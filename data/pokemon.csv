@@ -1,0 +1,501 @@
+id,name,forme_name,forme_base_pokemon_id,evolution_chain_id,evolution_parent_pokemon_id,evolution_method_id,evolution_parameter,height,weight,species,color,habitat,gender_rate,capture_rate,base_experience,base_happiness,gen1_internal_id,is_baby,has_dp_fem_sprite,has_dp_fem_back_sprite
+1,Bulbasaur,,,1,,,,7,69,Seed,green,grassland,1,45,64,70,153,0,0,0
+2,Ivysaur,,,1,1,1,16,10,130,Seed,green,grassland,1,45,141,70,9,0,0,0
+3,Venusaur,,,1,2,1,32,20,1000,Seed,green,grassland,1,45,208,70,154,0,0,0
+4,Charmander,,,2,,,,6,85,Lizard,red,mountain,1,45,65,70,176,0,0,0
+5,Charmeleon,,,2,4,1,16,11,190,Flame,red,mountain,1,45,142,70,178,0,0,0
+6,Charizard,,,2,5,1,36,17,905,Flame,red,mountain,1,45,209,70,180,0,0,0
+7,Squirtle,,,3,,,,5,90,Tiny Turtle,blue,water's edge,1,45,66,70,177,0,0,0
+8,Wartortle,,,3,7,1,16,10,225,Turtle,blue,water's edge,1,45,143,70,179,0,0,0
+9,Blastoise,,,3,8,1,36,16,855,Shellfish,blue,water's edge,1,45,210,70,28,0,0,0
+10,Caterpie,,,4,,,,3,29,Worm,green,forest,4,255,53,70,123,0,0,0
+11,Metapod,,,4,10,1,7,7,99,Cocoon,green,forest,4,120,72,70,124,0,0,0
+12,Butterfree,,,4,11,1,10,11,320,Butterfly,white,forest,4,45,160,70,125,0,0,0
+13,Weedle,,,5,,,,3,32,Hairy Bug,brown,forest,4,255,52,70,112,0,0,0
+14,Kakuna,,,5,13,1,7,6,100,Cocoon,yellow,forest,4,120,71,70,113,0,0,0
+15,Beedrill,,,5,14,1,10,10,295,Poison Bee,yellow,forest,4,45,159,70,114,0,0,0
+16,Pidgey,,,6,,,,3,18,Tiny Bird,brown,forest,4,255,55,70,36,0,0,0
+17,Pidgeotto,,,6,16,1,18,11,300,Bird,brown,forest,4,120,113,70,150,0,0,0
+18,Pidgeot,,,6,17,1,36,15,395,Bird,brown,forest,4,45,172,70,151,0,0,0
+19,Rattata,,,7,,,,3,35,Mouse,purple,grassland,4,255,57,70,165,0,0,0
+20,Raticate,,,7,19,1,20,7,185,Mouse,brown,grassland,4,127,116,70,166,0,0,0
+21,Spearow,,,8,,,,3,20,Tiny Bird,brown,rough terrain,4,255,58,70,5,0,0,0
+22,Fearow,,,8,21,1,20,12,380,Beak,brown,rough terrain,4,90,162,70,35,0,0,0
+23,Ekans,,,9,,,,20,69,Snake,purple,grassland,4,255,62,70,108,0,0,0
+24,Arbok,,,9,23,1,22,35,650,Cobra,purple,grassland,4,90,147,70,45,0,0,0
+25,Pikachu,,,10,172,12,,4,60,Mouse,yellow,forest,4,190,82,70,84,0,0,0
+26,Raichu,,,10,25,6,Thunderstone,8,300,Mouse,yellow,forest,4,75,122,70,85,0,1,0
+27,Sandshrew,,,11,,,,6,120,Mouse,yellow,rough terrain,4,255,93,70,96,0,0,0
+28,Sandslash,,,11,27,1,22,10,295,Mouse,yellow,rough terrain,4,90,163,70,97,0,0,0
+29,Nidoran♀,,,12,,,,4,70,Poison Pin,blue,grassland,8,235,59,70,15,0,0,0
+30,Nidorina,,,12,29,1,16,8,200,Poison Pin,blue,grassland,8,120,117,70,168,0,0,0
+31,Nidoqueen,,,12,30,6,Moon Stone,13,600,Drill,blue,grassland,8,45,194,70,16,0,0,0
+32,Nidoran♂,,,13,,,,5,90,Poison Pin,purple,grassland,0,235,60,70,3,0,0,0
+33,Nidorino,,,13,32,1,16,9,195,Poison Pin,purple,grassland,0,120,118,70,167,0,0,0
+34,Nidoking,,,13,33,6,Moon Stone,14,620,Drill,purple,grassland,0,45,195,70,7,0,0,0
+35,Clefairy,,,14,173,12,,6,75,Fairy,pink,mountain,6,150,68,140,4,0,0,0
+36,Clefable,,,14,35,6,Moon Stone,13,400,Fairy,pink,mountain,6,25,129,140,142,0,0,0
+37,Vulpix,,,15,,,,6,99,Fox,brown,grassland,6,190,63,70,82,0,0,0
+38,Ninetales,,,15,37,6,Fire Stone,11,199,Fox,yellow,grassland,6,75,178,70,83,0,0,0
+39,Jigglypuff,,,16,174,12,,5,55,Balloon,pink,grassland,6,170,76,70,100,0,0,0
+40,Wigglytuff,,,16,39,6,Moon Stone,10,120,Balloon,pink,grassland,6,50,109,70,101,0,0,0
+41,Zubat,,,17,,,,8,75,Bat,purple,cave,4,255,54,70,107,0,0,0
+42,Golbat,,,17,41,1,22,16,550,Bat,purple,cave,4,90,171,70,130,0,0,0
+43,Oddish,,,18,,,,5,54,Weed,blue,grassland,4,255,78,70,185,0,0,0
+44,Gloom,,,18,43,1,21,8,86,Weed,blue,grassland,4,120,132,70,186,0,0,0
+45,Vileplume,,,18,44,6,Leaf Stone,12,186,Flower,red,grassland,4,45,184,70,187,0,0,0
+46,Paras,,,19,,,,3,54,Mushroom,red,forest,4,190,70,70,109,0,0,0
+47,Parasect,,,19,46,1,24,10,295,Mushroom,red,forest,4,75,128,70,46,0,0,0
+48,Venonat,,,20,,,,10,300,Insect,purple,forest,4,190,75,70,65,0,0,0
+49,Venomoth,,,20,48,1,31,15,125,Poison Moth,purple,forest,4,75,138,70,119,0,0,0
+50,Diglett,,,21,,,,2,8,Mole,brown,cave,4,255,81,70,59,0,0,0
+51,Dugtrio,,,21,50,1,26,7,333,Mole,brown,cave,4,50,153,70,118,0,0,0
+52,Meowth,,,22,,,,4,42,Scratch Cat,yellow,urban,4,255,69,70,77,0,0,0
+53,Persian,,,22,52,1,28,10,320,Classy Cat,yellow,urban,4,90,148,70,144,0,0,0
+54,Psyduck,,,23,,,,8,196,Duck,yellow,water's edge,4,190,80,70,47,0,0,0
+55,Golduck,,,23,54,1,33,17,766,Duck,blue,water's edge,4,75,174,70,128,0,0,0
+56,Mankey,,,24,,,,5,280,Pig Monkey,brown,mountain,4,190,74,70,57,0,0,0
+57,Primeape,,,24,56,1,28,10,320,Pig Monkey,brown,mountain,4,75,149,70,117,0,0,0
+58,Growlithe,,,25,,,,7,190,Puppy,brown,grassland,2,190,91,70,33,0,0,0
+59,Arcanine,,,25,58,6,Fire Stone,19,1550,Legendary,brown,grassland,2,75,213,70,20,0,0,0
+60,Poliwag,,,26,,,,6,124,Tadpole,blue,water's edge,4,255,77,70,71,0,0,0
+61,Poliwhirl,,,26,60,1,25,10,200,Tadpole,blue,water's edge,4,120,131,70,110,0,0,0
+62,Poliwrath,,,26,61,6,Water Stone,13,540,Tadpole,blue,water's edge,4,45,185,70,111,0,0,0
+63,Abra,,,27,,,,9,195,Psi,brown,urban,2,200,75,70,148,0,0,0
+64,Kadabra,,,27,63,1,16,13,565,Psi,brown,urban,2,100,145,70,38,0,0,0
+65,Alakazam,,,27,64,5,,15,480,Psi,brown,urban,2,50,186,70,149,0,0,0
+66,Machop,,,28,,,,8,195,Superpower,gray,mountain,2,180,75,70,106,0,0,0
+67,Machoke,,,28,66,1,28,15,705,Superpower,gray,mountain,2,90,146,70,41,0,0,0
+68,Machamp,,,28,67,5,,16,1300,Superpower,gray,mountain,2,45,193,70,126,0,0,0
+69,Bellsprout,,,29,,,,7,40,Flower,green,forest,4,255,84,70,188,0,0,0
+70,Weepinbell,,,29,69,1,21,10,64,Flycatcher,green,forest,4,120,151,70,189,0,0,0
+71,Victreebel,,,29,70,6,Leaf Stone,17,155,Flycatcher,green,forest,4,45,191,70,190,0,0,0
+72,Tentacool,,,30,,,,9,455,Jellyfish,blue,sea,4,190,105,70,24,0,0,0
+73,Tentacruel,,,30,72,1,30,16,550,Jellyfish,blue,sea,4,60,205,70,155,0,0,0
+74,Geodude,,,31,,,,4,200,Rock,brown,mountain,4,255,73,70,169,0,0,0
+75,Graveler,,,31,74,1,25,10,1050,Rock,brown,mountain,4,120,134,70,39,0,0,0
+76,Golem,,,31,75,5,,14,3000,Megaton,brown,mountain,4,45,177,70,49,0,0,0
+77,Ponyta,,,32,,,,10,300,Fire Horse,yellow,grassland,4,190,152,70,163,0,0,0
+78,Rapidash,,,32,77,1,40,17,950,Fire Horse,yellow,grassland,4,60,192,70,164,0,0,0
+79,Slowpoke,,,33,,,,12,360,Dopey,pink,water's edge,4,190,99,70,37,0,0,0
+80,Slowbro,,,33,79,1,37,16,785,Hermit Crab,pink,water's edge,4,75,164,70,8,0,0,0
+81,Magnemite,,,34,,,,3,60,Magnet,gray,rough terrain,-1,190,89,70,173,0,0,0
+82,Magneton,,,34,81,1,30,10,600,Magnet,gray,rough terrain,-1,60,161,70,54,0,0,0
+83,Farfetch'd,,,35,,,,8,150,Wild Duck,brown,grassland,4,45,94,70,64,0,0,0
+84,Doduo,,,36,,,,14,392,Twin Bird,brown,grassland,4,190,96,70,70,0,0,0
+85,Dodrio,,,36,84,1,31,18,852,Triple Bird,brown,grassland,4,45,158,70,116,0,0,0
+86,Seel,,,37,,,,11,900,Sea Lion,white,sea,4,190,100,70,58,0,0,0
+87,Dewgong,,,37,86,1,34,17,1200,Sea Lion,white,sea,4,75,176,70,120,0,0,0
+88,Grimer,,,38,,,,9,300,Sludge,purple,urban,4,190,90,70,13,0,0,0
+89,Muk,,,38,88,1,38,12,300,Sludge,purple,urban,4,75,157,70,136,0,0,0
+90,Shellder,,,39,,,,3,40,Bivalve,purple,sea,4,190,97,70,23,0,0,0
+91,Cloyster,,,39,90,6,Water Stone,15,1325,Bivalve,purple,sea,4,60,203,70,139,0,0,0
+92,Gastly,,,40,,,,13,1,Gas,purple,cave,4,190,95,70,25,0,0,0
+93,Haunter,,,40,92,1,25,16,1,Gas,purple,cave,4,90,126,70,147,0,0,0
+94,Gengar,,,40,93,5,,15,405,Shadow,purple,cave,4,45,190,70,14,0,0,0
+95,Onix,,,41,,,,88,2100,Rock Snake,gray,cave,4,45,108,70,34,0,0,0
+96,Drowzee,,,42,,,,10,324,Hypnosis,yellow,grassland,4,190,102,70,48,0,0,0
+97,Hypno,,,42,96,1,26,16,756,Hypnosis,yellow,grassland,4,75,165,70,129,0,0,0
+98,Krabby,,,43,,,,4,65,River Crab,red,water's edge,4,225,115,70,78,0,0,0
+99,Kingler,,,43,98,1,28,13,600,Pincer,red,water's edge,4,60,206,70,138,0,0,0
+100,Voltorb,,,44,,,,5,104,Ball,red,urban,-1,190,103,70,6,0,0,0
+101,Electrode,,,44,100,1,30,12,666,Ball,red,urban,-1,60,150,70,141,0,0,0
+102,Exeggcute,,,45,,,,4,25,Egg,pink,forest,4,90,98,70,12,0,0,0
+103,Exeggutor,,,45,102,6,Leaf Stone,20,1200,Coconut,yellow,forest,4,45,212,70,10,0,0,0
+104,Cubone,,,46,,,,4,65,Lonely,brown,mountain,4,190,87,70,17,0,0,0
+105,Marowak,,,46,104,1,28,10,450,Bone Keeper,brown,mountain,4,75,124,70,145,0,0,0
+106,Hitmonlee,,,47,236,17,20,15,498,Kicking,brown,urban,0,45,139,70,43,0,0,0
+107,Hitmonchan,,,47,236,18,20,14,502,Punching,brown,urban,0,45,140,70,44,0,0,0
+108,Lickitung,,,48,,,,12,655,Licking,pink,grassland,4,45,127,70,11,0,0,0
+109,Koffing,,,49,,,,6,10,Poison Gas,purple,urban,4,190,114,70,55,0,0,0
+110,Weezing,,,49,109,1,35,12,95,Poison Gas,purple,urban,4,60,173,70,143,0,0,0
+111,Rhyhorn,,,50,,,,10,1150,Spikes,gray,rough terrain,4,120,135,70,1,0,0,0
+112,Rhydon,,,50,111,1,42,19,1200,Drill,gray,rough terrain,4,60,204,70,18,0,0,0
+113,Chansey,,,51,440,9,Oval Stone,11,346,Egg,pink,urban,8,30,255,140,40,0,0,0
+114,Tangela,,,52,,,,10,350,Vine,blue,grassland,4,45,166,70,30,0,0,0
+115,Kangaskhan,,,53,,,,22,800,Parent,brown,grassland,8,45,175,70,2,0,0,0
+116,Horsea,,,54,,,,4,80,Dragon,blue,sea,4,225,83,70,92,0,0,0
+117,Seadra,,,54,116,1,32,12,250,Dragon,blue,sea,4,75,155,70,93,0,0,0
+118,Goldeen,,,55,,,,6,150,Goldfish,red,water's edge,4,225,111,70,157,0,0,0
+119,Seaking,,,55,118,1,33,13,390,Goldfish,red,water's edge,4,60,170,70,158,0,0,0
+120,Staryu,,,56,,,,8,345,Star Shape,brown,sea,-1,225,106,70,27,0,0,0
+121,Starmie,,,56,120,6,Water Stone,11,800,Mysterious,purple,sea,-1,60,207,70,152,0,0,0
+122,Mr. Mime,,,57,439,11,102,13,545,Barrier,pink,urban,4,45,136,70,42,0,0,0
+123,Scyther,,,58,,,,15,560,Mantis,green,grassland,4,45,187,70,26,0,1,0
+124,Jynx,,,59,238,1,30,14,406,Human Shape,red,urban,8,45,137,70,72,0,0,0
+125,Electabuzz,,,60,239,1,30,11,300,Electric,yellow,grassland,2,45,156,70,53,0,0,0
+126,Magmar,,,61,240,1,30,13,445,Spitfire,red,mountain,2,45,167,70,51,0,0,0
+127,Pinsir,,,62,,,,15,550,Stag Beetle,brown,forest,4,45,200,70,29,0,0,0
+128,Tauros,,,63,,,,14,884,Wild Bull,brown,grassland,0,45,211,70,60,0,0,0
+129,Magikarp,,,64,,,,9,100,Fish,red,water's edge,4,255,20,70,133,0,0,0
+130,Gyarados,,,64,129,1,20,65,2350,Atrocious,blue,water's edge,4,45,214,70,22,0,0,0
+131,Lapras,,,65,,,,25,2200,Transport,blue,sea,4,45,219,70,19,0,0,0
+132,Ditto,,,66,,,,3,40,Transform,purple,urban,-1,35,61,70,76,0,0,0
+133,Eevee,,,67,,,,3,65,Evolution,brown,urban,1,45,92,70,102,0,0,0
+134,Vaporeon,,,67,133,6,Water Stone,10,290,Bubble Jet,blue,urban,1,45,196,70,105,0,0,0
+135,Jolteon,,,67,133,6,Thunderstone,8,245,Lightning,yellow,urban,1,45,197,70,104,0,0,0
+136,Flareon,,,67,133,6,Fire Stone,9,250,Flame,red,urban,1,45,198,70,103,0,0,0
+137,Porygon,,,68,,,,8,365,Virtual,pink,urban,-1,45,130,70,170,0,0,0
+138,Omanyte,,,69,,,,4,75,Spiral,blue,sea,1,45,99,70,98,0,0,0
+139,Omastar,,,69,138,1,40,10,350,Spiral,blue,sea,1,45,199,70,99,0,0,0
+140,Kabuto,,,70,,,,5,115,Shellfish,brown,sea,1,45,99,70,90,0,0,0
+141,Kabutops,,,70,140,1,40,13,405,Shellfish,brown,sea,1,45,199,70,91,0,0,0
+142,Aerodactyl,,,71,,,,18,590,Fossil,purple,mountain,1,45,202,70,171,0,0,0
+143,Snorlax,,,72,446,12,,21,4600,Sleeping,black,mountain,1,25,154,70,132,0,0,0
+144,Articuno,,,73,,,,17,554,Freeze,blue,rare,-1,3,215,35,74,0,0,0
+145,Zapdos,,,74,,,,16,526,Electric,yellow,rare,-1,3,216,35,75,0,0,0
+146,Moltres,,,75,,,,20,600,Flame,yellow,rare,-1,3,217,35,73,0,0,0
+147,Dratini,,,76,,,,18,33,Dragon,blue,water's edge,4,45,67,35,88,0,0,0
+148,Dragonair,,,76,147,1,30,40,165,Dragon,blue,water's edge,4,45,144,35,89,0,0,0
+149,Dragonite,,,76,148,1,55,22,2100,Dragon,brown,water's edge,4,45,218,35,66,0,0,0
+150,Mewtwo,,,77,,,,20,1220,Genetic,purple,rare,-1,3,220,0,131,0,0,0
+151,Mew,,,78,,,,4,40,New Species,pink,rare,-1,45,64,100,21,0,0,0
+152,Chikorita,,,79,,,,9,64,Leaf,green,grassland,1,45,64,70,,0,0,0
+153,Bayleef,,,79,152,1,16,12,158,Leaf,green,grassland,1,45,141,70,,0,0,0
+154,Meganium,,,79,153,1,32,18,1005,Herb,green,grassland,1,45,208,70,,0,0,0
+155,Cyndaquil,,,80,,,,5,79,Fire Mouse,yellow,grassland,1,45,65,70,,0,0,0
+156,Quilava,,,80,155,1,14,9,190,Volcano,yellow,grassland,1,45,142,70,,0,0,0
+157,Typhlosion,,,80,156,1,36,17,795,Volcano,yellow,grassland,1,45,209,70,,0,0,0
+158,Totodile,,,81,,,,6,95,Big Jaw,blue,water's edge,1,45,66,70,,0,0,0
+159,Croconaw,,,81,158,1,18,11,250,Big Jaw,blue,water's edge,1,45,143,70,,0,0,0
+160,Feraligatr,,,81,159,1,30,23,888,Big Jaw,blue,water's edge,1,45,210,70,,0,0,0
+161,Sentret,,,82,,,,8,60,Scout,brown,grassland,4,255,57,70,,0,0,0
+162,Furret,,,82,161,1,15,18,325,Long Body,brown,grassland,4,90,116,70,,0,0,0
+163,Hoothoot,,,83,,,,7,212,Owl,brown,forest,4,255,58,70,,0,0,0
+164,Noctowl,,,83,163,1,20,16,408,Owl,brown,forest,4,90,162,70,,0,0,0
+165,Ledyba,,,84,,,,10,108,Five Star,red,forest,4,255,54,70,,0,0,0
+166,Ledian,,,84,165,1,18,14,356,Five Star,red,forest,4,90,134,70,,0,0,0
+167,Spinarak,,,85,,,,5,85,String Spit,green,forest,4,255,54,70,,0,0,0
+168,Ariados,,,85,167,1,22,11,335,Long Leg,red,forest,4,90,134,70,,0,0,0
+169,Crobat,,,17,42,12,,18,750,Bat,purple,cave,4,90,204,70,,0,0,0
+170,Chinchou,,,86,,,,5,120,Angler,blue,sea,4,190,90,70,,0,0,0
+171,Lanturn,,,86,170,1,27,12,225,Light,blue,sea,4,75,156,70,,0,0,0
+172,Pichu,,,10,,,,3,20,Tiny Mouse,yellow,forest,4,190,42,70,,1,0,0
+173,Cleffa,,,14,,,,3,30,Star Shape,pink,mountain,6,150,37,140,,1,0,0
+174,Igglybuff,,,16,,,,3,10,Balloon,pink,grassland,6,170,39,70,,1,0,0
+175,Togepi,,,87,,,,3,15,Spike Ball,white,forest,1,190,74,70,,0,0,0
+176,Togetic,,,87,175,12,,6,32,Happiness,white,forest,1,75,114,70,,0,0,0
+177,Natu,,,88,,,,2,20,Tiny Bird,green,forest,4,190,73,70,,0,0,0
+178,Xatu,,,88,177,1,25,15,150,Mystic,green,forest,4,75,171,70,,0,0,0
+179,Mareep,,,89,,,,6,78,Wool,white,grassland,4,235,59,70,,0,0,0
+180,Flaaffy,,,89,179,1,15,8,133,Wool,pink,grassland,4,120,117,70,,0,0,0
+181,Ampharos,,,89,180,1,30,14,615,Light,yellow,grassland,4,45,194,70,,0,0,0
+182,Bellossom,,,18,44,6,Sun Stone,4,58,Flower,green,grassland,4,45,184,70,,0,0,0
+183,Marill,,,90,298,12,,4,85,Aqua Mouse,blue,water's edge,4,190,58,70,,0,0,0
+184,Azumarill,,,90,183,1,18,8,285,Aqua Rabbit,blue,water's edge,4,75,153,70,,0,0,0
+185,Sudowoodo,,,91,438,11,102,12,380,Imitation,brown,forest,4,65,135,70,,0,0,0
+186,Politoed,,,26,61,5,King's Rock,11,339,Frog,green,water's edge,4,45,185,70,,0,0,0
+187,Hoppip,,,92,,,,4,5,Cottonweed,pink,grassland,4,255,74,70,,0,0,0
+188,Skiploom,,,92,187,1,18,6,10,Cottonweed,green,grassland,4,120,136,70,,0,0,0
+189,Jumpluff,,,92,188,1,27,8,30,Cottonweed,blue,grassland,4,45,176,70,,0,0,0
+190,Aipom,,,93,,,,8,115,Long Tail,purple,forest,4,45,94,70,,0,0,0
+191,Sunkern,,,94,,,,3,18,Seed,yellow,grassland,4,235,52,70,,0,0,0
+192,Sunflora,,,94,191,6,Sun Stone,8,85,Sun,yellow,grassland,4,120,146,70,,0,0,0
+193,Yanma,,,95,,,,12,380,Clear Wing,red,forest,4,75,147,70,,0,0,0
+194,Wooper,,,96,,,,4,85,Water Fish,blue,water's edge,4,255,52,70,,0,0,0
+195,Quagsire,,,96,194,1,20,14,750,Water Fish,blue,water's edge,4,90,137,70,,0,0,0
+196,Espeon,,,67,133,13,Sun Shard,9,265,Sun,purple,urban,1,45,197,70,,0,0,0
+197,Umbreon,,,67,133,14,Moon Shard,10,270,Moonlight,black,urban,1,45,197,35,,0,0,0
+198,Murkrow,,,97,,,,5,21,Darkness,black,forest,4,30,107,35,,0,0,0
+199,Slowking,,,33,79,5,King's Rock,20,795,Royal,pink,water's edge,4,70,164,70,,0,0,0
+200,Misdreavus,,,98,,,,7,10,Screech,gray,cave,4,45,147,35,,0,0,0
+201,Unown,,,99,,,,5,50,Symbol,black,rare,-1,225,61,70,,0,0,0
+202,Wobbuffet,,,100,360,1,15,13,285,Patient,blue,cave,4,45,177,70,,0,0,0
+203,Girafarig,,,101,,,,15,415,Long Neck,yellow,grassland,4,60,149,70,,0,0,0
+204,Pineco,,,102,,,,6,72,Bagworm,gray,forest,4,190,60,70,,0,0,0
+205,Forretress,,,102,204,1,31,12,1258,Bagworm,purple,forest,4,75,118,70,,0,0,0
+206,Dunsparce,,,103,,,,15,140,Land Snake,yellow,cave,4,190,125,70,,0,0,0
+207,Gligar,,,104,,,,11,648,FlyScorpion,purple,mountain,4,60,108,70,,0,1,0
+208,Steelix,,,41,95,5,Metal Coat,92,4000,Iron Snake,gray,cave,4,25,196,70,,0,0,0
+209,Snubbull,,,105,,,,6,78,Fairy,pink,urban,6,190,63,70,,0,0,0
+210,Granbull,,,105,209,1,23,14,487,Fairy,purple,urban,6,75,178,70,,0,0,0
+211,Qwilfish,,,106,,,,5,39,Balloon,gray,sea,4,45,100,70,,0,0,0
+212,Scizor,,,58,123,5,Metal Coat,18,1180,Pincer,red,grassland,4,25,200,70,,0,1,0
+213,Shuckle,,,107,,,,6,205,Mold,yellow,mountain,4,190,80,70,,0,0,0
+214,Heracross,,,108,,,,15,540,Single Horn,blue,forest,4,45,200,70,,0,0,0
+215,Sneasel,,,109,,,,9,280,Sharp Claw,black,forest,4,60,132,35,,0,0,0
+216,Teddiursa,,,110,,,,6,88,Little Bear,brown,mountain,4,120,124,70,,0,0,0
+217,Ursaring,,,110,216,1,30,18,1258,Hibernator,brown,mountain,4,60,189,70,,0,0,0
+218,Slugma,,,111,,,,7,350,Lava,red,mountain,4,190,78,70,,0,0,0
+219,Magcargo,,,111,218,1,38,8,550,Lava,red,mountain,4,75,154,70,,0,0,0
+220,Swinub,,,112,,,,4,65,Pig,brown,cave,4,225,78,70,,0,0,0
+221,Piloswine,,,112,220,1,33,11,558,Swine,brown,cave,4,75,160,70,,0,0,0
+222,Corsola,,,113,,,,6,50,Coral,pink,sea,6,60,113,70,,0,0,0
+223,Remoraid,,,114,,,,6,120,Jet,gray,sea,4,190,78,70,,0,0,0
+224,Octillery,,,114,223,1,25,9,285,Jet,red,sea,4,75,164,70,,0,0,0
+225,Delibird,,,115,,,,9,160,Delivery,red,mountain,4,45,183,70,,0,0,0
+226,Mantine,,,116,458,20,223,21,2200,Kite,purple,sea,4,25,168,70,,0,0,0
+227,Skarmory,,,117,,,,17,505,Armor Bird,gray,rough terrain,4,25,168,70,,0,0,0
+228,Houndour,,,118,,,,6,108,Dark,black,rough terrain,4,120,114,35,,0,0,0
+229,Houndoom,,,118,228,1,24,14,350,Dark,black,rough terrain,4,45,204,35,,0,0,0
+230,Kingdra,,,54,117,5,Dragon Scale,18,1520,Dragon,blue,sea,4,45,207,70,,0,0,0
+231,Phanpy,,,119,,,,5,335,Long Nose,blue,rough terrain,4,120,124,70,,0,0,0
+232,Donphan,,,119,231,1,25,11,1200,Armor,gray,rough terrain,4,60,189,70,,0,0,0
+233,Porygon2,,,68,137,5,Up-Grade,6,325,Virtual,red,urban,-1,45,180,70,,0,0,0
+234,Stantler,,,120,,,,14,712,Big Horn,brown,forest,4,45,165,70,,0,0,0
+235,Smeargle,,,121,,,,12,580,Painter,white,urban,4,45,106,70,,0,0,0
+236,Tyrogue,,,47,,,,7,210,Scuffle,purple,urban,0,75,91,70,,1,0,0
+237,Hitmontop,,,47,236,19,20,14,480,Handstand,brown,urban,0,45,138,70,,0,0,0
+238,Smoochum,,,59,,,,4,60,Kiss,pink,urban,8,45,87,70,,1,0,0
+239,Elekid,,,60,,,,6,235,Electric,yellow,grassland,2,45,106,70,,1,0,0
+240,Magby,,,61,,,,7,214,Live Coal,red,mountain,2,45,117,70,,1,0,0
+241,Miltank,,,122,,,,12,755,Milk Cow,pink,grassland,8,45,200,70,,0,0,0
+242,Blissey,,,51,113,12,,15,468,Happiness,pink,urban,8,30,255,140,,0,0,0
+243,Raikou,,,123,,,,19,1780,Thunder,yellow,grassland,-1,3,216,35,,0,0,0
+244,Entei,,,124,,,,21,1980,Volcano,brown,grassland,-1,3,217,35,,0,0,0
+245,Suicune,,,125,,,,20,1870,Aurora,blue,grassland,-1,3,215,35,,0,0,0
+246,Larvitar,,,126,,,,6,720,Rock Skin,green,mountain,4,45,67,35,,0,0,0
+247,Pupitar,,,126,246,1,30,12,1520,Hard Shell,gray,mountain,4,45,144,35,,0,0,0
+248,Tyranitar,,,126,247,1,55,20,2020,Armor,green,mountain,4,45,218,35,,0,0,0
+249,Lugia,,,127,,,,52,2160,Diving,white,rare,-1,3,220,0,,0,0,0
+250,Ho-oh,,,128,,,,38,1990,Rainbow,red,rare,-1,3,220,0,,0,0,0
+251,Celebi,,,129,,,,6,50,Time Travel,green,forest,-1,45,64,100,,0,0,0
+252,Treecko,,,130,,,,5,50,Wood Gecko,green,forest,1,45,65,70,,0,0,0
+253,Grovyle,,,130,252,1,16,9,216,Wood Gecko,green,forest,1,45,141,70,,0,0,0
+254,Sceptile,,,130,253,1,36,17,522,Forest,green,forest,1,45,208,70,,0,0,0
+255,Torchic,,,131,,,,4,25,Chick,red,grassland,1,45,65,70,,0,0,1
+256,Combusken,,,131,255,1,16,9,195,Young Fowl,red,grassland,1,45,142,70,,0,0,0
+257,Blaziken,,,131,256,1,36,19,520,Blaze,red,grassland,1,45,209,70,,0,0,0
+258,Mudkip,,,132,,,,4,76,Mud Fish,blue,water's edge,1,45,65,70,,0,0,0
+259,Marshtomp,,,132,258,1,16,7,280,Mud Fish,blue,water's edge,1,45,143,70,,0,0,0
+260,Swampert,,,132,259,1,36,15,819,Mud Fish,blue,water's edge,1,45,210,70,,0,0,0
+261,Poochyena,,,133,,,,5,136,Bite,gray,grassland,4,255,55,70,,0,0,0
+262,Mightyena,,,133,261,1,18,10,370,Bite,gray,grassland,4,127,128,70,,0,0,0
+263,Zigzagoon,,,134,,,,4,175,TinyRaccoon,brown,grassland,4,255,60,70,,0,0,0
+264,Linoone,,,134,263,1,20,5,325,Rushing,white,grassland,4,90,128,70,,0,0,0
+265,Wurmple,,,135,,,,3,36,Worm,red,forest,4,255,54,70,,0,0,0
+266,Silcoon,,,135,265,1,7,6,100,Cocoon,white,forest,4,120,72,70,,0,0,0
+267,Beautifly,,,135,266,1,10,10,284,Butterfly,yellow,forest,4,45,161,70,,0,0,0
+268,Cascoon,,,135,265,1,7,7,115,Cocoon,purple,forest,4,120,72,70,,0,0,0
+269,Dustox,,,135,268,1,10,12,316,Poison Moth,green,forest,4,45,161,70,,0,0,0
+270,Lotad,,,136,,,,5,26,Water Weed,green,water's edge,4,255,74,70,,0,0,0
+271,Lombre,,,136,270,1,14,12,325,Jolly,green,water's edge,4,120,141,70,,0,0,0
+272,Ludicolo,,,136,271,6,Water Stone,15,550,Carefree,green,water's edge,4,45,181,70,,0,0,0
+273,Seedot,,,137,,,,5,40,Acorn,brown,forest,4,255,74,70,,0,0,0
+274,Nuzleaf,,,137,273,1,14,10,280,Wily,brown,forest,4,120,141,70,,0,0,0
+275,Shiftry,,,137,274,6,Leaf Stone,13,596,Wicked,brown,forest,4,45,181,70,,0,0,0
+276,Taillow,,,138,,,,3,23,TinySwallow,blue,grassland,4,200,59,70,,0,0,0
+277,Swellow,,,138,276,1,22,7,198,Swallow,blue,grassland,4,45,162,70,,0,0,0
+278,Wingull,,,139,,,,6,95,Seagull,white,sea,4,190,64,70,,0,0,0
+279,Pelipper,,,139,278,1,25,12,280,Water Bird,yellow,sea,4,45,164,70,,0,0,0
+280,Ralts,,,140,,,,4,66,Feeling,white,urban,4,235,70,35,,0,0,0
+281,Kirlia,,,140,280,1,20,8,202,Emotion,white,urban,4,120,140,35,,0,0,0
+282,Gardevoir,,,140,281,1,30,16,484,Embrace,white,urban,4,45,208,35,,0,0,0
+283,Surskit,,,141,,,,5,17,Pond Skater,blue,water's edge,4,200,63,70,,0,0,0
+284,Masquerain,,,141,283,1,22,8,36,Eyeball,blue,water's edge,4,75,128,70,,0,0,0
+285,Shroomish,,,142,,,,4,45,Mushroom,brown,forest,4,255,65,70,,0,0,0
+286,Breloom,,,142,285,1,23,12,392,Mushroom,green,forest,4,90,165,70,,0,0,0
+287,Slakoth,,,143,,,,8,240,Slacker,brown,forest,4,255,83,70,,0,0,0
+288,Vigoroth,,,143,287,1,18,14,465,Wild Monkey,white,forest,4,120,126,70,,0,0,0
+289,Slaking,,,143,288,1,36,20,1305,Lazy,brown,forest,4,45,210,70,,0,0,0
+290,Nincada,,,144,,,,5,55,Trainee,gray,forest,4,255,65,70,,0,0,0
+291,Ninjask,,,144,290,1,20,8,120,Ninja,yellow,forest,4,120,155,70,,0,0,0
+292,Shedinja,,,144,290,16,Ninjask,8,12,Shed,brown,forest,-1,45,95,70,,0,0,0
+293,Whismur,,,145,,,,6,163,Whisper,pink,cave,4,190,68,70,,0,0,0
+294,Loudred,,,145,293,1,20,10,405,Big Voice,blue,cave,4,120,126,70,,0,0,0
+295,Exploud,,,145,294,1,40,15,840,Loud Noise,blue,cave,4,45,184,70,,0,0,0
+296,Makuhita,,,146,,,,10,864,Guts,yellow,mountain,2,180,87,70,,0,0,0
+297,Hariyama,,,146,296,1,24,23,2538,Arm Thrust,brown,mountain,2,200,184,70,,0,0,0
+298,Azurill,,,90,,,,2,20,Polka Dot,blue,water's edge,6,150,33,70,,1,0,0
+299,Nosepass,,,147,,,,10,970,Compass,gray,cave,4,255,108,70,,0,0,0
+300,Skitty,,,148,,,,6,110,Kitten,pink,forest,6,255,65,70,,0,0,0
+301,Delcatty,,,148,300,6,Moon Stone,11,326,Prim,purple,forest,6,60,138,70,,0,0,0
+302,Sableye,,,149,,,,5,110,Darkness,purple,cave,4,45,98,35,,0,0,0
+303,Mawile,,,150,,,,6,115,Deceiver,black,cave,4,45,98,70,,0,0,0
+304,Aron,,,151,,,,4,600,Iron Armor,gray,mountain,4,180,96,35,,0,0,0
+305,Lairon,,,151,304,1,32,9,1200,Iron Armor,gray,mountain,4,90,152,35,,0,0,0
+306,Aggron,,,151,305,1,42,21,3600,Iron Armor,gray,mountain,4,45,205,35,,0,0,0
+307,Meditite,,,152,,,,6,112,Meditate,blue,mountain,4,180,91,70,,0,0,0
+308,Medicham,,,152,307,1,37,13,315,Meditate,red,mountain,4,90,153,70,,0,0,0
+309,Electrike,,,153,,,,6,152,Lightning,green,grassland,4,120,104,70,,0,0,0
+310,Manectric,,,153,309,1,26,15,402,Discharge,yellow,grassland,4,45,168,70,,0,0,0
+311,Plusle,,,154,,,,4,42,Cheering,yellow,grassland,4,200,120,70,,0,0,0
+312,Minun,,,155,,,,4,42,Cheering,yellow,grassland,4,200,120,70,,0,0,0
+313,Volbeat,,,156,,,,7,177,Firefly,gray,forest,0,150,146,70,,0,0,0
+314,Illumise,,,157,,,,6,177,Firefly,purple,forest,8,150,146,70,,0,0,0
+315,Roselia,,,158,406,13,,3,20,Thorn,green,grassland,4,150,152,70,,0,0,0
+316,Gulpin,,,159,,,,4,103,Stomach,green,grassland,4,225,75,70,,0,0,0
+317,Swalot,,,159,316,1,26,17,800,Poison Bag,purple,grassland,4,75,168,70,,0,0,0
+318,Carvanha,,,160,,,,8,208,Savage,red,sea,4,225,88,35,,0,0,0
+319,Sharpedo,,,160,318,1,30,18,888,Brutal,blue,sea,4,60,175,35,,0,0,0
+320,Wailmer,,,161,,,,20,1300,Ball Whale,blue,sea,4,125,137,70,,0,0,0
+321,Wailord,,,161,320,1,40,145,3980,Float Whale,blue,sea,4,60,206,70,,0,0,0
+322,Numel,,,162,,,,7,240,Numb,yellow,mountain,4,255,88,70,,0,0,0
+323,Camerupt,,,162,322,1,33,19,2200,Eruption,red,mountain,4,150,175,70,,0,0,0
+324,Torkoal,,,163,,,,5,804,Coal,brown,mountain,4,90,161,70,,0,0,0
+325,Spoink,,,164,,,,7,306,Bounce,black,mountain,4,255,89,70,,0,0,0
+326,Grumpig,,,164,325,1,32,9,715,Manipulate,purple,mountain,4,60,164,70,,0,0,0
+327,Spinda,,,165,,,,11,50,Spot Panda,brown,mountain,4,255,85,70,,0,0,0
+328,Trapinch,,,166,,,,7,150,Ant Pit,brown,rough terrain,4,255,73,70,,0,0,0
+329,Vibrava,,,166,328,1,35,11,153,Vibration,green,rough terrain,4,120,126,70,,0,0,0
+330,Flygon,,,166,329,1,45,20,820,Mystic,green,rough terrain,4,45,197,70,,0,0,0
+331,Cacnea,,,167,,,,4,513,Cactus,green,rough terrain,4,190,97,35,,0,0,0
+332,Cacturne,,,167,331,1,32,13,774,Scarecrow,green,rough terrain,4,60,177,35,,0,1,0
+333,Swablu,,,168,,,,4,12,Cotton Bird,blue,forest,4,255,74,70,,0,0,0
+334,Altaria,,,168,333,1,35,11,206,Humming,blue,forest,4,45,188,70,,0,0,0
+335,Zangoose,,,169,,,,13,403,Cat Ferret,white,grassland,4,90,165,70,,0,0,0
+336,Seviper,,,170,,,,27,525,Fang Snake,black,grassland,4,90,165,70,,0,0,0
+337,Lunatone,,,171,,,,10,1680,Meteorite,yellow,cave,-1,45,150,70,,0,0,0
+338,Solrock,,,172,,,,12,1540,Meteorite,red,cave,-1,45,150,70,,0,0,0
+339,Barboach,,,173,,,,4,19,Whiskers,gray,water's edge,4,190,92,70,,0,0,0
+340,Whiscash,,,173,339,1,30,9,236,Whiskers,blue,water's edge,4,75,158,70,,0,0,0
+341,Corphish,,,174,,,,6,115,Ruffian,red,water's edge,4,205,111,70,,0,0,0
+342,Crawdaunt,,,174,341,1,30,11,328,Rogue,red,water's edge,4,155,161,70,,0,0,0
+343,Baltoy,,,175,,,,5,215,Clay Doll,brown,rough terrain,-1,255,58,70,,0,0,0
+344,Claydol,,,175,343,1,36,15,1080,Clay Doll,black,rough terrain,-1,90,189,70,,0,0,0
+345,Lileep,,,176,,,,10,238,Sea Lily,purple,sea,1,45,99,70,,0,0,0
+346,Cradily,,,176,345,1,40,15,604,Barnacle,green,sea,1,45,199,70,,0,0,0
+347,Anorith,,,177,,,,7,125,Old Shrimp,gray,water's edge,1,45,99,70,,0,0,0
+348,Armaldo,,,177,347,1,40,15,682,Plate,gray,water's edge,1,45,199,70,,0,0,0
+349,Feebas,,,178,,,,6,74,Fish,brown,water's edge,4,255,61,70,,0,0,0
+350,Milotic,,,178,349,15,170,62,1620,Tender,pink,water's edge,4,60,213,70,,0,0,0
+351,Castform,,,179,,,,3,8,Weather,white,grassland,4,45,145,70,,0,0,0
+352,Kecleon,,,180,,,,10,220,Color Swap,green,forest,4,200,132,70,,0,0,0
+353,Shuppet,,,181,,,,6,23,Puppet,black,urban,4,225,97,35,,0,0,0
+354,Banette,,,181,353,1,37,11,125,Marionette,black,urban,4,45,179,35,,0,0,0
+355,Duskull,,,182,,,,8,150,Requiem,black,forest,4,190,97,35,,0,0,0
+356,Dusclops,,,182,355,1,37,16,306,Beckon,black,forest,4,90,179,35,,0,0,0
+357,Tropius,,,183,,,,20,1000,Fruit,green,forest,4,200,169,70,,0,0,0
+358,Chimecho,,,184,433,14,,6,10,Wind Chime,blue,grassland,4,45,147,70,,0,0,0
+359,Absol,,,185,,,,12,470,Disaster,white,mountain,4,30,174,35,,0,0,0
+360,Wynaut,,,100,,,,6,140,Bright,blue,cave,4,125,44,70,,1,0,0
+361,Snorunt,,,186,,,,7,168,Snow Hat,gray,cave,4,190,74,70,,0,0,0
+362,Glalie,,,186,361,1,42,15,2565,Face,gray,cave,4,75,187,70,,0,0,0
+363,Spheal,,,187,,,,8,395,Clap,blue,sea,4,255,75,70,,0,0,0
+364,Sealeo,,,187,363,1,32,11,876,Ball Roll,blue,sea,4,120,128,70,,0,0,0
+365,Walrein,,,187,364,1,44,14,1506,Ice Break,blue,sea,4,45,192,70,,0,0,0
+366,Clamperl,,,188,,,,4,525,Bivalve,blue,sea,4,255,142,70,,0,0,0
+367,Huntail,,,188,366,5,DeepSeaTooth,17,270,Deep Sea,blue,sea,4,60,178,70,,0,0,0
+368,Gorebyss,,,188,366,5,DeepSeaScale,18,226,South Sea,pink,sea,4,60,178,70,,0,0,0
+369,Relicanth,,,189,,,,10,234,Longevity,gray,sea,1,25,198,70,,0,0,0
+370,Luvdisc,,,190,,,,6,87,Rendezvous,pink,sea,6,225,110,70,,0,0,0
+371,Bagon,,,191,,,,6,421,Rock Head,blue,rough terrain,4,45,89,35,,0,0,0
+372,Shelgon,,,191,371,1,30,11,1105,Endurance,white,rough terrain,4,45,144,35,,0,0,0
+373,Salamence,,,191,372,1,50,15,1026,Dragon,blue,rough terrain,4,45,218,35,,0,0,0
+374,Beldum,,,192,,,,6,952,Iron Ball,blue,rough terrain,-1,3,103,35,,0,0,0
+375,Metang,,,192,374,1,20,12,2025,Iron Claw,blue,rough terrain,-1,3,153,35,,0,0,0
+376,Metagross,,,192,375,1,45,16,5500,Iron Leg,blue,rough terrain,-1,3,210,35,,0,0,0
+377,Regirock,,,193,,,,17,2300,Rock Peak,brown,cave,-1,3,217,35,,0,0,0
+378,Regice,,,194,,,,18,1750,Iceberg,blue,cave,-1,3,216,35,,0,0,0
+379,Registeel,,,195,,,,19,2050,Iron,gray,cave,-1,3,215,35,,0,0,0
+380,Latias,,,196,,,,14,400,Eon,red,water's edge,8,3,211,90,,0,0,0
+381,Latios,,,197,,,,20,600,Eon,blue,water's edge,0,3,211,90,,0,0,0
+382,Kyogre,,,198,,,,45,3520,Sea Basin,blue,sea,-1,5,218,0,,0,0,0
+383,Groudon,,,199,,,,35,9500,Continent,red,rough terrain,-1,5,218,0,,0,0,0
+384,Rayquaza,,,200,,,,70,2065,Sky High,green,rare,-1,3,220,0,,0,0,0
+385,Jirachi,,,201,,,,3,11,Wish,yellow,mountain,-1,3,215,100,,0,0,0
+386,Deoxys,normal,,202,,,,17,608,DNA,red,rare,-1,3,215,0,,0,0,0
+387,Turtwig,,,203,,,,4,102,Tiny Leaf,green,,1,45,64,70,,0,0,0
+388,Grotle,,,203,387,1,18,11,970,Grove,green,,1,45,141,70,,0,0,0
+389,Torterra,,,203,388,1,32,22,3100,Continent,green*,,1,45,208,70,,0,0,0
+390,Chimchar,,,204,,,,5,62,Chimp,brown*,,1,45,65,70,,0,0,0
+391,Monferno,,,204,390,1,14,9,220,Playful,brown*,,1,45,142,70,,0,0,0
+392,Infernape,,,204,391,1,36,12,550,Flame,brown,,1,45,209,70,,0,0,0
+393,Piplup,,,205,,,,4,52,Penguin,blue,,1,45,66,70,,0,0,0
+394,Prinplup,,,205,393,1,16,8,230,Penguin,blue,,1,45,143,70,,0,0,0
+395,Empoleon,,,205,394,1,36,17,845,Emperor,blue,,1,45,210,70,,0,0,0
+396,Starly,,,206,,,,3,20,Starling,brown,,4,255,56,70,,0,0,0
+397,Staravia,,,206,396,1,14,6,155,Starling,brown,,4,120,113,70,,0,0,0
+398,Staraptor,,,206,397,1,34,12,249,Predator,brown,,4,45,172,70,,0,1,0
+399,Bidoof,,,207,,,,5,200,Plump Mouse,brown,,4,255,58,70,,0,0,0
+400,Bibarel,,,207,399,1,15,10,315,Beaver,brown,,4,127,116,70,,0,1,0
+401,Kricketot,,,208,,,,3,22,Cricket,red,,4,255,54,70,,0,0,0
+402,Kricketune,,,208,401,1,10,10,255,Cricket,red,,4,45,159,70,,0,0,0
+403,Shinx,,,209,,,,5,95,Flash,blue,,4,235,60,70,,0,0,0
+404,Luxio,,,209,403,1,15,9,305,Spark,blue,,4,120,117,100,,0,0,0
+405,Luxray,,,209,404,1,30,14,420,Gleam Eyes,blue,,4,45,194,70,,0,0,0
+406,Budew,,,158,,,,2,12,Bud,green*,,4,255,68,70,,1,0,0
+407,Roserade,,,158,315,6,Shiny Stone,9,145,Bouquet,green*,,4,75,204,70,,0,1,0
+408,Cranidos,,,211,,,,9,315,Head Butt,blue,,1,45,99,70,,0,0,0
+409,Rampardos,,,211,408,1,30,16,1025,Head Butt,blue,,1,45,199,70,,0,0,0
+410,Shieldon,,,212,,,,5,570,Shield,gray,,1,45,99,70,,0,0,0
+411,Bastiodon,,,212,410,1,30,13,1495,Shield,gray,,1,45,199,70,,0,0,0
+412,Burmy,,,213,,,,2,34,Bagworm,gray,,4,120,61,70,,0,0,0
+413,Wormadam,grass,,213,412,3,20,5,65,Bagworm,gray,,8,45,159,70,,0,0,0
+414,Mothim,,,213,412,2,20,9,233,Moth,yellow,,0,45,159,70,,0,0,0
+415,Combee,,,214,,,,3,55,Tiny Bee,yellow,,1,120,63,70,,0,1,0
+416,Vespiquen,,,214,415,3,21,12,385,Beehive,yellow,,8,45,188,70,,0,0,0
+417,Pachirisu,,,215,,,,4,39,EleSquirrel,white,,4,200,120,100,,0,1,0
+418,Buizel,,,216,,,,7,295,Sea Weasel,brown,,4,190,75,70,,0,0,1
+419,Floatzel,,,216,418,1,26,11,335,Sea Weasel,brown,,4,75,178,70,,0,0,1
+420,Cherubi,,,217,,,,4,33,Cherry,pink,,4,190,68,70,,0,0,0
+421,Cherrim,,,217,420,1,25,5,93,Blossom,pink,,4,75,133,70,,0,0,0
+422,Shellos,,,218,,,,3,63,Sea Slug,purple,,4,190,73,70,,0,0,0
+423,Gastrodon,,,218,422,1,30,9,299,Sea Slug,purple,,4,75,176,70,,0,0,0
+424,Ambipom,,,93,190,11,458,12,203,Long Tail,purple,,4,45,186,100,,0,0,0
+425,Drifloon,,,219,,,,4,12,Balloon,purple,,4,125,127,70,,0,0,0
+426,Drifblim,,,219,425,1,28,12,150,Blimp,purple,,4,60,204,70,,0,0,0
+427,Buneary,,,220,,,,4,55,Rabbit,brown,,4,190,84,0,,0,0,0
+428,Lopunny,,,220,427,12,,12,333,Rabbit,brown,,4,60,178,140,,0,0,0
+429,Mismagius,,,98,200,6,Dusk Stone,9,44,Magical,purple,,4,45,187,35,,0,0,0
+430,Honchkrow,,,97,198,6,Dusk Stone,9,273,Big Boss,black,,4,30,187,35,,0,0,0
+431,Glameow,,,221,,,,5,39,Catty,gray,,6,190,71,70,,0,0,0
+432,Purugly,,,221,431,1,38,10,438,Tiger Cat,gray,,6,75,183,70,,0,0,0
+433,Chingling,,,184,,,,2,6,Bell,yellow,,4,120,74,70,,1,0,0
+434,Stunky,,,223,,,,4,192,Skunk,purple,,4,225,79,70,,0,0,0
+435,Skuntank,,,223,434,1,34,10,380,Skunk,purple,,4,60,209,70,,0,0,0
+436,Bronzor,,,224,,,,5,605,Bronze,green,,-1,255,72,70,,0,0,0
+437,Bronzong,,,224,436,1,33,13,1870,Bronze Bell,green,,-1,90,188,70,,0,0,0
+438,Bonsly,,,91,,,,5,150,Bonsai,brown,,4,255,68,70,,1,0,0
+439,Mime Jr.,,,57,,,,6,130,Mime,pink,,4,145,78,70,,1,0,0
+440,Happiny,,,51,,,,6,244,Playhouse,pink,,8,130,255,140,,1,0,0
+441,Chatot,,,228,,,,5,19,Music Note,black,,4,30,107,35,,0,0,0
+442,Spiritomb,,,229,,,,10,1080,Forbidden,purple,,4,100,168,70,,0,0,0
+443,Gible,,,230,,,,7,205,Land Shark,blue,,4,45,67,70,,0,0,0
+444,Gabite,,,230,443,1,24,14,560,Cave,blue,,4,45,144,70,,0,0,0
+445,Garchomp,,,230,444,1,48,19,950,Mach,blue,,4,45,218,70,,0,1,0
+446,Munchlax,,,72,,,,6,1050,Big Eater,black,,1,50,94,70,,1,0,0
+447,Riolu,,,232,,,,7,202,Emanation,blue,,1,75,72,70,,0,0,0
+448,Lucario,,,232,447,13,,12,540,Aura,blue,,1,45,204,70,,0,0,0
+449,Hippopotas,,,233,,,,8,495,Hippo,brown,,4,140,95,70,,0,0,0
+450,Hippowdon,,,233,449,1,34,20,3000,Heavyweight,brown,,4,60,198,70,,0,0,0
+451,Skorupi,,,234,,,,8,120,Scorpion,purple,,4,120,114,70,,0,0,0
+452,Drapion,,,234,451,1,40,13,615,Ogre Scorp,purple,,4,45,204,70,,0,0,0
+453,Croagunk,,,235,,,,7,230,Toxic Mouth,blue,,4,140,83,100,,0,0,0
+454,Toxicroak,,,235,453,1,37,13,444,Toxic Mouth,blue,,4,75,181,70,,0,0,0
+455,Carnivine,,,236,,,,14,270,Bug Catcher,green,,4,200,164,70,,0,0,0
+456,Finneon,,,237,,,,4,70,Wing Fish,blue,,4,190,90,70,,0,0,0
+457,Lumineon,,,237,456,1,31,12,240,Neon,blue,,4,75,156,70,,0,0,0
+458,Mantyke,,,116,,,,10,650,Kite,blue,,4,25,108,70,,1,0,0
+459,Snover,,,239,,,,10,505,Frost Tree,white,,4,120,131,70,,0,0,0
+460,Abomasnow,,,239,459,1,40,22,1355,Frost Tree,white,,4,60,214,70,,0,1,0
+461,Weavile,,,109,215,10,Razor Claw,11,340,Sharp Claw,black,,4,45,199,35,,0,0,0
+462,Magnezone,,,34,82,4,Mt. Coronet,12,1800,Magnet Area,gray,,-1,30,211,70,,0,0,0
+463,Lickilicky,,,48,108,11,205,17,1400,Licking,pink,,4,30,193,70,,0,0,0
+464,Rhyperior,,,50,112,5,Protector,24,2828,Drill,gray,,4,30,217,70,,0,0,0
+465,Tangrowth,,,52,114,11,246,20,1286,Vine,blue,,4,30,211,70,,0,1,0
+466,Electivire,,,60,125,5,Electirizer,18,1386,Thunderbolt,yellow,,2,30,199,70,,0,0,0
+467,Magmortar,,,61,126,5,Magmarizer,16,680,Blast,red*,,2,30,199,70,,0,0,0
+468,Togekiss,,,87,176,6,Shiny Stone,15,380,Jubilee,white*,,1,30,220,70,,0,0,0
+469,Yanmega,,,95,193,11,246,19,515,Ogre Darner,green,,4,30,198,70,,0,0,0
+470,Leafeon,,,67,133,4,Moss Rock in Eterna Forest,10,255,Verdant,green,,1,45,196,35,,0,0,0
+471,Glaceon,,,67,133,4,Ice Rock on Route 217,8,259,Fresh Snow,blue,,1,45,196,35,,0,0,0
+472,Gliscor,,,104,207,10,Razor Fang,20,425,Fang Scorp,purple,,4,30,192,70,,0,0,0
+473,Mamoswine,,,112,221,11,246,25,2910,Twin Tusk,brown,,4,50,207,70,,0,1,0
+474,Porygon-Z,,,68,233,5,Dubious Disc,9,340,Virtual,red,,-1,30,185,70,,0,0,0
+475,Gallade,,,140,281,7,Dawn Stone,16,520,Blade,white,,0,45,208,35,,0,0,0
+476,Probopass,,,147,299,4,Mt. Coronet,14,3400,Compass,gray,,4,60,198,70,,0,0,0
+477,Dusknoir,,,182,356,5,Reaper Cloth,22,1066,Gripper,black,,4,45,210,35,,0,0,0
+478,Froslass,,,186,361,8,Dawn Stone,13,266,Snow Land,white,,8,75,187,70,,0,0,0
+479,Rotom,,,240,,,,3,3,Plasma,red,,-1,45,132,70,,0,0,0
+480,Uxie,,,241,,,,3,3,Knowledge,yellow,,-1,3,210,140,,0,0,0
+481,Mesprit,,,242,,,,3,3,Emotion,pink,,-1,3,210,140,,0,0,0
+482,Azelf,,,243,,,,3,3,Willpower,blue,,-1,3,210,140,,0,0,0
+483,Dialga,,,244,,,,54,6830,Temporal,white,,-1,30,220,0,,0,0,0
+484,Palkia,,,245,,,,42,3360,Spatial,purple,,-1,30,220,0,,0,0,0
+485,Heatran,,,246,,,,17,4300,Lava Dome,brown,,4,3,215,100,,0,0,0
+486,Regigigas,,,247,,,,37,4200,Colossal,white,,-1,3,220,0,,0,0,0
+487,Giratina,,,248,,,,45,7500,Renegade,black,,-1,3,220,0,,0,0,0
+488,Cresselia,,,249,,,,15,856,Lunar,yellow,,8,3,210,100,,0,0,0
+489,Phione,,,250,,,,4,31,Sea Drifter,blue,,-1,30,165,70,,1,0,0
+490,Manaphy,,,250,489,21,,3,14,Seafaring,blue,,-1,3,215,70,,0,0,0
+491,Darkrai,,,252,,,,15,505,Pitch-Black,black,,-1,3,210,0,,0,0,0
+492,Shaymin,,,253,,,,2,21,Gratitude,green,,-1,45,64,100,,0,0,0
+493,Arceus,,,254,,,,32,3200,Alpha,gray,,-1,3,255,0,,0,0,0
+494,Pokemon494,,,0,,,,0,0,,,,-1,3,255,0,,0,0,0
+495,Pokemon495,,,0,,,,0,0,,,,-1,3,255,0,,0,0,0
+496,Deoxys,attack,386,202,,,,17,608,DNA,red,rare,-1,3,215,0,,0,0,0
+497,Deoxys,defense,386,202,,,,17,608,DNA,red,rare,-1,3,215,0,,0,0,0
+498,Deoxys,speed,386,202,,,,17,608,DNA,red,rare,-1,3,215,0,,0,0,0
+499,Wormadam,ground,413,213,,,,5,65,Bagworm,gray,,8,45,159,70,,0,0,0
+500,Wormadam,steel,413,213,,,,5,65,Bagworm,gray,,8,45,159,70,,0,0,0

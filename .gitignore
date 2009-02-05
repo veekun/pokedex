@@ -1,0 +1,6 @@
+*.pyc
+*.pyo
+~*
+*.swp
+
+*.egg-into

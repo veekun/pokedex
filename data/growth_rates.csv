@@ -1,0 +1,7 @@
+id,name,formula
+1,slow,1.2x^3
+2,medium,x^3
+3,fast,0.8x^3
+4,poly,?
+5,superfast,?
+6,superslow,?

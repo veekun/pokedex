@@ -1,0 +1,282 @@
+id,priority,short_effect,effect
+1,0,Inflicts regular damage.,Inflicts regular damage.
+2,0,Puts the target to Sleep.,Puts the target to Sleep.
+3,0,Has a chance to Poison the target.,Has a chance to Poison the target.
+4,0,Heals the user by half the damage the target receives.,Heals the user by half the damage the target receives.
+5,0,Has a chance to Burn the target.,Has a chance to Burn the target.
+6,0,Has a chance to Freeze the target.,Has a chance to Freeze the target.
+7,0,Has a chance to Paralyze the target.,Has a chance to Paralyze the target.
+8,0,Inflicts double damage and faints the user.,Halves the target's Defense for damage calculation (which approximately doubles base power).  Automatically faints the user even if the attack fails or misses.
+9,0,Heals the user by half the damage the target receives.  Only works on Sleeping Pokemon.,Heals the user by half the damage the target receives.  Only works on Sleeping Pokemon.
+10,0,Uses the target's last used move.,Uses the target's last used move.
+11,0,Raises the user's Attack.,Raises the user's Attack.
+12,0,Raises the user's Defense.,Raises the user's Defense.
+14,0,Raises the user's Special Attack.,Raises the user's Special Attack.
+17,0,Raises the user's Evasion.,Raises the user's Evasion.
+18,0,Never misses.,Never misses.
+19,0,Lowers the target's Attack.,Lowers the target's Attack.
+20,0,Lowers the target's Defense.,Lowers the target's Defense.
+21,0,Lowers the target's Speed.,Lowers the target's Speed.
+24,0,Lowers the target's Accuracy.,Lowers the target's Accuracy.
+25,0,Lowers the target's Evasion.,Lowers the target's Evasion.
+26,0,"Resets all Pokemon's stats, Accuracy, and Evasion.","Resets all Pokemon's stats, Accuracy, and Evasion."
+27,1,"User waits for 2-3 turns, then inflicts typeless damage equal to twice the HP it lost while waiting.","User waits for 2-3 turns, then inflicts typeless damage equal to twice the HP it lost while waiting."
+28,0,"Hits every turn for 2-3 turns, then Confuses the user.","Hits every turn for 2-3 turns, then Confuses the user."
+29,-6,Immediately ends wild battles.  Forces trainers to switch Pokemon.,Immediately ends wild battles.  Randomly switches the target out for another of its trainer's Pokemon in trainer battles.
+30,0,Hits 2-5 times in one turn.,"Hits 2-5 times in one turn: 3/8 chance each to hit 2 or 3 times, and 1/8 chance each to hit 4 or 5 times, for an average of 3 hits per use."
+31,0,"User's type changes to the type of one of its moves (including this one), chosen at random.","User's type changes to the type of one of its moves (including this one), chosen at random."
+32,0,Has a chance to make the target Flinch.,Has a chance to make the target Flinch.
+33,0,Heals the user by half its max HP.,Heals the user by half its max HP.
+34,0,"Badly Poisons the target, inflicting more damage every turn.","Badly Poisons the target, inflicting 1/16 its max HP in damage during its next turn and doubling every turn thereafter."
+35,0,Scatters money on the ground worth twice the user's level.,"In in-game battles, scatters money on the ground worth twice the user's level for the trainer to collect after the battle ends."
+36,0,Reduces damage from special attacks by 50% for five turns..,Reduces damage from special attacks by 50% for five turns..
+37,0,"Has a chance to Burn, Freeze, or Paralyze the target.","Has a chance to Burn, Freeze, or Paralyze the target."
+38,0,"User Sleeps, completely healing itself.","User Sleeps and immediately regains all its HP.  The Sleep will replace any other major status effect, but it only lasts until the end of the second turn after the turn this move is used."
+39,0,Causes a one-hit KO.,Causes a one-hit KO.
+40,0,User charges for one turn before attacking.,User charges for one turn before attacking.
+41,0,Inflicts damage equal to half the target's HP.,Inflicts damage equal to half the target's HP.
+42,0,Inflicts 40 points of damage.,Inflicts 40 points of damage.
+43,0,Both prevents the target from fleeing and inflicts damage for 2-5 turns.,"Prevents the target from fleeing and inflicts 1/16 its max HP in damage at the end of every turn for 2-5 turns -- 3/8 chance each to last 2 or 3 turns, and 1/8 chance each to last 4 or 5 turns.  This effect can be canceled by Rapid Spin."
+44,0,Has an increased chance for a critical hit.,Has an increased chance for a critical hit.
+45,0,Hits twice in one turn.,Hits twice in one turn.
+46,0,"If the user misses, it takes 1/8 the damage it would have inflicted in recoil.","If the user misses, it takes 1/8 the damage it would have inflicted in recoil."
+47,0,Protects the user's stats from being changed by opposing Pokemon's moves.,Protects the user's stats from being changed by opposing Pokemon's moves.
+48,0,Increases the critical hit counter by 1 until the user leaves battle.,Increases the critical hit counter by 1 until the user leaves battle.
+49,0,User receives 1/4 the damage it inflicts in recoil.,User receives 1/4 the damage it inflicts in recoil.
+50,0,Confuses the target.,Confuses the target.
+51,0,Raises the user's Attack by two levels.,Raises the user's Attack by two levels.
+52,0,Raises the user's Defense by two levels.,Raises the user's Defense by two levels.
+53,0,Raises the user's Speed by two levels.,Raises the user's Speed by two levels.
+54,0,Raises the user's Special Attack by two levels.,Raises the user's Special Attack by two levels.
+55,0,Raises the user's Special Defense by two levels.,Raises the user's Special Defense by two levels.
+58,0,User becomes a copy of the target until it leaves battle.,"User becomes a copy of the target until it leaves battle.  All stats are copied except HP, and all moves start with 5 PP."
+59,0,Lowers the target's Attack by two levels.,Lowers the target's Attack by two levels.
+60,0,Lowers the target's Defense by two levels.,Lowers the target's Defense by two levels.
+61,0,Lowers the target's Speed by two levels.,Lowers the target's Speed by two levels.
+63,0,Lowers the target's Special Defense by two levels.,Lowers the target's Special Defense by two levels.
+66,0,Reduces damage from physical attacks by 50%.,Reduces damage from physical attacks by 50%.
+67,0,Poisons the target.,Poisons the target.
+68,0,Paralyzes the target.,Paralyzes the target.
+69,0,Has a chance to lower the target's Attack.,Has a chance to lower the target's Attack.
+70,0,Has a chance to lower the target's Defense.,Has a chance to lower the target's Defense.
+71,0,Has a chance to lower the target's Speed.,Has a chance to lower the target's Speed.
+72,0,Has a chance to lower the target's Special Attack.,Has a chance to lower the target's Special Attack.
+73,0,Has a chance to lower the target's Special Defense.,Has a chance to lower the target's Special Defense.
+74,0,Has a chance to lower the target's Accuracy.,Has a chance to lower the target's Accuracy.
+76,0,User charges for one turn before attacking.  Has a chance to make the target Flinch.,User charges for one turn before attacking.  Has a chance to make the target Flinch.
+77,0,Has a chance to Confuse the target.,Has a chance to Confuse the target.
+78,0,Hits twice in the same turn.  Has a chance to Poison the target.,Hits twice in the same turn.  Has a chance to Poison the target.
+79,-1,Never misses.,Never misses.
+80,0,"Transfers 1/4 of the user's max HP into a doll, protecting the user from further damage or status changes until it breaks.","Transfers 1/4 of the user's max HP into a doll, protecting the user from further damage or status changes until it breaks."
+81,0,User foregoes its next turn to recharge.,User foregoes its next turn to recharge.
+82,0,"User can only use this move until it wins or faints, but becomes stronger each time it is hit.",User will automatically attack with this 
+83,0,Copies the target's last used move.,"Replaces this move with the target's last used move.  PP remains the same, and this move returns when the user leaves battle.  Fails against Metronome, Mimic, Struggle, and Sketch."
+84,0,Randomly selects and uses any move in the game.,"Randomly selects and uses any move in the game.  Counter, Covet, Destiny Bond, Detect, Endure, Focus Punch, Follow Me, Helping Hand, Metronome, Mimic, Mirror Coat, Protect, Sketch, Sleep Talk, Snatch, Struggle, Thief, and Trick are exempt."
+85,0,"Seeds the target, stealing HP from it every turn.","Leech Seeds the target, stealing 1/16 of its max HP every turn and giving it to the user (or any other Pokemon that has taken its place).  This effect is canceled if the target leaves battle or uses Rapid Spin.  Does not work on Grass Pokemon."
+86,0,Does nothing.,Does nothing.
+87,0,Disables the target's last used move for 1-8 turns.,"Disables the target's last used move, preventing its use for 1-8 turns or until the target leaves battle.  Only one move can be Disabled at a time."
+88,0,Inflicts damage equal to the user's level.,Inflicts damage equal to the user's level.
+89,0,Inflicts damage between 1 HP and 1.5 times the user's level.,"Inflicts damage between 1 HP and 1.5 times the user's level, given by: level * (rand(0, 10) * 10 + 50) / 100."
+90,-5,"Inflicts twice the damage the user received from the last hit it took, if the move was Normal or Fighting.","Inflicts twice the damage the user received from the last hit it took, if the move was Normal or Fighting."
+91,0,Forces the target to repeat its last used move every turn for 2 to 6 turns.,Forces the target to repeat its last used move every turn for 2 to 6 turns.
+92,0,Sets the user's and targets's HP to the average of their current HP.,Sets the user's and targets's HP to the average of their current HP.
+93,0,Has a chance to make the target Flinch.  Only works if the user is Sleeping.,Has a chance to make the target Flinch.  Only works if the user is Sleeping.
+94,0,Changes the user's type to a random type either resistant or immune to the last move used against it.,Changes the user's type to a random type either resistant or immune to the last move used against it.
+95,0,Ensures that the user's next move will hit the target.,Ensures that the user's next move will hit the target.
+96,0,Permanently becomes the target's last used move.  Fails against Sketch and Struggle.,Permanently becomes the target's last used move.  Fails against Sketch and Struggle.
+98,0,Randomly uses one of the user's other three moves.  Only works if the user is Sleeping.,Randomly uses one of the user's other three moves.  Only works if the user is Sleeping.
+99,0,"If the user faints this turn, the target automatically will, too.","If the user faints this turn, the target automatically will, too."
+100,0,"Inflicts more damage when the user has less HP remaining, with a maximum of 200 power.",Inflicts regular damage.  Never result
+101,0,Lowers the PP of the target's last used move by 2 to 5 points.,Lowers the PP of the target's last used move by 2 to 5 points.
+102,0,Cannot lower the target's HP below 1.,Cannot lower the target's HP below 1.
+103,0,"Cures the user and the user's ally, if any, of major status effects.","Cures the user and the user's ally, if any, of major status effects."
+104,1,Inflicts regular damage.,Inflicts regular damage.
+105,0,"Hits three times, increasing power by 10 with each successful hit.","Hits three times in the same turn, stopping if any hit misses.  Each time a hit lands, power increases by 10; i.e. all three hits landing is about the same as a single attack with six times the power."
+106,0,Takes the target's item.,"If the target is holding an item and the user is not, the user will take the item.  In in-game battles, the theft is permanent."
+107,0,Prevents the target from leaving battle.,"Prevents the target from leaving battle, except by fainting."
+108,0,Target loses 1/4 its max HP every turn as long as it continues Sleeping.,The target will lose 1/4 its max HP every turn.  Only works on Sleeping Pokemon.  Effect ends if the target wakes up.
+109,0,Raises the user's Evade.,Raises the user's Evade.
+110,0,Ghosts pay half their max HP to hurt the target every turn.  Others decrease Speed but raise Attack and Defense.,"If the user is a Ghost: user pays half its max HP to Curse the target, damaging it by 1/4 its max HP every turn.  Otherwise: Lowers the user's Speed and raises its Attack and Defense."
+112,3,Prevents any moves from hitting the user this turn.,"Prevents any moves from hitting the user this turn.  Accuracy (or, at least, the chance of success) is halved each time this move is used, whether or not it succeeds."
+113,0,"Scatters Spikes, hurting opposing Pokemon that switch in.","Scatters Spikes around the opposing field, which will damage any non-Flying opposing Pokemon by a fraction of its max HP when it enters battle."
+114,0,"Forces the target to have no Evade, and allows it to be hit by Normal and Fighting moves even if it is a Ghost.","Resets the target's Evade to normal and prevents any further boosting.  If the target is a Ghost, it will become vulnerable to Normal and Fighting moves until it leaves battle."
+115,0,User and target both faint after three turns.,"User and target are given a Perish Count of 3, which drops by 1 after every turn.  Leaving battle removes the Perish Count from a Pokemon.  If a Pokemon's Perish Count reaches zero, the Pokemon automatically faints."
+116,0,Changes the weather to a sandstorm for five turns.,"Changes the weather to a sandstorm for five turns, damaging non-Rock/Ground/Steel Pokemon for 1/8 their max HP every turn."
+117,3,Prevents the user's HP from lowering below 1 this turn.,"Prevents any moves from lowering the user's HP below 1 this turn.  Accuracy (or, at least, the chance of success) is halved each time this move is used, whether or not it succeeds."
+118,0,"Power doubles every turn this move is used in succession after the first, resetting after five turns.","Power doubles every turn this move is used in succession after the first, resetting after five turns."
+119,0,Raises the target's Attack by two levels and Confuses the target.,"Raises the target's Attack by two levels and Confuses the target.  If the target's Attack cannot be raised by two levels, the Confusion is not applied; however, the Attack raise will be applied even if the target cannot be Confused."
+120,0,"Power doubles every turn this move is used in succession after the first, maxing out after five turns.","Power doubles every turn this move is used in succession after the first, maxing out at 16 times the original power."
+121,0,"Target falls in love if it has the opposite gender, and has a 50% chance to refuse attacking the user.","Causes the target to fall in love, giving it a 50% chance to refuse to attack the user.  Only works if the user and target have opposite genders.  Effect is cancelled if either Pokemon leaves battle."
+122,0,"Power increases with Happiness, up to a maximum of 102.","Power increases with Happiness, up to a maximum of 102, as calculated by: happiness / 2.5."
+123,0,Randomly inflicts damage with power from 40 to 120 or heals the target for 1/4 its max HP.,"Randomly uses one of the following effects.
+Inflicts damage with 40 power:	40% chance
+Inflicts damage with 80 power:	30% chance
+Inflicts damage with 120 power:	10% chance
+Heals the target for 1/4 its max HP:	20% chance"
+124,0,"Power increases as Happiness decreases, up to a maximum of 102.","Power increases as Happiness decreases, up to a maximum of 102,  given by: (255 - happiness) / 2.5."
+125,0,Protects the user's field from incoming major status ailments and Confusion for five turns.,Protects the user's side of the field from major status ailments and Confusion caused by the target for five turns.  Does not cancel existing ailments.
+126,0,Has a chance to Burn the target.  Can be used by Frozen Pokemon to thaw themselves.,Has a chance to Burn the target.  Can be used by Frozen Pokemon to thaw themselves.
+127,0,Power varies randomly from 10 to 150.,Selects a number fro
+128,0,Allows the trainer to switch out the user and pass effects along to its replacement.,Allows the user's trainer to switch it out regardless of any trapping moves or other rules; any temporary stat effects (good or bad) on the user will be passed on to its replacement.
+129,0,"If the target leaves battle this turn, user will hit the target with double power and then hit its replacement normally.","If the target leaves battle this turn, user will hit the target with double power and then hit its replacement normally."
+130,0,"Frees the user from binding moves, removes Leech Seed, and blows away Spikes.","Frees the user from binding moves, removes Leech Seed, and blows away Spikes."
+131,0,Inflicts 20 points of damage.,Inflicts 20 points of damage.
+133,0,"Heals the user by half its max HP at the right time of day, or 1/4 otherwise.",Heals the user by half of its max HP during the corresponding time of day or in link battles; heals by 1/4 its max HP any other time.  Healing power is doubled in sunny weather and halved in rain.
+136,0,Power and type depend upon user's IVs.  Power can range from 30 to 70.,Power and type depend upon user's IVs.  Power can range from 30 to 70.
+137,0,Changes the weather to rain for five turns.,Changes the weather to rain for
+138,0,Changes the weather to sunny for five turns.,Changes the weather to sunny for five turns.  Decreases all water damage by 1/2.  I
+139,0,Has a chance to raise the user's Defense.,Has a chance to raise the user's Defense.
+140,0,Has a chance to raise the user's Attack.,Has a chance to raise the user's Attack.
+141,0,Has a chance to raise all of the user's stats.,Has a chance to raise all of the user's stats.
+143,0,User pays half its max HP to raise its Attack as high as is allowed by stat changes.,User pays half its max HP to raise its Attack as high as is allowed by stat changes.
+144,0,Discards the user's stat changes and copies the target's.,Discards the user's stat changes and copies the target's.
+145,-5,"If the user takes Special damage this turn, inflicts twice the damage taken to the target.","If the user takes Special damage this turn, inflicts twice the damage taken to the target."
+146,0,Raises the user's Defense.  User charges for one turn before attacking.,Raises the user's Defense.  User charges for one turn before attacking.
+147,0,Has chance to make the target Flinch.,Has chance to make the target Flinch.  Inflicts double damage against Pokemon using Dive.
+148,0,Inflicts regular damage.,Inflicts double damage against Pokemon using Dig.
+149,0,Hits the target two turns later.,"Inflicts typeless damage two turns later.  If the target is switched out, this move will hit the replacement."
+150,0,Inflicts regular damage.,Inflicts double damage against Pokemon using Fly or Bounce.
+151,0,Has a chance to make the target Flinch.,Has a chance to make the target Flinch.  Inflicts double damage against Pokemon that have used Minimize.
+152,0,Requires a turn to charge before attacking.,"Requires a turn to charge before attacking, except during Sunny Day.  Damage is halved during Rain Dance."
+153,0,Has a chance to Paralyze the target.,Inflicts double damage against Pokemon using Fly or Bounce.  Has a chance to Paralyze the target.  Never misses during Rain Dance.
+154,0,Immediately ends wild battles.,Immediately ends wild battles.  No effect in trainer battles.
+155,0,Hits once for every conscious Pokemon the user's trainer has.,"Hits once for every Pokemon the user's trainer has.  Doesn't count Frozen, Sleeping, or Fainted Pokemon."
+156,0,"User flies high into the air, dodging all attacks, and hits next turn.","User flies high into the air for one turn and becomes immune to all moves except Gust, Sky Uppercut, Thunder, Twister, and Whirlwind; damage is inflicted on the next turn."
+157,0,Raises user's Defense.  Doubles Rollout's power if it's the next move used.,Raises user's Defense.  Doubles Rollout's power if it's the next move used.
+159,1,Can only be used as the first move after the user enters battle.  Causes the target to Flinch.,Can only be used as the first move after the user enters battle.  Causes the target to Flinch.
+160,0,Prevents any Pokemon from Sleeping for 2-5 turns.,"Starts an Uproar, which lasts 2-5 turns (with the same chances as all other 2-5 turn effects) and prevents any Pokemon from Sleeping."
+161,0,Stores energy up to three times for use with Spit Up and Swallow.,Stores energy up to three times for use with Spit Up and Swallow.
+162,0,Power is equal to 100 times the amount of energy Stockpiled.,Power is equal to 100 times the amount of energy Stockpiled.
+163,0,"Recovers 1/4 HP after one Stockpile, 1/2 HP after two Stockpiles, or full HP after three Stockpiles.","Recovers 1/4 HP after one Stockpile, 1/2 HP after two Stockpiles, or full HP after three Stockpiles."
+165,0,Changes the weather to a hailstorm for five turns.,"Changes the weather to a hailstorm for five turns, damaging non-Ice Pokemon for 1/8 their max HP every turn and giving Blizzard a 100% chance to hit."
+166,0,Prevents the target from using the same move twice in a row until it leaves battle.,Prevents the target from using the same move twice in a row until it leaves battle.
+167,0,Raises the target's Special Attack by two levels and Confuses the target.,
+168,0,Burns the target.,Burns the target.
+169,0,Lowers the target's Attack and Special Attack by two levels.  User faints.,Lowers the target's Attack and Special Attack by two levels.  User faints.
+170,0,"Power doubles if user is Burned, Paralyzed, or Poisoned.","Power doubles if user is Burned, Paralyzed, or Poisoned."
+171,-3,"If the user takes damage before attacking, the attack is canceled.","If the user takes damage before attacking, the attack is canceled."
+172,0,"If the target is Paralyzed, inflicts double damage and cures the Paralysis.","If the target is Paralyzed, inflicts double damage and cures the Paralysis."
+173,3,Redirects the target's single-target effects to the user for this turn.,"Until the end of this turn, if the target uses any move that affects only one target, it will affect the user of this move instead."
+174,0,Uses a move which depends upon the terrain.,"Uses a move chosen according to the terrain.
+Grass:	Stun Spore
+Tall grass:	Razor Leaf
+Sand:	Earthquake
+Cave:	Shadow Ball
+Mountains:	Rock Slide
+Shallow water:	Bubblebeam
+Deep water:	Surf
+Underwater:	Hydro Pump
+Anywhere else:	Swift"
+175,0,Raises the user's Special Defense.  User's Electric moves inflict double damage next turn.,Raises the user's Special Defense.  User's Electric moves inflict double damage next turn.
+176,0,"For the next two turns, the target can only use moves that inflict damage.","For the next two turns, the target can only use moves that inflict damage."
+177,5,User's ally's next move inflicts 50% more damage.,User's ally's next move inflicts 50% more damage.
+178,0,User and target swap items until the end of the battle.,User and target swap items until the end of the battle.  Fails if either is holding an Enigma Berry.
+179,0,User's ability is replaced with the target's until the user leaves battle.,User's ability is replaced with the target's until the user leaves battle.
+180,0,User or its replacement will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will recover half of its max HP.  If the user is switched out, its replacement will be healed instead."
+181,0,Randomly selects and uses one of the trainer's other Pokemon's moves.,Randomly selects and uses one of the trainer's other Pokemon's moves.
+182,0,"Prevents the user from leaving battle, except by fainting.  User regains 1/16 of its max HP every turn.","Prevents the user from leaving battle, except by fainting.  User regains 1/16 of its max HP every turn."
+183,0,Lowers the user's Attack and Defense after inflicting damage.,Lowers the user's Attack and Defense after inflicting damage.
+184,4,Reflects back any effects the target tries to use on the user this turn.,"If the target uses a non-damaging move on the user later during this turn, any major or minor status effect, stat change, or trap effect will be reflected back at the target."
+185,0,"User regains the item it was holding when it entered battle, if it is no longer holding an item.","User regains the item it was holding when it entered battle, if it is no longer holding an item."
+186,-4,Inflicts double damage if the user takes damage before attacking this turn.,Inflicts double damage if the user takes damage before attacking this turn.
+187,0,Cancels the effects of Reflect and Light Screen.,Cancels the effects of Reflect and Light Screen.
+188,0,Target Sleeps at the end of the next turn.,"Target becomes Drowsy, and falls Asleep at the end of the next turn.  Effect is canceled if the target leaves battle."
+189,0,Target drops its held item.,"Causes the target to drop its held item, if any.  Target reclaims its item when the battle ends."
+190,0,Lowers the target's HP to equal the user's.,Inflicts exactly enough damage to lower the target's HP to equal the user's.  Does nothing if the user has more HP than the target.
+191,0,"Inflicts more damage when the user has more HP remaining, with a maximum of 150 power.","Never results in a critical hit and ignores the random factor in the damage formula.  Power increases the higher the user's HP is, according to: cur HP * 150 / max HP."
+192,0,User and target swap abilities.,User and target swap abilities.  Doesn't work if either ability is Truant or Wonder Guard.
+193,0,Prevents the target from using any moves that the user also knows.,Prevents the target from using any moves that the user also knows.
+194,0,"Cleanses the user of a Burn, Paralysis, or Poison.","Cleanses the user of a Burn, Paralysis, or Poison."
+195,0,"When the user faints, the PP of the move that fainted it will be reduced to 0.","When the user faints, the PP of the move that fainted it will be reduced to 0."
+196,4,"Steals the target's move, if it is self-targeted.","If the target uses a move on itself or itself and its ally this turn, user will steal the target's move and gain its effect instead."
+197,0,"Inflicts more damage to heavier targets, with a maximum of 120 power.","Power increases according to the target's weight in kilograms.
+Below 10 kg:	20 power
+10.1 kg - 25 kg:	40 power
+25.1 kg - 50 kg:	60 power
+50.1 kg - 100 kg:	80 power
+100.1 kg - 200 kg:	100 power
+200.1 kg and up:	120 power"
+198,0,Has a chance to inflict a status effect which depends upon the terrain.,Has a chance to in
+199,0,User receives 1/3 the damage inflicted in recoil.,User receives 1/3 the damage inflicted in recoil.
+200,0,Target becomes Confused.,Target becomes Confused.
+201,0,Has an increased chance for a critical hit and a chance to Burn the target.,Has an increased chance for a critical hit and a chance to Burn the target.
+202,0,All damage from Electric moves is halved until the end of the battle.,All damage from Electric moves is halved until the end of the battle.
+203,0,Has a chance to badly Poison the target.,Has a chance to badly Poison the target.
+204,0,"If there be weather, the damage inflicted will be doubled and have the weather's type.","If there be weather, the damage inflicted will be doubled and have the weather's type."
+205,0,Lowers the user's Special Attack by two levels after inflicting damage.,Lowers the user's Special Attack by two levels after inflicting damage.
+206,0,Lowers the target's Attack and Defense.,Lowers the target's Attack and Defense.
+207,0,Raises the user's Defense and Special Defense.,Raises the user's Defense and Special Defense.
+208,0,Can hit Pokemon that are using Fly.,Can hit Pokemon that are using Fly.
+209,0,Raises the user's Attack and Defense.,Raises the user's Attack and Defense.
+210,0,Has an increased chance for a critical hit and a chance to Poison the target.,Has an increased chance for a critical hit and a chance to Poison the target.
+211,0,All damage from Fire moves is halved until the end of the battle.,All damage from Fire moves is halved until the end of the battle.
+212,0,Raises the user's Special Attack and Special Defense.,Raises the user's Special Attack and Special Defense.
+213,0,Raises the user's Attack and Speed.,Raises the user's Attack and Speed.
+214,0,User's type changes to match the terrain.,User's type changes to match the terrain.
+215,0,Heals the user by half its max HP.,Heals the user by half its max HP.
+216,0,Disables moves and immunities that involve flying or levitating for five turns.,"For the next five turns, the moves Fly, Bounce, Jump Kick, and Hi Jump Kick are disabled, and any immunities granted by the Flying type or by Levitate or Magnet Rise are disabled."
+217,0,"Forces the target to have no Evade, and allows it to be hit by Psychic moves even if it is Dark.","Resets the target's Evade to normal and prevents any further boosting.  If the target is Dark, it will become vulnerable to Psychic moves until it leaves battle."
+218,0,"If the target is Sleeping, inflicts double damage and wakes it up.","If the target is Sleeping, inflicts double damage and wakes it up."
+219,0,Lowers user's Speed.,Lowers user's Speed.
+220,0,"Inflicts more damage when the user has lower Speed, with a maximum of 150 power.","Inflicts more damage when the target has much higher Speed, with a maximum cap of 150 power, given by: 25 * target's calculated Speed / user's calculated Speed."
+221,0,"If the user faints this turn, its replacement will have its HP fully restored and any major status effect removed.","If the user faints this turn, its replacement will have its HP fully restored and any major status effect removed."
+222,0,Inflicts double damage against Pokemon that have less than half their max HP remaining.,Inflicts double damage against Pokemon that have less than half their max HP remaining.
+223,0,Power and type depend on the held berry.,Power and type depend on the held berry.
+224,2,Only works if the target uses Protect or Detect on this turn.,Only works if the target uses Protect or Detect on this turn.
+225,0,Inflicts double damage if the user is holding a berry.,Inflicts double damage if the user is holding a berry.
+226,0,"For five turns, any Pokemon on the user's field have raised Speed.","For five turns, any Pokemon on the user's field have raised Speed."
+227,0,Raises one of the user's stats at random by two levels.,Raises one of the user's stats at random by two levels.
+228,0,Inflicts double the damage the user receives this turn prior to using this move..,Inflicts double the damage the user receives this turn prior to using this move..
+229,0,User must switch out after attacking.,User must switch out after attacking.
+230,0,Lowers the user's Defense and Special Defense after inflicting damage.,Lowers the user's Defense and Special Defense after inflicting damage.
+231,0,Inflicts double damage if the user receives damage before using this move.,Inflicts double damage if the user receives damage before using this move.
+232,0,Inflicts double damage if the target has already received damage this turn.,Inflicts double damage if the target has already received damage this turn.
+233,0,Target cannot use held items until it leaves battle.,Target cannot use held items until it leaves battle.
+234,0,Throws held item at the target; power depends on the item.,Throws held item at the target; power depends on the item.
+235,0,Transfers the user's major status effect to the target.,"Transfers the user's major status effect to the target, if the user has one and the target does not."
+236,0,"Inflicts more damage when this move has less PP, with a maximum of 190 power.","Inflicts more damage when this move has less PP, with a maximum of APPROXIMATELY 190 power:
+5+ PP	40 power
+4 PP	50 power
+3 PP	60 power
+2 PP	75 power
+1 PP	190 power"
+237,0,Prevents target from restoring its HP for five turns.,Prevents target from restoring its HP for five turns.
+238,0,"Inflicts more damage to targets with more HP remaining, with a maximum of 110 power.","Inflicts more damage to targets with more HP remaining, with a maximum of 110 power, APPROXIMATELY given by: 110 * target's HP / target's max HP."
+239,0,User swaps Attack and Defense.,User swaps Attack and Defense.
+240,0,Nullifies target's ability until it leaves battle.,Nullifies target's ability until it leaves battle.
+241,0,Prevents the target from inflicting critical hits for five turns.,Prevents the target from inflicting critical hits for five turns.
+242,0,"Uses the target's move against it before it attacks, with power increased by 50%.","Uses the target's move against it before it attacks, with power increased by 50%."
+243,0,Uses the target's last used move.,Uses the target's last used move.
+244,0,User swaps Attack and Special Attack with the target.,User swaps Attack and Special Attack with the target.
+245,0,User swaps Defense and Special Defense with the target.,User swaps Defense and Special Defense with the target.
+246,0,Inflicts more damage to targets with more positive stat changes.,"Power increases by 20 for every level each of the target's stats (excluding Accuracy and Evasion) is raised in total, up to a maximum of 200.  Stat drops have no effect."
+247,0,Can only be used after all of the user's other moves have been used.,Can only be used after all of the user's other moves have been used at least once since it entered battle.
+248,0,Changes the target's ability to Insomnia.,Changes the target's ability to Insomnia.
+249,1,Only works if the target uses a damaging move this turn.,Only works if the target uses a damaging move this turn.
+250,0,"Scatters poisoned Spikes, poisoning opposing Pokemon that switch in.","Scatters poisoned Spikes around the opposing field, which will poison Pokemon that switch in.  Flying, Poison, and Steel Pokemon and Pokemon with Levitate are immune to this effect.  A second layer of poisoned Spikes will inflict Toxic poisoning instead."
+251,0,User and target swap stat changes.,User and target swap stat changes.
+252,0,Restores 1/16 of the user's max HP every turn.,Restores 1/16 of the user's max HP every turn as long as it remains in battle.
+253,0,Changes the user's ability to Levitate.,Changes the user's ability to Levitate.
+254,0,User receives 1/3 the damage inflicted in recoil.  Has a chance to Burn the target.,User receives 1/3 the damage inflicted in recoil.  Has a chance to Burn the target.
+255,0,Inflicts typeless damage.  User receives 1/4 its max HP in recoil.,Inflicts typeless damage.  User receives 1/4 its max HP in recoil.
+256,0,"User dives underwater, dodging all attacks, and hits next turn.",User dives underwater for one turn and becomes immune to all moves except Surf and Whirlpool and takes no damage from Sandstorm or Hail; damage is inflicted on the second turn.
+257,0,"User digs underground, dodging all attacks, and hits next turn.","User digs a hole for one turn and becomes immune to all moves except Earthquake, Magnitude, and Fissure; damage is inflicted on the second turn."
+258,0,Inflicts regular damage.,Inflicts double damage against Pokemon using Dive.
+259,0,Lowers the target's Evade.  Cancels the effects of Reflect and Light Screen.,Lowers the target's Evade.  Cancels the effects of Reflect and Light Screen.
+260,-7,"For five turns, slower Pokemon will act before faster Pokemon.","For five turns, slower Pokemon will act before faster Pokemon."
+261,0,Has a chance to Freeze the target. Chance to hit becomes 100% during Hail.,Has a chance to Freeze the target. Chance to hit becomes 100% during Hail.
+262,0,Prevents the target from leaving battle and inflicts 1/16 its max HP in damage for 2-5 turns.,Prevents the target from leaving battle and inflicts 1/16 its max HP in damage for 2-5 turns.
+263,0,User receives 1/3 the damage inflicted in recoil.  Has a chance to Paralyze the target.,User receives 1/3 the damage inflicted in recoil.  Has a chance to Paralyze the target.
+264,0,"User bounces high into the air, dodging all attacks, and hits next turn.","User bounces high into the air for one turn and becomes immune to all moves except Gust, Thunder, Twister, and Whirlwind; damage is inflicted on the second turn.  Has a chance to Paralyze the target."
+266,0,Lowers the target's Special Attack by two levels if it is the opposite gender.,Lowers the target's Special Attack by two levels.  Only works if the user has a gender and the target has the opposite gender.
+267,0,Causes damage when Pokemon switch in to where the target is now.,Causes damage when Pokemon switch in to where the target is now.
+268,0,Target becomes Confused.,Confuses the target and inflicts damage using words the user has learned.
+269,0,"If the user is holding a plate, the damage inflicted will match it.","If the user is holding a plate, the damage inflicted will match it."
+270,0,User receives 1/2 the damage inflicted in recoil.,User receives 1/2 the damage inflicted in recoil.
+271,0,"User faints, and its replacement's HP is completely restored.","User faints, and its replacement's HP is completely restored."
+272,0,Lowers the target's Special Defense.,Lowers the target's Special Defense.
+273,0,"User vanishes, dodging all attacks, and hits next turn.  Works against Protect and Detect.",User vanishes the first turn and becomes immune to all moves; damage is inflicted on the second turn.  Protect and Detect do not work against this move.
+274,0,Has a chance to Burn the target and a chance to make the target Flinch.,Has a chance to Burn the target and a chance to make the target Flinch.
+275,0,Has a chance to Freeze the target and a chance to make the target Flinch.,Has a chance to Freeze the target and a chance to make the target Flinch.
+276,0,Has a chance to Paralyze the target and a chance to make the target Flinch.,Has a chance to Paralyze the target and a chance to make the target Flinch.
+277,0,Has a chance to raise the user's Special Attack.,Has a chance to raise the user's Special Attack.
