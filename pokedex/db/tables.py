@@ -1,5 +1,6 @@
-from sqlalchemy import Column, MetaData, Table
+from sqlalchemy import Column, ForeignKey, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relation
 from sqlalchemy.types import *
 from sqlalchemy.databases.mysql import *
 
@@ -29,7 +30,7 @@ class EggGroup(TableBase):
 class EvolutionChain(TableBase):
     __tablename__ = 'evolution_chains'
     id = Column(Integer, primary_key=True, nullable=False)
-    growth_rate_id = Column(Integer, nullable=False)
+    growth_rate_id = Column(Integer, ForeignKey('growth_rates.id'), nullable=False)
     steps_to_hatch = Column(Integer, nullable=False)
     baby_trigger_item = Column(Unicode(12))
 
@@ -72,16 +73,16 @@ class Move(TableBase):
     __tablename__ = 'moves'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(12), nullable=False)
-    type_id = Column(Integer, nullable=False)
+    type_id = Column(Integer, ForeignKey('types.id'), nullable=False)
     power = Column(SmallInteger)
     pp = Column(SmallInteger, nullable=False)
     accuracy = Column(SmallInteger)
-    target_id = Column(Integer, nullable=False)
+    target_id = Column(Integer, ForeignKey('move_targets.id'), nullable=False)
     category = Column(Unicode(8), nullable=False)
-    effect_id = Column(Integer, nullable=False)
+    effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False)
     effect_chance = Column(Integer)
     contest_type = Column(Unicode(8), nullable=False)
-    contest_effect_id = Column(Integer, nullable=False)
+    contest_effect_id = Column(Integer, ForeignKey('contest_effects.id'), nullable=False)
     super_contest_effect_id = Column(Integer, nullable=False)
 
 class Pokemon(TableBase):
@@ -89,10 +90,10 @@ class Pokemon(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(20), nullable=False)
     forme_name = Column(Unicode(16))
-    forme_base_pokemon_id = Column(Integer)
-    evolution_chain_id = Column(Integer, nullable=False)
-    evolution_parent_pokemon_id = Column(Integer)
-    evolution_method_id = Column(Integer)
+    forme_base_pokemon_id = Column(Integer, ForeignKey('pokemon.id'))
+    evolution_chain_id = Column(Integer, ForeignKey('evolution_chains.id'), nullable=False)
+    evolution_parent_pokemon_id = Column(Integer, ForeignKey('pokemon.id'))
+    evolution_method_id = Column(Integer, ForeignKey('evolution_methods.id'))
     evolution_parameter = Column(Unicode(32))
     height = Column(Integer, nullable=False)
     weight = Column(Integer, nullable=False)
@@ -110,44 +111,44 @@ class Pokemon(TableBase):
 
 class PokemonAbility(TableBase):
     __tablename__ = 'pokemon_abilities'
-    pokemon_id = Column(Integer, primary_key=True, nullable=False)
-    ability_id = Column(Integer, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
+    ability_id = Column(Integer, ForeignKey('abilities.id'), nullable=False)
     slot = Column(Integer, primary_key=True, nullable=False)
 
 class PokemonDexNumber(TableBase):
     __tablename__ = 'pokemon_dex_numbers'
-    pokemon_id = Column(Integer, primary_key=True, nullable=False)
-    generation_id = Column(Integer, primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False)
     pokedex_number = Column(Integer, nullable=False)
 
 class PokemonEggGroup(TableBase):
     __tablename__ = 'pokemon_egg_groups'
-    pokemon_id = Column(Integer, primary_key=True, nullable=False)
-    egg_group_id = Column(Integer, primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
+    egg_group_id = Column(Integer, ForeignKey('egg_groups.id'), primary_key=True, nullable=False)
 
 class PokemonFlavorText(TableBase):
     __tablename__ = 'pokemon_flavor_text'
-    pokemon_id = Column(Integer, primary_key=True, nullable=False)
-    version_id = Column(Integer, primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
+    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False)
     flavor = Column(Unicode(255), nullable=False)
 
 class PokemonName(TableBase):
     __tablename__ = 'pokemon_names'
-    pokemon_id = Column(Integer, primary_key=True, nullable=False)
-    language_id = Column(Integer, primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False)
     name = Column(Unicode(16), nullable=False)
 
 class PokemonStat(TableBase):
     __tablename__ = 'pokemon_stats'
-    pokemon_id = Column(Integer, primary_key=True, nullable=False)
-    stat_id = Column(Integer, primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
+    stat_id = Column(Integer, ForeignKey('stats.id'), primary_key=True, nullable=False)
     base_stat = Column(Integer, nullable=False)
     effort = Column(Integer, nullable=False)
 
 class PokemonType(TableBase):
     __tablename__ = 'pokemon_types'
-    pokemon_id = Column(Integer, primary_key=True, nullable=False)
-    type_id = Column(Integer, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
+    type_id = Column(Integer, ForeignKey('types.id'), nullable=False)
     slot = Column(Integer, primary_key=True, nullable=False)
 
 class Stat(TableBase):
@@ -157,8 +158,8 @@ class Stat(TableBase):
 
 class TypeEfficacy(TableBase):
     __tablename__ = 'type_efficacy'
-    damage_type_id = Column(Integer, primary_key=True, nullable=False)
-    target_type_id = Column(Integer, primary_key=True, nullable=False)
+    damage_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False)
+    target_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False)
     damage_factor = Column(Integer, nullable=False)
 
 class Type(TableBase):
@@ -170,10 +171,14 @@ class Type(TableBase):
 class VersionGroup(TableBase):
     __tablename__ = 'version_groups'
     id = Column(Integer, primary_key=True, nullable=False)
-    generation_id = Column(Integer, nullable=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
 
 class Version(TableBase):
     __tablename__ = 'versions'
     id = Column(Integer, primary_key=True, nullable=False)
-    version_group_id = Column(Integer, nullable=False)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False)
     name = Column(Unicode(32), nullable=False)
+
+
+### Relations down here, to avoid ordering problems
+Pokemon.types = relation(Type, secondary=PokemonType.__table__)
