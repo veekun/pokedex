@@ -181,4 +181,26 @@ class Version(TableBase):
 
 
 ### Relations down here, to avoid ordering problems
+Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
+                                      order_by=PokemonAbility.slot,
+                                      backref='pokemon')
+Pokemon.dex_numbers = relation(PokemonDexNumber, backref='pokemon')
+Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
+Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
+Pokemon.stats = relation(PokemonStat, backref='pokemon')
 Pokemon.types = relation(Type, secondary=PokemonType.__table__)
+
+PokemonDexNumber.generation = relation(Generation)
+
+PokemonName.language = relation(Language)
+
+PokemonStat.stat = relation(Stat)
+
+Type.damage_efficacies = relation(TypeEfficacy,
+                                  primaryjoin=Type.id
+                                      ==TypeEfficacy.damage_type_id,
+                                  backref='damage_type')
+Type.target_efficacies = relation(TypeEfficacy,
+                                  primaryjoin=Type.id
+                                      ==TypeEfficacy.target_type_id,
+                                  backref='target_type')
