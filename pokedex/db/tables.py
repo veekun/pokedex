@@ -91,6 +91,7 @@ class Pokemon(TableBase):
     name = Column(Unicode(20), nullable=False)
     forme_name = Column(Unicode(16))
     forme_base_pokemon_id = Column(Integer, ForeignKey('pokemon.id'))
+    generation_id = Column(Integer, ForeignKey('generations.id'))
     evolution_chain_id = Column(Integer, ForeignKey('evolution_chains.id'), nullable=False)
     evolution_parent_pokemon_id = Column(Integer, ForeignKey('pokemon.id'))
     evolution_method_id = Column(Integer, ForeignKey('evolution_methods.id'))
@@ -187,6 +188,7 @@ Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
 Pokemon.dex_numbers = relation(PokemonDexNumber, backref='pokemon')
 Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
+Pokemon.generation = relation(Generation, backref='pokemon')
 Pokemon.stats = relation(PokemonStat, backref='pokemon')
 Pokemon.types = relation(Type, secondary=PokemonType.__table__)
 
