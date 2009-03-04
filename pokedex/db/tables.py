@@ -183,10 +183,14 @@ class Version(TableBase):
 
 
 ### Relations down here, to avoid ordering problems
+EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
                                       backref='pokemon')
 Pokemon.dex_numbers = relation(PokemonDexNumber, backref='pokemon')
+Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
+                                        order_by=PokemonEggGroup.egg_group_id,
+                                        backref='pokemon')
 Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
 Pokemon.generation = relation(Generation, backref='pokemon')
