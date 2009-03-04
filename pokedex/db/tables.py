@@ -44,6 +44,7 @@ class Generation(TableBase):
     __tablename__ = 'generations'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(16), nullable=False)
+    main_region = Column(Unicode(16), nullable=False)
 
 class GrowthRate(TableBase):
     __tablename__ = 'growth_rates'
