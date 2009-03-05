@@ -101,6 +101,7 @@ class Pokemon(TableBase):
     weight = Column(Integer, nullable=False)
     species = Column(Unicode(16), nullable=False)
     color = Column(Unicode(6), nullable=False)
+    pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=False)
     habitat = Column(Unicode(16), nullable=False)
     gender_rate = Column(Integer, nullable=False)
     capture_rate = Column(Integer, nullable=False)
@@ -139,6 +140,12 @@ class PokemonName(TableBase):
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
     language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False)
     name = Column(Unicode(16), nullable=False)
+
+class PokemonShape(TableBase):
+    __tablename__ = 'pokemon_shapes'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(24), nullable=False)
+    awesome_name = Column(Unicode(16), nullable=False)
 
 class PokemonStat(TableBase):
     __tablename__ = 'pokemon_stats'
@@ -194,6 +201,7 @@ Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
 Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
 Pokemon.generation = relation(Generation, backref='pokemon')
+Pokemon.shape = relation(PokemonShape, backref='pokemon')
 Pokemon.stats = relation(PokemonStat, backref='pokemon')
 Pokemon.types = relation(Type, secondary=PokemonType.__table__)
 
