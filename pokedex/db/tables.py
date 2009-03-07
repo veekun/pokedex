@@ -133,7 +133,7 @@ class PokemonFlavorText(TableBase):
     __tablename__ = 'pokemon_flavor_text'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
     version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False)
-    flavor = Column(Unicode(255), nullable=False)
+    flavor_text = Column(Unicode(255), nullable=False)
 
 class PokemonName(TableBase):
     __tablename__ = 'pokemon_names'
@@ -199,6 +199,7 @@ Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,
                                         backref='pokemon')
 Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
+Pokemon.flavor_text = relation(PokemonFlavorText, backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
 Pokemon.generation = relation(Generation, backref='pokemon')
 Pokemon.shape = relation(PokemonShape, backref='pokemon')
@@ -206,6 +207,8 @@ Pokemon.stats = relation(PokemonStat, backref='pokemon')
 Pokemon.types = relation(Type, secondary=PokemonType.__table__)
 
 PokemonDexNumber.generation = relation(Generation)
+
+PokemonFlavorText.version = relation(Version)
 
 PokemonName.language = relation(Language)
 
