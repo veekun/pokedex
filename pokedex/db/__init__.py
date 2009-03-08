@@ -15,9 +15,11 @@ def connect(uri):
         if 'charset' not in uri:
             uri += '?charset=utf8'
 
-        # Tables should be InnoDB, in the event that we're creating them
+        # Tables should be InnoDB, in the event that we're creating them, and
+        # use UTF-8 goddammit!
         for table in metadata.tables.values():
             table.kwargs['mysql_engine'] = 'InnoDB'
+            table.kwargs['mysql_charset'] = 'utf8'
 
     ### Connect
     engine = create_engine(uri)

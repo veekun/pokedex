@@ -27,6 +27,12 @@ def csvimport(engine_uri, dir='.'):
 
     metadata.create_all()
 
+    # Oh, mysql-chan.
+    # TODO try to insert data in preorder so we don't need this hack and won't
+    #      break similarly on other engines
+    if 'mysql' in engine_uri:
+        session.execute('SET FOREIGN_KEY_CHECKS = 0')
+
     # This is a secret attribute on a secret singleton of a secret class that
     # appears to hopefully contain all registered classes as keys.
     # There is no other way to accomplish this, as far as I can tell.
@@ -49,6 +55,11 @@ def csvimport(engine_uri, dir='.'):
             session.add(row)
 
         session.commit()
+
+    # Shouldn't matter since this is usually the end of the program and thus
+    # the connection too, but let's change this back just in case
+    if 'mysql' in engine_uri:
+        session.execute('SET FOREIGN_KEY_CHECKS = 1')
 
 
 def csvexport(engine_uri, dir='.'):

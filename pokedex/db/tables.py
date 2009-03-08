@@ -114,31 +114,31 @@ class Pokemon(TableBase):
 
 class PokemonAbility(TableBase):
     __tablename__ = 'pokemon_abilities'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
     ability_id = Column(Integer, ForeignKey('abilities.id'), nullable=False)
-    slot = Column(Integer, primary_key=True, nullable=False)
+    slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
 
 class PokemonDexNumber(TableBase):
     __tablename__ = 'pokemon_dex_numbers'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
-    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False, autoincrement=False)
     pokedex_number = Column(Integer, nullable=False)
 
 class PokemonEggGroup(TableBase):
     __tablename__ = 'pokemon_egg_groups'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
-    egg_group_id = Column(Integer, ForeignKey('egg_groups.id'), primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    egg_group_id = Column(Integer, ForeignKey('egg_groups.id'), primary_key=True, nullable=False, autoincrement=False)
 
 class PokemonFlavorText(TableBase):
     __tablename__ = 'pokemon_flavor_text'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
-    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False, autoincrement=False)
     flavor_text = Column(Unicode(255), nullable=False)
 
 class PokemonName(TableBase):
     __tablename__ = 'pokemon_names'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
-    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
     name = Column(Unicode(16), nullable=False)
 
 class PokemonShape(TableBase):
@@ -149,16 +149,16 @@ class PokemonShape(TableBase):
 
 class PokemonStat(TableBase):
     __tablename__ = 'pokemon_stats'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
-    stat_id = Column(Integer, ForeignKey('stats.id'), primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    stat_id = Column(Integer, ForeignKey('stats.id'), primary_key=True, nullable=False, autoincrement=False)
     base_stat = Column(Integer, nullable=False)
     effort = Column(Integer, nullable=False)
 
 class PokemonType(TableBase):
     __tablename__ = 'pokemon_types'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
     type_id = Column(Integer, ForeignKey('types.id'), nullable=False)
-    slot = Column(Integer, primary_key=True, nullable=False)
+    slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
 
 class Stat(TableBase):
     __tablename__ = 'stats'
@@ -167,8 +167,8 @@ class Stat(TableBase):
 
 class TypeEfficacy(TableBase):
     __tablename__ = 'type_efficacy'
-    damage_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False)
-    target_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False)
+    damage_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False)
+    target_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False)
     damage_factor = Column(Integer, nullable=False)
 
 class Type(TableBase):
