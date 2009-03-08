@@ -3,4 +3,4 @@
 ~*
 *.swp
 
-*.egg-into
+*.egg-info
