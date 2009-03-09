@@ -43,14 +43,20 @@ def csvimport(engine_uri, dir='.'):
         print table_name
 
         reader = csv.reader(open("%s/%s.csv" % (dir, table_name), 'rb'), lineterminator='\n')
-        columns = [unicode(column) for column in reader.next()]
+        column_names = [unicode(column) for column in reader.next()]
 
         for csvs in reader:
             row = table()
 
-            for column, value in zip(columns, csvs):
-                value = value.decode('utf-8')
-                setattr(row, column, value)
+            for column_name, value in zip(column_names, csvs):
+                if table.__table__.c[column_name].nullable and value == '':
+                    # Empty string in a nullable column really means NULL
+                    value = None
+                else:
+                    # Otherwise, unflatten from bytes
+                    value = value.decode('utf-8')
+
+                setattr(row, column_name, value)
 
             session.add(row)
 
