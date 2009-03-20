@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relation
+from sqlalchemy.orm import backref, relation
 from sqlalchemy.types import *
 from sqlalchemy.databases.mysql import *
 
@@ -93,7 +93,7 @@ class Pokemon(TableBase):
     forme_name = Column(Unicode(16))
     forme_base_pokemon_id = Column(Integer, ForeignKey('pokemon.id'))
     generation_id = Column(Integer, ForeignKey('generations.id'))
-    evolution_chain_id = Column(Integer, ForeignKey('evolution_chains.id'), nullable=False)
+    evolution_chain_id = Column(Integer, ForeignKey('evolution_chains.id'))
     evolution_parent_pokemon_id = Column(Integer, ForeignKey('pokemon.id'))
     evolution_method_id = Column(Integer, ForeignKey('evolution_methods.id'))
     evolution_parameter = Column(Unicode(32))
@@ -199,6 +199,10 @@ Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,
                                         backref='pokemon')
 Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
+Pokemon.evolution_method = relation(EvolutionMethod)
+Pokemon.evolution_children = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.evolution_parent_pokemon_id,
+                                               backref=backref('evolution_parent',
+                                                               remote_side=[Pokemon.id]))
 Pokemon.flavor_text = relation(PokemonFlavorText, backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
 Pokemon.generation = relation(Generation, backref='pokemon')
