@@ -1,4 +1,4 @@
-id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolution_parent_pokemon_id,evolution_method_id,evolution_parameter,height,weight,species,color,pokemon_shape_id,habitat,gender_rate,capture_rate,base_experience,base_happiness,gen1_internal_id,is_baby,has_dp_fem_sprite,has_dp_fem_back_sprite
+id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolution_parent_pokemon_id,evolution_method_id,evolution_parameter,height,weight,species,color,pokemon_shape_id,habitat,gender_rate,capture_rate,base_experience,base_happiness,gen1_internal_id,is_baby,has_gen4_fem_sprite,has_gen4_fem_back_sprite
 1,Bulbasaur,,,1,1,,,,7,69,Seed,green,8,grassland,1,45,64,70,153,0,0,0
 2,Ivysaur,,,1,1,1,1,16,10,130,Seed,green,8,grassland,1,45,141,70,9,0,0,0
 3,Venusaur,,,1,1,2,1,32,20,1000,Seed,green,8,grassland,1,45,208,70,154,0,1,1
@@ -121,7 +121,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 120,Staryu,,,1,56,,,,8,345,Star Shape,brown,5,sea,-1,225,106,70,27,0,0,0
 121,Starmie,,,1,56,120,6,Water Stone,11,800,Mysterious,purple,5,sea,-1,60,207,70,152,0,0,0
 122,Mr. Mime,,,1,57,439,11,102,13,545,Barrier,pink,12,urban,4,45,136,70,42,0,0,0
-123,Scyther,,,1,58,,,,15,560,Mantis,green,13,grassland,4,45,187,70,26,0,1,0
+123,Scyther,,,1,58,,,,15,560,Mantis,green,13,grassland,4,45,187,70,26,0,1,1
 124,Jynx,,,1,59,238,1,30,14,406,Human Shape,red,12,urban,8,45,137,70,72,0,0,0
 125,Electabuzz,,,1,60,239,1,30,11,300,Electric,yellow,6,grassland,2,45,156,70,53,0,0,0
 126,Magmar,,,1,61,240,1,30,13,445,Spitfire,red,6,mountain,2,45,167,70,51,0,0,0
@@ -176,7 +176,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 175,Togepi,,,2,87,,,,3,15,Spike Ball,white,12,forest,1,190,74,70,,0,0,0
 176,Togetic,,,2,87,175,12,,6,32,Happiness,white,12,forest,1,75,114,70,,0,0,0
 177,Natu,,,2,88,,,,2,20,Tiny Bird,green,9,forest,4,190,73,70,,0,0,0
-178,Xatu,,,2,88,177,1,25,15,150,Mystic,green,9,forest,4,75,171,70,,0,1,1
+178,Xatu,,,2,88,177,1,25,15,150,Mystic,green,9,forest,4,75,171,70,,0,1,0
 179,Mareep,,,2,89,,,,6,78,Wool,white,8,grassland,4,235,59,70,,0,0,0
 180,Flaaffy,,,2,89,179,1,15,8,133,Wool,pink,6,grassland,4,120,117,70,,0,0,0
 181,Ampharos,,,2,89,180,1,30,14,615,Light,yellow,6,grassland,4,45,194,70,,0,0,0
@@ -205,7 +205,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 204,Pineco,,,2,102,,,,6,72,Bagworm,gray,1,forest,4,190,60,70,,0,0,0
 205,Forretress,,,2,102,204,1,31,12,1258,Bagworm,purple,1,forest,4,75,118,70,,0,0,0
 206,Dunsparce,,,2,103,,,,15,140,Land Snake,yellow,2,cave,4,190,125,70,,0,0,0
-207,Gligar,,,2,104,,,,11,648,FlyScorpion,purple,9,mountain,4,60,108,70,,0,1,0
+207,Gligar,,,2,104,,,,11,648,FlyScorpion,purple,9,mountain,4,60,108,70,,0,1,1
 208,Steelix,,,2,41,95,5,Metal Coat,92,4000,Iron Snake,gray,2,cave,4,25,196,70,,0,1,1
 209,Snubbull,,,2,105,,,,6,78,Fairy,pink,12,urban,6,190,63,70,,0,0,0
 210,Granbull,,,2,105,209,1,23,14,487,Fairy,purple,6,urban,6,75,178,70,,0,0,0
@@ -356,7 +356,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 355,Duskull,,,3,182,,,,8,150,Requiem,black,4,forest,4,190,97,35,,0,0,0
 356,Dusclops,,,3,182,355,1,37,16,306,Beckon,black,12,forest,4,90,179,35,,0,0,0
 357,Tropius,,,3,183,,,,20,1000,Fruit,green,8,forest,4,200,169,70,,0,0,0
-358,Chimecho,,,3,184,433,14,,6,10,Wind Chime,blue,4,grassland,4,45,147,70,,0,0,0
+358,Chimecho,,,3,184,433,14,,6,10,Wind Chime,blue,4,grassland,4,45,147,70,,0,0,1
 359,Absol,,,3,185,,,,12,470,Disaster,white,8,mountain,4,30,174,35,,0,0,0
 360,Wynaut,,,3,100,,,,6,140,Bright,blue,6,cave,4,125,44,70,,1,0,0
 361,Snorunt,,,3,186,,,,7,168,Snow Hat,gray,12,cave,4,190,74,70,,0,0,0
@@ -405,7 +405,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 404,Luxio,,,4,209,403,1,15,9,305,Spark,blue,8,,4,120,117,100,,0,1,1
 405,Luxray,,,4,209,404,1,30,14,420,Gleam Eyes,blue,8,,4,45,194,70,,0,1,1
 406,Budew,,,4,158,,,,2,12,Bud,green*,12,,4,255,68,70,,1,0,0
-407,Roserade,,,4,158,315,6,Shiny Stone,9,145,Bouquet,green*,12,,4,75,204,70,,0,1,0
+407,Roserade,,,4,158,315,6,Shiny Stone,9,145,Bouquet,green*,12,,4,75,204,70,,0,1,1
 408,Cranidos,,,4,211,,,,9,315,Head Butt,blue,6,,1,45,99,70,,0,0,0
 409,Rampardos,,,4,211,408,1,30,16,1025,Head Butt,blue,6,,1,45,199,70,,0,0,0
 410,Shieldon,,,4,212,,,,5,570,Shield,gray,8,,1,45,99,70,,0,0,0
@@ -463,7 +463,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 462,Magnezone,,,4,34,82,4,Mt. Coronet,12,1800,Magnet Area,gray,4,,-1,30,211,70,,0,0,0
 463,Lickilicky,,,4,48,108,11,205,17,1400,Licking,pink,12,,4,30,193,70,,0,0,0
 464,Rhyperior,,,4,50,112,5,Protector,24,2828,Drill,gray,6,,4,30,217,70,,0,1,1
-465,Tangrowth,,,4,52,114,11,246,20,1286,Vine,blue,12,,4,30,211,70,,0,1,0
+465,Tangrowth,,,4,52,114,11,246,20,1286,Vine,blue,12,,4,30,211,70,,0,1,1
 466,Electivire,,,4,60,125,5,Electirizer,18,1386,Thunderbolt,yellow,6,,2,30,199,70,,0,0,0
 467,Magmortar,,,4,61,126,5,Magmarizer,16,680,Blast,red*,6,,2,30,199,70,,0,0,0
 468,Togekiss,,,4,87,176,6,Shiny Stone,15,380,Jubilee,white*,9,,1,30,220,70,,0,0,0
