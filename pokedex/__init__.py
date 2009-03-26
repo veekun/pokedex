@@ -1,6 +1,8 @@
 # encoding: utf8
 import sys
 
+import sqlalchemy.types
+
 from .db import connect, metadata
 
 def main():
@@ -49,9 +51,17 @@ def csvimport(engine_uri, dir='.'):
             row = table()
 
             for column_name, value in zip(column_names, csvs):
-                if table.__table__.c[column_name].nullable and value == '':
+                column = table.__table__.c[column_name]
+                if column.nullable and value == '':
                     # Empty string in a nullable column really means NULL
                     value = None
+                elif isinstance(column.type, sqlalchemy.types.Boolean):
+                    # Boolean values are stored as string values 0/1, but both
+                    # of those evaluate as true; SQLA wants True/False
+                    if value == '0':
+                        value = False
+                    else:
+                        value = True
                 else:
                     # Otherwise, unflatten from bytes
                     value = value.decode('utf-8')
