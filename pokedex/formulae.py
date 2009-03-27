@@ -19,3 +19,10 @@ def calculated_hp(base_hp, level, iv, effort):
         return 1
 
     return (base_hp * 2 + iv + effort // 4) * level // 100 + 10 + level
+
+def earned_exp(base_exp, level):
+    """Returns the amount of EXP earned when defeating a Pokémon at the given
+    level.
+    """
+
+    return base_exp * level // 7
