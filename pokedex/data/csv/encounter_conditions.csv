@@ -1,0 +1,11 @@
+id,encounter_condition_group_id,name
+1,1,During a swarm
+10,4,Leaf Green
+9,4,Fire Red
+8,4,Emerald
+7,4,Sapphire
+6,4,Ruby
+5,3,Using PokéRadar
+4,2,Night
+3,2,Day
+2,2,Morning

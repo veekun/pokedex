@@ -27,6 +27,40 @@ class EggGroup(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(16), nullable=False)
 
+class Encounter(TableBase):
+    __tablename__ = 'encounters'
+    id = Column(Integer, primary_key=True, nullable=False)
+    version_id = Column(Integer, ForeignKey('versions.id'), nullable=False, autoincrement=False)
+    location_area_id = Column(Integer, ForeignKey('location_areas.id'), nullable=False, autoincrement=False)
+    encounter_type_slot_id = Column(Integer, ForeignKey('encounter_type_slots.id'), nullable=False, autoincrement=False)
+    encounter_condition_id = Column(Integer, ForeignKey('encounter_conditions.id'), nullable=True, autoincrement=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, autoincrement=False)
+    min_level = Column(Integer, nullable=False, autoincrement=False)
+    max_level = Column(Integer, nullable=False, autoincrement=False)
+
+class EncounterCondition(TableBase):
+    __tablename__ = 'encounter_conditions'
+    id = Column(Integer, primary_key=True, nullable=False)
+    encounter_condition_group_id = Column(Integer, ForeignKey('encounter_condition_groups.id'), primary_key=False, nullable=False, autoincrement=False)
+    name = Column(Unicode(64), nullable=False)
+
+class EncounterConditionGroup(TableBase):
+    __tablename__ = 'encounter_condition_groups'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(64), nullable=False)
+
+class EncounterType(TableBase):
+    __tablename__ = 'encounter_types'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(64), nullable=False)
+
+class EncounterTypeSlot(TableBase):
+    __tablename__ = 'encounter_type_slots'
+    id = Column(Integer, primary_key=True, nullable=False)
+    encounter_type_id = Column(Integer, ForeignKey('encounter_types.id'), primary_key=False, nullable=False, autoincrement=False)
+    encounter_condition_group_id = Column(Integer, ForeignKey('encounter_condition_groups.id'), primary_key=False, nullable=True, autoincrement=False)
+    rarity = Column(Integer, nullable=False, autoincrement=False)
+
 class EvolutionChain(TableBase):
     __tablename__ = 'evolution_chains'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -56,6 +90,19 @@ class Language(TableBase):
     __tablename__ = 'languages'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(16), nullable=False)
+
+class Location(TableBase):
+    __tablename__ = 'locations'
+    id = Column(Integer, primary_key=True, nullable=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
+    name = Column(Unicode(64), nullable=False)
+
+class LocationArea(TableBase):
+    __tablename__ = 'location_areas'
+    id = Column(Integer, primary_key=True, nullable=False)
+    location_id = Column(Integer, ForeignKey('locations.id'), nullable=False)
+    internal_id = Column(Integer, nullable=False)
+    name = Column(Unicode(64), nullable=True)
 
 class MoveEffect(TableBase):
     __tablename__ = 'move_effects'
@@ -190,7 +237,21 @@ class Version(TableBase):
 
 
 ### Relations down here, to avoid ordering problems
+Encounter.pokemon = relation(Pokemon, backref='encounters')
+Encounter.version = relation(Version, backref='encounters')
+Encounter.location_area = relation(LocationArea, backref='encounters')
+Encounter.slot = relation(EncounterTypeSlot, backref='encounters')
+Encounter.condition = relation(EncounterCondition, backref='encounters')
+
+EncounterCondition.group = relation(EncounterConditionGroup,
+                                    backref='conditions')
+
+EncounterTypeSlot.type = relation(EncounterType, backref='slots')
+
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
+
+LocationArea.location = relation(Location, backref='areas')
+
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
                                       backref='pokemon')
@@ -226,3 +287,6 @@ Type.target_efficacies = relation(TypeEfficacy,
                                   primaryjoin=Type.id
                                       ==TypeEfficacy.target_type_id,
                                   backref='target_type')
+
+Version.generation = relation(Generation, secondary=VersionGroup.__table__,
+                              backref='versions')
