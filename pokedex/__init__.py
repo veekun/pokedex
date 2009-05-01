@@ -42,9 +42,17 @@ def csvimport(engine_uri, dir='.'):
     for table in sorted(instrumentation_registry.manager_finders.keys(),
                         key=lambda self: self.__table__.name):
         table_name = table.__table__.name
-        print table_name
+        # Print the table name but leave the cursor in a fixed column
+        print table_name + '...', ' ' * (40 - len(table_name)),
 
-        reader = csv.reader(open("%s/%s.csv" % (dir, table_name), 'rb'), lineterminator='\n')
+        try:
+            csvfile = open("%s/%s.csv" % (dir, table_name), 'rb')
+        except IOError:
+            # File doesn't exist; don't load anything!
+            print 'no data!'
+            continue
+
+        reader = csv.reader(csvfile, lineterminator='\n')
         column_names = [unicode(column) for column in reader.next()]
 
         for csvs in reader:
@@ -71,6 +79,7 @@ def csvimport(engine_uri, dir='.'):
             session.add(row)
 
         session.commit()
+        print 'loaded'
 
     # Shouldn't matter since this is usually the end of the program and thus
     # the connection too, but let's change this back just in case
