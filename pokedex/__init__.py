@@ -3,7 +3,7 @@ import sys
 
 import sqlalchemy.types
 
-from .db import connect, metadata
+from .db import connect, metadata, tables as tables_module
 
 def main():
     if len(sys.argv) <= 1:
@@ -20,7 +20,7 @@ def main():
         help()
 
 
-def csvimport(engine_uri, dir='.'):
+def csvimport(engine_uri, directory='.'):
     import csv
 
     from sqlalchemy.orm.attributes import instrumentation_registry
@@ -35,18 +35,36 @@ def csvimport(engine_uri, dir='.'):
     if 'mysql' in engine_uri:
         session.execute('SET FOREIGN_KEY_CHECKS = 0')
 
-    # This is a secret attribute on a secret singleton of a secret class that
-    # appears to hopefully contain all registered classes as keys.
-    # There is no other way to accomplish this, as far as I can tell.
-    # Fuck.
-    for table in sorted(instrumentation_registry.manager_finders.keys(),
-                        key=lambda self: self.__table__.name):
-        table_name = table.__table__.name
+    # SQLAlchemy is retarded and there is no way for me to get a list of ORM
+    # classes besides to inspect the module they all happen to live in for
+    # things that look right.
+    table_base = tables_module.TableBase
+    orm_classes = {}
+
+    for name in dir(tables_module):
+        # dir() returns strings!  How /convenient/.
+        thingy = getattr(tables_module, name)
+
+        if not isinstance(thingy, type):
+            # Not a class; bail
+            continue
+        elif not issubclass(thingy, table_base):
+            # Not a declarative table; bail
+            continue
+        elif thingy == table_base:
+            # Declarative table base, so not a real table; bail
+            continue
+
+        # thingy is definitely a table class!  Hallelujah.
+        orm_classes[thingy.__table__.name] = thingy
+
+    # Okay, run through the tables and actually load the data now
+    for table_name, table in sorted(orm_classes.items()):
         # Print the table name but leave the cursor in a fixed column
         print table_name + '...', ' ' * (40 - len(table_name)),
 
         try:
-            csvfile = open("%s/%s.csv" % (dir, table_name), 'rb')
+            csvfile = open("%s/%s.csv" % (directory, table_name), 'rb')
         except IOError:
             # File doesn't exist; don't load anything!
             print 'no data!'
@@ -87,7 +105,7 @@ def csvimport(engine_uri, dir='.'):
         session.execute('SET FOREIGN_KEY_CHECKS = 1')
 
 
-def csvexport(engine_uri, dir='.'):
+def csvexport(engine_uri, directory='.'):
     import csv
     session = connect(engine_uri)
 
@@ -95,7 +113,8 @@ def csvexport(engine_uri, dir='.'):
         print table_name
         table = metadata.tables[table_name]
 
-        writer = csv.writer(open("%s/%s.csv" % (dir, table_name), 'wb'), lineterminator='\n')
+        writer = csv.writer(open("%s/%s.csv" % (directory, table_name), 'wb'),
+                            lineterminator='\n')
         columns = [col.name for col in table.columns]
         writer.writerow(columns)
 
