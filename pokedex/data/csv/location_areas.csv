@@ -1,22 +1,5 @@
 id,location_id,internal_id,name
-1,1,0,1F
-2,1,0,2F
-3,1,0,B1F a
-4,1,0,B1F b
-5,1,0,B1F c
-6,1,0,B2F a
-7,1,0,B2F b
-8,1,0,B2F c
-9,1,0,B3F a
-10,1,0,B3F b
-11,1,0,B3F c
-12,1,0,B3F d
-13,1,0,B3F e
-14,1,0,B4F a
-15,1,0,B4F b
-16,1,0,B4F c
-17,1,0,B4F d
-18,1,0,B5F
+1,1,0,
 19,2,0,
 20,3,0,
 21,4,0,
@@ -122,15 +105,9 @@ id,location_id,internal_id,name
 121,55,0,B2F right
 122,55,0,B3F
 123,56,0,26+ different Unown caught
-124,57,0,2F
-125,57,0,2F left room
-126,57,0,2F leftmost room
-127,57,0,2F middle room
-128,57,0,2F private room
-129,57,0,2F right room
-130,57,0,2F rightmost room
-131,57,0,dining room
-132,57,0,entrance
+124,57,0,
+125,57,0,"2F back room, second from left"
+129,57,0,"2F back room, second from right"
 133,58,0,
 134,59,0,
 135,60,0,
