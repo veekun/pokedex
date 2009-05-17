@@ -46,26 +46,26 @@ id,location_id,internal_id,name
 45,14,0,
 46,15,0,
 47,16,0,
-48,17,0,High-level (rooms 16-21)
-49,17,0,Low-level (rooms 4-9)
-50,17,0,Mid-level (most rooms)
+48,17,0,up to Pillar 3
+49,17,0,up to Pillar 1
+50,17,0,up to Pillar 2
 51,18,0,
 52,19,0,
 53,20,0,
-54,21,0,Floaroma City side
-55,21,0,Jubilife City side
-56,22,0,Eterna City side
-57,22,0,Floaroma City side
+54,21,0,"north, towards Floaroma City"
+55,21,0,"south, towards Jubilife City"
+56,22,0,"east, towards Eterna City"
+57,22,0,"south, towards Floaroma Town"
 58,23,0,
 59,24,0,
 60,25,0,
 61,26,0,
-62,27,0,Celestic City side
-63,27,0,Solaceon City side
-64,28,0,Celestic City side
-65,28,0,Eterna City side
-66,29,0,Hearthome City side
-67,29,0,Pastoria City side
+62,27,0,"west, towards Celestic Town"
+63,27,0,"south, towards Solaceon Town"
+64,28,0,"east, towards Celestic Town"
+65,28,0,"west, towards Eterna City"
+66,29,0,"north, towards Hearthome City"
+67,29,0,"east, towards Pastoria City"
 68,30,0,
 69,31,0,
 70,32,0,
@@ -112,8 +112,8 @@ id,location_id,internal_id,name
 111,51,0,inside exit
 112,52,0,
 113,53,0,
-114,54,0,
-115,54,0,expansion
+114,56,0,0–9 different Unown caught
+115,56,0,10–25 different Unown caught
 116,55,0,
 117,55,0,1F
 118,55,0,B1F left
@@ -121,7 +121,7 @@ id,location_id,internal_id,name
 120,55,0,B2F left
 121,55,0,B2F right
 122,55,0,B3F
-123,56,0,
+123,56,0,26+ different Unown caught
 124,57,0,2F
 125,57,0,2F left room
 126,57,0,2F leftmost room
@@ -136,7 +136,7 @@ id,location_id,internal_id,name
 135,60,0,
 136,61,0,
 137,62,0,
-138,63,0,after
-139,63,0,before
+138,63,0,after Galactic intervention
+139,63,0,before Galactic intervention
 140,78,0,
-141,17,0,"Mid-level (rooms 1, 10-15)"
+141,17,0,up to Pillar 2 (alternate)
