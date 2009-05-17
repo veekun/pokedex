@@ -28,6 +28,28 @@ class EggGroup(TableBase):
     name = Column(Unicode(16), nullable=False)
 
 class Encounter(TableBase):
+    """Rows in this table represent encounters with wild Pokémon.
+
+    Within a given area in a given game, encounters are differentiated by the
+    slot they are in and a world condition.
+
+    Groups of slots belong to encounter types; these are what the player is
+    doing to get an encounter, such as surfing or walking through tall grass.
+
+    Within an encounter type, slots are defined primarily by rarity.  Each slot
+    can also be affected by a world condition; for example, the 20% slot for
+    walking in tall grass is affected by whether a swarm is in effect in the
+    areas.  "There is a swarm" and "there is not a swarm" are conditions, and
+    together they make a condition group.  However, since "not a swarm" is a
+    base state rather than any sort of new state, it is omitted and instead
+    referred to by a NULL.
+
+    A slot (20% walking in grass) and single world condition (NULL, i.e. no
+    swarm) are thus enough to define a specific encounter.
+    
+    Well, okay, almost: each slot actually appears twice.
+    """
+
     __tablename__ = 'encounters'
     id = Column(Integer, primary_key=True, nullable=False)
     version_id = Column(Integer, ForeignKey('versions.id'), nullable=False, autoincrement=False)
@@ -39,22 +61,44 @@ class Encounter(TableBase):
     max_level = Column(Integer, nullable=False, autoincrement=False)
 
 class EncounterCondition(TableBase):
+    """Rows in this table represent something different about the world that
+    can affect what Pokémon are encountered.
+    """
+
     __tablename__ = 'encounter_conditions'
     id = Column(Integer, primary_key=True, nullable=False)
     encounter_condition_group_id = Column(Integer, ForeignKey('encounter_condition_groups.id'), primary_key=False, nullable=False, autoincrement=False)
     name = Column(Unicode(64), nullable=False)
 
 class EncounterConditionGroup(TableBase):
+    """Rows in this table represent a group of mutually exclusive conditions,
+    such as morning/day/night.  "Conditions" that are part of the default state
+    of the world, such as "not during a swarm" or "not using the PokéRadar",
+    are not included in this table and are referred to by NULLs in other
+    tables.
+    """
+
     __tablename__ = 'encounter_condition_groups'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(64), nullable=False)
 
 class EncounterType(TableBase):
+    """Rows in this table represent ways the player can enter a wild encounter;
+    i.e. surfing, fishing, or walking through tall grass.
+    """
+
     __tablename__ = 'encounter_types'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(64), nullable=False)
 
 class EncounterTypeSlot(TableBase):
+    """Rows in this table represent an abstract "slot" within an encounter
+    type, associated with both a condition group and a rarity.
+
+    Note that there are two encounters per slot, so the rarities will only add
+    up to 50.
+    """
+
     __tablename__ = 'encounter_type_slots'
     id = Column(Integer, primary_key=True, nullable=False)
     encounter_type_id = Column(Integer, ForeignKey('encounter_types.id'), primary_key=False, nullable=False, autoincrement=False)
