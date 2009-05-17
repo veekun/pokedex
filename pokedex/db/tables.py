@@ -1,3 +1,5 @@
+# encoding: utf8
+
 from sqlalchemy import Column, ForeignKey, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import backref, relation
