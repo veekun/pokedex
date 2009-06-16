@@ -228,6 +228,17 @@ class PokemonFlavorText(TableBase):
     version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False, autoincrement=False)
     flavor_text = Column(Unicode(255), nullable=False)
 
+class PokemonFormGroup(TableBase):
+    __tablename__ = 'pokemon_form_groups'
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    description = Column(Unicode(255), nullable=False)
+
+class PokemonFormSprite(TableBase):
+    __tablename__ = 'pokemon_form_sprites'
+    id = Column(Integer, primary_key=True, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    name = Column(Unicode(16), nullable=True)
+
 class PokemonName(TableBase):
     __tablename__ = 'pokemon_names'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
@@ -320,6 +331,10 @@ Pokemon.types = relation(Type, secondary=PokemonType.__table__)
 PokemonDexNumber.generation = relation(Generation)
 
 PokemonFlavorText.version = relation(Version)
+
+PokemonFormGroup.pokemon = relation(Pokemon, backref=backref('form_group',
+                                                             uselist=False))
+PokemonFormSprite.pokemon = relation(Pokemon, backref='form_sprites')
 
 PokemonName.language = relation(Language)
 
