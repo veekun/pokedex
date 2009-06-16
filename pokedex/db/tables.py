@@ -205,6 +205,26 @@ class Pokemon(TableBase):
     has_gen4_fem_sprite = Column(Boolean, nullable=False)
     has_gen4_fem_back_sprite = Column(Boolean, nullable=False)
 
+    ### Stuff to handle alternate Pokémon forms
+
+    @property
+    def national_id(self):
+        """Returns the National Pokédex number for this Pokémon.  Use this
+        instead of the id directly; alternate formes may make the id incorrect.
+        """
+
+        if self.forme_base_pokemon_id:
+            return self.forme_base_pokemon_id
+        return self.id
+
+    @property
+    def full_name(self):
+        """Returns the name of this Pokémon, including its Forme, if any."""
+
+        if self.forme_name:
+            return "%s %s" % (self.forme_name.capitalize(), self.name)
+        return self.name
+
 class PokemonAbility(TableBase):
     __tablename__ = 'pokemon_abilities'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
