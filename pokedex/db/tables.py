@@ -180,6 +180,14 @@ class Move(TableBase):
     super_contest_effect_id = Column(Integer, nullable=False)
 
 class Pokemon(TableBase):
+    """The core to this whole mess.
+
+    Note that I use both 'forme' and 'form' in both code and the database.  I
+    only use 'forme' when specifically referring to Pokémon that have multiple
+    distinct species as forms—i.e., different stats or movesets.  'Form' is a
+    more general term referring to any variation within a species, including
+    purely cosmetic forms like Unown.
+    """
     __tablename__ = 'pokemon'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(20), nullable=False)
@@ -224,6 +232,17 @@ class Pokemon(TableBase):
         if self.forme_name:
             return "%s %s" % (self.forme_name.capitalize(), self.name)
         return self.name
+
+    @property
+    def normal_form(self):
+        """Returns the normal form for this Pokémon; i.e., this will return
+        regular Deoxys when called on any Deoxys form.
+        """
+
+        if self.forme_base_pokemon:
+            return self.forme_base_pokemon
+
+        return self
 
 class PokemonAbility(TableBase):
     __tablename__ = 'pokemon_abilities'
@@ -332,6 +351,9 @@ LocationArea.location = relation(Location, backref='areas')
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
                                       backref='pokemon')
+Pokemon.formes = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.forme_base_pokemon_id,
+                                               backref=backref('forme_base_pokemon',
+                                                               remote_side=[Pokemon.id]))
 Pokemon.dex_numbers = relation(PokemonDexNumber, backref='pokemon')
 Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,

@@ -8,5 +8,6 @@ pokemon_id,description
 422,Forms only affect appearance.  A form is selected before a wild encounter based on whether the battle is in Western or Eastern Sinnoh and cannot be changed.
 423,Forms only affect appearance.  A form is selected before a wild encounter based on whether the battle is in Western or Eastern Sinnoh and cannot be changed.
 479,"Forms have different signature moves.  When switching forms, the old signature move is removed and the new one, if any, is learned immediately.  In a secret room in the Galactic Eterna Building, accessible only with a Secret Key, there are appliances that can be used to switch between forms."
-492,"Forms have different stats and movepools.  After using Gracidea, Sky form will be active during daytime; otherwise, only Land form is active.  Gracidea only works on an official event Shaymin."
+487,"Forms have different stats.  Giratina becomes Origin form in Distortion World or while holding a Griseous Orb.  Otherwise, or during a link battle, Giratina will be in Altered form."
+492,"Forms have different stats and movepools.  After using a Gracidea, Shaymin will transform into Sky form during the daytime.  If a Gracidea is not used, it is currently nighttime, during a link battle, or Sky form is Frozen, Shaymin will be in Land form.  Gracidea only works on an official event Shaymin."
 493,"Form always reflects type, which may be changed by attaching a Plate and activating Multitype."
