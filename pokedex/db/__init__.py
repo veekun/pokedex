@@ -2,7 +2,7 @@ from sqlalchemy import MetaData, Table, create_engine, orm
 
 from .tables import metadata
 
-def connect(uri):
+def connect(uri, **kwargs):
     """Connects to the requested URI.  Returns a session object.
 
     Calling this function also binds the metadata object to the created engine.
@@ -26,7 +26,9 @@ def connect(uri):
     conn = engine.connect()
     metadata.bind = engine
 
-    sm = orm.sessionmaker(autoflush=True, autocommit=False, bind=engine)
+    session_args = dict(autoflush=True, autocommit=False, bind=engine)
+    session_args.update(kwargs)
+    sm = orm.sessionmaker(**session_args)
     session = orm.scoped_session(sm)
 
     return session

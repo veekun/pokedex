@@ -176,7 +176,7 @@ class Move(TableBase):
     effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False)
     effect_chance = Column(Integer)
     contest_type = Column(Unicode(8), nullable=False)
-    contest_effect_id = Column(Integer, ForeignKey('contest_effects.id'), nullable=False)
+    contest_effect_id = Column(Integer, ForeignKey('contest_effects.id'), nullable=True)
     super_contest_effect_id = Column(Integer, nullable=False)
 
 class Pokemon(TableBase):
@@ -270,7 +270,7 @@ class PokemonFlavorText(TableBase):
 class PokemonFormGroup(TableBase):
     __tablename__ = 'pokemon_form_groups'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    description = Column(Unicode(255), nullable=False)
+    description = Column(Unicode(512), nullable=False)
 
 class PokemonFormSprite(TableBase):
     __tablename__ = 'pokemon_form_sprites'
