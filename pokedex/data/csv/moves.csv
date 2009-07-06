@@ -172,7 +172,7 @@ id,name,type_id,power,pp,accuracy,target_id,category,effect_id,effect_chance,con
 171,Nightmare,8,0,15,100,10,none,108,,smart,5,19
 172,Flame Wheel,10,60,25,100,10,physical,126,10,beauty,1,7
 173,Snore,1,40,15,100,10,special,93,30,cute,1,5
-174,Curse,0,0,10,100,10,none,110,,tough,31,21
+174,Curse,18,0,10,100,10,none,110,,tough,31,21
 175,Flail,1,1,15,100,10,physical,100,,cute,26,15
 176,Conversion2,1,0,30,100,7,none,94,,beauty,12,23
 177,Aeroblast,3,100,5,95,10,special,44,,cool,2,22
@@ -353,116 +353,116 @@ id,name,type_id,power,pp,accuracy,target_id,category,effect_id,effect_chance,con
 352,Water Pulse,11,60,20,100,10,special,77,20,beauty,21,17
 353,Doom Desire,9,120,5,85,10,special,149,,cool,24,17
 354,Psycho Boost,14,140,5,90,10,special,205,100,smart,3,22
-355,Roost,3,0,10,0,7,none,215,,cool,0,8
-356,Gravity,14,0,5,0,12,none,216,,beauty,0,13
-357,Miracle Eye,14,0,40,0,10,none,217,,cute,0,20
-358,Wake-Up Slap,2,60,10,100,10,physical,218,,smart,0,16
-359,Hammer Arm,2,100,10,90,10,physical,219,,cool,0,2
-360,Gyro Ball,9,1,5,100,10,physical,220,,beauty,0,15
-361,Healing Wish,14,0,10,0,7,none,221,,cute,0,8
-362,Brine,11,65,10,100,10,special,222,,smart,0,4
-363,Natural Gift,1,1,15,100,10,physical,223,,cool,0,18
-364,Feint,1,50,10,100,10,physical,224,,beauty,0,16
-365,Pluck,3,60,20,100,10,physical,225,,cute,0,12
-366,Tailwind,3,0,30,0,4,none,226,,smart,0,1
-367,Acupressure,1,0,30,0,5,none,227,,cool,0,11
-368,Metal Burst,9,1,10,100,1,physical,228,,beauty,0,15
-369,U-Turn,7,70,20,100,10,physical,229,,cute,0,16
-370,Close Combat,2,120,5,100,10,physical,230,,smart,0,22
-371,Payback,17,50,10,100,10,physical,231,,cool,0,6
-372,Assurance,17,50,10,100,10,physical,232,,beauty,0,15
-373,Embargo,17,0,15,100,10,none,233,,cute,0,13
-374,Fling,17,1,10,100,10,physical,234,,tough,0,23
-375,Psycho Shift,14,0,10,90,10,none,235,,cool,0,16
-376,Trump Card,1,1,5,0,10,special,236,,cool,0,21
-377,Heal Block,14,0,15,100,11,none,237,,cute,0,13
-378,Wring Out,1,1,5,100,10,special,238,,smart,0,22
-379,Power Trick,14,0,10,0,7,none,239,,cool,0,16
-380,Gastro Acid,4,0,10,100,10,none,240,,beauty,0,13
-381,Lucky Chant,1,0,30,0,4,none,241,,cute,0,13
-382,Me First,1,0,20,0,2,none,242,,cute,0,1
-383,Copycat,1,0,20,0,1,none,243,,cool,0,12
-384,Power Swap,14,0,10,0,10,none,244,,beauty,0,16
-385,Guard Swap,14,0,10,0,10,none,245,,cute,0,16
-386,Punishment,17,60,5,100,10,physical,246,,smart,0,23
-387,Last Resort,1,130,5,100,10,physical,247,,cute,0,21
-388,Worry Seed,12,0,10,100,10,none,248,,beauty,0,19
-389,Sucker Punch,17,80,5,100,10,physical,249,,smart,0,1
-390,Toxic Spikes,4,0,20,0,6,none,250,,smart,0,13
-391,Heart Swap,14,0,10,0,10,none,251,,cool,0,16
-392,Aqua Ring,11,0,20,0,7,none,252,,beauty,0,8
-393,Magnet Rise,13,0,10,0,7,none,253,,cute,0,13
-394,Flare Blitz,10,120,15,100,10,physical,254,10,smart,0,22
-395,Force Palm,2,60,10,100,10,physical,7,30,cool,0,18
-396,Aura Sphere,2,90,20,0,10,special,18,,beauty,0,17
-397,Rock Polish,6,0,20,0,7,none,53,,tough,0,1
-398,Poison Jab,4,80,20,100,10,physical,3,30,smart,0,4
-399,Dark Pulse,17,80,15,100,10,special,32,20,cool,0,17
-400,Night Slash,17,70,15,100,10,physical,44,,beauty,0,5
-401,Aqua Tail,11,90,10,90,10,physical,1,,cute,0,5
-402,Seed Bomb,12,80,15,100,10,physical,1,,smart,0,5
-403,Air Slash,3,75,20,95,10,special,32,30,cool,0,17
-404,X-Scissor,7,80,15,100,10,physical,1,,beauty,0,17
-405,Bug Buzz,7,90,10,100,10,special,73,10,cute,0,4
-406,Dragon Pulse,16,90,10,100,10,special,1,,smart,0,4
-407,Dragon Rush,16,100,10,75,10,physical,32,20,cool,0,18
-408,Power Gem,6,70,20,100,10,special,1,,beauty,0,5
-409,Drain Punch,2,60,5,100,10,physical,4,,beauty,0,20
-410,Vacuum Wave,2,40,30,100,10,special,104,,smart,0,1
-411,Focus Blast,2,120,5,70,10,special,73,10,cool,0,17
-412,Energy Ball,12,80,10,100,10,special,73,10,beauty,0,17
-413,Brave Bird,3,120,15,100,10,physical,199,,cute,0,18
-414,Earth Power,5,90,10,100,10,special,73,10,smart,0,18
-415,Switcheroo,17,0,10,100,10,none,178,,cool,0,12
-416,Giga Impact,1,150,5,90,10,physical,81,,beauty,0,22
-417,Nasty Plot,17,0,20,0,7,none,54,,cute,0,11
-418,Bullet Punch,9,40,30,100,10,physical,104,,smart,0,1
-419,Avalanche,15,60,10,100,10,physical,186,,cool,0,15
-420,Ice Shard,15,40,30,100,10,physical,104,,beauty,0,1
-421,Shadow Claw,8,70,15,100,10,physical,44,,cute,0,17
-422,Thunder Fang,13,65,15,95,10,physical,276,10,smart,0,5
-423,Ice Fang,15,65,15,95,10,physical,275,10,cool,0,5
-424,Fire Fang,10,65,15,95,10,physical,274,10,beauty,0,5
-425,Shadow Sneak,8,40,30,100,10,physical,104,,smart,0,1
-426,Mud Bomb,5,65,10,85,10,special,74,30,smart,0,18
-427,Psycho Cut,14,70,20,100,10,physical,44,,cool,0,17
-428,Zen Headbutt,14,80,15,90,10,physical,32,20,beauty,0,18
-429,Mirror Shot,9,65,10,85,10,special,74,30,cute,0,17
-430,Flash Cannon,9,80,10,100,10,special,73,10,smart,0,17
-431,Rock Climb,1,90,20,85,10,physical,77,20,cool,0,18
-432,Defog,3,0,15,0,10,none,259,,beauty,0,13
-433,Trick Room,14,0,5,0,12,none,260,,cute,0,14
-434,Draco Meteor,16,140,5,90,10,special,205,100,smart,0,22
-435,Discharge,13,80,15,100,9,special,7,30,cool,0,17
-436,Lava Plume,10,80,15,100,9,special,5,30,tough,0,17
-437,Leaf Storm,12,140,5,90,10,special,205,100,cute,0,22
-438,Power Whip,12,120,10,85,10,physical,1,,beauty,0,5
-439,Rock Wrecker,6,150,5,90,10,physical,81,,tough,0,22
-440,Cross Poison,4,70,20,100,10,physical,210,10,cool,0,5
-441,Gunk Shot,4,120,5,70,10,physical,3,30,cool,0,5
-442,Iron Head,9,80,15,100,10,physical,32,30,tough,0,18
-443,Magnet Bomb,9,60,20,0,10,physical,18,,cool,0,5
-444,Stone Edge,6,100,5,80,10,physical,44,,tough,0,4
-445,Captivate,1,0,20,100,11,none,266,,beauty,0,19
-446,Stealth Rock,6,0,20,0,6,none,267,,cool,0,13
-447,Grass Knot,12,1,20,100,10,special,197,,smart,0,4
-448,Chatter,3,60,20,100,10,special,268,,smart,0,23
-449,Judgment,1,100,10,100,10,special,269,,smart,0,14
-450,Bug Bite,7,60,20,100,10,physical,225,,tough,0,12
-451,Charge Beam,13,50,10,90,10,special,277,70,beauty,0,17
-452,Wood Hammer,12,120,15,100,10,physical,199,,tough,0,18
-453,Aqua Jet,11,40,20,100,10,physical,104,,beauty,0,1
-454,Attack Order,7,90,15,100,10,physical,44,,smart,0,4
-455,Defend Order,7,0,10,0,7,none,207,,smart,0,11
-456,Heal Order,7,0,10,0,7,none,33,,smart,0,8
-457,Head Smash,6,150,5,80,10,physical,270,,tough,0,22
-458,Double Hit,1,35,10,90,10,physical,45,,smart,0,7
-459,Roar Of Time,16,150,5,90,10,special,81,,cool,0,22
-460,Spacial Rend,16,100,5,95,10,special,44,,tough,0,4
-461,Lunar Dance,14,0,10,0,7,none,271,,beauty,0,8
-462,Crush Grip,1,1,5,100,10,physical,238,,tough,0,15
-463,Magma Storm,10,120,5,70,10,special,43,,tough,0,7
-464,Dark Void,17,0,10,80,11,none,2,,smart,0,19
-465,Seed Flare,12,120,5,85,10,special,272,40,cool,0,22
-466,Ominous Wind,8,60,5,100,10,special,141,10,smart,0,11
-467,Shadow Force,8,120,5,100,10,physical,273,,smart,0,22
+355,Roost,3,0,10,0,7,none,215,,cool,,8
+356,Gravity,14,0,5,0,12,none,216,,beauty,,13
+357,Miracle Eye,14,0,40,0,10,none,217,,cute,,20
+358,Wake-Up Slap,2,60,10,100,10,physical,218,,smart,,16
+359,Hammer Arm,2,100,10,90,10,physical,219,,cool,,2
+360,Gyro Ball,9,1,5,100,10,physical,220,,beauty,,15
+361,Healing Wish,14,0,10,0,7,none,221,,cute,,8
+362,Brine,11,65,10,100,10,special,222,,smart,,4
+363,Natural Gift,1,1,15,100,10,physical,223,,cool,,18
+364,Feint,1,50,10,100,10,physical,224,,beauty,,16
+365,Pluck,3,60,20,100,10,physical,225,,cute,,12
+366,Tailwind,3,0,30,0,4,none,226,,smart,,1
+367,Acupressure,1,0,30,0,5,none,227,,cool,,11
+368,Metal Burst,9,1,10,100,1,physical,228,,beauty,,15
+369,U-Turn,7,70,20,100,10,physical,229,,cute,,16
+370,Close Combat,2,120,5,100,10,physical,230,,smart,,22
+371,Payback,17,50,10,100,10,physical,231,,cool,,6
+372,Assurance,17,50,10,100,10,physical,232,,beauty,,15
+373,Embargo,17,0,15,100,10,none,233,,cute,,13
+374,Fling,17,1,10,100,10,physical,234,,tough,,23
+375,Psycho Shift,14,0,10,90,10,none,235,,cool,,16
+376,Trump Card,1,1,5,0,10,special,236,,cool,,21
+377,Heal Block,14,0,15,100,11,none,237,,cute,,13
+378,Wring Out,1,1,5,100,10,special,238,,smart,,22
+379,Power Trick,14,0,10,0,7,none,239,,cool,,16
+380,Gastro Acid,4,0,10,100,10,none,240,,beauty,,13
+381,Lucky Chant,1,0,30,0,4,none,241,,cute,,13
+382,Me First,1,0,20,0,2,none,242,,cute,,1
+383,Copycat,1,0,20,0,1,none,243,,cool,,12
+384,Power Swap,14,0,10,0,10,none,244,,beauty,,16
+385,Guard Swap,14,0,10,0,10,none,245,,cute,,16
+386,Punishment,17,60,5,100,10,physical,246,,smart,,23
+387,Last Resort,1,130,5,100,10,physical,247,,cute,,21
+388,Worry Seed,12,0,10,100,10,none,248,,beauty,,19
+389,Sucker Punch,17,80,5,100,10,physical,249,,smart,,1
+390,Toxic Spikes,4,0,20,0,6,none,250,,smart,,13
+391,Heart Swap,14,0,10,0,10,none,251,,cool,,16
+392,Aqua Ring,11,0,20,0,7,none,252,,beauty,,8
+393,Magnet Rise,13,0,10,0,7,none,253,,cute,,13
+394,Flare Blitz,10,120,15,100,10,physical,254,10,smart,,22
+395,Force Palm,2,60,10,100,10,physical,7,30,cool,,18
+396,Aura Sphere,2,90,20,0,10,special,18,,beauty,,17
+397,Rock Polish,6,0,20,0,7,none,53,,tough,,1
+398,Poison Jab,4,80,20,100,10,physical,3,30,smart,,4
+399,Dark Pulse,17,80,15,100,10,special,32,20,cool,,17
+400,Night Slash,17,70,15,100,10,physical,44,,beauty,,5
+401,Aqua Tail,11,90,10,90,10,physical,1,,cute,,5
+402,Seed Bomb,12,80,15,100,10,physical,1,,smart,,5
+403,Air Slash,3,75,20,95,10,special,32,30,cool,,17
+404,X-Scissor,7,80,15,100,10,physical,1,,beauty,,17
+405,Bug Buzz,7,90,10,100,10,special,73,10,cute,,4
+406,Dragon Pulse,16,90,10,100,10,special,1,,smart,,4
+407,Dragon Rush,16,100,10,75,10,physical,32,20,cool,,18
+408,Power Gem,6,70,20,100,10,special,1,,beauty,,5
+409,Drain Punch,2,60,5,100,10,physical,4,,beauty,,20
+410,Vacuum Wave,2,40,30,100,10,special,104,,smart,,1
+411,Focus Blast,2,120,5,70,10,special,73,10,cool,,17
+412,Energy Ball,12,80,10,100,10,special,73,10,beauty,,17
+413,Brave Bird,3,120,15,100,10,physical,199,,cute,,18
+414,Earth Power,5,90,10,100,10,special,73,10,smart,,18
+415,Switcheroo,17,0,10,100,10,none,178,,cool,,12
+416,Giga Impact,1,150,5,90,10,physical,81,,beauty,,22
+417,Nasty Plot,17,0,20,0,7,none,54,,cute,,11
+418,Bullet Punch,9,40,30,100,10,physical,104,,smart,,1
+419,Avalanche,15,60,10,100,10,physical,186,,cool,,15
+420,Ice Shard,15,40,30,100,10,physical,104,,beauty,,1
+421,Shadow Claw,8,70,15,100,10,physical,44,,cute,,17
+422,Thunder Fang,13,65,15,95,10,physical,276,10,smart,,5
+423,Ice Fang,15,65,15,95,10,physical,275,10,cool,,5
+424,Fire Fang,10,65,15,95,10,physical,274,10,beauty,,5
+425,Shadow Sneak,8,40,30,100,10,physical,104,,smart,,1
+426,Mud Bomb,5,65,10,85,10,special,74,30,smart,,18
+427,Psycho Cut,14,70,20,100,10,physical,44,,cool,,17
+428,Zen Headbutt,14,80,15,90,10,physical,32,20,beauty,,18
+429,Mirror Shot,9,65,10,85,10,special,74,30,cute,,17
+430,Flash Cannon,9,80,10,100,10,special,73,10,smart,,17
+431,Rock Climb,1,90,20,85,10,physical,77,20,cool,,18
+432,Defog,3,0,15,0,10,none,259,,beauty,,13
+433,Trick Room,14,0,5,0,12,none,260,,cute,,14
+434,Draco Meteor,16,140,5,90,10,special,205,100,smart,,22
+435,Discharge,13,80,15,100,9,special,7,30,cool,,17
+436,Lava Plume,10,80,15,100,9,special,5,30,tough,,17
+437,Leaf Storm,12,140,5,90,10,special,205,100,cute,,22
+438,Power Whip,12,120,10,85,10,physical,1,,beauty,,5
+439,Rock Wrecker,6,150,5,90,10,physical,81,,tough,,22
+440,Cross Poison,4,70,20,100,10,physical,210,10,cool,,5
+441,Gunk Shot,4,120,5,70,10,physical,3,30,cool,,5
+442,Iron Head,9,80,15,100,10,physical,32,30,tough,,18
+443,Magnet Bomb,9,60,20,0,10,physical,18,,cool,,5
+444,Stone Edge,6,100,5,80,10,physical,44,,tough,,4
+445,Captivate,1,0,20,100,11,none,266,,beauty,,19
+446,Stealth Rock,6,0,20,0,6,none,267,,cool,,13
+447,Grass Knot,12,1,20,100,10,special,197,,smart,,4
+448,Chatter,3,60,20,100,10,special,268,,smart,,23
+449,Judgment,1,100,10,100,10,special,269,,smart,,14
+450,Bug Bite,7,60,20,100,10,physical,225,,tough,,12
+451,Charge Beam,13,50,10,90,10,special,277,70,beauty,,17
+452,Wood Hammer,12,120,15,100,10,physical,199,,tough,,18
+453,Aqua Jet,11,40,20,100,10,physical,104,,beauty,,1
+454,Attack Order,7,90,15,100,10,physical,44,,smart,,4
+455,Defend Order,7,0,10,0,7,none,207,,smart,,11
+456,Heal Order,7,0,10,0,7,none,33,,smart,,8
+457,Head Smash,6,150,5,80,10,physical,270,,tough,,22
+458,Double Hit,1,35,10,90,10,physical,45,,smart,,7
+459,Roar Of Time,16,150,5,90,10,special,81,,cool,,22
+460,Spacial Rend,16,100,5,95,10,special,44,,tough,,4
+461,Lunar Dance,14,0,10,0,7,none,271,,beauty,,8
+462,Crush Grip,1,1,5,100,10,physical,238,,tough,,15
+463,Magma Storm,10,120,5,70,10,special,43,,tough,,7
+464,Dark Void,17,0,10,80,11,none,2,,smart,,19
+465,Seed Flare,12,120,5,85,10,special,272,40,cool,,22
+466,Ominous Wind,8,60,5,100,10,special,141,10,smart,,11
+467,Shadow Force,8,120,5,100,10,physical,273,,smart,,22

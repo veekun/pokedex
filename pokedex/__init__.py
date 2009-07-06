@@ -1,6 +1,7 @@
 # encoding: utf8
 import sys
 
+from sqlalchemy.exc import IntegrityError
 import sqlalchemy.types
 
 from .db import connect, metadata, tables as tables_module
@@ -25,7 +26,8 @@ def csvimport(engine_uri, directory='.'):
 
     from sqlalchemy.orm.attributes import instrumentation_registry
 
-    session = connect(engine_uri)
+    # Use autocommit in case rows fail due to foreign key incest
+    session = connect(engine_uri, autocommit=True, autoflush=False)
 
     metadata.create_all()
 
@@ -59,6 +61,7 @@ def csvimport(engine_uri, directory='.'):
 
         # Print the table name but leave the cursor in a fixed column
         print table_name + '...', ' ' * (40 - len(table_name)),
+        sys.stdout.flush()
 
         try:
             csvfile = open("%s/%s.csv" % (directory, table_name), 'rb')
@@ -69,6 +72,12 @@ def csvimport(engine_uri, directory='.'):
 
         reader = csv.reader(csvfile, lineterminator='\n')
         column_names = [unicode(column) for column in reader.next()]
+
+        # Self-referential tables may contain rows with foreign keys of
+        # other rows in the same table that do not yet exist.  We'll keep
+        # a running list of these and try inserting them again after the
+        # rest are done
+        failed_rows = []
 
         for csvs in reader:
             row = table_class()
@@ -91,11 +100,33 @@ def csvimport(engine_uri, directory='.'):
 
                 setattr(row, column_name, value)
 
-            session.add(row)
+            try:
+                session.add(row)
+                session.flush()
+            except IntegrityError as e:
+                failed_rows.append(row)
 
-        session.commit()
-        print 'loaded'
+        # Loop over the failed rows and keep trying to insert them.  If a loop
+        # doesn't manage to insert any rows, bail.
+        do_another_loop = True
+        while failed_rows and do_another_loop:
+            do_another_loop = False
 
+            for i, row in enumerate(failed_rows):
+                try:
+                    session.add(row)
+                    session.flush()
+
+                    # Success!
+                    del failed_rows[i]
+                    do_another_loop = True
+                except IntegrityError as e:
+                    pass
+
+        if failed_rows:
+            print len(failed_rows), "rows failed"
+        else:
+            print 'loaded'
 
 def csvexport(engine_uri, directory='.'):
     import csv
