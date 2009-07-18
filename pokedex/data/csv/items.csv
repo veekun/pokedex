@@ -1,0 +1,442 @@
+id,name
+1,Master Ball
+2,Ultra Ball
+3,Great Ball
+4,Poke Ball
+5,Safari Ball
+6,Net Ball
+7,Dive Ball
+8,Nest Ball
+9,Repeat Ball
+10,Timer Ball
+11,Luxury Ball
+12,Premier Ball
+13,Dusk Ball
+14,Heal Ball
+15,Quick Ball
+16,Cherish Ball
+17,Potion
+18,Antidote
+19,Burn Heal
+20,Ice Heal
+21,Awakening
+22,Parlyz Heal
+23,Full Restore
+24,Max Potion
+25,Hyper Potion
+26,Super Potion
+27,Full Heal
+28,Revive
+29,Max Revive
+30,Fresh Water
+31,Soda Pop
+32,Lemonade
+33,Moomoo Milk
+34,EnergyPowder
+35,Energy Root
+36,Heal Powder
+37,Revival Herb
+38,Ether
+39,Max Ether
+40,Elixir
+41,Max Elixir
+42,Lava Cookie
+43,Berry Juice
+44,Sacred Ash
+45,HP Up
+46,Protein
+47,Iron
+48,Carbos
+49,Calcium
+50,Rare Candy
+51,PP Up
+52,Zinc
+53,PP Max
+54,Old Gateau
+55,Guard Spec.
+56,Dire Hit
+57,X Attack
+58,X Defend
+59,X Speed
+60,X Accuracy
+61,X Special
+62,X Sp. Def
+63,Poke Doll
+64,Fluffy Tail
+65,Blue Flute
+66,Yellow Flute
+67,Red Flute
+68,Black Flute
+69,White Flute
+70,Shoal Salt
+71,Shoal Shell
+72,Red Shard
+73,Blue Shard
+74,Yellow Shard
+75,Green Shard
+76,Super Repel
+77,Max Repel
+78,Escape Rope
+79,Repel
+80,Sun Stone
+81,Moon Stone
+82,Fire Stone
+83,Thunderstone
+84,Water Stone
+85,Leaf Stone
+86,TinyMushroom
+87,Big Mushroom
+88,Pearl
+89,Big Pearl
+90,Stardust
+91,Star Piece
+92,Nugget
+93,Heart Scale
+94,Honey
+95,Growth Mulch
+96,Damp Mulch
+97,Stable Mulch
+98,Gooey Mulch
+99,Root Fossil
+100,Claw Fossil
+101,Helix Fossil
+102,Dome Fossil
+103,Old Amber
+104,Armor Fossil
+105,Skull Fossil
+106,Rare Bone
+107,Shiny Stone
+108,Dusk Stone
+109,Dawn Stone
+110,Oval Stone
+111,Odd Keystone
+112,Adamant Orb
+113,Lustrous Orb
+114,Grass Mail
+115,Flame Mail
+116,Bubble Mail
+117,Bloom Mail
+118,Tunnel Mail
+119,Steel Mail
+120,Heart Mail
+121,Snow Mail
+122,Space Mail
+123,Air Mail
+124,Mosaic Mail
+125,Brick Mail
+126,Cheri Berry
+127,Chesto Berry
+128,Pecha Berry
+129,Rawst Berry
+130,Aspear Berry
+131,Leppa Berry
+132,Oran Berry
+133,Persim Berry
+134,Lum Berry
+135,Sitrus Berry
+136,Figy Berry
+137,Wiki Berry
+138,Mago Berry
+139,Aguav Berry
+140,Iapapa Berry
+141,Razz Berry
+142,Bluk Berry
+143,Nanab Berry
+144,Wepear Berry
+145,Pinap Berry
+146,Pomeg Berry
+147,Kelpsy Berry
+148,Qualot Berry
+149,Hondew Berry
+150,Grepa Berry
+151,Tamato Berry
+152,Cornn Berry
+153,Magost Berry
+154,Rabuta Berry
+155,Nomel Berry
+156,Spelon Berry
+157,Pamtre Berry
+158,Watmel Berry
+159,Durin Berry
+160,Belue Berry
+161,Occa Berry
+162,Passho Berry
+163,Wacan Berry
+164,Rindo Berry
+165,Yache Berry
+166,Chople Berry
+167,Kebia Berry
+168,Shuca Berry
+169,Coba Berry
+170,Payapa Berry
+171,Tanga Berry
+172,Charti Berry
+173,Kasib Berry
+174,Haban Berry
+175,Colbur Berry
+176,Babiri Berry
+177,Chilan Berry
+178,Liechi Berry
+179,Ganlon Berry
+180,Salac Berry
+181,Petaya Berry
+182,Apicot Berry
+183,Lansat Berry
+184,Starf Berry
+185,Enigma Berry
+186,Micle Berry
+187,Custap Berry
+188,Jaboca Berry
+189,Rowap Berry
+190,BrightPowder
+191,White Herb
+192,Macho Brace
+193,Exp. Share
+194,Quick Claw
+195,Soothe Bell
+196,Mental Herb
+197,Choice Band
+198,King's Rock
+199,SilverPowder
+200,Amulet Coin
+201,Cleanse Tag
+202,Soul Dew
+203,DeepSeaTooth
+204,DeepSeaScale
+205,Smoke Ball
+206,Everstone
+207,Focus Band
+208,Lucky Egg
+209,Scope Lens
+210,Metal Coat
+211,Leftovers
+212,Dragon Scale
+213,Light Ball
+214,Soft Sand
+215,Hard Stone
+216,Miracle Seed
+217,BlackGlasses
+218,Black Belt
+219,Magnet
+220,Mystic Water
+221,Sharp Beak
+222,Poison Barb
+223,NeverMeltIce
+224,Spell Tag
+225,TwistedSpoon
+226,Charcoal
+227,Dragon Fang
+228,Silk Scarf
+229,Up-Grade
+230,Shell Bell
+231,Sea Incense
+232,Lax Incense
+233,Lucky Punch
+234,Metal Powder
+235,Thick Club
+236,Stick
+237,Red Scarf
+238,Blue Scarf
+239,Pink Scarf
+240,Green Scarf
+241,Yellow Scarf
+242,Wide Lens
+243,Muscle Band
+244,Wise Glasses
+245,Expert Belt
+246,Light Clay
+247,Life Orb
+248,Power Herb
+249,Toxic Orb
+250,Flame Orb
+251,Quick Powder
+252,Focus Sash
+253,Zoom Lens
+254,Metronome
+255,Iron Ball
+256,Lagging Tail
+257,Destiny Knot
+258,Black Sludge
+259,Icy Rock
+260,Smooth Rock
+261,Heat Rock
+262,Damp Rock
+263,Grip Claw
+264,Choice Scarf
+265,Sticky Barb
+266,Power Bracer
+267,Power Belt
+268,Power Lens
+269,Power Band
+270,Power Anklet
+271,Power Weight
+272,Shed Shell
+273,Big Root
+274,Choice Specs
+275,Flame Plate
+276,Splash Plate
+277,Zap Plate
+278,Meadow Plate
+279,Icicle Plate
+280,Fist Plate
+281,Toxic Plate
+282,Earth Plate
+283,Sky Plate
+284,Mind Plate
+285,Insect Plate
+286,Stone Plate
+287,Spooky Plate
+288,Draco Plate
+289,Dread Plate
+290,Iron Plate
+291,Odd Incense
+292,Rock Incense
+293,Full Incense
+294,Wave Incense
+295,Rose Incense
+296,Luck Incense
+297,Pure Incense
+298,Protector
+299,Electirizer
+300,Magmarizer
+301,Dubious Disc
+302,Reaper Cloth
+303,Razor Claw
+304,Razor Fang
+305,TM01
+306,TM02
+307,TM03
+308,TM04
+309,TM05
+310,TM06
+311,TM07
+312,TM08
+313,TM09
+314,TM10
+315,TM11
+316,TM12
+317,TM13
+318,TM14
+319,TM15
+320,TM16
+321,TM17
+322,TM18
+323,TM19
+324,TM20
+325,TM21
+326,TM22
+327,TM23
+328,TM24
+329,TM25
+330,TM26
+331,TM27
+332,TM28
+333,TM29
+334,TM30
+335,TM31
+336,TM32
+337,TM33
+338,TM34
+339,TM35
+340,TM36
+341,TM37
+342,TM38
+343,TM39
+344,TM40
+345,TM41
+346,TM42
+347,TM43
+348,TM44
+349,TM45
+350,TM46
+351,TM47
+352,TM48
+353,TM49
+354,TM50
+355,TM51
+356,TM52
+357,TM53
+358,TM54
+359,TM55
+360,TM56
+361,TM57
+362,TM58
+363,TM59
+364,TM60
+365,TM61
+366,TM62
+367,TM63
+368,TM64
+369,TM65
+370,TM66
+371,TM67
+372,TM68
+373,TM69
+374,TM70
+375,TM71
+376,TM72
+377,TM73
+378,TM74
+379,TM75
+380,TM76
+381,TM77
+382,TM78
+383,TM79
+384,TM80
+385,TM81
+386,TM82
+387,TM83
+388,TM84
+389,TM85
+390,TM86
+391,TM87
+392,TM88
+393,TM89
+394,TM90
+395,TM91
+396,TM92
+397,HM01
+398,HM02
+399,HM03
+400,HM04
+401,HM05
+402,HM06
+403,HM07
+404,HM08
+405,Explorer Kit
+406,Loot Sack
+407,Rule Book
+408,Poke Radar
+409,Point Card
+410,Journal
+411,Seal Case
+412,Fashion Case
+413,Seal Bag
+414,Pal Pad
+415,Works Key
+416,Old Charm
+417,Galactic Key
+418,Red Chain
+419,Town Map
+420,Vs. Seeker
+421,Coin Case
+422,Old Rod
+423,Good Rod
+424,Super Rod
+425,Sprayduck
+426,Poffin Case
+427,Bicycle
+428,Suite Key
+429,Oak's Letter
+430,Lunar Wing
+431,Member Card
+432,Azure Flute
+433,S.S. Ticket
+434,Contest Pass
+435,Magma Stone
+436,Parcel
+437,Coupon 1
+438,Coupon 2
+439,Coupon 3
+440,Storage Key
+441,SecretPotion

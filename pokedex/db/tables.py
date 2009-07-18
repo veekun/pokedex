@@ -132,6 +132,11 @@ class GrowthRate(TableBase):
     name = Column(Unicode(16), nullable=False)
     formula = Column(Unicode(255), nullable=False)
 
+class Item(TableBase):
+    __tablename__ = 'items'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(16), nullable=False)
+
 class Language(TableBase):
     __tablename__ = 'languages'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -278,6 +283,13 @@ class PokemonFormSprite(TableBase):
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
     name = Column(Unicode(16), nullable=True)
 
+class PokemonItem(TableBase):
+    __tablename__ = 'pokemon_items'
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False, autoincrement=False)
+    item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, nullable=False, autoincrement=False)
+    rarity = Column(Integer, nullable=False)
+
 class PokemonName(TableBase):
     __tablename__ = 'pokemon_names'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
@@ -365,6 +377,7 @@ Pokemon.evolution_children = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.e
                                                                remote_side=[Pokemon.id]))
 Pokemon.flavor_text = relation(PokemonFlavorText, backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
+Pokemon.items = relation(PokemonItem)
 Pokemon.generation = relation(Generation, backref='pokemon')
 Pokemon.shape = relation(PokemonShape, backref='pokemon')
 Pokemon.stats = relation(PokemonStat, backref='pokemon')
@@ -373,6 +386,9 @@ Pokemon.types = relation(Type, secondary=PokemonType.__table__)
 PokemonDexNumber.generation = relation(Generation)
 
 PokemonFlavorText.version = relation(Version)
+
+PokemonItem.item = relation(Item, backref='pokemon')
+PokemonItem.version = relation(Version)
 
 PokemonFormGroup.pokemon = relation(Pokemon, backref=backref('form_group',
                                                              uselist=False))
