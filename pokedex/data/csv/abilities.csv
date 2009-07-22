@@ -104,7 +104,7 @@ id,name,flavor_text,effect
 103,Klutz,The Pokémon can't use any held items.,This Pokemon cannot use its held item.
 104,Mold Breaker,Moves can be used regardless of abilities.,Enemy Pokemon cannot prevent attacks with abilities.
 105,Super Luck,Heightens the critical-hit ratios of moves.,This Pokemon has a higher chance to hit critically..
-106,Aftermath,Damages the foe landing the finishing hit.,"When this Pokemon is fainted by a contact move, this Pokemon that fainted it takes 1/4 its max HP in damage."
+106,Aftermath,Damages the foe landing the finishing hit.,"When this Pokemon is fainted by a contact move, the attacker takes 1/4 its max HP in damage."
 107,Anticipation,Senses the foe's dangerous moves.,This Pokemon will be aware when an opposing Pokemon with a move that would do super-effective damage against it switches in.
 108,Forewarn,Determines what moves the foe has.,"This Pokemon can see its opponent's move with the highest power, or one of them at random in the case of a tie."
 109,Unaware,Ignores any change in ability by the foe.,This Pokemon ignores any of the enemy's stat changes.  Speed calculations are unaffected.
