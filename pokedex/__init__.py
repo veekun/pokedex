@@ -5,6 +5,7 @@ from sqlalchemy.exc import IntegrityError
 import sqlalchemy.types
 
 from .db import connect, metadata, tables as tables_module
+from pokedex.lookup import lookup as pokedex_lookup
 
 def main():
     if len(sys.argv) <= 1:
@@ -159,11 +160,21 @@ def csvexport(engine_uri, directory='.'):
 
             writer.writerow(csvs)
 
+def lookup(engine_uri, name):
+    # XXX don't require uri!  somehow
+    session = connect(engine_uri)
+
+    results = pokedex_lookup(session, name)
+    print "Matched:"
+    for object, matchiness in results:
+        print object.__tablename__, object.name, "(%.03f)" % matchiness
+
 
 def help():
     print u"""pokedex -- a command-line Pokédex interface
 
     help                        Displays this message.
+    lookup {uri} [name]         Look up something in the Pokédex.
 
   These commands are only useful for developers:
     csvimport {uri} [dir]       Import data from a set of CSVs to the database
