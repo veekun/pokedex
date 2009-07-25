@@ -164,10 +164,14 @@ def lookup(engine_uri, name):
     # XXX don't require uri!  somehow
     session = connect(engine_uri)
 
-    results = pokedex_lookup(session, name)
-    print "Matched:"
-    for object, matchiness in results:
-        print object.__tablename__, object.name, "(%.03f)" % matchiness
+    results, exact = pokedex_lookup(session, name)
+    if exact:
+        print "Matched:"
+    else:
+        print "Fuzzy-matched:"
+
+    for object in results:
+        print object.__tablename__, object.name
 
 
 def help():
