@@ -15,14 +15,14 @@ def main():
     args = sys.argv[2:]
 
     # Find the command as a function in this file
-    func = globals().get(command, None)
-    if func and callable(func) and command != 'main':
+    func = globals().get("command_%s" % command, None)
+    if func:
         func(*args)
     else:
-        help()
+        command_help()
 
 
-def csvimport(engine_uri, directory='.'):
+def command_csvimport(engine_uri, directory='.'):
     import csv
 
     from sqlalchemy.orm.attributes import instrumentation_registry
@@ -129,7 +129,7 @@ def csvimport(engine_uri, directory='.'):
         else:
             print 'loaded'
 
-def csvexport(engine_uri, directory='.'):
+def command_csvexport(engine_uri, directory='.'):
     import csv
     session = connect(engine_uri)
 
@@ -160,7 +160,7 @@ def csvexport(engine_uri, directory='.'):
 
             writer.writerow(csvs)
 
-def lookup(engine_uri, name):
+def command_lookup(engine_uri, name):
     # XXX don't require uri!  somehow
     session = connect(engine_uri)
 
@@ -174,7 +174,7 @@ def lookup(engine_uri, name):
         print object.__tablename__, object.name
 
 
-def help():
+def command_help():
     print u"""pokedex -- a command-line Pokédex interface
 
     help                        Displays this message.
