@@ -17,6 +17,14 @@ for cls in [
     ]:
     indexed_tables[cls.__tablename__] = cls
 
+# Dictionary of extra keys to file types of objects under, e.g. Pokémon can
+# also be looked up purely by number
+extra_keys = {
+    tables.Pokemon: [
+        lambda row: unicode(row.id),
+    ],
+}
+
 index_bits = {}
 def get_index(session):
     """Returns (index, speller).
@@ -30,16 +38,17 @@ def get_index(session):
     store = whoosh.store.RamStorage()
     schema = whoosh.fields.Schema(
         name=whoosh.fields.ID(stored=True),
-        spelling_name=whoosh.fields.ID(stored=True),
         table=whoosh.fields.STORED,
         row_id=whoosh.fields.STORED,
         language_id=whoosh.fields.STORED,
     )
 
+    # Construct a straight lookup index
     index = whoosh.index.Index(store, schema=schema, create=True)
     writer = index.writer()
 
     # Index every name in all our tables of interest
+    speller_entries = []
     for cls in indexed_tables.values():
         q = session.query(cls)
 
@@ -48,24 +57,48 @@ def get_index(session):
             q = q.filter_by(forme_base_pokemon_id=None)
 
         for row in q.yield_per(5):
+            row_key = dict(table=cls.__tablename__, row_id=row.id)
+
+            # Spelling index only indexes strings of letters, alas, so we
+            # reduce every name to this to make the index work.  However, exact
+            # matches are not returned, so e.g. 'nidoran' would neither match
+            # exactly nor fuzzy-match.  Solution: add the spelling-munged name
+            # as a regular index row too.
             name = row.name.lower()
-            spelling_name = re.sub('[^a-z]', '', name)
-            writer.add_document(name=name,
-                                spelling_name=spelling_name,
-                                table=cls.__tablename__,
-                                row_id=row.id)
+            writer.add_document(name=name, **row_key)
+
+            speller_entries.append(name)
+
+            for extra_key_func in extra_keys[cls]:
+                extra_key = extra_key_func(row)
+                writer.add_document(name=extra_key, **row_key)
 
     writer.commit()
 
-    ### Construct a spell-checker index
+    # Construct and populate a spell-checker index.  Quicker to do it all
+    # at once, as every call to add_* does a commit(), and those seem to be
+    # expensive
     speller = whoosh.spelling.SpellChecker(index.storage)
-
-    # Can't use speller.add_field because it tries to intuit a frequency, and
-    # names are in an ID field, which seems to be immune to frequency.
-    # Not hard to add everything ourselves, though
-    reader = index.doc_reader()
-    speller.add_words([ _['spelling_name'] for _ in reader ])
-    reader.close()
+    # WARNING: HERE BE DRAGONS
+    # whoosh.spelling refuses to index things that don't look like words.
+    # Unfortunately, this doesn't work so well for Pokémon (Mr. Mime,
+    # Porygon-Z, etc.), and attempts to work around it lead to further
+    # complications.
+    # The below is copied from SpellChecker.add_scored_words without the check
+    # for isalpha().  XXX get whoosh patched to make this unnecessary!
+    writer = whoosh.writing.IndexWriter(speller.index())
+    for word in speller_entries:
+        fields = {"word": word, "score": 1}
+        for size in xrange(speller.mingram, speller.maxgram + 1):
+            nga = whoosh.analysis.NgramAnalyzer(size)
+            gramlist = [t.text for t in nga(word)]
+            if len(gramlist) > 0:
+                fields["start%s" % size] = gramlist[0]
+                fields["end%s" % size] = gramlist[-1]
+                fields["gram%s" % size] = " ".join(gramlist)
+        writer.add_document(**fields)
+    writer.commit()
+    # end copy-pasta
 
     index_bits['index'] = index
     index_bits['speller'] = speller
@@ -88,35 +121,23 @@ def lookup(session, name, exact_only=False):
 
     exact = True
 
-    # Alas!  We have to make three attempts to find anything with this index.
-    # First: Try an exact match for a name in the index.
-    # Second: Try an exact match for a stripped-down name in the index.
-    # Third: Get spelling suggestions.
-    # The spelling module apparently only indexes *words* -- that is, [a-z]+.
-    # So we have a separate field that contains the same name, stripped down to
-    # just [a-z]+.
-    # Unfortunately, exact matches aren't returned as spelling suggestions, so
-    # we also have to do a regular index match against this separate field.
-    # Otherwise, 'nidoran' will never match anything
     index, speller = get_index(session)
 
-    # Look for exact name
-    parser = QueryParser('name', schema=index.schema)
-    results = index.find(name.lower(), parser=parser)
+    # Look for exact name.  A Term object does an exact match, so we don't have
+    # to worry about a query parser tripping on weird characters in the input
+    searcher = index.searcher()
+    query = whoosh.query.Term('name', name)
+    results = searcher.search(query)
 
     if not exact_only:
-        # Look for a match with a reduced a-z name
-        if not results:
-            parser = QueryParser('spelling_name', schema=index.schema)
-            results = index.find(name.lower(), parser=parser)
-
         # Look for some fuzzy matches
         if not results:
-            results = []
             exact = False
+            results = []
 
             for suggestion in speller.suggest(name, 3):
-                results.extend( index.find(suggestion, parser=parser) )
+                query = whoosh.query.Term('name', suggestion)
+                results.extend(searcher.search(query))
 
     # Convert results to db objects
     objects = []
