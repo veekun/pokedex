@@ -142,7 +142,8 @@ def command_csvexport(engine_uri, directory='.'):
         columns = [col.name for col in table.columns]
         writer.writerow(columns)
 
-        for row in session.query(table).all():
+        primary_key = table.primary_key
+        for row in session.query(table).order_by(*primary_key).all():
             csvs = []
             for col in columns:
                 # Convert Pythony values to something more universal
