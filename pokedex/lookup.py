@@ -13,13 +13,20 @@ import pokedex.db.tables as tables
 # retrieve something from the index
 indexed_tables = {}
 for cls in [
+        tables.Ability,
+        tables.Item,
+        tables.Move,
         tables.Pokemon,
+        tables.Type,
     ]:
     indexed_tables[cls.__tablename__] = cls
 
 # Dictionary of extra keys to file types of objects under, e.g. Pokémon can
 # also be looked up purely by number
 extra_keys = {
+    tables.Move: [
+        lambda row: u"move %d" % row.id,
+    ],
     tables.Pokemon: [
         lambda row: unicode(row.id),
     ],
@@ -69,7 +76,7 @@ def get_index(session):
 
             speller_entries.append(name)
 
-            for extra_key_func in extra_keys[cls]:
+            for extra_key_func in extra_keys.get(cls, []):
                 extra_key = extra_key_func(row)
                 writer.add_document(name=extra_key, **row_key)
 
