@@ -290,6 +290,21 @@ class PokemonItem(TableBase):
     item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, nullable=False, autoincrement=False)
     rarity = Column(Integer, nullable=False)
 
+class PokemonMove(TableBase):
+    __tablename__ = 'pokemon_moves'
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False, index=True)
+    pokemon_move_method_id = Column(Integer, ForeignKey('pokemon_move_methods.id'), primary_key=True, nullable=False, autoincrement=False)
+    level = Column(Integer, primary_key=True, nullable=True)
+    order = Column(Integer, nullable=True)
+
+class PokemonMoveMethod(TableBase):
+    __tablename__ = 'pokemon_move_methods'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
+    name = Column(Unicode(64), nullable=False)
+    description = Column(Unicode(255), nullable=False)
+
 class PokemonName(TableBase):
     __tablename__ = 'pokemon_names'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
@@ -394,6 +409,11 @@ PokemonFormGroup.pokemon = relation(Pokemon, backref=backref('form_group',
                                                              uselist=False))
 PokemonFormSprite.pokemon = relation(Pokemon, backref='form_sprites')
 
+PokemonMove.pokemon = relation(Pokemon, backref='pokemon_moves')
+PokemonMove.version_group = relation(VersionGroup)
+PokemonMove.move = relation(Move, backref='pokemon_moves')
+PokemonMove.method = relation(PokemonMoveMethod)
+
 PokemonName.language = relation(Language)
 
 PokemonStat.stat = relation(Stat)
@@ -409,3 +429,4 @@ Type.target_efficacies = relation(TypeEfficacy,
 
 Version.generation = relation(Generation, secondary=VersionGroup.__table__,
                               backref='versions')
+Version.version_group = relation(VersionGroup, backref='versions')
