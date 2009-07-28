@@ -104,7 +104,7 @@ def command_csvimport(engine_uri, directory='.'):
             try:
                 session.add(row)
                 session.flush()
-            except IntegrityError as e:
+            except IntegrityError, e:
                 failed_rows.append(row)
 
         # Loop over the failed rows and keep trying to insert them.  If a loop
@@ -121,7 +121,7 @@ def command_csvimport(engine_uri, directory='.'):
                     # Success!
                     del failed_rows[i]
                     do_another_loop = True
-                except IntegrityError as e:
+                except IntegrityError, e:
                     pass
 
         if failed_rows:
