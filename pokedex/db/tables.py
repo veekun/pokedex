@@ -375,6 +375,8 @@ EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 
 LocationArea.location = relation(Location, backref='areas')
 
+Move.type = relation(Type, backref='moves')
+
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
                                       backref='pokemon')
