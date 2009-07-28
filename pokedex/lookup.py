@@ -133,7 +133,7 @@ def lookup(session, name, exact_only=False):
     # Look for exact name.  A Term object does an exact match, so we don't have
     # to worry about a query parser tripping on weird characters in the input
     searcher = index.searcher()
-    query = whoosh.query.Term('name', name)
+    query = whoosh.query.Term('name', name.lower())
     results = searcher.search(query)
 
     if not exact_only:
