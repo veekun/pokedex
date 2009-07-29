@@ -187,6 +187,6 @@ def command_help():
     csvexport {uri} [dir]       Export data from the database given by the URI
                                   to a set of CSVs.
                                 Directory defaults to cwd.
-"""
+""".encode(sys.getdefaultencoding(), 'replace')
 
     sys.exit(0)
