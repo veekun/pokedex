@@ -127,10 +127,11 @@ class Generation(TableBase):
     main_region = Column(Unicode(16), nullable=False)
 
 class GrowthRate(TableBase):
+    """`formula` is written in LaTeX math notation."""
     __tablename__ = 'growth_rates'
     id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(16), nullable=False)
-    formula = Column(Unicode(255), nullable=False)
+    name = Column(Unicode(20), nullable=False)
+    formula = Column(Unicode(500), nullable=False)
 
 class Item(TableBase):
     __tablename__ = 'items'
