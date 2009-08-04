@@ -377,6 +377,7 @@ EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 LocationArea.location = relation(Location, backref='areas')
 
 Move.type = relation(Type, backref='moves')
+Move.effect = relation(MoveEffect, backref='moves')
 
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
@@ -433,3 +434,5 @@ Type.target_efficacies = relation(TypeEfficacy,
 Version.generation = relation(Generation, secondary=VersionGroup.__table__,
                               backref='versions')
 Version.version_group = relation(VersionGroup, backref='versions')
+
+VersionGroup.generation = relation(Generation, backref='version_groups')
