@@ -1,6 +1,6 @@
 id,name,description
 1,Level up,Learned when a Pokémon reaches a certain level.
-2,Egg,"Appears on a newly-hatched Pokémon, if the mother had the same move."
+2,Egg,"Appears on a newly-hatched Pokémon, if the father had the same move."
 3,Tutor,Can be taught at any time by an NPC.
 4,Machine,Can be taught at any time by using a TM or HM.
 5,Stadium: Surfing Pikachu,"Learned when a non-rental Pikachu helps beat Prime Cup Master Ball R-2.  It must participate in every battle, and you must win with no continues."
