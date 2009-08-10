@@ -156,6 +156,12 @@ class LocationArea(TableBase):
     internal_id = Column(Integer, nullable=False)
     name = Column(Unicode(64), nullable=True)
 
+class Machine(TableBase):
+    __tablename__ = 'machines'
+    machine_number = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False, autoincrement=False)
+    move_id = Column(Integer, ForeignKey('moves.id'), nullable=False)
+
 class MoveEffect(TableBase):
     __tablename__ = 'move_effects'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -376,8 +382,11 @@ EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 
 LocationArea.location = relation(Location, backref='areas')
 
+Machine.generation = relation(Generation)
+
 Move.type = relation(Type, backref='moves')
 Move.effect = relation(MoveEffect, backref='moves')
+Move.machines = relation(Machine, backref='move')
 
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
