@@ -179,6 +179,7 @@ class Move(TableBase):
     __tablename__ = 'moves'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(12), nullable=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
     type_id = Column(Integer, ForeignKey('types.id'), nullable=False)
     power = Column(SmallInteger)
     pp = Column(SmallInteger, nullable=False)
@@ -385,6 +386,8 @@ LocationArea.location = relation(Location, backref='areas')
 Machine.generation = relation(Generation)
 
 Move.type = relation(Type, backref='moves')
+Move.generation = relation(Generation, backref='moves')
+Move.target = relation(MoveTarget, backref='moves')
 Move.effect = relation(MoveEffect, backref='moves')
 Move.machines = relation(Machine, backref='move')
 
