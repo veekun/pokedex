@@ -1,8 +1,12 @@
 # encoding: utf8
+import os, os.path
 import re
 
 from sqlalchemy.sql import func
 import whoosh
+import whoosh.filedb.filestore
+import whoosh.filedb.fileindex
+import whoosh.index
 from whoosh.qparser import QueryParser
 import whoosh.spelling
 
@@ -42,16 +46,22 @@ def get_index(session):
     if index_bits:
         return index_bits['index'], index_bits['speller']
 
-    store = whoosh.store.RamStorage()
+    store = whoosh.filedb.filestore.RamStorage()
     schema = whoosh.fields.Schema(
         name=whoosh.fields.ID(stored=True),
         table=whoosh.fields.STORED,
         row_id=whoosh.fields.STORED,
-        language_id=whoosh.fields.STORED,
+        language=whoosh.fields.STORED,
+
+        # Whoosh 0.2 explodes when using a file-stored schema with no TEXT
+        # columns.  Appease it
+        dummy=whoosh.fields.TEXT,
     )
 
-    # Construct a straight lookup index
-    index = whoosh.index.Index(store, schema=schema, create=True)
+    index_directory = '/var/tmp/pokedex'
+    if not os.path.exists(index_directory):
+        os.mkdir(index_directory)
+    index = whoosh.index.create_in(index_directory, schema=schema)
     writer = index.writer()
 
     # Index every name in all our tables of interest
@@ -82,6 +92,14 @@ def get_index(session):
 
     writer.commit()
 
+    # XXX GIHWEGREHKG
+    old__schema = whoosh.spelling.SpellChecker._schema
+    def new__schema(self):
+        schema = old__schema(self)
+        schema.add('dummy', whoosh.fields.TEXT)
+        return schema
+    whoosh.spelling.SpellChecker._schema = new__schema
+
     # Construct and populate a spell-checker index.  Quicker to do it all
     # at once, as every call to add_* does a commit(), and those seem to be
     # expensive
@@ -93,7 +111,7 @@ def get_index(session):
     # complications.
     # The below is copied from SpellChecker.add_scored_words without the check
     # for isalpha().  XXX get whoosh patched to make this unnecessary!
-    writer = whoosh.writing.IndexWriter(speller.index())
+    writer = speller.index(create=True).writer()
     for word in speller_entries:
         fields = {"word": word, "score": 1}
         for size in xrange(speller.mingram, speller.maxgram + 1):
