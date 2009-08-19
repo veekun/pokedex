@@ -4,7 +4,7 @@ import sys
 
 from .db import connect, metadata
 import pokedex.db.load
-from pokedex.lookup import lookup as pokedex_lookup
+import pokedex.lookup
 
 def main():
     if len(sys.argv) <= 1:
@@ -46,12 +46,14 @@ def command_load(*args):
                                   drop_tables=options.drop_tables,
                                   verbose=options.verbose)
 
+def command_setup(*args):
+    session = connect()
+    pokedex.db.load.load(session, verbose=False, drop_tables=True)
+    pokedex.lookup.open_index(session=session, recreate=True)
 
-def command_lookup(engine_uri, name):
-    # XXX don't require uri!  somehow
-    session = connect(engine_uri)
 
-    results, exact = pokedex_lookup(session, name)
+def command_lookup(name):
+    results, exact = pokedex.lookup.lookup(name)
     if exact:
         print "Matched:"
     else:
@@ -73,6 +75,9 @@ Commands:
 System commands:
     load                Load Pokédex data into a database from CSV files.
     dump                Dump Pokédex data from a database into CSV files.
+    setup               Loads Pokédex data into the right place and creates a
+                        lookup index in the right place.  No options or output.
+                        This will blow away the default database and index!
 
 Options:
     -d|--directory      By default, load and dump will use the CSV files in the

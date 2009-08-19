@@ -1,5 +1,6 @@
 # encoding: utf8
 import os, os.path
+import pkg_resources
 import re
 
 from sqlalchemy.sql import func
@@ -10,6 +11,7 @@ import whoosh.index
 from whoosh.qparser import QueryParser
 import whoosh.spelling
 
+from pokedex.db import connect
 import pokedex.db.tables as tables
 
 # Dictionary of table name => table class.
@@ -36,17 +38,49 @@ extra_keys = {
     ],
 }
 
-index_bits = {}
-def get_index(session):
-    """Returns (index, speller).
+def open_index(directory=None, session=None, recreate=False):
+    """Opens the whoosh index stored in the named directory and returns (index,
+    speller).  If the index doesn't already exist, it will be created.
 
-    Creates an index if one does not exist.
+    `directory`
+        Directory containing the index.  Defaults to a location within the
+        `pokedex` egg directory.
+
+    `session`
+        If the index needs to be created, this database session will be used.
+        Defaults to an attempt to connect to the default SQLite database
+        installed by `pokedex setup`.
+
+    `recreate`
+        If set to True, the whoosh index will be created even if it already
+        exists.
     """
 
-    if index_bits:
-        return index_bits['index'], index_bits['speller']
+    # Defaults
+    if not directory:
+        directory = pkg_resources.resource_filename('pokedex',
+                                                    'data/whoosh_index')
 
-    store = whoosh.filedb.filestore.RamStorage()
+    if not session:
+        session = connect()
+
+    # Attempt to open or create the index
+    directory_exists = os.path.exists(directory)
+    if directory_exists and not recreate:
+        # Already exists; should be an index!
+        try:
+            index = whoosh.index.open_dir(directory, indexname='pokedex')
+            speller = whoosh.index.open_dir(directory, indexname='spelling')
+            return index, speller
+        except whoosh.index.EmptyIndexError as e:
+            # Apparently not a real index.  Fall out of the if and create it
+            pass
+
+    if not directory_exists:
+        os.mkdir(directory)
+
+
+    # Create index
     schema = whoosh.fields.Schema(
         name=whoosh.fields.ID(stored=True),
         table=whoosh.fields.STORED,
@@ -58,10 +92,8 @@ def get_index(session):
         dummy=whoosh.fields.TEXT,
     )
 
-    index_directory = '/var/tmp/pokedex'
-    if not os.path.exists(index_directory):
-        os.mkdir(index_directory)
-    index = whoosh.index.create_in(index_directory, schema=schema)
+    index = whoosh.index.create_in(directory, schema=schema,
+                                              indexname='pokedex')
     writer = index.writer()
 
     # Index every name in all our tables of interest
@@ -103,7 +135,7 @@ def get_index(session):
     # Construct and populate a spell-checker index.  Quicker to do it all
     # at once, as every call to add_* does a commit(), and those seem to be
     # expensive
-    speller = whoosh.spelling.SpellChecker(index.storage)
+    speller = whoosh.spelling.SpellChecker(index.storage, indexname='spelling')
     # WARNING: HERE BE DRAGONS
     # whoosh.spelling refuses to index things that don't look like words.
     # Unfortunately, this doesn't work so well for Pokémon (Mr. Mime,
@@ -125,12 +157,10 @@ def get_index(session):
     writer.commit()
     # end copy-pasta
 
-    index_bits['index'] = index
-    index_bits['speller'] = speller
-    index_bits['store'] = store
-    return index_bits['index'], index_bits['speller']
+    return index, speller
 
-def lookup(session, name, exact_only=False):
+
+def lookup(name, session=None, exact_only=False):
     """Attempts to find some sort of object, given a database session and name.
 
     Returns (objects, exact) where `objects` is a list of database objects, and
@@ -142,11 +172,27 @@ def lookup(session, name, exact_only=False):
 
     Currently recognizes:
     - Pokémon names: "Eevee"
+
+    `name`
+        Name of the thing to look for.
+
+    `session`
+        A database session to use for retrieving objects.  As with get_index,
+        if this is not provided, a connection to the default database will be
+        attempted.
+
+    `exact_only`
+        If True, only exact matches are returned.  If set to False (the
+        default), and the provided `name` doesn't match anything exactly,
+        spelling correction will be attempted.
     """
 
-    exact = True
+    if not session:
+        session = connect()
 
-    index, speller = get_index(session)
+    index, speller = open_index()
+
+    exact = True
 
     # Look for exact name.  A Term object does an exact match, so we don't have
     # to worry about a query parser tripping on weird characters in the input
