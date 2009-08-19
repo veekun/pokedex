@@ -86,10 +86,6 @@ def open_index(directory=None, session=None, recreate=False):
         table=whoosh.fields.STORED,
         row_id=whoosh.fields.STORED,
         language=whoosh.fields.STORED,
-
-        # Whoosh 0.2 explodes when using a file-stored schema with no TEXT
-        # columns.  Appease it
-        dummy=whoosh.fields.TEXT,
     )
 
     index = whoosh.index.create_in(directory, schema=schema,
@@ -124,38 +120,11 @@ def open_index(directory=None, session=None, recreate=False):
 
     writer.commit()
 
-    # XXX GIHWEGREHKG
-    old__schema = whoosh.spelling.SpellChecker._schema
-    def new__schema(self):
-        schema = old__schema(self)
-        schema.add('dummy', whoosh.fields.TEXT)
-        return schema
-    whoosh.spelling.SpellChecker._schema = new__schema
-
     # Construct and populate a spell-checker index.  Quicker to do it all
     # at once, as every call to add_* does a commit(), and those seem to be
     # expensive
     speller = whoosh.spelling.SpellChecker(index.storage, indexname='spelling')
-    # WARNING: HERE BE DRAGONS
-    # whoosh.spelling refuses to index things that don't look like words.
-    # Unfortunately, this doesn't work so well for Pokémon (Mr. Mime,
-    # Porygon-Z, etc.), and attempts to work around it lead to further
-    # complications.
-    # The below is copied from SpellChecker.add_scored_words without the check
-    # for isalpha().  XXX get whoosh patched to make this unnecessary!
-    writer = speller.index(create=True).writer()
-    for word in speller_entries:
-        fields = {"word": word, "score": 1}
-        for size in xrange(speller.mingram, speller.maxgram + 1):
-            nga = whoosh.analysis.NgramAnalyzer(size)
-            gramlist = [t.text for t in nga(word)]
-            if len(gramlist) > 0:
-                fields["start%s" % size] = gramlist[0]
-                fields["end%s" % size] = gramlist[-1]
-                fields["gram%s" % size] = " ".join(gramlist)
-        writer.add_document(**fields)
-    writer.commit()
-    # end copy-pasta
+    speller.add_words(speller_entries)
 
     return index, speller
 
