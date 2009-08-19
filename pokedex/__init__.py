@@ -25,22 +25,26 @@ def command_dump(*args):
     parser = OptionParser()
     parser.add_option('-e', '--engine', dest='engine_uri', default=None)
     parser.add_option('-d', '--directory', dest='directory', default=None)
+    parser.add_option('-q', '--quiet', dest='verbose', default=True, action='store_false')
     options, _ = parser.parse_args(list(args))
 
     session = connect(options.engine_uri)
-    pokedex.db.load.dump(session, directory=options.directory)
+    pokedex.db.load.dump(session, directory=options.directory,
+                                  verbose=options.verbose)
 
 def command_load(*args):
     parser = OptionParser()
     parser.add_option('-e', '--engine', dest='engine_uri', default=None)
     parser.add_option('-d', '--directory', dest='directory', default=None)
     parser.add_option('-D', '--drop-tables', dest='drop_tables', default=False, action='store_true')
+    parser.add_option('-q', '--quiet', dest='verbose', default=True, action='store_false')
     options, _ = parser.parse_args(list(args))
 
     session = connect(options.engine_uri)
 
     pokedex.db.load.load(session, directory=options.directory,
-                                  drop_tables=options.drop_tables)
+                                  drop_tables=options.drop_tables,
+                                  verbose=options.verbose)
 
 
 def command_lookup(engine_uri, name):
@@ -78,6 +82,7 @@ Options:
     -e|--engine=URI     By default, all commands try to use a SQLite database
                         in the pokedex install directory.  Use this option to
                         specify an alternate database.
+    -q|--quiet          Turn off any unnecessary status output from dump/load.
 """.encode(sys.getdefaultencoding(), 'replace')
 
     sys.exit(0)

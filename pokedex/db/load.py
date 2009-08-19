@@ -10,7 +10,41 @@ from pokedex.db import metadata
 import pokedex.db.tables as tables
 
 
-def load(session, directory=None, drop_tables=False):
+def _get_verbose_prints(verbose):
+    """If `verbose` is true, returns two functions: one for printing a starting
+    message, and the other for printing a success or failure message when
+    finished.
+
+    If `verbose` is false, returns two no-op functions.
+    """
+
+    if verbose:
+        import sys
+        def print_start(thing):
+            # Truncate to 66 characters, leaving 10 characters for a success
+            # or failure message
+            truncated_thing = thing[0:66]
+
+            # Also, space-pad to keep the cursor in a known column
+            num_spaces = 66 - len(truncated_thing)
+
+            print "%s...%s" % (truncated_thing, ' ' * num_spaces),
+            sys.stdout.flush()
+
+        def print_done(msg='ok'):
+            print msg
+            sys.stdout.flush()
+
+        return print_start, print_done
+
+    # Not verbose; return dummies
+    def dummy(*args, **kwargs):
+        pass
+
+    return dummy, dummy
+
+
+def load(session, directory=None, drop_tables=False, verbose=False):
     """Load data from CSV files into the given database session.
 
     Tables are created automatically.
@@ -24,15 +58,23 @@ def load(session, directory=None, drop_tables=False):
 
     `drop_tables`
         If set to True, existing `pokedex`-related tables will be dropped.
+
+    `verbose`
+        If set to True, status messages will be printed to stdout.
     """
+
+    # First take care of verbosity
+    print_start, print_done = _get_verbose_prints(verbose)
+
 
     if not directory:
         directory = pkg_resources.resource_filename('pokedex', 'data/csv')
 
     # Drop all tables if requested
-    if options.drop_tables:
-        print 'Dropping tables...'
+    if drop_tables:
+        print_start('Dropping tables')
         metadata.drop_all()
+        print_done()
 
     metadata.create_all()
 
@@ -64,15 +106,13 @@ def load(session, directory=None, drop_tables=False):
         table_class = orm_classes[table_obj]
         table_name = table_obj.name
 
-        # Print the table name but leave the cursor in a fixed column
-        print table_name + '...', ' ' * (40 - len(table_name)),
-        sys.stdout.flush()
+        print_start(table_name)
 
         try:
             csvfile = open("%s/%s.csv" % (directory, table_name), 'rb')
         except IOError:
             # File doesn't exist; don't load anything!
-            print 'no data!'
+            print_done('missing?')
             continue
 
         reader = csv.reader(csvfile, lineterminator='\n')
@@ -149,11 +189,11 @@ def load(session, directory=None, drop_tables=False):
             seen_ids[row.id] = 1
             session.commit()
 
-        print 'loaded'
+        print_done()
 
 
 
-def dump(session, directory=None):
+def dump(session, directory=None, verbose=False):
     """Dumps the contents of a database to a set of CSV files.  Probably not
     useful to anyone besides a developer.
 
@@ -163,13 +203,20 @@ def dump(session, directory=None):
     `directory`
         Directory the CSV files should be put in.  Defaults to the `pokedex`
         data directory.
+
+    `verbose`
+        If set to True, status messages will be printed to stdout.
     """
+
+    # First take care of verbosity
+    print_start, print_done = _get_verbose_prints(verbose)
+
 
     if not directory:
         directory = pkg_resources.resource_filename('pokedex', 'data/csv')
 
     for table_name in sorted(metadata.tables.keys()):
-        print table_name
+        print_start(table_name)
         table = metadata.tables[table_name]
 
         writer = csv.writer(open("%s/%s.csv" % (directory, table_name), 'wb'),
@@ -195,3 +242,5 @@ def dump(session, directory=None):
                 csvs.append(val)
 
             writer.writerow(csvs)
+
+        print_done()
