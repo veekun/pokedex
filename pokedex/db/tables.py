@@ -2,6 +2,7 @@
 
 from sqlalchemy import Column, ForeignKey, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import backref, relation
 from sqlalchemy.types import *
 from sqlalchemy.databases.mysql import *
@@ -366,6 +367,8 @@ class Version(TableBase):
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False)
     name = Column(Unicode(32), nullable=False)
 
+    generation = association_proxy('version_group', 'generation')
+
 
 ### Relations down here, to avoid ordering problems
 Encounter.pokemon = relation(Pokemon, backref='encounters')
@@ -380,6 +383,8 @@ EncounterCondition.group = relation(EncounterConditionGroup,
 EncounterTypeSlot.type = relation(EncounterType, backref='slots')
 
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
+
+Generation.versions = relation(Version, secondary=VersionGroup.__table__)
 
 LocationArea.location = relation(Location, backref='areas')
 
@@ -443,8 +448,6 @@ Type.target_efficacies = relation(TypeEfficacy,
                                       ==TypeEfficacy.target_type_id,
                                   backref='target_type')
 
-Version.generation = relation(Generation, secondary=VersionGroup.__table__,
-                              backref='versions')
 Version.version_group = relation(VersionGroup, backref='versions')
 
 VersionGroup.generation = relation(Generation, backref='version_groups')
