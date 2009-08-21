@@ -13,6 +13,11 @@ def main():
     command = sys.argv[1]
     args = sys.argv[2:]
 
+    # XXX there must be a better way to get Unicode argv
+    # XXX this doesn't work on Windows durp
+    enc = sys.stdin.encoding
+    args = [_.decode(enc) for _ in args]
+
     # Find the command as a function in this file
     func = globals().get("command_%s" % command, None)
     if func:
@@ -53,14 +58,16 @@ def command_setup(*args):
 
 
 def command_lookup(name):
-    results, exact = pokedex.lookup.lookup(name)
-    if exact:
+    results = pokedex.lookup.lookup(name)
+    if not results:
+        print "No matches."
+    elif results[0].exact:
         print "Matched:"
     else:
         print "Fuzzy-matched:"
 
-    for object in results:
-        print object.__tablename__, object.name
+    for object, language, exact in results:
+        print object.__tablename__, object.name, language
 
 
 def command_help():

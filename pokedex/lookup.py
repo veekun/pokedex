@@ -1,4 +1,5 @@
 # encoding: utf8
+from collections import namedtuple
 import os, os.path
 import pkg_resources
 import re
@@ -13,6 +14,7 @@ import whoosh.spelling
 
 from pokedex.db import connect
 import pokedex.db.tables as tables
+from pokedex.roomaji import romanize
 
 # Dictionary of table name => table class.
 # Need the table name so we can get the class from the table name after we
@@ -69,10 +71,9 @@ def open_index(directory=None, session=None, recreate=False):
     if directory_exists and not recreate:
         # Already exists; should be an index!
         try:
-            index = whoosh.index.open_dir(directory, indexname='pokedex')
+            index = whoosh.index.open_dir(directory, indexname='MAIN')
             spell_store = whoosh.filedb.filestore.FileStorage(directory)
-            speller = whoosh.spelling.SpellChecker(spell_store,
-                                                   indexname='spelling')
+            speller = whoosh.spelling.SpellChecker(spell_store)
             return index, speller
         except whoosh.index.EmptyIndexError as e:
             # Apparently not a real index.  Fall out of the if and create it
@@ -90,8 +91,7 @@ def open_index(directory=None, session=None, recreate=False):
         language=whoosh.fields.STORED,
     )
 
-    index = whoosh.index.create_in(directory, schema=schema,
-                                              indexname='pokedex')
+    index = whoosh.index.create_in(directory, schema=schema, indexname='MAIN')
     writer = index.writer()
 
     # Index every name in all our tables of interest
@@ -106,42 +106,57 @@ def open_index(directory=None, session=None, recreate=False):
         for row in q.yield_per(5):
             row_key = dict(table=cls.__tablename__, row_id=row.id)
 
-            # Spelling index only indexes strings of letters, alas, so we
-            # reduce every name to this to make the index work.  However, exact
-            # matches are not returned, so e.g. 'nidoran' would neither match
-            # exactly nor fuzzy-match.  Solution: add the spelling-munged name
-            # as a regular index row too.
             name = row.name.lower()
             writer.add_document(name=name, **row_key)
-
             speller_entries.append(name)
 
             for extra_key_func in extra_keys.get(cls, []):
                 extra_key = extra_key_func(row)
                 writer.add_document(name=extra_key, **row_key)
 
+            # Pokemon also get other languages
+            if cls == tables.Pokemon:
+                for foreign_name in row.foreign_names:
+                    name = foreign_name.name.lower()
+                    writer.add_document(name=name,
+                                        language=foreign_name.language.name,
+                                        **row_key)
+                    speller_entries.append(name)
+
+                    if foreign_name.language.name == 'Japanese':
+                        # Add Roomaji too
+                        roomaji = romanize(foreign_name.name).lower()
+                        writer.add_document(name=roomaji,
+                                            language='Roomaji',
+                                            **row_key)
+                        speller_entries.append(roomaji)
+
+
     writer.commit()
 
     # Construct and populate a spell-checker index.  Quicker to do it all
     # at once, as every call to add_* does a commit(), and those seem to be
     # expensive
-    speller = whoosh.spelling.SpellChecker(index.storage, indexname='spelling')
+    speller = whoosh.spelling.SpellChecker(index.storage)
     speller.add_words(speller_entries)
 
     return index, speller
 
 
+LookupResult = namedtuple('LookupResult', ['object', 'language', 'exact'])
 def lookup(name, session=None, indices=None, exact_only=False):
     """Attempts to find some sort of object, given a database session and name.
 
-    Returns (objects, exact) where `objects` is a list of database objects, and
-    `exact` is True iff the given name matched the returned objects exactly.
+    Returns a list of named (object, language, exact) tuples.  `object` is a
+    database object, `language` is the name of the language in which the name
+    was found, and `exact` is True iff this was an exact match.
 
-    This function ONLY does fuzzy matching if there are no exact matches.
+    This function currently ONLY does fuzzy matching if there are no exact
+    matches.
 
     Formes are not returned; "Shaymin" will return only grass Shaymin.
 
-    Currently recognizes:
+    Recognizes:
     - Pokémon names: "Eevee"
 
     `name`
@@ -170,6 +185,8 @@ def lookup(name, session=None, indices=None, exact_only=False):
     else:
         index, speller = open_index()
 
+    name = unicode(name)
+
     exact = True
 
     # Look for exact name.  A Term object does an exact match, so we don't have
@@ -178,17 +195,16 @@ def lookup(name, session=None, indices=None, exact_only=False):
     query = whoosh.query.Term('name', name.lower())
     results = searcher.search(query)
 
-    if not exact_only:
-        # Look for some fuzzy matches
-        if not results:
-            exact = False
-            results = []
+    # Look for some fuzzy matches if necessary
+    if not exact_only and not results:
+        exact = False
+        results = []
 
-            for suggestion in speller.suggest(name, 3):
-                query = whoosh.query.Term('name', suggestion)
-                results.extend(searcher.search(query))
+        for suggestion in speller.suggest(name, 10):
+            query = whoosh.query.Term('name', suggestion)
+            results.extend(searcher.search(query))
 
-    # Convert results to db objects
+    ### Convert results to db objects
     objects = []
     seen = {}
     for result in results:
@@ -200,6 +216,6 @@ def lookup(name, session=None, indices=None, exact_only=False):
 
         cls = indexed_tables[result['table']]
         obj = session.query(cls).get(result['row_id'])
-        objects.append(obj)
+        objects.append(LookupResult(obj, result['language'], exact))
 
-    return objects, exact
+    return objects

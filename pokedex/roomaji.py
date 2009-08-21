@@ -131,4 +131,4 @@ def romanize(string):
     if last_kana == 'sokuon':
         raise ValueError("Sokuon cannot be the last character.")
 
-    return ''.join(characters)
+    return unicode(''.join(characters))
