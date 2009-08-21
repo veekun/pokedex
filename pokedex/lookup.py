@@ -129,7 +129,7 @@ def open_index(directory=None, session=None, recreate=False):
     return index, speller
 
 
-def lookup(name, session=None, exact_only=False):
+def lookup(name, session=None, indices=None, exact_only=False):
     """Attempts to find some sort of object, given a database session and name.
 
     Returns (objects, exact) where `objects` is a list of database objects, and
@@ -150,6 +150,10 @@ def lookup(name, session=None, exact_only=False):
         if this is not provided, a connection to the default database will be
         attempted.
 
+    `indices`
+        Tuple of index, speller as returned from `open_index()`.  Defaults to
+        a call to `open_index()`.
+
     `exact_only`
         If True, only exact matches are returned.  If set to False (the
         default), and the provided `name` doesn't match anything exactly,
@@ -159,7 +163,10 @@ def lookup(name, session=None, exact_only=False):
     if not session:
         session = connect()
 
-    index, speller = open_index()
+    if indices:
+        index, speller = indices
+    else:
+        index, speller = open_index()
 
     exact = True
 
