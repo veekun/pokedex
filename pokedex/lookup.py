@@ -70,7 +70,9 @@ def open_index(directory=None, session=None, recreate=False):
         # Already exists; should be an index!
         try:
             index = whoosh.index.open_dir(directory, indexname='pokedex')
-            speller = whoosh.index.open_dir(directory, indexname='spelling')
+            spell_store = whoosh.filedb.filestore.FileStorage(directory)
+            speller = whoosh.spelling.SpellChecker(spell_store,
+                                                   indexname='spelling')
             return index, speller
         except whoosh.index.EmptyIndexError as e:
             # Apparently not a real index.  Fall out of the if and create it
