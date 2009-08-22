@@ -66,8 +66,12 @@ def command_lookup(name):
     else:
         print "Fuzzy-matched:"
 
-    for object, language, exact in results:
-        print object.__tablename__, object.name, language
+    for result in results:
+        print "%s: %s" % (result.object.__tablename__, result.object.name),
+        if result.language:
+            print "(%s in %s)" % (result.name, result.language)
+        else:
+            print
 
 
 def command_help():

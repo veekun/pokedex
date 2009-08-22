@@ -95,6 +95,10 @@ def open_index(directory=None, session=None, recreate=False):
     writer = index.writer()
 
     # Index every name in all our tables of interest
+    # speller_entries becomes a list of (word, score) tuples; the score is 2
+    # for English names, 1.5 for Roomaji, and 1 for everything else.  I think
+    # this biases the results in the direction most people expect, especially
+    # when e.g. German names are very similar to English names
     speller_entries = []
     for cls in indexed_tables.values():
         q = session.query(cls)
@@ -108,28 +112,31 @@ def open_index(directory=None, session=None, recreate=False):
 
             name = row.name.lower()
             writer.add_document(name=name, **row_key)
-            speller_entries.append(name)
+            speller_entries.append((name, 1))
 
             for extra_key_func in extra_keys.get(cls, []):
                 extra_key = extra_key_func(row)
                 writer.add_document(name=extra_key, **row_key)
 
             # Pokemon also get other languages
-            if cls == tables.Pokemon:
-                for foreign_name in row.foreign_names:
-                    name = foreign_name.name.lower()
-                    writer.add_document(name=name,
-                                        language=foreign_name.language.name,
-                                        **row_key)
-                    speller_entries.append(name)
+            for foreign_name in getattr(row, 'foreign_names', []):
+                moonspeak = foreign_name.name.lower()
+                if name == moonspeak:
+                    # Don't add the English name again as a different language;
+                    # no point and it makes spell results confusing
+                    continue
 
-                    if foreign_name.language.name == 'Japanese':
-                        # Add Roomaji too
-                        roomaji = romanize(foreign_name.name).lower()
-                        writer.add_document(name=roomaji,
-                                            language='Roomaji',
-                                            **row_key)
-                        speller_entries.append(roomaji)
+                writer.add_document(name=moonspeak,
+                                    language=foreign_name.language.name,
+                                    **row_key)
+                speller_entries.append((moonspeak, 3))
+
+                # Add Roomaji too
+                if foreign_name.language.name == 'Japanese':
+                    roomaji = romanize(foreign_name.name).lower()
+                    writer.add_document(name=roomaji, language='Roomaji',
+                                        **row_key)
+                    speller_entries.append((roomaji, 8))
 
 
     writer.commit()
@@ -138,18 +145,20 @@ def open_index(directory=None, session=None, recreate=False):
     # at once, as every call to add_* does a commit(), and those seem to be
     # expensive
     speller = whoosh.spelling.SpellChecker(index.storage)
-    speller.add_words(speller_entries)
+    speller.add_scored_words(speller_entries)
 
     return index, speller
 
 
-LookupResult = namedtuple('LookupResult', ['object', 'language', 'exact'])
+LookupResult = namedtuple('LookupResult',
+                          ['object', 'name', 'language', 'exact'])
 def lookup(name, session=None, indices=None, exact_only=False):
     """Attempts to find some sort of object, given a database session and name.
 
-    Returns a list of named (object, language, exact) tuples.  `object` is a
-    database object, `language` is the name of the language in which the name
-    was found, and `exact` is True iff this was an exact match.
+    Returns a list of named (object, name, language, exact) tuples.  `object`
+    is a database object, `name` is the name under which the object was found,
+    `language` is the name of the language in which the name was found, and
+    `exact` is True iff this was an exact match.
 
     This function currently ONLY does fuzzy matching if there are no exact
     matches.
@@ -209,6 +218,12 @@ def lookup(name, session=None, indices=None, exact_only=False):
     seen = {}
     for result in results:
         # Skip dupe results
+        # Note!  The speller prefers English names, but the query does not.  So
+        # "latias" comes over "ratiasu".  "latias" matches only the English
+        # row, comes out first, and all is well.
+        # However!  The speller could then return "foo" which happens to be the
+        # name for two different things in different languages, and the
+        # non-English one could appear preferred.  This is not very likely.
         seen_key = result['table'], result['row_id']
         if seen_key in seen:
             continue
@@ -216,6 +231,9 @@ def lookup(name, session=None, indices=None, exact_only=False):
 
         cls = indexed_tables[result['table']]
         obj = session.query(cls).get(result['row_id'])
-        objects.append(LookupResult(obj, result['language'], exact))
+        objects.append(LookupResult(object=obj,
+                                    name=result['name'],
+                                    language=result['language'],
+                                    exact=exact))
 
-    return objects
+    return objects[:5]
