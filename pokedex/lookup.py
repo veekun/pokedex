@@ -81,6 +81,7 @@ def open_index(directory=None, session=None, recreate=False):
         table=whoosh.fields.STORED,
         row_id=whoosh.fields.ID(stored=True),
         language=whoosh.fields.STORED,
+        display_name=whoosh.fields.STORED,  # non-lowercased name
     )
 
     index = whoosh.index.create_in(directory, schema=schema, indexname='MAIN')
@@ -102,29 +103,34 @@ def open_index(directory=None, session=None, recreate=False):
         for row in q.yield_per(5):
             row_key = dict(table=cls.__tablename__, row_id=unicode(row.id))
 
-            name = row.name.lower()
-            writer.add_document(name=name, **row_key)
-            speller_entries.append((name, 1))
+            name = row.name
+            writer.add_document(name=name.lower(),
+                                display_name=name,
+                                **row_key)
+            speller_entries.append((name.lower(), 1))
 
             # Pokemon also get other languages
             for foreign_name in getattr(row, 'foreign_names', []):
-                moonspeak = foreign_name.name.lower()
+                moonspeak = foreign_name.name
                 if name == moonspeak:
                     # Don't add the English name again as a different language;
                     # no point and it makes spell results confusing
                     continue
 
-                writer.add_document(name=moonspeak,
+                writer.add_document(name=moonspeak.lower(),
                                     language=foreign_name.language.name,
+                                    display_name=moonspeak,
                                     **row_key)
-                speller_entries.append((moonspeak, 3))
+                speller_entries.append((moonspeak.lower(), 3))
 
                 # Add Roomaji too
                 if foreign_name.language.name == 'Japanese':
-                    roomaji = romanize(foreign_name.name).lower()
-                    writer.add_document(name=roomaji, language='Roomaji',
+                    roomaji = romanize(foreign_name.name)
+                    writer.add_document(name=roomaji.lower(),
+                                        language='Roomaji',
+                                        display_name=roomaji,
                                         **row_key)
-                    speller_entries.append((roomaji, 8))
+                    speller_entries.append((roomaji.lower(), 8))
 
 
     writer.commit()
@@ -248,7 +254,7 @@ def lookup(input, session=None, indices=None, exact_only=False):
         cls = indexed_tables[result['table']]
         obj = session.query(cls).get(result['row_id'])
         objects.append(LookupResult(object=obj,
-                                    name=result['name'],
+                                    name=result['display_name'],
                                     language=result['language'],
                                     exact=exact))
 
