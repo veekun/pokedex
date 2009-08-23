@@ -67,7 +67,12 @@ def command_lookup(name):
         print "Fuzzy-matched:"
 
     for result in results:
-        print "%s: %s" % (result.object.__tablename__, result.object.name),
+        if hasattr(result.object, 'full_name'):
+            name = result.object.full_name
+        else:
+            name = result.object.name
+
+        print "%s: %s" % (result.object.__tablename__, name),
         if result.language:
             print "(%s in %s)" % (result.name, result.language)
         else:

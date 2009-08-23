@@ -75,13 +75,14 @@ def open_index(directory=None, session=None, recreate=False):
         os.mkdir(directory)
 
 
-    # Create index
+    ### Create index
     schema = whoosh.fields.Schema(
         name=whoosh.fields.ID(stored=True),
-        table=whoosh.fields.STORED,
+        table=whoosh.fields.ID(stored=True),
         row_id=whoosh.fields.ID(stored=True),
         language=whoosh.fields.STORED,
         display_name=whoosh.fields.STORED,  # non-lowercased name
+        forme_name=whoosh.fields.ID,
     )
 
     index = whoosh.index.create_in(directory, schema=schema, indexname='MAIN')
@@ -96,12 +97,16 @@ def open_index(directory=None, session=None, recreate=False):
     for cls in indexed_tables.values():
         q = session.query(cls)
 
-        # Only index base Pokémon formes
-        if hasattr(cls, 'forme_base_pokemon_id'):
-            q = q.filter_by(forme_base_pokemon_id=None)
-
         for row in q.yield_per(5):
-            row_key = dict(table=cls.__tablename__, row_id=unicode(row.id))
+            # XXX need to give forme_name a dummy value because I can't search
+            # for explicitly empty fields.  boo.
+            row_key = dict(table=unicode(cls.__tablename__),
+                           row_id=unicode(row.id),
+                           forme_name=u'XXX')
+
+            # If this is a form, mark it as such
+            if getattr(row, 'forme_base_pokemon_id', None):
+                row_key['forme_name'] = row.forme_name
 
             name = row.name
             writer.add_document(name=name.lower(),
@@ -165,7 +170,7 @@ rx_is_number = re.compile('^\d+$')
 
 LookupResult = namedtuple('LookupResult',
                           ['object', 'name', 'language', 'exact'])
-def lookup(input, session=None, indices=None, exact_only=False):
+def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     """Attempts to find some sort of object, given a database session and name.
 
     Returns a list of named (object, name, language, exact) tuples.  `object`
@@ -182,11 +187,21 @@ def lookup(input, session=None, indices=None, exact_only=False):
     - Names: "Eevee", "Surf", "Run Away", "Payapa Berry", etc.
     - Foreign names: "Iibui", "Eivui"
     - Fuzzy names in whatever language: "Evee", "Ibui"
-    - IDs: "pokemon 133", "move 192", "item 250"
-    - Dex numbers: "sinnoh 55", "133", "johto 180"
+    - IDs: "133", "192", "250"
+    Also:
+    - Type restrictions.  "type:psychic" will only return the type.  This is
+      how to make ID lookup useful.  Multiple type specs can be entered with
+      commas, as "move,item:1".  If `valid_types` are provided, any type prefix
+      will be ignored.
+    - Alternate formes can be specified merely like "wash rotom".
 
     `input`
         Name of the thing to look for.
+
+    `valid_types`
+        A list of table objects or names, e.g., `['pokemon', 'moves']`.  If
+        this is provided, only results in one of the given tables will be
+        returned.
 
     `session`
         A database session to use for retrieving objects.  As with get_index,
@@ -213,6 +228,16 @@ def lookup(input, session=None, indices=None, exact_only=False):
 
     name = unicode(input).lower()
     exact = True
+    form = None
+
+    # Remove any type prefix (pokemon:133) before constructing a query
+    if ':' in name:
+        prefix_chunk, name = name.split(':', 2)
+        prefixes = prefix_chunk.split(',')
+        if not valid_types:
+            # Only use types from the query string if none were explicitly
+            # provided
+            valid_types = prefixes
 
     # If the input provided is a number, match it as an id.  Otherwise, name.
     # Term objects do an exact match, so we don't have to worry about a query
@@ -223,7 +248,34 @@ def lookup(input, session=None, indices=None, exact_only=False):
         query = whoosh.query.Term(u'row_id', name)
     else:
         # Not an integer
-        query = whoosh.query.Term(u'name', name)
+        query = whoosh.query.Term(u'name', name) \
+              & whoosh.query.Term(u'forme_name', u'XXX')
+
+        # If there's a space in the input, this might be a form
+        if ' ' in name:
+            form, formless_name = name.split(' ', 2)
+            form_query = whoosh.query.Term(u'name', formless_name) \
+                       & whoosh.query.Term(u'forme_name', form)
+            query = query | form_query
+
+    ### Filter by type of object
+    type_terms = []
+    for valid_type in valid_types:
+        if hasattr(valid_type, '__tablename__'):
+            table_name = getattr(valid_type, '__tablename__')
+        elif valid_type in indexed_tables:
+            table_name = valid_type
+        elif valid_type + 's' in indexed_tables:
+            table_name = valid_type + 's'
+        else:
+            # Bogus.  Be nice and ignore it
+            continue
+
+        type_terms.append(whoosh.query.Term(u'table', table_name))
+
+    if type_terms:
+        query = query & whoosh.query.Or(type_terms)
+
 
     ### Actual searching
     searcher = index.searcher()
@@ -253,6 +305,7 @@ def lookup(input, session=None, indices=None, exact_only=False):
 
         cls = indexed_tables[result['table']]
         obj = session.query(cls).get(result['row_id'])
+
         objects.append(LookupResult(object=obj,
                                     name=result['display_name'],
                                     language=result['language'],
