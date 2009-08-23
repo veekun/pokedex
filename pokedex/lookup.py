@@ -29,17 +29,6 @@ for cls in [
     ]:
     indexed_tables[cls.__tablename__] = cls
 
-# Dictionary of extra keys to file types of objects under, e.g. Pokémon can
-# also be looked up purely by number
-extra_keys = {
-    tables.Move: [
-        lambda row: u"move %d" % row.id,
-    ],
-    tables.Pokemon: [
-        lambda row: unicode(row.id),
-    ],
-}
-
 def open_index(directory=None, session=None, recreate=False):
     """Opens the whoosh index stored in the named directory and returns (index,
     speller).  If the index doesn't already exist, it will be created.
@@ -87,7 +76,7 @@ def open_index(directory=None, session=None, recreate=False):
     schema = whoosh.fields.Schema(
         name=whoosh.fields.ID(stored=True),
         table=whoosh.fields.STORED,
-        row_id=whoosh.fields.STORED,
+        row_id=whoosh.fields.ID(stored=True),
         language=whoosh.fields.STORED,
     )
 
@@ -108,15 +97,11 @@ def open_index(directory=None, session=None, recreate=False):
             q = q.filter_by(forme_base_pokemon_id=None)
 
         for row in q.yield_per(5):
-            row_key = dict(table=cls.__tablename__, row_id=row.id)
+            row_key = dict(table=cls.__tablename__, row_id=unicode(row.id))
 
             name = row.name.lower()
             writer.add_document(name=name, **row_key)
             speller_entries.append((name, 1))
-
-            for extra_key_func in extra_keys.get(cls, []):
-                extra_key = extra_key_func(row)
-                writer.add_document(name=extra_key, **row_key)
 
             # Pokemon also get other languages
             for foreign_name in getattr(row, 'foreign_names', []):
@@ -150,9 +135,11 @@ def open_index(directory=None, session=None, recreate=False):
     return index, speller
 
 
+rx_is_number = re.compile('^\d+$')
+
 LookupResult = namedtuple('LookupResult',
                           ['object', 'name', 'language', 'exact'])
-def lookup(name, session=None, indices=None, exact_only=False):
+def lookup(input, session=None, indices=None, exact_only=False):
     """Attempts to find some sort of object, given a database session and name.
 
     Returns a list of named (object, name, language, exact) tuples.  `object`
@@ -166,9 +153,13 @@ def lookup(name, session=None, indices=None, exact_only=False):
     Formes are not returned; "Shaymin" will return only grass Shaymin.
 
     Recognizes:
-    - Pokémon names: "Eevee"
+    - Names: "Eevee", "Surf", "Run Away", "Payapa Berry", etc.
+    - Foreign names: "Iibui", "Eivui"
+    - Fuzzy names in whatever language: "Evee", "Ibui"
+    - IDs: "pokemon 133", "move 192", "item 250"
+    - Dex numbers: "sinnoh 55", "133", "johto 180"
 
-    `name`
+    `input`
         Name of the thing to look for.
 
     `session`
@@ -194,14 +185,22 @@ def lookup(name, session=None, indices=None, exact_only=False):
     else:
         index, speller = open_index()
 
-    name = unicode(name)
-
+    name = unicode(input).lower()
     exact = True
+
+    # If the input provided is a number, match it as an id.  Otherwise, name
+    if rx_is_number.match(input):
+        query_column = 'row_id'
+        exact_only = True  # don't spell-check numbers!
+    else:
+        # Not an integer
+        query_column = 'name'
 
     # Look for exact name.  A Term object does an exact match, so we don't have
     # to worry about a query parser tripping on weird characters in the input
     searcher = index.searcher()
-    query = whoosh.query.Term('name', name.lower())
+    query = whoosh.query.Term(query_column, name)
+    print query
     results = searcher.search(query)
 
     # Look for some fuzzy matches if necessary
@@ -209,7 +208,7 @@ def lookup(name, session=None, indices=None, exact_only=False):
         exact = False
         results = []
 
-        for suggestion in speller.suggest(name, 10):
+        for suggestion in speller.suggest(name, 25):
             query = whoosh.query.Term('name', suggestion)
             results.extend(searcher.search(query))
 
@@ -236,4 +235,9 @@ def lookup(name, session=None, indices=None, exact_only=False):
                                     language=result['language'],
                                     exact=exact))
 
-    return objects[:5]
+    # Only return up to 10 matches; beyond that, something is wrong.
+    # We strip out duplicate entries above, so it's remotely possible that we
+    # should have more than 10 here and lost a few.  The speller returns 25 to
+    # give us some padding, and should avoid that problem.  Not a big deal if
+    # we lose the 25th-most-likely match anyway.
+    return objects[:10]
