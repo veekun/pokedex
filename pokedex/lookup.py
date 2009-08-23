@@ -10,11 +10,14 @@ import whoosh.filedb.filestore
 import whoosh.filedb.fileindex
 import whoosh.index
 from whoosh.qparser import QueryParser
+import whoosh.scoring
 import whoosh.spelling
 
 from pokedex.db import connect
 import pokedex.db.tables as tables
 from pokedex.roomaji import romanize
+
+__all__ = ['open_index', 'lookup']
 
 # Dictionary of table name => table class.
 # Need the table name so we can get the class from the table name after we
@@ -135,6 +138,23 @@ def open_index(directory=None, session=None, recreate=False):
     return index, speller
 
 
+class LanguageWeighting(whoosh.scoring.Weighting):
+    """A scoring class that forces otherwise-equal English results to come
+    before foreign results.
+    """
+
+    def score(self, searcher, fieldnum, text, docnum, weight, QTF=1):
+        doc = searcher.stored_fields(docnum)
+        if doc['language'] == None:
+            # English (well, "default"); leave it at 1
+            return weight
+        elif doc['language'] == u'Roomaji':
+            # Give Roomaji a bit of a boost, as it's most likely to be searched
+            return weight * 0.95
+        else:
+            # Everything else can drop down the totem pole
+            return weight * 0.9
+
 rx_is_number = re.compile('^\d+$')
 
 LookupResult = namedtuple('LookupResult',
@@ -188,19 +208,22 @@ def lookup(input, session=None, indices=None, exact_only=False):
     name = unicode(input).lower()
     exact = True
 
-    # If the input provided is a number, match it as an id.  Otherwise, name
-    if rx_is_number.match(input):
-        query_column = 'row_id'
-        exact_only = True  # don't spell-check numbers!
+    # If the input provided is a number, match it as an id.  Otherwise, name.
+    # Term objects do an exact match, so we don't have to worry about a query
+    # parser tripping on weird characters in the input
+    if rx_is_number.match(name):
+        # Don't spell-check numbers!
+        exact_only = True
+        query = whoosh.query.Term(u'row_id', name)
     else:
         # Not an integer
-        query_column = 'name'
+        query = whoosh.query.Term(u'name', name)
 
-    # Look for exact name.  A Term object does an exact match, so we don't have
-    # to worry about a query parser tripping on weird characters in the input
+    ### Actual searching
     searcher = index.searcher()
-    query = whoosh.query.Term(query_column, name)
-    print query
+    searcher.weighting = LanguageWeighting()  # XXX kosher?  docs say search()
+                                              # takes a weighting kw but it
+                                              # certainly does not
     results = searcher.search(query)
 
     # Look for some fuzzy matches if necessary
@@ -217,12 +240,6 @@ def lookup(input, session=None, indices=None, exact_only=False):
     seen = {}
     for result in results:
         # Skip dupe results
-        # Note!  The speller prefers English names, but the query does not.  So
-        # "latias" comes over "ratiasu".  "latias" matches only the English
-        # row, comes out first, and all is well.
-        # However!  The speller could then return "foo" which happens to be the
-        # name for two different things in different languages, and the
-        # non-English one could appear preferred.  This is not very likely.
         seen_key = result['table'], result['row_id']
         if seen_key in seen:
             continue
