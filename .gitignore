@@ -4,3 +4,6 @@
 *.swp
 
 *.egg-info
+
+pokedex.sqlite
+whoosh-index

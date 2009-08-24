@@ -53,7 +53,7 @@ def open_index(directory=None, session=None, recreate=False):
     # Defaults
     if not directory:
         directory = pkg_resources.resource_filename('pokedex',
-                                                    'data/whoosh_index')
+                                                    'data/whoosh-index')
 
     if not session:
         session = connect()
