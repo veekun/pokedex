@@ -2,7 +2,7 @@ id,name
 1,Master Ball
 2,Ultra Ball
 3,Great Ball
-4,Poké Ball
+4,Poke Ball
 5,Safari Ball
 6,Net Ball
 7,Dive Ball
@@ -61,7 +61,7 @@ id,name
 60,X Accuracy
 61,X Special
 62,X Sp. Def
-63,Poké Doll
+63,Poke Doll
 64,Fluffy Tail
 65,Blue Flute
 66,Yellow Flute
@@ -406,7 +406,7 @@ id,name
 405,Explorer Kit
 406,Loot Sack
 407,Rule Book
-408,Poké Radar
+408,Poke Radar
 409,Point Card
 410,Journal
 411,Seal Case
