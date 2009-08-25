@@ -102,3 +102,14 @@ def test_wildcard_lookup():
         first_result = results[0]
         assert_equal(first_result.object.name, name,
                                                 u'Wildcards work correctly')
+
+def test_random_lookup():
+    for _ in xrange(5):
+        results = pokedex.lookup.lookup(u'random')
+        assert_equal(len(results), 1,           u'Random returns one result')
+
+    for table_name in [u'pokemon', u'moves', u'items', u'abilities', u'types']:
+        results = pokedex.lookup.lookup(u'random', valid_types=[table_name])
+        assert_equal(len(results), 1,           u'Constrained random returns one result')
+        assert_equal(results[0].object.__tablename__, table_name,
+                                                u'Constrained random returns result from the right table')

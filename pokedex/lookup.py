@@ -2,6 +2,7 @@
 from collections import namedtuple
 import os, os.path
 import pkg_resources
+import random
 import re
 import shutil
 
@@ -18,7 +19,7 @@ from pokedex.db import connect
 import pokedex.db.tables as tables
 from pokedex.roomaji import romanize
 
-__all__ = ['open_index', 'lookup']
+__all__ = ['open_index', 'lookup', 'random_lookup']
 
 INTERMEDIATE_LOOKUP_RESULTS = 25
 MAX_LOOKUP_RESULTS = 10
@@ -176,6 +177,24 @@ rx_is_number = re.compile('^\d+$')
 
 LookupResult = namedtuple('LookupResult',
                           ['object', 'name', 'language', 'exact'])
+
+def _parse_table_name(name):
+    """Takes a singular table name, table name, or table object and returns the
+    table name.
+
+    Returns None for a bogus name.
+    """
+    if hasattr(name, '__tablename__'):
+        return getattr(name, '__tablename__')
+    elif name in indexed_tables:
+        return name
+    elif name + 's' in indexed_tables:
+        return name + 's'
+    else:
+        # Bogus.  Be nice and return dummy
+        return None
+
+
 def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     """Attempts to find some sort of object, given a database session and name.
 
@@ -245,6 +264,12 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
             # provided
             valid_types = prefixes
 
+    # Random lookup
+    if name == 'random':
+        return random_lookup(indices=(index, speller),
+                             session=session,
+                             valid_types=valid_types)
+
     # Do different things depending what the query looks like
     # Note: Term objects do an exact match, so we don't have to worry about a
     # query parser tripping on weird characters in the input
@@ -270,16 +295,7 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     ### Filter by type of object
     type_terms = []
     for valid_type in valid_types:
-        if hasattr(valid_type, '__tablename__'):
-            table_name = getattr(valid_type, '__tablename__')
-        elif valid_type in indexed_tables:
-            table_name = valid_type
-        elif valid_type + 's' in indexed_tables:
-            table_name = valid_type + 's'
-        else:
-            # Bogus.  Be nice and ignore it
-            continue
-
+        table_name = _parse_table_name(valid_type)
         type_terms.append(whoosh.query.Term(u'table', table_name))
 
     if type_terms:
@@ -326,3 +342,36 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     # give us some padding, and should avoid that problem.  Not a big deal if
     # we lose the 25th-most-likely match anyway.
     return objects[:MAX_LOOKUP_RESULTS]
+
+
+def random_lookup(valid_types=[], session=None, indices=None):
+    """Takes similar arguments as `lookup()`, but returns a random lookup
+    result from one of the provided `valid_types`.
+    """
+
+    tables = []
+    for valid_type in valid_types:
+        table_name = _parse_table_name(valid_type)
+        if table_name:
+            tables.append(indexed_tables[table_name])
+
+    if not tables:
+        tables = indexed_tables.values()
+
+    # Rather than create an array of many hundred items and pick randomly from
+    # it, just pick a number up to the total number of potential items, then
+    # pick randomly from that, and partition the whole range into chunks
+    total = 0
+    partitions = []
+    for table in tables:
+        count = session.query(table).count()
+        total += count
+        partitions.append((table, count))
+
+    n = random.randint(1, total)
+    while n > partitions[0][1]:
+        n -= partitions[0][1]
+        partitions.pop(0)
+
+    return lookup(unicode(n), valid_types=[ partitions[0][0] ],
+                  indices=indices, session=session)
