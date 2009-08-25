@@ -7,9 +7,8 @@ from pokedex.db.load import load
 def setup():
     # Reload data just in case
     session = connect()
-    load(session, verbose=False, drop_tables=True)
     open_index(session=session, recreate=True)
 
 
 def teardown():
-    print "teardown"
+    pass

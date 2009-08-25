@@ -20,6 +20,9 @@ from pokedex.roomaji import romanize
 
 __all__ = ['open_index', 'lookup']
 
+INTERMEDIATE_LOOKUP_RESULTS = 25
+MAX_LOOKUP_RESULTS = 10
+
 # Dictionary of table name => table class.
 # Need the table name so we can get the class from the table name after we
 # retrieve something from the index
@@ -242,10 +245,13 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
             # provided
             valid_types = prefixes
 
-    # If the input provided is a number, match it as an id.  Otherwise, name.
-    # Term objects do an exact match, so we don't have to worry about a query
-    # parser tripping on weird characters in the input
-    if rx_is_number.match(name):
+    # Do different things depending what the query looks like
+    # Note: Term objects do an exact match, so we don't have to worry about a
+    # query parser tripping on weird characters in the input
+    if '*' in name or '?' in name:
+        exact_only = True
+        query = whoosh.query.Wildcard(u'name', name)
+    elif rx_is_number.match(name):
         # Don't spell-check numbers!
         exact_only = True
         query = whoosh.query.Term(u'row_id', name)
@@ -285,14 +291,14 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     searcher.weighting = LanguageWeighting()  # XXX kosher?  docs say search()
                                               # takes a weighting kw but it
                                               # certainly does not
-    results = searcher.search(query)
+    results = searcher.search(query, limit=INTERMEDIATE_LOOKUP_RESULTS)
 
     # Look for some fuzzy matches if necessary
     if not exact_only and not results:
         exact = False
         results = []
 
-        for suggestion in speller.suggest(name, 25):
+        for suggestion in speller.suggest(name, INTERMEDIATE_LOOKUP_RESULTS):
             query = whoosh.query.Term('name', suggestion)
             results.extend(searcher.search(query))
 
@@ -319,4 +325,4 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     # should have more than 10 here and lost a few.  The speller returns 25 to
     # give us some padding, and should avoid that problem.  Not a big deal if
     # we lose the 25th-most-likely match anyway.
-    return objects[:10]
+    return objects[:MAX_LOOKUP_RESULTS]

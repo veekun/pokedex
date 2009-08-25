@@ -89,3 +89,16 @@ def test_fuzzy_lookup():
     top_names = [_.object.name for _ in results[0:2]]
     assert_true(u'Nidoran♂' in top_names,       u'Nidoran♂ is a top result for "Nidoran"')
     assert_true(u'Nidoran♀' in top_names,       u'Nidoran♀ is a top result for "Nidoran"')
+
+def test_wildcard_lookup():
+    tests = [
+        (u'pokemon:*meleon',    u'Charmeleon'),
+        (u'item:master*',       u'Master Ball'),
+        (u'ee?ee',              u'Eevee'),
+    ]
+
+    for wildcard, name in tests:
+        results = pokedex.lookup.lookup(wildcard)
+        first_result = results[0]
+        assert_equal(first_result.object.name, name,
+                                                u'Wildcards work correctly')
