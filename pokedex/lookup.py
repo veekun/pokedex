@@ -3,6 +3,7 @@ from collections import namedtuple
 import os, os.path
 import pkg_resources
 import re
+import shutil
 
 from sqlalchemy.sql import func
 import whoosh
@@ -71,6 +72,14 @@ def open_index(directory=None, session=None, recreate=False):
             # Apparently not a real index.  Fall out of the if and create it
             pass
 
+    # Delete and start over if we're going to bail anyway.
+    if directory_exists and recreate:
+        # Be safe and only delete if it looks like a whoosh index, i.e.,
+        # everything starts with _
+        if all(f[0] == '_' for f in os.listdir(directory)):
+            shutil.rmtree(directory)
+            directory_exists = False
+
     if not directory_exists:
         os.mkdir(directory)
 
@@ -104,15 +113,18 @@ def open_index(directory=None, session=None, recreate=False):
                            row_id=unicode(row.id),
                            forme_name=u'XXX')
 
+            def add(name, language, score):
+                writer.add_document(name=name.lower(), display_name=name,
+                                    language=language,
+                                    **row_key)
+                speller_entries.append((name.lower(), score))
+
             # If this is a form, mark it as such
             if getattr(row, 'forme_base_pokemon_id', None):
                 row_key['forme_name'] = row.forme_name
 
             name = row.name
-            writer.add_document(name=name.lower(),
-                                display_name=name,
-                                **row_key)
-            speller_entries.append((name.lower(), 1))
+            add(name, None, 1)
 
             # Pokemon also get other languages
             for foreign_name in getattr(row, 'foreign_names', []):
@@ -122,21 +134,12 @@ def open_index(directory=None, session=None, recreate=False):
                     # no point and it makes spell results confusing
                     continue
 
-                writer.add_document(name=moonspeak.lower(),
-                                    language=foreign_name.language.name,
-                                    display_name=moonspeak,
-                                    **row_key)
-                speller_entries.append((moonspeak.lower(), 3))
+                add(moonspeak, foreign_name.language.name, 3)
 
                 # Add Roomaji too
                 if foreign_name.language.name == 'Japanese':
                     roomaji = romanize(foreign_name.name)
-                    writer.add_document(name=roomaji.lower(),
-                                        language='Roomaji',
-                                        display_name=roomaji,
-                                        **row_key)
-                    speller_entries.append((roomaji.lower(), 8))
-
+                    add(roomaji, u'Roomaji', 8)
 
     writer.commit()
 
