@@ -15,7 +15,7 @@ def main():
 
     # XXX there must be a better way to get Unicode argv
     # XXX this doesn't work on Windows durp
-    enc = sys.stdin.encoding
+    enc = sys.stdin.encoding or 'utf8'
     args = [_.decode(enc) for _ in args]
 
     # Find the command as a function in this file
