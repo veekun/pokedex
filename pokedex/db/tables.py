@@ -163,6 +163,12 @@ class Machine(TableBase):
     generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False, autoincrement=False)
     move_id = Column(Integer, ForeignKey('moves.id'), nullable=False)
 
+class MoveDamageClass(TableBase):
+    __tablename__ = 'move_damage_classes'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(8), nullable=False)
+    description = Column(Unicode(64), nullable=False)
+
 class MoveEffect(TableBase):
     __tablename__ = 'move_effects'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -186,7 +192,7 @@ class Move(TableBase):
     pp = Column(SmallInteger, nullable=False)
     accuracy = Column(SmallInteger)
     target_id = Column(Integer, ForeignKey('move_targets.id'), nullable=False)
-    category = Column(Unicode(8), nullable=False)
+    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=False)
     effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False)
     effect_chance = Column(Integer)
     contest_type = Column(Unicode(8), nullable=False)
@@ -367,8 +373,6 @@ class Version(TableBase):
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False)
     name = Column(Unicode(32), nullable=False)
 
-    generation = association_proxy('version_group', 'generation')
-
 
 ### Relations down here, to avoid ordering problems
 Encounter.pokemon = relation(Pokemon, backref='encounters')
@@ -390,11 +394,12 @@ LocationArea.location = relation(Location, backref='areas')
 
 Machine.generation = relation(Generation)
 
-Move.type = relation(Type, backref='moves')
-Move.generation = relation(Generation, backref='moves')
-Move.target = relation(MoveTarget, backref='moves')
+Move.damage_class = relation(MoveDamageClass, backref='moves')
 Move.effect = relation(MoveEffect, backref='moves')
+Move.generation = relation(Generation, backref='moves')
 Move.machines = relation(Machine, backref='move')
+Move.target = relation(MoveTarget, backref='moves')
+Move.type = relation(Type, backref='moves')
 
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
@@ -449,5 +454,6 @@ Type.target_efficacies = relation(TypeEfficacy,
                                   backref='target_type')
 
 Version.version_group = relation(VersionGroup, backref='versions')
+Version.generation = association_proxy('version_group', 'generation')
 
 VersionGroup.generation = relation(Generation, backref='version_groups')
