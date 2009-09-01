@@ -7,6 +7,8 @@ from sqlalchemy.orm import backref, relation
 from sqlalchemy.types import *
 from sqlalchemy.databases.mysql import *
 
+from pokedex.db import rst
+
 metadata = MetaData()
 TableBase = declarative_base(metadata=metadata)
 
@@ -174,7 +176,7 @@ class MoveEffect(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     priority = Column(SmallInteger, nullable=False)
     short_effect = Column(Unicode(128), nullable=False)
-    effect = Column(Unicode(255), nullable=False)
+    effect = Column(Unicode(5120), nullable=False)
 
 class MoveTarget(TableBase):
     __tablename__ = 'move_targets'
@@ -395,11 +397,15 @@ LocationArea.location = relation(Location, backref='areas')
 Machine.generation = relation(Generation)
 
 Move.damage_class = relation(MoveDamageClass, backref='moves')
-Move.effect = relation(MoveEffect, backref='moves')
+Move.move_effect = relation(MoveEffect, backref='moves')
 Move.generation = relation(Generation, backref='moves')
 Move.machines = relation(Machine, backref='move')
 Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, backref='moves')
+
+Move.effect = rst.MoveEffectProperty()
+Move.priority = association_proxy('move_effect', 'priority')
+Move.short_effect = association_proxy('move_effect', 'short_effect')
 
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
