@@ -14,6 +14,7 @@ TableBase = declarative_base(metadata=metadata)
 
 class Ability(TableBase):
     __tablename__ = 'abilities'
+    __singlename__ = 'ability'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(24), nullable=False)
     flavor_text = Column(Unicode(64), nullable=False)
@@ -138,6 +139,7 @@ class GrowthRate(TableBase):
 
 class Item(TableBase):
     __tablename__ = 'items'
+    __singlename__ = 'item'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(16), nullable=False)
 
@@ -148,6 +150,7 @@ class Language(TableBase):
 
 class Location(TableBase):
     __tablename__ = 'locations'
+    __singlename__ = 'location'
     id = Column(Integer, primary_key=True, nullable=False)
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
     name = Column(Unicode(64), nullable=False)
@@ -186,6 +189,7 @@ class MoveTarget(TableBase):
 
 class Move(TableBase):
     __tablename__ = 'moves'
+    __singlename__ = 'move'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(12), nullable=False)
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
@@ -211,6 +215,7 @@ class Pokemon(TableBase):
     purely cosmetic forms like Unown.
     """
     __tablename__ = 'pokemon'
+    __singlename__ = 'pokemon'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(20), nullable=False)
     forme_name = Column(Unicode(16))
@@ -360,6 +365,7 @@ class TypeEfficacy(TableBase):
 
 class Type(TableBase):
     __tablename__ = 'types'
+    __singlename__ = 'type'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(8), nullable=False)
     abbreviation = Column(Unicode(3), nullable=False)
