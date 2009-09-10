@@ -63,12 +63,13 @@ class UnicodeOutput(Output):
 ### Text roles
 
 def generic_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
-    node = docutils.nodes.strong(text, rawtext, **options)
+    node = docutils.nodes.emphasis(rawtext, text, **options)
     return [node], []
 
 roles.register_local_role('ability', generic_role)
 roles.register_local_role('item', generic_role)
 roles.register_local_role('move', generic_role)
+roles.register_local_role('type', generic_role)
 roles.register_local_role('pokemon', generic_role)
 roles.register_local_role('mechanic', generic_role)
 
@@ -147,6 +148,9 @@ class MoveEffectProperty(object):
     lie and it doesn't yet.
     """
 
+    def __init__(self, effect_column):
+        self.effect_column = effect_column
+
     def __get__(self, move, move_class):
         # Attach a function for handling the `data` role
         # XXX make this a little more fault-tolerant..  maybe..
@@ -155,6 +159,6 @@ class MoveEffectProperty(object):
             newtext = getattr(move, text[5:])
             return docutils.nodes.Text(newtext, rawtext)
 
-        return RstString(move.move_effect.effect,
+        return RstString(getattr(move.move_effect, self.effect_column),
                          document_properties=dict(
                              _pokedex_handle_data=data_role_func))

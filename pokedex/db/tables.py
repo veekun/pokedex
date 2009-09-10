@@ -178,7 +178,7 @@ class MoveEffect(TableBase):
     __tablename__ = 'move_effects'
     id = Column(Integer, primary_key=True, nullable=False)
     priority = Column(SmallInteger, nullable=False)
-    short_effect = Column(Unicode(128), nullable=False)
+    short_effect = Column(Unicode(256), nullable=False)
     effect = Column(Unicode(5120), nullable=False)
 
 class MoveTarget(TableBase):
@@ -409,9 +409,9 @@ Move.machines = relation(Machine, backref='move')
 Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, backref='moves')
 
-Move.effect = rst.MoveEffectProperty()
+Move.effect = rst.MoveEffectProperty('effect')
 Move.priority = association_proxy('move_effect', 'priority')
-Move.short_effect = association_proxy('move_effect', 'short_effect')
+Move.short_effect = rst.MoveEffectProperty('short_effect')
 
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
