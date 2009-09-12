@@ -78,7 +78,7 @@ def romanize(string):
 
             # Drop the -i and append the ya/yu/yo sound
             new_sound = _roomaji_youon[char]
-            if last_kana in ['shi', 'ji']:
+            if last_kana in ['chi', 'shi', 'ji']:
                 # Strip the y-
                 new_char = last_kana[:-1] + new_sound[1:]
             else:
