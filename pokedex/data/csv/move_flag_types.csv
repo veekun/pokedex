@@ -1,0 +1,7 @@
+id,name,description
+1,Makes contact,"User touches the target.  This triggers some abilities (e.g., :ability:`Static`) and items (e.g., :item:`Sticky Barb`)."
+2,Blocked by Detect and Protect,This move will not work if the target has used :move:`Detect` or :move:`Protect` this turn.
+3,Reflectable with Magic Coat,This move will be reflected back at the user if the target has used :move:`Magic Coat` this turn.
+4,Snatchable,This move will be stolen if another Pokémon has used :move:`Snatch` this turn.
+5,Rolls accuracy,This move is affected by :mechanic:`accuracy` and :mechanic:`evasion` modifiers.
+6,Flinches with King's Rock,A held :item:`King's Rock` gives this move an 11.7% chance to make the target :mechanic:`flinch`.
