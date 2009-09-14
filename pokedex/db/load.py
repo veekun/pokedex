@@ -175,6 +175,11 @@ def load(session, directory=None, drop_tables=False, verbose=False):
 
             session.add(row)
 
+            # Remembering some zillion rows in the session consumes a lot of
+            # RAM.  Let's not do that.  Commit every 1000 rows
+            if len(session.new) > 1000:
+                session.commit()
+
         session.commit()
 
         # Attempt to add any spare rows we've collected
