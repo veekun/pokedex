@@ -22,7 +22,7 @@ _roomaji_kana = {
 
 _roomaji_youon = {
     u'ャ': 'ya',                    u'ュ': 'yu',                    u'ョ': 'yo',
-    u'ゃ': 'ya',                    u'ゅ': 'yu',                    u'ょ': 'yo',
+    #u'ゃ': 'ya',                    u'ゅ': 'yu',                    u'ょ': 'yo',
 }
 
 # XXX If romanize() ever handles hiragana, it will need to make sure that the
@@ -73,7 +73,7 @@ def romanize(string):
 
         # Youon
         elif char in _roomaji_youon:
-            if last_kana[-1] != 'i' or last_kana == 'i':
+            if not last_kana or last_kana[-1] != 'i' or last_kana == 'i':
                 raise ValueError("Youon must follow an -i sound.")
 
             # Drop the -i and append the ya/yu/yo sound
@@ -88,7 +88,8 @@ def romanize(string):
             last_kana = new_char
 
         # Sokuon
-        elif char in (u'っ', u'ッ'):
+        #elif char in (u'っ', u'ッ'):
+        elif char in (u'ッ',):
             # Remember it and double the consonant next time around
             last_kana = 'sokuon'
 

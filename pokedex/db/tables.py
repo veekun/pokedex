@@ -181,6 +181,12 @@ class MoveEffect(TableBase):
     short_effect = Column(Unicode(256), nullable=False)
     effect = Column(Unicode(5120), nullable=False)
 
+class MoveName(TableBase):
+    __tablename__ = 'move_names'
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
+    name = Column(Unicode(16), nullable=False)
+
 class MoveTarget(TableBase):
     __tablename__ = 'move_targets'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -403,15 +409,18 @@ LocationArea.location = relation(Location, backref='areas')
 Machine.generation = relation(Generation)
 
 Move.damage_class = relation(MoveDamageClass, backref='moves')
-Move.move_effect = relation(MoveEffect, backref='moves')
+Move.foreign_names = relation(MoveName, backref='pokemon')
 Move.generation = relation(Generation, backref='moves')
 Move.machines = relation(Machine, backref='move')
+Move.move_effect = relation(MoveEffect, backref='moves')
 Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, backref='moves')
 
 Move.effect = rst.MoveEffectProperty('effect')
 Move.priority = association_proxy('move_effect', 'priority')
 Move.short_effect = rst.MoveEffectProperty('short_effect')
+
+MoveName.language = relation(Language)
 
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
