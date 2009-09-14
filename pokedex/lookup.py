@@ -206,7 +206,10 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     This function currently ONLY does fuzzy matching if there are no exact
     matches.
 
-    Formes are not returned; "Shaymin" will return only grass Shaymin.
+    Formes are not returned unless requested; "Shaymin" will return only grass
+    Shaymin.
+
+    Extraneous whitespace is removed with extreme prejudice.
 
     Recognizes:
     - Names: "Eevee", "Surf", "Run Away", "Payapa Berry", etc.
@@ -251,18 +254,20 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     else:
         index, speller = open_index()
 
-    name = unicode(input).lower()
+    name = unicode(input).strip().lower()
     exact = True
     form = None
 
     # Remove any type prefix (pokemon:133) before constructing a query
     if ':' in name:
-        prefix_chunk, name = name.split(':', 2)
-        prefixes = prefix_chunk.split(',')
+        prefix_chunk, name = name.split(':', 1)
+        name = name.strip()
+
         if not valid_types:
             # Only use types from the query string if none were explicitly
             # provided
-            valid_types = prefixes
+            prefixes = prefix_chunk.split(',')
+            valid_types = [_.strip() for _ in prefixes]
 
     # Random lookup
     if name == 'random':
@@ -287,7 +292,7 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
 
         # If there's a space in the input, this might be a form
         if ' ' in name:
-            form, formless_name = name.split(' ', 2)
+            form, formless_name = name.split(' ', 1)
             form_query = whoosh.query.Term(u'name', formless_name) \
                        & whoosh.query.Term(u'forme_name', form)
             query = query | form_query
