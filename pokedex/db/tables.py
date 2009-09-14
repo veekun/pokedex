@@ -181,6 +181,17 @@ class MoveEffect(TableBase):
     short_effect = Column(Unicode(256), nullable=False)
     effect = Column(Unicode(5120), nullable=False)
 
+class MoveFlag(TableBase):
+    __tablename__ = 'move_flags'
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+    move_flag_type_id = Column(Integer, ForeignKey('move_flag_types.id'), primary_key=True, nullable=False, autoincrement=False)
+
+class MoveFlagType(TableBase):
+    __tablename__ = 'move_flag_types'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(32), nullable=False)
+    description = Column(rst.RstTextColumn(128), nullable=False)
+
 class MoveName(TableBase):
     __tablename__ = 'move_names'
     move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
@@ -409,16 +420,20 @@ LocationArea.location = relation(Location, backref='areas')
 Machine.generation = relation(Generation)
 
 Move.damage_class = relation(MoveDamageClass, backref='moves')
+Move.flags = association_proxy('move_flags', 'flag')
 Move.foreign_names = relation(MoveName, backref='pokemon')
 Move.generation = relation(Generation, backref='moves')
 Move.machines = relation(Machine, backref='move')
 Move.move_effect = relation(MoveEffect, backref='moves')
+Move.move_flags = relation(MoveFlag, backref='move')
 Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, backref='moves')
 
 Move.effect = rst.MoveEffectProperty('effect')
 Move.priority = association_proxy('move_effect', 'priority')
 Move.short_effect = rst.MoveEffectProperty('short_effect')
+
+MoveFlag.flag = relation(MoveFlagType)
 
 MoveName.language = relation(Language)
 

@@ -40,6 +40,8 @@ from docutils.parsers.rst import Parser, roles
 import docutils.utils
 from docutils.writers.html4css1 import Writer as HTMLWriter
 
+import sqlalchemy.types
+
 ### Subclasses of bits of docutils, to munge it into doing what I want
 class HTMLFragmentWriter(HTMLWriter):
     """Translates reST to HTML, but only as a fragment.  Enclosing <body>,
@@ -138,7 +140,7 @@ class RstString(object):
 class MoveEffectProperty(object):
     """Property that wraps a move effect.  Used like this:
 
-        MoveClass.effect = MoveEffectProperty()
+        MoveClass.effect = MoveEffectProperty('effect')
 
         some_move.effect            # returns an RstString
         some_move.effect.as_html    # returns a chunk of HTML
@@ -162,3 +164,17 @@ class MoveEffectProperty(object):
         return RstString(getattr(move.move_effect, self.effect_column),
                          document_properties=dict(
                              _pokedex_handle_data=data_role_func))
+
+class RstTextColumn(sqlalchemy.types.TypeDecorator):
+    """Generic column type for reST text.
+
+    Do NOT use this for move effects!  They need to know what move they belong
+    to so they can fill in, e.g., effect chances.
+    """
+    impl = sqlalchemy.types.Unicode
+
+    def process_bind_param(self, value, dialect):
+        return unicode(value)
+
+    def process_result_value(self, value, dialect):
+        return RstString(value)

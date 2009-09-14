@@ -578,7 +578,7 @@ The user may still use :move:`U-Turn` to leave the :mechanic:`field`.
 
 This effect can be passed with :move:`Baton Pass`."
 183,0,Lowers the user's Attack and Defense by one level after inflicting damage.,"Inflicts :mechanic:`regular damage`, then :mechanic:`lowers` the user's mechanic:`Attack` and mechanic:`Defense` by one level."
-184,4,Reflects back any effects the target tries to use on the user this turn.,"Until the user leaves the mechanic:`field`, any non-damaging move targeting the user that inflicts mechanic:`major status effect`\ s, mechanic:`stat change`\ s, or mechanic:`trap`\ ping effects will be reflected at its user.
+184,4,Reflects back the first effect move used on the user this turn.,"The first non-damaging move targeting the user this turn that inflicts :mechanic:`major status effect`\ s, :mechanic:`stat change`\ s, or :mechanic:`trap`\ ping effects will be reflected at its user.
 
 :move:`Defog`, :move:`Memento`, and :move:`Teeter Dance` are not reflected.
 
