@@ -198,6 +198,12 @@ class MoveFlagType(TableBase):
     name = Column(Unicode(32), nullable=False)
     description = Column(rst.RstTextColumn(128), nullable=False)
 
+class MoveFlavorText(TableBase):
+    __tablename__ = 'move_flavor_text'
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False, autoincrement=False)
+    flavor_text = Column(Unicode(255), nullable=False)
+
 class MoveName(TableBase):
     __tablename__ = 'move_names'
     move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
@@ -434,6 +440,7 @@ Machine.generation = relation(Generation)
 Move.contest_effect = relation(ContestEffect, backref='moves')
 Move.damage_class = relation(MoveDamageClass, backref='moves')
 Move.flags = association_proxy('move_flags', 'flag')
+Move.flavor_text = relation(MoveFlavorText, order_by=MoveFlavorText.generation_id, backref='move')
 Move.foreign_names = relation(MoveName, backref='pokemon')
 Move.generation = relation(Generation, backref='moves')
 Move.machines = relation(Machine, backref='move')
@@ -448,6 +455,8 @@ Move.priority = association_proxy('move_effect', 'priority')
 Move.short_effect = rst.MoveEffectProperty('short_effect')
 
 MoveFlag.flag = relation(MoveFlagType)
+
+MoveFlavorText.generation = relation(Generation)
 
 MoveName.language = relation(Language)
 
@@ -466,7 +475,7 @@ Pokemon.evolution_method = relation(EvolutionMethod)
 Pokemon.evolution_children = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.evolution_parent_pokemon_id,
                                                backref=backref('evolution_parent',
                                                                remote_side=[Pokemon.id]))
-Pokemon.flavor_text = relation(PokemonFlavorText, backref='pokemon')
+Pokemon.flavor_text = relation(PokemonFlavorText, order_by=PokemonFlavorText.pokemon_id, backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
 Pokemon.items = relation(PokemonItem)
 Pokemon.generation = relation(Generation, backref='pokemon')
