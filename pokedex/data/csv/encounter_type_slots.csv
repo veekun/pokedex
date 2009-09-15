@@ -25,3 +25,9 @@ id,encounter_type_id,encounter_condition_group_id,rarity
 24,5,,5
 25,5,,4
 26,5,,1
+27,1,2,20
+28,1,2,5
+29,1,2,4
+30,1,2,1
+32,6,,51
+33,6,,49

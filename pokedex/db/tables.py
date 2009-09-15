@@ -162,6 +162,12 @@ class LocationArea(TableBase):
     internal_id = Column(Integer, nullable=False)
     name = Column(Unicode(64), nullable=True)
 
+class LocationAreaEncounterRate(TableBase):
+    __tablename__ = 'location_area_encounter_rates'
+    location_area_id = Column(Integer, ForeignKey('location_areas.id'), primary_key=True, nullable=False, autoincrement=False)
+    encounter_type_id = Column(Integer, ForeignKey('encounter_types.id'), primary_key=True, nullable=False, autoincrement=False)
+    rate = Column(Integer, nullable=True)
+
 class Machine(TableBase):
     __tablename__ = 'machines'
     machine_number = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
