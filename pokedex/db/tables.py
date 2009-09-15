@@ -332,6 +332,7 @@ class PokemonFormSprite(TableBase):
     __tablename__ = 'pokemon_form_sprites'
     id = Column(Integer, primary_key=True, nullable=False)
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    introduced_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
     name = Column(Unicode(16), nullable=True)
 
 class PokemonItem(TableBase):
@@ -493,6 +494,7 @@ PokemonItem.version = relation(Version)
 PokemonFormGroup.pokemon = relation(Pokemon, backref=backref('form_group',
                                                              uselist=False))
 PokemonFormSprite.pokemon = relation(Pokemon, backref='form_sprites')
+PokemonFormSprite.introduced_in = relation(VersionGroup)
 
 PokemonMove.pokemon = relation(Pokemon, backref='pokemon_moves')
 PokemonMove.version_group = relation(VersionGroup)
