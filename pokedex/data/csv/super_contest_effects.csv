@@ -1,0 +1,23 @@
+id,appeal,flavor_text
+1,2,Enables the user to perform first in the next turn.
+2,2,Enables the user to perform last in the next turn.
+4,2,Earn +2 if the Judge's Voltage goes up.
+5,3,A basic performance using a move known by the Pokémon.
+6,1,Earn +3 if no other Pokémon has chosen the same Judge.
+7,2,Allows performance of the same move twice in a row.
+8,0,Increased Voltage is added to the performance score.
+9,0,Earn +15 if all the Pokémon choose the same Judge.
+10,2,Lowers the Voltage of all Judges by one each.
+11,0,Earn double the score in the next turn.
+12,0,Steals the Voltage of the Pokémon that just went.
+13,2,Prevents the Voltage from going up in the same turn.
+14,2,Makes the order of contestants random in the next turn.
+15,2,Earns double the score on the final performance.
+16,0,Raises the score if the Voltage is low.
+17,2,Earn +2 if the Pokémon performs first in the turn.
+18,2,Earn +2 if the Pokémon performs last in the turn.
+19,2,Prevents the Voltage from going down in the same turn.
+20,1,Earn +3 if two Pokémon raise the Voltage in a row.
+21,0,Earn a higher score the later the Pokémon performs.
+22,2,Earn +3 if the Pokémon that just went hit max Voltage.
+23,1,Earn +3 if the Pokémon gets the lowest score.

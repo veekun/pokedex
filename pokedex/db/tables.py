@@ -25,7 +25,7 @@ class ContestEffect(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     appeal = Column(SmallInteger, nullable=False)
     jam = Column(SmallInteger, nullable=False)
-    flavor = Column(Unicode(255), nullable=False)
+    flavor_text = Column(Unicode(64), nullable=False)
     effect = Column(Unicode(255), nullable=False)
 
 class EggGroup(TableBase):
@@ -226,7 +226,7 @@ class Move(TableBase):
     effect_chance = Column(Integer)
     contest_type = Column(Unicode(8), nullable=False)
     contest_effect_id = Column(Integer, ForeignKey('contest_effects.id'), nullable=True)
-    super_contest_effect_id = Column(Integer, nullable=False)
+    super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=False)
 
 class Pokemon(TableBase):
     """The core to this whole mess.
@@ -380,6 +380,12 @@ class Stat(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(16), nullable=False)
 
+class SuperContestEffect(TableBase):
+    __tablename__ = 'super_contest_effects'
+    id = Column(Integer, primary_key=True, nullable=False)
+    appeal = Column(SmallInteger, nullable=False)
+    flavor_text = Column(Unicode(64), nullable=False)
+
 class TypeEfficacy(TableBase):
     __tablename__ = 'type_efficacy'
     damage_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False)
@@ -425,6 +431,7 @@ LocationArea.location = relation(Location, backref='areas')
 
 Machine.generation = relation(Generation)
 
+Move.contest_effect = relation(ContestEffect, backref='moves')
 Move.damage_class = relation(MoveDamageClass, backref='moves')
 Move.flags = association_proxy('move_flags', 'flag')
 Move.foreign_names = relation(MoveName, backref='pokemon')
@@ -432,6 +439,7 @@ Move.generation = relation(Generation, backref='moves')
 Move.machines = relation(Machine, backref='move')
 Move.move_effect = relation(MoveEffect, backref='moves')
 Move.move_flags = relation(MoveFlag, backref='move')
+Move.super_contest_effect = relation(SuperContestEffect, backref='moves')
 Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, backref='moves')
 
