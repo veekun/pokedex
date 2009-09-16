@@ -20,6 +20,11 @@ class Ability(TableBase):
     flavor_text = Column(Unicode(64), nullable=False)
     effect = Column(Unicode(255), nullable=False)
 
+class ContestCombo(TableBase):
+    __tablename__ = 'contest_combos'
+    first_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+    second_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+
 class ContestEffect(TableBase):
     __tablename__ = 'contest_effects'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -387,6 +392,11 @@ class Stat(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(16), nullable=False)
 
+class SuperContestCombo(TableBase):
+    __tablename__ = 'super_contest_combos'
+    first_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+    second_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+
 class SuperContestEffect(TableBase):
     __tablename__ = 'super_contest_effects'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -419,6 +429,11 @@ class Version(TableBase):
 
 
 ### Relations down here, to avoid ordering problems
+ContestCombo.first = relation(Move, primaryjoin=ContestCombo.first_move_id==Move.id,
+                                    backref='contest_combo_first')
+ContestCombo.second = relation(Move, primaryjoin=ContestCombo.second_move_id==Move.id,
+                                     backref='contest_combo_second')
+
 Encounter.pokemon = relation(Pokemon, backref='encounters')
 Encounter.version = relation(Version, backref='encounters')
 Encounter.location_area = relation(LocationArea, backref='encounters')
@@ -439,6 +454,8 @@ LocationArea.location = relation(Location, backref='areas')
 Machine.generation = relation(Generation)
 
 Move.contest_effect = relation(ContestEffect, backref='moves')
+Move.contest_combo_next = association_proxy('contest_combo_first', 'second')
+Move.contest_combo_prev = association_proxy('contest_combo_second', 'first')
 Move.damage_class = relation(MoveDamageClass, backref='moves')
 Move.flags = association_proxy('move_flags', 'flag')
 Move.flavor_text = relation(MoveFlavorText, order_by=MoveFlavorText.generation_id, backref='move')
@@ -448,6 +465,8 @@ Move.machines = relation(Machine, backref='move')
 Move.move_effect = relation(MoveEffect, backref='moves')
 Move.move_flags = relation(MoveFlag, backref='move')
 Move.super_contest_effect = relation(SuperContestEffect, backref='moves')
+Move.super_contest_combo_next = association_proxy('super_contest_combo_first', 'second')
+Move.super_contest_combo_prev = association_proxy('super_contest_combo_second', 'first')
 Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, backref='moves')
 
@@ -504,6 +523,11 @@ PokemonMove.method = relation(PokemonMoveMethod)
 PokemonName.language = relation(Language)
 
 PokemonStat.stat = relation(Stat)
+
+SuperContestCombo.first = relation(Move, primaryjoin=SuperContestCombo.first_move_id==Move.id,
+                                        backref='super_contest_combo_first')
+SuperContestCombo.second = relation(Move, primaryjoin=SuperContestCombo.second_move_id==Move.id,
+                                         backref='super_contest_combo_second')
 
 Type.damage_efficacies = relation(TypeEfficacy,
                                   primaryjoin=Type.id
