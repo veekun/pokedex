@@ -176,7 +176,7 @@ class LocationAreaEncounterRate(TableBase):
 class Machine(TableBase):
     __tablename__ = 'machines'
     machine_number = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
-    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False, autoincrement=False)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
     move_id = Column(Integer, ForeignKey('moves.id'), nullable=False)
 
 class MoveDamageClass(TableBase):
@@ -451,7 +451,7 @@ Generation.versions = relation(Version, secondary=VersionGroup.__table__)
 
 LocationArea.location = relation(Location, backref='areas')
 
-Machine.generation = relation(Generation)
+Machine.version_group = relation(VersionGroup)
 
 Move.contest_effect = relation(ContestEffect, backref='moves')
 Move.contest_combo_next = association_proxy('contest_combo_first', 'second')
