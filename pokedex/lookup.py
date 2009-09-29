@@ -194,6 +194,31 @@ def _parse_table_name(name):
         # Bogus.  Be nice and return dummy
         return None
 
+def _whoosh_records_to_results(records, session, exact=True):
+    """Converts a list of whoosh's indexed records to LookupResult tuples
+    containing database objects.
+    """
+    # XXX this 'exact' thing is getting kinda leaky.  would like a better way
+    # to handle it, since only lookup() cares about fuzzy results
+    seen = {}
+    results = []
+    for record in records:
+        # Skip dupes
+        seen_key = record['table'], record['row_id']
+        if seen_key in seen:
+            continue
+        seen[seen_key] = True
+
+        cls = indexed_tables[record['table']]
+        obj = session.query(cls).get(record['row_id'])
+
+        results.append(LookupResult(object=obj,
+                                    name=record['display_name'],
+                                    language=record['language'],
+                                    exact=exact))
+
+    return results
+
 
 def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     """Attempts to find some sort of object, given a database session and name.
@@ -324,22 +349,7 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
             results.extend(searcher.search(query))
 
     ### Convert results to db objects
-    objects = []
-    seen = {}
-    for result in results:
-        # Skip dupe results
-        seen_key = result['table'], result['row_id']
-        if seen_key in seen:
-            continue
-        seen[seen_key] = True
-
-        cls = indexed_tables[result['table']]
-        obj = session.query(cls).get(result['row_id'])
-
-        objects.append(LookupResult(object=obj,
-                                    name=result['display_name'],
-                                    language=result['language'],
-                                    exact=exact))
+    objects = _whoosh_records_to_results(results, session, exact=exact)
 
     # Only return up to 10 matches; beyond that, something is wrong.
     # We strip out duplicate entries above, so it's remotely possible that we
@@ -380,3 +390,28 @@ def random_lookup(valid_types=[], session=None, indices=None):
 
     return lookup(unicode(n), valid_types=[ partitions[0][0] ],
                   indices=indices, session=session)
+
+def prefix_lookup(prefix, session=None, indices=None):
+    """Returns terms starting with the given exact prefix.
+
+    No special magic is currently done with the name; type prefixes are not
+    recognized.
+
+    `session` and `indices` are treated as with `lookup()`.
+    """
+
+    if not session:
+        session = connect()
+
+    if indices:
+        index, speller = indices
+    else:
+        index, speller = open_index()
+
+    query = whoosh.query.Prefix(u'name', prefix)
+
+    searcher = index.searcher()
+    searcher.weighting = LanguageWeighting()
+    results = searcher.search(query)  # XXX , limit=MAX_LOOKUP_RESULTS)
+
+    return _whoosh_records_to_results(results, session)
