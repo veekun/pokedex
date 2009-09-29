@@ -2,6 +2,25 @@
 """Provides `romanize()` for romanizing simple Japanese text."""
 
 _roomaji_kana = {
+    # Hiragana
+    u'あ': 'a',     u'い': 'i',     u'う': 'u',     u'え': 'e',     u'お': 'o',
+    u'か': 'ka',    u'き': 'ki',    u'く': 'ku',    u'け': 'ke',    u'こ': 'ko',
+    u'さ': 'sa',    u'し': 'shi',   u'す': 'su',    u'せ': 'se',    u'そ': 'so',
+    u'た': 'ta',    u'ち': 'chi',   u'つ': 'tsu',   u'て': 'te',    u'と': 'to',
+    u'な': 'na',    u'に': 'ni',    u'ぬ': 'nu',    u'ね': 'ne',    u'の': 'no',
+    u'は': 'ha',    u'ひ': 'hi',    u'ふ': 'fu',    u'へ': 'he',    u'ほ': 'ho',
+    u'ま': 'ma',    u'み': 'mi',    u'む': 'mu',    u'め': 'me',    u'も': 'mo',
+    u'や': 'ya',                    u'ゆ': 'yu',                    u'よ': 'yo',
+    u'ら': 'ra',    u'り': 'ri',    u'る': 'ru',    u'れ': 're',    u'ろ': 'ro',
+    u'わ': 'wa',    u'ゐ': 'wi',                    u'ゑ': 'we',    u'を': 'wo',
+                                                                    u'ん': 'n',
+    u'が': 'ga',    u'ぎ': 'gi',    u'ぐ': 'gu',    u'げ': 'ge',    u'ご': 'go',
+    u'ざ': 'za',    u'じ': 'ji',    u'ず': 'zu',    u'ぜ': 'ze',    u'ぞ': 'zo',
+    u'だ': 'da',    u'ぢ': 'ji',    u'づ': 'dzu',   u'で': 'de',    u'ど': 'do',
+    u'ば': 'ba',    u'び': 'bi',    u'ぶ': 'bu',    u'べ': 'be',    u'ぼ': 'bo',
+    u'ぱ': 'pa',    u'ぴ': 'pi',    u'ぷ': 'pu',    u'ぺ': 'pe',    u'ぽ': 'po',
+
+    # Katakana
     u'ア': 'a',     u'イ': 'i',     u'ウ': 'u',     u'エ': 'e',     u'オ': 'o',
     u'カ': 'ka',    u'キ': 'ki',    u'ク': 'ku',    u'ケ': 'ke',    u'コ': 'ko',
     u'サ': 'sa',    u'シ': 'shi',   u'ス': 'su',    u'セ': 'se',    u'ソ': 'so',
@@ -21,8 +40,11 @@ _roomaji_kana = {
 }
 
 _roomaji_youon = {
+    # Hiragana
+    u'ゃ': 'ya',                    u'ゅ': 'yu',                    u'ょ': 'yo',
+
+    # Katakana
     u'ャ': 'ya',                    u'ュ': 'yu',                    u'ョ': 'yo',
-    #u'ゃ': 'ya',                    u'ゅ': 'yu',                    u'ょ': 'yo',
 }
 
 # XXX If romanize() ever handles hiragana, it will need to make sure that the
@@ -33,6 +55,7 @@ _roomaji_small_kana = {
     u'ァ': 'a',     u'ィ': 'i',     u'ゥ': 'u',     u'ェ': 'e',     u'ォ': 'o',
 }
 _roomaji_small_kana_combos = {
+                                    u'ウィ': 'wi',
                                                     u'チェ': 'che',
                                                     u'シェ': 'she',
     u'テァ': 'tha', u'ティ': 'ti',  u'テゥ': 'thu', u'テェ': 'tye', u'テォ': 'tho',
@@ -70,6 +93,8 @@ def romanize(string):
                 # full-size vowel.  Better than bailing, and seems to occur a
                 # lot, e.g. ピィ is "pii"
                 characters.append(_roomaji_small_kana[char])
+
+            last_kana = _roomaji_small_kana[char]
 
         # Youon
         elif char in _roomaji_youon:
