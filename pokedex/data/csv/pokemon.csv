@@ -492,9 +492,9 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 491,Darkrai,,,4,252,,,,15,505,Pitch-Black,black,12,,-1,3,210,0,,0,0,0
 492,Shaymin,land,,4,253,,,,2,21,Gratitude,green,8,,-1,45,64,100,,0,0,0
 493,Arceus,,,4,254,,,,32,3200,Alpha,gray,8,,-1,3,255,0,,0,0,0
-496,Deoxys,attack,386,4,202,,,,17,608,DNA,red,12,rare,-1,3,215,0,,0,0,0
-497,Deoxys,defense,386,4,202,,,,17,608,DNA,red,12,rare,-1,3,215,0,,0,0,0
-498,Deoxys,speed,386,4,202,,,,17,608,DNA,red,12,rare,-1,3,215,0,,0,0,0
+496,Deoxys,attack,386,3,202,,,,17,608,DNA,red,12,rare,-1,3,215,0,,0,0,0
+497,Deoxys,defense,386,3,202,,,,17,608,DNA,red,12,rare,-1,3,215,0,,0,0,0
+498,Deoxys,speed,386,3,202,,,,17,608,DNA,red,12,rare,-1,3,215,0,,0,0,0
 499,Wormadam,sandy,413,4,213,412,3,20,5,65,Bagworm,gray,2,,8,45,159,70,,0,0,0
 500,Wormadam,trash,413,4,213,412,3,20,5,65,Bagworm,gray,2,,8,45,159,70,,0,0,0
 501,Giratina,origin,487,4,248,,,,69,6500,Renegade,black,10,,-1,3,220,0,,0,0,0
