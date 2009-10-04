@@ -109,8 +109,8 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 108,Lickitung,,,1,48,,,,12,655,Licking,pink,6,grassland,4,45,127,70,11,0,0,0
 109,Koffing,,,1,49,,,,6,10,Poison Gas,purple,1,urban,4,190,114,70,55,0,0,0
 110,Weezing,,,1,49,109,1,35,12,95,Poison Gas,purple,11,urban,4,60,173,70,143,0,0,0
-111,Rhyhorn,,,1,50,,,,10,1150,Spikes,gray,8,rough terrain,4,120,135,70,1,0,1,1
-112,Rhydon,,,1,50,111,1,42,19,1200,Drill,gray,6,rough terrain,4,60,204,70,18,0,1,1
+111,Rhyhorn,,,1,50,,,,10,1150,Spikes,gray,8,rough terrain,4,120,135,70,18,0,1,1
+112,Rhydon,,,1,50,111,1,42,19,1200,Drill,gray,6,rough terrain,4,60,204,70,1,0,1,1
 113,Chansey,,,1,51,440,9,Oval Stone,11,346,Egg,pink,6,urban,8,30,255,140,40,0,0,0
 114,Tangela,,,1,52,,,,10,350,Vine,blue,7,grassland,4,45,166,70,30,0,0,0
 115,Kangaskhan,,,1,53,,,,22,800,Parent,brown,6,grassland,8,45,175,70,2,0,0,0
