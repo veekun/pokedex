@@ -113,8 +113,7 @@ def romanize(string):
             last_kana = new_char
 
         # Sokuon
-        #elif char in (u'っ', u'ッ'):
-        elif char in (u'ッ',):
+        elif char in (u'っ', u'ッ'):
             # Remember it and double the consonant next time around
             last_kana = 'sokuon'
 
