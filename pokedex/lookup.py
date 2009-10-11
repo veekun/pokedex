@@ -408,7 +408,7 @@ def prefix_lookup(prefix, session=None, indices=None):
     else:
         index, speller = open_index()
 
-    query = whoosh.query.Prefix(u'name', prefix)
+    query = whoosh.query.Prefix(u'name', prefix.lower())
 
     searcher = index.searcher()
     searcher.weighting = LanguageWeighting()
