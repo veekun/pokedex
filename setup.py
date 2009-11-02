@@ -5,7 +5,11 @@ setup(
     zip_safe = False,
     packages = find_packages(),
     package_data = { '': ['pokedex/data'] },
-    install_requires=['SQLAlchemy>=0.5.1', 'whoosh>=0.3.0b24'],
+    install_requires=[
+        'docutils',
+        'SQLAlchemy>=0.5.1',
+        'whoosh>=0.3.0b24',
+    ],
 
     entry_points = {
         'console_scripts': [
