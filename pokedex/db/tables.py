@@ -179,6 +179,18 @@ class Machine(TableBase):
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
     move_id = Column(Integer, ForeignKey('moves.id'), nullable=False)
 
+class MoveEffectCategory(TableBase):
+    __tablename__ = 'move_effect_categories'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(64), nullable=False)
+    can_affect_user = Column(Boolean, nullable=False)
+
+class MoveEffectCategoryMap(TableBase):
+    __tablename__ = 'move_effect_category_map'
+    move_effect_id = Column(Integer, ForeignKey('move_effects.id'), primary_key=True, nullable=False)
+    move_effect_category_id = Column(Integer, ForeignKey('move_effect_categories.id'), primary_key=True, nullable=False)
+    affects_user = Column(Boolean, primary_key=True, nullable=False)
+
 class MoveDamageClass(TableBase):
     __tablename__ = 'move_damage_classes'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -473,6 +485,10 @@ Move.type = relation(Type, backref='moves')
 Move.effect = rst.MoveEffectProperty('effect')
 Move.priority = association_proxy('move_effect', 'priority')
 Move.short_effect = rst.MoveEffectProperty('short_effect')
+
+MoveEffect.category_map = relation(MoveEffectCategoryMap)
+MoveEffect.categories = association_proxy('category_map', 'category')
+MoveEffectCategoryMap.category = relation(MoveEffectCategory)
 
 MoveFlag.flag = relation(MoveFlagType)
 
