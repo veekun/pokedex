@@ -111,7 +111,7 @@ If the user is holding :item:`Light Clay`, the barrier lasts for eight turns.
 72,0,Has a :data:`move.effect_chance`\ % chance to lower the target's Special Attack by one level.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`lower` the target's :mechanic:`Special Attack` by one level.
 73,0,Has a :data:`move.effect_chance`\ % chance to lower the target's Special Defense by one level.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`lower` the target's :mechanic:`Special Defense` by one level.
 74,0,Has a :data:`move.effect_chance`\ % chance to lower the target's Accuracy by one level.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`lower` the target's :mechanic:`accuracy` by one level.
-76,0,User charges for one turn before attacking.  Has a :data:`move.effect_chance`\ % chance to make the target flinch.,"User charges for one turn before attacking.  Has a :data:`move.effect_chance`\ % chance to make the target :mechanic:`flinch`.
+76,0,User charges for one turn before attacking.  Has a :data:`move.effect_chance`\ % chance to make the target flinch.,"Inflicts :mechanic:`regular damage`.  User charges for one turn before attacking.  Has a :data:`move.effect_chance`\ % chance to make the target :mechanic:`flinch`.
 
 This move cannot be selected by :move:`Sleep Talk`."
 77,0,Has a :data:`move.effect_chance`\ % chance to confuse the target.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`confuse` the target.
@@ -156,7 +156,7 @@ This effect is passed on by :move:`Baton Pass`."
 86,0,Does nothing.,Does nothing.
 87,0,Disables the target's last used move for 1-8 turns.,"Disables the target's last used move, preventing its use for 4–7 turns, selected at random, or until the target leaves the :mechanic:`field`.  If the target hasn't used a move since entering the :mechanic:`field`, if it tried to use a move this turn and :mechanic:`failed`,  if its last used move has 0 PP remaining, or if it already has a move disabled, this move will fail."
 88,0,Inflicts damage equal to the user's level.,"Inflicts damage equal to the user's level.  Type immunity applies, but other type effects are ignored."
-89,0,Inflicts damage between 1/2 and 1.5 times the user's level.,"Inflicts damage between 50% and 150% of the user's level, selected at random in increments of 10%."
+89,0,Inflicts damage between 50% and 150% of the user's level.,"Inflicts :mechanic:`typeless` damage between 50% and 150% of the user's level, selected at random in increments of 10%."
 90,-5,Inflicts twice the damage the user received from the last physical hit it took.,"Targets the last opposing Pokémon to hit the user with a :mechanic:`physical` move this turn.  Inflicts twice the damage that move did to the user.  If there is no eligible target, this move will :mechanic:`fail`.  Type immunity applies, but other type effects are ignored.
 
 This move cannot be copied by :move:`Mirror Move`, nor selected by :move:`Assist` or :move:`Metronome`."
@@ -272,7 +272,7 @@ This move cannot be selected by :move:`Assist` or :move:`Metronome`."
 
 If the user has used :move:`Defense Curl` since entering the field, this move has double power."
 119,0,Raises the target's Attack by two levels and confuses the target.,":mechanic:`Raises` the target's :mechanic:`Attack` by two levels, then :mechanic:`confuses` it.  If the target's :mechanic:`Attack` cannot be :mechanic:`raised` by two levels, the :mechanic:`confusion` is not applied."
-120,0,"Power doubles every turn this move is used in succession after the first, maxing out after five turns.","Power doubles after every time this move is used, whether consecutively or not, maxing out at 16x.  If this move misses or the user leaves the :mechanic:`field`, power resets."
+120,0,"Power doubles every turn this move is used in succession after the first, maxing out after five turns.","Inflicts :mechanic:`regular damage`.  Power doubles after every time this move is used, whether consecutively or not, maxing out at 16x.  If this move misses or the user leaves the :mechanic:`field`, power resets."
 121,0,"Target falls in love if it has the opposite gender, and has a 50% chance to refuse attacking the user.","Causes the target to fall in love with the user, giving it a 50% chance to do nothing each turn.  If the user and target are the same gender, or either is genderless, this move will fail.  If either Pokémon leaves the :mechanic:`field`, this effect ends."
 122,0,"Power increases with happiness, up to a maximum of 102.","Inflicts :mechanic:`regular damage`.  Power increases with :mechanic:`happiness`, given by ``happiness * 2 / 5``, to a maximum of 102.  Power bottoms out at 1."
 123,0,Randomly inflicts damage with power from 40 to 120 or heals the target for 1/4 its max HP.,"Randomly uses one of the following effects.
@@ -869,7 +869,7 @@ This move cannot be copied by :move:`Mimic`, :move:`Mirror Move`, or :move:`Sket
 269,0,"If the user is holding a plate, the damage inflicted will match it.","Inflicts :mechanic:`regular damage`.  If the user is holding a plate, this move's type is the type corresponding to the plate."
 270,0,User receives 1/2 the damage inflicted in recoil.,Inflicts :mechanic:`regular damage`.  User takes 1/2 the damage it inflicts in recoil.
 271,0,"User faints, and its replacement is fully healed.","User :mechanic:`faint`\ s.  Its replacement's :mechanic:`HP` and :mechanic:`PP` are fully restored, and any :mechanic:`major status effect` is removed."
-272,0,Lowers the target's Special Defense by one level.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`lower` the target's :mechanic:`Special Defense` by two levels.
+272,0,Has a :data:`move.effect_chance`\ % chance to lower the target's Special Defense by two levels.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`lower` the target's :mechanic:`Special Defense` by two levels.
 273,0,"User vanishes, dodging all attacks, and hits next turn.  Works against Protect and Detect.","Inflicts :move:`regular damage`.  User vanishes for one turn, becoming immune to attack, and hits on the second turn.
 
 This move breaks through :move:`Detect` and :move:`Protect.
