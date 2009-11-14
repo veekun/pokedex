@@ -1,468 +1,935 @@
 move_id,language_id,name
 1,1,はたく
+1,5,Ecras'Face
 2,1,からてチョップ
+2,5,Poing-Karaté
 3,1,おうふくビンタ
+3,5,Torgnoles
 4,1,れんぞくパンチ
+4,5,Poing Comète
 5,1,メガトンパンチ
+5,5,Ultimapoing
 6,1,ネコにこばん
+6,5,Jackpot
 7,1,ほのおのパンチ
+7,5,Poing de Feu
 8,1,れいとうパンチ
+8,5,Poinglace
 9,1,かみなりパンチ
+9,5,Poing-Eclair
 10,1,ひっかく
+10,5,Griffe
 11,1,はさむ
+11,5,Force Poigne
 12,1,ハサミギロチン
+12,5,Guillotine
 13,1,かまいたち
+13,5,Coupe-Vent
 14,1,つるぎのまい
+14,5,Danse-Lames
 15,1,いあいぎり
+15,5,Coupe
 16,1,かぜおこし
+16,5,Tornade
 17,1,つばさでうつ
+17,5,Cru-Aile
 18,1,ふきとばし
+18,5,Cyclone
 19,1,そらをとぶ
+19,5,Vol
 20,1,しめつける
+20,5,Etreinte
 21,1,たたきつける
+21,5,Souplesse
 22,1,つるのムチ
+22,5,Fouet Lianes
 23,1,ふみつけ
+23,5,Ecrasement
 24,1,にどげり
+24,5,Double Pied
 25,1,メガトンキック
+25,5,Ultimawashi
 26,1,とびげり
+26,5,Pied Sauté
 27,1,まわしげり
+27,5,Mawashi Geri
 28,1,すなかけ
+28,5,Jet de Sable
 29,1,ずつき
+29,5,Coup d'Boule
 30,1,つのでつく
+30,5,Koud'Korne
 31,1,みだれづき
+31,5,Furie
 32,1,つのドリル
+32,5,Empal'Korne
 33,1,たいあたり
+33,5,Charge
 34,1,のしかかり
+34,5,Plaquage
 35,1,まきつく
+35,5,Ligotage
 36,1,とっしん
+36,5,Bélier
 37,1,あばれる
+37,5,Mania
 38,1,すてみタックル
+38,5,Damoclès
 39,1,しっぽをふる
+39,5,Mimi-Queue
 40,1,どくばり
+40,5,Dard-Venin
 41,1,ダブルニードル
+41,5,Double-Dard
 42,1,ミサイルばり
+42,5,Dard-Nuée
 43,1,にらみつける
+43,5,Groz'Yeux
 44,1,かみつく
+44,5,Morsure
 45,1,なきごえ
+45,5,Rugissement
 46,1,ほえる
+46,5,Hurlement
 47,1,うたう
+47,5,Berceuse
 48,1,ちょうおんぱ
+48,5,Ultrason
 49,1,ソニックブーム
+49,5,Sonicboom
 50,1,かなしばり
+50,5,Entrave
 51,1,ようかいえき
+51,5,Acide
 52,1,ひのこ
+52,5,Flammèche
 53,1,かえんほうしゃ
+53,5,Lance-Flamme
 54,1,しろいきり
+54,5,Brume
 55,1,みずでっぽう
+55,5,Pistolet à O
 56,1,ハイドロポンプ
+56,5,Hydrocanon
 57,1,なみのり
+57,5,Surf
 58,1,れいとうビーム
+58,5,Laser Glace
 59,1,ふぶき
+59,5,Blizzard
 60,1,サイケこうせん
+60,5,Rafale Psy
 61,1,バブルこうせん
+61,5,Bulles d'O
 62,1,オーロラビーム
+62,5,Onde Boréale
 63,1,はかいこうせん
+63,5,Ultralaser
 64,1,つつく
+64,5,Picpic
 65,1,ドリルくちばし
+65,5,Bec Vrille
 66,1,じごくぐるま
+66,5,Sacrifice
 67,1,けたぐり
+67,5,Balayage
 68,1,カウンター
+68,5,Riposte
 69,1,ちきゅうなげ
+69,5,Frappe Atlas
 70,1,かいりき
+70,5,Force
 71,1,すいとる
+71,5,Vol-Vie
 72,1,メガドレイン
+72,5,Méga-Sangsue
 73,1,やどりぎのタネ
+73,5,Vampigraine
 74,1,せいちょう
+74,5,Croissance
 75,1,はっぱカッター
+75,5,Tranch'Herbe
 76,1,ソーラービーム
+76,5,Lance-Soleil
 77,1,どくのこな
+77,5,Poudre Toxik
 78,1,しびれごな
+78,5,Para-Spore
 79,1,ねむりごな
+79,5,Poudre Dodo
 80,1,はなびらのまい
+80,5,Danse-Fleur
 81,1,いとをはく
+81,5,Sécrétion
 82,1,りゅうのいかり
+82,5,Draco-Rage
 83,1,ほのおのうず
+83,5,Danseflamme
 84,1,でんきショック
+84,5,Eclair
 85,1,１０まんボルト
+85,5,Tonnerre
 86,1,でんじは
+86,5,Cage-Eclair
 87,1,かみなり
+87,5,Fatal-Foudre
 88,1,いわおとし
+88,5,Jet-Pierres
 89,1,じしん
+89,5,Séisme
 90,1,じわれ
+90,5,Abîme
 91,1,あなをほる
+91,5,Tunnel
 92,1,どくどく
+92,5,Toxik
 93,1,ねんりき
+93,5,Choc Mental
 94,1,サイコキネシス
+94,5,Psyko
 95,1,さいみんじゅつ
+95,5,Hypnose
 96,1,ヨガのポーズ
+96,5,Yoga
 97,1,こうそくいどう
+97,5,Hâte
 98,1,でんこうせっか
+98,5,Vive-Attaque
 99,1,いかり
+99,5,Frénésie
 100,1,テレポート
+100,5,Téléport
 101,1,ナイトヘッド
+101,5,Ténèbres
 102,1,ものまね
+102,5,Copie
 103,1,いやなおと
+103,5,Grincement
 104,1,かげぶんしん
+104,5,Reflet
 105,1,じこさいせい
+105,5,Soin
 106,1,かたくなる
+106,5,Armure
 107,1,ちいさくなる
+107,5,Lilliput
 108,1,えんまく
+108,5,Brouillard
 109,1,あやしいひかり
+109,5,Onde Folie
 110,1,からにこもる
+110,5,Repli
 111,1,まるくなる
+111,5,Boul'Armure
 112,1,バリアー
+112,5,Bouclier
 113,1,ひかりのかべ
+113,5,Mur Lumière
 114,1,くろいきり
+114,5,Buée Noire
 115,1,リフレクター
+115,5,Protection
 116,1,きあいだめ
+116,5,Puissance
 117,1,がまん
+117,5,Patience
 118,1,ゆびをふる
+118,5,Métronome
 119,1,オウムがえし
+119,5,Mimique
 120,1,じばく
+120,5,Destruction
 121,1,タマゴばくだん
+121,5,Bomb'Oeuf
 122,1,したでなめる
+122,5,Léchouille
 123,1,スモッグ
+123,5,Purédpois
 124,1,ヘドロこうげき
+124,5,Détritus
 125,1,ホネこんぼう
+125,5,Massd'Os
 126,1,だいもんじ
+126,5,Déflagration
 127,1,たきのぼり
+127,5,Cascade
 128,1,からではさむ
+128,5,Claquoir
 129,1,スピードスター
+129,5,Météores
 130,1,ロケットずつき
+130,5,Coud'Krâne
 131,1,とげキャノン
+131,5,Picanon
 132,1,からみつく
+132,5,Constriction
 133,1,ドわすれ
+133,5,Amnésie
 134,1,スプーンまげ
+134,5,Télékinésie
 135,1,タマゴうみ
+135,5,E-Coque
 136,1,とびひざげり
+136,5,Pied Voltige
 137,1,へびにらみ
+137,5,Intimidation
 138,1,ゆめくい
+138,5,Dévorêve
 139,1,どくガス
+139,5,Gaz Toxik
 140,1,たまなげ
+140,5,Pilonnage
 141,1,きゅうけつ
+141,5,Vampirisme
 142,1,あくまのキッス
+142,5,Grobisou
 143,1,ゴッドバード
+143,5,Pique
 144,1,へんしん
+144,5,Morphing
 145,1,あわ
+145,5,Ecume
 146,1,ピヨピヨパンチ
+146,5,Uppercut
 147,1,キノコのほうし
+147,5,Spore
 148,1,フラッシュ
+148,5,Flash
 149,1,サイコウェーブ
+149,5,Vague Psy
 150,1,はねる
+150,5,Trempette
 151,1,とける
+151,5,Acidarmure
 152,1,クラブハンマー
+152,5,Pince-Masse
 153,1,だいばくはつ
+153,5,Explosion
 154,1,みだれひっかき
+154,5,Combo-Griffe
 155,1,ホネブーメラン
+155,5,Osmerang
 156,1,ねむる
+156,5,Repos
 157,1,いわなだれ
+157,5,Eboulement
 158,1,ひっさつまえば
+158,5,Croc de Mort
 159,1,かくばる
+159,5,Affûtage
 160,1,テクスチャー
+160,5,Adaptation
 161,1,トライアタック
+161,5,Triplattaque
 162,1,いかりのまえば
+162,5,Croc Fatal
 163,1,きりさく
+163,5,Tranche
 164,1,みがわり
+164,5,Clonage
 165,1,わるあがき
+165,5,Lutte
 166,1,スケッチ
+166,5,Gribouille
 167,1,トリプルキック
+167,5,Triple Pied
 168,1,どろぼう
+168,5,Larcin
 169,1,クモのす
+169,5,Toile
 170,1,こころのめ
+170,5,Lire-Esprit
 171,1,あくむ
+171,5,Cauchemar
 172,1,かえんぐるま
+172,5,Roue de Feu
 173,1,いびき
+173,5,Ronflement
 174,1,のろい
+174,5,Malédiction
 175,1,じたばた
+175,5,Fléau
 176,1,テクスチャー２
+176,5,Conversion 2
 177,1,エアロブラスト
+177,5,Aéroblast
 178,1,わたほうし
+178,5,Spore Coton
 179,1,きしかいせい
+179,5,Contre
 180,1,うらみ
+180,5,Dépit
 181,1,こなゆき
+181,5,Poudreuse
 182,1,まもる
+182,5,Abri
 183,1,マッハパンチ
+183,5,Mach Punch
 184,1,こわいかお
+184,5,Grimace
 185,1,だましうち
+185,5,Feinte
 186,1,てんしのキッス
+186,5,Doux Baiser
 187,1,はらだいこ
+187,5,Cognobidon
 188,1,ヘドロばくだん
+188,5,Bomb-Beurk
 189,1,どろかけ
+189,5,Coud'Boue
 190,1,オクタンほう
+190,5,Octazooka
 191,1,まきびし
+191,5,Picots
 192,1,でんじほう
+192,5,Elecanon
 193,1,みやぶる
+193,5,Clairvoyance
 194,1,みちづれ
+194,5,Prlvt Destin
 195,1,ほろびのうた
+195,5,Requiem
 196,1,こごえるかぜ
+196,5,Vent Glace
 197,1,みきり
+197,5,Détection
 198,1,ボーンラッシュ
+198,5,Charge-Os
 199,1,ロックオン
+199,5,Verrouillage
 200,1,げきりん
+200,5,Colère
 201,1,すなあらし
+201,5,Tempêtesable
 202,1,ギガドレイン
+202,5,Giga-Sangsue
 203,1,こらえる
+203,5,Ténacité
 204,1,あまえる
+204,5,Charme
 205,1,ころがる
+205,5,Roulade
 206,1,みねうち
+206,5,Faux-Chage
 207,1,いばる
+207,5,Vantardise
 208,1,ミルクのみ
+208,5,Lait à Boire
 209,1,スパーク
+209,5,Etincelle
 210,1,れんぞくぎり
+210,5,Taillade
 211,1,はがねのつばさ
+211,5,Aile d'Acier
 212,1,くろいまなざし
+212,5,Regard Noir
 213,1,メロメロ
+213,5,Attraction
 214,1,ねごと
+214,5,Blabla Dodo
 215,1,いやしのすず
+215,5,Glas de Soin
 216,1,おんがえし
+216,5,Retour
 217,1,プレゼント
+217,5,Cadeau
 218,1,やつあたり
+218,5,Frustration
 219,1,しんぴのまもり
+219,5,Rune Protect
 220,1,いたみわけ
+220,5,Balance
 221,1,せいなるほのお
+221,5,Feu Sacré
 222,1,マグニチュード
+222,5,Ampleur
 223,1,ばくれつパンチ
+223,5,Dynamopoing
 224,1,メガホーン
+224,5,Mégacorne
 225,1,りゅうのいぶき
+225,5,Dracosouffle
 226,1,バトンタッチ
+226,5,Relais
 227,1,アンコール
+227,5,Encore
 228,1,おいうち
+228,5,Poursuite
 229,1,こうそくスピン
+229,5,Tour Rapide
 230,1,あまいかおり
+230,5,Doux Parfum
 231,1,アイアンテール
+231,5,Queue de Fer
 232,1,メタルクロー
+232,5,Griffe Acier
 233,1,あてみなげ
+233,5,Corps Perdu
 234,1,あさのひざし
+234,5,Aurore
 235,1,こうごうせい
+235,5,Synthèse
 236,1,つきのひかり
+236,5,Rayon Lune
 237,1,めざめるパワー
+237,5,Puis. Cachée
 238,1,クロスチョップ
+238,5,Coup-Croix
 239,1,たつまき
+239,5,Ouragan
 240,1,あまごい
+240,5,Danse Pluie
 241,1,にほんばれ
+241,5,Zénith
 242,1,かみくだく
+242,5,Mâchouille
 243,1,ミラーコート
+243,5,Voile Miroir
 244,1,じこあんじ
+244,5,Boost
 245,1,しんそく
+245,5,Vit.Extrême
 246,1,げんしのちから
+246,5,Pouv.Antique
 247,1,シャドーボール
+247,5,Ball'Ombre
 248,1,みらいよち
+248,5,Prescience
 249,1,いわくだき
+249,5,Eclate-Roc
 250,1,うずしお
+250,5,Siphon
 251,1,ふくろだたき
+251,5,Baston
 252,1,ねこだまし
+252,5,Bluff
 253,1,さわぐ
+253,5,Brouhaha
 254,1,たくわえる
+254,5,Stockage
 255,1,はきだす
+255,5,Relâche
 256,1,のみこむ
+256,5,Avale
 257,1,ねっぷう
+257,5,Canicule
 258,1,あられ
+258,5,Grêle
 259,1,いちゃもん
+259,5,Tourmente
 260,1,おだてる
+260,5,Flatterie
 261,1,おにび
+261,5,Feu Follet
 262,1,おきみやげ
+262,5,Souvenir
 263,1,からげんき
+263,5,Façade
 264,1,きあいパンチ
+264,5,Mitra-Poing
 265,1,きつけ
+265,5,Stimulant
 266,1,このゆびとまれ
+266,5,Par Ici
 267,1,しぜんのちから
+267,5,Force-Nature
 268,1,じゅうでん
+268,5,Chargeur
 269,1,ちょうはつ
+269,5,Provoc
 270,1,てだすけ
+270,5,Coup d'Main
 271,1,トリック
+271,5,Tourmagik
 272,1,なりきり
+272,5,Imitation
 273,1,ねがいごと
+273,5,Voeu
 274,1,ねこのて
+274,5,Assistance
 275,1,ねをはる
+275,5,Racines
 276,1,ばかぢから
+276,5,Surpuissance
 277,1,マジックコート
+277,5,Reflet Magik
 278,1,リサイクル
+278,5,Recyclage
 279,1,リベンジ
+279,5,Vendetta
 280,1,かわらわり
+280,5,Casse-Brique
 281,1,あくび
+281,5,Bâillement
 282,1,はたきおとす
+282,5,Sabotage
 283,1,がむしゃら
+283,5,Effort
 284,1,ふんか
+284,5,Eruption
 285,1,スキルスワップ
+285,5,Echange
 286,1,ふういん
+286,5,Possessif
 287,1,リフレッシュ
+287,5,Régénération
 288,1,おんねん
+288,5,Rancune
 289,1,よこどり
+289,5,Saisie
 290,1,ひみつのちから
+290,5,Force Cachée
 291,1,ダイビング
+291,5,Plongée
 292,1,つっぱり
+292,5,Cogne
 293,1,ほごしょく
+293,5,Camouflage
 294,1,ほたるび
+294,5,Lumiqueue
 295,1,ラスターパージ
+295,5,Lumi-Eclat
 296,1,ミストボール
+296,5,Ball'Brume
 297,1,フェザーダンス
+297,5,Danse-Plume
 298,1,フラフラダンス
+298,5,Danse-Folle
 299,1,ブレイズキック
+299,5,Pied Brûleur
 300,1,どろあそび
+300,5,Lance-Boue
 301,1,アイスボール
+301,5,Ball'Glace
 302,1,ニードルアーム
+302,5,Poing Dard
 303,1,なまける
+303,5,Paresse
 304,1,ハイパーボイス
+304,5,Mégaphone
 305,1,どくどくのキバ
+305,5,Crochetvenin
 306,1,ブレイククロー
+306,5,Eclategriffe
 307,1,ブラストバーン
+307,5,Rafale Feu
 308,1,ハイドロカノン
+308,5,Hydroblast
 309,1,コメットパンチ
+309,5,Poing Météor
 310,1,おどろかす
+310,5,Etonnement
 311,1,ウェザーボール
+311,5,Ball'Météo
 312,1,アロマセラピー
+312,5,Aromathérapi
 313,1,うそなき
+313,5,Croco Larme
 314,1,エアカッター
+314,5,Tranch'Air
 315,1,オーバーヒート
+315,5,Surchauffe
 316,1,かぎわける
+316,5,Flair
 317,1,がんせきふうじ
+317,5,Tomberoche
 318,1,ぎんいろのかぜ
+318,5,Vent Argenté
 319,1,きんぞくおん
+319,5,Strido-Son
 320,1,くさぶえ
+320,5,Siffl'Herbe
 321,1,くすぐる
+321,5,Chatouille
 322,1,コスモパワー
+322,5,Force Cosmik
 323,1,しおふき
+323,5,Giclédo
 324,1,シグナルビーム
+324,5,Rayon Signal
 325,1,シャドーパンチ
+325,5,Poing Ombre
 326,1,じんつうりき
+326,5,Extrasenseur
 327,1,スカイアッパー
+327,5,Stratopercut
 328,1,すなじごく
+328,5,Tourbi-Sable
 329,1,ぜったいれいど
+329,5,Glaciation
 330,1,だくりゅう
+330,5,Ocroupi
 331,1,タネマシンガン
+331,5,Balle Graine
 332,1,つばめがえし
+332,5,Aéropique
 333,1,つららばり
+333,5,Stalagtite
 334,1,てっぺき
+334,5,Mur de Fer
 335,1,とおせんぼう
+335,5,Barrage
 336,1,とおぼえ
+336,5,Grondement
 337,1,ドラゴンクロー
+337,5,Dracogriffe
 338,1,ハードプラント
+338,5,Végé-Attak
 339,1,ビルドアップ
+339,5,Gonflette
 340,1,とびはねる
+340,5,Rebond
 341,1,マッドショット
+341,5,Tir de Boue
 342,1,ポイズンテール
+342,5,Queue-Poison
 343,1,ほしがる
+343,5,Implore
 344,1,ボルテッカー
+344,5,Electacle
 345,1,マジカルリーフ
+345,5,Feuillemagik
 346,1,みずあそび
+346,5,Tourniquet
 347,1,めいそう
+347,5,Plénitude
 348,1,リーフブレード
+348,5,Lame-Feuille
 349,1,りゅうのまい
+349,5,Danse Draco
 350,1,ロックブラスト
+350,5,Boule Roc
 351,1,でんげきは
+351,5,Onde de Choc
 352,1,みずのはどう
+352,5,Vibraqua
 353,1,はめつのねがい
+353,5,Carnareket
 354,1,サイコブースト
+354,5,Psycho Boost
 355,1,はねやすめ
+355,5,Atterrissage
 356,1,じゅうりょく
+356,5,Gravité
 357,1,ミラクルアイ
+357,5,Oeil Miracle
 358,1,めざましビンタ
+358,5,Réveil Forcé
 359,1,アームハンマー
+359,5,Marto-Poing
 360,1,ジャイロボール
+360,5,Gyroballe
 361,1,いやしのねがい
+361,5,Voeu Soin
 362,1,しおみず
+362,5,Saumure
 363,1,しぜんのめぐみ
+363,5,Don Naturel
 364,1,フェイント
+364,5,Ruse
 365,1,ついばむ
+365,5,Picore
 366,1,おいかぜ
+366,5,Vent Arrière
 367,1,つぼをつく
+367,5,Acupression
 368,1,メタルバースト
+368,5,Fulmifer
 369,1,とんぼがえり
+369,5,Demi-Tour
 370,1,インファイト
+370,5,Close Combat
 371,1,しっぺがえし
+371,5,Représailles
 372,1,ダメおし
+372,5,Assurance
 373,1,さしおさえ
+373,5,Embargo
 374,1,なげつける
+374,5,Dégommage
 375,1,サイコシフト
+375,5,Echange Psy
 376,1,きりふだ
+376,5,Atout
 377,1,かいふくふうじ
+377,5,Anti-Soin
 378,1,しぼりとる
+378,5,Essorage
 379,1,パワートリック
+379,5,Astuce Force
 380,1,いえき
+380,5,Suc Digestif
 381,1,おまじない
+381,5,Air Veinard
 382,1,さきどり
+382,5,Moi d'Abord
 383,1,まねっこ
+383,5,Photocopie
 384,1,パワースワップ
+384,5,Permuforce
 385,1,ガードスワップ
+385,5,Permugarde
 386,1,おしおき
+386,5,Punition
 387,1,とっておき
+387,5,Dernierecour
 388,1,なやみのタネ
+388,5,Soucigraine
 389,1,ふいうち
+389,5,Coup Bas
 390,1,どくびし
+390,5,Pics Toxik
 391,1,ハートスワップ
+391,5,Permucoeur
 392,1,アクアリング
+392,5,Anneau Hydro
 393,1,でんじふゆう
+393,5,Vol Magnétik
 394,1,フレアドライブ
+394,5,Boutefeu
 395,1,はっけい
+395,5,Forte-Paume
 396,1,はどうだん
+396,5,Aurasphère
 397,1,ロックカット
+397,5,Poliroche
 398,1,どくづき
+398,5,Direct Toxik
 399,1,あくのはどう
+399,5,Vibrobscur
 400,1,つじぎり
+400,5,Tranche-Nuit
 401,1,アクアテール
+401,5,Hydroqueue
 402,1,タネばくだん
+402,5,Canon Graine
 403,1,エアスラッシュ
+403,5,Lame d'Air
 404,1,シザークロス
+404,5,Plaie-Croix
 405,1,むしのさざめき
+405,5,Bourdon
 406,1,りゅうのはどう
+406,5,Dracochoc
 407,1,ドラゴンダイブ
+407,5,Dracocharge
 408,1,パワージェム
+408,5,Rayon Gemme
 409,1,ドレインパンチ
+409,5,Vampipoing
 410,1,しんくうは
+410,5,Onde Vide
 411,1,きあいだま
+411,5,Exploforce
 412,1,エナジーボール
+412,5,Eco-Sphère
 413,1,ブレイブバード
+413,5,Rapace
 414,1,だいちのちから
+414,5,Telluriforce
 415,1,すりかえ
+415,5,Passe-Passe
 416,1,ギガインパクト
+416,5,Giga Impact
 417,1,わるだくみ
+417,5,Machination
 418,1,バレットパンチ
+418,5,Pisto-Poing
 419,1,ゆきなだれ
+419,5,Avalanche
 420,1,こおりのつぶて
+420,5,Eclats Glace
 421,1,シャドークロー
+421,5,Griffe Ombre
 422,1,かみなりのキバ
+422,5,Crocs Eclair
 423,1,こおりのキバ
+423,5,Crocs Givre
 424,1,ほのおのキバ
+424,5,Crocs Feu
 425,1,かげうち
+425,5,Ombre Portée
 426,1,どろばくだん
+426,5,Boue-Bombe
 427,1,サイコカッター
+427,5,Coupe Psycho
 428,1,しねんのずつき
+428,5,Psykoud'Boul
 429,1,ミラーショット
+429,5,Miroi-Tir
 430,1,ラスターカノン
+430,5,Luminocanon
 431,1,ロッククライム
+431,5,Escalade
 432,1,きりばらい
+432,5,Anti-Brume
 433,1,トリックルーム
+433,5,Distorsion
 434,1,りゅうせいぐん
+434,5,Draco Météor
 435,1,ほうでん
+435,5,Coup d'Jus
 436,1,ふんえん
+436,5,Ebullilave
 437,1,リーフストーム
+437,5,Tempêteverte
 438,1,パワーウィップ
+438,5,Mégafouet
 439,1,がんせきほう
+439,5,Roc-Boulet
 440,1,クロスポイズン
+440,5,Poison-Croix
 441,1,ダストシュート
+441,5,Détricanon
 442,1,アイアンヘッド
+442,5,Tête de Fer
 443,1,マグネットボム
+443,5,Bombaimant
 444,1,ストーンエッジ
+444,5,Lame de Roc
 445,1,ゆうわく
+445,5,Séduction
 446,1,ステルスロック
+446,5,Piège de Roc
 447,1,くさむすび
+447,5,Noeud Herbe
 448,1,おしゃべり
+448,5,Babil
 449,1,さばきのつぶて
+449,5,Jugement
 450,1,むしくい
+450,5,Piqûre
 451,1,チャージビーム
+451,5,Rayon Chargé
 452,1,ウッドハンマー
+452,5,Martobois
 453,1,アクアジェット
+453,5,Aqua-Jet
 454,1,こうげきしれい
+454,5,Appel Attak
 455,1,ぼうぎょしれい
+455,5,Appel Défens
 456,1,かいふくしれい
+456,5,Appel Soins
 457,1,もろはのずつき
+457,5,Fracass'Tête
 458,1,ダブルアタック
+458,5,Coup Double
 459,1,ときのほうこう
+459,5,Hurle-Temps
 460,1,あくうせつだん
+460,5,Spatio-Rift
 461,1,みかづきのまい
+461,5,Danse-Lune
 462,1,にぎりつぶす
+462,5,Presse
 463,1,マグマストーム
+463,5,Vortex Magma
 464,1,ダークホール
+464,5,Trou Noir
 465,1,シードフレア
+465,5,Fulmigraine
 466,1,あやしいかぜ
+466,5,Vent Mauvais
 467,1,シャドーダイブ
+467,5,Revenant
