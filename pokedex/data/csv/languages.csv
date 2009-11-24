@@ -1,7 +1,7 @@
-id,name
-1,Japanese
-2,Official Romaaji
-3,Korean
-4,Chinese
-5,French
-6,German
+id,iso3166,name
+1,jp,Japanese
+2,jp,Official Romaaji
+3,kr,Korean
+4,cn,Chinese
+5,fr,French
+6,de,German

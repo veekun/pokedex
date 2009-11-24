@@ -94,6 +94,7 @@ def open_index(directory=None, session=None, recreate=False):
         table=whoosh.fields.ID(stored=True),
         row_id=whoosh.fields.ID(stored=True),
         language=whoosh.fields.STORED,
+        iso3166=whoosh.fields.STORED,
         display_name=whoosh.fields.STORED,  # non-lowercased name
         forme_name=whoosh.fields.ID,
     )
@@ -117,9 +118,10 @@ def open_index(directory=None, session=None, recreate=False):
                            row_id=unicode(row.id),
                            forme_name=u'XXX')
 
-            def add(name, language, score):
+            def add(name, language, iso3166, score):
                 writer.add_document(name=name.lower(), display_name=name,
                                     language=language,
+                                    iso3166=iso3166,
                                     **row_key)
                 speller_entries.append((name.lower(), score))
 
@@ -128,7 +130,7 @@ def open_index(directory=None, session=None, recreate=False):
                 row_key['forme_name'] = row.forme_name
 
             name = row.name
-            add(name, None, 1)
+            add(name, None, u'us', 1)
 
             # Pokemon also get other languages
             for foreign_name in getattr(row, 'foreign_names', []):
@@ -138,12 +140,14 @@ def open_index(directory=None, session=None, recreate=False):
                     # no point and it makes spell results confusing
                     continue
 
-                add(moonspeak, foreign_name.language.name, 3)
+                add(moonspeak, foreign_name.language.name,
+                               foreign_name.language.iso3166,
+                               3)
 
                 # Add Roomaji too
                 if foreign_name.language.name == 'Japanese':
                     roomaji = romanize(foreign_name.name)
-                    add(roomaji, u'Roomaji', 8)
+                    add(roomaji, u'Roomaji', u'jp', 8)
 
     writer.commit()
 
@@ -176,7 +180,7 @@ class LanguageWeighting(whoosh.scoring.Weighting):
 rx_is_number = re.compile('^\d+$')
 
 LookupResult = namedtuple('LookupResult',
-                          ['object', 'name', 'language', 'exact'])
+                          ['object', 'name', 'language', 'iso3166', 'exact'])
 
 def _parse_table_name(name):
     """Takes a singular table name, table name, or table object and returns the
@@ -215,6 +219,7 @@ def _whoosh_records_to_results(records, session, exact=True):
         results.append(LookupResult(object=obj,
                                     name=record['display_name'],
                                     language=record['language'],
+                                    iso3166=record['iso3166'],
                                     exact=exact))
 
     return results
