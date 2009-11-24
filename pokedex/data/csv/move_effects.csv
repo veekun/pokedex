@@ -1,5 +1,5 @@
 id,priority,short_effect,effect
-1,0,,Inflicts :mechanic:`regular damage`.
+1,0,Inflicts regular damage with no additional effect.,Inflicts :mechanic:`regular damage`.
 2,0,Puts the target to sleep.,Puts the target to :mechanic:`sleep`.
 3,0,Has a :data:`move.effect_chance`\ % chance to poison the target.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`poison` the target.
 4,0,Heals the user by half the damage inflicted.,Inflicts :mechanic:`regular damage`.  Heals the user for half the damage inflicted.
@@ -204,7 +204,7 @@ This move cannot be selected by :move:`Assist` or :move:`Metronome`."
 101,0,Lowers the PP of the target's last used move by 4.,"Lowers the PP of the target's last used move by 4.  If the target hasn't used a move since entering the :mechanic:`field`, if it tried to use a move this turn and :mechanic:`failed`, or if its last used move has 0 PP remaining, this move will fail."
 102,0,Cannot lower the target's HP below 1.,Inflicts :mechanic:`regular damage`.  Will not reduce the target's :mechanic:`HP` below 1.
 103,0,Cures the user and the user's ally of major status effects.,Removes :mechanic:`major status effects` and :mechanic:`confusion` from every Pokémon in the user's party.
-104,1,,Inflicts :mechanic:`regular damage`.
+104,1,Inflicts regular damage with no additional effect.,Inflicts :mechanic:`regular damage`.
 105,0,"Hits three times, increasing power by 100% with each successful hit.","Inflicts :mechanic:`regular damage`.  Hits three times in the same turn.  The second hit has double power, and the third hit has triple power.  Each hit has a separate :mechanic:`accuracy` check, and this move stops if a hit misses.
 
 :ability:`Skill Link` does not apply."
@@ -424,7 +424,7 @@ This move cannot be selected by :move:`Sleep Talk`."
 147,0,Has chance to make the target flinch.,"Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to make each target :mechanic:`flinch`.
 
 If the target is in the first turn of :move:`Bounce` or :move:`Fly`, this move will hit with double power."
-148,0,,"Inflicts :mechanic:`regular damage`.
+148,0,Inflicts regular damage and can hit Dig users.,"Inflicts :mechanic:`regular damage`.
 
 If the target is in the first turn of :move:`Dig`, this move will hit with double power."
 149,0,Hits the target two turns later.,"Inflicts :mechanic:`typeless` :mechanic:`regular damage` at the end of the third turn, starting with this one.  This move cannot :mechanic:`critical hit`.  If the target :mechanic:`switches out`, its replacement will be hit instead.  Damage is calculated at the time this move is used; :mechanic:`stat changes` and :mechanic:`switching out` during the delay won't change the damage inflicted.  No move with this effect can be used against the same target again until after the end of the third turn.
@@ -436,7 +436,7 @@ If the target is protected by :move:`Protect` or :move:`Detect` on the turn this
 The damage is applied at the end of the turn, so it ignores :move:`Endure` and :item:`Focus Sash`.
 
 This move cannot be copied by :move:`Mirror Move`."
-150,0,,"Inflicts :mechanic:`regular damage`.
+150,0,Inflicts regular damage and can hit Bounce and Fly users.,"Inflicts :mechanic:`regular damage`.
 
 If the target is in the first turn of :move:`Bounce` or :move:`Fly`, this move will hit with double power."
 151,0,Has a :data:`move.effect_chance`\ % chance to make the target flinch.,"Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to make the target :mechanic:`flinch`.
@@ -667,7 +667,7 @@ Waterfall       Puts target to :mechanic:`sleep`
 205,0,Lowers the user's Special Attack by two levels after inflicting damage.,"Inflicts :mechanic:`regular damage`, then :mechanic:`lowers` the user's :mechanic:`Special Attack` by two levels."
 206,0,Lowers the target's Attack and Defense by one level.,:mechanic:`Lowers` the target's :mechanic:`Attack` and :mechanic:`Defense` by one level.
 207,0,Raises the user's Defense and Special Defense by one level.,:mechanic:`Raises` the user's :mechanic:`Defense` and :mechanic:`Special Defense` by one level.
-208,0,,"Inflicts :mechanic:`regular damage`.
+208,0,Inflicts regular damage and can hit Bounce and Fly users.,"Inflicts :mechanic:`regular damage`.
 
 If the target is in the first turn of :move:`Bounce` or :move:`Fly`, this move will hit."
 209,0,Raises the user's Attack and Defense by one level.,:mechanic:`Raises` the user's :mechanic:`Attack` and :mechanic:`Defense` by one level.
@@ -830,7 +830,7 @@ During the immune turn, :move:`Earthquake`, :move:`Fissure`, and :move:`Magnitud
 The user may be hit during its immune turn if under the effect of :move:`Lock-On`, :move:`Mind Reader`, or :ability:`No Guard`.
 
 This move cannot be selected by :move:`Sleep Talk`."
-258,0,,"Inflicts :mechanic:`regular damage`.
+258,0,Inflicts regular damage and can hit Dive users.,"Inflicts :mechanic:`regular damage`.
 
 If the target is in the first turn of :move:`Dive`, this move will hit with double power."
 259,0,Lowers the target's evasion by one level.  Removes effects from the enemy field.,":mechanic:`Lower`\ s the target's :mechanic:`evasion` by one level.  Clears away fog.  Removes the effects of :move:`Mist`, :move:`Light Screen`, :move:`Reflect`, :move:`Safeguard`, :move:`Spikes`, :move:`Stealth Rock`, and :move:`Toxic Spikes` from the target's side of the :mechanic:`field`.
