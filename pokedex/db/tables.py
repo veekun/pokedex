@@ -4,6 +4,7 @@ from sqlalchemy import Column, ForeignKey, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import backref, relation
+from sqlalchemy.sql import and_
 from sqlalchemy.types import *
 from sqlalchemy.databases.mysql import *
 
@@ -534,6 +535,11 @@ PokemonFormSprite.introduced_in = relation(VersionGroup)
 
 PokemonMove.pokemon = relation(Pokemon, backref='pokemon_moves')
 PokemonMove.version_group = relation(VersionGroup)
+PokemonMove.machine = relation(Machine, backref='pokemon_moves',
+                               primaryjoin=and_(Machine.version_group_id==PokemonMove.version_group_id,
+                                                Machine.move_id==PokemonMove.move_id),
+                                foreign_keys=[Machine.version_group_id, Machine.move_id],
+                                uselist=False)
 PokemonMove.move = relation(Move, backref='pokemon_moves')
 PokemonMove.method = relation(PokemonMoveMethod)
 
