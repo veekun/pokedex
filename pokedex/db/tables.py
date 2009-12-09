@@ -40,23 +40,23 @@ class EggGroup(TableBase):
     name = Column(Unicode(16), nullable=False)
 
 class Encounter(TableBase):
-    """Rows in this table represent encounters with wild Pokémon.
+    """Rows in this table represent encounters with wild Pokémon.  Bear with
+    me, here.
 
     Within a given area in a given game, encounters are differentiated by the
-    slot they are in and a world condition.
+    "slot" they are in and the state of the game world.
 
-    Groups of slots belong to encounter types; these are what the player is
-    doing to get an encounter, such as surfing or walking through tall grass.
+    What the player is doing to get an encounter, such as surfing or walking
+    through tall grass, is called terrain.  Each terrain has its own set of
+    encounter slots.
 
-    Within an encounter type, slots are defined primarily by rarity.  Each slot
-    can also be affected by a world condition; for example, the 20% slot for
-    walking in tall grass is affected by whether a swarm is in effect in the
-    areas.  "There is a swarm" and "there is not a swarm" are conditions, and
-    together they make a condition group.  However, since "not a swarm" is a
-    base state rather than any sort of new state, it is omitted and instead
-    referred to by a NULL.
+    Within a terrain, slots are defined primarily by rarity.  Each slot can
+    also be affected by world conditions; for example, the 20% slot for walking
+    in tall grass is affected by whether a swarm is in effect in that area.
+    "Is there a swarm?" is a condition; "there is a swarm" and "there is not a
+    swarm" are the possible values of this condition.
 
-    A slot (20% walking in grass) and single world condition (NULL, i.e. no
+    A slot (20% walking in grass) and any appropriate world conditions (no
     swarm) are thus enough to define a specific encounter.
     
     Well, okay, almost: each slot actually appears twice.
@@ -66,56 +66,65 @@ class Encounter(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     version_id = Column(Integer, ForeignKey('versions.id'), nullable=False, autoincrement=False)
     location_area_id = Column(Integer, ForeignKey('location_areas.id'), nullable=False, autoincrement=False)
-    encounter_type_slot_id = Column(Integer, ForeignKey('encounter_type_slots.id'), nullable=False, autoincrement=False)
-    encounter_condition_id = Column(Integer, ForeignKey('encounter_conditions.id'), nullable=True, autoincrement=False)
+    encounter_slot_id = Column(Integer, ForeignKey('encounter_slots.id'), nullable=False, autoincrement=False)
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, autoincrement=False)
     min_level = Column(Integer, nullable=False, autoincrement=False)
     max_level = Column(Integer, nullable=False, autoincrement=False)
 
 class EncounterCondition(TableBase):
-    """Rows in this table represent something different about the world that
-    can affect what Pokémon are encountered.
+    """Rows in this table represent varying conditions in the game world, such
+    as time of day.
     """
 
     __tablename__ = 'encounter_conditions'
     id = Column(Integer, primary_key=True, nullable=False)
-    encounter_condition_group_id = Column(Integer, ForeignKey('encounter_condition_groups.id'), primary_key=False, nullable=False, autoincrement=False)
     name = Column(Unicode(64), nullable=False)
 
-class EncounterConditionGroup(TableBase):
-    """Rows in this table represent a group of mutually exclusive conditions,
-    such as morning/day/night.  "Conditions" that are part of the default state
-    of the world, such as "not during a swarm" or "not using the PokéRadar",
-    are not included in this table and are referred to by NULLs in other
-    tables.
+class EncounterConditionValue(TableBase):
+    """Rows in this table represent possible states for a condition; for
+    example, the state of 'swarm' could be 'swarm' or 'no swarm'.
     """
 
-    __tablename__ = 'encounter_condition_groups'
+    __tablename__ = 'encounter_condition_values'
+    id = Column(Integer, primary_key=True, nullable=False)
+    encounter_condition_id = Column(Integer, ForeignKey('encounter_conditions.id'), primary_key=False, nullable=False, autoincrement=False)
+    name = Column(Unicode(64), nullable=False)
+
+class EncounterConditionValueMap(TableBase):
+    """Maps encounters to the specific conditions under which they occur."""
+
+    __tablename__ = 'encounter_condition_value_map'
+    encounter_id = Column(Integer, ForeignKey('encounters.id'), primary_key=True, nullable=False, autoincrement=False)
+    encounter_condition_value_id = Column(Integer, ForeignKey('encounter_condition_values.id'), primary_key=True, nullable=False, autoincrement=False)
+
+class EncounterTerrain(TableBase):
+    """Rows in this table represent ways the player can enter a wild encounter,
+    e.g., surfing, fishing, or walking through tall grass.
+    """
+
+    __tablename__ = 'encounter_terrain'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(64), nullable=False)
 
-class EncounterType(TableBase):
-    """Rows in this table represent ways the player can enter a wild encounter;
-    i.e. surfing, fishing, or walking through tall grass.
-    """
-
-    __tablename__ = 'encounter_types'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(64), nullable=False)
-
-class EncounterTypeSlot(TableBase):
-    """Rows in this table represent an abstract "slot" within an encounter
-    type, associated with both a condition group and a rarity.
+class EncounterSlot(TableBase):
+    """Rows in this table represent an abstract "slot" within a terrain,
+    associated with both some set of conditions and a rarity.
 
     Note that there are two encounters per slot, so the rarities will only add
     up to 50.
     """
 
-    __tablename__ = 'encounter_type_slots'
+    __tablename__ = 'encounter_slots'
     id = Column(Integer, primary_key=True, nullable=False)
-    encounter_type_id = Column(Integer, ForeignKey('encounter_types.id'), primary_key=False, nullable=False, autoincrement=False)
-    encounter_condition_group_id = Column(Integer, ForeignKey('encounter_condition_groups.id'), primary_key=False, nullable=True, autoincrement=False)
+    encounter_terrain_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=False, nullable=False, autoincrement=False)
     rarity = Column(Integer, nullable=False, autoincrement=False)
+
+class EncounterSlotCondition(TableBase):
+    """Lists all conditions that affect each slot."""
+
+    __tablename__ = 'encounter_slot_conditions'
+    encounter_slot_id = Column(Integer, ForeignKey('encounter_slots.id'), primary_key=True, nullable=False, autoincrement=False)
+    encounter_condition_id = Column(Integer, ForeignKey('encounter_conditions.id'), primary_key=True, nullable=False, autoincrement=False)
 
 class EvolutionChain(TableBase):
     __tablename__ = 'evolution_chains'
@@ -172,7 +181,7 @@ class LocationArea(TableBase):
 class LocationAreaEncounterRate(TableBase):
     __tablename__ = 'location_area_encounter_rates'
     location_area_id = Column(Integer, ForeignKey('location_areas.id'), primary_key=True, nullable=False, autoincrement=False)
-    encounter_type_id = Column(Integer, ForeignKey('encounter_types.id'), primary_key=True, nullable=False, autoincrement=False)
+    encounter_type_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=True, nullable=False, autoincrement=False)
     rate = Column(Integer, nullable=True)
 
 class Machine(TableBase):
@@ -448,16 +457,24 @@ ContestCombo.first = relation(Move, primaryjoin=ContestCombo.first_move_id==Move
 ContestCombo.second = relation(Move, primaryjoin=ContestCombo.second_move_id==Move.id,
                                      backref='contest_combo_second')
 
+Encounter.location_area = relation(LocationArea, backref='encounters')
 Encounter.pokemon = relation(Pokemon, backref='encounters')
 Encounter.version = relation(Version, backref='encounters')
-Encounter.location_area = relation(LocationArea, backref='encounters')
-Encounter.slot = relation(EncounterTypeSlot, backref='encounters')
-Encounter.condition = relation(EncounterCondition, backref='encounters')
+Encounter.slot = relation(EncounterSlot, backref='encounters')
 
-EncounterCondition.group = relation(EncounterConditionGroup,
-                                    backref='conditions')
+EncounterConditionValue.condition = relation(EncounterCondition, backref='values')
 
-EncounterTypeSlot.type = relation(EncounterType, backref='slots')
+Encounter.condition_value_map = relation(EncounterConditionValueMap, backref='encounter')
+Encounter.condition_values = association_proxy('condition_value_map', 'condition_value')
+EncounterConditionValueMap.condition_value = relation(EncounterConditionValue,
+                                                      backref='encounter_map')
+
+EncounterSlot.terrain = relation(EncounterTerrain, backref='slots')
+
+EncounterSlot.condition_map = relation(EncounterSlotCondition, backref='slot')
+EncounterSlot.conditions = association_proxy('condition_map', 'condition')
+EncounterSlotCondition.condition = relation(EncounterCondition,
+                                            backref='slot_map')
 
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 
