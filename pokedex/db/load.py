@@ -77,34 +77,12 @@ def load(session, directory=None, drop_tables=False, verbose=False):
         print_done()
 
     metadata.create_all()
-
-    # SQLAlchemy is retarded and there is no way for me to get a list of ORM
-    # classes besides to inspect the module they all happen to live in for
-    # things that look right.
-    table_base = tables.TableBase
-    orm_classes = {}  # table object => table class
-
-    for name in dir(tables):
-        # dir() returns strings!  How /convenient/.
-        thingy = getattr(tables, name)
-
-        if not isinstance(thingy, type):
-            # Not a class; bail
-            continue
-        elif not issubclass(thingy, table_base):
-            # Not a declarative table; bail
-            continue
-        elif thingy == table_base:
-            # Declarative table base, so not a real table; bail
-            continue
-
-        # thingy is definitely a table class!  Hallelujah.
-        orm_classes[thingy.__table__] = thingy
+    connection = session.connection()
 
     # Okay, run through the tables and actually load the data now
     for table_obj in metadata.sorted_tables:
-        table_class = orm_classes[table_obj]
         table_name = table_obj.name
+        insert_stmt = table_obj.insert()
 
         print_start(table_name)
 
@@ -131,8 +109,14 @@ def load(session, directory=None, drop_tables=False, verbose=False):
             if any(_.references(table_obj) for _ in column.foreign_keys):
                 self_ref_columns.append(column)
 
+        new_rows = []
+        def insert_and_commit():
+            session.connection().execute(insert_stmt, new_rows)
+            session.commit()
+            new_rows[:] = []
+
         for csvs in reader:
-            row = table_class()
+            row_data = {}
 
             for column_name, value in zip(column_names, csvs):
                 column = table_obj.c[column_name]
@@ -150,49 +134,53 @@ def load(session, directory=None, drop_tables=False, verbose=False):
                     # Otherwise, unflatten from bytes
                     value = value.decode('utf-8')
 
-                setattr(row, column_name, value)
+                # nb: Dictionaries flattened with ** have to have string keys
+                row_data[ str(column_name) ] = value
 
             # May need to stash this row and add it later if it refers to a
             # later row in this table
             if self_ref_columns:
-                foreign_ids = [getattr(row, _.name) for _ in self_ref_columns]
+                foreign_ids = [row_data[_.name] for _ in self_ref_columns]
                 foreign_ids = [_ for _ in foreign_ids if _]  # remove NULL ids
 
                 if not foreign_ids:
                     # NULL key.  Remember this row and add as usual.
-                    seen_ids[row.id] = 1
+                    seen_ids[row_data['id']] = 1
 
                 elif all(_ in seen_ids for _ in foreign_ids):
                     # Non-NULL key we've already seen.  Remember it and commit
                     # so we know the old row exists when we add the new one
-                    session.commit()
-                    seen_ids[row.id] = 1
+                    insert_and_commit()
+                    seen_ids[row_data['id']] = 1
 
                 else:
                     # Non-NULL future id.  Save this and insert it later!
-                    deferred_rows.append((row, foreign_ids))
+                    deferred_rows.append((row_data, foreign_ids))
                     continue
 
-            session.add(row)
+            # Insert row!
+            new_rows.append(row_data)
 
             # Remembering some zillion rows in the session consumes a lot of
             # RAM.  Let's not do that.  Commit every 1000 rows
-            if len(session.new) > 1000:
-                session.commit()
+            if len(new_rows) > 1000:
+                insert_and_commit()
 
-        session.commit()
+        insert_and_commit()
 
         # Attempt to add any spare rows we've collected
-        for row, foreign_ids in deferred_rows:
+        for row_data, foreign_ids in deferred_rows:
             if not all(_ in seen_ids for _ in foreign_ids):
                 # Could happen if row A refers to B which refers to C.
                 # This is ridiculous and doesn't happen in my data so far
                 raise ValueError("Too many levels of self-reference!  "
-                                 "Row was: " + str(row.__dict__))
+                                 "Row was: " + str(row))
 
-            session.add(row)
-            seen_ids[row.id] = 1
-            session.commit()
+            session.connection().execute(
+                insert_stmt.values(**row_data)
+            )
+            seen_ids[row_data['id']] = 1
+        session.commit()
 
         print_done()
 
