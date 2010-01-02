@@ -1,14 +1,22 @@
-id,encounter_condition_id,name
-1,1,During a swarm
-2,2,Morning
-3,2,Day
-4,2,Night
-5,3,Using PokéRadar
-6,4,Ruby
-7,4,Sapphire
-8,4,Emerald
-9,4,Fire Red
-10,4,Leaf Green
-12,1,Not during a swarm
-13,3,Not using PokéRadar
-14,4,No game in slot 3
+id,encounter_condition_id,name,default
+1,1,During a swarm,0
+2,1,Not during a swarm,1
+3,2,In the morning,0
+4,2,During the day,1
+5,2,At night,0
+6,3,Using PokeRadar,0
+7,3,Not using PokeRadar,1
+8,4,No game in slot 2,1
+9,4,Ruby in slot 2,0
+10,4,Sapphire in slot 2,0
+11,4,Emerald in slot 2,0
+12,4,Fire Red in slot 2,0
+13,4,Leaf Green in slot 2,0
+14,5,Radio off,1
+15,5,Hoenn radio,0
+16,5,Sinnoh radio,0
+17,6,No surfing swarm,1
+18,6,Surfing swarm,0
+19,7,No fishing swarm,1
+20,7,Fishing swarm,0
+21,7,Fishing swarm 2?,0

@@ -89,6 +89,7 @@ class EncounterConditionValue(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     encounter_condition_id = Column(Integer, ForeignKey('encounter_conditions.id'), primary_key=False, nullable=False, autoincrement=False)
     name = Column(Unicode(64), nullable=False)
+    default = Column(Boolean, nullable=False)
 
 class EncounterConditionValueMap(TableBase):
     """Maps encounters to the specific conditions under which they occur."""
@@ -116,6 +117,7 @@ class EncounterSlot(TableBase):
 
     __tablename__ = 'encounter_slots'
     id = Column(Integer, primary_key=True, nullable=False)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False, autoincrement=False)
     encounter_terrain_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=False, nullable=False, autoincrement=False)
     rarity = Column(Integer, nullable=False, autoincrement=False)
 
