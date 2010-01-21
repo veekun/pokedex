@@ -1,4 +1,4 @@
-id,encounter_condition_id,name,default
+id,encounter_condition_id,name,is_default
 1,1,During a swarm,0
 2,1,Not during a swarm,1
 3,2,In the morning,0
@@ -19,4 +19,3 @@ id,encounter_condition_id,name,default
 18,6,Surfing swarm,0
 19,7,No fishing swarm,1
 20,7,Fishing swarm,0
-21,7,Fishing swarm 2?,0
