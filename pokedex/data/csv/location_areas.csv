@@ -59,52 +59,13 @@ id,location_id,internal_id,name
 58,16,58,entrance
 59,16,59,inside
 60,17,60,
-61,18,61,a
-62,18,62,b
-63,18,63,c
-64,18,64,d
-65,18,65,e
-66,18,66,f
-67,18,67,g
-68,18,68,h
-69,18,69,i
-70,18,70,j
-71,18,71,k
-72,18,72,l
-73,18,73,m
-74,18,74,n
-75,18,75,o
-76,18,76,p
-77,18,77,q
-78,18,78,r
-79,18,79,s
-80,18,80,t
-81,18,81,u
-82,18,82,v
-83,18,83,w
-84,18,84,x
-85,18,85,y
-86,18,86,z
-87,18,87,alpha
-88,18,88,beta
-89,18,89,gamma
-90,18,90,delta
-91,18,91,epsilon
-92,18,92,zeta
-93,18,93,eta
-94,18,94,theta
-95,18,95,iota
-96,18,96,kappa
-97,18,97,lambda
-98,18,98,mu
-99,18,99,nu
-100,18,100,xi
-101,18,101,omicron
-102,18,102,pi
-103,18,103,rho
-104,18,104,sigma
-105,18,105,tau
-106,18,106,upsilon
+61,18,61,pillar 1
+62,18,62,pillar 2
+63,18,63,pillar 3
+64,18,64,before pillar 1
+70,18,70,between pillars 1 and 2
+76,18,76,between pillars 2 and 3
+82,18,82,after pillar 3
 107,19,107,1F
 108,19,108,B1F
 109,19,109,B2F
@@ -113,9 +74,9 @@ id,location_id,internal_id,name
 112,19,112,B5F
 113,20,113,1F
 114,20,114,B1F
-115,21,115,
-116,21,116,expansion
-117,22,117,
+115,22,115,0–9 different Unown caught
+116,22,116,10–25 different Unown caught
+117,22,117,26+ different Unown caught
 118,23,118,
 119,24,119,
 120,24,120,1F
@@ -133,8 +94,8 @@ id,location_id,internal_id,name
 132,25,132,2F middle room
 133,25,133,2F right room
 134,25,134,2F rightmost room
-135,26,135,before
-136,26,136,after
+135,26,135,before Galactic intervention
+136,26,136,after Galactic intervention
 137,27,137,
 138,28,138,
 139,29,139,
@@ -142,10 +103,10 @@ id,location_id,internal_id,name
 141,31,141,
 142,32,142,
 143,33,143,
-144,34,144,Jubilife City side
-145,34,145,Floaroma City side
-146,35,146,Floaroma City side
-147,35,147,Eterna City side
+144,34,144,"south, towards Jubilife City"
+145,34,145,"north, towards Floaroma Town"
+146,35,146,"south, towards Floaroma Town"
+147,35,147,"east, towards Eterna City"
 148,36,148,
 149,37,149,
 150,38,150,
@@ -155,12 +116,12 @@ id,location_id,internal_id,name
 154,40,154,3F
 155,40,155,4F
 156,40,156,5F
-157,41,157,Solaceon City side
-158,41,158,Celestic City side
-159,42,159,Eterna City side
-160,42,160,Celestic City side
-161,43,161,Hearthome City side
-162,43,162,Pastoria City side
+157,41,157,"south, towards Solaceon City"
+158,41,158,"west, towards Celestic Town"
+159,42,159,"west, towards Eterna City"
+160,42,160,"east, towards Celestic Town"
+161,43,161,"north, towards Hearthome City"
+162,43,162,"east, towards Pastoria City"
 163,44,163,
 164,45,164,
 165,46,165,

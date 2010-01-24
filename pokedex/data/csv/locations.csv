@@ -9,7 +9,7 @@ id,generation_id,name
 8,4,Eterna Forest
 9,4,Fuego Ironworks
 10,4,Mt. Coronet
-11,4,Safari Zone
+11,4,Great Marsh
 12,4,Solaceon Ruins
 13,4,Victory Road
 14,4,Deserted Escape Path
@@ -19,9 +19,8 @@ id,generation_id,name
 18,4,Turnback Cave
 19,4,Snowpoint Temple
 20,4,Wayward Cave
-21,4,Ruins Maniac's Cave
-22,4,Ruins Maniac's Tunnel
-23,4,Pokemon Mansion garden
+22,4,Ruin Maniac Tunnel
+23,4,Trophy Garden
 24,4,Iron Island
 25,4,Old Chateau
 26,4,Lake Verity
