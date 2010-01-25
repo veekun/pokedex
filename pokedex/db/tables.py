@@ -144,8 +144,8 @@ class EvolutionMethod(TableBase):
 class Generation(TableBase):
     __tablename__ = 'generations'
     id = Column(Integer, primary_key=True, nullable=False)
+    main_region_id = Column(Integer, ForeignKey('regions.id'))
     name = Column(Unicode(16), nullable=False)
-    main_region = Column(Unicode(16), nullable=False)
 
 class GrowthRate(TableBase):
     """`formula` is written in LaTeX math notation."""
@@ -170,7 +170,7 @@ class Location(TableBase):
     __tablename__ = 'locations'
     __singlename__ = 'location'
     id = Column(Integer, primary_key=True, nullable=False)
-    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
+    region_id = Column(Integer, ForeignKey('regions.id'))
     name = Column(Unicode(64), nullable=False)
 
 class LocationArea(TableBase):
@@ -412,6 +412,12 @@ class PokemonType(TableBase):
     type_id = Column(Integer, ForeignKey('types.id'), nullable=False)
     slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
 
+class Region(TableBase):
+    """Major areas of the world: Kanto, Johto, etc."""
+    __tablename__ = 'regions'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(16), nullable=False)
+
 class Stat(TableBase):
     __tablename__ = 'stats'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -448,6 +454,11 @@ class VersionGroup(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
 
+class VersionGroupRegion(TableBase):
+    __tablename__ = 'version_group_regions'
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False)
+    region_id = Column(Integer, ForeignKey('regions.id'), primary_key=True, nullable=False)
+
 class Version(TableBase):
     __tablename__ = 'versions'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -483,6 +494,9 @@ EncounterSlotCondition.condition = relation(EncounterCondition,
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 
 Generation.versions = relation(Version, secondary=VersionGroup.__table__)
+Generation.main_region = relation(Region)
+
+Location.region = relation(Region, backref='locations')
 
 LocationArea.location = relation(Location, backref='areas')
 
@@ -568,6 +582,12 @@ PokemonName.language = relation(Language)
 
 PokemonStat.stat = relation(Stat)
 
+# This is technically a has-many; Generation.main_region_id -> Region.id
+Region.generation = relation(Generation, uselist=False)
+Region.version_group_regions = relation(VersionGroupRegion, backref='region',
+                                        order_by='VersionGroupRegion.version_group_id')
+Region.version_groups = association_proxy('version_group_regions', 'version_group')
+
 SuperContestCombo.first = relation(Move, primaryjoin=SuperContestCombo.first_move_id==Move.id,
                                         backref='super_contest_combo_first')
 SuperContestCombo.second = relation(Move, primaryjoin=SuperContestCombo.second_move_id==Move.id,
@@ -589,3 +609,5 @@ Version.version_group = relation(VersionGroup, backref='versions')
 Version.generation = association_proxy('version_group', 'generation')
 
 VersionGroup.generation = relation(Generation, backref='version_groups')
+VersionGroup.version_group_regions = relation(VersionGroupRegion, backref='version_group')
+VersionGroup.regions = association_proxy('version_group_regions', 'region')
