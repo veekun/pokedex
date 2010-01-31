@@ -1,5 +1,5 @@
-id,name,main_region
-1,Generation I,Kanto
-2,Generation II,Johto
-3,Generation III,Hoenn
-4,Generation IV,Sinnoh
+id,main_region_id,name
+1,1,Generation I
+2,2,Generation II
+3,3,Generation III
+4,4,Generation IV
