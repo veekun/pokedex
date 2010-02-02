@@ -228,10 +228,11 @@ def _whoosh_records_to_results(records, session, exact=True):
 def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     """Attempts to find some sort of object, given a database session and name.
 
-    Returns a list of named (object, name, language, exact) tuples.  `object`
-    is a database object, `name` is the name under which the object was found,
-    `language` is the name of the language in which the name was found, and
-    `exact` is True iff this was an exact match.
+    Returns a list of named (object, name, language, iso3166, exact) tuples.
+    `object` is a database object, `name` is the name under which the object
+    was found, `language` and `iso3166` are the name and country code of the
+    language in which the name was found, and `exact` is True iff this was an
+    exact match.
 
     This function currently ONLY does fuzzy matching if there are no exact
     matches.
