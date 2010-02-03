@@ -4,8 +4,8 @@ id,encounter_condition_id,name,is_default
 3,2,In the morning,0
 4,2,During the day,1
 5,2,At night,0
-6,3,Using PokeRadar,0
-7,3,Not using PokeRadar,1
+6,3,Using PokéRadar,0
+7,3,Not using PokéRadar,1
 8,4,No game in slot 2,1
 9,4,Ruby in slot 2,0
 10,4,Sapphire in slot 2,0
