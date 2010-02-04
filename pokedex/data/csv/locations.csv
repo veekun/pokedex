@@ -144,7 +144,7 @@ id,region_id,name
 144,2,Unknown 50
 145,2,Unknown 64
 146,2,Unknown 90
-147,2,Unknown Dungeon
+147,1,Unknown Dungeon
 148,2,Unknown; all Poliwag
 149,2,Unknown; all Rattata
 150,2,Unknown; all bugs
@@ -154,3 +154,9 @@ id,region_id,name
 154,1,Viridian City
 155,1,Viridian Forest
 156,2,Whirl Islands
+157,1,Route 23
+158,1,Power Plant
+159,1,Victory Road
+160,1,Pokémon Tower
+161,1,Pokémon Mansion
+162,1,Safari Zone
