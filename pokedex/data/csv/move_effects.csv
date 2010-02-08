@@ -719,7 +719,7 @@ Specifically, :type:`Flying` Pokémon and those with :ability:`Levitate` or that
 224,2,Only works if the target uses Protect or Detect on this turn.,"Inflicts :mechanic:`regular damage`.  Removes the effect of :move:`Detect` or :move:`Protect` from the target until the end of this turn.  If the target is not currently protected by either of these moves, this move will fail.
 
 This move cannot be copied by :move:`Mirror Move`, nor selected by :move:`Assist` or :move:`Metronome`."
-225,0,Inflicts double damage if the user is holding a berry.,"Inflicts :mechanic:`regular damage`.  If the target is holding a berry, this move has double power, and the user takes the berry and uses it immediately.
+225,0,"If target has a berry, inflicts double damage and uses the berry.","Inflicts :mechanic:`regular damage`.  If the target is holding a berry, this move has double power, and the user takes the berry and uses it immediately.
 
 If the target is holding a :item:`Jaboca Berry` or :item:`Rowap Berry`, the berry is still removed, but has no effect.
 
