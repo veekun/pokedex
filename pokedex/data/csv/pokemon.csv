@@ -173,7 +173,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 172,Pichu,,,2,10,,,,3,20,Tiny Mouse,yellow,8,forest,4,190,42,70,,1,0,0
 173,Cleffa,,,2,14,,,,3,30,Star Shape,pink,6,mountain,6,150,37,140,,1,0,0
 174,Igglybuff,,,2,16,,,,3,10,Balloon,pink,12,grassland,6,170,39,70,,1,0,0
-175,Togepi,,,2,87,,,,3,15,Spike Ball,white,12,forest,1,190,74,70,,0,0,0
+175,Togepi,,,2,87,,,,3,15,Spike Ball,white,12,forest,1,190,74,70,,1,0,0
 176,Togetic,,,2,87,175,12,,6,32,Happiness,white,12,forest,1,75,114,70,,0,0,0
 177,Natu,,,2,88,,,,2,20,Tiny Bird,green,9,forest,4,190,73,70,,0,0,0
 178,Xatu,,,2,88,177,1,25,15,150,Mystic,green,9,forest,4,75,171,70,,0,1,0
@@ -445,7 +445,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 444,Gabite,,,4,230,443,1,24,14,560,Cave,blue,6,,4,45,144,70,,0,1,1
 445,Garchomp,,,4,230,444,1,48,19,950,Mach,blue,6,,4,45,218,70,,0,1,0
 446,Munchlax,,,4,72,,,,6,1050,Big Eater,black,12,,1,50,94,70,,1,0,0
-447,Riolu,,,4,232,,,,7,202,Emanation,blue,6,,1,75,72,70,,0,0,0
+447,Riolu,,,4,232,,,,7,202,Emanation,blue,6,,1,75,72,70,,1,0,0
 448,Lucario,,,4,232,447,13,,12,540,Aura,blue,6,,1,45,204,70,,0,0,0
 449,Hippopotas,,,4,233,,,,8,495,Hippo,brown,8,,4,140,95,70,,0,1,1
 450,Hippowdon,,,4,233,449,1,34,20,3000,Heavyweight,brown,8,,4,60,198,70,,0,1,1
