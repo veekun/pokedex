@@ -305,7 +305,6 @@ class Pokemon(TableBase):
     capture_rate = Column(Integer, nullable=False)
     base_experience = Column(Integer, nullable=False)
     base_happiness = Column(Integer, nullable=False)
-    gen1_internal_id = Column(Integer)
     is_baby = Column(Boolean, nullable=False)
     has_gen4_fem_sprite = Column(Boolean, nullable=False)
     has_gen4_fem_back_sprite = Column(Boolean, nullable=False)
