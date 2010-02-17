@@ -264,6 +264,17 @@ class Move(TableBase):
     contest_effect_id = Column(Integer, ForeignKey('contest_effects.id'), nullable=True)
     super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=False)
 
+class Pokedex(TableBase):
+    __tablename__ = 'pokedexes'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(16), nullable=False)
+    description = Column(Unicode(512))
+
+class PokedexVersionGroup(TableBase):
+    __tablename__ = 'pokedex_version_groups'
+    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True, nullable=False, autoincrement=False)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
+
 class Pokemon(TableBase):
     """The core to this whole mess.
 
@@ -339,7 +350,7 @@ class PokemonAbility(TableBase):
 class PokemonDexNumber(TableBase):
     __tablename__ = 'pokemon_dex_numbers'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False, autoincrement=False)
+    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True, nullable=False, autoincrement=False)
     pokedex_number = Column(Integer, nullable=False)
 
 class PokemonEggGroup(TableBase):
@@ -533,6 +544,8 @@ MoveFlavorText.generation = relation(Generation)
 
 MoveName.language = relation(Language)
 
+Pokedex.version_groups = relation(VersionGroup, secondary=PokedexVersionGroup.__table__)
+
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
                                       backref='pokemon')
@@ -556,7 +569,7 @@ Pokemon.shape = relation(PokemonShape, backref='pokemon')
 Pokemon.stats = relation(PokemonStat, backref='pokemon')
 Pokemon.types = relation(Type, secondary=PokemonType.__table__)
 
-PokemonDexNumber.generation = relation(Generation)
+PokemonDexNumber.pokedex = relation(Pokedex)
 
 PokemonFlavorText.version = relation(Version)
 
