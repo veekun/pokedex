@@ -87,7 +87,7 @@ roles.register_local_role('data', data_role)
 
 class RstString(object):
     """Wraps a reStructuredText string.  Stringifies to the original text, but
-    may be translated to HTML with .to_html().
+    may be translated to HTML with .as_html().
     """
 
     def __init__(self, source_text, document_properties={}):
