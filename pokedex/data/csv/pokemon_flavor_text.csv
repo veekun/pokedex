@@ -26,7 +26,7 @@ pokemon_id,version_id,flavor_text
 2,11,"As the bulb on its back grows larger, it appears to lose the ability to stand on its hind legs."
 2,12,"When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower's coming bloom."
 2,13,"When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower's coming bloom."
-2,14,"When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom."
+2,14,"When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower's coming bloom."
 3,1,"The plant blooms when it is absorbing solar energy, prompting the Venusaur to keep moving in search of sunlight."
 3,2,"The plant blooms when it is absorbing solar energy, prompting the Venusaur to keep moving in search of sunlight."
 3,3,The flower on its back catches the sun's rays. The sunlight is then absorbed and used for energy.
@@ -82,7 +82,7 @@ pokemon_id,version_id,flavor_text
 6,11,Spits fire that is hot enough to melt boulders.  Known to cause forest fires unintentionally.
 6,12,It is said that CHARIZARD's fire burns hotter if it has experienced harsh battles.
 6,13,It is said that CHARIZARD's fire burns hotter if it has experienced harsh battles.
-6,14,It is said that CHARIZARD’s fire burns hotter if it has experienced harsh battles.
+6,14,It is said that CHARIZARD's fire burns hotter if it has experienced harsh battles.
 7,1,"After birth, its back swells and hardens into a shell.  Powerfully sprays foam from its mouth."
 7,2,"After birth, its back swells and hardens into a shell.  Powerfully sprays foam from its mouth."
 7,3,Shoots water at prey while in the water. Withdraws into its shell when in danger.
@@ -418,7 +418,7 @@ pokemon_id,version_id,flavor_text
 30,11,The female's horn develops slowly.  Prefers physical attacks such as clawing and biting.
 30,12,"When it senses danger, it raises all the barbs on its body. These barbs grow slower than NIDORINO's."
 30,13,"When it senses danger, it raises all the barbs on its body. These barbs grow slower than NIDORINO's."
-30,14,"When it senses danger, it raises all the barbs on its body. These barbs grow slower than NIDORINO’s."
+30,14,"When it senses danger, it raises all the barbs on its body. These barbs grow slower than NIDORINO's."
 31,1,"Its hard scales provide strong protection, and it uses its hefty bulk to execute powerful moves."
 31,2,"Its hard scales provide strong protection, and it uses its hefty bulk to execute powerful moves."
 31,3,Tough scales cover the sturdy body of this Pokemon.  It appears that the scales grow in cycles.
@@ -656,7 +656,7 @@ pokemon_id,version_id,flavor_text
 47,11,A host-parasite pair in which the parasite mushroom has taken over the host bug.  Prefers damp places.
 47,12,A mushroom grown larger than the host's body controls PARASECT. It scatters poisonous spores.
 47,13,It is controlled by a mushroom grown larger than the bug body. It is said to prefer damp places.
-47,14,A mushroom grown larger than the host’s body controls PARASECT. It scatters poisonous spores.
+47,14,A mushroom grown larger than the host's body controls PARASECT. It scatters poisonous spores.
 48,1,"Lives in the shadows of tall trees, where it eats insects.  It is attracted by light at night."
 48,2,"Lives in the shadows of tall trees, where it eats insects.  It is attracted by light at night."
 48,3,"Its large eyes act as radars.  In a bright place, you can see that they are clusters of many tiny eyes."
@@ -1062,7 +1062,7 @@ pokemon_id,version_id,flavor_text
 76,11,It's boulder-like body is extremely hard and can easily withstand dynamite blasts without damage.
 76,12,"It sheds its hide once a year. Its boulder like body is so tough, even dynamite can't harm it."
 76,13,"It tumbles down mountains, leaving grooves from peak to base. Stay clear of these grooves."
-76,14,"Even dynamite can’t harm its hard, boulderlike body. It sheds its hide just once a year."
+76,14,"Even dynamite can't harm its hard, boulderlike body. It sheds its hide just once a year."
 77,1,"Its hooves are 10 times harder than diamonds, and it can trample anything completely flat in little time."
 77,2,"Its hooves are 10 times harder than diamonds, and it can trample anything completely flat in little time."
 77,3,Capable of jumping really high.  Its hooves and sturdy legs absorb the impact of the hard landing.
@@ -1160,7 +1160,7 @@ pokemon_id,version_id,flavor_text
 83,11,The spring of green onions it holds is its weapon.  It is used much like a metal sword.
 83,12,It can't live without the stalk it holds. That's why it defends the stalk from attackers with its life.
 83,13,It can't live without the stalk it holds. That's why it defends the stalk from attackers with its life.
-83,14,It can’t live without the stalk it holds. That’s why it defends the stalk from attackers with its life.
+83,14,It can't live without the stalk it holds. That's why it defends the stalk from attackers with its life.
 84,1,A bird that makes up for its poor flying with its fast foot speed.  Leaves giant footprints.
 84,2,A bird that makes up for its poor flying with its fast foot speed.  Leaves giant footprints.
 84,3,"Its short wings make flying difficult.  Instead, this Pokemon runs at high speed on developed legs."
@@ -1230,7 +1230,7 @@ pokemon_id,version_id,flavor_text
 88,11,Appears in filthy areas and thrives by sucking up polluted sludge that is pumped out of factories.
 88,12,It was born when sludge in a dirty stream was exposed to the moon's X-rays. It appears among filth.
 88,13,It was born when sludge in a dirty stream was exposed to the moon's X-rays. It appears among filth.
-88,14,It was born when sludge in a dirty stream was exposed to the moon’s X-rays. It appears among filth.
+88,14,It was born when sludge in a dirty stream was exposed to the moon's X-rays. It appears among filth.
 89,1,"Thickly covered with a filthy, vile sludge.  It is so toxic, even its footprints contain poison."
 89,2,"Thickly covered with a filthy, vile sludge.  It is so toxic, even its footprints contain poison."
 89,3,"Smells so awful, it can cause fainting.  Through degeneration, it lost its sense of smell."
@@ -1440,7 +1440,7 @@ pokemon_id,version_id,flavor_text
 103,11,Legend has it that on rare occasions one of its heads will drop off and continue on as an Exeggcute.
 103,12,"It is called ""The Walking Jungle."" If a head grows too big, it falls off and becomes an EXEGGCUTE."
 103,13,"It is called ""The Walking Jungle."" If a head grows too big, it falls off and becomes an EXEGGCUTE."
-103,14,"It is called “The Walking Jungle.” If a head grows too big, it falls off and becomes an EXEGGCUTE."
+103,14,"It is called ""The Walking Jungle."" If a head grows too big, it falls off and becomes an EXEGGCUTE."
 104,1,"Because the Cubone never removes its skull helmet, no one has ever seen this Pokemon's real face."
 104,2,"Because the Cubone never removes its skull helmet, no one has ever seen this Pokemon's real face."
 104,3,Wears the skull of its deceased mother.  Its cries echo inside the skull and come out as a sad melody.
@@ -1776,7 +1776,7 @@ pokemon_id,version_id,flavor_text
 127,11,"If it fails to crush the victim in its pincers, the Pinsir will swing it around and toss it hard."
 127,12,"It grips prey with its pincers until the prey is torn in half. What it can't tear, it tosses far."
 127,13,"It grips prey with its pincers until the prey is torn in half. What it can't tear, it tosses far."
-127,14,"It grips prey with its pincers until the prey is torn in half. What it can’t tear, it tosses far."
+127,14,"It grips prey with its pincers until the prey is torn in half. What it can't tear, it tosses far."
 128,1,"When the Tauros targets an enemy, it charges furiously while whipping its foe with its long tails."
 128,2,"When the Tauros targets an enemy, it charges furiously while whipping its foe with its long tails."
 128,3,"A rowdy Pokemon with a lot of stamina. Once running, it won't stop until it hits something."
@@ -2056,7 +2056,7 @@ pokemon_id,version_id,flavor_text
 147,11,Long considered a mythical Pokemon until recently when a small colony was found living underwater.
 147,12,"It is called the ""Mirage Pokémon"" because so few have seen it. Its shed skin has been found."
 147,13,"It is called the ""Mirage Pokémon"" because so few have seen it. Its shed skin has been found."
-147,14,It is called the “Mirage Pokémon” because so few have seen it. Its shed skin has been found.
+147,14,"It is called the ""Mirage Pokémon"" because so few have seen it. Its shed skin has been found."
 148,1,A mystical Pokemon that exudes a gentle aura.  Has the ability to change climate conditions.
 148,2,A mystical Pokemon that exudes a gentle aura.  Has the ability to change climate conditions.
 148,3,"According to a witness, its body was surrounded by a strange aura that gave it a mystical look."
@@ -2098,7 +2098,7 @@ pokemon_id,version_id,flavor_text
 150,11,It was created by a scientist after years of horrific gene splicing and DNA engineering.
 150,12,A Pokémon created by recombining MEW's genes. It's said to have the most savage heart among Pokémon.
 150,13,A Pokémon created by recombining MEW's genes. It's said to have the most savage heart among Pokémon.
-150,14,A Pokémon created by recombining MEW’s genes. It’s said to have the most savage heart among Pokémon.
+150,14,A Pokémon created by recombining MEW's genes. It's said to have the most savage heart among Pokémon.
 151,1,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.
 151,2,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.
 151,3,"When viewed through a microscope, this Pokemon's short, fine, delicate hair can be seen."
@@ -2200,7 +2200,7 @@ pokemon_id,version_id,flavor_text
 159,11,"If it loses a fang, a new one grows back in its place. There are always 48 fangs lining its mouth."
 159,12,"Once it bites down, it won't let go until it loses its fangs. New fangs quickly grow into place."
 159,13,"Once it bites down, it won't let go until it loses its fangs. New fangs quickly grow into place."
-159,14,"Once it bites down, it won’t let go until it loses its fangs. New fangs quickly grow into place."
+159,14,"Once it bites down, it won't let go until it loses its fangs. New fangs quickly grow into place."
 160,4,"When it bites with its massive and powerful jaws, it shakes its head and savagely tears its victim up."
 160,5,"It is hard for it to support its own weight out of water, so it gets down on all fours. But it moves fast."
 160,6,"Although it has a massive body, its powerful hind legs enable it to move quickly, even on the ground."
@@ -2244,7 +2244,7 @@ pokemon_id,version_id,flavor_text
 163,11,"It always stands on one foot. It changes feet so fast, the movement can rarely be seen."
 163,12,"It always stands on one foot. Even when attacked, it does not brace itself using both feet."
 163,13,"It switches its standing foot so quickly, it can't be seen. It cries at the same time every day."
-163,14,"It marks time precisely. Some countries consider it to be a wise friend, versed in the world’s ways."
+163,14,"It marks time precisely. Some countries consider it to be a wise friend, versed in the world's ways."
 164,4,Its eyes are specially adapted. They concentrate even faint light and enable it to see in the dark.
 164,5,"When it need to think, it rotates its head 180 degrees to sharpen its intellectual power."
 164,6,Its extremely soft feathers make no sound in flight. It silently sneaks up on prey without being detected.
@@ -2266,7 +2266,7 @@ pokemon_id,version_id,flavor_text
 165,11,It is very timid. It will be afraid to move if it is alone. But it will be active if it is in a group
 165,12,"It is so timid, it can't move if it isn't with a swarm of others. It conveys its feelings with scent."
 165,13,"It is so timid, it can't move if it isn't with a swarm of others. It conveys its feelings with scent."
-165,14,"It is so timid, it can’t move if it isn’t with a swarm of others. It conveys its feelings with scent."
+165,14,"It is so timid, it can't move if it isn't with a swarm of others. It conveys its feelings with scent."
 166,4,"When the stars flicker in the night sky, it flutters about scattering a glowing powder."
 166,5,The star patterns on its back grow larger or smaller depending on the number of stars in the night sky.
 166,6,"In the daytime when it gets warm, it curls up inside a big leaf and drifts off into a deep slumber."
@@ -2332,7 +2332,7 @@ pokemon_id,version_id,flavor_text
 171,11,The light it emits is so bright that it can illuminate the sea's surface from a depth of over three miles.
 171,12,"LANTURN's light can shine up from great depths. It is nicknamed ""The Deep-Sea Star."""
 171,13,"LANTURN's light can shine up from great depths. It is nicknamed ""The Deep-Sea Star."""
-171,14,LANTURN’s light can shine up from great depths. It is nicknamed “The Deep-Sea Star.”
+171,14,"LANTURN's light can shine up from great depths. It is nicknamed ""The Deep-Sea Star."""
 172,4,It is not yet skilled at storing electricity. It may send out a jolt if amused or startled.
 172,5,"Despite its small size, it can zap even adult humans. However, if it does so, it also surprises itself."
 172,6,It is unskilled at storing electric power. Any kind of shock causes it to discharge energy spontaneously.
@@ -2354,7 +2354,7 @@ pokemon_id,version_id,flavor_text
 173,11,"Because of its unusual, star-like silhouette, people believe that it came here on a meteor."
 173,12,Its silhouette is like a star. It is believed to arrive riding on shooting stars.
 173,13,Many appear when the night skies are filled with shooting stars. They disappear with sunrise.
-173,14,It is often seen when shooting stars fill the night skies. It’s said to arrive riding on a shooting star.
+173,14,It is often seen when shooting stars fill the night skies. It's said to arrive riding on a shooting star.
 174,4,"It has a very soft body. If it starts to roll, it will bounce all over and be impossible to stop."
 174,5,"Its extremely flexible and elastic body makes it bounce continuously--anytime, anywhere."
 174,6,"Instead of walking with its short legs, it moves around by bouncing on its soft, tender body."
@@ -2409,7 +2409,7 @@ pokemon_id,version_id,flavor_text
 178,11,They say that it stays still and quiet because it is seeing both the past and future at the same time.
 178,12,This odd Pokémon can see both the past and the future. It eyes the sun's movement all day.
 178,13,This odd Pokémon can see both the past and the future. It eyes the sun's movement all day.
-178,14,This odd Pokémon can see both the past and the future. It eyes the sun’s movement all day.
+178,14,This odd Pokémon can see both the past and the future. It eyes the sun's movement all day.
 179,4,"If static electricity builds in its body, its fleece doubles in volume. Touching it will shock you."
 179,5,"Its fleece grows continually. In the summer, the fleece is fully shed, but it grows back in a week."
 179,6,"It stores lots of air in its soft fur, allowing it to stay cool in summer and warm in winter."
@@ -2442,7 +2442,7 @@ pokemon_id,version_id,flavor_text
 181,11,The tail's tip shines brightly and can be seen from far away. It acts as a beacon for lost people.
 181,12,"The tip of its tail shines brightly. In the olden days, people sent signals using the tail's light."
 181,13,"The tip of its tail shines brightly. In the olden days, people sent signals using the tail's light."
-181,14,"The tip of its tail shines brightly. In the olden days, people sent signals using the tail’s light."
+181,14,"The tip of its tail shines brightly. In the olden days, people sent signals using the tail's light."
 182,4,Bellossom gather at times and appear to dance. They say that the dance is a ritual to summon the sun.
 182,5,"Plentiful in the tropics. When it dances, its petals rub together and make a pleasant ringing sound."
 182,6,"When these dance together, their petals rub against each other, making pretty, relaxing sounds."
@@ -2596,7 +2596,7 @@ pokemon_id,version_id,flavor_text
 195,11,This carefree Pokemon has a easy-going nature. While swimming it always bumps into board hulls.
 195,12,"It has a sluggish nature. It lies at the river's bottom, waiting for prey to stray into its mouth."
 195,13,A dim-witted Pokémon. It doesn't care if it bumps its head into boats or rocks while swimming.
-195,14,It has an easygoing nature. It doesn’t care if it bumps its head on boats and boulders while swimming.
+195,14,It has an easygoing nature. It doesn't care if it bumps its head on boats and boulders while swimming.
 196,4,It uses the fine hairs that cover its body to sense air currents and predict its enemy's actions.
 196,5,"By reading air currents, it can predict things such as weather or its foe's next move."
 196,6,The tip of its forked tail quivers when it is predicting its opponent's next move.
@@ -2618,7 +2618,7 @@ pokemon_id,version_id,flavor_text
 197,11,"When agitated, this Pokemon protects itself by spraying poisonous sweat from its pores."
 197,12,The light of the moon changed EEVEE's genetic structure. It lurks in darkness for prey.
 197,13,The light of the moon changed EEVEE's genetic structure. It lurks in darkness for prey.
-197,14,"When exposed to the moon’s aura, the rings on its body glow faintly and it gains a mysterious power."
+197,14,"When exposed to the moon's aura, the rings on its body glow faintly and it gains a mysterious power."
 198,4,"Feared and loathed by many, it is believed to bring misfortune to all those who see it at night."
 198,5,"It is said that when chased, it lures its attacker onto dark mountain trails where the foe will get lost."
 198,6,It hides any shiny object it finds in a secret location. Murkrow and Meowth loot one another's stashes.
@@ -2849,7 +2849,7 @@ pokemon_id,version_id,flavor_text
 218,11,"It never sleeps. It has to keep moving because if it stopped, its magma body would cool and harden."
 218,12,"Its body is made of magma. If it doesn't keep moving, its body will cool and harden."
 218,13,"Its body is made of magma. If it doesn't keep moving, its body will cool and harden."
-218,14,"Its body is made of magma. If it doesn’t keep moving, its body will cool and harden."
+218,14,"Its body is made of magma. If it doesn't keep moving, its body will cool and harden."
 219,4,The shell on its back is just skin that has cooled and hardened. It breaks easily with a slight touch.
 219,5,Its brittle shell occasionally spouts intense flames that circulate throughout its body.
 219,6,Its body is as hot as lava and is always billowing. Flames will occasionally burst from its shell.
@@ -2893,7 +2893,7 @@ pokemon_id,version_id,flavor_text
 222,11,It continuously sheds and grows. The tip of its head is prized as a treasure for its beauty.
 222,12,Many live in the clean seas of the south. They apparently can't live in polluted waters.
 222,13,Many live in the clean seas of the south. They apparently can't live in polluted waters.
-222,14,Many live in the clean seas of the south. They apparently can’t live in polluted waters.
+222,14,Many live in the clean seas of the south. They apparently can't live in polluted waters.
 223,4,It has superb accuracy. The water it shoots out can strike even moving pray from more than 300 feet.
 223,5,"Using its dorsal fin as a suction pad, it clings to a Mantine's underside to scavenger for leftovers."
 223,6,"To escape from an attacker, it may shoot water out of its mouth, then use that force to swim backward."
@@ -3091,7 +3091,7 @@ pokemon_id,version_id,flavor_text
 240,11,"Each and every time it inhales and exhales, hot embers dribble out of its mouth and nostrils."
 240,12,"Its body temperature is around 1,100 degrees F. It is healthy if it is breathing yellow flames."
 240,13,"Its body temperature is around 1,100 degrees F. It is healthy if it is breathing yellow flames."
-240,14,"Its magma-like blood circulates throughout its body. Its body’s heat can top 1,100 degrees F."
+240,14,"Its magma-like blood circulates throughout its body. Its body's heat can top 1,100 degrees F."
 241,4,Its milk is packed with nutrition making it the ultimate beverage for the sick or weary.
 241,5,"If it has just had a baby, the milk it produces contains much more nutrition than usual."
 241,6,"In order to milk a Miltank, one must have a knack for rhythmically pulling up and down on its udders."
@@ -3102,7 +3102,7 @@ pokemon_id,version_id,flavor_text
 241,11,Its milk is packed with nutrition making it the ultimate beverage for the sick or weary.
 241,12,"It is said that kids who drink MILTANK's milk grow up to become hearty, healthy adults."
 241,13,"It is said that kids who drink MILTANK's milk grow up to become hearty, healthy adults."
-241,14,"It is said that kids who drink MILTANK’s milk grow up to become hearty, healthy adults."
+241,14,"It is said that kids who drink MILTANK's milk grow up to become hearty, healthy adults."
 242,4,Anyone who takes even one bite of Blissey's egg becomes unfailingly caring and pleasant to everyone.
 242,5,"It has a very compassionate nature. If it sees a sick Pokemon, it will nurse the sufferer back to health."
 242,6,Biting into one of the delicious eggs that Blissey provides will make everyone around smile with joy.
@@ -3364,7 +3364,7 @@ pokemon_id,version_id,flavor_text
 270,11,"It searches about for clean water. If it does not drink water for too long, the leaf on its head wilts."
 270,12,It looks like an aquatic plant and serves as a ferry to Pokémon that can't swim.
 270,13,It looks like an aquatic plant and serves as a ferry to Pokémon that can't swim.
-270,14,It looks like an aquatic plant and serves as a ferry to Pokémon that can’t swim.
+270,14,It looks like an aquatic plant and serves as a ferry to Pokémon that can't swim.
 271,7,"Lombre is nocturnal - it will get active after dusk. It is also a mischief-maker. When this Pokemon spots anglers, it tugs on their fishing lines from beneath the surface and enjoys their consternation."
 271,8,"Lombre's entire body is covered by a slippery, slimy film. It feels horribly unpleasant to be touched by this Pokemon's hands. Lombre is often mistaken for a human child."
 271,9,"In the evening, it takes great delight in popping out of rivers and startling people. It feeds on aquatic moss that grows on rocks on the riverbed."
@@ -3380,7 +3380,7 @@ pokemon_id,version_id,flavor_text
 272,11,"The rhythm of bright, festive music activates Ludicolo's cells, making it more powerful."
 272,12,"If it hears festive music, all its muscles fill with energy. It can't help breaking out into a dance."
 272,13,"If it hears festive music, all its muscles fill with energy. It can't help breaking out into a dance."
-272,14,"If it hears festive music, all its muscles fill with energy. It can’t help breaking out into a dance."
+272,14,"If it hears festive music, all its muscles fill with energy. It can't help breaking out into a dance."
 273,7,"Seedot attaches itself to a tree branch using the top of its head. It sucks moisture from the tree while hanging off the branch. The more water it drinks, the glossier this Pokemon's body becomes."
 273,8,Seedot looks exactly like an acorn when it is dangling from a tree branch. It startles other Pokemon by suddenly moving. This Pokemon polishes its body once a day using leaves.
 273,9,"It hangs off branches and absorbs nutrients. When it finishes eating, its body becomes so heavy that it drops to the ground with a thump."
@@ -3516,7 +3516,7 @@ pokemon_id,version_id,flavor_text
 289,11,"It is the world's most slothful Pokémon. However, it can exert horrifying power by releasing pent-up energy all at once."
 289,12,"The world's laziest Pokémon. When it is lounging, it is actually saving energy for striking back."
 289,13,"The world's laziest Pokémon. When it is lounging, it is actually saving energy for striking back."
-289,14,"The world’s laziest Pokémon. When it is lounging, it is actually saving energy for striking back."
+289,14,"The world's laziest Pokémon. When it is lounging, it is actually saving energy for striking back."
 290,7,Nincada lives underground for many years in complete darkness. This Pokemon absorbs nutrients from the roots of trees. It stays motionless as it waits for evolution.
 290,8,Nincada lives underground. It uses its sharp claws to carve the roots of trees and absorb moisture and nutrients. This Pokemon can't withstand bright sunlight so avoids it.
 290,9,"It makes its nest at the roots of a mighty tree. Using its whiskerlike antennae, it probes its surroundings in the pitch black darkness of soil."
@@ -3540,7 +3540,7 @@ pokemon_id,version_id,flavor_text
 292,11,A most peculiar Pokémon that somehow appears in a Poke Ball when a Nincada evolves.
 292,12,A discarded bug shell that came to life. Peering into the crack on its back is said to steal one's spirit.
 292,13,A discarded bug shell that came to life. Peering into the crack on its back is said to steal one's spirit.
-292,14,A discarded bug shell that came to life. Peering into the crack on its back is said to steal one’s spirit.
+292,14,A discarded bug shell that came to life. Peering into the crack on its back is said to steal one's spirit.
 293,7,"Normally, Whismur's voice is very quiet - it is barely audible even if one is paying close attention. However, if this Pokemon senses danger, it starts crying at an earsplitting volume."
 293,8,"Whismur is very timid. If it starts to cry loudly, it becomes startled by its own crying and cries even harder. When it finally stops crying, the Pokemon goes to sleep, all tired out."
 293,9,"Its cries equal a jet plane in volume. It inhales through its ear canals. Because of this system, it can cry continually without having to catch its breath."
@@ -3604,7 +3604,7 @@ pokemon_id,version_id,flavor_text
 300,11,"It is said to be difficult to earn its trust. However, it is extremely popular for its cute looks and behavior."
 300,12,"It can't stop itself from chasing moving things, and it runs in a circle, chasing its own tail."
 300,13,"It can't stop itself from chasing moving things, and it runs in a circle, chasing its own tail."
-300,14,"It can’t stop itself from chasing moving things, and it runs in a circle, chasing its own tail."
+300,14,"It can't stop itself from chasing moving things, and it runs in a circle, chasing its own tail."
 301,7,"Delcatty prefers to live an unfettered existence in which it can do as it pleases at its own pace. Because this Pokemon eats and sleeps whenever it decides, its daily routines are completely random."
 301,8,"Delcatty sleeps anywhere it wants without keeping a permanent nest. If other Pokemon approach it as it sleeps, this Pokemon will never fight - it will just move away somewhere else."
 301,9,"Rather than keeping a permanent lair, it habitually seeks comfortable spots and sleeps there. It is nocturnal and becomes active at dusk."
@@ -3708,7 +3708,7 @@ pokemon_id,version_id,flavor_text
 313,11,"It lives around clean ponds. At night, its rear lights up. It converses with others by flashing its light."
 313,12,It communicates with others by lighting up its rear at night. It loves ILLUMISE's sweet aroma.
 313,13,It communicates with others by lighting up its rear at night. It loves ILLUMISE's sweet aroma.
-313,14,It communicates with others by lighting up its rear at night. It loves ILLUMISE’s sweet aroma.
+313,14,It communicates with others by lighting up its rear at night. It loves ILLUMISE's sweet aroma.
 314,7,"Illumise attracts a swarm of Volbeat using a sweet fragrance. Once the Volbeat have gathered, this Pokemon leads the lit-up swarm in drawing geometric designs on the canvas of the night sky."
 314,8,Illumise leads a flight of illuminated Volbeat to draw signs in the night sky. This Pokemon is said to earn greater respect from its peers by composing more complex designs in the sky.
 314,9,A nocturnal Pokemon that becomes active upon nightfall. It leads a Volbeat swarm to draw patterns in the night sky. Over 200 different patterns have been confirmed.
@@ -3724,7 +3724,7 @@ pokemon_id,version_id,flavor_text
 315,11,"Its flowers five off a relaxing fragrance. The stronger its aroma, the healthier the Roselia is."
 315,12,ROSELIA raised on clean drinking water are known to grow vividly colored flowers.
 315,13,The beautiful flowers on its arms have toxic thorns. Don't even think about picking those flowers.
-315,14,"The more healthy the ROSELIA, the more pleasant its flowers’ aroma. Its scent deeply relaxes people."
+315,14,"The more healthy the ROSELIA, the more pleasant its flowers' aroma. Its scent deeply relaxes people."
 316,7,"Virtually all of Gulpin's body is its stomach. As a result, it can swallow something its own size. This Pokemon's stomach contains a special fluid that digests anything."
 316,8,Most of Gulpin's body is made up of its stomach - its heart and brain are very small in comparison. This Pokemon's stomach contains special enzymes that dissolve anything.
 316,9,"This Pokemon's stomach fluid can even digest scrap iron. In one gulp, it can swallow something that is as large as itself."
@@ -3756,7 +3756,7 @@ pokemon_id,version_id,flavor_text
 319,11,"The ruffian of the seas, it has fangs that crunch through iron. It swims by jetting water from its rear."
 319,12,"Its fangs rip through sheet iron. It swims at 75 mph and is known as ""The Bully of the Sea."""
 319,13,"Its fangs rip through sheet iron. It swims at 75 mph and is known as ""The Bully of the Sea."""
-319,14,Its fangs rip through sheet iron. It swims at 75 mph and is known as “The Bully of the Sea.”
+319,14,"Its fangs rip through sheet iron. It swims at 75 mph and is known as ""The Bully of the Sea."""
 320,7,Wailmer's nostrils are located above its eyes. This playful Pokemon loves to startle people by forcefully snorting out seawater it stores inside its body out of its nostrils.
 320,8,"Wailmer can store water inside its body to transform itself into a ball for bouncing around on the ground. By filling itself up with more water, this Pokemon can elevate the height of its bounces."
 320,9,"While this Pokemon usually lives in the sea, it can survive on land, although not too long. It loses vitality if its body becomes dried out."
@@ -3844,7 +3844,7 @@ pokemon_id,version_id,flavor_text
 330,11,It hides itself by kicking up desert sand with its wings. Red covers shield its eyes from sand.
 330,12,"It whips up sandstorms with powerful flaps of its wings. It is known as ""The Desert Spirit."""
 330,13,"It whips up sandstorms with powerful flaps of its wings. It is known as ""The Desert Spirit."""
-330,14,It whips up sandstorms with powerful flaps of its wings. It is known as “The Desert Spirit.”
+330,14,"It whips up sandstorms with powerful flaps of its wings. It is known as ""The Desert Spirit."""
 331,7,"Cacnea lives in arid locations such as deserts. It releases a strong aroma from its flower to attract prey. When prey comes near, this Pokemon shoots sharp thorns from its body to bring the victim down."
 331,8,"The more arid and harsh the environment, the more pretty and fragrant a flower Cacnea grows. This Pokemon battles by wildly swinging its thorny arms."
 331,9,"Cacnea live in deserts with virtually no rainfall. It battles by swinging its thick, spiked arms. One a year, a yellow flower blooms on the top of its head."
@@ -3860,7 +3860,7 @@ pokemon_id,version_id,flavor_text
 332,11,It lives in deserts. It becomes active at night when it hunts for prey exhausted from the desert's heat.
 332,12,"It becomes active at night, seeking prey that is exhausted from the day's desert heat."
 332,13,"It becomes active at night, seeking prey that is exhausted from the day's desert heat."
-332,14,"It becomes active at night, seeking prey that is exhausted from the day’s desert heat."
+332,14,"It becomes active at night, seeking prey that is exhausted from the day's desert heat."
 333,7,Swablu has light and fluffy wings that are like cottony clouds. This Pokemon is not frightened of people. It lands on the heads of people and sits there like a cotton-fluff hat.
 333,8,"Swablu loves to make things clean. If it spots something dirty, it will wipe and polish it with its cottony wings. If its wings become dirty, this Pokemon finds a stream and showers itself."
 333,9,"A Pokemon that has wings like cottony clouds. After enduring winter, in which little food is available, Swably flocks moves closer to towns in the spring."
@@ -3868,7 +3868,7 @@ pokemon_id,version_id,flavor_text
 333,11,It constantly grooms its cotton-like wings. It takes a shower to clean itself if it becomes dirty.
 333,12,"Its wings are like cotton tufts. If it perches on someone's head, it looks like a cotton hat."
 333,13,"Its wings are like cotton tufts. If it perches on someone's head, it looks like a cotton hat."
-333,14,It can’t relax if it or its surroundings are not clean. It wipes off dirt with its wings.
+333,14,It can't relax if it or its surroundings are not clean. It wipes off dirt with its wings.
 334,7,"Altaria dances and wheels through the sky among billowing, cotton-like clouds. By singing melodies in its crystal-clear voice, this Pokemon makes its listeners experience dreamy wonderment."
 334,8,Altaria sings in a gorgeous soprano. Its wings are like cotton clouds. This Pokemon catches updrafts with its buoyant wings and soars way up into the wild blue yonder.
 334,9,It hums in a beautiful soprano voice. It flies among white clouds in the blue sky. It launches intensely hot fireballs from its mouth.
@@ -4020,7 +4020,7 @@ pokemon_id,version_id,flavor_text
 352,11,It changes body color to blend in with its surroundings. It also changes color if it is happy or sad.
 352,12,"It can freely change its body's color. The zigzag pattern on its belly doesn't change, however."
 352,13,"It can freely change its body's color. The zigzag pattern on its belly doesn't change, however."
-352,14,"It can freely change its body’s color. The zigzag pattern on its belly doesn’t change, however."
+352,14,"It can freely change its body's color. The zigzag pattern on its belly doesn't change, however."
 353,7,"Shuppet is attracted by feelings of jealousy and vindictiveness. If someone develops strong feelings of vengeance, this Pokemon will appear in a swarm and line up beneath the eaves of that person's home."
 353,8,"Shuppet grows by feeding on dark emotions, such as vengefulness and envy, in the hearts of people. It roams through cities in search of grudges that taint people."
 353,9,This Pokemon roams about deep in the night seeking such negative emotions as grudges and envy. It retreats to its nest when the sun begins to rise.
@@ -4052,7 +4052,7 @@ pokemon_id,version_id,flavor_text
 356,11,"Its body is entirely hollow. When it opens its mouth, it sucks everything in as if it were a black hole."
 356,12,Its body is hollow. It is said that those who look into its body are sucked into the void.
 356,13,Its body is hollow. It is said that those who look into its body are sucked into the void.
-356,14,It seeks drifting will-o’-the-wisps and sucks them into its empty body. What happens inside is a mystery.
+356,14,It seeks drifting will-o'-the-wisps and sucks them into its empty body. What happens inside is a mystery.
 357,7,"The bunches of fruit around Tropius's neck are very popular with children. This Pokemon loves fruit, and eats it continuously. Apparently, its love for fruit resulted in its own outgrowth of fruit."
 357,8,Children of the southern tropics eat as snacks the fruit that grows in bunches around the neck of Tropius. This Pokemon flies by flapping the leaves on its back as if they were wings.
 357,9,"It flies by flapping its broad leaves. The bunch of fruit that grows around its neck is deliciously sweet. In the spring, it scatters pollen from its neck."
@@ -4204,7 +4204,7 @@ pokemon_id,version_id,flavor_text
 375,11,"It floats midair using magnetism. Its body is so tough, even a crash with a jet plane won't leave a scratch."
 375,12,It is formed by two BELDUM joining together. Its steel body won't be scratched if it collides with a jet.
 375,13,It is formed by two BELDUM joining together. Its steel body won't be scratched if it collides with a jet.
-375,14,It is formed by two BELDUM joining together. Its steel body won’t be scratched if it collides with a jet.
+375,14,It is formed by two BELDUM joining together. Its steel body won't be scratched if it collides with a jet.
 376,7,"Metagross has four brains in total. Combined, the four brains can breeze through difficult calculations faster than a supercomputer. This Pokemon can float in the air by tucking in its four legs."
 376,8,"Metagross is the result of two Metang achieving fusion. When hunting, this Pokemon pins the prey to the ground under its massive body. It then eats the helpless victim using the large mouth on its stomach."
 376,9,"Metagross has four brains that are joined by a complex neural network. As a result of integration, this Pokemon is smarter than a super-computer."
@@ -4301,7 +4301,7 @@ pokemon_id,version_id,flavor_text
 388,14,It knows where pure water wells up. It carries fellow Pokémon there on its back.
 389,12,Small Pokémon occasionally gather on its unmoving back to begin building their nests.
 389,13,"Groups of this Pokémon migrating in search of water have been mistaken for ""moving forests."""
-389,14,Some Pokémon are born on a TORTERRA’s back and spend their entire life there.
+389,14,Some Pokémon are born on a TORTERRA's back and spend their entire life there.
 390,12,It agilely scales sheer cliffs to live atop craggy mountains. Its fire is put out when it sleeps.
 390,13,Its fiery rear end is fueled by gas made in its belly. Even rain can't extinguish the fire.
 390,14,"It is very agile. Before going to sleep, it extinguishes the flame on its tail to prevent fires."
@@ -4331,7 +4331,7 @@ pokemon_id,version_id,flavor_text
 398,14,It never stops attacking even if it is injured. It fusses over the shape of its comb.
 399,12,"With nerves of steel, nothing can perturb it. It is more agile and active than it appears."
 399,13,It constantly gnaws on logs and rocks to whittle down its front teeth. It nests alongside water.
-399,14,A comparison revealed that BIDOOF’s front teeth grow at the same rate as RATTATA’s.
+399,14,A comparison revealed that BIDOOF's front teeth grow at the same rate as RATTATA's.
 400,12,It makes its nest by damming streams with bark and mud. It is known as an industrious worker.
 400,13,"While its movements out of water are sluggish, it can swim as fast as any FEEBAS."
 400,14,"A river dammed by BIBAREL will never overflow its banks, which is appreciated by people nearby."
@@ -4352,7 +4352,7 @@ pokemon_id,version_id,flavor_text
 405,14,It can see clearly through walls to track down its prey and seek its lost young.
 406,12,"Over the winter, it closes its bud and endures the cold. In spring, the bud opens and releases pollen."
 406,13,It lives alongside clear ponds. It scatters pollen that induces harsh sneezing and runny noses.
-406,14,"Sensitive to changing temperature, the bud is said to bloom when it feels the sun’s warm touch."
+406,14,"Sensitive to changing temperature, the bud is said to bloom when it feels the sun's warm touch."
 407,12,"It attracts prey with a sweet aroma, then downs it with thorny whips hidden in its arms."
 407,13,"With the movements of a dancer, it strikes with whips that are densely lined with poison thorns."
 407,14,"Each of its hands contains different toxins, but both hands can jab with near-fatal power."
@@ -4376,7 +4376,7 @@ pokemon_id,version_id,flavor_text
 413,14,"When evolving, its body takes in surrounding materials. As a result, there are many body variations."
 414,12,It loves the honey of flowers and steals honey collected by COMBEE.
 414,13,It does not keep a nest. It flies over fields and mountains in constant search of floral honey.
-414,14,"While it loves floral honey, it won’t gather any itself. Instead, it plots to steal some from COMBEE."
+414,14,"While it loves floral honey, it won't gather any itself. Instead, it plots to steal some from COMBEE."
 415,12,A Pokémon formed by three others. It busily carries sweet floral honey to VESPIQUEN.
 415,13,"It collects and delivers honey to its colony. At night, they cluster to form a beehive and sleep."
 415,14,The trio is together from birth. It constantly gathers honey from flowers to please VESPIQUEN.
@@ -4397,7 +4397,7 @@ pokemon_id,version_id,flavor_text
 420,14,"The small ball is not only filled with nutrients, it is also tasty. STARLY try to peck it off."
 421,12,It blooms during times of strong sunlight. It tries to make up for everything it endured as a bud.
 421,13,"It is docile as a bud, but turns cheerful when it blooms. It folds back into a bud if sunlight wanes."
-421,14,"If it senses strong sunlight, it opens its folded petals to absorb the sun’s rays with its whole body."
+421,14,"If it senses strong sunlight, it opens its folded petals to absorb the sun's rays with its whole body."
 422,12,"Its colors and shapes differ from region to region. In the Sinnoh region, two types are confirmed."
 422,13,It lives along bodies of water. Its body shape has changed to suit its habitat.
 422,14,"Beware of pushing strongly on its squishy body, as it makes a mysterious purple fluid ooze out."
@@ -4409,7 +4409,7 @@ pokemon_id,version_id,flavor_text
 424,14,"Split into two, the tails are so adept at handling and doing things, AMBIPOM rarely uses its hands."
 425,12,"A Pokémon formed by the spirits of people and Pokémon. It loves damp, humid seasons."
 425,13,"It tugs on the hands of children to steal them away. However, it gets pulled around instead."
-425,14,"Because of the way it floats aimlessly, an old folktale calls it a “Signpost for Wandering Spirits.”"
+425,14,"Because of the way it floats aimlessly, an old folktale calls it a ""Signpost for Wandering Spirits."""
 426,12,"It's drowsy in daytime, but flies off in the evening in big groups. No one knows where they go."
 426,13,"It carries people and Pokémon when it flies. But since it only drifts, it can end up anywhere."
 426,14,"At dusk, swarms of them are carried aloft on winds. When noticed, they suddenly vanish."
@@ -4424,10 +4424,10 @@ pokemon_id,version_id,flavor_text
 429,14,Its cry sounds like an incantation. It is said the cry may rarely be imbued with happiness-giving power.
 430,12,"Becoming active at night, it is known to swarm with numerous MURKROW in tow."
 430,13,"It makes its MURKROW cronies bring it food. It idles its time away, grooming itself in its nest."
-430,14,"If one utters a deep cry, many MURKROW gather quickly. For this, it is called “Summoner of Night.”"
+430,14,"If one utters a deep cry, many MURKROW gather quickly. For this, it is called ""Summoner of Night."""
 431,12,It claws if displeased and purrs when affectionate. Its fickleness is very popular among some.
 431,13,"With its sharp glare, it puts foes in a mild hypnotic state. It is a very fickle Pokémon."
-431,14,It hides its spiteful tendency of hooking its claws into the nose of its Trainer if it isn’t fed.
+431,14,It hides its spiteful tendency of hooking its claws into the nose of its Trainer if it isn't fed.
 432,12,It is a brazen brute that barges its way into another Pokémon's nest and claims it as its own.
 432,13,"To make itself appear intimidatingly beefy, it tightly cinches its waist with its twin tails."
 432,14,"It binds its body with its tails to make itself look bigger. If it locks eyes, it will glare ceaselessly."
@@ -4454,10 +4454,10 @@ pokemon_id,version_id,flavor_text
 439,14,It mimics the expressions and motions of those it sees to understand the feelings of others.
 440,12,It loves round white things. It carries an egg-shaped rock in imitation of CHANSEY.
 440,13,"It carries a round, egg-shaped rock in its belly pouch and gives the rock to its friends."
-440,14,It likes to carry around a small rock. It may wander around others’ feet and cause them to stumble.
+440,14,It likes to carry around a small rock. It may wander around others' feet and cause them to stumble.
 441,12,"It can learn and speak human words. If they gather, they all learn the same saying."
 441,13,It keeps rhythm by flicking its tail feathers like a metronome. It imitates human speech.
-441,14,"Its tongue is just like a human’s. As a result, it can cleverly mimic human speech."
+441,14,"Its tongue is just like a human's. As a result, it can cleverly mimic human speech."
 442,12,A Pokémon that was formed by 108 spirits. It is bound to a fissure in an odd keystone.
 442,13,It was bound to a fissure in an odd keystone as punishment for misdeeds 500 years ago.
 442,14,Its constant mischief and misdeeds resulted in it being bound to an Odd Keystone by a mysterious spell.
@@ -4538,7 +4538,7 @@ pokemon_id,version_id,flavor_text
 467,14,"When launching 3,600 degrees F fireballs, its body takes on a whitish hue from the intense heat."
 468,12,It will never appear where there is strife. Its sightings have become rare recently.
 468,13,It will never appear where there is strife. Its sightings have become rare recently.
-468,14,It shares many blessings with people who respect one another’s rights and avoid needless strife.
+468,14,It shares many blessings with people who respect one another's rights and avoid needless strife.
 469,12,"By churning its wings, it creates shock waves that inflict critical internal injuries to foes."
 469,13,"By churning its wings, it creates shock waves that inflict critical internal injuries to foes."
 469,14,Its jaw power is incredible. It is adept at biting apart foes while flying by at high speed.
@@ -4583,10 +4583,10 @@ pokemon_id,version_id,flavor_text
 482,14,"When AZELF flew, people gained the determination to do things. It was the birth of willpower."
 483,12,It has the power to control time. It appears in Sinnoh-region myths as an ancient deity.
 483,13,A Pokémon spoken of in legend. It is said that time began moving when DIALGA was born.
-483,14,A legendary Pokémon of Sinnoh. It is said that time flows when DIALGA’s heart beats.
+483,14,A legendary Pokémon of Sinnoh. It is said that time flows when DIALGA's heart beats.
 484,12,It has the ability to distort space. It is described as a deity in Sinnoh-region mythology.
 484,13,It is said to live in a gap in the spatial dimension parallel to ours. It appears in mythology.
-484,14,A legendary Pokémon of Sinnoh. It is said that space becomes more stable with PALKIA’s every breath.
+484,14,A legendary Pokémon of Sinnoh. It is said that space becomes more stable with PALKIA's every breath.
 485,12,It dwells in volcanic caves. It digs in with its cross-shaped feet to crawl on ceilings and walls.
 485,13,It dwells in volcanic caves. It digs in with its cross-shaped feet to crawl on ceilings and walls.
 485,14,"Its body is made of rugged steel. However, it is partially melted in spots because of its own heat."
