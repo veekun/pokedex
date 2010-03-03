@@ -298,7 +298,7 @@ class Pokemon(TableBase):
     height = Column(Integer, nullable=False)
     weight = Column(Integer, nullable=False)
     species = Column(Unicode(16), nullable=False)
-    color = Column(Unicode(6), nullable=False)
+    color_id = Column(Integer, ForeignKey('pokemon_colors.id'), nullable=False)
     pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=False)
     habitat = Column(Unicode(16), nullable=False)
     gender_rate = Column(Integer, nullable=False)
@@ -345,6 +345,11 @@ class PokemonAbility(TableBase):
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
     ability_id = Column(Integer, ForeignKey('abilities.id'), nullable=False)
     slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
+
+class PokemonColor(TableBase):
+    __tablename__ = 'pokemon_colors'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
+    name = Column(Unicode(6), nullable=False)
 
 class PokemonDexNumber(TableBase):
     __tablename__ = 'pokemon_dex_numbers'
@@ -551,6 +556,8 @@ Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
 Pokemon.formes = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.forme_base_pokemon_id,
                                                backref=backref('forme_base_pokemon',
                                                                remote_side=[Pokemon.id]))
+Pokemon.pokemon_color = relation(PokemonColor, backref='pokemon')
+Pokemon.color = association_proxy('pokemon_color', 'name')
 Pokemon.dex_numbers = relation(PokemonDexNumber, backref='pokemon')
 Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,
