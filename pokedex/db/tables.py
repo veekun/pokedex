@@ -300,7 +300,7 @@ class Pokemon(TableBase):
     species = Column(Unicode(16), nullable=False)
     color_id = Column(Integer, ForeignKey('pokemon_colors.id'), nullable=False)
     pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=False)
-    habitat = Column(Unicode(16), nullable=False)
+    habitat_id = Column(Integer, ForeignKey('pokemon_habitats.id'), nullable=True)
     gender_rate = Column(Integer, nullable=False)
     capture_rate = Column(Integer, nullable=False)
     base_experience = Column(Integer, nullable=False)
@@ -379,6 +379,11 @@ class PokemonFormSprite(TableBase):
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
     introduced_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
     name = Column(Unicode(16), nullable=True)
+
+class PokemonHabitat(TableBase):
+    __tablename__ = 'pokemon_habitats'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
+    name = Column(Unicode(16), nullable=False)
 
 class PokemonItem(TableBase):
     __tablename__ = 'pokemon_items'
@@ -569,6 +574,8 @@ Pokemon.evolution_children = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.e
                                                                remote_side=[Pokemon.id]))
 Pokemon.flavor_text = relation(PokemonFlavorText, order_by=PokemonFlavorText.pokemon_id, backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
+Pokemon.pokemon_habitat = relation(PokemonHabitat, backref='pokemon')
+Pokemon.habitat = association_proxy('pokemon_habitat', 'name')
 Pokemon.items = relation(PokemonItem)
 Pokemon.generation = relation(Generation, backref='pokemon')
 Pokemon.shape = relation(PokemonShape, backref='pokemon')
