@@ -45,7 +45,7 @@ Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 t
 33,0,Heals the user by half its max HP.,Heals the user for half its max :mechanic:`HP`.
 34,0,"Badly poisons the target, inflicting more damage every turn.",:mechanic:`Badly poisons` the target.
 35,0,Scatters money on the ground worth five times the user's level.,"Inflicts :mechanic:`regular damage`.  After the battle ends, the winner receives five times the user's level in extra money for each time this move was used."
-36,0,Reduces damage from special attacks by 50% for five turns..,"Erects a barrier around the user's side of the field that reduces damage from :mechanic:`special` attacks by half for five turns.  In double battles, the reduction is 2/3.  :mechanic:`Critical hit`\ s are not affected by the barrier.
+36,0,Reduces damage from special attacks by 50% for five turns..,"Erects a barrier around the user's side of the field that reduces damage from :mechanic:`special` attacks by half for five turns.  In double battles, the reduction is 1/3.  :mechanic:`Critical hit`\ s are not affected by the barrier.
 
 If the user is holding :item:`Light Clay`, the barrier lasts for eight turns.
 
@@ -98,7 +98,7 @@ This move cannot be copied by :move:`Mirror Move`, nor forced by :move:`Encore`.
 60,0,Lowers the target's Defense by two levels.,:mechanic:`Lowers` the target's :mechanic:`Defense` by two levels.
 61,0,Lowers the target's Speed by two levels.,:mechanic:`Lowers` the target's :mechanic:`Speed` by two levels.
 63,0,Lowers the target's Special Defense by two levels.,:mechanic:`Lowers` the target's :mechanic:`Special Defense` by two levels.
-66,0,Reduces damage from physical attacks by half.,"Erects a barrier around the user's side of the field that reduces damage from :mechanic:`physical` attacks by half for five turns.  In double battles, the reduction is 2/3.  :mechanic:`Critical hit`\ s are not affected by the barrier.
+66,0,Reduces damage from physical attacks by half.,"Erects a barrier around the user's side of the field that reduces damage from :mechanic:`physical` attacks by half for five turns.  In double battles, the reduction is 1/3.  :mechanic:`Critical hit`\ s are not affected by the barrier.
 
 If the user is holding :item:`Light Clay`, the barrier lasts for eight turns.
 
@@ -111,7 +111,7 @@ If the user is holding :item:`Light Clay`, the barrier lasts for eight turns.
 72,0,Has a :data:`move.effect_chance`\ % chance to lower the target's Special Attack by one level.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`lower` the target's :mechanic:`Special Attack` by one level.
 73,0,Has a :data:`move.effect_chance`\ % chance to lower the target's Special Defense by one level.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`lower` the target's :mechanic:`Special Defense` by one level.
 74,0,Has a :data:`move.effect_chance`\ % chance to lower the target's Accuracy by one level.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`lower` the target's :mechanic:`accuracy` by one level.
-76,0,User charges for one turn before attacking.  Has a :data:`move.effect_chance`\ % chance to make the target flinch.,"Inflicts :mechanic:`regular damage`.  User charges for one turn before attacking.  Has a :data:`move.effect_chance`\ % chance to make the target :mechanic:`flinch`.
+76,0,User charges for one turn before attacking.  Has a :data:`move.effect_chance`\ % chance to make the target flinch.,"Inflicts :mechanic:`regular damage`.  User charges for one turn before attacking.  :mechanic:`Critical hit chance` is one level higher than normal.  Has a :data:`move.effect_chance`\ % chance to make the target :mechanic:`flinch`.
 
 This move cannot be selected by :move:`Sleep Talk`."
 77,0,Has a :data:`move.effect_chance`\ % chance to confuse the target.,Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`confuse` the target.
@@ -703,7 +703,7 @@ Sunset          :type:`Ground`
 Waterfall       :type:`Grass`
 ==============  ==============
 "
-215,0,Heals the user by half its max HP.,"Heals the user for half its max :mechanic:`HP`.  If the user is :type:`Flying`, its :type:`Flying` type is ignored until the end of this turn."
+215,0,Heals the user by half its max HP.,"Heals the user for half its max :mechanic:`HP`.  Cancels the effect of :move:`Levitate` on the user.  If the user is :type:`Flying`, its :type:`Flying` type is ignored until the end of this turn."
 216,0,Disables moves and immunities that involve flying or levitating for five turns.,"For the next five turns, all immunities to :type:`Ground` moves are disabled.  For the duration of this effect, the :mechanic:`evasion` of every Pokémon on the field is :mechanic:`lower`\ ed by two levels.
 
 Specifically, :type:`Flying` Pokémon and those with :ability:`Levitate` or that have used :move:`Magnet Rise` are no longer immune to :type:`Ground` attacks, :move:`Arena Trap`, :move:`Spikes`, or :move:`Toxic Spikes`.
@@ -780,8 +780,8 @@ This move cannot be copied by :move:`Mirror Move`, nor selected by :move:`Assist
 This move cannot copy itself.
 
 This move cannot be copied by :move:`Mirror Move`, nor selected by :move:`Assist`, :move:`Metronome`, or :move:`Sleep Talk`."
-244,0,User swaps Attack and Special Attack with the target.,User swaps its :mechanic:`Attack` and :mechanic:`Special Attack` modifiers with the target.
-245,0,User swaps Defense and Special Defense with the target.,User swaps its :mechanic:`Defense` and :mechanic:`Special Defense` modifiers with the target.
+244,0,User swaps Attack and Special Attack changes with the target.,User swaps its :mechanic:`Attack` and :mechanic:`Special Attack` :mechanic:`stat modifiers` with the target.
+245,0,User swaps Defense and Special Defense changes with the target.,User swaps its :mechanic:`Defense` and :mechanic:`Special Defense` User swaps its :mechanic:`Attack` and :mechanic:`Special Attack` :mechanic:`stat modifiers` with the target. with the target.
 246,0,"Power increases against targets with more raised stats, up to a maximum of 200.","Inflicts :mechanic:`regular damage`.  Power starts at 60 and is increased by 20 for every level any of the target's stats has been :mechanic:`raise`\ d, capping at 200.  :mechanic:`Accuracy` and :mechanic:`evasion` modifiers do not increase this move's power."
 247,0,Can only be used after all of the user's other moves have been used.,"Inflicts :mechanic:`regular damage`.  This move can only be used if each of the user's other moves has been used at least once since the user entered the :mechanic:`field`.  If this is the user's only move, this move will fail."
 248,0,Changes the target's ability to Insomnia.,"Changes the target's ability to :ability:`Insomnia`.
@@ -833,7 +833,7 @@ This move cannot be selected by :move:`Sleep Talk`."
 258,0,Inflicts regular damage and can hit Dive users.,"Inflicts :mechanic:`regular damage`.
 
 If the target is in the first turn of :move:`Dive`, this move will hit with double power."
-259,0,Lowers the target's evasion by one level.  Removes effects from the enemy field.,":mechanic:`Lower`\ s the target's :mechanic:`evasion` by one level.  Clears away fog.  Removes the effects of :move:`Mist`, :move:`Light Screen`, :move:`Reflect`, :move:`Safeguard`, :move:`Spikes`, :move:`Stealth Rock`, and :move:`Toxic Spikes` from the target's side of the :mechanic:`field`.
+259,0,Lowers the target's evasion by one level.  Removes field effects from the enemy field.,":mechanic:`Lower`\ s the target's :mechanic:`evasion` by one level.  Clears away fog.  Removes the effects of :move:`Mist`, :move:`Light Screen`, :move:`Reflect`, :move:`Safeguard`, :move:`Spikes`, :move:`Stealth Rock`, and :move:`Toxic Spikes` from the target's side of the :mechanic:`field`.
 
 If the target is protected by :move:`Mist`, it will prevent the :mechanic:`evasion` change, then be removed by this move."
 260,-7,"For five turns, slower Pokémon will act before faster Pokemon.","For five turns (including this one), slower Pokemon will act before faster Pokemon.  Move priority is not affected.  Using this move when its effect is already active will end the effect.

@@ -22,7 +22,7 @@ id,name,flavor_text,effect
 21,Suction Cups,Negates moves that force switching out.,This Pokemon cannot be switched with Roar or Whirlwind.
 22,Intimidate,Lowers the foe's Attack stat.,This Pokemon lowers the enemy's Attack one level when it enters battle.
 23,Shadow Tag,Prevents the foe from escaping.,Enemy Pokemon cannot run or be switched out.
-24,Rough Skin,Inflicts damage to the foe on contact.,Enemy Pokemon receive 1/16 of the damage they did as recoil every time they touch this Pokemon.
+24,Rough Skin,Inflicts damage to the foe on contact.,Enemy Pokemon receive 1/8 of the damage they inflict as recoil every time they touch this Pokemon.
 25,Wonder Guard,Only supereffective moves will hit.,This Pokemon can only be damaged by moves of types it is weak to.
 26,Levitate,Gives full immunity to all Ground-type moves.,This Pokemon does not take damage from Ground moves.
 27,Effect Spore,"Contact may paralyze, poison, or cause sleep.","Enemy Pokemon have a 30% chance of becoming Paralyzed, Poisoned, or Asleep every time they touch this Pokemon."
@@ -42,7 +42,7 @@ id,name,flavor_text,effect
 41,Water Veil,Prevents the Pokémon from getting a burn.,This Pokemon cannot become Burned.
 42,Magnet Pull,Prevents Steel-type Pokémon from escaping.,Steel enemies cannot run or be switched out.
 43,Soundproof,Gives full immunity to all sound-based moves.,"This Pokemon is immune to Growl, Grasswhistle, Hyper Voice, Heal Bell, Metal Sound, Perish Song, Roar, Screech, Sing, Snore, Supersonic, and Uproar."
-44,Rain Dish,The Pokémon gradually recovers HP in rain.,This Pokemon regains small amounts of HP every turn during Rain Dance.
+44,Rain Dish,The Pokémon gradually recovers HP in rain.,This Pokemon regains 1/16 its max HP every turn during Rain Dance.
 45,Sand Stream,The Pokémon summons a sandstorm in battle.,Sandstorm is in effect while this Pokemon is in battle.
 46,Pressure,The Pokémon raises the foe's PP usage.,Opposing Pokemon must use 2 PP per move.
 47,Thick Fat,Raises resistance to Fire-and Ice-type moves.,Fire and Ice moves only do half damage against this Pokemon.
