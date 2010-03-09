@@ -28,9 +28,9 @@ id,pokemon_id,introduced_in_version_group_id,name
 27,201,5,?
 28,201,5,!
 29,351,5,
-30,351,5,sun
+30,351,5,sunny
 31,351,5,rain
-32,351,5,hail
+32,351,5,snow-cloud
 33,386,5,
 34,386,7,attack
 35,386,7,defense
@@ -41,7 +41,7 @@ id,pokemon_id,introduced_in_version_group_id,name
 40,413,8,plant
 41,413,8,sandy
 42,413,8,trash
-43,421,8,
+43,421,8,overcast
 44,421,8,sunshine
 45,422,8,east
 46,422,8,west
@@ -76,4 +76,4 @@ id,pokemon_id,introduced_in_version_group_id,name
 75,493,8,steel
 76,493,8,water
 77,172,3,
-78,172,10,gizamimi
+78,172,10,spiky-eared
