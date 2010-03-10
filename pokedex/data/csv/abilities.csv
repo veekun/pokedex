@@ -53,7 +53,7 @@ id,name,flavor_text,effect
 52,Hyper Cutter,Prevents the Attack stat from being lowered.,This Pokemon cannot have its Attack lowered.
 53,Pickup,The Pokémon may pick up items.,"After battle, this Pokemon will sometimes be holding an item if it was not already."
 54,Truant,The Pokémon can't attack on consecutive turns.,"Whenever this Pokemon deals damage, it skips its next turn."
-55,Hustle,"Boosts the Attack stat, but lowers accuracy.",This Pokemon's moves do 50% more damage but have 80% of their usual accuracy.
+55,Hustle,"Boosts the Attack stat, but lowers accuracy.","This Pokemon's base Attack is increased by 50%, but its physical moves have 80% of their usual accuracy."
 56,Cute Charm,Contact with the Pokémon may cause infatuation.,Enemy Pokemon have a 30% chance of becoming Attracted every time they touch this Pokemon.
 57,Plus,Boosts Sp. Atk if another Pokémon has Minus.,"When this Pokemon's partner has Minus, its Special Attack increases by 50%."
 58,Minus,Boosts Sp. Atk if another Pokémon has Plus.,"When this Pokemon's partner has Plus, its Special Attack increases by 50%."
