@@ -384,7 +384,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 383,Groudon,,,3,199,,,,35,9500,Continent,8,6,6,-1,5,218,0,0,0,0
 384,Rayquaza,,,3,200,,,,70,2065,Sky High,5,2,5,-1,3,220,0,0,0,0
 385,Jirachi,,,3,201,,,,3,11,Wish,10,12,4,-1,3,215,100,0,0,0
-386,Deoxys,,,3,202,,,,17,608,DNA,8,12,5,-1,3,215,0,0,0,0
+386,Deoxys,normal,,3,202,,,,17,608,DNA,8,12,5,-1,3,215,0,0,0,0
 387,Turtwig,,,4,203,,,,4,102,Tiny Leaf,5,8,,1,45,64,70,0,0,0
 388,Grotle,,,4,203,387,1,18,11,970,Grove,5,8,,1,45,141,70,0,0,0
 389,Torterra,,,4,203,388,1,32,22,3100,Continent,5,8,,1,45,208,70,0,0,0
@@ -477,7 +477,7 @@ id,name,forme_name,forme_base_pokemon_id,generation_id,evolution_chain_id,evolut
 476,Probopass,,,4,147,299,4,Mt. Coronet,14,3400,Compass,4,11,,4,60,198,70,0,0,0
 477,Dusknoir,,,4,182,356,5,Reaper Cloth,22,1066,Gripper,1,4,,4,45,210,35,0,0,0
 478,Froslass,,,4,186,361,8,Dawn Stone,13,266,Snow Land,9,4,,8,75,187,70,0,0,0
-479,Rotom,,,4,240,,,,3,3,Plasma,8,1,,-1,45,132,70,0,0,0
+479,Rotom,normal,,4,240,,,,3,3,Plasma,8,1,,-1,45,132,70,0,0,0
 480,Uxie,,,4,241,,,,3,3,Knowledge,10,6,,-1,3,210,140,0,0,0
 481,Mesprit,,,4,242,,,,3,3,Emotion,6,6,,-1,3,210,140,0,0,0
 482,Azelf,,,4,243,,,,3,3,Willpower,2,6,,-1,3,210,140,0,0,0

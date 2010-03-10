@@ -326,7 +326,7 @@ class Pokemon(TableBase):
         """Returns the name of this Pokémon, including its Forme, if any."""
 
         if self.forme_name:
-            return "%s %s" % (self.forme_name.capitalize(), self.name)
+            return "%s %s" % (self.forme_name.title(), self.name)
         return self.name
 
     @property
@@ -371,6 +371,7 @@ class PokemonFlavorText(TableBase):
 class PokemonFormGroup(TableBase):
     __tablename__ = 'pokemon_form_groups'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    is_battle_only = Column(Boolean, nullable=False)
     description = Column(Unicode(512), nullable=False)
 
 class PokemonFormSprite(TableBase):
@@ -379,6 +380,7 @@ class PokemonFormSprite(TableBase):
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
     introduced_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
     name = Column(Unicode(16), nullable=True)
+    is_default = Column(Boolean, nullable=True)
 
 class PokemonHabitat(TableBase):
     __tablename__ = 'pokemon_habitats'
@@ -564,6 +566,12 @@ Pokemon.formes = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.forme_base_po
 Pokemon.pokemon_color = relation(PokemonColor, backref='pokemon')
 Pokemon.color = association_proxy('pokemon_color', 'name')
 Pokemon.dex_numbers = relation(PokemonDexNumber, backref='pokemon')
+Pokemon.default_form_sprite = relation(PokemonFormSprite,
+                                       primaryjoin=and_(
+                                            Pokemon.id==PokemonFormSprite.pokemon_id,
+                                            PokemonFormSprite.is_default==True,
+                                       ),
+                                       uselist=False)
 Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,
                                         backref='pokemon')

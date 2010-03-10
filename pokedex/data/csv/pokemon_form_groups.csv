@@ -1,14 +1,14 @@
-pokemon_id,description
-172,Forms only affect appearance.  All wild Pichu are normal Pichu and cannot be converted into spiky-eared Pichu.  Spiky-eared Pichu can only be encountered by taking the shiny Pichu from an official promotion to Celebi's shrine in Ilex Forest.  Spiky-eared Pichu cannot evolve or be taken into Pokémon Center trade area.
-201,Forms only affect appearance.  A form is selected at random before a wild encounter and cannot be changed.
-351,Form changes to match the current weather.
-386,"Forms have different stats and movepools.  Form changes depending on the game: normal form in Ruby/Sapphire, Attack form in Fire Red, Defense form in Leaf Green, and Speed form in Emerald.  Every form exists in Diamond/Pearl/Platinum, and form is preserved when transferring from an older game.  Meteorites in the south end of Veilstone City can be used to switch between forms."
-412,"Cloaks only affect appearance, although they become permanent upon evolution.  Cloak changes to match the current terrain after a battle (or when an egg hatches), if possible: Plant Cloak for grassy areas, Sandy Cloak for beaches and caves, or Trash Cloak for buildings."
-413,"Forms have different stats and movepools.  During evolution, the current cloak becomes the new form, and can no longer be changed."
-421,"Sunshine form is active only during Sunny Day, due to Flower Gift."
-422,Forms only affect appearance.  A form is selected before a wild encounter based on whether the battle is in Western or Eastern Sinnoh and cannot be changed.
-423,Forms only affect appearance.  A form is selected before a wild encounter based on whether the battle is in Western or Eastern Sinnoh and cannot be changed.
-479,"Forms have different signature moves.  When switching forms, the old signature move is removed and the new one, if any, is learned immediately.  In a secret room in the Galactic Eterna Building, accessible only with a Secret Key, there are appliances that can be used to switch between forms."
-487,"Forms have different stats.  Giratina becomes Origin form in Distortion World or while holding a Griseous Orb.  Otherwise, or during a link battle, Giratina will be in Altered form."
-492,"Forms have different stats and movepools.  After using a Gracidea, Shaymin will transform into Sky form during the daytime.  If a Gracidea is not used, it is currently nighttime, during a link battle, or Sky form is Frozen, Shaymin will be in Land form.  Gracidea only works on an official event Shaymin."
-493,"Form always reflects type, which may be changed by attaching a Plate and activating Multitype."
+pokemon_id,is_battle_only,description
+172,0,Forms only affect appearance.  All wild Pichu are normal Pichu and cannot be converted into spiky-eared Pichu.  Spiky-eared Pichu can only be encountered by taking the shiny Pichu from an official promotion to Celebi's shrine in Ilex Forest.  Spiky-eared Pichu cannot evolve or be taken into Pokémon Center trade area.
+201,0,Forms only affect appearance.  A form is selected at random before a wild encounter and cannot be changed.
+351,1,Form changes to match the current weather.
+386,0,"Forms have different stats and movepools.  Form changes depending on the game: normal form in Ruby/Sapphire, Attack form in Fire Red, Defense form in Leaf Green, and Speed form in Emerald.  Every form exists in Diamond/Pearl/Platinum, and form is preserved when transferring from an older game.  Meteorites in the south end of Veilstone City can be used to switch between forms."
+412,0,"Cloaks only affect appearance, although they become permanent upon evolution.  Cloak changes to match the current terrain after a battle (or when an egg hatches), if possible: Plant Cloak for grassy areas, Sandy Cloak for beaches and caves, or Trash Cloak for buildings."
+413,0,"Forms have different stats and movepools.  During evolution, the current cloak becomes the new form, and can no longer be changed."
+421,1,"Sunshine form is active only during Sunny Day, due to Flower Gift."
+422,0,Forms only affect appearance.  A form is selected before a wild encounter based on whether the battle is in Western or Eastern Sinnoh and cannot be changed.
+423,0,Forms only affect appearance.  A form is selected before a wild encounter based on whether the battle is in Western or Eastern Sinnoh and cannot be changed.
+479,0,"Forms have different signature moves.  When switching forms, the old signature move is removed and the new one, if any, is learned immediately.  In a secret room in the Galactic Eterna Building, accessible only with a Secret Key, there are appliances that can be used to switch between forms."
+487,0,"Forms have different stats.  Giratina becomes Origin form in Distortion World or while holding a Griseous Orb.  Otherwise, or during a link battle, Giratina will be in Altered form."
+492,0,"Forms have different stats and movepools.  After using a Gracidea, Shaymin will transform into Sky form during the daytime.  If a Gracidea is not used, it is currently nighttime, during a link battle, or Sky form is Frozen, Shaymin will be in Land form.  Gracidea only works on an official event Shaymin."
+493,0,"Form always reflects type, which may be changed by attaching a Plate and activating Multitype."
