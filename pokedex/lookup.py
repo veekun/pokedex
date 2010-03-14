@@ -332,7 +332,9 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     type_terms = []
     for valid_type in valid_types:
         table_name = _parse_table_name(valid_type)
-        type_terms.append(whoosh.query.Term(u'table', table_name))
+        if table_name:
+            # Quietly ignore bogus valid_types; more likely to DTRT
+            type_terms.append(whoosh.query.Term(u'table', table_name))
 
     if type_terms:
         query = query & whoosh.query.Or(type_terms)
@@ -377,11 +379,17 @@ def random_lookup(valid_types=[], session=None, indices=None):
             tables.append(indexed_tables[table_name])
 
     if not tables:
+        # n.b.: It's possible we got a list of valid_types and none of them
+        # were valid, but this function is guaranteed to return *something*, so
+        # it politely selects from the entire index isntead
         tables = indexed_tables.values()
 
     # Rather than create an array of many hundred items and pick randomly from
     # it, just pick a number up to the total number of potential items, then
-    # pick randomly from that, and partition the whole range into chunks
+    # pick randomly from that, and partition the whole range into chunks.
+    # This also avoids the slight problem that the index contains more rows
+    # (for languages) for some items than others.
+    # XXX ought to cache this (in the index?) if possible
     total = 0
     partitions = []
     for table in tables:
