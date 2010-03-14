@@ -41,6 +41,7 @@ import docutils.nodes
 from docutils.parsers.rst import Parser, roles
 import docutils.utils
 from docutils.writers.html4css1 import Writer as HTMLWriter
+from docutils.writers import UnfilteredWriter
 
 import sqlalchemy.types
 
@@ -53,6 +54,53 @@ class HTMLFragmentWriter(HTMLWriter):
     def apply_template(self):
         subs = self.interpolation_dict()
         return subs['body']
+
+
+class TextishTranslator(docutils.nodes.SparseNodeVisitor):
+    """A simple translator that tries to return plain text that still captures
+    the spirit of the original (basic) formatting.
+
+    This will probably not be useful for anything complicated; it's only meant
+    for extremely simple text.
+    """
+
+    def __init__(self, document):
+        self.document = document
+        self.translated = u''
+
+    def visit_Text(self, node):
+        """Text is left alone."""
+        self.translated += node.astext()
+
+    def depart_paragraph(self, node):
+        """Append a blank line after a paragraph, unless it's the last of its
+        siblings.
+        """
+        if not node.parent:
+            return
+
+        # Loop over siblings.  If we see a sibling after we see this node, then
+        # append the blank line
+        seen_node = False
+        for sibling in node.parent:
+            if sibling is node:
+                seen_node = True
+                continue
+
+            if seen_node:
+                self.translated += u'\n\n'
+                return
+
+class TextishWriter(UnfilteredWriter):
+    """Translates reST back into plain text, aka more reST.  Difference is that
+    custom roles are handled, so you get "50% chance" instead of junk.
+    """
+
+    def translate(self):
+        visitor = TextishTranslator(self.document)
+        self.document.walkabout(visitor)
+        self.output = visitor.translated
+
 
 class UnicodeOutput(Output):
     """reST Unicode output.  The distribution only has a StringOutput, and I
@@ -145,6 +193,16 @@ class RstString(object):
 
         destination = UnicodeOutput()
         writer = HTMLFragmentWriter()
+        return writer.write(document, destination)
+
+    @property
+    def as_text(self):
+        """Returns the string mostly unchanged, save for our custom roles."""
+
+        document = self.rest_document
+
+        destination = UnicodeOutput()
+        writer = TextishWriter()
         return writer.write(document, destination)
 
 
