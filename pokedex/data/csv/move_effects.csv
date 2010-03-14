@@ -585,7 +585,7 @@ This effect can be passed with :move:`Baton Pass`."
 :move:`Attract`, :move:`Flatter`, :move:`Gastro Acid`, :move:`Leech Seed`, :move:`Swagger`, :move:`Worry Seed`, and :move:`Yawn` are reflected.
 
 This move cannot be copied by :move:`Mirror Move`."
-185,0,User recovers the item it last used up.,"User recovers the last item consumed by the user or a Pokémon in its position on the :mechanic:`field.  The item must be used again before it can be recovered by this move again.  If the user is holding an item, this move fails.
+185,0,User recovers the item it last used up.,"User recovers the last item consumed by the user or a Pokémon in its position on the :mechanic:`field`.  The item must be used again before it can be recovered by this move again.  If the user is holding an item, this move fails.
 
 Items taken or given away by :move:`Covet`, :move:`Knock Off`, :move:`Switcheroo`, :move:`Thief`, or :move:`Trick` may not be recovered."
 186,-4,Inflicts double damage if the user takes damage before attacking this turn.,"Inflicts :mechanic:`regular damage`.  If the target damaged the user this turn and was the last to do so, this move has double power.
