@@ -33,6 +33,8 @@ are, apparently, global.
     return a reST node.
 """
 
+import cgi
+
 from docutils.frontend import OptionParser
 from docutils.io import Output
 import docutils.nodes
@@ -131,8 +133,17 @@ class RstString(object):
         """Returns the string as HTML4."""
 
         document = self.rest_document
-        destination = UnicodeOutput()
 
+        # Check for errors; don't want to leave the default error message cruft
+        # in here
+        if document.next_node(condition=docutils.nodes.system_message):
+            # Boo!  Cruft.
+            return u"""
+                <p><em>Error in markup!  Raw source is below.</em></p>
+                <pre>{0}</pre>
+            """.format( cgi.escape(self.source_text) )
+
+        destination = UnicodeOutput()
         writer = HTMLFragmentWriter()
         return writer.write(document, destination)
 
