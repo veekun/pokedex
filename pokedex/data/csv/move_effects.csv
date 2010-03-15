@@ -241,6 +241,7 @@ If the user successfully used :move:`Detect`, :move:`Endure`, or :move:`Protect`
 :move:`Thunder` during :move:`Rain Dance` and :move:`Blizzard` during :move:`Hail` have a 30% chance to break through this move.
 
 The following effects are not prevented by this move:
+
 * :move:`Acupressure` from an ally
 * :move:`Curse`'s curse effect
 * Delayed damage from :move:`Doom Desire` and :move:`Future Sight`; however, these moves will be prevented if they are used this turn
@@ -705,7 +706,7 @@ Sunset          :type:`Ground`
 Waterfall       :type:`Grass`
 ==============  ==============
 "
-215,0,Heals the user by half its max HP.,"Heals the user for half its max :mechanic:`HP`.  Cancels the effect of :move:`Levitate` on the user.  If the user is :type:`Flying`, its :type:`Flying` type is ignored until the end of this turn."
+215,0,Heals the user by half its max HP.,"Heals the user for half its max :mechanic:`HP`.  If the user is :type:`Flying`, its :type:`Flying` type is ignored until the end of this turn."
 216,0,Disables moves and immunities that involve flying or levitating for five turns.,"For the next five turns, all immunities to :type:`Ground` moves are disabled.  For the duration of this effect, the :mechanic:`evasion` of every Pokémon on the field is :mechanic:`lower`\ ed by two levels.
 
 Specifically, :type:`Flying` Pokémon and those with :ability:`Levitate` or that have used :move:`Magnet Rise` are no longer immune to :type:`Ground` attacks, :move:`Arena Trap`, :move:`Spikes`, or :move:`Toxic Spikes`.
