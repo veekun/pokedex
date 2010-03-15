@@ -73,7 +73,7 @@ Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 t
 45,0,Hits twice in one turn.,Inflicts :mechanic:`regular damage`.  Hits twice in one turn.
 46,0,"If the user misses, it takes half the damage it would have inflicted in recoil.","Inflicts :mechanic:`regular damage`.  If this move misses, is blocked by Protect or Detect, or has no effect, the user takes half the damage it would have inflicted in recoil.  This recoil damage will not exceed half the user's max HP.
 
-This move cannot be used when :move:`Gravity` is in effect."
+This move cannot be used while :move:`Gravity` is in effect."
 47,0,Protects the user's stats from being changed by enemy moves.,"Pokémon on the user's side of the :mechanic:`field` are immune to stat-:mechanic:`lower`\ ing effects for five turns.
 
 :move:`Guard Swap`, :move:`Heart Swap`, and :move:`Power Swap` may still be used.
@@ -153,7 +153,9 @@ The user takes damage instead of being healed if the target has :ability:`Liquid
 :move:`Rapid Spin` will remove this effect.
 
 This effect is passed on by :move:`Baton Pass`."
-86,0,Does nothing.,Does nothing.
+86,0,Does nothing.,"Does nothing.
+
+This move cannot be used while :move:`Gravity` is in effect."
 87,0,Disables the target's last used move for 1-8 turns.,"Disables the target's last used move, preventing its use for 4–7 turns, selected at random, or until the target leaves the :mechanic:`field`.  If the target hasn't used a move since entering the :mechanic:`field`, if it tried to use a move this turn and :mechanic:`failed`,  if its last used move has 0 PP remaining, or if it already has a move disabled, this move will fail."
 88,0,Inflicts damage equal to the user's level.,"Inflicts damage equal to the user's level.  Type immunity applies, but other type effects are ignored."
 89,0,Inflicts damage between 50% and 150% of the user's level.,"Inflicts :mechanic:`typeless` damage between 50% and 150% of the user's level, selected at random in increments of 10%."
@@ -466,7 +468,7 @@ The damage from :move:`Hail` and :move:`Sandstorm` still applies during the immu
 
 The user may be hit during its immune turn if under the effect of :move:`Lock-On`, :move:`Mind Reader`, or :ability:`No Guard`.
 
-This move cannot be used when :move:`Gravity` is in effect.
+This move cannot be used while :move:`Gravity` is in effect.
 
 This move cannot be selected by :move:`Sleep Talk`."
 157,0,Raises user's Defense by one level.,":mechanic:`Raises` user's :mechanic:`Defense` by one level.
@@ -708,7 +710,7 @@ Waterfall       :type:`Grass`
 
 Specifically, :type:`Flying` Pokémon and those with :ability:`Levitate` or that have used :move:`Magnet Rise` are no longer immune to :type:`Ground` attacks, :move:`Arena Trap`, :move:`Spikes`, or :move:`Toxic Spikes`.
 
-:move:`Bounce`, :move:`Fly`, :move:`Hi Jump Kick`, and :move:`Jump Kick` cannot be used while this move is in effect."
+:move:`Bounce`, :move:`Fly`, :move:`Hi Jump Kick`, :move:`Jump Kick`, and :move:`Splash` cannot be used while this move is in effect."
 217,0,"Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.",Resets the target's :mechanic:`evasion` to normal and prevents any further boosting until the target leaves the :mechanic:`field`.  A :type:`Dark` Pokémon under this effect takes normal damage from :type:`Psychic` moves.  This move itself ignores :mechanic:`accuracy` and :mechanic:`evasion` modifiers.
 218,0,"If the target is asleep, has double power and wakes it up.","Inflicts :mechanic:`regular damage`.  If the target is :mechanic:`sleep`\ ing, this move has double power, and the target wakes up."
 219,0,Lowers user's Speed by one level.,"Inflicts :mechanic:`regular damage`, then :mechanic:`lowers` the user's :mechanic:`Speed` by one level."
@@ -856,7 +858,7 @@ The damage from :move:`Hail` and :move:`Sandstorm` still applies during the immu
 
 The user may be hit during its immune turn if under the effect of :move:`Lock-On`, :move:`Mind Reader`, or :ability:`No Guard`.
 
-This move cannot be used when :move:`Gravity` is in effect.
+This move cannot be used while :move:`Gravity` is in effect.
 
 This move cannot be selected by :move:`Sleep Talk`."
 266,0,Lowers the target's Special Attack by two levels if it's the opposite gender.,":mechanic:`Lower`\ s the target's :mechanic:`Special Attack` by two levels.  If the user and target are the same gender, or either is genderless, this move will fail."
