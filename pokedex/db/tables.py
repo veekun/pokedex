@@ -118,7 +118,8 @@ class EncounterSlot(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False, autoincrement=False)
     encounter_terrain_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=False, nullable=False, autoincrement=False)
-    rarity = Column(Integer, nullable=False, autoincrement=False)
+    slot = Column(Integer, nullable=True)
+    rarity = Column(Integer, nullable=False)
 
 class EncounterSlotCondition(TableBase):
     """Lists all conditions that affect each slot."""
