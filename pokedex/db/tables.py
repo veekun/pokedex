@@ -163,6 +163,7 @@ class Item(TableBase):
 class Language(TableBase):
     __tablename__ = 'languages'
     id = Column(Integer, primary_key=True, nullable=False)
+    iso639 = Column(Unicode(2), nullable=False)
     iso3166 = Column(Unicode(2), nullable=False)
     name = Column(Unicode(16), nullable=False)
 

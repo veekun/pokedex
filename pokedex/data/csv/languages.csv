@@ -1,7 +1,9 @@
-id,iso3166,name
-1,jp,Japanese
-2,jp,Official Roomaji
-3,kr,Korean
-4,cn,Chinese
-5,fr,French
-6,de,German
+id,iso639,iso3166,name
+1,ja,jp,Japanese
+2,ja,jp,Official Roomaji
+3,ko,kr,Korean
+4,zh,cn,Chinese
+5,fr,fr,French
+6,de,de,German
+7,es,es,Spanish
+8,it,it,Italian
