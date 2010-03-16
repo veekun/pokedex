@@ -1,935 +1,2336 @@
 move_id,language_id,name
 1,1,はたく
 1,5,Ecras'Face
+1,6,Pfund
+1,7,Destructor
+1,8,Botta
 2,1,からてチョップ
 2,5,Poing-Karaté
+2,6,Karateschlag
+2,7,Golpe Karate
+2,8,Colpokarate
 3,1,おうふくビンタ
 3,5,Torgnoles
+3,6,Duplexhieb
+3,7,Doblebofetón
+3,8,Doppiasberla
 4,1,れんぞくパンチ
 4,5,Poing Comète
+4,6,Kometenhieb
+4,7,Puño Cometa
+4,8,Cometapugno
 5,1,メガトンパンチ
 5,5,Ultimapoing
+5,6,Megahieb
+5,7,Megapuño
+5,8,Megapugno
 6,1,ネコにこばん
 6,5,Jackpot
+6,6,Zahltag
+6,7,Día de Pago
+6,8,Giornopaga
 7,1,ほのおのパンチ
 7,5,Poing de Feu
+7,6,Feuerschlag
+7,7,Puño Fuego
+7,8,Fuocopugno
 8,1,れいとうパンチ
 8,5,Poinglace
+8,6,Eishieb
+8,7,Puño Hielo
+8,8,Gelopugno
 9,1,かみなりパンチ
 9,5,Poing-Eclair
+9,6,Donnerschlag
+9,7,Puño Trueno
+9,8,Tuonopugno
 10,1,ひっかく
 10,5,Griffe
+10,6,Kratzer
+10,7,Arañazo
+10,8,Graffio
 11,1,はさむ
 11,5,Force Poigne
+11,6,Klammer
+11,7,Agarre
+11,8,Presa
 12,1,ハサミギロチン
 12,5,Guillotine
+12,6,Guillotine
+12,7,Guillotina
+12,8,Ghigliottina
 13,1,かまいたち
 13,5,Coupe-Vent
+13,6,Klingensturm
+13,7,V. Cortante
+13,8,Ventagliente
 14,1,つるぎのまい
 14,5,Danse-Lames
+14,6,Schwerttanz
+14,7,Danza Espada
+14,8,Danzaspada
 15,1,いあいぎり
 15,5,Coupe
+15,6,Zerschneider
+15,7,Corte
+15,8,Taglio
 16,1,かぜおこし
 16,5,Tornade
+16,6,Windstoß
+16,7,Tornado
+16,8,Raffica
 17,1,つばさでうつ
 17,5,Cru-Aile
+17,6,Flügelschlag
+17,7,Ataque Ala
+17,8,Att. d'Ala
 18,1,ふきとばし
 18,5,Cyclone
+18,6,Wirbelwind
+18,7,Remolino
+18,8,Turbine
 19,1,そらをとぶ
 19,5,Vol
+19,6,Fliegen
+19,7,Vuelo
+19,8,Volo
 20,1,しめつける
 20,5,Etreinte
+20,6,Klammergriff
+20,7,Atadura
+20,8,Legatutto
 21,1,たたきつける
 21,5,Souplesse
+21,6,Slam
+21,7,Portazo
+21,8,Schianto
 22,1,つるのムチ
 22,5,Fouet Lianes
+22,6,Rankenhieb
+22,7,Látigo Cepa
+22,8,Frustata
 23,1,ふみつけ
 23,5,Ecrasement
+23,6,Stampfer
+23,7,Pisotón
+23,8,Pestone
 24,1,にどげり
 24,5,Double Pied
+24,6,Doppelkick
+24,7,Doble Patada
+24,8,Doppiocalcio
 25,1,メガトンキック
 25,5,Ultimawashi
+25,6,Megakick
+25,7,Megapatada
+25,8,Megacalcio
 26,1,とびげり
 26,5,Pied Sauté
+26,6,Sprungkick
+26,7,Patada Salto
+26,8,Calciosalto
 27,1,まわしげり
 27,5,Mawashi Geri
+27,6,Fegekick
+27,7,Patada Giro
+27,8,Calciorullo
 28,1,すなかけ
 28,5,Jet de Sable
+28,6,Sandwirbel
+28,7,Ataque Arena
+28,8,Turbosabbia
 29,1,ずつき
 29,5,Coup d'Boule
+29,6,Kopfnuss
+29,7,Golpe Cabeza
+29,8,Bottintesta
 30,1,つのでつく
 30,5,Koud'Korne
+30,6,Hornattacke
+30,7,Cornada
+30,8,Incornata
 31,1,みだれづき
 31,5,Furie
+31,6,Furienschlag
+31,7,Ataque Furia
+31,8,Furia
 32,1,つのドリル
 32,5,Empal'Korne
+32,6,Hornbohrer
+32,7,Perforador
+32,8,Perforcorno
 33,1,たいあたり
 33,5,Charge
+33,6,Tackle
+33,7,Placaje
+33,8,Azione
 34,1,のしかかり
 34,5,Plaquage
+34,6,Bodyslam
+34,7,Golpe Cuerpo
+34,8,Corposcontro
 35,1,まきつく
 35,5,Ligotage
+35,6,Wickel
+35,7,Repetición
+35,8,Avvolgibotta
 36,1,とっしん
 36,5,Bélier
+36,6,Bodycheck
+36,7,Derribo
+36,8,Riduttore
 37,1,あばれる
 37,5,Mania
+37,6,Fuchtler
+37,7,Golpe
+37,8,Colpo
 38,1,すてみタックル
 38,5,Damoclès
+38,6,Risikotackle
+38,7,Doble Filo
+38,8,Sdoppiatore
 39,1,しっぽをふる
 39,5,Mimi-Queue
+39,6,Rutenschlag
+39,7,Látigo
+39,8,Colpocoda
 40,1,どくばり
 40,5,Dard-Venin
+40,6,Giftstachel
+40,7,Picotazo Ven
+40,8,Velenospina
 41,1,ダブルニードル
 41,5,Double-Dard
+41,6,Duonadel
+41,7,Dobleataque
+41,8,Doppio Ago
 42,1,ミサイルばり
 42,5,Dard-Nuée
+42,6,Nadelrakete
+42,7,Pin Misil
+42,8,Missilspillo
 43,1,にらみつける
 43,5,Groz'Yeux
+43,6,Silberblick
+43,7,Malicioso
+43,8,Fulmisguardo
 44,1,かみつく
 44,5,Morsure
+44,6,Biss
+44,7,Mordisco
+44,8,Morso
 45,1,なきごえ
 45,5,Rugissement
+45,6,Heuler
+45,7,Gruñido
+45,8,Ruggito
 46,1,ほえる
 46,5,Hurlement
+46,6,Brüller
+46,7,Rugido
+46,8,Boato
 47,1,うたう
 47,5,Berceuse
+47,6,Gesang
+47,7,Canto
+47,8,Canto
 48,1,ちょうおんぱ
 48,5,Ultrason
+48,6,Superschall
+48,7,Supersónico
+48,8,Supersuono
 49,1,ソニックブーム
 49,5,Sonicboom
+49,6,Ultraschall
+49,7,Bomba Sónica
+49,8,Sonicboom
 50,1,かなしばり
 50,5,Entrave
+50,6,Aussetzer
+50,7,Anulación
+50,8,Inibitore
 51,1,ようかいえき
 51,5,Acide
+51,6,Säure
+51,7,Ácido
+51,8,Acido
 52,1,ひのこ
 52,5,Flammèche
+52,6,Glut
+52,7,Ascuas
+52,8,Braciere
 53,1,かえんほうしゃ
 53,5,Lance-Flamme
+53,6,Flammenwurf
+53,7,Lanzallamas
+53,8,Lanciafiamme
 54,1,しろいきり
 54,5,Brume
+54,6,Weißnebel
+54,7,Neblina
+54,8,Nebbia
 55,1,みずでっぽう
 55,5,Pistolet à O
+55,6,Aquaknarre
+55,7,Pistola Agua
+55,8,Pistolacqua
 56,1,ハイドロポンプ
 56,5,Hydrocanon
+56,6,Hydropumpe
+56,7,Hidrobomba
+56,8,Idropompa
 57,1,なみのり
 57,5,Surf
+57,6,Surfer
+57,7,Surf
+57,8,Surf
 58,1,れいとうビーム
 58,5,Laser Glace
+58,6,Eisstrahl
+58,7,Rayo Hielo
+58,8,Geloraggio
 59,1,ふぶき
 59,5,Blizzard
+59,6,Blizzard
+59,7,Ventisca
+59,8,Bora
 60,1,サイケこうせん
 60,5,Rafale Psy
+60,6,Psystrahl
+60,7,Psicorrayo
+60,8,Psicoraggio
 61,1,バブルこうせん
 61,5,Bulles d'O
+61,6,Blubbstrahl
+61,7,Rayo Burbuja
+61,8,Bollaraggio
 62,1,オーロラビーム
 62,5,Onde Boréale
+62,6,Aurorastrahl
+62,7,Rayo Aurora
+62,8,Raggiaurora
 63,1,はかいこうせん
 63,5,Ultralaser
+63,6,Hyperstrahl
+63,7,Hiperrayo
+63,8,Iper Raggio
 64,1,つつく
 64,5,Picpic
+64,6,Schnabel
+64,7,Picotazo
+64,8,Beccata
 65,1,ドリルくちばし
 65,5,Bec Vrille
+65,6,Bohrschnabel
+65,7,Pico Taladro
+65,8,Perforbecco
 66,1,じごくぐるま
 66,5,Sacrifice
+66,6,Überroller
+66,7,Sumisión
+66,8,Sottomiss.
 67,1,けたぐり
 67,5,Balayage
+67,6,Fußkick
+67,7,Patada Baja
+67,8,Colpo Basso
 68,1,カウンター
 68,5,Riposte
+68,6,Konter
+68,7,Contador
+68,8,Contatore
 69,1,ちきゅうなげ
 69,5,Frappe Atlas
+69,6,Geowurf
+69,7,Mov. Sísmico
+69,8,Mov. Sismico
 70,1,かいりき
 70,5,Force
+70,6,Stärke
+70,7,Fuerza
+70,8,Forza
 71,1,すいとる
 71,5,Vol-Vie
+71,6,Absorber
+71,7,Absorber
+71,8,Assorbimento
 72,1,メガドレイン
 72,5,Méga-Sangsue
+72,6,Megasauger
+72,7,Megaagotar
+72,8,Megassorbim.
 73,1,やどりぎのタネ
 73,5,Vampigraine
+73,6,Egelsamen
+73,7,Drenadoras
+73,8,Parassiseme
 74,1,せいちょう
 74,5,Croissance
+74,6,Wachstum
+74,7,Desarrollo
+74,8,Crescita
 75,1,はっぱカッター
 75,5,Tranch'Herbe
+75,6,Rasierblatt
+75,7,Hoja Afilada
+75,8,Foglielama
 76,1,ソーラービーム
 76,5,Lance-Soleil
+76,6,Solarstrahl
+76,7,Rayo Solar
+76,8,Solarraggio
 77,1,どくのこな
 77,5,Poudre Toxik
+77,6,Giftpuder
+77,7,Polvo Veneno
+77,8,Velenpolvere
 78,1,しびれごな
 78,5,Para-Spore
+78,6,Stachelspore
+78,7,Paralizador
+78,8,Paralizzante
 79,1,ねむりごな
 79,5,Poudre Dodo
+79,6,Schlafpuder
+79,7,Somnífero
+79,8,Sonnifero
 80,1,はなびらのまい
 80,5,Danse-Fleur
+80,6,Blättertanz
+80,7,Danza Pétalo
+80,8,Petalodanza
 81,1,いとをはく
 81,5,Sécrétion
+81,6,Fadenschuss
+81,7,Disp. Demora
+81,8,Millebave
 82,1,りゅうのいかり
 82,5,Draco-Rage
+82,6,Drachenwut
+82,7,Furia Dragón
+82,8,Ira di Drago
 83,1,ほのおのうず
 83,5,Danseflamme
+83,6,Feuerwirbel
+83,7,Giro Fuego
+83,8,Turbofuoco
 84,1,でんきショック
 84,5,Eclair
+84,6,Donnerschock
+84,7,Impactrueno
+84,8,Tuonoshock
 85,1,１０まんボルト
 85,5,Tonnerre
+85,6,Donnerblitz
+85,7,Rayo
+85,8,Fulmine
 86,1,でんじは
 86,5,Cage-Eclair
+86,6,Donnerwelle
+86,7,Onda Trueno
+86,8,Tuononda
 87,1,かみなり
 87,5,Fatal-Foudre
+87,6,Donner
+87,7,Trueno
+87,8,Tuono
 88,1,いわおとし
 88,5,Jet-Pierres
+88,6,Steinwurf
+88,7,Lanzarrocas
+88,8,Sassata
 89,1,じしん
 89,5,Séisme
+89,6,Erdbeben
+89,7,Terremoto
+89,8,Terremoto
 90,1,じわれ
 90,5,Abîme
+90,6,Geofissur
+90,7,Fisura
+90,8,Abisso
 91,1,あなをほる
 91,5,Tunnel
+91,6,Schaufler
+91,7,Excavar
+91,8,Fossa
 92,1,どくどく
 92,5,Toxik
+92,6,Toxin
+92,7,Tóxico
+92,8,Tossina
 93,1,ねんりき
 93,5,Choc Mental
+93,6,Konfusion
+93,7,Confusión
+93,8,Confusione
 94,1,サイコキネシス
 94,5,Psyko
+94,6,Psychokinese
+94,7,Psíquico
+94,8,Psichico
 95,1,さいみんじゅつ
 95,5,Hypnose
+95,6,Hypnose
+95,7,Hipnosis
+95,8,Ipnosi
 96,1,ヨガのポーズ
 96,5,Yoga
+96,6,Meditation
+96,7,Meditación
+96,8,Meditazione
 97,1,こうそくいどう
 97,5,Hâte
+97,6,Agilität
+97,7,Agilidad
+97,8,Agilità
 98,1,でんこうせっか
 98,5,Vive-Attaque
+98,6,Ruckzuckhieb
+98,7,At. Rápido
+98,8,Att. Rapido
 99,1,いかり
 99,5,Frénésie
+99,6,Raserei
+99,7,Furia
+99,8,Ira
 100,1,テレポート
 100,5,Téléport
+100,6,Teleport
+100,7,Teletransp
+100,8,Teletraspor.
 101,1,ナイトヘッド
 101,5,Ténèbres
+101,6,Nachtnebel
+101,7,Tinieblas
+101,8,Ombra Nott.
 102,1,ものまね
 102,5,Copie
+102,6,Mimikry
+102,7,Mimético
+102,8,Mimica
 103,1,いやなおと
 103,5,Grincement
+103,6,Kreideschrei
+103,7,Chirrido
+103,8,Stridio
 104,1,かげぶんしん
 104,5,Reflet
+104,6,Doppelteam
+104,7,Doble Equipo
+104,8,Doppioteam
 105,1,じこさいせい
 105,5,Soin
+105,6,Genesung
+105,7,Recuperación
+105,8,Ripresa
 106,1,かたくなる
 106,5,Armure
+106,6,Härtner
+106,7,Fortaleza
+106,8,Rafforzatore
 107,1,ちいさくなる
 107,5,Lilliput
+107,6,Komprimator
+107,7,Reducción
+107,8,Minimizzato
 108,1,えんまく
 108,5,Brouillard
+108,6,Rauchwolke
+108,7,Pantallahumo
+108,8,Muro di Fumo
 109,1,あやしいひかり
 109,5,Onde Folie
+109,6,Konfustrahl
+109,7,Rayo Confuso
+109,8,Stordiraggio
 110,1,からにこもる
 110,5,Repli
+110,6,Panzerschutz
+110,7,Refugio
+110,8,Ritirata
 111,1,まるくなる
 111,5,Boul'Armure
+111,6,Einigler
+111,7,Rizo Defensa
+111,8,Ricciolscudo
 112,1,バリアー
 112,5,Bouclier
+112,6,Barriere
+112,7,Barrera
+112,8,Barriera
 113,1,ひかりのかべ
 113,5,Mur Lumière
+113,6,Lichtschild
+113,7,Pantalla Luz
+113,8,Schermoluce
 114,1,くろいきり
 114,5,Buée Noire
+114,6,Dunkelnebel
+114,7,Niebla
+114,8,Nube
 115,1,リフレクター
 115,5,Protection
+115,6,Reflektor
+115,7,Reflejo
+115,8,Riflesso
 116,1,きあいだめ
 116,5,Puissance
+116,6,Energiefokus
+116,7,Foco Energía
+116,8,Focalenergia
 117,1,がまん
 117,5,Patience
+117,6,Geduld
+117,7,Venganza
+117,8,Pazienza
 118,1,ゆびをふる
 118,5,Métronome
+118,6,Metronom
+118,7,Metrónomo
+118,8,Metronomo
 119,1,オウムがえし
 119,5,Mimique
+119,6,Spiegeltrick
+119,7,Mov. Espejo
+119,8,Speculmossa
 120,1,じばく
 120,5,Destruction
+120,6,Finale
+120,7,Autodestruc
+120,8,Autodistruz.
 121,1,タマゴばくだん
 121,5,Bomb'Oeuf
+121,6,Eierbombe
+121,7,Bomba Huevo
+121,8,Uovobomba
 122,1,したでなめる
 122,5,Léchouille
+122,6,Schlecker
+122,7,Lengüetazo
+122,8,Leccata
 123,1,スモッグ
 123,5,Purédpois
+123,6,Smog
+123,7,Polución
+123,8,Smog
 124,1,ヘドロこうげき
 124,5,Détritus
+124,6,Schlammbad
+124,7,Residuos
+124,8,Fango
 125,1,ホネこんぼう
 125,5,Massd'Os
+125,6,Knochenkeule
+125,7,Hueso Palo
+125,8,Ossoclava
 126,1,だいもんじ
 126,5,Déflagration
+126,6,Feuersturm
+126,7,Llamarada
+126,8,Fuocobomba
 127,1,たきのぼり
 127,5,Cascade
+127,6,Kaskade
+127,7,Cascada
+127,8,Cascata
 128,1,からではさむ
 128,5,Claquoir
+128,6,Schnapper
+128,7,Tenaza
+128,8,Tenaglia
 129,1,スピードスター
 129,5,Météores
+129,6,Sternschauer
+129,7,Rapidez
+129,8,Comete
 130,1,ロケットずつき
 130,5,Coud'Krâne
+130,6,Schädelwumme
+130,7,Cabezazo
+130,8,Capocciata
 131,1,とげキャノン
 131,5,Picanon
+131,6,Dornkanone
+131,7,Clavo Cañón
+131,8,Sparalance
 132,1,からみつく
 132,5,Constriction
+132,6,Umklammerung
+132,7,Restricción
+132,8,Limitazione
 133,1,ドわすれ
 133,5,Amnésie
+133,6,Amnesie
+133,7,Amnesia
+133,8,Amnesia
 134,1,スプーンまげ
 134,5,Télékinésie
+134,6,Psykraft
+134,7,Kinético
+134,8,Cinèsi
 135,1,タマゴうみ
 135,5,E-Coque
+135,6,Weichei
+135,7,Amortiguador
+135,8,Covauova
 136,1,とびひざげり
 136,5,Pied Voltige
+136,6,Turmkick
+136,7,Pat. S. Alta
+136,8,Calcinvolo
 137,1,へびにらみ
 137,5,Intimidation
+137,6,Giftblick
+137,7,Deslumbrar
+137,8,Bagliore
 138,1,ゆめくい
 138,5,Dévorêve
+138,6,Traumfresser
+138,7,Come Sueños
+138,8,Mangiasogni
 139,1,どくガス
 139,5,Gaz Toxik
+139,6,Giftwolke
+139,7,Gas Venenoso
+139,8,Velenogas
 140,1,たまなげ
 140,5,Pilonnage
+140,6,Stakkato
+140,7,Presa
+140,8,Att. Pioggia
 141,1,きゅうけつ
 141,5,Vampirisme
+141,6,Blutsauger
+141,7,Chupavidas
+141,8,Sanguisuga
 142,1,あくまのキッス
 142,5,Grobisou
+142,6,Todeskuss
+142,7,Beso Amoroso
+142,8,Demonbacio
 143,1,ゴッドバード
 143,5,Pique
+143,6,Himmelsfeger
+143,7,Ataque Aéreo
+143,8,Aeroattacco
 144,1,へんしん
 144,5,Morphing
+144,6,Wandler
+144,7,Transform
+144,8,Trasformaz.
 145,1,あわ
 145,5,Ecume
+145,6,Blubber
+145,7,Burbuja
+145,8,Bolla
 146,1,ピヨピヨパンチ
 146,5,Uppercut
+146,6,Irrschlag
+146,7,Puño Mareo
+146,8,Stordipugno
 147,1,キノコのほうし
 147,5,Spore
+147,6,Pilzspore
+147,7,Espora
+147,8,Spora
 148,1,フラッシュ
 148,5,Flash
+148,6,Blitz
+148,7,Destello
+148,8,Flash
 149,1,サイコウェーブ
 149,5,Vague Psy
+149,6,Psywelle
+149,7,Psicoonda
+149,8,Psiconda
 150,1,はねる
 150,5,Trempette
+150,6,Platscher
+150,7,Salpicadura
+150,8,Splash
 151,1,とける
 151,5,Acidarmure
+151,6,Säurepanzer
+151,7,Armad. Ácida
+151,8,Scudo Acido
 152,1,クラブハンマー
 152,5,Pince-Masse
+152,6,Krabbhammer
+152,7,Martillazo
+152,8,Martellata
 153,1,だいばくはつ
 153,5,Explosion
+153,6,Explosion
+153,7,Explosión
+153,8,Esplosione
 154,1,みだれひっかき
 154,5,Combo-Griffe
+154,6,Kratzfurie
+154,7,Golpes Furia
+154,8,Sfuriate
 155,1,ホネブーメラン
 155,5,Osmerang
+155,6,Knochmerang
+155,7,Huesomerang
+155,8,Ossomerang
 156,1,ねむる
 156,5,Repos
+156,6,Erholung
+156,7,Descanso
+156,8,Riposo
 157,1,いわなだれ
 157,5,Eboulement
+157,6,Steinhagel
+157,7,Avalancha
+157,8,Frana
 158,1,ひっさつまえば
 158,5,Croc de Mort
+158,6,Hyperzahn
+158,7,Hip.Colmillo
+158,8,Iperzanna
 159,1,かくばる
 159,5,Affûtage
+159,6,Schärfer
+159,7,Afilar
+159,8,Affilatore
 160,1,テクスチャー
 160,5,Adaptation
+160,6,Umwandlung
+160,7,Conversión
+160,8,Conversione
 161,1,トライアタック
 161,5,Triplattaque
+161,6,Triplette
+161,7,Triataque
+161,8,Tripletta
 162,1,いかりのまえば
 162,5,Croc Fatal
+162,6,Superzahn
+162,7,Superdiente
+162,8,Superzanna
 163,1,きりさく
 163,5,Tranche
+163,6,Schlitzer
+163,7,Cuchillada
+163,8,Lacerazione
 164,1,みがわり
 164,5,Clonage
+164,6,Delegator
+164,7,Sustituto
+164,8,Sostituto
 165,1,わるあがき
 165,5,Lutte
+165,6,Verzweifler
+165,7,Combate
+165,8,Scontro
 166,1,スケッチ
 166,5,Gribouille
+166,6,Nachahmer
+166,7,Esquema
+166,8,Schizzo
 167,1,トリプルキック
 167,5,Triple Pied
+167,6,Dreifachkick
+167,7,Triplepatada
+167,8,Triplocalcio
 168,1,どろぼう
 168,5,Larcin
+168,6,Raub
+168,7,Ladrón
+168,8,Furto
 169,1,クモのす
 169,5,Toile
+169,6,Spinnennetz
+169,7,Telaraña
+169,8,Ragnatela
 170,1,こころのめ
 170,5,Lire-Esprit
+170,6,Willensleser
+170,7,Telépata
+170,8,Leggimente
 171,1,あくむ
 171,5,Cauchemar
+171,6,Nachtmahr
+171,7,Pesadilla
+171,8,Incubo
 172,1,かえんぐるま
 172,5,Roue de Feu
+172,6,Flammenrad
+172,7,Rueda Fuego
+172,8,Ruotafuoco
 173,1,いびき
 173,5,Ronflement
+173,6,Schnarcher
+173,7,Ronquido
+173,8,Russare
 174,1,のろい
 174,5,Malédiction
+174,6,Fluch
+174,7,Maldición
+174,8,Maledizione
 175,1,じたばた
 175,5,Fléau
+175,6,Dreschflegel
+175,7,Azote
+175,8,Flagello
 176,1,テクスチャー２
 176,5,Conversion 2
+176,6,Umwandlung2
+176,7,Conversión2
+176,8,Conversione2
 177,1,エアロブラスト
 177,5,Aéroblast
+177,6,Luftstoß
+177,7,Aerochorro
+177,8,Aerocolpo
 178,1,わたほうし
 178,5,Spore Coton
+178,6,Baumwollsaat
+178,7,Esporagodón
+178,8,Cottonspora
 179,1,きしかいせい
 179,5,Contre
+179,6,Gegenschlag
+179,7,Inversión
+179,8,Contropiede
 180,1,うらみ
 180,5,Dépit
+180,6,Groll
+180,7,Rencor
+180,8,Dispetto
 181,1,こなゆき
 181,5,Poudreuse
+181,6,Pulverschnee
+181,7,Nieve Polvo
+181,8,Polneve
 182,1,まもる
 182,5,Abri
+182,6,Schutzschild
+182,7,Protección
+182,8,Protezione
 183,1,マッハパンチ
 183,5,Mach Punch
+183,6,Tempohieb
+183,7,Ultrapuño
+183,8,Pugnorapido
 184,1,こわいかお
 184,5,Grimace
+184,6,Grimasse
+184,7,Cara Susto
+184,8,Visotruce
 185,1,だましうち
 185,5,Feinte
+185,6,Finte
+185,7,Finta
+185,8,Finta
 186,1,てんしのキッス
 186,5,Doux Baiser
+186,6,Bitterkuss
+186,7,Beso Dulce
+186,8,Dolcebacio
 187,1,はらだいこ
 187,5,Cognobidon
+187,6,Bauchtrommel
+187,7,Tambor
+187,8,Panciamburo
 188,1,ヘドロばくだん
 188,5,Bomb-Beurk
+188,6,Matschbombe
+188,7,Bomba Lodo
+188,8,Fangobomba
 189,1,どろかけ
 189,5,Coud'Boue
+189,6,Lehmschelle
+189,7,Bofetón Lodo
+189,8,Fangosberla
 190,1,オクタンほう
 190,5,Octazooka
+190,6,Octazooka
+190,7,Pulpocañón
+190,8,Octazooka
 191,1,まきびし
 191,5,Picots
+191,6,Stachler
+191,7,Púas
+191,8,Punte
 192,1,でんじほう
 192,5,Elecanon
+192,6,Blitzkanone
+192,7,Electrocañón
+192,8,Falcecannone
 193,1,みやぶる
 193,5,Clairvoyance
+193,6,Gesichte
+193,7,Profecía
+193,8,Preveggenza
 194,1,みちづれ
 194,5,Prlvt Destin
+194,6,Abgangsbund
+194,7,Mismodestino
+194,8,Destinobbl.
 195,1,ほろびのうた
 195,5,Requiem
+195,6,Abgesang
+195,7,Canto Mortal
+195,8,Ultimocanto
 196,1,こごえるかぜ
 196,5,Vent Glace
+196,6,Eissturm
+196,7,Viento Hielo
+196,8,Ventogelato
 197,1,みきり
 197,5,Détection
+197,6,Scanner
+197,7,Detección
+197,8,Individua
 198,1,ボーンラッシュ
 198,5,Charge-Os
+198,6,Knochenhatz
+198,7,Ataque Óseo
+198,8,Ossoraffica
 199,1,ロックオン
 199,5,Verrouillage
+199,6,Zielschuss
+199,7,Fijar Blanco
+199,8,Localizza
 200,1,げきりん
 200,5,Colère
+200,6,Wutanfall
+200,7,Enfado
+200,8,Oltraggio
 201,1,すなあらし
 201,5,Tempêtesable
+201,6,Sandsturm
+201,7,Torm. Arena
+201,8,Terrempesta
 202,1,ギガドレイン
 202,5,Giga-Sangsue
+202,6,Gigasauger
+202,7,Gigadrenado
+202,8,Gigassorbim.
 203,1,こらえる
 203,5,Ténacité
+203,6,Ausdauer
+203,7,Aguante
+203,8,Resistenza
 204,1,あまえる
 204,5,Charme
+204,6,Charme
+204,7,Encanto
+204,8,Fascino
 205,1,ころがる
 205,5,Roulade
+205,6,Walzer
+205,7,Desenrollar
+205,8,Rotolamento
 206,1,みねうち
 206,5,Faux-Chage
+206,6,Trugschlag
+206,7,Falsotortazo
+206,8,Falsofinale
 207,1,いばる
 207,5,Vantardise
+207,6,Angeberei
+207,7,Contoneo
+207,8,Bullo
 208,1,ミルクのみ
 208,5,Lait à Boire
+208,6,Milchgetränk
+208,7,Batido
+208,8,Buonlatte
 209,1,スパーク
 209,5,Etincelle
+209,6,Funkensprung
+209,7,Chispa
+209,8,Scintilla
 210,1,れんぞくぎり
 210,5,Taillade
+210,6,Zornklinge
+210,7,Cortefuria
+210,8,Tagliofuria
 211,1,はがねのつばさ
 211,5,Aile d'Acier
+211,6,Stahlflügel
+211,7,Ala de Acero
+211,8,Alacciaio
 212,1,くろいまなざし
 212,5,Regard Noir
+212,6,Horrorblick
+212,7,Mal de Ojo
+212,8,Malosguardo
 213,1,メロメロ
 213,5,Attraction
+213,6,Anziehung
+213,7,Atracción
+213,8,Attrazione
 214,1,ねごと
 214,5,Blabla Dodo
+214,6,Schlafrede
+214,7,Sonámbulo
+214,8,Sonnolalia
 215,1,いやしのすず
 215,5,Glas de Soin
+215,6,Vitalglocke
+215,7,Campana Cura
+215,8,Rintoccasana
 216,1,おんがえし
 216,5,Retour
+216,6,Rückkehr
+216,7,Retroceso
+216,8,Ritorno
 217,1,プレゼント
 217,5,Cadeau
+217,6,Geschenk
+217,7,Presente
+217,8,Regalino
 218,1,やつあたり
 218,5,Frustration
+218,6,Frustration
+218,7,Frustración
+218,8,Frustrazione
 219,1,しんぴのまもり
 219,5,Rune Protect
+219,6,Bodyguard
+219,7,Velo Sagrado
+219,8,Salvaguardia
 220,1,いたみわけ
 220,5,Balance
+220,6,Leidteiler
+220,7,Divide Dolor
+220,8,Malcomune
 221,1,せいなるほのお
 221,5,Feu Sacré
+221,6,Läuterfeuer
+221,7,Fuegosagrado
+221,8,Magifuoco
 222,1,マグニチュード
 222,5,Ampleur
+222,6,Intensität
+222,7,Magnitud
+222,8,Magnitudo
 223,1,ばくれつパンチ
 223,5,Dynamopoing
+223,6,Wuchtschlag
+223,7,Puñodinámico
+223,8,Dinamipugno
 224,1,メガホーン
 224,5,Mégacorne
+224,6,Vielender
+224,7,Megacuerno
+224,8,Megacorno
 225,1,りゅうのいぶき
 225,5,Dracosouffle
+225,6,Feuerodem
+225,7,Dragoaliento
+225,8,Dragospiro
 226,1,バトンタッチ
 226,5,Relais
+226,6,Staffette
+226,7,Relevo
+226,8,Staffetta
 227,1,アンコール
 227,5,Encore
+227,6,Zugabe
+227,7,Otra Vez
+227,8,Ripeti
 228,1,おいうち
 228,5,Poursuite
+228,6,Verfolgung
+228,7,Persecución
+228,8,Inseguimento
 229,1,こうそくスピン
 229,5,Tour Rapide
+229,6,Turbodreher
+229,7,Giro Rápido
+229,8,Rapigiro
 230,1,あまいかおり
 230,5,Doux Parfum
+230,6,Lockduft
+230,7,Dulce Aroma
+230,8,Profumino
 231,1,アイアンテール
 231,5,Queue de Fer
+231,6,Eisenschweif
+231,7,Cola Férrea
+231,8,Codacciaio
 232,1,メタルクロー
 232,5,Griffe Acier
+232,6,Metallklaue
+232,7,Garra Metal
+232,8,Ferrartigli
 233,1,あてみなげ
 233,5,Corps Perdu
+233,6,Überwurf
+233,7,Tiro Vital
+233,8,Vitaltiro
 234,1,あさのひざし
 234,5,Aurore
+234,6,Morgengrauen
+234,7,Sol Matinal
+234,8,Mattindoro
 235,1,こうごうせい
 235,5,Synthèse
+235,6,Synthese
+235,7,Síntesis
+235,8,Sintesi
 236,1,つきのひかり
 236,5,Rayon Lune
+236,6,Mondschein
+236,7,Luz Lunar
+236,8,Lucelunare
 237,1,めざめるパワー
 237,5,Puis. Cachée
+237,6,Kraftreserve
+237,7,Poder Oculto
+237,8,Introforza
 238,1,クロスチョップ
 238,5,Coup-Croix
+238,6,Kreuzhieb
+238,7,Tajo Cruzado
+238,8,Incrocolpo
 239,1,たつまき
 239,5,Ouragan
+239,6,Windhose
+239,7,Ciclón
+239,8,Tornado
 240,1,あまごい
 240,5,Danse Pluie
+240,6,Regentanz
+240,7,Danza Lluvia
+240,8,Pioggiadanza
 241,1,にほんばれ
 241,5,Zénith
+241,6,Sonnentag
+241,7,Día Soleado
+241,8,Giornodisole
 242,1,かみくだく
 242,5,Mâchouille
+242,6,Knirscher
+242,7,Triturar
+242,8,Sgranocchio
 243,1,ミラーコート
 243,5,Voile Miroir
+243,6,Spiegelcape
+243,7,Manto Espejo
+243,8,Specchiovelo
 244,1,じこあんじ
 244,5,Boost
+244,6,Psycho-Plus
+244,7,Más Psique
+244,8,Psicamisù
 245,1,しんそく
 245,5,Vit.Extrême
+245,6,Turbotempo
+245,7,Vel. Extrema
+245,8,Extrarapido
 246,1,げんしのちから
 246,5,Pouv.Antique
+246,6,Antik-Kraft
+246,7,Poder Pasado
+246,8,Forzantica
 247,1,シャドーボール
 247,5,Ball'Ombre
+247,6,Spukball
+247,7,Bola Sombra
+247,8,Palla Ombra
 248,1,みらいよち
 248,5,Prescience
+248,6,Seher
+248,7,Premonición
+248,8,Divinazione
 249,1,いわくだき
 249,5,Eclate-Roc
+249,6,Zertrümmerer
+249,7,Golpe Roca
+249,8,Spaccaroccia
 250,1,うずしお
 250,5,Siphon
+250,6,Whirlpool
+250,7,Torbellino
+250,8,Mulinello
 251,1,ふくろだたき
 251,5,Baston
+251,6,Prügler
+251,7,Paliza
+251,8,Picchiaduro
 252,1,ねこだまし
 252,5,Bluff
+252,6,Mogelhieb
+252,7,Sorpresa
+252,8,Bruciapelo
 253,1,さわぐ
 253,5,Brouhaha
+253,6,Aufruhr
+253,7,Alboroto
+253,8,Baraonda
 254,1,たくわえる
 254,5,Stockage
+254,6,Horter
+254,7,Reserva
+254,8,Accumulo
 255,1,はきだす
 255,5,Relâche
+255,6,Entfessler
+255,7,Escupir
+255,8,Sfoghenergia
 256,1,のみこむ
 256,5,Avale
+256,6,Verzehrer
+256,7,Tragar
+256,8,Introenergia
 257,1,ねっぷう
 257,5,Canicule
+257,6,Hitzewelle
+257,7,Onda Ígnea
+257,8,Ondacalda
 258,1,あられ
 258,5,Grêle
+258,6,Hagelsturm
+258,7,Granizo
+258,8,Grandine
 259,1,いちゃもん
 259,5,Tourmente
+259,6,Folterknecht
+259,7,Tormento
+259,8,Attaccalite
 260,1,おだてる
 260,5,Flatterie
+260,6,Schmeichler
+260,7,Camelo
+260,8,Adulazione
 261,1,おにび
 261,5,Feu Follet
+261,6,Irrlicht
+261,7,Fuego Fatuo
+261,8,Fuocofatuo
 262,1,おきみやげ
 262,5,Souvenir
+262,6,Memento-Mori
+262,7,Legado
+262,8,Memento
 263,1,からげんき
 263,5,Façade
+263,6,Fassade
+263,7,Imagen
+263,8,Facciata
 264,1,きあいパンチ
 264,5,Mitra-Poing
+264,6,Power-Punch
+264,7,Puño Certero
+264,8,Centripugno
 265,1,きつけ
 265,5,Stimulant
+265,6,Riechsalz
+265,7,Estímulo
+265,8,Maniereforti
 266,1,このゆびとまれ
 266,5,Par Ici
+266,6,Spotlight
+266,7,Señuelo
+266,8,Sonoqui
 267,1,しぜんのちから
 267,5,Force-Nature
+267,6,Natur-Kraft
+267,7,Adaptación
+267,8,Naturforza
 268,1,じゅうでん
 268,5,Chargeur
+268,6,Ladevorgang
+268,7,Carga
+268,8,Sottocarica
 269,1,ちょうはつ
 269,5,Provoc
+269,6,Verhöhner
+269,7,Mofa
+269,8,Provocazione
 270,1,てだすけ
 270,5,Coup d'Main
+270,6,Rechte Hand
+270,7,Refuerzo
+270,8,Altruismo
 271,1,トリック
 271,5,Tourmagik
+271,6,Trickbetrug
+271,7,Truco
+271,8,Raggiro
 272,1,なりきり
 272,5,Imitation
+272,6,Rollentausch
+272,7,Imitación
+272,8,Giocodiruolo
 273,1,ねがいごと
 273,5,Voeu
+273,6,Wunschtraum
+273,7,Deseo
+273,8,Desiderio
 274,1,ねこのて
 274,5,Assistance
+274,6,Zuschuss
+274,7,Ayuda
+274,8,Assistente
 275,1,ねをはる
 275,5,Racines
+275,6,Verwurzler
+275,7,Arraigo
+275,8,Radicamento
 276,1,ばかぢから
 276,5,Surpuissance
+276,6,Kraftkoloss
+276,7,Fuerza Bruta
+276,8,Troppoforte
 277,1,マジックコート
 277,5,Reflet Magik
+277,6,Magiemantel
+277,7,Capa Mágica
+277,8,Magivelo
 278,1,リサイクル
 278,5,Recyclage
+278,6,Aufbereitung
+278,7,Reciclaje
+278,8,Riciclo
 279,1,リベンジ
 279,5,Vendetta
+279,6,Vergeltung
+279,7,Desquite
+279,8,Vendetta
 280,1,かわらわり
 280,5,Casse-Brique
+280,6,Durchbruch
+280,7,Demolición
+280,8,Breccia
 281,1,あくび
 281,5,Bâillement
+281,6,Gähner
+281,7,Bostezo
+281,8,Sbadiglio
 282,1,はたきおとす
 282,5,Sabotage
+282,6,Abschlag
+282,7,Desarme
+282,8,Privazione
 283,1,がむしゃら
 283,5,Effort
+283,6,Notsituation
+283,7,Esfuerzo
+283,8,Rimonta
 284,1,ふんか
 284,5,Eruption
+284,6,Eruption
+284,7,Estallido
+284,8,Eruzione
 285,1,スキルスワップ
 285,5,Echange
+285,6,Wertewechsel
+285,7,Intercambio
+285,8,Baratto
 286,1,ふういん
 286,5,Possessif
+286,6,Begrenzer
+286,7,Cerca
+286,8,Esclusiva
 287,1,リフレッシュ
 287,5,Régénération
+287,6,Heilung
+287,7,Alivio
+287,8,Rinfrescata
 288,1,おんねん
 288,5,Rancune
+288,6,Nachspiel
+288,7,Rabia
+288,8,Rancore
 289,1,よこどり
 289,5,Saisie
+289,6,Übernahme
+289,7,Robo
+289,8,Scippo
 290,1,ひみつのちから
 290,5,Force Cachée
+290,6,Geheimpower
+290,7,Daño Secreto
+290,8,Forzasegreta
 291,1,ダイビング
 291,5,Plongée
+291,6,Taucher
+291,7,Buceo
+291,8,Sub
 292,1,つっぱり
 292,5,Cogne
+292,6,Armstoß
+292,7,Empujón
+292,8,Sberletese
 293,1,ほごしょく
 293,5,Camouflage
+293,6,Tarnung
+293,7,Camuflaje
+293,8,Camuffamento
 294,1,ほたるび
 294,5,Lumiqueue
+294,6,Schweifglanz
+294,7,Ráfaga
+294,8,Codadiluce
 295,1,ラスターパージ
 295,5,Lumi-Eclat
+295,6,Scheinwerfer
+295,7,Resplandor
+295,8,Abbagliante
 296,1,ミストボール
 296,5,Ball'Brume
+296,6,Nebelball
+296,7,Bola Neblina
+296,8,Foschisfera
 297,1,フェザーダンス
 297,5,Danse-Plume
+297,6,Daunenreigen
+297,7,Danza Pluma
+297,8,Danzadipiume
 298,1,フラフラダンス
 298,5,Danse-Folle
+298,6,Taumeltanz
+298,7,Danza Caos
+298,8,Strampadanza
 299,1,ブレイズキック
 299,5,Pied Brûleur
+299,6,Feuerfeger
+299,7,Patada Ígnea
+299,8,Calciardente
 300,1,どろあそび
 300,5,Lance-Boue
+300,6,Lehmsuhler
+300,7,Chapoteolodo
+300,8,Fangata
 301,1,アイスボール
 301,5,Ball'Glace
+301,6,Frostbeule
+301,7,Bola Hielo
+301,8,Palla Gelo
 302,1,ニードルアーム
 302,5,Poing Dard
+302,6,Nietenranke
+302,7,Brazo Pincho
+302,8,Pugnospine
 303,1,なまける
 303,5,Paresse
+303,6,Tagedieb
+303,7,Relajo
+303,8,Pigro
 304,1,ハイパーボイス
 304,5,Mégaphone
+304,6,Schallwelle
+304,7,Vozarrón
+304,8,Granvoce
 305,1,どくどくのキバ
 305,5,Crochetvenin
+305,6,Giftzahn
+305,7,Colmillo Ven
+305,8,Velenodenti
 306,1,ブレイククロー
 306,5,Eclategriffe
+306,6,Zermalmklaue
+306,7,Garra Brutal
+306,8,Tritartigli
 307,1,ブラストバーン
 307,5,Rafale Feu
+307,6,Lohekanonade
+307,7,Anillo Ígneo
+307,8,Incendio
 308,1,ハイドロカノン
 308,5,Hydroblast
+308,6,Aquahaubitze
+308,7,Hidrocañón
+308,8,Idrocannone
 309,1,コメットパンチ
 309,5,Poing Météor
+309,6,Sternenhieb
+309,7,Puño Meteoro
+309,8,Meteorpugno
 310,1,おどろかす
 310,5,Etonnement
+310,6,Erstauner
+310,7,Impresionar
+310,8,Sgomento
 311,1,ウェザーボール
 311,5,Ball'Météo
+311,6,Meteorologe
+311,7,Meteorobola
+311,8,Palla Clima
 312,1,アロマセラピー
 312,5,Aromathérapi
+312,6,Aromakur
+312,7,Aromaterapia
+312,8,Aromaterapia
 313,1,うそなき
 313,5,Croco Larme
+313,6,Trugträne
+313,7,Llanto Falso
+313,8,Falselacrime
 314,1,エアカッター
 314,5,Tranch'Air
+314,6,Windschnitt
+314,7,Aire Afilado
+314,8,Aerasoio
 315,1,オーバーヒート
 315,5,Surchauffe
+315,6,Hitzekoller
+315,7,Sofoco
+315,8,Vampata
 316,1,かぎわける
 316,5,Flair
+316,6,Schnüffler
+316,7,Rastreo
+316,8,Segugio
 317,1,がんせきふうじ
 317,5,Tomberoche
+317,6,Felsgrab
+317,7,Tumba Rocas
+317,8,Rocciotomba
 318,1,ぎんいろのかぜ
 318,5,Vent Argenté
+318,6,Silberhauch
+318,7,Viento Plata
+318,8,Ventargenteo
 319,1,きんぞくおん
 319,5,Strido-Son
+319,6,Metallsound
+319,7,Eco Metálico
+319,8,Ferrostrido
 320,1,くさぶえ
 320,5,Siffl'Herbe
+320,6,Grasflöte
+320,7,Silbato
+320,8,Meloderba
 321,1,くすぐる
 321,5,Chatouille
+321,6,Spaßkanone
+321,7,Cosquillas
+321,8,Solletico
 322,1,コスモパワー
 322,5,Force Cosmik
+322,6,Kosmik-Kraft
+322,7,Masa Cósmica
+322,8,Cosmoforza
 323,1,しおふき
 323,5,Giclédo
+323,6,Fontränen
+323,7,Salpicar
+323,8,Zampillo
 324,1,シグナルビーム
 324,5,Rayon Signal
+324,6,Ampelleuchte
+324,7,Doble Rayo
+324,8,Segnoraggio
 325,1,シャドーパンチ
 325,5,Poing Ombre
+325,6,Finsterfaust
+325,7,Puño Sombra
+325,8,Pugnodombra
 326,1,じんつうりき
 326,5,Extrasenseur
+326,6,Sondersensor
+326,7,Paranormal
+326,8,Extrasenso
 327,1,スカイアッパー
 327,5,Stratopercut
+327,6,Himmelhieb
+327,7,Gancho Alto
+327,8,Stramontante
 328,1,すなじごく
 328,5,Tourbi-Sable
+328,6,Sandgrab
+328,7,Bucle Arena
+328,8,Sabbiotomba
 329,1,ぜったいれいど
 329,5,Glaciation
+329,6,Eiseskälte
+329,7,Frío Polar
+329,8,Purogelo
 330,1,だくりゅう
 330,5,Ocroupi
+330,6,Lehmbrühe
+330,7,Agua Lodosa
+330,8,Fanghiglia
 331,1,タネマシンガン
 331,5,Balle Graine
+331,6,Kugelsaat
+331,7,Recurrente
+331,8,Semitraglia
 332,1,つばめがえし
 332,5,Aéropique
+332,6,Aero-Ass
+332,7,Golpe Aéreo
+332,8,Aeroassalto
 333,1,つららばり
 333,5,Stalagtite
+333,6,Eisspeer
+333,7,Carámbano
+333,8,Gelolancia
 334,1,てっぺき
 334,5,Mur de Fer
+334,6,Eisenabwehr
+334,7,Def. Férrea
+334,8,Ferroscudo
 335,1,とおせんぼう
 335,5,Barrage
+335,6,Rückentzug
+335,7,Bloqueo
+335,8,Blocco
 336,1,とおぼえ
 336,5,Grondement
+336,6,Jauler
+336,7,Aullido
+336,8,Gridodilotta
 337,1,ドラゴンクロー
 337,5,Dracogriffe
+337,6,Drachenklaue
+337,7,Garra Dragón
+337,8,Dragartigli
 338,1,ハードプラント
 338,5,Végé-Attak
+338,6,Fauna-Statue
+338,7,Planta Feroz
+338,8,Radicalbero
 339,1,ビルドアップ
 339,5,Gonflette
+339,6,Protzer
+339,7,Corpulencia
+339,8,Granfisico
 340,1,とびはねる
 340,5,Rebond
+340,6,Sprungfeder
+340,7,Bote
+340,8,Rimbalzo
 341,1,マッドショット
 341,5,Tir de Boue
+341,6,Lehmschuss
+341,7,Disp. Lodo
+341,8,Colpodifango
 342,1,ポイズンテール
 342,5,Queue-Poison
+342,6,Giftschweif
+342,7,Cola Veneno
+342,8,Velenocoda
 343,1,ほしがる
 343,5,Implore
+343,6,Bezirzer
+343,7,Antojo
+343,8,Supplica
 344,1,ボルテッカー
 344,5,Electacle
+344,6,Volttackle
+344,7,Placaje Eléc
+344,8,Locomovolt
 345,1,マジカルリーフ
 345,5,Feuillemagik
+345,6,Zauberblatt
+345,7,Hoja Mágica
+345,8,Fogliamagica
 346,1,みずあそび
 346,5,Tourniquet
+346,6,Nassmacher
+346,7,Hidrochorro
+346,8,Docciascudo
 347,1,めいそう
 347,5,Plénitude
+347,6,Gedankengut
+347,7,Paz Mental
+347,8,Calmamente
 348,1,リーフブレード
 348,5,Lame-Feuille
+348,6,Laubklinge
+348,7,Hoja Aguda
+348,8,Fendifoglia
 349,1,りゅうのまい
 349,5,Danse Draco
+349,6,Drachentanz
+349,7,Danza Dragón
+349,8,Dragodanza
 350,1,ロックブラスト
 350,5,Boule Roc
+350,6,Felswurf
+350,7,Pedrada
+350,8,Cadutamassi
 351,1,でんげきは
 351,5,Onde de Choc
+351,6,Schockwelle
+351,7,Onda Voltio
+351,8,Ondashock
 352,1,みずのはどう
 352,5,Vibraqua
+352,6,Aquawelle
+352,7,Hidropulso
+352,8,Idropulsar
 353,1,はめつのねがい
 353,5,Carnareket
+353,6,Kismetwunsch
+353,7,Deseo Oculto
+353,8,Obbliderio
 354,1,サイコブースト
 354,5,Psycho Boost
+354,6,Psyschub
+354,7,Psicoataque
+354,8,Psicoslancio
 355,1,はねやすめ
 355,5,Atterrissage
+355,6,Ruheort
+355,7,Respiro
+355,8,Trespolo
 356,1,じゅうりょく
 356,5,Gravité
+356,6,Erdanziehung
+356,7,Gravedad
+356,8,Gravità
 357,1,ミラクルアイ
 357,5,Oeil Miracle
+357,6,Wunderauge
+357,7,Gran Ojo
+357,8,Miracolvista
 358,1,めざましビンタ
 358,5,Réveil Forcé
+358,6,Weckruf
+358,7,Espabila
+358,8,Svegliopacca
 359,1,アームハンマー
 359,5,Marto-Poing
+359,6,Hammerarm
+359,7,Machada
+359,8,Martelpugno
 360,1,ジャイロボール
 360,5,Gyroballe
+360,6,Gyroball
+360,7,Giro Bola
+360,8,Vortexpalla
 361,1,いやしのねがい
 361,5,Voeu Soin
+361,6,Heilopfer
+361,7,Deseo Cura
+361,8,Curardore
 362,1,しおみず
 362,5,Saumure
+362,6,Lake
+362,7,Salmuera
+362,8,Acquadisale
 363,1,しぜんのめぐみ
 363,5,Don Naturel
+363,6,Beerenkräfte
+363,7,Don Natural
+363,8,Dononaturale
 364,1,フェイント
 364,5,Ruse
+364,6,Offenlegung
+364,7,Amago
+364,8,Fintoattacco
 365,1,ついばむ
 365,5,Picore
+365,6,Pflücker
+365,7,Picoteo
+365,8,Spennata
 366,1,おいかぜ
 366,5,Vent Arrière
+366,6,Rückenwind
+366,7,Viento Afín
+366,8,Ventoincoda
 367,1,つぼをつく
 367,5,Acupression
+367,6,Akupressur
+367,7,Acupresión
+367,8,Acupressione
 368,1,メタルバースト
 368,5,Fulmifer
+368,6,Metallstoß
+368,7,Repr. Metal
+368,8,Metalscoppio
 369,1,とんぼがえり
 369,5,Demi-Tour
+369,6,Kehrtwende
+369,7,Ida y Vuelta
+369,8,Retromarcia
 370,1,インファイト
 370,5,Close Combat
+370,6,Nahkampf
+370,7,A Bocajarro
+370,8,Zuffa
 371,1,しっぺがえし
 371,5,Représailles
+371,6,Gegenstoß
+371,7,Vendetta
+371,8,Rivincita
 372,1,ダメおし
 372,5,Assurance
+372,6,Gewissheit
+372,7,Buena Baza
+372,8,Garanzia
 373,1,さしおさえ
 373,5,Embargo
+373,6,Itemsperre
+373,7,Embargo
+373,8,Divieto
 374,1,なげつける
 374,5,Dégommage
+374,6,Schleuder
+374,7,Lanzamiento
+374,8,Lancio
 375,1,サイコシフト
 375,5,Echange Psy
+375,6,Psybann
+375,7,Psico-cambio
+375,8,Psicotrasfer
 376,1,きりふだ
 376,5,Atout
+376,6,Trumpfkarte
+376,7,As Oculto
+376,8,Asso
 377,1,かいふくふうじ
 377,5,Anti-Soin
+377,6,Heilblockade
+377,7,Anticura
+377,8,Anticura
 378,1,しぼりとる
 378,5,Essorage
+378,6,Auswringen
+378,7,Estrujón
+378,8,Strizzata
 379,1,パワートリック
 379,5,Astuce Force
+379,6,Krafttrick
+379,7,Truco Fuerza
+379,8,Ingannoforza
 380,1,いえき
 380,5,Suc Digestif
+380,6,Magensäfte
+380,7,Bilis
+380,8,Gastroacido
 381,1,おまじない
 381,5,Air Veinard
+381,6,Beschwörung
+381,7,Conjuro
+381,8,Fortuncanto
 382,1,さきどり
 382,5,Moi d'Abord
+382,6,Egotrip
+382,7,Yo Primero
+382,8,Precedenza
 383,1,まねっこ
 383,5,Photocopie
+383,6,Imitator
+383,7,Copión
+383,8,Copione
 384,1,パワースワップ
 384,5,Permuforce
+384,6,Krafttausch
+384,7,Cambia Fue.
+384,8,Barattoforza
 385,1,ガードスワップ
 385,5,Permugarde
+385,6,Schutztausch
+385,7,Cambia Def.
+385,8,Barattoscudo
 386,1,おしおき
 386,5,Punition
+386,6,Strafattacke
+386,7,Castigo
+386,8,Punizione
 387,1,とっておき
 387,5,Dernierecour
+387,6,Zuflucht
+387,7,Última Baza
+387,8,Ultimascelta
 388,1,なやみのタネ
 388,5,Soucigraine
+388,6,Sorgensamen
+388,7,Abatidoras
+388,8,Affannoseme
 389,1,ふいうち
 389,5,Coup Bas
+389,6,Tiefschlag
+389,7,Golpe Bajo
+389,8,Sbigoattacco
 390,1,どくびし
 390,5,Pics Toxik
+390,6,Giftspitzen
+390,7,Púas Tóxicas
+390,8,Fielepunte
 391,1,ハートスワップ
 391,5,Permucoeur
+391,6,Statustausch
+391,7,Cambia Almas
+391,8,Cuorbaratto
 392,1,アクアリング
 392,5,Anneau Hydro
+392,6,Wasserring
+392,7,Acua Aro
+392,8,Acquanello
 393,1,でんじふゆう
 393,5,Vol Magnétik
+393,6,Magnetflug
+393,7,Levitón
+393,8,Magnetascesa
 394,1,フレアドライブ
 394,5,Boutefeu
+394,6,Flammenblitz
+394,7,Envite Ígneo
+394,8,Fuococarica
 395,1,はっけい
 395,5,Forte-Paume
+395,6,Kraftwelle
+395,7,Palmeo
+395,8,Palmoforza
 396,1,はどうだん
 396,5,Aurasphère
+396,6,Aurasphäre
+396,7,Esfera Aural
+396,8,Forzasfera
 397,1,ロックカット
 397,5,Poliroche
+397,6,Steinpolitur
+397,7,Pulimento
+397,8,Lucidatura
 398,1,どくづき
 398,5,Direct Toxik
+398,6,Gifthieb
+398,7,Puya Nociva
+398,8,Velenpuntura
 399,1,あくのはどう
 399,5,Vibrobscur
+399,6,Finsteraura
+399,7,Pulso Umbrío
+399,8,Neropulsar
 400,1,つじぎり
 400,5,Tranche-Nuit
+400,6,Nachthieb
+400,7,Tajo Umbrío
+400,8,Nottesferza
 401,1,アクアテール
 401,5,Hydroqueue
+401,6,Nassschweif
+401,7,Acua Cola
+401,8,Idrondata
 402,1,タネばくだん
 402,5,Canon Graine
+402,6,Samenbomben
+402,7,Bomba Germen
+402,8,Semebomba
 403,1,エアスラッシュ
 403,5,Lame d'Air
+403,6,Luftschnitt
+403,7,Tajo Aéreo
+403,8,Eterelama
 404,1,シザークロス
 404,5,Plaie-Croix
+404,6,Kreuzschere
+404,7,Tijera X
+404,8,Forbice X
 405,1,むしのさざめき
 405,5,Bourdon
+405,6,Käfergebrumm
+405,7,Zumbido
+405,8,Ronzio
 406,1,りゅうのはどう
 406,5,Dracochoc
+406,6,Drachenpuls
+406,7,Pulso Dragón
+406,8,Dragopulsar
 407,1,ドラゴンダイブ
 407,5,Dracocharge
+407,6,Drachenstoß
+407,7,Carga Dragón
+407,8,Dragofuria
 408,1,パワージェム
 408,5,Rayon Gemme
+408,6,Juwelenkraft
+408,7,Joya de Luz
+408,8,Gemmoforza
 409,1,ドレインパンチ
 409,5,Vampipoing
+409,6,Ableithieb
+409,7,Puño Drenaje
+409,8,Assorbipugno
 410,1,しんくうは
 410,5,Onde Vide
+410,6,Vakuumwelle
+410,7,Onda Vacío
+410,8,Vuotonda
 411,1,きあいだま
 411,5,Exploforce
+411,6,Fokusstoß
+411,7,Onda Certera
+411,8,Focalcolpo
 412,1,エナジーボール
 412,5,Eco-Sphère
+412,6,Energieball
+412,7,Energibola
+412,8,Energipalla
 413,1,ブレイブバード
 413,5,Rapace
+413,6,Sturzflug
+413,7,Pájaro Osado
+413,8,Baldeali
 414,1,だいちのちから
 414,5,Telluriforce
+414,6,Erdkräfte
+414,7,Tierra Viva
+414,8,Geoforza
 415,1,すりかえ
 415,5,Passe-Passe
+415,6,Wechseldich
+415,7,Trapicheo
+415,8,Rapidscambio
 416,1,ギガインパクト
 416,5,Giga Impact
+416,6,Gigastoß
+416,7,Giga Impacto
+416,8,Gigaimpatto
 417,1,わるだくみ
 417,5,Machination
+417,6,Ränkeschmied
+417,7,Maquinación
+417,8,Congiura
 418,1,バレットパンチ
 418,5,Pisto-Poing
+418,6,Patronenhieb
+418,7,Puño Bala
+418,8,Pugnoscarica
 419,1,ゆきなだれ
 419,5,Avalanche
+419,6,Lawine
+419,7,Alud
+419,8,Slavina
 420,1,こおりのつぶて
 420,5,Eclats Glace
+420,6,Eissplitter
+420,7,Canto Helado
+420,8,Geloscheggia
 421,1,シャドークロー
 421,5,Griffe Ombre
+421,6,Dunkelklaue
+421,7,Garra Umbría
+421,8,Ombrartigli
 422,1,かみなりのキバ
 422,5,Crocs Eclair
+422,6,Donnerzahn
+422,7,Colm. Rayo
+422,8,Fulmindenti
 423,1,こおりのキバ
 423,5,Crocs Givre
+423,6,Eiszahn
+423,7,Colm. Hielo
+423,8,Gelodenti
 424,1,ほのおのキバ
 424,5,Crocs Feu
+424,6,Feuerzahn
+424,7,Colm. Ígneo
+424,8,Rogodenti
 425,1,かげうち
 425,5,Ombre Portée
+425,6,Schattenstoß
+425,7,Sombra Vil
+425,8,Furtivombra
 426,1,どろばくだん
 426,5,Boue-Bombe
+426,6,Schlammbombe
+426,7,Bomba Fango
+426,8,Pantanobomba
 427,1,サイコカッター
 427,5,Coupe Psycho
+427,6,Psychoklinge
+427,7,Psico-corte
+427,8,Psicotaglio
 428,1,しねんのずつき
 428,5,Psykoud'Boul
+428,6,Zen-Kopfstoß
+428,7,Cabezazo Zen
+428,8,Cozzata Zen
 429,1,ミラーショット
 429,5,Miroi-Tir
+429,6,Spiegelsalve
+429,7,Disp. Espejo
+429,8,Cristalcolpo
 430,1,ラスターカノン
 430,5,Luminocanon
+430,6,Lichtkanone
+430,7,Foco Respl.
+430,8,Cannonflash
 431,1,ロッククライム
 431,5,Escalade
+431,6,Kraxler
+431,7,Treparrocas
+431,8,Scalaroccia
 432,1,きりばらい
 432,5,Anti-Brume
+432,6,Auflockern
+432,7,Despejar
+432,8,Scacciabruma
 433,1,トリックルーム
 433,5,Distorsion
+433,6,Bizarroraum
+433,7,Espacio Raro
+433,8,Distortozona
 434,1,りゅうせいぐん
 434,5,Draco Météor
+434,6,Draco Meteor
+434,7,Cometa Draco
+434,8,Dragobolide
 435,1,ほうでん
 435,5,Coup d'Jus
+435,6,Ladungsstoß
+435,7,Chispazo
+435,8,Scarica
 436,1,ふんえん
 436,5,Ebullilave
+436,6,Flammensturm
+436,7,Humareda
+436,8,Lavasbuffo
 437,1,リーフストーム
 437,5,Tempêteverte
+437,6,Blättersturm
+437,7,Lluevehojas
+437,8,Verdebufera
 438,1,パワーウィップ
 438,5,Mégafouet
+438,6,Blattgeißel
+438,7,Latigazo
+438,8,Vigorcolpo
 439,1,がんせきほう
 439,5,Roc-Boulet
+439,6,Felswerfer
+439,7,Romperrocas
+439,8,Devastomasso
 440,1,クロスポイズン
 440,5,Poison-Croix
+440,6,Giftstreich
+440,7,Veneno X
+440,8,Velenocroce
 441,1,ダストシュート
 441,5,Détricanon
+441,6,Mülltreffer
+441,7,Lanza Mugre
+441,8,Sporcolancio
 442,1,アイアンヘッド
 442,5,Tête de Fer
+442,6,Eisenschädel
+442,7,Cabezahierro
+442,8,Metaltestata
 443,1,マグネットボム
 443,5,Bombaimant
+443,6,Magnetbombe
+443,7,Bomba Imán
+443,8,Bombagnete
 444,1,ストーンエッジ
 444,5,Lame de Roc
+444,6,Steinkante
+444,7,Roca Afilada
+444,8,Pietrataglio
 445,1,ゆうわく
 445,5,Séduction
+445,6,Liebreiz
+445,7,Seducción
+445,8,Incanto
 446,1,ステルスロック
 446,5,Piège de Roc
+446,6,Tarnsteine
+446,7,Trampa Rocas
+446,8,Levitoroccia
 447,1,くさむすび
 447,5,Noeud Herbe
+447,6,Strauchler
+447,7,Hierba Lazo
+447,8,Laccioerboso
 448,1,おしゃべり
 448,5,Babil
+448,6,Geschwätz
+448,7,Cháchara
+448,8,Schiamazzo
 449,1,さばきのつぶて
 449,5,Jugement
+449,6,Urteilskraft
+449,7,Sentencia
+449,8,Giudizio
 450,1,むしくい
 450,5,Piqûre
+450,6,Käferbiss
+450,7,Picadura
+450,8,Coleomorso
 451,1,チャージビーム
 451,5,Rayon Chargé
+451,6,Ladestrahl
+451,7,Rayo Carga
+451,8,Raggioscossa
 452,1,ウッドハンマー
 452,5,Martobois
+452,6,Holzhammer
+452,7,Mazazo
+452,8,Mazzuolegno
 453,1,アクアジェット
 453,5,Aqua-Jet
+453,6,Wasserdüse
+453,7,Acua Jet
+453,8,Acquagetto
 454,1,こうげきしれい
 454,5,Appel Attak
+454,6,Schlagbefehl
+454,7,Al Ataque
+454,8,Comandourto
 455,1,ぼうぎょしれい
 455,5,Appel Défens
+455,6,Blockbefehl
+455,7,A Defender
+455,8,Comandoscudo
 456,1,かいふくしれい
 456,5,Appel Soins
+456,6,Heilbefehl
+456,7,Auxilio
+456,8,Comandocura
 457,1,もろはのずつき
 457,5,Fracass'Tête
+457,6,Kopfstoß
+457,7,Testarazo
+457,8,Zuccata
 458,1,ダブルアタック
 458,5,Coup Double
+458,6,Doppelschlag
+458,7,Doble Golpe
+458,8,Doppiosmash
 459,1,ときのほうこう
 459,5,Hurle-Temps
+459,6,Zeitenlärm
+459,7,Distorsión
+459,8,Fragortempo
 460,1,あくうせつだん
 460,5,Spatio-Rift
+460,6,Raumschlag
+460,7,Corte Vacío
+460,8,Fendispazio
 461,1,みかづきのまい
 461,5,Danse-Lune
+461,6,Lunartanz
+461,7,Danza Lunar
+461,8,Lunardanza
 462,1,にぎりつぶす
 462,5,Presse
+462,6,Quetschgriff
+462,7,Agarrón
+462,8,Sbriciolmano
 463,1,マグマストーム
 463,5,Vortex Magma
+463,6,Lavasturm
+463,7,Lluvia Ígnea
+463,8,Magmaclisma
 464,1,ダークホール
 464,5,Trou Noir
+464,6,Schlummerort
+464,7,Brecha Negra
+464,8,Vuototetro
 465,1,シードフレア
 465,5,Fulmigraine
+465,6,Schocksamen
+465,7,Fogonazo
+465,8,Infuriaseme
 466,1,あやしいかぜ
 466,5,Vent Mauvais
+466,6,Unheilböen
+466,7,Vien. Aciago
+466,8,Funestovento
 467,1,シャドーダイブ
 467,5,Revenant
+467,6,Schemenkraft
+467,7,Golpe Umbrío
+467,8,Oscurotuffo
