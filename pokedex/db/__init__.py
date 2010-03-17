@@ -4,7 +4,7 @@ from sqlalchemy import MetaData, Table, create_engine, orm
 
 from .tables import metadata
 
-def connect(uri=None, **kwargs):
+def connect(uri=None, session_args={}, engine_args={}):
     """Connects to the requested URI.  Returns a session object.
 
     With the URI omitted, attempts to connect to a default SQLite database
@@ -33,13 +33,13 @@ def connect(uri=None, **kwargs):
             table.kwargs['mysql_charset'] = 'utf8'
 
     ### Connect
-    engine = create_engine(uri)
+    engine = create_engine(uri, **engine_args)
     conn = engine.connect()
     metadata.bind = engine
 
-    session_args = dict(autoflush=True, autocommit=False, bind=engine)
-    session_args.update(kwargs)
-    sm = orm.sessionmaker(**session_args)
+    all_session_args = dict(autoflush=True, autocommit=False, bind=engine)
+    all_session_args.update(session_args)
+    sm = orm.sessionmaker(**all_session_args)
     session = orm.scoped_session(sm)
 
     return session
