@@ -20,169 +20,13 @@ from pokedex.db import connect
 import pokedex.db.tables as tables
 from pokedex.roomaji import romanize
 
-__all__ = ['open_index', 'lookup', 'random_lookup']
-
-INTERMEDIATE_LOOKUP_RESULTS = 25
-MAX_LOOKUP_RESULTS = 10
-
-# Dictionary of table name => table class.
-# Need the table name so we can get the class from the table name after we
-# retrieve something from the index
-indexed_tables = {}
-for cls in [
-        tables.Ability,
-        tables.Item,
-        tables.Move,
-        tables.Pokemon,
-        tables.Type,
-    ]:
-    indexed_tables[cls.__tablename__] = cls
-
-def normalize(name):
-    """Strips irrelevant formatting junk from name input.
-
-    Specifically: everything is lowercased, and accents are removed.
-    """
-    # http://stackoverflow.com/questions/517923/what-is-the-best-way-to-remove-accents-in-a-python-unicode-string
-    # Makes sense to me.  Decompose by Unicode rules, then remove combining
-    # characters, then recombine.  I'm explicitly doing it this way instead of
-    # testing combining() because Korean characters apparently decompose!  But
-    # the results are considered letters, not combining characters, so testing
-    # for Mn works well, and combining them again makes them look right.
-    nkfd_form = unicodedata.normalize('NFKD', unicode(name))
-    name = u"".join(c for c in nkfd_form
-                    if unicodedata.category(c) != 'Mn')
-    name = unicodedata.normalize('NFC', name)
-
-    name = name.strip()
-    name = name.lower()
-
-    return name
+__all__ = ['PokedexLookup']
 
 
-def open_index(directory=None, session=None, recreate=False):
-    """Opens the whoosh index stored in the named directory and returns (index,
-    speller).  If the index doesn't already exist, it will be created.
+rx_is_number = re.compile('^\d+$')
 
-    `directory`
-        Directory containing the index.  Defaults to a location within the
-        `pokedex` egg directory.
-
-    `session`
-        If the index needs to be created, this database session will be used.
-        Defaults to an attempt to connect to the default SQLite database
-        installed by `pokedex setup`.
-
-    `recreate`
-        If set to True, the whoosh index will be created even if it already
-        exists.
-    """
-
-    # Defaults
-    if not directory:
-        directory = pkg_resources.resource_filename('pokedex',
-                                                    'data/whoosh-index')
-
-    if not session:
-        session = connect()
-
-    # Attempt to open or create the index
-    directory_exists = os.path.exists(directory)
-    if directory_exists and not recreate:
-        # Already exists; should be an index!
-        try:
-            index = whoosh.index.open_dir(directory, indexname='MAIN')
-            spell_store = whoosh.filedb.filestore.FileStorage(directory)
-            speller = whoosh.spelling.SpellChecker(spell_store)
-            return index, speller
-        except whoosh.index.EmptyIndexError as e:
-            # Apparently not a real index.  Fall out of the if and create it
-            pass
-
-    # Delete and start over if we're going to bail anyway.
-    if directory_exists and recreate:
-        # Be safe and only delete if it looks like a whoosh index, i.e.,
-        # everything starts with _
-        if all(f[0] == '_' for f in os.listdir(directory)):
-            shutil.rmtree(directory)
-            directory_exists = False
-
-    if not directory_exists:
-        os.mkdir(directory)
-
-
-    ### Create index
-    schema = whoosh.fields.Schema(
-        name=whoosh.fields.ID(stored=True),
-        table=whoosh.fields.ID(stored=True),
-        row_id=whoosh.fields.ID(stored=True),
-        language=whoosh.fields.STORED,
-        iso3166=whoosh.fields.STORED,
-        display_name=whoosh.fields.STORED,  # non-lowercased name
-        forme_name=whoosh.fields.ID,
-    )
-
-    index = whoosh.index.create_in(directory, schema=schema, indexname='MAIN')
-    writer = index.writer()
-
-    # Index every name in all our tables of interest
-    # speller_entries becomes a list of (word, score) tuples; the score is 2
-    # for English names, 1.5 for Roomaji, and 1 for everything else.  I think
-    # this biases the results in the direction most people expect, especially
-    # when e.g. German names are very similar to English names
-    speller_entries = []
-    for cls in indexed_tables.values():
-        q = session.query(cls)
-
-        for row in q.yield_per(5):
-            # XXX need to give forme_name a dummy value because I can't search
-            # for explicitly empty fields.  boo.
-            row_key = dict(table=unicode(cls.__tablename__),
-                           row_id=unicode(row.id),
-                           forme_name=u'XXX')
-
-            def add(name, language, iso3166, score):
-                normalized_name = normalize(name)
-                writer.add_document(name=normalized_name, display_name=name,
-                                    language=language,
-                                    iso3166=iso3166,
-                                    **row_key)
-                speller_entries.append((normalized_name, score))
-
-            # If this is a form, mark it as such
-            if getattr(row, 'forme_base_pokemon_id', None):
-                row_key['forme_name'] = row.forme_name
-
-            name = row.name
-            add(name, None, u'us', 1)
-
-            # Pokemon also get other languages
-            for foreign_name in getattr(row, 'foreign_names', []):
-                moonspeak = foreign_name.name
-                if name == moonspeak:
-                    # Don't add the English name again as a different language;
-                    # no point and it makes spell results confusing
-                    continue
-
-                add(moonspeak, foreign_name.language.name,
-                               foreign_name.language.iso3166,
-                               3)
-
-                # Add Roomaji too
-                if foreign_name.language.name == 'Japanese':
-                    roomaji = romanize(foreign_name.name)
-                    add(roomaji, u'Roomaji', u'jp', 8)
-
-    writer.commit()
-
-    # Construct and populate a spell-checker index.  Quicker to do it all
-    # at once, as every call to add_* does a commit(), and those seem to be
-    # expensive
-    speller = whoosh.spelling.SpellChecker(index.storage)
-    speller.add_scored_words(speller_entries)
-
-    return index, speller
-
+LookupResult = namedtuple('LookupResult',
+                          ['object', 'name', 'language', 'iso3166', 'exact'])
 
 class LanguageWeighting(whoosh.scoring.Weighting):
     """A scoring class that forces otherwise-equal English results to come
@@ -195,261 +39,403 @@ class LanguageWeighting(whoosh.scoring.Weighting):
             # English (well, "default"); leave it at 1
             return weight
         elif doc['language'] == u'Roomaji':
-            # Give Roomaji a bit of a boost, as it's most likely to be searched
+            # Give Roomaji a little boost; it's most likely to be searched
             return weight * 0.95
         else:
             # Everything else can drop down the totem pole
             return weight * 0.9
 
-rx_is_number = re.compile('^\d+$')
 
-LookupResult = namedtuple('LookupResult',
-                          ['object', 'name', 'language', 'iso3166', 'exact'])
+class PokedexLookup(object):
+    INTERMEDIATE_LOOKUP_RESULTS = 25
+    MAX_LOOKUP_RESULTS = 10
 
-def _parse_table_name(name):
-    """Takes a singular table name, table name, or table object and returns the
-    table name.
-
-    Returns None for a bogus name.
-    """
-    if hasattr(name, '__tablename__'):
-        return getattr(name, '__tablename__')
-    elif name in indexed_tables:
-        return name
-    elif name + 's' in indexed_tables:
-        return name + 's'
-    else:
-        # Bogus.  Be nice and return dummy
-        return None
-
-def _whoosh_records_to_results(records, session, exact=True):
-    """Converts a list of whoosh's indexed records to LookupResult tuples
-    containing database objects.
-    """
-    # XXX this 'exact' thing is getting kinda leaky.  would like a better way
-    # to handle it, since only lookup() cares about fuzzy results
-    seen = {}
-    results = []
-    for record in records:
-        # Skip dupes
-        seen_key = record['table'], record['row_id']
-        if seen_key in seen:
-            continue
-        seen[seen_key] = True
-
-        cls = indexed_tables[record['table']]
-        obj = session.query(cls).get(record['row_id'])
-
-        results.append(LookupResult(object=obj,
-                                    name=record['display_name'],
-                                    language=record['language'],
-                                    iso3166=record['iso3166'],
-                                    exact=exact))
-
-    return results
+    # Dictionary of table name => table class.
+    # Need the table name so we can get the class from the table name after we
+    # retrieve something from the index
+    indexed_tables = dict(
+        (cls.__tablename__, cls)
+        for cls in (
+            tables.Ability,
+            tables.Item,
+            tables.Move,
+            tables.Pokemon,
+            tables.Type,
+        )
+    )
 
 
-def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
-    """Attempts to find some sort of object, given a database session and name.
+    def __init__(self, directory=None, session=None, recreate=False):
+        """Opens the whoosh index stored in the named directory.  If the index
+        doesn't already exist, it will be created.
 
-    Returns a list of named (object, name, language, iso3166, exact) tuples.
-    `object` is a database object, `name` is the name under which the object
-    was found, `language` and `iso3166` are the name and country code of the
-    language in which the name was found, and `exact` is True iff this was an
-    exact match.
+        `directory`
+            Directory containing the index.  Defaults to a location within the
+            `pokedex` egg directory.
 
-    This function currently ONLY does fuzzy matching if there are no exact
-    matches.
+        `session`
+            If the index needs to be created, this database session will be
+            used.  Defaults to an attempt to connect to the default SQLite
+            database installed by `pokedex setup`.
 
-    Formes are not returned unless requested; "Shaymin" will return only grass
-    Shaymin.
+        `recreate`
+            If set to True, the whoosh index will be created even if it already
+            exists.
+        """
 
-    Extraneous whitespace is removed with extreme prejudice.
+        # By the time this returns, self.index, self.speller, and self.session
+        # must be set
 
-    Recognizes:
-    - Names: "Eevee", "Surf", "Run Away", "Payapa Berry", etc.
-    - Foreign names: "Iibui", "Eivui"
-    - Fuzzy names in whatever language: "Evee", "Ibui"
-    - IDs: "133", "192", "250"
-    Also:
-    - Type restrictions.  "type:psychic" will only return the type.  This is
-      how to make ID lookup useful.  Multiple type specs can be entered with
-      commas, as "move,item:1".  If `valid_types` are provided, any type prefix
-      will be ignored.
-    - Alternate formes can be specified merely like "wash rotom".
+        # Defaults
+        if not directory:
+            directory = pkg_resources.resource_filename('pokedex',
+                                                        'data/whoosh-index')
 
-    `input`
-        Name of the thing to look for.
+        if session:
+            self.session = session
+        else:
+            self.session = connect()
 
-    `valid_types`
-        A list of table objects or names, e.g., `['pokemon', 'moves']`.  If
-        this is provided, only results in one of the given tables will be
-        returned.
+        # Attempt to open or create the index
+        directory_exists = os.path.exists(directory)
+        if directory_exists and not recreate:
+            # Already exists; should be an index!  Bam, done.
+            try:
+                self.index = whoosh.index.open_dir(directory, indexname='MAIN')
+                spell_store = whoosh.filedb.filestore.FileStorage(directory)
+                self.speller = whoosh.spelling.SpellChecker(spell_store)
+                return
+            except whoosh.index.EmptyIndexError as e:
+                # Apparently not a real index.  Fall out and create it
+                pass
 
-    `session`
-        A database session to use for retrieving objects.  As with get_index,
-        if this is not provided, a connection to the default database will be
-        attempted.
+        # Delete and start over if we're going to bail anyway.
+        if directory_exists and recreate:
+            # Be safe and only delete if it looks like a whoosh index, i.e.,
+            # everything starts with _
+            if all(f[0] == '_' for f in os.listdir(directory)):
+                shutil.rmtree(directory)
+                directory_exists = False
 
-    `indices`
-        Tuple of index, speller as returned from `open_index()`.  Defaults to
-        a call to `open_index()`.
+        if not directory_exists:
+            os.mkdir(directory)
 
-    `exact_only`
-        If True, only exact matches are returned.  If set to False (the
-        default), and the provided `name` doesn't match anything exactly,
-        spelling correction will be attempted.
-    """
 
-    if not session:
-        session = connect()
+        ### Create index
+        schema = whoosh.fields.Schema(
+            name=whoosh.fields.ID(stored=True),
+            table=whoosh.fields.ID(stored=True),
+            row_id=whoosh.fields.ID(stored=True),
+            language=whoosh.fields.STORED,
+            iso3166=whoosh.fields.STORED,
+            display_name=whoosh.fields.STORED,  # non-lowercased name
+            forme_name=whoosh.fields.ID,
+        )
 
-    if indices:
-        index, speller = indices
-    else:
-        index, speller = open_index()
+        self.index = whoosh.index.create_in(directory, schema=schema,
+                                            indexname='MAIN')
+        writer = self.index.writer()
 
-    name = normalize(input)
-    exact = True
-    form = None
+        # Index every name in all our tables of interest
+        # speller_entries becomes a list of (word, score) tuples; the score is
+        # 2 for English names, 1.5 for Roomaji, and 1 for everything else.  I
+        # think this biases the results in the direction most people expect,
+        # especially when e.g. German names are very similar to English names
+        speller_entries = []
+        for cls in self.indexed_tables.values():
+            q = session.query(cls)
 
-    # Remove any type prefix (pokemon:133) before constructing a query
-    if ':' in name:
-        prefix_chunk, name = name.split(':', 1)
+            for row in q.yield_per(5):
+                # Need to give forme_name a dummy value because I can't
+                # search for explicitly empty fields.  Boo.
+                row_key = dict(table=unicode(cls.__tablename__),
+                               row_id=unicode(row.id),
+                               forme_name=u'__empty__')
+
+                def add(name, language, iso3166, score):
+                    normalized_name = self.normalize_name(name)
+                    writer.add_document(
+                        name=normalized_name, display_name=name,
+                        language=language, iso3166=iso3166,
+                        **row_key
+                    )
+                    speller_entries.append((normalized_name, score))
+
+                # If this is a form, mark it as such
+                if getattr(row, 'forme_base_pokemon_id', None):
+                    row_key['forme_name'] = row.forme_name
+
+                name = row.name
+                add(name, None, u'us', 1)
+
+                # Pokemon also get other languages
+                for foreign_name in getattr(row, 'foreign_names', []):
+                    moonspeak = foreign_name.name
+                    if name == moonspeak:
+                        # Don't add the English name again as a different
+                        # language; no point and it makes spell results
+                        # confusing
+                        continue
+
+                    add(moonspeak, foreign_name.language.name,
+                                   foreign_name.language.iso3166,
+                                   3)
+
+                    # Add Roomaji too
+                    if foreign_name.language.name == 'Japanese':
+                        roomaji = romanize(foreign_name.name)
+                        add(roomaji, u'Roomaji', u'jp', 8)
+
+        writer.commit()
+
+        # Construct and populate a spell-checker index.  Quicker to do it all
+        # at once, as every call to add_* does a commit(), and those seem to be
+        # expensive
+        self.speller = whoosh.spelling.SpellChecker(self.index.storage)
+        self.speller.add_scored_words(speller_entries)
+
+
+    def normalize_name(self, name):
+        """Strips irrelevant formatting junk from name input.
+
+        Specifically: everything is lowercased, and accents are removed.
+        """
+        # http://stackoverflow.com/questions/517923/what-is-the-best-way-to-remove-accents-in-a-python-unicode-string
+        # Makes sense to me.  Decompose by Unicode rules, then remove combining
+        # characters, then recombine.  I'm explicitly doing it this way instead
+        # of testing combining() because Korean characters apparently
+        # decompose!  But the results are considered letters, not combining
+        # characters, so testing for Mn works well, and combining them again
+        # makes them look right.
+        nkfd_form = unicodedata.normalize('NFKD', unicode(name))
+        name = u"".join(c for c in nkfd_form
+                        if unicodedata.category(c) != 'Mn')
+        name = unicodedata.normalize('NFC', name)
+
         name = name.strip()
+        name = name.lower()
 
-        if not valid_types:
-            # Only use types from the query string if none were explicitly
-            # provided
-            prefixes = prefix_chunk.split(',')
-            valid_types = [_.strip() for _ in prefixes]
-
-    # Random lookup
-    if name == 'random':
-        return random_lookup(indices=(index, speller),
-                             session=session,
-                             valid_types=valid_types)
-
-    # Do different things depending what the query looks like
-    # Note: Term objects do an exact match, so we don't have to worry about a
-    # query parser tripping on weird characters in the input
-    if '*' in name or '?' in name:
-        exact_only = True
-        query = whoosh.query.Wildcard(u'name', name)
-    elif rx_is_number.match(name):
-        # Don't spell-check numbers!
-        exact_only = True
-        query = whoosh.query.Term(u'row_id', name)
-    else:
-        # Not an integer
-        query = whoosh.query.Term(u'name', name) \
-              & whoosh.query.Term(u'forme_name', u'XXX')
-
-        # If there's a space in the input, this might be a form
-        if ' ' in name:
-            form, formless_name = name.split(' ', 1)
-            form_query = whoosh.query.Term(u'name', formless_name) \
-                       & whoosh.query.Term(u'forme_name', form)
-            query = query | form_query
-
-    ### Filter by type of object
-    type_terms = []
-    for valid_type in valid_types:
-        table_name = _parse_table_name(valid_type)
-        if table_name:
-            # Quietly ignore bogus valid_types; more likely to DTRT
-            type_terms.append(whoosh.query.Term(u'table', table_name))
-
-    if type_terms:
-        query = query & whoosh.query.Or(type_terms)
+        return name
 
 
-    ### Actual searching
-    searcher = index.searcher()
-    searcher.weighting = LanguageWeighting()  # XXX kosher?  docs say search()
-                                              # takes a weighting kw but it
-                                              # certainly does not
-    results = searcher.search(query, limit=INTERMEDIATE_LOOKUP_RESULTS)
+    def _parse_table_name(self, name):
+        """Takes a singular table name, table name, or table object and returns
+        the table name.
 
-    # Look for some fuzzy matches if necessary
-    if not exact_only and not results:
-        exact = False
+        Returns None for a bogus name.
+        """
+        if hasattr(name, '__tablename__'):
+            return getattr(name, '__tablename__')
+        elif name in self.indexed_tables:
+            return name
+        elif name + 's' in self.indexed_tables:
+            return name + 's'
+        else:
+            # Bogus.  Be nice and return dummy
+            return None
+
+    def _whoosh_records_to_results(self, records, exact=True):
+        """Converts a list of whoosh's indexed records to LookupResult tuples
+        containing database objects.
+        """
+        # XXX this 'exact' thing is getting kinda leaky.  would like a better
+        # way to handle it, since only lookup() cares about fuzzy results
+        seen = {}
         results = []
+        for record in records:
+            # Skip dupes
+            seen_key = record['table'], record['row_id']
+            if seen_key in seen:
+                continue
+            seen[seen_key] = True
 
-        for suggestion in speller.suggest(name, INTERMEDIATE_LOOKUP_RESULTS):
-            query = whoosh.query.Term('name', suggestion)
-            results.extend(searcher.search(query))
+            cls = self.indexed_tables[record['table']]
+            obj = self.session.query(cls).get(record['row_id'])
 
-    ### Convert results to db objects
-    objects = _whoosh_records_to_results(results, session, exact=exact)
+            results.append(LookupResult(object=obj,
+                                        name=record['display_name'],
+                                        language=record['language'],
+                                        iso3166=record['iso3166'],
+                                        exact=exact))
 
-    # Only return up to 10 matches; beyond that, something is wrong.
-    # We strip out duplicate entries above, so it's remotely possible that we
-    # should have more than 10 here and lost a few.  The speller returns 25 to
-    # give us some padding, and should avoid that problem.  Not a big deal if
-    # we lose the 25th-most-likely match anyway.
-    return objects[:MAX_LOOKUP_RESULTS]
+        return results
 
 
-def random_lookup(valid_types=[], session=None, indices=None):
-    """Takes similar arguments as `lookup()`, but returns a random lookup
-    result from one of the provided `valid_types`.
-    """
+    def lookup(self, input, valid_types=[], exact_only=False):
+        """Attempts to find some sort of object, given a name.
 
-    tables = []
-    for valid_type in valid_types:
-        table_name = _parse_table_name(valid_type)
-        if table_name:
-            tables.append(indexed_tables[table_name])
+        Returns a list of named (object, name, language, iso3166, exact)
+        tuples.  `object` is a database object, `name` is the name under which
+        the object was found, `language` and `iso3166` are the name and country
+        code of the language in which the name was found, and `exact` is True
+        iff this was an
+        exact match.
 
-    if not tables:
-        # n.b.: It's possible we got a list of valid_types and none of them
-        # were valid, but this function is guaranteed to return *something*, so
-        # it politely selects from the entire index isntead
-        tables = indexed_tables.values()
+        This function currently ONLY does fuzzy matching if there are no exact
+        matches.
 
-    # Rather than create an array of many hundred items and pick randomly from
-    # it, just pick a number up to the total number of potential items, then
-    # pick randomly from that, and partition the whole range into chunks.
-    # This also avoids the slight problem that the index contains more rows
-    # (for languages) for some items than others.
-    # XXX ought to cache this (in the index?) if possible
-    total = 0
-    partitions = []
-    for table in tables:
-        count = session.query(table).count()
-        total += count
-        partitions.append((table, count))
+        Formes are not returned unless requested; "Shaymin" will return only
+        grass Shaymin.
 
-    n = random.randint(1, total)
-    while n > partitions[0][1]:
-        n -= partitions[0][1]
-        partitions.pop(0)
+        Extraneous whitespace is removed with extreme prejudice.
 
-    return lookup(unicode(n), valid_types=[ partitions[0][0] ],
-                  indices=indices, session=session)
+        Recognizes:
+        - Names: "Eevee", "Surf", "Run Away", "Payapa Berry", etc.
+        - Foreign names: "Iibui", "Eivui"
+        - Fuzzy names in whatever language: "Evee", "Ibui"
+        - IDs: "133", "192", "250"
+        Also:
+        - Type restrictions.  "type:psychic" will only return the type.  This
+          is how to make ID lookup useful.  Multiple type specs can be entered
+          with commas, as "move,item:1".  If `valid_types` are provided, any
+          type prefix will be ignored.
+        - Alternate formes can be specified merely like "wash rotom".
 
-def prefix_lookup(prefix, session=None, indices=None):
-    """Returns terms starting with the given exact prefix.
+        `input`
+            Name of the thing to look for.
 
-    No special magic is currently done with the name; type prefixes are not
-    recognized.
+        `valid_types`
+            A list of table objects or names, e.g., `['pokemon', 'moves']`.  If
+            this is provided, only results in one of the given tables will be
+            returned.
 
-    `session` and `indices` are treated as with `lookup()`.
-    """
+        `exact_only`
+            If True, only exact matches are returned.  If set to False (the
+            default), and the provided `name` doesn't match anything exactly,
+            spelling correction will be attempted.
+        """
 
-    if not session:
-        session = connect()
+        name = self.normalize_name(input)
+        exact = True
+        form = None
 
-    if indices:
-        index, speller = indices
-    else:
-        index, speller = open_index()
+        # Remove any type prefix (pokemon:133) before constructing a query
+        if ':' in name:
+            prefix_chunk, name = name.split(':', 1)
+            name = name.strip()
 
-    query = whoosh.query.Prefix(u'name', normalize(prefix))
+            if not valid_types:
+                # Only use types from the query string if none were explicitly
+                # provided
+                prefixes = prefix_chunk.split(',')
+                valid_types = [_.strip() for _ in prefixes]
 
-    searcher = index.searcher()
-    searcher.weighting = LanguageWeighting()
-    results = searcher.search(query)  # XXX , limit=MAX_LOOKUP_RESULTS)
+        # Random lookup
+        if name == 'random':
+            return self.random_lookup(valid_types=valid_types)
 
-    return _whoosh_records_to_results(results, session)
+        # Do different things depending what the query looks like
+        # Note: Term objects do an exact match, so we don't have to worry about
+        # a query parser tripping on weird characters in the input
+        if '*' in name or '?' in name:
+            exact_only = True
+            query = whoosh.query.Wildcard(u'name', name)
+        elif rx_is_number.match(name):
+            # Don't spell-check numbers!
+            exact_only = True
+            query = whoosh.query.Term(u'row_id', name)
+        else:
+            # Not an integer
+            query = whoosh.query.Term(u'name', name) \
+                  & whoosh.query.Term(u'forme_name', u'__empty__')
+
+            # If there's a space in the input, this might be a form
+            if ' ' in name:
+                form, formless_name = name.split(' ', 1)
+                form_query = whoosh.query.Term(u'name', formless_name) \
+                           & whoosh.query.Term(u'forme_name', form)
+                query = query | form_query
+
+        ### Filter by type of object
+        type_terms = []
+        for valid_type in valid_types:
+            table_name = self._parse_table_name(valid_type)
+            if table_name:
+                # Quietly ignore bogus valid_types; more likely to DTRT
+                type_terms.append(whoosh.query.Term(u'table', table_name))
+
+        if type_terms:
+            query = query & whoosh.query.Or(type_terms)
+
+
+        ### Actual searching
+        searcher = self.index.searcher()
+        # XXX is this kosher?  docs say search() takes a weighting arg, but it
+        # certainly does not
+        searcher.weighting = LanguageWeighting()
+        results = searcher.search(query,
+                                  limit=self.INTERMEDIATE_LOOKUP_RESULTS)
+
+        # Look for some fuzzy matches if necessary
+        if not exact_only and not results:
+            exact = False
+            results = []
+
+            for suggestion in self.speller.suggest(
+                name, self.INTERMEDIATE_LOOKUP_RESULTS):
+
+                query = whoosh.query.Term('name', suggestion)
+                results.extend(searcher.search(query))
+
+        ### Convert results to db objects
+        objects = self._whoosh_records_to_results(results, exact=exact)
+
+        # Only return up to 10 matches; beyond that, something is wrong.  We
+        # strip out duplicate entries above, so it's remotely possible that we
+        # should have more than 10 here and lost a few.  The speller returns 25
+        # to give us some padding, and should avoid that problem.  Not a big
+        # deal if we lose the 25th-most-likely match anyway.
+        return objects[:self.MAX_LOOKUP_RESULTS]
+
+
+    def random_lookup(self, valid_types=[]):
+        """Returns a random lookup result from one of the provided
+        `valid_types`.
+        """
+
+        tables = []
+        for valid_type in valid_types:
+            table_name = self._parse_table_name(valid_type)
+            if table_name:
+                tables.append(self.indexed_tables[table_name])
+
+        if not tables:
+            # n.b.: It's possible we got a list of valid_types and none of them
+            # were valid, but this function is guaranteed to return
+            # *something*, so it politely selects from the entire index isntead
+            tables = self.indexed_tables.values()
+
+        # Rather than create an array of many hundred items and pick randomly
+        # from it, just pick a number up to the total number of potential
+        # items, then pick randomly from that, and partition the whole range
+        # into chunks.  This also avoids the slight problem that the index
+        # contains more rows (for languages) for some items than others.
+        # XXX ought to cache this (in the index?) if possible
+        total = 0
+        partitions = []
+        for table in tables:
+            count = self.session.query(table).count()
+            total += count
+            partitions.append((table, count))
+
+        n = random.randint(1, total)
+        while n > partitions[0][1]:
+            n -= partitions[0][1]
+            partitions.pop(0)
+
+        return self.lookup(unicode(n), valid_types=[ partitions[0][0] ])
+
+    def prefix_lookup(self, prefix):
+        """Returns terms starting with the given exact prefix.
+
+        No special magic is currently done with the name; type prefixes are not
+        recognized.
+        """
+
+        query = whoosh.query.Prefix(u'name', self.normalize_name(prefix))
+
+        searcher = self.index.searcher()
+        searcher.weighting = LanguageWeighting()
+        results = searcher.search(query)  # XXX , limit=self.MAX_LOOKUP_RESULTS)
+
+        return self._whoosh_records_to_results(results)

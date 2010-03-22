@@ -54,11 +54,11 @@ def command_load(*args):
 def command_setup(*args):
     session = connect()
     pokedex.db.load.load(session, verbose=False, drop_tables=True)
-    pokedex.lookup.open_index(session=session, recreate=True)
+    pokedex.lookup.PokedexLookup(session=session, recreate=True)
 
 
 def command_lookup(name):
-    results = pokedex.lookup.lookup(name)
+    results = pokedex.lookup.PokedexLookup().lookup(name)
     if not results:
         print "No matches."
     elif results[0].exact:
