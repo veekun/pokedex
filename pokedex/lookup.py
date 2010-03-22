@@ -5,6 +5,7 @@ import pkg_resources
 import random
 import re
 import shutil
+import unicodedata
 
 from sqlalchemy.sql import func
 import whoosh
@@ -36,6 +37,28 @@ for cls in [
         tables.Type,
     ]:
     indexed_tables[cls.__tablename__] = cls
+
+def normalize(name):
+    """Strips irrelevant formatting junk from name input.
+
+    Specifically: everything is lowercased, and accents are removed.
+    """
+    # http://stackoverflow.com/questions/517923/what-is-the-best-way-to-remove-accents-in-a-python-unicode-string
+    # Makes sense to me.  Decompose by Unicode rules, then remove combining
+    # characters, then recombine.  I'm explicitly doing it this way instead of
+    # testing combining() because Korean characters apparently decompose!  But
+    # the results are considered letters, not combining characters, so testing
+    # for Mn works well, and combining them again makes them look right.
+    nkfd_form = unicodedata.normalize('NFKD', unicode(name))
+    name = u"".join(c for c in nkfd_form
+                    if unicodedata.category(c) != 'Mn')
+    name = unicodedata.normalize('NFC', name)
+
+    name = name.strip()
+    name = name.lower()
+
+    return name
+
 
 def open_index(directory=None, session=None, recreate=False):
     """Opens the whoosh index stored in the named directory and returns (index,
@@ -119,11 +142,12 @@ def open_index(directory=None, session=None, recreate=False):
                            forme_name=u'XXX')
 
             def add(name, language, iso3166, score):
-                writer.add_document(name=name.lower(), display_name=name,
+                normalized_name = normalize(name)
+                writer.add_document(name=normalized_name, display_name=name,
                                     language=language,
                                     iso3166=iso3166,
                                     **row_key)
-                speller_entries.append((name.lower(), score))
+                speller_entries.append((normalized_name, score))
 
             # If this is a form, mark it as such
             if getattr(row, 'forme_base_pokemon_id', None):
@@ -285,7 +309,7 @@ def lookup(input, valid_types=[], session=None, indices=None, exact_only=False):
     else:
         index, speller = open_index()
 
-    name = unicode(input).strip().lower()
+    name = normalize(input)
     exact = True
     form = None
 
@@ -422,7 +446,7 @@ def prefix_lookup(prefix, session=None, indices=None):
     else:
         index, speller = open_index()
 
-    query = whoosh.query.Prefix(u'name', prefix.lower())
+    query = whoosh.query.Prefix(u'name', normalize(prefix))
 
     searcher = index.searcher()
     searcher.weighting = LanguageWeighting()
