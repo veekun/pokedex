@@ -265,6 +265,13 @@ class Move(TableBase):
     contest_effect_id = Column(Integer, ForeignKey('contest_effects.id'), nullable=True)
     super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=False)
 
+class Nature(TableBase):
+    __tablename__ = 'natures'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(8), nullable=False)
+    decreased_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False)
+    increased_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False)
+
 class Pokedex(TableBase):
     __tablename__ = 'pokedexes'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -555,6 +562,11 @@ MoveFlag.flag = relation(MoveFlagType)
 MoveFlavorText.generation = relation(Generation)
 
 MoveName.language = relation(Language)
+
+Nature.decreased_stat = relation(Stat, primaryjoin=Nature.decreased_stat_id==Stat.id,
+                                       backref='decreasing_natures')
+Nature.increased_stat = relation(Stat, primaryjoin=Nature.increased_stat_id==Stat.id,
+                                       backref='increasing_natures')
 
 Pokedex.version_groups = relation(VersionGroup, secondary=PokedexVersionGroup.__table__)
 
