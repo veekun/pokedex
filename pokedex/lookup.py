@@ -148,22 +148,34 @@ class PokedexLookup(object):
             for row in q.yield_per(5):
                 # Need to give forme_name a dummy value because I can't
                 # search for explicitly empty fields.  Boo.
-                row_key = dict(table=unicode(cls.__tablename__),
-                               row_id=unicode(row.id),
-                               forme_name=u'__empty__')
+                row_keys = [
+                    dict(table=unicode(cls.__tablename__),
+                         row_id=unicode(row.id),
+                         forme_name=u'__empty__')
+                ]
+
+                # If this is a form, mark it as such
+                # XXX foreign form names...?
+                if getattr(row, 'forme_name', None):
+                    # ...but if it's also the *default* form, index the name
+                    # bare too
+                    if not getattr(row, 'forme_base_pokemon_id', None):
+                        new_key = row_keys[0].copy()
+                        row_keys.append(new_key)
+
+                    row_keys[0]['forme_name'] = row.forme_name
 
                 def add(name, language, iso3166, score):
                     normalized_name = self.normalize_name(name)
-                    writer.add_document(
-                        name=normalized_name, display_name=name,
-                        language=language, iso3166=iso3166,
-                        **row_key
-                    )
+                    for row_key in row_keys:
+                        writer.add_document(
+                            name=normalized_name, display_name=name,
+                            language=language, iso3166=iso3166,
+                            **row_key
+                        )
+
                     speller_entries.append((normalized_name, score))
 
-                # If this is a form, mark it as such
-                if getattr(row, 'forme_base_pokemon_id', None):
-                    row_key['forme_name'] = row.forme_name
 
                 name = row.name
                 add(name, None, u'us', 1)
