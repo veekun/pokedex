@@ -53,7 +53,7 @@ id,pokemon_id,introduced_in_version_group_id,name,is_default
 52,479,9,heat,0
 53,479,9,mow,0
 54,479,9,wash,0
-55,487,8,another,1
+55,487,8,altered,1
 56,487,9,origin,0
 57,492,8,land,1
 58,492,9,sky,0
