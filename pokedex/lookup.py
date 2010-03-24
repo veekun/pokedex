@@ -343,15 +343,7 @@ class PokedexLookup(object):
             query = whoosh.query.Term(u'row_id', name)
         else:
             # Not an integer
-            query = whoosh.query.Term(u'name', name) \
-                  & whoosh.query.Term(u'forme_name', u'__empty__')
-
-            # If there's a space in the input, this might be a form
-            if ' ' in name:
-                form, formless_name = name.split(' ', 1)
-                form_query = whoosh.query.Term(u'name', formless_name) \
-                           & whoosh.query.Term(u'forme_name', form)
-                query = query | form_query
+            query = whoosh.query.Term(u'name', name)
 
         ### Filter by type of object
         type_terms = []
