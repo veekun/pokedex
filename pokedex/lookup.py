@@ -26,7 +26,7 @@ __all__ = ['PokedexLookup']
 rx_is_number = re.compile('^\d+$')
 
 LookupResult = namedtuple('LookupResult',
-                          ['object', 'name', 'language', 'iso3166', 'exact'])
+    ['object', 'indexed_name', 'name', 'language', 'iso3166', 'exact'])
 
 class LanguageWeighting(whoosh.scoring.Weighting):
     """A scoring class that forces otherwise-equal English results to come
@@ -129,7 +129,6 @@ class PokedexLookup(object):
             language=whoosh.fields.STORED,
             iso3166=whoosh.fields.STORED,
             display_name=whoosh.fields.STORED,  # non-lowercased name
-            forme_name=whoosh.fields.ID,
         )
 
         self.index = whoosh.index.create_in(directory, schema=schema,
@@ -146,44 +145,39 @@ class PokedexLookup(object):
             q = session.query(cls)
 
             for row in q.yield_per(5):
-                # Need to give forme_name a dummy value because I can't
-                # search for explicitly empty fields.  Boo.
-                row_keys = [
-                    dict(table=unicode(cls.__tablename__),
-                         row_id=unicode(row.id),
-                         forme_name=u'__empty__')
-                ]
-
-                # If this is a form, mark it as such
-                # XXX foreign form names...?
-                if getattr(row, 'forme_name', None):
-                    # ...but if it's also the *default* form, index the name
-                    # bare too
-                    if not getattr(row, 'forme_base_pokemon_id', None):
-                        new_key = row_keys[0].copy()
-                        row_keys.append(new_key)
-
-                    row_keys[0]['forme_name'] = row.forme_name
+                row_key = dict(table=unicode(cls.__tablename__),
+                               row_id=unicode(row.id))
 
                 def add(name, language, iso3166, score):
                     normalized_name = self.normalize_name(name)
-                    for row_key in row_keys:
-                        writer.add_document(
-                            name=normalized_name, display_name=name,
-                            language=language, iso3166=iso3166,
-                            **row_key
-                        )
+
+                    writer.add_document(
+                        name=normalized_name, display_name=name,
+                        language=language, iso3166=iso3166,
+                        **row_key
+                    )
 
                     speller_entries.append((normalized_name, score))
 
 
-                name = row.name
-                add(name, None, u'us', 1)
+                # Add the basic English name to the index
+                if cls == tables.Pokemon:
+                    # Pokémon need their form name added
+                    # XXX kinda kludgy
+                    add(row.full_name, None, u'us', 1)
 
-                # Pokemon also get other languages
+                    # If this is a default form, ALSO add the unadorned name,
+                    # so 'Deoxys' alone will still do the right thing
+                    if row.forme_name and not row.forme_base_pokemon_id:
+                        add(row.name, None, u'us', 1)
+                else:
+                    add(row.name, None, u'us', 1)
+
+                # Some things also have other languages' names
+                # XXX other language form names..?
                 for foreign_name in getattr(row, 'foreign_names', []):
                     moonspeak = foreign_name.name
-                    if name == moonspeak:
+                    if row.name == moonspeak:
                         # Don't add the English name again as a different
                         # language; no point and it makes spell results
                         # confusing
@@ -265,6 +259,7 @@ class PokedexLookup(object):
             obj = self.session.query(cls).get(record['row_id'])
 
             results.append(LookupResult(object=obj,
+                                        indexed_name=record['name'],
                                         name=record['display_name'],
                                         language=record['language'],
                                         iso3166=record['iso3166'],
