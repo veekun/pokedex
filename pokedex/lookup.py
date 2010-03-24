@@ -58,6 +58,7 @@ class PokedexLookup(object):
         for cls in (
             tables.Ability,
             tables.Item,
+            tables.Location,
             tables.Move,
             tables.Pokemon,
             tables.Type,
