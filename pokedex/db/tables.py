@@ -6,7 +6,6 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import backref, relation
 from sqlalchemy.sql import and_
 from sqlalchemy.types import *
-from sqlalchemy.databases.mysql import *
 
 from pokedex.db import rst
 
@@ -58,7 +57,7 @@ class Encounter(TableBase):
 
     A slot (20% walking in grass) and any appropriate world conditions (no
     swarm) are thus enough to define a specific encounter.
-    
+
     Well, okay, almost: each slot actually appears twice.
     """
 
