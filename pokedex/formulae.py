@@ -74,9 +74,6 @@ def capture_chance(current_hp, max_hp, capture_rate,
     # shake_index is the number of times the ball will shake.  If all four are
     # <= shake_index, the Pokémon is caught.
 
-    # The RNG tends to work with integers, so integer math likely kicks in now.
-    shake_index = int(shake_index)
-
     # If shake_index >= 65535, all four randoms must be <= it, and the Pokémon
     # will be caught.  Skip hard math
     if shake_index >= 65535:
