@@ -567,7 +567,7 @@ This move cannot be selected by :move:`Assist` or :move:`Metronome`."
 If the target has :ability:`Wonder Guard`, this move will fail.
 
 This move cannot be copied by :move:`Mirror Move`."
-180,0,User will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will be healed for half its max :mechanic:`HP`.  If the user is :mechanic:`switched out`, its replacement will be healed instead.  If the user :mechanic:`faint`\ s, this effect will not activate."
+180,0,User will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will be healed for half its max :mechanic:`HP`.  If the user is :mechanic:`switched out`, its replacement will be healed instead.  If the user :mechanic:`faint`\ s or is forcefully switched by :move:`Roar` or :move:`Whirlwind`, this effect will not activate."
 181,0,Randomly selects and uses one of the trainer's other Pokémon's moves.,"Uses a move from another Pokémon in the user's party, both selected at random.  Moves from fainted Pokémon can be used.  If there are no eligible Pokémon or moves, this move will fail.
 
 This move will not select :move:`Assist`, :move:`Chatter`, :move:`Copycat`, :move:`Counter`, :move:`Covet`, :move:`Destiny Bond`, :move:`Detect`, :move:`Endure`, :move:`Feint`, :move:`Focus Punch`, :move:`Follow Me`, :move:`Helping Hand`, :move:`Me First`, :move:`Metronome`, :move:`Mimic`, :move:`Mirror Coat`, :move:`Mirror Move`, :move:`Protect`, :move:`Sketch`, :move:`Sleep Talk`, :move:`Snatch`, :move:`Struggle`, :move:`Switcheroo`, :move:`Thief`, or :move:`Trick`.
