@@ -44,9 +44,10 @@ def earned_exp(base_exp, level):
 
     return base_exp * level // 7
 
-def capture_chance(current_hp, max_hp, capture_rate,
+def capture_chance(percent_hp, capture_rate,
                    ball_bonus=1, status_bonus=1, heavy_modifier=0):
-    """Calculates the chance that a Pokémon will be caught.
+    """Calculates the chance that a Pokémon will be caught, given its capture
+    rate and the percentage of HP it has remaining.
 
     Returns five values: the chance of a capture, then the chance of the ball
     shaking three, two, one, or zero times.  Each of these is a float such that
@@ -63,9 +64,15 @@ def capture_chance(current_hp, max_hp, capture_rate,
     # ROOTS in a moment, so it can't possibly be.  It probably doesn't matter
     # either way, so whatever; use regular ol' division.  ball_bonus and
     # status_bonus can be 1.5, anyway.
-    base_chance = ((3 * max_hp - 2 * current_hp) * capture_rate * ball_bonus) \
-                / (3 * max_hp) \
-                * status_bonus
+
+    # A slight math note:
+    # The formula is originally: (3 max - 2 curr) rate bonus / (3 max)
+    # I have reduced this to: (1 - 2/3 * pct) rate bonus
+    # My rationale is that this cannot possibly be integer math, so rounding is
+    # not a problem and commutation won't make a difference.  It also
+    # simplifies the input considerably.
+    base_chance = (1 - 2/3 * percent_hp) * capture_rate \
+                * ball_bonus * status_bonus
 
     shake_index = (base_chance / 255) ** 0.25 * (2**16 - 1)
 
