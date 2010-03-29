@@ -143,7 +143,7 @@ class PokedexLookup(object):
         # especially when e.g. German names are very similar to English names
         speller_entries = []
         for cls in self.indexed_tables.values():
-            q = session.query(cls)
+            q = self.session.query(cls)
 
             for row in q.yield_per(5):
                 row_key = dict(table=unicode(cls.__tablename__),
