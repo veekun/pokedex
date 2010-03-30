@@ -1,5 +1,5 @@
-id,main_region_id,name
-1,1,Generation I
-2,2,Generation II
-3,3,Generation III
-4,4,Generation IV
+id,main_region_id,canonical_pokedex_id,name
+1,1,2,Generation I
+2,2,7,Generation II
+3,3,4,Generation III
+4,4,6,Generation IV

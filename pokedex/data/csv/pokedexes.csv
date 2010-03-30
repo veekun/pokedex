@@ -1,9 +1,9 @@
-id,name,description
-1,National,
-2,Kanto,
-3,Johto,"Gold/Silver/Crystal Johto dex: called the ""New"" Pokédex in-game"
-4,Hoenn,
-5,Sinnoh,Diamond/Pearl Sinnoh dex
-6,Sinnoh,Platinum Sinnoh dex: an extended version of Diamond and Pearl's
-7,Johto,"HeartGold/SoulSilver Johto dex: a slightly extended version of Gold, Silver, and Crystal's, adding five Generation IV evolutions of Generation I and Generation II Pokémon"
-8,Internal ID,IDs used internally in Generation I
+id,region_id,name,description
+1,,National,Entire National dex
+2,1,Kanto,Red/Blue/Yellow Kanto dex
+3,2,Johto,"Gold/Silver/Crystal Johto dex—called the ""New"" Pokédex in-game"
+4,3,Hoenn,Ruby/Sapphire/Emerald Hoenn dex
+5,4,Sinnoh,Diamond/Pearl Sinnoh dex
+6,4,Sinnoh,Platinum Sinnoh dex—an extended version of Diamond and Pearl's
+7,2,Johto,"HeartGold/SoulSilver Johto dex—Gold/Silver/Crystal's, extended to add Generation IV evolutions"
+8,1,Internal ID,IDs used internally in Generation I

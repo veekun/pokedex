@@ -145,6 +145,7 @@ class Generation(TableBase):
     __tablename__ = 'generations'
     id = Column(Integer, primary_key=True, nullable=False)
     main_region_id = Column(Integer, ForeignKey('regions.id'))
+    canonical_pokedex_id = Column(Integer, ForeignKey('pokedexes.id'))
     name = Column(Unicode(16), nullable=False)
 
 class GrowthRate(TableBase):
@@ -275,6 +276,7 @@ class Nature(TableBase):
 class Pokedex(TableBase):
     __tablename__ = 'pokedexes'
     id = Column(Integer, primary_key=True, nullable=False)
+    region_id = Column(Integer, ForeignKey('regions.id'), nullable=True)
     name = Column(Unicode(16), nullable=False)
     description = Column(Unicode(512))
 
@@ -523,6 +525,7 @@ EncounterSlotCondition.condition = relation(EncounterCondition,
 
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 
+Generation.canonical_pokedex = relation(Pokedex, backref='canonical_for_generation')
 Generation.versions = relation(Version, secondary=VersionGroup.__table__)
 Generation.main_region = relation(Region)
 
@@ -568,7 +571,8 @@ Nature.decreased_stat = relation(Stat, primaryjoin=Nature.decreased_stat_id==Sta
 Nature.increased_stat = relation(Stat, primaryjoin=Nature.increased_stat_id==Stat.id,
                                        backref='increasing_natures')
 
-Pokedex.version_groups = relation(VersionGroup, secondary=PokedexVersionGroup.__table__)
+Pokedex.region = relation(Region, backref='pokedexes')
+Pokedex.version_groups = relation(VersionGroup, secondary=PokedexVersionGroup.__table__, backref='pokedexes')
 
 Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
                                       order_by=PokemonAbility.slot,
