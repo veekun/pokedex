@@ -400,7 +400,7 @@ pokemon_id,language_id,name
 67,3,근육몬
 67,4,豪力
 67,5,Machopeur
-67,6,Maschok
+67,6,Maschock
 68,1,カイリキー
 68,2,Kairiky
 68,3,괴력몬
@@ -958,7 +958,7 @@ pokemon_id,language_id,name
 160,3,장크로다일
 160,4,大力鱷
 160,5,Aligatueur
-160,6,Imergator
+160,6,Impergator
 161,1,オタチ
 161,2,Otachi
 161,3,꼬리선
@@ -1120,7 +1120,7 @@ pokemon_id,language_id,name
 187,3,통통코
 187,4,毽子草
 187,5,Granivol
-187,6,Hoppsross
+187,6,Hoppspross
 188,1,ポポッコ
 188,2,Popocco
 188,3,두코
@@ -1288,7 +1288,7 @@ pokemon_id,language_id,name
 215,3,포푸니
 215,4,狃拉
 215,5,Farfuret
-215,6,Sneibel
+215,6,Sniebel
 216,1,ヒメグマ
 216,2,Himeguma
 216,3,깜지곰
@@ -1804,7 +1804,7 @@ pokemon_id,language_id,name
 301,3,델케티
 301,4,優雅貓
 301,5,Delcatty
-301,6,Enecoro
+301,6,Enekoro
 302,1,ヤミラミ
 302,2,Yamirami
 302,3,깜까미
@@ -1900,7 +1900,7 @@ pokemon_id,language_id,name
 317,3,꿀꺽몬
 317,4,吞食獸
 317,5,Avaltout
-317,6,Schlukweck
+317,6,Schlukwech
 318,1,キバニア
 318,2,Kibanha
 318,3,샤프니아
@@ -2608,7 +2608,7 @@ pokemon_id,language_id,name
 435,3,스컹탱크
 435,4,坦克臭鼬
 435,5,Moufflair
-435,6,Skunktank
+435,6,Skuntank
 436,1,ドーミラー
 436,2,Domirror
 436,3,동미러
