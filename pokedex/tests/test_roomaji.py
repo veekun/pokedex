@@ -17,10 +17,12 @@ def test_roomaji():
         (u'ニャース',           'nyaasu'),
         (u'ジャ',               'ja'),
         (u'ぎゃくてん',         'gyakuten'),
+        (u'ウェザーボール',     'wezaabooru'),
 
         # Special katakana combinations
         (u'ラティアス',         'ratiasu'),
         (u'ウィー',             'wii'),
+        (u'セレビィ',           'sereby'),
     ]
 
     for kana, roomaji in tests:

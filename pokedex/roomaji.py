@@ -55,12 +55,21 @@ _roomaji_small_kana = {
     u'ァ': 'a',     u'ィ': 'i',     u'ゥ': 'u',     u'ェ': 'e',     u'ォ': 'o',
 }
 _roomaji_small_kana_combos = {
-                                    u'ウィ': 'wi',
+    # These are, by the way, fairly arbitrary.  "shi xi" to mean "sy" is
+    # particularly weird, but it seems to be what GF intends
+
+    # Simple vowel replacement
+                    u'ウィ': 'wi',  u'ウゥ': 'wu',  u'ウェ': 'we',
                                                     u'チェ': 'che',
                                                     u'シェ': 'she',
     u'テァ': 'tha', u'ティ': 'ti',  u'テゥ': 'thu', u'テェ': 'tye', u'テォ': 'tho',
     u'デァ': 'dha', u'ディ': 'di',  u'デゥ': 'dhu', u'デェ': 'dye', u'デォ': 'dho',
     u'ファ': 'fa',  u'フィ': 'fi',  u'ホゥ': 'hu',  u'フェ': 'fe',  u'フォ': 'fo',
+
+    # Not so much
+    u'シィ': 'sy',
+    u'ビィ': 'by',
+    u'ピィ': 'py',
 }
 
 def romanize(string):
