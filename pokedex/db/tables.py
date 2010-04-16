@@ -350,6 +350,22 @@ class Pokemon(TableBase):
 
         return self
 
+    ### Not forms!
+
+    def stat(self, stat_name):
+        """Returns a PokemonStat record for the given stat name (or Stat row
+        object).  Uses the normal has-many machinery, so all the stats are
+        effectively cached.
+        """
+        if isinstance(stat_name, Stat):
+            stat_name = stat_name.name
+
+        for pokemon_stat in self.stats:
+            if pokemon_stat.stat.name == stat_name:
+                return pokemon_stat
+
+        return None
+
 class PokemonAbility(TableBase):
     __tablename__ = 'pokemon_abilities'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
