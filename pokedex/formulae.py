@@ -45,43 +45,54 @@ def earned_exp(base_exp, level):
     return base_exp * level // 7
 
 def capture_chance(percent_hp, capture_rate,
-                   ball_bonus=1, status_bonus=1, heavy_modifier=0):
+                   ball_bonus=10, status_bonus=1,
+                   capture_bonus=10, capture_modifier=0):
     """Calculates the chance that a Pokémon will be caught, given its capture
     rate and the percentage of HP it has remaining.
+
+    Bonuses are such that 10 means "unchanged".
 
     Returns five values: the chance of a capture, then the chance of the ball
     shaking three, two, one, or zero times.  Each of these is a float such that
     0.0 <= n <= 1.0.  Feel free to ignore all but the first.
     """
 
-    if heavy_modifier:
-        # Only used by Heavy Ball.  Changes the target's capture rate outright
-        capture_rate += heavy_modifier
-        if capture_rate <= 1:
-            capture_rate = 1
-
-    # This should really be integer math, right?  But the formula uses FOURTH
-    # ROOTS in a moment, so it can't possibly be.  It probably doesn't matter
-    # either way, so whatever; use regular ol' division.  ball_bonus and
-    # status_bonus can be 1.5, anyway.
+    # HG/SS Pokéballs modify capture rate rather than the ball bonus
+    capture_rate = capture_rate * capture_bonus // 10 + capture_modifier
+    if capture_rate < 1:
+        capture_rate = 1
+    elif capture_rate > 255:
+        capture_rate = 255
 
     # A slight math note:
-    # The formula is originally: (3 max - 2 curr) rate bonus / (3 max)
-    # I have reduced this to: (1 - 2/3 * pct) rate bonus
-    # My rationale is that this cannot possibly be integer math, so rounding is
-    # not a problem and commutation won't make a difference.  It also
-    # simplifies the input considerably.
-    base_chance = (1 - 2/3 * percent_hp) * capture_rate \
-                * ball_bonus * status_bonus
+    # The actual formula uses (3 * max_hp - 2 * curr_hp) / (3 * max_hp)
+    # This uses (1 - 2/3 * curr_hp/max_hp)
+    # Integer division is taken into account by flooring immediately
+    # afterwards, so there should be no appreciable rounding error.
+    base_chance = int(
+        capture_rate * ball_bonus // 10 * (1 - 2/3 * percent_hp)
+    )
+    base_chance = base_chance * status_bonus // 10
 
-    shake_index = (base_chance / 255) ** 0.25 * (2**16 - 1)
+    # Shake index involves integer sqrt.  Lovely.
+    isqrt = lambda x: int(x ** 0.5)
+    if not base_chance:
+        # This is very silly.  Due to what must be an oversight, it's possible
+        # for the above formula to end with a zero chance to catch, which is
+        # then thrown blindly into the below denominator.  Luckily, the games'
+        # division function is a no-op with a denominator of zero..  which
+        # means a base_chance of 0 is effectively a base chance of 1.
+        base_chance = 1
+    shake_index = 1048560 // isqrt(isqrt(16711680 // base_chance))
 
     # Iff base_chance < 255, then shake_index < 65535.
-    # The game now picks four random uwords.  However many of them are <=
-    # shake_index is the number of times the ball will shake.  If all four are
-    # <= shake_index, the Pokémon is caught.
+    # The Pokémon now has four chances to escape.  The game starts picking
+    # random uint16s.  If such a random number is < shake_index, the Pokémon
+    # stays in the ball, and it wobbles.  If the number is >= shake_index, the
+    # ball breaks open then and there, and the capture fails.
+    # If all four are < shake_index, the Pokémon is caught.
 
-    # If shake_index >= 65535, all four randoms must be <= it, and the Pokémon
+    # If shake_index >= 65535, all four randoms must be < it, and the Pokémon
     # will be caught.  Skip hard math
     if shake_index >= 65535:
         return (1.0, 0.0, 0.0, 0.0, 0.0)
@@ -90,21 +101,20 @@ def capture_chance(percent_hp, capture_rate,
     # Something is guaranteed to happen.
 
     # Alrighty.  Here's some probability.
-    # The chance that a single random number will be <= shake_index is:
-    p = (shake_index + 1) / 65536
-    # Now, the chance that two random numbers will be <= shake_index is p**2.
-    # And the chance that neither will be is (1 - p)**2.
-    # With me so far?
-    # The chance that one will be and one will NOT be is p * (1 - p) * 2.
-    # The 2 is because they can go in any order: the first could be less, or
-    # the second could be less.  That 2 is actually nCr(2, 1); the number of
-    # ways of picking one item in any order from a group of two.
-    # Try it yourself add up those three values and you'll get 1.
+    # The chance that a single random uint16 will be < shake_index, thus
+    # keeping the Pokémon in the ball, is:
+    p = shake_index / 65536
 
-    # Right.  Hopefully, the following now makes sense.
-    # There are five cases: four randoms are <= shake_index (which means
-    # capture), or three are, etc.
+    # Now, the chance for n wobbles is the chance that the Pokémon will stay in
+    # the ball for (n-1) attempts, then break out on the nth.
+    # The chance of capture is just the chance that the Pokémon stays in the
+    # ball for all four tries.
+
+    # There are five cases: captured, wobbled three times, etc.
     return [
-        p**i * (1 - p)**(4 - i) * nCr(4, i)
-        for i in reversed(range(5))
+        p**4,  # capture
+        p**3 * (1 - p),
+        p**2 * (1 - p),
+        p**1 * (1 - p),
+               (1 - p),
     ]
