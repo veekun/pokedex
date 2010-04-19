@@ -580,7 +580,7 @@ This move cannot be copied by :move:`Mirror Move`, nor selected by :move:`Metron
 The user may still use :move:`U-Turn` to leave the :mechanic:`field`.
 
 This effect can be passed with :move:`Baton Pass`."
-183,0,Lowers the user's Attack and Defense by one level after inflicting damage.,"Inflicts :mechanic:`regular damage`, then :mechanic:`lowers` the user's mechanic:`Attack` and mechanic:`Defense` by one level."
+183,0,Lowers the user's Attack and Defense by one level after inflicting damage.,"Inflicts :mechanic:`regular damage`, then :mechanic:`lowers` the user's :mechanic:`Attack` and :mechanic:`Defense` by one level."
 184,4,Reflects back the first effect move used on the user this turn.,"The first non-damaging move targeting the user this turn that inflicts :mechanic:`major status effect`\ s, :mechanic:`stat change`\ s, or :mechanic:`trap`\ ping effects will be reflected at its user.
 
 :move:`Defog`, :move:`Memento`, and :move:`Teeter Dance` are not reflected.
@@ -793,7 +793,7 @@ If the target's ability is :ability:`Truant` or :ability:`Multitype`, this move 
 249,1,Only works if the target is about to use a damaging move.,"Inflicts :mechanic:`regular damage`.  If the target has not selected a damaging move this turn, or if the target has already acted this turn, this move will fail.
 
 This move is not affected by :ability:`Iron Fist`."
-250,0,"Scatters poisoned spikes, poisoning opposing Pokémon that switch in.","Scatters poisoned spikes around the opposing :mechanic:`field`, which :mechanic:`poison` opposing Pokémon that enter the :mechanic:`field`.  A second layer of these spikes may be laid down, in which case Pokémon will be mechanic:`badly poison`\ ed instead.  Pokémon immune to either :type:`Ground` moves or being :mechanic:`poison`\ ed are immune to this effect.  Pokémon otherwise immune to :type:`Ground` moves are affected during :move:`Gravity`.
+250,0,"Scatters poisoned spikes, poisoning opposing Pokémon that switch in.","Scatters poisoned spikes around the opposing :mechanic:`field`, which :mechanic:`poison` opposing Pokémon that enter the :mechanic:`field`.  A second layer of these spikes may be laid down, in which case Pokémon will be :mechanic:`badly poison`\ ed instead.  Pokémon immune to either :type:`Ground` moves or being :mechanic:`poison`\ ed are immune to this effect.  Pokémon otherwise immune to :type:`Ground` moves are affected during :move:`Gravity`.
 
 If a :type:`Poison` Pokémon not immune to :type:`Ground` moves enters a :mechanic:`field` covered with poisoned spikes, the spikes are removed.
 
