@@ -226,6 +226,64 @@ class PokedexLookup(object):
         return name
 
 
+    def _apply_valid_types(self, name, valid_types):
+        """Combines the enforced `valid_types` with any from the search string
+        itself and updates the query.
+
+        For example, a name of 'a,b:foo' and valid_types of b,c will search for
+        only `b`s named "foo".
+
+        Returns `(name, merged_valid_types, term)`, where `name` has had any type
+        prefix stripped, `merged_valid_types` combines the original
+        `valid_types` with the type prefix, and `term` is a query term for
+        limited to just the allowed types.  If there are no type restrictions
+        at all, `term` will be None.
+        """
+
+        # Remove any type prefix (pokemon:133) first
+        user_valid_types = []
+        if ':' in name:
+            prefix_chunk, name = name.split(':', 1)
+            name = name.strip()
+
+            prefixes = prefix_chunk.split(',')
+            user_valid_types = [_.strip() for _ in prefixes]
+
+        # Merge the valid types together.  Only types that appear in BOTH lists
+        # may be used.
+        # As a special case, if the user asked for types that are explicitly
+        # forbidden, completely ignore what the user requested
+        combined_valid_types = []
+        if user_valid_types and valid_types:
+            combined_valid_types = list(
+                set(user_valid_types) & set(combined_valid_types)
+            )
+
+            if not combined_valid_types:
+                # No overlap!  Just use the enforced ones
+                combined_valid_types = valid_types
+        else:
+            # One list or the other was blank, so just use the one that isn't
+            combined_valid_types = valid_types + user_valid_types
+
+        if not combined_valid_types:
+            # No restrictions
+            return name, [], None
+
+        # Construct the term
+        type_terms = []
+        final_valid_types = []
+        for valid_type in combined_valid_types:
+            table_name = self._parse_table_name(valid_type)
+
+            # Quietly ignore bogus valid_types; more likely to DTRT
+            if table_name:
+                final_valid_types.append(valid_type)
+                type_terms.append(whoosh.query.Term(u'table', table_name))
+
+        return name, final_valid_types, whoosh.query.Or(type_terms)
+
+
     def _parse_table_name(self, name):
         """Takes a singular table name, table name, or table object and returns
         the table name.
@@ -318,20 +376,13 @@ class PokedexLookup(object):
         exact = True
         form = None
 
-        # Remove any type prefix (pokemon:133) before constructing a query
-        if ':' in name:
-            prefix_chunk, name = name.split(':', 1)
-            name = name.strip()
-
-            if not valid_types:
-                # Only use types from the query string if none were explicitly
-                # provided
-                prefixes = prefix_chunk.split(',')
-                valid_types = [_.strip() for _ in prefixes]
+        # Pop off any type prefix and merge with valid_types
+        name, merged_valid_types, type_term = \
+            self._apply_valid_types(name, valid_types)
 
         # Random lookup
         if name == 'random':
-            return self.random_lookup(valid_types=valid_types)
+            return self.random_lookup(valid_types=merged_valid_types)
 
         # Do different things depending what the query looks like
         # Note: Term objects do an exact match, so we don't have to worry about
@@ -347,16 +398,8 @@ class PokedexLookup(object):
             # Not an integer
             query = whoosh.query.Term(u'name', name)
 
-        ### Filter by type of object
-        type_terms = []
-        for valid_type in valid_types:
-            table_name = self._parse_table_name(valid_type)
-            if table_name:
-                # Quietly ignore bogus valid_types; more likely to DTRT
-                type_terms.append(whoosh.query.Term(u'table', table_name))
-
-        if type_terms:
-            query = query & whoosh.query.Or(type_terms)
+        if type_term:
+            query = query & type_term
 
 
         ### Actual searching
@@ -426,14 +469,20 @@ class PokedexLookup(object):
 
         return self.lookup(unicode(n), valid_types=[ partitions[0][0] ])
 
-    def prefix_lookup(self, prefix):
+    def prefix_lookup(self, prefix, valid_types=[]):
         """Returns terms starting with the given exact prefix.
 
-        No special magic is currently done with the name; type prefixes are not
-        recognized.
+        Type prefixes are recognized, but no other name munging is done.
         """
 
+        # Pop off any type prefix and merge with valid_types
+        prefix, merged_valid_types, type_term = \
+            self._apply_valid_types(prefix, valid_types)
+
         query = whoosh.query.Prefix(u'name', self.normalize_name(prefix))
+
+        if type_term:
+            query = query & type_term
 
         searcher = self.index.searcher()
         searcher.weighting = LanguageWeighting()
