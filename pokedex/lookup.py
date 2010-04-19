@@ -60,6 +60,7 @@ class PokedexLookup(object):
             tables.Item,
             tables.Location,
             tables.Move,
+            tables.Nature,
             tables.Pokemon,
             tables.Type,
         )

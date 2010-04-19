@@ -268,6 +268,7 @@ class Move(TableBase):
 
 class Nature(TableBase):
     __tablename__ = 'natures'
+    __singlename__ = 'nature'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(8), nullable=False)
     decreased_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False)
