@@ -775,7 +775,9 @@ This effect is passed on by :move:`Baton Pass`."
 
 This effect is passed on by :move:`Baton Pass`."
 241,0,Prevents the target from scoring critical hits for five turns.,"For five turns, opposing Pokémon cannot get :mechanic:`critical hit`\ s."
-242,0,"Uses the target's move against it before it attacks, with power increased by half.","If the target would use a damaging move this turn and the user acts first, the user will steal the target's move and use it against a random opponent with a 50% increase in power.
+242,0,"Uses the target's move against it before it attacks, with power increased by half.","If the target has selected a damaging move this turn, the user will copy that move and use it against the target, with a 50% increase in power.
+
+If the target moves before the user, this move will fail.
 
 This move cannot be copied by :move:`Mirror Move`, nor selected by :move:`Assist`, :move:`Metronome`, or :move:`Sleep Talk`."
 243,0,Uses the target's last used move.,"Uses the last move that was used successfully by any Pokémon, including the user.
