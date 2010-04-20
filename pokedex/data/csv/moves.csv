@@ -457,7 +457,7 @@ id,name,generation_id,type_id,power,pp,accuracy,target_id,damage_class_id,effect
 456,Heal Order,4,7,0,10,0,7,1,33,,smart,,8
 457,Head Smash,4,6,150,5,80,10,2,270,,tough,,22
 458,Double Hit,4,1,35,10,90,10,2,45,,smart,,7
-459,Roar Of Time,4,16,150,5,90,10,3,81,,cool,,22
+459,Roar of Time,4,16,150,5,90,10,3,81,,cool,,22
 460,Spacial Rend,4,16,100,5,95,10,3,44,,tough,,4
 461,Lunar Dance,4,14,0,10,0,7,1,271,,beauty,,8
 462,Crush Grip,4,1,1,5,100,10,2,238,,tough,,15
