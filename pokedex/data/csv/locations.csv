@@ -12,7 +12,7 @@ id,region_id,name
 11,4,Great Marsh
 12,4,Solaceon Ruins
 13,4,Victory Road
-14,4,Deserted Escape Path
+14,4,Ravaged Path
 15,4,Oreburgh Tunnel
 16,4,Stark Mountain
 17,4,Spring Path
@@ -24,10 +24,10 @@ id,region_id,name
 24,4,Iron Island
 25,4,Old Chateau
 26,4,Lake Verity
-27,4,Lake Valour
+27,4,Lake Valor
 28,4,Lake Acuity
-29,4,Near Lake Valour
-30,4,Near Lake Acuity
+29,4,Valor Lakefront
+30,4,Acuity Lakefront
 31,4,Route 201
 32,4,Route 202
 33,4,Route 203
@@ -74,7 +74,7 @@ id,region_id,name
 74,2,Dragon's Den
 75,2,Ecruteak City
 76,1,Fuchsia City
-77,2,Ice Cave
+77,2,Ice Path
 78,2,Ilex Forest
 79,2,Lake of Rage
 80,1,Mt. Moon
@@ -95,10 +95,10 @@ id,region_id,name
 95,1,Route 16
 96,1,Route 17
 97,1,Route 18
-98,1,Route 19
+98,1,Sea Route 19
 99,1,Route 2
-100,1,Route 20
-101,1,Route 21
+100,1,Sea Route 20
+101,1,Sea Route 21
 102,1,Route 22
 103,1,Route 24
 104,1,Route 25
@@ -118,8 +118,8 @@ id,region_id,name
 118,2,Route 38
 119,2,Route 39
 120,1,Route 4
-121,2,Route 40
-122,2,Route 41
+121,2,Sea Route 40
+122,2,Sea Route 41
 123,2,Route 42
 124,2,Route 43
 125,2,Route 44
@@ -139,11 +139,6 @@ id,region_id,name
 139,2,Tin Tower
 140,2,Tohjo Falls
 141,2,Union Cave
-142,2,Unknown 138
-143,2,Unknown 49
-144,2,Unknown 50
-145,2,Unknown 64
-146,2,Unknown 90
 147,1,Cerulean Cave
 148,2,Unknown; all Poliwag
 149,2,Unknown; all Rattata
