@@ -174,7 +174,7 @@ id,name,generation_id,type_id,power,pp,accuracy,target_id,damage_class_id,effect
 173,Snore,2,1,40,15,100,10,3,93,30,cute,1,5
 174,Curse,2,18,0,10,100,10,1,110,,tough,31,21
 175,Flail,2,1,1,15,100,10,2,100,,cute,26,15
-176,Conversion2,2,1,0,30,100,7,1,94,,beauty,12,23
+176,Conversion 2,2,1,0,30,100,7,1,94,,beauty,12,23
 177,Aeroblast,2,3,100,5,95,10,3,44,,cool,2,22
 178,Cotton Spore,2,12,0,40,85,10,1,61,,beauty,10,1
 179,Reversal,2,2,1,15,100,10,2,100,,cool,28,15
@@ -367,7 +367,7 @@ id,name,generation_id,type_id,power,pp,accuracy,target_id,damage_class_id,effect
 366,Tailwind,4,3,0,30,0,4,1,226,,smart,,1
 367,Acupressure,4,1,0,30,0,5,1,227,,cool,,11
 368,Metal Burst,4,9,1,10,100,1,2,228,,beauty,,15
-369,U-Turn,4,7,70,20,100,10,2,229,,cute,,16
+369,U-turn,4,7,70,20,100,10,2,229,,cute,,16
 370,Close Combat,4,2,120,5,100,10,2,230,,smart,,22
 371,Payback,4,17,50,10,100,10,2,231,,cool,,6
 372,Assurance,4,17,50,10,100,10,2,232,,beauty,,15
