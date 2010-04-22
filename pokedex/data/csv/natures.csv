@@ -13,7 +13,7 @@ id,name,decreased_stat_id,increased_stat_id
 12,Impish,4,3
 13,Bashful,4,4
 14,Careful,4,5
-15,Rash,4,5
+15,Rash,5,4
 16,Jolly,4,6
 17,Naughty,5,2
 18,Lax,5,3
