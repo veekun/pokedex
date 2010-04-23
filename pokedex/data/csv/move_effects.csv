@@ -219,7 +219,7 @@ The target cannot recover its item with :move:`Recycle`.
 This move cannot be selected by :move:`Assist` or :move:`Metronome`."
 107,0,Prevents the target from leaving battle.,"The target cannot :mechanic:`switch out` normally.  Ignores :mechanic:`accuracy` and :mechanic:`evasion` modifiers.  This effect ends when the user leaves the :mechanic:`field`.
 
-The target may still escape by using :move:`Baton Pass`, :move:`U-Turn`, or a :item:`Shed Shell`.
+The target may still escape by using :move:`Baton Pass`, :move:`U-turn`, or a :item:`Shed Shell`.
 
 Both the user and the target pass on this effect with :move:`Baton Pass`."
 108,0,Target loses 1/4 its max HP every turn as long as it's asleep.,"Only works on :mechanic:`sleep`\ ing Pokémon.  Gives the target a nightmare, damaging it for 1/4 its max :mechanic:`HP` every turn.  If the target wakes up or leaves the :mechanic:`field`, this effect ends."
@@ -577,7 +577,7 @@ This move cannot be copied by :move:`Mirror Move`, nor selected by :move:`Metron
 
 :move:`Roar` and :move:`Whirlwind` will not affect the user.  The user cannot use :move:`Magnet Rise`.
 
-The user may still use :move:`U-Turn` to leave the :mechanic:`field`.
+The user may still use :move:`U-turn` to leave the :mechanic:`field`.
 
 This effect can be passed with :move:`Baton Pass`."
 183,0,Lowers the user's Attack and Defense by one level after inflicting damage.,"Inflicts :mechanic:`regular damage`, then :mechanic:`lowers` the user's :mechanic:`Attack` and :mechanic:`Defense` by one level."
