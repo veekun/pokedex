@@ -45,37 +45,66 @@ def _wildcards_to_regex(strings):
 
 
 def _get_verbose_prints(verbose):
-    """If `verbose` is true, returns two functions: one for printing a starting
-    message, and the other for printing a success or failure message when
-    finished.
+    """If `verbose` is true, returns three functions: one for printing a
+    starting message, one for printing an interim status update, and one for
+    printing a success or failure message when finished.
 
-    If `verbose` is false, returns two no-op functions.
+    If `verbose` is false, returns no-op functions.
     """
 
-    if verbose:
-        import sys
-        def print_start(thing):
-            # Truncate to 66 characters, leaving 10 characters for a success
-            # or failure message
-            truncated_thing = thing[0:66]
+    if not verbose:
+        # Return dummies
+        def dummy(*args, **kwargs):
+            pass
 
-            # Also, space-pad to keep the cursor in a known column
-            num_spaces = 66 - len(truncated_thing)
+        return dummy, dummy, dummy
 
-            print "%s...%s" % (truncated_thing, ' ' * num_spaces),
+    ### Okay, verbose == True; print stuff
+
+    def print_start(thing):
+        # Truncate to 66 characters, leaving 10 characters for a success
+        # or failure message
+        truncated_thing = thing[0:66]
+
+        # Also, space-pad to keep the cursor in a known column
+        num_spaces = 66 - len(truncated_thing)
+
+        print "%s...%s" % (truncated_thing, ' ' * num_spaces),
+        sys.stdout.flush()
+
+    if sys.stdout.isatty():
+        # stdout is a terminal; stupid backspace tricks are OK.
+        # Don't use print, because it always adds magical spaces, which
+        # makes backspace accounting harder
+
+        backspaces = [0]
+        def print_status(msg):
+            # Overwrite any status text with spaces before printing
+            sys.stdout.write('\b' * backspaces[0])
+            sys.stdout.write(' ' * backspaces[0])
+            sys.stdout.write('\b' * backspaces[0])
+            sys.stdout.write(msg)
             sys.stdout.flush()
+            backspaces[0] = len(msg)
+
+        def print_done(msg='ok'):
+            # Overwrite any status text with spaces before printing
+            sys.stdout.write('\b' * backspaces[0])
+            sys.stdout.write(' ' * backspaces[0])
+            sys.stdout.write('\b' * backspaces[0])
+            sys.stdout.write(msg + "\n")
+            sys.stdout.flush()
+            backspaces[0] = 0
+
+    else:
+        # stdout is a file (or something); don't bother with status at all
+        def print_status(msg):
+            pass
 
         def print_done(msg='ok'):
             print msg
-            sys.stdout.flush()
 
-        return print_start, print_done
-
-    # Not verbose; return dummies
-    def dummy(*args, **kwargs):
-        pass
-
-    return dummy, dummy
+    return print_start, print_status, print_done
 
 
 def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
@@ -101,7 +130,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
     """
 
     # First take care of verbosity
-    print_start, print_done = _get_verbose_prints(verbose)
+    print_start, print_status, print_done = _get_verbose_prints(verbose)
 
 
     if not directory:
@@ -136,11 +165,14 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
         print_start(table_name)
 
         try:
-            csvfile = open("%s/%s.csv" % (directory, table_name), 'rb')
+            csvpath = "%s/%s.csv" % (directory, table_name)
+            csvfile = open(csvpath, 'rb')
         except IOError:
             # File doesn't exist; don't load anything!
             print_done('missing?')
             continue
+
+        csvsize = os.stat(csvpath).st_size
 
         reader = csv.reader(csvfile, lineterminator='\n')
         column_names = [unicode(column) for column in reader.next()]
@@ -163,6 +195,9 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
             session.connection().execute(insert_stmt, new_rows)
             session.commit()
             new_rows[:] = []
+
+            progress = "{0}%".format(100 * csvfile.tell() // csvsize)
+            print_status(progress)
 
         for csvs in reader:
             row_data = {}
@@ -254,7 +289,7 @@ def dump(session, tables=[], directory=None, verbose=False):
     """
 
     # First take care of verbosity
-    print_start, print_done = _get_verbose_prints(verbose)
+    print_start, print_status, print_done = _get_verbose_prints(verbose)
 
 
     if not directory:
