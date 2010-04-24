@@ -1,8 +1,8 @@
 """CSV to database or vice versa."""
 import csv
+import fnmatch
 import os.path
 import pkg_resources
-import re
 import sys
 
 from sqlalchemy.orm.attributes import instrumentation_registry
@@ -13,36 +13,24 @@ from pokedex.db import metadata
 import pokedex.db.tables as tables
 
 
-def _wildcard_char_to_regex(char):
-    """Converts a single wildcard character to the regex equivalent."""
+def _get_table_names(metadata, patterns):
+    """Returns a list of table names from the given metadata.  If `patterns`
+    exists, only tables matching one of the patterns will be returned.
+    """
+    if patterns:
+        table_names = set()
+        for pattern in patterns:
+            if '.' in pattern or '/' in pattern:
+                # If it looks like a filename, pull out just the table name
+                _, filename = os.path.split(pattern)
+                table_name, _ = os.path.splitext(filename)
+                pattern = table_name
 
-    if char == '?':
-        return '.?'
-    elif char == '*':
-        return '.*'
+            table_names.update(fnmatch.filter(metadata.tables.keys(), pattern))
     else:
-        return re.escape(char)
+        table_names = metadata.tables.keys()
 
-def _wildcard_glob_to_regex(glob):
-    """Converts a single wildcard glob to a regex STRING."""
-
-    # If it looks like a filename, make it not one
-    if '.' in glob or '/' in glob:
-        _, filename = os.path.split(glob)
-        table_name, _ = os.path.splitext(filename)
-        glob = table_name
-
-    return u''.join(map(_wildcard_char_to_regex, glob))
-
-def _wildcards_to_regex(strings):
-    """Converts a list of wildcard globs to a single regex object."""
-
-    regex_parts = map(_wildcard_glob_to_regex, strings)
-
-    regex = '^(?:' + '|'.join(regex_parts) + ')$'
-
-    return re.compile(regex)
-
+    return list(table_names)
 
 def _get_verbose_prints(verbose):
     """If `verbose` is true, returns three functions: one for printing a
@@ -136,12 +124,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
     if not directory:
         directory = pkg_resources.resource_filename('pokedex', 'data/csv')
 
-    if tables:
-        regex = _wildcards_to_regex(tables)
-        table_names = filter(regex.match, metadata.tables.keys())
-    else:
-        table_names = metadata.tables.keys()
-
+    table_names = _get_table_names(metadata, tables)
     table_objs = [metadata.tables[name] for name in table_names]
     table_objs = sqlalchemy.sql.util.sort_tables(table_objs)
 
@@ -295,12 +278,7 @@ def dump(session, tables=[], directory=None, verbose=False):
     if not directory:
         directory = pkg_resources.resource_filename('pokedex', 'data/csv')
 
-    if tables:
-        regex = _wildcards_to_regex(tables)
-        table_names = filter(regex.match, metadata.tables.keys())
-    else:
-        table_names = metadata.tables.keys()
-
+    table_names = _get_table_names(metadata, tables)
     table_names.sort()
 
 
