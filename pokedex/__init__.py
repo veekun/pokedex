@@ -30,7 +30,7 @@ def main():
 
 def get_parser(verbose=True):
     """Returns an OptionParser prepopulated with the global options.
-    
+
     `verbose` is whether or not the options should be verbose by default.
     """
     parser = OptionParser()
@@ -247,16 +247,16 @@ Global options:
                         the pokedex install directory.  Use this option (or a
                         POKEDEX_INDEX_DIR environment variable) to specify an
                         alternate loction.
-
-System options:
-    -d|--directory      By default, load and dump will use the CSV files in the
-                        pokedex install directory.  Use this option to specify
-                        a different directory.
-    -D|--drop-tables    With load, drop all tables before loading data.
     -q|--quiet          Don't print system output.  This is the default for
                         non-system commands and setup.
     -v|--verbose        Print system output.  This is the default for system
                         commands, except setup.
+
+System options:
+    -d|--directory=DIR  By default, load and dump will use the CSV files in the
+                        pokedex install directory.  Use this option to specify
+                        a different directory.
+    -D|--drop-tables    With load, drop all tables before loading data.
 
     Additionally, load and dump accept a list of table names (possibly with
     wildcards) and/or csv fileames as an argument list.
