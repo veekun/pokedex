@@ -185,7 +185,8 @@ class LocationArea(TableBase):
 class LocationAreaEncounterRate(TableBase):
     __tablename__ = 'location_area_encounter_rates'
     location_area_id = Column(Integer, ForeignKey('location_areas.id'), primary_key=True, nullable=False, autoincrement=False)
-    encounter_type_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=True, nullable=False, autoincrement=False)
+    encounter_terrain_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=True, nullable=False, autoincrement=False)
+    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, autoincrement=False)
     rate = Column(Integer, nullable=True)
 
 class Machine(TableBase):
