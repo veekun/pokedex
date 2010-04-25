@@ -179,7 +179,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
             session.commit()
             new_rows[:] = []
 
-            progress = "{0}%".format(100 * csvfile.tell() // csvsize)
+            progress = "%d%%" % (100 * csvfile.tell() // csvsize)
             print_status(progress)
 
         for csvs in reader:

@@ -1,5 +1,4 @@
 # encoding: utf8
-from collections import namedtuple
 import os, os.path
 import random
 import re
@@ -14,6 +13,8 @@ import whoosh.index
 from whoosh.qparser import QueryParser
 import whoosh.scoring
 import whoosh.spelling
+
+from pokedex.util import namedtuple
 
 from pokedex.db import connect
 import pokedex.db.tables as tables

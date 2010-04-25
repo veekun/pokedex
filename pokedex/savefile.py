@@ -8,7 +8,8 @@ Kudos to LordLandon for his pkmlib.py, from which this module was originally
 derived.
 """
 
-import itertools, struct
+import struct
+from pokedex.util import permutations
 
 def pokemon_prng(seed):
     u"""Creates a generator that simulates the main Pokémon PRNG."""
@@ -79,7 +80,7 @@ class PokemonSave(object):
 
     ### Utility methods
 
-    shuffle_orders = list( itertools.permutations(range(4)) )
+    shuffle_orders = list( permutations(range(4)) )
 
     @classmethod
     def shuffle_chunks(cls, words, reverse=False):

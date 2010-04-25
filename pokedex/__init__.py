@@ -55,8 +55,8 @@ def get_session(options):
     session = pokedex.db.connect(engine_uri)
 
     if options.verbose:
-        print "Connected to database {engine} (from {got_from})" \
-            .format(engine=session.bind.url, got_from=got_from)
+        print "Connected to database %(engine)s (from %(got_from)s)" \
+            % dict(engine=session.bind.url, got_from=got_from)
 
     return session
 
@@ -75,8 +75,8 @@ def get_lookup(options, session=None, recreate=False):
         index_dir, got_from = defaults.get_default_index_dir_with_origin()
 
     if options.verbose:
-        print "Opened lookup index {index_dir} (from {got_from})" \
-            .format(index_dir=index_dir, got_from=got_from)
+        print "Opened lookup index %(index_dir)s (from %(got_from)s)" \
+            % dict(index_dir=index_dir, got_from=got_from)
 
     lookup = pokedex.lookup.PokedexLookup(index_dir, session=session)
 
@@ -97,8 +97,8 @@ def get_csv_directory(options):
     if csvdir is None:
         csvdir, got_from = defaults.get_default_csv_dir_with_origin()
 
-    print "Using CSV directory {csvdir} (from {got_from})" \
-        .format(csvdir=csvdir, got_from=got_from)
+    print "Using CSV directory %(csvdir)s (from %(got_from)s)" \
+        % dict(csvdir=csvdir, got_from=got_from)
 
     return csvdir
 
