@@ -20,6 +20,30 @@ class Ability(TableBase):
     flavor_text = Column(Unicode(64), nullable=False)
     effect = Column(Unicode(255), nullable=False)
 
+class Berry(TableBase):
+    __tablename__ = 'berries'
+    id = Column(Integer, primary_key=True, nullable=False)
+    item_id = Column(Integer, ForeignKey('items.id'), nullable=False)
+    firmness_id = Column(Integer, ForeignKey('berry_firmness.id'), nullable=False)
+    natural_gift_power = Column(Integer, nullable=True)
+    natural_gift_type_id = Column(Integer, ForeignKey('types.id'), nullable=True)
+    size = Column(Integer, nullable=False)
+    max_harvest = Column(Integer, nullable=False)
+    growth_time = Column(Integer, nullable=False)
+    soil_dryness = Column(Integer, nullable=False)
+    smoothness = Column(Integer, nullable=False)
+
+class BerryFirmness(TableBase):
+    __tablename__ = 'berry_firmness'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(10), nullable=False)
+
+class BerryFlavor(TableBase):
+    __tablename__ = 'berry_flavors'
+    berry_id = Column(Integer, ForeignKey('berries.id'), primary_key=True, nullable=False, autoincrement=False)
+    contest_type_id = Column(Integer, ForeignKey('contest_types.id'), primary_key=True, nullable=False, autoincrement=False)
+    flavor = Column(Integer, nullable=False)
+
 class ContestCombo(TableBase):
     __tablename__ = 'contest_combos'
     first_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
@@ -32,6 +56,13 @@ class ContestEffect(TableBase):
     jam = Column(SmallInteger, nullable=False)
     flavor_text = Column(Unicode(64), nullable=False)
     effect = Column(Unicode(255), nullable=False)
+
+class ContestType(TableBase):
+    __tablename__ = 'contest_types'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(6), nullable=False)
+    flavor = Column(Unicode(6), nullable=False)
+    color = Column(Unicode(6), nullable=False)
 
 class EggGroup(TableBase):
     __tablename__ = 'egg_groups'
@@ -158,6 +189,33 @@ class GrowthRate(TableBase):
 class Item(TableBase):
     __tablename__ = 'items'
     __singlename__ = 'item'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(16), nullable=False)
+    category_id = Column(Integer, ForeignKey('item_categories.id'), nullable=False)
+    cost = Column(Integer, nullable=False)
+    fling_power = Column(Integer, nullable=True)
+    fling_effect_id = Column(Integer, ForeignKey('item_fling_effects.id'), nullable=True)
+    flavor_text = Column(Unicode(255), nullable=False)
+    effect = Column(Unicode(5120), nullable=False)
+    is_underground = Column(Boolean, nullable=False)
+    can_hold = Column(Boolean, nullable=False)
+    is_battle_item = Column(Boolean, nullable=False)
+    can_use_automatically = Column(Boolean, nullable=False)
+    can_reuse = Column(Boolean, nullable=False)
+
+class ItemCategory(TableBase):
+    __tablename__ = 'item_categories'
+    id = Column(Integer, primary_key=True, nullable=False)
+    pocket_id = Column(Integer, ForeignKey('item_pockets.id'), nullable=False)
+    name = Column(Unicode(16), nullable=False)
+
+class ItemFlingEffect(TableBase):
+    __tablename__ = 'item_fling_effects'
+    id = Column(Integer, primary_key=True, nullable=False)
+    effect = Column(Unicode(255), nullable=False)
+
+class ItemPocket(TableBase):
+    __tablename__ = 'item_pockets'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(16), nullable=False)
 
@@ -517,6 +575,13 @@ class Version(TableBase):
 
 
 ### Relations down here, to avoid ordering problems
+Berry.berry_firmness = relation(BerryFirmness, backref='berries')
+Berry.firmness = association_proxy('berry_firmness', 'name')
+Berry.flavors = relation(BerryFlavor, order_by=BerryFlavor.contest_type_id, backref='berry')
+Berry.natural_gift_type = relation(Type)
+
+BerryFlavor.contest_type = relation(ContestType)
+
 ContestCombo.first = relation(Move, primaryjoin=ContestCombo.first_move_id==Move.id,
                                     backref='contest_combo_first')
 ContestCombo.second = relation(Move, primaryjoin=ContestCombo.second_move_id==Move.id,
@@ -546,6 +611,12 @@ EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 Generation.canonical_pokedex = relation(Pokedex, backref='canonical_for_generation')
 Generation.versions = relation(Version, secondary=VersionGroup.__table__)
 Generation.main_region = relation(Region)
+
+Item.berry = relation(Berry, uselist=False, backref='item')
+Item.fling_effect = relation(ItemFlingEffect, backref='items')
+Item.category = relation(ItemCategory, backref='items')
+
+ItemCategory.pocket = relation(ItemPocket, backref='categories')
 
 Location.region = relation(Region, backref='locations')
 
@@ -619,7 +690,7 @@ Pokemon.flavor_text = relation(PokemonFlavorText, order_by=PokemonFlavorText.pok
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
 Pokemon.pokemon_habitat = relation(PokemonHabitat, backref='pokemon')
 Pokemon.habitat = association_proxy('pokemon_habitat', 'name')
-Pokemon.items = relation(PokemonItem)
+Pokemon.items = relation(PokemonItem, backref='pokemon')
 Pokemon.generation = relation(Generation, backref='pokemon')
 Pokemon.shape = relation(PokemonShape, backref='pokemon')
 Pokemon.stats = relation(PokemonStat, backref='pokemon')
