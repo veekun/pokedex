@@ -172,6 +172,12 @@ class EvolutionMethod(TableBase):
     name = Column(Unicode(64), nullable=False)
     description = Column(Unicode(255), nullable=False)
 
+class Experience(TableBase):
+    __tablename__ = 'experience'
+    growth_rate_id = Column(Integer, ForeignKey('growth_rates.id'), primary_key=True, nullable=False)
+    level = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
+    experience = Column(Integer, nullable=False)
+
 class Generation(TableBase):
     __tablename__ = 'generations'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -633,6 +639,8 @@ EncounterSlotCondition.condition = relation(EncounterCondition,
                                             backref='slot_map')
 
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
+
+Experience.growth_rate = relation(GrowthRate, backref='experience_table')
 
 Generation.canonical_pokedex = relation(Pokedex, backref='canonical_for_generation')
 Generation.versions = relation(Version, secondary=VersionGroup.__table__)
