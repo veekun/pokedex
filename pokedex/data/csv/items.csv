@@ -61,11 +61,11 @@ id,name,category_id,cost,fling_power,fling_effect_id,flavor_text,effect,is_under
 60,X Accuracy,1,950,30,,An item that raises the accuracy of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's Accuracy.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
 61,X Special,1,350,30,,An item that raises the Sp. Atk stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's Special Attack.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
 62,X Sp. Def,1,350,30,,An item that raises the Sp. Def stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's Special Defense.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
-63,Poké Doll,31,1000,30,,A doll that attracts Pokémon. Use it to flee from any battle with a wild Pokémon.,In wild battles: Ends the battle.,0,0,0,0,0
-64,Fluffy Tail,31,1000,30,,An item that attracts Pokémon. Use it to flee from any battle with a wild Pokémon.,In wild battles: Ends the battle.,0,0,0,0,0
-65,Blue Flute,30,100,30,,A blue flute made from blown glass. Its melody awakens a single Pokémon from sleep.,Awakens one Pokémon.  Reusable.,0,0,0,0,0
-66,Yellow Flute,30,200,30,,A yellow flute made from blown glass. Its melody snaps a single Pokémon out of confusion.,Cures one Pokémon of Confusion.  Reusable.,0,0,0,0,0
-67,Red Flute,30,300,30,,A red flute made from blown glass. Its melody snaps a single Pokémon out of infatuation.,Cures one Pokémon of Attraction.  Reusable.,0,0,0,0,0
+63,Poké Doll,11,1000,30,,A doll that attracts Pokémon. Use it to flee from any battle with a wild Pokémon.,In wild battles: Ends the battle.,0,0,0,0,0
+64,Fluffy Tail,11,1000,30,,An item that attracts Pokémon. Use it to flee from any battle with a wild Pokémon.,In wild battles: Ends the battle.,0,0,0,0,0
+65,Blue Flute,38,100,30,,A blue flute made from blown glass. Its melody awakens a single Pokémon from sleep.,Awakens one Pokémon.  Reusable.,0,0,0,0,0
+66,Yellow Flute,38,200,30,,A yellow flute made from blown glass. Its melody snaps a single Pokémon out of confusion.,Cures one Pokémon of Confusion.  Reusable.,0,0,0,0,0
+67,Red Flute,38,300,30,,A red flute made from blown glass. Its melody snaps a single Pokémon out of infatuation.,Cures one Pokémon of Attraction.  Reusable.,0,0,0,0,0
 68,Black Flute,11,400,30,,A black flute made from blown glass. Its melody makes wild Pokémon less likely to appear.,Makes wild encounters less frequent.  Reusable.,0,0,0,0,0
 69,White Flute,11,500,30,,A white flute made from blown glass. Its melody makes wild Pokémon more likely to appear.,Makes wild encounters more frequent.  Reusable.,0,0,0,0,0
 70,Shoal Salt,9,20,30,,Pure salt that was discovered deep inside the Shoal Cave. It is extremely salty.,No effect.,0,0,0,0,0
