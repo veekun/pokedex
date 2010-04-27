@@ -1,71 +1,71 @@
 id,name,category_id,cost,fling_power,fling_effect_id,flavor_text,effect,is_underground,can_hold,is_battle_item,can_use_automatically,can_reuse
-1,Master Ball,34,0,,,The best Ball with the ultimate level of performance. It will catch any wild Pokémon without fail.,In battle: Captures one Pokemon without fail.  Has a capture rate of 255.,0,0,1,0,0
-2,Ultra Ball,34,1200,,,An ultra-performance Ball that provides a higher Pokémon catch rate than a Great Ball.,In battle: Attempts to capture one Pokemon.  Has a capture rate of 2.,0,0,1,0,0
-3,Great Ball,34,600,,,"A good, high-performance Ball that provides a higher Pokémon catch rate than a standard Poké Ball.",In battle: Attempts to capture one Pokemon.  Has a capture rate of 1.5.,0,0,1,0,0
-4,Poke Ball,34,200,,,A device for catching wild Pokémon. It is thrown like a ball at the target. It is designed as a capsule system.,In battle: Attempts to capture one Pokemon.  Has a capture rate of 1.,0,0,1,0,0
-5,Safari Ball,34,0,,,A special Poké Ball that is used only in the Great Marsh. It is decorated in a camouflage pattern.,In a Great Marsh encounter: Attempts to capture one Pokemon.  Has a capture rate of 1.5.,0,0,0,0,0
-6,Net Ball,33,1000,,,A somewhat different Poké Ball that works especially well on Water- and Bug-type Pokémon.,"In battle: Attempts to capture one Pokemon.  Has a capture rate of 3 against Water or Bug Pokemon, but 1 against any others.",0,0,1,0,0
-7,Dive Ball,33,1000,,,A somewhat different Poké Ball that works especially well on Pokémon that live in the sea.,"In battle: Attempts to capture one Pokemon.  Has a capture rate of 3.5 if the trainer is underwater, but 1 otherwise.",0,0,1,0,0
-8,Nest Ball,33,1000,,,A somewhat different Poké Ball that works especially well on weaker Pokémon in the wild.,"In battle: Attempts to capture one Pokemon.  Has a capture rate of 3 if the Pokemon is level 19 or below, 2 if the Pokemon is levels 20 through 29, and 1 otherwise.",0,0,1,0,0
-9,Repeat Ball,33,1000,,,A somewhat different Poké Ball that works especially well on Pokémon species that were previously caught.,"In battle: Attempts to capture one Pokemon.  Has a capture rate of 3 against Pokemon marked as caught in the trainer's Pokedex, but 1 otherwise.",0,0,1,0,0
-10,Timer Ball,33,1000,,,A somewhat different Ball that becomes progressively better the more turns there are in a battle.,"In battle: Attempts to capture one Pokemon.  Has a capture rate of 1, but increases by 1 after every tenth turn, to a maximum of 4.",0,0,1,0,0
-11,Luxury Ball,33,1000,,,A comfortable Poké Ball that makes a caught wild Pokémon quickly grow friendly.,In battle: Attempts to capture one Pokemon.  Has a capture rate of 1.  Increases the rate at which the contained Pokemon gains Happiness.,0,0,1,0,0
-12,Premier Ball,33,200,,,A somewhat rare Poké Ball that has been specially made to commemorate an event of some sort.,In battle: Attempts to capture one Pokemon.  Has a capture rate of 1.,0,0,1,0,0
-13,Dusk Ball,33,1000,,,A somewhat different Poké Ball that makes it easier to catch wild Pokémon at night or in dark places like caves.,"In battle: Attempts to capture one Pokemon.  Has a capture rate of 4 in caves or at night, but 1 otherwise.",0,0,1,0,0
-14,Heal Ball,33,300,,,A remedial Poké Ball that restores the caught Pokémon's HP and eliminates any status problem.,In battle: Attempts to capture one Pokemon.  Has a capture rate of 1.  Captured Pokemon have their HP fully restored and any major status ailments cured.,0,0,1,0,0
-15,Quick Ball,33,1000,,,A somewhat different Poké Ball that provides a better catch rate if it is used at the start of a wild encounter.,"In battle: Attempts to capture one Pokemon.  Has a capture rate of 4, but decreases by 1 after every fifth turn, to a minimum of 1.",0,0,1,0,0
-16,Cherish Ball,33,200,,,A quite rare Poké Ball that has been specially crafted to commemorate an occasion of some sort.,In battle: Attempts to capture one Pokemon.  Has a capture rate of 1.,0,0,1,0,0
-17,Potion,27,300,30,,A spray-type medicine for wounds. It restores the HP of one Pokémon by just 20 points.,Heals one Pokemon for 20 HP.,0,0,0,0,0
-18,Antidote,30,100,30,,A spray-type medicine. It lifts the effect of poison from one Pokémon.,Cures one Pokemon of Poison.,0,0,0,0,0
-19,Burn Heal,30,250,30,,A spray-type medicine. It heals a single Pokémon that is suffering from a burn.,Cures one Pokemon of a Burn.,0,0,0,0,0
-20,Ice Heal,30,250,30,,A spray-type medicine. It defrosts a Pokémon that has been frozen solid.,Thaws one Pokemon.,0,0,0,0,0
-21,Awakening,30,250,30,,A spray-type medicine. It awakens a Pokémon from the clutches of sleep.,Awakens one Pokemon.,0,0,0,0,0
-22,Parlyz Heal,30,200,30,,A spray-type medicine. It eliminates paralysis from a single Pokémon.,Cures one Pokemon of Paralysis.,0,0,0,0,0
-23,Full Restore,27,3000,30,,A medicine that fully restores the HP and heals any status problems of a single Pokémon.,Fully heals one Pokemon and cures it of any major status ailment.,0,0,0,0,0
-24,Max Potion,27,2500,30,,A spray-type medicine for wounds. It completely restores the HP of a single Pokémon.,Fully heals one Pokemon.,0,0,0,0,0
-25,Hyper Potion,27,1200,30,,A spray-type medicine for wounds. It restores the HP of one Pokémon by 200 points.,Heals one Pokemon for 200 HP.,0,0,0,0,0
-26,Super Potion,27,700,30,,A spray-type medicine for wounds. It restores the HP of one Pokémon by 50 points.,Heals one Pokemon for 50 HP.,0,0,0,0,0
-27,Full Heal,30,600,30,,A spray-type medicine. It heals all the status problems of a single Pokémon.,Cures one Pokemon of any major status ailment.,0,0,0,0,0
-28,Revive,29,1500,30,,A medicine that revives a fainted Pokémon. It restores half the Pokémon's maximum HP.,Revives a Fainted Pokemon and restores half its max HP.,1,0,0,0,0
-29,Max Revive,29,4000,30,,A medicine that revives a fainted Pokémon. It fully restores the Pokémon's HP.,Revives a Fainted Pokemon and fully restores its HP.,1,0,0,0,0
-30,Fresh Water,27,200,30,,Water with a high mineral content. It restores the HP of one Pokémon by 50 points.,Heals one Pokemon for 50 HP.,0,0,0,0,0
-31,Soda Pop,27,300,30,,A fizzy soda drink. It restores the HP of one Pokémon by 60 points.,Heals one Pokemon for 60 HP.,0,0,0,0,0
-32,Lemonade,27,350,30,,A very sweet drink. It restores the HP of one Pokémon by 80 points.,Heals one Pokemon for 80 HP.,0,0,0,0,0
-33,Moomoo Milk,27,500,30,,Milk with a very high nutrition content. It restores the HP of one Pokémon by 100 points.,Heals one Pokemon for 100 HP.,0,0,0,0,0
-34,EnergyPowder,27,500,30,,A very bitter medicine powder. It restores the HP of one Pokémon by 50 points.,Heals one Pokemon for 50 HP.  Lowers that Pokemon's Happiness by 5/5/10.,0,0,0,0,0
-35,Energy Root,27,800,30,,A very bitter root. It restores the HP of one Pokémon by 200 points.,Heals one Pokemon for 200 HP.  Lowers that Pokemon's Happiness by 10/10/15.,0,0,0,0,0
-36,Heal Powder,30,450,30,,A very bitter medicine powder. It heals all the status problems of a single Pokémon.,Cures one Pokemon of any major status ailment.  Lowers that Pokemon's Happiness by 5/5/10.,0,0,0,0,0
-37,Revival Herb,29,2800,30,,"A very bitter medicinal herb. It revives a fainted Pokémon, fully restoring its HP.",Revives a Fainted Pokemon and fully restores its HP.  Lowers that Pokemon's Happiness by 10/10/15.,0,0,0,0,0
-38,Ether,28,1200,30,,It restores the PP of a Pokémon's selected move by a maximum of 10 points.,Restores the PP for one Pokemon's selected move by 10.,0,0,0,0,0
-39,Max Ether,28,2000,30,,It fully restores the PP of a single selected move that has been learned by the target Pokémon.,Fully restores the PP for one Pokemon's selected move.,0,0,0,0,0
-40,Elixir,28,3000,30,,It restores the PP of all the moves learned by the targeted Pokémon by 10 points each.,Restores the PP for each of one Pokemon's moves by 10.,0,0,0,0,0
-41,Max Elixir,28,4500,30,,It fully restores the PP of all the moves learned by the targeted Pokémon.,Fully restores the PP for each of one Pokemon's moves.,0,0,0,0,0
-42,Lava Cookie,30,200,30,,Lavaridge Town's local specialty. It heals all the status problems of one Pokémon.,Cures one Pokemon of any major status ailment.,0,0,0,0,0
-43,Berry Juice,27,100,30,,A 100% pure juice made of Berries. It restores the HP of one Pokémon by just 20 points.,Heals one Pokemon for 20 HP.,0,0,0,0,0
-44,Sacred Ash,29,200,30,,"It revives all fainted Pokémon. In doing so, it also fully restores their HP.",Revives all Fainted Pokemon in the trainer's party and fully restores their HP.,0,0,0,0,0
-45,HP Up,26,9800,30,,A nutritious drink for Pokémon. It raises the base HP of a single Pokémon.,"Increases one Pokemon's HP effort by 10, to a maximum of 100.  Raises that Pokemon's Happiness by 5/3/2.",0,0,0,0,0
-46,Protein,26,9800,30,,A nutritious drink for Pokémon. It raises the base Attack stat of a single Pokémon.,"Increases one Pokemon's Attack effort by 10, to a maximum of 100.  Raises that Pokemon's Happiness by 5/3/2.",0,0,0,0,0
-47,Iron,26,9800,30,,A nutritious drink for Pokémon. It raises the base Defense stat of a single Pokémon.,"Increases one Pokemon's Defense effort by 10, to a maximum of 100.  Raises that Pokemon's Happiness by 5/3/2.",0,0,0,0,0
-48,Carbos,26,9800,30,,A nutritious drink for Pokémon. It raises the base Speed stat of a single Pokémon.,"Increases one Pokemon's Speed effort by 10, to a maximum of 100.  Raises that Pokemon's Happiness by 5/3/2.",0,0,0,0,0
-49,Calcium,26,9800,30,,A nutritious drink for Pokémon. It raises the base Sp. Atk (Special Attack) stat of a single Pokémon.,"Increases one Pokemon's Special Attack effort by 10, to a maximum of 100.  Raises that Pokemon's Happiness by 5/3/2.",0,0,0,0,0
-50,Rare Candy,26,4800,30,,A candy that is packed with energy. It raises the level of a single Pokémon by one.,Levels up one Pokemon.  Raises that Pokemon's Happiness by 5/3/2.,0,0,0,0,0
-51,PP Up,26,9800,30,,It slightly raises the maximum PP of a selected move that has been learned by the target Pokémon.,"Increases the max PP for one of one Pokemon's moves by 20% its original PP, up to three times.  Raises that Pokemon's Happiness by 5/3/2.",0,0,0,0,0
-52,Zinc,26,9800,30,,A nutritious drink for Pokémon. It raises the base Sp. Def (Special Defense) stat of a single Pokémon.,"Increases one Pokemon's Special Defense effort by 10, to a maximum of 100.  Raises that Pokemon's Happiness by 5/3/2.",0,0,0,0,0
-53,PP Max,26,9800,30,,It maximally raises the top PP of a selected move that has been learned by the target Pokémon.,Increases the max PP for one of one Pokemon's moves to its original PP plus 60%.  Raises that Pokemon's Happiness by 5/3/2.,0,0,0,0,0
-54,Old Gateau,30,200,30,,Old Chateau's hidden specialty. It heals all the status problems of a single Pokémon.,Cures one Pokemon of any major status ailment.,0,0,0,0,0
-55,Guard Spec.,1,700,30,,An item that prevents stat reduction among the Trainer's party Pokémon for five turns after use.,In battle: Prevents one Pokemon's stats from being lowered for the next five turns.  Raises that Pokemon's Happiness by 1/1/0.,0,0,1,0,0
-56,Dire Hit,1,650,30,,An item that raises the critical-hit ratio of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokemon's critical hit counter by 1.  Raises that Pokemon's Happiness by 1/1/0.,0,0,1,0,0
-57,X Attack,1,500,30,,An item that raises the Attack stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokemon's Attack.  Raises that Pokemon's Happiness by 1/1/0.,0,0,1,0,0
-58,X Defend,1,550,30,,An item that raises the Defense stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokemon's Defense.  Raises that Pokemon's Happiness by 1/1/0.,0,0,1,0,0
-59,X Speed,1,350,30,,An item that raises the Speed stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokemon's Speed.  Raises that Pokemon's Happiness by 1/1/0.,0,0,1,0,0
-60,X Accuracy,1,950,30,,An item that raises the accuracy of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokemon's Accuracy.  Raises that Pokemon's Happiness by 1/1/0.,0,0,1,0,0
-61,X Special,1,350,30,,An item that raises the Sp. Atk stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokemon's Special Attack.  Raises that Pokemon's Happiness by 1/1/0.,0,0,1,0,0
-62,X Sp. Def,1,350,30,,An item that raises the Sp. Def stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokemon's Special Defense.  Raises that Pokemon's Happiness by 1/1/0.,0,0,1,0,0
-63,Poke Doll,31,1000,30,,A doll that attracts Pokémon. Use it to flee from any battle with a wild Pokémon.,In wild battles: Ends the battle.,0,0,0,0,0
+1,Master Ball,34,0,,,The best Ball with the ultimate level of performance. It will catch any wild Pokémon without fail.,In battle: Captures one Pokémon without fail.  Has a capture rate of 255.,0,0,1,0,0
+2,Ultra Ball,34,1200,,,An ultra-performance Ball that provides a higher Pokémon catch rate than a Great Ball.,In battle: Attempts to capture one Pokémon.  Has a capture rate of 2.,0,0,1,0,0
+3,Great Ball,34,600,,,"A good, high-performance Ball that provides a higher Pokémon catch rate than a standard Poké Ball.",In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.5.,0,0,1,0,0
+4,Poké Ball,34,200,,,A device for catching wild Pokémon. It is thrown like a ball at the target. It is designed as a capsule system.,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.,0,0,1,0,0
+5,Safari Ball,34,0,,,A special Poké Ball that is used only in the Great Marsh. It is decorated in a camouflage pattern.,In a Great Marsh encounter: Attempts to capture one Pokémon.  Has a capture rate of 1.5.,0,0,0,0,0
+6,Net Ball,33,1000,,,A somewhat different Poké Ball that works especially well on Water- and Bug-type Pokémon.,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 3 against Water or Bug Pokémon, but 1 against any others.",0,0,1,0,0
+7,Dive Ball,33,1000,,,A somewhat different Poké Ball that works especially well on Pokémon that live in the sea.,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 3.5 if the trainer is underwater, but 1 otherwise.",0,0,1,0,0
+8,Nest Ball,33,1000,,,A somewhat different Poké Ball that works especially well on weaker Pokémon in the wild.,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 3 if the Pokémon is level 19 or below, 2 if the Pokémon is levels 20 through 29, and 1 otherwise.",0,0,1,0,0
+9,Repeat Ball,33,1000,,,A somewhat different Poké Ball that works especially well on Pokémon species that were previously caught.,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 3 against Pokémon marked as caught in the trainer's Pokédex, but 1 otherwise.",0,0,1,0,0
+10,Timer Ball,33,1000,,,A somewhat different Ball that becomes progressively better the more turns there are in a battle.,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 1, but increases by 1 after every tenth turn, to a maximum of 4.",0,0,1,0,0
+11,Luxury Ball,33,1000,,,A comfortable Poké Ball that makes a caught wild Pokémon quickly grow friendly.,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.  Increases the rate at which the contained Pokémon gains Happiness.,0,0,1,0,0
+12,Premier Ball,33,200,,,A somewhat rare Poké Ball that has been specially made to commemorate an event of some sort.,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.,0,0,1,0,0
+13,Dusk Ball,33,1000,,,A somewhat different Poké Ball that makes it easier to catch wild Pokémon at night or in dark places like caves.,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 4 in caves or at night, but 1 otherwise.",0,0,1,0,0
+14,Heal Ball,33,300,,,A remedial Poké Ball that restores the caught Pokémon's HP and eliminates any status problem.,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.  Captured Pokémon have their HP fully restored and any major status ailments cured.,0,0,1,0,0
+15,Quick Ball,33,1000,,,A somewhat different Poké Ball that provides a better catch rate if it is used at the start of a wild encounter.,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 4, but decreases by 1 after every fifth turn, to a minimum of 1.",0,0,1,0,0
+16,Cherish Ball,33,200,,,A quite rare Poké Ball that has been specially crafted to commemorate an occasion of some sort.,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.,0,0,1,0,0
+17,Potion,27,300,30,,A spray-type medicine for wounds. It restores the HP of one Pokémon by just 20 points.,Heals one Pokémon for 20 HP.,0,0,0,0,0
+18,Antidote,30,100,30,,A spray-type medicine. It lifts the effect of poison from one Pokémon.,Cures one Pokémon of Poison.,0,0,0,0,0
+19,Burn Heal,30,250,30,,A spray-type medicine. It heals a single Pokémon that is suffering from a burn.,Cures one Pokémon of a Burn.,0,0,0,0,0
+20,Ice Heal,30,250,30,,A spray-type medicine. It defrosts a Pokémon that has been frozen solid.,Thaws one Pokémon.,0,0,0,0,0
+21,Awakening,30,250,30,,A spray-type medicine. It awakens a Pokémon from the clutches of sleep.,Awakens one Pokémon.,0,0,0,0,0
+22,Parlyz Heal,30,200,30,,A spray-type medicine. It eliminates paralysis from a single Pokémon.,Cures one Pokémon of Paralysis.,0,0,0,0,0
+23,Full Restore,27,3000,30,,A medicine that fully restores the HP and heals any status problems of a single Pokémon.,Fully heals one Pokémon and cures it of any major status ailment.,0,0,0,0,0
+24,Max Potion,27,2500,30,,A spray-type medicine for wounds. It completely restores the HP of a single Pokémon.,Fully heals one Pokémon.,0,0,0,0,0
+25,Hyper Potion,27,1200,30,,A spray-type medicine for wounds. It restores the HP of one Pokémon by 200 points.,Heals one Pokémon for 200 HP.,0,0,0,0,0
+26,Super Potion,27,700,30,,A spray-type medicine for wounds. It restores the HP of one Pokémon by 50 points.,Heals one Pokémon for 50 HP.,0,0,0,0,0
+27,Full Heal,30,600,30,,A spray-type medicine. It heals all the status problems of a single Pokémon.,Cures one Pokémon of any major status ailment.,0,0,0,0,0
+28,Revive,29,1500,30,,A medicine that revives a fainted Pokémon. It restores half the Pokémon's maximum HP.,Revives a Fainted Pokémon and restores half its max HP.,1,0,0,0,0
+29,Max Revive,29,4000,30,,A medicine that revives a fainted Pokémon. It fully restores the Pokémon's HP.,Revives a Fainted Pokémon and fully restores its HP.,1,0,0,0,0
+30,Fresh Water,27,200,30,,Water with a high mineral content. It restores the HP of one Pokémon by 50 points.,Heals one Pokémon for 50 HP.,0,0,0,0,0
+31,Soda Pop,27,300,30,,A fizzy soda drink. It restores the HP of one Pokémon by 60 points.,Heals one Pokémon for 60 HP.,0,0,0,0,0
+32,Lemonade,27,350,30,,A very sweet drink. It restores the HP of one Pokémon by 80 points.,Heals one Pokémon for 80 HP.,0,0,0,0,0
+33,Moomoo Milk,27,500,30,,Milk with a very high nutrition content. It restores the HP of one Pokémon by 100 points.,Heals one Pokémon for 100 HP.,0,0,0,0,0
+34,EnergyPowder,27,500,30,,A very bitter medicine powder. It restores the HP of one Pokémon by 50 points.,Heals one Pokémon for 50 HP.  Lowers that Pokémon's Happiness by 5/5/10.,0,0,0,0,0
+35,Energy Root,27,800,30,,A very bitter root. It restores the HP of one Pokémon by 200 points.,Heals one Pokémon for 200 HP.  Lowers that Pokémon's Happiness by 10/10/15.,0,0,0,0,0
+36,Heal Powder,30,450,30,,A very bitter medicine powder. It heals all the status problems of a single Pokémon.,Cures one Pokémon of any major status ailment.  Lowers that Pokémon's Happiness by 5/5/10.,0,0,0,0,0
+37,Revival Herb,29,2800,30,,"A very bitter medicinal herb. It revives a fainted Pokémon, fully restoring its HP.",Revives a Fainted Pokémon and fully restores its HP.  Lowers that Pokémon's Happiness by 10/10/15.,0,0,0,0,0
+38,Ether,28,1200,30,,It restores the PP of a Pokémon's selected move by a maximum of 10 points.,Restores the PP for one Pokémon's selected move by 10.,0,0,0,0,0
+39,Max Ether,28,2000,30,,It fully restores the PP of a single selected move that has been learned by the target Pokémon.,Fully restores the PP for one Pokémon's selected move.,0,0,0,0,0
+40,Elixir,28,3000,30,,It restores the PP of all the moves learned by the targeted Pokémon by 10 points each.,Restores the PP for each of one Pokémon's moves by 10.,0,0,0,0,0
+41,Max Elixir,28,4500,30,,It fully restores the PP of all the moves learned by the targeted Pokémon.,Fully restores the PP for each of one Pokémon's moves.,0,0,0,0,0
+42,Lava Cookie,30,200,30,,Lavaridge Town's local specialty. It heals all the status problems of one Pokémon.,Cures one Pokémon of any major status ailment.,0,0,0,0,0
+43,Berry Juice,27,100,30,,A 100% pure juice made of Berries. It restores the HP of one Pokémon by just 20 points.,Heals one Pokémon for 20 HP.,0,0,0,0,0
+44,Sacred Ash,29,200,30,,"It revives all fainted Pokémon. In doing so, it also fully restores their HP.",Revives all Fainted Pokémon in the trainer's party and fully restores their HP.,0,0,0,0,0
+45,HP Up,26,9800,30,,A nutritious drink for Pokémon. It raises the base HP of a single Pokémon.,"Increases one Pokémon's HP effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2.",0,0,0,0,0
+46,Protein,26,9800,30,,A nutritious drink for Pokémon. It raises the base Attack stat of a single Pokémon.,"Increases one Pokémon's Attack effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2.",0,0,0,0,0
+47,Iron,26,9800,30,,A nutritious drink for Pokémon. It raises the base Defense stat of a single Pokémon.,"Increases one Pokémon's Defense effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2.",0,0,0,0,0
+48,Carbos,26,9800,30,,A nutritious drink for Pokémon. It raises the base Speed stat of a single Pokémon.,"Increases one Pokémon's Speed effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2.",0,0,0,0,0
+49,Calcium,26,9800,30,,A nutritious drink for Pokémon. It raises the base Sp. Atk (Special Attack) stat of a single Pokémon.,"Increases one Pokémon's Special Attack effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2.",0,0,0,0,0
+50,Rare Candy,26,4800,30,,A candy that is packed with energy. It raises the level of a single Pokémon by one.,Levels up one Pokémon.  Raises that Pokémon's Happiness by 5/3/2.,0,0,0,0,0
+51,PP Up,26,9800,30,,It slightly raises the maximum PP of a selected move that has been learned by the target Pokémon.,"Increases the max PP for one of one Pokémon's moves by 20% its original PP, up to three times.  Raises that Pokémon's Happiness by 5/3/2.",0,0,0,0,0
+52,Zinc,26,9800,30,,A nutritious drink for Pokémon. It raises the base Sp. Def (Special Defense) stat of a single Pokémon.,"Increases one Pokémon's Special Defense effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2.",0,0,0,0,0
+53,PP Max,26,9800,30,,It maximally raises the top PP of a selected move that has been learned by the target Pokémon.,Increases the max PP for one of one Pokémon's moves to its original PP plus 60%.  Raises that Pokémon's Happiness by 5/3/2.,0,0,0,0,0
+54,Old Gateau,30,200,30,,Old Chateau's hidden specialty. It heals all the status problems of a single Pokémon.,Cures one Pokémon of any major status ailment.,0,0,0,0,0
+55,Guard Spec.,1,700,30,,An item that prevents stat reduction among the Trainer's party Pokémon for five turns after use.,In battle: Prevents one Pokémon's stats from being lowered for the next five turns.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
+56,Dire Hit,1,650,30,,An item that raises the critical-hit ratio of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's critical hit counter by 1.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
+57,X Attack,1,500,30,,An item that raises the Attack stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's Attack.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
+58,X Defend,1,550,30,,An item that raises the Defense stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's Defense.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
+59,X Speed,1,350,30,,An item that raises the Speed stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's Speed.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
+60,X Accuracy,1,950,30,,An item that raises the accuracy of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's Accuracy.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
+61,X Special,1,350,30,,An item that raises the Sp. Atk stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's Special Attack.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
+62,X Sp. Def,1,350,30,,An item that raises the Sp. Def stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.,In battle: Raises one Pokémon's Special Defense.  Raises that Pokémon's Happiness by 1/1/0.,0,0,1,0,0
+63,Poké Doll,31,1000,30,,A doll that attracts Pokémon. Use it to flee from any battle with a wild Pokémon.,In wild battles: Ends the battle.,0,0,0,0,0
 64,Fluffy Tail,31,1000,30,,An item that attracts Pokémon. Use it to flee from any battle with a wild Pokémon.,In wild battles: Ends the battle.,0,0,0,0,0
-65,Blue Flute,30,100,30,,A blue flute made from blown glass. Its melody awakens a single Pokémon from sleep.,Awakens one Pokemon.  Reusable.,0,0,0,0,0
-66,Yellow Flute,30,200,30,,A yellow flute made from blown glass. Its melody snaps a single Pokémon out of confusion.,Cures one Pokemon of Confusion.  Reusable.,0,0,0,0,0
-67,Red Flute,30,300,30,,A red flute made from blown glass. Its melody snaps a single Pokémon out of infatuation.,Cures one Pokemon of Attraction.  Reusable.,0,0,0,0,0
+65,Blue Flute,30,100,30,,A blue flute made from blown glass. Its melody awakens a single Pokémon from sleep.,Awakens one Pokémon.  Reusable.,0,0,0,0,0
+66,Yellow Flute,30,200,30,,A yellow flute made from blown glass. Its melody snaps a single Pokémon out of confusion.,Cures one Pokémon of Confusion.  Reusable.,0,0,0,0,0
+67,Red Flute,30,300,30,,A red flute made from blown glass. Its melody snaps a single Pokémon out of infatuation.,Cures one Pokémon of Attraction.  Reusable.,0,0,0,0,0
 68,Black Flute,11,400,30,,A black flute made from blown glass. Its melody makes wild Pokémon less likely to appear.,Makes wild encounters less frequent.  Reusable.,0,0,0,0,0
 69,White Flute,11,500,30,,A white flute made from blown glass. Its melody makes wild Pokémon more likely to appear.,Makes wild encounters more frequent.  Reusable.,0,0,0,0,0
 70,Shoal Salt,9,20,30,,Pure salt that was discovered deep inside the Shoal Cave. It is extremely salty.,No effect.,0,0,0,0,0
@@ -74,10 +74,10 @@ id,name,category_id,cost,fling_power,fling_effect_id,flavor_text,effect,is_under
 73,Blue Shard,9,200,30,,A small blue shard. It appears to be from some sort of implement made long ago.,Trade 10 for a Rain Dance TM in the house midway along the southern section of Route 212.,1,0,0,0,0
 74,Yellow Shard,9,200,30,,A small yellow shard. It appears to be from some sort of implement made long ago.,Trade 10 for a Sandstorm TM in the house midway along the southern section of Route 212.,1,0,0,0,0
 75,Green Shard,9,200,30,,A small green shard. It appears to be from some sort of implement made long ago.,Trade 10 for a Hail TM in the house midway along the southern section of Route 212.,1,0,0,0,0
-76,Super Repel,11,500,30,,An item that prevents weak wild Pokémon from appearing for 200 steps after its use.,Prevents wild battles with Pokemon that are lower level than the trainer's lead Pokemon for 200 steps.,0,0,0,0,0
-77,Max Repel,11,700,30,,An item that prevents weak wild Pokémon from appearing for 250 steps after its use.,Prevents wild battles with Pokemon that are lower level than the trainer's lead Pokemon for 250 steps.,0,0,0,0,0
+76,Super Repel,11,500,30,,An item that prevents weak wild Pokémon from appearing for 200 steps after its use.,Prevents wild battles with Pokémon that are lower level than the trainer's lead Pokémon for 200 steps.,0,0,0,0,0
+77,Max Repel,11,700,30,,An item that prevents weak wild Pokémon from appearing for 250 steps after its use.,Prevents wild battles with Pokémon that are lower level than the trainer's lead Pokémon for 250 steps.,0,0,0,0,0
 78,Escape Rope,11,550,30,,"A long, durable rope. Use it to escape instantly from a cave or a dungeon.",Transports the trainer to the entrance of the cave s/he is in.  Only usable in caves.,0,0,0,0,0
-79,Repel,11,350,30,,An item that prevents weak wild Pokémon from appearing for 100 steps after its use.,Prevents wild battles with Pokemon that are lower level than the trainer's lead Pokemon for 100 steps.,0,0,0,0,0
+79,Repel,11,350,30,,An item that prevents weak wild Pokémon from appearing for 100 steps after its use.,Prevents wild battles with Pokémon that are lower level than the trainer's lead Pokémon for 100 steps.,0,0,0,0,0
 80,Sun Stone,10,2100,30,,A peculiar stone that makes certain species of Pokémon evolve. It is as red as the sun.,Evolves a Gloom into Bellossom or a Sunkern into Sunflora.,1,0,0,0,0
 81,Moon Stone,10,2100,30,,A peculiar stone that makes certain species of Pokémon evolve. It is as black as the night sky.,"Evolves a Clefairy into Clefable, Jigglypuff into Wigglytuff, Nidorina into Nidoqueen, Nidorino into Nidoking, or Skitty into Delcatty.",1,0,0,0,0
 82,Fire Stone,10,2100,30,,A peculiar stone that makes certain species of Pokémon evolve. It is colored orange.,"Evolves an Eevee into Flareon, a Growlithe into Arcanine, or a Vulpix into Ninetales.",1,0,0,0,0
@@ -91,8 +91,8 @@ id,name,category_id,cost,fling_power,fling_effect_id,flavor_text,effect,is_under
 90,Stardust,24,2000,30,,"Lovely, red-colored sand with a loose, silky feel. It can be sold at a high price to shops.",No effect.,0,0,0,0,0
 91,Star Piece,24,9800,30,,A shard of a pretty gem that sparkles in a red color. It can be sold at a high price to shops.,No effect.,1,0,0,0,0
 92,Nugget,24,10000,30,,A nugget of pure gold that gives off a lustrous gleam. It can be sold at a high price to shops.,No effect.,0,0,0,0,0
-93,Heart Scale,9,100,30,,"A pretty, heart-shaped scale that is extremely rare. It glows faintly in the colors of the rainbow.",Trade one to the Move Relearner in Pastoria City to teach one Pokemon a prior level-up move.,1,0,0,0,0
-94,Honey,35,100,30,,"A sweet honey with a lush aroma that attracts wild Pokémon when it is used in grass, caves, or on special trees.",Immediately starts a wild battle if the trainer is standing in grass or in a cave.  Can be smeared on sweet-smelling trees to attract tree-dwelling Pokemon after ten hours.,0,0,0,0,0
+93,Heart Scale,9,100,30,,"A pretty, heart-shaped scale that is extremely rare. It glows faintly in the colors of the rainbow.",Trade one to the Move Relearner in Pastoria City to teach one Pokémon a prior level-up move.,1,0,0,0,0
+94,Honey,35,100,30,,"A sweet honey with a lush aroma that attracts wild Pokémon when it is used in grass, caves, or on special trees.",Immediately starts a wild battle if the trainer is standing in grass or in a cave.  Can be smeared on sweet-smelling trees to attract tree-dwelling Pokémon after ten hours.,0,0,0,0,0
 95,Growth Mulch,32,200,30,,"A plant fertilizer spread on soft soil. It speeds up the growth of Berries. However, it also dries the soil faster.",Spread over a planted Berry: Decreases growth time by 25% and speeds up the soil's drying.,0,0,0,0,0
 96,Damp Mulch,32,200,30,,A plant fertilizer spread on soft soil. It slows the growth of Berries and causes the soil to dry slower.,Spread over a planted Berry: Increases growth time and slows the soil's drying.,0,0,0,0,0
 97,Stable Mulch,32,200,30,,A plant fertilizer spread on soft soil. It extends the time ripened Berries remain on their plants before falling.,Spread over a planted Berry: Increases the time the grown plant's Berries will stay attached.,0,0,0,0,0
@@ -112,18 +112,18 @@ id,name,category_id,cost,fling_power,fling_effect_id,flavor_text,effect,is_under
 111,Odd Keystone,35,2100,80,,A vital item that is needed to keep a stone tower from collapsing. Voices can be heard from it occasionally.,"Place in the Hallowed Tower, and a Spiritomb will be summoned if the trainer's Underground status card counts at least 32 greetings.",1,0,0,0,0
 112,Adamant Orb,18,10000,60,,A brightly gleaming orb to be held by DIALGA. It boosts the power of Dragon- and Steel-type moves.,Held by a Dialga: Increases the damage of the holder's Dragon and Steel moves by 20%.,0,1,0,0,0
 113,Lustrous Orb,18,10000,60,,A beautifully glowing orb to be held by PALKIA. It boosts the power of Dragon- and Water-type moves.,Held by a Palkia: Increases the damage of the holder's Dragon and Water moves by 20%.,0,1,0,0,0
-114,Grass Mail,25,50,,,Stationery featuring a print of a refreshingly green field. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-115,Flame Mail,25,50,,,Stationery featuring a print of flames in blazing red. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-116,Bubble Mail,25,50,,,Stationery featuring a print of a blue world underwater. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-117,Bloom Mail,25,50,,,Stationery featuring a print of pretty floral patterns. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-118,Tunnel Mail,25,50,,,Stationery featuring a print of a dimly lit coal mine. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-119,Steel Mail,25,50,,,Stationery featuring a print of cool mechanical designs. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-120,Heart Mail,25,50,,,Stationery featuring a print of giant heart patterns. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-121,Snow Mail,25,50,,,"Stationery featuring a print of a chilly, snow-covered world. Let a Pokémon hold it for delivery.",Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-122,Space Mail,25,50,,,Stationery featuring a print depicting the huge expanse of space. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-123,Air Mail,25,50,,,Stationery featuring a print of colorful letter sets. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-124,Mosaic Mail,25,50,,,Stationery featuring a print of a vivid rainbow pattern. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
-125,Brick Mail,25,50,,,Stationery featuring a print of a tough-looking brick pattern. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokemon trading.,0,0,0,0,0
+114,Grass Mail,25,50,,,Stationery featuring a print of a refreshingly green field. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+115,Flame Mail,25,50,,,Stationery featuring a print of flames in blazing red. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+116,Bubble Mail,25,50,,,Stationery featuring a print of a blue world underwater. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+117,Bloom Mail,25,50,,,Stationery featuring a print of pretty floral patterns. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+118,Tunnel Mail,25,50,,,Stationery featuring a print of a dimly lit coal mine. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+119,Steel Mail,25,50,,,Stationery featuring a print of cool mechanical designs. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+120,Heart Mail,25,50,,,Stationery featuring a print of giant heart patterns. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+121,Snow Mail,25,50,,,"Stationery featuring a print of a chilly, snow-covered world. Let a Pokémon hold it for delivery.",Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+122,Space Mail,25,50,,,Stationery featuring a print depicting the huge expanse of space. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+123,Air Mail,25,50,,,Stationery featuring a print of colorful letter sets. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+124,Mosaic Mail,25,50,,,Stationery featuring a print of a vivid rainbow pattern. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
+125,Brick Mail,25,50,,,Stationery featuring a print of a tough-looking brick pattern. Let a Pokémon hold it for delivery.,Used to send short messages to other players via Pokémon trading.,0,0,0,0,0
 126,Cheri Berry,3,20,10,3,A Poffin ingredient. It may be used or held by a Pokémon to recover from paralysis.,"Held: When the holder becomes Paralyzed, this Berry is consumed and cures the Paralysis.",0,0,0,1,0
 127,Chesto Berry,3,20,10,3,A Poffin ingredient. It may be used or held by a Pokémon to recover from sleep.,"Held: When the holder falls asleep, this Berry is consumed and awakens the holder.",0,0,0,1,0
 128,Pecha Berry,3,20,10,3,A Poffin ingredient. It may be used or held by a Pokémon to recover from poison.,"Held: When the holder becomes Poisoned, this Berry is consumed and cures the Poison.",0,0,0,1,0
@@ -144,12 +144,12 @@ id,name,category_id,cost,fling_power,fling_effect_id,flavor_text,effect,is_under
 143,Nanab Berry,8,20,10,,A Poffin ingredient. Bury it in soft soil to grow a Nanab Plant.,No effect; only useful for planting and cooking.,0,0,0,0,0
 144,Wepear Berry,8,20,10,,A Poffin ingredient. Bury it in soft soil to grow a Wepear Plant.,No effect; only useful for planting and cooking.,0,0,0,0,0
 145,Pinap Berry,8,20,10,,A Poffin ingredient. Bury it in soft soil to grow a Pinap Plant.,No effect; only useful for planting and cooking.,0,0,0,0,0
-146,Pomeg Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base HP.",Raises one Pokemon's Happiness by 10/5/2.  Lowers that Pokemon's HP effort by 10.,0,0,0,0,0
-147,Kelpsy Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Attack stat.",Raises one Pokemon's Happiness by 10/5/2.  Lowers that Pokemon's Attack effort by 10.,0,0,0,0,0
-148,Qualot Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Defense stat.",Raises one Pokemon's Happiness by 10/5/2.  Lowers that Pokemon's Defense effort by 10.,0,0,0,0,0
-149,Hondew Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Atk stat.",Raises one Pokemon's Happiness by 10/5/2.  Lowers that Pokemon's Special Attack effort by 10.,0,0,0,0,0
-150,Grepa Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Def stat.",Raises one Pokemon's Happiness by 10/5/2.  Lowers that Pokemon's Special Defense effort by 10.,0,0,0,0,0
-151,Tamato Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Speed stat.",Raises one Pokemon's Happiness by 10/5/2.  Lowers that Pokemon's Speed effort by 10.,0,0,0,0,0
+146,Pomeg Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base HP.",Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's HP effort by 10.,0,0,0,0,0
+147,Kelpsy Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Attack stat.",Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Attack effort by 10.,0,0,0,0,0
+148,Qualot Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Defense stat.",Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Defense effort by 10.,0,0,0,0,0
+149,Hondew Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Atk stat.",Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Special Attack effort by 10.,0,0,0,0,0
+150,Grepa Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Sp. Def stat.",Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Special Defense effort by 10.,0,0,0,0,0
+151,Tamato Berry,2,20,10,,"A Poffin ingredient. Using it on a Pokémon makes it more friendly, but it also lowers its base Speed stat.",Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Speed effort by 10.,0,0,0,0,0
 152,Cornn Berry,8,20,10,,A Poffin ingredient. Bury it in soft soil to grow a Cornn Plant.,No effect; only useful for planting and cooking.,0,0,0,0,0
 153,Magost Berry,8,20,10,,A Poffin ingredient. Bury it in soft soil to grow a Magost Plant.,No effect; only useful for planting and cooking.,0,0,0,0,0
 154,Rabuta Berry,8,20,10,,A Poffin ingredient. Bury it in soft soil to grow a Rabuta Plant.,No effect; only useful for planting and cooking.,0,0,0,0,0
@@ -186,8 +186,8 @@ id,name,category_id,cost,fling_power,fling_effect_id,flavor_text,effect,is_under
 185,Enigma Berry,4,20,10,,"A Poffin ingredient. If held by a Pokémon, it restores its HP if it is hit by a foe's supereffective attack.","Held: When the holder is hit by a super-effective move, this Berry is consumed and heals the holder for 1/4 its max HP.",0,0,0,1,0
 186,Micle Berry,5,20,10,3,"A Poffin ingredient. If held by a Pokémon, it raises the accuracy of a move just once in a pinch.","Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the accuracy of the holder's next used move.",0,0,0,1,0
 187,Custap Berry,5,20,10,,"A Poffin ingredient. If held by a Pokémon, it gets to move first just once in a pinch.","Held: When the holder's HP falls to 1/4 or less, this Berry is consumed.  On the next turn, the holder will move first within its move's priority bracket, regardless of Speed.",0,0,0,1,0
-188,Jaboca Berry,4,20,10,,"A Poffin ingredient. If held by a Pokémon, and if a foe's physical attack lands, the foe also takes damage.","Held: When the holder is hit by a physical attack and survives, this Berry is consumed, and the opposing Pokemon takes 1/8 its max HP in damage.",0,0,0,1,0
-189,Rowap Berry,4,20,10,,"A Poffin ingredient. If held by a Pokémon, and if a foe's special attack lands, the foe also takes damage.","Held: When the holder is hit by a special attack and survives, this Berry is consumed, and the opposing Pokemon takes 1/8 its max HP in damage.",0,0,0,1,0
+188,Jaboca Berry,4,20,10,,"A Poffin ingredient. If held by a Pokémon, and if a foe's physical attack lands, the foe also takes damage.","Held: When the holder is hit by a physical attack and survives, this Berry is consumed, and the opposing Pokémon takes 1/8 its max HP in damage.",0,0,0,1,0
+189,Rowap Berry,4,20,10,,"A Poffin ingredient. If held by a Pokémon, and if a foe's special attack lands, the foe also takes damage.","Held: When the holder is hit by a special attack and survives, this Berry is consumed, and the opposing Pokémon takes 1/8 its max HP in damage.",0,0,0,1,0
 190,BrightPowder,12,10,10,,An item to be held by a Pokémon. It casts a tricky glare that lowers the opponent's accuracy.,"Held: Raises the holder's Evasion 10% (added, not multiplied).",0,1,0,1,0
 191,White Herb,12,100,10,4,An item to be held by a Pokémon. It restores any lowered stat in battle. It can be used only once.,"Held: After each move, if any of the holder's stats are below normal, this item is consumed and restores them to normal.",0,1,0,1,0
 192,Macho Brace,14,3000,60,,An item to be held by a Pokémon. It is a stiff and heavy brace that promotes strong growth but lowers Speed.,Held: Doubles the effort the holder earns.  Halves the holder's Speed.,0,1,0,1,0
@@ -201,7 +201,7 @@ id,name,category_id,cost,fling_power,fling_effect_id,flavor_text,effect,is_under
 Held by Poliwhirl or Slowbro: Evolves the holder into Politoed or Slowking when traded, respectively.",0,1,0,1,0
 199,SilverPowder,19,100,10,,"An item to be held by a Pokémon. It is a shiny, silver powder that ups the power of Bug-type moves.",Held: Increases the power of the holder's Bug moves by 20%.,0,1,0,1,0
 200,Amulet Coin,16,100,30,,An item to be held by a Pokémon. It doubles a battle's prize money if the holding Pokémon joins in.,Held: Doubles the money the trainer receives after an in-game trainer battle.  This effect cannot apply more than once to the same battle.,0,1,0,1,0
-201,Cleanse Tag,16,200,30,,An item to be held by a Pokémon. It helps keep wild Pokémon away if the holder is the first one in the party.,Held by lead Pokemon: Prevents wild battles with Pokemon that are lower level than the holder.,0,1,0,0,0
+201,Cleanse Tag,16,200,30,,An item to be held by a Pokémon. It helps keep wild Pokémon away if the holder is the first one in the party.,Held by lead Pokémon: Prevents wild battles with Pokémon that are lower level than the holder.,0,1,0,0,0
 202,Soul Dew,18,200,30,,A wondrous orb to be held by LATIOS or LATIAS. It raises both the Sp. Atk and Sp. Def stats.,Held by Latias or Latios: Increases the holder's Special Attack and Special Defense by 50%.,0,1,0,0,0
 203,DeepSeaTooth,18,200,90,,"An item to be held by CLAMPERL. A fang that gleams a sharp silver, it raises the Sp. Atk stat.",Held by Clamperl: Doubles the holder's Special Attack.  Evolves the holder into Huntail when traded.,0,1,0,0,0
 204,DeepSeaScale,18,200,30,,"An item to be held by CLAMPERL. A scale that shines a faint pink, it raises the Sp. Def stat.",Held by Clamperl: Doubles the holder's Special Defense.  Evolves the holder into Gorebyss when traded.,0,1,0,0,0
@@ -258,8 +258,8 @@ Held by Onix or Scyther: Evolves the holder into Steelix or Scizor when traded, 
 Ingame description is incorrect.",0,1,0,1,0
 254,Metronome,12,200,30,,A Pokémon hold item that boosts a move used consecutively. Its effect is reset if another move is used.,"Held: Each time the holder uses the same move consecutively, its power is increased by another 10% of its original, to a maximum of 100%.",0,1,0,1,0
 255,Iron Ball,15,200,130,,A Pokémon hold item that cuts Speed. It makes Flying-type and levitating holders susceptible to Ground moves.,"Held: Decreases the holder's Speed by 50%.  If the holder is Flying or has Levitate, it takes regular damage from Ground attacks and is suspectible to Spikes and Toxic Spikes.",0,1,0,1,0
-256,Lagging Tail,15,200,10,,An item to be held by a Pokémon. It is tremendously heavy and makes the holder move slower than usual.,"Held: The holder will go last within its move's priority bracket, regardless of Speed.  If multiple Pokemon within the same priority bracket are subject to this effect, the slower Pokemon will go first.  The holder will move after Pokemon with Stall.  If the holder has Stall, Stall is ignored.  This item ignores Trick Room.",0,1,0,1,0
-257,Destiny Knot,12,200,10,,"A long, thin, bright red string to be held by a Pokémon. If the holder becomes infatuated, the foe does too.","Held: When the holder becomes Attracted, the Pokemon it is Attracted to becomes Attracted back.",0,1,0,1,0
+256,Lagging Tail,15,200,10,,An item to be held by a Pokémon. It is tremendously heavy and makes the holder move slower than usual.,"Held: The holder will go last within its move's priority bracket, regardless of Speed.  If multiple Pokémon within the same priority bracket are subject to this effect, the slower Pokémon will go first.  The holder will move after Pokémon with Stall.  If the holder has Stall, Stall is ignored.  This item ignores Trick Room.",0,1,0,1,0
+257,Destiny Knot,12,200,10,,"A long, thin, bright red string to be held by a Pokémon. If the holder becomes infatuated, the foe does too.","Held: When the holder becomes Attracted, the Pokémon it is Attracted to becomes Attracted back.",0,1,0,1,0
 258,Black Sludge,12,200,30,,A hold item that gradually restores the HP of Poison-type Pokémon. It inflicts damage on all other types.,"Held: If the holder is Poison-type, restores 1/16 max HP at the end of each turn.  Otherwise, damages the holder by 1/16 its max HP at the end of each turn.",0,1,0,1,0
 259,Icy Rock,12,200,40,,A Pokémon hold item that extends the duration of the move Hail used by the holder.,"Held: The holder's Hail will create a hailstorm lasting for eight turns rather than five.  As this item affects the move rather than the weather itself, the effect is not lost if the holder leaves battle or drops this item.",1,1,0,1,0
 260,Smooth Rock,12,200,10,,A Pokémon hold item that extends the duration of the move Sandstorm used by the holder.,"Held: The holder's Sandstorm will create a sandstorm lasting for eight turns rather than five.  As this item affects the move rather than the weather itself, the effect is not lost if the holder leaves battle or drops this item.",1,1,0,1,0
@@ -269,55 +269,55 @@ Ingame description is incorrect.",0,1,0,1,0
 264,Choice Scarf,13,200,10,,"An item to be held by a Pokémon. This scarf boosts Speed, but allows the use of only one kind of move.","Held: Increases the holder's Speed by 50%, but restricts it to the first move it uses until it leaves battle or loses this item.  If this item is swapped for another Choice item via Trick or Switcheroo, the holder's restriction is still lifted, but it will again be restricted to the next move it uses.
 (Quirk: If the holder is switched in by U-Turn and it also knows U-Turn, U-Turn becomes its restricted move.)",0,1,0,1,0
 265,Sticky Barb,15,200,80,,A hold item that damages the holder on every turn. It may latch on to foes that touch the holder.,"Held: Damaged the holder for 1/8 its max HP.  When the holder is struck by a contact move, damages the attacker for 1/8 its max HP; if the attacker is not holding an item, it will take this item.",0,1,0,1,0
-266,Power Bracer,14,3000,70,,"A Pokémon hold item that promotes Attack gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Attack effort from battle, increases that effort by 4; this applies before the PokeRUS doubling effect.",0,1,0,1,0
-267,Power Belt,14,3000,70,,"A Pokémon hold item that promotes Defense gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Defense effort from battle, increases that effort by 4; this applies before the PokeRUS doubling effect.",0,1,0,1,0
-268,Power Lens,14,3000,70,,"A Pokémon hold item that promotes Sp. Atk gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Special Attack effort from battle, increases that effort by 4; this applies before the PokeRUS doubling effect.",0,1,0,1,0
-269,Power Band,14,3000,70,,"A Pokémon hold item that promotes Sp. Def gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Special Defense effort from battle, increases that effort by 4; this applies before the PokeRUS doubling effect.",0,1,0,1,0
-270,Power Anklet,14,3000,70,,"A Pokémon hold item that promotes Speed gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Speed effort from battle, increases that effort by 4; this applies before the PokeRUS doubling effect.",0,1,0,1,0
-271,Power Weight,14,3000,70,,"A Pokémon hold item that promotes HP gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains HP effort from battle, increases that effort by 4; this applies before the PokeRUS doubling effect.",0,1,0,1,0
+266,Power Bracer,14,3000,70,,"A Pokémon hold item that promotes Attack gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Attack effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect.",0,1,0,1,0
+267,Power Belt,14,3000,70,,"A Pokémon hold item that promotes Defense gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Defense effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect.",0,1,0,1,0
+268,Power Lens,14,3000,70,,"A Pokémon hold item that promotes Sp. Atk gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Special Attack effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect.",0,1,0,1,0
+269,Power Band,14,3000,70,,"A Pokémon hold item that promotes Sp. Def gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Special Defense effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect.",0,1,0,1,0
+270,Power Anklet,14,3000,70,,"A Pokémon hold item that promotes Speed gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Speed effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect.",0,1,0,1,0
+271,Power Weight,14,3000,70,,"A Pokémon hold item that promotes HP gain on leveling, but reduces the Speed stat.","Held: Decreases the holder's Speed by 50%.  Whenever the holder gains HP effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect.",0,1,0,1,0
 272,Shed Shell,12,100,10,,"A tough, discarded carapace to be held by a Pokémon. It enables the holder to switch with a waiting Pokémon in battle.",Held: The holder is unaffected by any moves or abilities that would prevent it from actively leaving battle.,0,1,0,1,0
 273,Big Root,12,200,10,,A Pokémon hold item that boosts the power of HP-stealing moves to let the holder recover more HP.,"Held: HP restored from Absorb, Aqua Ring, Drain Punch, Dream Eater, Giga Drain, Ingrain, Leech Life, Leech Seed, and Mega Drain is increased by 30%.  Damage inflicted is not affected.",0,1,0,1,0
 274,Choice Specs,13,200,10,,"An item to be held by a Pokémon. These distinctive glasses boost Sp. Atk, but allow only one kind of move to be used.","Held: Increases the holder's Special Attack by 50%, but restricts it to the first move it uses until it leaves battle or loses this item.  If this item is swapped for another Choice item via Trick or Switcheroo, the holder's restriction is still lifted, but it will again be restricted to the next move it uses.
 (Quirk: If the holder is switched in by U-Turn and it also knows U-Turn, U-Turn becomes its restricted move.)",0,1,0,1,0
 275,Flame Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Fire-type moves.,"Held: Increases the power of the holder's Fire moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Fire.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Fire.",1,1,0,1,0
 276,Splash Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Water-type moves.,"Held: Increases the power of the holder's Water moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Water.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Water.",1,1,0,1,0
 277,Zap Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Electric-type moves.,"Held: Increases the power of the holder's Electric moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Electric.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Electric.",1,1,0,1,0
 278,Meadow Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Grass-type moves.,"Held: Increases the power of the holder's Grass moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Grass.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Grass.",1,1,0,1,0
 279,Icicle Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Ice-type moves.,"Held: Increases the power of the holder's Ice moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Ice.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Ice.",1,1,0,1,0
 280,Fist Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Fighting-type moves.,"Held: Increases the power of the holder's Fighting moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Fighting.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Fighting.",1,1,0,1,0
 281,Toxic Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Poison-type moves.,"Held: Increases the power of the holder's Poison moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Poison.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Poison.",1,1,0,1,0
 282,Earth Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Ground-type moves.,"Held: Increases the power of the holder's Ground moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Ground.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Ground.",1,1,0,1,0
 283,Sky Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Flying-type moves.,"Held: Increases the power of the holder's Flying moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Flying.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Flying.",1,1,0,1,0
 284,Mind Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Psychic-type moves.,"Held: Increases the power of the holder's Psychic moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Psychic.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Psychic.",1,1,0,1,0
 285,Insect Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Bug-type moves.,"Held: Increases the power of the holder's Bug moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Bug.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Bug.",1,1,0,1,0
 286,Stone Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Rock-type moves.,"Held: Increases the power of the holder's Rock moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Rock.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Rock.",1,1,0,1,0
 287,Spooky Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Ghost-type moves.,"Held: Increases the power of the holder's Ghost moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Ghost.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Ghost.",1,1,0,1,0
 288,Draco Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Dragon-type moves.,"Held: Increases the power of the holder's Dragon moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Dragon.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Dragon.",1,1,0,1,0
 289,Dread Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Dark-type moves.,"Held: Increases the power of the holder's Dark moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Dark.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Dark.",1,1,0,1,0
 290,Iron Plate,17,1000,90,,An item to be held by a Pokémon. It is a stone tablet that boosts the power of Steel-type moves.,"Held: Increases the power of the holder's Steel moves by 20%.
-Held by a Multitype Pokemon: Holder's type becomes Steel.",1,1,0,1,0
+Held by a Multitype Pokémon: Holder's type becomes Steel.",1,1,0,1,0
 291,Odd Incense,19,9600,10,,An item to be held by a Pokémon. It is an exotic-smelling incense that boosts the power of Psychic-type moves.,Held: Increases the power of the holder's Psychic moves by 20%.,0,1,0,1,0
 292,Rock Incense,19,9600,10,,An item to be held by a Pokémon. It is an exotic-smelling incense that boosts the power of Rock-type moves.,Held: Increases the power of the holder's Rock moves by 20%.,0,1,0,1,0
-293,Full Incense,15,9600,10,,An item to be held by a Pokémon. It is an exotic-smelling incense that makes the holder bloated and slow moving.,"Held: The holder will go last within its move's priority bracket, regardless of Speed.  If multiple Pokemon within the same priority bracket are subject to this effect, the slower Pokemon will go first.  The holder will move after Pokemon with Stall.  If the holder has Stall, Stall is ignored.  This item ignores Trick Room.",0,1,0,1,0
+293,Full Incense,15,9600,10,,An item to be held by a Pokémon. It is an exotic-smelling incense that makes the holder bloated and slow moving.,"Held: The holder will go last within its move's priority bracket, regardless of Speed.  If multiple Pokémon within the same priority bracket are subject to this effect, the slower Pokémon will go first.  The holder will move after Pokémon with Stall.  If the holder has Stall, Stall is ignored.  This item ignores Trick Room.",0,1,0,1,0
 294,Wave Incense,19,9600,10,,An item to be held by a Pokémon. It is an exotic-smelling incense that boosts the power of Water-type moves.,Held: Increases the power of the holder's Water moves by 20%.,0,1,0,1,0
 295,Rose Incense,19,9600,10,,An item to be held by a Pokémon. It is an exotic-smelling incense that boosts the power of Grass-type moves.,Held: Increases the power of the holder's Grass moves by 20%.,0,1,0,1,0
 296,Luck Incense,16,9600,10,,An item to be held by a Pokémon. It doubles a battle's prize money if the holding Pokémon joins in.,Held: Doubles the money the trainer receives after an in-game trainer battle.  This effect cannot apply more than once to the same battle.,0,1,0,1,0
-297,Pure Incense,16,9600,10,,An item to be held by a Pokémon. It helps keep wild Pokémon away if the holder is the first one in the party.,Held by lead Pokemon: Prevents wild battles with Pokemon that are lower level than the holder.,0,1,0,0,0
+297,Pure Incense,16,9600,10,,An item to be held by a Pokémon. It helps keep wild Pokémon away if the holder is the first one in the party.,Held by lead Pokémon: Prevents wild battles with Pokémon that are lower level than the holder.,0,1,0,0,0
 298,Protector,10,2100,80,,A protective item of some sort. It is extremely stiff and heavy. It is loved by a certain Pokémon.,Held by Rhydon: Evolves the holder into Rhyperior when traded.,0,0,0,0,0
 299,Electirizer,10,2100,80,,A box packed with a tremendous amount of electric energy. It is loved by a certain Pokémon.,Held by Electabuzz: Evolves the holder into Electivire when traded.,0,0,0,0,0
 300,Magmarizer,10,2100,80,,A box packed with a tremendous amount of magma energy. It is loved by a certain Pokémon.,Held by Magmar: Evolves the holder into Magmortar when traded.,0,0,0,0,0
@@ -327,114 +327,114 @@ Held by a Multitype Pokemon: Holder's type becomes Steel.",1,1,0,1,0
 Held by Sneasel: Evolves the holder into Weavile when it levels up during the night.",0,1,0,1,0
 304,Razor Fang,12,2100,30,7,An item to be held by a Pokémon. It may cause the foe to flinch when the holder inflicts damage.,"Held: When the holder attacks with most damaging moves, provides an extra 11.7% (30/256) chance for the target to flinch.
 Held by Gligar: Evolves the holder into Gliscor when traded.",0,1,0,1,0
-305,TM01,37,3000,,,The user focuses its mind before launching this attack. It will fail if the user is hit before it is used.,Teaches Focus Punch to a compatible Pokemon.,0,0,0,0,0
-306,TM02,37,3000,,,"Sharp, huge claws hook and slash the foe quickly and with great power.",Teaches Dragon Claw to a compatible Pokemon.,0,0,0,0,0
-307,TM03,37,3000,,,The foe is hit with a pulsing blast of water. It may also confuse the target.,Teaches Water Pulse to a compatible Pokemon.,0,0,0,0,0
-308,TM04,37,1500,,,The user quietly focuses its mind and calms its spirit to raise its Sp. Atk and Sp. Def stats.,Teaches Calm Mind to a compatible Pokemon.,0,0,0,0,0
-309,TM05,37,1000,,,"The foe is scared off, to be replaced by another Pokémon in its party. In the wild, the battle ends.",Teaches Roar to a compatible Pokemon.,0,0,0,0,0
-310,TM06,37,3000,,,A move that leaves the foe badly poisoned. This poison damage worsens every turn.,Teaches Toxic to a compatible Pokemon.,0,0,0,0,0
-311,TM07,37,2000,,,Summons a hailstorm that lasts for five turns. The hailstorm damages all types except Ice.,Teaches Hail to a compatible Pokemon.,0,0,0,0,0
-312,TM08,37,1500,,,"The user tenses its muscles to bulk up its body, boosting both its Attack and Defense stats.",Teaches Bulk Up to a compatible Pokemon.,0,0,0,0,0
-313,TM09,37,2000,,,The user forcefully shoots seeds at the foe. Two to five seeds are shot in rapid succession.,Teaches Bullet Seed to a compatible Pokemon.,0,0,0,0,0
-314,TM10,37,2000,,,A variable move that changes type and power depending on the hidden ability of the Pokémon using it.,Teaches Hidden Power to a compatible Pokemon.,0,0,0,0,0
-315,TM11,37,2000,,,"The user intensifies the sun for five turns, powering up Fire-type moves.",Teaches Sunny Day to a compatible Pokemon.,0,0,0,0,0
-316,TM12,37,1500,,,The foe is taunted into a rage that allows it to use only attack moves for two to four turns.,Teaches Taunt to a compatible Pokemon.,0,0,0,0,0
-317,TM13,37,3000,,,The foe is struck with an icy-cold beam of energy. It may also freeze the target solid.,Teaches Ice Beam to a compatible Pokemon.,0,0,0,0,0
-318,TM14,37,5500,,,A howling blizzard is summoned to strike the foe. It may also freeze the target solid.,Teaches Blizzard to a compatible Pokemon.,0,0,0,0,0
-319,TM15,37,7500,,,The foe is attacked with a powerful beam. The user must rest on the next turn to regain its energy.,Teaches Hyper Beam to a compatible Pokemon.,0,0,0,0,0
-320,TM16,37,2000,,,A wondrous wall of light is put up to suppress damage from special attacks for five turns.,Teaches Light Screen to a compatible Pokemon.,0,0,0,0,0
-321,TM17,37,2000,,,It enables the user to evade all attacks. Its chance of failing rises if it is used in succession.,Teaches Protect to a compatible Pokemon.,0,0,0,0,0
-322,TM18,37,2000,,,"The user summons a heavy rain that falls for five turns, powering up Water-type moves.",Teaches Rain Dance to a compatible Pokemon.,0,0,0,0,0
-323,TM19,37,3000,,,A nutrient-draining attack. The user's HP is restored by half the damage taken by the target.,Teaches Giga Drain to a compatible Pokemon.,0,0,0,0,0
-324,TM20,37,2000,,,"The user creates a protective field that prevents status problems like poison, paralysis, burn, and sleep.",Teaches Safeguard to a compatible Pokemon.,0,0,0,0,0
-325,TM21,37,1000,,,A full-power attack that grows more powerful the less the user likes its Trainer.,Teaches Frustration to a compatible Pokemon.,0,0,0,0,0
-326,TM22,37,3000,,,"A two-turn attack. The user gathers light, then blasts a bundled beam on the second turn.",Teaches SolarBeam to a compatible Pokemon.,0,0,0,0,0
-327,TM23,37,3000,,,The foe is slammed with a sturdy tail of steel. It may also lower the target's Defense stat if it hits.,Teaches Iron Tail to a compatible Pokemon.,0,0,0,0,0
-328,TM24,37,3000,,,A strong electric blast is loosed at the foe. It may also leave the foe paralyzed.,Teaches Thunderbolt to a compatible Pokemon.,0,0,0,0,0
-329,TM25,37,5500,,,A wicked thunderbolt is dropped on the foe to inflict damage. It may also leave the target paralyzed.,Teaches Thunder to a compatible Pokemon.,0,0,0,0,0
-330,TM26,37,3000,,,The user sets off an earthquake that hits all the Pokémon in the battle.,Teaches Earthquake to a compatible Pokemon.,0,0,0,0,0
-331,TM27,37,1000,,,A full-power attack that grows more powerful the more the user likes its Trainer.,Teaches Return to a compatible Pokemon.,0,0,0,0,0
-332,TM28,37,2000,,,"The user burrows, then attacks on the second turn. It can also be used to exit dungeons.",Teaches Dig to a compatible Pokemon.,0,0,0,0,0
-333,TM29,37,3000,,,The foe is hit by a strong telekinetic force. It may also reduce the foe's Sp. Def stat.,Teaches Psychic to a compatible Pokemon.,0,0,0,0,0
-334,TM30,37,3000,,,The user hurls a shadowy blob at the foe. It may also lower the foe's Sp. Def stat.,Teaches Shadow Ball to a compatible Pokemon.,0,0,0,0,0
-335,TM31,37,3000,,,"The user attacks with tough fists, etc. It can also break any barrier such as Light Screen and Reflect.",Teaches Brick Break to a compatible Pokemon.,0,0,0,0,0
-336,TM32,37,1000,,,The user begins moving so quickly that it creates illusory copies to raise its evasiveness.,Teaches Double Team to a compatible Pokemon.,0,0,0,0,0
-337,TM33,37,2000,,,A wondrous wall of light is put up to suppress damage from physical attacks for five turns.,Teaches Reflect to a compatible Pokemon.,0,0,0,0,0
-338,TM34,37,3000,,,The user strikes the foe with a quick jolt of electricity. This attack cannot be evaded.,Teaches Shock Wave to a compatible Pokemon.,0,0,0,0,0
-339,TM35,37,3000,,,The foe is scorched with an intense blast of fire. The target may also be left with a burn.,Teaches Flamethrower to a compatible Pokemon.,0,0,0,0,0
-340,TM36,37,3000,,,Unsanitary sludge is hurled at the foe. It may also poison the target.,Teaches Sludge Bomb to a compatible Pokemon.,0,0,0,0,0
-341,TM37,37,2000,,,"A five-turn sandstorm is summoned to hurt all combatants except the Rock, Ground, and Steel types.",Teaches Sandstorm to a compatible Pokemon.,0,0,0,0,0
-342,TM38,37,5500,,,The foe is attacked with an intense blast of all-consuming fire. It may also leave the target with a burn.,Teaches Fire Blast to a compatible Pokemon.,0,0,0,0,0
-343,TM39,37,2000,,,Large boulders are hurled at the foe to inflict damage. It may also make the target flinch.,Teaches Rock Tomb to a compatible Pokemon.,0,0,0,0,0
-344,TM40,37,3000,,,"The user confounds the foe with speed, then strikes. The attack lands without fail.",Teaches Aerial Ace to a compatible Pokemon.,0,0,0,0,0
-345,TM41,37,1500,,,"The user torments and enrages the foe, making it incapable of using the same move twice in a row.",Teaches Torment to a compatible Pokemon.,0,0,0,0,0
-346,TM42,37,3000,,,"An attack move that doubles its power if the user is poisoned, paralyzed, or has a burn.",Teaches Facade to a compatible Pokemon.,0,0,0,0,0
-347,TM43,37,2000,,,An attack move with effects that vary depending on the user's environment.,Teaches Secret Power to a compatible Pokemon.,0,0,0,0,0
-348,TM44,37,3000,,,The user goes to sleep for two turns. It fully restores the user's HP and heals any status problem.,Teaches Rest to a compatible Pokemon.,0,0,0,0,0
-349,TM45,37,3000,,,"If it is the opposite gender of the user, the foe becomes infatuated and less likely to attack.",Teaches Attract to a compatible Pokemon.,0,0,0,0,0
-350,TM46,37,2000,,,The user attacks and steals the foe's held item simultaneously. It can't steal if the user holds an item.,Teaches Thief to a compatible Pokemon.,0,0,0,0,0
-351,TM47,37,3000,,,The foe is hit with wings of steel. It may also raise the user's Defense stat.,Teaches Steel Wing to a compatible Pokemon.,0,0,0,0,0
-352,TM48,37,3000,,,The user employs its psychic power to exchange abilities with the foe. ,Teaches Skill Swap to a compatible Pokemon.,0,0,0,0,0
-353,TM49,37,1500,,,The user steals the effects of any healing or status-changing move the foe attempts to use.,Teaches Snatch to a compatible Pokemon.,0,0,0,0,0
-354,TM50,37,5500,,,The user attacks the foe at full power using fiery energy. It also sharply reduces the user's Sp. Atk.,Teaches Overheat to a compatible Pokemon.,0,0,0,0,0
-355,TM51,37,2000,,,The user lands and rests its body. It restores the user's HP by up to half of its top HP.,Teaches Roost to a compatible Pokemon.,0,0,0,0,0
-356,TM52,37,5500,,,The user attacks at full power. It may also lower the foe's Sp. Def stat if it hits.,Teaches Focus Blast to a compatible Pokemon.,0,0,0,0,0
-357,TM53,37,3000,,,The user draws power from nature and fires it at the foe. It may also lower the target's Sp. Def.,Teaches Energy Ball to a compatible Pokemon.,0,0,0,0,0
-358,TM54,37,2000,,,A restrained attack that prevents the foe from fainting. The target is left with at least 1 HP.,Teaches False Swipe to a compatible Pokemon.,0,0,0,0,0
-359,TM55,37,3000,,,"If the foe's HP is down to under half, this attack will hit with double the power.",Teaches Brine to a compatible Pokemon.,0,0,0,0,0
-360,TM56,37,2000,,,The user flings its held item at the foe to attack. Its power and effects depend on the item.,Teaches Fling to a compatible Pokemon.,0,0,0,0,0
-361,TM57,37,3000,,,The user attacks with an electric charge. The user may use any remaining electricity to raise its Sp. Atk stat.,Teaches Charge Beam to a compatible Pokemon.,0,0,0,0,0
-362,TM58,37,2000,,,"The user endures any attack, leaving 1 HP. Its chance of failing rises if it is used in succession.",Teaches Endure to a compatible Pokemon.,0,0,0,0,0
-363,TM59,37,3000,,,The foe is attacked with a shock wave generated by the user's gaping mouth.,Teaches Dragon Pulse to a compatible Pokemon.,0,0,0,0,0
-364,TM60,37,3000,,,An energy-draining punch. The user's HP is restored by half the damage taken by the target.,Teaches Drain Punch to a compatible Pokemon.,0,0,0,0,0
-365,TM61,37,2000,,,"The user shoots a sinister, bluish white flame at the foe to inflict a burn.",Teaches Will-O-Wisp to a compatible Pokemon.,0,0,0,0,0
-366,TM62,37,3000,,,The foe is attacked with powdery scales blown by wind. It may also raise all the user's stats.,Teaches Silver Wind to a compatible Pokemon.,0,0,0,0,0
-367,TM63,37,2000,,,It prevents the foe from using its held item. Its Trainer is also prevented from using items on it.,Teaches Embargo to a compatible Pokemon.,0,0,0,0,0
-368,TM64,37,7500,,,The user explodes to inflict damage on all Pokémon in battle. The user faints upon using this move.,Teaches Explosion to a compatible Pokemon.,0,0,0,0,0
-369,TM65,37,3000,,,The user slashes with a sharp claw made from shadows. It has a high critical-hit ratio.,Teaches Shadow Claw to a compatible Pokemon.,0,0,0,0,0
-370,TM66,37,3000,,,"The user stores power, then attacks. If the user can use this attack after the foe, its power is doubled.",Teaches Payback to a compatible Pokemon.,0,0,0,0,0
-371,TM67,37,1000,,,The user recycles a single-use item that has been used in battle so it can be used again.,Teaches Recycle to a compatible Pokemon.,0,0,0,0,0
-372,TM68,37,7500,,,The user charges the foe using every bit of its power. It must rest on the next turn to recover.,Teaches Giga Impact to a compatible Pokemon.,0,0,0,0,0
-373,TM69,37,1500,,,The user polishes its body to reduce drag. It sharply raises the Speed stat.,Teaches Rock Polish to a compatible Pokemon.,0,0,0,0,0
-374,TM70,37,1000,,,The user flashes a light that cuts the foe's accuracy. It can also be used to illuminate caves.,Teaches Flash to a compatible Pokemon.,0,0,0,0,0
-375,TM71,37,3000,,,The user stabs the foe with a sharpened stone from below. It has a high critical-hit ratio.,Teaches Stone Edge to a compatible Pokemon.,0,0,0,0,0
-376,TM72,37,3000,,,An attack move that inflicts double the damage if the user has been hurt by the foe in the same turn.,Teaches Avalanche to a compatible Pokemon.,0,0,0,0,0
-377,TM73,37,2000,,,A weak electric charge is launched at the foe. It causes paralysis if it hits.,Teaches Thunder Wave to a compatible Pokemon.,0,0,0,0,0
-378,TM74,37,3000,,,"The user tackles the foe from a high-speed spin. The slower the user, the greater the damage.",Teaches Gyro Ball to a compatible Pokemon.,0,0,0,0,0
-379,TM75,37,1500,,,A frenetic dance to uplift the fighting spirit. It sharply raises the user's Attack stat.,Teaches Swords Dance to a compatible Pokemon.,0,0,0,0,0
-380,TM76,37,2000,,,The user lays a trap of levitating stones around the foe. The trap hurts foes that switch into battle.,Teaches Stealth Rock to a compatible Pokemon.,0,0,0,0,0
-381,TM77,37,1500,,,The user hypnotizes itself into copying any stat change made by the foe.,Teaches Psych Up to a compatible Pokemon.,0,0,0,0,0
-382,TM78,37,1500,,,"If it is the opposite gender of the user, the foe is charmed into sharply lowering its Sp. Atk stat.",Teaches Captivate to a compatible Pokemon.,0,0,0,0,0
-383,TM79,37,3000,,,The user releases a horrible aura imbued with dark thoughts. It may also make the target flinch.,Teaches Dark Pulse to a compatible Pokemon.,0,0,0,0,0
-384,TM80,37,3000,,,Large boulders are hurled at the foe to inflict damage. It may also make the target flinch.,Teaches Rock Slide to a compatible Pokemon.,0,0,0,0,0
-385,TM81,37,3000,,,The user slashes at the foe by crossing its scythes or claws as if they were a pair of scissors.,Teaches X-Scissor to a compatible Pokemon.,0,0,0,0,0
-386,TM82,37,1000,,,"While it is asleep, the user randomly uses one of the moves it knows.",Teaches Sleep Talk to a compatible Pokemon.,0,0,0,0,0
-387,TM83,37,2000,,,The user draws power from the Berry it is holding to attack. The Berry determines its type and power.,Teaches Natural Gift to a compatible Pokemon.,0,0,0,0,0
-388,TM84,37,3000,,,The foe is stabbed with a tentacle or arm seeped with poison. It may also poison the foe.,Teaches Poison Jab to a compatible Pokemon.,0,0,0,0,0
-389,TM85,37,3000,,,An attack that works only on a sleeping foe. It absorbs half the damage caused to heal the user's HP.,Teaches Dream Eater to a compatible Pokemon.,0,0,0,0,0
-390,TM86,37,3000,,,"The user snares the foe with grass and trips it. The heavier the foe, the greater the damage.",Teaches Grass Knot to a compatible Pokemon.,0,0,0,0,0
-391,TM87,37,1500,,,"The user enrages the foe into confusion. However, it also sharply raises the foe's Attack stat.",Teaches Swagger to a compatible Pokemon.,0,0,0,0,0
-392,TM88,37,3000,,,"The user pecks the foe. If the foe is holding a Berry, the user plucks it and gains its effect.",Teaches Pluck to a compatible Pokemon.,0,0,0,0,0
-393,TM89,37,3000,,,"After making its attack, the user rushes back to switch places with a party Pokémon in waiting.",Teaches U-Turn to a compatible Pokemon.,0,0,0,0,0
-394,TM90,37,2000,,,The user makes a copy of itself using some of its HP. The copy serves as the user's decoy.,Teaches Substitute to a compatible Pokemon.,0,0,0,0,0
-395,TM91,37,3000,,,The user gathers all its light energy and releases it in one shot. It may also lower the foe's Sp. Def stat.,Teaches Flash Cannon to a compatible Pokemon.,0,0,0,0,0
-396,TM92,37,5500,,,The user creates a bizarre space in which slower Pokémon get to move first for five turns.,Teaches Trick Room to a compatible Pokemon.,0,0,0,0,0
-397,HM01,37,0,,,The foe is cut with a scythe or a claw. It can also be used to cut down thin trees.,Teaches Cut to a compatible Pokemon.,0,0,0,0,0
-398,HM02,37,0,,,"The user soars, then strikes on the second turn. It can also be used to fly to any familiar town.",Teaches Fly to a compatible Pokemon.,0,0,0,0,0
-399,HM03,37,0,,,It swamps the entire battlefield with a giant wave. It can also be used to cross water.,Teaches Surf to a compatible Pokemon.,0,0,0,0,0
-400,HM04,37,0,,,The foe is slugged with a punch thrown at maximum power. It can also be used to move boulders.,Teaches Strength to a compatible Pokemon.,0,0,0,0,0
-401,HM05,37,0,,,"Obstacles are moved, reducing the foe's evasion stat. It can also be used to clear deep fog.",Teaches Defog to a compatible Pokemon.,0,0,0,0,0
-402,HM06,37,0,,,The user slugs the foe with a shattering punch. It can also smash cracked boulders.,Teaches Rock Smash to a compatible Pokemon.,0,0,0,0,0
-403,HM07,37,0,,,The user charges the foe at an awesome speed. It can also be used to climb a waterfall.,Teaches Waterfall to a compatible Pokemon.,0,0,0,0,0
-404,HM08,37,0,,,A charging attack that may also leave the foe confused. It can also be used to scale rocky walls.,Teaches Rock Climb to a compatible Pokemon.,0,0,0,0,0
+305,TM01,37,3000,,,The user focuses its mind before launching this attack. It will fail if the user is hit before it is used.,Teaches Focus Punch to a compatible Pokémon.,0,0,0,0,0
+306,TM02,37,3000,,,"Sharp, huge claws hook and slash the foe quickly and with great power.",Teaches Dragon Claw to a compatible Pokémon.,0,0,0,0,0
+307,TM03,37,3000,,,The foe is hit with a pulsing blast of water. It may also confuse the target.,Teaches Water Pulse to a compatible Pokémon.,0,0,0,0,0
+308,TM04,37,1500,,,The user quietly focuses its mind and calms its spirit to raise its Sp. Atk and Sp. Def stats.,Teaches Calm Mind to a compatible Pokémon.,0,0,0,0,0
+309,TM05,37,1000,,,"The foe is scared off, to be replaced by another Pokémon in its party. In the wild, the battle ends.",Teaches Roar to a compatible Pokémon.,0,0,0,0,0
+310,TM06,37,3000,,,A move that leaves the foe badly poisoned. This poison damage worsens every turn.,Teaches Toxic to a compatible Pokémon.,0,0,0,0,0
+311,TM07,37,2000,,,Summons a hailstorm that lasts for five turns. The hailstorm damages all types except Ice.,Teaches Hail to a compatible Pokémon.,0,0,0,0,0
+312,TM08,37,1500,,,"The user tenses its muscles to bulk up its body, boosting both its Attack and Defense stats.",Teaches Bulk Up to a compatible Pokémon.,0,0,0,0,0
+313,TM09,37,2000,,,The user forcefully shoots seeds at the foe. Two to five seeds are shot in rapid succession.,Teaches Bullet Seed to a compatible Pokémon.,0,0,0,0,0
+314,TM10,37,2000,,,A variable move that changes type and power depending on the hidden ability of the Pokémon using it.,Teaches Hidden Power to a compatible Pokémon.,0,0,0,0,0
+315,TM11,37,2000,,,"The user intensifies the sun for five turns, powering up Fire-type moves.",Teaches Sunny Day to a compatible Pokémon.,0,0,0,0,0
+316,TM12,37,1500,,,The foe is taunted into a rage that allows it to use only attack moves for two to four turns.,Teaches Taunt to a compatible Pokémon.,0,0,0,0,0
+317,TM13,37,3000,,,The foe is struck with an icy-cold beam of energy. It may also freeze the target solid.,Teaches Ice Beam to a compatible Pokémon.,0,0,0,0,0
+318,TM14,37,5500,,,A howling blizzard is summoned to strike the foe. It may also freeze the target solid.,Teaches Blizzard to a compatible Pokémon.,0,0,0,0,0
+319,TM15,37,7500,,,The foe is attacked with a powerful beam. The user must rest on the next turn to regain its energy.,Teaches Hyper Beam to a compatible Pokémon.,0,0,0,0,0
+320,TM16,37,2000,,,A wondrous wall of light is put up to suppress damage from special attacks for five turns.,Teaches Light Screen to a compatible Pokémon.,0,0,0,0,0
+321,TM17,37,2000,,,It enables the user to evade all attacks. Its chance of failing rises if it is used in succession.,Teaches Protect to a compatible Pokémon.,0,0,0,0,0
+322,TM18,37,2000,,,"The user summons a heavy rain that falls for five turns, powering up Water-type moves.",Teaches Rain Dance to a compatible Pokémon.,0,0,0,0,0
+323,TM19,37,3000,,,A nutrient-draining attack. The user's HP is restored by half the damage taken by the target.,Teaches Giga Drain to a compatible Pokémon.,0,0,0,0,0
+324,TM20,37,2000,,,"The user creates a protective field that prevents status problems like poison, paralysis, burn, and sleep.",Teaches Safeguard to a compatible Pokémon.,0,0,0,0,0
+325,TM21,37,1000,,,A full-power attack that grows more powerful the less the user likes its Trainer.,Teaches Frustration to a compatible Pokémon.,0,0,0,0,0
+326,TM22,37,3000,,,"A two-turn attack. The user gathers light, then blasts a bundled beam on the second turn.",Teaches SolarBeam to a compatible Pokémon.,0,0,0,0,0
+327,TM23,37,3000,,,The foe is slammed with a sturdy tail of steel. It may also lower the target's Defense stat if it hits.,Teaches Iron Tail to a compatible Pokémon.,0,0,0,0,0
+328,TM24,37,3000,,,A strong electric blast is loosed at the foe. It may also leave the foe paralyzed.,Teaches Thunderbolt to a compatible Pokémon.,0,0,0,0,0
+329,TM25,37,5500,,,A wicked thunderbolt is dropped on the foe to inflict damage. It may also leave the target paralyzed.,Teaches Thunder to a compatible Pokémon.,0,0,0,0,0
+330,TM26,37,3000,,,The user sets off an earthquake that hits all the Pokémon in the battle.,Teaches Earthquake to a compatible Pokémon.,0,0,0,0,0
+331,TM27,37,1000,,,A full-power attack that grows more powerful the more the user likes its Trainer.,Teaches Return to a compatible Pokémon.,0,0,0,0,0
+332,TM28,37,2000,,,"The user burrows, then attacks on the second turn. It can also be used to exit dungeons.",Teaches Dig to a compatible Pokémon.,0,0,0,0,0
+333,TM29,37,3000,,,The foe is hit by a strong telekinetic force. It may also reduce the foe's Sp. Def stat.,Teaches Psychic to a compatible Pokémon.,0,0,0,0,0
+334,TM30,37,3000,,,The user hurls a shadowy blob at the foe. It may also lower the foe's Sp. Def stat.,Teaches Shadow Ball to a compatible Pokémon.,0,0,0,0,0
+335,TM31,37,3000,,,"The user attacks with tough fists, etc. It can also break any barrier such as Light Screen and Reflect.",Teaches Brick Break to a compatible Pokémon.,0,0,0,0,0
+336,TM32,37,1000,,,The user begins moving so quickly that it creates illusory copies to raise its evasiveness.,Teaches Double Team to a compatible Pokémon.,0,0,0,0,0
+337,TM33,37,2000,,,A wondrous wall of light is put up to suppress damage from physical attacks for five turns.,Teaches Reflect to a compatible Pokémon.,0,0,0,0,0
+338,TM34,37,3000,,,The user strikes the foe with a quick jolt of electricity. This attack cannot be evaded.,Teaches Shock Wave to a compatible Pokémon.,0,0,0,0,0
+339,TM35,37,3000,,,The foe is scorched with an intense blast of fire. The target may also be left with a burn.,Teaches Flamethrower to a compatible Pokémon.,0,0,0,0,0
+340,TM36,37,3000,,,Unsanitary sludge is hurled at the foe. It may also poison the target.,Teaches Sludge Bomb to a compatible Pokémon.,0,0,0,0,0
+341,TM37,37,2000,,,"A five-turn sandstorm is summoned to hurt all combatants except the Rock, Ground, and Steel types.",Teaches Sandstorm to a compatible Pokémon.,0,0,0,0,0
+342,TM38,37,5500,,,The foe is attacked with an intense blast of all-consuming fire. It may also leave the target with a burn.,Teaches Fire Blast to a compatible Pokémon.,0,0,0,0,0
+343,TM39,37,2000,,,Large boulders are hurled at the foe to inflict damage. It may also make the target flinch.,Teaches Rock Tomb to a compatible Pokémon.,0,0,0,0,0
+344,TM40,37,3000,,,"The user confounds the foe with speed, then strikes. The attack lands without fail.",Teaches Aerial Ace to a compatible Pokémon.,0,0,0,0,0
+345,TM41,37,1500,,,"The user torments and enrages the foe, making it incapable of using the same move twice in a row.",Teaches Torment to a compatible Pokémon.,0,0,0,0,0
+346,TM42,37,3000,,,"An attack move that doubles its power if the user is poisoned, paralyzed, or has a burn.",Teaches Facade to a compatible Pokémon.,0,0,0,0,0
+347,TM43,37,2000,,,An attack move with effects that vary depending on the user's environment.,Teaches Secret Power to a compatible Pokémon.,0,0,0,0,0
+348,TM44,37,3000,,,The user goes to sleep for two turns. It fully restores the user's HP and heals any status problem.,Teaches Rest to a compatible Pokémon.,0,0,0,0,0
+349,TM45,37,3000,,,"If it is the opposite gender of the user, the foe becomes infatuated and less likely to attack.",Teaches Attract to a compatible Pokémon.,0,0,0,0,0
+350,TM46,37,2000,,,The user attacks and steals the foe's held item simultaneously. It can't steal if the user holds an item.,Teaches Thief to a compatible Pokémon.,0,0,0,0,0
+351,TM47,37,3000,,,The foe is hit with wings of steel. It may also raise the user's Defense stat.,Teaches Steel Wing to a compatible Pokémon.,0,0,0,0,0
+352,TM48,37,3000,,,The user employs its psychic power to exchange abilities with the foe. ,Teaches Skill Swap to a compatible Pokémon.,0,0,0,0,0
+353,TM49,37,1500,,,The user steals the effects of any healing or status-changing move the foe attempts to use.,Teaches Snatch to a compatible Pokémon.,0,0,0,0,0
+354,TM50,37,5500,,,The user attacks the foe at full power using fiery energy. It also sharply reduces the user's Sp. Atk.,Teaches Overheat to a compatible Pokémon.,0,0,0,0,0
+355,TM51,37,2000,,,The user lands and rests its body. It restores the user's HP by up to half of its top HP.,Teaches Roost to a compatible Pokémon.,0,0,0,0,0
+356,TM52,37,5500,,,The user attacks at full power. It may also lower the foe's Sp. Def stat if it hits.,Teaches Focus Blast to a compatible Pokémon.,0,0,0,0,0
+357,TM53,37,3000,,,The user draws power from nature and fires it at the foe. It may also lower the target's Sp. Def.,Teaches Energy Ball to a compatible Pokémon.,0,0,0,0,0
+358,TM54,37,2000,,,A restrained attack that prevents the foe from fainting. The target is left with at least 1 HP.,Teaches False Swipe to a compatible Pokémon.,0,0,0,0,0
+359,TM55,37,3000,,,"If the foe's HP is down to under half, this attack will hit with double the power.",Teaches Brine to a compatible Pokémon.,0,0,0,0,0
+360,TM56,37,2000,,,The user flings its held item at the foe to attack. Its power and effects depend on the item.,Teaches Fling to a compatible Pokémon.,0,0,0,0,0
+361,TM57,37,3000,,,The user attacks with an electric charge. The user may use any remaining electricity to raise its Sp. Atk stat.,Teaches Charge Beam to a compatible Pokémon.,0,0,0,0,0
+362,TM58,37,2000,,,"The user endures any attack, leaving 1 HP. Its chance of failing rises if it is used in succession.",Teaches Endure to a compatible Pokémon.,0,0,0,0,0
+363,TM59,37,3000,,,The foe is attacked with a shock wave generated by the user's gaping mouth.,Teaches Dragon Pulse to a compatible Pokémon.,0,0,0,0,0
+364,TM60,37,3000,,,An energy-draining punch. The user's HP is restored by half the damage taken by the target.,Teaches Drain Punch to a compatible Pokémon.,0,0,0,0,0
+365,TM61,37,2000,,,"The user shoots a sinister, bluish white flame at the foe to inflict a burn.",Teaches Will-O-Wisp to a compatible Pokémon.,0,0,0,0,0
+366,TM62,37,3000,,,The foe is attacked with powdery scales blown by wind. It may also raise all the user's stats.,Teaches Silver Wind to a compatible Pokémon.,0,0,0,0,0
+367,TM63,37,2000,,,It prevents the foe from using its held item. Its Trainer is also prevented from using items on it.,Teaches Embargo to a compatible Pokémon.,0,0,0,0,0
+368,TM64,37,7500,,,The user explodes to inflict damage on all Pokémon in battle. The user faints upon using this move.,Teaches Explosion to a compatible Pokémon.,0,0,0,0,0
+369,TM65,37,3000,,,The user slashes with a sharp claw made from shadows. It has a high critical-hit ratio.,Teaches Shadow Claw to a compatible Pokémon.,0,0,0,0,0
+370,TM66,37,3000,,,"The user stores power, then attacks. If the user can use this attack after the foe, its power is doubled.",Teaches Payback to a compatible Pokémon.,0,0,0,0,0
+371,TM67,37,1000,,,The user recycles a single-use item that has been used in battle so it can be used again.,Teaches Recycle to a compatible Pokémon.,0,0,0,0,0
+372,TM68,37,7500,,,The user charges the foe using every bit of its power. It must rest on the next turn to recover.,Teaches Giga Impact to a compatible Pokémon.,0,0,0,0,0
+373,TM69,37,1500,,,The user polishes its body to reduce drag. It sharply raises the Speed stat.,Teaches Rock Polish to a compatible Pokémon.,0,0,0,0,0
+374,TM70,37,1000,,,The user flashes a light that cuts the foe's accuracy. It can also be used to illuminate caves.,Teaches Flash to a compatible Pokémon.,0,0,0,0,0
+375,TM71,37,3000,,,The user stabs the foe with a sharpened stone from below. It has a high critical-hit ratio.,Teaches Stone Edge to a compatible Pokémon.,0,0,0,0,0
+376,TM72,37,3000,,,An attack move that inflicts double the damage if the user has been hurt by the foe in the same turn.,Teaches Avalanche to a compatible Pokémon.,0,0,0,0,0
+377,TM73,37,2000,,,A weak electric charge is launched at the foe. It causes paralysis if it hits.,Teaches Thunder Wave to a compatible Pokémon.,0,0,0,0,0
+378,TM74,37,3000,,,"The user tackles the foe from a high-speed spin. The slower the user, the greater the damage.",Teaches Gyro Ball to a compatible Pokémon.,0,0,0,0,0
+379,TM75,37,1500,,,A frenetic dance to uplift the fighting spirit. It sharply raises the user's Attack stat.,Teaches Swords Dance to a compatible Pokémon.,0,0,0,0,0
+380,TM76,37,2000,,,The user lays a trap of levitating stones around the foe. The trap hurts foes that switch into battle.,Teaches Stealth Rock to a compatible Pokémon.,0,0,0,0,0
+381,TM77,37,1500,,,The user hypnotizes itself into copying any stat change made by the foe.,Teaches Psych Up to a compatible Pokémon.,0,0,0,0,0
+382,TM78,37,1500,,,"If it is the opposite gender of the user, the foe is charmed into sharply lowering its Sp. Atk stat.",Teaches Captivate to a compatible Pokémon.,0,0,0,0,0
+383,TM79,37,3000,,,The user releases a horrible aura imbued with dark thoughts. It may also make the target flinch.,Teaches Dark Pulse to a compatible Pokémon.,0,0,0,0,0
+384,TM80,37,3000,,,Large boulders are hurled at the foe to inflict damage. It may also make the target flinch.,Teaches Rock Slide to a compatible Pokémon.,0,0,0,0,0
+385,TM81,37,3000,,,The user slashes at the foe by crossing its scythes or claws as if they were a pair of scissors.,Teaches X-Scissor to a compatible Pokémon.,0,0,0,0,0
+386,TM82,37,1000,,,"While it is asleep, the user randomly uses one of the moves it knows.",Teaches Sleep Talk to a compatible Pokémon.,0,0,0,0,0
+387,TM83,37,2000,,,The user draws power from the Berry it is holding to attack. The Berry determines its type and power.,Teaches Natural Gift to a compatible Pokémon.,0,0,0,0,0
+388,TM84,37,3000,,,The foe is stabbed with a tentacle or arm seeped with poison. It may also poison the foe.,Teaches Poison Jab to a compatible Pokémon.,0,0,0,0,0
+389,TM85,37,3000,,,An attack that works only on a sleeping foe. It absorbs half the damage caused to heal the user's HP.,Teaches Dream Eater to a compatible Pokémon.,0,0,0,0,0
+390,TM86,37,3000,,,"The user snares the foe with grass and trips it. The heavier the foe, the greater the damage.",Teaches Grass Knot to a compatible Pokémon.,0,0,0,0,0
+391,TM87,37,1500,,,"The user enrages the foe into confusion. However, it also sharply raises the foe's Attack stat.",Teaches Swagger to a compatible Pokémon.,0,0,0,0,0
+392,TM88,37,3000,,,"The user pecks the foe. If the foe is holding a Berry, the user plucks it and gains its effect.",Teaches Pluck to a compatible Pokémon.,0,0,0,0,0
+393,TM89,37,3000,,,"After making its attack, the user rushes back to switch places with a party Pokémon in waiting.",Teaches U-Turn to a compatible Pokémon.,0,0,0,0,0
+394,TM90,37,2000,,,The user makes a copy of itself using some of its HP. The copy serves as the user's decoy.,Teaches Substitute to a compatible Pokémon.,0,0,0,0,0
+395,TM91,37,3000,,,The user gathers all its light energy and releases it in one shot. It may also lower the foe's Sp. Def stat.,Teaches Flash Cannon to a compatible Pokémon.,0,0,0,0,0
+396,TM92,37,5500,,,The user creates a bizarre space in which slower Pokémon get to move first for five turns.,Teaches Trick Room to a compatible Pokémon.,0,0,0,0,0
+397,HM01,37,0,,,The foe is cut with a scythe or a claw. It can also be used to cut down thin trees.,Teaches Cut to a compatible Pokémon.,0,0,0,0,0
+398,HM02,37,0,,,"The user soars, then strikes on the second turn. It can also be used to fly to any familiar town.",Teaches Fly to a compatible Pokémon.,0,0,0,0,0
+399,HM03,37,0,,,It swamps the entire battlefield with a giant wave. It can also be used to cross water.,Teaches Surf to a compatible Pokémon.,0,0,0,0,0
+400,HM04,37,0,,,The foe is slugged with a punch thrown at maximum power. It can also be used to move boulders.,Teaches Strength to a compatible Pokémon.,0,0,0,0,0
+401,HM05,37,0,,,"Obstacles are moved, reducing the foe's evasion stat. It can also be used to clear deep fog.",Teaches Defog to a compatible Pokémon.,0,0,0,0,0
+402,HM06,37,0,,,The user slugs the foe with a shattering punch. It can also smash cracked boulders.,Teaches Rock Smash to a compatible Pokémon.,0,0,0,0,0
+403,HM07,37,0,,,The user charges the foe at an awesome speed. It can also be used to climb a waterfall.,Teaches Waterfall to a compatible Pokémon.,0,0,0,0,0
+404,HM08,37,0,,,A charging attack that may also leave the foe confused. It can also be used to scale rocky walls.,Teaches Rock Climb to a compatible Pokémon.,0,0,0,0,0
 405,Explorer Kit,21,0,,,A bag filled with convenient tools for exploring. It provides access to the Underground.,Sends the trainer to the Underground.  Only usable outside.,0,0,0,0,0
 406,Loot Sack,23,0,,,"A sturdy, spacious bag that is used to carry loot obtained in the coal mine.",Unused.,0,0,0,0,0
 407,Rule Book,23,0,,,"It lists the rules for holding battles. For linked battles, you may choose which set of rules you wish to use.",Unused.,0,0,0,0,0
-408,Poke Radar,21,0,,,A tool that can search out Pokémon that are hiding in grass. Its battery is recharged as you walk.,"Designates several nearby patches of grass as containing Pokemon, some of which may be special radar-only Pokemon.  Successive uses in a certain way create chains of encounters with the same species; longer chains increase the chance that a shiny Pokemon of that species will appear.",0,0,0,0,0
+408,Poké Radar,21,0,,,A tool that can search out Pokémon that are hiding in grass. Its battery is recharged as you walk.,"Designates several nearby patches of grass as containing Pokémon, some of which may be special radar-only Pokémon.  Successive uses in a certain way create chains of encounters with the same species; longer chains increase the chance that a shiny Pokémon of that species will appear.",0,0,0,0,0
 409,Point Card,21,0,,,A card that lists the Battle Points you have earned. ,Tracks Battle Points.,0,0,0,0,0
 410,Journal,21,0,,,A notebook that keeps a day-to-day record of your adventure so far. ,Records some of the trainer's activities for the day.,0,0,0,0,0
-411,Seal Case,21,0,,,A case for storing Seals that can be applied to the capsule cases of Poké Balls.,Contains Seals used for decorating Pokeballs.,0,0,0,0,0
-412,Fashion Case,21,0,,,A fancy case for the tidy and organized storage of colorful Pokémon Accessories.,Contains Pokemon Accessories.,0,0,0,0,0
+411,Seal Case,21,0,,,A case for storing Seals that can be applied to the capsule cases of Poké Balls.,Contains Seals used for decorating Pokéballs.,0,0,0,0,0
+412,Fashion Case,21,0,,,A fancy case for the tidy and organized storage of colorful Pokémon Accessories.,Contains Pokémon Accessories.,0,0,0,0,0
 413,Seal Bag,23,0,,,A tiny bag that can hold ten Seals for decorating Poké Balls.,Unused.,0,0,0,0,0
 414,Pal Pad,21,0,,,A convenient notepad that is used for registering your friends and keeping a record of game play.,"Contains friend codes for up to 32 other players, as well as their sprite, gender, and basic statistics for those that have been seen on WFC.",0,0,0,0,0
 415,Works Key,22,0,,,A large key for operating the doors of the Valley Windworks in the canyon. It was held by a Team Galactic Grunt.,Opens the front door of the Valley Windworks.  Reusable.,0,0,0,0,0
@@ -444,9 +444,9 @@ Held by Gligar: Evolves the holder into Gliscor when traded.",0,1,0,1,0
 419,Town Map,21,0,,,A very convenient map that can be viewed anytime. It even shows your  present location.,"Displays a map of the region including the trainer's position, location names, visited towns, gym locations, and where the trainer has been walking recently.",0,0,0,0,0
 420,Vs. Seeker,21,0,,,A device that indicates Trainers who want to battle. Its battery charges while you walk.,"Reveals trainers who want a rematch, by showing !! over their heads.  Each use drains the battery; requires 100 steps to charge.",0,0,0,0,0
 421,Coin Case,21,0,,,"A case for holding Coins obtained at the Game Corner. It holds up to 50,000 Coins.","Contains the Coins used by the Game Corner, to a maximum of 50,000.",0,0,0,0,0
-422,Old Rod,21,0,,,An old and beat-up fishing rod. Use it by any body of water to fish for wild aquatic Pokémon.,"Used to find Pokemon on the Old Rod list for an area, which are generally Magikarp or similar.",0,0,0,0,0
-423,Good Rod,21,0,,,"A new, good-quality fishing rod. Use it by any body of water to fish for wild aquatic Pokémon.","Used to find Pokemon on the Good Rod list for an area, which are generally mediocre.",0,0,0,0,0
-424,Super Rod,21,0,,,"An awesome, high-tech fishing rod. Use it by any body of water to fish for wild aquatic Pokémon.","Used to find Pokemon on the Super Rod list for an area, which are generally the best available there.",0,0,0,0,0
+422,Old Rod,21,0,,,An old and beat-up fishing rod. Use it by any body of water to fish for wild aquatic Pokémon.,"Used to find Pokémon on the Old Rod list for an area, which are generally Magikarp or similar.",0,0,0,0,0
+423,Good Rod,21,0,,,"A new, good-quality fishing rod. Use it by any body of water to fish for wild aquatic Pokémon.","Used to find Pokémon on the Good Rod list for an area, which are generally mediocre.",0,0,0,0,0
+424,Super Rod,21,0,,,"An awesome, high-tech fishing rod. Use it by any body of water to fish for wild aquatic Pokémon.","Used to find Pokémon on the Super Rod list for an area, which are generally the best available there.",0,0,0,0,0
 425,Sprayduck,21,0,,,A watering can shaped like a PSYDUCK. It helps promote healthy growth of Berries planted in soft soil.,Waters Berry plants.,0,0,0,0,0
 426,Poffin Case,21,0,,,A case for storing Poffin cooked from Berries. ,Contains up to 100 Poffins.,0,0,0,0,0
 427,Bicycle,21,0,,,A folding Bicycle that enables much faster movement than the Running Shoes.,"Increases movement speed outside or in caves.  In high gear, allows the trainer to hop over some rocks and ascend muddy slopes.",0,0,0,0,0
@@ -459,8 +459,8 @@ Held by Gligar: Evolves the holder into Gliscor when traded.",0,1,0,1,0
 434,Contest Pass,21,0,,,The pass required for entering Pokémon Contests. It has a drawing of an award ribbon on it.,Allows the trainer to enter Contests.,0,0,0,0,0
 435,Magma Stone,23,0,,,"A stone formed when boulders melted in intensely hot magma, then hardened. Magma remains sealed inside.",Unused.,0,0,0,0,0
 436,Parcel,22,0,,,A parcel entrusted in your care. You are supposed to deliver it to your childhood friend who left Twinleaf Town.,"Given to the trainer's rival in Jubilife City.  Contains two Town Maps, one of which is given to the trainer upon delivery.",0,0,0,0,0
-437,Coupon 1,22,0,,,A coupon to be exchanged for a Pokémon Watch (Pokétch for short). Three coupons are needed.,One of three coupons needed to receive a Poketch.,0,0,0,0,0
-438,Coupon 2,22,0,,,A coupon to be exchanged for a Pokémon Watch (Pokétch for short). Three coupons are needed.,One of three coupons needed to receive a Poketch.,0,0,0,0,0
-439,Coupon 3,22,0,,,A coupon to be exchanged for a Pokémon Watch (Pokétch for short). Three coupons are needed.,One of three coupons needed to receive a Poketch.,0,0,0,0,0
+437,Coupon 1,22,0,,,A coupon to be exchanged for a Pokémon Watch (Pokétch for short). Three coupons are needed.,One of three coupons needed to receive a Pokétch.,0,0,0,0,0
+438,Coupon 2,22,0,,,A coupon to be exchanged for a Pokémon Watch (Pokétch for short). Three coupons are needed.,One of three coupons needed to receive a Pokétch.,0,0,0,0,0
+439,Coupon 3,22,0,,,A coupon to be exchanged for a Pokémon Watch (Pokétch for short). Three coupons are needed.,One of three coupons needed to receive a Pokétch.,0,0,0,0,0
 440,Storage Key,22,0,,,The key to Team Galactic's sinister warehouse located at the edge of Veilstone City.,Grants access to the Team Galactic warehouse in Veilstone City.,0,0,0,0,0
 441,SecretPotion,22,0,,,A fantastic medicine dispensed by the pharmacy in Cianwood City. It fully heals a Pokémon of any ailment.,Required to cure the Psyducks blocking Route 210 of their chronic headaches.,0,0,0,0,0

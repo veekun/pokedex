@@ -217,6 +217,7 @@ class ItemFlingEffect(TableBase):
 class ItemPocket(TableBase):
     __tablename__ = 'item_pockets'
     id = Column(Integer, primary_key=True, nullable=False)
+    identifier = Column(Unicode(16), nullable=False)
     name = Column(Unicode(16), nullable=False)
 
 class Language(TableBase):
@@ -614,9 +615,13 @@ Generation.main_region = relation(Region)
 
 Item.berry = relation(Berry, uselist=False, backref='item')
 Item.fling_effect = relation(ItemFlingEffect, backref='items')
-Item.category = relation(ItemCategory, backref='items')
+Item.category = relation(ItemCategory)
+Item.pocket = association_proxy('category', 'pocket')
 
-ItemCategory.pocket = relation(ItemPocket, backref='categories')
+ItemCategory.items = relation(Item, order_by=Item.name)
+ItemCategory.pocket = relation(ItemPocket)
+
+ItemPocket.categories = relation(ItemCategory, order_by=ItemCategory.name)
 
 Location.region = relation(Region, backref='locations')
 
