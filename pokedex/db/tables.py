@@ -254,6 +254,11 @@ class Machine(TableBase):
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
     move_id = Column(Integer, ForeignKey('moves.id'), nullable=False)
 
+class MoveBattleStyle(TableBase):
+    __tablename__ = 'move_battle_styles'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(8), nullable=False)
+
 class MoveEffectCategory(TableBase):
     __tablename__ = 'move_effect_categories'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -333,6 +338,26 @@ class Nature(TableBase):
     name = Column(Unicode(8), nullable=False)
     decreased_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False)
     increased_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False)
+    hates_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False)
+    likes_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False)
+
+class NatureBattleStylePreference(TableBase):
+    __tablename__ = 'nature_battle_style_preferences'
+    nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False)
+    move_battle_style_id = Column(Integer, ForeignKey('move_battle_styles.id'), primary_key=True, nullable=False)
+    low_hp_preference = Column(Integer, nullable=False)
+    high_hp_preference = Column(Integer, nullable=False)
+
+class NaturePokeathlonStat(TableBase):
+    __tablename__ = 'nature_pokeathlon_stats'
+    nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False)
+    pokeathlon_stat_id = Column(Integer, ForeignKey('pokeathlon_stats.id'), primary_key=True, nullable=False)
+    max_change = Column(Integer, nullable=False)
+
+class PokeathlonStat(TableBase):
+    __tablename__ = 'pokeathlon_stats'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(8), nullable=False)
 
 class Pokedex(TableBase):
     __tablename__ = 'pokedexes'
@@ -665,6 +690,18 @@ Nature.decreased_stat = relation(Stat, primaryjoin=Nature.decreased_stat_id==Sta
                                        backref='decreasing_natures')
 Nature.increased_stat = relation(Stat, primaryjoin=Nature.increased_stat_id==Stat.id,
                                        backref='increasing_natures')
+Nature.hates_flavor = relation(ContestType, primaryjoin=Nature.hates_flavor_id==ContestType.id,
+                                       backref='hating_natures')
+Nature.likes_flavor = relation(ContestType, primaryjoin=Nature.likes_flavor_id==ContestType.id,
+                                       backref='liking_natures')
+Nature.battle_style_preferences = relation(NatureBattleStylePreference,
+                                           order_by=NatureBattleStylePreference.move_battle_style_id,
+                                           backref='nature')
+Nature.pokeathlon_effects = relation(NaturePokeathlonStat, order_by=NaturePokeathlonStat.pokeathlon_stat_id)
+
+NatureBattleStylePreference.battle_style = relation(MoveBattleStyle, backref='nature_preferences')
+
+NaturePokeathlonStat.pokeathlon_stat = relation(PokeathlonStat, backref='nature_effects')
 
 Pokedex.region = relation(Region, backref='pokedexes')
 Pokedex.version_groups = relation(VersionGroup, secondary=PokedexVersionGroup.__table__, backref='pokedexes')
