@@ -387,13 +387,20 @@ class PokedexLookup(object):
         # Do different things depending what the query looks like
         # Note: Term objects do an exact match, so we don't have to worry about
         # a query parser tripping on weird characters in the input
+        try:
+            # Let Python try to convert to a number, so 0xff works
+            name_as_number = int(name, base=0)
+        except ValueError:
+            # Oh well
+            name_as_number = None
+
         if '*' in name or '?' in name:
             exact_only = True
             query = whoosh.query.Wildcard(u'name', name)
-        elif rx_is_number.match(name):
+        elif name_as_number is not None:
             # Don't spell-check numbers!
             exact_only = True
-            query = whoosh.query.Term(u'row_id', name)
+            query = whoosh.query.Term(u'row_id', unicode(name_as_number))
         else:
             # Not an integer
             query = whoosh.query.Term(u'name', name)
