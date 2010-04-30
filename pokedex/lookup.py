@@ -290,15 +290,17 @@ class PokedexLookup(object):
 
         Returns None for a bogus name.
         """
+        # Table object
         if hasattr(name, '__tablename__'):
             return getattr(name, '__tablename__')
-        elif name in self.indexed_tables:
-            return name
-        elif name + 's' in self.indexed_tables:
-            return name + 's'
-        else:
-            # Bogus.  Be nice and return dummy
-            return None
+
+        # Table name
+        for table in self.indexed_tables.values():
+            if name in (table.__tablename__, table.__singlename__):
+                return table.__tablename__
+
+        # Bogus.  Be nice and return dummy
+        return None
 
     def _whoosh_records_to_results(self, records, exact=True):
         """Converts a list of whoosh's indexed records to LookupResult tuples
