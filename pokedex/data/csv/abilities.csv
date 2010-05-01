@@ -122,4 +122,3 @@ id,name,generation_id,flavor_text,effect
 121,Multitype,4,Changes type to match the held Plate.,This Pokemon changes type and form to match the Plate it holds.
 122,Flower Gift,4,Powers up party Pokémon when it is sunny.,"During Sunny Day, this Pokemon changes form, and both it and its ally's Attack and Special Attack increase by 50%."
 123,Bad Dreams,4,Reduces a sleeping foe's HP.,Enemy Pokemon lose HP every turn they are Sleeping.
-200,No Ability,4,,This Pokemon has no special ability.
