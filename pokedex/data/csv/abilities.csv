@@ -1,125 +1,125 @@
-id,name,flavor_text,effect
-1,Stench,The stench helps keep wild Pokémon away.,"If this Pokemon is first on your belt, the chance of a wild encounter drops."
-2,Drizzle,The Pokémon makes it rain if it appears in battle.,Rain Dance is in effect while this Pokemon is in battle.
-3,Speed Boost,The Pokémon's Speed stat is gradually boosted.,This Pokemon's Speed rises one level every turn.
-4,Battle Armor,The Pokémon is protected against critical hits.,No moves will critically hit this Pokemon.
-5,Sturdy,The Pokémon is protected against 1-hit KO attacks.,One-hit KO moves do not work on this Pokemon.
-6,Damp,Prevents combatants from self destructing.,Neither this Pokemon nor the enemy can use Explosion or Selfdestruct.
-7,Limber,The Pokémon is protected from paralysis.,This Pokemon cannot become Paralyzed.
-8,Sand Veil,Boosts the Pokémon's evasion in a sandstorm.,This Pokemon's Evasion rises one level during Sandstorm.
-9,Static,Contact with the Pokémon may cause paralysis.,Enemy Pokemon have a 30% chance of becoming Paralyzed every time they touch this Pokemon.
-10,Volt Absorb,Restores HP if hit by an Electric-type move.,Damage from Electric moves instead heals up to 1/4 of this Pokemon's max HP.
-11,Water Absorb,Restores HP if hit by a Water-type move.,Damage from Water moves instead heals up to 1/4 of this Pokemon's max HP.
-12,Oblivious,Prevents the Pokémon from becoming infatuated.,This Pokemon cannot become Attracted.
-13,Cloud Nine,Eliminates the effects of weather.,Weather does not affect this Pokemon.
-14,Compoundeyes,The Pokémon's accuracy is boosted.,This Pokemon's moves receive a 30% increase in Accuracy.
-15,Insomnia,Prevents the Pokémon from falling asleep.,This Pokemon cannot become Asleep.
-16,Color Change,Changes the Pokémon's type to the foe's move.,This Pokemon's type changes to that of the last move that inflicted damage.
-17,Immunity,Prevents the Pokémon from getting poisoned.,This Pokemon cannot become Poisoned.
-18,Flash Fire,Powers up Fire-type moves if hit by a fire move.,"When this Pokemon takes damage from a Fire move, it becomes immune to Fire moves and all its Fire moves do 50% more damage until it leaves battle."
-19,Shield Dust,Blocks the added effects of attacks taken.,This Pokemon is immune to stat/status changes from damaging moves.
-20,Own Tempo,Prevents the Pokémon from becoming confused.,This Pokemon cannot become Confused.
-21,Suction Cups,Negates moves that force switching out.,This Pokemon cannot be switched with Roar or Whirlwind.
-22,Intimidate,Lowers the foe's Attack stat.,This Pokemon lowers the enemy's Attack one level when it enters battle.
-23,Shadow Tag,Prevents the foe from escaping.,Enemy Pokemon cannot run or be switched out.
-24,Rough Skin,Inflicts damage to the foe on contact.,Enemy Pokemon receive 1/8 their max HP in damage every time they touch this Pokemon.
-25,Wonder Guard,Only supereffective moves will hit.,This Pokemon can only be damaged by moves of types it is weak to.
-26,Levitate,Gives full immunity to all Ground-type moves.,This Pokemon does not take damage from Ground moves.
-27,Effect Spore,"Contact may paralyze, poison, or cause sleep.","Enemy Pokemon have a 30% chance of becoming Paralyzed, Poisoned, or Asleep every time they touch this Pokemon."
-28,Synchronize,"Passes on a burn, poison, or paralysis to the foe.","When this Pokemon becomes Burned, Paralyzed, or Poisoned, the enemy does too."
-29,Clear Body,Prevents the Pokémon's stats from being lowered.,This Pokemon's stats cannot be lowered.
-30,Natural Cure,All status problems are healed upon switching out.,This Pokemon's status returns to normal when it leaves battle.
-31,Lightningrod,The Pokémon draws in all Electric-type moves.,This Pokemon takes damage from Electric moves aimed at its partner.
-32,Serene Grace,Boosts the likelihood of added effects appearing.,The chance of a move's stat/status effect occuring is double for this Pokemon.
-33,Swift Swim,Boosts the Pokémon's Speed in rain.,This Pokemon's Speed doubles during Rain Dance.
-34,Chlorophyll,Boosts the Pokémon's Speed in sunshine.,This Pokemon's Speed doubles during Sunny Day.
-35,Illuminate,Raises the likelihood of meeting wild Pokémon.,"If this Pokemon is first on your belt, the chance of a wild encounter rises."
-36,Trace,The Pokémon copies the foe's ability.,This Pokemon copies the ability of the enemy when entering battle.
-37,Huge Power,Raises the Pokémon's Attack stat.,This Pokemon's Attack is doubled.
-38,Poison Point,Contact with the Pokémon may poison the foe.,Enemy Pokemon have a 30% chance of becoming Poisoned every time they touch this Pokemon.
-39,Inner Focus,The Pokémon is protected from flinching.,This Pokemon will not Flinch.
-40,Magma Armor,Prevents the Pokémon from becoming frozen.,This Pokemon cannot become Frozen.
-41,Water Veil,Prevents the Pokémon from getting a burn.,This Pokemon cannot become Burned.
-42,Magnet Pull,Prevents Steel-type Pokémon from escaping.,Steel enemies cannot run or be switched out.
-43,Soundproof,Gives full immunity to all sound-based moves.,"This Pokemon is immune to Growl, Grasswhistle, Hyper Voice, Heal Bell, Metal Sound, Perish Song, Roar, Screech, Sing, Snore, Supersonic, and Uproar."
-44,Rain Dish,The Pokémon gradually recovers HP in rain.,This Pokemon regains 1/16 its max HP every turn during Rain Dance.
-45,Sand Stream,The Pokémon summons a sandstorm in battle.,Sandstorm is in effect while this Pokemon is in battle.
-46,Pressure,The Pokémon raises the foe's PP usage.,Opposing Pokemon must use 2 PP per move.
-47,Thick Fat,Raises resistance to Fire-and Ice-type moves.,Fire and Ice moves only do half damage against this Pokemon.
-48,Early Bird,The Pokémon awakens quickly from sleep.,"This Pokemon wakes up from Sleep in half as many turns, including Sleep from Rest."
-49,Flame Body,Contact with the Pokémon may burn the foe.,Enemy Pokemon have a 30% chance of becoming Burned every time they touch this Pokemon.
-50,Run Away,Enables sure getaway from wild Pokémon.,This Pokemon can always run from wild battles.
-51,Keen Eye,Prevents the Pokémon from losing accuracy.,This Pokemon cannot have its Accuracy lowered.
-52,Hyper Cutter,Prevents the Attack stat from being lowered.,This Pokemon cannot have its Attack lowered.
-53,Pickup,The Pokémon may pick up items.,"After battle, this Pokemon will sometimes be holding an item if it was not already."
-54,Truant,The Pokémon can't attack on consecutive turns.,"Whenever this Pokemon deals damage, it skips its next turn."
-55,Hustle,"Boosts the Attack stat, but lowers accuracy.","This Pokemon's base Attack is increased by 50%, but its physical moves have 80% of their usual accuracy."
-56,Cute Charm,Contact with the Pokémon may cause infatuation.,Enemy Pokemon have a 30% chance of becoming Attracted every time they touch this Pokemon.
-57,Plus,Boosts Sp. Atk if another Pokémon has Minus.,"When this Pokemon's partner has Minus, its Special Attack increases by 50%."
-58,Minus,Boosts Sp. Atk if another Pokémon has Plus.,"When this Pokemon's partner has Plus, its Special Attack increases by 50%."
-59,Forecast,CASTFORM transforms with the weather.,This Pokemon's type changes to match the weather.
-60,Sticky Hold,Protects the Pokémon from item theft.,This Pokemon's item cannot be removed by enemy moves.
-61,Shed Skin,The Pokémon may heal its own status problems.,"Each turn, this Pokemon has a 1/3 chance of its status becoming normal."
-62,Guts,Boosts Attack if there is a status problem.,"When this Pokemon has a major status ailment, its Attack increases by 50%."
-63,Marvel Scale,Boosts Defense if there is a status problem.,"When this Pokemon has a status condition, its Defense increases by 50%."
-64,Liquid Ooze,Inflicts damage on foes using any draining move.,"When the enemy uses absorbtion moves on this Pokemon, it loses HP instead of gaining."
-65,Overgrow,Powers up Grass-type moves in a pinch.,"When this Pokemon's HP is 1/3 its max or lower, its Grass moves do 50% more damage."
-66,Blaze,Powers up Fire-type moves in a pinch.,"When this Pokemon's HP is 1/3 its max or lower, its Fire moves do 50% more damage."
-67,Torrent,Powers up Water-type moves in a pinch.,"When this Pokemon's HP is 1/3 its max or lower, its Water moves do 50% more damage."
-68,Swarm,Powers up Bug-type moves in a pinch.,"When this Pokemon's HP is 1/3 its max or lower, its Bug moves do 50% more damage."
-69,Rock Head,Protects the Pokémon from recoil damage.,This Pokemon does not receive any recoil from moves.
-70,Drought,The Pokémon makes it sunny if it is in battle.,Sunny Day is in effect while this Pokemon is in battle.
-71,Arena Trap,Prevents the foe from fleeing.,Prevents enemy Pokemon (except Flying Pokemon and Pokemon that can Levitate) from running or being switched out.
-72,Vital Spirit,Prevents the Pokémon from falling asleep.,This Pokemon cannot become Asleep.
-73,White Smoke,Prevents the Pokémon's stats from being lowered.,This Pokemon's stats cannot be lowered.
-74,Pure Power,Boosts the power of physical attacks.,This Pokemon's Attack is doubled.
-75,Shell Armor,The Pokémon is protected against critical hits.,No moves will critically hit this Pokemon.
-76,Air Lock,Eliminates the effects of weather.,Weather does not affect this Pokemon.
-77,Tangled Feet,Raises evasion if the Pokémon is confused.,This Pokemon's Evasion rises when it's Confused.
-78,Motor Drive,Raises Speed if hit by an Electric-type move.,This Pokemon's Speed rises one level when it is struck by an Electric move.
-79,Rivalry,Raises Attack if the foe is of the same gender.,This Pokemon's Attack rises when fighting an enemy of the same gender.
-80,Steadfast,Raises Speed each time the Pokémon flinches.,This Pokemon's Speed rises one level when it Flinches.
-81,Snow Cloak,Raises evasion in a hailstorm.,This Pokemon's Evasion rises one level during Hail.
-82,Gluttony,Encourages the early use of a held Berry.,This Pokemon will eat held berries triggered by low HP at 1/2 its max HP rather than 1/4.
-83,Anger Point,Raises Attack upon taking a critical hit.,This Pokemon's Attack rises to its maximum when it is hit with a critical hit.
-84,Unburden,Raises Speed if a held item is used.,This Pokemon's Speed rises one level when it uses or loses its held item.
-85,Heat Proof,Weakens the power of Fire-type moves.,This Pokemon takes half damage from Fire moves.
-86,Simple,The Pokémon is prone to wild stat changes.,"Stat changes are doubled against this Pokemon, although the maximum of six is unchanged."
-87,Dry Skin,Reduces HP if it is hot. Water restores HP.,"This Pokemon gradually loses HP per turn during Sunny Day, and gradually heals during Rain Dance.  This Pokemon takes double damage from Fire attacks, but Water attacks heal it for 1/4 its HP."
-88,Download,Adjusts power according to the foe's ability.,"When this Pokemon enters battle, it raises one level in the Attack stat corresponding to its opponent's weaker Defense stat."
-89,Iron Fist,Boosts the power of punching moves.,This Pokemon's Punch moves do 20% more damage.
-90,Poison Heal,Restores HP if the Pokémon is poisoned.,This Pokemon regains 1/8 its max HP each turn when it is Poisoned.
-91,Adaptability,Powers up moves of the same type.,Moves with the same type as this Pokemon become more powerful.
-92,Skill Link,Increases the frequency of multi-strike moves.,This Pokemon always hits five times with 2-to-5-hit moves.
-93,Hydration,Heals status problems if it is raining.,This Pokemon is cured of any major status effects during Rain Dance.
-94,Solar Power,"Boosts Sp. Atk, but lowers HP in sunshine.",This Pokemon's max HP lowers and Special Attack rises one level during Sunny Day.
-95,Quick Feet,Boosts Speed if there is a status problem.,This Pokemon's Speed rises one level when it has a major status effect.
-96,Normalize,All the Pokémon's moves become the Normal type.,All of this Pokemon's moves are Normal.
-97,Sniper,Powers up moves if they become critical hits.,This Pokemon inflicts double damage with critical hits.
-98,Magic Guard,The Pokémon only takes damage from attacks.,This Pokemon is immune to damage not caused directly by an attack.
-99,No Guard,Ensures the Pokémon and its foe's attacks land.,All damage-inflicting moves have 100% Accuracy while this Pokemon is in battle.
-100,Stall,The Pokémon moves after even slower foes.,This Pokemon always goes second.
-101,Technician,Powers up the Pokémon's weaker moves.,This Pokemon inflicts 50% more damage with moves that have power of 60 or less.  Hidden Power is not affected.
-102,Leaf Guard,Prevents status problems in sunny weather.,This Pokemon is immune to major status effects during Sunny Day.
-103,Klutz,The Pokémon can't use any held items.,This Pokemon cannot use its held item.
-104,Mold Breaker,Moves can be used regardless of abilities.,Enemy Pokemon cannot prevent attacks with abilities.
-105,Super Luck,Heightens the critical-hit ratios of moves.,This Pokemon has a higher chance to hit critically..
-106,Aftermath,Damages the foe landing the finishing hit.,"When this Pokemon is fainted by a contact move, the attacker takes 1/4 its max HP in damage."
-107,Anticipation,Senses the foe's dangerous moves.,This Pokemon will be aware when an opposing Pokemon with a move that would do super-effective damage against it switches in.
-108,Forewarn,Determines what moves the foe has.,"This Pokemon can see its opponent's move with the highest power, or one of them at random in the case of a tie."
-109,Unaware,Ignores any change in ability by the foe.,This Pokemon ignores any of the enemy's stat changes.  Speed calculations are unaffected.
-110,Tinted Lens,"Powers up ""not very effective"" moves.",This Pokemon inflicts double damage with not-very-effective moves.
-111,Filter,Powers down super-effective moves.,This Pokemon takes half damage from super-effective moves.
-112,Slow Start,Temporarily halves Attack and Speed.,This Pokemon's Attack and Speed are halved for the first few turns it's in battle.
-113,Scrappy,Enables moves to hit Ghost-type foes.,This Pokemon can hit Ghost Pokemon with Normal and Fighting moves.
-114,Storm Drain,The Pokémon draws in all Water-type moves.,All Water moves are drawn to this Pokemon.
-115,Ice Body,The Pokémon regains HP in a hailstorm.,This Pokemon regains HP during Hail.
-116,Solid Rock,Powers down super-effective moves.,This Pokemon takes less damage from super-effective moves.
-117,Snow Warning,The Pokémon summons a hailstorm in battle.,Hail is in effect while this Pokemon is in battle.
-118,Honey Gather,The Pokémon may gather Honey from somewhere.,This Pokemon picks up a Sweet Honey after battle.
-119,Frisk,The Pokémon can check the foe's held item.,This Pokemon can see what enemy Pokemon are holding.
-120,Reckless,Powers up moves that have recoil damage.,Opposing Pokemon take 30% more damage from recoil.
-121,Multitype,Changes type to match the held Plate.,This Pokemon changes type and form to match the Plate it holds.
-122,Flower Gift,Powers up party Pokémon when it is sunny.,"During Sunny Day, this Pokemon changes form, and both it and its ally's Attack and Special Attack increase by 50%."
-123,Bad Dreams,Reduces a sleeping foe's HP.,Enemy Pokemon lose HP every turn they are Sleeping.
-200,No Ability,,This Pokemon has no special ability.
+id,name,generation_id,flavor_text,effect
+1,Stench,3,The stench helps keep wild Pokémon away.,"If this Pokemon is first on your belt, the chance of a wild encounter drops."
+2,Drizzle,3,The Pokémon makes it rain if it appears in battle.,Rain Dance is in effect while this Pokemon is in battle.
+3,Speed Boost,3,The Pokémon's Speed stat is gradually boosted.,This Pokemon's Speed rises one level every turn.
+4,Battle Armor,3,The Pokémon is protected against critical hits.,No moves will critically hit this Pokemon.
+5,Sturdy,3,The Pokémon is protected against 1-hit KO attacks.,One-hit KO moves do not work on this Pokemon.
+6,Damp,3,Prevents combatants from self destructing.,Neither this Pokemon nor the enemy can use Explosion or Selfdestruct.
+7,Limber,3,The Pokémon is protected from paralysis.,This Pokemon cannot become Paralyzed.
+8,Sand Veil,3,Boosts the Pokémon's evasion in a sandstorm.,This Pokemon's Evasion rises one level during Sandstorm.
+9,Static,3,Contact with the Pokémon may cause paralysis.,Enemy Pokemon have a 30% chance of becoming Paralyzed every time they touch this Pokemon.
+10,Volt Absorb,3,Restores HP if hit by an Electric-type move.,Damage from Electric moves instead heals up to 1/4 of this Pokemon's max HP.
+11,Water Absorb,3,Restores HP if hit by a Water-type move.,Damage from Water moves instead heals up to 1/4 of this Pokemon's max HP.
+12,Oblivious,3,Prevents the Pokémon from becoming infatuated.,This Pokemon cannot become Attracted.
+13,Cloud Nine,3,Eliminates the effects of weather.,Weather does not affect this Pokemon.
+14,Compoundeyes,3,The Pokémon's accuracy is boosted.,This Pokemon's moves receive a 30% increase in Accuracy.
+15,Insomnia,3,Prevents the Pokémon from falling asleep.,This Pokemon cannot become Asleep.
+16,Color Change,3,Changes the Pokémon's type to the foe's move.,This Pokemon's type changes to that of the last move that inflicted damage.
+17,Immunity,3,Prevents the Pokémon from getting poisoned.,This Pokemon cannot become Poisoned.
+18,Flash Fire,3,Powers up Fire-type moves if hit by a fire move.,"When this Pokemon takes damage from a Fire move, it becomes immune to Fire moves and all its Fire moves do 50% more damage until it leaves battle."
+19,Shield Dust,3,Blocks the added effects of attacks taken.,This Pokemon is immune to stat/status changes from damaging moves.
+20,Own Tempo,3,Prevents the Pokémon from becoming confused.,This Pokemon cannot become Confused.
+21,Suction Cups,3,Negates moves that force switching out.,This Pokemon cannot be switched with Roar or Whirlwind.
+22,Intimidate,3,Lowers the foe's Attack stat.,This Pokemon lowers the enemy's Attack one level when it enters battle.
+23,Shadow Tag,3,Prevents the foe from escaping.,Enemy Pokemon cannot run or be switched out.
+24,Rough Skin,3,Inflicts damage to the foe on contact.,Enemy Pokemon receive 1/8 their max HP in damage every time they touch this Pokemon.
+25,Wonder Guard,3,Only supereffective moves will hit.,This Pokemon can only be damaged by moves of types it is weak to.
+26,Levitate,3,Gives full immunity to all Ground-type moves.,This Pokemon does not take damage from Ground moves.
+27,Effect Spore,3,"Contact may paralyze, poison, or cause sleep.","Enemy Pokemon have a 30% chance of becoming Paralyzed, Poisoned, or Asleep every time they touch this Pokemon."
+28,Synchronize,3,"Passes on a burn, poison, or paralysis to the foe.","When this Pokemon becomes Burned, Paralyzed, or Poisoned, the enemy does too."
+29,Clear Body,3,Prevents the Pokémon's stats from being lowered.,This Pokemon's stats cannot be lowered.
+30,Natural Cure,3,All status problems are healed upon switching out.,This Pokemon's status returns to normal when it leaves battle.
+31,Lightningrod,3,The Pokémon draws in all Electric-type moves.,This Pokemon takes damage from Electric moves aimed at its partner.
+32,Serene Grace,3,Boosts the likelihood of added effects appearing.,The chance of a move's stat/status effect occuring is double for this Pokemon.
+33,Swift Swim,3,Boosts the Pokémon's Speed in rain.,This Pokemon's Speed doubles during Rain Dance.
+34,Chlorophyll,3,Boosts the Pokémon's Speed in sunshine.,This Pokemon's Speed doubles during Sunny Day.
+35,Illuminate,3,Raises the likelihood of meeting wild Pokémon.,"If this Pokemon is first on your belt, the chance of a wild encounter rises."
+36,Trace,3,The Pokémon copies the foe's ability.,This Pokemon copies the ability of the enemy when entering battle.
+37,Huge Power,3,Raises the Pokémon's Attack stat.,This Pokemon's Attack is doubled.
+38,Poison Point,3,Contact with the Pokémon may poison the foe.,Enemy Pokemon have a 30% chance of becoming Poisoned every time they touch this Pokemon.
+39,Inner Focus,3,The Pokémon is protected from flinching.,This Pokemon will not Flinch.
+40,Magma Armor,3,Prevents the Pokémon from becoming frozen.,This Pokemon cannot become Frozen.
+41,Water Veil,3,Prevents the Pokémon from getting a burn.,This Pokemon cannot become Burned.
+42,Magnet Pull,3,Prevents Steel-type Pokémon from escaping.,Steel enemies cannot run or be switched out.
+43,Soundproof,3,Gives full immunity to all sound-based moves.,"This Pokemon is immune to Growl, Grasswhistle, Hyper Voice, Heal Bell, Metal Sound, Perish Song, Roar, Screech, Sing, Snore, Supersonic, and Uproar."
+44,Rain Dish,3,The Pokémon gradually recovers HP in rain.,This Pokemon regains 1/16 its max HP every turn during Rain Dance.
+45,Sand Stream,3,The Pokémon summons a sandstorm in battle.,Sandstorm is in effect while this Pokemon is in battle.
+46,Pressure,3,The Pokémon raises the foe's PP usage.,Opposing Pokemon must use 2 PP per move.
+47,Thick Fat,3,Raises resistance to Fire-and Ice-type moves.,Fire and Ice moves only do half damage against this Pokemon.
+48,Early Bird,3,The Pokémon awakens quickly from sleep.,"This Pokemon wakes up from Sleep in half as many turns, including Sleep from Rest."
+49,Flame Body,3,Contact with the Pokémon may burn the foe.,Enemy Pokemon have a 30% chance of becoming Burned every time they touch this Pokemon.
+50,Run Away,3,Enables sure getaway from wild Pokémon.,This Pokemon can always run from wild battles.
+51,Keen Eye,3,Prevents the Pokémon from losing accuracy.,This Pokemon cannot have its Accuracy lowered.
+52,Hyper Cutter,3,Prevents the Attack stat from being lowered.,This Pokemon cannot have its Attack lowered.
+53,Pickup,3,The Pokémon may pick up items.,"After battle, this Pokemon will sometimes be holding an item if it was not already."
+54,Truant,3,The Pokémon can't attack on consecutive turns.,"Whenever this Pokemon deals damage, it skips its next turn."
+55,Hustle,3,"Boosts the Attack stat, but lowers accuracy.","This Pokemon's base Attack is increased by 50%, but its physical moves have 80% of their usual accuracy."
+56,Cute Charm,3,Contact with the Pokémon may cause infatuation.,Enemy Pokemon have a 30% chance of becoming Attracted every time they touch this Pokemon.
+57,Plus,3,Boosts Sp. Atk if another Pokémon has Minus.,"When this Pokemon's partner has Minus, its Special Attack increases by 50%."
+58,Minus,3,Boosts Sp. Atk if another Pokémon has Plus.,"When this Pokemon's partner has Plus, its Special Attack increases by 50%."
+59,Forecast,3,CASTFORM transforms with the weather.,This Pokemon's type changes to match the weather.
+60,Sticky Hold,3,Protects the Pokémon from item theft.,This Pokemon's item cannot be removed by enemy moves.
+61,Shed Skin,3,The Pokémon may heal its own status problems.,"Each turn, this Pokemon has a 1/3 chance of its status becoming normal."
+62,Guts,3,Boosts Attack if there is a status problem.,"When this Pokemon has a major status ailment, its Attack increases by 50%."
+63,Marvel Scale,3,Boosts Defense if there is a status problem.,"When this Pokemon has a status condition, its Defense increases by 50%."
+64,Liquid Ooze,3,Inflicts damage on foes using any draining move.,"When the enemy uses absorbtion moves on this Pokemon, it loses HP instead of gaining."
+65,Overgrow,3,Powers up Grass-type moves in a pinch.,"When this Pokemon's HP is 1/3 its max or lower, its Grass moves do 50% more damage."
+66,Blaze,3,Powers up Fire-type moves in a pinch.,"When this Pokemon's HP is 1/3 its max or lower, its Fire moves do 50% more damage."
+67,Torrent,3,Powers up Water-type moves in a pinch.,"When this Pokemon's HP is 1/3 its max or lower, its Water moves do 50% more damage."
+68,Swarm,3,Powers up Bug-type moves in a pinch.,"When this Pokemon's HP is 1/3 its max or lower, its Bug moves do 50% more damage."
+69,Rock Head,3,Protects the Pokémon from recoil damage.,This Pokemon does not receive any recoil from moves.
+70,Drought,3,The Pokémon makes it sunny if it is in battle.,Sunny Day is in effect while this Pokemon is in battle.
+71,Arena Trap,3,Prevents the foe from fleeing.,Prevents enemy Pokemon (except Flying Pokemon and Pokemon that can Levitate) from running or being switched out.
+72,Vital Spirit,3,Prevents the Pokémon from falling asleep.,This Pokemon cannot become Asleep.
+73,White Smoke,3,Prevents the Pokémon's stats from being lowered.,This Pokemon's stats cannot be lowered.
+74,Pure Power,3,Boosts the power of physical attacks.,This Pokemon's Attack is doubled.
+75,Shell Armor,3,The Pokémon is protected against critical hits.,No moves will critically hit this Pokemon.
+76,Air Lock,3,Eliminates the effects of weather.,Weather does not affect this Pokemon.
+77,Tangled Feet,4,Raises evasion if the Pokémon is confused.,This Pokemon's Evasion rises when it's Confused.
+78,Motor Drive,4,Raises Speed if hit by an Electric-type move.,This Pokemon's Speed rises one level when it is struck by an Electric move.
+79,Rivalry,4,Raises Attack if the foe is of the same gender.,This Pokemon's Attack rises when fighting an enemy of the same gender.
+80,Steadfast,4,Raises Speed each time the Pokémon flinches.,This Pokemon's Speed rises one level when it Flinches.
+81,Snow Cloak,4,Raises evasion in a hailstorm.,This Pokemon's Evasion rises one level during Hail.
+82,Gluttony,4,Encourages the early use of a held Berry.,This Pokemon will eat held berries triggered by low HP at 1/2 its max HP rather than 1/4.
+83,Anger Point,4,Raises Attack upon taking a critical hit.,This Pokemon's Attack rises to its maximum when it is hit with a critical hit.
+84,Unburden,4,Raises Speed if a held item is used.,This Pokemon's Speed rises one level when it uses or loses its held item.
+85,Heat Proof,4,Weakens the power of Fire-type moves.,This Pokemon takes half damage from Fire moves.
+86,Simple,4,The Pokémon is prone to wild stat changes.,"Stat changes are doubled against this Pokemon, although the maximum of six is unchanged."
+87,Dry Skin,4,Reduces HP if it is hot. Water restores HP.,"This Pokemon gradually loses HP per turn during Sunny Day, and gradually heals during Rain Dance.  This Pokemon takes double damage from Fire attacks, but Water attacks heal it for 1/4 its HP."
+88,Download,4,Adjusts power according to the foe's ability.,"When this Pokemon enters battle, it raises one level in the Attack stat corresponding to its opponent's weaker Defense stat."
+89,Iron Fist,4,Boosts the power of punching moves.,This Pokemon's Punch moves do 20% more damage.
+90,Poison Heal,4,Restores HP if the Pokémon is poisoned.,This Pokemon regains 1/8 its max HP each turn when it is Poisoned.
+91,Adaptability,4,Powers up moves of the same type.,Moves with the same type as this Pokemon become more powerful.
+92,Skill Link,4,Increases the frequency of multi-strike moves.,This Pokemon always hits five times with 2-to-5-hit moves.
+93,Hydration,4,Heals status problems if it is raining.,This Pokemon is cured of any major status effects during Rain Dance.
+94,Solar Power,4,"Boosts Sp. Atk, but lowers HP in sunshine.",This Pokemon's max HP lowers and Special Attack rises one level during Sunny Day.
+95,Quick Feet,4,Boosts Speed if there is a status problem.,This Pokemon's Speed rises one level when it has a major status effect.
+96,Normalize,4,All the Pokémon's moves become the Normal type.,All of this Pokemon's moves are Normal.
+97,Sniper,4,Powers up moves if they become critical hits.,This Pokemon inflicts double damage with critical hits.
+98,Magic Guard,4,The Pokémon only takes damage from attacks.,This Pokemon is immune to damage not caused directly by an attack.
+99,No Guard,4,Ensures the Pokémon and its foe's attacks land.,All damage-inflicting moves have 100% Accuracy while this Pokemon is in battle.
+100,Stall,4,The Pokémon moves after even slower foes.,This Pokemon always goes second.
+101,Technician,4,Powers up the Pokémon's weaker moves.,This Pokemon inflicts 50% more damage with moves that have power of 60 or less.  Hidden Power is not affected.
+102,Leaf Guard,4,Prevents status problems in sunny weather.,This Pokemon is immune to major status effects during Sunny Day.
+103,Klutz,4,The Pokémon can't use any held items.,This Pokemon cannot use its held item.
+104,Mold Breaker,4,Moves can be used regardless of abilities.,Enemy Pokemon cannot prevent attacks with abilities.
+105,Super Luck,4,Heightens the critical-hit ratios of moves.,This Pokemon has a higher chance to hit critically..
+106,Aftermath,4,Damages the foe landing the finishing hit.,"When this Pokemon is fainted by a contact move, the attacker takes 1/4 its max HP in damage."
+107,Anticipation,4,Senses the foe's dangerous moves.,This Pokemon will be aware when an opposing Pokemon with a move that would do super-effective damage against it switches in.
+108,Forewarn,4,Determines what moves the foe has.,"This Pokemon can see its opponent's move with the highest power, or one of them at random in the case of a tie."
+109,Unaware,4,Ignores any change in ability by the foe.,This Pokemon ignores any of the enemy's stat changes.  Speed calculations are unaffected.
+110,Tinted Lens,4,"Powers up ""not very effective"" moves.",This Pokemon inflicts double damage with not-very-effective moves.
+111,Filter,4,Powers down super-effective moves.,This Pokemon takes half damage from super-effective moves.
+112,Slow Start,4,Temporarily halves Attack and Speed.,This Pokemon's Attack and Speed are halved for the first few turns it's in battle.
+113,Scrappy,4,Enables moves to hit Ghost-type foes.,This Pokemon can hit Ghost Pokemon with Normal and Fighting moves.
+114,Storm Drain,4,The Pokémon draws in all Water-type moves.,All Water moves are drawn to this Pokemon.
+115,Ice Body,4,The Pokémon regains HP in a hailstorm.,This Pokemon regains HP during Hail.
+116,Solid Rock,4,Powers down super-effective moves.,This Pokemon takes less damage from super-effective moves.
+117,Snow Warning,4,The Pokémon summons a hailstorm in battle.,Hail is in effect while this Pokemon is in battle.
+118,Honey Gather,4,The Pokémon may gather Honey from somewhere.,This Pokemon picks up a Sweet Honey after battle.
+119,Frisk,4,The Pokémon can check the foe's held item.,This Pokemon can see what enemy Pokemon are holding.
+120,Reckless,4,Powers up moves that have recoil damage.,Opposing Pokemon take 30% more damage from recoil.
+121,Multitype,4,Changes type to match the held Plate.,This Pokemon changes type and form to match the Plate it holds.
+122,Flower Gift,4,Powers up party Pokémon when it is sunny.,"During Sunny Day, this Pokemon changes form, and both it and its ally's Attack and Special Attack increase by 50%."
+123,Bad Dreams,4,Reduces a sleeping foe's HP.,Enemy Pokemon lose HP every turn they are Sleeping.
+200,No Ability,4,,This Pokemon has no special ability.

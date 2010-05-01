@@ -17,6 +17,7 @@ class Ability(TableBase):
     __singlename__ = 'ability'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(24), nullable=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
     flavor_text = Column(Unicode(64), nullable=False)
     effect = Column(Unicode(255), nullable=False)
 
@@ -628,6 +629,8 @@ class Version(TableBase):
 
 
 ### Relations down here, to avoid ordering problems
+Ability.generation = relation(Generation, backref='abilities')
+
 Berry.berry_firmness = relation(BerryFirmness, backref='berries')
 Berry.firmness = association_proxy('berry_firmness', 'name')
 Berry.flavors = relation(BerryFlavor, order_by=BerryFlavor.contest_type_id, backref='berry')
