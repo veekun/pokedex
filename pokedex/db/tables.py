@@ -201,7 +201,6 @@ class Item(TableBase):
     cost = Column(Integer, nullable=False)
     fling_power = Column(Integer, nullable=True)
     fling_effect_id = Column(Integer, ForeignKey('item_fling_effects.id'), nullable=True)
-    flavor_text = Column(Unicode(255), nullable=False)
     effect = Column(Unicode(5120), nullable=False)
     is_underground = Column(Boolean, nullable=False)
     can_hold = Column(Boolean, nullable=False)
@@ -215,10 +214,22 @@ class ItemCategory(TableBase):
     pocket_id = Column(Integer, ForeignKey('item_pockets.id'), nullable=False)
     name = Column(Unicode(16), nullable=False)
 
+class ItemFlavorText(TableBase):
+    __tablename__ = 'item_flavor_text'
+    item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, autoincrement=False, nullable=False)
+    flavor_text = Column(Unicode(255), nullable=False)
+
 class ItemFlingEffect(TableBase):
     __tablename__ = 'item_fling_effects'
     id = Column(Integer, primary_key=True, nullable=False)
     effect = Column(Unicode(255), nullable=False)
+
+class ItemInternalID(TableBase):
+    __tablename__ = 'item_internal_ids'
+    item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False)
+    internal_id = Column(Integer, nullable=False)
 
 class ItemPocket(TableBase):
     __tablename__ = 'item_pockets'
@@ -647,12 +658,15 @@ Generation.versions = relation(Version, secondary=VersionGroup.__table__)
 Generation.main_region = relation(Region)
 
 Item.berry = relation(Berry, uselist=False, backref='item')
+Item.flavor_text = relation(ItemFlavorText, order_by=ItemFlavorText.version_group_id.asc(), backref='item')
 Item.fling_effect = relation(ItemFlingEffect, backref='items')
 Item.category = relation(ItemCategory)
 Item.pocket = association_proxy('category', 'pocket')
 
 ItemCategory.items = relation(Item, order_by=Item.name)
 ItemCategory.pocket = relation(ItemPocket)
+
+ItemFlavorText.version_group = relation(VersionGroup)
 
 ItemPocket.categories = relation(ItemCategory, order_by=ItemCategory.name)
 
@@ -737,7 +751,7 @@ Pokemon.evolution_method = relation(EvolutionMethod)
 Pokemon.evolution_children = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.evolution_parent_pokemon_id,
                                                backref=backref('evolution_parent',
                                                                remote_side=[Pokemon.id]))
-Pokemon.flavor_text = relation(PokemonFlavorText, order_by=PokemonFlavorText.pokemon_id, backref='pokemon')
+Pokemon.flavor_text = relation(PokemonFlavorText, order_by=PokemonFlavorText.version_id.asc(), backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
 Pokemon.pokemon_habitat = relation(PokemonHabitat, backref='pokemon')
 Pokemon.habitat = association_proxy('pokemon_habitat', 'name')
