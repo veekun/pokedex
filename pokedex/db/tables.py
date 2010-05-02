@@ -202,17 +202,22 @@ class Item(TableBase):
     fling_power = Column(Integer, nullable=True)
     fling_effect_id = Column(Integer, ForeignKey('item_fling_effects.id'), nullable=True)
     effect = Column(Unicode(5120), nullable=False)
-    is_underground = Column(Boolean, nullable=False)
-    can_hold = Column(Boolean, nullable=False)
-    is_battle_item = Column(Boolean, nullable=False)
-    can_use_automatically = Column(Boolean, nullable=False)
-    can_reuse = Column(Boolean, nullable=False)
 
 class ItemCategory(TableBase):
     __tablename__ = 'item_categories'
     id = Column(Integer, primary_key=True, nullable=False)
     pocket_id = Column(Integer, ForeignKey('item_pockets.id'), nullable=False)
     name = Column(Unicode(16), nullable=False)
+
+class ItemFlag(TableBase):
+    __tablename__ = 'item_flags'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(64), nullable=False)
+
+class ItemFlagMap(TableBase):
+    __tablename__ = 'item_flag_map'
+    item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False)
+    item_flag_id = Column(Integer, ForeignKey('item_flags.id'), primary_key=True, autoincrement=False, nullable=False)
 
 class ItemFlavorText(TableBase):
     __tablename__ = 'item_flavor_text'
@@ -658,6 +663,7 @@ Generation.versions = relation(Version, secondary=VersionGroup.__table__)
 Generation.main_region = relation(Region)
 
 Item.berry = relation(Berry, uselist=False, backref='item')
+Item.flags = relation(ItemFlag, secondary=ItemFlagMap.__table__)
 Item.flavor_text = relation(ItemFlavorText, order_by=ItemFlavorText.version_group_id.asc(), backref='item')
 Item.fling_effect = relation(ItemFlingEffect, backref='items')
 Item.category = relation(ItemCategory)
