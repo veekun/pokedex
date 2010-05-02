@@ -201,7 +201,11 @@ class Item(TableBase):
     cost = Column(Integer, nullable=False)
     fling_power = Column(Integer, nullable=True)
     fling_effect_id = Column(Integer, ForeignKey('item_fling_effects.id'), nullable=True)
-    effect = Column(Unicode(5120), nullable=False)
+    effect = Column(rst.RstTextColumn(5120), nullable=False)
+
+    @property
+    def appears_underground(self):
+        return any(flag.identifier == u'underground' for flag in self.flags)
 
 class ItemCategory(TableBase):
     __tablename__ = 'item_categories'
@@ -212,6 +216,7 @@ class ItemCategory(TableBase):
 class ItemFlag(TableBase):
     __tablename__ = 'item_flags'
     id = Column(Integer, primary_key=True, nullable=False)
+    identifier = Column(Unicode(24), nullable=False)
     name = Column(Unicode(64), nullable=False)
 
 class ItemFlagMap(TableBase):

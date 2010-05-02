@@ -120,6 +120,7 @@ def generic_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
 
 roles.register_local_role('ability', generic_role)
 roles.register_local_role('item', generic_role)
+roles.register_local_role('location', generic_role)
 roles.register_local_role('move', generic_role)
 roles.register_local_role('type', generic_role)
 roles.register_local_role('pokemon', generic_role)
