@@ -464,3 +464,130 @@ Held by Gligar: Evolves the holder into Gliscor when traded.",0,1,0,1,0
 439,Coupon 3,22,0,,,A coupon to be exchanged for a Pokémon Watch (Pokétch for short). Three coupons are needed.,One of three coupons needed to receive a Pokétch.,0,0,0,0,0
 440,Storage Key,22,0,,,The key to Team Galactic's sinister warehouse located at the edge of Veilstone City.,Grants access to the Team Galactic warehouse in Veilstone City.,0,0,0,0,0
 441,SecretPotion,22,0,,,A fantastic medicine dispensed by the pharmacy in Cianwood City. It fully heals a Pokémon of any ailment.,Required to cure the Psyducks blocking Route 210 of their chronic headaches.,0,0,0,0,0
+442,Griseous Orb,15,10000,,,xxx,"Held by :pokemon:`Giratina`
+    Holder's :type:`dragon` and :type:`ghost` moves have 1.2× their base power.
+
+    Holder is in Origin Forme.
+
+This item cannot be held by any Pokémon but Giratina.  When you enter the Union Room or connect to Wi-Fi, this item returns to your bag.",0,0,0,0,0
+443,Vs. Recorder,21,0,,,xxx,"Optionally records wireless, Wi-Fi, and Battle Frontier battles.
+
+Tracks Battle Points earned in the Battle Frontier, and stores commemorative prints.",0,0,0,0,0
+444,Gracidea,20,0,,,xxx,"Used by trainer on a :pokemon:`Shaymin`
+    Changes the target Shaymin from Land Forme to Sky Forme.
+
+    This item cannot be used on a :mechanic:`frozen` Shaymin or at night.  Sky Forme Shaymin will revert to Land Forme overnight, when frozen, and upon entering a link battle.  This item must be used again to change it back.",0,0,0,0,0
+445,Secret Key,20,0,,,xxx,"Used by trainer in the Galactic Eterna Building, on the ground floor, to the left of the TV
+    Unlocks the secret :pokemon:`Rotom` room, in which there are five appliances which can change Rotom's form.",0,0,0,0,0
+446,Apricorn Box,21,0,,,xxx,Stores Apricorns.,0,0,0,0,0
+447,Berry Pots,21,0,,,xxx,Contains four portable pots of soil suitable for growing berries.,0,0,0,0,0
+448,SquirtBottle,22,0,,,xxx,"Required to water berries within the :item:`Berry Pots`.
+
+Required to battle the :pokemon:`Sudowoodo` on :location:`Route 36`.
+
+This item cannot be directly used from the bag.",0,0,0,0,0
+449,Lure Ball,39,300,,,xxx,"Used by trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the wild Pokémon was encountered by fishing, the wild Pokémon's catch rate is 3× normal.",0,0,0,0,0
+450,Level Ball,39,300,,,xxx,"Used by trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the trainer's Pokémon's level is higher than:
+    * four times the wild Pokémon's, the wild Pokémon's catch rate is 8× normal.
+    * than twice the wild Pokémon's, the wild Pokémon's catch rate is 4× normal.
+    * the wild Pokémon's, the wild Pokémon's catch rate is 2× normal.",0,0,0,0,0
+451,Moon Ball,39,300,,,xxx,"Used by trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the wild Pokémon is a :pokemon:`Clefairy`, :pokemon:`Nidoran♂`, :pokemon:`Nidoran♀`, :pokemon:`Jigglypuff`, :pokemon:`Skitty`, or any evolution thereof, the wild Pokémon has 4× its catch rate.",0,0,0,0,0
+452,Heavy Ball,39,300,,,xxx,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the wild Pokémon weighs:
+    * 409.6 kg (903.0 lb) or more, its catch rate is 40 more than normal.
+    * 307.2 kg (677.3 lb) or more, its catch rate is 30 more than normal.
+    * 204.8 kg (451.5 lb) or more, its catch rate is 20 more than normal.
+    * less than 204.8 kg (451.5 lb), its catch rate is 20 less than normal.",0,0,0,0,0
+453,Fast Ball,39,300,,,xxx,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the wild Pokémon's base :mechanic:`Speed` is 100 or more, its catch rate is 4× normal.",0,0,0,0,0
+454,Friend Ball,39,300,,,xxx,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If caught, the wild Pokémon's :mechanic:`happiness` starts at 200.",0,0,0,0,0
+455,Love Ball,39,300,,,xxx,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the trainer's Pokémon and wild Pokemon are of the same species but opposite genders, the wild Pokémon's catch rate is 8× normal.",0,0,0,0,0
+456,Park Ball,34,0,,,xxx,"Used by a trainer in battle
+    :mechanic:`Catch`\ es a wild Pokémon.
+
+This item can only be used in :location:`Pal Park`.",0,0,0,0,0
+457,Sport Ball,34,0,,,xxx,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.
+
+    The wild Pokémon's catch rate is 1.5× normal.",0,0,0,0,0
+458,Red Apricorn,40,0,,,xxx,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Level Ball`.,0,0,0,0,0
+459,Blu Apricorn,40,0,,,xxx,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Lure Ball`.,0,0,0,0,0
+460,Ylw Apricorn,40,0,,,xxx,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Moon Ball`.,0,0,0,0,0
+461,Grn Apricorn,40,0,,,xxx,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Friend Ball`.,0,0,0,0,0
+462,Pnk Apricorn,40,0,,,xxx,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Love Ball`.,0,0,0,0,0
+463,Wht Apricorn,40,0,,,xxx,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Fast Ball`.,0,0,0,0,0
+464,Blk Apricorn,40,0,,,xxx,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Heavy Ball`.,0,0,0,0,0
+465,Dowsing MCHN,21,0,,,xxx,"Used by trainer outside of battle
+    Searches for hidden items.",0,0,0,0,0
+466,RageCandyBar,21,0,,,xxx,May be traded for a :item:`TM64` in the vertical Underground Path.,0,0,0,0,0
+467,Red Orb,22,0,,,xxx,Causes :pokemon:`Groudon` to appear in the :location:`Embedded Tower`.,0,0,0,0,0
+468,Blue Orb,22,0,,,xxx,Causes :pokemon:`Kyogre` to appear in the :location:`Embedded Tower`.,0,0,0,0,0
+469,Jade Orb,22,0,,,xxx,Causes :pokemon:`Rayquaza` to appear in the :location:`Embedded Tower`.,0,0,0,0,0
+470,Enigma Stone,20,0,,,xxx,"When taken to the :location:`Pewter City` museum, causes :pokemon:`Latias` or :pokemon:`Latios` to attack the trainer.
+
+The Pokémon to appear will be whicher can't be encountered roaming in the wild.",0,0,0,0,0
+471,Unown Report,21,0,,,xxx,Lists which :pokemon:`Unown` forms the trainer has caught.,0,0,0,0,0
+472,Blue Card,21,0,,,xxx,Allows the trainer to answer the daily question on Buena's radio show.  Records the points earned for correct answers.,0,0,0,0,0
+473,SlowpokeTail,23,0,,,xxx,Does nothing.,0,0,0,0,0
+474,Clear Bell,22,0,,,xxx,May be given to the Kimono Girls to summon :pokemon:`Ho-Oh` to the top of the :location:`Bell Tower`.,0,0,0,0,0
+475,Card Key,22,0,,,xxx,"Used by trainer outside of battle
+    Opens doors in the :location:`Goldenrod City` Radio Tower.",0,0,0,0,0
+476,Basement Key,22,0,,,xxx,"Used by trainer outside of battle
+    Opens the door to the basement tunnel under :location:`Goldenrod City`.",0,0,0,0,0
+477,Red Scale,22,0,,,xxx,May be traded to Mr. Pokémon for an :item:`Exp. Share`.,0,0,0,0,0
+478,Lost Item,22,0,,,xxx,May be traded to the Copycat for a :item:`Pass`.,0,0,0,0,0
+479,Pass,22,0,,,xxx,Allows the trainer to ride the Magnet Train between :location:`Goldenrod City` and :location:`Saffron City`.,0,0,0,0,0
+480,Machine Part,22,0,,,xxx,Must be replaced in the :location:`Power Plant` to power the Magnet Train.,0,0,0,0,0
+481,Silver Wing,22,0,,,xxx,Causes :pokemon:`Lugia` to appear in the :location:`Whirl Islands`.,0,0,0,0,0
+482,Rainbow Wing,22,0,,,xxx,Causes :pokemon:`Ho-Oh` to appear at the top of :location:`Bell Tower`.,0,0,0,0,0
+483,Mystery Egg,22,0,,,xxx,"Must be obtained to trigger the break-in at Professor Elm's lab, the first rival battle, and access to :location:`Route 31`.",0,0,0,0,0
+484,GB Sounds,21,0,,,xxx,"Used by trainer outside of battle
+    Changes the background music to the equivalent 8-bit music.",0,0,0,0,0
+485,Tidal Bell,22,0,,,xxx,May be given to the Kimono Girls to summon :pokemon:`Lugia` to the top of the :location:`Bell Tower`.,0,0,0,0,0
+486,Data Card 01,41,0,,,xxx,Records the number of times the trainer has come in first place overall in the Pokéathlon.,0,0,0,0,0
+487,Data Card 02,41,0,,,xxx,Records the number of times the trainer has come in last place overall in the Pokéathlon.,0,0,0,0,0
+488,Data Card 03,41,0,,,xxx,Records the number of times the trainer's Pokémon have dashed in the Pokéathlon.,0,0,0,0,0
+489,Data Card 04,41,0,,,xxx,Records the number of times the trainer's Pokémon have jumped in the Pokéathlon.,0,0,0,0,0
+490,Data Card 05,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Hurdle Dash.,0,0,0,0,0
+491,Data Card 06,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Relay Run.,0,0,0,0,0
+492,Data Card 07,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Pennant Capture.,0,0,0,0,0
+493,Data Card 08,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Block Smash.,0,0,0,0,0
+494,Data Card 09,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Disc Catch.,0,0,0,0,0
+495,Data Card 10,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Snow Throw.,0,0,0,0,0
+496,Data Card 11,41,0,,,xxx,Records the number of points the trainer has earned in the Pokéathlon.,0,0,0,0,0
+497,Data Card 12,41,0,,,xxx,Records the number of times the trainer's Pokémon have messed up in the Pokéathlon.,0,0,0,0,0
+498,Data Card 13,41,0,,,xxx,Records the number of times the trainer's Pokémon have defeated themselves in the Pokéathlon.,0,0,0,0,0
+499,Data Card 14,41,0,,,xxx,Records the number of times the trainer's Pokémon have tackled in the Pokéathlon.,0,0,0,0,0
+500,Data Card 15,41,0,,,xxx,Records the number of times the trainer's Pokémon have fallen in the Pokéathlon.,0,0,0,0,0
+501,Data Card 16,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Ring Drop.,0,0,0,0,0
+502,Data Card 17,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Lamp Jump.,0,0,0,0,0
+503,Data Card 18,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Circle Push.,0,0,0,0,0
+504,Data Card 19,41,0,,,xxx,Records the number of times the trainer has come in first place overall in the Pokéathlon over wirelss.,0,0,0,0,0
+505,Data Card 20,41,0,,,xxx,Records the number of times the trainer has come in last place overall in the Pokéathlon over wireless.,0,0,0,0,0
+506,Data Card 21,41,0,,,xxx,Records the number of times the trainer has come in first across all Pokéathlon events.,0,0,0,0,0
+507,Data Card 22,41,0,,,xxx,Records the number of times the trainer has come in last across all Pokéathlon events.,0,0,0,0,0
+508,Data Card 23,41,0,,,xxx,Records the number of times the trainer has switched Pokémon in the Pokéathlon.,0,0,0,0,0
+509,Data Card 24,41,0,,,xxx,Records the number of times the trainer has come in first in the Pokéathlon Goal Roll.,0,0,0,0,0
+510,Data Card 25,41,0,,,xxx,Records the number of times the trainer's Pokémon received prizes in the Pokéathlon.,0,0,0,0,0
+511,Data Card 26,41,0,,,xxx,Records the number of times the trainer has instructed Pokémon in the Pokéathlon.,0,0,0,0,0
+512,Data Card 27,41,0,,,xxx,Records the total time spent in the Pokéathlon.,0,0,0,0,0
+513,Lock Capsule,23,0,,,xxx,Does nothing.,0,0,0,0,0
