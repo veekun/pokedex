@@ -667,6 +667,9 @@ Generation.canonical_pokedex = relation(Pokedex, backref='canonical_for_generati
 Generation.versions = relation(Version, secondary=VersionGroup.__table__)
 Generation.main_region = relation(Region)
 
+GrowthRate.max_experience_obj = relation(Experience, primaryjoin=and_(Experience.growth_rate_id == GrowthRate.id, Experience.level == 100), uselist=False)
+GrowthRate.max_experience = association_proxy('max_experience_obj', 'experience')
+
 Item.berry = relation(Berry, uselist=False, backref='item')
 Item.flags = relation(ItemFlag, secondary=ItemFlagMap.__table__)
 Item.flavor_text = relation(ItemFlavorText, order_by=ItemFlavorText.version_group_id.asc(), backref='item')
