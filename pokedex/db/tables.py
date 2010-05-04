@@ -18,8 +18,9 @@ class Ability(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(24), nullable=False)
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
+    effect = Column(rst.RstTextColumn(5120), nullable=False)
+    short_effect = Column(rst.RstTextColumn(255), nullable=False)
     flavor_text = Column(Unicode(64), nullable=False)
-    effect = Column(Unicode(255), nullable=False)
 
 class Berry(TableBase):
     __tablename__ = 'berries'
