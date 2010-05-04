@@ -20,6 +20,11 @@ class Ability(TableBase):
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
     effect = Column(rst.RstTextColumn(5120), nullable=False)
     short_effect = Column(rst.RstTextColumn(255), nullable=False)
+
+class AbilityFlavorText(TableBase):
+    __tablename__ = 'ability_flavor_text'
+    ability_id = Column(Integer, ForeignKey('abilities.id'), primary_key=True, nullable=False, autoincrement=False)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
     flavor_text = Column(Unicode(64), nullable=False)
 
 class Berry(TableBase):
@@ -630,7 +635,10 @@ class Version(TableBase):
 
 
 ### Relations down here, to avoid ordering problems
+Ability.flavor_text = relation(AbilityFlavorText, order_by=AbilityFlavorText.version_group_id, backref='abilities')
 Ability.generation = relation(Generation, backref='abilities')
+
+AbilityFlavorText.version_group = relation(VersionGroup)
 
 Berry.berry_firmness = relation(BerryFirmness, backref='berries')
 Berry.firmness = association_proxy('berry_firmness', 'name')
