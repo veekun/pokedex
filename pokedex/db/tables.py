@@ -785,7 +785,7 @@ Pokemon.items = relation(PokemonItem, backref='pokemon')
 Pokemon.generation = relation(Generation, backref='pokemon')
 Pokemon.shape = relation(PokemonShape, backref='pokemon')
 Pokemon.stats = relation(PokemonStat, backref='pokemon')
-Pokemon.types = relation(Type, secondary=PokemonType.__table__)
+Pokemon.types = relation(Type, secondary=PokemonType.__table__, order_by=PokemonType.slot.asc())
 
 PokemonDexNumber.pokedex = relation(Pokedex)
 
