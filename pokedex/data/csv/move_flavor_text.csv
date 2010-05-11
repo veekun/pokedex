@@ -233,7 +233,7 @@ move_id,generation_id,flavor_text
 116,4,The user takes a deep breath and focuses to raise the critical-hit ratio of its attacks.
 117,3,Endures attack for 2 turns to retaliate double.
 117,4,"The user endures attacks for two turns, then strikes back to cause double the damage taken."
-118,3,Waggles a finger to use any Pokemon move at random.
+118,3,Waggles a finger to use any Pokémon move at random.
 118,4,The user waggles a finger and stimulates the brain into randomly using nearly any move.
 119,3,Counters the foe's attack with the same move.
 119,4,The user counters the foe by mimicking the move last used by the foe.
@@ -387,7 +387,7 @@ move_id,generation_id,flavor_text
 193,4,Enables the user to hit a Ghost type with any type of move. It also enables the user to hit an evasive foe.
 194,3,"If the user faints, the foe is also made to faint."
 194,4,"When this move is used, if the user faints, the foe that landed the knockout hit also faints."
-195,3,Any Pokemon hearing this song faints in 3 turns.
+195,3,Any Pokémon hearing this song faints in 3 turns.
 195,4,Any Pokémon that hears this song faints in three turns unless it switches out of battle.
 196,3,A chilling attack that lowers the foe's SPEED.
 196,4,The user attacks with a gust of chilled air. It also lowers the target's Speed stat.
@@ -499,7 +499,7 @@ move_id,generation_id,flavor_text
 249,4,The user slugs the foe with a shattering punch. It can also smash cracked boulders.
 250,3,Traps and hurts the foe in a whirlpool for 2 to 5 turns.
 250,4,"The user traps the foe inside a fast, vicious whirlpool that lasts for two to five turns."
-251,3,Summons party Pokemon to join in the attack.
+251,3,Summons party Pokémon to join in the attack.
 251,4,"The user gets all the party Pokémon to attack the foe. The more party Pokémon, the more damage."
 252,3,"A 1st-turn, 1st-strike move that causes flinching."
 252,4,An attack that hits first and makes the target flinch. This move works only on the first turn.
@@ -583,7 +583,7 @@ move_id,generation_id,flavor_text
 291,4,"A two-turn attack. The user dives underwater on the first turn, then hits on the next turn."
 292,3,Straight-arm punches that strike the foe 2 to 5 times.
 292,4,The user looses a flurry of open-palmed arm thrusts that hit two to five times in a row.
-293,3,Alters the Pokemon's type depending on the location.
+293,3,Alters the Pokémon's type depending on the location.
 293,4,"The user's type is changed depending on its environment, such as at water's edge, in grass, or in a cave."
 294,3,Flashes a light that sharply raises SP. ATK.
 294,4,"The user stares at flashing lights to focus its mind, sharply raising its Sp. Atk stat."
@@ -593,7 +593,7 @@ move_id,generation_id,flavor_text
 296,4,A mistlike flurry of down envelops and damages the foe. It may also lower the target's Sp. Atk.
 297,3,Envelops the foe with down to sharply reduce ATTACK.
 297,4,The user covers the foe with a mass of down that sharply lowers the Attack stat.
-298,3,Confuses all Pokemon on the scene.
+298,3,Confuses all Pokémon on the scene.
 298,4,The user performs a wobbly dance that confuses all the Pokémon in battle.
 299,3,A kick with a high criticalhit ratio. May cause a burn.
 299,4,The user launches a kick with a high critical-hit ratio. It may also leave the target with a burn.

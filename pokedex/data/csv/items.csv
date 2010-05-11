@@ -520,7 +520,7 @@ This item cannot be directly used from the bag."
 455,Love Ball,39,300,,,"Used by a trainer in battle
     Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
-    If the trainer's Pokémon and wild Pokemon are of the same species but opposite genders, the wild Pokémon's catch rate is 8× normal."
+    If the trainer's Pokémon and wild Pokémon are of the same species but opposite genders, the wild Pokémon's catch rate is 8× normal."
 456,Park Ball,34,0,,,"Used by a trainer in battle
     :mechanic:`Catch`\ es a wild Pokémon.
 

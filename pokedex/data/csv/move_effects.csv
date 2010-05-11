@@ -841,7 +841,7 @@ If the target is in the first turn of :move:`Dive`, this move will hit with doub
 259,0,Lowers the target's evasion by one level.  Removes field effects from the enemy field.,":mechanic:`Lower`\ s the target's :mechanic:`evasion` by one level.  Clears away fog.  Removes the effects of :move:`Mist`, :move:`Light Screen`, :move:`Reflect`, :move:`Safeguard`, :move:`Spikes`, :move:`Stealth Rock`, and :move:`Toxic Spikes` from the target's side of the :mechanic:`field`.
 
 If the target is protected by :move:`Mist`, it will prevent the :mechanic:`evasion` change, then be removed by this move."
-260,-7,"For five turns, slower Pokémon will act before faster Pokemon.","For five turns (including this one), slower Pokemon will act before faster Pokemon.  Move priority is not affected.  Using this move when its effect is already active will end the effect.
+260,-7,"For five turns, slower Pokémon will act before faster Pokémon.","For five turns (including this one), slower Pokémon will act before faster Pokémon.  Move priority is not affected.  Using this move when its effect is already active will end the effect.
 
 Pokémon holding :item:`Full Incense`, :item:`Lagging Tail`, or :item:`Quick Claw` and Pokémon with :ability:`Stall` ignore this effect."
 261,0,Has a :data:`move.effect_chance`\ % chance to freeze the target.,"Inflicts :mechanic:`regular damage`.  Has a :data:`move.effect_chance`\ % chance to :mechanic:`freeze` the target.
