@@ -3,7 +3,8 @@
 from sqlalchemy import Column, ForeignKey, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import backref, relation
+from sqlalchemy.orm import backref, eagerload_all, relation
+from sqlalchemy.orm.session import Session
 from sqlalchemy.sql import and_
 from sqlalchemy.types import *
 
@@ -286,7 +287,12 @@ class Machine(TableBase):
     __tablename__ = 'machines'
     machine_number = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
+    item_id = Column(Integer, ForeignKey('items.id'), nullable=False)
     move_id = Column(Integer, ForeignKey('moves.id'), nullable=False)
+
+    @property
+    def is_hm(self):
+        return self.machine_number >= 100
 
 class MoveBattleStyle(TableBase):
     __tablename__ = 'move_battle_styles'
@@ -686,6 +692,7 @@ Item.berry = relation(Berry, uselist=False, backref='item')
 Item.flags = relation(ItemFlag, secondary=ItemFlagMap.__table__)
 Item.flavor_text = relation(ItemFlavorText, order_by=ItemFlavorText.version_group_id.asc(), backref='item')
 Item.fling_effect = relation(ItemFlingEffect, backref='items')
+Item.machines = relation(Machine, order_by=Machine.version_group_id.asc())
 Item.category = relation(ItemCategory)
 Item.pocket = association_proxy('category', 'pocket')
 
@@ -700,6 +707,7 @@ Location.region = relation(Region, backref='locations')
 
 LocationArea.location = relation(Location, backref='areas')
 
+Machine.item = relation(Item)
 Machine.version_group = relation(VersionGroup)
 
 Move.contest_effect = relation(ContestEffect, backref='moves')
