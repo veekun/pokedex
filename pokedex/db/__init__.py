@@ -1,3 +1,4 @@
+import os
 import pkg_resources
 
 from sqlalchemy import MetaData, Table, create_engine, orm
@@ -13,7 +14,10 @@ def connect(uri=None, session_args={}, engine_args={}):
     Calling this function also binds the metadata object to the created engine.
     """
 
-    # Default to a URI within the package, which was hopefully created at some point
+    # Fall back to the environment, then a URI within the package
+    if not uri:
+        uri = os.environ.get('POKEDEX_DB_ENGINE', None)
+
     if not uri:
         sqlite_path = pkg_resources.resource_filename('pokedex',
                                                       'data/pokedex.sqlite')

@@ -104,6 +104,9 @@ class PokedexLookup(object):
 
         # Defaults
         if not directory:
+            directory = os.environ.get('POKEDEX_INDEX_DIR', None)
+
+        if not directory:
             directory = pkg_resources.resource_filename('pokedex',
                                                         'data/whoosh-index')
         self.directory = directory

@@ -46,6 +46,9 @@ def get_session(options):
     session.
     """
 
+    # WARNING: This logic duplicates that in db.connect(), because there's no
+    # other reliable way to tell where the engine actually came from.  Keep it
+    # up to date!
     engine_uri = options.engine_uri
     got_from = None
     if engine_uri:
@@ -70,6 +73,9 @@ def get_lookup(options, session=None, recreate=False):
     PokedexLookup object.
     """
 
+    # WARNING: This logic duplicates that in PokedexLookup, because there's no
+    # other reliable way to tell where the engine actually came from.  Keep it
+    # up to date!
     if recreate and not session:
         raise ValueError("get_lookup() needs an explicit session to regen the index")
 
