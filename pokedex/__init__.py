@@ -6,6 +6,7 @@ import sys
 
 import pokedex.db
 import pokedex.db.load
+import pokedex.db.tables
 import pokedex.lookup
 
 def main():
@@ -67,11 +68,7 @@ def get_session(options):
 def get_lookup(options, session=None, recreate=False):
     """Given a parsed options object, opens the whoosh index and returns a
     PokedexLookup object.
-
-    Unlike `get_session`, this function can actually do population as a side
-    effect!  This is fallout from how PokedexLookup works.
     """
-    # TODO fix the above
 
     if recreate and not session:
         raise ValueError("get_lookup() needs an explicit session to regen the index")
@@ -100,8 +97,8 @@ def get_lookup(options, session=None, recreate=False):
 
     return lookup
 
-def print_csv_directory(options):
-    """Just prints the csv directory we're about to use."""
+def get_csv_directory(options):
+    """Prints and returns the csv directory we're about to use."""
 
     if not options.verbose:
         return
@@ -117,6 +114,8 @@ def print_csv_directory(options):
     print "Using CSV directory {csvdir} (from {got_from})" \
         .format(csvdir=csvdir, got_from=got_from)
 
+    return csvdir
+
 
 ### Plumbing commands
 
@@ -126,7 +125,7 @@ def command_dump(*args):
     options, tables = parser.parse_args(list(args))
 
     session = get_session(options)
-    print_csv_directory(options)
+    get_csv_directory(options)
 
     pokedex.db.load.dump(session, directory=options.directory,
                                   tables=tables,
@@ -146,7 +145,7 @@ def command_load(*args):
         print
 
     session = get_session(options)
-    print_csv_directory(options)
+    get_csv_directory(options)
 
     pokedex.db.load.load(session, directory=options.directory,
                                   drop_tables=options.drop_tables,
@@ -170,7 +169,7 @@ def command_setup(*args):
     options.directory = None
 
     session = get_session(options)
-    print_csv_directory(options)
+    get_csv_directory(options)
     pokedex.db.load.load(session, directory=None, drop_tables=True,
                                   verbose=options.verbose)
 
@@ -185,9 +184,39 @@ def command_status(*args):
     options.verbose = True
     options.directory = None
 
+    # Database, and a lame check for whether it's been inited at least once
     session = get_session(options)
-    print_csv_directory(options)
+    print "  - OK!  Connected successfully."
+
+    if pokedex.db.tables.Pokemon.__table__.exists(session.bind):
+        print "  - OK!  Database seems to contain some data."
+    else:
+        print "  - WARNING: Database appears to be empty."
+
+    # CSV; simple checks that the dir exists
+    csvdir = get_csv_directory(options)
+    if not os.path.exists(csvdir):
+        print "  - ERROR: No such directory!"
+    elif not os.path.isdir(csvdir):
+        print "  - ERROR: Not a directory!"
+    else:
+        print "  - OK!  Directory exists."
+
+        if os.access(csvdir, os.R_OK):
+            print "  - OK!  Can read from directory."
+        else:
+            print "  - ERROR: Can't read from directory!"
+
+        if os.access(csvdir, os.W_OK):
+            print "  - OK!  Can write to directory."
+        else:
+            print "  - WARNING: Can't write to directory!  " \
+                "`dump` will not work.  You may need to sudo."
+
+    # Index; the PokedexLookup constructor covers most tests and will
+    # cheerfully bomb if they fail
     lookup = get_lookup(options, recreate=False)
+    print "  - OK!  Opened successfully."
 
 
 ### User-facing commands
