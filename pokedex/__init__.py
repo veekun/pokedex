@@ -1,13 +1,13 @@
 # encoding: utf8
 from optparse import OptionParser
 import os
-import pkg_resources
 import sys
 
 import pokedex.db
 import pokedex.db.load
 import pokedex.db.tables
 import pokedex.lookup
+from pokedex import defaults
 
 def main():
     if len(sys.argv) <= 1:
@@ -35,8 +35,8 @@ def get_parser(verbose=True):
     `verbose` is whether or not the options should be verbose by default.
     """
     parser = OptionParser()
-    parser.add_option('-e', '--engine', dest='engine_uri', default=os.environ.get('POKEDEX_DB_ENGINE', None))
-    parser.add_option('-i', '--index', dest='index_dir', default=os.environ.get('POKEDEX_INDEX_DIR', None))
+    parser.add_option('-e', '--engine', dest='engine_uri', default=None)
+    parser.add_option('-i', '--index', dest='index_dir', default=None)
     parser.add_option('-q', '--quiet', dest='verbose', default=verbose, action='store_false')
     parser.add_option('-v', '--verbose', dest='verbose', default=verbose, action='store_true')
     return parser
@@ -46,19 +46,11 @@ def get_session(options):
     session.
     """
 
-    # WARNING: This logic duplicates that in db.connect(), because there's no
-    # other reliable way to tell where the engine actually came from.  Keep it
-    # up to date!
     engine_uri = options.engine_uri
-    got_from = None
-    if engine_uri:
-        got_from = 'command line'
-    else:
-        engine_uri = os.environ.get('POKEDEX_DB_ENGINE', None)
-        if engine_uri:
-            got_from = 'environment'
-        else:
-            got_from = 'default setting'
+    got_from = 'command line'
+
+    if engine_uri is None:
+        engine_uri, got_from = defaults.get_default_db_uri_with_origin()
 
     session = pokedex.db.connect(engine_uri)
 
@@ -73,24 +65,14 @@ def get_lookup(options, session=None, recreate=False):
     PokedexLookup object.
     """
 
-    # WARNING: This logic duplicates that in PokedexLookup, because there's no
-    # other reliable way to tell where the engine actually came from.  Keep it
-    # up to date!
     if recreate and not session:
         raise ValueError("get_lookup() needs an explicit session to regen the index")
 
     index_dir = options.index_dir
-    got_from = None
-    if index_dir:
-        got_from = 'command line'
-    else:
-        index_dir = os.environ.get('POKEDEX_INDEX_DIR', None)
-        if index_dir:
-            got_from = 'environment'
-        else:
-            index_dir = pkg_resources.resource_filename('pokedex',
-                                                        'data/whoosh-index')
-            got_from = 'default setting'
+    got_from = 'command line'
+
+    if index_dir is None:
+        index_dir, got_from = defaults.get_default_index_dir_with_origin()
 
     if options.verbose:
         print "Opened lookup index {index_dir} (from {got_from})" \
@@ -109,13 +91,11 @@ def get_csv_directory(options):
     if not options.verbose:
         return
 
-    if options.directory:
-        csvdir = options.directory
-        got_from = 'command line'
-    else:
-        # This is the same as the db.load default
-        csvdir = pkg_resources.resource_filename('pokedex', 'data/csv')
-        got_from = 'default setting'
+    csvdir = options.directory
+    got_from = 'command line'
+
+    if csvdir is None:
+        csvdir, got_from = defaults.get_default_csv_dir_with_origin()
 
     print "Using CSV directory {csvdir} (from {got_from})" \
         .format(csvdir=csvdir, got_from=got_from)

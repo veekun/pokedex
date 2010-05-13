@@ -1,9 +1,8 @@
-import os
-import pkg_resources
-
 from sqlalchemy import MetaData, Table, create_engine, orm
 
+from ..defaults import get_default_db_uri
 from .tables import metadata
+
 
 def connect(uri=None, session_args={}, engine_args={}):
     """Connects to the requested URI.  Returns a session object.
@@ -14,14 +13,9 @@ def connect(uri=None, session_args={}, engine_args={}):
     Calling this function also binds the metadata object to the created engine.
     """
 
-    # Fall back to the environment, then a URI within the package
-    if not uri:
-        uri = os.environ.get('POKEDEX_DB_ENGINE', None)
-
-    if not uri:
-        sqlite_path = pkg_resources.resource_filename('pokedex',
-                                                      'data/pokedex.sqlite')
-        uri = 'sqlite:///' + sqlite_path
+    # If we didn't get a uri, fall back to the default
+    if uri is None:
+        uri = get_default_db_uri()
 
     ### Do some fixery for MySQL
     if uri[0:5] == 'mysql':

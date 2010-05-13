@@ -2,7 +2,6 @@
 import csv
 import fnmatch
 import os.path
-import pkg_resources
 import sys
 
 from sqlalchemy.orm.attributes import instrumentation_registry
@@ -11,6 +10,7 @@ import sqlalchemy.types
 
 from pokedex.db import metadata
 import pokedex.db.tables as tables
+from pokedex.defaults import get_default_csv_dir
 
 
 def _get_table_names(metadata, patterns):
@@ -121,8 +121,8 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
     print_start, print_status, print_done = _get_verbose_prints(verbose)
 
 
-    if not directory:
-        directory = pkg_resources.resource_filename('pokedex', 'data/csv')
+    if directory is None:
+        directory = get_default_csv_dir()
 
     table_names = _get_table_names(metadata, tables)
     table_objs = [metadata.tables[name] for name in table_names]
@@ -276,7 +276,7 @@ def dump(session, tables=[], directory=None, verbose=False):
 
 
     if not directory:
-        directory = pkg_resources.resource_filename('pokedex', 'data/csv')
+        directory = get_default_csv_dir()
 
     table_names = _get_table_names(metadata, tables)
     table_names.sort()

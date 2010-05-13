@@ -1,7 +1,6 @@
 # encoding: utf8
 from collections import namedtuple
 import os, os.path
-import pkg_resources
 import random
 import re
 import shutil
@@ -19,6 +18,7 @@ import whoosh.spelling
 from pokedex.db import connect
 import pokedex.db.tables as tables
 from pokedex.roomaji import romanize
+from pokedex.defaults import get_default_index_dir
 
 __all__ = ['PokedexLookup']
 
@@ -102,13 +102,10 @@ class PokedexLookup(object):
         # By the time this returns, self.index, self.speller, and self.session
         # must be set
 
-        # Defaults
-        if not directory:
-            directory = os.environ.get('POKEDEX_INDEX_DIR', None)
+        # If a directory was not given, use the default
+        if directory is None:
+            directory = get_default_index_dir()
 
-        if not directory:
-            directory = pkg_resources.resource_filename('pokedex',
-                                                        'data/whoosh-index')
         self.directory = directory
 
         if session:
