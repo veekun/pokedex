@@ -28,6 +28,24 @@ rx_is_number = re.compile('^\d+$')
 LookupResult = namedtuple('LookupResult',
     ['object', 'indexed_name', 'name', 'language', 'iso3166', 'exact'])
 
+class UninitializedIndex(object):
+    class UninitializedIndexError(Exception):
+        pass
+
+    def __nonzero__(self):
+        """Dummy object should identify itself as False."""
+        return False
+
+    def __bool__(self):
+        """Python 3000 version of the above.  Future-proofing rules!"""
+        return False
+
+    def __getattr__(self, *args, **kwargs):
+        raise self.UninitializedIndexError(
+            "The lookup index does not exist.  Please use `pokedex setup` "
+            "or lookup.rebuild_index() to create it."
+        )
+
 class LanguageWeighting(whoosh.scoring.Weighting):
     """A scoring class that forces otherwise-equal English results to come
     before foreign results.
@@ -67,7 +85,7 @@ class PokedexLookup(object):
     )
 
 
-    def __init__(self, directory=None, session=None, recreate=False):
+    def __init__(self, directory=None, session=None):
         """Opens the whoosh index stored in the named directory.  If the index
         doesn't already exist, it will be created.
 
@@ -76,13 +94,9 @@ class PokedexLookup(object):
             `pokedex` egg directory.
 
         `session`
-            If the index needs to be created, this database session will be
-            used.  Defaults to an attempt to connect to the default SQLite
-            database installed by `pokedex setup`.
-
-        `recreate`
-            If set to True, the whoosh index will be created even if it already
-            exists.
+            Used for creating the index and retrieving objects.  Defaults to an
+            attempt to connect to the default SQLite database installed by
+            `pokedex setup`.
         """
 
         # By the time this returns, self.index, self.speller, and self.session
@@ -92,6 +106,7 @@ class PokedexLookup(object):
         if not directory:
             directory = pkg_resources.resource_filename('pokedex',
                                                         'data/whoosh-index')
+        self.directory = directory
 
         if session:
             self.session = session
@@ -99,31 +114,33 @@ class PokedexLookup(object):
             self.session = connect()
 
         # Attempt to open or create the index
-        directory_exists = os.path.exists(directory)
-        if directory_exists and not recreate:
-            # Already exists; should be an index!  Bam, done.
-            try:
-                self.index = whoosh.index.open_dir(directory, indexname='MAIN')
-                spell_store = whoosh.filedb.filestore.FileStorage(directory)
-                self.speller = whoosh.spelling.SpellChecker(spell_store)
-                return
-            except whoosh.index.EmptyIndexError as e:
-                # Apparently not a real index.  Fall out and create it
-                pass
+        if not os.path.exists(directory) or not os.listdir(directory):
+            # Directory doesn't exist OR is empty; caller needs to use
+            # rebuild_index before doing anything.  Provide a dummy object that
+            # complains when used
+            self.index = UninitializedIndex()
+            self.speller = UninitializedIndex()
+            return
 
-        # Delete and start over if we're going to bail anyway.
-        if directory_exists and recreate:
-            # Be safe and only delete if it looks like a whoosh index, i.e.,
-            # everything starts with _
-            if all(f[0] == '_' for f in os.listdir(directory)):
-                shutil.rmtree(directory)
-                directory_exists = False
+        # Otherwise, already exists; should be an index!  Bam, done.
+        # Note that this will explode if the directory exists but doesn't
+        # contain an index; that's a feature
+        try:
+            self.index = whoosh.index.open_dir(directory, indexname='MAIN')
+        except whoosh.index.EmptyIndexError:
+            raise IOError(
+                "The index directory already contains files.  "
+                "Please use a dedicated directory for the lookup index."
+            )
 
-        if not directory_exists:
-            os.mkdir(directory)
+        # Create speller, and done
+        spell_store = whoosh.filedb.filestore.FileStorage(directory)
+        self.speller = whoosh.spelling.SpellChecker(spell_store)
 
 
-        ### Create index
+    def rebuild_index(self):
+        """Creates the index from scratch."""
+
         schema = whoosh.fields.Schema(
             name=whoosh.fields.ID(stored=True),
             table=whoosh.fields.ID(stored=True),
@@ -133,8 +150,11 @@ class PokedexLookup(object):
             display_name=whoosh.fields.STORED,  # non-lowercased name
         )
 
-        self.index = whoosh.index.create_in(directory, schema=schema,
-                                            indexname='MAIN')
+        if not os.path.exists(self.directory):
+            os.mkdir(self.directory)
+
+        self.index = whoosh.index.create_in(self.directory, schema=schema,
+                                                            indexname='MAIN')
         writer = self.index.writer()
 
         # Index every name in all our tables of interest

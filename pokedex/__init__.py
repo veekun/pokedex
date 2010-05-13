@@ -93,8 +93,10 @@ def get_lookup(options, session=None, recreate=False):
         print "Opened lookup index {index_dir} (from {got_from})" \
             .format(index_dir=index_dir, got_from=got_from)
 
-    lookup = pokedex.lookup.PokedexLookup(index_dir, session=session,
-                                                     recreate=recreate)
+    lookup = pokedex.lookup.PokedexLookup(index_dir, session=session)
+
+    if recreate:
+        lookup.rebuild_index()
 
     return lookup
 
