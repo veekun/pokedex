@@ -4,7 +4,9 @@ setup(
     version = '0.1',
     zip_safe = False,
     packages = find_packages(),
-    package_data = { '': ['pokedex/data'] },
+    package_data = {
+        'pokedex': ['data/csv/*.csv']
+    },
     install_requires=[
         'docutils',
         'SQLAlchemy>=0.5.1',
