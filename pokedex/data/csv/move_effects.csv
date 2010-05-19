@@ -531,6 +531,11 @@ Shallow water   :move:`Hydro Pump`
 Snow            :move:`Blizzard`
 Tall grass      :move:`Seed Bomb`
 ==============  ==================
+
+In Pokémon Battle Revolution:
+==============  ==================
+Terrain         Selected move
+==============  ==================
 Courtyard       :move:`Tri Attack`
 Crystal         :move:`Rock Slide`
 Gateway         :move:`Hydro Pump`
@@ -693,7 +698,12 @@ Pond            :type:`Water`
 Road            :type:`Ground`
 Snow            :type:`Ice`
 Tall grass      :type:`Grass`
---------------  --------------
+==============  ==============
+
+In Pokémon Battle Revolution:
+==============  ==============
+Terrain         New type
+==============  ==============
 Courtyard       :type:`Normal`
 Crystal         :type:`Rock`
 Gateway         :type:`Water`
