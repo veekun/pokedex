@@ -338,7 +338,7 @@ class MoveFlagType(TableBase):
 class MoveFlavorText(TableBase):
     __tablename__ = 'move_flavor_text'
     move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
-    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False, autoincrement=False)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
     flavor_text = Column(Unicode(255), nullable=False)
 
 class MoveName(TableBase):
@@ -716,7 +716,7 @@ Move.contest_combo_prev = association_proxy('contest_combo_second', 'first')
 Move.contest_type = relation(ContestType, backref='moves')
 Move.damage_class = relation(MoveDamageClass, backref='moves')
 Move.flags = association_proxy('move_flags', 'flag')
-Move.flavor_text = relation(MoveFlavorText, order_by=MoveFlavorText.generation_id, backref='move')
+Move.flavor_text = relation(MoveFlavorText, order_by=MoveFlavorText.version_group_id, backref='move')
 Move.foreign_names = relation(MoveName, backref='pokemon')
 Move.generation = relation(Generation, backref='moves')
 Move.machines = relation(Machine, backref='move')
@@ -738,7 +738,7 @@ MoveEffectCategoryMap.category = relation(MoveEffectCategory)
 
 MoveFlag.flag = relation(MoveFlagType)
 
-MoveFlavorText.generation = relation(Generation)
+MoveFlavorText.version_group = relation(VersionGroup)
 
 MoveName.language = relation(Language)
 
