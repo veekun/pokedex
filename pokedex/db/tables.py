@@ -794,13 +794,11 @@ Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,
                                         backref='pokemon')
 Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
-Pokemon.evolution_children = relation(Pokemon,
+Pokemon.child_pokemon = relation(Pokemon,
     primaryjoin=Pokemon.id==PokemonEvolution.from_pokemon_id,
     secondary=PokemonEvolution.__table__,
     secondaryjoin=PokemonEvolution.to_pokemon_id==Pokemon.id,
-    backref=backref('evolution_parent',
-        uselist=False,
-    ),
+    backref=backref('parent_pokemon', uselist=False),
 )
 Pokemon.flavor_text = relation(PokemonFlavorText, order_by=PokemonFlavorText.version_id.asc(), backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
