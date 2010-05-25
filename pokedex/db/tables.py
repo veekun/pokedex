@@ -795,11 +795,10 @@ Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         backref='pokemon')
 Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
 Pokemon.evolution_children = relation(Pokemon,
-    secondary=PokemonEvolution.__table__,
     primaryjoin=Pokemon.id==PokemonEvolution.from_pokemon_id,
+    secondary=PokemonEvolution.__table__,
     secondaryjoin=PokemonEvolution.to_pokemon_id==Pokemon.id,
     backref=backref('evolution_parent',
-        remote_side=[Pokemon.id],
         uselist=False,
     ),
 )
