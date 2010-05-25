@@ -1,0 +1,616 @@
+ability_id,language_id,name
+1,1,あくしゅう
+1,5,Puanteur
+1,6,Duftnote
+1,7,Hedor
+1,8,Tanfo
+2,1,あめふらし
+2,5,Crachin
+2,6,Niesel
+2,7,Llovizna
+2,8,Piovischio
+3,1,かそく
+3,5,Turbo
+3,6,Temposchub
+3,7,Impulso
+3,8,Acceleratore
+4,1,カブトアーマー
+4,5,Armurbaston
+4,6,Kampfpanzer
+4,7,Armad. Bat.
+4,8,Lottascudo
+5,1,がんじょう
+5,5,Fermeté
+5,6,Robustheit
+5,7,Robustez
+5,8,Vigore
+6,1,しめりけ
+6,5,Moiteur
+6,6,Feuchtigkeit
+6,7,Humedad
+6,8,Umidità
+7,1,じゅうなん
+7,5,Echauffement
+7,6,Flexibilität
+7,7,Flexibilidad
+7,8,Scioltezza
+8,1,すながくれ
+8,5,Voile Sable
+8,6,Sandschleier
+8,7,Velo Arena
+8,8,Sabbiavelo
+9,1,せいでんき
+9,5,Statik
+9,6,Statik
+9,7,Elec. Estát.
+9,8,Statico
+10,1,ちくでん
+10,5,Absorb Volt
+10,6,Voltabsorber
+10,7,Absor. Elec.
+10,8,Assorbivolt
+11,1,ちょすい
+11,5,Absorb Eau
+11,6,H2O-Absorber
+11,7,Absor. Agua
+11,8,Assorbacqua
+12,1,どんかん
+12,5,Benêt
+12,6,Dösigkeit
+12,7,Despiste
+12,8,Indifferenza
+13,1,ノーてんき
+13,5,Ciel Gris
+13,6,Wolke Sieben
+13,7,Aclimatación
+13,8,Antimeteo
+14,1,ふくがん
+14,5,Oeil Composé
+14,6,Facettenauge
+14,7,Ojocompuesto
+14,8,Insettocchi
+15,1,ふみん
+15,5,Insomnia
+15,6,Insomnia
+15,7,Insomnio
+15,8,Insonnia
+16,1,へんしょく
+16,5,Déguisement
+16,6,Farbwechsel
+16,7,Cambio Color
+16,8,Cambiacolore
+17,1,めんえき
+17,5,Vaccin
+17,6,Immunität
+17,7,Inmunidad
+17,8,Immunità
+18,1,もらいび
+18,5,Torche
+18,6,Feuerfänger
+18,7,Absor. Fuego
+18,8,Fuocardore
+19,1,りんぷん
+19,5,Ecran Poudre
+19,6,Puderabwehr
+19,7,Polvo Escudo
+19,8,Polvoscudo
+20,1,マイペース
+20,5,Tempo Perso
+20,6,Tempomacher
+20,7,Ritmo Propio
+20,8,Mente Locale
+21,1,きゅうばん
+21,5,Ventouse
+21,6,Saugnapf
+21,7,Ventosas
+21,8,Ventose
+22,1,いかく
+22,5,Intimidation
+22,6,Bedroher
+22,7,Intimidación
+22,8,Prepotenza
+23,1,かげふみ
+23,5,Marque Ombre
+23,6,Wegsperre
+23,7,Sombratrampa
+23,8,Pedinombra
+24,1,さめはだ
+24,5,Peau Dure
+24,6,Rauhaut
+24,7,Piel Tosca
+24,8,Cartavetro
+25,1,ふしぎなまもり
+25,5,Garde Mystik
+25,6,Wunderwache
+25,7,Superguarda
+25,8,Magidifesa
+26,1,ふゆう
+26,5,Lévitation
+26,6,Schwebe
+26,7,Levitación
+26,8,Levitazione
+27,1,ほうし
+27,5,Pose Spore
+27,6,Sporenwirt
+27,7,Efec. Espora
+27,8,Spargispora
+28,1,シンクロ
+28,5,Synchro
+28,6,Synchro
+28,7,Sincronía
+28,8,Sincronismo
+29,1,クリアボディ
+29,5,Corps Sain
+29,6,Neutraltorso
+29,7,Cuerpo Puro
+29,8,Corpochiaro
+30,1,しぜんかいふく
+30,5,Médic Nature
+30,6,Innere Kraft
+30,7,Cura Natural
+30,8,Alternacura
+31,1,ひらいしん
+31,5,Paratonnerre
+31,6,Blitzfänger
+31,7,Pararrayos
+31,8,Parafulmine
+32,1,てんのめぐみ
+32,5,Sérénité
+32,6,Edelmut
+32,7,Dicha
+32,8,Leggiadro
+33,1,すいすい
+33,5,Glissade
+33,6,Wassertempo
+33,7,Nado Rápido
+33,8,Nuotovelox
+34,1,ようりょくそ
+34,5,Chlorophyle
+34,6,Chlorophyll
+34,7,Clorofila
+34,8,Clorofilla
+35,1,はっこう
+35,5,Lumiatirance
+35,6,Erleuchtung
+35,7,Iluminación
+35,8,Risplendi
+36,1,トレース
+36,5,Calque
+36,6,Fährte
+36,7,Rastro
+36,8,Traccia
+37,1,ちからもち
+37,5,Coloforce
+37,6,Kraftkoloss
+37,7,Potencia
+37,8,Macroforza
+38,1,どくのトゲ
+38,5,Point Poison
+38,6,Giftdorn
+38,7,Punto Tóxico
+38,8,Velenopunto
+39,1,せいしんりょく
+39,5,Attention
+39,6,Konzentrator
+39,7,Foco Interno
+39,8,Fuocodentro
+40,1,マグマのよろい
+40,5,Armumagma
+40,6,Magmapanzer
+40,7,Escudo Magma
+40,8,Magmascudo
+41,1,みずのベール
+41,5,Ignifu-Voile
+41,6,Aquahülle
+41,7,Velo Agua
+41,8,Idrovelo
+42,1,じりょく
+42,5,Magnépiège
+42,6,Magnetfalle
+42,7,Imán
+42,8,Magnetismo
+43,1,ぼうおん
+43,5,Anti-Bruit
+43,6,Lärmschutz
+43,7,Insonorizar
+43,8,Antisuono
+44,1,あめうけざら
+44,5,Cuvette
+44,6,Regengenuss
+44,7,Cura Lluvia
+44,8,Copripioggia
+45,1,すなおこし
+45,5,Sable Volant
+45,6,Sandsturm
+45,7,Chorro Arena
+45,8,Sabbiafiume
+46,1,プレッシャー
+46,5,Pression
+46,6,Erzwinger
+46,7,Presión
+46,8,Pressione
+47,1,あついしぼう
+47,5,Isograisse
+47,6,Speckschicht
+47,7,Sebo
+47,8,Grassospesso
+48,1,はやおき
+48,5,Matinal
+48,6,Frühwecker
+48,7,Madrugar
+48,8,Sveglialampo
+49,1,ほのおのからだ
+49,5,Corps Ardent
+49,6,Flammkörper
+49,7,Cuerpo Llama
+49,8,Corpodifuoco
+50,1,にげあし
+50,5,Fuite
+50,6,Angsthase
+50,7,Fuga
+50,8,Fugafacile
+51,1,するどいめ
+51,5,Regard Vif
+51,6,Adlerauge
+51,7,Vista Lince
+51,8,Sguardofermo
+52,1,かいりきバサミ
+52,5,Hyper Cutter
+52,6,Scherenmacht
+52,7,Corte Fuerte
+52,8,Ipertaglio
+53,1,ものひろい
+53,5,Ramassage
+53,6,Mitnahme
+53,7,Recogida
+53,8,Raccolta
+54,1,なまけ
+54,5,Absentéisme
+54,6,Schnarchnase
+54,7,Ausente
+54,8,Pigrone
+55,1,はりきり
+55,5,Agitation
+55,6,Übereifer
+55,7,Entusiasmo
+55,8,Tuttafretta
+56,1,メロメロボディ
+56,5,Joli Sourire
+56,6,Charmebolzen
+56,7,Gran Encanto
+56,8,Incantevole
+57,1,プラス
+57,5,Plus
+57,6,Plus
+57,7,Más
+57,8,Più
+58,1,マイナス
+58,5,Minus
+58,6,Minus
+58,7,Menos
+58,8,Meno
+59,1,てんきや
+59,5,Météo
+59,6,Prognose
+59,7,Predicción
+59,8,Previsioni
+60,1,ねんちゃく
+60,5,Glue
+60,6,Wertehalter
+60,7,Viscosidad
+60,8,Antifurto
+61,1,だっぴ
+61,5,Mue
+61,6,Expidermis
+61,7,Mudar
+61,8,Muta
+62,1,こんじょう
+62,5,Cran
+62,6,Adrenalin
+62,7,Agallas
+62,8,Dentistretti
+63,1,ふしぎなうろこ
+63,5,Ecaille Spé.
+63,6,Notschutz
+63,7,Escama Esp.
+63,8,Pelledura
+64,1,ヘドロえき
+64,5,Suintement
+64,6,Kloakensoße
+64,7,Lodo Líquido
+64,8,Melma
+65,1,しんりょく
+65,5,Engrais
+65,6,Notdünger
+65,7,Espesura
+65,8,Erbaiuto
+66,1,もうか
+66,5,Brasier
+66,6,Großbrand
+66,7,Mar Llamas
+66,8,Aiutofuoco
+67,1,げきりゅう
+67,5,Torrent
+67,6,Sturzbach
+67,7,Torrente
+67,8,Acquaiuto
+68,1,むしのしらせ
+68,5,Essaim
+68,6,Hexaplaga
+68,7,Enjambre
+68,8,Aiutinsetto
+69,1,いしあたま
+69,5,Tête de Roc
+69,6,Steinhaupt
+69,7,Cabeza Roca
+69,8,Testadura
+70,1,ひでり
+70,5,Sécheresse
+70,6,Dürre
+70,7,Sequía
+70,8,Siccità
+71,1,ありじごく
+71,5,Piège
+71,6,Auswegslos
+71,7,Trampa Arena
+71,8,Trappoarena
+72,1,やるき
+72,5,Esprit Vital
+72,6,Munterkeit
+72,7,Espír. Vital
+72,8,Spiritovivo
+73,1,しろいけむり
+73,5,Ecran Fumée
+73,6,Pulverrauch
+73,7,Humo Blanco
+73,8,Fumochiaro
+74,1,ヨガパワー
+74,5,Force Pure
+74,6,Mentalkraft
+74,7,Energía Pura
+74,8,Forzapura
+75,1,シェルアーマー
+75,5,Coque Armure
+75,6,Panzerhaut
+75,7,Caparazón
+75,8,Guscioscudo
+76,1,エアロック
+76,5,Air Lock
+76,6,Klimaschutz
+76,7,Bucle Aire
+76,8,Riparo
+77,1,ちどりあし
+77,5,Pieds Confus
+77,6,Fußangel
+77,7,Tumbos
+77,8,Intricopiedi
+78,1,でんきエンジン
+78,5,Motorisé
+78,6,Starthilfe
+78,7,Electromotor
+78,8,Elettrorapid
+79,1,とうそうしん
+79,5,Rivalité
+79,6,Rivalität
+79,7,Rivalidad
+79,8,Antagonismo
+80,1,ふくつのこころ
+80,5,Impassible
+80,6,Felsenfest
+80,7,Impasible
+80,8,Cuordeciso
+81,1,ゆきがくれ
+81,5,Rideau Neige
+81,6,Schneemantel
+81,7,Manto Níveo
+81,8,Mantelneve
+82,1,くいしんぼう
+82,5,Gloutonnerie
+82,6,Völlerei
+82,7,Gula
+82,8,Voracità
+83,1,いかりのつぼ
+83,5,Colérique
+83,6,Kurzschluss
+83,7,Irascible
+83,8,Grancollera
+84,1,かるわざ
+84,5,Délestage
+84,6,Entlastung
+84,7,Liviano
+84,8,Agiltecnica
+85,1,たいねつ
+85,5,Ignifuge
+85,6,Hitzeschutz
+85,7,Ignífugo
+85,8,Antifuoco
+86,1,たんじゅん
+86,5,Simple
+86,6,Wankelmut
+86,7,Simple
+86,8,Disinvoltura
+87,1,かんそうはだ
+87,5,Peau Sèche
+87,6,Trockenheit
+87,7,Piel Seca
+87,8,Pellearsa
+88,1,ダウンロード
+88,5,Télécharge
+88,6,Download
+88,7,Descarga
+88,8,Download
+89,1,てつのこぶし
+89,5,Poing de Fer
+89,6,Eisenfaust
+89,7,Puño Férreo
+89,8,Ferropugno
+90,1,ポイズンヒール
+90,5,Soin Poison
+90,6,Aufheber
+90,7,Antídoto
+90,8,Velencura
+91,1,てきおうりょく
+91,5,Adaptabilité
+91,6,Anpassung
+91,7,Adaptable
+91,8,Adattabilità
+92,1,スキルリンク
+92,5,Multi-Coups
+92,6,Wertelink
+92,7,Encadenado
+92,8,Abillegame
+93,1,うるおいボディ
+93,5,Hydratation
+93,6,Hydration
+93,7,Hidratación
+93,8,Idratazione
+94,1,サンパワー
+94,5,Force Soleil
+94,6,Solarkraft
+94,7,Poder Solar
+94,8,Solarpotere
+95,1,はやあし
+95,5,Pied Véloce
+95,6,Rasanz
+95,7,Pies Rápidos
+95,8,Piedisvelti
+96,1,ノーマルスキン
+96,5,Normalise
+96,6,Regulierung
+96,7,Normalidad
+96,8,Normalità
+97,1,スナイパー
+97,5,Sniper
+97,6,Superschütze
+97,7,Francotirad.
+97,8,Cecchino
+98,1,マジックガード
+98,5,Garde Magik
+98,6,Magieschild
+98,7,Muro Mágico
+98,8,Magicscudo
+99,1,ノーガード
+99,5,Annule Garde
+99,6,Schildlos
+99,7,Indefenso
+99,8,Nullodifesa
+100,1,あとだし
+100,5,Frein
+100,6,Zeitspiel
+100,7,Rezagado
+100,8,Rallentatore
+101,1,テクニシャン
+101,5,Technicien
+101,6,Techniker
+101,7,Experto
+101,8,Tecnico
+102,1,リーフガード
+102,5,Feuil. Garde
+102,6,Floraschild
+102,7,Defensa Hoja
+102,8,Fogliamanto
+103,1,ぶきよう
+103,5,Maladresse
+103,6,Tollpatsch
+103,7,Zoquete
+103,8,Impaccio
+104,1,かたやぶり
+104,5,Brise Moule
+104,6,Überbrückung
+104,7,Rompemoldes
+104,8,Rompiforma
+105,1,きょううん
+105,5,Chanceux
+105,6,Glückspilz
+105,7,Afortunado
+105,8,Supersorte
+106,1,ゆうばく
+106,5,Boom Final
+106,6,Finalschlag
+106,7,Resquicio
+106,8,Scoppio
+107,1,きけんよち
+107,5,Anticipation
+107,6,Vorahnung
+107,7,Anticipación
+107,8,Presagio
+108,1,よちむ
+108,5,Prédiction
+108,6,Vorwarnung
+108,7,Alerta
+108,8,Premonizione
+109,1,てんねん
+109,5,Inconscient
+109,6,Unkenntnis
+109,7,Ignorante
+109,8,Imprudenza
+110,1,いろめがね
+110,5,Lentiteintée
+110,6,Aufwertung
+110,7,Cromolente
+110,8,Lentifumé
+111,1,フィルター
+111,5,Filtre
+111,6,Filter
+111,7,Filtro
+111,8,Filtro
+112,1,スロースタート
+112,5,Début Calme
+112,6,Saumselig
+112,7,Inicio Lento
+112,8,Lentoinizio
+113,1,きもったま
+113,5,Querelleur
+113,6,Rauflust
+113,7,Intrépido
+113,8,Nervisaldi
+114,1,よびみず
+114,5,Lavabo
+114,6,Sturmsog
+114,7,Colector
+114,8,Acquascolo
+115,1,アイスボディ
+115,5,Corps Gel
+115,6,Eishaut
+115,7,Gélido
+115,8,Corpogelo
+116,1,ハードロック
+116,5,Solide Roc
+116,6,Felskern
+116,7,Roca Sólida
+116,8,Solidroccia
+117,1,ゆきふらし
+117,5,Alerte Neige
+117,6,Hagelalarm
+117,7,Nevada
+117,8,Scendineve
+118,1,みつあつめ
+118,5,Cherche Miel
+118,6,Honigmaul
+118,7,Recogemiel
+118,8,Mielincetta
+119,1,おみとおし
+119,5,Fouille
+119,6,Schnüffler
+119,7,Cacheo
+119,8,Indagine
+120,1,すてみ
+120,5,Téméraire
+120,6,Achtlos
+120,7,Audaz
+120,8,Temerarietà
+121,1,マルチタイプ
+121,5,Multi-Type
+121,6,Variabilität
+121,7,Multitipo
+121,8,Multitipo
+122,1,フラワーギフト
+122,5,Don Floral
+122,6,Pflanzengabe
+122,7,Don Floral
+122,8,Regalfiore
+123,1,ナイトメア
+123,5,Mauvais Rêve
+123,6,Alptraum
+123,7,Mal Sueño
+123,8,Sogniamari

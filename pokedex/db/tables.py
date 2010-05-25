@@ -28,6 +28,12 @@ class AbilityFlavorText(TableBase):
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
     flavor_text = Column(Unicode(64), nullable=False)
 
+class AbilityName(TableBase):
+    __tablename__ = 'ability_names'
+    ability_id = Column(Integer, ForeignKey('abilities.id'), primary_key=True, nullable=False, autoincrement=False)
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
+    name = Column(Unicode(16), nullable=False)
+
 class Berry(TableBase):
     __tablename__ = 'berries'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -654,10 +660,13 @@ class Version(TableBase):
 
 
 ### Relations down here, to avoid ordering problems
-Ability.flavor_text = relation(AbilityFlavorText, order_by=AbilityFlavorText.version_group_id, backref='abilities')
+Ability.flavor_text = relation(AbilityFlavorText, order_by=AbilityFlavorText.version_group_id, backref='ability')
+Ability.foreign_names = relation(AbilityName, backref='ability')
 Ability.generation = relation(Generation, backref='abilities')
 
 AbilityFlavorText.version_group = relation(VersionGroup)
+
+AbilityName.language = relation(Language)
 
 Berry.berry_firmness = relation(BerryFirmness, backref='berries')
 Berry.firmness = association_proxy('berry_firmness', 'name')
@@ -730,7 +739,7 @@ Move.contest_type = relation(ContestType, backref='moves')
 Move.damage_class = relation(MoveDamageClass, backref='moves')
 Move.flags = association_proxy('move_flags', 'flag')
 Move.flavor_text = relation(MoveFlavorText, order_by=MoveFlavorText.version_group_id, backref='move')
-Move.foreign_names = relation(MoveName, backref='pokemon')
+Move.foreign_names = relation(MoveName, backref='move')
 Move.generation = relation(Generation, backref='moves')
 Move.machines = relation(Machine, backref='move')
 Move.move_effect = relation(MoveEffect, backref='moves')
