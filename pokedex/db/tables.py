@@ -180,6 +180,11 @@ class EvolutionMethod(TableBase):
     name = Column(Unicode(64), nullable=False)
     description = Column(Unicode(255), nullable=False)
 
+class EvolutionTrigger(TableBase):
+    __tablename__ = 'evolution_triggers'
+    id = Column(Integer, primary_key=True, nullable=False)
+    identifier = Column(Unicode(16), nullable=False)
+
 class Experience(TableBase):
     __tablename__ = 'experience'
     growth_rate_id = Column(Integer, ForeignKey('growth_rates.id'), primary_key=True, nullable=False)
@@ -428,9 +433,6 @@ class Pokemon(TableBase):
     forme_base_pokemon_id = Column(Integer, ForeignKey('pokemon.id'))
     generation_id = Column(Integer, ForeignKey('generations.id'))
     evolution_chain_id = Column(Integer, ForeignKey('evolution_chains.id'))
-    evolution_parent_pokemon_id = Column(Integer, ForeignKey('pokemon.id'))
-    evolution_method_id = Column(Integer, ForeignKey('evolution_methods.id'))
-    evolution_parameter = Column(Unicode(32))
     height = Column(Integer, nullable=False)
     weight = Column(Integer, nullable=False)
     species = Column(Unicode(16), nullable=False)
@@ -513,6 +515,23 @@ class PokemonEggGroup(TableBase):
     __tablename__ = 'pokemon_egg_groups'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
     egg_group_id = Column(Integer, ForeignKey('egg_groups.id'), primary_key=True, nullable=False, autoincrement=False)
+
+class PokemonEvolution(TableBase):
+    __tablename__ = 'pokemon_evolution'
+    from_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False)
+    to_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
+    evolution_trigger_id = Column(Integer, ForeignKey('evolution_triggers.id'), nullable=False)
+    trigger_item_id = Column(Integer, ForeignKey('items.id'), nullable=True)
+    minimum_level = Column(Integer, nullable=True)
+    gender = Column(Enum('male', 'female', name='pokemon_evolution_gender'), nullable=True)
+    location_id = Column(Integer, ForeignKey('locations.id'), nullable=True)
+    held_item_id = Column(Integer, ForeignKey('items.id'), nullable=True)
+    time_of_day = Column(Enum('morning', 'day', 'night', name='pokemon_evolution_time_of_day'), nullable=True)
+    known_move_id = Column(Integer, ForeignKey('moves.id'), nullable=True)
+    minimum_happiness = Column(Integer, nullable=True)
+    minimum_beauty = Column(Integer, nullable=True)
+    relative_physical_stats = Column(Integer, nullable=True)
+    party_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=True)
 
 class PokemonFlavorText(TableBase):
     __tablename__ = 'pokemon_flavor_text'
@@ -782,9 +801,15 @@ Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         backref='pokemon')
 Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
 Pokemon.evolution_method = relation(EvolutionMethod)
-Pokemon.evolution_children = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.evolution_parent_pokemon_id,
-                                               backref=backref('evolution_parent',
-                                                               remote_side=[Pokemon.id]))
+Pokemon.evolution_children = relation(Pokemon,
+    secondary=PokemonEvolution.__table__,
+    primaryjoin=Pokemon.id==PokemonEvolution.from_pokemon_id,
+    secondaryjoin=PokemonEvolution.to_pokemon_id==Pokemon.id,
+    backref=backref('evolution_parent',
+        remote_side=[Pokemon.id],
+        uselist=False,
+    ),
+)
 Pokemon.flavor_text = relation(PokemonFlavorText, order_by=PokemonFlavorText.version_id.asc(), backref='pokemon')
 Pokemon.foreign_names = relation(PokemonName, backref='pokemon')
 Pokemon.pokemon_habitat = relation(PokemonHabitat, backref='pokemon')
@@ -796,6 +821,38 @@ Pokemon.stats = relation(PokemonStat, backref='pokemon')
 Pokemon.types = relation(Type, secondary=PokemonType.__table__, order_by=PokemonType.slot.asc())
 
 PokemonDexNumber.pokedex = relation(Pokedex)
+
+PokemonEvolution.from_pokemon = relation(Pokemon,
+    primaryjoin=PokemonEvolution.from_pokemon_id==Pokemon.id,
+    backref='child_evolutions',
+)
+PokemonEvolution.to_pokemon = relation(Pokemon,
+    primaryjoin=PokemonEvolution.to_pokemon_id==Pokemon.id,
+    backref=backref('parent_evolution', uselist=False),
+)
+PokemonEvolution.child_evolutions = relation(PokemonEvolution,
+    primaryjoin=PokemonEvolution.from_pokemon_id==PokemonEvolution.to_pokemon_id,
+    foreign_keys=[PokemonEvolution.to_pokemon_id],
+    backref=backref('parent_evolution',
+        remote_side=[PokemonEvolution.from_pokemon_id],
+        uselist=False,
+    ),
+)
+PokemonEvolution.trigger = relation(EvolutionTrigger, backref='evolutions')
+PokemonEvolution.trigger_item = relation(Item,
+    primaryjoin=PokemonEvolution.trigger_item_id==Item.id,
+    backref='triggered_evolutions',
+)
+PokemonEvolution.held_item = relation(Item,
+    primaryjoin=PokemonEvolution.held_item_id==Item.id,
+    backref='required_for_evolutions',
+)
+PokemonEvolution.location = relation(Location, backref='triggered_evolutions')
+PokemonEvolution.known_move = relation(Move, backref='triggered_evolutions')
+PokemonEvolution.party_pokemon = relation(Pokemon,
+    primaryjoin=PokemonEvolution.party_pokemon_id==Pokemon.id,
+    backref='triggered_evolutions',
+)
 
 PokemonFlavorText.version = relation(Version)
 
