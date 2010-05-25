@@ -174,12 +174,6 @@ class EvolutionChain(TableBase):
     steps_to_hatch = Column(Integer, nullable=False)
     baby_trigger_item = Column(Unicode(12))
 
-class EvolutionMethod(TableBase):
-    __tablename__ = 'evolution_methods'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(64), nullable=False)
-    description = Column(Unicode(255), nullable=False)
-
 class EvolutionTrigger(TableBase):
     __tablename__ = 'evolution_triggers'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -800,7 +794,6 @@ Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,
                                         backref='pokemon')
 Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
-Pokemon.evolution_method = relation(EvolutionMethod)
 Pokemon.evolution_children = relation(Pokemon,
     secondary=PokemonEvolution.__table__,
     primaryjoin=Pokemon.id==PokemonEvolution.from_pokemon_id,
