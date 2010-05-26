@@ -543,7 +543,7 @@ class PokemonFormGroup(TableBase):
     __tablename__ = 'pokemon_form_groups'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
     is_battle_only = Column(Boolean, nullable=False)
-    description = Column(Unicode(512), nullable=False)
+    description = Column(rst.RstTextColumn(1024), nullable=False)
 
 class PokemonFormSprite(TableBase):
     __tablename__ = 'pokemon_form_sprites'
