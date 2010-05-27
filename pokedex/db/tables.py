@@ -492,7 +492,27 @@ class Pokemon(TableBase):
             if pokemon_stat.stat.name == stat_name:
                 return pokemon_stat
 
-        return None
+        raise KeyError(u'No stat named %s' % stat_name)
+
+    @property
+    def better_damage_class(self):
+        u"""Returns the MoveDamageClass that this Pokémon is best suited for,
+        based on its attack stats.
+
+        If the attack stats are about equal (within 5), returns None.  The
+        value None, not the damage class called 'None'.
+        """
+        phys = self.stat(u'Attack')
+        spec = self.stat(u'Special Attack')
+
+        diff = phys.base_stat - spec.base_stat
+
+        if diff > 5:
+            return phys.stat.damage_class
+        elif diff < -5:
+            return spec.stat.damage_class
+        else:
+            return None
 
 class PokemonAbility(TableBase):
     __tablename__ = 'pokemon_abilities'
@@ -614,6 +634,7 @@ class Region(TableBase):
 class Stat(TableBase):
     __tablename__ = 'stats'
     id = Column(Integer, primary_key=True, nullable=False)
+    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=True)
     name = Column(Unicode(16), nullable=False)
 
 class SuperContestCombo(TableBase):
@@ -882,6 +903,8 @@ Region.generation = relation(Generation, uselist=False)
 Region.version_group_regions = relation(VersionGroupRegion, backref='region',
                                         order_by='VersionGroupRegion.version_group_id')
 Region.version_groups = association_proxy('version_group_regions', 'version_group')
+
+Stat.damage_class = relation(MoveDamageClass, backref='stats')
 
 SuperContestCombo.first = relation(Move, primaryjoin=SuperContestCombo.first_move_id==Move.id,
                                         backref='super_contest_combo_first')

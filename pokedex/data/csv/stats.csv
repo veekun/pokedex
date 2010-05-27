@@ -1,7 +1,7 @@
-id,name
-1,HP
-2,Attack
-3,Defense
-4,Special Attack
-5,Special Defense
-6,Speed
+id,damage_class_id,name
+1,,HP
+2,2,Attack
+3,2,Defense
+4,3,Special Attack
+5,3,Special Defense
+6,,Speed
