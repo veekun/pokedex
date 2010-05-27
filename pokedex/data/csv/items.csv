@@ -592,3 +592,53 @@ The Pokémon to appear will be whicher can't be encountered roaming in the wild.
 512,Data Card 27,41,0,,,Records the total time spent in the Pokéathlon.
 513,Lock Capsule,23,0,,,Does nothing.
 514,Photo Album,23,0,,,Does nothing.
+515,Orange Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+516,Harbor Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+517,Glitter Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+518,Mech Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+519,Wood Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+520,Wave Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+521,Bead Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+522,Shadow Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+523,Tropic Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+524,Dream Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+525,Fab Mail,25,50,,,Used to send short messages to other players via Pokémon trading.
+526,Retro Mail,25,0,,,Used to send short messages to other players via Pokémon trading.
+527,Mach Bike,21,0,,,Increases movement speed outside or in caves.  Faster than the :item:`Acro Bike`.  Allows the trainer to ascend muddy slopes.
+528,Acro Bike,21,0,,,"Increases movement speed outside or in caves.  Slower than the :item:`Mach Bike`.  Can perform various tricks, allowing the trainer to reach certain special areas."
+529,Wailmer Pail,21,0,,,Waters Berry plants.
+530,Devon Goods,22,0,,,Contains a machine part to be delivered to Captain Stern.
+531,Soot Sack,21,0,,,Collects soot when walking through tall grass on :location:`Route 113`.
+532,Pokéblock Case,21,0,,,Stores Pokéblocks.
+533,Letter,22,0,,,Contains a letter to be delivered to Steven.
+534,Eon Ticket,20,0,,,"Provides access to :location:`Southern Island` and either :pokemon:`Latias` or :pokemon:`Latios`, whichever is not available roaming around Hoenn."
+535,Scanner,22,0,,,May be traded to Captain Stern for a :item:`DeepSeaTooth` or a :item:`DeepSeaScale`.
+536,Go-Goggles,21,0,,,Allows the trainer to enter the desert on :location:`Route 111`.
+537,Meteorite,22,0,,,"RSE: May be traded to Professor Cozmo for :item:`TM27`.
+
+FRLG: A meteorite to be delivered to Lostelle's father."
+538,Rm. 1 Key,22,0,,,Unlocks room 1 on the :location:`Abandoned Ship`.
+539,Rm. 2 Key,22,0,,,Unlocks room 2 on the :location:`Abandoned Ship`.
+540,Rm. 4 Key,22,0,,,Unlocks room 4 on the :location:`Abandoned Ship`.
+541,Rm. 6 Key,22,0,,,Unlocks room 6 on the :location:`Abandoned Ship`.
+542,Devon Scope,21,0,,,Reveals invisble :pokemon:`Kecleon` on the overworld.
+543,Oak's Parcel,22,0,,,A parcel to be delivered to Professor Oak for a Pokédex.
+544,Poké Flute,22,0,,,Wakes up :mechanic:`sleeping` Pokémon.  Required to wake up sleeping :pokemon:`Snorlax` on the overworld.
+545,Bike Voucher,22,0,,,May be traded for a :item:`Bicycle`.
+546,Gold Teeth,22,0,,,"The Safari Zone warden's teeth, to be returned to him for :item:`HM04`."
+547,Lift Key,22,0,,,Operates the elevator in the Celadon Rocket Hideout.
+548,Silph Scope,22,0,,,Identifies ghosts in :location:`Pokémon Tower`.
+549,Fame Checker,21,0,,,Records information on various famous people.
+550,TM Case,21,0,,,Stores TMs and HMs.
+551,Berry Pouch,21,0,,,Stores Berries.
+552,Teachy TV,21,0,,,Teaches beginning trainers basic information.
+553,Tri-Pass,22,0,,,Provides access to the first three Sevii Islands.
+554,Rainbow Pass,22,0,,,Provides access to the Sevii Islands.
+555,Tea,22,0,,,Used to bribe the :location:`Saffron City` guards for entry to the city.
+556,MysticTicket,20,0,,,"Provides access to :location:`Navel Rock`, :pokemon:`Ho-Oh`, and :pokemon:`Lugia`."
+557,AuroraTicket,20,0,,,Provides access to :location:`Birth Island` and :pokemon:`Deoxys`.
+558,Powder Jar,21,0,,,Holds Berry Powder from Berry Crushing.
+559,Ruby,22,0,,,Deliver to Celio for use in the Network Machine.
+560,Sapphire,22,0,,,Deliver to Celio for use in the Network Machine.
+561,Magma Emblem,22,0,,,Provides access to the :location:`Team Magma Hideout` in the :location:`Jagged Pass`.
+562,Old Sea Map,20,0,,,Provides access to :location:`Faraway Island` and :pokemon:`Mew`.
