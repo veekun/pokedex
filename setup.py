@@ -9,7 +9,7 @@ setup(
     },
     install_requires=[
         'docutils',
-        'SQLAlchemy>=0.5.1',
+        'SQLAlchemy>=0.6',
         'whoosh>=0.3.0b24',
     ],
 
