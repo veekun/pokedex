@@ -8,7 +8,7 @@ from sqlalchemy.orm.session import Session
 from sqlalchemy.sql import and_
 from sqlalchemy.types import *
 
-from pokedex.db import rst
+from pokedex.db import markdown
 
 metadata = MetaData()
 TableBase = declarative_base(metadata=metadata)
@@ -19,8 +19,8 @@ class Ability(TableBase):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(24), nullable=False)
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
-    effect = Column(rst.RstTextColumn(5120), nullable=False)
-    short_effect = Column(rst.RstTextColumn(255), nullable=False)
+    effect = Column(markdown.MarkdownColumn(5120), nullable=False)
+    short_effect = Column(markdown.MarkdownColumn(255), nullable=False)
 
 class AbilityFlavorText(TableBase):
     __tablename__ = 'ability_flavor_text'
@@ -214,7 +214,7 @@ class Item(TableBase):
     cost = Column(Integer, nullable=False)
     fling_power = Column(Integer, nullable=True)
     fling_effect_id = Column(Integer, ForeignKey('item_fling_effects.id'), nullable=True)
-    effect = Column(rst.RstTextColumn(5120), nullable=False)
+    effect = Column(markdown.MarkdownColumn(5120), nullable=False)
 
     @property
     def appears_underground(self):
@@ -338,7 +338,7 @@ class MoveFlagType(TableBase):
     __tablename__ = 'move_flag_types'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(Unicode(32), nullable=False)
-    description = Column(rst.RstTextColumn(128), nullable=False)
+    description = Column(markdown.MarkdownColumn(128), nullable=False)
 
 class MoveFlavorText(TableBase):
     __tablename__ = 'move_flavor_text'
@@ -771,9 +771,9 @@ Move.super_contest_combo_prev = association_proxy('super_contest_combo_second', 
 Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, backref='moves')
 
-Move.effect = rst.MoveEffectProperty('effect')
+Move.effect = markdown.MoveEffectProperty('effect')
 Move.priority = association_proxy('move_effect', 'priority')
-Move.short_effect = rst.MoveEffectProperty('short_effect')
+Move.short_effect = markdown.MoveEffectProperty('short_effect')
 
 MoveEffect.category_map = relation(MoveEffectCategoryMap)
 MoveEffect.categories = association_proxy('category_map', 'category')

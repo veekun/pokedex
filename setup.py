@@ -11,6 +11,7 @@ setup(
         'docutils',
         'SQLAlchemy>=0.6',
         'whoosh>=0.3.0b24',
+        'markdown',
     ],
 
     entry_points = {
