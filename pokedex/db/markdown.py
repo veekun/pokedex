@@ -8,6 +8,7 @@ http://michelf.com/projects/php-markdown/extra/ respectively.
 Pokédex links are represented with the extended syntax `[name]{type}`, e.g.,
 `[Eevee]{pokemon}`.  The actual code that parses these is in spline-pokedex.
 """
+from __future__ import absolute_import
 
 import markdown
 import sqlalchemy.types
