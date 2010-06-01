@@ -10,8 +10,8 @@ id,encounter_condition_id,name,is_default
 9,4,Ruby in slot 2,0
 10,4,Sapphire in slot 2,0
 11,4,Emerald in slot 2,0
-12,4,Fire Red in slot 2,0
-13,4,Leaf Green in slot 2,0
+12,4,FireRed in slot 2,0
+13,4,LeafGreen in slot 2,0
 14,5,Radio off,1
 15,5,Hoenn radio,0
 16,5,Sinnoh radio,0
