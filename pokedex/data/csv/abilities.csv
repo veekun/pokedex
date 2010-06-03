@@ -359,7 +359,7 @@ Other multiple-hit moves, such as [Triple Kick]{move}, are unaffected.",Extends 
 Overworld: If the lead Pokémon has this ability, the wild encounter rate is decreased.",Heightens [Speed]{mechanic} to 1.5× with a [major status ailment]{mechanic}.
 96,Normalize,4,"This Pokémon's moves all act as if they were [Normal]{type}-type.
 
-Moves that inflict [typeless damage]{mechanic} do so as usual.  Moves of variable type, such as [Hidden Power]{move} and [Judgement]{move}, are affected.  They otherwise work as usual, however; for example, [Weather Ball]{move} has doubled power and looks different during [weather]{mechanic}, but is always Normal.
+Moves that inflict [typeless damage]{mechanic} do so as usual.  Moves of variable type, such as [Hidden Power]{move} and [Judgment]{move}, are affected.  They otherwise work as usual, however; for example, [Weather Ball]{move} has doubled power and looks different during [weather]{mechanic}, but is always Normal.
 
 A [Will-O-Wisp]{move} turned Normal by this ability can affect [Ghost]{type}-type Pokémon, despite otherwise acting like a Normal move.  (This is specific to Will-O-Wisp; no other moves have this quirk.)",Makes the Pokémon's moves act [Normal]{type}-type.
 97,Sniper,4,"This Pokémon inflicts triple damage with [critical hits]{mechanic}, rather than the usual double damage.",Strengthens the Pokémon's [critical hits]{mechanic} to inflict 3× damage rather than 2×.

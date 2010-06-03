@@ -210,7 +210,7 @@ This move cannot be selected by [Assist]{move} or [Metronome]{move}."
 [Skill Link]{ability} does not apply."
 106,0,Takes the target's item.,"Inflicts [regular damage]{mechanic}.  If the target is holding an item and the user is not, the user will permanently take the item.  Damage is still inflicted if an item cannot be taken.
 
-Pokémon with [Sticky Hold]{ability} or [Multi-type]{ability} are immune to the item theft effect.
+Pokémon with [Sticky Hold]{ability} or [Multitype]{ability} are immune to the item theft effect.
 
 The target cannot recover its item with [Recycle]{move}.
 
@@ -453,7 +453,7 @@ During [Sunny Day]{move}, this move has 50% accuracy."
 155,0,Hits once for every conscious Pokémon the trainer has.,"Inflicts [typeless]{mechanic} [regular damage]{mechanic}.  Every Pokémon in the user's party, excepting those that have fainted or have a [major status effect]{mechanic}, attacks the target.  Calculated stats are ignored; the base stats for the target and assorted attackers are used instead.  The random factor in the damage formula is not used.  [Dark]{type} Pokémon still get [STAB]{mechanic}.
 
 This effect breaks through [Wonder Guard]{ability}."
-156,0,"User flies high into the air, dodging all attacks, and hits next turn.","Inflicts [regular damage]{move}.  User flies high into the air for one turn, becoming immune to attack, and hits on the second turn.
+156,0,"User flies high into the air, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic}.  User flies high into the air for one turn, becoming immune to attack, and hits on the second turn.
 
 During the immune turn, [Gust]{move}, [Sky Uppercut]{move}, [Thunder]{move}, and [Twister]{move} still hit the user normally.  [Gust]{move} and [Twister]{move} also have double power against the user.
 
@@ -658,7 +658,7 @@ Waterfall      | Puts target to [sleep]{mechanic}
 199,0,User receives 1/3 the damage inflicted in recoil.,Inflicts [regular damage]{mechanic}.  User takes 1/3 the damage it inflicts in recoil.
 200,0,Confuses the target.,[Confuse]{mechanic}s all targets.
 201,0,Has an increased chance for a critical hit and a $effect_chance% chance to burn the target.,Inflicts [regular damage]{mechanic}.  [Critical hit chance]{mechanic} is one level higher than normal.  Has a $effect_chance% chance to [burn]{mechanic} the target.
-202,0,All damage from Electric moves is halved until the end of the battle.,"[Electic]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
+202,0,All damage from Electric moves is halved until the end of the battle.,"[Electric]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
 203,0,Has a $effect_chance% chance to badly poison the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [badly poison]{mechanic} the target.
 204,0,"If there be weather, this move has doubled power and the weather's type.","Inflicts [regular damage]{mechanic}.  If a weather move is active, this move has double power, and its type becomes the type of the weather move."
 205,0,Lowers the user's Special Attack by two levels after inflicting damage.,"Inflicts [regular damage]{mechanic}, then [lowers]{mechanic} the user's [Special Attack]{mechanic} by two levels."
@@ -705,7 +705,7 @@ Waterfall      | [Grass]{type}
 215,0,Heals the user by half its max HP.,"Heals the user for half its max [HP]{mechanic}.  If the user is [Flying]{type}, its [Flying]{type} type is ignored until the end of this turn."
 216,0,Disables moves and immunities that involve flying or levitating for five turns.,"For the next five turns, all immunities to [Ground]{type} moves are disabled.  For the duration of this effect, the [evasion]{mechanic} of every Pokémon on the field is [lower]{mechanic}ed by two levels.
 
-Specifically, [Flying]{type} Pokémon and those with [Levitate]{ability} or that have used [Magnet Rise]{move} are no longer immune to [Ground]{type} attacks, [Arena Trap]{move}, [Spikes]{move}, or [Toxic Spikes]{move}.
+Specifically, [Flying]{type} Pokémon and those with [Levitate]{ability} or that have used [Magnet Rise]{move} are no longer immune to [Ground]{type} attacks, [Arena Trap]{ability}, [Spikes]{move}, or [Toxic Spikes]{move}.
 
 [Bounce]{move}, [Fly]{move}, [Hi Jump Kick]{move}, [Jump Kick]{move}, and [Splash]{move} cannot be used while this move is in effect."
 217,0,"Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.",Resets the target's [evasion]{mechanic} to normal and prevents any further boosting until the target leaves the [field]{mechanic}.  A [Dark]{type} Pokémon under this effect takes normal damage from [Psychic]{type} moves.  This move itself ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
@@ -815,14 +815,14 @@ This effect is passed on by [Baton Pass]{move}."
 This move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no [PP]{mechanic} remaining or being under the effect of both [Encore]{move} and [Torment]{move} at the same time
 
 This move cannot be copied by [Mimic]{move}, [Mirror Move]{move}, or [Sketch]{move}, nor selected by [Assist]{move} or [Metronome]{move}, nor forced by [Encore]{move}."
-256,0,"User dives underwater, dodging all attacks, and hits next turn.","Inflicts [regular damage]{move}.  User dives underwater for one turn, becoming immune to attack, and hits on the second turn.
+256,0,"User dives underwater, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic}.  User dives underwater for one turn, becoming immune to attack, and hits on the second turn.
 
 During the immune turn, [Low Kick]{move}, [Surf]{move}, and [Whirlpool]{move} still hit the user normally.  [Surf]{move} and [Whirlpool]{move} also have double power against the user.
 
 The user may be hit during its immune turn if under the effect of [Lock-On]{move}, [Mind Reader]{move}, or [No Guard]{ability}.
 
 This move cannot be selected by [Sleep Talk]{move}."
-257,0,"User digs underground, dodging all attacks, and hits next turn.","Inflicts [regular damage]{move}.  User digs underground for one turn, becoming immune to attack, and hits on the second turn.
+257,0,"User digs underground, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic}.  User digs underground for one turn, becoming immune to attack, and hits on the second turn.
 
 During the immune turn, [Earthquake]{move}, [Fissure]{move}, and [Magnitude]{move} still hit the user normally, and their power is doubled if appropriate.
 
@@ -847,7 +847,7 @@ Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 t
 
 If the target is in the first turn of [Dive]{move}, this move will hit with double power."
 263,0,User takes 1/3 the damage inflicted in recoil.  Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic}.  User takes 1/3 the damage it inflicts in recoil.  Has a $effect_chance% chance to [paralyze]{mechanic} the target.
-264,0,"User bounces high into the air, dodging all attacks, and hits next turn.","Inflicts [regular damage]{move}.  User bounces high into the air for one turn, becoming immune to attack, and hits on the second turn.  Has a $effect_chance% chance to [paralyze]{mechanic} the target.
+264,0,"User bounces high into the air, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic}.  User bounces high into the air for one turn, becoming immune to attack, and hits on the second turn.  Has a $effect_chance% chance to [paralyze]{mechanic} the target.
 
 During the immune turn, [Gust]{move}, [Sky Uppercut]{move}, [Thunder]{move}, and [Twister]{move} still hit the user normally.  [Gust]{move} and [Twister]{move} also have double power against the user.
 
@@ -869,7 +869,7 @@ This move cannot be copied by [Mimic]{move}, [Mirror Move]{move}, or [Sketch]{mo
 270,0,User receives 1/2 the damage inflicted in recoil.,Inflicts [regular damage]{mechanic}.  User takes 1/2 the damage it inflicts in recoil.
 271,0,"User faints, and its replacement is fully healed.","User [faint]{mechanic}s.  Its replacement's [HP]{mechanic} and [PP]{mechanic} are fully restored, and any [major status effect]{mechanic} is removed."
 272,0,Has a $effect_chance% chance to lower the target's Special Defense by two levels.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [lower]{mechanic} the target's [Special Defense]{mechanic} by two levels.
-273,0,"User vanishes, dodging all attacks, and hits next turn.  Works against Protect and Detect.","Inflicts [regular damage]{move}.  User vanishes for one turn, becoming immune to attack, and hits on the second turn.
+273,0,"User vanishes, dodging all attacks, and hits next turn.  Works against Protect and Detect.","Inflicts [regular damage]{mechanic}.  User vanishes for one turn, becoming immune to attack, and hits on the second turn.
 
 This move breaks through [Detect]{move} and [Protect]{move}.
 
