@@ -8,7 +8,6 @@ setup(
         'pokedex': ['data/csv/*.csv']
     },
     install_requires=[
-        'docutils',
         'SQLAlchemy>=0.6',
         'whoosh>=0.3.0b24',
         'markdown',
