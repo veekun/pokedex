@@ -819,7 +819,7 @@ Pokemon.formes = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.forme_base_po
                                                                remote_side=[Pokemon.id]))
 Pokemon.pokemon_color = relation(PokemonColor, backref='pokemon')
 Pokemon.color = association_proxy('pokemon_color', 'name')
-Pokemon.dex_numbers = relation(PokemonDexNumber, backref='pokemon')
+Pokemon.dex_numbers = relation(PokemonDexNumber, order_by=PokemonDexNumber.pokedex_id.asc(), backref='pokemon')
 Pokemon.default_form_sprite = relation(PokemonFormSprite,
                                        primaryjoin=and_(
                                             Pokemon.id==PokemonFormSprite.pokemon_id,
