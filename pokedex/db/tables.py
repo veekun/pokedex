@@ -578,6 +578,12 @@ class PokemonHabitat(TableBase):
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
     name = Column(Unicode(16), nullable=False)
 
+class PokemonInternalID(TableBase):
+    __tablename__ = 'pokemon_internal_ids'
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, autoincrement=False, nullable=False)
+    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False)
+    internal_id = Column(Integer, nullable=False)
+
 class PokemonItem(TableBase):
     __tablename__ = 'pokemon_items'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
