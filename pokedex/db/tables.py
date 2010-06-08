@@ -393,6 +393,12 @@ class NatureBattleStylePreference(TableBase):
     low_hp_preference = Column(Integer, nullable=False)
     high_hp_preference = Column(Integer, nullable=False)
 
+class NatureName(TableBase):
+    __tablename__ = 'nature_names'
+    nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False, autoincrement=False)
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
+    name = Column(Unicode(8), nullable=False)
+
 class NaturePokeathlonStat(TableBase):
     __tablename__ = 'nature_pokeathlon_stats'
     nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False)
@@ -791,6 +797,7 @@ MoveFlavorText.version_group = relation(VersionGroup)
 
 MoveName.language = relation(Language)
 
+Nature.foreign_names = relation(NatureName, backref='nature')
 Nature.decreased_stat = relation(Stat, primaryjoin=Nature.decreased_stat_id==Stat.id,
                                        backref='decreasing_natures')
 Nature.increased_stat = relation(Stat, primaryjoin=Nature.increased_stat_id==Stat.id,
@@ -805,6 +812,8 @@ Nature.battle_style_preferences = relation(NatureBattleStylePreference,
 Nature.pokeathlon_effects = relation(NaturePokeathlonStat, order_by=NaturePokeathlonStat.pokeathlon_stat_id)
 
 NatureBattleStylePreference.battle_style = relation(MoveBattleStyle, backref='nature_preferences')
+
+NatureName.language = relation(Language)
 
 NaturePokeathlonStat.pokeathlon_stat = relation(PokeathlonStat, backref='nature_effects')
 
