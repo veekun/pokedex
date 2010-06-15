@@ -254,6 +254,12 @@ class ItemInternalID(TableBase):
     generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False)
     internal_id = Column(Integer, nullable=False)
 
+class ItemName(TableBase):
+    __tablename__ = 'item_names'
+    item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, nullable=False, autoincrement=False)
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
+    name = Column(Unicode(16), nullable=False)
+
 class ItemPocket(TableBase):
     __tablename__ = 'item_pockets'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -747,6 +753,7 @@ Item.berry = relation(Berry, uselist=False, backref='item')
 Item.flags = relation(ItemFlag, secondary=ItemFlagMap.__table__)
 Item.flavor_text = relation(ItemFlavorText, order_by=ItemFlavorText.version_group_id.asc(), backref='item')
 Item.fling_effect = relation(ItemFlingEffect, backref='items')
+Item.foreign_names = relation(ItemName, backref='item')
 Item.machines = relation(Machine, order_by=Machine.version_group_id.asc())
 Item.category = relation(ItemCategory)
 Item.pocket = association_proxy('category', 'pocket')
@@ -755,6 +762,8 @@ ItemCategory.items = relation(Item, order_by=Item.name)
 ItemCategory.pocket = relation(ItemPocket)
 
 ItemFlavorText.version_group = relation(VersionGroup)
+
+ItemName.language = relation(Language)
 
 ItemPocket.categories = relation(ItemCategory, order_by=ItemCategory.name)
 
