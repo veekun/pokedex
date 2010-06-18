@@ -9,7 +9,9 @@ derived.
 """
 
 import struct
+
 from pokedex.util import permutations
+from pokedex.struct._pokemon_struct import pokemon_struct
 
 def pokemon_prng(seed):
     u"""Creates a generator that simulates the main Pokémon PRNG."""
@@ -19,14 +21,11 @@ def pokemon_prng(seed):
         yield seed >> 16
 
 
-class PokemonSave(object):
+class SaveFilePokemon(object):
     u"""Represents an individual Pokémon, from the game's point of view.
 
     Handles translating between the on-disk encrypted form, the in-RAM blob
     (also used by pokesav), and something vaguely intelligible.
-
-    XXX: Okay, well, right now it's just encryption and decryption.  But, you
-    know.
     """
 
     def __init__(self, blob, encrypted=False):
@@ -36,9 +35,6 @@ class PokemonSave(object):
         on-disk save.  Otherwise, the blob is taken to be already decrypted and
         is left alone.
         """
-
-        # XXX Sometime this should have an abstract internal representation.
-        # For now, just store the decrypted version
 
         if encrypted:
             # Decrypt it.
@@ -55,6 +51,8 @@ class PokemonSave(object):
         else:
             # Already decrypted
             self.blob = blob
+
+        self.structure = pokemon_struct.parse(self.blob)
 
 
     @property

@@ -3,6 +3,7 @@ from optparse import OptionParser
 import os
 import sys
 
+# XXX importing pokedex.whatever should not import all these
 import pokedex.db
 import pokedex.db.load
 import pokedex.db.tables

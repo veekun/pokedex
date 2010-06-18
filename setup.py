@@ -11,6 +11,7 @@ setup(
         'SQLAlchemy>=0.6',
         'whoosh>=0.3.0b24',
         'markdown',
+        'construct',
     ],
 
     entry_points = {
