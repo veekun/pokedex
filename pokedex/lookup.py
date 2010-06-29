@@ -449,6 +449,8 @@ class PokedexLookup(object):
                 name, self.INTERMEDIATE_LOOKUP_RESULTS):
 
                 query = whoosh.query.Term('name', suggestion)
+                if type_term:
+                    query = query & type_term
                 results.extend(searcher.search(query))
 
         ### Convert results to db objects
