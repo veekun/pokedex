@@ -52,22 +52,42 @@ class LanguageWeighting(whoosh.scoring.Weighting):
     before foreign results.
     """
 
+    def __init__(self, extra_weights={}, *args, **kwargs):
+        """`extra_weights` may be a dictionary of weights which will be
+        factored in.
+
+        Intended for use with spelling corrections, which come along with their
+        own weightings.
+        """
+        self.extra_weights = extra_weights
+        super(LanguageWeighting, self).__init__(*args, **kwargs)
+
     def score(self, searcher, fieldnum, text, docnum, weight, QTF=1):
         doc = searcher.stored_fields(docnum)
+
+        # Apply extra weight
+        weight = weight * self.extra_weights.get(text, 1.0)
+
         if doc['language'] == None:
             # English (well, "default"); leave it at 1
             return weight
         elif doc['language'] == u'Roomaji':
             # Give Roomaji a little boost; it's most likely to be searched
-            return weight * 0.95
+            return weight * 0.9
         else:
             # Everything else can drop down the totem pole
-            return weight * 0.9
+            return weight * 0.8
 
 
 class PokedexLookup(object):
     INTERMEDIATE_LOOKUP_RESULTS = 25
     MAX_LOOKUP_RESULTS = 10
+
+    # The speller only checks how much the input matches a word; there can be
+    # all manner of extra unmatched junk, and it won't affect the weighting.
+    # To compensate, greatly boost the weighting of matches at the beginning
+    # and end, so nearly-full-word-matches are much better
+    SPELLER_OPTIONS = dict(booststart=10.0, boostend=9.0)
 
     # Dictionary of table name => table class.
     # Need the table name so we can get the class from the table name after we
@@ -136,7 +156,8 @@ class PokedexLookup(object):
 
         # Create speller, and done
         spell_store = whoosh.filedb.filestore.FileStorage(directory)
-        self.speller = whoosh.spelling.SpellChecker(spell_store)
+        self.speller = whoosh.spelling.SpellChecker(spell_store,
+            **self.SPELLER_OPTIONS)
 
 
     def rebuild_index(self):
@@ -159,11 +180,7 @@ class PokedexLookup(object):
         writer = self.index.writer()
 
         # Index every name in all our tables of interest
-        # speller_entries becomes a list of (word, score) tuples; the score is
-        # 2 for English names, 1.5 for Roomaji, and 1 for everything else.  I
-        # think this biases the results in the direction most people expect,
-        # especially when e.g. German names are very similar to English names
-        speller_entries = []
+        speller_entries = set()
         for cls in self.indexed_tables.values():
             q = self.session.query(cls)
 
@@ -171,7 +188,7 @@ class PokedexLookup(object):
                 row_key = dict(table=unicode(cls.__tablename__),
                                row_id=unicode(row.id))
 
-                def add(name, language, iso3166, score):
+                def add(name, language, iso3166):
                     normalized_name = self.normalize_name(name)
 
                     writer.add_document(
@@ -180,21 +197,21 @@ class PokedexLookup(object):
                         **row_key
                     )
 
-                    speller_entries.append((normalized_name, score))
+                    speller_entries.add(normalized_name)
 
 
                 # Add the basic English name to the index
                 if cls == tables.Pokemon:
                     # Pokémon need their form name added
                     # XXX kinda kludgy
-                    add(row.full_name, None, u'us', 1)
+                    add(row.full_name, None, u'us')
 
                     # If this is a default form, ALSO add the unadorned name,
                     # so 'Deoxys' alone will still do the right thing
                     if row.forme_name and not row.forme_base_pokemon_id:
-                        add(row.name, None, u'us', 1)
+                        add(row.name, None, u'us')
                 else:
-                    add(row.name, None, u'us', 1)
+                    add(row.name, None, u'us')
 
                 # Some things also have other languages' names
                 # XXX other language form names..?
@@ -207,21 +224,21 @@ class PokedexLookup(object):
                         continue
 
                     add(moonspeak, foreign_name.language.name,
-                                   foreign_name.language.iso3166,
-                                   3)
+                                   foreign_name.language.iso3166)
 
                     # Add Roomaji too
                     if foreign_name.language.name == 'Japanese':
                         roomaji = romanize(foreign_name.name)
-                        add(roomaji, u'Roomaji', u'jp', 8)
+                        add(roomaji, u'Roomaji', u'jp')
 
         writer.commit()
 
         # Construct and populate a spell-checker index.  Quicker to do it all
         # at once, as every call to add_* does a commit(), and those seem to be
         # expensive
-        self.speller = whoosh.spelling.SpellChecker(self.index.storage)
-        self.speller.add_scored_words(speller_entries)
+        self.speller = whoosh.spelling.SpellChecker(self.index.storage, mingram=2,
+            **self.SPELLER_OPTIONS)
+        self.speller.add_words(speller_entries)
 
 
     def normalize_name(self, name):
@@ -445,13 +462,30 @@ class PokedexLookup(object):
             exact = False
             results = []
 
-            for suggestion in self.speller.suggest(
-                name, self.INTERMEDIATE_LOOKUP_RESULTS):
+            fuzzy_query_parts = []
+            fuzzy_weights = {}
+            min_weight = [None]
+            for suggestion, _, weight in self.speller.suggestions_and_scores(name):
+                # Only allow the top 50% of scores; otherwise there will always
+                # be a lot of trailing junk
+                if min_weight[0] is None:
+                    min_weight[0] = weight * 0.5
+                elif weight < min_weight[0]:
+                    break
 
-                query = whoosh.query.Term('name', suggestion)
-                if type_term:
-                    query = query & type_term
-                results.extend(searcher.search(query))
+                fuzzy_query_parts.append(whoosh.query.Term('name', suggestion))
+                fuzzy_weights[suggestion] = weight
+
+            if not fuzzy_query_parts:
+                # Nothing at all; don't try querying
+                return []
+
+            fuzzy_query = whoosh.query.Or(fuzzy_query_parts)
+            if type_term:
+                fuzzy_query = fuzzy_query & type_term
+
+            searcher.weighting = LanguageWeighting(extra_weights=fuzzy_weights)
+            results = searcher.search(fuzzy_query)
 
         ### Convert results to db objects
         objects = self._whoosh_records_to_results(results, exact=exact)
