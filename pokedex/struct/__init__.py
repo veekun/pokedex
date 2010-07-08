@@ -76,6 +76,24 @@ class SaveFilePokemon(object):
         return struct.pack(struct_def, *shuffled)
 
 
+    ### Delicious data
+
+    @property
+    def is_shiny(self):
+        u"""Returns true iff this Pokémon is shiny."""
+        # See http://bulbapedia.bulbagarden.net/wiki/Personality#Shininess
+        # But don't see it too much, because the above is super over
+        # complicated.  Do this instead!
+        personality_msdw = self.structure.personality >> 16
+        personality_lsdw = self.structure.personality & 0xffff
+        return (
+            self.structure.original_trainer_id
+            ^ self.structure.original_trainer_secret_id
+            ^ personality_msdw
+            ^ personality_lsdw
+        ) < 8
+
+
     ### Utility methods
 
     shuffle_orders = list( permutations(range(4)) )
