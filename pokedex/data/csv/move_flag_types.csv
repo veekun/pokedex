@@ -1,7 +1,7 @@
-id,name,description
-1,Makes contact,"User touches the target.  This triggers some abilities (e.g., [Static]{ability}) and items (e.g., [Sticky Barb]{item})."
-2,Blocked by Detect and Protect,This move will not work if the target has used [Detect]{move} or [Protect]{move} this turn.
-3,Reflectable with Magic Coat,This move will be reflected back at the user if the target has used [Magic Coat]{move} this turn.
-4,Snatchable,This move will be stolen if another Pokémon has used [Snatch]{move} this turn.
-5,Rolls accuracy,This move is affected by [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
-6,Flinches with King's Rock,A held [King's Rock]{item} gives this move an 11.7% chance to make the target [flinch]{mechanic}.
+id,identifier,name,description
+1,contact,Makes contact,"User touches the target.  This triggers some abilities (e.g., [Static]{ability}) and items (e.g., [Sticky Barb]{item})."
+2,protect,Blocked by Detect and Protect,This move will not work if the target has used [Detect]{move} or [Protect]{move} this turn.
+3,reflect,Reflectable with Magic Coat,This move will be reflected back at the user if the target has used [Magic Coat]{move} this turn.
+4,snatch,Snatchable,This move will be stolen if another Pokémon has used [Snatch]{move} this turn.
+5,accuracy,Rolls accuracy,This move is affected by [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
+6,flinch,Flinches with King's Rock,A held [King's Rock]{item} gives this move an 11.7% chance to make the target [flinch]{mechanic}.

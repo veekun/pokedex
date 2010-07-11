@@ -342,6 +342,7 @@ class MoveFlag(TableBase):
 class MoveFlagType(TableBase):
     __tablename__ = 'move_flag_types'
     id = Column(Integer, primary_key=True, nullable=False)
+    identifier = Column(Unicode(16), nullable=False)
     name = Column(Unicode(32), nullable=False)
     description = Column(markdown.MarkdownColumn(128), nullable=False)
 
