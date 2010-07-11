@@ -467,7 +467,7 @@ If a Pokémon [Transform]{move}s into an Arceus with this ability, it will Trans
 
 This ability does not stack if two allied Pokémon have it.
 
-Unlike [Forecast]{ability} and [Multitype]{ability}, this ability is not tied to its Pokémon's form change; [Cherrim]{pokemon} will switch between its forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim.",Heightens the Pokémon and its ally's [Special Attack]{mechanic} to 1.5× during [strong sunlight]{mechanic}.
+Unlike [Forecast]{ability} and [Multitype]{ability}, this ability is not tied to its Pokémon's form change; [Cherrim]{pokemon} will switch between its forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim.",Heightens the Pokémon and its ally's [Attack]{mechanic} and [Special Defense]{mechanic} to 1.5× during [strong sunlight]{mechanic}.
 123,Bad Dreams,4,"Opposing Pokémon take 1/8 of their maximum [HP]{mechanic} in damage after each turn while they are [asleep]{mechanic}.
 
 This ability stacks if two allied Pokémon have it.",Damages [sleeping]{mechanic} opponents for 1/8 their max [HP]{mechanic} after each turn.
