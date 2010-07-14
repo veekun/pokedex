@@ -177,7 +177,6 @@ class EvolutionChain(TableBase):
     __tablename__ = 'evolution_chains'
     id = Column(Integer, primary_key=True, nullable=False)
     growth_rate_id = Column(Integer, ForeignKey('growth_rates.id'), nullable=False)
-    steps_to_hatch = Column(Integer, nullable=False)
     baby_trigger_item = Column(Unicode(12))
 
 class EvolutionTrigger(TableBase):
@@ -456,6 +455,7 @@ class Pokemon(TableBase):
     base_experience = Column(Integer, nullable=False)
     base_happiness = Column(Integer, nullable=False)
     is_baby = Column(Boolean, nullable=False)
+    hatch_counter = Column(Integer, nullable=False)
     has_gen4_fem_sprite = Column(Boolean, nullable=False)
     has_gen4_fem_back_sprite = Column(Boolean, nullable=False)
 
