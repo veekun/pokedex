@@ -293,6 +293,12 @@ class LocationAreaEncounterRate(TableBase):
     version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, autoincrement=False)
     rate = Column(Integer, nullable=True)
 
+class LocationInternalID(TableBase):
+    __tablename__ = 'location_internal_ids'
+    location_id = Column(Integer, ForeignKey('locations.id'), nullable=False, primary_key=True)
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False, primary_key=True)
+    internal_id = Column(Integer, nullable=False)
+
 class Machine(TableBase):
     __tablename__ = 'machines'
     machine_number = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
@@ -764,6 +770,9 @@ ItemCategory.pocket = relation(ItemPocket)
 
 ItemFlavorText.version_group = relation(VersionGroup)
 
+ItemInternalID.item = relation(Item, backref='internal_ids')
+ItemInternalID.generation = relation(Generation)
+
 ItemName.language = relation(Language)
 
 ItemPocket.categories = relation(ItemCategory, order_by=ItemCategory.name)
@@ -771,6 +780,9 @@ ItemPocket.categories = relation(ItemCategory, order_by=ItemCategory.name)
 Location.region = relation(Region, backref='locations')
 
 LocationArea.location = relation(Location, backref='areas')
+
+LocationInternalID.location = relation(Location, backref='internal_ids')
+LocationInternalID.generation = relation(Generation)
 
 Machine.item = relation(Item)
 Machine.version_group = relation(VersionGroup)
