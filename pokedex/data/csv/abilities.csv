@@ -309,7 +309,7 @@ If either Pokémon is genderless, damage is unaffected.","Increases damage infli
 The evasion bonus does not count as a [stat modifier]{mechanic}.
 
 Overworld: If the lead Pokémon has this ability, the wild encounter rate is halved in a blizzard.",Heightens evasion to 1.25× during [hail]{mechanic}.
-82,Gluttony,4,"This Pokémon eats any held Berry triggered by low [HP]{mechanic} when it falls below 50% of its HP, regardless of the Berry's usual threshold.",Makes the Pokémon eat any held Berry triggered low [HP]{mechanic} below 1/2 its max HP.
+82,Gluttony,4,"This Pokémon eats any held Berry triggered by low [HP]{mechanic} when it falls below 50% of its HP, regardless of the Berry's usual threshold.",Makes the Pokémon eat any held Berry triggered by low [HP]{mechanic} below 1/2 its max HP.
 83,Anger Point,4,"Whenever this Pokémon receives a [critical hit]{mechanic}, its [Attack]{mechanic} rises to the maximum of 6 [stages]{mechanic}.
 
 This ability will still take effect if the critical hit is received by a [Substitute]{move}.",Raises [Attack]{mechanic} to the maximum of six [stages]{mechanic} upon receiving a [critical hit]{mechanic}.
@@ -321,7 +321,7 @@ This bonus does not count as a [stat modifier]{mechanic}.  There is no notificat
 Type alignments work as usual alongside this ability.",Halves damage from [Fire]{type} moves and [burns]{mechanic}.
 86,Simple,4,"Each [stage]{mechanic} of this Pokémon's [stat modifiers]{mechanic} acts as two stages.  These doubled stages are still limited to a minimum of -6 and a maximum of 6.
 
-This Pokémon can still still accumulate less than -3 or more than 3 stages' worth of stat modifiers, even though the extra ones will have no effect.",Doubles the Pokémon's [stat modifiers]{mechanic}.  These doubled modifiers are still capped at -6 or 6 [stages]{mechanic}.
+This Pokémon can still accumulate less than -3 or more than 3 stages of stat modifiers, even though the extra ones have no effect after doubling.",Doubles the Pokémon's [stat modifiers]{mechanic}.  These doubled modifiers are still capped at -6 or 6 [stages]{mechanic}.
 87,Dry Skin,4,"This Pokémon takes 1/8 of its maximum HP in damage after each turn during [strong sunlight]{mechanic}, but it heals for 1/8 of its HP each turn during [rain]{mechanic}.  This Pokémon takes 1.25× as much damage from [Fire]{type}-type moves, but whenever a [Water]{type} move hits it, it heals for 1/4 its maximum HP instead.","Causes 1/8 max [HP]{mechanic} in damage each turn during [strong sunlight]{mechanic}, but heals for 1/8 max HP during [rain]{mechanic}.  Increases damage from [Fire]{type} moves to 1.25×, but absorbs [Water]{type} moves, healing for 1/4 max HP."
 88,Download,4,"When this Pokémon enters battle, its [Attack]{mechanic} or [Special Attack]{mechanic}, whichever corresponds to its opponents' weaker total defense, rises one [stage]{mechanic}.
 
@@ -353,7 +353,7 @@ Poison will still damage this Pokémon as usual out of battle.",Heals for 1/8 ma
 
 Other multiple-hit moves, such as [Triple Kick]{move}, are unaffected.",Extends two-to-five-hit moves to a full five hits every time.
 93,Hydration,4,This Pokémon is cured of any [major status ailment]{mechanic} after each turn during [rain]{mechanic}.,Cures any [major status ailment]{mechanic} after each turn during [rain]{mechanic}.
-94,Solar Power,4,"During [strong sunlight]{mechanic}, this Pokémon has 1.5× its [Special Attack]{mechanic} but takes 1/8 of its maximum [HP]{mechanic} in damage after each turn.",Heightens [Special Attack]{mechanic} to 1.5× and causes 1/8 max [HP]{mechanic} in damage after each turn during [strong sunlight]{mechanic}.
+94,Solar Power,4,"During [strong sunlight]{mechanic}, this Pokémon has 1.5× its [Special Attack]{mechanic} but takes 1/8 of its maximum [HP]{mechanic} in damage after each turn.",Heightens [Special Attack]{mechanic} to 1.5× but costs 1/8 max [HP]{mechanic} after each turn during [strong sunlight]{mechanic}.
 95,Quick Feet,4,"Whenever this Pokémon has a [major status ailment]{mechanic}, it has 1.5× its [Speed]{mechanic}.  This Pokémon is not affected by the usual Speed cut from [paralysis]{mechanic}.
 
 Overworld: If the lead Pokémon has this ability, the wild encounter rate is decreased.",Heightens [Speed]{mechanic} to 1.5× with a [major status ailment]{mechanic}.
@@ -362,14 +362,14 @@ Overworld: If the lead Pokémon has this ability, the wild encounter rate is dec
 Moves that inflict [typeless damage]{mechanic} do so as usual.  Moves of variable type, such as [Hidden Power]{move} and [Judgment]{move}, are affected.  They otherwise work as usual, however; for example, [Weather Ball]{move} has doubled power and looks different during [weather]{mechanic}, but is always Normal.
 
 A [Will-O-Wisp]{move} turned Normal by this ability can affect [Ghost]{type}-type Pokémon, despite otherwise acting like a Normal move.  (This is specific to Will-O-Wisp; no other moves have this quirk.)",Makes the Pokémon's moves act [Normal]{type}-type.
-97,Sniper,4,"This Pokémon inflicts triple damage with [critical hits]{mechanic}, rather than the usual double damage.",Strengthens the Pokémon's [critical hits]{mechanic} to inflict 3× damage rather than 2×.
+97,Sniper,4,"This Pokémon inflicts triple damage with [critical hits]{mechanic}, rather than the usual double damage.",Strengthens [critical hits]{mechanic} to inflict 3× damage rather than 2×.
 98,Magic Guard,4,"This Pokémon is immune to damage not directly caused by a move.
 
 For example, this Pokémon takes no damage from from [weather]{mechanic}, recoil, [status ailments]{mechanic}, or [Spikes]{mechanic}, but it still suffers from the [Attack]{mechanic} cut when [burned]{mechanic}, and a [Life Orb]{item} will still power up this Pokémon's moves without damaging it.  Anything that depends on such damage will also not happen; for example, [Leech Seed]{move} will neither hurt this Pokémon nor heal the opponent, and Pokémon with a [Jaboca Berry]{item} or [Rowap Berry]{item} will not consume the berry when hit by this Pokémon.
 
 Also, [paralysis]{mechanic} cannot prevent this Pokémon from moving, though the [Speed]{mechanic} cut is unaffected.
 
-[Struggle]{move}'s recoil, the [HP]{mechanic} costs of [Belly Drum]{move} and [Substitute]{move}, and [Pain Split]{move}, whether used by or against this Pokémon, are unaffected.
+[Struggle]{move}'s recoil; [Pain Split]{move}, whether used by or against this Pokémon; and the [HP]{mechanic} costs of [Belly Drum]{move} and [Substitute]{move} are unaffected.
 
 If this Pokémon is [badly poisoned]{mechanic}, the poison counter is still increased each turn; if the Pokémon loses this ability, it will begin taking as much damage as it would be if it had been taking increasing damage each turn.  This Pokémon still takes poison damage outside of battle.",Protects against damage not directly caused by a move.
 99,No Guard,4,"Moves used by or against this Pokémon never miss.
@@ -383,7 +383,7 @@ Overworld: If the lead Pokémon has this ability, the wild encounter rate is inc
 
 Multiple Pokémon with this ability move in order of [Speed]{mechanic} amongst themselves.
 
-[Full Incense]{item} and [Lagging Tail]{item}s take precedence over this ability; that is, Pokémon holding these items will move after this Pokémon, and these items override this ability when held.
+The [Full Incense]{item} and [Lagging Tail]{item} take precedence over this ability; that is, Pokémon holding these items will move after this Pokémon, and these items override this ability when held.
 
 This ability works as usual during [Trick Room]{move}: Pokémon with this ability will move in reverse order of Speed after Pokémon without it.",Makes the Pokémon move last within its move's priority bracket.
 101,Technician,4,"This Pokémon inflicts 1.5× as much damage with moves whose base power is 60 or less.
@@ -394,7 +394,7 @@ This includes moves of variable power, such as [Hidden Power]{move} and [Magnitu
 This ability does not heal prior status ailments.  [Yawn]{move} will immediately fail if used on this Pokémon during strong sunlight, and an already-used Yawn will fail if the weather turns to strong sunlight in the meantime.  [Sleep]{mechanic} from [Rest]{move} is unaffected.",Protects against [major status ailments]{mechanic} during [strong sunlight]{mechanic}.
 103,Klutz,4,"This Pokémon's held item has no effect, positive or negative.
 
-The [Speed]{mechanic} cut from the [Iron Ball]{item} and the effort items—the [Macho Brace]{item}, [Power Weight]{item}, [Power Bracer]{item}, [Power Belt]{item}, [Power Lens]{item}, [Power Band]{item}, and [Power Anklet]{item}—is unaffected.  The experience from the [Exp. Share]{item} and the effort from the effort items are unaffected.",Negates all effects of the Pokémon's held item.
+The [Speed]{mechanic} cut from the [Iron Ball]{item} and the effort items (the [Macho Brace]{item}, [Power Weight]{item}, [Power Bracer]{item}, [Power Belt]{item}, [Power Lens]{item}, [Power Band]{item}, and [Power Anklet]{item}) is unaffected.  The experience from the [Exp. Share]{item} and the effort from the effort items are unaffected.",Negates all effects of the Pokémon's held item.
 104,Mold Breaker,4,"This Pokémon's moves completely ignore abilities that could hinder or prevent their effect on the target.
 
 This Pokémon's moves ignore abilities that would prevent them, such as [Levitate]{ability}, [Soundproof]{ability}, and [Water Absorb]{ability}; abilities that would prevent their effects, such as [Clear Body]{ability}, [Shell Armor]{ability}, and [Sticky Hold]{ability}; abilities that grant any protective benefit, such as [Simple]{ability}, [Snow Cloak]{ability}, and [Thick Fat]{ability}; and abilities that would prevent them from hitting the intended target, i.e. [Lightningrod]{ability} and [Storm Drain]{ability}.  If an ability could either hinder or help this Pokémon's moves, e.g. [Dry Skin]{ability} or [Unaware]{ability}, the ability is ignored either way.
