@@ -447,7 +447,9 @@ This ability functions identically to [Filter]{ability}.",Makes [super-effective
 117,Snow Warning,4,"The [weather]{mechanic} changes to [hail]{mechanic} when this Pokémon enters battle and continues indefinitely unless cancelled by another weather condition.
 
 The weather abilities respect [Speed]{mechanic}.  If multiple Pokémon with this ability, [Drizzle]{ability}, [Sand Stream]{ability}, or [Snow Warning]{ability} are sent out at the same time, each will take effect and be cancelled by the next, and only the slowest Pokémon's ability (or the fastest during [Trick Room]{move}) will have its weather stay.",Summons [hail]{mechanic} upon entering battle.
-118,Honey Gather,4,This Pokémon has a chance of picking up [Honey]{item} after each battle.,The Pokémon may pick up [Honey]{item} after battle.
+118,Honey Gather,4,"This Pokémon has a chance of picking up [Honey]{item} after each battle.
+
+This chance starts at 5% and rises another 5% after every tenth level: 5% from level 1–10, 10% from 11–20, and so on, up to 50% from 91–100.",The Pokémon may pick up [Honey]{item} after battle.
 119,Frisk,4,"When this Pokémon enters battle, it reveals an opposing Pokémon's held item to all participating trainers.
 
 In a double battle, if one opponent has an item, this Pokémon will Frisk that Pokémon; if both have an item, it will Frisk one at random.",Reveals an opponent's held item upon entering battle.
