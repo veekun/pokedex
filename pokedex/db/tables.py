@@ -688,6 +688,12 @@ class Type(TableBase):
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
     damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=False) ## ??? is none; everything else is physical or special
 
+class TypeName(TableBase):
+    __tablename__ = 'type_names'
+    type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False)
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
+    name = Column(Unicode(16), nullable=False)
+
 class VersionGroup(TableBase):
     __tablename__ = 'version_groups'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -959,6 +965,9 @@ Type.target_efficacies = relation(TypeEfficacy,
 
 Type.generation = relation(Generation, backref='types')
 Type.damage_class = relation(MoveDamageClass, backref='types')
+Type.foreign_names = relation(TypeName, backref='type')
+
+TypeName.language = relation(Language)
 
 Version.version_group = relation(VersionGroup, backref='versions')
 Version.generation = association_proxy('version_group', 'generation')
