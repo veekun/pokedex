@@ -527,6 +527,58 @@ class DateAdapter(Adapter):
         y, m, d = obj.year - 2000, obj.month, obj.day
         return ''.join(chr(n) for n in (y, m, d))
 
+class PokemonFormAdapter(Adapter):
+    """Converts form ids to form names, and vice versa."""
+    pokemon_forms = {
+        # Unown
+        201: 'abcdefghijklmnopqrstuvwxyz!?',
+
+        # Deoxys
+        386: ['normal', 'attack', 'defense', 'speed'],
+
+        # Burmy and Wormadam
+        412: ['plant', 'sandy', 'trash'],
+        413: ['plant', 'sandy', 'trash'],
+
+        # Shellos and Gastrodon
+        422: ['west', 'east'],
+        423: ['west', 'east'],
+
+        # Rotom
+        479: ['normal', 'heat', 'wash', 'frost', 'fan', 'cut'],
+
+        # Giratina
+        487: ['altered', 'origin'],
+
+        # Shaymin
+        492: ['land', 'sky'],
+
+        # Arceus
+        493: [
+            'normal', 'fighting', 'flying', 'poison', 'ground', 'rock',
+            'bug', 'ghost', 'steel', 'fire', 'water', 'grass',
+            'thunder', 'psychic', 'ice', 'dragon', 'dark', '???',
+        ],
+    }
+
+    def _decode(self, obj, context):
+        try:
+            forms = self.pokemon_forms[ context['national_id'] ]
+        except KeyError:
+            return None
+
+        return forms[obj >> 3]
+
+    def _encode(self, obj, context):
+        try:
+            forms = self.pokemon_forms[ context['national_id'] ]
+        except KeyError:
+            return None
+
+        return forms.index(obj) << 3
+
+
+
 # And here we go.
 # Docs: http://projectpokemon.org/wiki/Pokemon_NDS_Structure
 pokemon_struct = Struct('pokemon_struct',
@@ -669,7 +721,7 @@ pokemon_struct = Struct('pokemon_struct',
         Flag('cool_ribbon'),
     ),
     EmbeddedBitStruct(
-        BitField('alternate_form', 5),
+        PokemonFormAdapter(BitField('alternate_form', 5)),
         Enum(BitField('gender', 2),
             genderless = 2,
             male = 0,
@@ -747,14 +799,16 @@ pokemon_struct = Struct('pokemon_struct',
         BitField('met_at_level', 7),
     ),
     Enum(ULInt8('encounter_type'),
-        special = 0,
-        grass = 2,
+        special = 0,        # egg; pal park; event; honey tree; shaymin
+        grass = 2,          # or darkrai
         dialga_palkia = 4,
-        cave = 5,  # or hall of origin
+        cave = 5,           # or giratina or hall of origin
         water = 7,
         building = 9,
-        safari_zone = 10,
-        gift = 12,
+        safari_zone = 10,   # includes great marsh
+        gift = 12,          # starter; fossil; ingame trade?
+        # distortion_world = ???,
+        hgss_gift = 24,     # starter; fossil; bebe's eevee  (pt only??)
     ),
     ULInt8('hgss_pokeball'),
     Padding(1),
