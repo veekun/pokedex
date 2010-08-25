@@ -71,6 +71,26 @@ def test_type_lookup():
     results = lookup.lookup(u'1', valid_types=['pokemon'])
     assert_equal(results[0].name, u'Bulbasaur', u'valid_types works as well as type: prefix')
 
+def test_language_lookup():
+    # There are two objects named "charge": the move Charge, and the move
+    # Tackle, which is called "Charge" in French.
+    results = lookup.lookup(u'charge')
+    assert_true(len(results) > 1,               u'There are multiple "charge"s')
+
+    results = lookup.lookup(u'@fr:charge')
+    assert_equal(results[0].iso639, u'fr',      u'Language restriction works correctly')
+    assert_equal(len(results), 1,               u'Only one "charge" result when language is specified')
+    assert_equal(results[0].object.name, u'Tackle',
+                                                u'Language + vague name returns the right result')
+
+    results = lookup.lookup(u'charge', valid_types=['@fr'])
+    assert_equal(results[0].object.name, u'Tackle',
+                                                u'valid_types works as well as @lang: prefix')
+
+    results = lookup.lookup(u'@fr,move:charge')
+    assert_equal(results[0].object.name, u'Tackle',
+                                                u'Languages and types both work together')
+
 def test_fuzzy_lookup():
     tests = [
         # Regular English names

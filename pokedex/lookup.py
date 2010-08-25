@@ -26,8 +26,9 @@ __all__ = ['PokedexLookup']
 
 rx_is_number = re.compile('^\d+$')
 
-LookupResult = namedtuple('LookupResult',
-    ['object', 'indexed_name', 'name', 'language', 'iso3166', 'exact'])
+LookupResult = namedtuple('LookupResult', [
+    'object', 'indexed_name', 'name', 'language', 'iso639', 'iso3166', 'exact',
+])
 
 class UninitializedIndex(object):
     class UninitializedIndexError(Exception):
@@ -168,7 +169,8 @@ class PokedexLookup(object):
             table=whoosh.fields.ID(stored=True),
             row_id=whoosh.fields.ID(stored=True),
             language=whoosh.fields.STORED,
-            iso3166=whoosh.fields.STORED,
+            iso639=whoosh.fields.ID(stored=True),
+            iso3166=whoosh.fields.ID(stored=True),
             display_name=whoosh.fields.STORED,  # non-lowercased name
         )
 
@@ -188,12 +190,12 @@ class PokedexLookup(object):
                 row_key = dict(table=unicode(cls.__tablename__),
                                row_id=unicode(row.id))
 
-                def add(name, language, iso3166):
+                def add(name, language, iso639, iso3166):
                     normalized_name = self.normalize_name(name)
 
                     writer.add_document(
                         name=normalized_name, display_name=name,
-                        language=language, iso3166=iso3166,
+                        language=language, iso639=iso639, iso3166=iso3166,
                         **row_key
                     )
 
@@ -204,14 +206,14 @@ class PokedexLookup(object):
                 if cls == tables.Pokemon:
                     # Pokémon need their form name added
                     # XXX kinda kludgy
-                    add(row.full_name, None, u'us')
+                    add(row.full_name, None, u'en', u'us')
 
                     # If this is a default form, ALSO add the unadorned name,
                     # so 'Deoxys' alone will still do the right thing
                     if row.forme_name and not row.forme_base_pokemon_id:
-                        add(row.name, None, u'us')
+                        add(row.name, None, u'en', u'us')
                 else:
-                    add(row.name, None, u'us')
+                    add(row.name, None, u'en', u'us')
 
                 # Some things also have other languages' names
                 # XXX other language form names..?
@@ -224,12 +226,13 @@ class PokedexLookup(object):
                         continue
 
                     add(moonspeak, foreign_name.language.name,
+                                   foreign_name.language.iso639,
                                    foreign_name.language.iso3166)
 
                     # Add Roomaji too
                     if foreign_name.language.name == 'Japanese':
                         roomaji = romanize(foreign_name.name)
-                        add(roomaji, u'Roomaji', u'jp')
+                        add(roomaji, u'Roomaji', u'ja', u'jp')
 
         writer.commit()
 
@@ -310,16 +313,31 @@ class PokedexLookup(object):
 
         # Construct the term
         type_terms = []
+        lang_terms = []
         final_valid_types = []
         for valid_type in combined_valid_types:
-            table_name = self._parse_table_name(valid_type)
+            if valid_type.startswith(u'@'):
+                # @foo means: language must be foo.
+                # Allow for either country or language codes
+                lang_code = valid_type[1:]
+                lang_terms.append(whoosh.query.Term(u'iso639', lang_code))
+                lang_terms.append(whoosh.query.Term(u'iso3166', lang_code))
+            else:
+                # otherwise, this is a type/table name
+                table_name = self._parse_table_name(valid_type)
 
-            # Quietly ignore bogus valid_types; more likely to DTRT
-            if table_name:
-                final_valid_types.append(valid_type)
-                type_terms.append(whoosh.query.Term(u'table', table_name))
+                # Quietly ignore bogus valid_types; more likely to DTRT
+                if table_name:
+                    type_terms.append(whoosh.query.Term(u'table', table_name))
 
-        return name, final_valid_types, whoosh.query.Or(type_terms)
+        # Combine both kinds of restriction
+        all_terms = []
+        if type_terms:
+            all_terms.append(whoosh.query.Or(type_terms))
+        if lang_terms:
+            all_terms.append(whoosh.query.Or(lang_terms))
+
+        return name, combined_valid_types, whoosh.query.And(all_terms)
 
 
     def _parse_table_name(self, name):
@@ -362,6 +380,7 @@ class PokedexLookup(object):
                                         indexed_name=record['name'],
                                         name=record['display_name'],
                                         language=record['language'],
+                                        iso639=record['iso639'],
                                         iso3166=record['iso3166'],
                                         exact=exact))
 
@@ -371,12 +390,11 @@ class PokedexLookup(object):
     def lookup(self, input, valid_types=[], exact_only=False):
         """Attempts to find some sort of object, given a name.
 
-        Returns a list of named (object, name, language, iso3166, exact)
-        tuples.  `object` is a database object, `name` is the name under which
-        the object was found, `language` and `iso3166` are the name and country
-        code of the language in which the name was found, and `exact` is True
-        iff this was an
-        exact match.
+        Returns a list of named (object, name, language, iso639, iso3166,
+        exact) tuples.  `object` is a database object, `name` is the name under
+        which the object was found, `language` and the two isos are the name
+        and country codes of the language in which the name was found, and
+        `exact` is True iff this was an exact match.
 
         This function currently ONLY does fuzzy matching if there are no exact
         matches.
@@ -394,17 +412,19 @@ class PokedexLookup(object):
         Also:
         - Type restrictions.  "type:psychic" will only return the type.  This
           is how to make ID lookup useful.  Multiple type specs can be entered
-          with commas, as "move,item:1".  If `valid_types` are provided, any
-          type prefix will be ignored.
+          with commas, as "move,item:1".
+        - Language restrictions.  "@fr:charge" will only return Tackle, which
+          is called "Charge" in French.  These can be combined with type
+          restrictions, e.g., "@fr,move:charge".
         - Alternate formes can be specified merely like "wash rotom".
 
         `input`
             Name of the thing to look for.
 
         `valid_types`
-            A list of table objects or names, e.g., `['pokemon', 'moves']`.  If
-            this is provided, only results in one of the given tables will be
-            returned.
+            A list of type or language restrictions, e.g., `['pokemon',
+            '@ja']`.  If this is provided, only results in one of the given
+            tables will be returned.
 
         `exact_only`
             If True, only exact matches are returned.  If set to False (the
@@ -503,17 +523,18 @@ class PokedexLookup(object):
         `valid_types`.
         """
 
-        tables = []
+        table_names = []
         for valid_type in valid_types:
             table_name = self._parse_table_name(valid_type)
+            # Skip anything not recognized.  Could be, say, a language code
             if table_name:
-                tables.append(self.indexed_tables[table_name])
+                table_names.append(table_name)
 
-        if not tables:
+        if not table_names:
             # n.b.: It's possible we got a list of valid_types and none of them
             # were valid, but this function is guaranteed to return
-            # *something*, so it politely selects from the entire index isntead
-            tables = self.indexed_tables.values()
+            # *something*, so it politely selects from the entire index instead
+            table_names = self.indexed_tables.keys()
 
         # Rather than create an array of many hundred items and pick randomly
         # from it, just pick a number up to the total number of potential
@@ -523,10 +544,10 @@ class PokedexLookup(object):
         # XXX ought to cache this (in the index?) if possible
         total = 0
         partitions = []
-        for table in tables:
-            count = self.session.query(table).count()
+        for table_name in table_names:
+            count = self.session.query(self.indexed_tables[table_name]).count()
             total += count
-            partitions.append((table, count))
+            partitions.append((table_name, count))
 
         n = random.randint(1, total)
         while n > partitions[0][1]:
