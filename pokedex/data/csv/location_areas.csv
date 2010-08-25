@@ -58,7 +58,7 @@ id,location_id,internal_id,name
 57,16,57,
 58,16,58,entrance
 59,16,59,inside
-60,17,60,
+60,178,60,
 61,18,61,pillar 1
 62,18,62,pillar 2
 63,18,63,pillar 3
@@ -116,7 +116,7 @@ id,location_id,internal_id,name
 154,40,154,3F
 155,40,155,4F
 156,40,156,5F
-157,41,157,"south, towards Solaceon City"
+157,41,157,"south, towards Solaceon Town"
 158,41,158,"west, towards Celestic Town"
 159,42,159,"west, towards Eterna City"
 160,42,160,"east, towards Celestic Town"
