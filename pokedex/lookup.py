@@ -81,8 +81,9 @@ class LanguageWeighting(whoosh.scoring.Weighting):
 
 
 class PokedexLookup(object):
-    INTERMEDIATE_LOOKUP_RESULTS = 25
-    MAX_LOOKUP_RESULTS = 10
+    MAX_FUZZY_RESULTS = 10
+    MAX_EXACT_RESULTS = 43
+    INTERMEDIATE_FACTOR = 2
 
     # The speller only checks how much the input matches a word; there can be
     # all manner of extra unmatched junk, and it won't affect the weighting.
@@ -470,12 +471,26 @@ class PokedexLookup(object):
 
 
         ### Actual searching
-        searcher = self.index.searcher()
-        # XXX is this kosher?  docs say search() takes a weighting arg, but it
-        # certainly does not
-        searcher.weighting = LanguageWeighting()
-        results = searcher.search(query,
-                                  limit=self.INTERMEDIATE_LOOKUP_RESULTS)
+        # Limits; result limits are constants, and intermediate results (before
+        # duplicate items are stripped out) are capped at the result limit
+        # times another constant.
+        # Fuzzy are capped at 10, beyond which something is probably very
+        # wrong.  Exact matches -- that is, wildcards and ids -- are far less
+        # constrained.
+        # Also, exact matches are sorted by name, since weight doesn't matter.
+        sort_by = dict()
+        if exact_only:
+            max_results = self.MAX_EXACT_RESULTS
+            sort_by['sortedby'] = (u'table', u'name')
+        else:
+            max_results = self.MAX_FUZZY_RESULTS
+
+        searcher = self.index.searcher(weighting=LanguageWeighting())
+        results = searcher.search(
+            query,
+            limit=int(max_results * self.INTERMEDIATE_FACTOR),
+            **sort_by
+        )
 
         # Look for some fuzzy matches if necessary
         if not exact_only and not results:
@@ -510,12 +525,8 @@ class PokedexLookup(object):
         ### Convert results to db objects
         objects = self._whoosh_records_to_results(results, exact=exact)
 
-        # Only return up to 10 matches; beyond that, something is wrong.  We
-        # strip out duplicate entries above, so it's remotely possible that we
-        # should have more than 10 here and lost a few.  The speller returns 25
-        # to give us some padding, and should avoid that problem.  Not a big
-        # deal if we lose the 25th-most-likely match anyway.
-        return objects[:self.MAX_LOOKUP_RESULTS]
+        # Truncate and return
+        return objects[:max_results]
 
 
     def random_lookup(self, valid_types=[]):
