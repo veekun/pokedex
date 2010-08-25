@@ -66,10 +66,12 @@ def test_type_lookup():
     assert_equal(results[0].object.__tablename__, 'pokemon',
                                                 u'Type restriction works correctly')
     assert_equal(len(results), 1,               u'Only one id result when type is specified')
-    assert_equal(results[0].name, u'Bulbasaur', u'Type + id returns the right result')
+    assert_equal(results[0].object.name, u'Bulbasaur',
+                                                u'Type + id returns the right result')
 
     results = lookup.lookup(u'1', valid_types=['pokemon'])
-    assert_equal(results[0].name, u'Bulbasaur', u'valid_types works as well as type: prefix')
+    assert_equal(results[0].object.name, u'Bulbasaur',
+                                                u'valid_types works as well as type: prefix')
 
 def test_language_lookup():
     # There are two objects named "charge": the move Charge, and the move
@@ -90,6 +92,10 @@ def test_language_lookup():
     results = lookup.lookup(u'@fr,move:charge')
     assert_equal(results[0].object.name, u'Tackle',
                                                 u'Languages and types both work together')
+
+    results = lookup.lookup(u'@fr:charge', valid_types=['move'])
+    assert_equal(results[0].object.name, u'Tackle',
+                                                u'valid_types and language prefixes get along')
 
 def test_fuzzy_lookup():
     tests = [

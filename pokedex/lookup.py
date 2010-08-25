@@ -294,42 +294,44 @@ class PokedexLookup(object):
         # Merge the valid types together.  Only types that appear in BOTH lists
         # may be used.
         # As a special case, if the user asked for types that are explicitly
-        # forbidden, completely ignore what the user requested
-        combined_valid_types = []
-        if user_valid_types and valid_types:
-            combined_valid_types = list(
-                set(user_valid_types) & set(combined_valid_types)
-            )
+        # forbidden, completely ignore what the user requested.
+        # And, just to complicate matters: "type" and language need to be
+        # considered separately.
+        def merge_requirements(func):
+            user = filter(func, user_valid_types)
+            system = filter(func, valid_types)
 
-            if not combined_valid_types:
-                # No overlap!  Just use the enforced ones
-                combined_valid_types = valid_types
-        else:
-            # One list or the other was blank, so just use the one that isn't
-            combined_valid_types = valid_types + user_valid_types
+            if user and system:
+                merged = list(set(user) & set(system))
+                if merged:
+                    return merged
+                else:
+                    # No overlap; use the system restrictions
+                    return system
+            else:
+                # One or the other is blank; use the one that's not
+                return user or system
 
-        if not combined_valid_types:
-            # No restrictions
-            return name, [], None
+        # @foo means language must be foo; otherwise it's a table name
+        lang_requirements = merge_requirements(lambda req: req[0] == u'@')
+        type_requirements = merge_requirements(lambda req: req[0] != u'@')
+        all_requirements = lang_requirements + type_requirements
 
         # Construct the term
-        type_terms = []
         lang_terms = []
-        final_valid_types = []
-        for valid_type in combined_valid_types:
-            if valid_type.startswith(u'@'):
-                # @foo means: language must be foo.
-                # Allow for either country or language codes
-                lang_code = valid_type[1:]
-                lang_terms.append(whoosh.query.Term(u'iso639', lang_code))
-                lang_terms.append(whoosh.query.Term(u'iso3166', lang_code))
-            else:
-                # otherwise, this is a type/table name
-                table_name = self._parse_table_name(valid_type)
+        for lang in lang_requirements:
+            # Allow for either country or language codes
+            lang_code = lang[1:]
+            lang_terms.append(whoosh.query.Term(u'iso639', lang_code))
+            lang_terms.append(whoosh.query.Term(u'iso3166', lang_code))
 
-                # Quietly ignore bogus valid_types; more likely to DTRT
-                if table_name:
-                    type_terms.append(whoosh.query.Term(u'table', table_name))
+        type_terms = []
+        for type in type_requirements:
+            table_name = self._parse_table_name(type)
+
+            # Quietly ignore bogus valid_types; more likely to DTRT
+            if table_name:
+                type_terms.append(whoosh.query.Term(u'table', table_name))
 
         # Combine both kinds of restriction
         all_terms = []
@@ -338,7 +340,7 @@ class PokedexLookup(object):
         if lang_terms:
             all_terms.append(whoosh.query.Or(lang_terms))
 
-        return name, combined_valid_types, whoosh.query.And(all_terms)
+        return name, all_requirements, whoosh.query.And(all_terms)
 
 
     def _parse_table_name(self, name):
