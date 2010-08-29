@@ -464,7 +464,7 @@ Held by Gligar: Evolves the holder into Gliscor when traded."
 439,Coupon 3,22,0,,,One of three coupons needed to receive a Pokétch.
 440,Storage Key,22,0,,,Grants access to the Team Galactic warehouse in Veilstone City.
 441,SecretPotion,22,0,,,Required to cure the Psyducks blocking Route 210 of their chronic headaches.
-442,Griseous Orb,15,10000,,,"Held by :pokemon:`Giratina`
+442,Griseous Orb,18,10000,,,"Held by :pokemon:`Giratina`
     Holder's :type:`dragon` and :type:`ghost` moves have 1.2× their base power.
 
     Holder is in Origin Forme.
