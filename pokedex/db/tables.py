@@ -398,6 +398,13 @@ class Nature(TableBase):
     hates_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False)
     likes_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False)
 
+    @property
+    def is_neutral(self):
+        u"""Returns True iff this nature doesn't alter a Pokémon's stats,
+        bestow taste preferences, etc.
+        """
+        return self.increased_stat_id == self.decreased_stat_id
+
 class NatureBattleStylePreference(TableBase):
     __tablename__ = 'nature_battle_style_preferences'
     nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False)
