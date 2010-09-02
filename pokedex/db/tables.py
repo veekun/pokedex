@@ -177,7 +177,7 @@ class EvolutionChain(TableBase):
     __tablename__ = 'evolution_chains'
     id = Column(Integer, primary_key=True, nullable=False)
     growth_rate_id = Column(Integer, ForeignKey('growth_rates.id'), nullable=False)
-    baby_trigger_item = Column(Unicode(12))
+    baby_trigger_item_id = Column(Integer, ForeignKey('items.id'), nullable=True)
 
 class EvolutionTrigger(TableBase):
     __tablename__ = 'evolution_triggers'
@@ -759,6 +759,7 @@ EncounterSlotCondition.condition = relation(EncounterCondition,
                                             backref='slot_map')
 
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
+EvolutionChain.baby_trigger_item = relation(Item, backref='evolution_chains')
 
 Experience.growth_rate = relation(GrowthRate, backref='experience_table')
 

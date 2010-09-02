@@ -1,4 +1,4 @@
-id,growth_rate_id,baby_trigger_item
+id,growth_rate_id,baby_trigger_item_id
 1,4,
 2,4,
 3,4,
@@ -49,13 +49,13 @@ id,growth_rate_id,baby_trigger_item
 48,2,
 49,2,
 50,1,
-51,3,Luck Incense
+51,3,296
 52,2,
 53,2,
 54,2,
 55,2,
 56,1,
-57,2,Odd Incense
+57,2,291
 58,2,
 59,2,
 60,2,
@@ -70,7 +70,7 @@ id,growth_rate_id,baby_trigger_item
 69,2,
 70,2,
 71,1,
-72,1,Full Incense
+72,1,293
 73,1,
 74,1,
 75,1,
@@ -88,8 +88,8 @@ id,growth_rate_id,baby_trigger_item
 87,3,
 88,2,
 89,4,
-90,3,Sea Incense
-91,2,Rock Incense
+90,3,231
+91,2,292
 92,4,
 93,3,
 94,4,
@@ -98,7 +98,7 @@ id,growth_rate_id,baby_trigger_item
 97,4,
 98,3,
 99,2,
-100,2,Lax Incense
+100,2,232
 101,2,
 102,2,
 103,2,
@@ -114,7 +114,7 @@ id,growth_rate_id,baby_trigger_item
 113,3,
 114,2,
 115,3,
-116,1,Wave Incense
+116,1,294
 117,1,
 118,1,
 119,2,
@@ -156,7 +156,7 @@ id,growth_rate_id,baby_trigger_item
 155,2,
 156,5,
 157,6,
-158,4,Rose Incense
+158,4,295
 159,6,
 160,1,
 161,6,
@@ -182,7 +182,7 @@ id,growth_rate_id,baby_trigger_item
 181,3,
 182,3,
 183,1,
-184,3,Pure Incense
+184,3,297
 185,4,
 186,2,
 187,4,
