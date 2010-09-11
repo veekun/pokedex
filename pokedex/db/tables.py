@@ -1,6 +1,6 @@
 # encoding: utf8
 
-from sqlalchemy import Column, ForeignKey, MetaData, Table
+from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import backref, eagerload_all, relation
@@ -619,12 +619,17 @@ class PokemonItem(TableBase):
 
 class PokemonMove(TableBase):
     __tablename__ = 'pokemon_moves'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
-    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False, index=True)
-    pokemon_move_method_id = Column(Integer, ForeignKey('pokemon_move_methods.id'), primary_key=True, nullable=False, autoincrement=False)
-    level = Column(Integer, primary_key=True, nullable=True, autoincrement=False, index=True)
-    order = Column(Integer, nullable=True, index=True)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, index=True)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False, index=True)
+    move_id = Column(Integer, ForeignKey('moves.id'), nullable=False, index=True)
+    pokemon_move_method_id = Column(Integer, ForeignKey('pokemon_move_methods.id'), nullable=False, index=True)
+    level = Column(Integer, nullable=True, index=True)
+    order = Column(Integer, nullable=True)
+
+    __table_args__ = (
+        PrimaryKeyConstraint('pokemon_id', 'version_group_id', 'move_id', 'pokemon_move_method_id', 'level'),
+        {},
+    )
 
 class PokemonMoveMethod(TableBase):
     __tablename__ = 'pokemon_move_methods'
