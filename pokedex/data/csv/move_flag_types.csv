@@ -3,5 +3,5 @@ id,identifier,name,description
 2,protect,Blocked by Detect and Protect,This move will not work if the target has used [Detect]{move} or [Protect]{move} this turn.
 3,reflect,Reflectable with Magic Coat,This move will be reflected back at the user if the target has used [Magic Coat]{move} this turn.
 4,snatch,Snatchable,This move will be stolen if another Pokémon has used [Snatch]{move} this turn.
-5,accuracy,Rolls accuracy,This move is affected by [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
+5,mirror,Copied by Mirror Move,A Pokémon targeted by this move can use [Mirror Move]{move} to copy it.
 6,flinch,Flinches with King's Rock,A held [King's Rock]{item} gives this move an 11.7% chance to make the target [flinch]{mechanic}.
