@@ -69,10 +69,11 @@ class LanguageWeighting(whoosh.scoring.Weighting):
         # Apply extra weight
         weight = weight * self.extra_weights.get(text, 1.0)
 
-        if doc['language'] == None:
+        language = doc.get('language')
+        if language is None:
             # English (well, "default"); leave it at 1
             return weight
-        elif doc['language'] == u'Roomaji':
+        elif language == u'Roomaji':
             # Give Roomaji a little boost; it's most likely to be searched
             return weight * 0.9
         else:
@@ -175,7 +176,13 @@ class PokedexLookup(object):
             display_name=whoosh.fields.STORED,  # non-lowercased name
         )
 
-        if not os.path.exists(self.directory):
+        if os.path.exists(self.directory):
+            # create_in() isn't totally reliable, so just nuke whatever's there
+            # manually.  Try to be careful about this...
+            for f in os.listdir(self.directory):
+                if re.match('^_?(MAIN|SPELL)_', f):
+                    os.remove(os.path.join(self.directory, f))
+        else:
             os.mkdir(self.directory)
 
         self.index = whoosh.index.create_in(self.directory, schema=schema,
@@ -382,7 +389,7 @@ class PokedexLookup(object):
             results.append(LookupResult(object=obj,
                                         indexed_name=record['name'],
                                         name=record['display_name'],
-                                        language=record['language'],
+                                        language=record.get('language'),
                                         iso639=record['iso639'],
                                         iso3166=record['iso3166'],
                                         exact=exact))
