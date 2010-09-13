@@ -296,7 +296,11 @@ class PokedexLookup(object):
             name = name.strip()
 
             prefixes = prefix_chunk.split(',')
-            user_valid_types = [_.strip() for _ in prefixes]
+            user_valid_types = []
+            for prefix in prefixes:
+                prefix = prefix.strip()
+                if prefix:
+                    user_valid_types.append(prefix)
 
         # Merge the valid types together.  Only types that appear in BOTH lists
         # may be used.

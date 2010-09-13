@@ -146,3 +146,8 @@ def test_random_lookup():
         assert_equal(len(results), 1,           u'Constrained random returns one result')
         assert_equal(results[0].object.__tablename__, table_name,
                                                 u'Constrained random returns result from the right table')
+
+def test_crash_empty_prefix():
+    """Searching for ':foo' used to crash, augh!"""
+    results = lookup.lookup(u'Eevee')
+    assert_equal(results[0].object.name, u'Eevee', u'Empty prefix dun crash')
