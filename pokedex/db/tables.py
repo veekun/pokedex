@@ -374,19 +374,19 @@ class Move(TableBase):
     __tablename__ = 'moves'
     __singlename__ = 'move'
     id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(12), nullable=False)
+    name = Column(Unicode(24), nullable=False)
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
     type_id = Column(Integer, ForeignKey('types.id'), nullable=False)
-    power = Column(SmallInteger)
+    power = Column(SmallInteger, nullable=False)
     pp = Column(SmallInteger, nullable=False)
-    accuracy = Column(SmallInteger)
+    accuracy = Column(SmallInteger, nullable=True)
     target_id = Column(Integer, ForeignKey('move_targets.id'), nullable=False)
     damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=False)
     effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False)
     effect_chance = Column(Integer)
     contest_type_id = Column(Integer, ForeignKey('contest_types.id'), nullable=True)
     contest_effect_id = Column(Integer, ForeignKey('contest_effects.id'), nullable=True)
-    super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=False)
+    super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=True)
 
 class Nature(TableBase):
     __tablename__ = 'natures'
