@@ -12,3 +12,6 @@ pokemon_id,is_battle_only,description
 487,0,"Forms have different stats.  Giratina transforms into Origin Forme in the [Distortion World]{location} or while holding a [Griseous Orb]{item}.  Otherwise, it assumes its Altered Forme.  The Griseous Orb returns to the bag upon entering the Wi-Fi Club or the Union Room."
 492,0,"Forms have different stats and movepools.  Shaymin transforms into Sky Forme upon using a [Gracidea]{item}.  It reverts to Land Forme at night, when [frozen]{mechanic}, or upon entering the Wi-Fi Club or the Union Room, and stays in Land Forme until the Gracidea is used again.  A Gracidea may be received by showing a woman in southwest [Floaroma Town]{location} or the [Goldenrod City]{location} flower shop a fateful encounter Shaymin."
 493,0,"Form changes along with type to match a held Plate, due to [Multitype]{ability}."
+550,0,Not yet known
+555,0,Not yet known
+648,0,Not yet known

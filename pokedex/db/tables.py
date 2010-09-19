@@ -462,7 +462,7 @@ class Pokemon(TableBase):
     weight = Column(Integer, nullable=False)
     species = Column(Unicode(16), nullable=False)
     color_id = Column(Integer, ForeignKey('pokemon_colors.id'), nullable=False)
-    pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=False)
+    pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=True)
     habitat_id = Column(Integer, ForeignKey('pokemon_habitats.id'), nullable=True)
     gender_rate = Column(Integer, nullable=False)
     capture_rate = Column(Integer, nullable=False)
