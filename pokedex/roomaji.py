@@ -37,6 +37,7 @@ _roomaji_kana = {
     u'ダ': 'da',    u'ヂ': 'ji',    u'ヅ': 'dzu',   u'デ': 'de',    u'ド': 'do',
     u'バ': 'ba',    u'ビ': 'bi',    u'ブ': 'bu',    u'ベ': 'be',    u'ボ': 'bo',
     u'パ': 'pa',    u'ピ': 'pi',    u'プ': 'pu',    u'ペ': 'pe',    u'ポ': 'po',
+                                    u'ヴ': 'vu',
 }
 
 _roomaji_youon = {
@@ -60,8 +61,10 @@ _roomaji_small_kana_combos = {
 
     # Simple vowel replacement
                     u'ウィ': 'wi',  u'ウゥ': 'wu',  u'ウェ': 'we',
+    u'ヴァ': 'va',  u'ヴィ': 'vi',                  u'ヴェ': 've',  u'ヴォ': 'vo',
                                                     u'チェ': 'che',
                                                     u'シェ': 'she',
+                                                    u'ジェ': 'je',
     u'テァ': 'tha', u'ティ': 'ti',  u'テゥ': 'thu', u'テェ': 'tye', u'テォ': 'tho',
     u'デァ': 'dha', u'ディ': 'di',  u'デゥ': 'dhu', u'デェ': 'dye', u'デォ': 'dho',
     u'ファ': 'fa',  u'フィ': 'fi',  u'ホゥ': 'hu',  u'フェ': 'fe',  u'フォ': 'fo',
