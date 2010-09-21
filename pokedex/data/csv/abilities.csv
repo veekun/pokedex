@@ -23,7 +23,7 @@ Overworld: If the lead Pokémon has this ability, the wild encounter rate is hal
 
 Pokémon that are immune to [Electric]{type}-type moves can still be paralyzed by this ability.
 
-Overworld: In Pokémon Emerald and all subsequent games, if the lead Pokémon has this ability, Electric-type Pokémon have a higher encounter rate.",Has a 30% of [paralyzing]{mechanic} attacking Pokémon on contact.
+Overworld: In Pokémon Emerald and all subsequent games, if the lead Pokémon has this ability, Electric-type Pokémon have a higher encounter rate.",Has a 30% chance of [paralyzing]{mechanic} attacking Pokémon on contact.
 10,Volt Absorb,3,"Whenever an [Electric]{type}-type move hits this Pokémon, it heals for 1/4 of its maximum [HP]{mechanic} instead.
 
 This ability will not take effect if this Pokémon is immune to Electric moves.  Electric moves will ignore this Pokémon's [Substitute]{move}.
@@ -473,44 +473,44 @@ Unlike [Forecast]{ability} and [Multitype]{ability}, this ability is not tied to
 123,Bad Dreams,4,"Opposing Pokémon take 1/8 of their maximum [HP]{mechanic} in damage after each turn while they are [asleep]{mechanic}.
 
 This ability stacks if two allied Pokémon have it.",Damages [sleeping]{mechanic} opponents for 1/8 their max [HP]{mechanic} after each turn.
-124,Waruiteguse,5,Not yet known.  [[ability 124]],Not yet known.  [[ability 124]]
-125,Chikarazuku,5,Not yet known.  [[ability 125]],Not yet known.  [[ability 125]]
-126,Amanojaku,5,Not yet known.  [[ability 126]],Not yet known.  [[ability 126]]
-127,Kinchoukan,5,Not yet known.  [[ability 127]],Not yet known.  [[ability 127]]
-128,Makenki,5,Not yet known.  [[ability 128]],Not yet known.  [[ability 128]]
-129,Yowaki,5,Not yet known.  [[ability 129]],Not yet known.  [[ability 129]]
-130,Norowarebodi,5,Not yet known.  [[ability 130]],Not yet known.  [[ability 130]]
-131,Iyashinokokoro,5,Not yet known.  [[ability 131]],Not yet known.  [[ability 131]]
-132,Furendogaado,5,Not yet known.  [[ability 132]],Not yet known.  [[ability 132]]
-133,Kudakeruyoroi,5,Not yet known.  [[ability 133]],Not yet known.  [[ability 133]]
-134,Hevimetaru,5,Not yet known.  [[ability 134]],Not yet known.  [[ability 134]]
-135,Raitometaru,5,Not yet known.  [[ability 135]],Not yet known.  [[ability 135]]
-136,Maruchisukeiru,5,Not yet known.  [[ability 136]],Not yet known.  [[ability 136]]
-137,Dokubousou,5,Not yet known.  [[ability 137]],Not yet known.  [[ability 137]]
-138,Netsubousou,5,Not yet known.  [[ability 138]],Not yet known.  [[ability 138]]
-139,Shuukaku,5,Not yet known.  [[ability 139]],Not yet known.  [[ability 139]]
-140,Terepashii,5,Not yet known.  [[ability 140]],Not yet known.  [[ability 140]]
-141,Murakke,5,Not yet known.  [[ability 141]],Not yet known.  [[ability 141]]
-142,Boujin,5,Not yet known.  [[ability 142]],Not yet known.  [[ability 142]]
-143,Dokushu,5,Not yet known.  [[ability 143]],Not yet known.  [[ability 143]]
-144,Saiseiryoku,5,Not yet known.  [[ability 144]],Not yet known.  [[ability 144]]
-145,Hatomune,5,Not yet known.  [[ability 145]],Not yet known.  [[ability 145]]
-146,Sunakaki,5,Not yet known.  [[ability 146]],Not yet known.  [[ability 146]]
-147,Mirakurusukin,5,Not yet known.  [[ability 147]],Not yet known.  [[ability 147]]
-148,Anaraizu,5,Not yet known.  [[ability 148]],Not yet known.  [[ability 148]]
-149,Iryuujon,5,Not yet known.  [[ability 149]],Not yet known.  [[ability 149]]
-150,Kawarimono,5,Not yet known.  [[ability 150]],Not yet known.  [[ability 150]]
-151,Surinuke,5,Not yet known.  [[ability 151]],Not yet known.  [[ability 151]]
-152,Miira,5,Not yet known.  [[ability 152]],Not yet known.  [[ability 152]]
-153,Jishinkajou,5,Not yet known.  [[ability 153]],Not yet known.  [[ability 153]]
-154,Seiginokokoro,5,Not yet known.  [[ability 154]],Not yet known.  [[ability 154]]
-155,Bibiri,5,Not yet known.  [[ability 155]],Not yet known.  [[ability 155]]
-156,Majikkumiraa,5,Not yet known.  [[ability 156]],Not yet known.  [[ability 156]]
-157,Soushoku,5,Not yet known.  [[ability 157]],Not yet known.  [[ability 157]]
-158,Itazuragokoro,5,Not yet known.  [[ability 158]],Not yet known.  [[ability 158]]
-159,Sunanochikara,5,Not yet known.  [[ability 159]],Not yet known.  [[ability 159]]
-160,Tetsunotoge,5,Not yet known.  [[ability 160]],Not yet known.  [[ability 160]]
-161,Darumamoodo,5,Not yet known.  [[ability 161]],Not yet known.  [[ability 161]]
-162,Shourinohoshi,5,Not yet known.  [[ability 162]],Not yet known.  [[ability 162]]
-163,Taabobureizu,5,Not yet known.  [[ability 163]],Not yet known.  [[ability 163]]
-164,Teraboruteeji,5,Not yet known.  [[ability 164]],Not yet known.  [[ability 164]]
+124,wicked trick,5,"Whenever a move makes contact with this Pokémon, it steals the attacker's held item.",Steals attacking Pokémon's held item on contact.
+125,brute force,5,Strong attacks are more powerful.  (?),Strong attacks are more powerful.  (?)
+126,antagonist,5,Stat changes are inverted for this Pokémon.,Stat changes are inverted.
+127,tension,5,Opposing Pokémon will not automatically eat held Berries.  (?),Opposing Pokémon can't eat their Berries.  (?)
+128,competitive spirit,5,Not yet known.  [[ability 128]],Not yet known.  [[ability 128]]
+129,faint-hearted,5,"When this Pokémon has less than half its max HP, opposing Pokémon's stats are lower.  (?)",Lowers opposing Pokémon's stats when HP is less than half.  (?)
+130,cursed body,5,Not yet known.  [[ability 130]],Not yet known.  [[ability 130]]
+131,healing heart,5,Occasionally cures friendly Pokémon's major status ailments.  (?),Cures allies' major status ailments.  (?)
+132,friend guard,5,Takes less damage from allies.  (?),Takes less damage from allies.  (?)
+133,fragile armor,5,Every physical move that hits this Pokémon lowers its Attack and raises its Speed.  (?),Physical hits lower Attack and raise Speed.
+134,heavy metal,5,This Pokémon has double the usual weight for its species.,Weighs twice normal.
+135,light metal,5,This Pokémon has half the usual weight for its species.,Weighs half normal.
+136,multi-scale,5,Takes less damage with full HP.  (?),Takes less damage with full HP.  (?)
+137,poison rampage,5,This Pokémon inflicts more damage when poisoned.,Power increases when poisoned.
+138,heat rampage,5,This Pokémon inflicts more damage when burned.,Power increases when burned.
+139,harvest,5,Held berry is reusable.  (?),Held berry is reusable.  (?)
+140,telepathy,5,Not yet known.  [[ability 140]],Not yet known.  [[ability 140]]
+141,sudden impulse,5,"When this Pokémon enters the field, one of its stats raises by one stage, and one of its stats lowers by one stage.",One stat is raised and one stat is lowered.
+142,dustproof,5,This Pokémon takes no damage from weather.,Takes no damage from weather.
+143,poisoned drink,5,Poisons attacking Pokémon on contact.,Poisons attacking Pokémon on contact.
+144,regeneration,5,Recovers a little HP when switched out.  (?),Recovers a little HP when switched out.  (?)
+145,pigeon chest,5,This Pokémon's Defense cannot be lowered.,Defense cannot be lowered.
+146,sand fence,5,This Pokémon's Speed is raised during Sandstorm.,Raises Speed during Sandstorm.
+147,miracle skin,5,Not yet known.  [[ability 147]],Not yet known.  [[ability 147]]
+148,analyze,5,This Pokémon inflicts more damage when it moves last within a turn.,Raises power when moving last.
+149,illusion,5,Changes to the appearance of an ally.  (?),Changes to the appearance of an ally.  (?)
+150,eccentric,5,Uses Transform upon entering battle.,Uses Transform upon entering battle.
+151,slip through,5,Not yet known.  [[ability 151]],Not yet known.  [[ability 151]]
+152,mummify,5,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to mummify.",Attacker's ability changes to mummify on contact.
+153,brazen,5,Not yet known.  [[ability 153]],Not yet known.  [[ability 153]]
+154,righteous heart,5,Raises Attack when hit by dark-type moves.  (?),Raises Attack when hit by dark-type moves.  (?)
+155,chatter,5,Not yet known.  [[ability 155]],Not yet known.  [[ability 155]]
+156,magic mirror,5,Not yet known.  [[ability 156]],Not yet known.  [[ability 156]]
+157,herbivore,5,Raises Attack when hit by grass-type moves.  (?),Raises Attack when hit by grass-type moves.  (?)
+158,mischievous heart,5,Not yet known.  [[ability 158]],Not yet known.  [[ability 158]]
+159,sand power,5,Inflicts more damage during Sandstorm.  (?),Inflicts more damage during Sandstorm.  (?)
+160,iron thorns,5,Inflicts damage on contact.  (?),Inflicts damage on contact.  (?)
+161,daruma mode,5,Changes to Daruma form in a pinch.,Changes to Daruma form in a pinch.
+162,victory star,5,Not yet known.  [[ability 162]],Not yet known.  [[ability 162]]
+163,turbo blaze,5,Not yet known.  [[ability 163]],Not yet known.  [[ability 163]]
+164,teravoltage,5,Not yet known.  [[ability 164]],Not yet known.  [[ability 164]]
