@@ -880,63 +880,63 @@ This move breaks through [Wonder Guard]{ability}."
 275,0,Has a $effect_chance% chance to freeze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [freeze]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 276,0,Has a $effect_chance% chance to paralyze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 277,0,Has a $effect_chance% chance to raise the user's Special Attack by one level.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [raise]{mechanic} the user's [Special Attack]{mechanic} by one level.
-278,0,Not yet known.  [[effect 278]],Not yet known.  [[effect 278]]
-279,3,Not yet known.  [[effect 279]],Not yet known.  [[effect 279]]
-280,0,Not yet known.  [[effect 280]],Not yet known.  [[effect 280]]
-281,0,Not yet known.  [[effect 281]],Not yet known.  [[effect 281]]
-282,-7,Not yet known.  [[effect 282]],Not yet known.  [[effect 282]]
-283,0,Not yet known.  [[effect 283]],Not yet known.  [[effect 283]]
-284,0,Not yet known.  [[effect 284]],Not yet known.  [[effect 284]]
-285,0,Not yet known.  [[effect 285]],Not yet known.  [[effect 285]]
-286,0,Not yet known.  [[effect 286]],Not yet known.  [[effect 286]]
-287,-7,Not yet known.  [[effect 287]],Not yet known.  [[effect 287]]
-288,0,Not yet known.  [[effect 288]],Not yet known.  [[effect 288]]
-289,0,Not yet known.  [[effect 289]],Not yet known.  [[effect 289]]
+278,0,Raises the user's Attack and accuracy by one stage.,Raises the user's [Attack]{mechanic} and [accuracy]{mechanic} by one [stage]{mechanic}.
+279,3,Prevents all friendly Pokémon from fainting this turn.,No Pokémon on the user's team can have its [HP]{mechanic} reduced below 1 until the end of this turn.
+280,0,Averages Defense and Special Defense with the target.,Averages the user's Defense and Special Defense with the target's.
+281,0,Averages Attack and Special Attack with the target.,Averages the user's Attack and Special Attack with the target's.
+282,-7,Swaps every Pokémon's Defense and Special Defense for 5 turns.,Every Pokémon on the field has its Defense and Special Defense swapped for the next 5 turns.
+283,0,"Inflicts damage based on the target's Defense, not Special Defense.","Inflicts regular damage, but always uses the target's Defense for damage calculation, never its Special Defense."
+284,0,Inflicts double damage if the target is Poisoned.,Inflicts regular damage.  This move's power is doubled against Pokémon that are Poisoned.
+285,0,Raises the user's Speed by two stages.,Raises the user's Speed by two stages.
+286,0,Inflicts a random status effect on the target for 3 turns.,Inflicts a random status effect on the target for 3 turns.  This move will fail if Gravity is in effect.
+287,-7,Held items cannot be used for five turns. (?),Held items cannot be used for five turns. (?)
+288,0,Inflicts a random major status ailment on the target.,Inflicts a random major status ailment on the target.
+289,0,Always results in a critical hit.,Always results in a critical hit.
 290,0,Not yet known.  [[effect 290]],Not yet known.  [[effect 290]]
-291,0,Not yet known.  [[effect 291]],Not yet known.  [[effect 291]]
-292,0,Not yet known.  [[effect 292]],Not yet known.  [[effect 292]]
-293,0,Not yet known.  [[effect 293]],Not yet known.  [[effect 293]]
-294,0,Not yet known.  [[effect 294]],Not yet known.  [[effect 294]]
-295,0,Not yet known.  [[effect 295]],Not yet known.  [[effect 295]]
-296,0,Not yet known.  [[effect 296]],Not yet known.  [[effect 296]]
-297,0,Not yet known.  [[effect 297]],Not yet known.  [[effect 297]]
-298,0,Not yet known.  [[effect 298]],Not yet known.  [[effect 298]]
-299,0,Not yet known.  [[effect 299]],Not yet known.  [[effect 299]]
-300,0,Not yet known.  [[effect 300]],Not yet known.  [[effect 300]]
-301,0,Not yet known.  [[effect 301]],Not yet known.  [[effect 301]]
-302,0,Not yet known.  [[effect 302]],Not yet known.  [[effect 302]]
+291,0,"Raises the user's Special Attack, Special Defense, and Speed by one stage.","Raises the user's Special Attack, Special Defense, and Speed by one stage."
+292,0,Power scales with weight. (?),Power scales with weight.(?)
+293,0,Hits any Pokémon that shares a type with the user.,Inflicts regular damage.  Pokémon that do not share a type with the user will not take damage from this move.
+294,0,Power scales with Speed. (?),Power scales with Speed. (?)
+295,0,Changes the target's type to water.,Changes the target's type to water until it leaves battle.  If the target has a secondary type
+296,0,Inflicts regular damage.  Raises the user's Speed by one stage.,Inflicts regular damage.  Raises the user's Speed by one stage.
+297,0,Lowers the target's Special Defense by one stage.,Inflicts regular damage.  Lowers the target's Special Defense by one stage.
+298,0,More powerful against fighting-type Pokémon. (?),More powerful against fighting-type Pokémon. (?)
+299,0,Changes target's ability to Simple. (?),Changes target's ability to [Simple]{ability}. (?)
+300,0,User copies the target's nature.,User copies the target's nature.
+301,0,Copies non-damaging moves but makes the user go last.,"If the target would use a non-damaging move this turn, the user will copy the move and act last."
+302,0,Power increases the more Pokémon in the trainer's team know this move.,Power increases the more Pokémon in the trainer's team know this move.
 303,0,Not yet known.  [[effect 303]],Not yet known.  [[effect 303]]
-304,0,Not yet known.  [[effect 304]],Not yet known.  [[effect 304]]
-305,0,Not yet known.  [[effect 305]],Not yet known.  [[effect 305]]
-306,0,Not yet known.  [[effect 306]],Not yet known.  [[effect 306]]
-307,3,Not yet known.  [[effect 307]],Not yet known.  [[effect 307]]
-308,1,Not yet known.  [[effect 308]],Not yet known.  [[effect 308]]
-309,0,Not yet known.  [[effect 309]],Not yet known.  [[effect 309]]
-310,0,Not yet known.  [[effect 310]],Not yet known.  [[effect 310]]
-311,0,Not yet known.  [[effect 311]],Not yet known.  [[effect 311]]
-312,0,Not yet known.  [[effect 312]],Not yet known.  [[effect 312]]
-313,0,Not yet known.  [[effect 313]],Not yet known.  [[effect 313]]
-314,-6,Not yet known.  [[effect 314]],Not yet known.  [[effect 314]]
-315,0,Not yet known.  [[effect 315]],Not yet known.  [[effect 315]]
-316,0,Not yet known.  [[effect 316]],Not yet known.  [[effect 316]]
-317,0,Not yet known.  [[effect 317]],Not yet known.  [[effect 317]]
-318,0,Not yet known.  [[effect 318]],Not yet known.  [[effect 318]]
-319,0,Not yet known.  [[effect 319]],Not yet known.  [[effect 319]]
-320,0,Not yet known.  [[effect 320]],Not yet known.  [[effect 320]]
-321,0,Not yet known.  [[effect 321]],Not yet known.  [[effect 321]]
-322,0,Not yet known.  [[effect 322]],Not yet known.  [[effect 322]]
-323,0,Not yet known.  [[effect 323]],Not yet known.  [[effect 323]]
-324,0,Not yet known.  [[effect 324]],Not yet known.  [[effect 324]]
-325,0,Not yet known.  [[effect 325]],Not yet known.  [[effect 325]]
-326,0,Not yet known.  [[effect 326]],Not yet known.  [[effect 326]]
-327,0,Not yet known.  [[effect 327]],Not yet known.  [[effect 327]]
-328,0,Not yet known.  [[effect 328]],Not yet known.  [[effect 328]]
-329,0,Not yet known.  [[effect 329]],Not yet known.  [[effect 329]]
-330,0,Not yet known.  [[effect 330]],Not yet known.  [[effect 330]]
-331,0,Not yet known.  [[effect 331]],Not yet known.  [[effect 331]]
-332,0,Not yet known.  [[effect 332]],Not yet known.  [[effect 332]]
-333,0,Not yet known.  [[effect 333]],Not yet known.  [[effect 333]]
-335,0,Not yet known.  [[effect 335]],Not yet known.  [[effect 335]]
-336,0,Not yet known.  [[effect 336]],Not yet known.  [[effect 336]]
-337,0,Not yet known.  [[effect 337]],Not yet known.  [[effect 337]]
-338,0,Not yet known.  [[effect 338]],Not yet known.  [[effect 338]]
+304,0,Ignores the target's stat changes.,Inflicts regular damage.  Changes to the target's defensive stats are ignored.
+305,0,Removes all of the target's stat changes.,Inflicts regular damage.  Removes all of the target's stat changes.
+306,0,Power rises the more the user's stats have been raised.,Inflicts regular damage.  Power rises the more the user's stats have been raised.
+307,3,Fast moves won't damage the user or friendly Pokémon this turn.,"Prevents any fast moves (i.e., moves with a priority greater than 0) from hitting any Pokémon on the user's side of the field until the end of the turn.  Consecutive uses increase the chance of failure, possibly in the same manner as Protect and friends."
+308,1,User switches places with a random ally.,User switches places with a random ally.
+309,0,Raises user's Speed by one stage.  Lower user's Defense by one stage.,Raises user's Speed by one stage.  Lower user's Defense by one stage.
+310,0,Restores half the target's max HP.,Restores half the target's max HP.
+311,0,Inflicts more damage if the target has a major status ailment. (?),Inflicts more damage if the target has a major status ailment. (?)
+312,0,"Tosses the target into the air for a turn, during which it can't act.  Target falls and takes damage on the second turn.","Tosses the target into the air.  On the following turn, target falls to the ground and takes regular damage.  Target cannot move while it's in the air."
+313,0,Raises the user's Attack and Speed by one stage.,Raises the user's Attack and Speed by one stage.
+314,-6,Ends wild battles. (?),Ends wild battles. (?)
+315,0,Destroys the target's held berry.,"Inflicts regular damage.  If the target is holding a berry, it's destroyed.  Held berries cannot be used in response to this move."
+316,0,Makes the target act last this turn.,"If the target has not yet acted this turn, it will act last."
+317,0,Raises the user's Attack and Special Attack by one stage.,Raises the user's Attack and Special Attack by one stage.
+318,0,Inflicts regular damage.  Power is doubled (?) if the user has no held item.,Inflicts double (?) damage if the user has no held item.
+319,0,User becomes the target's type.,User becomes the target's type.
+320,0,Inflicts double damage if a friendly Pokémon fainted on the last turn.,Inflicts regular damage.  Power is doubled if a friendly Pokémon fainted on the previous turn.
+321,0,Inflicts damage equal to the user's remaining HP.  User faints.,Inflicts damage equal to the user's remaining HP.  User faints.
+322,0,Raises the user's Special Attack by two stages. (?),Raises the user's Special Attack by two stages. (?)
+323,0,"Raises the user's Attack, Defense, and accuracy by one stage.","Raises the user's Attack, Defense, and accuracy by one stage."
+324,0,Gives the user's held item to the target.,"If the user has a held item, and the target does not, the user's item is transferred to the target."
+325,0,Does some kind of combo when followed by fire realm.,Does some kind of combo when followed by fire realm.
+326,0,Does some kind of combo when followed by grass realm.,Does some kind of combo when followed by grass realm.
+327,0,Does some kind of combo when followed by water realm.,Does some kind of combo when followed by water realm.
+328,0,Raises the user's Attack and Special Attack by one stage.,Raises the user's Attack and Special Attack by one stage.
+329,0,Raises the user's Defense by two stages.,Raises the user's Defense by two stages.
+330,0,Has a $effect_chance% chance to put the target to sleep.,Inflicts regular damage.  Has a $effect_chance% chance to put the target to sleep.
+331,0,Lowers the target's Speed.,Inflicts regular damage.  Lowers the target's Speed.
+332,0,Charges for a turn before attacking.  Has a $effect_chance% chance to paralyze the target.,Inflicts regular damage.  Requires a turn to charge before attacking.  Has a $effect_chance% chance to paralyze the target.
+333,0,Charges for a turn before attacking.  Has a $effect_chance% chance to burn the target.,Inflicts regular damage.  Requires a turn to charge before attacking.  Has a $effect_chance% chance to burn the target.
+335,0,"Lowers the user's Defense, Special Defense, and Speed by one stage.","Inflicts regular damage.  Lowers the user's Defense, Special Defense, and Speed by one stage."
+336,0,"If the target knows cross thunder, it must use it this turn, and both moves inflict more damage.",Forces the target to use cross thunder if possible.
+337,0,"If the target knows cross flame, it must use it this turn, and both moves inflict more damage.",Forces the target to use cross flame if possible.
+338,0,Has a $effect_chance% chance to confuse the target.,Inflicts regular damage.  Has a $effect_chance% chance to confuse the target.
