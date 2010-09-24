@@ -86,11 +86,12 @@ def romanize(string):
     last_char = None  # Used for small kana combos
     for char in string:
         # Full-width Latin
-        if ord(char) >= 0xff11 and ord(char) <= 0xff5e:
+        if 0xff01 <= ord(char) <= 0xff5e:
             if last_kana == 'sokuon':
                 raise ValueError("Sokuon cannot precede Latin characters.")
 
-            char = chr(ord(char) - 0xff11 + 0x31)
+            # XXX Real Unicode decomposition would be nicer
+            char = chr(ord(char) - 0xff01 + 0x21)
             characters.append(char)
 
             last_kana = None
