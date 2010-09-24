@@ -60,7 +60,7 @@ _roomaji_small_kana_combos = {
     # particularly weird, but it seems to be what GF intends
 
     # Simple vowel replacement
-                    u'ウィ': 'wi',  u'ウゥ': 'wu',  u'ウェ': 'we',
+                    u'ウィ': 'wi',  u'ウゥ': 'wu',  u'ウェ': 'we',  u'ウォ': 'wo',
     u'ヴァ': 'va',  u'ヴィ': 'vi',                  u'ヴェ': 've',  u'ヴォ': 'vo',
                                                     u'チェ': 'che',
                                                     u'シェ': 'she',
@@ -71,6 +71,7 @@ _roomaji_small_kana_combos = {
 
     # Not so much
     u'シィ': 'sy',
+    u'ミィ': 'my',
     u'ビィ': 'by',
     u'ピィ': 'py',
 }
