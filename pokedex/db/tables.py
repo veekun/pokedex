@@ -208,7 +208,7 @@ class Item(TableBase):
     __tablename__ = 'items'
     __singlename__ = 'item'
     id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(16), nullable=False)
+    name = Column(Unicode(20), nullable=False)
     category_id = Column(Integer, ForeignKey('item_categories.id'), nullable=False)
     cost = Column(Integer, nullable=False)
     fling_power = Column(Integer, nullable=True)
