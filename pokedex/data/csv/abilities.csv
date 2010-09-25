@@ -186,7 +186,7 @@ When this Pokémon enters battle, all participating trainers are notified that i
 Prior to Generation IV, this ability did not affect ally moves that target all other Pokémon, and this ability's presence was not announced.
 
 Overworld: In Pokémon Emerald and all subsequent games, if the lead Pokémon has this ability, higher-levelled Pokémon have their encounter rate increased.",Increases the [PP]{mechanic} cost of moves targetting the Pokémon by one.
-47,Thick Fat,3,"This Pokémon takes half as much damage from [Fire]{type}- and [Ice]{type}-type moves.",Halves damage from [Fire]{type} and [Ice]{type} moves.
+47,Thick Fat,3,This Pokémon takes half as much damage from [Fire]{type}- and [Ice]{type}-type moves.,Halves damage from [Fire]{type} and [Ice]{type} moves.
 48,Early Bird,3,"This Pokémon awakens from [sleep]{mechanic} in half as many turns, rounded down.
 
 When one-turn sleep is lowered to zero turns, the Pokémon still falls asleep, but wakes up at its first opportunity.",Halves the duration of [sleep]{mechanic}.
@@ -316,7 +316,7 @@ This ability will still take effect if the critical hit is received by a [Substi
 84,Unburden,4,"When this Pokémon uses or loses its held item, its [Speed]{mechanic} is doubled.  If it gains another item or leaves battle, this bonus is lost.
 
 This bonus does not count as a [stat modifier]{mechanic}.  There is no notification when this ability takes effect.",Doubles [Speed]{mechanic} upon using or losing a held item.
-85,Heatproof,4,"This Pokémon takes half as much damage from [Fire]{type}-type moves and [burns]{mechanic:burn}.",Halves damage from [Fire]{type} moves and [burns]{mechanic:burn}.
+85,Heatproof,4,This Pokémon takes half as much damage from [Fire]{type}-type moves and [burns]{mechanic:burn}.,Halves damage from [Fire]{type} moves and [burns]{mechanic:burn}.
 86,Simple,4,"Each stage of this Pokémon's [stat modifiers]{mechanic} acts as two stages.  These doubled stages are still limited to a minimum of -6 and a maximum of 6.
 
 This Pokémon can still accumulate less than -3 or more than 3 stages of stat modifiers, even though the extra ones have no effect after doubling.",Doubles the Pokémon's [stat modifiers]{mechanic}.  These doubled modifiers are still capped at -6 or 6 stages.
