@@ -77,10 +77,10 @@ id,pokemon_id,introduced_in_version_group_id,name,is_default
 76,493,8,water,0
 77,172,3,,1
 78,172,10,spiky-eared,0
-79,550,11,normal,1
-80,550,11,alternate,0
-81,555,11,unblue,1
-82,555,11,blue,0
+79,550,11,red-stripe,1
+80,550,11,blue-stripe,0
+81,555,11,normal,1
+82,555,11,daruma,0
 83,585,11,spring,1
 84,585,11,summer,0
 85,585,11,autumn,0
@@ -89,8 +89,8 @@ id,pokemon_id,introduced_in_version_group_id,name,is_default
 88,586,11,summer,0
 89,586,11,autumn,0
 90,586,11,winter,0
-91,648,11,unred,1
-92,648,11,red,0
+91,648,11,voice,1
+92,648,11,step,0
 93,649,11,orange,1
 94,649,11,blue,0
 95,649,11,red,0
