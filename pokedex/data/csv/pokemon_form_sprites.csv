@@ -77,8 +77,8 @@ id,pokemon_id,introduced_in_version_group_id,name,is_default
 76,493,8,water,0
 77,172,3,,1
 78,172,10,spiky-eared,0
-79,550,11,red-stripe,1
-80,550,11,blue-stripe,0
+79,550,11,red stripe,1
+80,550,11,blue stripe,0
 81,555,11,normal,1
 82,555,11,daruma,0
 83,585,11,spring,1
