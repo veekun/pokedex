@@ -480,12 +480,12 @@ Unlike [Forecast]{ability} and [Multitype]{ability}, this ability is not tied to
 
 This ability stacks if two allied Pokémon have it.",Damages [sleeping]{mechanic} opponents for 1/8 their max [HP]{mechanic} after each turn.
 124,wicked trick,5,"Whenever a move makes contact with this Pokémon, it steals the attacker's held item.",Steals attacking Pokémon's held item on contact.
-125,brute force,5,Strong attacks are more powerful.  (?),Strong attacks are more powerful.  (?)
+125,brute force,5,"Moves have greater power, but secondary effects never occur.","Moves have greater power, but secondary effects never occur."
 126,antagonist,5,Stat changes are inverted for this Pokémon.,Stat changes are inverted.
 127,tension,5,Opposing Pokémon will not automatically eat held Berries.  (?),Opposing Pokémon can't eat their Berries.  (?)
-128,competitive spirit,5,Not yet known.  [[ability 128]],Not yet known.  [[ability 128]]
-129,faint-hearted,5,"When this Pokémon has less than half its max HP, opposing Pokémon's stats are lower.  (?)",Lowers opposing Pokémon's stats when HP is less than half.  (?)
-130,cursed body,5,Not yet known.  [[ability 130]],Not yet known.  [[ability 130]]
+128,competitive spirit,5,"When any of this Pokémon's stats are lowered, its Attack raises by one stage.",Attack rises when stats are lowered.
+129,faint-hearted,5,"When this Pokémon has less than half its max HP, its stats are lower.",Stats drop when HP is less than half.
+130,cursed body,5,"When this Pokémon attacks, it has a chance to disable one of its target's moves.",May disable a move when attacking.
 131,healing heart,5,Occasionally cures friendly Pokémon's major status ailments.  (?),Cures allies' major status ailments.  (?)
 132,friend guard,5,Takes less damage from allies.  (?),Takes less damage from allies.  (?)
 133,fragile armor,5,Every physical move that hits this Pokémon lowers its Attack and raises its Speed.  (?),Physical hits lower Attack and raise Speed.
@@ -495,28 +495,28 @@ This ability stacks if two allied Pokémon have it.",Damages [sleeping]{mechanic
 137,poison rampage,5,This Pokémon inflicts more damage when poisoned.,Power increases when poisoned.
 138,heat rampage,5,This Pokémon inflicts more damage when burned.,Power increases when burned.
 139,harvest,5,Held berry is reusable.  (?),Held berry is reusable.  (?)
-140,telepathy,5,Not yet known.  [[ability 140]],Not yet known.  [[ability 140]]
+140,telepathy,5,This Pokémon does not take damage from friendly Pokémon's moves.,Avoids attacks from friendly Pokémon.
 141,sudden impulse,5,"When this Pokémon enters the field, one of its stats raises by one stage, and one of its stats lowers by one stage.",One stat is raised and one stat is lowered.
 142,dustproof,5,This Pokémon takes no damage from weather.,Takes no damage from weather.
 143,poisoned drink,5,Poisons attacking Pokémon on contact.,Poisons attacking Pokémon on contact.
 144,regeneration,5,Recovers a little HP when switched out.  (?),Recovers a little HP when switched out.  (?)
 145,pigeon chest,5,This Pokémon's Defense cannot be lowered.,Defense cannot be lowered.
 146,sand fence,5,This Pokémon's Speed is raised during Sandstorm.,Raises Speed during Sandstorm.
-147,miracle skin,5,Not yet known.  [[ability 147]],Not yet known.  [[ability 147]]
+147,miracle skin,5,Not affected by non-damaging moves.  (?),Not affected by non-damaging moves.  (?)
 148,analyze,5,This Pokémon inflicts more damage when it moves last within a turn.,Raises power when moving last.
 149,illusion,5,Changes to the appearance of an ally.  (?),Changes to the appearance of an ally.  (?)
 150,eccentric,5,Uses Transform upon entering battle.,Uses Transform upon entering battle.
-151,slip through,5,Not yet known.  [[ability 151]],Not yet known.  [[ability 151]]
+151,slip through,5,Ignores Barrier and Light Screen.  (?),Ignores Barrier and Light Screen.  (?)
 152,mummify,5,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to mummify.",Attacker's ability changes to mummify on contact.
-153,brazen,5,Not yet known.  [[ability 153]],Not yet known.  [[ability 153]]
+153,brazen,5,"When this Pokémon faints another Pokémon, its Attack rises by one stage.",Attack raises by one stage after fainting a Pokémon.
 154,righteous heart,5,Raises Attack when hit by dark-type moves.  (?),Raises Attack when hit by dark-type moves.  (?)
-155,chatter,5,Not yet known.  [[ability 155]],Not yet known.  [[ability 155]]
-156,magic mirror,5,Not yet known.  [[ability 156]],Not yet known.  [[ability 156]]
+155,skittish,5,Speed rises under some condition...  (?),Speed rises under some condition... (?)
+156,magic mirror,5,"When this Pokémon is targeted by a non-damaging move, that move will instead hit its user.",Reflects non-damaging moves back at their user.
 157,herbivore,5,Raises Attack when hit by grass-type moves.  (?),Raises Attack when hit by grass-type moves.  (?)
-158,mischievous heart,5,Not yet known.  [[ability 158]],Not yet known.  [[ability 158]]
+158,mischievous heart,5,"When this Pokémon selects a non-damaging move, it will act first that turn.",Always acts first when using a non-damaging move.
 159,sand power,5,Inflicts more damage during Sandstorm.  (?),Inflicts more damage during Sandstorm.  (?)
-160,iron thorns,5,Inflicts damage on contact.  (?),Inflicts damage on contact.  (?)
+160,iron thorns,5,Inflicts extra damage when using a contact move.,Inflicts extra damage when using a contact move.
 161,daruma mode,5,Changes to Daruma form in a pinch.,Changes to Daruma form in a pinch.
-162,victory star,5,Not yet known.  [[ability 162]],Not yet known.  [[ability 162]]
-163,turbo blaze,5,Not yet known.  [[ability 163]],Not yet known.  [[ability 163]]
-164,teravoltage,5,Not yet known.  [[ability 164]],Not yet known.  [[ability 164]]
+162,victory star,5,"Raises every friendly Pokémon's Accuracy, including this Pokémon's.","Raises every friendly Pokémon's Accuracy, including this Pokémon's."
+163,turbo blaze,5,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Moves ignore abilities that would hinder or prevent them.
+164,teravoltage,5,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Moves ignore abilities that would hinder or prevent them.

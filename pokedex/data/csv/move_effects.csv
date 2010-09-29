@@ -902,7 +902,7 @@ This move breaks through [Wonder Guard]{ability}."
 297,0,Lowers the target's Special Defense by one stage.,Inflicts regular damage.  Lowers the target's Special Defense by one stage.
 298,0,More powerful against fighting-type Pokémon. (?),More powerful against fighting-type Pokémon. (?)
 299,0,Changes target's ability to Simple. (?),Changes target's ability to [Simple]{ability}. (?)
-300,0,User copies the target's nature.,User copies the target's nature.
+300,0,Copies the user's ability onto the target.,Changes the target's ability to match the user's.  This effect ends when the target leaves battle.
 301,0,Copies non-damaging moves but makes the user go last.,"If the target would use a non-damaging move this turn, the user will copy the move and act last."
 302,0,Power increases the more Pokémon in the trainer's team know this move.,Power increases the more Pokémon in the trainer's team know this move.
 303,0,Not yet known.  [[effect 303]],Not yet known.  [[effect 303]]
