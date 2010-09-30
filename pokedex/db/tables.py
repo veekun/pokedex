@@ -336,7 +336,6 @@ class MoveDamageClass(TableBase):
 class MoveEffect(TableBase):
     __tablename__ = 'move_effects'
     id = Column(Integer, primary_key=True, nullable=False)
-    priority = Column(SmallInteger, nullable=False)
     short_effect = Column(Unicode(256), nullable=False)
     effect = Column(Unicode(5120), nullable=False)
 
@@ -380,6 +379,7 @@ class Move(TableBase):
     power = Column(SmallInteger, nullable=False)
     pp = Column(SmallInteger, nullable=False)
     accuracy = Column(SmallInteger, nullable=True)
+    priority = Column(SmallInteger, nullable=False)
     target_id = Column(Integer, ForeignKey('move_targets.id'), nullable=False)
     damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=False)
     effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False)
@@ -825,7 +825,6 @@ Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, backref='moves')
 
 Move.effect = markdown.MoveEffectProperty('effect')
-Move.priority = association_proxy('move_effect', 'priority')
 Move.short_effect = markdown.MoveEffectProperty('short_effect')
 
 MoveEffect.category_map = relation(MoveEffectCategoryMap)
