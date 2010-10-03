@@ -553,7 +553,7 @@ id,name,generation_id,type_id,power,pp,accuracy,target_id,damage_class_id,effect
 552,flame dance,5,10,80,10,100,10,3,277,50,,,
 553,freezebolt,5,15,140,5,90,10,2,332,30,,,
 554,cold flare,5,15,140,5,90,10,3,333,30,,,
-555,back out,5,17,55,15,95,11,3,72,100,,,
+555,bark out,5,17,55,15,95,11,3,72,100,,,
 556,icicle drop,5,15,85,10,90,10,2,32,30,,,
 557,v-generate,5,10,180,5,95,10,2,335,100,,,
 558,cross flame,5,10,100,5,100,10,3,336,,,,
