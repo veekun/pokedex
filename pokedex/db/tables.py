@@ -38,7 +38,7 @@ metadata = MetaData()
 TableBase = declarative_base(metadata=metadata)
 
 class Ability(TableBase):
-    """An ability a pokémon can have, such as Static or Pressure.
+    u"""An ability a pokémon can have, such as Static or Pressure.
     """
     __tablename__ = 'abilities'
     __singlename__ = 'ability'
@@ -54,7 +54,7 @@ class Ability(TableBase):
         info=dict(description="Short summary of this ability's effect", format='markdown'))
 
 class AbilityFlavorText(TableBase):
-    """In-game flavor text of an ability
+    u"""In-game flavor text of an ability
     """
     __tablename__ = 'ability_flavor_text'
     ability_id = Column(Integer, ForeignKey('abilities.id'), primary_key=True, nullable=False, autoincrement=False,
@@ -65,7 +65,7 @@ class AbilityFlavorText(TableBase):
         info=dict(description="The actual flavor text", official=True, format='gametext'))
 
 class AbilityName(TableBase):
-    """Non-English official name of an ability
+    u"""Non-English official name of an ability
     """
     __tablename__ = 'ability_names'
     ability_id = Column(Integer, ForeignKey('abilities.id'), primary_key=True, nullable=False, autoincrement=False,
@@ -76,7 +76,7 @@ class AbilityName(TableBase):
         info=dict(description="ID of the language", official=True, foreign=True, format='plaintext'))
 
 class Berry(TableBase):
-    """A Berry, consumable item that grows on trees
+    u"""A Berry, consumable item that grows on trees
 
     For data common to all Items, such as the name, see the corresponding Item entry.
     """
@@ -103,7 +103,7 @@ class Berry(TableBase):
         info=dict(description="Smoothness of this Berry, a culinary attribute. Higher is better."))
 
 class BerryFirmness(TableBase):
-    """A Berry firmness, such as "hard" or "very soft".
+    u"""A Berry firmness, such as "hard" or "very soft".
     """
     __tablename__ = 'berry_firmness'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -112,7 +112,7 @@ class BerryFirmness(TableBase):
         info=dict(description="English name of the firmness level", official=True, format='plaintext'))
 
 class BerryFlavor(TableBase):
-    """A Berry flavor level.
+    u"""A Berry flavor level.
     """
     __tablename__ = 'berry_flavors'
     berry_id = Column(Integer, ForeignKey('berries.id'), primary_key=True, nullable=False, autoincrement=False,
@@ -123,7 +123,7 @@ class BerryFlavor(TableBase):
         info=dict(description="Level of the flavor in the berry"))
 
 class ContestCombo(TableBase):
-    """Combo of two moves in a Contest.
+    u"""Combo of two moves in a Contest.
     """
     __tablename__ = 'contest_combos'
     first_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
@@ -132,7 +132,7 @@ class ContestCombo(TableBase):
         info=dict(description="ID of the second and final move in the combo"))
 
 class ContestEffect(TableBase):
-    """Effect of a move when used in a Contest.
+    u"""Effect of a move when used in a Contest.
     """
     __tablename__ = 'contest_effects'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -147,7 +147,8 @@ class ContestEffect(TableBase):
         info=dict(description="Detailed description of the effect", format='markdown'))
 
 class ContestType(TableBase):
-    u"""A Contest type, such as "cool" or "smart". Also functions as Berry flavor and Pokéblock color."""
+    u"""A Contest type, such as "cool" or "smart". Also functions as Berry flavor and Pokéblock color.
+    """
     __tablename__ = 'contest_types'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
@@ -156,10 +157,10 @@ class ContestType(TableBase):
     flavor = Column(Unicode(6), nullable=False,
         info=dict(description="The English name of the corresponding Berry flavor", official=True, format='identifier'))
     color = Column(Unicode(6), nullable=False,
-        info=dict(description="The English name of the corresponding Pokéblock color", official=True, format='identifier'))
+        info=dict(description=u"The English name of the corresponding Pokéblock color", official=True, format='identifier'))
 
 class EggGroup(TableBase):
-    """An Egg group. Usually, two Pokémon can breed if they share an Egg Group.
+    u"""An Egg group. Usually, two Pokémon can breed if they share an Egg Group.
 
     (exceptions are the Ditto and No Eggs groups)
     """
@@ -167,10 +168,10 @@ class EggGroup(TableBase):
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
     name = Column(Unicode(16), nullable=False,
-        info=dict(description="The English “official” name. One NPC in Stadium uses these names; they are pretty bad.", official=True, format='identifier'))
+        info=dict(description=u'The English "official" name. One NPC in Stadium uses these names; they are pretty bad.', official=True, format='identifier'))
 
 class Encounter(TableBase):
-    """Encounters with wild Pokémon.
+    u"""Encounters with wild Pokémon.
 
     Bear with me, here.
 
@@ -210,7 +211,7 @@ class Encounter(TableBase):
         info=dict(description=u"The maxmum level of the encountered Pokémon"))
 
 class EncounterCondition(TableBase):
-    """A conditions in the game world that affects pokémon encounters, such as time of day.
+    u"""A conditions in the game world that affects pokémon encounters, such as time of day.
     """
 
     __tablename__ = 'encounter_conditions'
@@ -220,7 +221,7 @@ class EncounterCondition(TableBase):
         info=dict(description="An English name of the condition", format='plaintext'))
 
 class EncounterConditionValue(TableBase):
-    """A possible state for a condition; for example, the state of 'swarm' could be 'swarm' or 'no swarm'.
+    u"""A possible state for a condition; for example, the state of 'swarm' could be 'swarm' or 'no swarm'.
     """
 
     __tablename__ = 'encounter_condition_values'
@@ -234,8 +235,8 @@ class EncounterConditionValue(TableBase):
         info=dict(description='Set if this value is "default" or "normal" in some sense'))
 
 class EncounterConditionValueMap(TableBase):
-    """Maps encounters to the specific conditions under which they occur."""
-
+    u"""Maps encounters to the specific conditions under which they occur.
+    """
     __tablename__ = 'encounter_condition_value_map'
     encounter_id = Column(Integer, ForeignKey('encounters.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="ID of the encounter"))
@@ -243,7 +244,7 @@ class EncounterConditionValueMap(TableBase):
         info=dict(description="ID of the encounter condition value"))
 
 class EncounterTerrain(TableBase):
-    """A way the player can enter a wild encounter, e.g., surfing, fishing, or walking through tall grass.
+    u"""A way the player can enter a wild encounter, e.g., surfing, fishing, or walking through tall grass.
     """
 
     __tablename__ = 'encounter_terrain'
@@ -253,7 +254,7 @@ class EncounterTerrain(TableBase):
         info=dict(description="An english name of this terrain", format='plaintext'))
 
 class EncounterSlot(TableBase):
-    """Aan abstract "slot" within a terrain, associated with both some set of conditions and a rarity.
+    u"""An abstract "slot" within a terrain, associated with both some set of conditions and a rarity.
 
     Note that there are two encounters per slot, so the rarities will only add
     up to 50.
@@ -266,14 +267,14 @@ class EncounterSlot(TableBase):
         info=dict(description="The ID of the Version group this slot is in"))
     encounter_terrain_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=False, nullable=False, autoincrement=False,
         info=dict(description="The ID of the terrain"))
-    slot = Column(Integer, nullable=True)
-        # XXX: What is this?
+    slot = Column(Integer, nullable=True,
+        info=dict(description="The slot")) # XXX: What is this, exactly?
     rarity = Column(Integer, nullable=False,
         info=dict(description="The chance of the encounter, in percent"))  # XXX: It is in percent, right? I'm confused.
 
 class EncounterSlotCondition(TableBase):
-    """A condition that affects an encounter slot."""
-
+    u"""A condition that affects an encounter slot.
+    """
     __tablename__ = 'encounter_slot_conditions'
     encounter_slot_id = Column(Integer, ForeignKey('encounter_slots.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="The ID of the encounter slot"))
@@ -281,7 +282,8 @@ class EncounterSlotCondition(TableBase):
         info=dict(description="The ID of the encounter condition"))
 
 class EvolutionChain(TableBase):
-    """A family of pokémon that are linked by evolution"""
+    u"""A family of pokémon that are linked by evolution
+    """
     __tablename__ = 'evolution_chains'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
@@ -291,7 +293,8 @@ class EvolutionChain(TableBase):
         info=dict(description="Item that a parent must hold while breeding to produce a baby"))
 
 class EvolutionTrigger(TableBase):
-    """An evolution type, such as "level" or "trade"."""
+    u"""An evolution type, such as "level" or "trade".
+    """
     __tablename__ = 'evolution_triggers'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
@@ -299,7 +302,8 @@ class EvolutionTrigger(TableBase):
         info=dict(description="An English identifier", format='identifier'))
 
 class Experience(TableBase):
-    """EXP needed for a certain level with a certain growth rate"""
+    u"""EXP needed for a certain level with a certain growth rate
+    """
     __tablename__ = 'experience'
     growth_rate_id = Column(Integer, ForeignKey('growth_rates.id'), primary_key=True, nullable=False,
         info=dict(description="ID of the growth rate"))
@@ -309,7 +313,8 @@ class Experience(TableBase):
         info=dict(description="The number of EXP points needed to get to that level"))
 
 class Generation(TableBase):
-    u"""A Generation of the pokémon franchise"""
+    u"""A Generation of the pokémon franchise
+    """
     __tablename__ = 'generations'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
@@ -321,7 +326,8 @@ class Generation(TableBase):
         info=dict(description=u'An English name of this generation, such as "Generation IV"', format='plaintext'))
 
 class GrowthRate(TableBase):
-    u"""Growth rate of a pokémon, i.e. the EXP → level function."""
+    u"""Growth rate of a pokémon, i.e. the EXP → level function.
+    """
     __tablename__ = 'growth_rates'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
@@ -331,7 +337,8 @@ class GrowthRate(TableBase):
         info=dict(description="The formula", format='latex'))
 
 class Item(TableBase):
-    """An Item from the games, like "Poké Ball" or "Bicycle"."""
+    u"""An Item from the games, like "Poké Ball" or "Bicycle".
+    """
     __tablename__ = 'items'
     __singlename__ = 'item'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -351,11 +358,13 @@ class Item(TableBase):
 
     @property
     def appears_underground(self):
-        """True if the item appears underground, as specified by the appropriate flag"""
+        u"""True if the item appears underground, as specified by the appropriate flag
+        """
         return any(flag.identifier == u'underground' for flag in self.flags)
 
 class ItemCategory(TableBase):
-    """An item category"""
+    u"""An item category
+    """
     # XXX: This is fanon, right?
     __tablename__ = 'item_categories'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -366,7 +375,8 @@ class ItemCategory(TableBase):
         info=dict(description="English name of the category", format='plaintext'))
 
 class ItemFlag(TableBase):
-    """An item attribute such as "consumable" or "holdable"."""
+    u"""An item attribute such as "consumable" or "holdable".
+    """
     __tablename__ = 'item_flags'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
@@ -376,7 +386,8 @@ class ItemFlag(TableBase):
         info=dict(description="Short English description of the flag", format='plaintext'))
 
 class ItemFlagMap(TableBase):
-    """Maps an item flag to its item."""
+    u"""Maps an item flag to its item.
+    """
     __tablename__ = 'item_flag_map'
     item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description="The ID of the item"))
@@ -384,7 +395,8 @@ class ItemFlagMap(TableBase):
         info=dict(description="The ID of the item flag"))
 
 class ItemFlavorText(TableBase):
-    """An in-game description of an item"""
+    u"""An in-game description of an item
+    """
     __tablename__ = 'item_flavor_text'
     item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description="The ID of the item"))
@@ -394,7 +406,8 @@ class ItemFlavorText(TableBase):
         info=dict(description="The flavor text itself", official=True, format='gametext'))
 
 class ItemFlingEffect(TableBase):
-    """An effect of the move Fling when used with a specific item"""
+    u"""An effect of the move Fling when used with a specific item
+    """
     __tablename__ = 'item_fling_effects'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
@@ -402,7 +415,8 @@ class ItemFlingEffect(TableBase):
         info=dict(description="English description of the effect", format='plaintext'))
 
 class ItemInternalID(TableBase):
-    """The internal ID number a game uses for an item"""
+    u"""The internal ID number a game uses for an item
+    """
     __tablename__ = 'item_internal_ids'
     item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description="The database ID of the item"))
@@ -412,7 +426,8 @@ class ItemInternalID(TableBase):
         info=dict(description="Internal ID of the item in the generation"))
 
 class ItemName(TableBase):
-    """A non-English name of an item"""
+    u"""A non-English name of an item
+    """
     __tablename__ = 'item_names'
     item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="The ID of the item"))
@@ -422,7 +437,8 @@ class ItemName(TableBase):
         info=dict(description="The name of the item in this language", foreign=True, format='plaintext'))
 
 class ItemPocket(TableBase):
-    """A pocket that categorizes items"""
+    u"""A pocket that categorizes items
+    """
     __tablename__ = 'item_pockets'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
@@ -432,7 +448,8 @@ class ItemPocket(TableBase):
         info=dict(description="A numeric ID", format='plaintext'))
 
 class Language(TableBase):
-    u"""A language the Pokémon games have been transleted into; except English"""
+    u"""A language the Pokémon games have been transleted into; except English
+    """
     __tablename__ = 'languages'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
@@ -444,130 +461,234 @@ class Language(TableBase):
         info=dict(description="The English name of the language", format='plaintext'))
 
 class Location(TableBase):
+    u"""A place in the Pokémon world
+    """
     __tablename__ = 'locations'
     __singlename__ = 'location'
-    id = Column(Integer, primary_key=True, nullable=False)
-    region_id = Column(Integer, ForeignKey('regions.id'))
-    name = Column(Unicode(64), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    region_id = Column(Integer, ForeignKey('regions.id'),
+        info=dict(description="ID of the region this location is in"))
+    name = Column(Unicode(64), nullable=False,
+        info=dict(description="English name of the location", official=True, format='plaintext'))
 
 class LocationArea(TableBase):
+    u"""A sub-area of a location
+    """
     __tablename__ = 'location_areas'
-    id = Column(Integer, primary_key=True, nullable=False)
-    location_id = Column(Integer, ForeignKey('locations.id'), nullable=False)
-    internal_id = Column(Integer, nullable=False)
-    name = Column(Unicode(64), nullable=True)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    location_id = Column(Integer, ForeignKey('locations.id'), nullable=False,
+        info=dict(description="ID of the location this area is part of"))
+    internal_id = Column(Integer, nullable=False,
+        info=dict(description="ID the games ude for this area"))
+    name = Column(Unicode(64), nullable=True,
+        info=dict(description="An English name of the area, if applicable", format='plaintext'))
 
 class LocationAreaEncounterRate(TableBase):
+    # XXX: What's this exactly? Someone add the docstring & revise the descriptions
     __tablename__ = 'location_area_encounter_rates'
-    location_area_id = Column(Integer, ForeignKey('location_areas.id'), primary_key=True, nullable=False, autoincrement=False)
-    encounter_terrain_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=True, nullable=False, autoincrement=False)
-    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, autoincrement=False)
-    rate = Column(Integer, nullable=True)
+    location_area_id = Column(Integer, ForeignKey('location_areas.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the area"))
+    encounter_terrain_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the terrain"))
+    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, autoincrement=False,
+        info=dict(description="ID of the version"))
+    rate = Column(Integer, nullable=True,
+        info=dict(description="The encounter rate"))  # units?
 
 class LocationInternalID(TableBase):
+    u"""IDs the games use internally for locations
+    """
     __tablename__ = 'location_internal_ids'
-    location_id = Column(Integer, ForeignKey('locations.id'), nullable=False, primary_key=True)
-    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False, primary_key=True)
-    internal_id = Column(Integer, nullable=False)
+    location_id = Column(Integer, ForeignKey('locations.id'), nullable=False, primary_key=True,
+        info=dict(description="Database ID of the locaion"))
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False, primary_key=True,
+        info=dict(description="ID of the generation this entry to"))
+    internal_id = Column(Integer, nullable=False,
+        info=dict(description="Internal game ID of the location"))
 
 class Machine(TableBase):
+    u"""A TM or HM; numbered item that can teach a move to a pokémon
+    """
     __tablename__ = 'machines'
-    machine_number = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
-    item_id = Column(Integer, ForeignKey('items.id'), nullable=False)
-    move_id = Column(Integer, ForeignKey('moves.id'), nullable=False)
+    machine_number = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="Number of the machine for TMs, or 100 + the munber for HMs"))
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="Versions this entry applies to"))
+    item_id = Column(Integer, ForeignKey('items.id'), nullable=False,
+        info=dict(description="ID of the corresponding Item"))
+    move_id = Column(Integer, ForeignKey('moves.id'), nullable=False,
+        info=dict(description="ID of the taught move"))
 
     @property
     def is_hm(self):
+        u"""True if this machine is a HM, False if it's a TM
+        """
         return self.machine_number >= 100
 
 class MoveBattleStyle(TableBase):
+    u"""A battle style of a move"""  # XXX: Explain better
     __tablename__ = 'move_battle_styles'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(8), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    name = Column(Unicode(8), nullable=False,
+        info=dict(description="An English name for this battle style", format='plaintext'))
 
 class MoveEffectCategory(TableBase):
+    u"""Category of a move effect
+    """
     __tablename__ = 'move_effect_categories'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(64), nullable=False)
-    can_affect_user = Column(Boolean, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    name = Column(Unicode(64), nullable=False,
+        info=dict(description="English name of the category", format='plaintext'))
+    can_affect_user = Column(Boolean, nullable=False,
+        info=dict(description="Set if the user can be affected"))
 
 class MoveEffectCategoryMap(TableBase):
+    u"""Maps a move effect category to a move effect
+    """
     __tablename__ = 'move_effect_category_map'
-    move_effect_id = Column(Integer, ForeignKey('move_effects.id'), primary_key=True, nullable=False)
-    move_effect_category_id = Column(Integer, ForeignKey('move_effect_categories.id'), primary_key=True, nullable=False)
-    affects_user = Column(Boolean, primary_key=True, nullable=False)
+    move_effect_id = Column(Integer, ForeignKey('move_effects.id'), primary_key=True, nullable=False,
+        info=dict(description="ID of the move effect"))
+    move_effect_category_id = Column(Integer, ForeignKey('move_effect_categories.id'), primary_key=True, nullable=False,
+        info=dict(description="ID of the category"))
+    affects_user = Column(Boolean, primary_key=True, nullable=False,
+        info=dict(description="Set if the user is affected"))
 
 class MoveDamageClass(TableBase):
+    u"""Damage class of a move, i.e. "Physical", "Special, or "None".
+    """
     __tablename__ = 'move_damage_classes'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(8), nullable=False)
-    description = Column(Unicode(64), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    name = Column(Unicode(8), nullable=False,
+        info=dict(description="An English name of the class", format='plaintext'))
+    description = Column(Unicode(64), nullable=False,
+        info=dict(description="An English description of the class", format='plaintext'))
 
 class MoveEffect(TableBase):
+    u"""An effect of a move
+    """
     __tablename__ = 'move_effects'
-    id = Column(Integer, primary_key=True, nullable=False)
-    short_effect = Column(Unicode(256), nullable=False)
-    effect = Column(Unicode(5120), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    short_effect = Column(Unicode(256), nullable=False,
+        info=dict(description="A short summary of the effect", format='plaintext'))
+    effect = Column(Unicode(5120), nullable=False,
+        info=dict(description="A detailed description of the effect", format='plaintext'))
 
 class MoveFlag(TableBase):
+    u"""Maps a move flag to a move
+    """
+    # XXX: Other flags have a ___Flag class for the actual flag and ___FlagMap for the map,
+    # these, somewhat confusingly, have MoveFlagType and MoveFlag
     __tablename__ = 'move_flags'
-    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
-    move_flag_type_id = Column(Integer, ForeignKey('move_flag_types.id'), primary_key=True, nullable=False, autoincrement=False)
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the move"))
+    move_flag_type_id = Column(Integer, ForeignKey('move_flag_types.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the flag"))
 
 class MoveFlagType(TableBase):
+    u"""A Move attribute such as "snatchable" or "contact".
+    """
     __tablename__ = 'move_flag_types'
-    id = Column(Integer, primary_key=True, nullable=False)
-    identifier = Column(Unicode(16), nullable=False)
-    name = Column(Unicode(32), nullable=False)
-    description = Column(markdown.MarkdownColumn(128), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    identifier = Column(Unicode(16), nullable=False,
+        info=dict(description="A short identifier for the flag", format='identifier'))
+    name = Column(Unicode(32), nullable=False,
+        info=dict(description="An English name for the flag", format='plaintext'))
+    description = Column(markdown.MarkdownColumn(128), nullable=False,
+        info=dict(description="A short English description of the flag", format='markdown'))
 
 class MoveFlavorText(TableBase):
+    u"""In-game description of a move
+    """
     __tablename__ = 'move_flavor_text'
-    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
-    flavor_text = Column(Unicode(255), nullable=False)
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the move"))
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the version group this text appears in"))
+    flavor_text = Column(Unicode(255), nullable=False,
+        info=dict(description="The English flavor text", official=True, format='gametext'))
 
 class MoveName(TableBase):
+    u"""Non-English name of a move
+    """
     __tablename__ = 'move_names'
-    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
-    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
-    name = Column(Unicode(16), nullable=False)
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the move"))
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the language"))
+    name = Column(Unicode(16), nullable=False,
+        info=dict(description="ID of the language", foreign=True, format='plaintext'))
 
 class MoveTarget(TableBase):
+    u"""Targetting or "range" of a move, e.g. "Affects all opponents" or "Affects user".
+    """
     __tablename__ = 'move_targets'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(32), nullable=False)
-    description = Column(Unicode(128), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    name = Column(Unicode(32), nullable=False,
+        info=dict(description="An English name", format='plaintext'))
+    description = Column(Unicode(128), nullable=False,
+        info=dict(description="An English description", format='plaintext'))
 
 class Move(TableBase):
+    u"""A Move: technique or attack a Pokémon can learn to use
+    """
     __tablename__ = 'moves'
     __singlename__ = 'move'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(24), nullable=False)
-    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
-    type_id = Column(Integer, ForeignKey('types.id'), nullable=False)
-    power = Column(SmallInteger, nullable=False)
-    pp = Column(SmallInteger, nullable=False)
-    accuracy = Column(SmallInteger, nullable=True)
-    priority = Column(SmallInteger, nullable=False)
-    target_id = Column(Integer, ForeignKey('move_targets.id'), nullable=False)
-    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=False)
-    effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False)
-    effect_chance = Column(Integer)
-    contest_type_id = Column(Integer, ForeignKey('contest_types.id'), nullable=True)
-    contest_effect_id = Column(Integer, ForeignKey('contest_effects.id'), nullable=True)
-    super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=True)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    name = Column(Unicode(24), nullable=False,
+        info=dict(description="The English name of the move", official=True, format='plaintext'))
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
+        info=dict(description="ID of the generation this move first appeared in"))
+    type_id = Column(Integer, ForeignKey('types.id'), nullable=False,
+        info=dict(description="ID of the move's elemental type"))
+    power = Column(SmallInteger, nullable=False,
+        info=dict(description="Base power of the move"))
+    pp = Column(SmallInteger, nullable=False,
+        info=dict(description="Base PP (Power Points) of the move"))
+    accuracy = Column(SmallInteger, nullable=True,
+        info=dict(description="Accuracy of the move; NULL means it never misses"))
+    priority = Column(SmallInteger, nullable=False,
+        info=dict(description="The move's priority bracket"))
+    target_id = Column(Integer, ForeignKey('move_targets.id'), nullable=False,
+        info=dict(description="ID of the target (range) of the move"))
+    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=False,
+        info=dict(description="ID of the damage class (physical/special) of the move"))
+    effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False,
+        info=dict(description="ID of the move's effect"))
+    effect_chance = Column(Integer,
+        info=dict(description="The chance for a secondary effect. What this is a chance of is specified by the move's effect."))
+    contest_type_id = Column(Integer, ForeignKey('contest_types.id'), nullable=True,
+        info=dict(description="ID of the move's Contest type (e.g. cool or smart)"))
+    contest_effect_id = Column(Integer, ForeignKey('contest_effects.id'), nullable=True,
+        info=dict(description="ID of the move's Contest effect"))
+    super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=True,
+        info=dict(description="ID of the move's Super Contest effect"))
 
 class Nature(TableBase):
+    u"""A nature a pokémon can have, such as Calm or Brave
+    """
     __tablename__ = 'natures'
     __singlename__ = 'nature'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(8), nullable=False)
-    decreased_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False)
-    increased_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False)
-    hates_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False)
-    likes_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    name = Column(Unicode(8), nullable=False,
+        info=dict(description="An English name of the nature", official=True, format='plaintext'))
+    decreased_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False,
+        info=dict(description="ID of the stat that this nature decreases by 10% (if decreased_stat_id is the same, the effects cancel out)"))
+    increased_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False,
+        info=dict(description="ID of the stat that this nature increases by 10% (if decreased_stat_id is the same, the effects cancel out)"))
+    hates_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False,
+        info=dict(description=u"ID of the Berry flavor the Pokémon hates (if likes_flavor_id is the same, the effects cancel out)"))
+    likes_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False,
+        info=dict(description=u"ID of the Berry flavor the Pokémon likes (if hates_flavor_id is the same, the effects cancel out)"))
 
     @property
     def is_neutral(self):
@@ -577,43 +698,76 @@ class Nature(TableBase):
         return self.increased_stat_id == self.decreased_stat_id
 
 class NatureBattleStylePreference(TableBase):
+    u"""Battle Palace move preference
+
+    Specifies how likely a pokémon with a specific Nature is to use a move of
+    a particular battl style in Battle Palace or Battle Tent
+    """
     __tablename__ = 'nature_battle_style_preferences'
-    nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False)
-    move_battle_style_id = Column(Integer, ForeignKey('move_battle_styles.id'), primary_key=True, nullable=False)
-    low_hp_preference = Column(Integer, nullable=False)
-    high_hp_preference = Column(Integer, nullable=False)
+    nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False,
+        info=dict(description=u"ID of the pokémon's nature"))
+    move_battle_style_id = Column(Integer, ForeignKey('move_battle_styles.id'), primary_key=True, nullable=False,
+        info=dict(description="ID of the battle style"))
+    low_hp_preference = Column(Integer, nullable=False,
+        info=dict(description=u"Chance of using the move, in percent, if HP is under ½"))
+    high_hp_preference = Column(Integer, nullable=False,
+        info=dict(description=u"Chance of using the move, in percent, if HP is over ½"))
 
 class NatureName(TableBase):
+    u"""Non-english name of a Nature
+    """
     __tablename__ = 'nature_names'
-    nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False, autoincrement=False)
-    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
-    name = Column(Unicode(8), nullable=False)
+    nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the nature"))
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the language"))
+    name = Column(Unicode(8), nullable=False,
+        info=dict(description="The nature's foreign name", foreign=True, format='plaintext'))
 
 class NaturePokeathlonStat(TableBase):
+    u"""Specifies how a Nature affects a Pokéathlon stat
+    """
     __tablename__ = 'nature_pokeathlon_stats'
-    nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False)
-    pokeathlon_stat_id = Column(Integer, ForeignKey('pokeathlon_stats.id'), primary_key=True, nullable=False)
-    max_change = Column(Integer, nullable=False)
+    nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False,
+        info=dict(description="ID of the nature"))
+    pokeathlon_stat_id = Column(Integer, ForeignKey('pokeathlon_stats.id'), primary_key=True, nullable=False,
+        info=dict(description="ID of the stat"))
+    max_change = Column(Integer, nullable=False,
+        info=dict(description="Maximum change"))
 
 class PokeathlonStat(TableBase):
+    u"""A Pokéathlon stat, such as "Stamina" or "Jump".
+    """
     __tablename__ = 'pokeathlon_stats'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(8), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    name = Column(Unicode(8), nullable=False,
+        info=dict(description="The English name of the stat", official=True, format='plaintext'))
 
 class Pokedex(TableBase):
+    u"""A collection of pokémon species ordered in a particular way
+    """
     __tablename__ = 'pokedexes'
-    id = Column(Integer, primary_key=True, nullable=False)
-    region_id = Column(Integer, ForeignKey('regions.id'), nullable=True)
-    name = Column(Unicode(16), nullable=False)
-    description = Column(Unicode(512))
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    region_id = Column(Integer, ForeignKey('regions.id'), nullable=True,
+        info=dict(description=u"ID of the region this pokédex is used in, or None if it's global"))
+    name = Column(Unicode(16), nullable=False,
+        info=dict(description=u"An English name of the pokédex", format='plaintext'))
+    description = Column(Unicode(512),
+        info=dict(description=u"A longer description of the pokédex", format='plaintext'))
 
 class PokedexVersionGroup(TableBase):
+    u"""Maps a pokédex to the version group that uses it
+    """
     __tablename__ = 'pokedex_version_groups'
-    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True, nullable=False, autoincrement=False)
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
+    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokédex"))
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the version group"))
 
 class Pokemon(TableBase):
-    """The core to this whole mess.
+    u"""A species of pokémon. The core to this whole mess.
 
     Note that I use both 'forme' and 'form' in both code and the database.  I
     only use 'forme' when specifically referring to Pokémon that have multiple
@@ -621,34 +775,57 @@ class Pokemon(TableBase):
     more general term referring to any variation within a species, including
     purely cosmetic forms like Unown.
     """
+    # XXX: Refine the form-specific docs
+    # XXX: Update form/forme discussion when #179 is dealt with.
     __tablename__ = 'pokemon'
     __singlename__ = 'pokemon'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(20), nullable=False)
-    forme_name = Column(Unicode(16))
-    forme_base_pokemon_id = Column(Integer, ForeignKey('pokemon.id'))
-    generation_id = Column(Integer, ForeignKey('generations.id'))
-    evolution_chain_id = Column(Integer, ForeignKey('evolution_chains.id'))
-    height = Column(Integer, nullable=False)
-    weight = Column(Integer, nullable=False)
-    species = Column(Unicode(16), nullable=False)
-    color_id = Column(Integer, ForeignKey('pokemon_colors.id'), nullable=False)
-    pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=True)
-    habitat_id = Column(Integer, ForeignKey('pokemon_habitats.id'), nullable=True)
-    gender_rate = Column(Integer, nullable=False)
-    capture_rate = Column(Integer, nullable=False)
-    base_experience = Column(Integer, nullable=False)
-    base_happiness = Column(Integer, nullable=False)
-    is_baby = Column(Boolean, nullable=False)
-    hatch_counter = Column(Integer, nullable=False)
-    has_gen4_fem_sprite = Column(Boolean, nullable=False)
-    has_gen4_fem_back_sprite = Column(Boolean, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    name = Column(Unicode(20), nullable=False,
+        info=dict(description=u"The English name of the pokémon", official=True, format='plaintext'))
+    forme_name = Column(Unicode(16),
+        info=dict(description=u"The name of this form, if the species has forms", format='plaintext'))
+    forme_base_pokemon_id = Column(Integer, ForeignKey('pokemon.id'),
+        info=dict(description=u"ID for the base form, if this species has one"))  # XXX: ?
+    generation_id = Column(Integer, ForeignKey('generations.id'),
+        info=dict(description=u"ID of the generation this species first appeared in"))
+    evolution_chain_id = Column(Integer, ForeignKey('evolution_chains.id'),
+        info=dict(description=u"ID of the species' evolution chain (a.k.a. family)"))
+    height = Column(Integer, nullable=False,
+        info=dict(description=u"The height of the pokémon, in decimeters (tenths of a meter)"))
+    weight = Column(Integer, nullable=False,
+        info=dict(description=u"The weight of the pokémon, in tenths of a kilogram (decigrams)"))
+    species = Column(Unicode(16), nullable=False,
+        info=dict(description=u'The short English flavor text, such as "Seed" or "Lizard"; usually affixed with the word "Pokémon"',
+        official=True, format='plaintext'))
+    color_id = Column(Integer, ForeignKey('pokemon_colors.id'), nullable=False,
+        info=dict(description=u"ID of this pokémon's pokédex color, as used for a gimmick search function in the games."))
+    pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=True,
+        info=dict(description=u"ID of this pokémon's body shape, as used for a gimmick search function in the games."))
+    habitat_id = Column(Integer, ForeignKey('pokemon_habitats.id'), nullable=True,
+        info=dict(description=u"ID of this pokémon's habitat, as used for a gimmick search function in the games."))
+    gender_rate = Column(Integer, nullable=False,
+        info=dict(description=u"The chance of this pokémon being female, in eighths; or -1 for genderless"))
+    capture_rate = Column(Integer, nullable=False,
+        info=dict(description=u"The base capture rate; up to 255"))
+    base_experience = Column(Integer, nullable=False,
+        info=dict(description=u"The base EXP gained when defeating this pokémon"))  # XXX: Is this correct?
+    base_happiness = Column(Integer, nullable=False,
+        info=dict(description=u"The tameness when caught by a normal ball"))
+    is_baby = Column(Boolean, nullable=False,
+        info=dict(description=u"True iff the pokémon is a baby"))  # XXX: What exactly makes it a baby?
+    hatch_counter = Column(Integer, nullable=False,
+        info=dict(description=u"Initial hatch counter: one must walk 255 × (hatch_counter + 1) steps before this pokémon's egg hatches, unless utilizing bonuses like Flame Body's"))
+    has_gen4_fem_sprite = Column(Boolean, nullable=False,
+        info=dict(description=u"Set iff the species' female front sprite is different from the male's in generation IV"))
+    has_gen4_fem_back_sprite = Column(Boolean, nullable=False,
+        info=dict(description=u"Set iff the species' female back sprite is different from the male's in generation IV"))
 
     ### Stuff to handle alternate Pokémon forms
 
     @property
     def national_id(self):
-        """Returns the National Pokédex number for this Pokémon.  Use this
+        u"""Returns the National Pokédex number for this Pokémon.  Use this
         instead of the id directly; alternate formes may make the id incorrect.
         """
 
@@ -658,7 +835,8 @@ class Pokemon(TableBase):
 
     @property
     def full_name(self):
-        """Returns the name of this Pokémon, including its Forme, if any."""
+        u"""Returns the name of this Pokémon, including its Forme, if any.
+        """
 
         if self.forme_name:
             return "%s %s" % (self.forme_name.title(), self.name)
@@ -666,7 +844,7 @@ class Pokemon(TableBase):
 
     @property
     def normal_form(self):
-        """Returns the normal form for this Pokémon; i.e., this will return
+        u"""Returns the normal form for this Pokémon; i.e., this will return
         regular Deoxys when called on any Deoxys form.
         """
 
@@ -678,7 +856,7 @@ class Pokemon(TableBase):
     ### Not forms!
 
     def stat(self, stat_name):
-        """Returns a PokemonStat record for the given stat name (or Stat row
+        u"""Returns a PokemonStat record for the given stat name (or Stat row
         object).  Uses the normal has-many machinery, so all the stats are
         effectively cached.
         """
@@ -712,90 +890,162 @@ class Pokemon(TableBase):
             return None
 
 class PokemonAbility(TableBase):
+    u"""Maps an ability to a pokémon that can have it
+    """
     __tablename__ = 'pokemon_abilities'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    ability_id = Column(Integer, ForeignKey('abilities.id'), nullable=False)
-    slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    ability_id = Column(Integer, ForeignKey('abilities.id'), nullable=False,
+        info=dict(description=u"ID of the ability"))
+    slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"The ability slot, i.e. 1 or 2 for gen. IV"))
 
 class PokemonColor(TableBase):
+    u"""The "pokédex color" of a pokémon species. Usually based on the pokémon's color.
+    """
     __tablename__ = 'pokemon_colors'
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
-    name = Column(Unicode(6), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    name = Column(Unicode(6), nullable=False,
+        info=dict(description=u"The English name of the color", official=True, format='identifier'))
 
 class PokemonDexNumber(TableBase):
+    u"""The number of a Pokémon in a particular Pokédex (e.g. Jigglypuff is #138 in Hoenn's 'dex)
+    """
     __tablename__ = 'pokemon_dex_numbers'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True, nullable=False, autoincrement=False)
-    pokedex_number = Column(Integer, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokédex"))
+    pokedex_number = Column(Integer, nullable=False,
+        info=dict(description=u"Number of the pokémon in that the pokédex"))
 
 class PokemonEggGroup(TableBase):
+    u"""Maps an Egg group to a pokémon; each pokémon belongs to one or two egg groups
+    """
     __tablename__ = 'pokemon_egg_groups'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    egg_group_id = Column(Integer, ForeignKey('egg_groups.id'), primary_key=True, nullable=False, autoincrement=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    egg_group_id = Column(Integer, ForeignKey('egg_groups.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the egg group"))
 
 class PokemonEvolution(TableBase):
+    u"""Specifies what causes a particular pokémon to evolve into another species.
+    """
     __tablename__ = 'pokemon_evolution'
-    from_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False)
-    to_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    evolution_trigger_id = Column(Integer, ForeignKey('evolution_triggers.id'), nullable=False)
-    trigger_item_id = Column(Integer, ForeignKey('items.id'), nullable=True)
-    minimum_level = Column(Integer, nullable=True)
-    gender = Column(Enum('male', 'female', name='pokemon_evolution_gender'), nullable=True)
-    location_id = Column(Integer, ForeignKey('locations.id'), nullable=True)
-    held_item_id = Column(Integer, ForeignKey('items.id'), nullable=True)
-    time_of_day = Column(Enum('morning', 'day', 'night', name='pokemon_evolution_time_of_day'), nullable=True)
-    known_move_id = Column(Integer, ForeignKey('moves.id'), nullable=True)
-    minimum_happiness = Column(Integer, nullable=True)
-    minimum_beauty = Column(Integer, nullable=True)
-    relative_physical_stats = Column(Integer, nullable=True)
-    party_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=True)
+    from_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False,
+        info=dict(description=u"ID of the pre-evolution species"))
+    to_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the post-evolution species"))
+    evolution_trigger_id = Column(Integer, ForeignKey('evolution_triggers.id'), nullable=False,
+        info=dict(description=u"ID of the trigger type"))
+    trigger_item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
+        info=dict(description=u"ID of the item that triggers the evolution in a way defined by evolution_trigger_id"))
+    minimum_level = Column(Integer, nullable=True,
+        info=dict(description=u"Minimum level, or None if level doean't matter"))
+    gender = Column(Enum('male', 'female', name='pokemon_evolution_gender'), nullable=True,
+        info=dict(description=u"Required gender, or None if gender doesn't matter"))
+    location_id = Column(Integer, ForeignKey('locations.id'), nullable=True,
+        info=dict(description=u"Required location, or None if it doesn't matter"))
+    held_item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
+        info=dict(description=u"An item the pokémon must hold, or None if it doesn't matter"))
+    time_of_day = Column(Enum('morning', 'day', 'night', name='pokemon_evolution_time_of_day'), nullable=True,
+        info=dict(description=u"Required time of day, or None if it doesn't matter"))
+    known_move_id = Column(Integer, ForeignKey('moves.id'), nullable=True,
+        info=dict(description=u"ID of a move the pokémon must know, or None if it doesn't matter"))
+    minimum_happiness = Column(Integer, nullable=True,
+        info=dict(description=u"Minimum tameness value the pokémon must have, or None if it doesn't matter"))
+    minimum_beauty = Column(Integer, nullable=True,
+        info=dict(description=u"Minimum Beauty value the pokémon must have, or None if it doesn't matter"))
+    relative_physical_stats = Column(Integer, nullable=True,
+        info=dict(description=u"Relation of Attack and Defense stats the pokémon must have, as sgn(atk-def), or None if that doesn't matter"))
+    party_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=True,
+        info=dict(description=u"ID of a pokémon that must be present in the party, or None if there's no such condition"))
 
 class PokemonFlavorText(TableBase):
+    u"""In-game pokédex descrption of a pokémon.
+    """
     __tablename__ = 'pokemon_flavor_text'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False, autoincrement=False)
-    flavor_text = Column(Unicode(255), nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the version that has this flavor text"))
+    flavor_text = Column(Unicode(255), nullable=False,
+        info=dict(description=u"ID of the version that has this flavor text", official=True, format='gametext'))
 
 class PokemonFormGroup(TableBase):
+    # XXX: Give the docstring here & check column descriptions
     __tablename__ = 'pokemon_form_groups'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    is_battle_only = Column(Boolean, nullable=False)
-    description = Column(markdown.MarkdownColumn(1024), nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the base form pokémon"))
+    is_battle_only = Column(Boolean, nullable=False,
+        info=dict(description=u"Set iff the forms only change in battle"))
+    description = Column(markdown.MarkdownColumn(1024), nullable=False,
+        info=dict(description=u"English description of how the forms work", format='markdown'))
 
 class PokemonFormSprite(TableBase):
+    # XXX: Give the docstring here & check column descriptions
     __tablename__ = 'pokemon_form_sprites'
-    id = Column(Integer, primary_key=True, nullable=False)
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    introduced_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False)
-    name = Column(Unicode(16), nullable=True)
-    is_default = Column(Boolean, nullable=True)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    introduced_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of version group the form was introduced in"))
+    name = Column(Unicode(16), nullable=True,
+        info=dict(description=u"English name of the form", format='plaintext'))
+    is_default = Column(Boolean, nullable=True,
+        info=dict(description=u'Set iff the form is the base, normal, usual, or otherwise default form'))
 
 class PokemonHabitat(TableBase):
+    u"""The habitat of a pokémon, as given in the FireRed/LeafGreen version pokédex
+    """
     __tablename__ = 'pokemon_habitats'
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
-    name = Column(Unicode(16), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"A numeric ID"))
+    name = Column(Unicode(16), nullable=False,
+        info=dict(description=u"The English name of the habitat", official=True, format='plaintext'))
 
 class PokemonInternalID(TableBase):
+    u"""The number of a pokémon a game uses internally
+    """
     __tablename__ = 'pokemon_internal_ids'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, autoincrement=False, nullable=False)
-    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False)
-    internal_id = Column(Integer, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, autoincrement=False, nullable=False,
+        info=dict(description=u"Database ID of the pokémon"))
+    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False,
+        info=dict(description=u"Database ID of the generation"))
+    internal_id = Column(Integer, nullable=False,
+        info=dict(description=u"Internal ID the generation's games use for the pokémon"))
 
 class PokemonItem(TableBase):
+    u"""Record of an item a pokémon can hold in the wild
+    """
     __tablename__ = 'pokemon_items'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False, autoincrement=False)
-    item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, nullable=False, autoincrement=False)
-    rarity = Column(Integer, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the version this applies to"))
+    item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the item"))
+    rarity = Column(Integer, nullable=False,
+        info=dict(description=u"Chance of the pokémon holding the item, in percent"))
 
 class PokemonMove(TableBase):
+    u"""Record of a move a pokémon can learn
+    """
     __tablename__ = 'pokemon_moves'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, index=True)
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False, index=True)
-    move_id = Column(Integer, ForeignKey('moves.id'), nullable=False, index=True)
-    pokemon_move_method_id = Column(Integer, ForeignKey('pokemon_move_methods.id'), nullable=False, index=True)
-    level = Column(Integer, nullable=True, index=True)
-    order = Column(Integer, nullable=True)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, index=True,
+        info=dict(description=u"ID of the pokémon"))
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False, index=True,
+        info=dict(description=u"ID of the version group this applies to"))
+    move_id = Column(Integer, ForeignKey('moves.id'), nullable=False, index=True,
+        info=dict(description=u"ID of the move"))
+    pokemon_move_method_id = Column(Integer, ForeignKey('pokemon_move_methods.id'), nullable=False, index=True,
+        info=dict(description=u"ID of the method this move is learned by"))
+    level = Column(Integer, nullable=True, index=True,
+        info=dict(description=u"Level the move is learned at, if applicable"))
+    order = Column(Integer, nullable=True,
+        info=dict(description=u"A sort key to produce the correct ordering when all else is equal"))  # XXX: This needs a better description
 
     __table_args__ = (
         PrimaryKeyConstraint('pokemon_id', 'version_group_id', 'move_id', 'pokemon_move_method_id', 'level'),
@@ -803,95 +1053,168 @@ class PokemonMove(TableBase):
     )
 
 class PokemonMoveMethod(TableBase):
+    u"""A method a move can be learned by, such as "Level up" or "Tutor".
+    """
     __tablename__ = 'pokemon_move_methods'
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
-    name = Column(Unicode(64), nullable=False)
-    description = Column(Unicode(255), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"A numeric ID"))
+    name = Column(Unicode(64), nullable=False,
+        info=dict(description=u"An English name of the method", format='plaintext'))
+    description = Column(Unicode(255), nullable=False,
+        info=dict(description=u"A detailed description of how the method works", format='plaintext'))
 
 class PokemonName(TableBase):
+    u"""A non-English name of a pokémon.
+    """
     __tablename__ = 'pokemon_names'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
-    name = Column(Unicode(16), nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the language"))
+    name = Column(Unicode(16), nullable=False,
+        info=dict(description=u"Name of the pokémon in the language", foreign=True, format='plaintext'))
 
 class PokemonShape(TableBase):
+    u"""The shape of a pokémon's body, as used in generation IV pokédexes.
+    """
     __tablename__ = 'pokemon_shapes'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(24), nullable=False)
-    awesome_name = Column(Unicode(16), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    name = Column(Unicode(24), nullable=False,
+        info=dict(description=u"A boring English name of the body shape", format='plaintext'))
+    awesome_name = Column(Unicode(16), nullable=False,
+        info=dict(description=u"A splendiferous, technically English, name of the body shape", format='plaintext'))
 
 class PokemonStat(TableBase):
+    u"""A stat value of a pokémon
+    """
     __tablename__ = 'pokemon_stats'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    stat_id = Column(Integer, ForeignKey('stats.id'), primary_key=True, nullable=False, autoincrement=False)
-    base_stat = Column(Integer, nullable=False)
-    effort = Column(Integer, nullable=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    stat_id = Column(Integer, ForeignKey('stats.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the stat"))
+    base_stat = Column(Integer, nullable=False,
+        info=dict(description=u"The base stat"))
+    effort = Column(Integer, nullable=False,
+        info=dict(description=u"The effort increase in this stat gained when this pokémon is defeated"))
 
 class PokemonType(TableBase):
+    u"""Maps a type to a pokémon. Each pokémon has 1 or 2 types.
+    """
     __tablename__ = 'pokemon_types'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False)
-    type_id = Column(Integer, ForeignKey('types.id'), nullable=False)
-    slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False)
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the pokémon"))
+    type_id = Column(Integer, ForeignKey('types.id'), nullable=False,
+        info=dict(description=u"ID of the type"))
+    slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"The type's slot, 1 or 2, used to sort types if there are two of them"))
 
 class Region(TableBase):
-    """Major areas of the world: Kanto, Johto, etc."""
+    u"""Major areas of the world: Kanto, Johto, etc.
+    """
     __tablename__ = 'regions'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(16), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    name = Column(Unicode(16), nullable=False,
+        info=dict(description=u"The English name of the region", official=True, format='plaintext'))
 
 class Stat(TableBase):
+    u"""A Stat, such as Attack or Speed
+    """
     __tablename__ = 'stats'
-    id = Column(Integer, primary_key=True, nullable=False)
-    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=True)
-    name = Column(Unicode(16), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=True,
+        info=dict(description=u"For offensive and defensive stats, the damage this stat relates to; otherwise None (the NULL value)"))
+    name = Column(Unicode(16), nullable=False,
+        info=dict(description=u"The English name of the stat", official=True, format='plaintext'))
 
 class SuperContestCombo(TableBase):
+    u"""Combo of two moves in a Super Contest.
+    """
     __tablename__ = 'super_contest_combos'
-    first_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
-    second_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+    first_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the first move"))
+    second_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the second and last move"))
 
 class SuperContestEffect(TableBase):
+    u"""An effect a move can have when used in the Super Contest
+    """
     __tablename__ = 'super_contest_effects'
-    id = Column(Integer, primary_key=True, nullable=False)
-    appeal = Column(SmallInteger, nullable=False)
-    flavor_text = Column(Unicode(64), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    appeal = Column(SmallInteger, nullable=False,
+        info=dict(description=u"Number of hearts the user will get when executing a move with this effect"))
+    flavor_text = Column(Unicode(64), nullable=False,
+        info=dict(description=u"An English description of the effect", format='plaintext'))
 
 class TypeEfficacy(TableBase):
+    u"""The effectiveness of damage of one type against pokémon of another type
+    """
     __tablename__ = 'type_efficacy'
-    damage_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False)
-    target_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False)
-    damage_factor = Column(Integer, nullable=False)
+    damage_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the damage type; most commonly this is the same as the attack type"))
+    target_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the defending pokémon's type"))
+    damage_factor = Column(Integer, nullable=False,
+        info=dict(description=u"The effectiveness, in percent"))
 
 class Type(TableBase):
+    u"""An elemental type, such as Grass or Steel
+    """
     __tablename__ = 'types'
     __singlename__ = 'type'
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(Unicode(8), nullable=False)
-    abbreviation = Column(Unicode(3), nullable=False)
-    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
-    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=False) ## ??? is none; everything else is physical or special
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    name = Column(Unicode(8), nullable=False,
+        info=dict(description=u"The English name.", format='plaintext'))  # XXX: Is this official? The games don't spell "Electric" in full...
+    abbreviation = Column(Unicode(3), nullable=False,
+        info=dict(description=u"An arbitrary 3-letter abbreviation of the type", format='plaintext'))  # XXX: Or is it not arbitrary?
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
+        info=dict(description=u"ID of the generation this type first appeared in"))
+    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=False,
+        info=dict(description=u"ID of the damage class this type's moves had before generation IV, or None for the ??? type"))
 
 class TypeName(TableBase):
+    u"""Non-English name of an elemental type
+    """
     __tablename__ = 'type_names'
-    type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False)
-    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False)
-    name = Column(Unicode(16), nullable=False)
+    type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the type"))
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"ID of the language"))
+    name = Column(Unicode(16), nullable=False,
+        info=dict(description=u"Name of the type in that language", foreign=True, format='plaintext'))
 
 class VersionGroup(TableBase):
+    u"""A group of related game versions
+    """
     __tablename__ = 'version_groups'
-    id = Column(Integer, primary_key=True, nullable=False)
-    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
+        info=dict(description=u"ID of the generation the games of this group belong to"))
 
 class VersionGroupRegion(TableBase):
+    u"""Maps a region to a game version group that features it
+    """
     __tablename__ = 'version_group_regions'
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False)
-    region_id = Column(Integer, ForeignKey('regions.id'), primary_key=True, nullable=False)
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False,
+        info=dict(description=u"ID of the version"))
+    region_id = Column(Integer, ForeignKey('regions.id'), primary_key=True, nullable=False,
+        info=dict(description=u"ID of the region"))
 
 class Version(TableBase):
+    u"""A version of a mainline pokémon game
+    """
     __tablename__ = 'versions'
-    id = Column(Integer, primary_key=True, nullable=False)
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False)
-    name = Column(Unicode(32), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False,
+        info=dict(description=u"ID of the version group this game belongs to"))
+    name = Column(Unicode(32), nullable=False,
+        info=dict(description=u'The English name of the game, without the "Pokémon" prefix', official=True, format='plaintext'))
 
 
 ### Relations down here, to avoid ordering problems
