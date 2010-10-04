@@ -55,7 +55,7 @@ If the Pokémon has two types, both are overridden.  The Pokémon must directly 
 In Pokémon Colosseum and XD: Gale of Darkness, this ability does not take effect on Shadow-type moves.",Changes type to match when hit by a damaging move.
 17,Immunity,3,"This Pokémon cannot be [poisoned]{mechanic:poison}.  This includes bad poison.
 
-If a Pokémon is poisoned and acquires this ability, its poison is healed; this includes when regaining a lost ability upon leaving battle.",Prevents [poison]{mechanic].
+If a Pokémon is poisoned and acquires this ability, its poison is healed; this includes when regaining a lost ability upon leaving battle.",Prevents [poison]{mechanic}.
 18,Flash Fire,3,"This Pokémon is immune to [Fire]{type}-type moves.  Once this Pokémon has been hit by a Fire move, its own Fire moves will inflict 1.5× as much damage until it leaves battle.
 
 This ability has no effect while the Pokémon is [frozen]{mechanic:freezing}.  The Fire damage bonus is retained even if the Pokémon is frozen and thawed or the ability is lost or disabled.  Fire moves will ignore this Pokémon's [Substitute]{move}.
