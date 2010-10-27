@@ -99,7 +99,7 @@ If this Pokémon has a [Substitute]{move}, this ability will block moves as usua
 This ability is disabled during [Gravity]{move} or [Ingrain]{move}, or while holding an [Iron Ball]{item}.  This ability is not disabled during [Roost]{move}.",Protects against [Ground]{type} moves.
 27,Effect Spore,3,"Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being [paralyzed]{mechanic:paralysis}, [poisoned]{mechanic:poison}, or put to [sleep]{mechanic}, chosen at random.
 
-Nothing is done to compensate if the move's user is immune to one of these ailments; there is simply a lower chance that the move's user will be affected.","Has a 30% chance of inflcting either [paralysis]{mechanic, [poison]{mechanic}, or [sleep]{mechanic} on attacking Pokémon on contact."
+Nothing is done to compensate if the move's user is immune to one of these ailments; there is simply a lower chance that the move's user will be affected.","Has a 30% chance of inflcting either [paralysis]{mechanic}, [poison]{mechanic}, or [sleep]{mechanic} on attacking Pokémon on contact."
 28,Synchronize,3,"Whenever this Pokémon is [burned]{mechanic:burn}, [paralyzed]{mechanic:paralysis}, or [poisoned]{mechanic:poison}, the Pokémon who gave this Pokémon that ailment is also given the ailment.
 
 If this Pokémon is badly poisoned, this ability only passes back regular poison.  This ability cannot pass back a status ailment that the Pokémon did not directly receive from another Pokémon, such as the poison from [Toxic Spikes]{move} or the burn from a [Flame Orb]{item}.
@@ -198,12 +198,12 @@ Overworld: If any Pokémon in the party has this ability, each egg in the party 
 
 This ability does not prevent any accuracy losses other than [stat modifiers]{mechanic}, such as the accuracy cut from [fog]{mechanic}; nor does it prevent other Pokémon's [evasion]{mechanic} from making this Pokémon's moves less accurate.  This Pokémon can still be passed negative accuracy modifiers through [Heart Swap]{move}.
 
-Overworld: If the lead Pokémon has this ability, lower-levelled Pokémon have their encounter rate increased.",Protects against [accuracy]{mechanic} [drops]{mechanic:stat modifiers}.
+Overworld: If the lead Pokémon has this ability, lower-levelled Pokémon have their encounter rate increased.",Protects against [accuracy]{mechanic} [drops]{mechanic:stat modifier}.
 52,Hyper Cutter,3,"This Pokémon cannot have its [Attack]{mechanic} [lowered]{mechanic:stat modifier} by other Pokémon.
 
 This ability does not prevent any Attack losses other than [stat modifiers]{mechanic}, such as the Attack cut from a [burn]{mechanic}; nor self-inflicted Attack drops, such as the Attack drop from [Superpower]{move}; nor opponent-triggered Attack boosts, such as the Attack boost from [Swagger]{move}.  This Pokémon can still be passed negative Attack modifiers through [Heart Swap]{move} or [Power Swap]{move}.
 
-Overworld: In Pokémon Emerald, if any Pokémon in the party has this ability, [Cut]{move}'s radius for cutting grass is doubled.  (In Generation IV, the ability to cut grass with Cut has been removed.)",Protects against opponent-inflicted [Attack]{mechanic} [drops]{mechanic:stat modifiers}.
+Overworld: In Pokémon Emerald, if any Pokémon in the party has this ability, [Cut]{move}'s radius for cutting grass is doubled.  (In Generation IV, the ability to cut grass with Cut has been removed.)",Protects against opponent-inflicted [Attack]{mechanic} [drops]{mechanic:stat modifier}.
 53,Pickup,3,"After each battle, this Pokémon has a 10% chance of picking up an item if it is not already holding one.  The items that may be found vary by game, and, since Pokémon Emerald, by the Pokémon's level.
 
 This ability is checked after the battle ends, at which point any temporary ability changes have worn off.",The Pokémon has a 10% chance of picking up an item after battle.
@@ -310,9 +310,9 @@ The evasion bonus does not count as a [stat modifier]{mechanic}.
 
 Overworld: If the lead Pokémon has this ability, the wild encounter rate is halved in a blizzard.",Increases evasion to 1.25× during [hail]{mechanic}.
 82,Gluttony,4,"This Pokémon eats any held Berry triggered by low [HP]{mechanic} when it falls below 50% of its HP, regardless of the Berry's usual threshold.",Makes the Pokémon eat any held Berry triggered by low [HP]{mechanic} below 1/2 its max HP.
-83,Anger Point,4,"Whenever this Pokémon receives a [critical hit]{mechanic}, its [Attack]{mechanic} rises to the maximum of 6 [stages]{mechanic:stat modifiers}.
+83,Anger Point,4,"Whenever this Pokémon receives a [critical hit]{mechanic}, its [Attack]{mechanic} rises to the maximum of 6 [stages]{mechanic:stat modifier}.
 
-This ability will still take effect if the critical hit is received by a [Substitute]{move}.",Raises [Attack]{mechanic} to the maximum of six [stages]{mechanic:stat modifiers} upon receiving a [critical hit]{mechanic}.
+This ability will still take effect if the critical hit is received by a [Substitute]{move}.",Raises [Attack]{mechanic} to the maximum of six [stages]{mechanic:stat modifier} upon receiving a [critical hit]{mechanic}.
 84,Unburden,4,"When this Pokémon uses or loses its held item, its [Speed]{mechanic} is doubled.  If it gains another item or leaves battle, this bonus is lost.
 
 This bonus does not count as a [stat modifier]{mechanic}.  There is no notification when this ability takes effect.",Doubles [Speed]{mechanic} upon using or losing a held item.
@@ -470,7 +470,7 @@ This Pokémon's held item, whether or not it is a Plate, cannot be taken by [Cov
 
 This ability has no effect for any Pokémon other than [Arceus]{pokemon}.  This ability cannot be traded with [Skill Swap]{move}, nor copied with [Role Play]{move} or [Trace]{ability}, nor disabled with [Gastro Acid]{move}, nor changed with [Worry Seed]{move}.  This Pokémon cannot use Skill Swap or Role Play to lose its ability itself.  [Mold Breaker]{ability} cannot ignore this ability.
 
-If a Pokémon [Transform]{move}s into an Arceus with this ability, it will Transform into Arceus's default, [Normal]{type}-type form.  If the Transforming Pokémon is holding a plate, this ability will then activate and change the Pokémon into the corresponding form.",Changes [Arceus]{pokemon}'s type and form to match its held Plate.
+If a Pokémon [Transforms]{move:Transform} into an Arceus with this ability, it will Transform into Arceus's default, [Normal]{type}-type form.  If the Transforming Pokémon is holding a Plate, this ability will then activate and change the Pokémon into the corresponding form.",Changes [Arceus]{pokemon}'s type and form to match its held Plate.
 122,Flower Gift,4,"This Pokémon and its ally have 1.5× their [Attack]{mechanic} and [Special Defense]{mechanic} during [strong sunlight]{mechanic}.
 
 This ability does not stack if two allied Pokémon have it.
@@ -478,7 +478,7 @@ This ability does not stack if two allied Pokémon have it.
 Unlike [Forecast]{ability} and [Multitype]{ability}, this ability is not tied to its Pokémon's form change; [Cherrim]{pokemon} will switch between its forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim.",Heightens the Pokémon and its ally's [Attack]{mechanic} and [Special Defense]{mechanic} to 1.5× during [strong sunlight]{mechanic}.
 123,Bad Dreams,4,"Opposing Pokémon take 1/8 of their maximum [HP]{mechanic} in damage after each turn while they are [asleep]{mechanic}.
 
-This ability stacks if two allied Pokémon have it.",Damages [sleeping]{mechanic} opponents for 1/8 their max [HP]{mechanic} after each turn.
+This ability stacks if two allied Pokémon have it.",Damages [sleeping]{mechanic:sleep} opponents for 1/8 their max [HP]{mechanic} after each turn.
 124,wicked trick,5,"Whenever a move makes contact with this Pokémon, it steals the attacker's held item.",Steals attacking Pokémon's held item on contact.
 125,brute force,5,"Moves have greater power, but secondary effects never occur.","Moves have greater power, but secondary effects never occur."
 126,antagonist,5,Stat changes are inverted for this Pokémon.,Stat changes are inverted.
