@@ -915,7 +915,7 @@ This move breaks through [Wonder Guard]{ability}."
 310,Restores half the target's max HP.,Restores half the target's max HP.
 311,Inflicts more damage if the target has a major status ailment. (?),Inflicts more damage if the target has a major status ailment. (?)
 312,"Tosses the target into the air for a turn, during which it can't act.  Target falls and takes damage on the second turn.","Tosses the target into the air.  On the following turn, target falls to the ground and takes regular damage.  Target cannot move while it's in the air."
-313,Raises the user's Attack and Speed by one stage.,Raises the user's Attack and Speed by one stage.
+313,Raises the user's Attack by one stage.  Raises the user's Speed by two stages.,Raises the user's Attack by one stage.  Raises the user's Speed by two stages.
 314,Ends wild battles. (?),Ends wild battles. (?)
 315,Destroys the target's held berry.,"Inflicts regular damage.  If the target is holding a berry, it's destroyed.  Held berries cannot be used in response to this move."
 316,Makes the target act last this turn.,"If the target has not yet acted this turn, it will act last."
