@@ -876,7 +876,7 @@ This move breaks through [Detect]{move} and [Protect]{move}.
 This move cannot be selected by [Sleep Talk]{move}."
 274,Has a $effect_chance% chance to burn the target and a $effect_chance% chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 
-This move breaks through [Wonder Guard]{ability}."
+This move breaks through [Wonder Guard]{ability} in Generation IV."
 275,Has a $effect_chance% chance to freeze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [freeze]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 276,Has a $effect_chance% chance to paralyze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 277,Has a $effect_chance% chance to raise the user's Special Attack by one level.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [raise]{mechanic} the user's [Special Attack]{mechanic} by one level.
@@ -887,10 +887,10 @@ This move breaks through [Wonder Guard]{ability}."
 282,Swaps every Pokémon's Defense and Special Defense for 5 turns.,Every Pokémon on the field has its Defense and Special Defense swapped for the next 5 turns.
 283,"Inflicts damage based on the target's Defense, not Special Defense.","Inflicts regular damage, but always uses the target's Defense for damage calculation, never its Special Defense."
 284,Inflicts double damage if the target is Poisoned.,Inflicts regular damage.  This move's power is doubled against Pokémon that are Poisoned.
-285,Raises the user's Speed by two stages.,Raises the user's Speed by two stages.
+285,Raises the user's Speed by two stages and reduces the user's weight.,Raises the user's Speed by two stages and reduces weight.
 286,Inflicts a random status effect on the target for 3 turns.,Inflicts a random status effect on the target for 3 turns.  This move will fail if Gravity is in effect.
 287,Held items cannot be used for five turns. (?),Held items cannot be used for five turns. (?)
-288,Inflicts a random major status ailment on the target.,Inflicts a random major status ailment on the target.
+288,Grounds Flying and Levitating Pokémon.,"Removes [Flying]{type}-type and [Levitating]{ability:Levitate} Pokémon's immunity to Ground, similar to as in [Gravity]{move}."
 289,Always results in a critical hit.,Always results in a critical hit.
 290,Not yet known.  [[effect 290]],Not yet known.  [[effect 290]]
 291,"Raises the user's Special Attack, Special Defense, and Speed by one stage.","Raises the user's Special Attack, Special Defense, and Speed by one stage."
@@ -901,7 +901,7 @@ This move breaks through [Wonder Guard]{ability}."
 296,Inflicts regular damage.  Raises the user's Speed by one stage.,Inflicts regular damage.  Raises the user's Speed by one stage.
 297,Lowers the target's Special Defense by one stage.,Inflicts regular damage.  Lowers the target's Special Defense by one stage.
 298,More powerful against fighting-type Pokémon. (?),More powerful against fighting-type Pokémon. (?)
-299,Changes target's ability to Simple. (?),Changes target's ability to [Simple]{ability}. (?)
+299,Changes target's ability to Simple.,Changes target's ability to [Simple]{ability}. (?)
 300,Copies the user's ability onto the target.,Changes the target's ability to match the user's.  This effect ends when the target leaves battle.
 301,Copies non-damaging moves but makes the user go last.,"If the target would use a non-damaging move this turn, the user will copy the move and act last."
 302,Power increases the more Pokémon in the trainer's team know this move.,Power increases the more Pokémon in the trainer's team know this move.
@@ -915,7 +915,7 @@ This move breaks through [Wonder Guard]{ability}."
 310,Restores half the target's max HP.,Restores half the target's max HP.
 311,Inflicts more damage if the target has a major status ailment. (?),Inflicts more damage if the target has a major status ailment. (?)
 312,"Tosses the target into the air for a turn, during which it can't act.  Target falls and takes damage on the second turn.","Tosses the target into the air.  On the following turn, target falls to the ground and takes regular damage.  Target cannot move while it's in the air."
-313,Raises the user's Attack by one stage.  Raises the user's Speed by two stages.,Raises the user's Attack by one stage.  Raises the user's Speed by two stages.
+313,Raises the user's Attack by one stage and Speed by two stages.,Raises the user's Attack by one stage and Speed by two stages.
 314,Ends wild battles. (?),Ends wild battles. (?)
 315,Destroys the target's held berry.,"Inflicts regular damage.  If the target is holding a berry, it's destroyed.  Held berries cannot be used in response to this move."
 316,Makes the target act last this turn.,"If the target has not yet acted this turn, it will act last."
@@ -924,14 +924,14 @@ This move breaks through [Wonder Guard]{ability}."
 319,User becomes the target's type.,User becomes the target's type.
 320,Inflicts double damage if a friendly Pokémon fainted on the last turn.,Inflicts regular damage.  Power is doubled if a friendly Pokémon fainted on the previous turn.
 321,Inflicts damage equal to the user's remaining HP.  User faints.,Inflicts damage equal to the user's remaining HP.  User faints.
-322,Raises the user's Special Attack by two stages. (?),Raises the user's Special Attack by two stages. (?)
+322,Raises the user's Special Attack by three stages.,Raises the user's Special Attack by three stages.
 323,"Raises the user's Attack, Defense, and accuracy by one stage.","Raises the user's Attack, Defense, and accuracy by one stage."
 324,Gives the user's held item to the target.,"If the user has a held item, and the target does not, the user's item is transferred to the target."
 325,Does some kind of combo when followed by fire realm.,Does some kind of combo when followed by fire realm.
 326,Does some kind of combo when followed by grass realm.,Does some kind of combo when followed by grass realm.
 327,Does some kind of combo when followed by water realm.,Does some kind of combo when followed by water realm.
 328,Raises the user's Attack and Special Attack by one stage.,Raises the user's Attack and Special Attack by one stage.
-329,Raises the user's Defense by two stages.,Raises the user's Defense by two stages.
+329,Raises the user's Defense by three stages.,Raises the user's Defense by three stages.
 330,Has a $effect_chance% chance to put the target to sleep.,Inflicts regular damage.  Has a $effect_chance% chance to put the target to sleep.
 331,Lowers the target's Speed.,Inflicts regular damage.  Lowers the target's Speed.
 332,Charges for a turn before attacking.  Has a $effect_chance% chance to paralyze the target.,Inflicts regular damage.  Requires a turn to charge before attacking.  Has a $effect_chance% chance to paralyze the target.
