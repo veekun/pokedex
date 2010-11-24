@@ -186,10 +186,10 @@ id,location_id,internal_id,name
 224,85,41,
 225,121,42,
 226,122,43,
-227,156,44,unknown floors A
-228,156,45,unknown floors B
+227,156,44,1F
+228,156,45,B1F
 229,156,46,empty floor X
-230,156,47,unknown floors C
+230,156,47,B2F
 231,156,48,empty floor Y
 232,156,49,B3F
 235,70,52,
