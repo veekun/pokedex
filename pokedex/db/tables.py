@@ -897,6 +897,11 @@ class PokemonAbility(TableBase):
         info=dict(description=u"ID of the pokémon"))
     ability_id = Column(Integer, ForeignKey('abilities.id'), nullable=False,
         info=dict(description=u"ID of the ability"))
+    # XXX having both a method and a slot is kind of gross.  "slot" is a
+    # misnomer, anyway: duplicate abilities don't appear in slot 2.
+    # Probably should replace that with "order".
+    is_dream = Column(Boolean, nullable=False, index=True,
+        info=dict(description=u"Whether this is a Dream World ability"))
     slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"The ability slot, i.e. 1 or 2 for gen. IV"))
 
@@ -1221,6 +1226,9 @@ class Version(TableBase):
 Ability.flavor_text = relation(AbilityFlavorText, order_by=AbilityFlavorText.version_group_id, backref='ability')
 Ability.foreign_names = relation(AbilityName, backref='ability')
 Ability.generation = relation(Generation, backref='abilities')
+Ability.pokemon = relation(Pokemon,
+    secondary=PokemonAbility.__table__,
+)
 
 AbilityFlavorText.version_group = relation(VersionGroup)
 
@@ -1354,9 +1362,26 @@ NaturePokeathlonStat.pokeathlon_stat = relation(PokeathlonStat, backref='nature_
 Pokedex.region = relation(Region, backref='pokedexes')
 Pokedex.version_groups = relation(VersionGroup, secondary=PokedexVersionGroup.__table__, backref='pokedexes')
 
-Pokemon.abilities = relation(Ability, secondary=PokemonAbility.__table__,
-                                      order_by=PokemonAbility.slot,
-                                      backref='pokemon')
+Pokemon.all_abilities = relation(Ability,
+    secondary=PokemonAbility.__table__,
+    order_by=PokemonAbility.slot,
+)
+Pokemon.abilities = relation(Ability,
+    secondary=PokemonAbility.__table__,
+    primaryjoin=and_(
+        Pokemon.id == PokemonAbility.pokemon_id,
+        PokemonAbility.is_dream == False,
+    ),
+    order_by=PokemonAbility.slot,
+)
+Pokemon.dream_ability = relation(Ability,
+    secondary=PokemonAbility.__table__,
+    primaryjoin=and_(
+        Pokemon.id == PokemonAbility.pokemon_id,
+        PokemonAbility.is_dream == True,
+    ),
+    uselist=False,
+)
 Pokemon.formes = relation(Pokemon, primaryjoin=Pokemon.id==Pokemon.forme_base_pokemon_id,
                                                backref=backref('forme_base_pokemon',
                                                                remote_side=[Pokemon.id]))
