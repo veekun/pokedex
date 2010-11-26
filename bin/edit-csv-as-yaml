@@ -1,0 +1,98 @@
+#!/usr/bin/env python
+"""Quick, dirty script that will convert a csv file to yaml, spawn an editor
+for you to fiddle with it, then convert back to csv and replace the original
+file.
+
+Run me as: $0 some_file.csv
+
+The editor used is $EDITOR, of course.
+
+This script is not guaranteed to be even remotely reliable, so consider only
+using it on files in source control.
+"""
+
+import codecs
+import csv
+import os
+import subprocess
+import sys
+import tempfile
+
+try:
+    import yaml
+except ImportError:
+    sys.stderr.write("Please install PyYAML.\n")
+    sys.exit(13)
+
+infilename, = sys.argv[1:]
+
+data = []
+with open(infilename) as infile:
+    reader = csv.reader(infile, lineterminator='\n')
+    column_names = [unicode(column) for column in next(reader)]
+
+    # Read data...
+    for row in reader:
+        datum = dict()
+        for col, value in zip(column_names, row):
+            datum[col] = value.decode('utf-8')
+
+        data.append(datum)
+
+
+# Monkeypatch yaml to use > syntax for multiline text; easier to edit
+from yaml.emitter import Emitter
+orig_choose_scalar_style = Emitter.choose_scalar_style
+def new_choose_scalar_style(self):
+    if self.analysis is None:
+        self.analysis = self.analyze_scalar(self.event.value)
+    if self.analysis.multiline:
+        return '>'
+    return orig_choose_scalar_style(self)
+Emitter.choose_scalar_style = new_choose_scalar_style
+
+# Write to a tempfile
+with tempfile.NamedTemporaryFile(suffix='.yml') as tmp:
+    yaml.safe_dump(data, tmp,
+        default_flow_style=False,
+        allow_unicode=True,
+        indent=4,
+    )
+    del data  # reclaim rams!
+
+    error_line = ''  # used on errors
+    while True:
+        args = [os.environ['EDITOR'], tmp.name]
+        if 'vim' in os.environ['EDITOR']:
+            # vim has an arg for jumping to a line:
+            args.append("+{0}".format(error_line))
+
+        # Run the user's editor and wait for it to close
+        subprocess.Popen(args).wait()
+        tmp.seek(0)
+
+        try:
+            new_data = yaml.safe_load(tmp)
+            break
+        except yaml.YAMLError as e:
+            if hasattr(e, 'problem_mark'):
+                error_line = e.problem_mark.line + 1
+            else:
+                error_line = ''
+
+            print
+            print "Oh my god what have you done:"
+            print
+            print str(e)
+            print
+            print "Press Enter to try again, or I guess ctrl-c to bail."
+            raw_input()
+
+with open(infilename, 'wb') as outfile:
+    writer = csv.writer(outfile, lineterminator='\n')
+    writer.writerow([ column.encode('utf8') for column in column_names ])
+
+    for datum in new_data:
+        writer.writerow([
+            datum[column].encode('utf8') for column in column_names
+        ])
