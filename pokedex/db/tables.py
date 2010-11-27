@@ -672,6 +672,20 @@ class Move(TableBase):
     super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=True,
         info=dict(description="ID of the move's Super Contest effect"))
 
+class MoveChangelog(TableBase):
+    """History of changes to moves across main game versions."""
+    __tablename__ = 'move_changelog'
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False,
+        info=dict(description="ID of the move that changed"))
+    changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False,
+        info=dict(description="ID of the version group in which the move changed"))
+    power = Column(SmallInteger, nullable=True,
+        info=dict(description="Prior base power of the move, or NULL if unchanged"))
+    pp = Column(SmallInteger, nullable=True,
+        info=dict(description="Prior base PP of the move, or NULL if unchanged"))
+    accuracy = Column(SmallInteger, nullable=True,
+        info=dict(description="Prior accuracy of the move, or NULL if unchanged"))
+
 class Nature(TableBase):
     u"""A nature a pokémon can have, such as Calm or Brave
     """
@@ -1351,6 +1365,10 @@ LocationInternalID.generation = relation(Generation)
 Machine.item = relation(Item)
 Machine.version_group = relation(VersionGroup)
 
+Move.changelog = relation(MoveChangelog,
+    order_by=MoveChangelog.changed_in_version_group_id.asc(),
+    backref='move',
+)
 Move.contest_effect = relation(ContestEffect, backref='moves')
 Move.contest_combo_next = association_proxy('contest_combo_first', 'second')
 Move.contest_combo_prev = association_proxy('contest_combo_second', 'first')
@@ -1371,6 +1389,8 @@ Move.type = relation(Type, backref='moves')
 
 Move.effect = markdown.MoveEffectProperty('effect')
 Move.short_effect = markdown.MoveEffectProperty('short_effect')
+
+MoveChangelog.changed_in = relation(VersionGroup, backref='move_changelog')
 
 MoveEffect.category_map = relation(MoveEffectCategoryMap)
 MoveEffect.categories = association_proxy('category_map', 'category')
