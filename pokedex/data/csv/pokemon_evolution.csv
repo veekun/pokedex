@@ -319,6 +319,3 @@ from_pokemon_id,to_pokemon_id,evolution_trigger_id,trigger_item_id,minimum_level
 633,634,1,,50,,,,,,,,,
 634,635,1,,64,,,,,,,,,
 636,637,1,,59,,,,,,,,,
-412,10004,1,,20,female,,,,,,,,
-412,10005,1,,20,female,,,,,,,,
-554,10017,1,,35,,,,,,,,,

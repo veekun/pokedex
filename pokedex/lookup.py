@@ -104,6 +104,7 @@ class PokedexLookup(object):
             tables.Move,
             tables.Nature,
             tables.Pokemon,
+            tables.PokemonForm,
             tables.Type,
         )
     )
@@ -212,16 +213,16 @@ class PokedexLookup(object):
 
                 # Add the basic English name to the index
                 if cls == tables.Pokemon:
-                    # Pokémon need their form name added
-                    # XXX kinda kludgy
-                    add(row.full_name, None, u'en', u'us')
+                    # Don't re-add alternate forms of the same Pokémon; they'll
+                    # be added as Pokémon forms instead
+                    if not row.is_base_form:
+                        continue
+                elif cls == tables.PokemonForm:
+                    if row.name:
+                        add(row.pokemon_name, None, u'en', u'us')
+                    continue
 
-                    # If this is a default form, ALSO add the unadorned name,
-                    # so 'Deoxys' alone will still do the right thing
-                    if row.forme_name and not row.forme_base_pokemon_id:
-                        add(row.name, None, u'en', u'us')
-                else:
-                    add(row.name, None, u'en', u'us')
+                add(row.name, None, u'en', u'us')
 
                 # Some things also have other languages' names
                 # XXX other language form names..?
@@ -550,8 +551,10 @@ class PokedexLookup(object):
         table_names = []
         for valid_type in valid_types:
             table_name = self._parse_table_name(valid_type)
-            # Skip anything not recognized.  Could be, say, a language code
-            if table_name:
+            # Skip anything not recognized.  Could be, say, a language code.
+            # XXX The vast majority of Pokémon forms are unnamed and unindexed,
+            #     which can produce blank results.  So skip them too for now.
+            if table_name and table_name != 'pokemon_forms':
                 table_names.append(table_name)
 
         if not table_names:
@@ -559,6 +562,7 @@ class PokedexLookup(object):
             # were valid, but this function is guaranteed to return
             # *something*, so it politely selects from the entire index instead
             table_names = self.indexed_tables.keys()
+            table_names.remove('pokemon_forms')
 
         # Rather than create an array of many hundred items and pick randomly
         # from it, just pick a number up to the total number of potential
