@@ -1031,6 +1031,20 @@ class PokemonFormGroup(TableBase):
     description = Column(markdown.MarkdownColumn(1024), nullable=False,
         info=dict(description=u"English description of how the forms work", format='markdown'))
 
+class PokemonFormPokeathlonStat(TableBase):
+    u"""A Pokémon form's performance in one Pokéathlon stat."""
+    __tablename__ = 'pokemon_form_pokeathlon_stats'
+    pokemon_form_id = Column(Integer, ForeignKey('pokemon_forms.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u'The ID of the Pokémon form.'))
+    pokeathlon_stat_id = Column(Integer, ForeignKey('pokeathlon_stats.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u'The ID of the Pokéathlon stat.'))
+    minimum_stat = Column(Integer, nullable=False, autoincrement=False,
+        info=dict(description=u'The minimum value for this stat for this Pokémon form.'))
+    base_stat = Column(Integer, nullable=False, autoincrement=False,
+        info=dict(description=u'The default value for this stat for this Pokémon form.'))
+    maximum_stat = Column(Integer, nullable=False, autoincrement=False,
+        info=dict(description=u'The maximum value for this stat for this Pokémon form.'))
+
 class PokemonHabitat(TableBase):
     u"""The habitat of a pokémon, as given in the FireRed/LeafGreen version pokédex
     """
@@ -1481,9 +1495,14 @@ PokemonForm.unique_pokemon = relation(Pokemon, backref=backref('unique_form', us
                                       primaryjoin=PokemonForm.unique_pokemon_id==Pokemon.id)
 PokemonForm.version_group = relation(VersionGroup)
 PokemonForm.form_group = association_proxy('form_base_pokemon', 'form_group')
+PokemonForm.pokeathlon_stats = relation(PokemonFormPokeathlonStat,
+                                        order_by=PokemonFormPokeathlonStat.pokeathlon_stat_id,
+                                        backref='pokemon_form')
 
 PokemonFormGroup.pokemon = relation(Pokemon, backref=backref('form_group',
                                                              uselist=False))
+
+PokemonFormPokeathlonStat.pokeathlon_stat = relation(PokeathlonStat)
 
 PokemonItem.item = relation(Item, backref='pokemon')
 PokemonItem.version = relation(Version)
