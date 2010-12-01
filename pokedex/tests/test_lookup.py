@@ -28,7 +28,8 @@ def test_exact_lookup():
 
         # Forms
         (u'Rotom',          'pokemon',      479),
-        (u'Wash Rotom',     'pokemon',      504),
+        (u'Wash Rotom',     'pokemon_forms',10059),
+        (u'East Shellos',   'pokemon_forms',10039),
 
         # Other languages
         (u'イーブイ',       'pokemon',      133),
