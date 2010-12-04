@@ -143,7 +143,7 @@ All other effects work as normal."
 If [Chatter]{move}, [Metronome]{move}, [Mimic]{move}, [Sketch]{move}, or [Struggle]{move} is selected, this move will fail.
 
 This move cannot be copied by [Mirror Move]{move}, nor selected by [Assist]{move} or [Metronome]{move}, nor forced by [Encore]{move}."
-84,Randomly selects and uses any move in the game.,"Selects any move at random and uses it.  Moves the user already knows are not eligible.  Assist, meta, protection, and reflection moves are also not eligible; specifically, [Assist]{move}, [Chatter]{move}, [Copycat]{move}, [Counter]{move}, [Covet]{move}, [Destiny Bond]{move}, [Detect]{move}, [Endure]{move}, [Feint]{move}, [Focus Punch]{move}, [Follow Me]{move}, [Helping Hand]{move}, [Me First]{move}, [Metronome]{move}, [Mimic]{move}, [Mirror Coat]{move}, [Mirror Move]{move}, [Protect]{move}, [Sketch]{move}, [Sleep Talk]{move}, [Snatch]{move}, [Struggle]{move}, [Switcheroo]{move}, [Thief]{move}, and [Trick]{move} will not be used by this effect.
+84,Randomly selects and uses any move in the game.,"Selects any move at random and uses it.  Moves the user already knows are not eligible.  Assist, meta, protection, and reflection moves are also not eligible; specifically, [Assist]{move}, [Chatter]{move}, [Copycat]{move}, [Counter]{move}, [Covet]{move}, [Destiny Bond]{move}, [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Feint]{move}, [Focus Punch]{move}, [Follow Me]{move}, [Helping Hand]{move}, [Me First]{move}, [Metronome]{move}, [Mimic]{move}, [Mirror Coat]{move}, [Mirror Move]{move}, [Protect]{move}, [Sketch]{move}, [Sleep Talk]{move}, [Snatch]{move}, [Struggle]{move}, [Switcheroo]{move}, [Thief]{move}, [Trick]{move}, and [wide guard]{move} will not be selected by this move.
 
 This move cannot be copied by [Mimic]{move} or [Mirror Move]{move}, nor selected by [Assist]{move}, [Metronome]{move}, or [Sleep Talk]{move}."
 85,"Seeds the target, stealing HP from it every turn.","Plants a seed on the target that steals 1/8 of its max [HP]{mechanic} at the end of every turn and heals the user for the amount taken.  Has no effect on [Grass]{type} Pokémon.  The seed remains until the target leaves the field.
@@ -230,9 +230,9 @@ Otherwise: [Lowers]{mechanic} the user's [Speed]{mechanic} by one level, and [ra
 The curse effect is passed on by [Baton Pass]{move}.
 
 This move cannot be copied by [Mirror Move]{move}."
-112,Prevents any moves from hitting the user this turn.,"Protects the user from opponents' moves until the end of this turn.  If the user is last to move this turn, this move will fail.
+112,Prevents any moves from hitting the user this turn.,"No moves will hit the user for the remainder of this turn.  If the user is last to act this turn, this move will fail.
 
-If the user successfully used [Detect]{move}, [Endure]{move}, or [Protect]{move} on the last turn, this move has a 50% chance to [fail]{mechanic}.
+If the user successfully used [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Protect]{move}, or [wide guard]{move} on the last turn, this move has a 50% chance to fail.
 
 [Lock-On]{move}, [Mind Reader]{move}, and [No Guard]{ability} provide a (100 – accuracy)% chance for moves to break through this move.  This does not apply to one-hit KO moves ([Fissure]{move}, [Guillotine]{move}, [Horn Drill]{move}, and [Sheer Cold]{move}); those are always blocked by this move.
 
@@ -261,12 +261,14 @@ This move cannot be selected by [Assist]{move} or [Metronome]{move}."
 This effect is passed on by [Baton Pass]{move}.
 
 This move cannot be copied by [Mirror Move]{move}."
-116,Changes the weather to a sandstorm for five turns.,"Changes the weather to a sandstorm for five turns.  Pokémon that are not [Ground]{type}, [Rock]{type}, or [Steel]{type} take 1/8 their max [HP]{mechanic} at the end of every turn.  [Rock]{type} Pokémon's original [Special Defense]{mechanic} is raised by 50% for the duration of this effect.
+116,Changes the weather to a sandstorm for five turns.,"Changes the weather to a sandstorm for five turns.  Pokémon that are not [Ground]{type}, [Rock]{type}, or [Steel]{type} take 1/8 their max [HP]{mechanic} at the end of every turn.  Every [Rock]{type} Pokémon's original [Special Defense]{mechanic} is raised by 50% for the duration of this effect.
 
 [SolarBeam]{move}'s power is halved.
 
 [Moonlight]{move}, [Morning Sun]{move}, and [Synthesis]{move} only heal 1/4 the user's max [HP]{mechanic}."
-117,Prevents the user's HP from lowering below 1 this turn.,"Prevents the user's [HP]{mechanic} from being lowered below 1 until the end of this turn.  This effect protects against one-hit KO moves.  If the user successfully used [Detect]{move}, [Endure]{move}, or [Protect]{move} on the last turn, this move has a 50% chance to [fail]{mechanic}.
+117,Prevents the user's HP from lowering below 1 this turn.,"The user's [HP]{mechanic} cannot be lowered below 1 by any means for the remainder of this turn.
+
+If the user successfully used [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Protect]{move}, or [wide guard]{move} on the last turn, this move has a 50% chance to fail.
 
 This move cannot be selected by [Assist]{move} or [Metronome]{move}."
 118,"Power doubles every turn this move is used in succession after the first, resetting after five turns.","Inflicts [regular damage]{mechanic}.  User is forced to use this move for five turns.  Power doubles every time this move is used in succession to a maximum of 16x, and resets to normal after the lock-in ends.  If this move misses or becomes unusable, the lock-in ends.
@@ -564,7 +566,7 @@ This move cannot be copied by [Mirror Move]{move}."
 180,User will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will be healed for half its max [HP]{mechanic}.  If the user is [switched out]{mechanic}, its replacement will be healed instead.  If the user [faint]{mechanic}s or is forcefully switched by [Roar]{move} or [Whirlwind]{move}, this effect will not activate."
 181,Randomly selects and uses one of the trainer's other Pokémon's moves.,"Uses a move from another Pokémon in the user's party, both selected at random.  Moves from fainted Pokémon can be used.  If there are no eligible Pokémon or moves, this move will fail.
 
-This move will not select [Assist]{move}, [Chatter]{move}, [Copycat]{move}, [Counter]{move}, [Covet]{move}, [Destiny Bond]{move}, [Detect]{move}, [Endure]{move}, [Feint]{move}, [Focus Punch]{move}, [Follow Me]{move}, [Helping Hand]{move}, [Me First]{move}, [Metronome]{move}, [Mimic]{move}, [Mirror Coat]{move}, [Mirror Move]{move}, [Protect]{move}, [Sketch]{move}, [Sleep Talk]{move}, [Snatch]{move}, [Struggle]{move}, [Switcheroo]{move}, [Thief]{move}, or [Trick]{move}.
+This move will not select [Assist]{move}, [Chatter]{move}, [Copycat]{move}, [Counter]{move}, [Covet]{move}, [Destiny Bond]{move}, [Detect]{move}, [dragon tail]{move}, [Endure]{move}, [fast guard]{move}, [Feint]{move}, [Focus Punch]{move}, [Follow Me]{move}, [Helping Hand]{move}, [Me First]{move}, [Metronome]{move}, [Mimic]{move}, [Mirror Coat]{move}, [Mirror Move]{move}, [overhead toss]{move}, [Protect]{move}, [Sketch]{move}, [Sleep Talk]{move}, [Snatch]{move}, [Struggle]{move}, [Switcheroo]{move}, [Thief]{move}, [Trick]{move}, or [wide guard]{move}.
 
 This move cannot be copied by [Mirror Move]{move}, nor selected by [Metronome]{move} or [Sleep Talk]{move}."
 182,Prevents the user from leaving battle.  User regains 1/16 of its max HP every turn.,"Prevents the user from [switching out]{mechanic}.  User regains 1/16 of its max [HP]{mechanic} at the end of every turn.  If the user was immune to [Ground]{type} attacks, it will now take normal damage from them.
@@ -881,18 +883,28 @@ This move breaks through [Wonder Guard]{ability} in Generation IV."
 276,Has a $effect_chance% chance to paralyze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 277,Has a $effect_chance% chance to raise the user's Special Attack by one level.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [raise]{mechanic} the user's [Special Attack]{mechanic} by one level.
 278,Raises the user's Attack and accuracy by one stage.,Raises the user's [Attack]{mechanic} and [accuracy]{mechanic} by one [stage]{mechanic}.
-279,Prevents all friendly Pokémon from fainting this turn.,No Pokémon on the user's team can have its [HP]{mechanic} reduced below 1 until the end of this turn.
-280,Averages Defense and Special Defense with the target.,Averages the user's Defense and Special Defense with the target's.
-281,Averages Attack and Special Attack with the target.,Averages the user's Attack and Special Attack with the target's.
-282,Swaps every Pokémon's Defense and Special Defense for 5 turns.,Every Pokémon on the field has its Defense and Special Defense swapped for the next 5 turns.
-283,"Inflicts damage based on the target's Defense, not Special Defense.","Inflicts regular damage, but always uses the target's Defense for damage calculation, never its Special Defense."
-284,Inflicts double damage if the target is Poisoned.,Inflicts regular damage.  This move's power is doubled against Pokémon that are Poisoned.
-285,Raises the user's Speed by two stages and reduces the user's weight.,Raises the user's Speed by two stages and reduces weight.
-286,Inflicts a random status effect on the target for 3 turns.,Inflicts a random status effect on the target for 3 turns.  This move will fail if Gravity is in effect.
-287,Held items cannot be used for five turns. (?),Held items cannot be used for five turns. (?)
-288,Grounds Flying and Levitating Pokémon.,"Removes [Flying]{type}-type and [Levitating]{ability:Levitate} Pokémon's immunity to Ground, similar to as in [Gravity]{move}."
-289,Always results in a critical hit.,Always results in a critical hit.
-290,Not yet known.  [[effect 290]],Not yet known.  [[effect 290]]
+279,Prevents any multi-target moves from hitting friendly Pokémon this turn.,"Moves with multiple targets will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will fail.
+
+If the user successfully used [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Protect]{move}, or [wide guard]{move} on the last turn, this move has a 50% chance to fail.
+
+This move cannot be selected by [Assist]{move} or [Metronome]{move}."
+280,Averages Defense and Special Defense with the target.,Averages the user's unmodified [Defense]{mechanic} with the target's unmodified Defense; the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic} is averaged the same way.
+281,Averages Attack and Special Attack with the target.,"Averages the user's unmodified [Attack]{mechanic} with the target's unmodified Attack; the value becomes the unmodified Attack for both Pokémon. Unmodified [Special Attack]{mechanic} is averaged the same way.
+
+This effect applies before any other persistent changes to unmodified Attack or Special Attack, such as [Flower Gift]{ability} during [Sunny Day]{move}."
+282,All Pokémon's Defense and Special Defense are swapped for 5 turns.,"For five turns (including this one), every Pokémon's [Defense]{mechanic} and [Special Defense]{mechanic} are swapped."
+283,"Inflicts damage based on the target's Defense, not Special Defense.","Inflicts regular damage.  Damage calculation always uses the target's [Defense]{mechanic}, regardless of this move's damage class."
+284,Inflicts double damage if the target is Poisoned.,"Inflicts regular damage.  If the target is [poisoned]{mechanic}, this move has double power."
+285,Raises the user's Speed by two stages and halves the user's weight.,Raises the user's [Speed]{mechanic} by two [stages]{mechanic:stage}.  Halves the user's weight; this effect does not stack.
+286,Moves have 100% accuracy against the target for three turns.,"For three turns (including this one), moves used against the target have 100% [accuracy]{mechanic}, but the target is immune to [Ground]{type} damage.  Accuracy of one-hit KO moves is exempt from this effect.
+
+This effect is removed by [Gravity]{move}.  If Gravity is already in effect, this move will fail."
+287,Negates held items for five turns.,"For five turns (including this one), passive effects of held items are ignored, and Pokémon will not use their held items."
+288,Removes any immunity to Ground damage.,"Inflicts regular damage.  Removes the target's [immunity]{mechanic:immune} to [Ground]{mechanic} damage.  This effect removes any existing Ground immunity due to [Levitate]{ability}, [Magnet Rise]{move}, or [Telekinesis]{move}, and ignores the target's [Flying]{type} type when calculating damage it takes.
+
+If the target isn't immune to Ground damage, this move will fail."
+289,Always results in a critical hit.,Inflicts regular damage.  Always strikes a [critical hit]{mechanic}.
+290,Deals splash damage to Pokémon next to the target.,"Inflicts regular damage.  If this move successfully hits the target, any Pokémon adjacent to the target are damaged for 1/16 their max [HP]{mechanic}."
 291,"Raises the user's Special Attack, Special Defense, and Speed by one stage.","Raises the user's Special Attack, Special Defense, and Speed by one stage."
 292,Power scales with weight. (?),Power scales with weight.(?)
 293,Hits any Pokémon that shares a type with the user.,Inflicts regular damage.  Pokémon that do not share a type with the user will not take damage from this move.
@@ -915,7 +927,7 @@ This move breaks through [Wonder Guard]{ability} in Generation IV."
 310,Restores half the target's max HP.,Restores half the target's max HP.
 311,Inflicts more damage if the target has a major status ailment. (?),Inflicts more damage if the target has a major status ailment. (?)
 312,"Tosses the target into the air for a turn, during which it can't act.  Target falls and takes damage on the second turn.","Tosses the target into the air.  On the following turn, target falls to the ground and takes regular damage.  Target cannot move while it's in the air."
-313,Raises the user's Attack by one stage and Speed by two stages.,Raises the user's Attack by one stage and Speed by two stages.
+313,Raises the user's Attack by one stage and Speed by two stages.,Raises the user's Attack by one stage and Speed by two [stages]{mechanic:stage}.
 314,Ends wild battles. (?),Ends wild battles. (?)
 315,Destroys the target's held berry.,"Inflicts regular damage.  If the target is holding a berry, it's destroyed.  Held berries cannot be used in response to this move."
 316,Makes the target act last this turn.,"If the target has not yet acted this turn, it will act last."
@@ -924,14 +936,14 @@ This move breaks through [Wonder Guard]{ability} in Generation IV."
 319,User becomes the target's type.,User becomes the target's type.
 320,Inflicts double damage if a friendly Pokémon fainted on the last turn.,Inflicts regular damage.  Power is doubled if a friendly Pokémon fainted on the previous turn.
 321,Inflicts damage equal to the user's remaining HP.  User faints.,Inflicts damage equal to the user's remaining HP.  User faints.
-322,Raises the user's Special Attack by three stages.,Raises the user's Special Attack by three stages.
+322,Raises the user's Special Attack by three stages.,Raises the user's Special Attack by three [stages]{mechanic:stage}.
 323,"Raises the user's Attack, Defense, and accuracy by one stage.","Raises the user's Attack, Defense, and accuracy by one stage."
 324,Gives the user's held item to the target.,"If the user has a held item, and the target does not, the user's item is transferred to the target."
 325,Does some kind of combo when followed by fire realm.,Does some kind of combo when followed by fire realm.
 326,Does some kind of combo when followed by grass realm.,Does some kind of combo when followed by grass realm.
 327,Does some kind of combo when followed by water realm.,Does some kind of combo when followed by water realm.
 328,Raises the user's Attack and Special Attack by one stage.,Raises the user's Attack and Special Attack by one stage.
-329,Raises the user's Defense by three stages.,Raises the user's Defense by three stages.
+329,Raises the user's Defense by three stages.,Raises the user's Defense by three [stages]{mechanic:stage}.
 330,Has a $effect_chance% chance to put the target to sleep.,Inflicts regular damage.  Has a $effect_chance% chance to put the target to sleep.
 331,Lowers the target's Speed.,Inflicts regular damage.  Lowers the target's Speed.
 332,Charges for a turn before attacking.  Has a $effect_chance% chance to paralyze the target.,Inflicts regular damage.  Requires a turn to charge before attacking.  Has a $effect_chance% chance to paralyze the target.
