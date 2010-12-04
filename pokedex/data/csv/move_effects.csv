@@ -18,14 +18,14 @@ This move cannot be selected by [Assist]{move}, [Metronome]{move}, or [Sleep Tal
 11,Raises the user's Attack by one stage.,Raises the user's [Attack]{mechanic} by one [stage]{mechanic}.
 12,Raises the user's Defense by one stage.,Raises the user's [Defense]{mechanic} by one [stage]{mechanic}.
 14,Raises the user's Special Attack by one stage.,Raises the user's [Special Attack]{mechanic} by one [stage]{mechanic}.
-17,Raises the user's Evasion by one stage.,Raises the user's [evasion]{mechanic} by one [stage]{mechanic}.
+17,Raises the user's evasion by one stage.,Raises the user's [evasion]{mechanic} by one [stage]{mechanic}.
 18,Never misses.,Inflicts [regular damage]{mechanic}.  Ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
 19,Lowers the target's Attack by one stage.,Lowers the target's [Attack]{mechanic} by one [stage]{mechanic}.
 20,Lowers the target's Defense by one stage.,Lowers the target's [Defense]{mechanic} by one [stage]{mechanic}.
 21,Lowers the target's Speed by one stage.,Lowers the target's [Speed]{mechanic} by one [stage]{mechanic}.
-24,Lowers the target's Accuracy by one stage.,Lowers the target's [accuracy]{mechanic} by one [stage]{mechanic}.
-25,Lowers the target's Evasion by one stage.,Lowers the target's [evasion]{mechanic} by one [stage]{mechanic}.
-26,"Resets all Pokémon's stats, Accuracy, and Evasion.","Removes [stat]{mechanic}, [accuracy]{mechanic}, and [evasion]{mechanic} modifiers from every Pokémon on the [field]{mechanic}.
+24,Lowers the target's accuracy by one stage.,Lowers the target's [accuracy]{mechanic} by one [stage]{mechanic}.
+25,Lowers the target's evasion by one stage.,Lowers the target's [evasion]{mechanic} by one [stage]{mechanic}.
+26,"Resets all Pokémon's stats, accuracy, and evasion.","Removes [stat]{mechanic}, [accuracy]{mechanic}, and [evasion]{mechanic} modifiers from every Pokémon on the [field]{mechanic}.
 
 This does not count as a stat reduction for the purposes of [Clear Body]{ability} or [White Smoke]{ability}."
 27,"User waits for 2-3 turns, then hits back for twice the damage it took.","User waits for two turns.  On the third turn, the user inflicts twice the damage it accumulated on the last Pokémon to hit it.  Damage inflicted is [typeless]{mechanic}.
@@ -110,7 +110,7 @@ If the user is holding [Light Clay]{item}, the barrier lasts for eight turns.
 71,Has a $effect_chance% chance to lower the target's Speed by one stage.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to lower the target's [Speed]{mechanic} by one [stage]{mechanic}.
 72,Has a $effect_chance% chance to lower the target's Special Attack by one stage.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to lower the target's [Special Attack]{mechanic} by one [stage]{mechanic}.
 73,Has a $effect_chance% chance to lower the target's Special Defense by one stage.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to lower the target's [Special Defense]{mechanic} by one [stage]{mechanic}.
-74,Has a $effect_chance% chance to lower the target's Accuracy by one stage.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to lower the target's [accuracy]{mechanic} by one [stage]{mechanic}.
+74,Has a $effect_chance% chance to lower the target's accuracy by one stage.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to lower the target's [accuracy]{mechanic} by one [stage]{mechanic}.
 76,User charges for one turn before attacking.  Has a $effect_chance% chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  User charges for one turn before attacking.  [Critical hit chance]{mechanic} is one level higher than normal.  Has a $effect_chance% chance to make the target [flinch]{mechanic}.
 
 This move cannot be selected by [Sleep Talk]{move}."
