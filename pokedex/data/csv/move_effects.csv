@@ -203,7 +203,7 @@ This move cannot be selected by [Assist]{move} or [Metronome]{move}."
 "
 101,Lowers the PP of the target's last used move by 4.,"Lowers the PP of the target's last used move by 4.  If the target hasn't used a move since entering the [field]{mechanic}, if it tried to use a move this turn and [failed]{mechanic}, or if its last used move has 0 PP remaining, this move will fail."
 102,Cannot lower the target's HP below 1.,Inflicts [regular damage]{mechanic}.  Will not reduce the target's [HP]{mechanic} below 1.
-103,Cures the user and the user's ally of major status effects.,Removes [major status effects]{mechanic} and [confusion]{mechanic} from every Pokémon in the user's party.
+103,Cures the entire party of major status effects.,Removes [major status effects]{mechanic} and [confusion]{mechanic} from every Pokémon in the user's party.
 104,Inflicts regular damage with no additional effect.,Inflicts [regular damage]{mechanic}.
 105,"Hits three times, increasing power by 100% with each successful hit.","Inflicts [regular damage]{mechanic}.  Hits three times in the same turn.  The second hit has double power, and the third hit has triple power.  Each hit has a separate [accuracy]{mechanic} check, and this move stops if a hit misses.
 
@@ -781,8 +781,8 @@ This move cannot be copied by [Mirror Move]{move}, nor selected by [Assist]{move
 This move cannot copy itself.
 
 This move cannot be copied by [Mirror Move]{move}, nor selected by [Assist]{move}, [Metronome]{move}, or [Sleep Talk]{move}."
-244,User swaps Attack and Special Attack changes with the target.,User swaps its [Attack]{mechanic} and [Special Attack]{mechanic} [stat modifiers]{mechanic} with the target.
-245,User swaps Defense and Special Defense changes with the target.,User swaps its [Defense]{mechanic} and [Special Defense]{mechanic} User swaps its [Attack]{mechanic} and [Special Attack]{mechanic} [stat modifiers]{mechanic} with the target. with the target.
+244,User swaps Attack and Special Attack changes with the target.,User swaps its [Attack]{mechanic} and [Special Attack]{mechanic} [stat modifiers]{mechanic} modifiers with the target.
+245,User swaps Defense and Special Defense changes with the target.,User swaps its [Defense]{mechanic} and [Special Defense]{mechanic} modifiers with the target.
 246,"Power increases against targets with more raised stats, up to a maximum of 200.","Inflicts [regular damage]{mechanic}.  Power starts at 60 and is increased by 20 for every [stage]{mechanic} any of the target's stats has been raised, capping at 200.  [Accuracy]{mechanic} and [evasion]{mechanic} modifiers do not increase this move's power."
 247,Can only be used after all of the user's other moves have been used.,"Inflicts [regular damage]{mechanic}.  This move can only be used if each of the user's other moves has been used at least once since the user entered the [field]{mechanic}.  If this is the user's only move, this move will fail."
 248,Changes the target's ability to Insomnia.,"Changes the target's ability to [Insomnia]{ability}.
@@ -932,16 +932,22 @@ More than 4× the target's Speed  |   150
 298,Calculates damage with the target's attacking stat.,Inflicts [regular damage]{mechanic}.  Damage is calculated using the target's attacking stat rather than the user's.
 299,Changes the target's ability to Simple.,Changes the target's ability to [Simple]{ability}.
 300,Copies the user's ability onto the target.,Changes the target's ability to match the user's.  This effect ends when the target leaves battle.
-301,Copies non-damaging moves but makes the user go last.,"If the target would use a non-damaging move this turn, the user will copy the move and act last."
-302,Power increases the more Pokémon in the trainer's team know this move.,Power increases the more Pokémon in the trainer's team know this move.
-303,Not yet known.  [[effect 303]],Not yet known.  [[effect 303]]
-304,Ignores the target's stat changes.,Inflicts regular damage.  Changes to the target's defensive stats are ignored.
-305,Removes all of the target's stat changes.,Inflicts regular damage.  Removes all of the target's stat changes.
-306,Power rises the more the user's stats have been raised.,Inflicts regular damage.  Power rises the more the user's stats have been raised.
-307,Fast moves won't damage the user or friendly Pokémon this turn.,"Prevents any fast moves (i.e., moves with a priority greater than 0) from hitting any Pokémon on the user's side of the field until the end of the turn.  Consecutive uses increase the chance of failure, possibly in the same manner as Protect and friends."
-308,User switches places with a random ally.,User switches places with a random ally.
-309,Raises user's Speed by one stage.  Lower user's Defense by one stage.,Raises user's Speed by one stage.  Lower user's Defense by one stage.
-310,Restores half the target's max HP.,Restores half the target's max HP.
+301,Makes the target act next this turn.,"The target will act next this turn, regardless of [Speed]{mechanic} or move priority.
+If the target has already acted this turn, this move will fail."
+302,Has double power if it's used more than once per turn.,"Inflicts [regular damage]{mechanic}.  If [a capella]{move} has already been used this turn, this move's power is doubled.  After this move is used, any other Pokémon using it this turn will immediately do so (in the order they would otherwise act), regardless of [Speed]{mechanic} or priority.  Pokémon using other moves will then continue to act as usual."
+303,"Power increases by 100% for each consecutive use by any friendly Pokémon, to a maximum of 200.","Inflicts [regular damage]{mechanic}.  If any friendly Pokémon used this move earlier this turn or on the previous turn, that use's power is added to this move's power, to a maximum of 200."
+304,Ignores the target's stat modifiers.,"Inflicts [regular damage].  Damage calculation ignores the target's [stat modifiers]{mechanic}, including [evasion]{mechanic}."
+305,Removes all of the target's stat modifiers.,Inflicts [regular damage]{mechanic}.  All of the target's [stat modifiers]{mechanic} are reset to zero.
+306,"Power is higher the more the user's stats have been raised, to a maximum of 31×.","Inflicts regular damage.  Power is increased by 100% its original value for every [stage]{mechanic} any of the user's stats have been raised.  [Accuracy]{mechanic}, [evasion]{mechanic}, and lowered stats do not affect this move's power.  For a Pokémon with all five stats modified to +6, this move's power is 31×."
+307,Prevents any priority moves from hitting friendly Pokémon this turn.,"Moves with priority greater than 0 will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will fail.
+
+If the user successfully used [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Protect]{move}, or [wide guard]{move} on the last turn, this move has a 50% chance to fail.
+
+This move cannot be selected by [Assist]{move} or [Metronome]{move}.
+"
+308,User switches places with the friendly Pokémon opposite it.,"User switches position on the field with the friendly Pokémon opposite it.  If the user is in the middle position in a triple battle, or there are no other friendly Pokémon, this move will fail."
+309,"Raises user's Attack, Special Attack, and Speed by one stage.  Lower user's Defense and Special Defense by one stage.","Raises the user's [Attack]{mechanic}, [Special Attack]{mechanic}, and [Speed]{mechanic} by two [stages]{mechanic:stage} each.  Lowers the user's [Defense]{mechanic} and [Special Defense]{mechanic} by one stage each."
+310,Heals the target for half its max HP.,Heals the target for half its max [HP]{mechanic}.
 311,Inflicts more damage if the target has a major status ailment. (?),Inflicts more damage if the target has a major status ailment. (?)
 312,"Tosses the target into the air for a turn, during which it can't act.  Target falls and takes damage on the second turn.","Tosses the target into the air.  On the following turn, target falls to the ground and takes regular damage.  Target cannot move while it's in the air."
 313,Raises the user's Attack by one stage and Speed by two stages.,Raises the user's Attack by one stage and Speed by two [stages]{mechanic:stage}.
