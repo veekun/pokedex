@@ -771,15 +771,6 @@ class Pokedex(TableBase):
     description = Column(Unicode(512),
         info=dict(description=u"A longer description of the pokédex", format='plaintext'))
 
-class PokedexVersionGroup(TableBase):
-    u"""Maps a pokédex to the version group that uses it
-    """
-    __tablename__ = 'pokedex_version_groups'
-    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description=u"ID of the pokédex"))
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description=u"ID of the version group"))
-
 class Pokemon(TableBase):
     u"""A species of Pokémon.  The core to this whole mess.
     """
@@ -1257,6 +1248,8 @@ class VersionGroup(TableBase):
         info=dict(description=u"A numeric ID"))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description=u"ID of the generation the games of this group belong to"))
+    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), nullable=False,
+        info=dict(description=u"ID of the regional Pokédex used in this version group."))
 
 class VersionGroupRegion(TableBase):
     u"""Maps a region to a game version group that features it
@@ -1423,7 +1416,7 @@ NatureName.language = relation(Language)
 NaturePokeathlonStat.pokeathlon_stat = relation(PokeathlonStat, backref='nature_effects')
 
 Pokedex.region = relation(Region, backref='pokedexes')
-Pokedex.version_groups = relation(VersionGroup, secondary=PokedexVersionGroup.__table__, backref='pokedexes')
+Pokedex.version_groups = relation(VersionGroup, order_by=VersionGroup.id, back_populates='pokedex')
 
 Pokemon.all_abilities = relation(Ability,
     secondary=PokemonAbility.__table__,
@@ -1575,3 +1568,4 @@ Version.generation = association_proxy('version_group', 'generation')
 VersionGroup.generation = relation(Generation, backref='version_groups')
 VersionGroup.version_group_regions = relation(VersionGroupRegion, backref='version_group')
 VersionGroup.regions = association_proxy('version_group_regions', 'region')
+VersionGroup.pokedex = relation(Pokedex, back_populates='version_groups')
