@@ -905,15 +905,32 @@ This effect is removed by [Gravity]{move}.  If Gravity is already in effect, thi
 If the target isn't immune to Ground damage, this move will fail."
 289,Always scores a critical hit.,Inflicts regular damage.  Always scores a [critical hit]{mechanic}.
 290,Deals splash damage to Pokémon next to the target.,"Inflicts regular damage.  If this move successfully hits the target, any Pokémon adjacent to the target are damaged for 1/16 their max [HP]{mechanic}."
-291,"Raises the user's Special Attack, Special Defense, and Speed by one stage.","Raises the user's Special Attack, Special Defense, and Speed by one stage."
-292,Power scales with weight. (?),Power scales with weight.(?)
-293,Hits any Pokémon that shares a type with the user.,Inflicts regular damage.  Pokémon that do not share a type with the user will not take damage from this move.
-294,Power scales with Speed. (?),Power scales with Speed. (?)
-295,Changes the target's type to water.,Changes the target's type to water until it leaves battle.  If the target has a secondary type
-296,Inflicts regular damage.  Raises the user's Speed by one stage.,Inflicts regular damage.  Raises the user's Speed by one stage.
-297,Lowers the target's Special Defense by one stage.,Inflicts regular damage.  Lowers the target's Special Defense by one stage.
-298,More powerful against fighting-type Pokémon. (?),More powerful against fighting-type Pokémon. (?)
-299,Changes target's ability to Simple.,Changes target's ability to [Simple]{ability}. (?)
+291,"Raises the user's Special Attack, Special Defense, and Speed by one stage each.","Raises the user's [Special Attack]{mechanic}, [Special Defense]{mechanic}, and [Speed]{mechanic} by one [stage]{mechanic} each."
+292,"Power is higher when the user weighs more than the target, up to a maximum of 120.","Inflicts [regular damage]{mechanic}.  The greater the user's weight compared to the target's, the higher power this move has, to a maximum of 120.
+
+User's weight                    | Power
+-------------------------------- | ----:
+Up to 2× the target's weight     |    40
+Up to 3× the target's weight     |    60
+Up to 4× the target's weight     |    80
+Up to 5× the target's weight     |   100
+More than 5× the target's weight |   120
+"
+293,Hits any Pokémon that shares a type with the user.,Inflicts [regular damage]{mechanic}.  Only Pokémon that share a type with the user will take damage from this move.
+294,"Power is higher when the user has greater Speed than the target, up to a maximum of 150.","Inflicts [regular damage]{mechanic}.  The greater the user's [Speed]{mechanic} compared to the target's, the higher power this move has, to a maximum of 150.
+
+User's Speed                     | Power
+-------------------------------- | ----:
+Up to 2× the target's Speed      |    60
+Up to 3× the target's Speed      |    80
+Up to 4× the target's Speed      |   120
+More than 4× the target's Speed  |   150
+"
+295,Changes the target's type to Water.,"Changes the target to pure [Water]{type}-type until it leaves the field.  If the target has [Multitype]{ability}, this move will fail."
+296,Inflicts regular damage.  Raises the user's Speed by one stage.,Inflicts [regular damage]{mechanic}.  Raises the user's [Speed]{mechanic} by one [stage]{mechanic}.
+297,Lowers the target's Special Defense by one stage.,Inflicts [regular damage]{mechanic}.  Lowers the target's [Special Defense]{mechanic} by two [stages]{mechanic:stage}.
+298,Calculates damage with the target's attacking stat.,Inflicts [regular damage]{mechanic}.  Damage is calculated using the target's attacking stat rather than the user's.
+299,Changes the target's ability to Simple.,Changes the target's ability to [Simple]{ability}.
 300,Copies the user's ability onto the target.,Changes the target's ability to match the user's.  This effect ends when the target leaves battle.
 301,Copies non-damaging moves but makes the user go last.,"If the target would use a non-damaging move this turn, the user will copy the move and act last."
 302,Power increases the more Pokémon in the trainer's team know this move.,Power increases the more Pokémon in the trainer's team know this move.
