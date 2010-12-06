@@ -1578,9 +1578,10 @@ Type.foreign_names = relation(TypeName, backref='type')
 
 TypeName.language = relation(Language)
 
-Version.version_group = relation(VersionGroup, backref='versions')
+Version.version_group = relation(VersionGroup, back_populates='versions')
 Version.generation = association_proxy('version_group', 'generation')
 
+VersionGroup.versions = relation(Version, order_by=Version.id, back_populates='version_group')
 VersionGroup.generation = relation(Generation, backref='version_groups')
 VersionGroup.version_group_regions = relation(VersionGroupRegion, backref='version_group')
 VersionGroup.regions = association_proxy('version_group_regions', 'region')
