@@ -172,7 +172,7 @@ This effect fails against a [Substitute]{move}."
 94,Changes the user's type to a random type either resistant or immune to the last move used against it.,"Changes the user's type to a type either resistant or immune to the last damaging move that hit it.  The new type is selected at random and cannot be a type the user already is.  If there is no eligible new type, this move will fail."
 95,Ensures that the user's next move will hit the target.,"If the user targets the same target again before the end of the next turn, the move it uses is guaranteed to hit.  This move itself also ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
 
-One-hit KO moves are also guaranteed to hit, as long as the user is equal or higher level than the target.  This effect also allows the user to hit Pokémon in the immune turn of moves like [Dig]{move} or [Fly]{move}.
+One-hit KO moves are also guaranteed to hit, as long as the user is equal or higher level than the target.  This effect also allows the user to hit Pokémon that are off the field due to moves such as [Dig]{move} or [Fly]{move}.
 
 If the target uses [Detect]{move} or [Protect]{move} while under the effect of this move, the user is not guaranteed to hit, but has a (100 - accuracy)% chance to break through the protection.
 
@@ -182,7 +182,7 @@ This effect is passed on by [Baton Pass]{move}."
 This move cannot be copied by [Mimic]{move} or [Mirror Move]{move}, nor selected by [Assist]{move} or [Metronome]{move}, nor forced by [Encore]{move}."
 98,Randomly uses one of the user's other three moves.  Only works if the user is sleeping.,"Only usable if the user is [sleep]{mechanic}ing.  Randomly selects and uses one of the user's other three moves.  Use of the selected move requires and costs 0 [PP]{mechanic}.
 
-This move will not select [Assist]{move}, [Bide]{move}, [Bounce]{move}, [Chatter]{move}, [Copycat]{move}, [Dig]{move}, [Dive]{move}, [Fly]{move}, [Focus Punch]{move}, [Me First]{move}, [Metronome]{move}, [Mirror Move]{move}, [Shadow Force]{move}, [Skull Bash]{move}, [Sky Attack]{move}, [Sleep Talk]{move}, [SolarBeam]{move}, [Razor Wind]{move}, or [Uproar]{move}.
+This move will not select [Assist]{move}, [Bide]{move}, [Bounce]{move}, [Chatter]{move}, [Copycat]{move}, [Dig]{move}, [Dive]{move}, [Fly]{move}, [Focus Punch]{move}, [freefall]{move}, [Me First]{move}, [Metronome]{move}, [Mirror Move]{move}, [Shadow Force]{move}, [Skull Bash]{move}, [Sky Attack]{move}, [Sleep Talk]{move}, [SolarBeam]{move}, [Razor Wind]{move}, or [Uproar]{move}.
 
 If the selected move requires a recharge turn—i.e., one of [Blast Burn]{move}, [Frenzy Plant]{move}, [Giga Impact]{move}, [Hydro Cannon]{move}, [Hyper Beam]{move}, [Roar of Time]{move}, or [Rock Wrecker]{move}—and the user is still [sleep]{mechanic}ing next turn, then it's forced to use this move again and pay another [PP]{mechanic} for the recharge turn.
 
@@ -420,7 +420,7 @@ This move cannot be copied by [Mirror Move]{move}, nor selected by [Assist]{move
 This move cannot be selected by [Sleep Talk]{move}."
 147,Has chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to make each target [flinch]{mechanic}.
 
-If the target is in the first turn of [Bounce]{move} or [Fly]{move}, this move will hit with double power."
+If the target is under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}, this move will hit with double power."
 148,Inflicts regular damage and can hit Dig users.,"Inflicts [regular damage]{mechanic}.
 
 If the target is in the first turn of [Dig]{move}, this move will hit with double power."
@@ -435,7 +435,7 @@ The damage is applied at the end of the turn, so it ignores [Endure]{move} and [
 This move cannot be copied by [Mirror Move]{move}."
 150,Inflicts regular damage and can hit Bounce and Fly users.,"Inflicts [regular damage]{mechanic}.
 
-If the target is in the first turn of [Bounce]{move} or [Fly]{move}, this move will hit with double power."
+If the target is under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}, this move will hit with double power."
 151,Has a $effect_chance% chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to make the target [flinch]{mechanic}.
 
 Power is doubled against Pokémon that have used [Minimize]{move} since entering the [field]{mechanic}."
@@ -457,7 +457,7 @@ During [Sunny Day]{move}, this move has 50% accuracy."
 This effect breaks through [Wonder Guard]{ability}."
 156,"User flies high into the air, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic}.  User flies high into the air for one turn, becoming immune to attack, and hits on the second turn.
 
-During the immune turn, [Gust]{move}, [Sky Uppercut]{move}, [Thunder]{move}, and [Twister]{move} still hit the user normally.  [Gust]{move} and [Twister]{move} also have double power against the user.
+During the immune turn, [Gust]{move}, [Sky Uppercut]{move}, [Thunder]{move}, [Twister]{move}, and [Whirlwind]{move} still hit the user normally.  [Gust]{move} and [Twister]{move} also have double power against the user.
 
 The damage from [Hail]{move} and [Sandstorm]{move} still applies during the immune turn.
 
@@ -668,7 +668,7 @@ Waterfall      | Puts target to [sleep]{mechanic}
 207,Raises the user's Defense and Special Defense by one stage.,Raises the user's [Defense]{mechanic} and [Special Defense]{mechanic} by one [stage]{mechanic}.
 208,Inflicts regular damage and can hit Bounce and Fly users.,"Inflicts [regular damage]{mechanic}.
 
-If the target is in the first turn of [Bounce]{move} or [Fly]{move}, this move will hit."
+This move can hit targets under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}."
 209,Raises the user's Attack and Defense by one stage.,Raises the user's [Attack]{mechanic} and [Defense]{mechanic} by one [stage]{mechanic} each.
 210,Has an increased chance for a critical hit and a $effect_chance% chance to poison the target.,Inflicts [regular damage]{mechanic}.  User's [critical hit]{mechanic} rate is one level higher when using this move. Has a $effect_chance% chance to [poison]{mechanic} the target.
 211,All damage from Fire moves is halved until the end of the battle.,"[Fire]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
@@ -709,7 +709,7 @@ Waterfall      | [Grass]{type}
 
 Specifically, [Flying]{type} Pokémon and those with [Levitate]{ability} or that have used [Magnet Rise]{move} are no longer immune to [Ground]{type} attacks, [Arena Trap]{ability}, [Spikes]{move}, or [Toxic Spikes]{move}.
 
-[Bounce]{move}, [Fly]{move}, [Hi Jump Kick]{move}, [Jump Kick]{move}, and [Splash]{move} cannot be used while this move is in effect."
+[Bounce]{move}, [Fly]{move}, [freefall]{move}, [Hi Jump Kick]{move}, [Jump Kick]{move}, and [Splash]{move} cannot be used while this move is in effect."
 217,"Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.",Resets the target's [evasion]{mechanic} to normal and prevents any further boosting until the target leaves the [field]{mechanic}.  A [Dark]{type} Pokémon under this effect takes normal damage from [Psychic]{type} moves.  This move itself ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
 218,"If the target is asleep, has double power and wakes it up.","Inflicts [regular damage]{mechanic}.  If the target is [sleep]{mechanic}ing, this move has double power, and the target wakes up."
 219,Lowers user's Speed by one stage.,"Inflicts [regular damage]{mechanic}, then lowers the user's [Speed]{mechanic} by one [stage]{mechanic}."
@@ -900,9 +900,11 @@ This effect applies before any other persistent changes to unmodified Attack or 
 
 This effect is removed by [Gravity]{move}.  If Gravity is already in effect, this move will fail."
 287,Negates held items for five turns.,"For five turns (including this one), passive effects of held items are ignored, and Pokémon will not use their held items."
-288,Removes any immunity to Ground damage.,"Inflicts regular damage.  Removes the target's [immunity]{mechanic:immune} to [Ground]{mechanic} damage.  This effect removes any existing Ground immunity due to [Levitate]{ability}, [Magnet Rise]{move}, or [Telekinesis]{move}, and ignores the target's [Flying]{type} type when calculating damage it takes.
+288,Removes any immunity to Ground damage.,"Inflicts [regular damage]{move}.  Removes the target's [immunity]{mechanic:immune} to [Ground]{mechanic} damage.  This effect removes any existing Ground immunity due to [Levitate]{ability}, [Magnet Rise]{move}, or [Telekinesis]{move}, and causes the target's [Flying]{type} type to be ignored when it takes Ground damage.
 
-If the target isn't immune to Ground damage, this move will fail."
+If the target isn't immune to Ground damage, this move will fail.
+
+This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}, and ends the effect of Bounce or Fly."
 289,Always scores a critical hit.,Inflicts regular damage.  Always scores a [critical hit]{mechanic}.
 290,Deals splash damage to Pokémon next to the target.,"Inflicts regular damage.  If this move successfully hits the target, any Pokémon adjacent to the target are damaged for 1/16 their max [HP]{mechanic}."
 291,"Raises the user's Special Attack, Special Defense, and Speed by one stage each.","Raises the user's [Special Attack]{mechanic}, [Special Defense]{mechanic}, and [Speed]{mechanic} by one [stage]{mechanic} each."
@@ -948,16 +950,28 @@ This move cannot be selected by [Assist]{move} or [Metronome]{move}.
 308,User switches places with the friendly Pokémon opposite it.,"User switches position on the field with the friendly Pokémon opposite it.  If the user is in the middle position in a triple battle, or there are no other friendly Pokémon, this move will fail."
 309,"Raises user's Attack, Special Attack, and Speed by one stage.  Lower user's Defense and Special Defense by one stage.","Raises the user's [Attack]{mechanic}, [Special Attack]{mechanic}, and [Speed]{mechanic} by two [stages]{mechanic:stage} each.  Lowers the user's [Defense]{mechanic} and [Special Defense]{mechanic} by one stage each."
 310,Heals the target for half its max HP.,Heals the target for half its max [HP]{mechanic}.
-311,Inflicts more damage if the target has a major status ailment. (?),Inflicts more damage if the target has a major status ailment. (?)
-312,"Tosses the target into the air for a turn, during which it can't act.  Target falls and takes damage on the second turn.","Tosses the target into the air.  On the following turn, target falls to the ground and takes regular damage.  Target cannot move while it's in the air."
-313,Raises the user's Attack by one stage and Speed by two stages.,Raises the user's Attack by one stage and Speed by two [stages]{mechanic:stage}.
-314,Ends wild battles. (?),Ends wild battles. (?)
-315,Destroys the target's held berry.,"Inflicts regular damage.  If the target is holding a berry, it's destroyed.  Held berries cannot be used in response to this move."
-316,Makes the target act last this turn.,"If the target has not yet acted this turn, it will act last."
-317,Raises the user's Attack and Special Attack by one stage.,Raises the user's Attack and Special Attack by one stage.
-318,Inflicts regular damage.  Power is doubled (?) if the user has no held item.,Inflicts double (?) damage if the user has no held item.
-319,User becomes the target's type.,User becomes the target's type.
-320,Inflicts double damage if a friendly Pokémon fainted on the last turn.,Inflicts regular damage.  Power is doubled if a friendly Pokémon fainted on the previous turn.
+311,Has double power if the target has a major status ailment.,"Inflicts [regular damage].  If the target has a [major status ailment]{mechanic}, this move has double power."
+312,"Carries the target high into the air, dodging all attacks against either, and drops it next turn.","Inflicts [regular damage]{mechanic}.  User carries the target high into the air for one turn, during which no moves will hit either Pokémon and neither can act.  On the following turn, the user drops the target, inflicting damage and ending the effect.
+If the target is [Flying]{type}-type, this move will function as normal but inflict no damage.
+[Gust]{move}, [knock down]{move}, [Sky Uppercut]{move}, [Thunder]{move}, [Twister]{move}, and [Whirlwind]{move} can hit both the user and the target during this effect.  [Gust]{move} and [Twister]{move} will additionally have double power.
+
+The damage from [Hail]{move} and [Sandstorm]{move} still applies during this effect.
+
+Either Pokémon may be hit during this effect if also under the effect of [Lock-On]{move}, [Mind Reader]{move}, or [No Guard]{ability}.
+
+This move cannot be used while [Gravity]{move} is in effect.
+
+This move cannot be selected by [Sleep Talk]{move}."
+313,Raises the user's Attack by one stage and its Speed by two stages.,Raises the user's [Attack]{mechanic} by one [stage]{mechanic} and its [Speed]{mechanic} by two stages.
+314,Ends wild battles.  Forces trainers to switch Pokémon.,"Inflicts [regular damage]{mechanic}, then [switches]{mechanic:switch out} the target out for another of its trainer's Pokémon, selected at random.
+
+If the target is under the effect of [Ingrain]{move} or [Suction Cups]{ability}, or it has a [Substitute]{move}, or its Trainer has no more usable Pokémon, it will not be switched out.  If the target is a wild Pokémon, the battle ends instead."
+315,Destroys the target's held berry.,"Inflicts [regular damage]{mechanic}.  If the target is [holding]{mechanic:held item} a [berry]{mechanic}, it's destroyed and cannot be used in response to this move."
+316,Makes the target act last this turn.,"Forces the target to act last this turn, regardless of [Speed]{mechanic} or move [priority]{mechanic}.  If the target has already acted this turn, this move will fail."
+317,Raises the user's Attack and Special Attack by one stage.,"Raises the user's [Attack]{mechanic} and [Special Attack]{mechanic} by one [stage]{mechanic} each.  During [Sunny Day]{move}, raises both stats by two stages."
+318,Has double power if the user has no held item.,"Inflicts [regular damage]{mechanic}.  If the user has no [held item]{mechanic}, this move has double power."
+319,User becomes the target's type.,User's type changes to match the target's.
+320,Has double power if a friendly Pokémon fainted last turn.,"Inflicts [regular damage].  If a friendly Pokémon fainted on the previous turn, this move has double power."
 321,Inflicts damage equal to the user's remaining HP.  User faints.,Inflicts damage equal to the user's remaining HP.  User faints.
 322,Raises the user's Special Attack by three stages.,Raises the user's Special Attack by three [stages]{mechanic:stage}.
 323,"Raises the user's Attack, Defense, and accuracy by one stage.","Raises the user's Attack, Defense, and accuracy by one stage."
