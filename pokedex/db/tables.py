@@ -53,6 +53,16 @@ class Ability(TableBase):
     short_effect = Column(markdown.MarkdownColumn(255), nullable=False,
         info=dict(description="Short summary of this ability's effect", format='markdown'))
 
+class AbilityChangelog(TableBase):
+    """History of changes to abilities across main game versions."""
+    __tablename__ = 'ability_changelog'
+    ability_id = Column(Integer, ForeignKey('abilities.id'), primary_key=True, nullable=False,
+        info=dict(description="The ID of the ability that changed"))
+    changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False,
+        info=dict(description="The ID of the version group in which the ability changed"))
+    effect = Column(markdown.MarkdownColumn(255), nullable=False,
+        info=dict(description="A description of the old behavior", format='markdown'))
+
 class AbilityFlavorText(TableBase):
     u"""In-game flavor text of an ability
     """
@@ -1261,24 +1271,30 @@ class VersionGroupRegion(TableBase):
         info=dict(description=u"ID of the region"))
 
 class Version(TableBase):
-    u"""A version of a mainline pokémon game
+    u"""An individual main-series Pokémon game
     """
     __tablename__ = 'versions'
     id = Column(Integer, primary_key=True, nullable=False,
-        info=dict(description=u"A numeric ID"))
+        info=dict(description=u"A unique ID for this version"))
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False,
-        info=dict(description=u"ID of the version group this game belongs to"))
+        info=dict(description=u"The ID of the version group this game belongs to"))
     name = Column(Unicode(32), nullable=False,
         info=dict(description=u'The English name of the game, without the "Pokémon" prefix', official=True, format='plaintext'))
 
 
 ### Relations down here, to avoid ordering problems
+Ability.changelog = relation(AbilityChangelog,
+    order_by=AbilityChangelog.changed_in_version_group_id.desc(),
+    backref='ability',
+)
 Ability.flavor_text = relation(AbilityFlavorText, order_by=AbilityFlavorText.version_group_id, backref='ability')
 Ability.foreign_names = relation(AbilityName, backref='ability')
 Ability.generation = relation(Generation, backref='abilities')
 Ability.pokemon = relation(Pokemon,
     secondary=PokemonAbility.__table__,
 )
+
+AbilityChangelog.changed_in = relation(VersionGroup, backref='ability_changelog')
 
 AbilityFlavorText.version_group = relation(VersionGroup)
 

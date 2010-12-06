@@ -1,0 +1,12 @@
+ability_id,changed_in_version_group_id,effect
+1,11,Has no effect in battle.
+16,11,Triggers on every hit of multiple-hit moves.
+24,8,Inflicts only 1/16 of the attacker's maximum [HP]{mechanic} in damage.
+28,11,Passes back toxic [poison]{mechanic} as regular poison.
+31,8,"Does not absorb non-damaging [Electric]{type} moves, i.e. [Thunder Wave]{move}."
+31,11,Grants no [Electric]{type} immunity or [Special Attack]{mechanic} boosts.
+53,11,Has no effect in battle.
+98,11,"Paralysis cannot prevent the Pokémon from moving, though the [Speed]{mechanic} cut is unaffected."
+102,11,[Rest]{move} works as normal during [strong sunlight]{mechanic}.
+103,11,[Fling]{move} can be used as normal.
+114,11,Grants no [Water]{type} immunity or [Special Attack]{mechanic} boosts.
