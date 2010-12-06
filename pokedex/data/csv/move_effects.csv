@@ -51,9 +51,11 @@ If the user is holding [Light Clay]{item}, the barrier lasts for eight turns.
 
 [Brick Break]{move} or [Defog]{move} used by an opponent will destroy the barrier."
 37,"Has a $effect_chance% chance to burn, freeze, or paralyze the target.","Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic}, [freeze]{mechanic}, or [paralyze]{mechanic} the target.  One of these effects is selected at random; they do not each have independent chances to occur."
-38,"User sleeps for two turns, completely healing itself.","User falls to [sleep]{mechanic} and immediately regains all its [HP]{mechanic}.  If the user has another [major status effect]{mechanic}, [sleep]{mechanic} will replace it.  The user will always wake up after two turns.
+38,"User sleeps for two turns, completely healing itself.","User falls to [sleep]{mechanic} and immediately regains all its [HP]{mechanic}.  If the user has another [major status effect]{mechanic}, [sleep]{mechanic} will replace it.  The user will always wake up after two turns, or one turn with [Early Bird]{ability}.
 
-This move cannot be used during an [Uproar]{move}."
+This move fails if the Pokémon cannot fall asleep due to [Uproar]{move}, [Insomnia]{ability}, or [Vital Spirit]{ability}.
+
+After Generation III, this move fails if the Pokémon is already asleep."
 39,Causes a one-hit KO.,"Inflicts damage equal to the target's max [HP]{mechanic}.  Ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.  This move's [accuracy]{mechanic} is 30% plus 1% for each level the user is higher than the target.  If the user is a lower level than the target, this move will [fail]{mechanic}.
 
 Because this move inflicts a specific and finite amount of damage, [Endure]{move} still prevents the target from fainting.
@@ -950,7 +952,7 @@ If the user successfully used [Detect]{move}, [Endure]{move}, [fast guard]{move}
 This move cannot be selected by [Assist]{move} or [Metronome]{move}.
 "
 308,User switches places with the friendly Pokémon opposite it.,"User switches position on the field with the friendly Pokémon opposite it.  If the user is in the middle position in a triple battle, or there are no other friendly Pokémon, this move will fail."
-309,"Raises user's Attack, Special Attack, and Speed by one stage.  Lower user's Defense and Special Defense by one stage.","Raises the user's [Attack]{mechanic}, [Special Attack]{mechanic}, and [Speed]{mechanic} by two [stages]{mechanic:stage} each.  Lowers the user's [Defense]{mechanic} and [Special Defense]{mechanic} by one stage each."
+309,"Raises user's Attack, Special Attack, and Speed by two stages.  Lower user's Defense and Special Defense by one stage.","Raises the user's [Attack]{mechanic}, [Special Attack]{mechanic}, and [Speed]{mechanic} by two [stages]{mechanic:stage} each.  Lowers the user's [Defense]{mechanic} and [Special Defense]{mechanic} by one stage each."
 310,Heals the target for half its max HP.,Heals the target for half its max [HP]{mechanic}.
 311,Has double power if the target has a major status ailment.,"Inflicts [regular damage].  If the target has a [major status ailment]{mechanic}, this move has double power."
 312,"Carries the target high into the air, dodging all attacks against either, and drops it next turn.","Inflicts [regular damage]{mechanic}.  User carries the target high into the air for one turn, during which no moves will hit either Pokémon and neither can act.  On the following turn, the user drops the target, inflicting damage and ending the effect.
