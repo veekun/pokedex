@@ -1375,7 +1375,7 @@ Machine.item = relation(Item)
 Machine.version_group = relation(VersionGroup)
 
 Move.changelog = relation(MoveChangelog,
-    order_by=MoveChangelog.changed_in_version_group_id.asc(),
+    order_by=MoveChangelog.changed_in_version_group_id.desc(),
     backref='move',
 )
 Move.contest_effect = relation(ContestEffect, backref='moves')
