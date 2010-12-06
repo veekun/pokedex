@@ -972,16 +972,17 @@ If the target is under the effect of [Ingrain]{move} or [Suction Cups]{ability},
 318,Has double power if the user has no held item.,"Inflicts [regular damage]{mechanic}.  If the user has no [held item]{mechanic}, this move has double power."
 319,User becomes the target's type.,User's type changes to match the target's.
 320,Has double power if a friendly Pokémon fainted last turn.,"Inflicts [regular damage].  If a friendly Pokémon fainted on the previous turn, this move has double power."
-321,Inflicts damage equal to the user's remaining HP.  User faints.,Inflicts damage equal to the user's remaining HP.  User faints.
-322,Raises the user's Special Attack by three stages.,Raises the user's Special Attack by three [stages]{mechanic:stage}.
-323,"Raises the user's Attack, Defense, and accuracy by one stage.","Raises the user's Attack, Defense, and accuracy by one stage."
-324,Gives the user's held item to the target.,"If the user has a held item, and the target does not, the user's item is transferred to the target."
-325,Does some kind of combo when followed by fire realm.,Does some kind of combo when followed by fire realm.
-326,Does some kind of combo when followed by grass realm.,Does some kind of combo when followed by grass realm.
-327,Does some kind of combo when followed by water realm.,Does some kind of combo when followed by water realm.
-328,Raises the user's Attack and Special Attack by one stage.,Raises the user's Attack and Special Attack by one stage.
-329,Raises the user's Defense by three stages.,Raises the user's Defense by three [stages]{mechanic:stage}.
-330,Has a $effect_chance% chance to put the target to sleep.,Inflicts regular damage.  Has a $effect_chance% chance to put the target to sleep.
+321,Inflicts damage equal to the user's remaining HP.  User faints.,Inflicts damage equal to the user's remaining [HP]{mechanic}.  User faints.
+322,Raises the user's Special Attack by three stages.,Raises the user's [Special Attack]{mechanic} by three [stages]{mechanic:stage}.
+323,"Raises the user's Attack, Defense, and accuracy by one stage each.","Raises the user's [Attack]{mechanic}, [Defense]{mechanic}, and [accuracy]{mechanic} by one [stage]{mechanic} each."
+324,Gives the user's held item to the target.,"Transfers the user's [held item]{mechanic} to the target.  If the user has no held item, or the target already has a held item, this move will fail."
+325,"With grass realm, halves opposing Pokémon's Speed for four turns.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [grass realm]{move} earlier this turn, all opposing Pokémon have halved [Speed]{mechanic} for four turns (including this one)."
+326,"With water realm, doubles the effect chance of friendly Pokémon's moves for four turns.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [water realm]{move} earlier this turn, moves used by any friendly Pokémon have doubled effect chance for four turns (including this one)."
+327,"With fire realm, damages opposing Pokémon for 1/8 their max HP every turn for four turns.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [fire realm]{move} earlier this turn, all opposing Pokémon will take 1/8 their max [HP]{mechanic} in damage at the end of every turn for four turns (including this one)."
+328,Raises the user's Attack and Special Attack by one stage each.,Raises the user's [Attack] and [Special Attack] by one [stage]{mechanic} each.
+329,Raises the user's Defense by three stages.,Raises the user's [Defense]{mechanic} by three [stages]{mechanic:stage}.
+330,Has a $effect_chance% chance to put the target to sleep.,"Inflicts [regular damage].  Has a $effect_chance% chance to put the target to [sleep]{mechanic}.
+If the user is a [meroetta]{pokemon}, it will toggle between Voice and Step form."
 331,Lowers the target's Speed.,Inflicts regular damage.  Lowers the target's Speed.
 332,Charges for a turn before attacking.  Has a $effect_chance% chance to paralyze the target.,Inflicts regular damage.  Requires a turn to charge before attacking.  Has a $effect_chance% chance to paralyze the target.
 333,Charges for a turn before attacking.  Has a $effect_chance% chance to burn the target.,Inflicts regular damage.  Requires a turn to charge before attacking.  Has a $effect_chance% chance to burn the target.
