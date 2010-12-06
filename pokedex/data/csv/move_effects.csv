@@ -705,11 +705,13 @@ Sunset         | [Ground]{type}
 Waterfall      | [Grass]{type}
 "
 215,Heals the user by half its max HP.,"Heals the user for half its max [HP]{mechanic}.  If the user is [Flying]{type}, its [Flying]{type} type is ignored until the end of this turn."
-216,Disables moves and immunities that involve flying or levitating for five turns.,"For five turns (including this one), all immunities to [Ground]{type} moves are disabled.  For the duration of this effect, the [evasion]{mechanic} of every Pokémon on the field is lowered by two [stages]{mechanic:stage}.
+216,Disables moves and immunities that involve flying or levitating for five turns.,"For five turns (including this one), all immunities to [Ground]{type} moves are disabled.  For the duration of this effect, the [evasion]{mechanic} of every Pokémon on the field is lowered by two [stages]{mechanic:stage}.  Cancels the effects of [Bounce]{move}, [Fly]{move}, and [freefall]{move}.
 
 Specifically, [Flying]{type} Pokémon and those with [Levitate]{ability} or that have used [Magnet Rise]{move} are no longer immune to [Ground]{type} attacks, [Arena Trap]{ability}, [Spikes]{move}, or [Toxic Spikes]{move}.
 
-[Bounce]{move}, [Fly]{move}, [freefall]{move}, [Hi Jump Kick]{move}, [Jump Kick]{move}, and [Splash]{move} cannot be used while this move is in effect."
+[Bounce]{move}, [Fly]{move}, [freefall]{move}, [Hi Jump Kick]{move}, [Jump Kick]{move}, and [Splash]{move} cannot be used while this move is in effect.
+
+*Bug*: If this move is used during a double or triple battle while Pokémon are under the effect of [freefall]{move}, freefall's effect is not correctly canceled on freefall's target, and it remains high in the air indefinitely.  As freefall prevents the target from acting, the only way to subsequently remove it from the field is to faint it."
 217,"Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.",Resets the target's [evasion]{mechanic} to normal and prevents any further boosting until the target leaves the [field]{mechanic}.  A [Dark]{type} Pokémon under this effect takes normal damage from [Psychic]{type} moves.  This move itself ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
 218,"If the target is asleep, has double power and wakes it up.","Inflicts [regular damage]{mechanic}.  If the target is [sleep]{mechanic}ing, this move has double power, and the target wakes up."
 219,Lowers user's Speed by one stage.,"Inflicts [regular damage]{mechanic}, then lowers the user's [Speed]{mechanic} by one [stage]{mechanic}."
@@ -952,7 +954,9 @@ This move cannot be selected by [Assist]{move} or [Metronome]{move}.
 310,Heals the target for half its max HP.,Heals the target for half its max [HP]{mechanic}.
 311,Has double power if the target has a major status ailment.,"Inflicts [regular damage].  If the target has a [major status ailment]{mechanic}, this move has double power."
 312,"Carries the target high into the air, dodging all attacks against either, and drops it next turn.","Inflicts [regular damage]{mechanic}.  User carries the target high into the air for one turn, during which no moves will hit either Pokémon and neither can act.  On the following turn, the user drops the target, inflicting damage and ending the effect.
+
 If the target is [Flying]{type}-type, this move will function as normal but inflict no damage.
+
 [Gust]{move}, [hurricane]{move}, [knock down]{move}, [Sky Uppercut]{move}, [Thunder]{move}, [Twister]{move}, and [Whirlwind]{move} can hit both the user and the target during this effect.  [Gust]{move} and [Twister]{move} will additionally have double power.
 
 The damage from [Hail]{move} and [Sandstorm]{move} still applies during this effect.
@@ -961,7 +965,9 @@ Either Pokémon may be hit during this effect if also under the effect of [Lock-
 
 This move cannot be used while [Gravity]{move} is in effect.
 
-This move cannot be selected by [Sleep Talk]{move}."
+This move cannot be selected by [Sleep Talk]{move}.
+
+*Bug*: If [Gravity]{move} is used during a double or triple battle while this move is in effect, this move is not correctly canceled on the target, and it remains high in the air indefinitely.  As this move prevents the target from acting, the only way to subsequently remove it from the field is to faint it."
 313,Raises the user's Attack by one stage and its Speed by two stages.,Raises the user's [Attack]{mechanic} by one [stage]{mechanic} and its [Speed]{mechanic} by two stages.
 314,Ends wild battles.  Forces trainers to switch Pokémon.,"Inflicts [regular damage]{mechanic}, then [switches]{mechanic:switch out} the target out for another of its trainer's Pokémon, selected at random.
 
