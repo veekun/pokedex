@@ -6,7 +6,9 @@ id,short_effect,effect
 5,Has a $effect_chance% chance to burn the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.
 6,Has a $effect_chance% chance to freeze the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [freeze]{mechanic} the target.
 7,Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic} the target.
-8,Inflicts double damage.  User faints.,"User [faint]{mechanic}s, even if the attack [fail]{mechanic}s or [miss]{mechanic}es.  Inflicts [regular damage]{mechanic}, but halves the target's [Defense]{mechanic} for damage calculation, which is similar to doubling the attack's [power]{mechanic}."
+8,User faints.,"User [faint]{mechanic}s, even if the attack [fail]{mechanic}s or [miss]{mechanic}es.  Inflicts [regular damage]{mechanic}.
+
+Before BW: Halves the target's [Defense]{mechanic} for damage calculation, which is similar to doubling the attack's [power]{mechanic}."
 9,Only works on sleeping Pokémon.  Heals the user by half the damage inflicted.,Only works on [sleep]{mechanic}ing Pokémon.  Inflicts [regular damage]{mechanic}.  Heals the user for half the damage inflicted.
 10,Uses the target's last used move.,"Uses the last move targeted at the user by a Pokémon still on the [field]{mechanic}.  A move counts as targeting the user even if it hit multiple Pokémon, as long as the user was one of them; however, moves targeting the [field]{mechanic} itself do not count.  If the user has not been targeted by an appropriate move since entering the [field]{mechanic}, or if no Pokémon that targeted the user remains on the [field]{mechanic}, this move will [fail]{mechanic}.
 
@@ -55,7 +57,7 @@ If the user is holding [Light Clay]{item}, the barrier lasts for eight turns.
 
 This move fails if the Pokémon cannot fall asleep due to [Uproar]{move}, [Insomnia]{ability}, or [Vital Spirit]{ability}.
 
-After Generation III, this move fails if the Pokémon is already asleep."
+Before DP, this move fails if the Pokémon is already asleep."
 39,Causes a one-hit KO.,"Inflicts damage equal to the target's max [HP]{mechanic}.  Ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.  This move's [accuracy]{mechanic} is 30% plus 1% for each level the user is higher than the target.  If the user is a lower level than the target, this move will [fail]{mechanic}.
 
 Because this move inflicts a specific and finite amount of damage, [Endure]{move} still prevents the target from fainting.
