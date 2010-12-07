@@ -2335,6 +2335,10 @@ move_id,language_id,name
 467,7,Golpe Umbrío
 467,8,Oscurotuffo
 468,1,つめとぎ
+468,5,Aiguisage
+468,6,Klauenwetzer
+468,7,Afilagarras
+468,8,Unghiaguzze
 469,1,ワイドガード
 470,1,ガードシェア
 471,1,パワーシェア
@@ -2359,6 +2363,10 @@ move_id,language_id,name
 490,1,ローキック
 491,1,アシッドボム
 492,1,イカサマ
+492,5,Tricherie
+492,6,Schmarotzer
+492,7,Juego Sucio
+492,8,Ripicca
 493,1,シンプルビーム
 494,1,なかまづくり
 495,1,おさきにどうぞ
