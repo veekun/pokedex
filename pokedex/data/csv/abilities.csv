@@ -499,7 +499,7 @@ This Pokémon cannot steal upon being knocked out.  It can steal if the attacker
 129,faint-hearted,5,This Pokémon's [Attack]{mechanic} and [Special Attack]{mechanic} are halved when it has less than half its [HP]{mechanic}.,Halves [Attack]{mechanic} and [Special Attack]{mechanic} below 50% [HP]{mechanic}.
 130,cursed body,5,Moves that hit this Pokémon have a 30% chance of being [Disabled]{move:Disable].,Has a 30% chance of [Disabling]{move:Disable} any move that hits the Pokémon.
 131,healing heart,5,Friendly Pokémon next to this Pokémon in double and triple battles each have a 30% chance of being cured of any [major status ailment]{mechanic} after each turn.,Has a 30% chance of curing each adjacent ally of any [major status ailment]{mechanic} after each turn.
-132,friend guard,5,Takes less damage from allies.  (?),Takes less damage from allies.  (?)
+132,friend guard,5,This Pokémon's moves inflict less damage on friendly Pokémon.,Inflicts less damage on friendly Pokémon.
 133,fragile armor,5,"Whenever any move hits this Pokémon, its [Speed]{mechanic} rises one stage and its [Defense]{mechanic} falls one stage.
 
 This ability triggers on every hit of a multiple-hit move.",Raises [Speed]{mechanic} and lowers [Defense]{mechanic} by one stage upon being hit by any move.
@@ -522,9 +522,9 @@ Damaging moves that inflict major status ailments as an extra effect, such as [T
 148,analyze,5,This Pokémon inflicts more damage when it moves last within a turn.,Raises power when moving last.
 149,Illusion,5,"This Pokémon, upon being sent out, appears to have the species, nickname, and Poké Ball of the last Pokémon in the party that is able to battle.  This illusion breaks upon being hit by a damaging move.
 
-Other damage, e.g. from [weather]{mechanic} or [Spikes]{move}, does not break the illusion, nor does damage done to a [Substitute]{move}.",Changes to the appearance of an ally.  (?)
-150,eccentric,5,This Pokémon uses [Transform] upon entering battle.,Uses Transform upon entering battle.
-151,slip through,5,Ignores Barrier and Light Screen.  (?),Ignores Barrier and Light Screen.  (?)
+Other damage, e.g. from [weather]{mechanic} or [Spikes]{move}, does not break the illusion, nor does damage done to a [Substitute]{move}.",Appears to be the last Pokémon in the party until hit by a damaging move.
+150,eccentric,5,This Pokémon uses [Transform]{move} upon entering battle.,Uses Transform upon entering battle.
+151,slip through,5,"This Pokémon's moves ignore the effects of [Light Screen]{move}, [Reflect]{move}, or [Safeguard]{move} on their targets.","Ignores [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move} on the target."
 152,mummify,5,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to mummify.",Changes attacking Pokémon's abilities to mummify on contact.
 153,brazen,5,"This Pokémon's [Attack]{mechanic} rises one stage upon knocking out another Pokémon, even a friendly Pokémon.
 
