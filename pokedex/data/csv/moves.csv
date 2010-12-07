@@ -466,7 +466,7 @@ id,name,generation_id,type_id,power,pp,accuracy,priority,target_id,damage_class_
 465,Seed Flare,4,12,120,5,85,0,10,3,272,40,1,,22
 466,Ominous Wind,4,8,60,5,100,0,10,3,141,10,4,,11
 467,Shadow Force,4,8,120,5,100,0,10,2,273,,4,,22
-468,claw sharpen,5,17,0,15,,0,7,1,278,,,,
+468,Hone Claws,5,17,0,15,,0,7,1,278,,,,
 469,wide guard,5,6,0,10,,3,4,1,279,,,,
 470,guard share,5,14,0,10,,0,10,1,280,,,,
 471,power share,5,14,0,10,,0,10,1,281,,,,
@@ -490,7 +490,7 @@ id,name,generation_id,type_id,power,pp,accuracy,priority,target_id,damage_class_
 489,snake coil,5,4,0,20,,0,7,1,323,,,,
 490,low kick 2.0,5,2,60,20,100,0,10,2,21,100,,,
 491,acid bomb,5,4,40,20,100,0,10,3,297,100,,,
-492,trickery,5,17,95,15,100,0,10,2,298,,,,
+492,Foul Play,5,17,95,15,100,0,10,2,298,,,,
 493,simple beam,5,1,0,15,100,0,10,1,299,,,,
 494,befriend,5,1,0,15,100,0,10,1,300,,,,
 495,after you,5,1,0,15,,0,10,1,301,,,,

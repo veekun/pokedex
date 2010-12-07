@@ -520,7 +520,7 @@ This ability triggers on every hit of a multiple-hit move.",Raises [Speed]{mecha
 
 Damaging moves that inflict major status ailments as an extra effect, such as [Thunderbolt]{move}, are unaffected.",Has a 50% chance of protecting against non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}.
 148,analyze,5,This Pokémon inflicts more damage when it moves last within a turn.,Raises power when moving last.
-149,illusion,5,"This Pokémon, upon being sent out, appears to have the species, nickname, and Poké Ball of the last Pokémon in the party that is able to battle.  This illusion breaks upon being hit by a damaging move.
+149,Illusion,5,"This Pokémon, upon being sent out, appears to have the species, nickname, and Poké Ball of the last Pokémon in the party that is able to battle.  This illusion breaks upon being hit by a damaging move.
 
 Other damage, e.g. from [weather]{mechanic} or [Spikes]{move}, does not break the illusion, nor does damage done to a [Substitute]{move}.",Changes to the appearance of an ally.  (?)
 150,eccentric,5,This Pokémon uses [Transform] upon entering battle.,Uses Transform upon entering battle.
