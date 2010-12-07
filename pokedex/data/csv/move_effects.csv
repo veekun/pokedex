@@ -77,7 +77,9 @@ Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 t
 45,Hits twice in one turn.,Inflicts [regular damage]{mechanic}.  Hits twice in one turn.
 46,"If the user misses, it takes half the damage it would have inflicted in recoil.","Inflicts [regular damage]{mechanic}.  If this move misses, is blocked by Protect or Detect, or has no effect, the user takes half the damage it would have inflicted in recoil.  This recoil damage will not exceed half the user's max HP.
 
-This move cannot be used while [Gravity]{move} is in effect."
+This move cannot be used while [Gravity]{move} is in effect.
+
+Before GS: If this move misses, the user takes 1 point of damage in recoil."
 47,Protects the user's stats from being changed by enemy moves.,"Pokémon on the user's side of the [field]{mechanic} are immune to stat-lowering effects for five turns.
 
 [Guard Swap]{move}, [Heart Swap]{move}, and [Power Swap]{move} may still be used.
@@ -820,9 +822,11 @@ This effect is passed on by [Baton Pass]{move}."
 254,User takes 1/3 the damage inflicted in recoil.  Has a $effect_chance% chance to burn the target.,"Inflicts [regular damage]{mechanic}.  User takes 1/3 the damage it inflicts in recoil.  Has a $effect_chance% chance to [burn]{mechanic} the target.  [Frozen]{mechanic} Pokémon may use this move, in which case they will thaw."
 255,User takes 1/4 its max HP in recoil.,"Inflicts [typeless]{mechanic} [regular damage]{mechanic}.  User takes 1/4 its max [HP]{mechanic} in recoil.  Ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
 
-This move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no [PP]{mechanic} remaining or being under the effect of both [Encore]{move} and [Torment]{move} at the same time
+This move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no [PP]{mechanic} remaining or being under the effect of both [Encore]{move} and [Torment]{move} at the same time.
 
-This move cannot be copied by [Mimic]{move}, [Mirror Move]{move}, or [Sketch]{move}, nor selected by [Assist]{move} or [Metronome]{move}, nor forced by [Encore]{move}."
+This move cannot be copied by [Mimic]{move}, [Mirror Move]{move}, or [Sketch]{move}, nor selected by [Assist]{move} or [Metronome]{move}, nor forced by [Encore]{move}.
+
+Before GS: This move inflicts [normal]{type}-type damage and the user receives 1/2 of damage dealt in recoil."
 256,"User dives underwater, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic}.  User dives underwater for one turn, becoming immune to attack, and hits on the second turn.
 
 During the immune turn, [Low Kick]{move}, [Surf]{move}, and [Whirlpool]{move} still hit the user normally.  [Surf]{move} and [Whirlpool]{move} also have double power against the user.

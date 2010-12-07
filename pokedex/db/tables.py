@@ -673,7 +673,7 @@ class Move(TableBase):
         info=dict(description="ID of the damage class (physical/special) of the move"))
     effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False,
         info=dict(description="ID of the move's effect"))
-    effect_chance = Column(Integer,
+    effect_chance = Column(Integer, nullable=True
         info=dict(description="The chance for a secondary effect. What this is a chance of is specified by the move's effect."))
     contest_type_id = Column(Integer, ForeignKey('contest_types.id'), nullable=True,
         info=dict(description="ID of the move's Contest type (e.g. cool or smart)"))
@@ -689,12 +689,18 @@ class MoveChangelog(TableBase):
         info=dict(description="ID of the move that changed"))
     changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False,
         info=dict(description="ID of the version group in which the move changed"))
+    type_id = Column(Integer, ForeignKey('types.id'), nullable=True,
+        info=dict(description="Prior type of the move, or NULL if unchanged"))
     power = Column(SmallInteger, nullable=True,
         info=dict(description="Prior base power of the move, or NULL if unchanged"))
     pp = Column(SmallInteger, nullable=True,
         info=dict(description="Prior base PP of the move, or NULL if unchanged"))
     accuracy = Column(SmallInteger, nullable=True,
         info=dict(description="Prior accuracy of the move, or NULL if unchanged"))
+    effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=True,
+        info=dict(description="Prior ID of the effect, or NULL if unchanged"))
+    effect_chance = Column(Integer, nullable=True,
+        info=dict(description="Prior effect chance, or NULL if unchanged"))
 
 class Nature(TableBase):
     u"""A nature a pokémon can have, such as Calm or Brave
