@@ -573,7 +573,7 @@ class MoveDamageClass(TableBase):
     __tablename__ = 'move_damage_classes'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
-    name = Column(Unicode(8), nullable=False,
+    name = Column(Unicode(16), nullable=False,
         info=dict(description="An English name of the class", format='plaintext'))
     description = Column(Unicode(64), nullable=False,
         info=dict(description="An English description of the class", format='plaintext'))
