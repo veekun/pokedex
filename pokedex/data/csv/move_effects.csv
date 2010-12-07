@@ -57,7 +57,7 @@ If the user is holding [Light Clay]{item}, the barrier lasts for eight turns.
 
 This move fails if the Pokémon cannot fall asleep due to [Uproar]{move}, [Insomnia]{ability}, or [Vital Spirit]{ability}.
 
-Before DP, this move fails if the Pokémon is already asleep."
+After DP, this move fails if the Pokémon is already asleep."
 39,Causes a one-hit KO.,"Inflicts damage equal to the target's max [HP]{mechanic}.  Ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.  This move's [accuracy]{mechanic} is 30% plus 1% for each level the user is higher than the target.  If the user is a lower level than the target, this move will [fail]{mechanic}.
 
 Because this move inflicts a specific and finite amount of damage, [Endure]{move} still prevents the target from fainting.
