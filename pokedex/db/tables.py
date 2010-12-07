@@ -1579,7 +1579,7 @@ PokemonMove.machine = relation(Machine, backref='pokemon_moves',
 PokemonMove.move = relation(Move, backref='pokemon_moves')
 PokemonMove.method = relation(PokemonMoveMethod)
 
-PokemonName.language = relation(Language)
+PokemonName.language = relation(Language, lazy='joined')
 
 PokemonStat.stat = relation(Stat)
 
