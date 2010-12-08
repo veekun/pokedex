@@ -1,0 +1,13 @@
+effect_id,changed_in_version_group_id,effect
+8,11,"Halves the target's [Defense]{mechanic} for damage calculation, which is similar to doubling the attack's [power]{mechanic}."
+29,33,"Does nothing in trainer battles."
+38,8,"Works while asleep through [Sleep Talk]{move} if not at full health."
+46,3,"If this move misses, the user takes 1 point of damage in recoil."
+46,11,"If this move misses, the user takes half of the damage it would have inflicted in recoil."
+84,3,"Can call any move except for [Struggle]{move} and itself."
+109,11,"Raises evasion by one stage."
+161,8,"Did not raise [Defense]{mechanic} or [Special Defense]{mechanic}."
+175,8,"Did not raise the user's [Special Defense]{mechanic}."
+180,11,"Healed replacement Pokémon by half of their max HP."
+255,3,"Inflicts [normal]{type}-type damage and the user receives 1/2 of damage dealt in recoil."
+274,11,"Ignores [Wonder Guard]{ability}."

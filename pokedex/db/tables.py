@@ -589,6 +589,16 @@ class MoveEffect(TableBase):
     effect = Column(Unicode(5120), nullable=False,
         info=dict(description="A detailed description of the effect", format='plaintext'))
 
+class MoveEffectChangelog(TableBase):
+    """History of changes to move effects across main game versions."""
+    __tablename__ = 'move_effect_changelog'
+    effect_id = Column(Integer, ForeignKey('move_effects.id'), primary_key=True, nullable=False,
+        info=dict(description="The ID of the effect that changed"))
+    changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False,
+        info=dict(description="The ID of the version group in which the effect changed"))
+    effect = Column(markdown.MarkdownColumn(255), nullable=False,
+        info=dict(description="A description of the old behavior", format='markdown'))
+
 class MoveFlag(TableBase):
     u"""Maps a move flag to a move
     """

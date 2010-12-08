@@ -6,9 +6,7 @@ id,short_effect,effect
 5,Has a $effect_chance% chance to burn the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.
 6,Has a $effect_chance% chance to freeze the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [freeze]{mechanic} the target.
 7,Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic} the target.
-8,User faints.,"User [faint]{mechanic}s, even if the attack [fail]{mechanic}s or [miss]{mechanic}es.  Inflicts [regular damage]{mechanic}.
-
-Before BW: Halves the target's [Defense]{mechanic} for damage calculation, which is similar to doubling the attack's [power]{mechanic}."
+8,User faints.,"User [faint]{mechanic}s, even if the attack [fail]{mechanic}s or [miss]{mechanic}es.  Inflicts [regular damage]{mechanic}."
 9,Only works on sleeping Pokémon.  Heals the user by half the damage inflicted.,Only works on [sleep]{mechanic}ing Pokémon.  Inflicts [regular damage]{mechanic}.  Heals the user for half the damage inflicted.
 10,Uses the target's last used move.,"Uses the last move targeted at the user by a Pokémon still on the [field]{mechanic}.  A move counts as targeting the user even if it hit multiple Pokémon, as long as the user was one of them; however, moves targeting the [field]{mechanic} itself do not count.  If the user has not been targeted by an appropriate move since entering the [field]{mechanic}, or if no Pokémon that targeted the user remains on the [field]{mechanic}, this move will [fail]{mechanic}.
 
@@ -55,9 +53,7 @@ If the user is holding [Light Clay]{item}, the barrier lasts for eight turns.
 37,"Has a $effect_chance% chance to burn, freeze, or paralyze the target.","Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic}, [freeze]{mechanic}, or [paralyze]{mechanic} the target.  One of these effects is selected at random; they do not each have independent chances to occur."
 38,"User sleeps for two turns, completely healing itself.","User falls to [sleep]{mechanic} and immediately regains all its [HP]{mechanic}.  If the user has another [major status effect]{mechanic}, [sleep]{mechanic} will replace it.  The user will always wake up after two turns, or one turn with [Early Bird]{ability}.
 
-This move fails if the Pokémon cannot fall asleep due to [Uproar]{move}, [Insomnia]{ability}, or [Vital Spirit]{ability}.
-
-After DP, this move fails if the Pokémon is already asleep."
+This move fails if the Pokémon cannot fall asleep due to [Uproar]{move}, [Insomnia]{ability}, or [Vital Spirit]{ability}.  It also fails if the Pokémon is at full health or is already asleep."
 39,Causes a one-hit KO.,"Inflicts damage equal to the target's max [HP]{mechanic}.  Ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.  This move's [accuracy]{mechanic} is 30% plus 1% for each level the user is higher than the target.  If the user is a lower level than the target, this move will [fail]{mechanic}.
 
 Because this move inflicts a specific and finite amount of damage, [Endure]{move} still prevents the target from fainting.
@@ -77,9 +73,7 @@ Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 t
 45,Hits twice in one turn.,Inflicts [regular damage]{mechanic}.  Hits twice in one turn.
 46,"If the user misses, it takes half the damage it would have inflicted in recoil.","Inflicts [regular damage]{mechanic}.  If this move misses, is blocked by Protect or Detect, or has no effect, the user takes half the damage it would have inflicted in recoil.  This recoil damage will not exceed half the user's max HP.
 
-This move cannot be used while [Gravity]{move} is in effect.
-
-Before GS: If this move misses, the user takes 1 point of damage in recoil."
+This move cannot be used while [Gravity]{move} is in effect."
 47,Protects the user's stats from being changed by enemy moves.,"Pokémon on the user's side of the [field]{mechanic} are immune to stat-lowering effects for five turns.
 
 [Guard Swap]{move}, [Heart Swap]{move}, and [Power Swap]{move} may still be used.
@@ -227,7 +221,7 @@ The target may still escape by using [Baton Pass]{move}, [U-turn]{move}, or a [S
 
 Both the user and the target pass on this effect with [Baton Pass]{move}."
 108,Target loses 1/4 its max HP every turn as long as it's asleep.,"Only works on [sleep]{mechanic}ing Pokémon.  Gives the target a nightmare, damaging it for 1/4 its max [HP]{mechanic} every turn.  If the target wakes up or leaves the [field]{mechanic}, this effect ends."
-109,Raises the user's evasion.,"Raises the user's [evasion]{mechanic} by one [stage]{mechanic}.
+109,Raises the user's evasion by two stages.,"Raises the user's [evasion]{mechanic} by two [stage]{mechanic}.
 
 [Stomp]{move} has double power against Pokémon that have used this move since entering the [field]{mechanic}."
 110,Ghosts pay half their max HP to hurt the target every turn.  Others decrease Speed but raise Attack and Defense.,"If the user is a [Ghost]{type}: user pays half its max [HP]{mechanic} to place a curse on the target, damaging it for 1/4 its max [HP]{mechanic} every turn.
@@ -569,7 +563,7 @@ This move cannot be selected by [Assist]{move} or [Metronome]{move}."
 If the target has [Wonder Guard]{ability}, this move will fail.
 
 This move cannot be copied by [Mirror Move]{move}."
-180,User will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will be healed for half its max [HP]{mechanic}.  If the user is [switched out]{mechanic}, its replacement will be healed instead.  If the user [faint]{mechanic}s or is forcefully switched by [Roar]{move} or [Whirlwind]{move}, this effect will not activate."
+180,User will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will be healed for half its max [HP]{mechanic}.  If the user is [switched out]{mechanic}, its replacement will be healed instead for half of the user's max HP.  If the user [faint]{mechanic}s or is forcefully switched by [Roar]{move} or [Whirlwind]{move}, this effect will not activate."
 181,Randomly selects and uses one of the trainer's other Pokémon's moves.,"Uses a move from another Pokémon in the user's party, both selected at random.  Moves from fainted Pokémon can be used.  If there are no eligible Pokémon or moves, this move will fail.
 
 This move will not select [Assist]{move}, [Chatter]{move}, [Copycat]{move}, [Counter]{move}, [Covet]{move}, [Destiny Bond]{move}, [Detect]{move}, [dragon tail]{move}, [Endure]{move}, [fast guard]{move}, [Feint]{move}, [Focus Punch]{move}, [Follow Me]{move}, [Helping Hand]{move}, [Me First]{move}, [Metronome]{move}, [Mimic]{move}, [Mirror Coat]{move}, [Mirror Move]{move}, [overhead toss]{move}, [Protect]{move}, [Sketch]{move}, [Sleep Talk]{move}, [Snatch]{move}, [Struggle]{move}, [Switcheroo]{move}, [Thief]{move}, [Trick]{move}, or [wide guard]{move}.
@@ -824,12 +818,10 @@ This effect is passed on by [Baton Pass]{move}."
 
 This move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no [PP]{mechanic} remaining or being under the effect of both [Encore]{move} and [Torment]{move} at the same time.
 
-This move cannot be copied by [Mimic]{move}, [Mirror Move]{move}, or [Sketch]{move}, nor selected by [Assist]{move} or [Metronome]{move}, nor forced by [Encore]{move}.
-
-Before GS: This move inflicts [normal]{type}-type damage and the user receives 1/2 of damage dealt in recoil."
+This move cannot be copied by [Mimic]{move}, [Mirror Move]{move}, or [Sketch]{move}, nor selected by [Assist]{move} or [Metronome]{move}, nor forced by [Encore]{move}."
 256,"User dives underwater, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic}.  User dives underwater for one turn, becoming immune to attack, and hits on the second turn.
 
-During the immune turn, [Low Kick]{move}, [Surf]{move}, and [Whirlpool]{move} still hit the user normally.  [Surf]{move} and [Whirlpool]{move} also have double power against the user.
+During the immune turn, [Surf]{move}, and [Whirlpool]{move} still hit the user normally, and their power is doubled if appropriate.
 
 The user may be hit during its immune turn if under the effect of [Lock-On]{move}, [Mind Reader]{move}, or [No Guard]{ability}.
 
@@ -886,9 +878,7 @@ This move cannot be copied by [Mimic]{move}, [Mirror Move]{move}, or [Sketch]{mo
 This move breaks through [Detect]{move} and [Protect]{move}.
 
 This move cannot be selected by [Sleep Talk]{move}."
-274,Has a $effect_chance% chance to burn the target and a $effect_chance% chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
-
-This move breaks through [Wonder Guard]{ability} in Generation IV."
+274,Has a $effect_chance% chance to burn the target and a $effect_chance% chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}."
 275,Has a $effect_chance% chance to freeze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [freeze]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 276,Has a $effect_chance% chance to paralyze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 277,Has a $effect_chance% chance to raise the user's Special Attack by one stage.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to raise the user's [Special Attack]{mechanic} by one [stage]{mechanic}.
