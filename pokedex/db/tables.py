@@ -683,7 +683,7 @@ class Move(TableBase):
         info=dict(description="ID of the damage class (physical/special) of the move"))
     effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False,
         info=dict(description="ID of the move's effect"))
-    effect_chance = Column(Integer, nullable=True
+    effect_chance = Column(Integer, nullable=True,
         info=dict(description="The chance for a secondary effect. What this is a chance of is specified by the move's effect."))
     contest_type_id = Column(Integer, ForeignKey('contest_types.id'), nullable=True,
         info=dict(description="ID of the move's Contest type (e.g. cool or smart)"))

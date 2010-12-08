@@ -1,6 +1,6 @@
 effect_id,changed_in_version_group_id,effect
 8,11,"Halves the target's [Defense]{mechanic} for damage calculation, which is similar to doubling the attack's [power]{mechanic}."
-29,33,"Does nothing in trainer battles."
+29,3,"Does nothing in trainer battles."
 38,8,"Works while asleep through [Sleep Talk]{move} if not at full health."
 46,3,"If this move misses, the user takes 1 point of damage in recoil."
 46,11,"If this move misses, the user takes half of the damage it would have inflicted in recoil."
