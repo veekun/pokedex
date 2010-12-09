@@ -841,6 +841,8 @@ class Pokemon(TableBase):
         info=dict(description=u"Set iff the species' female front sprite is different from the male's in generation IV"))
     has_gen4_fem_back_sprite = Column(Boolean, nullable=False,
         info=dict(description=u"Set iff the species' female back sprite is different from the male's in generation IV"))
+    order = Column(Integer, nullable=False, index=True,
+        info=dict(description=u"Order for sorting. Almost national order, except families and forms are grouped together."))
 
     ### Stuff to handle alternate Pokémon forms
 
