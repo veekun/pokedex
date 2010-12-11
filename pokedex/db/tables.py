@@ -1306,8 +1306,25 @@ Ability.changelog = relation(AbilityChangelog,
 Ability.flavor_text = relation(AbilityFlavorText, order_by=AbilityFlavorText.version_group_id, backref='ability')
 Ability.foreign_names = relation(AbilityName, backref='ability')
 Ability.generation = relation(Generation, backref='abilities')
+Ability.all_pokemon = relation(Pokemon,
+    secondary=PokemonAbility.__table__,
+    back_populates='all_abilities',
+)
 Ability.pokemon = relation(Pokemon,
     secondary=PokemonAbility.__table__,
+    primaryjoin=and_(
+        PokemonAbility.ability_id == Ability.id,
+        PokemonAbility.is_dream == False
+    ),
+    back_populates='abilities',
+)
+Ability.dream_pokemon = relation(Pokemon,
+    secondary=PokemonAbility.__table__,
+    primaryjoin=and_(
+        PokemonAbility.ability_id == Ability.id,
+        PokemonAbility.is_dream == True
+    ),
+    back_populates='dream_ability',
 )
 
 AbilityChangelog.changed_in = relation(VersionGroup, backref='ability_changelog')
