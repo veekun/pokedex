@@ -43,7 +43,7 @@ move_id,changed_in_version_group_id,type_id,power,pp,accuracy,effect_id,effect_c
 157,3,,,,,1,0
 161,3,,,,,1,0
 170,11,,,40,,,
-174,11,18,,,,,
+174,11,10001,,,,,
 178,11,,,,85,,
 202,11,,60,,,,
 210,11,,10,,,,
