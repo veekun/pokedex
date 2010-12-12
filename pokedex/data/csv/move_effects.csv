@@ -662,7 +662,7 @@ Waterfall      | Puts target to [sleep]{mechanic}
 201,Has an increased chance for a critical hit and a $effect_chance% chance to burn the target.,Inflicts [regular damage]{mechanic}.  User's [critical hit]{mechanic} rate is one level higher when using this move. Has a $effect_chance% chance to [burn]{mechanic} the target.
 202,All damage from Electric moves is halved until the end of the battle.,"[Electric]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
 203,Has a $effect_chance% chance to badly poison the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [badly poison]{mechanic} the target.
-204,"If there be weather, this move has doubled power and the weather's type.","Inflicts [regular damage]{mechanic}.  If a weather move is active, this move has double power, and its type becomes the type of the weather move.  [Shadow Sky]{move} counts as [???]{type} for the purposes of this move."
+204,"If there be weather, this move has doubled power and the weather's type.","Inflicts [regular damage]{mechanic}.  If a weather move is active, this move has double power, and its type becomes the type of the weather move.  [Shadow Sky]{move} is typeless for the purposes of this move."
 205,Lowers the user's Special Attack by two stages after inflicting damage.,"Inflicts [regular damage]{mechanic}, then lowers the user's [Special Attack]{mechanic} by two [stages]{mechanic:stage}."
 206,Lowers the target's Attack and Defense by one stage.,Lowers the target's [Attack]{mechanic} and [Defense]{mechanic} by one [stage]{mechanic}.
 207,Raises the user's Defense and Special Defense by one stage.,Raises the user's [Defense]{mechanic} and [Special Defense]{mechanic} by one [stage]{mechanic}.
@@ -1003,4 +1003,4 @@ During [Rain Dance]{move}, this move has 100% accuracy.  During [Sunny Day]{move
 10003,Halves HP of all Pokémon on the field.  Must recharge,"Halves [HP]{mechanic} of all Pokémon on the field.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic} out during that turn."
 10004,Lowers the target's evasion by two stages.,Lowers the target's [evasion]{mechanic} by two [stages]{mechanic:stage}.
 10005,"Removes [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}.","Removes the effects of [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}."
-10006,Changes the weather to Shadow Sky for five turns.,"Changes the weather to Shadow Sky for five turns.  Pokémon other than [Shadow]{type} Pokémon take 1/16 their max [HP]{mechanic} at the end of every turn.  This move counts as [???]{type}-type for the purposes of [Weather Ball]{move}."
+10006,Changes the weather to Shadow Sky for five turns.,"Changes the weather to Shadow Sky for five turns.  Pokémon other than [Shadow]{type} Pokémon take 1/16 their max [HP]{mechanic} at the end of every turn.  This move is typeless for the purposes of [Weather Ball]{move}."
