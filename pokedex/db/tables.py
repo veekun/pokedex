@@ -363,6 +363,8 @@ class Item(TableBase):
         info=dict(description=u"Power of the move Fling when used with this item."))
     fling_effect_id = Column(Integer, ForeignKey('item_fling_effects.id'), nullable=True,
         info=dict(description=u"ID of the fling-effect of the move Fling when used with this item. Note that these are different from move effects."))
+    short_effect = Column(Unicode(256), nullable=False,
+        info=dict(description="A short summary of the effect", format='plaintext'))
     effect = Column(markdown.MarkdownColumn(5120), nullable=False,
         info=dict(description=u"Detailed English description of the item's effect.", format='markdown'))
 
