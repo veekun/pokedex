@@ -75,16 +75,16 @@ This item can only be used in the [Great Marsh]{location} or [Safari Zone]{locat
 :   Cures [sleep]{mechanic}."
 22,9,Cures paralysis.,"Used on a party Pokémon
 :   Cures [paralysis]{mechanic}."
-23,9,Restores HP to full and cures any status ailment.,"Used on a party Pokémon
-:   Restores [HP]{mechanic} to full and cures any [status ailment]{mechanic}."
+23,9,Restores HP to full and cures any status ailment and confusion.,"Used on a party Pokémon
+:   Restores [HP]{mechanic} to full and cures any [status ailment]{mechanic} and [confusion]{mechanic}."
 24,9,Restores HP to full.,"Used on a party Pokémon
 :   Restores [HP]{mechanic} to full."
 25,9,Restores 200 HP.,"Used on a party Pokémon
 :   Restores 200 [HP]{mechanic}."
 26,9,Restores 50 HP.,"Used on a party Pokémon
 :   Restores 50 [HP]{mechanic}."
-27,9,Cures any status ailment.,"Used on a party Pokémon
-:   Cures any [status ailment]{mechanic}."
+27,9,Cures any status ailment and confusion.,"Used on a party Pokémon
+:   Cures any [status ailment]{mechanic} and [confusion]{mechanic}."
 28,9,Revives with half HP.,"Used on a party Pokémon
 :   Revives the Pokémon and restores half its [HP]{mechanic}."
 29,9,Revives with full HP.,"Used on a party Pokémon
@@ -113,8 +113,8 @@ This item can only be used in the [Great Marsh]{location} or [Safari Zone]{locat
 :   Restores 10 [PP]{mechanic} for each move."
 41,9,Restores PP to full for each move.,"Used on a party Pokémon
 :   Restores [PP]{mechanic} to full for each move."
-42,9,Cures any status ailment.,"Used on a party Pokémon
-:   Cures any [status ailment]{mechanic}."
+42,9,Cures any status ailment and confusion.,"Used on a party Pokémon
+:   Cures any [status ailment]{mechanic} and [confusion]{mechanic}."
 43,9,Restores 20 HP.,"Used on a party Pokémon
 :   Restores 20 [HP]{mechanic}."
 44,9,Revives all fainted Pokémon with full HP.,"Used
@@ -137,8 +137,8 @@ This item can only be used in the [Great Marsh]{location} or [Safari Zone]{locat
 :   Increases [Special Defense]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2."
 53,9,Raises a move's max PP by 60%.,"Used on a party Pokémon
 :   Increases a selected move's max [PP]{mechanic} to 1.6× its original max PP.  Increases [happiness]{mechanic} by 5/3/2."
-54,9,Cures any status ailment.,"Used on a party Pokémon
-:   Cures any [status ailment]{mechanic}."
+54,9,Cures any status ailment and confusion.,"Used on a party Pokémon
+:   Cures any [status ailment]{mechanic} and [confusion]{mechanic}."
 55,9,Prevents stat changes in battle for five turns in battle.  Raises happiness.,"Used on a party Pokémon in battle
 :   Protects the target's stats from being [lowered]{mechanic:lower} for the next five turns.  Increases happiness by 1/1/0."
 56,9,Increases the chance of a critical hit in battle.  Raises happiness.,"Used on a party Pokémon in battle
@@ -165,90 +165,234 @@ This item can only be used in the [Great Marsh]{location} or [Safari Zone]{locat
 :   Cures [confusion]{mechanic}."
 67,9,Cures attraction.,"Used on a party Pokémon in battle
 :   Cures [attraction]{mechanic}."
-68,9,,Makes wild encounters less frequent.  Reusable.
-69,9,,Makes wild encounters more frequent.  Reusable.
+68,9,Halves the wild Pokémon encounter rate.,"Used outside of battle
+:   Decreases the wild Pokémon encounter rate by 50%."
+69,9,Doubles the wild Pokémon encounter rate.,"Used outside of battle
+:   Doubles the wild Pokémon encounter rate."
 70,9,No effect.,No effect.
 71,9,No effect.,No effect.
-72,9,,Trade 10 for a Sunny Day TM in the house midway along the southern section of Route 212.
-73,9,,Trade 10 for a Rain Dance TM in the house midway along the southern section of Route 212.
-74,9,,Trade 10 for a Sandstorm TM in the house midway along the southern section of Route 212.
-75,9,,Trade 10 for a Hail TM in the house midway along the southern section of Route 212.
-76,9,,Prevents wild battles with Pokémon that are lower level than the trainer's lead Pokémon for 200 steps.
-77,9,,Prevents wild battles with Pokémon that are lower level than the trainer's lead Pokémon for 250 steps.
-78,9,,Transports the trainer to the entrance of the cave s/he is in.  Only usable in caves.
-79,9,,Prevents wild battles with Pokémon that are lower level than the trainer's lead Pokémon for 100 steps.
-80,9,,Evolves a Gloom into Bellossom or a Sunkern into Sunflora.
-81,9,,"Evolves a Clefairy into Clefable, Jigglypuff into Wigglytuff, Nidorina into Nidoqueen, Nidorino into Nidoking, or Skitty into Delcatty."
-82,9,,"Evolves an Eevee into Flareon, a Growlithe into Arcanine, or a Vulpix into Ninetales."
-83,9,,Evolves an Eevee into Jolteon or a Pikachu into Raichu.
-84,9,,"Evolves an Eevee into Vaporeon, a Lombre into Ludicolo, a Poliwhirl into Poliwrath, a Shellder into Cloyster, or a Staryu into Starmie."
-85,9,,"Evolves an Exeggcute into Exeggutor, a Gloom into Vileplume, a Nuzleaf into Shiftry, or a Weepinbell into Victreebel."
-86,9,,No effect.
-87,9,,No effect.
-88,9,,No effect.
-89,9,,No effect.
-90,9,,No effect.
-91,9,,No effect.
-92,9,,No effect.
-93,9,,Trade one to the Move Relearner in Pastoria City to teach one Pokémon a prior level-up move.
-94,9,,Immediately starts a wild battle if the trainer is standing in grass or in a cave.  Can be smeared on sweet-smelling trees to attract tree-dwelling Pokémon after ten hours.
-95,9,,Spread over a planted Berry: Decreases growth time by 25% and speeds up the soil's drying.
-96,9,,Spread over a planted Berry: Increases growth time and slows the soil's drying.
-97,9,,Spread over a planted Berry: Increases the time the grown plant's Berries will stay attached.
-98,9,,Spread over a planted Berry: Increases the number of times the Berry will regrow after wilting.
-99,9,,"Contains the fossil of a Lileep, which a Scientist can revive."
-100,9,,"Contains the fossil of an Anorith, which a Scientist can revive."
-101,9,,"Contains the fossil of an Omanyte, which a Scientist can revive."
-102,9,,"Contains the fossil of a Kabuto, which a Scientist can revive."
-103,9,,"Contains the fossil of an Aerodactyl, which a Scientist can revive."
-104,9,,"Contains the fossil of a Shieldon, which a Scientist can revive."
-105,9,,"Contains the fossil of a Cranidos, which a Scientist can revive."
-106,9,,No effect.
-107,9,,Evolves a Roselia into Roserade or a Togetic into Togekiss.
-108,9,,Evolves a Misdreavus into Mismagius or a Murkrow into Honchkrow.
-109,9,,Evolves a male Kirlia into Gallade or a female Snorunt into Froslass.
-110,9,,Held by Happiny: Holder evolves into Chansey when it levels up during the daytime.
-111,9,,"Place in the Hallowed Tower, and a Spiritomb will be summoned if the trainer's Underground status card counts at least 32 greetings."
-112,9,,Held by a Dialga: Increases the damage of the holder's Dragon and Steel moves by 20%.
-113,9,,Held by a Palkia: Increases the damage of the holder's Dragon and Water moves by 20%.
-114,9,,Used to send short messages to other players via Pokémon trading.
-115,9,,Used to send short messages to other players via Pokémon trading.
-116,9,,Used to send short messages to other players via Pokémon trading.
-117,9,,Used to send short messages to other players via Pokémon trading.
-118,9,,Used to send short messages to other players via Pokémon trading.
-119,9,,Used to send short messages to other players via Pokémon trading.
-120,9,,Used to send short messages to other players via Pokémon trading.
-121,9,,Used to send short messages to other players via Pokémon trading.
-122,9,,Used to send short messages to other players via Pokémon trading.
-123,9,,Used to send short messages to other players via Pokémon trading.
-124,9,,Used to send short messages to other players via Pokémon trading.
-125,9,,Used to send short messages to other players via Pokémon trading.
-126,9,,"Held: When the holder becomes Paralyzed, this Berry is consumed and cures the Paralysis."
-127,9,,"Held: When the holder falls asleep, this Berry is consumed and awakens the holder."
-128,9,,"Held: When the holder becomes Poisoned, this Berry is consumed and cures the Poison."
-129,9,,"Held: When the holder becomes Burned, this Berry is consumed and cures the Burn."
-130,9,,"Held: When the holder becomes Frozen, this Berry is consumed and thaws the holder."
-131,9,,"Held: When one of the holder's moves runs out of PP, this Berry is consumed and restores 10 of the move's PP at the end of the turn."
-132,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 10 HP."
-133,9,,"Held: When the holder becomes Confused, this Berry is consumed and cures the Confusion."
-134,9,,"Held: When the holder gains a major status ailment, this Berry is consumed and cures the holder."
-135,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/4 its max HP."
-136,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes spicy flavors (- Attack nature), it will also become Confused."
-137,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes dry flavors (- Special Attack nature), it will also become Confused."
-138,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes sweet flavors (- Speed nature), it will also become Confused."
-139,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes bitter flavors (- Special Defense nature), it will also become Confused."
-140,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes sour flavors (- Defense nature), it will also become Confused."
+72,9,No effect.,"No effect.
+
+In Diamond and Pearl, trade ten for a [Sunny Day]{move} [TM]{item:TM11} in the house midway along the southern section of [Route 212]{location}.
+
+In Platinum, trade to [move tutors]{mechanic:move tutor} on [Route 212]{location}, in [Snowpoint City]{location}, and in the [Survival Area]{location}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
+
+In HeartGold and SoulSilver, trade one for a [Cheri Berry]{item}, a [Leppa Berry]{item}, and a [Pecha Berry]{item} with the Juggler near the Pokémon Center in [Violet City]{location}.
+
+In HeartGold and SoulSilver, trade one for a [Persim Berry]{item}, a [Pomeg Berry]{item}, and a [Razz Berry]{item} with the Juggler near the [Pal Park]{location} entrance in [Fuschia City]{location}."
+73,9,No effect.,"No effect.
+
+In Diamond and Pearl, trade ten for a [Rain Dance]{move} [TM]{item:TM18} in the house midway along the southern section of [Route 212]{location}.
+
+In Platinum, trade to [move tutors]{mechanic:move tutor} on [Route 212]{location}, in [Snowpoint City]{location}, and in the [Survival Area]{location}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
+
+In HeartGold and SoulSilver, trade one for a [Chesto Berry]{item}, an [Oran Berry]{item}, and a [Wiki Berry]{item} with the Juggler near the Pokémon Center in [Violet City]{location}.
+
+In HeartGold and SoulSilver, trade one for a [Bluk Berry]{item}, a [Cornn Berry]{item}, and a [Kelpsy Berry]{item} with the Juggler near the [Pal Park]{location} entrance in [Fuschia City]{location}."
+74,9,No effect.,"No effect.
+
+In Diamond and Pearl, trade ten for a [Sandstorm]{move} [TM]{item:TM37} in the house midway along the southern section of [Route 212]{location}.
+
+In Platinum, trade to [move tutors]{mechanic:move tutor} on [Route 212]{location}, in [Snowpoint City]{location}, and in the [Survival Area]{location}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
+
+In HeartGold and SoulSilver, trade one for an [Aspear Berry]{item}, a [Iapapa Berry]{item}, and a [Sitrus Berry]{item} with the Juggler near the Pokémon Center in [Violet City]{location}.
+
+In HeartGold and SoulSilver, trade one for a [Grepa Berry]{item}, a [Nomel Berry]{item}, and a [Pinap Berry]{item} with the Juggler near the [Pal Park]{location} entrance in [Fuschia City]{location}."
+75,9,No effect.,"No effect.
+
+In Diamond and Pearl, trade ten for a [Hail]{move} [TM]{item:TM07} in the house midway along the southern section of [Route 212]{location}.
+
+In Platinum, trade to [move tutors]{mechanic:move tutor} on [Route 212]{location}, in [Snowpoint City]{location}, and in the [Survival Area]{location}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
+
+In HeartGold and SoulSilver, trade one for an [Aguav Berry]{item}, a [Lum Berry]{item}, and a [Rawst Berry]{item} with the Juggler near the Pokémon Center in [Violet City]{location}.
+
+In HeartGold and SoulSilver, trade one for a [Durin Berry]{item}, a [Hondew Berry]{item}, and a [Wepear Berry]{item} with the Juggler near the [Pal Park]{location} entrance in [Fuschia City]{location}."
+76,9,,"Used outside of battle
+:   Trainer will skip encounters with wild Pokémon of a lower level than the lead party Pokémon.  This effect wears off after the trainer takes 200 steps."
+77,9,,"Used outside of battle
+:   Trainer will skip encounters with wild Pokémon of a lower level than the lead party Pokémon.  This effect wears off after the trainer takes 250 steps."
+78,9,,"Used outside of battle
+:   Transports the trainer to the last-entered dungeon entrance.  Cannot be used outside, in buildings, or in [Distortion World]{location}, [Hall of Origin]{location}, [Spear Pillar]{location}, or [Turnback Cave]{location}."
+79,9,,"Used outside of battle
+:   Trainer will skip encounters with wild Pokémon of a lower level than the lead party Pokémon.  This effect wears off after the trainer takes 100 steps."
+80,9,,"Used on a party Pokémon
+:   Evolves a [Gloom]{pokemon} into [Bellossom]{pokemon} or a [Sunkern]{pokemon} into [Sunflora]{pokemon}."
+81,9,,"Used on a party Pokémon
+:   Evolves a [Clefairy]{pokemon} into [Clefable]{pokemon}, [Jigglypuff]{pokemon} into [Wigglytuff]{pokemon}, [Nidorina]{pokemon} into [Nidoqueen]{pokemon}, [Nidorino]{pokemon} into [Nidoking]{pokemon}, or [Skitty]{pokemon} into [Delcatty]{pokemon}."
+82,9,,"Used on a party Pokémon
+:   Evolves an [Eevee]{pokemon} into [Flareon]{pokemon}, a [Growlithe]{pokemon} into [Arcanine]{pokemon}, or a [Vulpix]{pokemon} into [Ninetales]{pokemon}."
+83,9,,"Used on a party Pokémon
+:   Evolves an [Eevee]{pokemon} into [Jolteon]{pokemon} or a [Pikachu]{pokemon} into [Raichu]{pokemon}."
+84,9,,"Used on a party Pokémon
+:   Evolves an [Eevee]{pokemon} into [Vaporeon]{pokemon}, a [Lombre]{pokemon} into [Ludicolo]{pokemon}, a [Poliwhirl]{pokemon} into [Poliwrath]{pokemon}, a [Shellder]{pokemon} into [Cloyster]{pokemon}, or a [Staryu]{pokemon} into [Starmie]{pokemon}."
+85,9,,"Used on a party Pokémon
+:   Evolves an [Exeggcute]{pokemon} into [Exeggutor]{pokemon}, a [Gloom]{pokemon} into [Vileplume]{pokemon}, a [Nuzleaf]{pokemon} into [Shiftry]{pokemon}, or a [Weepinbell]{pokemon} into [Victreebel]{pokemon}."
+86,9,,Vendor trash.
+87,9,Vendor trash.,Vendor trash.
+88,9,Vendor trash.,Vendor trash.
+89,9,Vendor trash.,Vendor trash.
+90,9,Vendor trash.,Vendor trash.
+91,9,Vendor trash.,Vendor trash.
+92,9,Vendor trash.,Vendor trash.
+93,9,,Trade one to the Move Relearner near the shore in [Pastoria City]{location} or with the Move Deleter in [Blackthorn City]{location} to teach one party Pokémon a prior level-up move.
+94,9,,"Used outside of battle
+:   Immediately triggers a wild Pokémon battle, as long as the trainer is somewhere with wild Pokémon—i.e., in tall grass, in a cave, or surfing.
+
+Can be smeared on sweet-smelling trees to attract tree-dwelling Pokémon after six hours."
+95,9,,"Used on a patch of soil
+:   Plant's growth stages will each last 25% less time.  Dries soil out more quickly."
+96,9,,"Used on a patch of soil
+:   Plant's growth stages will each last 25% more time.  Dries soil out more slowly."
+97,9,,"Used on a patch of soil
+:   Fully-grown plant will last 25% longer before dying and possibly regrowing."
+98,9,,"Used on a path of soil
+:   Plant will regrow after dying 25% more times."
+99,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:Mining Museum} or [Pewter Museum of Science]{location:Pewter City} to receive a [Lileep]{pokemon}.
+100,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:Mining Museum} or [Pewter Museum of Science]{location:Pewter City} to receive a [Anorith]{pokemon}.
+101,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:Mining Museum} or [Pewter Museum of Science]{location:Pewter City} to receive a [Omanyte]{pokemon}.
+102,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:Mining Museum} or [Pewter Museum of Science]{location:Pewter City} to receive a [Kabuto]{pokemon}.
+103,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:Mining Museum} or [Pewter Museum of Science]{location:Pewter City} to receive a [Aerodactyl]{pokemon}.
+104,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:Mining Museum} or [Pewter Museum of Science]{location:Pewter City} to receive a [Shieldon]{pokemon}.
+105,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:Mining Museum} or [Pewter Museum of Science]{location:Pewter City} to receive a [Cranidos]{pokemon}.
+106,9,Vendor trash.,Vendor trash.
+107,9,,"Used on a party Pokémon
+:   Evolves a [Roselia]{pokemon} into [Roserade]{pokemon} or a [Togetic]{pokemon} into [Togekiss]{pokemon}."
+108,9,,"Used on a party Pokémon
+:   Evolves a [Misdreavus]{pokemon} into [Mismagius]{pokemon} or a [Murkrow]{pokemon} into [Honchkrow]{pokemon}."
+109,9,,"Used on a party Pokémon
+:   Evolves a male [Kirlia]{pokemon} into [Gallade]{pokemon} or a female [Snorunt]{pokemon} into [Froslass]{pokemon}."
+110,9,,"Held by [Happiny]{pokemon}
+:   Holder evolves into [Chansey]{pokemon} when it levels up during the daytime."
+111,9,,"Place in the tower on [Route 209]{location}.  Check the stone to encounter a [Spiritomb]{pokemon}, as long as the trainer's Underground status card counts at least 32 greetings."
+112,9,,"Held by [Dialga]{pokemon}
+:   Holder's [dragon]{type}- and [steel]{type}-type moves have 1.2× their usual power."
+113,9,,"Held by [Palkia]{pokemon}
+:   Holder's [dragon]{type}- and [water]{type}-type moves have 1.2× their usual power."
+114,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+115,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+116,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+117,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+118,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+119,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+120,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+121,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+122,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+123,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+124,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+125,9,,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
+
+Held
+:   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
+126,9,,"Held in battle
+:   When the holder is [paralyzed]{mechanic:paralysis}, it consumes this item to cure the paralysis.
+
+Used on a party Pokémon
+:   Cures [paralysis]{mechanic}."
+127,9,,"Held in battle
+:   When the holder is [asleep]{mechanic:sleep}, it consumes this item to wake up.
+
+Used on a party Pokémon
+:   Cures [sleep]{mechanic}."
+128,9,,"Held in battle
+:   When the holder is [poisoned]{mechanic:poison}, it consumes this item to cure the poison.
+
+Used on a party Pokémon
+:   Cures [poison]{mechanic}."
+129,9,,"Held in battle
+:   When the holder is [burned]{mechanic:burn}, it consumes this item to cure the burn.
+
+Used on a party Pokémon
+:   Cures a [burn]{mechanic}."
+130,9,,"Held in battle
+:   When the holder is [frozen]{mechanic:freezing}, it consumes this item to thaw itself.
+
+Used on a party Pokémon
+:   Cures [freezing]{mechanic}."
+131,9,,"Held in battle
+:   When the holder is out of [PP]{mechanic} for one of its moves, it consumes this item to restore 10 of that move's PP.
+
+Used on a party Pokémon
+:   Restores 10 [PP]{mechanic} for a selected move."
+132,9,,"Held in battle
+:   When the holder has 1/2 its max [HP]{mechanic} remaining or less, it consumes this item to restore 10 HP.
+
+Used on a party Pokémon
+:   Restores 10 [HP]{mechanic}."
+133,9,,"Held in battle
+:   When the holder is [confused]{mechanic:confusion}, it consumes this item to cure the confusion.
+
+Used on a party Pokémon
+:   Cures [confusion]{mechanic}."
+134,9,,"Held in battle
+:   When the holder is afflicted with a [major status ailment]{mechanic}, it consumes this item to cure the ailment.
+
+Used on a party Pokémon
+:   Cures any [major status ailment]{mechanic}."
+135,9,,"Held in battle
+:   When the holder has 1/2 its max [HP]{mechanic} remaining or less, it consumes this item to restore 1/4 its max HP.
+
+Used on a party Pokémon
+:   Restores 1/4 the Pokémon's max [HP]{mechanic}."
+136,9,,"Held in battle
+:   When the holder has 1/2 its max [HP]{mechanic} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes spicy flavors (i.e., has a nature that lowers [Attack]{mechanic}), it will also become [confused]{mechanic:confusion}."
+137,9,,"Held in battle
+:   When the holder has 1/2 its max [HP]{mechanic} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes dry flavors (i.e., has a nature that lowers [Special Attack]{mechanic}), it will also become [confused]{mechanic:confusion}."
+138,9,,"Held in battle
+:   When the holder has 1/2 its max [HP]{mechanic} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes sweet flavors (i.e., has a nature that lowers [Speed]{mechanic}), it will also become [confused]{mechanic:confusion}."
+139,9,,"Held in battle
+:   When the holder has 1/2 its max [HP]{mechanic} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes bitter flavors (i.e., has a nature that lowers [Special Defense]{mechanic}), it will also become [confused]{mechanic:confusion}."
+140,9,,"Held in battle
+:   When the holder has 1/2 its max [HP]{mechanic} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes sour flavors (i.e., has a nature that lowers [Defense]{mechanic}), it will also become [confused]{mechanic:confusion}."
 141,9,,No effect; only useful for planting and cooking.
 142,9,,No effect; only useful for planting and cooking.
 143,9,,No effect; only useful for planting and cooking.
 144,9,,No effect; only useful for planting and cooking.
 145,9,,No effect; only useful for planting and cooking.
-146,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's HP effort by 10.
-147,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Attack effort by 10.
-148,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Defense effort by 10.
-149,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Special Attack effort by 10.
-150,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Special Defense effort by 10.
-151,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Speed effort by 10.
+146,9,,"Used on a party Pokémon
+:   Increases [happiness]{mechanic} by 10/5/2.  Lowers [HP]{mechanic} [effort]{mechanic} by 10."
+147,9,,"Used on a party Pokémon
+:   Increases [happiness]{mechanic} by 10/5/2.  Lowers [Attack]{mechanic} [effort]{mechanic} by 10."
+148,9,,"Used on a party Pokémon
+:   Increases [happiness]{mechanic} by 10/5/2.  Lowers [Defense]{mechanic} [effort]{mechanic} by 10."
+149,9,,"Used on a party Pokémon
+:   Increases [happiness]{mechanic} by 10/5/2.  Lowers [Special Attack]{mechanic} [effort]{mechanic} by 10."
+150,9,,"Used on a party Pokémon
+:   Increases [happiness]{mechanic} by 10/5/2.  Lowers [Special Defense]{mechanic} [effort]{mechanic} by 10."
+151,9,,"Used on a party Pokémon
+:   Increases [happiness]{mechanic} by 10/5/2.  Lowers [Speed]{mechanic} [effort]{mechanic} by 10."
 152,9,,No effect; only useful for planting and cooking.
 153,9,,No effect; only useful for planting and cooking.
 154,9,,No effect; only useful for planting and cooking.
@@ -258,35 +402,64 @@ This item can only be used in the [Great Marsh]{location} or [Safari Zone]{locat
 158,9,,No effect; only useful for planting and cooking.
 159,9,,No effect; only useful for planting and cooking.
 160,9,,No effect; only useful for planting and cooking.
-161,9,,"Held: When the holder is struck by a super-effective Fire move, this Berry is consumed and reduces the damage taken by 50%."
-162,9,,"Held: When the holder is struck by a super-effective Water move, this Berry is consumed and reduces the damage taken by 50%."
-163,9,,"Held: When the holder is struck by a super-effective Electric move, this Berry is consumed and reduces the damage taken by 50%."
-164,9,,"Held: When the holder is struck by a super-effective Grass move, this Berry is consumed and reduces the damage taken by 50%."
-165,9,,"Held: When the holder is struck by a super-effective Ice move, this Berry is consumed and reduces the damage taken by 50%."
-166,9,,"Held: When the holder is struck by a super-effective Fighting move, this Berry is consumed and reduces the damage taken by 50%."
-167,9,,"Held: When the holder is struck by a super-effective Poison move, this Berry is consumed and reduces the damage taken by 50%."
-168,9,,"Held: When the holder is struck by a super-effective Ground move, this Berry is consumed and reduces the damage taken by 50%."
-169,9,,"Held: When the holder is struck by a super-effective Flying move, this Berry is consumed and reduces the damage taken by 50%."
-170,9,,"Held: When the holder is struck by a super-effective Psychic move, this Berry is consumed and reduces the damage taken by 50%."
-171,9,,"Held: When the holder is struck by a super-effective Bug move, this Berry is consumed and reduces the damage taken by 50%."
-172,9,,"Held: When the holder is struck by a super-effective Rock move, this Berry is consumed and reduces the damage taken by 50%."
-173,9,,"Held: When the holder is struck by a super-effective Ghost move, this Berry is consumed and reduces the damage taken by 50%."
-174,9,,"Held: When the holder is struck by a super-effective Dragon move, this Berry is consumed and reduces the damage taken by 50%."
-175,9,,"Held: When the holder is struck by a super-effective Dark move, this Berry is consumed and reduces the damage taken by 50%."
-176,9,,"Held: When the holder is struck by a super-effective Steel move, this Berry is consumed and reduces the damage taken by 50%."
-177,9,,"Held: When the holder is struck by a Normal move, this Berry is consumed and reduces the damage taken by 50%."
-178,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Attack."
-179,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Defense."
-180,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Speed."
-181,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Special Attack."
-182,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Special Defense."
-183,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's critical hit counter by 1."
-184,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises one of the holder's stats at random by two levels."
-185,9,,"Held: When the holder is hit by a super-effective move, this Berry is consumed and heals the holder for 1/4 its max HP."
-186,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the accuracy of the holder's next used move."
-187,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed.  On the next turn, the holder will move first within its move's priority bracket, regardless of Speed."
-188,9,,"Held: When the holder is hit by a physical attack and survives, this Berry is consumed, and the opposing Pokémon takes 1/8 its max HP in damage."
-189,9,,"Held: When the holder is hit by a special attack and survives, this Berry is consumed, and the opposing Pokémon takes 1/8 its max HP in damage."
+161,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [fire]{type}-type damage, it consumes this item to halve the amount of damage taken."
+162,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [water]{type}-type damage, it consumes this item to halve the amount of damage taken."
+163,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [electric]{type}-type damage, it consumes this item to halve the amount of damage taken."
+164,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [grass]{type}-type damage, it consumes this item to halve the amount of damage taken."
+165,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [ice]{type}-type damage, it consumes this item to halve the amount of damage taken."
+166,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [fighting]{type}-type damage, it consumes this item to halve the amount of damage taken."
+167,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [poison]{type}-type damage, it consumes this item to halve the amount of damage taken."
+168,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [ground]{type}-type damage, it consumes this item to halve the amount of damage taken."
+169,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [flying]{type}-type damage, it consumes this item to halve the amount of damage taken."
+170,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [psychic]{type}-type damage, it consumes this item to halve the amount of damage taken."
+171,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [bug]{type}-type damage, it consumes this item to halve the amount of damage taken."
+172,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [rock]{type}-type damage, it consumes this item to halve the amount of damage taken."
+173,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [ghost]{type}-type damage, it consumes this item to halve the amount of damage taken."
+174,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [dragon]{type}-type damage, it consumes this item to halve the amount of damage taken."
+175,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [dark]{type}-type damage, it consumes this item to halve the amount of damage taken."
+176,9,,"Held in battle
+:   When the holder would take [super-effective]{mechanic} [steel]{type}-type damage, it consumes this item to halve the amount of damage taken."
+177,9,,"Held in battle
+:   When the holder would take [normal]{type}-type damage, it consumes this item to halve the amount of damage taken."
+178,9,,"Held in battle
+:   When the holder has 1/4 its max [HP]{mechanic} remaining or less, it consumes this item to [raise]{mechanic} its [Attack]{mechanic} by one stage."
+179,9,,"Held in battle
+:   When the holder has 1/4 its max [HP]{mechanic} remaining or less, it consumes this item to [raise]{mechanic} its [Defense]{mechanic} by one stage."
+180,9,,"Held in battle
+:   When the holder has 1/4 its max [HP]{mechanic} remaining or less, it consumes this item to [raise]{mechanic} its [Speed]{mechanic} by one stage."
+181,9,,"Held in battle
+:   When the holder has 1/4 its max [HP]{mechanic} remaining or less, it consumes this item to [raise]{mechanic} its [Special Attack]{mechanic} by one stage."
+182,9,,"Held in battle
+:   When the holder has 1/4 its max [HP]{mechanic} remaining or less, it consumes this item to [raise]{mechanic} its [Special Defense]{mechanic} by one stage."
+183,9,,"Held in battle
+:   When the holder has 1/4 its max [HP]{mechanic} remaining or less, it consumes this item to [raise]{mechanic} its [critical hit chance]{mechanic} by one stage."
+184,9,,"Held in battle
+:   When the holder has 1/4 its max [HP]{mechanic} remaining or less, it consumes this item to [raise]{mechanic} a random stat by two stages."
+185,9,,"Held in battle
+:   When the holder takes [super-effective]{mechanic} damage, it consumes this item to restore 1/4 its max [HP]{mechanic}."
+186,9,,"Held in battle
+:   When the holder has 1/4 its max [HP]{mechanic} remaining or less, it consumes this item, and its next used move has 1.2× its normal accuracy."
+187,9,,"Held in battle
+:   When the holder has 1/4 its max [HP]{mechanic} remaining or less, it consumes this item.  On the following turn, the holder will act first among moves with the same [priority]{mechanic}, regardless of [Speed]{mechanic}."
+188,9,,"Held in battle
+:   When the holder takes [physical]{mechanic} damage, it consumes this item to damage the attacking Pokémon for 1/8 its max [HP]{mechanic}."
+189,9,,"Held in battle
+:   When the holder takes [special]{mechanic} damage, it consumes this item to damage the attacking Pokémon for 1/8 its max [HP]{mechanic}."
 190,9,,"Held: Raises the holder's Evasion 10% (added, not multiplied)."
 191,9,,"Held: After each move, if any of the holder's stats are below normal, this item is consumed and restores them to normal."
 192,9,,Held: Doubles the effort the holder earns.  Halves the holder's Speed.
