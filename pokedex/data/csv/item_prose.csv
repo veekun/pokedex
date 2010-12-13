@@ -1,174 +1,160 @@
 item_id,local_language_id,short_effect,effect
 1,9,Catches a wild Pokémon every time.,"Used in battle
-:   [catch]{mechanic}es a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   [Catches]{mechanic:catch} a wild Pokémon without fail.
 
-    Has a capture rate of 255."
+    If used in a trainer battle, nothing happens and the ball is lost."
 2,9,Tries to catch a wild Pokémon.  Success rate is 2×.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon, using a catch rate of 2×.
 
-    Has a capture rate of 2."
+    If used in a trainer battle, nothing happens and the ball is lost."
 3,9,Tries to catch a wild Pokémon.  Success rate is 1.5×.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon, using a catch rate of 1.5×.
 
-    Has a capture rate of 1.5."
+    If used in a trainer battle, nothing happens and the ball is lost."
 4,9,Tries to catch a wild Pokémon.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon, using a catch rate of 1×.
 
-    Has a capture rate of 1."
+    If used in a trainer battle, nothing happens and the ball is lost."
 5,9,Tries to catch a wild Pokémon in the Great Marsh or Safari Zone.  Success rate is 1.5×.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.
-
-    Has a capture rate of 1.5.
+:   Attempts to [catch]{mechanic} a wild Pokémon, using a catch rate of 1.5×.
 
 This item can only be used in the [Great Marsh]{location} or [Safari Zone]{location}."
 6,9,Tries to catch a wild Pokémon.  Success rate is 3× for water and bug Pokémon.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon.  If the wild Pokémon is [water]{type}- or [bug]{type}-type, this ball has a catch rate of 3×.  Otherwise, it has a catch rate of 1×.
 
-    If the wild Pokémon is at least partially [type]{water} or [type]{bug},
-this ball has a capture rate of 3.  Otherwise, it has a capture rate of 1."
+    If used in a trainer battle, nothing happens and the ball is lost."
 7,9,Tries to catch a wild Pokémon.  Success rate is 3.5× when fishing or surfing.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon.  If the wild Pokémon was encountered by surfing or fishing, this ball has a catch rate of 3.5×.  Otherwise, it has a catch rate of 1×.
 
-    If the wild Pokémon was encountered by surfing or fishing, this ball has
-a capture rate of 3.5.  Otherwise, it has a capture rate of 1."
+    If used in a trainer battle, nothing happens and the ball is lost."
 8,9,"Tries to catch a wild Pokémon.  Success rate is 3.9× for level 1 Pokémon, and drops steadily to 1× at level 30.","Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon.  Has a catch rate of given by `(40 - level) / 10`, where `level` is the wild Pokémon's level, to a maximum of 3.9× for level 1 Pokémon.  If the wild Pokémon's level is higher than 30, this ball has a catch rate of 1×.
 
-    Has a capture rate given by `(40 - level) / 10`, where `level` is the
-wild Pokémon's level.  If the wild Pokémon is higher than level 30, this ball has a capture rate of 1."
+    If used in a trainer battle, nothing happens and the ball is lost."
 9,9,Tries to catch a wild Pokémon.  Success rate is 3× for previously-caught Pokémon.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon.  If the wild Pokémon's species is marked as caught in the trainer's Pokédex, this ball has a catch rate of 3×.  Otherwise, it has a catch rate of 1×.
 
-    If the wild Pokémon's species is marked as seen in the trainer's Pokédex,
-this ball has a capture rate of 3.  Otherwise, it has a capture rate of 1."
+    If used in a trainer battle, nothing happens and the ball is lost."
 10,9,"Tries to catch a wild Pokémon.  Success rate increases by 0.1× every turn, to a max of 4×.","Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon.  Has a catch rate of 1.1× on the first turn of the battle and increases by 0.1× every turn, to a maximum of 4× on turn 30.
 
-    Has a capture rate given by `turn / 10 + 1`, where `turn` is the number
-of turns so far this battle, starting at 1 and not exceeding 30."
+    If used in a trainer battle, nothing happens and the ball is lost."
 11,9,Tries to catch a wild Pokémon.  Caught Pokémon start with 200 happiness.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon, using a catch rate of 1×.  Whenever the caught Pokémon's [happiness]{mechanic} increases, it increases by one extra point.
 
-    Has a capture rate of 1.
-
-    Pokémon captured in this ball start with 200 [happiness]{mechanic}."
+    If used in a trainer battle, nothing happens and the ball is lost."
 12,9,Tries to catch a wild Pokémon.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon, using a catch rate of 1×.
 
-    Has a capture rate of 1."
+    If used in a trainer battle, nothing happens and the ball is lost."
 13,9,Tries to catch a wild Pokémon.  Success rate is 3.5× at night and in caves.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon.  If it's currently nighttime or the wild Pokémon was encountered while walking in a cave, this ball has a catch rate of 3.5×.  Otherwise, it has a catch rate of 1×.
 
-    If it's currently nighttime or the wild Pokémon was encountered while
-walking in a cave, this ball has a capture rate of 3.5.  Otherwise, it has a capture rate of 1."
+    If used in a trainer battle, nothing happens and the ball is lost."
 14,9,Tries to catch a wild Pokémon.  Caught Pokémon are immediately healed.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon, using a catch rate of 1×.  The caught Pokémon's [HP]{mechanic} is immediately restored, [PP]{mechanic} for all its moves is restored, and any [status ailment]{mechanic} is cured.
 
-    Has a capture rate of 1.
-
-    Pokémon captured in this ball immediately have their [HP]{mechanic} restored
-and any [major status effect]{mechanic} removed."
+    If used in a trainer battle, nothing happens and the ball is lost."
 15,9,"Tries to catch a wild Pokémon.  Success rate is 4×, but only on the first turn.","Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon, using a catch rate of 4× on the first turn of a battle, but 1× any other time.
 
-    Has a capture rate of 4 on the first turn of a battle, or 1 any other
-time."
+    If used in a trainer battle, nothing happens and the ball is lost."
 16,9,Tries to catch a wild Pokémon.,"Used in battle
-:   Attempts to [catch]{mechanic} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic} a wild Pokémon, using a catch rate of 1×.
 
-    Has a capture rate of 1."
+    If used in a trainer battle, nothing happens and the ball is lost."
 17,9,Restores 20 HP.,"Used on a friendly Pokémon
-:   Restores 20 [HP]{mechanic}.  Cannot be used on a Pokémon with full HP."
+:   Restores 20 [HP]{mechanic}."
 18,9,Cures poison.,"Used on a party Pokémon
-:   Cures [poison]{mechanic}.  Cannot be used on a Pokémon that isn't poisoned."
+:   Cures [poison]{mechanic}."
 19,9,Cures a burn.,"Used on a party Pokémon
-:   Cures a [burn]{mechanic}.  Cannot be used on a Pokémon that isn't burned."
+:   Cures a [burn]{mechanic}."
 20,9,Cures freezing.,"Used on a party Pokémon
-:   Cures [freezing]{mechanic}.  Cannot be used on a Pokémon that isn't frozen."
+:   Cures [freezing]{mechanic}."
 21,9,Cures sleep.,"Used on a party Pokémon
-:   Cures [sleep]{mechanic}.  Cannot be used on a Pokémon that isn't asleep."
+:   Cures [sleep]{mechanic}."
 22,9,Cures paralysis.,"Used on a party Pokémon
-:   Cures [paralysis]{mechanic}.  Cannot be used on a Pokémon that isn't paralyzed."
-23,9,Restores HP to full and cures any status effect.,"Used on a party Pokémon
-:   Restores [HP]{mechanic} to full and cures any [major status effect]{mechanic}.  Cannot be used on a Pokémon with full HP and no major status effect."
+:   Cures [paralysis]{mechanic}."
+23,9,Restores HP to full and cures any status ailment.,"Used on a party Pokémon
+:   Restores [HP]{mechanic} to full and cures any [status ailment]{mechanic}."
 24,9,Restores HP to full.,"Used on a party Pokémon
-:   Restores [HP]{mechanic} to full.  Cannot be used on a Pokémon with full HP."
+:   Restores [HP]{mechanic} to full."
 25,9,Restores 200 HP.,"Used on a party Pokémon
-:   Restores 200 [HP]{mechanic}.  Cannot be used on a Pokémon with full HP."
+:   Restores 200 [HP]{mechanic}."
 26,9,Restores 50 HP.,"Used on a party Pokémon
-:   Restores 50 [HP]{mechanic}.  Cannot be used on a Pokémon with full HP."
-27,9,Cures any status effect.,"Used on a party Pokémon
-:   Cures any [major status effect]{mechanic}.  Cannot be used on a Pokémon with no major status effect."
+:   Restores 50 [HP]{mechanic}."
+27,9,Cures any status ailment.,"Used on a party Pokémon
+:   Cures any [status ailment]{mechanic}."
 28,9,Revives with half HP.,"Used on a party Pokémon
-:   Revives the Pokémon and restores half its [HP]{mechanic}.  Cannot be used on a Pokémon that hasn't [faint]{mechanic}ed."
+:   Revives the Pokémon and restores half its [HP]{mechanic}."
 29,9,Revives with full HP.,"Used on a party Pokémon
-:   Revives the Pokémon and restores its [HP]{mechanic} to full.  Cannot be used on a Pokémon that hasn't [faint]{mechanic}ed."
+:   Revives the Pokémon and restores its [HP]{mechanic} to full."
 30,9,Restores 50 HP.,"Used on a party Pokémon
-:   Restores 50 [HP]{mechanic}.  Cannot be used on a Pokémon with full HP."
+:   Restores 50 [HP]{mechanic}."
 31,9,Restores 60 HP.,"Used on a party Pokémon
-:   Restores 60 [HP]{mechanic}.  Cannot be used on a Pokémon with full HP."
+:   Restores 60 [HP]{mechanic}."
 32,9,Restores 80 HP.,"Used on a party Pokémon
-:   Restores 80 [HP]{mechanic}.  Cannot be used on a Pokémon with full HP."
+:   Restores 80 [HP]{mechanic}."
 33,9,Restores 100 HP.,"Used on a party Pokémon
-:   Restores 100 [HP]{mechanic}.  Cannot be used on a Pokémon with full HP."
+:   Restores 100 [HP]{mechanic}."
 34,9,"Restores 50 HP, but lowers happiness.","Used on a party Pokémon
-:   Restores 50 [HP]{mechanic}.  Decreases [happiness]{mechanic} by 5/5/10.  Cannot be used on a Pokémon with full HP."
+:   Restores 50 [HP]{mechanic}.  Decreases [happiness]{mechanic} by 5/5/10."
 35,9,"Restores 200 HP, but lowers happiness.","Used on a party Pokémon
-:   Restores 200 [HP]{mechanic}.  Decreases [happiness]{mechanic} by 10/10/15.  Cannot be used on a Pokémon with full HP."
-36,9,"Cures any status effect, but lowers happiness.","Used on a party Pokémon
-:   Cures any [major status effect]{mechanic}.  Decreases [happiness]{mechanic} by 5/5/10.  Cannot be used on a Pokémon with no major status effect."
+:   Restores 200 [HP]{mechanic}.  Decreases [happiness]{mechanic} by 10/10/15."
+36,9,"Cures any status ailment, but lowers happiness.","Used on a party Pokémon
+:   Cures any [status ailment]{mechanic}.  Decreases [happiness]{mechanic} by 5/5/10."
 37,9,"Revives with full HP, but lowers happiness.","Used on a party Pokémon
-:   Revives a [faint]{mechanic}ed Pokémon and restores its [HP]{mechanic} to full.  Decreases [happiness]{mechanic} by 10/10/15.  Cannot be used on a Pokémon that hasn't fainted."
+:   Revives a [fainted]{mechanic:faint} Pokémon and restores its [HP]{mechanic} to full.  Decreases [happiness]{mechanic} by 10/10/15."
 38,9,Restores 10 PP for one move.,"Used on a party Pokémon
-:   Restores 10 [PP]{mechanic} for a selected move.  Cannot be used on a move with full PP, or a Pokémon whose moves all have full PP."
+:   Restores 10 [PP]{mechanic} for a selected move."
 39,9,Restores PP to full for one move.,"Used on a party Pokémon
-:   Restores [PP]{mechanic} to full for a selected move.  Cannot be used on a move with full PP, or a Pokémon whose moves all have full PP."
+:   Restores [PP]{mechanic} to full for a selected move."
 40,9,Restores 10 PP for each move.,"Used on a party Pokémon
-:   Restores 10 [PP]{mechanic} for each move.  Cannot be used on a Pokémon whose moves all have full PP."
+:   Restores 10 [PP]{mechanic} for each move."
 41,9,Restores PP to full for each move.,"Used on a party Pokémon
-:   Restores [PP]{mechanic} to full for each move.  Cannot be used on a Pokémon whose moves all have full PP."
-42,9,Cures any status effect.,"Used on a party Pokémon
-:   Cures any [major status effect]{mechanic}.  Cannot be used on a Pokémon with no major status effect."
+:   Restores [PP]{mechanic} to full for each move."
+42,9,Cures any status ailment.,"Used on a party Pokémon
+:   Cures any [status ailment]{mechanic}."
 43,9,Restores 20 HP.,"Used on a party Pokémon
-:   Restores 20 [HP]{mechanic}.  Cannot be used on a Pokémon with full HP."
+:   Restores 20 [HP]{mechanic}."
 44,9,Revives all fainted Pokémon with full HP.,"Used
-:   Revives all [faint]{mechanic}ed Pokémon in the party and restores their [HP]{mechanic} to full.  Cannot be used if no Pokémon have fainted."
+:   Revives all [fainted]{mechanic:faint} Pokémon in the party and restores their [HP]{mechanic} to full."
 45,9,Raises HP effort and happiness.,"Used on a party Pokémon
-:   Increases [HP]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2.  Cannot be used on a Pokémon with HP effort of 100 or greater."
+:   Increases [HP]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2."
 46,9,Raises Attack effort and happiness.,"Used on a party Pokémon
-:   Increases [Attack]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2.  Cannot be used on a Pokémon with Attack effort of 100 or greater."
+:   Increases [Attack]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2."
 47,9,Raises Defense effort and happiness.,"Used on a party Pokémon
-:   Increases [Defense]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2.  Cannot be used on a Pokémon with Defense effort of 100 or greater."
+:   Increases [Defense]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2."
 48,9,Raises Speed effort and happiness.,"Used on a party Pokémon
-:   Increases [Speed]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2.  Cannot be used on a Pokémon with Speed effort of 100 or greater."
+:   Increases [Speed]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2."
 49,9,Raises Special Attack effort and happiness.,"Used on a party Pokémon
-:   Increases [Special Attack]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2.  Cannot be used on a Pokémon with Special Attack effort of 100 or greater."
+:   Increases [Special Attack]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2."
 50,9,Causes a level-up and raises happiness.,"Used on a party Pokémon
-:   Increases level by 1.  Increases [happiness]{mechanic} by 5/3/2.  Cannot be used on a Pokémon at level 100."
+:   Increases level by 1.  Increases [happiness]{mechanic} by 5/3/2."
 51,9,Raises a move's max PP by 20%.,"Used on a party Pokémon
-:   Increases a selected move's max [PP]{mechanic} by 20% its original max PP.  Increases [happiness]{mechanic} by 5/3/2.  Cannot be used on a move with PP already boosted by 60%, or on a Pokémon whose moves have all been so boosted."
+:   Increases a selected move's max [PP]{mechanic} by 20% its original max PP, to a maximum of 1.6×.  Increases [happiness]{mechanic} by 5/3/2."
 52,9,Raises Special Defense and happiness.,"Used on a party Pokémon
-:   Increases [Special Defense]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2.  Cannot be used on a Pokémon with Special Defense effort of 100 or greater."
+:   Increases [Special Defense]{mechanic} [effort]{mechanic} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic} by 5/3/2."
 53,9,Raises a move's max PP by 60%.,"Used on a party Pokémon
-:   Increases a selected move's max [PP]{mechanic} to 160% its original max PP.  Increases [happiness]{mechanic} by 5/3/2.  Cannot be used on a move with PP already boosted by 60%, or on a Pokémon whose moves have all been so boosted."
-54,9,Cures any status effect.,"Used on a party Pokémon
-:   Cures any [major status effect]{mechanic}.  Cannot be used on a Pokémon with no major status effect."
-55,9,Prevents stat changes in battle for five turns.  Raises happiness.,"Used on a party Pokémon in battle
-:   Protects the target's stats from being [lower]{mechanic}ed for the next five turns.  Increases happiness by 1/1/0."
-56,9,Increases the chance of a critical hit.  Raises happiness.,"Used on a party Pokémon in battle
+:   Increases a selected move's max [PP]{mechanic} to 1.6× its original max PP.  Increases [happiness]{mechanic} by 5/3/2."
+54,9,Cures any status ailment.,"Used on a party Pokémon
+:   Cures any [status ailment]{mechanic}."
+55,9,Prevents stat changes in battle for five turns in battle.  Raises happiness.,"Used on a party Pokémon in battle
+:   Protects the target's stats from being [lowered]{mechanic:lower} for the next five turns.  Increases happiness by 1/1/0."
+56,9,Increases the chance of a critical hit in battle.  Raises happiness.,"Used on a party Pokémon in battle
 :   Increases the target's [critical hit chance]{mechanic} by one stage until it leaves the field.  Increases happiness by 1/1/0."
-57,9,Raises Attack by one level.  Raises happiness.,"Used on a party Pokémon in battle
-:   [Raise]{mechanic}s the target's [Attack]{mechanic} by one level.  Increases happiness by 1/1/0."
-58,9,Raises Defense by one level.  Raises happiness.,"Used on a party Pokémon in battle
-:   [Raise]{mechanic}s the target's [Defense]{mechanic} by one level.  Increases happiness by 1/1/0."
-59,9,Raises Speed by one level.  Raises happiness.,"Used on a party Pokémon in battle
-:   [Raise]{mechanic}s the target's [Speed]{mechanic} by one level.  Increases happiness by 1/1/0."
-60,9,Raises accuracy by one level.  Raises happiness.,"Used on a party Pokémon in battle
-:   [Raise]{mechanic}s the target's [accuracy]{mechanic} by one level.  Increases happiness by 1/1/0."
-61,9,Raises Special Attack by one level.  Raises happiness.,"Used on a party Pokémon in battle
-:   [Raise]{mechanic}s the target's [Special Attack]{mechanic} by one level.  Increases happiness by 1/1/0."
-62,9,Raises Special Defense by one level.  Raises happiness.,"Used on a party Pokémon in battle
-:   [Raise]{mechanic}s the target's [Special Defense]{mechanic} by one level.  Increases happiness by 1/1/0."
+57,9,Raises Attack by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
+:   [Raises]{mechanic:raise} the target's [Attack]{mechanic} by one stage.  Increases happiness by 1/1/0."
+58,9,Raises Defense by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
+:   [Raises]{mechanic:raise} the target's [Defense]{mechanic} by one stage.  Increases happiness by 1/1/0."
+59,9,Raises Speed by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
+:   [Raises]{mechanic:raise} the target's [Speed]{mechanic} by one stage.  Increases happiness by 1/1/0."
+60,9,Raises accuracy by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
+:   [Raises]{mechanic:raise} the target's [accuracy]{mechanic} by one stage.  Increases happiness by 1/1/0."
+61,9,Raises Special Attack by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
+:   [Raises]{mechanic:raise} the target's [Special Attack]{mechanic} by one stage.  Increases happiness by 1/1/0."
+62,9,Raises Special Defense by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
+:   [Raises]{mechanic:raise} the target's [Special Defense]{mechanic} by one stage.  Increases happiness by 1/1/0."
 63,9,Ends a wild battle.,"Used in battle
 :   Ends a wild battle.  Cannot be used in trainer battles."
 64,9,Ends a wild battle.,"Used in battle
@@ -589,11 +575,9 @@ Tracks Battle Points earned in the Battle Frontier, and stores commemorative pri
 444,9,,"Used by trainer on a :pokemon:`Shaymin`
     Changes the target Shaymin from Land Forme to Sky Forme.
 
-    This item cannot be used on a :mechanic:`frozen` Shaymin or at night.  Sky
-Forme Shaymin will revert to Land Forme overnight, when frozen, and upon entering a link battle.  This item must be used again to change it back."
+    This item cannot be used on a :mechanic:`frozen` Shaymin or at night.  Sky Forme Shaymin will revert to Land Forme overnight, when frozen, and upon entering a link battle.  This item must be used again to change it back."
 445,9,,"Used by trainer in the Galactic Eterna Building, on the ground floor, to the left of the TV
-    Unlocks the secret :pokemon:`Rotom` room, in which there are five appliances
-which can change Rotom's form."
+    Unlocks the secret :pokemon:`Rotom` room, in which there are five appliances which can change Rotom's form."
 446,9,,Stores Apricorns.
 447,9,,Contains four portable pots of soil suitable for growing berries.
 448,9,,"Required to water berries within the :item:`Berry Pots`.
@@ -602,28 +586,22 @@ Required to battle the :pokemon:`Sudowoodo` on :location:`Route 36`.
 
 This item cannot be directly used from the bag."
 449,9,,"Used by trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle,
-nothing happens and the ball is lost.
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
-    If the wild Pokémon was encountered by fishing, the wild Pokémon's catch
-rate is 3× normal."
+    If the wild Pokémon was encountered by fishing, the wild Pokémon's catch rate is 3× normal."
 450,9,,"Used by trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle,
-nothing happens and the ball is lost.
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
     If the trainer's Pokémon's level is higher than:
     * four times the wild Pokémon's, the wild Pokémon's catch rate is 8× normal.
     * than twice the wild Pokémon's, the wild Pokémon's catch rate is 4× normal.
     * the wild Pokémon's, the wild Pokémon's catch rate is 2× normal."
 451,9,,"Used by trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle,
-nothing happens and the ball is lost.
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
-    If the wild Pokémon is a :pokemon:`Clefairy`, :pokemon:`Nidoran♂`, :pokemon:`Nidoran♀`,
-:pokemon:`Jigglypuff`, :pokemon:`Skitty`, or any evolution thereof, the wild Pokémon has 4× its catch rate."
+    If the wild Pokémon is a :pokemon:`Clefairy`, :pokemon:`Nidoran♂`, :pokemon:`Nidoran♀`, :pokemon:`Jigglypuff`, :pokemon:`Skitty`, or any evolution thereof, the wild Pokémon has 4× its catch rate."
 452,9,,"Used by a trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle,
-nothing happens and the ball is lost.
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
     If the wild Pokémon weighs:
     * 409.6 kg (903.0 lb) or more, its catch rate is 40 more than normal.
@@ -631,22 +609,17 @@ nothing happens and the ball is lost.
     * 204.8 kg (451.5 lb) or more, its catch rate is 20 more than normal.
     * less than 204.8 kg (451.5 lb), its catch rate is 20 less than normal."
 453,9,,"Used by a trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle,
-nothing happens and the ball is lost.
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
-    If the wild Pokémon's base :mechanic:`Speed` is 100 or more, its catch
-rate is 4× normal."
+    If the wild Pokémon's base :mechanic:`Speed` is 100 or more, its catch rate is 4× normal."
 454,9,,"Used by a trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle,
-nothing happens and the ball is lost.
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
     If caught, the wild Pokémon's :mechanic:`happiness` starts at 200."
 455,9,,"Used by a trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle,
-nothing happens and the ball is lost.
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
-    If the trainer's Pokémon and wild Pokémon are of the same species but
-opposite genders, the wild Pokémon's catch rate is 8× normal."
+    If the trainer's Pokémon and wild Pokémon are of the same species but opposite genders, the wild Pokémon's catch rate is 8× normal."
 456,9,,"Used by a trainer in battle
     :mechanic:`Catch`\ es a wild Pokémon.
 
