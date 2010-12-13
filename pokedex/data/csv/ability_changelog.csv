@@ -1,12 +1,42 @@
 ability_id,changed_in_version_group_id,effect
 1,11,Has no effect in battle.
+5,11,Does not prevent regular KOs from full [HP]{mechanic}.
+9,6,Has no overworld effect.
+10,8,"Does not absorb non-damaging [Electric]{type} moves, i.e. [Thunder Wave]{move}."
 16,11,Triggers on every hit of multiple-hit moves.
+18,8,[Will-O-Wisp]{move} does not trigger this ability for Pokémon immune to [burns]{mechanic:burn}.
+22,6,Has no overworld effect.
+22,8,Does not take effect if acquired after entering battle.
+23,6,Has no overworld effect.
 24,8,Inflicts only 1/16 of the attacker's maximum [HP]{mechanic} in damage.
+25,11,[Fire Fang]{move} and [typeless damage]{mechanic} ignore this ability regardless of the Pokémon's type.
+28,6,Has no overworld effect.
+28,8,Cannot influence the natures of Pokémon encountered by interacting with them on the overworld.
 28,11,Passes back toxic [poison]{mechanic} as regular poison.
-31,8,"Does not absorb non-damaging [Electric]{type} moves, i.e. [Thunder Wave]{move}."
-31,11,Grants no [Electric]{type} immunity or [Special Attack]{mechanic} boosts.
+31,8,"Does not affect non-damaging [Electric]{type} moves, i.e. [Thunder Wave]{move}."
+31,11,Redirects [Electric]{type} moves without negating them or granting any [Special Attack]{mechanic} boost.  Does not redirect [Hidden Power]{move}.
+40,6,Has no overworld effect.
+42,6,Has no overworld effect.
+43,11,"Prevents [Heal Bell]{move} from curing the Pokémon, whether or not it is in battle."
+46,6,Has no overworld effect.
+46,8,Does not affect friendly Pokémon's moves that target all other Pokémon.  This ability's presence is not announced upon entering battle.
+49,6,Has no overworld effect.
+51,6,Has no overworld effect.
+52,6,Has no overworld effect.
+52,8,Doubles [Cut]{move}'s grass-cutting radius on the overworld if the lead Pokémon has this ability.
 53,11,Has no effect in battle.
+55,6,Has no overworld effect.
+56,6,Has no overworld effect.
+60,6,Has no overworld effect.
+62,8,Does not take effect during [sleep]{mechanic}.
+68,6,Has no overworld effect.
+68,8,Increases the frequency of cries heard on the overworld if the lead Pokémon has this ability.
+71,6,Has no overworld effect.
+72,6,Has no overworld effect.
+73,6,Has no overworld effect.
+90,11,[Poison]{mechanic} still damages the Pokémon outside of battle.
 98,11,"Paralysis cannot prevent the Pokémon from moving, though the [Speed]{mechanic} cut is unaffected."
+99,9,"Due to a glitch, moves affected by this ability have a (100 - accuracy)% chance to hit through [Detect]{move} or [Protect]{move}."
 102,11,[Rest]{move} works as normal during [strong sunlight]{mechanic}.
 103,11,[Fling]{move} can be used as normal.
-114,11,Grants no [Water]{type} immunity or [Special Attack]{mechanic} boosts.
+114,11,Redirects [Water]{type} moves without negating them or granting any [Special Attack]{mechanic} boost.  Does not redirect [Hidden Power]{move}.
