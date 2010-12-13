@@ -24,6 +24,29 @@ except ImportError:
     sys.stderr.write("Please install PyYAML.\n")
     sys.exit(13)
 
+# Try to use ordered dicts, so the YAML keys are in database table order
+odict = dict  # fall back to regular dict
+try:
+    from collections import OrderedDict as odict
+except ImportError:
+    try:
+        # This is a library for 2.4-2.6
+        from ordereddict import OrderedDict as odict
+    except ImportError:
+        pass
+
+# Tell PyYAML how to dump our ordered dict.
+# The items() is to avoid the sorting the library does automatically.
+# Needs to be added to SafeDumper manually, because we use safe_dump below, and
+# every Representer class has its own independent goddamn dict of these things
+from yaml.dumper import SafeDumper
+yaml.add_representer(
+    odict,
+    lambda dumper, data: dumper.represent_dict(data.items()),
+    Dumper=SafeDumper,
+)
+
+### Do actual work!
 infilename, = sys.argv[1:]
 
 data = []
@@ -33,7 +56,7 @@ with open(infilename) as infile:
 
     # Read data...
     for row in reader:
-        datum = dict()
+        datum = odict()
         for col, value in zip(column_names, row):
             datum[col] = value.decode('utf-8')
 
@@ -46,7 +69,7 @@ orig_choose_scalar_style = Emitter.choose_scalar_style
 def new_choose_scalar_style(self):
     if self.analysis is None:
         self.analysis = self.analyze_scalar(self.event.value)
-    if self.analysis.multiline:
+    if self.analysis.multiline or len(self.analysis.scalar) > 80:
         return '>'
     return orig_choose_scalar_style(self)
 Emitter.choose_scalar_style = new_choose_scalar_style
