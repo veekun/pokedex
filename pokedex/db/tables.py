@@ -1435,6 +1435,11 @@ Move.effect = markdown.MoveEffectProperty('effect')
 Move.short_effect = markdown.MoveEffectProperty('short_effect')
 
 MoveChangelog.changed_in = relation(VersionGroup, backref='move_changelog')
+MoveChangelog.move_effect = relation(MoveEffect, backref='move_changelog')
+MoveChangelog.type = relation(Type, backref='move_changelog')
+
+MoveChangelog.effect = markdown.MoveEffectProperty('effect')
+MoveChangelog.short_effect = markdown.MoveEffectProperty('short_effect')
 
 MoveEffect.category_map = relation(MoveEffectCategoryMap)
 MoveEffect.categories = association_proxy('category_map', 'category')
