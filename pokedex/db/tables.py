@@ -1370,6 +1370,7 @@ EncounterSlotCondition.condition = relation(EncounterCondition,
 
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 EvolutionChain.baby_trigger_item = relation(Item, backref='evolution_chains')
+EvolutionChain.pokemon = relation(Pokemon, order_by=Pokemon.order, back_populates='evolution_chain')
 
 Experience.growth_rate = relation(GrowthRate, backref='experience_table')
 
@@ -1501,8 +1502,8 @@ Pokemon.color = association_proxy('pokemon_color', 'name')
 Pokemon.dex_numbers = relation(PokemonDexNumber, order_by=PokemonDexNumber.pokedex_id.asc(), backref='pokemon')
 Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,
-                                        backref='pokemon')
-Pokemon.evolution_chain = relation(EvolutionChain, backref='pokemon')
+                                        backref=backref('pokemon', order_by=Pokemon.order))
+Pokemon.evolution_chain = relation(EvolutionChain, back_populates='pokemon')
 Pokemon.child_pokemon = relation(Pokemon,
     primaryjoin=Pokemon.id==PokemonEvolution.from_pokemon_id,
     secondary=PokemonEvolution.__table__,
@@ -1523,7 +1524,9 @@ Pokemon.items = relation(PokemonItem, backref='pokemon')
 Pokemon.generation = relation(Generation, backref='pokemon')
 Pokemon.shape = relation(PokemonShape, backref='pokemon')
 Pokemon.stats = relation(PokemonStat, backref='pokemon', order_by=PokemonStat.stat_id.asc())
-Pokemon.types = relation(Type, secondary=PokemonType.__table__, order_by=PokemonType.slot.asc(), backref='pokemon')
+Pokemon.types = relation(Type, secondary=PokemonType.__table__,
+                               order_by=PokemonType.slot.asc(),
+                               back_populates='pokemon')
 
 PokemonDexNumber.pokedex = relation(Pokedex)
 
@@ -1617,6 +1620,9 @@ Type.target_efficacies = relation(TypeEfficacy,
 Type.generation = relation(Generation, backref='types')
 Type.damage_class = relation(MoveDamageClass, backref='types')
 Type.foreign_names = relation(TypeName, backref='type')
+Type.pokemon = relation(Pokemon, secondary=PokemonType.__table__,
+                                 order_by=Pokemon.order,
+                                 back_populates='types')
 
 TypeName.language = relation(Language)
 
