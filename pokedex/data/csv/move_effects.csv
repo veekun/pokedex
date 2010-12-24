@@ -992,7 +992,7 @@ If the user is a [meroetta]{pokemon}, it will toggle between Voice and Step form
 333,Requires a turn to charge before attacking.  Has a $effect_chance% chance to burn the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.  User charges for one turn before attacking.
 335,"Lowers the user's Defense, Special Defense, and Speed by one stage each.","Inflicts [regular damage]{mechanic}.  Lowers the user's [Defense]{mechanic}, [Special Defense]{mechanic}, and [Speed]{mechanic} by one [stage]{mechanic} each."
 336,"With cross thunder, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [cross thunder]{move} earlier this turn, this move has double power."
-337,"With cross thunder, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [cross flame]{move} earlier this turn, this move has double power."
+337,"With cross flame, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [cross flame]{move} earlier this turn, this move has double power."
 338,Has a $effect_chance% chance to confuse the target.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [confuse]{mechanic} the target.
 
 This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}.
