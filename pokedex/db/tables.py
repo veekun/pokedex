@@ -996,7 +996,9 @@ class PokemonEvolution(TableBase):
     relative_physical_stats = Column(Integer, nullable=True,
         info=dict(description=u"Relation of Attack and Defense stats the pokémon must have, as sgn(atk-def), or None if that doesn't matter"))
     party_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=True,
-        info=dict(description=u"ID of a pokémon that must be present in the party, or None if there's no such condition"))
+        info=dict(description=u"The ID of the Pokémon that must be present in the party."))
+    trade_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=True,
+        info=dict(description=u"The ID of the Pokémon for which this Pokémon must be traded."))
 
 class PokemonFlavorText(TableBase):
     u"""In-game pokédex descrption of a pokémon.
@@ -1560,6 +1562,9 @@ PokemonEvolution.known_move = relation(Move, backref='triggered_evolutions')
 PokemonEvolution.party_pokemon = relation(Pokemon,
     primaryjoin=PokemonEvolution.party_pokemon_id==Pokemon.id,
     backref='triggered_evolutions',
+)
+PokemonEvolution.trade_pokemon = relation(Pokemon,
+    primaryjoin=PokemonEvolution.trade_pokemon_id==Pokemon.id,
 )
 
 PokemonFlavorText.version = relation(Version)
