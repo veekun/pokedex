@@ -308,17 +308,13 @@ This bonus does not count as a [stat modifier]{mechanic}.  There is no notificat
 
 This Pokémon can still accumulate less than -3 or more than 3 stages of stat modifiers, even though the extra ones have no effect after doubling.",Doubles the Pokémon's [stat modifiers]{mechanic}.  These doubled modifiers are still capped at -6 or 6 stages.
 87,Dry Skin,4,"This Pokémon takes 1/8 of its maximum HP in damage after each turn during [strong sunlight]{mechanic}, but it heals for 1/8 of its HP each turn during [rain]{mechanic}.  This Pokémon takes 1.25× as much damage from [Fire]{type}-type moves, but whenever a [Water]{type} move hits it, it heals for 1/4 its maximum HP instead.","Causes 1/8 max [HP]{mechanic} in damage each turn during [strong sunlight]{mechanic}, but heals for 1/8 max HP during [rain]{mechanic}.  Increases damage from [Fire]{type} moves to 1.25×, but absorbs [Water]{type} moves, healing for 1/4 max HP."
-88,Download,4,"When this Pokémon enters battle, its [Attack]{mechanic} or [Special Attack]{mechanic}, whichever corresponds to its opponents' weaker total defensive stat, rises one [stage]{mechanic:stat modifier}.
-
-In the event of a tie, Special Attack is raised.
+88,Download,4,"When this Pokémon enters battle, its [Attack]{mechanic} or [Special Attack]{mechanic}, whichever corresponds to its opponents' weaker total defensive stat, rises one [stage]{mechanic:stat modifier}.  In the event of a tie, Special Attack is raised.
 
 This ability also takes effect when acquired during a battle.",Raises the attack stat corresponding to the opponents' weaker defense one [stage]{mechanic:stat modifier} upon entering battle.
 89,Iron Fist,4,"Moves flagged as being punch-based have 1.2× their base power for this Pokémon.
 
 [Sucker Punch]{move} is not flagged as punch-based; its original, Japanese name only means ""surprise attack"".",Strengthens punch-based moves to 1.2× their power.
-90,Poison Heal,4,"If this Pokémon is [poisoned]{mechanic:poison}, it will heal for 1/8 of its maximum [HP]{mechanic} after each turn rather than taking damage.  This includes bad poison.
-
-Poison will still damage this Pokémon as usual out of battle.",Heals for 1/8 max [HP]{mechanic} after each turn when [poisoned]{mechanic:poison} in place of damage.
+90,Poison Heal,4,"If this Pokémon is [poisoned]{mechanic:poison}, it will heal for 1/8 of its maximum [HP]{mechanic} after each turn rather than taking damage.  This includes bad poison.",Heals for 1/8 max [HP]{mechanic} after each turn when [poisoned]{mechanic:poison} in place of damage.
 91,Adaptability,4,"This Pokémon inflicts twice as much damage with moves whose types match its own, rather than the usual [same-type attack bonus]{mechanic} of 1.5×.",Increases the [same-type attack bonus]{mechanic} from 1.5× to 2×.
 92,Skill Link,4,"This Pokémon always hits five times with two-to-five-hit moves, such as [Icicle Spear]{move}.
 
@@ -358,12 +354,12 @@ This ability works as usual during [Trick Room]{move}: Pokémon with this abilit
 This includes moves of variable power, such as [Hidden Power]{move} and [Magnitude]{move}, when their power is 60 or less.",Strengthens moves of 60 base power or less to inflict 1.5× damage.
 102,Leaf Guard,4,"This Pokémon cannot be given a [major status ailment]{mechanic} during [strong sunlight]{mechanic}.
 
-This ability does not heal prior status ailments.  [Yawn]{move} will immediately fail if used on this Pokémon during strong sunlight, and an already-used Yawn will fail if the weather turns to strong sunlight in the meantime.  This Pokémon cannot use [Rest]{move} during strong sunlight.",Protects against [major status ailments]{mechanic} during [strong sunlight]{mechanic}.
+This ability does not heal prior status ailments.  [Rest]{move} will fail altogether with this ability in effect.  [Yawn]{move} will immediately fail if used on this Pokémon during strong sunlight, and an already-used Yawn will fail if the weather turns to strong sunlight in the meantime.",Protects against [major status ailments]{mechanic} during [strong sunlight]{mechanic}.
 103,Klutz,4,"In battle, this Pokémon cannot use its held item, and the item will not have any passive effect on the battle, positive or negative.  This Pokémon also cannot use [Fling]{move}.
 
 The [Speed]{mechanic} cut from the [Iron Ball]{item} and the effort items (the [Macho Brace]{item}, [Power Weight]{item}, [Power Bracer]{item}, [Power Belt]{item}, [Power Lens]{item}, [Power Band]{item}, and [Power Anklet]{item}) is unaffected.  Items that do not directly affect the battle, such as the [Exp. Share]{item}, the [Amulet Coin]{item}, or the [Soothe Bell]{item}, work as usual.  All held items work as usual out of battle.
 
-Other moves that use the held item, such as [Natural Gift]{move}, and [Switcheroo]{move}, work as usual.",Prevents the Pokémon from using its held item in battle.
+Other moves that use the held item, such as [Natural Gift]{move} and [Switcheroo]{move}, work as usual.",Prevents the Pokémon from using its held item in battle.
 104,Mold Breaker,4,"This Pokémon's moves completely ignore abilities that could hinder or prevent their effect on the target.
 
 This Pokémon's moves ignore abilities that would negate them, such as [Water Absorb]{ability}; abilities that would prevent any of their effects, such as [Clear Body]{ability}, [Shell Armor]{ability}, or [Sticky Hold]{ability}; and abilities that grant any protective benefit, such as [Simple]{ability}, [Snow Cloak]{ability}, or [Thick Fat]{ability}.  If an ability could either hinder or help this Pokémon's moves, e.g. [Dry Skin]{ability} or [Unaware]{ability}, the ability is ignored either way.
