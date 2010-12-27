@@ -489,7 +489,7 @@ This ability cannot reflect moves that have already been reflected by another Po
 This ability functions identically to [Rough Skin]{ability}.",Damages attacking Pokémon for 1/8 their max [HP]{mechanic} on contact.
 161,daruma mode,5,"This Pokémon changes to daruma mode when it falls below 50% of its maximum [HP]{mechanic}.
 
-This ability has no effect if this Pokémon is not a [hihidaruma]{pokemon}.",Changes [hihidaruma]{pokemon} to daruma mode below 50% max [HP]{mechanic}.
+This ability has no effect if this Pokémon is not a [Darmanitan]{pokemon}.",Changes [Darmanitan]{pokemon} to daruma mode below 50% max [HP]{mechanic}.
 162,victory star,5,"All friendly Pokémon's moves, including this Pokémon's own moves, have 1.1× their usual accuracy while this Pokémon is in battle.",Raises moves' accuracy to 1.1× for friendly Pokémon.
 163,Turboblaze,5,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Makes moves ignore targets' abilities if they could hinder or prevent them.
 164,Teravolt,5,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Makes moves ignore targets' abilities if they could hinder or prevent them.
