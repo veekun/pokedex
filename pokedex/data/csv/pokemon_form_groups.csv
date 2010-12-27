@@ -13,7 +13,7 @@ pokemon_id,term,is_battle_only,description
 492,Forme,0,"Forms have different stats and movepools.  Shaymin transforms into Sky Forme with the use of a [Gracidea]{item}.  It is limited to Land Forme at night, when [frozen]{mechanic}, in the storage system boxes, in the Wi-Fi Club, and in the Union Room; under these conditions, Sky Shaymin reverts to Land Forme, and the Gracidea has no effect.  The Gracidea must be used again to return to Sky Forme.  A Gracidea may be received by showing a woman in southwest [Floaroma Town]{location} or the [Goldenrod City]{location} flower shop a Shaymin met in a fateful encounter."
 493,Type,0,"Form changes along with type to match a held Plate, due to [Multitype]{ability}."
 550,,0,"Forms have one different ability and different wild held items.  Blue-stripe basurao are rarer in Black Version, and red-stripe basurao in White Version."
-555,mode,0,"Forms have different stats and types.  hihidaruma changes to daruma mode below 50% HP if it has [daruma mode]{ability}, and back to normal mode above 50% HP."
+555,mode,0,"Forms have different stats and types.  Darmanitan changes to daruma mode below 50% HP if it has [daruma mode]{ability}, and back to normal mode above 50% HP."
 585,form,0,"Form changes to match the season.  To switch forms, shikijika must be in the party when loading the game."
 586,form,0,"Form changes to match the season.  To switch forms, mebukijika must be in the party when loading the game."
 648,forme,0,"Forms have different stats and types.  meroetta changes form upon using [ancient song]{move} in battle, and reverts to voice forme outside of battle."
