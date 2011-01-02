@@ -227,7 +227,7 @@ In HeartGold and SoulSilver, trade one for a [Durin Berry]{item}, a [Hondew Berr
 :   Evolves an [Eevee]{pokemon} into [Vaporeon]{pokemon}, a [Lombre]{pokemon} into [Ludicolo]{pokemon}, a [Poliwhirl]{pokemon} into [Poliwrath]{pokemon}, a [Shellder]{pokemon} into [Cloyster]{pokemon}, or a [Staryu]{pokemon} into [Starmie]{pokemon}."
 85,9,,"Used on a party Pokémon
 :   Evolves an [Exeggcute]{pokemon} into [Exeggutor]{pokemon}, a [Gloom]{pokemon} into [Vileplume]{pokemon}, a [Nuzleaf]{pokemon} into [Shiftry]{pokemon}, or a [Weepinbell]{pokemon} into [Victreebel]{pokemon}."
-86,9,,Vendor trash.
+86,9,Vendor trash.,Vendor trash.
 87,9,Vendor trash.,Vendor trash.
 88,9,Vendor trash.,Vendor trash.
 89,9,Vendor trash.,Vendor trash.
@@ -1007,32 +1007,64 @@ Held
 
 Held
 :   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
-580,9,,Not yet known. [[B/W item 537]]
-581,9,,Not yet known. [[B/W item 538]]
-582,9,,Not yet known. [[B/W item 539]]
-583,9,,Not yet known. [[B/W item 540]]
-584,9,,Not yet known. [[B/W item 541]]
-585,9,,Not yet known. [[B/W item 542]]
-586,9,,Not yet known. [[B/W item 543]]
-587,9,,Not yet known. [[B/W item 544]]
-588,9,,Not yet known. [[B/W item 545]]
-589,9,,Not yet known. [[B/W item 546]]
-590,9,,Not yet known. [[B/W item 547]]
-591,9,,Not yet known. [[B/W item 548]]
-592,9,,Not yet known. [[B/W item 549]]
-593,9,,Not yet known. [[B/W item 550]]
-594,9,,Not yet known. [[B/W item 551]]
-595,9,,Not yet known. [[B/W item 552]]
-596,9,,Not yet known. [[B/W item 553]]
-597,9,,Not yet known. [[B/W item 554]]
-598,9,,Not yet known. [[B/W item 555]]
-599,9,,Not yet known. [[B/W item 556]]
-600,9,,Not yet known. [[B/W item 557]]
-601,9,,Not yet known. [[B/W item 558]]
-602,9,,Not yet known. [[B/W item 559]]
-603,9,,Not yet known. [[B/W item 560]]
-604,9,,Not yet known. [[B/W item 562]]
-605,9,,Not yet known. [[B/W item 563]]
+580,9,Traded on a Feebas: Holder evolves into Milotic.,"Held by [Feebas]{pokemon}
+:   Holder evolves into [Milotic]{pokemon} when traded."
+581,9,"Held: Holder has 1.5× Defense and Special Defense, as long as it's not fully evolved.","Held by a Pokémon that is not fully evolved
+:   Holder has 1.5× [Defense]{mechanic} and [Special Defense]{mechanic}."
+582,9,Held: Holder has 0.5× weight.,"Held
+:   Holder has 0.5× weight."
+583,9,"Held: When the holder is hit by a [contact]{mechanic} move, the attacking Pokémon takes 1/6 its max [HP]{mechanic} in damage.","Held
+:   When the holder is hit by a [contact]{mechanic} move, the attacking Pokémon takes 1/6 its max [HP]{mechanic} in damage."
+584,9,Holder is immune to [Ground]{type}-type moves.  Consumed when the holder takes damage from a move.,"Held
+:   Holder is immune to [Ground]{type}-type moves, [Spikes]{move}, [Toxic Spikes]{move}, and [Arena Trap]{ability}.
+
+    This effect does not apply during [Gravity]{move} or [Ingrain]{move}.
+
+    When the holder takes damage from a move, this item is consumed."
+585,9,"Held: When the holder takes damage from a move, it switches out for another random party Pokémon.","Held
+:   When the holder takes damage directly from a move and does not faint, it [switches out]{mechanic:switching out} for another random, non-fainted Pokémon in its party.
+This effect does not activate if another effect prevents the holder from switching out."
+586,9,Held: Negates the holder's type immunities.,"Held
+:   When one of the user's types would render it immune to damage, that type is ignored for damage calculation."
+587,9,Held: Doubles the per-turn damage of multi-turn trapping moves.,"Held
+:   Moves used by the holder that trap and damage a target for multiple turns (e.g. [Bind]{move}, [Fire Spin]{move}) inflict twice their usual per-turn damage."
+588,9,Held: Raises the holder's [Special Attack]{mechanic} by one [stage]{mechanic} when it takes [Water]{type}-type damage.,"Held
+:   When the holder takes [Water]{type}-type damage from a move, its [Special Attack]{mechanic} rises by one [stage]{mechanic} and this item is consumed."
+589,9,Held: Raises the holder's [Attack]{mechanic} by one [stage]{mechanic} when it takes [Electric]{type}-type damage.,"Held
+:   When the holder takes [Electric]{type}-type damage from a move, its [Attack]{mechanic} rises by one [stage]{mechanic} and this item is consumed."
+590,9,"Held: When the holder takes damage from a move, it switches out for a party Pokémon of the Trainer's choice.","Held
+:   When the holder takes damage directly from a move and does not faint, it [switches out]{mechanic:switching out} for another non-fainted Pokémon in its party, as chosen by the Trainer.
+This effect does not activate if another effect prevents the holder from switching out."
+591,9,"Held: When the holder uses a damaging [Fire]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Fire]{type}-type move, the move has 1.5× power and this item is consumed."
+592,9,"Held: When the holder uses a damaging [Water]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Water]{type}-type move, the move has 1.5× power and this item is consumed."
+593,9,"Held: When the holder uses a damaging [Electric]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Electric]{type}-type move, the move has 1.5× power and this item is consumed."
+594,9,"Held: When the holder uses a damaging [Grass]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Grass]{type}-type move, the move has 1.5× power and this item is consumed."
+595,9,"Held: When the holder uses a damaging [Ice]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Ice]{type}-type move, the move has 1.5× power and this item is consumed."
+596,9,"Held: When the holder uses a damaging [Fighting]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Fighting]{type}-type move, the move has 1.5× power and this item is consumed."
+597,9,"Held: When the holder uses a damaging [Poison]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Poison]{type}-type move, the move has 1.5× power and this item is consumed."
+598,9,"Held: When the holder uses a damaging [Ground]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Ground]{type}-type move, the move has 1.5× power and this item is consumed."
+599,9,"Held: When the holder uses a damaging [Flying]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Flying]{type}-type move, the move has 1.5× power and this item is consumed."
+600,9,"Held: When the holder uses a damaging [Psychic]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Psychic]{type}-type move, the move has 1.5× power and this item is consumed."
+601,9,"Held: When the holder uses a damaging [Bug]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Bug]{type}-type move, the move has 1.5× power and this item is consumed."
+602,9,"Held: When the holder uses a damaging [Rock]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Rock]{type}-type move, the move has 1.5× power and this item is consumed."
+603,9,"Held: When the holder uses a damaging [Ghost]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Ghost]{type}-type move, the move has 1.5× power and this item is consumed."
+604,9,"Held: When the holder uses a damaging [Dark]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Dark]{type}-type move, the move has 1.5× power and this item is consumed."
+605,9,"Held: When the holder uses a damaging [Steel]{type}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging [Steel]{type}-type move, the move has 1.5× power and this item is consumed."
 606,9,,Not yet known. [[B/W item 565]]
 607,9,,Not yet known. [[B/W item 566]]
 608,9,,Not yet known. [[B/W item 567]]
