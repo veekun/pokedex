@@ -13,7 +13,7 @@ ability_id,changed_in_version_group_id,effect
 25,11,[Fire Fang]{move} and moves that inflict [typeless damage]{mechanic} ignore this ability regardless of type.
 28,6,Has no overworld effect.
 28,8,Cannot influence the natures of Pokémon encountered by interacting with them on the overworld.
-28,11,Passes back toxic [poison]{mechanic} as regular poison.
+28,11,Passes back bad [poison]{mechanic} as regular poison.
 31,6,Has no overworld effect.
 31,8,"Does not affect non-damaging [Electric]{type} moves, i.e. [Thunder Wave]{move}.  Increases the frequency of Match Call calls on the overworld if any party Pokémon has this ability."
 31,11,Redirects [Electric]{type} moves without negating them or granting any [Special Attack]{mechanic} boost.  Does not redirect [Hidden Power]{move}.
