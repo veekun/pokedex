@@ -137,7 +137,8 @@ def command_load(*args):
     pokedex.db.load.load(session, directory=options.directory,
                                   drop_tables=options.drop_tables,
                                   tables=tables,
-                                  verbose=options.verbose)
+                                  verbose=options.verbose,
+                                  safe=False)
 
 def command_reindex(*args):
     parser = get_parser(verbose=True)
@@ -158,7 +159,8 @@ def command_setup(*args):
     session = get_session(options)
     get_csv_directory(options)
     pokedex.db.load.load(session, directory=None, drop_tables=True,
-                                  verbose=options.verbose)
+                                  verbose=options.verbose,
+                                  safe=False)
 
     lookup = get_lookup(options, session=session, recreate=True)
 

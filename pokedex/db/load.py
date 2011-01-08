@@ -95,7 +95,7 @@ def _get_verbose_prints(verbose):
     return print_start, print_status, print_done
 
 
-def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
+def load(session, tables=[], directory=None, drop_tables=False, verbose=False, safe=True):
     """Load data from CSV files into the given database session.
 
     Tables are created automatically.
@@ -115,6 +115,10 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
 
     `verbose`
         If set to True, status messages will be printed to stdout.
+
+    `safe`
+        If set to False, load can be faster, but can corrupt the database if
+        it crashes or is interrupted.
     """
 
     # First take care of verbosity
@@ -128,6 +132,10 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
     table_objs = [metadata.tables[name] for name in table_names]
     table_objs = sqlalchemy.sql.util.sort_tables(table_objs)
 
+    # SQLite speed tweaks
+    if not safe and session.connection().dialect.name == 'sqlite':
+        session.connection().execute("PRAGMA synchronous=OFF")
+        session.connection().execute("PRAGMA journal_mode=OFF")
 
     # Drop all tables if requested
     if drop_tables:
@@ -250,6 +258,10 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False):
         session.commit()
 
         print_done()
+
+    # SQLite check
+    if session.connection().dialect.name == 'sqlite':
+        session.connection().execute("PRAGMA integrity_check")
 
 
 
