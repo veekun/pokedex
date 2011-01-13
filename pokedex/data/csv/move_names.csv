@@ -2348,6 +2348,10 @@ move_id,language_id,name
 475,1,ボディパージ
 476,1,いかりのこな
 477,1,テレキネシス
+477,5,Lévikinésie
+477,6,Telekinese
+477,7,Telequinesis
+477,8,Telecinesi
 478,1,マジックルーム
 479,1,うちおとす
 480,1,やまあらし
@@ -2403,6 +2407,10 @@ move_id,language_id,name
 526,1,ふるいたてる
 527,1,エレキネット
 528,1,ワイルドボルト
+528,5,Eclair Fou
+528,6,Stromstoß
+528,7,Voltia Cruel
+528,8,Sprizzalampo
 529,1,ドリルライナー
 530,1,ダブルチョップ
 531,1,ハートスタンプ
@@ -2416,6 +2424,10 @@ move_id,language_id,name
 539,1,ナイトバースト
 540,1,サイコブレイク
 541,1,スイープビンタ
+541,5,Plumo-Queue
+541,6,Kehrschelle
+541,7,Plumerazo
+541,8,Spazzasberla
 542,1,ぼうふう
 543,1,アフロブレイク
 544,1,ギアソーサー

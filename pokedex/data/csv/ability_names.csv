@@ -616,6 +616,10 @@ ability_id,language_id,name
 123,8,Sogniamari
 124,1,わるいてぐせ
 125,1,ちからずく
+125,5,Sans Limite
+125,6,Rohe Gewalt
+125,7,Potencia Bruta
+125,8,Forzabruta
 126,1,あまのじゃく
 127,1,きんちょうかん
 128,1,まけんき
@@ -636,6 +640,10 @@ ability_id,language_id,name
 143,1,どくしゅ
 144,1,さいせいりょく
 145,1,はとむね
+145,5,Coeur de Coq
+145,6,Brustbieter
+145,7,Sacapecho
+145,8,Pettinfuori
 146,1,すなかき
 147,1,ミラクルスキン
 148,1,アナライズ
@@ -648,6 +656,10 @@ ability_id,language_id,name
 151,1,すりぬけ
 152,1,ミイラ
 153,1,じしんかじょう
+153,5,Impudence
+153,6,Hochmut
+153,7,Autoestima
+153,8,Arroganza
 154,1,せいぎのこころ
 155,1,びびり
 156,1,マジックミラー
