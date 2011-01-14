@@ -2374,6 +2374,10 @@ move_id,language_id,name
 493,1,シンプルビーム
 494,1,なかまづくり
 495,1,おさきにどうぞ
+495,5,Après Vous
+495,6,Galanterie
+495,7,Cede Paso
+495,8,Cortesia
 496,1,りんしょう
 497,1,エコーボイス
 498,1,なしくずし
@@ -2386,6 +2390,10 @@ move_id,language_id,name
 505,1,いやしのはどう
 506,1,たたりめ
 507,1,フリーフォール
+507,5,Chute Libre
+507,6,Freier Fall
+507,7,Caída Libre
+507,8,Cadutalibera
 508,1,ギアチェンジ
 509,1,ともえなげ
 510,1,やきつくす
@@ -2413,7 +2421,15 @@ move_id,language_id,name
 528,8,Sprizzalampo
 529,1,ドリルライナー
 530,1,ダブルチョップ
+530,5,Double Baffe
+530,6,Doppelhieb
+530,7,Golpe Bis
+530,8,Doppiocolpo
 531,1,ハートスタンプ
+531,5,Crèvecoeur
+531,6,Herzstempel
+531,7,Arrumaco
+531,8,Cuorestampo
 532,1,ウッドホーン
 533,1,せいなるつるぎ
 534,1,シェルブレード

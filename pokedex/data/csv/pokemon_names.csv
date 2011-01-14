@@ -2977,6 +2977,8 @@ pokemon_id,language_id,name
 502,1,フタチマル
 503,1,ダイケンキ
 504,1,ミネズミ
+504,5,Ratentif
+504,6,Nagelotz
 505,1,ミルホッグ
 506,1,ヨーテリー
 507,1,ハーデリア
@@ -2994,6 +2996,8 @@ pokemon_id,language_id,name
 517,5,Munna
 517,6,Somniam
 518,1,ムシャーナ
+518,5,Mushana
+518,6,Somnivora
 519,1,マメパト
 519,5,Poichigeon
 519,6,Dusselgurr
@@ -3009,8 +3013,12 @@ pokemon_id,language_id,name
 526,5,Gigalithe
 526,6,Brockoloss
 527,1,コロモリ
+527,5,Chovsourir
+527,6,Fleknoil
 528,1,ココロモリ
 529,1,モグリュー
+529,5,Rototaupe
+529,6,Rotomurf
 530,1,ドリュウズ
 531,1,タブンネ
 532,1,ドッコラー
@@ -3049,6 +3057,8 @@ pokemon_id,language_id,name
 561,1,シンボラー
 562,1,デスマス
 563,1,デスカーン
+563,5,Tutankafer
+563,6,Echnatoll
 564,1,プロトーガ
 565,1,アバゴーラ
 566,1,アーケン
@@ -3068,9 +3078,13 @@ pokemon_id,language_id,name
 574,1,ゴチム
 575,1,ゴチミル
 576,1,ゴチルゼル
+576,5,Sidérella
+576,6,Morbitesse
 577,1,ユニラン
 578,1,ダブラン
 579,1,ランクルス
+579,5,Symbios
+579,6,Zytomega
 580,1,コアルヒー
 581,1,スワンナ
 582,1,バニプッチ
@@ -3105,6 +3119,8 @@ pokemon_id,language_id,name
 609,1,シャンデラ
 610,1,キバゴ
 610,4,牙牙
+610,5,Coupenotte
+610,6,Milza
 611,1,オノンド
 612,1,オノノクス
 613,1,クマシュン
@@ -3123,6 +3139,8 @@ pokemon_id,language_id,name
 626,1,バッフロン
 627,1,ワシボン
 628,1,ウォーグル
+628,5,Gueriaigle
+628,6,Washakwil
 629,1,バルチャイ
 630,1,バルジーナ
 631,1,クイタラン

@@ -637,6 +637,10 @@ ability_id,language_id,name
 140,1,テレパシー
 141,1,ムラっけ
 142,1,ぼうじん
+142,5,Envelocape
+142,6,Wetterfest
+142,7,Funta
+142,8,Copricapo
 143,1,どくしゅ
 144,1,さいせいりょく
 145,1,はとむね
@@ -645,6 +649,10 @@ ability_id,language_id,name
 145,7,Sacapecho
 145,8,Pettinfuori
 146,1,すなかき
+146,5,Baigne Sable
+146,6,Sandscharrer
+146,7,Ímpetu Arena
+146,8,Remasabbia
 147,1,ミラクルスキン
 148,1,アナライズ
 149,1,イリュージョン
@@ -655,6 +663,10 @@ ability_id,language_id,name
 150,1,かわりもの
 151,1,すりぬけ
 152,1,ミイラ
+152,5,Momie
+152,6,Mumie
+152,7,Momia
+152,8,Mummia
 153,1,じしんかじょう
 153,5,Impudence
 153,6,Hochmut
@@ -666,6 +678,10 @@ ability_id,language_id,name
 157,1,そうしょく
 158,1,いたずらごころ
 159,1,すなのちから
+159,5,Force Sable
+159,6,Sandgewalt
+159,7,Poder Arena
+159,8,Silicoforza
 160,1,てつのトゲ
 161,1,ダルマモード
 162,1,しょうりのほし

@@ -456,11 +456,11 @@ This ability triggers on every hit of a multiple-hit move.",Raises [Speed]{mecha
 139,harvest,5,"After each turn, if this Pokémon ate a held Berry or used it with [Natural Gift]{move} that turn, the Pokémon regains its Berry.  If the Pokémon then meets the requirements to eat the Berry again, it will do so immediately, and will not be able restore the Berry again.",Restores any held Berry after the turn on which it is used.
 140,telepathy,5,"This Pokémon does not take damage from friendly Pokémon's moves, including single-targed moves aimed at it.",Protects against damaging moves from friendly Pokémon.
 141,sudden impulse,5,"After each turn, one of this Pokémon's stats at random rises two [stages]{mechanic:stat modifier}, and another falls one stage.",Raises a random stat two [stages]{mechanic:stat modifier} and lowers another one stage after each turn.
-142,dustproof,5,This Pokémon does not take damage from [weather]{mechanic}.,Protects against damage from [weather]{mechanic}.
+142,Overcoat,5,This Pokémon does not take damage from [weather]{mechanic}.,Protects against damage from [weather]{mechanic}.
 143,poisoned drink,5,This Pokémon's contact moves have a 20% chance of [poisoning]{mechanic:poison} the target with each hit.,Has a 20% chance of [poisoning]{mechanic:poison} Pokémon upon contact when attacking.
 144,regeneration,5,This Pokémon regains 1/3 of its maximum [HP]{mechanic} upon leaving battle.,Heals for 1/3 max [HP]{mechanic} upon leaving battle.
 145,Big Pecks,5,This Pokémon's [Defense]{mechanic} cannot be [lowered]{mechanic:stat modifiers}.,Protects against [Defense]{mechanic} drops.
-146,sand fence,5,This Pokémon's [Speed]{mechanic} is doubled during a [sandstorm]{mechanic}.,Doubles [Speed]{mechanic} during a [sandstorm]{mechanic}.
+146,Sand Rush,5,This Pokémon's [Speed]{mechanic} is doubled during a [sandstorm]{mechanic}.,Doubles [Speed]{mechanic} during a [sandstorm]{mechanic}.
 147,miracle skin,5,"Non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}, such as [Thunder Wave]{move}, have a 50% chance of failing against this Pokémon.",Has a 50% chance of protecting against non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}.
 148,analyze,5,This Pokémon inflicts more damage when it moves last in a turn.,Strengthens moves when moving last.
 149,Illusion,5,"This Pokémon, upon being sent out, appears to have the species, nickname, and Poké Ball of the last Pokémon in the party that is able to battle.  This illusion breaks upon being hit by a damaging move.
@@ -470,7 +470,7 @@ Other damage, e.g. from [weather]{mechanic} or [Spikes]{move}, does not break th
 If the party order becomes temporarily shuffled around as Pokémon are switched out in battle, this ability chooses the last Pokémon according to that shuffled order.",Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move.
 150,eccentric,5,This Pokémon uses [Transform]{move} upon entering battle.,[Transforms]{move:Transform} upon entering battle.
 151,slip through,5,"This Pokémon's moves ignore [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}.","Ignores [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}."
-152,mummify,5,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to mummify.",Changes attacking Pokémon's abilities to mummify on contact.
+152,Mummy,5,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to mummify.",Changes attacking Pokémon's abilities to mummify on contact.
 153,Moxie,5,"This Pokémon's [Attack]{mechanic} rises one stage upon knocking out another Pokémon, even a friendly Pokémon.
 
 This ability does not take effect when the Pokémon indirectly causes another Pokémon to faint, e.g. through [poison]{mechanic} or [Spikes]{move}.",Raises [Attack]{mechanic} one stage upon KOing a Pokémon.
@@ -483,7 +483,7 @@ The move is not negated in any way.",Raises Attack when hit by dark-type moves.
 This ability cannot reflect moves that have already been reflected by another Pokémon with this ability.",Reflects most non-damaging moves back at their user.
 157,herbivore,5,"Whenever a [Grass]{type}-type move hits this Pokémon, its [Attack]{mechanic} rises one [stage]{mechanic:stat modifier}, negating any other effect on it.","Absorbs [Grass]{type} moves, raising [Attack]{mechanic} one [stage]{mechanic:stat modifier}."
 158,mischievous heart,5,This Pokémon's non-damaging moves have their priority increased by one stage.,Raises non-damaging moves' priority by one stage.
-159,sand power,5,"During a [sandstorm]{mechanic}, this Pokémon's [Rock]{type}-, [Ground]{type}-, and [Steel]{type}-type moves have 1.3× their base power.  This Pokémon does not take sandstorm damage, regardless of type.","Strengthens [Rock]{type}, [Ground]{type}, and [Steel]{type} moves to 1.3× their power during a [sandstorm]{mechanic}."
+159,Sand Force,5,"During a [sandstorm]{mechanic}, this Pokémon's [Rock]{type}-, [Ground]{type}-, and [Steel]{type}-type moves have 1.3× their base power.  This Pokémon does not take sandstorm damage, regardless of type.","Strengthens [Rock]{type}, [Ground]{type}, and [Steel]{type} moves to 1.3× their power during a [sandstorm]{mechanic}."
 160,iron thorns,5,"Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum [HP]{mechanic} in damage.
 
 This ability functions identically to [Rough Skin]{ability}.",Damages attacking Pokémon for 1/8 their max [HP]{mechanic} on contact.
