@@ -182,7 +182,7 @@ This effect is passed on by [Baton Pass]{move}."
 This move cannot be copied by [Mimic]{move} or [Mirror Move]{move}, nor selected by [Assist]{move} or [Metronome]{move}, nor forced by [Encore]{move}."
 98,Randomly uses one of the user's other three moves.  Only works if the user is sleeping.,"Only usable if the user is [sleep]{mechanic}ing.  Randomly selects and uses one of the user's other three moves.  Use of the selected move requires and costs 0 [PP]{mechanic}.
 
-This move will not select [Assist]{move}, [Bide]{move}, [Bounce]{move}, [Chatter]{move}, [Copycat]{move}, [Dig]{move}, [Dive]{move}, [Fly]{move}, [Focus Punch]{move}, [freefall]{move}, [Me First]{move}, [Metronome]{move}, [Mirror Move]{move}, [Shadow Force]{move}, [Skull Bash]{move}, [Sky Attack]{move}, [Sleep Talk]{move}, [SolarBeam]{move}, [Razor Wind]{move}, or [Uproar]{move}.
+This move will not select [Assist]{move}, [Bide]{move}, [Bounce]{move}, [Chatter]{move}, [Copycat]{move}, [Dig]{move}, [Dive]{move}, [Fly]{move}, [Focus Punch]{move}, [Me First]{move}, [Metronome]{move}, [Mirror Move]{move}, [Shadow Force]{move}, [Skull Bash]{move}, [Sky Attack]{move}, [Sky Drop]{move}, [Sleep Talk]{move}, [SolarBeam]{move}, [Razor Wind]{move}, or [Uproar]{move}.
 
 If the selected move requires a recharge turn—i.e., one of [Blast Burn]{move}, [Frenzy Plant]{move}, [Giga Impact]{move}, [Hydro Cannon]{move}, [Hyper Beam]{move}, [Roar of Time]{move}, or [Rock Wrecker]{move}—and the user is still [sleep]{mechanic}ing next turn, then it's forced to use this move again and pay another [PP]{mechanic} for the recharge turn.
 
@@ -420,7 +420,7 @@ This move cannot be copied by [Mirror Move]{move}, nor selected by [Assist]{move
 This move cannot be selected by [Sleep Talk]{move}."
 147,Has chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to make each target [flinch]{mechanic}.
 
-If the target is under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}, this move will hit with double power."
+If the target is under the effect of [Bounce]{move}, [Fly]{move}, or [Sky Drop]{move}, this move will hit with double power."
 148,Inflicts regular damage and can hit Dig users.,"Inflicts [regular damage]{mechanic}.
 
 If the target is in the first turn of [Dig]{move}, this move will hit with double power."
@@ -435,7 +435,7 @@ The damage is applied at the end of the turn, so it ignores [Endure]{move} and [
 This move cannot be copied by [Mirror Move]{move}."
 150,Inflicts regular damage and can hit Bounce and Fly users.,"Inflicts [regular damage]{mechanic}.
 
-If the target is under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}, this move will hit with double power."
+If the target is under the effect of [Bounce]{move}, [Fly]{move}, or [Sky Drop]{move}, this move will hit with double power."
 151,Has a $effect_chance% chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to make the target [flinch]{mechanic}.
 
 Power is doubled against Pokémon that have used [Minimize]{move} since entering the [field]{mechanic}."
@@ -668,7 +668,7 @@ Waterfall      | Puts target to [sleep]{mechanic}
 207,Raises the user's Defense and Special Defense by one stage.,Raises the user's [Defense]{mechanic} and [Special Defense]{mechanic} by one [stage]{mechanic}.
 208,Inflicts regular damage and can hit Bounce and Fly users.,"Inflicts [regular damage]{mechanic}.
 
-This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}."
+This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [Sky Drop]{move}."
 209,Raises the user's Attack and Defense by one stage.,Raises the user's [Attack]{mechanic} and [Defense]{mechanic} by one [stage]{mechanic} each.
 210,Has an increased chance for a critical hit and a $effect_chance% chance to poison the target.,Inflicts [regular damage]{mechanic}.  User's [critical hit]{mechanic} rate is one level higher when using this move. Has a $effect_chance% chance to [poison]{mechanic} the target.
 211,All damage from Fire moves is halved until the end of the battle.,"[Fire]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
@@ -705,13 +705,13 @@ Sunset         | [Ground]{type}
 Waterfall      | [Grass]{type}
 "
 215,Heals the user by half its max HP.,"Heals the user for half its max [HP]{mechanic}.  If the user is [Flying]{type}, its [Flying]{type} type is ignored until the end of this turn."
-216,Disables moves and immunities that involve flying or levitating for five turns.,"For five turns (including this one), all immunities to [Ground]{type} moves are disabled.  For the duration of this effect, the [evasion]{mechanic} of every Pokémon on the field is lowered by two [stages]{mechanic:stage}.  Cancels the effects of [Bounce]{move}, [Fly]{move}, and [freefall]{move}.
+216,Disables moves and immunities that involve flying or levitating for five turns.,"For five turns (including this one), all immunities to [Ground]{type} moves are disabled.  For the duration of this effect, the [evasion]{mechanic} of every Pokémon on the field is lowered by two [stages]{mechanic:stage}.  Cancels the effects of [Bounce]{move}, [Fly]{move}, and [Sky Drop]{move}.
 
 Specifically, [Flying]{type} Pokémon and those with [Levitate]{ability} or that have used [Magnet Rise]{move} are no longer immune to [Ground]{type} attacks, [Arena Trap]{ability}, [Spikes]{move}, or [Toxic Spikes]{move}.
 
-[Bounce]{move}, [Fly]{move}, [freefall]{move}, [Hi Jump Kick]{move}, [Jump Kick]{move}, and [Splash]{move} cannot be used while this move is in effect.
+[Bounce]{move}, [Fly]{move}, [Sky Drop]{move}, [Hi Jump Kick]{move}, [Jump Kick]{move}, and [Splash]{move} cannot be used while this move is in effect.
 
-*Bug*: If this move is used during a double or triple battle while Pokémon are under the effect of [freefall]{move}, freefall's effect is not correctly canceled on freefall's target, and it remains high in the air indefinitely.  As freefall prevents the target from acting, the only way to subsequently remove it from the field is to faint it."
+*Bug*: If this move is used during a double or triple battle while Pokémon are under the effect of [Sky Drop]{move}, Sky Drop's effect is not correctly canceled on its target, and it remains high in the air indefinitely.  As Sky Drop prevents the target from acting, the only way to subsequently remove it from the field is to faint it."
 217,"Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.",Resets the target's [evasion]{mechanic} to normal and prevents any further boosting until the target leaves the [field]{mechanic}.  A [Dark]{type} Pokémon under this effect takes normal damage from [Psychic]{type} moves.  This move itself ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
 218,"If the target is asleep, has double power and wakes it up.","Inflicts [regular damage]{mechanic}.  If the target is [sleep]{mechanic}ing, this move has double power, and the target wakes up."
 219,Lowers user's Speed by one stage.,"Inflicts [regular damage]{mechanic}, then lowers the user's [Speed]{mechanic} by one [stage]{mechanic}."
@@ -904,7 +904,7 @@ This effect is removed by [Gravity]{move}.  If Gravity is already in effect, thi
 
 If the target isn't immune to Ground damage, this move will fail.
 
-This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}, and ends the effect of Bounce or Fly."
+This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [Sky Drop]{move}, and ends the effect of Bounce or Fly."
 289,Always scores a critical hit.,Inflicts regular damage.  Always scores a [critical hit]{mechanic}.
 290,Deals splash damage to Pokémon next to the target.,"Inflicts regular damage.  If this move successfully hits the target, any Pokémon adjacent to the target are damaged for 1/16 their max [HP]{mechanic}."
 291,"Raises the user's Special Attack, Special Defense, and Speed by one stage each.","Raises the user's [Special Attack]{mechanic}, [Special Defense]{mechanic}, and [Speed]{mechanic} by one [stage]{mechanic} each."
@@ -995,7 +995,7 @@ If the user is a [meroetta]{pokemon}, it will toggle between Voice and Step form
 337,"With cross flame, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [cross flame]{move} earlier this turn, this move has double power."
 338,Has a $effect_chance% chance to confuse the target.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [confuse]{mechanic} the target.
 
-This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [freefall]{move}.
+This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [Sky Drop]{move}.
 
 During [Rain Dance]{move}, this move has 100% accuracy.  During [Sunny Day]{move}, this move has 50% accuracy."
 10001,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic}.  User's [critical hit]{mechanic} rate is one level higher when using this move while in [hyper mode]{mechanic}.
