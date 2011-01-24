@@ -838,10 +838,8 @@ class Pokemon(TableBase):
         info=dict(description=u"True iff the Pokémon is a baby, i.e. a lowest-stage Pokémon that cannot breed but whose evolved form can."))
     hatch_counter = Column(Integer, nullable=False,
         info=dict(description=u"Initial hatch counter: one must walk 255 × (hatch_counter + 1) steps before this Pokémon's egg hatches, unless utilizing bonuses like Flame Body's"))
-    has_gen4_fem_sprite = Column(Boolean, nullable=False,
-        info=dict(description=u"Set iff the species' female front sprite is different from the male's in generation IV"))
-    has_gen4_fem_back_sprite = Column(Boolean, nullable=False,
-        info=dict(description=u"Set iff the species' female back sprite is different from the male's in generation IV"))
+    has_gender_differences = Column(Boolean, nullable=False,
+        info=dict(description=u"Set iff the species exhibits enough sexual dimorphism to have separate sets of sprites in Gen IV and beyond."))
     order = Column(Integer, nullable=False, index=True,
         info=dict(description=u"Order for sorting. Almost national order, except families and forms are grouped together."))
 
