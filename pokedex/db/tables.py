@@ -848,6 +848,12 @@ class Pokemon(TableBase):
     ### Stuff to handle alternate Pokémon forms
 
     @property
+    def form(self):
+        u"""Returns the Pokémon's form, using its default form as fallback."""
+
+        return self.unique_form or self.default_form
+
+    @property
     def is_base_form(self):
         u"""Returns True iff the Pokémon is the base form for its species,
         e.g. Land Shaymin.
@@ -1037,6 +1043,13 @@ class PokemonForm(TableBase):
         info=dict(description=u'Set for exactly one form used as the default for each species.'))
     order = Column(Integer, nullable=False, autoincrement=False,
         info=dict(description=u'The order in which forms should be sorted.  Multiple forms may have equal order, in which case they should fall back on sorting by name.'))
+
+    @property
+    def pokemon(self):
+        u"""Returns the Pokémon for this form, using the form base as fallback.
+        """
+
+        return self.unique_pokemon or self.form_base_pokemon
 
     @property
     def full_name(self):
