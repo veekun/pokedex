@@ -1377,6 +1377,7 @@ EncounterConditionValueMap.condition_value = relation(EncounterConditionValue,
                                                       backref='encounter_map')
 
 EncounterSlot.terrain = relation(EncounterTerrain, backref='slots')
+EncounterSlot.version_group = relation(VersionGroup)
 
 EncounterSlot.condition_map = relation(EncounterSlotCondition, backref='slot')
 EncounterSlot.conditions = association_proxy('condition_map', 'condition')
