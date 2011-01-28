@@ -283,15 +283,6 @@ class EncounterSlot(TableBase):
     rarity = Column(Integer, nullable=False,
         info=dict(description="The chance of the encounter as a percentage"))
 
-class EncounterSlotCondition(TableBase):
-    u"""A condition that affects an encounter slot.
-    """
-    __tablename__ = 'encounter_slot_conditions'
-    encounter_slot_id = Column(Integer, ForeignKey('encounter_slots.id'), primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description="The ID of the encounter slot"))
-    encounter_condition_id = Column(Integer, ForeignKey('encounter_conditions.id'), primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description="The ID of the encounter condition"))
-
 class EvolutionChain(TableBase):
     u"""A family of Pokémon that are linked by evolution
     """
@@ -1378,11 +1369,6 @@ EncounterConditionValueMap.condition_value = relation(EncounterConditionValue,
 
 EncounterSlot.terrain = relation(EncounterTerrain, backref='slots')
 EncounterSlot.version_group = relation(VersionGroup)
-
-EncounterSlot.condition_map = relation(EncounterSlotCondition, backref='slot')
-EncounterSlot.conditions = association_proxy('condition_map', 'condition')
-EncounterSlotCondition.condition = relation(EncounterCondition,
-                                            backref='slot_map')
 
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 EvolutionChain.baby_trigger_item = relation(Item, backref='evolution_chains')
