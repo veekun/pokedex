@@ -443,7 +443,7 @@ This Pokémon cannot steal upon being knocked out.  It can steal if the attacker
 128,competitive spirit,5,"When any of this Pokémon's stats are [lowered]{mechanic:stat modifier}, its [Attack]{mechanic} rises by two stages.",Raises [Attack]{mechanic} two [stages]{mechanic:stat modifier} upon having any stat lowered.
 129,faint-hearted,5,This Pokémon's [Attack]{mechanic} and [Special Attack]{mechanic} are halved when it has less than half its [HP]{mechanic}.,Halves [Attack]{mechanic} and [Special Attack]{mechanic} below 50% [HP]{mechanic}.
 130,cursed body,5,Moves that hit this Pokémon have a 30% chance of being [Disabled]{move:Disable} afterward.,Has a 30% chance of [Disabling]{move:Disable} any move that hits the Pokémon.
-131,healing heart,5,Friendly Pokémon next to this Pokémon in double and triple battles each have a 30% chance of being cured of any [major status ailment]{mechanic} after each turn.,Has a 30% chance of curing each adjacent ally of any [major status ailment]{mechanic} after each turn.
+131,Healer,5,Friendly Pokémon next to this Pokémon in double and triple battles each have a 30% chance of being cured of any [major status ailment]{mechanic} after each turn.,Has a 30% chance of curing each adjacent ally of any [major status ailment]{mechanic} after each turn.
 132,friend guard,5,This Pokémon's moves inflict less damage against friendly Pokémon.,Decreases damage inflicted against friendly Pokémon.
 133,fragile armor,5,"Whenever any move hits this Pokémon, its [Speed]{mechanic} rises one stage and its [Defense]{mechanic} falls one stage.
 
@@ -481,7 +481,7 @@ The move is not negated in any way.",Raises Attack when hit by dark-type moves.
 156,magic mirror,5,"When this Pokémon is targeted by a non-damaging move flagged as being reflectable, as most non-damaging, non-self-targetted moves are, the move is redirected to its user.
 
 This ability cannot reflect moves that have already been reflected by another Pokémon with this ability.",Reflects most non-damaging moves back at their user.
-157,herbivore,5,"Whenever a [Grass]{type}-type move hits this Pokémon, its [Attack]{mechanic} rises one [stage]{mechanic:stat modifier}, negating any other effect on it.","Absorbs [Grass]{type} moves, raising [Attack]{mechanic} one [stage]{mechanic:stat modifier}."
+157,Sap Sipper,5,"Whenever a [Grass]{type}-type move hits this Pokémon, its [Attack]{mechanic} rises one [stage]{mechanic:stat modifier}, negating any other effect on it.","Absorbs [Grass]{type} moves, raising [Attack]{mechanic} one [stage]{mechanic:stat modifier}."
 158,mischievous heart,5,This Pokémon's non-damaging moves have their priority increased by one stage.,Raises non-damaging moves' priority by one stage.
 159,Sand Force,5,"During a [sandstorm]{mechanic}, this Pokémon's [Rock]{type}-, [Ground]{type}-, and [Steel]{type}-type moves have 1.3× their base power.  This Pokémon does not take sandstorm damage, regardless of type.","Strengthens [Rock]{type}, [Ground]{type}, and [Steel]{type} moves to 1.3× their power during a [sandstorm]{mechanic}."
 160,iron thorns,5,"Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum [HP]{mechanic} in damage.
@@ -490,6 +490,6 @@ This ability functions identically to [Rough Skin]{ability}.",Damages attacking 
 161,daruma mode,5,"This Pokémon changes to daruma mode when it falls below 50% of its maximum [HP]{mechanic}.
 
 This ability has no effect if this Pokémon is not a [Darmanitan]{pokemon}.",Changes [Darmanitan]{pokemon} to daruma mode below 50% max [HP]{mechanic}.
-162,victory star,5,"All friendly Pokémon's moves, including this Pokémon's own moves, have 1.1× their usual accuracy while this Pokémon is in battle.",Raises moves' accuracy to 1.1× for friendly Pokémon.
+162,Victory Star,5,"All friendly Pokémon's moves, including this Pokémon's own moves, have 1.1× their usual accuracy while this Pokémon is in battle.",Raises moves' accuracy to 1.1× for friendly Pokémon.
 163,Turboblaze,5,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Makes moves ignore targets' abilities if they could hinder or prevent them.
 164,Teravolt,5,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Makes moves ignore targets' abilities if they could hinder or prevent them.
