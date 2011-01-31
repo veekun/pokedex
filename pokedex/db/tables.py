@@ -984,7 +984,7 @@ class PokemonEvolution(TableBase):
         info=dict(description=u"The ID of the location the evolution must be triggered at."))
     held_item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
         info=dict(description=u"The ID of the item the Pokémon must hold."))
-    time_of_day = Column(Enum('morning', 'day', 'night', name='pokemon_evolution_time_of_day'), nullable=True,
+    time_of_day = Column(Enum('day', 'night', name='pokemon_evolution_time_of_day'), nullable=True,
         info=dict(description=u"The required time of day."))
     known_move_id = Column(Integer, ForeignKey('moves.id'), nullable=True,
         info=dict(description=u"The ID of the move the Pokémon must know."))
