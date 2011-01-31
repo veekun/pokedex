@@ -1,10 +1,10 @@
-from sqlalchemy import MetaData, Table, create_engine, orm
+from sqlalchemy import MetaData, Table, engine_from_config, orm
 
 from ..defaults import get_default_db_uri
 from .tables import metadata
 
 
-def connect(uri=None, session_args={}, engine_args={}):
+def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
     """Connects to the requested URI.  Returns a session object.
 
     With the URI omitted, attempts to connect to a default SQLite database
@@ -14,6 +14,8 @@ def connect(uri=None, session_args={}, engine_args={}):
     """
 
     # If we didn't get a uri, fall back to the default
+    if uri is None:
+        uri = engine_args[engine_prefix + 'url']
     if uri is None:
         uri = get_default_db_uri()
 
@@ -31,7 +33,8 @@ def connect(uri=None, session_args={}, engine_args={}):
             table.kwargs['mysql_charset'] = 'utf8'
 
     ### Connect
-    engine = create_engine(uri, **engine_args)
+    engine_args[engine_prefix + 'url'] = uri
+    engine = engine_from_config(engine_args, prefix=engine_prefix)
     conn = engine.connect()
     metadata.bind = engine
 
