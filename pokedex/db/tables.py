@@ -1434,7 +1434,7 @@ Move.super_contest_effect = relation(SuperContestEffect, backref='moves')
 Move.super_contest_combo_next = association_proxy('super_contest_combo_first', 'second')
 Move.super_contest_combo_prev = association_proxy('super_contest_combo_second', 'first')
 Move.target = relation(MoveTarget, backref='moves')
-Move.type = relation(Type, backref='moves')
+Move.type = relation(Type, back_populates='moves')
 
 Move.effect = markdown.MoveEffectProperty('effect')
 Move.short_effect = markdown.MoveEffectProperty('short_effect')
@@ -1628,6 +1628,7 @@ Type.foreign_names = relation(TypeName, backref='type')
 Type.pokemon = relation(Pokemon, secondary=PokemonType.__table__,
                                  order_by=Pokemon.order,
                                  back_populates='types')
+Type.moves = relation(Move, back_populates='type', order_by=Move.name)
 
 TypeName.language = relation(Language)
 
