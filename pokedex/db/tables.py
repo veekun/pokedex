@@ -1318,6 +1318,7 @@ Ability.foreign_names = relation(AbilityName, backref='ability')
 Ability.generation = relation(Generation, backref='abilities')
 Ability.all_pokemon = relation(Pokemon,
     secondary=PokemonAbility.__table__,
+    order_by=Pokemon.order,
     back_populates='all_abilities',
 )
 Ability.pokemon = relation(Pokemon,
@@ -1326,6 +1327,7 @@ Ability.pokemon = relation(Pokemon,
         PokemonAbility.ability_id == Ability.id,
         PokemonAbility.is_dream == False
     ),
+    order_by=Pokemon.order,
     back_populates='abilities',
 )
 Ability.dream_pokemon = relation(Pokemon,
@@ -1334,6 +1336,7 @@ Ability.dream_pokemon = relation(Pokemon,
         PokemonAbility.ability_id == Ability.id,
         PokemonAbility.is_dream == True
     ),
+    order_by=Pokemon.order,
     back_populates='dream_ability',
 )
 
