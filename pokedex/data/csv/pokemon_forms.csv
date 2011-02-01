@@ -548,7 +548,7 @@ id,name,form_base_pokemon_id,unique_pokemon_id,introduced_in_version_group_id,is
 547,,547,,11,1,1
 548,,548,,11,1,1
 549,,549,,11,1,1
-550,red stripe,550,550,11,1,1
+550,Red-Stripe,550,550,11,1,1
 551,,551,,11,1,1
 552,,552,,11,1,1
 553,,553,,11,1,1
@@ -583,7 +583,7 @@ id,name,form_base_pokemon_id,unique_pokemon_id,introduced_in_version_group_id,is
 582,,582,,11,1,1
 583,,583,,11,1,1
 584,,584,,11,1,1
-585,spring,585,,11,1,1
+585,Spring,585,,11,1,1
 586,spring,586,,11,1,1
 587,,587,,11,1,1
 588,,588,,11,1,1
@@ -713,11 +713,11 @@ id,name,form_base_pokemon_id,unique_pokemon_id,introduced_in_version_group_id,is
 10063,Origin,487,10007,9,0,2
 10064,Sky,492,10006,9,0,2
 10065,Spiky-eared,172,,10,0,2
-10066,blue stripe,550,10016,11,0,2
+10066,Blue-Stripe,550,10016,11,0,2
 10067,daruma,555,10017,11,0,2
-10068,summer,585,,11,0,2
-10069,autumn,585,,11,0,3
-10070,winter,585,,11,0,4
+10068,Summer,585,,11,0,2
+10069,Autumn,585,,11,0,3
+10070,Winter,585,,11,0,4
 10071,summer,586,,11,0,2
 10072,autumn,586,,11,0,3
 10073,winter,586,,11,0,4

@@ -2958,6 +2958,8 @@ pokemon_id,language_id,name
 493,5,Arceus
 493,6,Arceus
 494,1,ビクティニ
+494,5,Victini
+494,6,Victini
 495,1,ツタージャ
 495,4,藤藤蛇
 495,5,Vipélierre
@@ -2980,6 +2982,8 @@ pokemon_id,language_id,name
 504,5,Ratentif
 504,6,Nagelotz
 505,1,ミルホッグ
+505,5,Miradar
+505,6,Kukmarda
 506,1,ヨーテリー
 507,1,ハーデリア
 508,1,ムーランド
@@ -2987,6 +2991,8 @@ pokemon_id,language_id,name
 510,1,レパルダス
 511,1,ヤナップ
 511,4,花椰猴
+511,5,Feuillajou
+511,6,Vegimak
 512,1,ヤナッキー
 513,1,バオップ
 514,1,バオッキー
@@ -3020,6 +3026,8 @@ pokemon_id,language_id,name
 529,5,Rototaupe
 529,6,Rotomurf
 530,1,ドリュウズ
+530,5,Minotaupe
+530,6,Stalobor
 531,1,タブンネ
 532,1,ドッコラー
 533,1,ドテッコツ
@@ -3030,6 +3038,8 @@ pokemon_id,language_id,name
 538,1,ナゲキ
 539,1,ダゲキ
 540,1,クルミル
+540,5,Larveyette
+540,6,Strawickl
 541,1,クルマユ
 542,1,ハハコモリ
 543,1,フシデ
@@ -3040,6 +3050,8 @@ pokemon_id,language_id,name
 548,1,チュリネ
 549,1,ドレディア
 550,1,バスラオ
+550,5,Bargantua
+550,6,Barschuft
 551,1,メグロコ
 551,5,Mascaïman
 551,6,Ganovil
@@ -3087,10 +3099,14 @@ pokemon_id,language_id,name
 579,6,Zytomega
 580,1,コアルヒー
 581,1,スワンナ
+581,5,Lakmécygne
+581,6,Swaroness
 582,1,バニプッチ
 583,1,バニリッチ
 584,1,バイバニラ
 585,1,シキジカ
+585,5,Vivaldaim
+585,6,Sesokitz
 586,1,メブキジカ
 587,1,エモンガ
 588,1,カブルモ
@@ -3100,6 +3116,8 @@ pokemon_id,language_id,name
 592,1,プルリル
 593,1,ブルンゲル
 594,1,ママンボウ
+594,5,Mamanbo
+594,6,Mamolida
 595,1,バチュル
 596,1,デンチュラ
 597,1,テッシード

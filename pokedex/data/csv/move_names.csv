@@ -2399,6 +2399,10 @@ move_id,language_id,name
 510,1,やきつくす
 511,1,さきおくり
 512,1,アクロバット
+512,5,Acrobatie
+512,6,Akrobatik
+512,7,Acróbata
+512,8,Acrobazia
 513,1,ミラータイプ
 514,1,かたきうち
 515,1,いのちがけ
@@ -2409,6 +2413,10 @@ move_id,language_id,name
 520,1,くさのちかい
 521,1,ボルトチェンジ
 522,1,むしのていこう
+522,5,Survinsecte
+522,6,Käfertrutz
+522,7,Estoicismo
+522,8,Entomoblocco
 523,1,じならし
 524,1,こおりのいぶき
 525,1,ドラゴンテール
@@ -2420,6 +2428,10 @@ move_id,language_id,name
 528,7,Voltia Cruel
 528,8,Sprizzalampo
 529,1,ドリルライナー
+529,5,Tunnelier
+529,6,Schlagbohrer
+529,7,Taladradora
+529,8,Giravvita
 530,1,ダブルチョップ
 530,5,Double Baffe
 530,6,Doppelhieb
@@ -2445,6 +2457,10 @@ move_id,language_id,name
 541,7,Plumerazo
 541,8,Spazzasberla
 542,1,ぼうふう
+542,5,Vent Violent
+542,6,Orkan
+542,7,Vendaval
+542,8,Tifone
 543,1,アフロブレイク
 544,1,ギアソーサー
 545,1,かえんだん

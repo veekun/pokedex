@@ -626,6 +626,10 @@ ability_id,language_id,name
 129,1,よわき
 130,1,のろわれボディ
 131,1,いやしのこころ
+131,5,Coeur Soin
+131,6,Heilherz
+131,7,Alma Cura
+131,8,Curacuore
 132,1,フレンドガード
 133,1,くだけるよろい
 134,1,ヘヴィメタル
@@ -676,6 +680,10 @@ ability_id,language_id,name
 155,1,びびり
 156,1,マジックミラー
 157,1,そうしょく
+157,5,Herbivore
+157,6,Vegetarier
+157,7,Herbívorio
+157,8,Mangiaerba
 158,1,いたずらごころ
 159,1,すなのちから
 159,5,Force Sable
@@ -685,6 +693,10 @@ ability_id,language_id,name
 160,1,てつのトゲ
 161,1,ダルマモード
 162,1,しょうりのほし
+162,5,Victorieux
+162,6,Triumphstern
+162,7,Tinovictoria
+162,8,Vittorstella
 163,1,ターボブレイズ
 163,5,TurboBrasier
 163,6,Turbobrand
