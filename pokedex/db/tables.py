@@ -1521,10 +1521,19 @@ Move.super_contest_combo_prev = association_proxy('super_contest_combo_second', 
 Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, back_populates='moves')
 
+Move.effect = markdown.MoveEffectProperty('effect')
+Move.effects = markdown.MoveEffectsProperty('effect')
+Move.short_effect = markdown.MoveEffectProperty('short_effect')
+Move.short_effects = markdown.MoveEffectsProperty('short_effect')
 
 MoveChangelog.changed_in = relation(VersionGroup, backref='move_changelog')
 MoveChangelog.move_effect = relation(MoveEffect, backref='move_changelog')
 MoveChangelog.type = relation(Type, backref='move_changelog')
+
+MoveChangelog.effect = markdown.MoveEffectProperty('effect')
+MoveChangelog.effects = markdown.MoveEffectsProperty('effect')
+MoveChangelog.short_effect = markdown.MoveEffectProperty('short_effect')
+MoveChangelog.short_effects = markdown.MoveEffectsProperty('short_effect')
 
 MoveEffect.category_map = relation(MoveEffectCategoryMap)
 MoveEffect.categories = association_proxy('category_map', 'category')
