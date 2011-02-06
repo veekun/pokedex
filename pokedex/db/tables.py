@@ -1264,8 +1264,8 @@ class Type(TableBase):
         info=dict(description=u"An arbitrary 3-letter abbreviation of this type.", format='plaintext'))  # XXX: Or is it not arbitrary?
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description=u"The ID of the generation this type first appeared in."))
-    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=False,
-        info=dict(description=u"The ID of the damage class this type's moves had before Generation IV."))
+    damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=True,
+        info=dict(description=u"The ID of the damage class this type's moves had before Generation IV, null if not applicable (e.g. ???)."))
 
 class TypeName(TableBase):
     u"""An official non-English name of an elemental type."""
