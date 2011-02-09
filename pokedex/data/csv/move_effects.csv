@@ -3,7 +3,7 @@ id,short_effect,effect
 2,Puts the target to sleep.,Puts the target to [sleep]{mechanic}.
 3,Has a $effect_chance% chance to poison the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [poison]{mechanic} the target.
 4,Heals the user by half the damage inflicted.,Inflicts [regular damage]{mechanic}.  Heals the user for half the damage inflicted.
-5,Has a $effect_chance% chance to burn the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.
+5,Has a $effect_chance% chance to [burn]{mechanic} the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.
 6,Has a $effect_chance% chance to freeze the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [freeze]{mechanic} the target.
 7,Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic} the target.
 8,User faints.,"User [faint]{mechanic}s, even if the attack [fail]{mechanic}s or [miss]{mechanic}es.  Inflicts [regular damage]{mechanic}."
@@ -50,7 +50,7 @@ Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 t
 If the user is holding [Light Clay]{item}, the barrier lasts for eight turns.
 
 [Brick Break]{move} or [Defog]{move} used by an opponent will destroy the barrier."
-37,"Has a $effect_chance% chance to burn, freeze, or paralyze the target.","Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic}, [freeze]{mechanic}, or [paralyze]{mechanic} the target.  One of these effects is selected at random; they do not each have independent chances to occur."
+37,"Has a $effect_chance% chance to [burn]{mechanic}, [freeze]{mechanic}, or [paralyze]{mechanic} the target.","Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic}, [freeze]{mechanic}, or [paralyze]{mechanic} the target.  One of these effects is selected at random; they do not each have independent chances to occur."
 38,"User sleeps for two turns, completely healing itself.","User falls to [sleep]{mechanic} and immediately regains all its [HP]{mechanic}.  If the user has another [major status effect]{mechanic}, [sleep]{mechanic} will replace it.  The user will always wake up after two turns, or one turn with [Early Bird]{ability}.
 
 This move fails if the Pokémon cannot fall asleep due to [Uproar]{move}, [Insomnia]{ability}, or [Vital Spirit]{ability}.  It also fails if the Pokémon is at full health or is already asleep."
@@ -221,9 +221,9 @@ The target may still escape by using [Baton Pass]{move}, [U-turn]{move}, or a [S
 
 Both the user and the target pass on this effect with [Baton Pass]{move}."
 108,Target loses 1/4 its max HP every turn as long as it's asleep.,"Only works on [sleep]{mechanic}ing Pokémon.  Gives the target a nightmare, damaging it for 1/4 its max [HP]{mechanic} every turn.  If the target wakes up or leaves the [field]{mechanic}, this effect ends."
-109,Raises the user's evasion by two stages.,"Raises the user's [evasion]{mechanic} by two [stage]{mechanic}.
+109,Raises the user's evasion by two stages.,"Raises the user's [evasion]{mechanic} by two [stages]{mechanic:stage}.
 
-[Stomp]{move} has double power against Pokémon that have used this move since entering the [field]{mechanic}."
+[Stomp]{move} and [hard roller]{move} have double power against Pokémon that have used this move since entering the [field]{mechanic}."
 110,Ghosts pay half their max HP to hurt the target every turn.  Others decrease Speed but raise Attack and Defense.,"If the user is a [Ghost]{type}: user pays half its max [HP]{mechanic} to place a curse on the target, damaging it for 1/4 its max [HP]{mechanic} every turn.
 Otherwise: Lowers the user's [Speed]{mechanic} by one [stage]{mechanic}, and raises its [Attack]{mechanic} and [Defense]{mechanic} by one [stage]{mechanic} each.
 
@@ -296,7 +296,7 @@ If [Yawn]{move} is used while this move is in effect, it will immediately fail.
 [Defog]{move} used by an opponent will end this effect.
 
 This effect does not prevent the [confusion]{mechanic} caused by [Outrage]{move}, [Petal Dance]{move}, or [Thrash]{move}."
-126,Has a $effect_chance% chance to burn the target.  Lets frozen Pokémon thaw themselves.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.  [Frozen]{mechanic} Pokémon may use this move, in which case they will thaw."
+126,Has a $effect_chance% chance to [burn]{mechanic} the target.  Lets frozen Pokémon thaw themselves.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.  [Frozen]{mechanic} Pokémon may use this move, in which case they will thaw."
 127,Power varies randomly from 10 to 150.,"Inflicts [regular damage]{mechanic}.  Power is selected at random between 10 and 150, with an average of 64:
 
 Magnitude | Power | Chance
@@ -433,7 +433,7 @@ If the target is protected by [Protect]{move} or [Detect]{move} on the turn this
 The damage is applied at the end of the turn, so it ignores [Endure]{move} and [Focus Sash]{item}.
 
 This move cannot be copied by [Mirror Move]{move}."
-150,Inflicts regular damage and can hit Bounce and Fly users.,"Inflicts [regular damage]{mechanic}.
+150,Inflicts regular damage and can hit Pokémon in the air.,"Inflicts [regular damage]{mechanic}.
 
 If the target is under the effect of [Bounce]{move}, [Fly]{move}, or [Sky Drop]{move}, this move will hit with double power."
 151,Has a $effect_chance% chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to make the target [flinch]{mechanic}.
@@ -659,7 +659,7 @@ Waterfall      | Puts target to [sleep]{mechanic}
 "
 199,User receives 1/3 the damage inflicted in recoil.,Inflicts [regular damage]{mechanic}.  User takes 1/3 the damage it inflicts in recoil.
 200,Confuses the target.,[Confuse]{mechanic}s all targets.
-201,Has an increased chance for a critical hit and a $effect_chance% chance to burn the target.,Inflicts [regular damage]{mechanic}.  User's [critical hit]{mechanic} rate is one level higher when using this move. Has a $effect_chance% chance to [burn]{mechanic} the target.
+201,Has an increased chance for a critical hit and a $effect_chance% chance to [burn]{mechanic} the target.,Inflicts [regular damage]{mechanic}.  User's [critical hit]{mechanic} rate is one level higher when using this move. Has a $effect_chance% chance to [burn]{mechanic} the target.
 202,All damage from Electric moves is halved until the end of the battle.,"[Electric]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
 203,Has a $effect_chance% chance to badly poison the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [badly poison]{mechanic} the target.
 204,"If there be weather, this move has doubled power and the weather's type.","Inflicts [regular damage]{mechanic}.  If a weather move is active, this move has double power, and its type becomes the type of the weather move.  [Shadow Sky]{move} is typeless for the purposes of this move."
@@ -813,7 +813,7 @@ If the user is under the effect of [Ingrain]{move} or has [Levitate]{ability}, t
 This effect is temporarily disabled by and cannot be used during [Gravity]{move}.
 
 This effect is passed on by [Baton Pass]{move}."
-254,User takes 1/3 the damage inflicted in recoil.  Has a $effect_chance% chance to burn the target.,"Inflicts [regular damage]{mechanic}.  User takes 1/3 the damage it inflicts in recoil.  Has a $effect_chance% chance to [burn]{mechanic} the target.  [Frozen]{mechanic} Pokémon may use this move, in which case they will thaw."
+254,User takes 1/3 the damage inflicted in recoil.  Has a $effect_chance% chance to [burn]{mechanic} the target.,"Inflicts [regular damage]{mechanic}.  User takes 1/3 the damage it inflicts in recoil.  Has a $effect_chance% chance to [burn]{mechanic} the target.  [Frozen]{mechanic} Pokémon may use this move, in which case they will thaw."
 255,User takes 1/4 its max HP in recoil.,"Inflicts [typeless]{mechanic} [regular damage]{mechanic}.  User takes 1/4 its max [HP]{mechanic} in recoil.  Ignores [accuracy]{mechanic} and [evasion]{mechanic} modifiers.
 
 This move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no [PP]{mechanic} remaining or being under the effect of both [Encore]{move} and [Torment]{move} at the same time.
@@ -878,7 +878,7 @@ This move cannot be copied by [Mimic]{move}, [Mirror Move]{move}, or [Sketch]{mo
 This move breaks through [Detect]{move} and [Protect]{move}.
 
 This move cannot be selected by [Sleep Talk]{move}."
-274,Has a $effect_chance% chance to burn the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
+274,Has a $effect_chance% chance to [burn]{mechanic} the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 275,Has a $effect_chance% chance to freeze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [freeze]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 276,Has a $effect_chance% chance to paralyze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.
 277,Has a $effect_chance% chance to raise the user's Special Attack by one stage.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to raise the user's [Special Attack]{mechanic} by one [stage]{mechanic}.
@@ -893,7 +893,7 @@ This move cannot be selected by [Assist]{move} or [Metronome]{move}."
 
 This effect applies before any other persistent changes to unmodified Attack or Special Attack, such as [Flower Gift]{ability} during [Sunny Day]{move}."
 282,All Pokémon's Defense and Special Defense are swapped for 5 turns.,"For five turns (including this one), every Pokémon's [Defense]{mechanic} and [Special Defense]{mechanic} are swapped."
-283,"Inflicts damage based on the target's Defense, not Special Defense.","Inflicts regular damage.  Damage calculation always uses the target's [Defense]{mechanic}, regardless of this move's damage class."
+283,"Inflicts damage based on the target's Defense, not Special Defense.","Inflicts [regular damage]{mechanic}.  Damage calculation always uses the target's [Defense]{mechanic}, regardless of this move's damage class."
 284,Inflicts double damage if the target is Poisoned.,"Inflicts regular damage.  If the target is [poisoned]{mechanic}, this move has double power."
 285,Raises the user's Speed by two stages and halves the user's weight.,Raises the user's [Speed]{mechanic} by two [stages]{mechanic:stage}.  Halves the user's weight; this effect does not stack.
 286,Moves have 100% accuracy against the target for three turns.,"For three turns (including this one), moves used against the target have 100% [accuracy]{mechanic}, but the target is immune to [Ground]{type} damage.  Accuracy of one-hit KO moves is exempt from this effect.
@@ -989,7 +989,7 @@ If the target is under the effect of [Ingrain]{move} or [Suction Cups]{ability},
 If the user is a [meroetta]{pokemon}, it will toggle between Voice and Step form."
 331,Lowers the target's Speed by one stage.,Inflicts [regular damage]{mechanic}.  Lowers the target's [Speed]{mechanic} by one [stage]{mechanic}.
 332,Requires a turn to charge before attacking.  Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralysis} the target.  User charges for one turn before attacking.
-333,Requires a turn to charge before attacking.  Has a $effect_chance% chance to burn the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.  User charges for one turn before attacking.
+333,Requires a turn to charge before attacking.  Has a $effect_chance% chance to [burn]{mechanic} the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.  User charges for one turn before attacking.
 335,"Lowers the user's Defense, Special Defense, and Speed by one stage each.","Inflicts [regular damage]{mechanic}.  Lowers the user's [Defense]{mechanic}, [Special Defense]{mechanic}, and [Speed]{mechanic} by one [stage]{mechanic} each."
 336,"With cross thunder, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [cross thunder]{move} earlier this turn, this move has double power."
 337,"With cross flame, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [cross flame]{move} earlier this turn, this move has double power."

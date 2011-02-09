@@ -1,13 +1,31 @@
 effect_id,changed_in_version_group_id,effect
 8,11,"Halves the target's [Defense]{mechanic} for damage calculation, which is similar to doubling the attack's [power]{mechanic}."
+18,3,Hits Pokémon under the effects of [Dig]{move} and [Fly]{move}.
 29,3,Does nothing in trainer battles.
 38,8,Works while asleep through [Sleep Talk]{move} if not at full health.
 46,3,"If this move misses, the user takes 1 point of damage in recoil."
 46,11,"If this move misses, the user takes half of the damage it would have inflicted in recoil."
+82,3,"Locks the user into this move.
+
+Bug: If this move misses, [accuracy]{mechanic} for subsequent hits is changed to 1/256."
 84,3,Can call any move except for [Struggle]{move} and itself.
-109,11,Raises evasion by one stage.
-161,8,Did not raise [Defense]{mechanic} or [Special Defense]{mechanic}.
-175,8,Did not raise the user's [Special Defense]{mechanic}.
-180,11,Healed replacement Pokémon by half of their max HP.
+109,3,Does not interact with [Stomp]{move}.
+109,11,Raises [evasion]{mechanic} by one stage.
+146,3,Does not raise [Defense]{mechanic}.
+148,3,Does not hit Pokémon under the effects of [Dig]{move}.
+150,3,Does not hit Pokémon under the effects of [Fly]{move}.
+151,3,Does not interact with [Minimize]{move}.
+153,3,Does not hit Pokémon under the effects of [Fly]{move}.
+155,11,Determines damage using each participant's base [Attack]{mechanic} and the opponent's base [Defense]{mechanic} in place of calculated stats.
+156,3,"Can only be hit by [Swift]{move} while in the air.
+
+Bug: If the user fails to attack on the second turn (e.g. due to confusion or paralysis), it remains in the air and immune to attack indefinitely, but can act normally on subsequent turns.  This effect only ends if the user leaves the field or attempts [Fly]{move} again and succeeds."
+161,8,Does not raise [Defense]{mechanic} or [Special Defense]{mechanic}.
+175,8,Does not raise the user's [Special Defense]{mechanic}.
+180,11,Heals replacement Pokémon by half of their max HP.
 255,3,Inflicts [normal]{type}-type damage and the user receives 1/2 of damage dealt in recoil.
+257,3,"Can only be hit by [Swift]{move} while underground.
+
+Bug: If the user fails to attack on the second turn (e.g. due to confusion or paralysis), it remains underground and immune to attack indefinitely, but can act normally on subsequent turns.  This effect only ends if the user leaves the field or attempts [Dig]{move} again and succeeds."
+261,8,Does not interact with [Hail]{move}.
 274,11,Ignores [Wonder Guard]{ability}.
