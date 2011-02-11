@@ -2356,11 +2356,19 @@ move_id,language_id,name
 479,1,うちおとす
 480,1,やまあらし
 481,1,はじけるほのお
+481,5,Rebondifeu
+481,6,Funkenflug
+481,7,Pirotecnia
+481,8,Pirolancio
 482,1,ヘドロウェーブ
 483,1,ちょうのまい
 484,1,ヘビーボンバー
 485,1,シンクロノイズ
 486,1,エレキボール
+486,5,Boule Elec
+486,6,Elektroball
+486,7,Bola Voltio
+486,8,Energisfera
 487,1,みずびたし
 488,1,ニトロチャージ
 489,1,とぐろをまく
@@ -2379,6 +2387,10 @@ move_id,language_id,name
 495,7,Cede Paso
 495,8,Cortesia
 496,1,りんしょう
+496,5,Chant Canon
+496,6,Kanon
+496,7,Canon
+496,8,Coro
 497,1,エコーボイス
 498,1,なしくずし
 499,1,クリアスモッグ
@@ -2386,9 +2398,21 @@ move_id,language_id,name
 501,1,ファストガード
 502,1,サイドチェンジ
 503,1,ねっとう
+503,5,Ebullition
+503,6,Siedewasser
+503,7,Escaldar
+503,8,Idrovampata
 504,1,からをやぶる
 505,1,いやしのはどう
+505,5,Vibra Soin
+505,6,Heilwoge
+505,7,Pulsa Cura
+505,8,Ondasana
 506,1,たたりめ
+506,5,Châtiment
+506,6,Bürde
+506,7,Infortunio
+506,8,Sciagura
 507,1,フリーフォール
 507,5,Chute Libre
 507,6,Freier Fall
@@ -2405,6 +2429,10 @@ move_id,language_id,name
 512,8,Acrobazia
 513,1,ミラータイプ
 514,1,かたきうち
+514,5,Vengeance
+514,6,Heimzahlung
+514,7,Represalia
+514,8,Nemesi
 515,1,いのちがけ
 516,1,ギフトパス
 517,1,れんごく
@@ -2420,7 +2448,15 @@ move_id,language_id,name
 523,1,じならし
 524,1,こおりのいぶき
 525,1,ドラゴンテール
+525,5,Draco-Queue
+525,6,Drachenrute
+525,7,Cola Dragón
+525,8,Codadrago
 526,1,ふるいたてる
+526,5,Rengorgement
+526,6,Kraftschub
+526,7,Avivar
+526,8,Cuordileone
 527,1,エレキネット
 528,1,ワイルドボルト
 528,5,Eclair Fou
@@ -2443,6 +2479,10 @@ move_id,language_id,name
 531,7,Arrumaco
 531,8,Cuorestampo
 532,1,ウッドホーン
+532,5,Encornebois
+532,6,Holzgeweih
+532,7,Astadrenaje
+532,8,Legnicorno
 533,1,せいなるつるぎ
 534,1,シェルブレード
 535,1,ヒートスタンプ

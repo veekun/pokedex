@@ -584,7 +584,7 @@ id,name,form_base_pokemon_id,unique_pokemon_id,introduced_in_version_group_id,is
 583,,583,,11,1,1
 584,,584,,11,1,1
 585,Spring,585,,11,1,1
-586,spring,586,,11,1,1
+586,Spring,586,,11,1,1
 587,,587,,11,1,1
 588,,588,,11,1,1
 589,,589,,11,1,1
@@ -718,9 +718,9 @@ id,name,form_base_pokemon_id,unique_pokemon_id,introduced_in_version_group_id,is
 10068,Summer,585,,11,0,2
 10069,Autumn,585,,11,0,3
 10070,Winter,585,,11,0,4
-10071,summer,586,,11,0,2
-10072,autumn,586,,11,0,3
-10073,winter,586,,11,0,4
+10071,Summer,586,,11,0,2
+10072,Autumn,586,,11,0,3
+10073,Winter,586,,11,0,4
 10074,step,648,10018,11,0,2
 10075,blue,649,,11,0,2
 10076,yellow,649,,11,0,2

@@ -622,6 +622,10 @@ ability_id,language_id,name
 125,8,Forzabruta
 126,1,あまのじゃく
 127,1,きんちょうかん
+127,5,Tension
+127,6,Anspannung
+127,7,Nerviosismo
+127,8,Agitazione
 128,1,まけんき
 129,1,よわき
 130,1,のろわれボディ
@@ -647,6 +651,10 @@ ability_id,language_id,name
 142,8,Copricapo
 143,1,どくしゅ
 144,1,さいせいりょく
+144,5,Régé-Force
+144,6,Belebekraft
+144,7,Regeneración
+144,8,Rigenergia
 145,1,はとむね
 145,5,Coeur de Coq
 145,6,Brustbieter

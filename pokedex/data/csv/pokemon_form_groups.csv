@@ -15,6 +15,6 @@ pokemon_id,term,is_battle_only,description
 550,Form,0,"Forms have one different ability and different wild held items. Blue-Striped Basculin are rarer in Black Version, and Red-Striped Basculin in White Version."
 555,mode,0,"Forms have different stats and types.  Darmanitan changes to daruma mode below 50% HP if it has [daruma mode]{ability}, and back to normal mode above 50% HP."
 585,Form,0,"Form changes to match the season.  To switch forms, Deerling must be in the party when loading the game."
-586,form,0,"Form changes to match the season.  To switch forms, mebukijika must be in the party when loading the game."
+586,Form,0,"Form changes to match the season.  To switch forms, Sawsbuck must be in the party when loading the game."
 648,forme,0,"Forms have different stats and types.  meroetta changes form upon using [ancient song]{move} in battle, and reverts to voice forme outside of battle."
 649,buster,0,Form changes to match genosekuto's held cassette.  The only differences are the color of its weapon and [techno buster]{move}'s type.

@@ -439,7 +439,7 @@ Unlike [Forecast]{ability}, [Multitype]{ability}, and [daruma mode]{ability}, th
 This Pokémon cannot steal upon being knocked out.  It can steal if the attacker has a [Substitute]{move}, but cannot steal when its own Substitute is hit.",Steals attacking Pokémon's held item on contact.
 125,Sheer Force,5,"This Pokémon's moves with extra effects have 1.3× their power, but their effect chances are reduced to 0.","Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects."
 126,antagonist,5,Stat modifiers are inverted for this Pokémon.,Inverts stat modifiers.
-127,tension,5,Opposing Pokémon cannot eat held Berries while this Pokémon is in battle.,Prevents opposing Pokémon from eating held Berries.
+127,Unnerve,5,Opposing Pokémon cannot eat held Berries while this Pokémon is in battle.,Prevents opposing Pokémon from eating held Berries.
 128,competitive spirit,5,"When any of this Pokémon's stats are [lowered]{mechanic:stat modifier}, its [Attack]{mechanic} rises by two stages.",Raises [Attack]{mechanic} two [stages]{mechanic:stat modifier} upon having any stat lowered.
 129,faint-hearted,5,This Pokémon's [Attack]{mechanic} and [Special Attack]{mechanic} are halved when it has less than half its [HP]{mechanic}.,Halves [Attack]{mechanic} and [Special Attack]{mechanic} below 50% [HP]{mechanic}.
 130,cursed body,5,Moves that hit this Pokémon have a 30% chance of being [Disabled]{move:Disable} afterward.,Has a 30% chance of [Disabling]{move:Disable} any move that hits the Pokémon.
@@ -458,7 +458,7 @@ This ability triggers on every hit of a multiple-hit move.",Raises [Speed]{mecha
 141,sudden impulse,5,"After each turn, one of this Pokémon's stats at random rises two [stages]{mechanic:stat modifier}, and another falls one stage.",Raises a random stat two [stages]{mechanic:stat modifier} and lowers another one stage after each turn.
 142,Overcoat,5,This Pokémon does not take damage from [weather]{mechanic}.,Protects against damage from [weather]{mechanic}.
 143,poisoned drink,5,This Pokémon's contact moves have a 20% chance of [poisoning]{mechanic:poison} the target with each hit.,Has a 20% chance of [poisoning]{mechanic:poison} Pokémon upon contact when attacking.
-144,regeneration,5,This Pokémon regains 1/3 of its maximum [HP]{mechanic} upon leaving battle.,Heals for 1/3 max [HP]{mechanic} upon leaving battle.
+144,Regenerator,5,This Pokémon regains 1/3 of its maximum [HP]{mechanic} upon leaving battle.,Heals for 1/3 max [HP]{mechanic} upon leaving battle.
 145,Big Pecks,5,This Pokémon's [Defense]{mechanic} cannot be [lowered]{mechanic:stat modifiers}.,Protects against [Defense]{mechanic} drops.
 146,Sand Rush,5,This Pokémon's [Speed]{mechanic} is doubled during a [sandstorm]{mechanic}.,Doubles [Speed]{mechanic} during a [sandstorm]{mechanic}.
 147,miracle skin,5,"Non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}, such as [Thunder Wave]{move}, have a 50% chance of failing against this Pokémon.",Has a 50% chance of protecting against non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}.
