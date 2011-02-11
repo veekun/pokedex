@@ -73,7 +73,7 @@ An extra effect is a move's chance, listed as an ""effect chance"", to inflict a
 If a Pokémon is confused and acquires this ability, its confusion will immediately be healed.",Prevents [confusion]{mechanic}.
 21,Suction Cups,3,"This Pokémon cannot be forced out of battle by moves such as [Whirlwind]{move}.
 
-[dragon tail]{move} and [overhead throw]{move} still inflict damage against this Pokémon.
+[Dragon Tail]{move} and [overhead throw]{move} still inflict damage against this Pokémon.
 
 Overworld: If the lead Pokémon has this ability, the encounter rate while fishing is increased.",Prevents being forced out of battle by other Pokémon's moves.
 22,Intimidate,3,"When this Pokémon enters battle, the opponent's [Attack]{mechanic} is lowered by one [stage]{mechanic:stat modifier}.  In a double battle, both opponents are affected.
