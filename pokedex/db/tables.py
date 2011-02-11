@@ -590,7 +590,7 @@ class MoveEffectChangelog(TableBase):
         info=dict(description="The ID of the effect that changed"))
     changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False,
         info=dict(description="The ID of the version group in which the effect changed"))
-    effect = Column(markdown.MarkdownColumn(255), nullable=False,
+    effect = Column(markdown.MarkdownColumn(512), nullable=False,
         info=dict(description="A description of the old behavior", format='markdown'))
 
 class MoveFlag(TableBase):
