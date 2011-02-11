@@ -665,8 +665,8 @@ class Move(TableBase):
         info=dict(description="ID of the move's elemental type"))
     power = Column(SmallInteger, nullable=False,
         info=dict(description="Base power of the move"))
-    pp = Column(SmallInteger, nullable=False,
-        info=dict(description="Base PP (Power Points) of the move"))
+    pp = Column(SmallInteger, nullable=True,
+        info=dict(description="Base PP (Power Points) of the move, nullable if not applicable (e.g. Struggle and Shadow moves)."))
     accuracy = Column(SmallInteger, nullable=True,
         info=dict(description="Accuracy of the move; NULL means it never misses"))
     priority = Column(SmallInteger, nullable=False,
