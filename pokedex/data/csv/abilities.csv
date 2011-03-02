@@ -73,7 +73,7 @@ An extra effect is a move's chance, listed as an ""effect chance"", to inflict a
 If a Pokémon is confused and acquires this ability, its confusion will immediately be healed.",Prevents [confusion]{mechanic}.
 21,Suction Cups,3,"This Pokémon cannot be forced out of battle by moves such as [Whirlwind]{move}.
 
-[Dragon Tail]{move} and [overhead throw]{move} still inflict damage against this Pokémon.
+[Dragon Tail]{move} and [Circle Throw]{move} still inflict damage against this Pokémon.
 
 Overworld: If the lead Pokémon has this ability, the encounter rate while fishing is increased.",Prevents being forced out of battle by other Pokémon's moves.
 22,Intimidate,3,"When this Pokémon enters battle, the opponent's [Attack]{mechanic} is lowered by one [stage]{mechanic:stat modifier}.  In a double battle, both opponents are affected.
@@ -90,7 +90,7 @@ Other Pokémon with this ability are unaffected.  Pokémon can still switch out 
 Overworld: If the lead Pokémon has this ability, the wild encounter rate is halved.",Prevents opponents from fleeing or switching out.
 24,Rough Skin,3,"Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum [HP]{mechanic} in damage.
 
-This ability functions identically to [iron thorns]{ability}.",Damages attacking Pokémon for 1/8 their max [HP]{mechanic} on contact.
+This ability functions identically to [Iron Barbs]{ability}.",Damages attacking Pokémon for 1/8 their max [HP]{mechanic} on contact.
 25,Wonder Guard,3,"This Pokémon is immune to damaging moves that are not [super effective]{mechanic} against it.
 
 Moves that inflict fixed damage, such as [Night Shade]{move} or [Seismic Toss]{move}, are considered super effective if their types are.  Damage not directly dealt by moves, such as damage from [weather]{mechanic}, a [status ailment]{mechanic}, or [Spikes]{move}, is not prevented.
@@ -432,7 +432,7 @@ This ability has no effect for any Pokémon other than [Arceus]{pokemon}.  This 
 If a Pokémon [Transforms]{move:Transform} into an Arceus with this ability, it will Transform into Arceus's default, [Normal]{type}-type form.  If the Transforming Pokémon is holding a Plate, this ability will then activate and change the Pokémon into the corresponding form.",Changes [Arceus]{pokemon}'s type and form to match its held Plate.
 122,Flower Gift,4,"Friendly Pokémon have 1.5× their [Attack]{mechanic} and [Special Defense]{mechanic} during [strong sunlight]{mechanic} if any friendly Pokémon has this ability.
 
-Unlike [Forecast]{ability}, [Multitype]{ability}, and [daruma mode]{ability}, this ability is not tied to its Pokémon's form change; [Cherrim]{pokemon} will switch between its forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim.",Increases friendly Pokémon's [Attack]{mechanic} and [Special Defense]{mechanic} to 1.5× during [strong sunlight]{mechanic}.
+Unlike [Forecast]{ability}, [Multitype]{ability}, and [Zen Mode]{ability}, this ability is not tied to its Pokémon's form change; [Cherrim]{pokemon} will switch between its forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim.",Increases friendly Pokémon's [Attack]{mechanic} and [Special Defense]{mechanic} to 1.5× during [strong sunlight]{mechanic}.
 123,Bad Dreams,4,Opposing Pokémon take 1/8 of their maximum [HP]{mechanic} in damage after each turn while they are [asleep]{mechanic}.,Damages [sleeping]{mechanic:sleep} opponents for 1/8 their max [HP]{mechanic} after each turn.
 124,Pickpocket,5,"Whenever a move makes contact with this Pokémon, it steals the attacker's held item if it does not already have an item.
 

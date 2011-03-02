@@ -33,7 +33,7 @@ This does not count as a stat reduction for the purposes of [Clear Body]{ability
 This move cannot be selected by [Sleep Talk]{move}."
 28,"Hits every turn for 2-3 turns, then confuses the user.","Inflicts [regular damage]{mechanic}.  User is forced to attack with this move for 2–3 turns,selected at random.  After the last hit, the user becomes [confused]{mechanic}.
 
-[Safeguard]{move} does not protect against the [confusion]{move} from this move."
+[Safeguard]{move} does not protect against the [confusion]{mechanic} from this move."
 29,Immediately ends wild battles.  Forces trainers to switch Pokémon.,"[Switch]{mechanic}es the target out for another of its trainer's Pokémon selected at random.  Wild battles end immediately.
 
 Doesn't affect Pokémon with [Suction Cups]{ability} or under the effect of [Ingrain]{move}."
@@ -143,7 +143,7 @@ All other effects work as normal."
 If [Chatter]{move}, [Metronome]{move}, [Mimic]{move}, [Sketch]{move}, or [Struggle]{move} is selected, this move will fail.
 
 This move cannot be copied by [Mirror Move]{move}, nor selected by [Assist]{move} or [Metronome]{move}, nor forced by [Encore]{move}."
-84,Randomly selects and uses any move in the game.,"Selects any move at random and uses it.  Moves the user already knows are not eligible.  Assist, meta, protection, and reflection moves are also not eligible; specifically, [Assist]{move}, [Chatter]{move}, [Copycat]{move}, [Counter]{move}, [Covet]{move}, [Destiny Bond]{move}, [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Feint]{move}, [Focus Punch]{move}, [Follow Me]{move}, [Helping Hand]{move}, [Me First]{move}, [Metronome]{move}, [Mimic]{move}, [Mirror Coat]{move}, [Mirror Move]{move}, [Protect]{move}, [Sketch]{move}, [Sleep Talk]{move}, [Snatch]{move}, [Struggle]{move}, [Switcheroo]{move}, [Thief]{move}, [Trick]{move}, and [wide guard]{move} will not be selected by this move.
+84,Randomly selects and uses any move in the game.,"Selects any move at random and uses it.  Moves the user already knows are not eligible.  Assist, meta, protection, and reflection moves are also not eligible; specifically, [Assist]{move}, [Chatter]{move}, [Copycat]{move}, [Counter]{move}, [Covet]{move}, [Destiny Bond]{move}, [Detect]{move}, [Endure]{move}, [Feint]{move}, [Focus Punch]{move}, [Follow Me]{move}, [Helping Hand]{move}, [Me First]{move}, [Metronome]{move}, [Mimic]{move}, [Mirror Coat]{move}, [Mirror Move]{move}, [Protect]{move}, [Quick Guard]{move}, [Sketch]{move}, [Sleep Talk]{move}, [Snatch]{move}, [Struggle]{move}, [Switcheroo]{move}, [Thief]{move}, [Trick]{move}, and [Wide Guard]{move} will not be selected by this move.
 
 This move cannot be copied by [Mimic]{move} or [Mirror Move]{move}, nor selected by [Assist]{move}, [Metronome]{move}, or [Sleep Talk]{move}."
 85,"Seeds the target, stealing HP from it every turn.","Plants a seed on the target that steals 1/8 of its max [HP]{mechanic} at the end of every turn and heals the user for the amount taken.  Has no effect on [Grass]{type} Pokémon.  The seed remains until the target leaves the field.
@@ -223,7 +223,7 @@ Both the user and the target pass on this effect with [Baton Pass]{move}."
 108,Target loses 1/4 its max HP every turn as long as it's asleep.,"Only works on [sleep]{mechanic}ing Pokémon.  Gives the target a nightmare, damaging it for 1/4 its max [HP]{mechanic} every turn.  If the target wakes up or leaves the [field]{mechanic}, this effect ends."
 109,Raises the user's evasion by two stages.,"Raises the user's [evasion]{mechanic} by two [stages]{mechanic:stage}.
 
-[Stomp]{move} and [hard roller]{move} have double power against Pokémon that have used this move since entering the [field]{mechanic}."
+[Stomp]{move} and [Steamroller]{move} have double power against Pokémon that have used this move since entering the [field]{mechanic}."
 110,Ghosts pay half their max HP to hurt the target every turn.  Others decrease Speed but raise Attack and Defense.,"If the user is a [Ghost]{type}: user pays half its max [HP]{mechanic} to place a curse on the target, damaging it for 1/4 its max [HP]{mechanic} every turn.
 Otherwise: Lowers the user's [Speed]{mechanic} by one [stage]{mechanic}, and raises its [Attack]{mechanic} and [Defense]{mechanic} by one [stage]{mechanic} each.
 
@@ -232,7 +232,7 @@ The curse effect is passed on by [Baton Pass]{move}.
 This move cannot be copied by [Mirror Move]{move}."
 112,Prevents any moves from hitting the user this turn.,"No moves will hit the user for the remainder of this turn.  If the user is last to act this turn, this move will fail.
 
-If the user successfully used [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Protect]{move}, or [wide guard]{move} on the last turn, this move has a 50% chance to fail.
+If the user successfully used [Detect]{move}, [Endure]{move}, [Protect]{move}, [Quick Guard]{move}, or [Wide Guard]{move} on the last turn, this move has a 50% chance to fail.
 
 [Lock-On]{move}, [Mind Reader]{move}, and [No Guard]{ability} provide a (100 – accuracy)% chance for moves to break through this move.  This does not apply to one-hit KO moves ([Fissure]{move}, [Guillotine]{move}, [Horn Drill]{move}, and [Sheer Cold]{move}); those are always blocked by this move.
 
@@ -268,7 +268,7 @@ This move cannot be copied by [Mirror Move]{move}."
 [Moonlight]{move}, [Morning Sun]{move}, and [Synthesis]{move} only heal 1/4 the user's max [HP]{mechanic}."
 117,Prevents the user's HP from lowering below 1 this turn.,"The user's [HP]{mechanic} cannot be lowered below 1 by any means for the remainder of this turn.
 
-If the user successfully used [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Protect]{move}, or [wide guard]{move} on the last turn, this move has a 50% chance to fail.
+If the user successfully used [Detect]{move}, [Endure]{move}, [Protect]{move}, [Quick Guard]{move}, or [Wide Guard]{move} on the last turn, this move has a 50% chance to fail.
 
 This move cannot be selected by [Assist]{move} or [Metronome]{move}."
 118,"Power doubles every turn this move is used in succession after the first, resetting after five turns.","Inflicts [regular damage]{mechanic}.  User is forced to use this move for five turns.  Power doubles every time this move is used in succession to a maximum of 16x, and resets to normal after the lock-in ends.  If this move misses or becomes unusable, the lock-in ends.
@@ -457,7 +457,7 @@ During [Sunny Day]{move}, this move has 50% accuracy."
 This effect breaks through [Wonder Guard]{ability}."
 156,"User flies high into the air, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic}.  User flies high into the air for one turn, becoming immune to attack, and hits on the second turn.
 
-During the immune turn, [Gust]{move}, [hurricane]{move}, [knock down]{move}, [Sky Uppercut]{move}, [Thunder]{move}, [Twister]{move}, and [Whirlwind]{move} still hit the user normally.  [Gust]{move} and [Twister]{move} also have double power against the user.
+During the immune turn, [Gust]{move}, [Hurricane]{move}, [Sky Uppercut]{move}, [Smack Down]{move}, [Thunder]{move}, [Twister]{move}, and [Whirlwind]{move} still hit the user normally.  [Gust]{move} and [Twister]{move} also have double power against the user.
 
 The damage from [Hail]{move} and [Sandstorm]{move} still applies during the immune turn.
 
@@ -566,7 +566,7 @@ This move cannot be copied by [Mirror Move]{move}."
 180,User will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will be healed for half its max [HP]{mechanic}.  If the user is [switched out]{mechanic}, its replacement will be healed instead for half of the user's max HP.  If the user [faint]{mechanic}s or is forcefully switched by [Roar]{move} or [Whirlwind]{move}, this effect will not activate."
 181,Randomly selects and uses one of the trainer's other Pokémon's moves.,"Uses a move from another Pokémon in the user's party, both selected at random.  Moves from fainted Pokémon can be used.  If there are no eligible Pokémon or moves, this move will fail.
 
-This move will not select [Assist]{move}, [Chatter]{move}, [Copycat]{move}, [Counter]{move}, [Covet]{move}, [Destiny Bond]{move}, [Detect]{move}, [Dragon Tail]{move}, [Endure]{move}, [fast guard]{move}, [Feint]{move}, [Focus Punch]{move}, [Follow Me]{move}, [Helping Hand]{move}, [Me First]{move}, [Metronome]{move}, [Mimic]{move}, [Mirror Coat]{move}, [Mirror Move]{move}, [overhead throw]{move}, [Protect]{move}, [Sketch]{move}, [Sleep Talk]{move}, [Snatch]{move}, [Struggle]{move}, [Switcheroo]{move}, [Thief]{move}, [Trick]{move}, or [wide guard]{move}.
+This move will not select [Assist]{move}, [Chatter]{move}, [Circle Throw]{move}, [Copycat]{move}, [Counter]{move}, [Covet]{move}, [Destiny Bond]{move}, [Detect]{move}, [Dragon Tail]{move}, [Endure]{move}, [Feint]{move}, [Focus Punch]{move}, [Follow Me]{move}, [Helping Hand]{move}, [Me First]{move}, [Metronome]{move}, [Mimic]{move}, [Mirror Coat]{move}, [Mirror Move]{move}, [Protect]{move}, [Quick Guard]{move}, [Sketch]{move}, [Sleep Talk]{move}, [Snatch]{move}, [Struggle]{move}, [Switcheroo]{move}, [Thief]{move}, [Trick]{move}, or [Wide Guard]{move}.
 
 This move cannot be copied by [Mirror Move]{move}, nor selected by [Metronome]{move} or [Sleep Talk]{move}."
 182,Prevents the user from leaving battle.  User regains 1/16 of its max HP every turn.,"Prevents the user from [switching out]{mechanic}.  User regains 1/16 of its max [HP]{mechanic} at the end of every turn.  If the user was immune to [Ground]{type} attacks, it will now take normal damage from them.
@@ -853,7 +853,7 @@ If the target is in the first turn of [Dive]{move}, this move will hit with doub
 263,User takes 1/3 the damage inflicted in recoil.  Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic}.  User takes 1/3 the damage it inflicts in recoil.  Has a $effect_chance% chance to [paralyze]{mechanic} the target.
 264,"User bounces high into the air, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic}.  User bounces high into the air for one turn, becoming immune to attack, and hits on the second turn.  Has a $effect_chance% chance to [paralyze]{mechanic} the target.
 
-During the immune turn, [Gust]{move}, [hurricane]{move}, [knock down]{move}, [Sky Uppercut]{move}, [Thunder]{move}, and [Twister]{move} still hit the user normally.  [Gust]{move} and [Twister]{move} also have double power against the user.
+During the immune turn, [Gust]{move}, [Hurricane]{move}, [Sky Uppercut]{move}, [Smack Down]{move}, [Thunder]{move}, and [Twister]{move} still hit the user normally.  [Gust]{move} and [Twister]{move} also have double power against the user.
 
 The damage from [Hail]{move} and [Sandstorm]{move} still applies during the immune turn.
 
@@ -885,7 +885,7 @@ This move cannot be selected by [Sleep Talk]{move}."
 278,Raises the user's Attack and accuracy by one stage.,Raises the user's [Attack]{mechanic} and [accuracy]{mechanic} by one [stage]{mechanic}.
 279,Prevents any multi-target moves from hitting friendly Pokémon this turn.,"Moves with multiple targets will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will fail.
 
-If the user successfully used [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Protect]{move}, or [wide guard]{move} on the last turn, this move has a 50% chance to fail.
+If the user successfully used [Detect]{move}, [Endure]{move}, [Protect]{move}, [Quick Guard]{move}, or [Wide Guard]{move} on the last turn, this move has a 50% chance to fail.
 
 This move cannot be selected by [Assist]{move} or [Metronome]{move}."
 280,Averages Defense and Special Defense with the target.,Averages the user's unmodified [Defense]{mechanic} with the target's unmodified Defense; the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic} is averaged the same way.
@@ -900,7 +900,7 @@ This effect applies before any other persistent changes to unmodified Attack or 
 
 This effect is removed by [Gravity]{move}.  If Gravity is already in effect, this move will fail."
 287,Negates held items for five turns.,"For five turns (including this one), passive effects of held items are ignored, and Pokémon will not use their held items."
-288,Removes any immunity to Ground damage.,"Inflicts [regular damage]{mechanic}.  Removes the target's [immunity]{mechanic:immune} to [Ground]{type}-type damage.  This effect removes any existing Ground immunity due to [Levitate]{ability}, [Magnet Rise]{move}, or [telekinesis]{move}, and causes the target's [Flying]{type} type to be ignored when it takes Ground damage.
+288,Removes any immunity to Ground damage.,"Inflicts [regular damage]{mechanic}.  Removes the target's [immunity]{mechanic:immune} to [Ground]{type}-type damage.  This effect removes any existing Ground immunity due to [Levitate]{ability}, [Magnet Rise]{move}, or [Telekinesis]{move}, and causes the target's [Flying]{type} type to be ignored when it takes Ground damage.
 
 If the target isn't immune to Ground damage, this move will fail.
 
@@ -943,7 +943,7 @@ If the target has already acted this turn, this move will fail."
 306,"Power is higher the more the user's stats have been raised, to a maximum of 31×.","Inflicts regular damage.  Power is increased by 100% its original value for every [stage]{mechanic} any of the user's stats have been raised.  [Accuracy]{mechanic}, [evasion]{mechanic}, and lowered stats do not affect this move's power.  For a Pokémon with all five stats modified to +6, this move's power is 31×."
 307,Prevents any priority moves from hitting friendly Pokémon this turn.,"Moves with priority greater than 0 will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will fail.
 
-If the user successfully used [Detect]{move}, [Endure]{move}, [fast guard]{move}, [Protect]{move}, or [wide guard]{move} on the last turn, this move has a 50% chance to fail.
+If the user successfully used [Detect]{move}, [Endure]{move}, [Protect]{move}, [Quick Guard]{move}, or [Wide Guard]{move} on the last turn, this move has a 50% chance to fail.
 
 This move cannot be selected by [Assist]{move} or [Metronome]{move}.
 "
@@ -955,7 +955,7 @@ This move cannot be selected by [Assist]{move} or [Metronome]{move}.
 
 If the target is [Flying]{type}-type, this move will function as normal but inflict no damage.
 
-[Gust]{move}, [hurricane]{move}, [knock down]{move}, [Sky Uppercut]{move}, [Thunder]{move}, [Twister]{move}, and [Whirlwind]{move} can hit both the user and the target during this effect.  [Gust]{move} and [Twister]{move} will additionally have double power.
+[Gust]{move}, [Hurricane]{move}, [Sky Uppercut]{move}, [Smack Down]{move}, [Thunder]{move}, [Twister]{move}, and [Whirlwind]{move} can hit both the user and the target during this effect.  [Gust]{move} and [Twister]{move} will additionally have double power.
 
 The damage from [Hail]{move} and [Sandstorm]{move} still applies during this effect.
 
@@ -980,19 +980,19 @@ If the target is under the effect of [Ingrain]{move} or [Suction Cups]{ability},
 322,Raises the user's Special Attack by three stages.,Raises the user's [Special Attack]{mechanic} by three [stages]{mechanic:stage}.
 323,"Raises the user's Attack, Defense, and accuracy by one stage each.","Raises the user's [Attack]{mechanic}, [Defense]{mechanic}, and [accuracy]{mechanic} by one [stage]{mechanic} each."
 324,Gives the user's held item to the target.,"Transfers the user's [held item]{mechanic} to the target.  If the user has no held item, or the target already has a held item, this move will fail."
-325,"With grass realm, halves opposing Pokémon's Speed for four turns.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [grass realm]{move} earlier this turn, all opposing Pokémon have halved [Speed]{mechanic} for four turns (including this one)."
-326,"With water realm, doubles the effect chance of friendly Pokémon's moves for four turns.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [water realm]{move} earlier this turn, moves used by any friendly Pokémon have doubled effect chance for four turns (including this one)."
-327,"With fire realm, damages opposing Pokémon for 1/8 their max HP every turn for four turns.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [fire realm]{move} earlier this turn, all opposing Pokémon will take 1/8 their max [HP]{mechanic} in damage at the end of every turn for four turns (including this one)."
+325,"With [Grass Pledge]{move}, halves opposing Pokémon's Speed for four turns.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [Grass Pledge]{move} earlier this turn, all opposing Pokémon have halved [Speed]{mechanic} for four turns (including this one)."
+326,"With [Water Pledge]{move}, doubles the effect chance of friendly Pokémon's moves for four turns.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [Water Pledge]{move} earlier this turn, moves used by any friendly Pokémon have doubled effect chance for four turns (including this one)."
+327,"With [Fire Pledge]{move}, damages opposing Pokémon for 1/8 their max HP every turn for four turns.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [Fire Pledge]{move} earlier this turn, all opposing Pokémon will take 1/8 their max [HP]{mechanic} in damage at the end of every turn for four turns (including this one)."
 328,Raises the user's Attack and Special Attack by one stage each.,Raises the user's [Attack]{mechanic} and [Special Attack]{mechanic} by one [stage]{mechanic} each.
 329,Raises the user's Defense by three stages.,Raises the user's [Defense]{mechanic} by three [stages]{mechanic:stage}.
 330,Has a $effect_chance% chance to put the target to sleep.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to put the target to [sleep]{mechanic}.
-If the user is a [meroetta]{pokemon}, it will toggle between Voice and Step form."
+If the user is a [Meloetta]{pokemon}, it will toggle between Aria and Pirouette Forme."
 331,Lowers the target's Speed by one stage.,Inflicts [regular damage]{mechanic}.  Lowers the target's [Speed]{mechanic} by one [stage]{mechanic}.
 332,Requires a turn to charge before attacking.  Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralysis} the target.  User charges for one turn before attacking.
 333,Requires a turn to charge before attacking.  Has a $effect_chance% chance to [burn]{mechanic} the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.  User charges for one turn before attacking.
 335,"Lowers the user's Defense, Special Defense, and Speed by one stage each.","Inflicts [regular damage]{mechanic}.  Lowers the user's [Defense]{mechanic}, [Special Defense]{mechanic}, and [Speed]{mechanic} by one [stage]{mechanic} each."
-336,"With cross thunder, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [cross thunder]{move} earlier this turn, this move has double power."
-337,"With cross flame, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [cross flame]{move} earlier this turn, this move has double power."
+336,"With [Fusion Bolt]{move}, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [Fusion Bolt]{move} earlier this turn, this move has double power."
+337,"With [Fusion Flare]{move}, inflicts double damage.","Inflicts [regular damage]{mechanic}.  If a friendly Pokémon used [Fusion Flare]{move} earlier this turn, this move has double power."
 338,Has a $effect_chance% chance to confuse the target.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [confuse]{mechanic} the target.
 
 This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [Sky Drop]{move}.

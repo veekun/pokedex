@@ -3,7 +3,7 @@ id,identifier,name,description
 2,charge,Has a charging turn,This move has a charging turn that can be skipped with a [Power Herb]{item}.
 3,recharge,Must recharge,"The turn after this move is used, the Pokémon's action is skipped so it can recharge."
 4,protect,Blocked by Detect and Protect,This move will not work if the target has used [Detect]{move} or [Protect]{move} this turn.
-5,reflectable,Reflectable,This move may be reflected back at the user with [Magic Coat]{move} or [magic mirror]{ability}.
+5,reflectable,Reflectable,This move may be reflected back at the user with [Magic Coat]{move} or [Magic Bounce]{ability}.
 6,snatch,Snatchable,This move will be stolen if another Pokémon has used [Snatch]{move} this turn.
 7,mirror,Copied by Mirror Move,A Pokémon targeted by this move can use [Mirror Move]{move} to copy it.
 8,punch,Punch-based,This move has 1.2× its usual power when used by a Pokémon with [Iron Fist]{ability}.
