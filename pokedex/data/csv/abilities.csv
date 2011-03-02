@@ -193,7 +193,7 @@ This ability does not prevent any Attack losses other than [stat modifiers]{mech
 Overworld: In Pokémon Emerald, if any Pokémon in the party has this ability, [Cut]{move}'s radius for cutting grass is doubled.  (After Generation III, Cut can no longer cut down tall grass.)",Protects against opponent-inflicted [Attack]{mechanic} [drops]{mechanic:stat modifiers}.
 53,Pickup,3,"At the end of each turn, if another Pokémon consumed or [Flung]{move:Fling} a held item that turn, this Pokémon picks up the item if it is not already holding one.  After each battle, this Pokémon has a 10% chance of picking up an item if it is not already holding one.
 
-The [balloon]{item} and [escape button]{item} cannot be picked up.
+The [Air Balloon]{item} and [Eject Button]{item} cannot be picked up.
 
 The items that may be found vary by game, and, since Pokémon Emerald, by the Pokémon's level.  This ability is checked after the battle ends, at which point any temporary ability changes have worn off.",Picks up other Pokémon's used and [Flung]{move:Fling} held items.  May also pick up an item after battle.
 54,Truant,3,"Every second turn on which this Pokémon should attempt to use a move, it will instead do nothing (""loaf around"").
