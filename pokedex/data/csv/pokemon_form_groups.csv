@@ -13,8 +13,8 @@ pokemon_id,term,is_battle_only,description
 492,Forme,0,"Forms have different stats and movepools.  Shaymin transforms into Sky Forme with the use of a [Gracidea]{item}.  It is limited to Land Forme at night, when [frozen]{mechanic}, in the storage system boxes, in the Wi-Fi Club, and in the Union Room; under these conditions, Sky Shaymin reverts to Land Forme, and the Gracidea has no effect.  The Gracidea must be used again to return to Sky Forme.  A Gracidea may be received by showing a woman in southwest [Floaroma Town]{location} or the [Goldenrod City]{location} flower shop a Shaymin met in a fateful encounter."
 493,Type,0,"Form changes along with type to match a held Plate, due to [Multitype]{ability}."
 550,Form,0,"Forms have one different ability and different wild held items. Blue-Striped Basculin are rarer in Black Version, and Red-Striped Basculin in White Version."
-555,mode,0,"Forms have different stats and types.  Darmanitan changes to daruma mode below 50% HP if it has [daruma mode]{ability}, and back to normal mode above 50% HP."
+555,Mode,0,"Forms have different stats and types.  Darmanitan changes to Zen Mode below 50% HP if it has [Zen Mode]{ability} as its ability, and back to Standard Mode above 50% HP."
 585,Form,0,"Form changes to match the season.  To switch forms, Deerling must be in the party when loading the game."
 586,Form,0,"Form changes to match the season.  To switch forms, Sawsbuck must be in the party when loading the game."
-648,forme,0,"Forms have different stats and types.  meroetta changes form upon using [ancient song]{move} in battle, and reverts to voice forme outside of battle."
-649,buster,0,Form changes to match genosekuto's held cassette.  The only differences are the color of its weapon and [techno buster]{move}'s type.
+648,Forme,0,"Forms have different stats and types.  Meloetta changes form upon using [Relic Song]{move} in battle, and reverts to Aria Forme outside of battle."
+649,Drive,0,Form changes to match Genesect's held Drive.  The only differences are the color of its weapon and [Techno Blast]{move}'s type.

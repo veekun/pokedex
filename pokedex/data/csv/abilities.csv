@@ -434,60 +434,60 @@ If a Pokémon [Transforms]{move:Transform} into an Arceus with this ability, it 
 
 Unlike [Forecast]{ability}, [Multitype]{ability}, and [daruma mode]{ability}, this ability is not tied to its Pokémon's form change; [Cherrim]{pokemon} will switch between its forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim.",Increases friendly Pokémon's [Attack]{mechanic} and [Special Defense]{mechanic} to 1.5× during [strong sunlight]{mechanic}.
 123,Bad Dreams,4,Opposing Pokémon take 1/8 of their maximum [HP]{mechanic} in damage after each turn while they are [asleep]{mechanic}.,Damages [sleeping]{mechanic:sleep} opponents for 1/8 their max [HP]{mechanic} after each turn.
-124,wicked trick,5,"Whenever a move makes contact with this Pokémon, it steals the attacker's held item if it does not already have an item.
+124,Pickpocket,5,"Whenever a move makes contact with this Pokémon, it steals the attacker's held item if it does not already have an item.
 
 This Pokémon cannot steal upon being knocked out.  It can steal if the attacker has a [Substitute]{move}, but cannot steal when its own Substitute is hit.",Steals attacking Pokémon's held item on contact.
 125,Sheer Force,5,"This Pokémon's moves with extra effects have 1.3× their power, but their effect chances are reduced to 0.","Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects."
-126,antagonist,5,Stat modifiers are inverted for this Pokémon.,Inverts stat modifiers.
+126,Contrary,5,Stat modifiers are inverted for this Pokémon.,Inverts stat modifiers.
 127,Unnerve,5,Opposing Pokémon cannot eat held Berries while this Pokémon is in battle.,Prevents opposing Pokémon from eating held Berries.
-128,competitive spirit,5,"When any of this Pokémon's stats are [lowered]{mechanic:stat modifier}, its [Attack]{mechanic} rises by two stages.",Raises [Attack]{mechanic} two [stages]{mechanic:stat modifier} upon having any stat lowered.
-129,faint-hearted,5,This Pokémon's [Attack]{mechanic} and [Special Attack]{mechanic} are halved when it has less than half its [HP]{mechanic}.,Halves [Attack]{mechanic} and [Special Attack]{mechanic} below 50% [HP]{mechanic}.
-130,cursed body,5,Moves that hit this Pokémon have a 30% chance of being [Disabled]{move:Disable} afterward.,Has a 30% chance of [Disabling]{move:Disable} any move that hits the Pokémon.
+128,Defiant,5,"When any of this Pokémon's stats are [lowered]{mechanic:stat modifier}, its [Attack]{mechanic} rises by two stages.",Raises [Attack]{mechanic} two [stages]{mechanic:stat modifier} upon having any stat lowered.
+129,Defeatist,5,This Pokémon's [Attack]{mechanic} and [Special Attack]{mechanic} are halved when it has less than half its [HP]{mechanic}.,Halves [Attack]{mechanic} and [Special Attack]{mechanic} below 50% [HP]{mechanic}.
+130,Cursed Body,5,Moves that hit this Pokémon have a 30% chance of being [Disabled]{move:Disable} afterward.,Has a 30% chance of [Disabling]{move:Disable} any move that hits the Pokémon.
 131,Healer,5,Friendly Pokémon next to this Pokémon in double and triple battles each have a 30% chance of being cured of any [major status ailment]{mechanic} after each turn.,Has a 30% chance of curing each adjacent ally of any [major status ailment]{mechanic} after each turn.
-132,friend guard,5,This Pokémon's moves inflict less damage against friendly Pokémon.,Decreases damage inflicted against friendly Pokémon.
-133,fragile armor,5,"Whenever any move hits this Pokémon, its [Speed]{mechanic} rises one stage and its [Defense]{mechanic} falls one stage.
+132,Friend Guard,5,This Pokémon's moves inflict less damage against friendly Pokémon.,Decreases damage inflicted against friendly Pokémon.
+133,Weak Armor,5,"Whenever any move hits this Pokémon, its [Speed]{mechanic} rises one stage and its [Defense]{mechanic} falls one stage.
 
 This ability triggers on every hit of a multiple-hit move.",Raises [Speed]{mechanic} and lowers [Defense]{mechanic} by one stage each upon being hit by any move.
-134,heavy metal,5,This Pokémon has double the usual weight for its species.,Doubles the Pokémon's weight.
-135,light metal,5,This Pokémon has half the usual weight for its species.,Halves the Pokémon's weight.
-136,multi-scale,5,This Pokémon takes half as much damage when it is hit having full [HP]{mechanic}.,Halves damage taken from full [HP]{mechanic}.
-137,poison rampage,5,This Pokémon has 1.5× its [Attack]{mechanic} when [poisoned]{mechanic:poison}.,Increases [Attack]{mechanic} to 1.5× when [poisoned]{mechanic:poison}.
-138,heat rampage,5,This Pokémon has 1.5× its [Special Attack]{mechanic} when [burned]{mechanic:burn}.,Increases [Special Attack]{mechanic} to 1.5× when [burned]{mechanic:burn}.
-139,harvest,5,"After each turn, if this Pokémon ate a held Berry or used it with [Natural Gift]{move} that turn, the Pokémon regains its Berry.  If the Pokémon then meets the requirements to eat the Berry again, it will do so immediately, and will not be able restore the Berry again.",Restores any held Berry after the turn on which it is used.
-140,telepathy,5,"This Pokémon does not take damage from friendly Pokémon's moves, including single-targed moves aimed at it.",Protects against damaging moves from friendly Pokémon.
-141,sudden impulse,5,"After each turn, one of this Pokémon's stats at random rises two [stages]{mechanic:stat modifier}, and another falls one stage.",Raises a random stat two [stages]{mechanic:stat modifier} and lowers another one stage after each turn.
+134,Heavy Metal,5,This Pokémon has double the usual weight for its species.,Doubles the Pokémon's weight.
+135,Light Metal,5,This Pokémon has half the usual weight for its species.,Halves the Pokémon's weight.
+136,Multiscale,5,This Pokémon takes half as much damage when it is hit having full [HP]{mechanic}.,Halves damage taken from full [HP]{mechanic}.
+137,Toxic Boost,5,This Pokémon has 1.5× its [Attack]{mechanic} when [poisoned]{mechanic:poison}.,Increases [Attack]{mechanic} to 1.5× when [poisoned]{mechanic:poison}.
+138,Flare Boost,5,This Pokémon has 1.5× its [Special Attack]{mechanic} when [burned]{mechanic:burn}.,Increases [Special Attack]{mechanic} to 1.5× when [burned]{mechanic:burn}.
+139,Harvest,5,"After each turn, if this Pokémon ate a held Berry or used it with [Natural Gift]{move} that turn, the Pokémon regains its Berry.  If the Pokémon then meets the requirements to eat the Berry again, it will do so immediately, and will not be able restore the Berry again.",Restores any held Berry after the turn on which it is used.
+140,Telepathy,5,"This Pokémon does not take damage from friendly Pokémon's moves, including single-targed moves aimed at it.",Protects against damaging moves from friendly Pokémon.
+141,Moody,5,"After each turn, one of this Pokémon's stats at random rises two [stages]{mechanic:stat modifier}, and another falls one stage.",Raises a random stat two [stages]{mechanic:stat modifier} and lowers another one stage after each turn.
 142,Overcoat,5,This Pokémon does not take damage from [weather]{mechanic}.,Protects against damage from [weather]{mechanic}.
-143,poisoned drink,5,This Pokémon's contact moves have a 20% chance of [poisoning]{mechanic:poison} the target with each hit.,Has a 20% chance of [poisoning]{mechanic:poison} Pokémon upon contact when attacking.
+143,Poison Touch,5,This Pokémon's contact moves have a 20% chance of [poisoning]{mechanic:poison} the target with each hit.,Has a 20% chance of [poisoning]{mechanic:poison} Pokémon upon contact when attacking.
 144,Regenerator,5,This Pokémon regains 1/3 of its maximum [HP]{mechanic} upon leaving battle.,Heals for 1/3 max [HP]{mechanic} upon leaving battle.
 145,Big Pecks,5,This Pokémon's [Defense]{mechanic} cannot be [lowered]{mechanic:stat modifiers}.,Protects against [Defense]{mechanic} drops.
 146,Sand Rush,5,This Pokémon's [Speed]{mechanic} is doubled during a [sandstorm]{mechanic}.,Doubles [Speed]{mechanic} during a [sandstorm]{mechanic}.
-147,miracle skin,5,"Non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}, such as [Thunder Wave]{move}, have a 50% chance of failing against this Pokémon.",Has a 50% chance of protecting against non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}.
-148,analyze,5,This Pokémon inflicts more damage when it moves last in a turn.,Strengthens moves when moving last.
+147,Wonder Skin,5,"Non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}, such as [Thunder Wave]{move}, have a 50% chance of failing against this Pokémon.",Has a 50% chance of protecting against non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}.
+148,Analytic,5,This Pokémon inflicts more damage when it moves last in a turn.,Strengthens moves when moving last.
 149,Illusion,5,"This Pokémon, upon being sent out, appears to have the species, nickname, and Poké Ball of the last Pokémon in the party that is able to battle.  This illusion breaks upon being hit by a damaging move.
 
 Other damage, e.g. from [weather]{mechanic} or [Spikes]{move}, does not break the illusion, nor does damage done to a [Substitute]{move}.
 
 If the party order becomes temporarily shuffled around as Pokémon are switched out in battle, this ability chooses the last Pokémon according to that shuffled order.",Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move.
-150,eccentric,5,This Pokémon uses [Transform]{move} upon entering battle.,[Transforms]{move:Transform} upon entering battle.
-151,slip through,5,"This Pokémon's moves ignore [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}.","Ignores [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}."
+150,Imposter,5,This Pokémon uses [Transform]{move} upon entering battle.,[Transforms]{move:Transform} upon entering battle.
+151,Infiltrator,5,"This Pokémon's moves ignore [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}.","Ignores [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}."
 152,Mummy,5,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to mummify.",Changes attacking Pokémon's abilities to mummify on contact.
 153,Moxie,5,"This Pokémon's [Attack]{mechanic} rises one stage upon knocking out another Pokémon, even a friendly Pokémon.
 
 This ability does not take effect when the Pokémon indirectly causes another Pokémon to faint, e.g. through [poison]{mechanic} or [Spikes]{move}.",Raises [Attack]{mechanic} one stage upon KOing a Pokémon.
-154,righteous heart,5,"Whenever a [Dark]{type}-type move hits this Pokémon, its [Attack]{mechanic} rises one [stage]{mechanic:stat modifier}.
+154,Justified,5,"Whenever a [Dark]{type}-type move hits this Pokémon, its [Attack]{mechanic} rises one [stage]{mechanic:stat modifier}.
 
 The move is not negated in any way.",Raises Attack when hit by dark-type moves.
-155,skittish,5,"This Pokémon's [Speed]{mechanic} rises one stage with each hit from a damaging [Dark]{type}-, [Ghost]{type}-, or [Bug]{type}-type move.","Raises [Speed]{mechanic} one [stage]{mechanic:stat modifier} upon being hit by a [Dark]{type}, [Ghost]{type}, or [Bug]{type} move."
-156,magic mirror,5,"When this Pokémon is targeted by a non-damaging move flagged as being reflectable, as most non-damaging, non-self-targetted moves are, the move is redirected to its user.
+155,Rattled,5,"This Pokémon's [Speed]{mechanic} rises one stage with each hit from a damaging [Dark]{type}-, [Ghost]{type}-, or [Bug]{type}-type move.","Raises [Speed]{mechanic} one [stage]{mechanic:stat modifier} upon being hit by a [Dark]{type}, [Ghost]{type}, or [Bug]{type} move."
+156,Magic Bounce,5,"When this Pokémon is targeted by a non-damaging move flagged as being reflectable, as most non-damaging, non-self-targetted moves are, the move is redirected to its user.
 
 This ability cannot reflect moves that have already been reflected by another Pokémon with this ability.",Reflects most non-damaging moves back at their user.
 157,Sap Sipper,5,"Whenever a [Grass]{type}-type move hits this Pokémon, its [Attack]{mechanic} rises one [stage]{mechanic:stat modifier}, negating any other effect on it.","Absorbs [Grass]{type} moves, raising [Attack]{mechanic} one [stage]{mechanic:stat modifier}."
-158,mischievous heart,5,This Pokémon's non-damaging moves have their priority increased by one stage.,Raises non-damaging moves' priority by one stage.
+158,Prankster,5,This Pokémon's non-damaging moves have their priority increased by one stage.,Raises non-damaging moves' priority by one stage.
 159,Sand Force,5,"During a [sandstorm]{mechanic}, this Pokémon's [Rock]{type}-, [Ground]{type}-, and [Steel]{type}-type moves have 1.3× their base power.  This Pokémon does not take sandstorm damage, regardless of type.","Strengthens [Rock]{type}, [Ground]{type}, and [Steel]{type} moves to 1.3× their power during a [sandstorm]{mechanic}."
-160,iron thorns,5,"Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum [HP]{mechanic} in damage.
+160,Iron Barbs,5,"Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum [HP]{mechanic} in damage.
 
 This ability functions identically to [Rough Skin]{ability}.",Damages attacking Pokémon for 1/8 their max [HP]{mechanic} on contact.
-161,daruma mode,5,"This Pokémon changes to daruma mode when it falls below 50% of its maximum [HP]{mechanic}.
+161,Zen Mode,5,"This Pokémon changes to daruma mode when it falls below 50% of its maximum [HP]{mechanic}.
 
 This ability has no effect if this Pokémon is not a [Darmanitan]{pokemon}.",Changes [Darmanitan]{pokemon} to daruma mode below 50% max [HP]{mechanic}.
 162,Victory Star,5,"All friendly Pokémon's moves, including this Pokémon's own moves, have 1.1× their usual accuracy while this Pokémon is in battle.",Raises moves' accuracy to 1.1× for friendly Pokémon.
