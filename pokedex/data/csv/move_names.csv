@@ -1,6 +1,6 @@
 move_id,language_id,name
 1,1,はたく
-1,5,Ecras'Face
+1,5,Écras'Face
 1,6,Pfund
 1,7,Destructor
 1,8,Botta
@@ -40,7 +40,7 @@ move_id,language_id,name
 8,7,Puño Hielo
 8,8,Gelopugno
 9,1,かみなりパンチ
-9,5,Poing-Eclair
+9,5,Poing-Éclair
 9,6,Donnerschlag
 9,7,Puño Trueno
 9,8,Tuonopugno
@@ -95,7 +95,7 @@ move_id,language_id,name
 19,7,Vuelo
 19,8,Volo
 20,1,しめつける
-20,5,Etreinte
+20,5,Étreinte
 20,6,Klammergriff
 20,7,Atadura
 20,8,Legatutto
@@ -110,7 +110,7 @@ move_id,language_id,name
 22,7,Látigo Cepa
 22,8,Frustata
 23,1,ふみつけ
-23,5,Ecrasement
+23,5,Écrasement
 23,6,Stampfer
 23,7,Pisotón
 23,8,Pestone
@@ -415,7 +415,7 @@ move_id,language_id,name
 83,7,Giro Fuego
 83,8,Turbofuoco
 84,1,でんきショック
-84,5,Eclair
+84,5,Éclair
 84,6,Donnerschock
 84,7,Impactrueno
 84,8,Tuonoshock
@@ -425,7 +425,7 @@ move_id,language_id,name
 85,7,Rayo
 85,8,Fulmine
 86,1,でんじは
-86,5,Cage-Eclair
+86,5,Cage-Éclair
 86,6,Donnerwelle
 86,7,Onda Trueno
 86,8,Tuononda
@@ -600,7 +600,7 @@ move_id,language_id,name
 120,7,Autodestruc
 120,8,Autodistruz.
 121,1,タマゴばくだん
-121,5,Bomb'Oeuf
+121,5,Bomb'Œuf
 121,6,Eierbombe
 121,7,Bomba Huevo
 121,8,Uovobomba
@@ -720,7 +720,7 @@ move_id,language_id,name
 144,7,Transform
 144,8,Trasformaz.
 145,1,あわ
-145,5,Ecume
+145,5,Écume
 145,6,Blubber
 145,7,Burbuja
 145,8,Bolla
@@ -780,7 +780,7 @@ move_id,language_id,name
 156,7,Descanso
 156,8,Riposo
 157,1,いわなだれ
-157,5,Eboulement
+157,5,Éboulement
 157,6,Steinhagel
 157,7,Avalancha
 157,8,Frana
@@ -955,7 +955,7 @@ move_id,language_id,name
 191,7,Púas
 191,8,Punte
 192,1,でんじほう
-192,5,Elecanon
+192,5,Élecanon
 192,6,Blitzkanone
 192,7,Electrocañón
 192,8,Falcecannone
@@ -1040,7 +1040,7 @@ move_id,language_id,name
 208,7,Batido
 208,8,Buonlatte
 209,1,スパーク
-209,5,Etincelle
+209,5,Étincelle
 209,6,Funkensprung
 209,7,Chispa
 209,8,Scintilla
@@ -1240,7 +1240,7 @@ move_id,language_id,name
 248,7,Premonición
 248,8,Divinazione
 249,1,いわくだき
-249,5,Eclate-Roc
+249,5,Éclate-Roc
 249,6,Zertrümmerer
 249,7,Golpe Roca
 249,8,Spaccaroccia
@@ -1360,7 +1360,7 @@ move_id,language_id,name
 272,7,Imitación
 272,8,Giocodiruolo
 273,1,ねがいごと
-273,5,Voeu
+273,5,Vœu
 273,6,Wunschtraum
 273,7,Deseo
 273,8,Desiderio
@@ -1415,12 +1415,12 @@ move_id,language_id,name
 283,7,Esfuerzo
 283,8,Rimonta
 284,1,ふんか
-284,5,Eruption
+284,5,Éruption
 284,6,Eruption
 284,7,Estallido
 284,8,Eruzione
 285,1,スキルスワップ
-285,5,Echange
+285,5,Échange
 285,6,Wertewechsel
 285,7,Intercambio
 285,8,Baratto
@@ -1470,7 +1470,7 @@ move_id,language_id,name
 294,7,Ráfaga
 294,8,Codadiluce
 295,1,ラスターパージ
-295,5,Lumi-Eclat
+295,5,Lumi-Éclat
 295,6,Scheinwerfer
 295,7,Resplandor
 295,8,Abbagliante
@@ -1525,7 +1525,7 @@ move_id,language_id,name
 305,7,Colmillo Ven
 305,8,Velenodenti
 306,1,ブレイククロー
-306,5,Eclategriffe
+306,5,Éclategriffe
 306,6,Zermalmklaue
 306,7,Garra Brutal
 306,8,Tritartigli
@@ -1545,7 +1545,7 @@ move_id,language_id,name
 309,7,Puño Meteoro
 309,8,Meteorpugno
 310,1,おどろかす
-310,5,Etonnement
+310,5,Étonnement
 310,6,Erstauner
 310,7,Impresionar
 310,8,Sgomento
@@ -1715,7 +1715,7 @@ move_id,language_id,name
 343,7,Antojo
 343,8,Supplica
 344,1,ボルテッカー
-344,5,Electacle
+344,5,Électacle
 344,6,Volttackle
 344,7,Placaje Eléc
 344,8,Locomovolt
@@ -1780,7 +1780,7 @@ move_id,language_id,name
 356,7,Gravedad
 356,8,Gravità
 357,1,ミラクルアイ
-357,5,Oeil Miracle
+357,5,Œil Miracle
 357,6,Wunderauge
 357,7,Gran Ojo
 357,8,Miracolvista
@@ -1800,7 +1800,7 @@ move_id,language_id,name
 360,7,Giro Bola
 360,8,Vortexpalla
 361,1,いやしのねがい
-361,5,Voeu Soin
+361,5,Vœu Soin
 361,6,Heilopfer
 361,7,Deseo Cura
 361,8,Curardore
@@ -1870,7 +1870,7 @@ move_id,language_id,name
 374,7,Lanzamiento
 374,8,Lancio
 375,1,サイコシフト
-375,5,Echange Psy
+375,5,Échange Psy
 375,6,Psybann
 375,7,Psico-cambio
 375,8,Psicotrasfer
@@ -1950,7 +1950,7 @@ move_id,language_id,name
 390,7,Púas Tóxicas
 390,8,Fielepunte
 391,1,ハートスワップ
-391,5,Permucoeur
+391,5,Permucœur
 391,6,Statustausch
 391,7,Cambia Almas
 391,8,Cuorbaratto
@@ -2055,7 +2055,7 @@ move_id,language_id,name
 411,7,Onda Certera
 411,8,Focalcolpo
 412,1,エナジーボール
-412,5,Eco-Sphère
+412,5,Éco-Sphère
 412,6,Energieball
 412,7,Energibola
 412,8,Energipalla
@@ -2095,7 +2095,7 @@ move_id,language_id,name
 419,7,Alud
 419,8,Slavina
 420,1,こおりのつぶて
-420,5,Eclats Glace
+420,5,Éclats Glace
 420,6,Eissplitter
 420,7,Canto Helado
 420,8,Geloscheggia
@@ -2105,7 +2105,7 @@ move_id,language_id,name
 421,7,Garra Umbría
 421,8,Ombrartigli
 422,1,かみなりのキバ
-422,5,Crocs Eclair
+422,5,Crocs Éclair
 422,6,Donnerzahn
 422,7,Colm. Rayo
 422,8,Fulmindenti
@@ -2175,7 +2175,7 @@ move_id,language_id,name
 435,7,Chispazo
 435,8,Scarica
 436,1,ふんえん
-436,5,Ebullilave
+436,5,Ébullilave
 436,6,Flammensturm
 436,7,Humareda
 436,8,Lavasbuffo
@@ -2230,7 +2230,7 @@ move_id,language_id,name
 446,7,Trampa Rocas
 446,8,Levitoroccia
 447,1,くさむすび
-447,5,Noeud Herbe
+447,5,Nœud Herbe
 447,6,Strauchler
 447,7,Hierba Lazo
 447,8,Laccioerboso
@@ -2340,47 +2340,69 @@ move_id,language_id,name
 468,7,Afilagarras
 468,8,Unghiaguzze
 469,1,ワイドガード
+469,5,Garde Large
 470,1,ガードシェア
+470,5,PartageGarde
 471,1,パワーシェア
+471,5,PartageForce
 472,1,ワンダールーム
+472,5,Zone Étrange
 473,1,サイコショック
+473,5,Choc Psy
 474,1,ベノムショック
+474,5,Choc Venin
 475,1,ボディパージ
+475,5,Allègement
 476,1,いかりのこな
+476,5,PoudreFureur
 477,1,テレキネシス
 477,5,Lévikinésie
 477,6,Telekinese
 477,7,Telequinesis
 477,8,Telecinesi
 478,1,マジックルーム
+478,5,Zone Magique
 479,1,うちおとす
+479,5,Anti-Air
 480,1,やまあらし
+480,5,Yama Arashi
 481,1,はじけるほのお
 481,5,Rebondifeu
 481,6,Funkenflug
 481,7,Pirotecnia
 481,8,Pirolancio
 482,1,ヘドロウェーブ
+482,5,Cradovague
 483,1,ちょうのまい
+483,5,Papillodanse
 484,1,ヘビーボンバー
+484,5,Tacle Lourd
 485,1,シンクロノイズ
+485,5,Synchropeine
 486,1,エレキボール
-486,5,Boule Elec
+486,5,Boule Élek
 486,6,Elektroball
 486,7,Bola Voltio
 486,8,Energisfera
 487,1,みずびたし
+487,5,Détrempage
 488,1,ニトロチャージ
+488,5,Nitrocharge
 489,1,とぐろをまく
+489,5,Enroulement
 490,1,ローキック
+490,5,Balayette
 491,1,アシッドボム
+491,5,Bombe Acide
 492,1,イカサマ
 492,5,Tricherie
 492,6,Schmarotzer
 492,7,Juego Sucio
 492,8,Ripicca
 493,1,シンプルビーム
+493,5,Rayon Simple
 494,1,なかまづくり
+494,5,Ten-danse
 495,1,おさきにどうぞ
 495,5,Après Vous
 495,6,Galanterie
@@ -2392,17 +2414,24 @@ move_id,language_id,name
 496,7,Canon
 496,8,Coro
 497,1,エコーボイス
+497,5,Écho
 498,1,なしくずし
+498,5,Attrition
 499,1,クリアスモッグ
+499,5,Bain de Smog
 500,1,アシストパワー
+500,5,ForceAjoutée
 501,1,ファストガード
+501,5,Prévention
 502,1,サイドチェンジ
+502,5,Interversion
 503,1,ねっとう
-503,5,Ebullition
+503,5,Ébullition
 503,6,Siedewasser
 503,7,Escaldar
 503,8,Idrovampata
 504,1,からをやぶる
+504,5,Exuviation
 505,1,いやしのはどう
 505,5,Vibra Soin
 505,6,Heilwoge
@@ -2419,34 +2448,48 @@ move_id,language_id,name
 507,7,Caída Libre
 507,8,Cadutalibera
 508,1,ギアチェンジ
+508,5,Chgt Vitesse
 509,1,ともえなげ
+509,5,Projection
 510,1,やきつくす
+510,5,Calcination
 511,1,さきおくり
+511,5,À la Queue
 512,1,アクロバット
 512,5,Acrobatie
 512,6,Akrobatik
 512,7,Acróbata
 512,8,Acrobazia
 513,1,ミラータイプ
+513,5,Copie Type
 514,1,かたきうち
 514,5,Vengeance
 514,6,Heimzahlung
 514,7,Represalia
 514,8,Nemesi
 515,1,いのちがけ
+515,5,Tout ou Rien
 516,1,ギフトパス
+516,5,Passe-Cadeau
 517,1,れんごく
+517,5,Feu d'Enfer
 518,1,みずのちかい
+518,5,Aire d'Eau
 519,1,ほのおのちかい
+519,5,Aire de Feu
 520,1,くさのちかい
+520,5,Aire d'Herbe
 521,1,ボルトチェンジ
+521,5,ChangeÉclair
 522,1,むしのていこう
 522,5,Survinsecte
 522,6,Käfertrutz
 522,7,Estoicismo
 522,8,Entomoblocco
 523,1,じならし
+523,5,Piétisol
 524,1,こおりのいぶき
+524,5,SouffleGlacé
 525,1,ドラゴンテール
 525,5,Draco-Queue
 525,6,Drachenrute
@@ -2458,8 +2501,9 @@ move_id,language_id,name
 526,7,Avivar
 526,8,Cuordileone
 527,1,エレキネット
+527,5,Toile Élek
 528,1,ワイルドボルト
-528,5,Eclair Fou
+528,5,Éclair Fou
 528,6,Stromstoß
 528,7,Voltia Cruel
 528,8,Sprizzalampo
@@ -2474,7 +2518,7 @@ move_id,language_id,name
 530,7,Golpe Bis
 530,8,Doppiocolpo
 531,1,ハートスタンプ
-531,5,Crèvecoeur
+531,5,Crèvecœur
 531,6,Herzstempel
 531,7,Arrumaco
 531,8,Cuorestampo
@@ -2484,13 +2528,21 @@ move_id,language_id,name
 532,7,Astadrenaje
 532,8,Legnicorno
 533,1,せいなるつるぎ
+533,5,Lame Sainte
 534,1,シェルブレード
+534,5,Coquilame
 535,1,ヒートスタンプ
+535,5,Tacle Feu
 536,1,グラスミキサー
+536,5,Phytomixeur
 537,1,ハードローラー
+537,5,Bulldoboule
 538,1,コットンガード
+538,5,Cotogarde
 539,1,ナイトバースト
+539,5,Explonuit
 540,1,サイコブレイク
+540,5,Frappe Psy
 541,1,スイープビンタ
 541,5,Plumo-Queue
 541,6,Kehrschelle
@@ -2502,22 +2554,39 @@ move_id,language_id,name
 542,7,Vendaval
 542,8,Tifone
 543,1,アフロブレイク
+543,5,Peignée
 544,1,ギアソーサー
+544,5,Lancécrou
 545,1,かえんだん
+545,5,Incendie
 546,1,テクノバスター
+546,5,TechnoBuster
 547,1,いにしえのうた
+547,5,ChantAntique
 548,1,しんぴのつるぎ
+548,5,Lame Ointe
 549,1,こごえるせかい
+549,5,ÈreGlaciaire
 550,1,らいげき
+550,5,ChargeFoudre
 551,1,あおいほのお
+551,5,Flamme Bleue
 552,1,ほのおのまい
+552,5,Danse du Feu
 553,1,フリーズボルト
+553,5,Éclair Gelé
 554,1,コールドフレア
+554,5,Feu Glacé
 555,1,バークアウト
+555,5,Aboiement
 556,1,つららおとし
+556,5,Chute Glace
 557,1,Ｖジェネレート
+557,5,CoupVictoire
 558,1,クロスフレイム
+558,5,Flamme Croix
 559,1,クロスサンダー
+559,5,Éclair Croix
 10001,1,ダークラッシュ
 10001,5,Charge Noire
 10001,6,Cryptoschlag

@@ -195,12 +195,12 @@ item_id,language_id,name
 39,7,Éter Máx.
 39,8,Etere Max
 40,1,ピーピーエイダー
-40,5,Elixir
+40,5,Élixir
 40,6,Elixier
 40,7,Elixir
 40,8,Elisir
 41,1,ピーピーマックス
-41,5,Max Elixir
+41,5,Max Élixir
 41,6,Top-Elixier
 41,7,Elixir Máx.
 41,8,Elisir Max
@@ -445,12 +445,12 @@ item_id,language_id,name
 89,7,Perla Grande
 89,8,Grande Perla
 90,1,ほしのすな
-90,5,Pouss.Etoile
+90,5,Pouss.Étoile
 90,6,Sternenstaub
 90,7,Polvoestelar
 90,8,Polvostella
 91,1,ほしのかけら
-91,5,Morc. Etoile
+91,5,Morc. Étoile
 91,6,Sternenstück
 91,7,Tr. Estrella
 91,8,Pezzo Stella
@@ -460,7 +460,7 @@ item_id,language_id,name
 92,7,Pepita
 92,8,Pepita
 93,1,ハートのウロコ
-93,5,Ecaillecoeur
+93,5,Écaillecœur
 93,6,Herzschuppe
 93,7,Esc. Corazón
 93,8,Squama Cuore
@@ -530,7 +530,7 @@ item_id,language_id,name
 106,7,Hueso Raro
 106,8,Osso Raro
 107,1,ひかりのいし
-107,5,Pierre Eclat
+107,5,Pierre Éclat
 107,6,Leuchtstein
 107,7,Piedra Día
 107,8,Pietrabrillo
@@ -1005,7 +1005,7 @@ item_id,language_id,name
 201,7,Amuleto
 201,8,Velopuro
 202,1,こころのしずく
-202,5,Rosée Ame
+202,5,Rosée Âme
 202,6,Seelentau
 202,7,Rocío Bondad
 202,8,Cuorugiada
@@ -1015,7 +1015,7 @@ item_id,language_id,name
 203,7,Diente Mar.
 203,8,Dente Abissi
 204,1,しんかいのウロコ
-204,5,Ecailleocéan
+204,5,Écailleocéan
 204,6,Abyssplatte
 204,7,Escama Mar.
 204,8,Squamabissi
@@ -1035,7 +1035,7 @@ item_id,language_id,name
 207,7,Cinta Focus
 207,8,Bandana
 208,1,しあわせタマゴ
-208,5,Oeuf Chance
+208,5,Œuf Chance
 208,6,Glücks-Ei
 208,7,Huevo Suerte
 208,8,Fortunuovo
@@ -1055,7 +1055,7 @@ item_id,language_id,name
 211,7,Restos
 211,8,Avanzi
 212,1,りゅうのウロコ
-212,5,Ecailledraco
+212,5,Écailledraco
 212,6,Drachenhaut
 212,7,Escamadragón
 212,8,Squama Drago
@@ -1280,7 +1280,7 @@ item_id,language_id,name
 256,7,Cola Plúmbea
 256,8,Rallentocoda
 257,1,あかいいと
-257,5,Noeud Destin
+257,5,Nœud Destin
 257,6,Fatumknoten
 257,7,Lazo Destino
 257,8,Destincomune
@@ -1490,7 +1490,7 @@ item_id,language_id,name
 298,7,Protector
 298,8,Copertura
 299,1,エレキブースター
-299,5,Electiriseur
+299,5,Électiriseur
 299,6,Stromisierer
 299,7,Electrizador
 299,8,Elettritore
@@ -2380,7 +2380,7 @@ item_id,language_id,name
 476,7,Ll. Sótano
 476,8,Chiave Sott.
 477,1,あかいウロコ
-477,5,Ecaillerouge
+477,5,Écaillerouge
 477,6,Rote Haut
 477,7,Escama Roja
 477,8,Squama Rossa
@@ -2410,7 +2410,7 @@ item_id,language_id,name
 482,7,Ala Arcoíris
 482,8,Ala d'Iride
 483,1,ふしぎなタマゴ
-483,5,Oeuf Mystère
+483,5,Œuf Mystère
 483,6,Rätsel-Ei
 483,7,Huevo Mist
 483,8,Uovo Mistero
@@ -2560,7 +2560,7 @@ item_id,language_id,name
 512,7,T. Datos 27
 512,8,Sch. Dati 27
 513,1,ロックカプセル
-513,5,Poké Ecrin
+513,5,Poké Écrin
 513,6,Tresorkapsel
 513,7,Cáp. Candado
 513,8,Cap. Scrigno
@@ -2665,7 +2665,7 @@ item_id,language_id,name
 533,7,Carta
 533,8,Lettera
 534,1,むげんのチケット
-534,5,Passe Eon
+534,5,Passe Éon
 534,6,Äon-Ticket
 534,7,Ticket Eón
 534,8,Bigl. Eone
@@ -2810,108 +2810,213 @@ item_id,language_id,name
 562,7,Mapa Viejo
 562,8,Mappa Stinta
 563,1,アクアカセット
+563,5,Module Aqua
 564,1,イナズマカセット
+564,5,Module Choc
 565,1,ブレイズカセット
+565,5,Module Pyro
 566,1,フリーズカセット
+566,5,Module Cryo
 567,1,ハートスイーツ
+567,5,Chococœur
 568,1,はじめてメール
+568,5,Lettre Salut
 569,1,だいすきメール
+569,5,Lettre Fan
 570,1,おさそいメール
+570,5,Lettre Invit
 571,1,かんしゃメール
+571,5,Lettre Merci
 572,1,しつもんメール
+572,5,Let. Demande
 573,1,おすすめメール
+573,5,Lettre Avis
 574,1,おかえしメール
+574,5,Let. Réponse
 575,1,ブリッジメールＳ
+575,5,Lettre PontS
 576,1,ブリッジメールＨ
+576,5,Lettre PontY
 577,1,ブリッジメールＣ
+577,5,Lettre PontF
 578,1,ブリッジメールＶ
+578,5,Lettre PontH
 579,1,ブリッジメールＷ
+579,5,Lettre PontI
 580,1,きれいなウロコ
+580,5,Bel'Écaille
 581,1,しんかのきせき
+581,5,Évoluroc
 582,1,かるいし
+582,5,Pierrallégée
 583,1,ゴツゴツメット
+583,5,Casque Brut
 584,1,ふうせん
+584,5,Ballon
 585,1,レッドカード
+585,5,Carton Rouge
 586,1,ねらいのまと
+586,5,Pt de Mire
 587,1,しめつけバンド
+587,5,B. Étreinte
 588,1,きゅうこん
+588,5,Bulbe
 589,1,じゅうでんち
+589,5,Pile
 590,1,だっしゅつボタン
+590,5,Bouton Fuite
 591,1,ほのおのジュエル
+591,5,Joyau Feu
 592,1,みずのジュエル
+592,5,Joyau Eau
 593,1,でんきのジュエル
+593,5,Joyau Électr
 594,1,くさのジュエル
+594,5,Joyau Plante
 595,1,こおりのジュエル
+595,5,Joyau Glace
 596,1,かくとうジュエル
+596,5,Joyau Combat
 597,1,どくのジュエル
+597,5,Joyau Poison
 598,1,じめんのジュエル
+598,5,Joyau Sol
 599,1,ひこうのジュエル
+599,5,Joyau Vol
 600,1,エスパージュエル
+600,5,Joyau Psy
 601,1,むしのジュエル
+601,5,Joyau Insect
 602,1,いわのジュエル
+602,5,Joyau Roche
 603,1,ゴーストジュエル
+603,5,Joyau Spectr
 604,1,あくのジュエル
+604,5,Joyau Ténèbr
 605,1,はがねのジュエル
+605,5,Joyau Acier
 606,1,たいりょくのハネ
+606,5,Aile Santé
 607,1,きんりょくのハネ
+607,5,Aile Force
 608,1,ていこうのハネ
+608,5,Aile Armure
 609,1,ちりょくのハネ
+609,5,Aile Esprit
 610,1,せいしんのハネ
+610,5,Aile Mental
 611,1,しゅんぱつのハネ
+611,5,Aile Sprint
 612,1,きれいなハネ
+612,5,Jolie Aile
 613,1,ふたのカセキ
+613,5,Foss. Plaque
 614,1,はねのカセキ
+614,5,Foss. Plume
 615,1,リバティチケット
+615,5,Pass Liberté
 616,1,デルダマ
+616,5,Offrisphère
 617,1,ドリームボール
+617,5,Rêve Ball
 618,1,ポケじゃらし
+618,5,Poképlumet
 619,1,グッズケース
+619,5,Boîte Parure
 620,1,ドラゴンのホネ
+620,5,Crâne Dragon
 621,1,かおるキノコ
+621,5,Champi Suave
 622,1,でかいきんのたま
+622,5,Maxi Pépite
 623,1,おだんごしんじゅ
+623,5,Perle Triple
 624,1,すいせいのかけら
+624,5,Morc. Comète
 625,1,こだいのどうか
+625,5,Vieux Sou
 626,1,こだいのぎんか
+626,5,Vieil Écu
 627,1,こだいのきんか
+627,5,Vieux Ducat
 628,1,こだいのツボ
+628,5,Vieux Vase
 629,1,こだいのうでわ
+629,5,Vieux Bijou
 630,1,こだいのせきぞう
+630,5,Vieux Santon
 631,1,こだいのおうかん
+631,5,Vieux Tortil
 632,1,ヒウンアイス
+632,5,Glace Volute
 633,1,クリティカット２
+633,5,Muscle 2
 634,1,スピーダー２
+634,5,Vitesse 2
 635,1,ＳＰアップ２
+635,5,Atq. Spé. 2
 636,1,ＳＰガード２
+636,5,Déf. Spé. 2
 637,1,ディフェンダー２
+637,5,Défense 2
 638,1,プラスパワー２
+638,5,Attaque 2
 639,1,ヨクアタール２
+639,5,Précision 2
 640,1,スピーダー３
+640,5,Vitesse 3
 641,1,ＳＰアップ３
+641,5,Atq. Spé. 3
 642,1,ＳＰガード３
+642,5,Déf. Spé. 3
 643,1,ディフェンダー３
+643,5,Défense 3
 644,1,プラスパワー３
+644,5,Attaque 3
 645,1,ヨクアタール３
+645,5,Précision 3
 646,1,スピーダー６
+646,5,Vitesse 6
 647,1,ＳＰアップ６
+647,5,Atq. Spé. 6
 648,1,ＳＰガード６
+648,5,Déf. Spé. 6
 649,1,ディフェンダー６
+649,5,Défense 6
 650,1,プラスパワー６
+650,5,Attaque 6
 651,1,ヨクアタール６
+651,5,Précision 6
 652,1,スキルコール
+652,5,Appel CapSpé
 653,1,アイテムドロップ
+653,5,Jette Objet
 654,1,アイテムコール
+654,5,Appel Objet
 655,1,フラットコール
+655,5,Réamorçage
 656,1,クリティカット３
+656,5,Muscle 3
 657,1,ライトストーン
+657,5,Galet Blanc
 658,1,ダークストーン
+658,5,Galet Noir
 659,1,わざマシン９３
+659,5,CT93
 660,1,わざマシン９４
+660,5,CT94
 661,1,わざマシン９５
+661,5,CT95
 662,1,ライブキャスター
+662,5,Vokit
 663,1,ゴッドストーン
 664,1,はいたつぶつ１
+664,5,Courrier 1
 665,1,はいたつぶつ２
+665,5,Courrier 2
 666,1,はいたつぶつ３
+666,5,Courrier 3
 668,1,ドラゴンジュエル
+668,5,Joyau Dragon
 669,1,ノーマルジュエル
+669,5,Joyau Normal
