@@ -8,6 +8,8 @@ wild Pokémon away."
 wild Pokémon away."
 1,10,"The stench helps keep
 wild Pokémon away."
+1,11,"The stench may cause
+the target to flinch."
 2,5,Summons rain in battle.
 2,6,Summons rain in battle.
 2,7,Summons rain in battle.
@@ -16,6 +18,8 @@ if it appears in battle."
 2,9,"The Pokémon makes it rain
 if it appears in battle."
 2,10,"The Pokémon makes it rain
+if it appears in battle."
+2,11,"The Pokémon makes it rain
 if it appears in battle."
 3,5,Gradually boosts SPEED.
 3,6,Gradually boosts SPEED.
@@ -26,6 +30,8 @@ is gradually boosted."
 is gradually boosted."
 3,10,"Its Speed stat is
 gradually boosted."
+3,11,"Its Speed stat is
+gradually boosted."
 4,5,Blocks critical hits.
 4,6,Blocks critical hits.
 4,7,Blocks critical hits.
@@ -34,6 +40,8 @@ against critical hits."
 4,9,"The Pokémon is protected
 against critical hits."
 4,10,"The Pokémon is protected
+against critical hits."
+4,11,"The Pokémon is protected
 against critical hits."
 5,5,Negates 1-hit KO attacks.
 5,6,Negates 1-hit KO attacks.
@@ -44,6 +52,8 @@ against 1-hit KO attacks."
 against 1-hit KO attacks."
 5,10,"It is protected against
 1-hit KO attacks."
+5,11,"It cannot be knocked
+out with one hit."
 6,5,Prevents self-destruction.
 6,6,Prevents self-destruction.
 6,7,Prevents self-destruction.
@@ -53,6 +63,8 @@ self destructing."
 self destructing."
 6,10,"Prevents combatants
 from self-destructing."
+6,11,"Prevents the use of
+self-destructing moves."
 7,5,Prevents paralysis.
 7,6,Prevents paralysis.
 7,7,Prevents paralysis.
@@ -61,6 +73,8 @@ from paralysis."
 7,9,"The Pokémon is protected
 from paralysis."
 7,10,"The Pokémon is protected
+from paralysis."
+7,11,"The Pokémon is protected
 from paralysis."
 8,5,Ups evasion in a sandstorm.
 8,6,Ups evasion in a sandstorm.
@@ -71,6 +85,8 @@ evasion in a sandstorm."
 evasion in a sandstorm."
 8,10,"Boosts the Pokémon’s
 evasion in a sandstorm."
+8,11,"Boosts the Pokémon's
+evasion in a sandstorm."
 9,5,Paralyzes on contact.
 9,6,Paralyzes on contact.
 9,7,Paralyzes on contact.
@@ -79,6 +95,8 @@ may cause paralysis."
 9,9,"Contact with the Pokémon
 may cause paralysis."
 9,10,"Contact with the Pokémon
+may cause paralysis."
+9,11,"Contact with the Pokémon
 may cause paralysis."
 10,5,Turns electricity into HP.
 10,6,Turns electricity into HP.
@@ -89,6 +107,8 @@ Electric-type move."
 Electric-type move."
 10,10,"Restores HP if hit by an
 Electric-type move."
+10,11,"Restores HP if hit by an
+Electric-type move."
 11,5,Changes water into HP.
 11,6,Changes water into HP.
 11,7,Changes water into HP.
@@ -97,6 +117,8 @@ Water-type move."
 11,9,"Restores HP if hit by a
 Water-type move."
 11,10,"Restores HP if hit by a
+Water-type move."
+11,11,"Restores HP if hit by a
 Water-type move."
 12,5,Prevents attraction.
 12,6,Prevents attraction.
@@ -107,6 +129,8 @@ from becoming infatuated."
 from becoming infatuated."
 12,10,"Prevents it from
 becoming infatuated."
+12,11,"Prevents it from
+becoming infatuated."
 13,5,Negates weather effects.
 13,6,Negates weather effects.
 13,7,Negates weather effects.
@@ -115,6 +139,8 @@ weather."
 13,9,"Eliminates the effects of
 weather."
 13,10,"Eliminates the effects of
+weather."
+13,11,"Eliminates the effects of
 weather."
 14,5,Raises accuracy.
 14,6,Raises accuracy.
@@ -125,6 +151,8 @@ boosted."
 boosted."
 14,10,"The Pokémon’s accuracy
 is boosted."
+14,11,"The Pokémon's accuracy
+is boosted."
 15,5,Prevents sleep.
 15,6,Prevents sleep.
 15,7,Prevents sleep.
@@ -133,6 +161,8 @@ from falling asleep."
 15,9,"Prevents the Pokémon
 from falling asleep."
 15,10,"Prevents the Pokémon
+from falling asleep."
+15,11,"Prevents the Pokémon
 from falling asleep."
 16,5,Changes type to foe’s move.
 16,6,Changes type to foe’s move.
@@ -143,6 +173,8 @@ type to the foe’s move."
 type to the foe’s move."
 16,10,"Changes the Pokémon’s
 type to the foe’s move."
+16,11,"Changes the Pokémon's
+type to the foe's move."
 17,5,Prevents poisoning.
 17,6,Prevents poisoning.
 17,7,Prevents poisoning.
@@ -151,6 +183,8 @@ from getting poisoned."
 17,9,"Prevents the Pokémon
 from getting poisoned."
 17,10,"Prevents the Pokémon
+from getting poisoned."
+17,11,"Prevents the Pokémon
 from getting poisoned."
 18,5,Powers up if hit by fire.
 18,6,Powers up if hit by fire.
@@ -161,6 +195,8 @@ if hit by a fire move."
 if hit by a fire move."
 18,10,"It powers up Fire-type
 moves if it’s hit by one."
+18,11,"It powers up Fire-type
+moves if it's hit by one."
 19,5,Prevents added effects.
 19,6,Prevents added effects.
 19,7,Prevents added effects.
@@ -169,6 +205,8 @@ of attacks taken."
 19,9,"Blocks the added effects
 of attacks taken."
 19,10,"Blocks the added effects
+of attacks taken."
+19,11,"Blocks the added effects
 of attacks taken."
 20,5,Prevents confusion.
 20,6,Prevents confusion.
@@ -179,6 +217,8 @@ from becoming confused."
 from becoming confused."
 20,10,"Prevents the Pokémon
 from becoming confused."
+20,11,"Prevents the Pokémon
+from becoming confused."
 21,5,Firmly anchors the body.
 21,6,Firmly anchors the body.
 21,7,Firmly anchors the body.
@@ -187,6 +227,8 @@ force switching out."
 21,9,"Negates moves that
 force switching out."
 21,10,"Negates foes’ moves that
+force switching out."
+21,11,"Negates all moves that
 force switching out."
 22,5,Lowers the foe’s ATTACK.
 22,6,Lowers the foe’s ATTACK.
@@ -197,6 +239,8 @@ stat."
 stat."
 22,10,"Lowers the foe’s
 Attack stat."
+22,11,"Lowers the foe's
+Attack stat."
 23,5,Prevents the foe’s escape.
 23,6,Prevents the foe’s escape.
 23,7,Prevents the foe’s escape.
@@ -205,6 +249,8 @@ escaping."
 23,9,"Prevents the foe from
 escaping."
 23,10,"Prevents the foe from
+escaping."
+23,11,"Prevents the foe from
 escaping."
 24,5,Hurts to touch.
 24,6,Hurts to touch.
@@ -215,6 +261,8 @@ foe on contact."
 foe on contact."
 24,10,"Inflicts damage to the
 foe on contact."
+24,11,"Inflicts damage to the
+attacker on contact."
 25,5,“Super effective” hits.
 25,6,“Super effective” hits.
 25,7,“Super effective” hits.
@@ -223,6 +271,8 @@ moves will hit."
 25,9,"Only supereffective
 moves will hit."
 25,10,"Only supereffective
+moves will hit."
+25,11,"Only supereffective
 moves will hit."
 26,5,Not hit by GROUND attacks.
 26,6,Not hit by GROUND attacks.
@@ -233,6 +283,8 @@ Ground-type moves."
 Ground-type moves."
 26,10,"Gives full immunity to all
 Ground-type moves."
+26,11,"Gives full immunity to all
+Ground-type moves."
 27,5,Leaves spores on contact.
 27,6,Leaves spores on contact.
 27,7,Leaves spores on contact.
@@ -242,6 +294,8 @@ poison, or cause sleep."
 poison, or cause sleep."
 27,10,"Contact may paralyze,
 poison, or cause sleep."
+27,11,"Contact may poison or
+cause paralysis or sleep."
 28,5,Passes on status problems.
 28,6,Passes on status problems.
 28,7,Passes on status problems.
@@ -250,6 +304,8 @@ or paralysis to the foe."
 28,9,"Passes on a burn, poison,
 or paralysis to the foe."
 28,10,"Passes a burn, poison,
+or paralysis to the foe."
+28,11,"Passes a burn, poison,
 or paralysis to the foe."
 29,5,Prevents ability reduction.
 29,6,Prevents ability reduction.
@@ -260,6 +316,8 @@ stats from being lowered."
 stats from being lowered."
 29,10,"Prevents its stats from
 being lowered."
+29,11,"Prevents other Pokémon
+from lowering its stats."
 30,5,Heals upon switching out.
 30,6,Heals upon switching out.
 30,7,Heals upon switching out.
@@ -268,6 +326,8 @@ healed upon switching out."
 30,9,"All status problems are
 healed upon switching out."
 30,10,"All status problems heal
+when it switches out."
+30,11,"All status problems heal
 when it switches out."
 31,5,Draws electrical moves.
 31,6,Draws electrical moves.
@@ -278,6 +338,8 @@ Electric-type moves."
 Electric-type moves."
 31,10,"The Pokémon draws in all
 Electric-type moves."
+31,11,"Draws in all Electric-type
+moves to up Sp. Attack."
 32,5,Promotes added effects.
 32,6,Promotes added effects.
 32,7,Promotes added effects.
@@ -286,6 +348,8 @@ added effects appearing."
 32,9,"Boosts the likelihood of
 added effects appearing."
 32,10,"Boosts the likelihood of
+added effects appearing."
+32,11,"Boosts the likelihood of
 added effects appearing."
 33,5,Raises SPEED in rain.
 33,6,Raises SPEED in rain.
@@ -296,6 +360,8 @@ Speed in rain."
 Speed in rain."
 33,10,"Boosts the Pokémon’s
 Speed in rain."
+33,11,"Boosts the Pokémon's
+Speed in rain."
 34,5,Raises SPEED in sunshine.
 34,6,Raises SPEED in sunshine.
 34,7,Raises SPEED in sunshine.
@@ -304,6 +370,8 @@ Speed in sunshine."
 34,9,"Boosts the Pokémon’s
 Speed in sunshine."
 34,10,"Boosts the Pokémon’s
+Speed in sunshine."
+34,11,"Boosts the Pokémon's
 Speed in sunshine."
 35,5,Encounter rate increases.
 35,6,Encounter rate increases.
@@ -314,6 +382,8 @@ meeting wild Pokémon."
 meeting wild Pokémon."
 35,10,"Raises the likelihood of
 meeting wild Pokémon."
+35,11,"Raises the likelihood of
+meeting wild Pokémon."
 36,5,Copies special ability.
 36,6,Copies special ability.
 36,7,Copies special ability.
@@ -323,6 +393,8 @@ foe’s ability."
 foe’s ability."
 36,10,"The Pokémon copies the
 foe’s ability."
+36,11,"The Pokémon copies a
+foe's Ability."
 37,5,Raises ATTACK.
 37,6,Raises ATTACK.
 37,7,Raises ATTACK.
@@ -331,6 +403,8 @@ Attack stat."
 37,9,"Raises the Pokémon’s
 Attack stat."
 37,10,"Raises the Pokémon’s
+Attack stat."
+37,11,"Raises the Pokémon's
 Attack stat."
 38,5,Poisons foe on contact.
 38,6,Poisons foe on contact.
@@ -341,6 +415,8 @@ may poison the foe."
 may poison the foe."
 38,10,"Contact with the Pokémon
 may poison the foe."
+38,11,"Contact with the Pokémon
+may poison the attacker."
 39,5,Prevents flinching.
 39,6,Prevents flinching.
 39,7,Prevents flinching.
@@ -349,6 +425,8 @@ from flinching."
 39,9,"The Pokémon is protected
 from flinching."
 39,10,"The Pokémon is protected
+from flinching."
+39,11,"The Pokémon is protected
 from flinching."
 40,5,Prevents freezing.
 40,6,Prevents freezing.
@@ -359,6 +437,8 @@ from becoming frozen."
 from becoming frozen."
 40,10,"Prevents the Pokémon
 from becoming frozen."
+40,11,"Prevents the Pokémon
+from becoming frozen."
 41,5,Prevents burns.
 41,6,Prevents burns.
 41,7,Prevents burns.
@@ -367,6 +447,8 @@ from getting a burn."
 41,9,"Prevents the Pokémon
 from getting a burn."
 41,10,"Prevents the Pokémon
+from getting a burn."
+41,11,"Prevents the Pokémon
 from getting a burn."
 42,5,Traps STEEL-type POKéMON.
 42,6,Traps STEEL-type POKéMON.
@@ -377,6 +459,8 @@ Pokémon from escaping."
 Pokémon from escaping."
 42,10,"Prevents Steel-type
 Pokémon from escaping."
+42,11,"Prevents Steel-type
+Pokémon from escaping."
 43,5,Avoids sound-based moves.
 43,6,Avoids sound-based moves.
 43,7,Avoids sound-based moves.
@@ -385,6 +469,8 @@ sound-based moves."
 43,9,"Gives full immunity to all
 sound-based moves."
 43,10,"Gives full immunity to all
+sound-based moves."
+43,11,"Gives full immunity to all
 sound-based moves."
 44,5,Slight HP recovery in rain.
 44,6,Slight HP recovery in rain.
@@ -395,6 +481,8 @@ recovers HP in rain."
 recovers HP in rain."
 44,10,"The Pokémon gradually
 recovers HP in rain."
+44,11,"The Pokémon gradually
+regains HP in rain."
 45,5,Summons a sandstorm.
 45,6,Summons a sandstorm.
 45,7,Summons a sandstorm.
@@ -403,6 +491,8 @@ sandstorm in battle."
 45,9,"The Pokémon summons a
 sandstorm in battle."
 45,10,"The Pokémon summons a
+sandstorm in battle."
+45,11,"The Pokémon summons a
 sandstorm in battle."
 46,5,Raises foe’s PP usage.
 46,6,Raises foe’s PP usage.
@@ -413,6 +503,8 @@ foe’s PP usage."
 foe’s PP usage."
 46,10,"The Pokémon raises the
 foe’s PP usage."
+46,11,"The Pokémon raises the
+foe's PP usage."
 47,5,Heat-and-cold protection.
 47,6,Heat-and-cold protection.
 47,7,Heat-and-cold protection.
@@ -421,6 +513,8 @@ and Ice-type moves."
 47,9,"Raises resistance to Fire-​
 and Ice-type moves."
 47,10,"Ups resistance to Fire-​
+and Ice-type moves."
+47,11,"Ups resistance to Fire-
 and Ice-type moves."
 48,5,Awakens quickly from sleep.
 48,6,Awakens quickly from sleep.
@@ -431,6 +525,8 @@ quickly from sleep."
 quickly from sleep."
 48,10,"The Pokémon awakens
 quickly from sleep."
+48,11,"The Pokémon awakens
+quickly from sleep."
 49,5,Burns the foe on contact.
 49,6,Burns the foe on contact.
 49,7,Burns the foe on contact.
@@ -440,6 +536,8 @@ may burn the foe."
 may burn the foe."
 49,10,"Contact with the Pokémon
 may burn the foe."
+49,11,"Contact with the Pokémon
+may burn the attacker."
 50,5,Makes escaping easier.
 50,6,Makes escaping easier.
 50,7,Makes escaping easier.
@@ -448,6 +546,8 @@ wild Pokémon."
 50,9,"Enables sure getaway from
 wild Pokémon."
 50,10,"Enables sure getaway
+from wild Pokémon."
+50,11,"Enables a sure getaway
 from wild Pokémon."
 51,5,Prevents loss of accuracy.
 51,6,Prevents loss of accuracy.
@@ -458,6 +558,8 @@ from losing accuracy."
 from losing accuracy."
 51,10,"Prevents the Pokémon
 from losing accuracy."
+51,11,"Prevents other Pokémon
+from lowering accuracy."
 52,5,Prevents ATTACK reduction.
 52,6,Prevents ATTACK reduction.
 52,7,Prevents ATTACK reduction.
@@ -467,6 +569,8 @@ from being lowered."
 from being lowered."
 52,10,"Prevents the Attack
 stat from being lowered."
+52,11,"Prevents other Pokémon
+from lowering Attack stat."
 53,5,May pick up items.
 53,6,May pick up items.
 53,7,May pick up items.
@@ -475,6 +579,8 @@ items."
 53,9,"The Pokémon may pick up
 items."
 53,10,"The Pokémon may
+pick up items."
+53,11,"The Pokémon may
 pick up items."
 54,5,Moves only every two turns.
 54,6,Moves only every two turns.
@@ -485,6 +591,8 @@ on consecutive turns."
 on consecutive turns."
 54,10,"Pokémon can’t attack
 on consecutive turns."
+54,11,"Pokémon can't attack
+on consecutive turns."
 55,5,Trades accuracy for power.
 55,6,Trades accuracy for power.
 55,7,Trades accuracy for power.
@@ -493,6 +601,8 @@ but lowers accuracy."
 55,9,"Boosts the Attack stat,
 but lowers accuracy."
 55,10,"Boosts the Attack stat,
+but lowers accuracy."
+55,11,"Boosts the Attack stat,
 but lowers accuracy."
 56,5,Infatuates on contact.
 56,6,Infatuates on contact.
@@ -503,6 +613,8 @@ may cause infatuation."
 may cause infatuation."
 56,10,"Contact with the Pokémon
 may cause infatuation."
+56,11,"Contact with the Pokémon
+may cause infatuation."
 57,5,Powers up with MINUS.
 57,6,Powers up with MINUS.
 57,7,Powers up with MINUS.
@@ -512,6 +624,8 @@ Pokémon has Minus."
 Pokémon has Minus."
 57,10,"Ups Sp. Atk if another
 Pokémon has Minus."
+57,11,"Ups Sp. Atk if another
+Pokémon has Plus or Minus."
 58,5,Powers up with PLUS.
 58,6,Powers up with PLUS.
 58,7,Powers up with PLUS.
@@ -521,6 +635,8 @@ Pokémon has Plus."
 Pokémon has Plus."
 58,10,"Ups Sp. Atk if another
 Pokémon has Plus."
+58,11,"Ups Sp. Atk if another
+Pokémon has Plus or Minus."
 59,5,Changes with the weather.
 59,6,Changes with the weather.
 59,7,Changes with the weather.
@@ -529,6 +645,8 @@ the weather."
 59,9,"CASTFORM transforms with
 the weather."
 59,10,"CASTFORM transforms with
+the weather."
+59,11,"Castform transforms with
 the weather."
 60,5,Prevents item theft.
 60,6,Prevents item theft.
@@ -539,6 +657,8 @@ from item theft."
 from item theft."
 60,10,"Protects the Pokémon
 from item theft."
+60,11,"Protects the Pokémon
+from item theft."
 61,5,Heals the body by shedding.
 61,6,Heals the body by shedding.
 61,7,Heals the body by shedding.
@@ -547,6 +667,8 @@ own status problems."
 61,9,"The Pokémon may heal its
 own status problems."
 61,10,"The Pokémon may heal its
+own status problems."
+61,11,"The Pokémon may heal its
 own status problems."
 62,5,Ups ATTACK if suffering.
 62,6,Ups ATTACK if suffering.
@@ -557,6 +679,8 @@ a status problem."
 a status problem."
 62,10,"Boosts Attack if there is
 a status problem."
+62,11,"Boosts Attack if there is
+a status problem."
 63,5,Ups DEFENSE if suffering.
 63,6,Ups DEFENSE if suffering.
 63,7,Ups DEFENSE if suffering.
@@ -565,6 +689,8 @@ a status problem."
 63,9,"Boosts Defense if there is
 a status problem."
 63,10,"Ups Defense if there is
+a status problem."
+63,11,"Ups Defense if there is
 a status problem."
 64,5,Draining causes injury.
 64,6,Draining causes injury.
@@ -575,6 +701,8 @@ using any draining move."
 using any draining move."
 64,10,"Inflicts damage on foes
 using any draining move."
+64,11,"Damages attackers
+using any draining move."
 65,5,Ups GRASS moves in a pinch.
 65,6,Ups GRASS moves in a pinch.
 65,7,Ups GRASS moves in a pinch.
@@ -583,6 +711,8 @@ moves in a pinch."
 65,9,"Powers up Grass-type
 moves in a pinch."
 65,10,"Powers up Grass-type
+moves in a pinch."
+65,11,"Powers up Grass-type
 moves in a pinch."
 66,5,Ups FIRE moves in a pinch.
 66,6,Ups FIRE moves in a pinch.
@@ -593,6 +723,8 @@ moves in a pinch."
 moves in a pinch."
 66,10,"Powers up Fire-type
 moves in a pinch."
+66,11,"Powers up Fire-type
+moves in a pinch."
 67,5,Ups WATER moves in a pinch.
 67,6,Ups WATER moves in a pinch.
 67,7,Ups WATER moves in a pinch.
@@ -601,6 +733,8 @@ moves in a pinch."
 67,9,"Powers up Water-type
 moves in a pinch."
 67,10,"Powers up Water-type
+moves in a pinch."
+67,11,"Powers up Water-type
 moves in a pinch."
 68,5,Ups BUG moves in a pinch.
 68,6,Ups BUG moves in a pinch.
@@ -611,6 +745,8 @@ moves in a pinch."
 moves in a pinch."
 68,10,"Powers up Bug-type
 moves in a pinch."
+68,11,"Powers up Bug-type
+moves in a pinch."
 69,5,Prevents recoil damage.
 69,6,Prevents recoil damage.
 69,7,Prevents recoil damage.
@@ -619,6 +755,8 @@ from recoil damage."
 69,9,"Protects the Pokémon
 from recoil damage."
 69,10,"Protects the Pokémon
+from recoil damage."
+69,11,"Protects the Pokémon
 from recoil damage."
 70,5,Summons sunlight in battle.
 70,6,Summons sunlight in battle.
@@ -629,6 +767,8 @@ sunny if it is in battle."
 sunny if it is in battle."
 70,10,"The Pokémon makes it
 sunny if it is in battle."
+70,11,"Turns the sunlight harsh
+if it is in battle."
 71,5,Prevents fleeing.
 71,6,Prevents fleeing.
 71,7,Prevents fleeing.
@@ -637,6 +777,8 @@ fleeing."
 71,9,"Prevents the foe from
 fleeing."
 71,10,"Prevents the foe from
+fleeing."
+71,11,"Prevents the foe from
 fleeing."
 72,5,Prevents sleep.
 72,6,Prevents sleep.
@@ -647,6 +789,8 @@ from falling asleep."
 from falling asleep."
 72,10,"Prevents the Pokémon
 from falling asleep."
+72,11,"Prevents the Pokémon
+from falling asleep."
 73,5,Prevents ability reduction.
 73,6,Prevents ability reduction.
 73,7,Prevents ability reduction.
@@ -656,6 +800,8 @@ stats from being lowered."
 stats from being lowered."
 73,10,"Prevents its stats from
 being lowered."
+73,11,"Prevents other Pokémon
+from lowering its stats."
 74,5,Raises ATTACK.
 74,6,Raises ATTACK.
 74,7,Raises ATTACK.
@@ -665,6 +811,8 @@ physical attacks."
 physical attacks."
 74,10,"Boosts the power of
 physical attacks."
+74,11,"Raises the Pokémon's
+Attack stat."
 75,5,Blocks critical hits.
 75,6,Blocks critical hits.
 75,7,Blocks critical hits.
@@ -673,6 +821,8 @@ against critical hits."
 75,9,"The Pokémon is protected
 against critical hits."
 75,10,"The Pokémon is protected
+against critical hits."
+75,11,"The Pokémon is protected
 against critical hits."
 76,5,Negates weather effects.
 76,6,Negates weather effects.
@@ -683,11 +833,15 @@ weather."
 weather."
 76,10,"Eliminates the effects of
 weather."
+76,11,"Eliminates the effects of
+weather."
 77,8,"Raises evasion if the
 Pokémon is confused."
 77,9,"Raises evasion if the
 Pokémon is confused."
 77,10,"Raises evasion if the
+Pokémon is confused."
+77,11,"Raises evasion if the
 Pokémon is confused."
 78,8,"Raises Speed if hit by an
 Electric-type move."
@@ -695,17 +849,23 @@ Electric-type move."
 Electric-type move."
 78,10,"Raises Speed if hit by an
 Electric-type move."
+78,11,"Raises Speed if hit by an
+Electric-type move."
 79,8,"Raises Attack if the foe
 is of the same gender."
 79,9,"Raises Attack if the foe
 is of the same gender."
 79,10,"Raises Attack if the foe
 is of the same gender."
+79,11,"Deals more damage to a
+Pokémon of same gender."
 80,8,"Raises Speed each time
 the Pokémon flinches."
 80,9,"Raises Speed each time
 the Pokémon flinches."
 80,10,"Raises Speed each time
+the Pokémon flinches."
+80,11,"Raises Speed each time
 the Pokémon flinches."
 81,8,"Raises evasion in a
 hailstorm."
@@ -713,11 +873,15 @@ hailstorm."
 hailstorm."
 81,10,"Raises evasion in a
 hailstorm."
+81,11,"Raises evasion in a
+hailstorm."
 82,8,"Encourages the early use
 of a held Berry."
 82,9,"Encourages the early use
 of a held Berry."
 82,10,"Encourages the early use
+of a held Berry."
+82,11,"Encourages the early use
 of a held Berry."
 83,8,"Raises Attack upon taking
 a critical hit."
@@ -725,11 +889,15 @@ a critical hit."
 a critical hit."
 83,10,"Raises Attack upon
 taking a critical hit."
+83,11,"Maxes Attack after
+taking a critical hit."
 84,8,"Raises Speed if a held
 item is used."
 84,9,"Raises Speed if a held
 item is used."
 84,10,"Raises Speed if a held
+item is used."
+84,11,"Raises Speed if a held
 item is used."
 85,8,"Weakens the power of
 Fire-type moves."
@@ -737,11 +905,15 @@ Fire-type moves."
 Fire-type moves."
 85,10,"Weakens the power of
 Fire-type moves."
+85,11,"Weakens the power of
+Fire-type moves."
 86,8,"The Pokémon is prone to
 wild stat changes."
 86,9,"The Pokémon is prone to
 wild stat changes."
 86,10,"The Pokémon is prone to
+wild stat changes."
+86,11,"The Pokémon is prone to
 wild stat changes."
 87,8,"Reduces HP if it is hot.
 Water restores HP."
@@ -749,17 +921,23 @@ Water restores HP."
 Water restores HP."
 87,10,"Reduces HP if it is hot.
 Water restores HP."
+87,11,"Reduces HP if it is hot.
+Water restores HP."
 88,8,"Adjusts power according
 to the foe’s ability."
 88,9,"Adjusts power according
 to the foe’s ability."
 88,10,"Adjusts power according
 to the foe’s ability."
+88,11,"Adjusts power according
+to a foe's defenses."
 89,8,"Boosts the power of
 punching moves."
 89,9,"Boosts the power of
 punching moves."
 89,10,"Boosts the power of
+punching moves."
+89,11,"Boosts the power of
 punching moves."
 90,8,"Restores HP if the
 Pokémon is poisoned."
@@ -767,11 +945,15 @@ Pokémon is poisoned."
 Pokémon is poisoned."
 90,10,"Restores HP if the
 Pokémon is poisoned."
+90,11,"Restores HP if the
+Pokémon is poisoned."
 91,8,"Powers up moves of the
 same type."
 91,9,"Powers up moves of the
 same type."
 91,10,"Powers up moves of the
+same type."
+91,11,"Powers up moves of the
 same type."
 92,8,"Increases the frequency
 of multi-strike moves."
@@ -779,11 +961,15 @@ of multi-strike moves."
 of multi-strike moves."
 92,10,"Increases the frequency
 of multi-strike moves."
+92,11,"Increases the frequency
+of multi-strike moves."
 93,8,"Heals status problems if
 it is raining."
 93,9,"Heals status problems if
 it is raining."
 93,10,"Heals status problems if
+it is raining."
+93,11,"Heals status problems if
 it is raining."
 94,8,"Boosts Sp. Atk, but
 lowers HP in sunshine."
@@ -791,11 +977,15 @@ lowers HP in sunshine."
 lowers HP in sunshine."
 94,10,"Boosts Sp. Atk, but
 lowers HP in sunshine."
+94,11,"In sunshine, Sp. Atk is
+boosted but HP decreases."
 95,8,"Boosts Speed if there is a
 status problem."
 95,9,"Boosts Speed if there is a
 status problem."
 95,10,"Boosts Speed if there is
+a status problem."
+95,11,"Boosts Speed if there is
 a status problem."
 96,8,"All the Pokémon’s moves
 become the Normal type."
@@ -803,11 +993,15 @@ become the Normal type."
 become the Normal type."
 96,10,"All the Pokémon’s moves
 become the Normal type."
+96,11,"All the Pokémon's moves
+become the Normal type."
 97,8,"Powers up moves if they
 become critical hits."
 97,9,"Powers up moves if they
 become critical hits."
 97,10,"Powers up moves if they
+become critical hits."
+97,11,"Powers up moves if they
 become critical hits."
 98,8,"The Pokémon only takes
 damage from attacks."
@@ -815,23 +1009,31 @@ damage from attacks."
 damage from attacks."
 98,10,"The Pokémon only takes
 damage from attacks."
+98,11,"The Pokémon only takes
+damage from attacks."
 99,8,"Ensures the Pokémon and
 its foe’s attacks land."
 99,9,"Ensures the Pokémon and
 its foe’s attacks land."
 99,10,"Ensures both Pokémon’s
 and foe’s attacks land."
+99,11,"Ensures attacks by or
+against the Pokémon land."
 100,8,"The Pokémon moves after
 even slower foes."
 100,9,"The Pokémon moves after
 even slower foes."
 100,10,"The Pokémon moves after
 even slower foes."
+100,11,"The Pokémon moves after
+all other Pokémon do."
 101,8,"Powers up the Pokémon’s
 weaker moves."
 101,9,"Powers up the Pokémon’s
 weaker moves."
 101,10,"Powers up the Pokémon’s
+weaker moves."
+101,11,"Powers up the Pokémon's
 weaker moves."
 102,8,"Prevents status problems
 in sunny weather."
@@ -839,11 +1041,15 @@ in sunny weather."
 in sunny weather."
 102,10,"Prevents problems with
 status in sunny weather."
+102,11,"Prevents problems with
+status in sunny weather."
 103,8,"The Pokémon can’t use
 any held items."
 103,9,"The Pokémon can’t use
 any held items."
 103,10,"The Pokémon can’t use
+any held items."
+103,11,"The Pokémon can't use
 any held items."
 104,8,"Moves can be used
 regardless of abilities."
@@ -851,11 +1057,15 @@ regardless of abilities."
 regardless of abilities."
 104,10,"Moves can be used
 regardless of abilities."
+104,11,"Moves can be used
+regardless of Abilities."
 105,8,"Heightens the critical-hit
 ratios of moves."
 105,9,"Heightens the critical-hit
 ratios of moves."
 105,10,"Heightens the critical-
+hit ratios of moves."
+105,11,"Heightens the critical-
 hit ratios of moves."
 106,8,"Damages the foe landing
 the finishing hit."
@@ -863,11 +1073,15 @@ the finishing hit."
 the finishing hit."
 106,10,"Damages the foe landing
 the finishing hit."
+106,11,"Damages the attacker
+landing the finishing hit."
 107,8,"Senses the foe’s
 dangerous moves."
 107,9,"Senses the foe’s
 dangerous moves."
 107,10,"Senses the foe’s
+dangerous moves."
+107,11,"Senses a foe's
 dangerous moves."
 108,8,"Determines what moves
 the foe has."
@@ -875,23 +1089,31 @@ the foe has."
 the foe has."
 108,10,"Determines what moves
 the foe has."
+108,11,"Determines what moves
+a foe has."
 109,8,"Ignores any change in
 ability by the foe."
 109,9,"Ignores any change in
 ability by the foe."
 109,10,"Ignores any change in
 ability by the foe."
+109,11,"Ignores any stat changes
+in the Pokémon."
 110,8,"Powers up “not very
 effective” moves."
 110,9,"Powers up “not very
 effective” moves."
 110,10,"Powers up “not very
 effective” moves."
+110,11,"Powers up “not very
+effective"" moves."
 111,8,"Powers down super­
 effective moves."
 111,9,"Powers down super­
 effective moves."
 111,10,"Reduces damage from
+supereffective attacks."
+111,11,"Reduces damage from
 supereffective attacks."
 112,8,"Temporarily halves Attack
 and Speed."
@@ -899,35 +1121,47 @@ and Speed."
 and Speed."
 112,10,"Temporarily halves
 Attack and Speed."
+112,11,"Temporarily halves
+Attack and Speed."
 113,8,"Enables moves to hit
 Ghost-type foes."
 113,9,"Enables moves to hit
 Ghost-type foes."
 113,10,"Enables moves to hit
 Ghost-type foes."
+113,11,"Enables moves to hit
+Ghost-type Pokémon."
 114,8,"The Pokémon draws in all
 Water-type moves."
 114,9,"The Pokémon draws in all
 Water-type moves."
 114,10,"The Pokémon draws in all
 Water-type moves."
+114,11,"Draws in all Water-type
+moves to up Sp. Attack."
 115,8,"The Pokémon regains HP in
 a hailstorm."
 115,9,"The Pokémon regains HP in
 a hailstorm."
 115,10,"The Pokémon regains HP in
 a hailstorm."
+115,11,"The Pokémon gradually
+regains HP in a hailstorm."
 116,8,"Powers down super­
 effective moves."
 116,9,"Powers down super­
 effective moves."
 116,10,"Reduces damage from
 supereffective attacks"
+116,11,"Reduces damage from
+supereffective attacks."
 117,8,"The Pokémon summons a
 hailstorm in battle."
 117,9,"The Pokémon summons a
 hailstorm in battle."
 117,10,"The Pokémon summons a
+hailstorm in battle."
+117,11,"The Pokémon summons a
 hailstorm in battle."
 118,8,"The Pokémon may gather
 Honey from somewhere."
@@ -935,17 +1169,23 @@ Honey from somewhere."
 Honey from somewhere."
 118,10,"The Pokémon may gather
 Honey from somewhere."
+118,11,"The Pokémon may gather
+Honey from somewhere."
 119,8,"The Pokémon can check
 the foe’s held item."
 119,9,"The Pokémon can check
 the foe’s held item."
 119,10,"The Pokémon can check
 the foe’s held item."
+119,11,"The Pokémon can check
+a foe's held item."
 120,8,"Powers up moves that
 have recoil damage."
 120,9,"Powers up moves that
 have recoil damage."
 120,10,"Powers up moves that
+have recoil damage."
+120,11,"Powers up moves that
 have recoil damage."
 121,8,"Changes type to match
 the held Plate."
@@ -953,11 +1193,15 @@ the held Plate."
 the held Plate."
 121,10,"Changes type to match
 the held Plate."
+121,11,"Changes type to match
+the held Plate."
 122,8,"Powers up party Pokémon
 when it is sunny."
 122,9,"Powers up party Pokémon
 when it is sunny."
 122,10,"Powers up party Pokémon
+when it is sunny."
+122,11,"Powers up party Pokémon
 when it is sunny."
 123,8,"Reduces a sleeping foe’s
 HP."
@@ -965,44 +1209,87 @@ HP."
 HP."
 123,10,"Reduces a sleeping
 foe’s HP."
-124,11,触られた　相手から 道具を　盗む。
-125,11,力が　強くなるが 追加効果が　なくなる。
-126,11,能力の　変化が 逆転する。
-127,11,相手を　緊張させ きのみを　食べさせない。
-128,11,能力が　さがると 攻撃が　あがる。
-129,11,ＨＰが　半分になると 能力が　さがる。
-130,11,攻撃されると　たまに かなしばりにする。
-131,11,味方の　状態異常を たまに　治す。
-132,11,味方の　ダメージを 減らすことができる。
-133,11,物理技で　防御がさがり 素早さが　あがる。
-134,11,自分の　重さが ２倍に　なる。
-135,11,自分の　重さが 半分に　なる。
-136,11,ＨＰが　満タンのときに ダメージが　少なくなる。
-137,11,毒のとき　物理の 威力が　あがる。
-138,11,やけどのとき　特殊の 威力が　あがる。
-139,11,使った　きのみを 何回も　つくりだす。
-140,11,味方の　攻撃を 読み取って　受けない。
-141,11,能力が　あがったり さがったりする。
-142,11,天気の　影響で ダメージを　受けない。
-143,11,触るだけで　相手を　 毒にすることがある。
-144,11,ひっこめると ＨＰが 少し　回復する。
-145,11,防御を　さげる 攻撃を　受けない。
-146,11,砂あらしで 素早さが　あがる。
-147,11,変化技を　受けにくい 体に　なっている。
-148,11,一番　最後に 技をだすと　強くなる。
-149,11,後ろの　ポケモンに なりきって　でてくる。
-150,11,目の前の　ポケモンに 変身してしまう。
-151,11,相手の　かべを すりぬけて　攻撃。
-152,11,相手に　触られると 相手を　ミイラにする。
-153,11,相手を　倒すと 攻撃が　あがる。
-154,11,あくを　受けると 攻撃が　あがる。
-155,11,びびって　素早さが あがる　タイプがある。
-156,11,変化技を　返す ことが　できる。
-157,11,くさの　技を　受けると 攻撃が　あがる。
-158,11,変化技を　先制で だすことが　できる。
-159,11,砂あらしで　威力が あがる　技がある。
-160,11,触れた　相手を キズつける。
-161,11,ピンチに　なると 姿が　変化する。
-162,11,自分や　味方の 命中が　あがる。
-163,11,特性に　関係なく 相手に　技を　だせる。
-164,11,特性に　関係なく 相手に　技を　だせる。
+123,11,"Reduces a sleeping
+foe's HP."
+124,11,"Steals an item when hit
+by another Pokémon."
+125,11,"Removes added effects to
+increase move damage."
+126,11,"Makes stat changes have
+an opposite effect."
+127,11,"Makes the foe nervous and
+unable to eat Berries."
+128,11,"When its stats are lowered
+its Attack increases."
+129,11,"Lowers stats when HP
+becomes half or less."
+130,11,"May disable a move used
+on the Pokémon."
+131,11,"May heal an ally's status
+conditions."
+132,11,"Reduces damage done
+to allies."
+133,11,"Physical attacks lower
+Defense and raise Speed."
+134,11,"Doubles the Pokémon's
+weight."
+135,11,"Halves the Pokémon's
+weight."
+136,11,"Reduces damage when HP
+is full."
+137,11,"Powers up physical
+attacks when poisoned."
+138,11,"Powers up special attacks
+when burned."
+139,11,"May create another
+Berry after one is used."
+140,11,"Anticipates an ally's
+attack and dodges it."
+141,11,"Raises one stat and
+lowers another."
+142,11,"Protects the Pokémon from
+damage from weather."
+143,11,"May poison targets when a
+Pokémon makes contact."
+144,11,"Restores a little HP when
+withdrawn from battle."
+145,11,"Protects the Pokémon from
+Defense-lowering attacks."
+146,11,"Boosts the Pokémon's
+Speed in a sandstorm."
+147,11,"Makes status-changing
+moves more likely to miss."
+148,11,"Boosts move power when
+the Pokémon moves last."
+149,11,"Comes out disguised as
+the Pokémon in back."
+150,11,"It transforms itself into
+the Pokémon it is facing."
+151,11,"Passes through the foe's
+barrier and strikes."
+152,11,"Contact with this Pokémon
+spreads this Ability."
+153,11,"Boosts Attack after
+knocking out any Pokémon."
+154,11,"Raises Attack when hit by
+a Dark-type move."
+155,11,"Some move types scare
+it and boost its Speed."
+156,11,"Reflects status-
+changing moves."
+157,11,"Boosts Attack when hit by
+a Grass-type move."
+158,11,"Gives priority to a
+status move."
+159,11,"Boosts certain moves'
+power in a sandstorm."
+160,11,"Inflicts damage to the
+Pokémon on contact."
+161,11,"Changes the Pokémon's
+shape when HP is halved."
+162,11,"Boosts the accuracy of its
+allies and itself."
+163,11,"Moves can be used
+regardless of Abilities."
+164,11,"Moves can be used
+regardless of Abilities."
