@@ -105,6 +105,10 @@ class SaveFilePokemon(object):
 
         st = self.structure
         self._pokemon = session.query(tables.Pokemon).get(st.national_id)
+        self._pokemon_form = session.query(tables.PokemonForm) \
+            .with_parent(self._pokemon) \
+            .filter_by(name=st.alternate_form) \
+            .one()
         self._ability = self._session.query(tables.Ability).get(st.ability_id)
 
         growth_rate = self._pokemon.evolution_chain.growth_rate
@@ -187,6 +191,10 @@ class SaveFilePokemon(object):
     def species(self):
         # XXX forme!
         return self._pokemon
+
+    @property
+    def species_form(self):
+        return self._pokemon_form
 
     @property
     def pokeball(self):
