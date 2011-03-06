@@ -628,6 +628,44 @@ class MoveFlavorText(TableBase):
     flavor_text = Column(Unicode(255), nullable=False,
         info=dict(description="The English flavor text", official=True, format='gametext'))
 
+class MoveMeta(TableBase):
+    u"""Metadata for move effects, sorta-kinda ripped straight from the game"""
+    __tablename__ = 'move_meta'
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+    meta_category_id = Column(Integer, ForeignKey('move_meta_categories.id'), nullable=False)
+    meta_ailment_id = Column(Integer, ForeignKey('move_meta_ailments.id'), nullable=False)
+    min_hits = Column(Integer, nullable=True, index=True)
+    max_hits = Column(Integer, nullable=True, index=True)
+    min_turns = Column(Integer, nullable=True, index=True)
+    max_turns = Column(Integer, nullable=True, index=True)
+    recoil = Column(Integer, nullable=False, index=True)
+    healing = Column(Integer, nullable=False, index=True)
+    crit_rate = Column(Integer, nullable=False, index=True)
+    ailment_chance = Column(Integer, nullable=False, index=True)
+    flinch_chance = Column(Integer, nullable=False, index=True)
+    stat_chance = Column(Integer, nullable=False, index=True)
+
+class MoveMetaAilment(TableBase):
+    u"""Common status ailments moves can inflict on a single Pokémon, including
+    major ailments like paralysis and minor ailments like trapping.
+    """
+    __tablename__ = 'move_meta_ailments'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(Unicode(24), nullable=False)
+
+class MoveMetaCategory(TableBase):
+    u"""Very general categories that loosely group move effects."""
+    __tablename__ = 'move_meta_categories'
+    id = Column(Integer, primary_key=True, nullable=False)
+    description = Column(Unicode(64), nullable=False)
+
+class MoveMetaStatChange(TableBase):
+    u"""Stat changes moves (may) make."""
+    __tablename__ = 'move_meta_stat_changes'
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
+    stat_id = Column(Integer, ForeignKey('stats.id'), primary_key=True, nullable=False, autoincrement=False)
+    change = Column(Integer, nullable=False, index=True)
+
 class MoveName(TableBase):
     u"""Non-English name of a move
     """
@@ -1431,6 +1469,8 @@ Move.flavor_text = relation(MoveFlavorText, order_by=MoveFlavorText.version_grou
 Move.foreign_names = relation(MoveName, backref='move')
 Move.generation = relation(Generation, backref='moves')
 Move.machines = relation(Machine, backref='move')
+Move.meta = relation(MoveMeta, uselist=False, backref='move')
+Move.meta_stat_changes = relation(MoveMetaStatChange)
 Move.move_effect = relation(MoveEffect, backref='moves')
 Move.move_flags = relation(MoveFlag, backref='move')
 Move.super_contest_effect = relation(SuperContestEffect, backref='moves')
@@ -1462,6 +1502,11 @@ MoveEffectChangelog.changed_in = relation(VersionGroup, backref='move_effect_cha
 MoveFlag.flag = relation(MoveFlagType)
 
 MoveFlavorText.version_group = relation(VersionGroup)
+
+MoveMeta.category = relation(MoveMetaCategory, backref='move_meta')
+MoveMeta.ailment = relation(MoveMetaAilment, backref='move_meta')
+
+MoveMetaStatChange.stat = relation(Stat, backref='move_meta_stat_changes')
 
 MoveName.language = relation(Language)
 

@@ -5,3 +5,5 @@ id,damage_class_id,name
 4,3,Special Attack
 5,3,Special Defense
 6,,Speed
+7,,accuracy
+8,,evasion
