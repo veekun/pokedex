@@ -1258,6 +1258,17 @@ class Stat(TableBase):
     name = Column(Unicode(16), nullable=False,
         info=dict(description=u"The English name of the stat", official=True, format='plaintext'))
 
+class StatHint(TableBase):
+    u"""Flavor text for genes that appears in a Pokémon's summary.  Sometimes
+    called "characteristics".
+    """
+    __tablename__ = 'stat_hints'
+    id = Column(Integer, primary_key=True, nullable=False)
+    stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False)
+    gene_mod_5 = Column(Integer, nullable=False, index=True)
+    text = Column(Unicode(24), nullable=False, index=True, unique=True,
+        info=dict(description=u"The English text displayed", official=True, format='plaintext'))
+
 class SuperContestCombo(TableBase):
     u"""Combo of two moves in a Super Contest.
     """
@@ -1661,6 +1672,8 @@ Region.version_group_regions = relation(VersionGroupRegion, backref='region',
 Region.version_groups = association_proxy('version_group_regions', 'version_group')
 
 Stat.damage_class = relation(MoveDamageClass, backref='stats')
+
+StatHint.stat = relation(Stat, backref='hints')
 
 SuperContestCombo.first = relation(Move, primaryjoin=SuperContestCombo.first_move_id==Move.id,
                                         backref='super_contest_combo_first')
