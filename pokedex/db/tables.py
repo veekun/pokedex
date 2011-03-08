@@ -25,7 +25,9 @@ from sqlalchemy.ext.declarative import (
         declarative_base, declared_attr, DeclarativeMeta,
     )
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import backref, eagerload_all, relation, class_mapper
+from sqlalchemy.orm import (
+        backref, eagerload_all, relation, class_mapper, synonym, mapper,
+    )
 from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.collections import attribute_mapped_collection
 from sqlalchemy.sql import and_
@@ -1770,52 +1772,53 @@ def makeTextTable(object_table, name_plural, name_singular, columns, lazy):
     if safe_name == 'language':
         safe_name = 'lang'
 
-    fields = {
-            safe_name + '_id': Column(Integer,
-                    ForeignKey(object_table.id), primary_key=True, nullable=False,
-                    info=dict(description="ID of the object this table represents")
-                ),
-            '__tablename__': table.__singlename__ + '_' + name_plural,
-            '__singlename__': table.__singlename__ + '_' + name_singular,
-            'is_%s_table' % name_singular: True,
-        }
+    tablename = object_table.__singlename__ + '_' + name_plural
+    singlename = object_table.__singlename__ + '_' + name_singular
 
-    fields.update((name, col) for name, plural, col in columns)
+    class Strings(object):
+        __tablename__ = tablename
+        __singlename__ = singlename
 
-    name = table.__name__ + name_singular.capitalize()
+    for name, plural, column in columns:
+        column.name = name
 
-    # There are some dynamic things that can only be set at class
-    # creation time because of declarative metaclass magic.
-    # So create class dynamically.
-    Strings = type(name, (TableBase, LanguageSpecific), fields)
+    table = Table(tablename, metadata,
+            Column(safe_name + '_id', Integer, ForeignKey(object_table.id),
+                    primary_key=True, nullable=False),
+            Column('language_id', Integer, ForeignKey(Language.id),
+                    primary_key=True, nullable=False),
+            *(column for name, plural, column in columns)
+        )
 
-    # Alias the described thing to 'object', to make meta stuff easier
-    Strings.object_id = getattr(Strings, safe_name + '_id')
+    mapper(Strings, table,
+            properties={
+                    "object_id": synonym(safe_name + '_id'),
+                    "language": relation(
+                            Language,
+                            primaryjoin=table.c.language_id == Language.id,
+                        ),
+                },
+        )
 
     # The relation to the object
-    setattr(table, name_plural, relation(
+    setattr(object_table, name_plural, relation(
             Strings,
-            primaryjoin=(table.id == Strings.object_id),
+            primaryjoin=(object_table.id == Strings.object_id),
             backref=safe_name,
             collection_class=attribute_mapped_collection('language'),
             lazy=lazy,
         ))
-
     Strings.object = getattr(Strings, safe_name)
 
-    Strings.object_table = table
-    setattr(table, name_singular + '_table', Strings)
-
-    Strings.language = relation(
-            Language,
-            primaryjoin=Strings.language_id == Language.id,
-        )
+    # Link the tables themselves, so we can get to them
+    Strings.object_table = object_table
+    setattr(object_table, name_singular + '_table', Strings)
 
     for colname, pluralname, column in columns:
         # Provide a relation with all the names, and an English accessor
         # for backwards compatibility
         def scope(colname, pluralname, column):
-            def get_string(self):
+            def get_strings(self):
                 return dict(
                         (l, getattr(t, colname))
                         for l, t in getattr(self, name_plural).items()
@@ -1823,16 +1826,16 @@ def makeTextTable(object_table, name_plural, name_singular, columns, lazy):
 
             def get_english_string(self):
                 try:
-                    return get_string(self)['en']
+                    return get_strings(self)['en']
                 except KeyError:
                     raise AttributeError(colname)
 
-            setattr(table, pluralname, property(get_string))
-            setattr(table, colname, property(get_english_string))
+            setattr(object_table, pluralname, property(get_strings))
+            setattr(object_table, colname, property(get_english_string))
         scope(colname, pluralname, column)
 
         if colname == 'name':
-            table.name_table = Strings
+            object_table.name_table = Strings
 
     return Strings
 
