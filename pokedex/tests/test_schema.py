@@ -19,7 +19,7 @@ def test_variable_names():
         classname = table.__name__
         if classname and varname[0].isupper():
             assert varname == classname, '%s refers to %s' % (varname, classname)
-    for table in tables.all_tables():
+    for table in tables.table_classes:
         assert getattr(tables, table.__name__) is table
 
 def test_texts():
@@ -28,7 +28,7 @@ def test_texts():
     Mostly protects against copy/paste oversights and rebase hiccups.
     If there's a reason to relax the tests, do it
     """
-    for table in sorted(tables.all_tables(), key=lambda t: t.__name__):
+    for table in sorted(tables.table_classes, key=lambda t: t.__name__):
         if issubclass(table, tables.LanguageSpecific):
             good_formats = 'markdown plaintext gametext'.split()
             assert_text = '%s is language-specific'
@@ -61,7 +61,7 @@ def test_identifiers_with_names():
 
     ...have either names or identifiers.
     """
-    for table in sorted(tables.all_tables(), key=lambda t: t.__name__):
+    for table in sorted(tables.table_classes, key=lambda t: t.__name__):
         if issubclass(table, tables.Named):
             assert issubclass(table, tables.OfficiallyNamed) or issubclass(table, tables.UnofficiallyNamed), table
             assert hasattr(table, 'identifier'), table
