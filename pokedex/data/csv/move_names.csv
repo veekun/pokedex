@@ -2341,20 +2341,28 @@ move_id,language_id,name
 468,8,Unghiaguzze
 469,1,ワイドガード
 469,5,Garde Large
+469,6,Rundumschutz
 470,1,ガードシェア
 470,5,PartageGarde
+470,6,Schutzteiler
 471,1,パワーシェア
 471,5,PartageForce
+471,6,Kraftteiler
 472,1,ワンダールーム
 472,5,Zone Étrange
+472,6,Wunderraum
 473,1,サイコショック
 473,5,Choc Psy
+473,6,Psychoschock
 474,1,ベノムショック
 474,5,Choc Venin
+474,6,Giftschock
 475,1,ボディパージ
 475,5,Allègement
+475,6,Autotomie
 476,1,いかりのこな
 476,5,PoudreFureur
+476,6,Wutpulver
 477,1,テレキネシス
 477,5,Lévikinésie
 477,6,Telekinese
@@ -2362,10 +2370,13 @@ move_id,language_id,name
 477,8,Telecinesi
 478,1,マジックルーム
 478,5,Zone Magique
+478,6,Magieraum
 479,1,うちおとす
 479,5,Anti-Air
+479,6,Katapult
 480,1,やまあらし
 480,5,Yama Arashi
+480,6,Bergsturm
 481,1,はじけるほのお
 481,5,Rebondifeu
 481,6,Funkenflug
@@ -2373,12 +2384,16 @@ move_id,language_id,name
 481,8,Pirolancio
 482,1,ヘドロウェーブ
 482,5,Cradovague
+482,6,Schlammwoge
 483,1,ちょうのまい
 483,5,Papillodanse
+483,6,Falterreigen
 484,1,ヘビーボンバー
 484,5,Tacle Lourd
+484,6,Rammboss
 485,1,シンクロノイズ
 485,5,Synchropeine
+485,6,Synchrolärm
 486,1,エレキボール
 486,5,Boule Élek
 486,6,Elektroball
@@ -2386,14 +2401,19 @@ move_id,language_id,name
 486,8,Energisfera
 487,1,みずびたし
 487,5,Détrempage
+487,6,Überflutung
 488,1,ニトロチャージ
 488,5,Nitrocharge
+488,6,Nitroladung
 489,1,とぐろをまく
 489,5,Enroulement
+489,6,Einrollen
 490,1,ローキック
 490,5,Balayette
+490,6,Fußtritt
 491,1,アシッドボム
 491,5,Bombe Acide
+491,6,Säurespeier
 492,1,イカサマ
 492,5,Tricherie
 492,6,Schmarotzer
@@ -2401,8 +2421,10 @@ move_id,language_id,name
 492,8,Ripicca
 493,1,シンプルビーム
 493,5,Rayon Simple
+493,6,Wankelstrahl
 494,1,なかまづくり
 494,5,Ten-danse
+494,6,Zwango
 495,1,おさきにどうぞ
 495,5,Après Vous
 495,6,Galanterie
@@ -2415,16 +2437,22 @@ move_id,language_id,name
 496,8,Coro
 497,1,エコーボイス
 497,5,Écho
+497,6,Widerhall
 498,1,なしくずし
 498,5,Attrition
+498,6,Zermürben
 499,1,クリアスモッグ
 499,5,Bain de Smog
+499,6,Klärsmog
 500,1,アシストパワー
 500,5,ForceAjoutée
+500,6,Kraftvorrat
 501,1,ファストガード
 501,5,Prévention
+501,6,Rapidschutz
 502,1,サイドチェンジ
 502,5,Interversion
+502,6,Seitentausch
 503,1,ねっとう
 503,5,Ébullition
 503,6,Siedewasser
@@ -2432,6 +2460,7 @@ move_id,language_id,name
 503,8,Idrovampata
 504,1,からをやぶる
 504,5,Exuviation
+504,6,Hausbruch
 505,1,いやしのはどう
 505,5,Vibra Soin
 505,6,Heilwoge
@@ -2449,12 +2478,16 @@ move_id,language_id,name
 507,8,Cadutalibera
 508,1,ギアチェンジ
 508,5,Chgt Vitesse
+508,6,Gangwechsel
 509,1,ともえなげ
 509,5,Projection
+509,6,Überkopfwurf
 510,1,やきつくす
 510,5,Calcination
+510,6,Einäschern
 511,1,さきおくり
 511,5,À la Queue
+511,6,Verzögerung
 512,1,アクロバット
 512,5,Acrobatie
 512,6,Akrobatik
@@ -2462,6 +2495,7 @@ move_id,language_id,name
 512,8,Acrobazia
 513,1,ミラータイプ
 513,5,Copie Type
+513,6,Typenspiegel
 514,1,かたきうち
 514,5,Vengeance
 514,6,Heimzahlung
@@ -2469,18 +2503,25 @@ move_id,language_id,name
 514,8,Nemesi
 515,1,いのちがけ
 515,5,Tout ou Rien
+515,6,Wagemut
 516,1,ギフトパス
 516,5,Passe-Cadeau
+516,6,Offerte
 517,1,れんごく
 517,5,Feu d'Enfer
+517,6,Inferno
 518,1,みずのちかい
 518,5,Aire d'Eau
+518,6,Wassersäulen
 519,1,ほのおのちかい
 519,5,Aire de Feu
+519,6,Feuersäulen
 520,1,くさのちかい
 520,5,Aire d'Herbe
+520,6,Pflanzsäulen
 521,1,ボルトチェンジ
 521,5,ChangeÉclair
+521,6,Voltwechsel
 522,1,むしのていこう
 522,5,Survinsecte
 522,6,Käfertrutz
@@ -2488,8 +2529,10 @@ move_id,language_id,name
 522,8,Entomoblocco
 523,1,じならし
 523,5,Piétisol
+523,6,Dampfwalze
 524,1,こおりのいぶき
 524,5,SouffleGlacé
+524,6,Eisesodem
 525,1,ドラゴンテール
 525,5,Draco-Queue
 525,6,Drachenrute
@@ -2502,6 +2545,7 @@ move_id,language_id,name
 526,8,Cuordileone
 527,1,エレキネット
 527,5,Toile Élek
+527,6,Elektronetz
 528,1,ワイルドボルト
 528,5,Éclair Fou
 528,6,Stromstoß
@@ -2529,20 +2573,28 @@ move_id,language_id,name
 532,8,Legnicorno
 533,1,せいなるつるぎ
 533,5,Lame Sainte
+533,6,Sanctoklinge
 534,1,シェルブレード
 534,5,Coquilame
+534,6,Kalkklinge
 535,1,ヒートスタンプ
 535,5,Tacle Feu
+535,6,Brandstempel
 536,1,グラスミキサー
 536,5,Phytomixeur
+536,6,Grasmixer
 537,1,ハードローラー
 537,5,Bulldoboule
+537,6,Quetschwalze
 538,1,コットンガード
 538,5,Cotogarde
+538,6,Watteschild
 539,1,ナイトバースト
 539,5,Explonuit
+539,6,Nachtflut
 540,1,サイコブレイク
 540,5,Frappe Psy
+540,6,Psychostoß
 541,1,スイープビンタ
 541,5,Plumo-Queue
 541,6,Kehrschelle
@@ -2555,38 +2607,55 @@ move_id,language_id,name
 542,8,Tifone
 543,1,アフロブレイク
 543,5,Peignée
+543,6,Steinschädel
 544,1,ギアソーサー
 544,5,Lancécrou
+544,6,Klikkdiskus
 545,1,かえんだん
 545,5,Incendie
+545,6,Flammenball
 546,1,テクノバスター
 546,5,TechnoBuster
+546,6,Techblaster
 547,1,いにしえのうた
 547,5,ChantAntique
+547,6,Urgesang
 548,1,しんぴのつるぎ
 548,5,Lame Ointe
+548,6,Mystoschwert
 549,1,こごえるせかい
 549,5,ÈreGlaciaire
+549,6,Eiszeit
 550,1,らいげき
 550,5,ChargeFoudre
+550,6,Blitzschlag
 551,1,あおいほのお
 551,5,Flamme Bleue
+551,6,Blauflammen
 552,1,ほのおのまい
 552,5,Danse du Feu
+552,6,Feuerreigen
 553,1,フリーズボルト
 553,5,Éclair Gelé
+553,6,Frostvolt
 554,1,コールドフレア
 554,5,Feu Glacé
+554,6,Frosthauch
 555,1,バークアウト
 555,5,Aboiement
+555,6,Standpauke
 556,1,つららおとし
 556,5,Chute Glace
+556,6,Eiszapfhagel
 557,1,Ｖジェネレート
 557,5,CoupVictoire
+557,6,V-Generator
 558,1,クロスフレイム
 558,5,Flamme Croix
+558,6,Kreuzflamme
 559,1,クロスサンダー
 559,5,Éclair Croix
+559,6,Kreuzdonner
 10001,1,ダークラッシュ
 10001,5,Charge Noire
 10001,6,Cryptoschlag

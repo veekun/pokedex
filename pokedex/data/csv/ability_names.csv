@@ -351,7 +351,7 @@ ability_id,language_id,name
 70,8,Siccità
 71,1,ありじごく
 71,5,Piège
-71,6,Auswegslos
+71,6,Ausweglos
 71,7,Trampa Arena
 71,8,Trappoarena
 72,1,やるき
@@ -616,6 +616,7 @@ ability_id,language_id,name
 123,8,Sogniamari
 124,1,わるいてぐせ
 124,5,Pickpocket
+124,6,Langfinger
 125,1,ちからずく
 125,5,Sans Limite
 125,6,Rohe Gewalt
@@ -623,6 +624,7 @@ ability_id,language_id,name
 125,8,Forzabruta
 126,1,あまのじゃく
 126,5,Contestation
+126,6,Umkehrung
 127,1,きんちょうかん
 127,5,Tension
 127,6,Anspannung
@@ -630,10 +632,13 @@ ability_id,language_id,name
 127,8,Agitazione
 128,1,まけんき
 128,5,Acharné
+128,6,Siegeswille
 129,1,よわき
 129,5,Défaitiste
+129,6,Schwächling
 130,1,のろわれボディ
 130,5,Corps Maudit
+130,6,Tastfluch
 131,1,いやしのこころ
 131,5,Cœur Soin
 131,6,Heilherz
@@ -641,24 +646,34 @@ ability_id,language_id,name
 131,8,Curacuore
 132,1,フレンドガード
 132,5,Garde Amie
+132,6,Freundeshut
 133,1,くだけるよろい
 133,5,Armurouillée
+133,6,Bruchrüstung
 134,1,ヘヴィメタル
 134,5,Heavy Metal
+134,6,Schwermetall
 135,1,ライトメタル
 135,5,Light Metal
+135,6,Leichtmetall
 136,1,マルチスケイル
 136,5,Multiécaille
+136,6,Multischuppe
 137,1,どくぼうそう
 137,5,Rage Poison
+137,6,Giftwahn
 138,1,ねつぼうそう
 138,5,Rage Brûlure
+138,6,Hitzewahn
 139,1,しゅうかく
 139,5,Récolte
+139,6,Reiche Ernte
 140,1,テレパシー
 140,5,Télépathe
+140,6,Telepathie
 141,1,ムラっけ
 141,5,Lunatique
+141,6,Gefühlswippe
 142,1,ぼうじん
 142,5,Envelocape
 142,6,Wetterfest
@@ -666,6 +681,7 @@ ability_id,language_id,name
 142,8,Copricapo
 143,1,どくしゅ
 143,5,Toxitouche
+143,6,Giftgriff
 144,1,さいせいりょく
 144,5,Régé-Force
 144,6,Belebekraft
@@ -683,8 +699,10 @@ ability_id,language_id,name
 146,8,Remasabbia
 147,1,ミラクルスキン
 147,5,Peau Miracle
+147,6,Wunderhaut
 148,1,アナライズ
 148,5,Analyste
+148,6,Analyse
 149,1,イリュージョン
 149,5,Illusion
 149,6,Trugbild
@@ -692,8 +710,10 @@ ability_id,language_id,name
 149,8,Illusione
 150,1,かわりもの
 150,5,Imposteur
+150,6,Doppelgänger
 151,1,すりぬけ
 151,5,Infiltration
+151,6,Schwebedurch
 152,1,ミイラ
 152,5,Momie
 152,6,Mumie
@@ -706,10 +726,13 @@ ability_id,language_id,name
 153,8,Arroganza
 154,1,せいぎのこころ
 154,5,Cœur Noble
+154,6,Redlichkeit
 155,1,びびり
 155,5,Phobique
+155,6,Hasenfuß
 156,1,マジックミラー
 156,5,Miroir Magik
+156,6,Magiespiegel
 157,1,そうしょく
 157,5,Herbivore
 157,6,Vegetarier
@@ -717,6 +740,7 @@ ability_id,language_id,name
 157,8,Mangiaerba
 158,1,いたずらごころ
 158,5,Farceur
+158,6,Strolch
 159,1,すなのちから
 159,5,Force Sable
 159,6,Sandgewalt
@@ -724,8 +748,10 @@ ability_id,language_id,name
 159,8,Silicoforza
 160,1,てつのトゲ
 160,5,Épine de Fer
+160,6,Eisenstachel
 161,1,ダルマモード
 161,5,Mode Transe
+161,6,Trance-Modus
 162,1,しょうりのほし
 162,5,Victorieux
 162,6,Triumphstern

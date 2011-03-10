@@ -2811,212 +2811,317 @@ item_id,language_id,name
 562,8,Mappa Stinta
 563,1,アクアカセット
 563,5,Module Aqua
+563,6,Aquamodul
 564,1,イナズマカセット
 564,5,Module Choc
+564,6,Blitzmodul
 565,1,ブレイズカセット
 565,5,Module Pyro
+565,6,Flammenmodul
 566,1,フリーズカセット
 566,5,Module Cryo
+566,6,Gefriermodul
 567,1,ハートスイーツ
 567,5,Chococœur
+567,6,Herzkonfekt
 568,1,はじめてメール
 568,5,Lettre Salut
+568,6,Grußbrief
 569,1,だいすきメール
 569,5,Lettre Fan
+569,6,Faiblebrief
 570,1,おさそいメール
 570,5,Lettre Invit
+570,6,Einladebrief
 571,1,かんしゃメール
 571,5,Lettre Merci
+571,6,Dankesbrief
 572,1,しつもんメール
 572,5,Let. Demande
+572,6,Fragebrief
 573,1,おすすめメール
 573,5,Lettre Avis
+573,6,Insiderbrief
 574,1,おかえしメール
 574,5,Let. Réponse
+574,6,Rückbrief
 575,1,ブリッジメールＳ
 575,5,Lettre PontS
+575,6,Brückbrief H
 576,1,ブリッジメールＨ
 576,5,Lettre PontY
+576,6,Brückbrief M
 577,1,ブリッジメールＣ
 577,5,Lettre PontF
+577,6,Brückbrief Z
 578,1,ブリッジメールＶ
 578,5,Lettre PontH
+578,6,Brückbrief D
 579,1,ブリッジメールＷ
 579,5,Lettre PontI
+579,6,Brückbrief W
 580,1,きれいなウロコ
 580,5,Bel'Écaille
+580,6,Schönschuppe
 581,1,しんかのきせき
 581,5,Évoluroc
+581,6,Evolith
 582,1,かるいし
 582,5,Pierrallégée
+582,6,Leichtstein
 583,1,ゴツゴツメット
 583,5,Casque Brut
+583,6,Beulenhelm
 584,1,ふうせん
 584,5,Ballon
+584,6,Luftballon
 585,1,レッドカード
 585,5,Carton Rouge
+585,6,Rote Karte
 586,1,ねらいのまと
 586,5,Pt de Mire
+586,6,Zielscheibe
 587,1,しめつけバンド
 587,5,B. Étreinte
+587,6,Klammerband
 588,1,きゅうこん
 588,5,Bulbe
+588,6,Knolle
 589,1,じゅうでんち
 589,5,Pile
+589,6,Akku
 590,1,だっしゅつボタン
 590,5,Bouton Fuite
+590,6,Fluchtknopf
 591,1,ほのおのジュエル
 591,5,Joyau Feu
+591,6,Feuerjuwel
 592,1,みずのジュエル
 592,5,Joyau Eau
+592,6,Wasserjuwel
 593,1,でんきのジュエル
 593,5,Joyau Électr
+593,6,Elektrojuwel
 594,1,くさのジュエル
 594,5,Joyau Plante
+594,6,Pflanzjuwel
 595,1,こおりのジュエル
 595,5,Joyau Glace
+595,6,Eisjuwel
 596,1,かくとうジュエル
 596,5,Joyau Combat
+596,6,Kampfjuwel
 597,1,どくのジュエル
 597,5,Joyau Poison
+597,6,Giftjuwel
 598,1,じめんのジュエル
 598,5,Joyau Sol
+598,6,Bodenjuwel
 599,1,ひこうのジュエル
 599,5,Joyau Vol
+599,6,Flugjuwel
 600,1,エスパージュエル
 600,5,Joyau Psy
+600,6,Psychojuwel
 601,1,むしのジュエル
 601,5,Joyau Insect
+601,6,Käferjuwel
 602,1,いわのジュエル
 602,5,Joyau Roche
+602,6,Gesteinjuwel
 603,1,ゴーストジュエル
 603,5,Joyau Spectr
+603,6,Geistjuwel
 604,1,あくのジュエル
 604,5,Joyau Ténèbr
+604,6,Unlichtjuwel
 605,1,はがねのジュエル
 605,5,Joyau Acier
+605,6,Stahljuwel
 606,1,たいりょくのハネ
 606,5,Aile Santé
+606,6,Heilfeder
 607,1,きんりょくのハネ
 607,5,Aile Force
+607,6,Kraftfeder
 608,1,ていこうのハネ
 608,5,Aile Armure
+608,6,Abwehrfeder
 609,1,ちりょくのハネ
 609,5,Aile Esprit
+609,6,Geniefeder
 610,1,せいしんのハネ
 610,5,Aile Mental
+610,6,Espritfeder
 611,1,しゅんぱつのハネ
 611,5,Aile Sprint
+611,6,Flinkfeder
 612,1,きれいなハネ
 612,5,Jolie Aile
+612,6,Prachtfeder
 613,1,ふたのカセキ
 613,5,Foss. Plaque
+613,6,Schildfossil
 614,1,はねのカセキ
 614,5,Foss. Plume
+614,6,Federfossil
 615,1,リバティチケット
 615,5,Pass Liberté
+615,6,Gartenpass
 616,1,デルダマ
 616,5,Offrisphère
+616,6,Transferorb
 617,1,ドリームボール
 617,5,Rêve Ball
+617,6,Traumball
 618,1,ポケじゃらし
 618,5,Poképlumet
+618,6,Pokéwedel
 619,1,グッズケース
 619,5,Boîte Parure
+619,6,Deko-Box
 620,1,ドラゴンのホネ
 620,5,Crâne Dragon
+620,6,Drakoschädel
 621,1,かおるキノコ
 621,5,Champi Suave
+621,6,Duftpilz
 622,1,でかいきんのたま
 622,5,Maxi Pépite
+622,6,Riesennugget
 623,1,おだんごしんじゅ
 623,5,Perle Triple
+623,6,Triperle
 624,1,すいせいのかけら
 624,5,Morc. Comète
+624,6,Kometstück
 625,1,こだいのどうか
 625,5,Vieux Sou
+625,6,Alter Heller
 626,1,こだいのぎんか
 626,5,Vieil Écu
+626,6,Alter Taler
 627,1,こだいのきんか
 627,5,Vieux Ducat
+627,6,Alter Dukat
 628,1,こだいのツボ
 628,5,Vieux Vase
+628,6,Alte Vase
 629,1,こだいのうでわ
 629,5,Vieux Bijou
+629,6,Alter Reif
 630,1,こだいのせきぞう
 630,5,Vieux Santon
+630,6,Alte Statue
 631,1,こだいのおうかん
 631,5,Vieux Tortil
+631,6,Alte Krone
 632,1,ヒウンアイス
 632,5,Glace Volute
+632,6,Stratos-Eis
 633,1,クリティカット２
 633,5,Muscle 2
+633,6,Angriffplus2
 634,1,スピーダー２
 634,5,Vitesse 2
+634,6,X-Tempo2
 635,1,ＳＰアップ２
 635,5,Atq. Spé. 2
+635,6,X-Spezial2
 636,1,ＳＰガード２
 636,5,Déf. Spé. 2
+636,6,X-Sp. Ver.2
 637,1,ディフェンダー２
 637,5,Défense 2
+637,6,X-Abwehr2
 638,1,プラスパワー２
 638,5,Attaque 2
+638,6,X-Angriff2
 639,1,ヨクアタール２
 639,5,Précision 2
+639,6,X-Treffer2
 640,1,スピーダー３
 640,5,Vitesse 3
+640,6,X-Tempo3
 641,1,ＳＰアップ３
 641,5,Atq. Spé. 3
+641,6,X-Spezial3
 642,1,ＳＰガード３
 642,5,Déf. Spé. 3
+642,6,X-Sp. Ver.3
 643,1,ディフェンダー３
 643,5,Défense 3
+643,6,X-Abwehr3
 644,1,プラスパワー３
 644,5,Attaque 3
+644,6,X-Angriff3
 645,1,ヨクアタール３
 645,5,Précision 3
+645,6,X-Treffer3
 646,1,スピーダー６
 646,5,Vitesse 6
+646,6,X-Tempo6
 647,1,ＳＰアップ６
 647,5,Atq. Spé. 6
+647,6,X-Spezial6
 648,1,ＳＰガード６
 648,5,Déf. Spé. 6
+648,6,X-Sp. Ver.6
 649,1,ディフェンダー６
 649,5,Défense 6
+649,6,X-Abwehr6
 650,1,プラスパワー６
 650,5,Attaque 6
+650,6,X-Angriff6
 651,1,ヨクアタール６
 651,5,Précision 6
+651,6,X-Treffer6
 652,1,スキルコール
 652,5,Appel CapSpé
+652,6,Fäh.-Appell
 653,1,アイテムドロップ
 653,5,Jette Objet
+653,6,Itemabwurf
 654,1,アイテムコール
 654,5,Appel Objet
+654,6,Itemappell
 655,1,フラットコール
 655,5,Réamorçage
+655,6,Umkehrappell
 656,1,クリティカット３
 656,5,Muscle 3
+656,6,Angriffplus3
 657,1,ライトストーン
 657,5,Galet Blanc
+657,6,Lichtstein
 658,1,ダークストーン
 658,5,Galet Noir
+658,6,Dunkelstein
 659,1,わざマシン９３
 659,5,CT93
+659,6,TM93
 660,1,わざマシン９４
 660,5,CT94
+660,6,TM94
 661,1,わざマシン９５
 661,5,CT95
+661,6,TM95
 662,1,ライブキャスター
 662,5,Vokit
+662,6,Viso-Caster
 663,1,ゴッドストーン
 664,1,はいたつぶつ１
 664,5,Courrier 1
+664,6,Briefpost 1
 665,1,はいたつぶつ２
 665,5,Courrier 2
+665,6,Briefpost 2
 666,1,はいたつぶつ３
 666,5,Courrier 3
+666,6,Briefpost 3
 668,1,ドラゴンジュエル
 668,5,Joyau Dragon
+668,6,Drakojuwel
 669,1,ノーマルジュエル
 669,5,Joyau Normal
+669,6,Normaljuwel
