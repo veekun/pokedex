@@ -2342,34 +2342,42 @@ move_id,language_id,name
 469,1,ワイドガード
 469,5,Garde Large
 469,6,Rundumschutz
+469,7,Vastaguardia
 469,8,Bodyguard
 470,1,ガードシェア
 470,5,PartageGarde
 470,6,Schutzteiler
+470,7,Isoguardia
 470,8,Paridifesa
 471,1,パワーシェア
 471,5,PartageForce
 471,6,Kraftteiler
+471,7,Isofuerza
 471,8,Pariattacco
 472,1,ワンダールーム
 472,5,Zone Étrange
 472,6,Wunderraum
+472,7,Zona Extraña
 472,8,Mirabilzona
 473,1,サイコショック
 473,5,Choc Psy
 473,6,Psychoschock
+473,7,Psicocarga
 473,8,Psicoshock
 474,1,ベノムショック
 474,5,Choc Venin
 474,6,Giftschock
+474,7,Cargatóxica
 474,8,Velenoshock
 475,1,ボディパージ
 475,5,Allègement
 475,6,Autotomie
+475,7,Aligerar
 475,8,Sganciapesi
 476,1,いかりのこな
 476,5,PoudreFureur
 476,6,Wutpulver
+476,7,Polvo Ira
 476,8,Polverabbia
 477,1,テレキネシス
 477,5,Lévikinésie
@@ -2379,14 +2387,17 @@ move_id,language_id,name
 478,1,マジックルーム
 478,5,Zone Magique
 478,6,Magieraum
+478,7,Zona Mágica
 478,8,Magicozona
 479,1,うちおとす
 479,5,Anti-Air
 479,6,Katapult
+479,7,Antiaéreo
 479,8,Abbattimento
 480,1,やまあらし
 480,5,Yama Arashi
 480,6,Bergsturm
+480,7,Llave Corsé
 480,8,Tempestretta
 481,1,はじけるほのお
 481,5,Rebondifeu
@@ -2396,18 +2407,22 @@ move_id,language_id,name
 482,1,ヘドロウェーブ
 482,5,Cradovague
 482,6,Schlammwoge
+482,7,Onda Tóxica
 482,8,Fangonda
 483,1,ちょうのまい
 483,5,Papillodanse
 483,6,Falterreigen
+483,7,Danza Aleteo
 483,8,Eledanza
 484,1,ヘビーボンバー
 484,5,Tacle Lourd
 484,6,Rammboss
+484,7,Cuerpopesado
 484,8,Pesobomba
 485,1,シンクロノイズ
 485,5,Synchropeine
 485,6,Synchrolärm
+485,7,Sincrorruido
 485,8,Sincrumore
 486,1,エレキボール
 486,5,Boule Élek
@@ -2417,22 +2432,27 @@ move_id,language_id,name
 487,1,みずびたし
 487,5,Détrempage
 487,6,Überflutung
+487,7,Anegar
 487,8,Inondazione
 488,1,ニトロチャージ
 488,5,Nitrocharge
 488,6,Nitroladung
+488,7,Nitrocarga
 488,8,Nitrocarica
 489,1,とぐろをまく
 489,5,Enroulement
 489,6,Einrollen
+489,7,Enrosque
 489,8,Arrotola
 490,1,ローキック
 490,5,Balayette
 490,6,Fußtritt
+490,7,Puntapié
 490,8,Calciobasso
 491,1,アシッドボム
 491,5,Bombe Acide
 491,6,Säurespeier
+491,7,Bomba Ácida
 491,8,Acidobomba
 492,1,イカサマ
 492,5,Tricherie
@@ -2442,10 +2462,12 @@ move_id,language_id,name
 493,1,シンプルビーム
 493,5,Rayon Simple
 493,6,Wankelstrahl
+493,7,Onda Simple
 493,8,Ondisinvolta
 494,1,なかまづくり
 494,5,Ten-danse
 494,6,Zwango
+494,7,Danza Amiga
 494,8,Saltamicizia
 495,1,おさきにどうぞ
 495,5,Après Vous
@@ -2460,26 +2482,32 @@ move_id,language_id,name
 497,1,エコーボイス
 497,5,Écho
 497,6,Widerhall
+497,7,Eco Voz
 497,8,Echeggiavoce
 498,1,なしくずし
 498,5,Attrition
 498,6,Zermürben
+498,7,Guardia Baja
 498,8,Insidia
 499,1,クリアスモッグ
 499,5,Bain de Smog
 499,6,Klärsmog
+499,7,Nieblaclara
 499,8,Pulifumo
 500,1,アシストパワー
 500,5,ForceAjoutée
 500,6,Kraftvorrat
+500,7,Poderreserva
 500,8,Veicolaforza
 501,1,ファストガード
 501,5,Prévention
 501,6,Rapidschutz
+501,7,Anticipo
 501,8,Anticipo
 502,1,サイドチェンジ
 502,5,Interversion
 502,6,Seitentausch
+502,7,Cambio Banda
 502,8,Cambiaposto
 503,1,ねっとう
 503,5,Ébullition
@@ -2489,11 +2517,12 @@ move_id,language_id,name
 504,1,からをやぶる
 504,5,Exuviation
 504,6,Hausbruch
+504,7,Rompecoraza
 504,8,Gettaguscio
 505,1,いやしのはどう
 505,5,Vibra Soin
 505,6,Heilwoge
-505,7,Pulsa Cura
+505,7,Pulso Cura
 505,8,Ondasana
 506,1,たたりめ
 506,5,Châtiment
@@ -2508,18 +2537,22 @@ move_id,language_id,name
 508,1,ギアチェンジ
 508,5,Chgt Vitesse
 508,6,Gangwechsel
+508,7,Cambiomarcha
 508,8,Cambiomarcia
 509,1,ともえなげ
 509,5,Projection
 509,6,Überkopfwurf
+509,7,Llave Giro
 509,8,Ribaltiro
 510,1,やきつくす
 510,5,Calcination
 510,6,Einäschern
+510,7,Calcinación
 510,8,Bruciatutto
 511,1,さきおくり
 511,5,À la Queue
 511,6,Verzögerung
+511,7,Último Lugar
 511,8,Spintone
 512,1,アクロバット
 512,5,Acrobatie
@@ -2529,6 +2562,7 @@ move_id,language_id,name
 513,1,ミラータイプ
 513,5,Copie Type
 513,6,Typenspiegel
+513,7,Clonatipo
 513,8,Riflettipo
 514,1,かたきうち
 514,5,Vengeance
@@ -2538,30 +2572,37 @@ move_id,language_id,name
 515,1,いのちがけ
 515,5,Tout ou Rien
 515,6,Wagemut
+515,7,Sacrificio
 515,8,Azzardo
 516,1,ギフトパス
 516,5,Passe-Cadeau
 516,6,Offerte
+516,7,Ofrenda
 516,8,Cediregalo
 517,1,れんごく
 517,5,Feu d'Enfer
 517,6,Inferno
+517,7,Infierno
 517,8,Marchiatura
 518,1,みずのちかい
 518,5,Aire d'Eau
 518,6,Wassersäulen
+518,7,Voto Agua
 518,8,Acquapatto
 519,1,ほのおのちかい
 519,5,Aire de Feu
 519,6,Feuersäulen
+519,7,Voto Fuego
 519,8,Fiammapatto
 520,1,くさのちかい
 520,5,Aire d'Herbe
 520,6,Pflanzsäulen
+520,7,Voto Planta
 520,8,Erbapatto
 521,1,ボルトチェンジ
 521,5,ChangeÉclair
 521,6,Voltwechsel
+521,7,Voltiocambio
 521,8,Invertivolt
 522,1,むしのていこう
 522,5,Survinsecte
@@ -2571,10 +2612,12 @@ move_id,language_id,name
 523,1,じならし
 523,5,Piétisol
 523,6,Dampfwalze
+523,7,Terratemblor
 523,8,Battiterra
 524,1,こおりのいぶき
 524,5,SouffleGlacé
 524,6,Eisesodem
+524,7,Vaho Gélido
 524,8,Alitogelido
 525,1,ドラゴンテール
 525,5,Draco-Queue
@@ -2589,11 +2632,12 @@ move_id,language_id,name
 527,1,エレキネット
 527,5,Toile Élek
 527,6,Elektronetz
+527,7,Electrotela
 527,8,Elettrotela
 528,1,ワイルドボルト
 528,5,Éclair Fou
 528,6,Stromstoß
-528,7,Voltia Cruel
+528,7,Voltio Cruel
 528,8,Sprizzalampo
 529,1,ドリルライナー
 529,5,Tunnelier
@@ -2618,34 +2662,42 @@ move_id,language_id,name
 533,1,せいなるつるぎ
 533,5,Lame Sainte
 533,6,Sanctoklinge
+533,7,Espadasanta
 533,8,Spadasolenne
 534,1,シェルブレード
 534,5,Coquilame
 534,6,Kalkklinge
+534,7,Concha Filo
 534,8,Conchilama
 535,1,ヒートスタンプ
 535,5,Tacle Feu
 535,6,Brandstempel
+535,7,Golpe Calor
 535,8,Marchiafuoco
 536,1,グラスミキサー
 536,5,Phytomixeur
 536,6,Grasmixer
+536,7,Ciclón Hojas
 536,8,Vorticerba
 537,1,ハードローラー
 537,5,Bulldoboule
 537,6,Quetschwalze
+537,7,Rodillo Púas
 537,8,Rulloduro
 538,1,コットンガード
 538,5,Cotogarde
 538,6,Watteschild
+538,7,Rizo Algodón
 538,8,Cotonscudo
 539,1,ナイトバースト
 539,5,Explonuit
 539,6,Nachtflut
+539,7,Pulso Noche
 539,8,Urtoscuro
 540,1,サイコブレイク
 540,5,Frappe Psy
 540,6,Psychostoß
+540,7,Onda Mental
 540,8,Psicobotta
 541,1,スイープビンタ
 541,5,Plumo-Queue
@@ -2660,70 +2712,87 @@ move_id,language_id,name
 543,1,アフロブレイク
 543,5,Peignée
 543,6,Steinschädel
+543,7,Ariete
 543,8,Ricciolata
 544,1,ギアソーサー
 544,5,Lancécrou
 544,6,Klikkdiskus
+544,7,Rueda Doble
 544,8,Ingracolpo
 545,1,かえんだん
 545,5,Incendie
 545,6,Flammenball
+545,7,Bomba Ígnea
 545,8,Sparafuoco
 546,1,テクノバスター
 546,5,TechnoBuster
 546,6,Techblaster
+546,7,Tecno Shock
 546,8,Tecnobotto
 547,1,いにしえのうた
 547,5,ChantAntique
 547,6,Urgesang
+547,7,Cantoarcaico
 547,8,Cantoantico
 548,1,しんぴのつるぎ
 548,5,Lame Ointe
 548,6,Mystoschwert
+548,7,Sablemístico
 548,8,Spadamistica
 549,1,こごえるせかい
 549,5,ÈreGlaciaire
 549,6,Eiszeit
+549,7,Mundo Gélido
 549,8,Gelamondo
 550,1,らいげき
 550,5,ChargeFoudre
 550,6,Blitzschlag
+550,7,At. Fulgor
 550,8,Lucesiluro
 551,1,あおいほのお
 551,5,Flamme Bleue
 551,6,Blauflammen
+551,7,Llama Azul
 551,8,Fuocoblu
 552,1,ほのおのまい
 552,5,Danse du Feu
 552,6,Feuerreigen
+552,7,Danza Llama
 552,8,Voldifuoco
 553,1,フリーズボルト
 553,5,Éclair Gelé
 553,6,Frostvolt
+553,7,Rayo Gélido
 553,8,Elettrogelo
 554,1,コールドフレア
 554,5,Feu Glacé
 554,6,Frosthauch
+554,7,Llama Gélida
 554,8,Vampagelida
 555,1,バークアウト
 555,5,Aboiement
 555,6,Standpauke
+555,7,Alarido
 555,8,Urlorabbia
 556,1,つららおとし
 556,5,Chute Glace
 556,6,Eiszapfhagel
+556,7,Chuzos
 556,8,Scagliagelo
 557,1,Ｖジェネレート
 557,5,CoupVictoire
 557,6,V-Generator
+557,7,V de Fuego
 557,8,Generatore V
 558,1,クロスフレイム
 558,5,Flamme Croix
 558,6,Kreuzflamme
+558,7,Llama Fusión
 558,8,Incrofiamma
 559,1,クロスサンダー
 559,5,Éclair Croix
 559,6,Kreuzdonner
+559,7,Rayo Fusión
 559,8,Incrotuono
 10001,1,ダークラッシュ
 10001,5,Charge Noire

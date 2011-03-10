@@ -617,15 +617,17 @@ ability_id,language_id,name
 124,1,わるいてぐせ
 124,5,Pickpocket
 124,6,Langfinger
+124,7,Hurto
 124,8,Arraffalesto
 125,1,ちからずく
 125,5,Sans Limite
 125,6,Rohe Gewalt
-125,7,Potencia Bruta
+125,7,Pot. Bruta
 125,8,Forzabruta
 126,1,あまのじゃく
 126,5,Contestation
 126,6,Umkehrung
+126,7,Respondón
 126,8,Inversione
 127,1,きんちょうかん
 127,5,Tension
@@ -635,14 +637,17 @@ ability_id,language_id,name
 128,1,まけんき
 128,5,Acharné
 128,6,Siegeswille
+128,7,Competitivo
 128,8,Agonismo
 129,1,よわき
 129,5,Défaitiste
 129,6,Schwächling
+129,7,Flaqueza
 129,8,Sconforto
 130,1,のろわれボディ
 130,5,Corps Maudit
 130,6,Tastfluch
+130,7,Cue. Maldito
 130,8,Corpofunesto
 131,1,いやしのこころ
 131,5,Cœur Soin
@@ -652,51 +657,62 @@ ability_id,language_id,name
 132,1,フレンドガード
 132,5,Garde Amie
 132,6,Freundeshut
+132,7,Compiescolta
 132,8,Amicoscudo
 133,1,くだけるよろい
 133,5,Armurouillée
 133,6,Bruchrüstung
+133,7,Arm. Frágil
 133,8,Sottilguscio
 134,1,ヘヴィメタル
 134,5,Heavy Metal
 134,6,Schwermetall
+134,7,Met. Pesado
 134,8,Metalpesante
 135,1,ライトメタル
 135,5,Light Metal
 135,6,Leichtmetall
+135,7,Met. Liviano
 135,8,Metalleggero
 136,1,マルチスケイル
 136,5,Multiécaille
 136,6,Multischuppe
+136,7,Compensación
 136,8,Multisquame
 137,1,どくぼうそう
 137,5,Rage Poison
 137,6,Giftwahn
+137,7,Ím. Tóxico
 137,8,Velenimpeto
 138,1,ねつぼうそう
 138,5,Rage Brûlure
 138,6,Hitzewahn
+138,7,Ím. Ardiente
 138,8,Bruciaimpeto
 139,1,しゅうかく
 139,5,Récolte
 139,6,Reiche Ernte
+139,7,Cosecha
 139,8,Coglibacche
 140,1,テレパシー
 140,5,Télépathe
 140,6,Telepathie
+140,7,Telepatía
 140,8,Telepatia
 141,1,ムラっけ
 141,5,Lunatique
 141,6,Gefühlswippe
+141,7,Veleta
 141,8,Altalena
 142,1,ぼうじん
 142,5,Envelocape
 142,6,Wetterfest
-142,7,Funta
+142,7,Funda
 142,8,Copricapo
 143,1,どくしゅ
 143,5,Toxitouche
 143,6,Giftgriff
+143,7,Toque Tóxico
 143,8,Velentocco
 144,1,さいせいりょく
 144,5,Régé-Force
@@ -716,10 +732,12 @@ ability_id,language_id,name
 147,1,ミラクルスキン
 147,5,Peau Miracle
 147,6,Wunderhaut
+147,7,Piel Milagro
 147,8,Splendicute
 148,1,アナライズ
 148,5,Analyste
 148,6,Analyse
+148,7,Cálc. Final
 148,8,Ponderazione
 149,1,イリュージョン
 149,5,Illusion
@@ -729,10 +747,12 @@ ability_id,language_id,name
 150,1,かわりもの
 150,5,Imposteur
 150,6,Doppelgänger
+150,7,Impostor
 150,8,Sosia
 151,1,すりぬけ
 151,5,Infiltration
 151,6,Schwebedurch
+151,7,Allanamiento
 151,8,Intrapasso
 152,1,ミイラ
 152,5,Momie
@@ -747,23 +767,27 @@ ability_id,language_id,name
 154,1,せいぎのこころ
 154,5,Cœur Noble
 154,6,Redlichkeit
+154,7,Justiciero
 154,8,Giustizia
 155,1,びびり
 155,5,Phobique
 155,6,Hasenfuß
+155,7,Cobardía
 155,8,Paura
 156,1,マジックミラー
 156,5,Miroir Magik
 156,6,Magiespiegel
+156,7,Espejomágico
 156,8,Magispecchio
 157,1,そうしょく
 157,5,Herbivore
 157,6,Vegetarier
-157,7,Herbívorio
+157,7,Herbívoro
 157,8,Mangiaerba
 158,1,いたずらごころ
 158,5,Farceur
 158,6,Strolch
+158,7,Bromista
 158,8,Burla
 159,1,すなのちから
 159,5,Force Sable
@@ -773,10 +797,12 @@ ability_id,language_id,name
 160,1,てつのトゲ
 160,5,Épine de Fer
 160,6,Eisenstachel
+160,7,Punta Acero
 160,8,Spineferrate
 161,1,ダルマモード
 161,5,Mode Transe
 161,6,Trance-Modus
+161,7,Modo Daruma
 161,8,Stato Zen
 162,1,しょうりのほし
 162,5,Victorieux

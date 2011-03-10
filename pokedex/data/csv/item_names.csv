@@ -2812,421 +2812,526 @@ item_id,language_id,name
 563,1,アクアカセット
 563,5,Module Aqua
 563,6,Aquamodul
+563,7,HidroROM
 563,8,Idromodulo
 564,1,イナズマカセット
 564,5,Module Choc
 564,6,Blitzmodul
+564,7,FulgoROM
 564,8,Voltmodulo
 565,1,ブレイズカセット
 565,5,Module Pyro
 565,6,Flammenmodul
+565,7,PiroROM
 565,8,Piromodulo
 566,1,フリーズカセット
 566,5,Module Cryo
 566,6,Gefriermodul
+566,7,CrioROM
 566,8,Gelomodulo
 567,1,ハートスイーツ
 567,5,Chococœur
 567,6,Herzkonfekt
+567,7,Cor. Dulce
 567,8,Dolcecuore
 568,1,はじめてメール
 568,5,Lettre Salut
 568,6,Grußbrief
+568,7,C. Inicial
 568,8,Mess. Inizio
 569,1,だいすきメール
 569,5,Lettre Fan
 569,6,Faiblebrief
+569,7,C. Favoritos
 569,8,Mess. TVB
 570,1,おさそいメール
 570,5,Lettre Invit
 570,6,Einladebrief
+570,7,C. Invitar
 570,8,Mess. Invito
 571,1,かんしゃメール
 571,5,Lettre Merci
 571,6,Dankesbrief
+571,7,C. Gracias
 571,8,Mess. Grazie
 572,1,しつもんメール
 572,5,Let. Demande
 572,6,Fragebrief
+572,7,C. Pregunta
 572,8,Mess. Chiedi
 573,1,おすすめメール
 573,5,Lettre Avis
 573,6,Insiderbrief
+573,7,C. Gustos
 573,8,Mess. Sugg.
 574,1,おかえしメール
 574,5,Let. Réponse
 574,6,Rückbrief
+574,7,C. Respuesta
 574,8,Mess. Risp.
 575,1,ブリッジメールＳ
 575,5,Lettre PontS
 575,6,Brückbrief H
+575,7,C. Puente S
 575,8,Mess. Frec.
 576,1,ブリッジメールＨ
 576,5,Lettre PontY
 576,6,Brückbrief M
+576,7,C. Puente F
 576,8,Mess. Libec.
 577,1,ブリッジメールＣ
 577,5,Lettre PontF
 577,6,Brückbrief Z
+577,7,C. Puente A
 577,8,Mess. Prop.
 578,1,ブリッジメールＶ
 578,5,Lettre PontH
 578,6,Brückbrief D
+578,7,C. Puente V
 578,8,Mess. Vill.
 579,1,ブリッジメールＷ
 579,5,Lettre PontI
 579,6,Brückbrief W
+579,7,C. Puente P
 579,8,Mess. Merav.
 580,1,きれいなウロコ
 580,5,Bel'Écaille
 580,6,Schönschuppe
+580,7,Escama Bella
 580,8,Squama Bella
 581,1,しんかのきせき
 581,5,Évoluroc
 581,6,Evolith
+581,7,Mineral Evol
 581,8,Evolcondensa
 582,1,かるいし
 582,5,Pierrallégée
 582,6,Leichtstein
+582,7,Piedra Pómez
 582,8,Pietralieve
 583,1,ゴツゴツメット
 583,5,Casque Brut
 583,6,Beulenhelm
+583,7,Cas. Dentado
 583,8,Bitorzolelmo
 584,1,ふうせん
 584,5,Ballon
 584,6,Luftballon
+584,7,Globo Helio
 584,8,Palloncino
 585,1,レッドカード
 585,5,Carton Rouge
 585,6,Rote Karte
+585,7,Tarjeta Roja
 585,8,Cartelrosso
 586,1,ねらいのまと
 586,5,Pt de Mire
 586,6,Zielscheibe
+586,7,Blanco
 586,8,Facilsaglio
 587,1,しめつけバンド
 587,5,B. Étreinte
 587,6,Klammerband
+587,7,Ban. Atadura
 587,8,Legafascia
 588,1,きゅうこん
 588,5,Bulbe
 588,6,Knolle
+588,7,Tubérculo
 588,8,Bulbo
 589,1,じゅうでんち
 589,5,Pile
 589,6,Akku
+589,7,Pila
 589,8,Ricaripila
 590,1,だっしゅつボタン
 590,5,Bouton Fuite
 590,6,Fluchtknopf
+590,7,Botón Escape
 590,8,Pulsantefuga
 591,1,ほのおのジュエル
 591,5,Joyau Feu
 591,6,Feuerjuwel
+591,7,G. Fuego
 591,8,Bijoufuoco
 592,1,みずのジュエル
 592,5,Joyau Eau
 592,6,Wasserjuwel
+592,7,G. Agua
 592,8,Bijouacqua
 593,1,でんきのジュエル
 593,5,Joyau Électr
 593,6,Elektrojuwel
+593,7,G. Eléctrica
 593,8,Bijouelettro
 594,1,くさのジュエル
 594,5,Joyau Plante
 594,6,Pflanzjuwel
+594,7,G. Planta
 594,8,Bijouerba
 595,1,こおりのジュエル
 595,5,Joyau Glace
 595,6,Eisjuwel
+595,7,G. Hielo
 595,8,Bijoughiac.
 596,1,かくとうジュエル
 596,5,Joyau Combat
 596,6,Kampfjuwel
+596,7,G. Lucha
 596,8,Bijoulotta
 597,1,どくのジュエル
 597,5,Joyau Poison
 597,6,Giftjuwel
+597,7,G. Veneno
 597,8,Bijouveleno
 598,1,じめんのジュエル
 598,5,Joyau Sol
 598,6,Bodenjuwel
+598,7,G. Tierra
 598,8,Bijouterra
 599,1,ひこうのジュエル
 599,5,Joyau Vol
 599,6,Flugjuwel
+599,7,G. Voladora
 599,8,Bijouvolante
 600,1,エスパージュエル
 600,5,Joyau Psy
 600,6,Psychojuwel
+600,7,G. Psíquica
 600,8,Bijoupsico
 601,1,むしのジュエル
 601,5,Joyau Insect
 601,6,Käferjuwel
+601,7,G. Bicho
 601,8,Bijoucoleot.
 602,1,いわのジュエル
 602,5,Joyau Roche
 602,6,Gesteinjuwel
+602,7,G. Roca
 602,8,Bijouroccia
 603,1,ゴーストジュエル
 603,5,Joyau Spectr
 603,6,Geistjuwel
+603,7,G. Fantasma
 603,8,Bijouspettro
 604,1,あくのジュエル
 604,5,Joyau Ténèbr
 604,6,Unlichtjuwel
+604,7,G. Siniestra
 604,8,Bijoubuio
 605,1,はがねのジュエル
 605,5,Joyau Acier
 605,6,Stahljuwel
+605,7,G. Acero
 605,8,Bijouacciaio
 606,1,たいりょくのハネ
 606,5,Aile Santé
 606,6,Heilfeder
+606,7,P. Vigor
 606,8,Piumsalute
 607,1,きんりょくのハネ
 607,5,Aile Force
 607,6,Kraftfeder
+607,7,P. Músculo
 607,8,Piumpotenza
 608,1,ていこうのハネ
 608,5,Aile Armure
 608,6,Abwehrfeder
+608,7,P. Aguante
 608,8,Piumtutela
 609,1,ちりょくのハネ
 609,5,Aile Esprit
 609,6,Geniefeder
+609,7,P. Intelecto
 609,8,Piumingegno
 610,1,せいしんのハネ
 610,5,Aile Mental
 610,6,Espritfeder
+610,7,P. Mente
 610,8,Piumintuito
 611,1,しゅんぱつのハネ
 611,5,Aile Sprint
 611,6,Flinkfeder
+611,7,P. Ímpetu
 611,8,Piumreazione
 612,1,きれいなハネ
 612,5,Jolie Aile
 612,6,Prachtfeder
+612,7,P. Bella
 612,8,Piumabella
 613,1,ふたのカセキ
 613,5,Foss. Plaque
 613,6,Schildfossil
+613,7,Fósil Tapa
 613,8,Fossiltappo
 614,1,はねのカセキ
 614,5,Foss. Plume
 614,6,Federfossil
+614,7,Fósil Pluma
 614,8,Fossilpiuma
 615,1,リバティチケット
 615,5,Pass Liberté
 615,6,Gartenpass
+615,7,T. Libertad
 615,8,Liberticket
 616,1,デルダマ
 616,5,Offrisphère
 616,6,Transferorb
+616,7,Regalosfera
 616,8,Passabilia
 617,1,ドリームボール
 617,5,Rêve Ball
 617,6,Traumball
+617,7,Ensueño Ball
 617,8,Dream Ball
 618,1,ポケじゃらし
 618,5,Poképlumet
 618,6,Pokéwedel
+618,7,Pokéseñuelo
 618,8,Pokégingillo
 619,1,グッズケース
 619,5,Boîte Parure
 619,6,Deko-Box
+619,7,Neceser
 619,8,Portagadget
 620,1,ドラゴンのホネ
 620,5,Crâne Dragon
 620,6,Drakoschädel
+620,7,Crán. Dragón
 620,8,Teschio
 621,1,かおるキノコ
 621,5,Champi Suave
 621,6,Duftpilz
+621,7,Seta Aroma
 621,8,Profumfungo
 622,1,でかいきんのたま
 622,5,Maxi Pépite
 622,6,Riesennugget
+622,7,Maxipepita
 622,8,Granpepita
 623,1,おだんごしんじゅ
 623,5,Perle Triple
 623,6,Triperle
+623,7,Sarta Perlas
 623,8,Trittiperla
 624,1,すいせいのかけら
 624,5,Morc. Comète
 624,6,Kometstück
+624,7,Frag. Cometa
 624,8,Pezzo Cometa
 625,1,こだいのどうか
 625,5,Vieux Sou
 625,6,Alter Heller
+625,7,Real Cobre
 625,8,Soldantico
 626,1,こだいのぎんか
 626,5,Vieil Écu
 626,6,Alter Taler
+626,7,Real Plata
 626,8,Ducatantico
 627,1,こだいのきんか
 627,5,Vieux Ducat
 627,6,Alter Dukat
+627,7,Real Oro
 627,8,Doblonantico
 628,1,こだいのツボ
 628,5,Vieux Vase
 628,6,Alte Vase
+628,7,Ánfora
 628,8,Vasantico
 629,1,こだいのうでわ
 629,5,Vieux Bijou
 629,6,Alter Reif
+629,7,Brazal
 629,8,Bracciantico
 630,1,こだいのせきぞう
 630,5,Vieux Santon
 630,6,Alte Statue
+630,7,Efi. Antigua
 630,8,Statuantica
 631,1,こだいのおうかん
 631,5,Vieux Tortil
 631,6,Alte Krone
+631,7,Cor. Antigua
 631,8,Coronantica
 632,1,ヒウンアイス
 632,5,Glace Volute
 632,6,Stratos-Eis
+632,7,Porcehelado
 632,8,Conostropoli
 633,1,クリティカット２
 633,5,Muscle 2
 633,6,Angriffplus2
+633,7,Directo 2
 633,8,Supercolpo 2
 634,1,スピーダー２
 634,5,Vitesse 2
 634,6,X-Tempo2
+634,7,Veloc. X 2
 634,8,Velocità X-2
 635,1,ＳＰアップ２
 635,5,Atq. Spé. 2
 635,6,X-Spezial2
+635,7,Especial X 2
 635,8,Special X-2
 636,1,ＳＰガード２
 636,5,Déf. Spé. 2
 636,6,X-Sp. Ver.2
+636,7,D. Esp. X 2
 636,8,Dif. Sp. X-2
 637,1,ディフェンダー２
 637,5,Défense 2
 637,6,X-Abwehr2
+637,7,Defensa X 2
 637,8,Difesa X-2
 638,1,プラスパワー２
 638,5,Attaque 2
 638,6,X-Angriff2
+638,7,Ataque X 2
 638,8,Attacco X-2
 639,1,ヨクアタール２
 639,5,Précision 2
 639,6,X-Treffer2
+639,7,Prec. X 2
 639,8,Precis. X-2
 640,1,スピーダー３
 640,5,Vitesse 3
 640,6,X-Tempo3
+640,7,Veloc. X 3
 640,8,Velocità X-3
 641,1,ＳＰアップ３
 641,5,Atq. Spé. 3
 641,6,X-Spezial3
+641,7,Especial X 3
 641,8,Special X-3
 642,1,ＳＰガード３
 642,5,Déf. Spé. 3
 642,6,X-Sp. Ver.3
+642,7,D. Esp. X 3
 642,8,Dif. Sp. X-3
 643,1,ディフェンダー３
 643,5,Défense 3
 643,6,X-Abwehr3
+643,7,Defensa X 3
 643,8,Difesa X-3
 644,1,プラスパワー３
 644,5,Attaque 3
 644,6,X-Angriff3
+644,7,Ataque X 3
 644,8,Attacco X-3
 645,1,ヨクアタール３
 645,5,Précision 3
 645,6,X-Treffer3
+645,7,Prec. X 3
 645,8,Precis. X-3
 646,1,スピーダー６
 646,5,Vitesse 6
 646,6,X-Tempo6
+646,7,Veloc. X 6
 646,8,Velocità X-6
 647,1,ＳＰアップ６
 647,5,Atq. Spé. 6
 647,6,X-Spezial6
+647,7,Especial X 6
 647,8,Special X-6
 648,1,ＳＰガード６
 648,5,Déf. Spé. 6
 648,6,X-Sp. Ver.6
+648,7,D. Esp. X 6
 648,8,Dif. Sp. X-6
 649,1,ディフェンダー６
 649,5,Défense 6
 649,6,X-Abwehr6
+649,7,Defensa X 6
 649,8,Difesa X-6
 650,1,プラスパワー６
 650,5,Attaque 6
 650,6,X-Angriff6
+650,7,Ataque X 6
 650,8,Attacco X-6
 651,1,ヨクアタール６
 651,5,Précision 6
 651,6,X-Treffer6
+651,7,Prec. X 6
 651,8,Precis. X-6
 652,1,スキルコール
 652,5,Appel CapSpé
 652,6,Fäh.-Appell
+652,7,Habilitador
 652,8,Chiamabilità
 653,1,アイテムドロップ
 653,5,Jette Objet
 653,6,Itemabwurf
+653,7,Tiraobjeto
 653,8,Lascioggetto
 654,1,アイテムコール
 654,5,Appel Objet
 654,6,Itemappell
+654,7,Activaobjeto
 654,8,Chiamoggetto
 655,1,フラットコール
 655,5,Réamorçage
 655,6,Umkehrappell
+655,7,Quitaestado
 655,8,Ripristino
 656,1,クリティカット３
 656,5,Muscle 3
 656,6,Angriffplus3
+656,7,Directo 3
 656,8,Supercolpo 3
 657,1,ライトストーン
 657,5,Galet Blanc
 657,6,Lichtstein
+657,7,Orbe Claro
 657,8,Chiarolite
 658,1,ダークストーン
 658,5,Galet Noir
 658,6,Dunkelstein
+658,7,Orbe Oscuro
 658,8,Scurolite
 659,1,わざマシン９３
 659,5,CT93
 659,6,TM93
+659,7,MT93
 659,8,MT93
 660,1,わざマシン９４
 660,5,CT94
 660,6,TM94
+660,7,MT94
 660,8,MT94
 661,1,わざマシン９５
 661,5,CT95
 661,6,TM95
+661,7,MT95
 661,8,MT95
 662,1,ライブキャスター
 662,5,Vokit
 662,6,Viso-Caster
+662,7,Videomisor
 662,8,Interpoké
 663,1,ゴッドストーン
 664,1,はいたつぶつ１
 664,5,Courrier 1
 664,6,Briefpost 1
+664,7,Envío 1
 664,8,Missiva 1
 665,1,はいたつぶつ２
 665,5,Courrier 2
 665,6,Briefpost 2
+665,7,Envío 2
 665,8,Missiva 2
 666,1,はいたつぶつ３
 666,5,Courrier 3
 666,6,Briefpost 3
+666,7,Envío 3
 666,8,Missiva 3
 668,1,ドラゴンジュエル
 668,5,Joyau Dragon
 668,6,Drakojuwel
+668,7,G. Dragón
 668,8,Bijoudrago
 669,1,ノーマルジュエル
 669,5,Joyau Normal
 669,6,Normaljuwel
+669,7,G. Normal
 669,8,Bijounormale
