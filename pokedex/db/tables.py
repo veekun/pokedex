@@ -681,9 +681,9 @@ class MoveEffectChangelog(TableBase):
     __singlename__ = 'move_effect_changelog'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
-    effect_id = Column(Integer, ForeignKey('move_effects.id'), primary_key=True, nullable=False,
+    effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=False,
         info=dict(description="The ID of the effect that changed"))
-    changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False,
+    changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False,
         info=dict(description="The ID of the version group in which the effect changed"))
     effect = ProseColumn(markdown.MarkdownColumn(512), plural='effects', nullable=False,
         info=dict(description="A description of the old behavior", format='markdown'))
@@ -1407,7 +1407,7 @@ class Type(TableBase, OfficiallyNamed):
     __singlename__ = 'type'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u"A unique ID for this type."))
-    identifier = Column(Unicode(8), nullable=False,
+    identifier = Column(Unicode(12), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description=u"The ID of the generation this type first appeared in."))
@@ -1795,7 +1795,7 @@ for table in list(table_classes):
     else:
         continue
     table.name = cls(Unicode(class_mapper(table).c.identifier.type.length),
-        plural='names', nullable=False, info=info)
+        plural='names', index=True, nullable=False, info=info)
 
 ### Add text/prose tables
 
@@ -1823,7 +1823,7 @@ def makeTextTable(object_table, name_plural, name_singular, columns, lazy):
             Column(safe_name + '_id', Integer, ForeignKey(object_table.id),
                     primary_key=True, nullable=False),
             Column('language_id', Integer, ForeignKey(Language.id),
-                    primary_key=True, nullable=False),
+                    primary_key=True, index=True, nullable=False),
             *(column for name, plural, column in columns)
         )
 
