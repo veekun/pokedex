@@ -1,0 +1,38 @@
+move_effect_category_id,language_id,name
+1,9,Regular damage
+2,9,Power varies
+3,9,Special damage
+4,9,Double damage
+5,9,Faints
+6,9,Critical
+7,9,Ignores type
+8,9,Ignores accuracy modifiers
+9,9,Meta
+10,9,Multiple turns/hits
+11,9,Charge or recovery turn
+12,9,Heals HP
+13,9,Cures status
+14,9,Protection
+15,9,Attack up
+16,9,Attack down
+17,9,Defense up
+18,9,Defense down
+19,9,Special Attack up
+20,9,Special Attack down
+21,9,Special Defense up
+22,9,Special Defense down
+23,9,Speed up
+24,9,Speed down
+25,9,Accuracy up
+26,9,Accuracy down
+27,9,Evasion up
+28,9,Evasion down
+29,9,Sleep
+30,9,Burn
+31,9,Paralysis
+32,9,Freeze
+33,9,Poison
+34,9,Confusion
+35,9,Flinch
+36,9,Trap
+37,9,Weather

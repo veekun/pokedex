@@ -1,13 +1,13 @@
-id,name,description
-1,Specific move,One specific move.  How this move is chosen depends upon on the move being used.
-2,Selected Pokémon,"One other Pokémon on the field, selected by the trainer.  Stolen moves reuse the same target."
-3,Ally,The user's ally (if any).
-4,User's field,The user's side of the field.  Affects the user and its ally (if any).
-5,User or ally,"Either the user or its ally, selected by the trainer."
-6,Opponent's field,The opposing side of the field.  Affects opposing Pokémon.
-7,User,The user.
-8,Random opponent,"One opposing Pokémon, selected at random."
-9,All other Pokémon,Every other Pokémon on the field.
-10,Selected Pokémon,"One other Pokémon on the field, selected by the trainer."
-11,All opponents,All opposing Pokémon.
-12,Entire field,The entire field.  Affects all Pokémon.
+id,identifier
+1,specific-move
+2,selected-pokemon
+3,ally
+4,users-field
+5,user-or-ally
+6,opponents-field
+7,user
+8,random-opponent
+9,all-other-pokemon
+10,selected-pokemon
+11,all-opponents
+12,entire-field

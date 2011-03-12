@@ -1,0 +1,9 @@
+stat_id,language_id,name
+1,9,HP
+2,9,Attack
+3,9,Defense
+4,9,Special Attack
+5,9,Special Defense
+6,9,Speed
+7,9,accuracy
+8,9,evasion

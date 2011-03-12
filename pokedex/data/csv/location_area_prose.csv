@@ -1,0 +1,306 @@
+location_area_id,language_id,name
+1,9,
+2,9,
+3,9,
+4,9,
+5,9,
+6,9,1F
+7,9,B1F
+8,9,
+9,9,
+10,9,
+11,9,Route 207
+12,9,2F
+13,9,3F
+14,9,snowfall
+15,9,blizzard
+16,9,4F
+17,9,5F
+18,9,6F
+19,9,7F
+20,9,cave
+21,9,Route 216
+22,9,Route 211
+23,9,B1F
+24,9,Area 1
+25,9,Area 2
+26,9,Area 3
+27,9,Area 4
+28,9,Area 5
+29,9,Area 6
+30,9,2F
+31,9,1F
+32,9,B1F a
+33,9,B1F b
+34,9,B1F c
+35,9,B2F a
+36,9,B2F b
+37,9,B2F c
+38,9,B3F a
+39,9,B3F b
+40,9,B3F c
+41,9,B3F d
+42,9,B3F e
+43,9,B4F a
+44,9,B4F b
+45,9,B4F c
+46,9,B4F d
+47,9,B5F
+48,9,1F
+49,9,2F
+50,9,B1F
+51,9,inside B1F
+52,9,inside
+53,9,inside exit
+54,9,
+55,9,1F
+56,9,B1F
+57,9,
+58,9,entrance
+59,9,inside
+60,9,
+61,9,pillar 1
+62,9,pillar 2
+63,9,pillar 3
+64,9,before pillar 1
+70,9,between pillars 1 and 2
+76,9,between pillars 2 and 3
+82,9,after pillar 3
+107,9,1F
+108,9,B1F
+109,9,B2F
+110,9,B3F
+111,9,B4F
+112,9,B5F
+113,9,1F
+114,9,B1F
+115,9,0–9 different Unown caught
+116,9,10–25 different Unown caught
+117,9,26+ different Unown caught
+118,9,
+119,9,
+120,9,1F
+121,9,B1F left
+122,9,B1F right
+123,9,B2F right
+124,9,B2F left
+125,9,B3F
+126,9,entrance
+127,9,dining room
+128,9,2F private room
+129,9,2F
+130,9,2F leftmost room
+131,9,2F left room
+132,9,2F middle room
+133,9,2F right room
+134,9,2F rightmost room
+135,9,before Galactic intervention
+136,9,after Galactic intervention
+137,9,
+138,9,
+139,9,
+140,9,
+141,9,
+142,9,
+143,9,
+144,9,"south, towards Jubilife City"
+145,9,"north, towards Floaroma Town"
+146,9,"south, towards Floaroma Town"
+147,9,"east, towards Eterna City"
+148,9,
+149,9,
+150,9,
+151,9,
+152,9,1F
+153,9,2F
+154,9,3F
+155,9,4F
+156,9,5F
+157,9,"south, towards Solaceon Town"
+158,9,"west, towards Celestic Town"
+159,9,"west, towards Eterna City"
+160,9,"east, towards Celestic Town"
+161,9,"north, towards Hearthome City"
+162,9,"east, towards Pastoria City"
+163,9,
+164,9,
+165,9,
+166,9,
+167,9,
+168,9,
+169,9,
+170,9,
+171,9,
+172,9,
+173,9,
+174,9,
+175,9,
+176,9,
+177,9,
+178,9,
+179,9,
+180,9,
+181,9,
+182,9,
+183,9,
+184,9,
+185,9,
+186,9,
+187,9,
+188,9,
+189,9,
+190,9,2F
+191,9,3F
+192,9,
+193,9,Outside
+194,9,Interior A
+195,9,Interior B
+196,9,Interior C
+197,9,Interior D
+198,9,1F
+199,9,B1F
+200,9,B2F
+201,9,
+202,9,1F
+203,9,B1F
+204,9,
+205,9,
+206,9,
+207,9,
+208,9,
+209,9,
+210,9,
+211,9,
+212,9,1F
+213,9,B1F
+214,9,2F
+215,9,3F
+216,9,4F
+217,9,5F
+218,9,6F
+219,9,7F
+220,9,8F
+221,9,9F
+222,9,
+223,9,
+224,9,
+225,9,
+226,9,
+227,9,1F
+228,9,B1F
+229,9,empty floor X
+230,9,B2F
+231,9,empty floor Y
+232,9,B3F
+235,9,
+236,9,
+237,9,1F
+238,9,Lower Cave
+239,9,Upper Cave
+240,9,B1F
+241,9,
+242,9,
+243,9,
+244,9,1F
+245,9,B1F
+246,9,B2F
+247,9,B3F
+249,9,
+250,9,
+251,9,
+252,9,
+253,9,Violet City entrance
+254,9,Blackthorn City entrance
+255,9,
+256,9,Mt. Moon Square
+257,9,
+258,9,1F
+259,9,B1F
+260,9,B2F
+261,9,B3F
+262,9,B4F
+263,9,2F
+264,9,1F top
+265,9,4F
+266,9,cave gate
+267,9,inside cave
+268,9,10F
+269,9,outside
+270,9,1F
+271,9,mountainside
+272,9,3F
+273,9,top
+275,9,
+276,9,
+277,9,
+278,9,
+279,9,
+280,9,
+281,9,
+282,9,
+283,9,
+284,9,
+285,9,
+286,9,
+287,9,
+288,9,
+289,9,
+290,9,1F
+291,9,2F
+292,9,1F
+293,9,B1F
+294,9,1F
+295,9,
+296,9,"south, towards Viridian City"
+297,9,
+298,9,
+299,9,
+300,9,
+301,9,
+302,9,
+303,9,
+304,9,
+305,9,
+306,9,
+307,9,
+308,9,
+309,9,
+310,9,
+311,9,
+312,9,
+313,9,
+314,9,
+315,9,
+316,9,
+317,9,
+318,9,2F
+319,9,3F
+320,9,"north, towards Pewter City"
+321,9,
+323,9,1F
+324,9,2F
+325,9,B1F
+326,9,B1F
+327,9,B2F
+328,9,B2F
+329,9,
+330,9,
+331,9,1F
+332,9,2F
+333,9,3F
+334,9,1F
+335,9,2F
+336,9,3F
+337,9,4F
+338,9,5F
+339,9,6F
+340,9,7F
+341,9,1F
+342,9,2F
+343,9,3F
+344,9,B1F
+345,9,middle
+346,9,"Area 1, east"
+347,9,"Area 2, north"
+348,9,"Area 3, west"
+349,9,S.S. Anne dock

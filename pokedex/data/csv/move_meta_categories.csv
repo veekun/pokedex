@@ -1,15 +1,15 @@
-id,description
-0,Inflicts damage
-1,No damage; inflicts status ailment
-2,No damage; lowers target's stats or raises user's stats
-3,No damage; heals the user
-4,Inflicts damage; inflicts status ailment
-5,No damage; inflicts status ailment; raises target's stats
-6,Inflicts damage; lowers target's stats
-7,Inflicts damage; raises user's stats
-8,Inflicts damage; absorbs damage done to heal the user
-9,One-hit KO
-10,Effect on the whole field
-11,Effect on one side of the field
-12,Forces target to switch out
-13,Unique effect
+id
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13

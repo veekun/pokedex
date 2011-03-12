@@ -1,6 +1,6 @@
-id,name
-1,Swarm
-2,Time of day
-3,PokeRadar
-4,Gen 3 game in slot 2
-5,Radio
+id,identifier
+1,swarm
+2,time-of-day
+3,pokeradar
+4,gen-3-game-in-slot-2
+5,radio

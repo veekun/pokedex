@@ -1,0 +1,333 @@
+location_id,language_id,name
+1,9,Canalave City
+2,9,Eterna City
+3,9,Pastoria City
+4,9,Sunyshore City
+5,9,Pokémon League
+6,9,Oreburgh Mine
+7,9,Valley Windworks
+8,9,Eterna Forest
+9,9,Fuego Ironworks
+10,9,Mt. Coronet
+11,9,Great Marsh
+12,9,Solaceon Ruins
+13,9,Victory Road
+14,9,Ravaged Path
+15,9,Oreburgh Gate
+16,9,Stark Mountain
+17,9,Spring Path
+18,9,Turnback Cave
+19,9,Snowpoint Temple
+20,9,Wayward Cave
+22,9,Ruin Maniac Cave
+23,9,Trophy Garden
+24,9,Iron Island
+25,9,Old Chateau
+26,9,Lake Verity
+27,9,Lake Valor
+28,9,Lake Acuity
+29,9,Valor Lakefront
+30,9,Acuity Lakefront
+31,9,Route 201
+32,9,Route 202
+33,9,Route 203
+34,9,Route 204
+35,9,Route 205
+36,9,Route 206
+37,9,Route 207
+38,9,Route 208
+39,9,Route 209
+40,9,Lost Tower
+41,9,Route 210
+42,9,Route 211
+43,9,Route 212
+44,9,Route 213
+45,9,Route 214
+46,9,Route 215
+47,9,Route 216
+48,9,Route 217
+49,9,Route 218
+50,9,Route 219
+51,9,Route 221
+52,9,Route 222
+53,9,Route 224
+54,9,Route 225
+55,9,Route 227
+56,9,Route 228
+57,9,Route 229
+58,9,Twinleaf Town
+59,9,Celestic Town
+60,9,Resort Area
+61,9,Sea Route 220
+62,9,Sea Route 223
+63,9,Sea Route 226
+64,9,Sea Route 230
+65,9,Blackthorn City
+66,9,Burned Tower
+67,9,Celadon City
+68,9,Cerulean City
+69,9,Cherrygrove City
+70,9,Cianwood City
+71,9,Cinnabar Island
+72,9,Dark Cave
+73,9,Diglett's Cave
+74,9,Dragon's Den
+75,9,Ecruteak City
+76,9,Fuchsia City
+77,9,Ice Path
+78,9,Ilex Forest
+79,9,Lake of Rage
+80,9,Mt. Moon
+81,9,Mt. Mortar
+82,9,Mt. Silver
+83,9,National Park
+84,9,New Bark Town
+85,9,Olivine City
+86,9,Pallet Town
+87,9,Rock Tunnel
+88,9,Route 1
+89,9,Route 10
+90,9,Route 11
+91,9,Route 12
+92,9,Route 13
+93,9,Route 14
+94,9,Route 15
+95,9,Route 16
+96,9,Route 17
+97,9,Route 18
+98,9,Sea Route 19
+99,9,Route 2
+100,9,Sea Route 20
+101,9,Sea Route 21
+102,9,Route 22
+103,9,Route 24
+104,9,Route 25
+105,9,Route 26
+106,9,Route 27
+107,9,Route 28
+108,9,Route 29
+109,9,Route 3
+110,9,Route 30
+111,9,Route 31
+112,9,Route 32
+113,9,Route 33
+114,9,Route 34
+115,9,Route 35
+116,9,Route 36
+117,9,Route 37
+118,9,Route 38
+119,9,Route 39
+120,9,Route 4
+121,9,Sea Route 40
+122,9,Sea Route 41
+123,9,Route 42
+124,9,Route 43
+125,9,Route 44
+126,9,Route 45
+127,9,Route 46
+128,9,Route 47
+129,9,Route 48
+130,9,Route 5
+131,9,Route 6
+132,9,Route 7
+133,9,Route 8
+134,9,Route 9
+135,9,Ruins of Alph
+136,9,Seafoam Islands
+137,9,Slowpoke Well
+138,9,Sprout Tower
+139,9,Bell Tower
+140,9,Tohjo Falls
+141,9,Union Cave
+147,9,Cerulean Cave
+148,9,Unknown; all Poliwag
+149,9,Unknown; all Rattata
+150,9,Unknown; all bugs
+151,9,Vermilion City
+152,9,Victory Road
+153,9,Violet City
+154,9,Viridian City
+155,9,Viridian Forest
+156,9,Whirl Islands
+157,9,Route 23
+158,9,Power Plant
+159,9,Victory Road
+160,9,Pokémon Tower
+161,9,Pokémon Mansion
+162,9,Safari Zone
+163,9,Sandgem Town
+164,9,Floaroma Town
+165,9,Solaceon Town
+167,9,Jubilife City
+168,9,Oreburgh City
+169,9,Hearthome City
+170,9,Veilstone City
+171,9,Snowpoint City
+172,9,Spear Pillar
+173,9,Pal Park
+174,9,Amity Square
+175,9,Floaroma Meadow
+177,9,Fullmoon Island
+178,9,Sendoff Spring
+179,9,Flower Paradise
+180,9,Maniac Tunnel
+181,9,Galactic HQ
+182,9,Verity Lakefront
+183,9,Newmoon Island
+184,9,Battle Tower
+185,9,Fight Area
+186,9,Survival Area
+187,9,Seabreak Path
+188,9,Hall of Origin
+189,9,Hall of Origin
+190,9,Verity Cavern
+191,9,Valor Cavern
+192,9,Acuity Cavern
+193,9,Jubilife TV
+194,9,Pokétch Co.
+195,9,GTS
+196,9,Trainers’ School
+197,9,Mining Museum
+198,9,Flower Shop
+199,9,Cycle Shop
+200,9,Contest Hall
+201,9,Poffin House
+202,9,Foreign Building
+203,9,Pokémon Day Care
+204,9,Veilstone Store
+205,9,Game Corner
+206,9,Canalave Library
+207,9,Vista Lighthouse
+208,9,Sunyshore Market
+209,9,Footstep House
+210,9,Café
+211,9,Grand Lake
+212,9,Restaurant
+213,9,Battle Park
+214,9,Battle Frontier
+215,9,Battle Factory
+216,9,Battle Castle
+217,9,Battle Arcade
+218,9,Battle Hall
+219,9,Distortion World
+220,9,Global Terminal
+221,9,Villa
+222,9,Battleground
+223,9,ROTOM's Room
+224,9,T.G. Eterna Bldg
+225,9,Iron Ruins
+226,9,Iceberg Ruins
+227,9,Rock Peak Ruins
+228,9,Azalea Town
+229,9,Goldenrod City
+230,9,Mahogany Town
+231,9,Pewter City
+232,9,Lavender Town
+233,9,Indigo Plateau
+234,9,Saffron City
+236,9,Lighthouse
+237,9,Team Rocket HQ
+238,9,Goldenrod Tunnel
+239,9,Mt. Silver Cave
+241,9,Pokéathlon Dome
+242,9,S.S. Aqua
+243,9,Safari Zone Gate
+244,9,Cliff Cave
+245,9,Frontier Access
+246,9,Bellchime Trail
+247,9,Sinjoh Ruins
+248,9,Embedded Tower
+249,9,Pokéwalker
+250,9,Cliff Edge Gate
+252,9,Radio Tower
+253,9,Day-Care Couple
+254,9,Link trade (arrive)
+255,9,Link trade (met)
+256,9,Kanto
+257,9,Johto
+258,9,Hoenn
+259,9,Sinnoh
+260,9,Distant land
+261,9,Traveling Man
+262,9,Riley
+263,9,Cynthia
+264,9,Mystery Zone
+265,9,Lovely place
+266,9,Pokémon Ranger
+267,9,Faraway place
+268,9,Pokémon Movie
+269,9,Pokémon Movie 06
+270,9,Pokémon Movie 07
+271,9,Pokémon Movie 08
+272,9,Pokémon Movie 09
+273,9,Pokémon Movie 10
+274,9,Pokémon Movie 11
+275,9,Pokémon Movie 12
+276,9,Pokémon Movie 13
+277,9,Pokémon Movie 14
+278,9,Pokémon Movie 15
+279,9,Pokémon Movie 16
+280,9,Pokémon Cartoon
+281,9,Space World
+282,9,Space World 06
+283,9,Space World 07
+284,9,Space World 08
+285,9,Space World 09
+286,9,Space World 10
+287,9,Space World 11
+288,9,Space World 12
+289,9,Space World 13
+290,9,Space World 14
+291,9,Space World 15
+292,9,Space World 16
+293,9,Pokémon Festa
+294,9,Pokémon Festa 06
+295,9,Pokémon Festa 07
+296,9,Pokémon Festa 08
+297,9,Pokémon Festa 09
+298,9,Pokémon Festa 10
+299,9,Pokémon Festa 11
+300,9,Pokémon Festa 12
+301,9,Pokémon Festa 13
+302,9,Pokémon Festa 14
+303,9,Pokémon Festa 15
+304,9,Pokémon Festa 16
+305,9,POKéPARK
+306,9,POKéPARK 06
+307,9,POKéPARK 07
+308,9,POKéPARK 08
+309,9,POKéPARK 09
+310,9,POKéPARK 10
+311,9,POKéPARK 11
+312,9,POKéPARK 12
+313,9,POKéPARK 13
+314,9,POKéPARK 14
+315,9,POKéPARK 15
+316,9,POKéPARK 16
+317,9,Pokémon Center
+318,9,PC Tokyo
+319,9,PC Osaka
+320,9,PC Fukuoka
+321,9,PC Nagoya
+322,9,PC Sapporo
+323,9,PC Yokohama
+324,9,Nintendo World
+325,9,Pokémon Event
+326,9,Pokémon Event 06
+327,9,Pokémon Event 07
+328,9,Pokémon Event 08
+329,9,Pokémon Event 09
+330,9,Pokémon Event 10
+331,9,Pokémon Event 11
+332,9,Pokémon Event 12
+333,9,Pokémon Event 13
+334,9,Pokémon Event 14
+335,9,Pokémon Event 15
+336,9,Pokémon Event 16
+337,9,Wi-Fi Event
+338,9,Wi-Fi Gift
+339,9,Pokémon Fan Club
+340,9,Event Site
+341,9,Concert Event
+342,9,Mr. Pokémon
+343,9,Primo

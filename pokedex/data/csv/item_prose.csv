@@ -1,0 +1,750 @@
+item_id,language_id,short_effect,effect
+1,9,,In battle: Captures one Pokémon without fail.  Has a capture rate of 255.
+2,9,,In battle: Attempts to capture one Pokémon.  Has a capture rate of 2.
+3,9,,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.5.
+4,9,,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.
+5,9,,In a Great Marsh encounter: Attempts to capture one Pokémon.  Has a capture rate of 1.5.
+6,9,,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 3 against Water or Bug Pokémon, but 1 against any others."
+7,9,,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 3.5 if the trainer is underwater, but 1 otherwise."
+8,9,,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 3 if the Pokémon is level 19 or below, 2 if the Pokémon is levels 20 through 29, and 1 otherwise."
+9,9,,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 3 against Pokémon marked as caught in the trainer's Pokédex, but 1 otherwise."
+10,9,,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 1, but increases by 1 after every tenth turn, to a maximum of 4."
+11,9,,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.  Increases the rate at which the contained Pokémon gains Happiness.
+12,9,,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.
+13,9,,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 4 in caves or at night, but 1 otherwise."
+14,9,,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.  Captured Pokémon have their HP fully restored and any major status ailments cured.
+15,9,,"In battle: Attempts to capture one Pokémon.  Has a capture rate of 4, but decreases by 1 after every fifth turn, to a minimum of 1."
+16,9,,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.
+17,9,,Heals one Pokémon for 20 HP.
+18,9,,Cures one Pokémon of Poison.
+19,9,,Cures one Pokémon of a Burn.
+20,9,,Thaws one Pokémon.
+21,9,,Awakens one Pokémon.
+22,9,,Cures one Pokémon of Paralysis.
+23,9,,Fully heals one Pokémon and cures it of any major status ailment.
+24,9,,Fully heals one Pokémon.
+25,9,,Heals one Pokémon for 200 HP.
+26,9,,Heals one Pokémon for 50 HP.
+27,9,,Cures one Pokémon of any major status ailment.
+28,9,,Revives a Fainted Pokémon and restores half its max HP.
+29,9,,Revives a Fainted Pokémon and fully restores its HP.
+30,9,,Heals one Pokémon for 50 HP.
+31,9,,Heals one Pokémon for 60 HP.
+32,9,,Heals one Pokémon for 80 HP.
+33,9,,Heals one Pokémon for 100 HP.
+34,9,,Heals one Pokémon for 50 HP.  Lowers that Pokémon's Happiness by 5/5/10.
+35,9,,Heals one Pokémon for 200 HP.  Lowers that Pokémon's Happiness by 10/10/15.
+36,9,,Cures one Pokémon of any major status ailment.  Lowers that Pokémon's Happiness by 5/5/10.
+37,9,,Revives a Fainted Pokémon and fully restores its HP.  Lowers that Pokémon's Happiness by 10/10/15.
+38,9,,Restores the PP for one Pokémon's selected move by 10.
+39,9,,Fully restores the PP for one Pokémon's selected move.
+40,9,,Restores the PP for each of one Pokémon's moves by 10.
+41,9,,Fully restores the PP for each of one Pokémon's moves.
+42,9,,Cures one Pokémon of any major status ailment.
+43,9,,Heals one Pokémon for 20 HP.
+44,9,,Revives all Fainted Pokémon in the trainer's party and fully restores their HP.
+45,9,,"Increases one Pokémon's HP effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2."
+46,9,,"Increases one Pokémon's Attack effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2."
+47,9,,"Increases one Pokémon's Defense effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2."
+48,9,,"Increases one Pokémon's Speed effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2."
+49,9,,"Increases one Pokémon's Special Attack effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2."
+50,9,,Levels up one Pokémon.  Raises that Pokémon's Happiness by 5/3/2.
+51,9,,"Increases the max PP for one of one Pokémon's moves by 20% its original PP, up to three times.  Raises that Pokémon's Happiness by 5/3/2."
+52,9,,"Increases one Pokémon's Special Defense effort by 10, to a maximum of 100.  Raises that Pokémon's Happiness by 5/3/2."
+53,9,,Increases the max PP for one of one Pokémon's moves to its original PP plus 60%.  Raises that Pokémon's Happiness by 5/3/2.
+54,9,,Cures one Pokémon of any major status ailment.
+55,9,,In battle: Prevents one Pokémon's stats from being lowered for the next five turns.  Raises that Pokémon's Happiness by 1/1/0.
+56,9,,In battle: Raises one Pokémon's critical hit counter by 1.  Raises that Pokémon's Happiness by 1/1/0.
+57,9,,In battle: Raises one Pokémon's Attack.  Raises that Pokémon's Happiness by 1/1/0.
+58,9,,In battle: Raises one Pokémon's Defense.  Raises that Pokémon's Happiness by 1/1/0.
+59,9,,In battle: Raises one Pokémon's Speed.  Raises that Pokémon's Happiness by 1/1/0.
+60,9,,In battle: Raises one Pokémon's Accuracy.  Raises that Pokémon's Happiness by 1/1/0.
+61,9,,In battle: Raises one Pokémon's Special Attack.  Raises that Pokémon's Happiness by 1/1/0.
+62,9,,In battle: Raises one Pokémon's Special Defense.  Raises that Pokémon's Happiness by 1/1/0.
+63,9,,In wild battles: Ends the battle.
+64,9,,In wild battles: Ends the battle.
+65,9,,Awakens one Pokémon.  Reusable.
+66,9,,Cures one Pokémon of Confusion.  Reusable.
+67,9,,Cures one Pokémon of Attraction.  Reusable.
+68,9,,Makes wild encounters less frequent.  Reusable.
+69,9,,Makes wild encounters more frequent.  Reusable.
+70,9,,No effect.
+71,9,,No effect.
+72,9,,Trade 10 for a Sunny Day TM in the house midway along the southern section of Route 212.
+73,9,,Trade 10 for a Rain Dance TM in the house midway along the southern section of Route 212.
+74,9,,Trade 10 for a Sandstorm TM in the house midway along the southern section of Route 212.
+75,9,,Trade 10 for a Hail TM in the house midway along the southern section of Route 212.
+76,9,,Prevents wild battles with Pokémon that are lower level than the trainer's lead Pokémon for 200 steps.
+77,9,,Prevents wild battles with Pokémon that are lower level than the trainer's lead Pokémon for 250 steps.
+78,9,,Transports the trainer to the entrance of the cave s/he is in.  Only usable in caves.
+79,9,,Prevents wild battles with Pokémon that are lower level than the trainer's lead Pokémon for 100 steps.
+80,9,,Evolves a Gloom into Bellossom or a Sunkern into Sunflora.
+81,9,,"Evolves a Clefairy into Clefable, Jigglypuff into Wigglytuff, Nidorina into Nidoqueen, Nidorino into Nidoking, or Skitty into Delcatty."
+82,9,,"Evolves an Eevee into Flareon, a Growlithe into Arcanine, or a Vulpix into Ninetales."
+83,9,,Evolves an Eevee into Jolteon or a Pikachu into Raichu.
+84,9,,"Evolves an Eevee into Vaporeon, a Lombre into Ludicolo, a Poliwhirl into Poliwrath, a Shellder into Cloyster, or a Staryu into Starmie."
+85,9,,"Evolves an Exeggcute into Exeggutor, a Gloom into Vileplume, a Nuzleaf into Shiftry, or a Weepinbell into Victreebel."
+86,9,,No effect.
+87,9,,No effect.
+88,9,,No effect.
+89,9,,No effect.
+90,9,,No effect.
+91,9,,No effect.
+92,9,,No effect.
+93,9,,Trade one to the Move Relearner in Pastoria City to teach one Pokémon a prior level-up move.
+94,9,,Immediately starts a wild battle if the trainer is standing in grass or in a cave.  Can be smeared on sweet-smelling trees to attract tree-dwelling Pokémon after ten hours.
+95,9,,Spread over a planted Berry: Decreases growth time by 25% and speeds up the soil's drying.
+96,9,,Spread over a planted Berry: Increases growth time and slows the soil's drying.
+97,9,,Spread over a planted Berry: Increases the time the grown plant's Berries will stay attached.
+98,9,,Spread over a planted Berry: Increases the number of times the Berry will regrow after wilting.
+99,9,,"Contains the fossil of a Lileep, which a Scientist can revive."
+100,9,,"Contains the fossil of an Anorith, which a Scientist can revive."
+101,9,,"Contains the fossil of an Omanyte, which a Scientist can revive."
+102,9,,"Contains the fossil of a Kabuto, which a Scientist can revive."
+103,9,,"Contains the fossil of an Aerodactyl, which a Scientist can revive."
+104,9,,"Contains the fossil of a Shieldon, which a Scientist can revive."
+105,9,,"Contains the fossil of a Cranidos, which a Scientist can revive."
+106,9,,No effect.
+107,9,,Evolves a Roselia into Roserade or a Togetic into Togekiss.
+108,9,,Evolves a Misdreavus into Mismagius or a Murkrow into Honchkrow.
+109,9,,Evolves a male Kirlia into Gallade or a female Snorunt into Froslass.
+110,9,,Held by Happiny: Holder evolves into Chansey when it levels up during the daytime.
+111,9,,"Place in the Hallowed Tower, and a Spiritomb will be summoned if the trainer's Underground status card counts at least 32 greetings."
+112,9,,Held by a Dialga: Increases the damage of the holder's Dragon and Steel moves by 20%.
+113,9,,Held by a Palkia: Increases the damage of the holder's Dragon and Water moves by 20%.
+114,9,,Used to send short messages to other players via Pokémon trading.
+115,9,,Used to send short messages to other players via Pokémon trading.
+116,9,,Used to send short messages to other players via Pokémon trading.
+117,9,,Used to send short messages to other players via Pokémon trading.
+118,9,,Used to send short messages to other players via Pokémon trading.
+119,9,,Used to send short messages to other players via Pokémon trading.
+120,9,,Used to send short messages to other players via Pokémon trading.
+121,9,,Used to send short messages to other players via Pokémon trading.
+122,9,,Used to send short messages to other players via Pokémon trading.
+123,9,,Used to send short messages to other players via Pokémon trading.
+124,9,,Used to send short messages to other players via Pokémon trading.
+125,9,,Used to send short messages to other players via Pokémon trading.
+126,9,,"Held: When the holder becomes Paralyzed, this Berry is consumed and cures the Paralysis."
+127,9,,"Held: When the holder falls asleep, this Berry is consumed and awakens the holder."
+128,9,,"Held: When the holder becomes Poisoned, this Berry is consumed and cures the Poison."
+129,9,,"Held: When the holder becomes Burned, this Berry is consumed and cures the Burn."
+130,9,,"Held: When the holder becomes Frozen, this Berry is consumed and thaws the holder."
+131,9,,"Held: When one of the holder's moves runs out of PP, this Berry is consumed and restores 10 of the move's PP at the end of the turn."
+132,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 10 HP."
+133,9,,"Held: When the holder becomes Confused, this Berry is consumed and cures the Confusion."
+134,9,,"Held: When the holder gains a major status ailment, this Berry is consumed and cures the holder."
+135,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/4 its max HP."
+136,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes spicy flavors (- Attack nature), it will also become Confused."
+137,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes dry flavors (- Special Attack nature), it will also become Confused."
+138,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes sweet flavors (- Speed nature), it will also become Confused."
+139,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes bitter flavors (- Special Defense nature), it will also become Confused."
+140,9,,"Held: When the holder's HP falls to 1/2 or less, this Berry is consumed and heals the holder for 1/8 its max HP.  If the holder dislikes sour flavors (- Defense nature), it will also become Confused."
+141,9,,No effect; only useful for planting and cooking.
+142,9,,No effect; only useful for planting and cooking.
+143,9,,No effect; only useful for planting and cooking.
+144,9,,No effect; only useful for planting and cooking.
+145,9,,No effect; only useful for planting and cooking.
+146,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's HP effort by 10.
+147,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Attack effort by 10.
+148,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Defense effort by 10.
+149,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Special Attack effort by 10.
+150,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Special Defense effort by 10.
+151,9,,Raises one Pokémon's Happiness by 10/5/2.  Lowers that Pokémon's Speed effort by 10.
+152,9,,No effect; only useful for planting and cooking.
+153,9,,No effect; only useful for planting and cooking.
+154,9,,No effect; only useful for planting and cooking.
+155,9,,No effect; only useful for planting and cooking.
+156,9,,No effect; only useful for planting and cooking.
+157,9,,No effect; only useful for planting and cooking.
+158,9,,No effect; only useful for planting and cooking.
+159,9,,No effect; only useful for planting and cooking.
+160,9,,No effect; only useful for planting and cooking.
+161,9,,"Held: When the holder is struck by a super-effective Fire move, this Berry is consumed and reduces the damage taken by 50%."
+162,9,,"Held: When the holder is struck by a super-effective Water move, this Berry is consumed and reduces the damage taken by 50%."
+163,9,,"Held: When the holder is struck by a super-effective Electric move, this Berry is consumed and reduces the damage taken by 50%."
+164,9,,"Held: When the holder is struck by a super-effective Grass move, this Berry is consumed and reduces the damage taken by 50%."
+165,9,,"Held: When the holder is struck by a super-effective Ice move, this Berry is consumed and reduces the damage taken by 50%."
+166,9,,"Held: When the holder is struck by a super-effective Fighting move, this Berry is consumed and reduces the damage taken by 50%."
+167,9,,"Held: When the holder is struck by a super-effective Poison move, this Berry is consumed and reduces the damage taken by 50%."
+168,9,,"Held: When the holder is struck by a super-effective Ground move, this Berry is consumed and reduces the damage taken by 50%."
+169,9,,"Held: When the holder is struck by a super-effective Flying move, this Berry is consumed and reduces the damage taken by 50%."
+170,9,,"Held: When the holder is struck by a super-effective Psychic move, this Berry is consumed and reduces the damage taken by 50%."
+171,9,,"Held: When the holder is struck by a super-effective Bug move, this Berry is consumed and reduces the damage taken by 50%."
+172,9,,"Held: When the holder is struck by a super-effective Rock move, this Berry is consumed and reduces the damage taken by 50%."
+173,9,,"Held: When the holder is struck by a super-effective Ghost move, this Berry is consumed and reduces the damage taken by 50%."
+174,9,,"Held: When the holder is struck by a super-effective Dragon move, this Berry is consumed and reduces the damage taken by 50%."
+175,9,,"Held: When the holder is struck by a super-effective Dark move, this Berry is consumed and reduces the damage taken by 50%."
+176,9,,"Held: When the holder is struck by a super-effective Steel move, this Berry is consumed and reduces the damage taken by 50%."
+177,9,,"Held: When the holder is struck by a Normal move, this Berry is consumed and reduces the damage taken by 50%."
+178,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Attack."
+179,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Defense."
+180,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Speed."
+181,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Special Attack."
+182,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's Special Defense."
+183,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the holder's critical hit counter by 1."
+184,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises one of the holder's stats at random by two levels."
+185,9,,"Held: When the holder is hit by a super-effective move, this Berry is consumed and heals the holder for 1/4 its max HP."
+186,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed and raises the accuracy of the holder's next used move."
+187,9,,"Held: When the holder's HP falls to 1/4 or less, this Berry is consumed.  On the next turn, the holder will move first within its move's priority bracket, regardless of Speed."
+188,9,,"Held: When the holder is hit by a physical attack and survives, this Berry is consumed, and the opposing Pokémon takes 1/8 its max HP in damage."
+189,9,,"Held: When the holder is hit by a special attack and survives, this Berry is consumed, and the opposing Pokémon takes 1/8 its max HP in damage."
+190,9,,"Held: Raises the holder's Evasion 10% (added, not multiplied)."
+191,9,,"Held: After each move, if any of the holder's stats are below normal, this item is consumed and restores them to normal."
+192,9,,Held: Doubles the effort the holder earns.  Halves the holder's Speed.
+193,9,,"Held: The holder counts as having participated in the battle when Exp is distributed, whether or not it actually did."
+194,9,,"Held: The holder has a 3/16 chance to move first within its move's priority bracket, regardless of Speed."
+195,9,,Held: Doubles any Happiness earned by the holder.
+196,9,,"Held: When the holder becomes Attracted, this Berry is consumed and cures the Attraction."
+197,9,,"Held: Increases the holder's Attack by 50%, but restricts it to the first move it uses until it leaves battle or loses this item.  If this item is swapped for another Choice item via Trick or Switcheroo, the holder's restriction is still lifted, but it will again be restricted to the next move it uses.
+(Quirk: If the holder is switched in by U-Turn and it also knows U-Turn, U-Turn becomes its restricted move.)"
+198,9,,"Held: When the holder attacks with most damaging moves, provides an extra 11.7% (30/256) chance for the target to flinch.
+Held by Poliwhirl or Slowbro: Evolves the holder into Politoed or Slowking when traded, respectively."
+199,9,,Held: Increases the power of the holder's Bug moves by 20%.
+200,9,,Held: Doubles the money the trainer receives after an in-game trainer battle.  This effect cannot apply more than once to the same battle.
+201,9,,Held by lead Pokémon: Prevents wild battles with Pokémon that are lower level than the holder.
+202,9,,Held by Latias or Latios: Increases the holder's Special Attack and Special Defense by 50%.
+203,9,,Held by Clamperl: Doubles the holder's Special Attack.  Evolves the holder into Huntail when traded.
+204,9,,Held by Clamperl: Doubles the holder's Special Defense.  Evolves the holder into Gorebyss when traded.
+205,9,,"Held: In wild battles, attempts to run away on the holder's turn will always succeed."
+206,9,,"Held: Prevents the holder from evolving naturally.  Evolution initiated by the trainer (Stones, etc) will still work."
+207,9,,"Held: If the holder is attacked for regular damage that would faint it, this item has a 10% chance to prevent the holder's HP from lowering below 1."
+208,9,,Held: Increases any Exp the holder gains by 50%.
+209,9,,Held: Raises the holder's critical hit counter by 1.
+210,9,,"Held: Increases the power of the holder's Steel moves by 20%.
+Held by Onix or Scyther: Evolves the holder into Steelix or Scizor when traded, respectively."
+211,9,,Held: Heals the holder by 1/16 its max HP at the end of each turn.
+212,9,,Held by Seadra: Evolves the holder into Kingdra when traded.
+213,9,,Held by Pikachu: Doubles the holder's initial Attack and Special Attack.
+214,9,,Held: Increases the power of the holder's Ground moves by 20%.
+215,9,,Held: Increases the power of the holder's Rock moves by 20%.
+216,9,,Held: Increases the power of the holder's Grass moves by 20%.
+217,9,,Held: Increases the power of the holder's Dark moves by 20%.
+218,9,,Held: Increases the power of the holder's Fighting moves by 20%.
+219,9,,Held: Increases the power of the holder's Electric moves by 20%.
+220,9,,Held: Increases the power of the holder's Water moves by 20%.
+221,9,,Held: Increases the power of the holder's Flying moves by 20%.
+222,9,,Held: Increases the power of the holder's Poison moves by 20%.
+223,9,,Held: Increases the power of the holder's Ice moves by 20%.
+224,9,,Held: Increases the power of the holder's Ghost moves by 20%.
+225,9,,Held: Increases the power of the holder's Psychic moves by 20%.
+226,9,,Held: Increases the power of the holder's Fire moves by 20%.
+227,9,,Held: Increases the power of the holder's Dragon moves by 20%.
+228,9,,Held: Increases the power of the holder's Normal moves by 20%.
+229,9,,Held by Porygon: Evolves the holder into Porygon2 when traded.
+230,9,,Held: Heals the holder by 1/8 of any damage it inflicts.
+231,9,,Held: Increases the power of the holder's Water moves by 20%.
+232,9,,Held: Increases the holder's Evasion by 5%.
+233,9,,Held by Chansey: Raises the holder's critical hit counter by 2.
+234,9,,Held by Ditto: Increases the holder's initial Defense and Special Defense by 50%.
+235,9,,Held by Cubone or Marowak: Doubles the holder's Attack.
+236,9,,Held by Farfetch'd: Raises the holder's critical hit counter by 2.
+237,9,,Held: Increases the holder's Coolness during a Super Contest's Visual Competition.
+238,9,,Held: Increases the holder's Beauty during a Super Contest's Visual Competition.
+239,9,,Held: Increases the holder's Cuteness during a Super Contest's Visual Competition.
+240,9,,Held: Increases the holder's Smartness during a Super Contest's Visual Competition.
+241,9,,Held: Increases the holder's Toughness during a Super Contest's Visual Competition.
+242,9,,Held: Increases the accuracy of any move the holder uses by 10% (multiplied; i.e. 70% accuracy is increased to 77%).
+243,9,,Held: Increases the power of the holder's physical moves by 10%.
+244,9,,Held: Increases the power of the holder's special moves by 10%.
+245,9,,"Held: When the holder hits with a super-effective move, its power is raised by 20%."
+246,9,,"Held: The holder's Reflect and Light Screen will create effects lasting for eight turns rather than five.  As this item affects the move rather than the barrier itself, the effect is not lost if the holder leaves battle or drops this item."
+247,9,,"Held: Damage from the holder's moves is increased by 30%.  On each turn the holder uses a damage-inflicting move, it takes 10% its max HP in damage."
+248,9,,"Held: Whenever the holder uses a move that requires a turn to charge first (Bounce, Dig, Dive, Fly, Razor Wind, Skull Bash, Sky Attack, or Solarbeam), this item is consumed and the charge is skipped.  Skull Bash still provides a Defense boost."
+249,9,,Held: Badly poisons the holder at the end of each turn.
+250,9,,Held: Burns the holder at the end of each turn.
+251,9,,Held by Ditto: Doubles the holder's initial Speed.
+252,9,,"Held: If the holder has full HP and is attacked for regular damage that would faint it, this item is consumed and prevents the holder's HP from lowering below 1.  This effect works against multi-hit attacks, but does not work against the effects of Doom Desire or Future Sight."
+253,9,,"Held: Raises the holder's Accuracy by 20% when it goes last.
+Ingame description is incorrect."
+254,9,,"Held: Each time the holder uses the same move consecutively, its power is increased by another 10% of its original, to a maximum of 100%."
+255,9,,"Held: Decreases the holder's Speed by 50%.  If the holder is Flying or has Levitate, it takes regular damage from Ground attacks and is suspectible to Spikes and Toxic Spikes."
+256,9,,"Held: The holder will go last within its move's priority bracket, regardless of Speed.  If multiple Pokémon within the same priority bracket are subject to this effect, the slower Pokémon will go first.  The holder will move after Pokémon with Stall.  If the holder has Stall, Stall is ignored.  This item ignores Trick Room."
+257,9,,"Held: When the holder becomes Attracted, the Pokémon it is Attracted to becomes Attracted back."
+258,9,,"Held: If the holder is Poison-type, restores 1/16 max HP at the end of each turn.  Otherwise, damages the holder by 1/16 its max HP at the end of each turn."
+259,9,,"Held: The holder's Hail will create a hailstorm lasting for eight turns rather than five.  As this item affects the move rather than the weather itself, the effect is not lost if the holder leaves battle or drops this item."
+260,9,,"Held: The holder's Sandstorm will create a sandstorm lasting for eight turns rather than five.  As this item affects the move rather than the weather itself, the effect is not lost if the holder leaves battle or drops this item."
+261,9,,"Held: The holder's Sunny Day will create sunshine lasting for eight turns rather than five.  As this item affects the move rather than the weather itself, the effect is not lost if the holder leaves battle or drops this item."
+262,9,,"Held: The holder's Rain Dance will create rain lasting for eight turns rather than five.  As this item affects the move rather than the weather itself, the effect is not lost if the holder leaves battle or drops this item."
+263,9,,Held: Increases the duration of the holder's multiturn (2-5 turn) moves by three turns.
+264,9,,"Held: Increases the holder's Speed by 50%, but restricts it to the first move it uses until it leaves battle or loses this item.  If this item is swapped for another Choice item via Trick or Switcheroo, the holder's restriction is still lifted, but it will again be restricted to the next move it uses.
+(Quirk: If the holder is switched in by U-Turn and it also knows U-Turn, U-Turn becomes its restricted move.)"
+265,9,,"Held: Damaged the holder for 1/8 its max HP.  When the holder is struck by a contact move, damages the attacker for 1/8 its max HP; if the attacker is not holding an item, it will take this item."
+266,9,,"Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Attack effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect."
+267,9,,"Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Defense effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect."
+268,9,,"Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Special Attack effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect."
+269,9,,"Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Special Defense effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect."
+270,9,,"Held: Decreases the holder's Speed by 50%.  Whenever the holder gains Speed effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect."
+271,9,,"Held: Decreases the holder's Speed by 50%.  Whenever the holder gains HP effort from battle, increases that effort by 4; this applies before the PokéRUS doubling effect."
+272,9,,Held: The holder is unaffected by any moves or abilities that would prevent it from actively leaving battle.
+273,9,,"Held: HP restored from Absorb, Aqua Ring, Drain Punch, Dream Eater, Giga Drain, Ingrain, Leech Life, Leech Seed, and Mega Drain is increased by 30%.  Damage inflicted is not affected."
+274,9,,"Held: Increases the holder's Special Attack by 50%, but restricts it to the first move it uses until it leaves battle or loses this item.  If this item is swapped for another Choice item via Trick or Switcheroo, the holder's restriction is still lifted, but it will again be restricted to the next move it uses.
+(Quirk: If the holder is switched in by U-Turn and it also knows U-Turn, U-Turn becomes its restricted move.)"
+275,9,,"Held: Increases the power of the holder's Fire moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Fire."
+276,9,,"Held: Increases the power of the holder's Water moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Water."
+277,9,,"Held: Increases the power of the holder's Electric moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Electric."
+278,9,,"Held: Increases the power of the holder's Grass moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Grass."
+279,9,,"Held: Increases the power of the holder's Ice moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Ice."
+280,9,,"Held: Increases the power of the holder's Fighting moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Fighting."
+281,9,,"Held: Increases the power of the holder's Poison moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Poison."
+282,9,,"Held: Increases the power of the holder's Ground moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Ground."
+283,9,,"Held: Increases the power of the holder's Flying moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Flying."
+284,9,,"Held: Increases the power of the holder's Psychic moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Psychic."
+285,9,,"Held: Increases the power of the holder's Bug moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Bug."
+286,9,,"Held: Increases the power of the holder's Rock moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Rock."
+287,9,,"Held: Increases the power of the holder's Ghost moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Ghost."
+288,9,,"Held: Increases the power of the holder's Dragon moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Dragon."
+289,9,,"Held: Increases the power of the holder's Dark moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Dark."
+290,9,,"Held: Increases the power of the holder's Steel moves by 20%.
+Held by a Multitype Pokémon: Holder's type becomes Steel."
+291,9,,Held: Increases the power of the holder's Psychic moves by 20%.
+292,9,,Held: Increases the power of the holder's Rock moves by 20%.
+293,9,,"Held: The holder will go last within its move's priority bracket, regardless of Speed.  If multiple Pokémon within the same priority bracket are subject to this effect, the slower Pokémon will go first.  The holder will move after Pokémon with Stall.  If the holder has Stall, Stall is ignored.  This item ignores Trick Room."
+294,9,,Held: Increases the power of the holder's Water moves by 20%.
+295,9,,Held: Increases the power of the holder's Grass moves by 20%.
+296,9,,Held: Doubles the money the trainer receives after an in-game trainer battle.  This effect cannot apply more than once to the same battle.
+297,9,,Held by lead Pokémon: Prevents wild battles with Pokémon that are lower level than the holder.
+298,9,,Held by Rhydon: Evolves the holder into Rhyperior when traded.
+299,9,,Held by Electabuzz: Evolves the holder into Electivire when traded.
+300,9,,Held by Magmar: Evolves the holder into Magmortar when traded.
+301,9,,Held by Porygon2: Evolves the holder into Porygon-Z when traded.
+302,9,,Held by Dusclops: Evolves the holder into Dusknoir when traded.
+303,9,,"Held: Raises the holder's critical hit counter by 1.
+Held by Sneasel: Evolves the holder into Weavile when it levels up during the night."
+304,9,,"Held: When the holder attacks with most damaging moves, provides an extra 11.7% (30/256) chance for the target to flinch.
+Held by Gligar: Evolves the holder into Gliscor when traded."
+305,9,,Teaches Focus Punch to a compatible Pokémon.
+306,9,,Teaches Dragon Claw to a compatible Pokémon.
+307,9,,Teaches Water Pulse to a compatible Pokémon.
+308,9,,Teaches Calm Mind to a compatible Pokémon.
+309,9,,Teaches Roar to a compatible Pokémon.
+310,9,,Teaches Toxic to a compatible Pokémon.
+311,9,,Teaches Hail to a compatible Pokémon.
+312,9,,Teaches Bulk Up to a compatible Pokémon.
+313,9,,Teaches Bullet Seed to a compatible Pokémon.
+314,9,,Teaches Hidden Power to a compatible Pokémon.
+315,9,,Teaches Sunny Day to a compatible Pokémon.
+316,9,,Teaches Taunt to a compatible Pokémon.
+317,9,,Teaches Ice Beam to a compatible Pokémon.
+318,9,,Teaches Blizzard to a compatible Pokémon.
+319,9,,Teaches Hyper Beam to a compatible Pokémon.
+320,9,,Teaches Light Screen to a compatible Pokémon.
+321,9,,Teaches Protect to a compatible Pokémon.
+322,9,,Teaches Rain Dance to a compatible Pokémon.
+323,9,,Teaches Giga Drain to a compatible Pokémon.
+324,9,,Teaches Safeguard to a compatible Pokémon.
+325,9,,Teaches Frustration to a compatible Pokémon.
+326,9,,Teaches SolarBeam to a compatible Pokémon.
+327,9,,Teaches Iron Tail to a compatible Pokémon.
+328,9,,Teaches Thunderbolt to a compatible Pokémon.
+329,9,,Teaches Thunder to a compatible Pokémon.
+330,9,,Teaches Earthquake to a compatible Pokémon.
+331,9,,Teaches Return to a compatible Pokémon.
+332,9,,Teaches Dig to a compatible Pokémon.
+333,9,,Teaches Psychic to a compatible Pokémon.
+334,9,,Teaches Shadow Ball to a compatible Pokémon.
+335,9,,Teaches Brick Break to a compatible Pokémon.
+336,9,,Teaches Double Team to a compatible Pokémon.
+337,9,,Teaches Reflect to a compatible Pokémon.
+338,9,,Teaches Shock Wave to a compatible Pokémon.
+339,9,,Teaches Flamethrower to a compatible Pokémon.
+340,9,,Teaches Sludge Bomb to a compatible Pokémon.
+341,9,,Teaches Sandstorm to a compatible Pokémon.
+342,9,,Teaches Fire Blast to a compatible Pokémon.
+343,9,,Teaches Rock Tomb to a compatible Pokémon.
+344,9,,Teaches Aerial Ace to a compatible Pokémon.
+345,9,,Teaches Torment to a compatible Pokémon.
+346,9,,Teaches Facade to a compatible Pokémon.
+347,9,,Teaches Secret Power to a compatible Pokémon.
+348,9,,Teaches Rest to a compatible Pokémon.
+349,9,,Teaches Attract to a compatible Pokémon.
+350,9,,Teaches Thief to a compatible Pokémon.
+351,9,,Teaches Steel Wing to a compatible Pokémon.
+352,9,,Teaches Skill Swap to a compatible Pokémon.
+353,9,,Teaches Snatch to a compatible Pokémon.
+354,9,,Teaches Overheat to a compatible Pokémon.
+355,9,,Teaches Roost to a compatible Pokémon.
+356,9,,Teaches Focus Blast to a compatible Pokémon.
+357,9,,Teaches Energy Ball to a compatible Pokémon.
+358,9,,Teaches False Swipe to a compatible Pokémon.
+359,9,,Teaches Brine to a compatible Pokémon.
+360,9,,Teaches Fling to a compatible Pokémon.
+361,9,,Teaches Charge Beam to a compatible Pokémon.
+362,9,,Teaches Endure to a compatible Pokémon.
+363,9,,Teaches Dragon Pulse to a compatible Pokémon.
+364,9,,Teaches Drain Punch to a compatible Pokémon.
+365,9,,Teaches Will-O-Wisp to a compatible Pokémon.
+366,9,,Teaches Silver Wind to a compatible Pokémon.
+367,9,,Teaches Embargo to a compatible Pokémon.
+368,9,,Teaches Explosion to a compatible Pokémon.
+369,9,,Teaches Shadow Claw to a compatible Pokémon.
+370,9,,Teaches Payback to a compatible Pokémon.
+371,9,,Teaches Recycle to a compatible Pokémon.
+372,9,,Teaches Giga Impact to a compatible Pokémon.
+373,9,,Teaches Rock Polish to a compatible Pokémon.
+374,9,,Teaches Flash to a compatible Pokémon.
+375,9,,Teaches Stone Edge to a compatible Pokémon.
+376,9,,Teaches Avalanche to a compatible Pokémon.
+377,9,,Teaches Thunder Wave to a compatible Pokémon.
+378,9,,Teaches Gyro Ball to a compatible Pokémon.
+379,9,,Teaches Swords Dance to a compatible Pokémon.
+380,9,,Teaches Stealth Rock to a compatible Pokémon.
+381,9,,Teaches Psych Up to a compatible Pokémon.
+382,9,,Teaches Captivate to a compatible Pokémon.
+383,9,,Teaches Dark Pulse to a compatible Pokémon.
+384,9,,Teaches Rock Slide to a compatible Pokémon.
+385,9,,Teaches X-Scissor to a compatible Pokémon.
+386,9,,Teaches Sleep Talk to a compatible Pokémon.
+387,9,,Teaches Natural Gift to a compatible Pokémon.
+388,9,,Teaches Poison Jab to a compatible Pokémon.
+389,9,,Teaches Dream Eater to a compatible Pokémon.
+390,9,,Teaches Grass Knot to a compatible Pokémon.
+391,9,,Teaches Swagger to a compatible Pokémon.
+392,9,,Teaches Pluck to a compatible Pokémon.
+393,9,,Teaches U-Turn to a compatible Pokémon.
+394,9,,Teaches Substitute to a compatible Pokémon.
+395,9,,Teaches Flash Cannon to a compatible Pokémon.
+396,9,,Teaches Trick Room to a compatible Pokémon.
+397,9,,Teaches Cut to a compatible Pokémon.
+398,9,,Teaches Fly to a compatible Pokémon.
+399,9,,Teaches Surf to a compatible Pokémon.
+400,9,,Teaches Strength to a compatible Pokémon.
+401,9,,Teaches Defog to a compatible Pokémon.
+402,9,,Teaches Rock Smash to a compatible Pokémon.
+403,9,,Teaches Waterfall to a compatible Pokémon.
+404,9,,Teaches Rock Climb to a compatible Pokémon.
+405,9,,Sends the trainer to the Underground.  Only usable outside.
+406,9,,Unused.
+407,9,,Unused.
+408,9,,"Designates several nearby patches of grass as containing Pokémon, some of which may be special radar-only Pokémon.  Successive uses in a certain way create chains of encounters with the same species; longer chains increase the chance that a shiny Pokémon of that species will appear."
+409,9,,Tracks Battle Points.
+410,9,,Records some of the trainer's activities for the day.
+411,9,,Contains Seals used for decorating Pokéballs.
+412,9,,Contains Pokémon Accessories.
+413,9,,Unused.
+414,9,,"Contains friend codes for up to 32 other players, as well as their sprite, gender, and basic statistics for those that have been seen on WFC."
+415,9,,Opens the front door of the Valley Windworks.  Reusable.
+416,9,,Given to Cynthia's grandmother to get the Surf HM.
+417,9,,Grants access to Galactic HQ in Veilstone City.
+418,9,,Unused.
+419,9,,"Displays a map of the region including the trainer's position, location names, visited towns, gym locations, and where the trainer has been walking recently."
+420,9,,"Reveals trainers who want a rematch, by showing !! over their heads.  Each use drains the battery; requires 100 steps to charge."
+421,9,,"Contains the Coins used by the Game Corner, to a maximum of 50,000."
+422,9,,"Used to find Pokémon on the Old Rod list for an area, which are generally Magikarp or similar."
+423,9,,"Used to find Pokémon on the Good Rod list for an area, which are generally mediocre."
+424,9,,"Used to find Pokémon on the Super Rod list for an area, which are generally the best available there."
+425,9,,Waters Berry plants.
+426,9,,Contains up to 100 Poffins.
+427,9,,"Increases movement speed outside or in caves.  In high gear, allows the trainer to hop over some rocks and ascend muddy slopes."
+428,9,,Opens the locked building in the lakeside resort.
+429,9,,Grants access to Flower Paradise and Shaymin.
+430,9,,"Cures the sailor's son of his nightmares; no reward, only a side effect of seeing Cresselia."
+431,9,,Provides access to Newmoon Island and Darkrai.
+432,9,,Supposedly related to t
+433,9,,Unused.
+434,9,,Allows the trainer to enter Contests.
+435,9,,Unused.
+436,9,,"Given to the trainer's rival in Jubilife City.  Contains two Town Maps, one of which is given to the trainer upon delivery."
+437,9,,One of three coupons needed to receive a Pokétch.
+438,9,,One of three coupons needed to receive a Pokétch.
+439,9,,One of three coupons needed to receive a Pokétch.
+440,9,,Grants access to the Team Galactic warehouse in Veilstone City.
+441,9,,Required to cure the Psyducks blocking Route 210 of their chronic headaches.
+442,9,,"Held by :pokemon:`Giratina`
+    Holder's :type:`dragon` and :type:`ghost` moves have 1.2× their base power.
+
+    Holder is in Origin Forme.
+
+This item cannot be held by any Pokémon but Giratina.  When you enter the Union Room or connect to Wi-Fi, this item returns to your bag."
+443,9,,"Optionally records wireless, Wi-Fi, and Battle Frontier battles.
+
+Tracks Battle Points earned in the Battle Frontier, and stores commemorative prints."
+444,9,,"Used by trainer on a :pokemon:`Shaymin`
+    Changes the target Shaymin from Land Forme to Sky Forme.
+
+    This item cannot be used on a :mechanic:`frozen` Shaymin or at night.  Sky Forme Shaymin will revert to Land Forme overnight, when frozen, and upon entering a link battle.  This item must be used again to change it back."
+445,9,,"Used by trainer in the Galactic Eterna Building, on the ground floor, to the left of the TV
+    Unlocks the secret :pokemon:`Rotom` room, in which there are five appliances which can change Rotom's form."
+446,9,,Stores Apricorns.
+447,9,,Contains four portable pots of soil suitable for growing berries.
+448,9,,"Required to water berries within the :item:`Berry Pots`.
+
+Required to battle the :pokemon:`Sudowoodo` on :location:`Route 36`.
+
+This item cannot be directly used from the bag."
+449,9,,"Used by trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the wild Pokémon was encountered by fishing, the wild Pokémon's catch rate is 3× normal."
+450,9,,"Used by trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the trainer's Pokémon's level is higher than:
+    * four times the wild Pokémon's, the wild Pokémon's catch rate is 8× normal.
+    * than twice the wild Pokémon's, the wild Pokémon's catch rate is 4× normal.
+    * the wild Pokémon's, the wild Pokémon's catch rate is 2× normal."
+451,9,,"Used by trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the wild Pokémon is a :pokemon:`Clefairy`, :pokemon:`Nidoran♂`, :pokemon:`Nidoran♀`, :pokemon:`Jigglypuff`, :pokemon:`Skitty`, or any evolution thereof, the wild Pokémon has 4× its catch rate."
+452,9,,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the wild Pokémon weighs:
+    * 409.6 kg (903.0 lb) or more, its catch rate is 40 more than normal.
+    * 307.2 kg (677.3 lb) or more, its catch rate is 30 more than normal.
+    * 204.8 kg (451.5 lb) or more, its catch rate is 20 more than normal.
+    * less than 204.8 kg (451.5 lb), its catch rate is 20 less than normal."
+453,9,,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the wild Pokémon's base :mechanic:`Speed` is 100 or more, its catch rate is 4× normal."
+454,9,,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If caught, the wild Pokémon's :mechanic:`happiness` starts at 200."
+455,9,,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+
+    If the trainer's Pokémon and wild Pokémon are of the same species but opposite genders, the wild Pokémon's catch rate is 8× normal."
+456,9,,"Used by a trainer in battle
+    :mechanic:`Catch`\ es a wild Pokémon.
+
+This item can only be used in :location:`Pal Park`."
+457,9,,"Used by a trainer in battle
+    Attempts to :mechanic:`catch` a wild Pokémon.
+
+    The wild Pokémon's catch rate is 1.5× normal."
+458,9,,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Level Ball`.
+459,9,,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Lure Ball`.
+460,9,,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Moon Ball`.
+461,9,,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Friend Ball`.
+462,9,,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Love Ball`.
+463,9,,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Fast Ball`.
+464,9,,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Heavy Ball`.
+465,9,,"Used by trainer outside of battle
+    Searches for hidden items."
+466,9,,May be traded for a :item:`TM64` in the vertical Underground Path.
+467,9,,Causes :pokemon:`Groudon` to appear in the :location:`Embedded Tower`.
+468,9,,Causes :pokemon:`Kyogre` to appear in the :location:`Embedded Tower`.
+469,9,,Causes :pokemon:`Rayquaza` to appear in the :location:`Embedded Tower`.
+470,9,,"When taken to the :location:`Pewter City` museum, causes :pokemon:`Latias` or :pokemon:`Latios` to attack the trainer.
+
+The Pokémon to appear will be whicher can't be encountered roaming in the wild."
+471,9,,Lists which :pokemon:`Unown` forms the trainer has caught.
+472,9,,Allows the trainer to answer the daily question on Buena's radio show.  Records the points earned for correct answers.
+473,9,,Does nothing.
+474,9,,May be given to the Kimono Girls to summon :pokemon:`Ho-Oh` to the top of the :location:`Bell Tower`.
+475,9,,"Used by trainer outside of battle
+    Opens doors in the :location:`Goldenrod City` Radio Tower."
+476,9,,"Used by trainer outside of battle
+    Opens the door to the basement tunnel under :location:`Goldenrod City`."
+477,9,,May be traded to Mr. Pokémon for an :item:`Exp. Share`.
+478,9,,May be traded to the Copycat for a :item:`Pass`.
+479,9,,Allows the trainer to ride the Magnet Train between :location:`Goldenrod City` and :location:`Saffron City`.
+480,9,,Must be replaced in the :location:`Power Plant` to power the Magnet Train.
+481,9,,Causes :pokemon:`Lugia` to appear in the :location:`Whirl Islands`.
+482,9,,Causes :pokemon:`Ho-Oh` to appear at the top of :location:`Bell Tower`.
+483,9,,"Must be obtained to trigger the break-in at Professor Elm's lab, the first rival battle, and access to :location:`Route 31`."
+484,9,,"Used by trainer outside of battle
+    Changes the background music to the equivalent 8-bit music."
+485,9,,May be given to the Kimono Girls to summon :pokemon:`Lugia` to the top of the :location:`Bell Tower`.
+486,9,,Records the number of times the trainer has come in first place overall in the Pokéathlon.
+487,9,,Records the number of times the trainer has come in last place overall in the Pokéathlon.
+488,9,,Records the number of times the trainer's Pokémon have dashed in the Pokéathlon.
+489,9,,Records the number of times the trainer's Pokémon have jumped in the Pokéathlon.
+490,9,,Records the number of times the trainer has come in first in the Pokéathlon Hurdle Dash.
+491,9,,Records the number of times the trainer has come in first in the Pokéathlon Relay Run.
+492,9,,Records the number of times the trainer has come in first in the Pokéathlon Pennant Capture.
+493,9,,Records the number of times the trainer has come in first in the Pokéathlon Block Smash.
+494,9,,Records the number of times the trainer has come in first in the Pokéathlon Disc Catch.
+495,9,,Records the number of times the trainer has come in first in the Pokéathlon Snow Throw.
+496,9,,Records the number of points the trainer has earned in the Pokéathlon.
+497,9,,Records the number of times the trainer's Pokémon have messed up in the Pokéathlon.
+498,9,,Records the number of times the trainer's Pokémon have defeated themselves in the Pokéathlon.
+499,9,,Records the number of times the trainer's Pokémon have tackled in the Pokéathlon.
+500,9,,Records the number of times the trainer's Pokémon have fallen in the Pokéathlon.
+501,9,,Records the number of times the trainer has come in first in the Pokéathlon Ring Drop.
+502,9,,Records the number of times the trainer has come in first in the Pokéathlon Lamp Jump.
+503,9,,Records the number of times the trainer has come in first in the Pokéathlon Circle Push.
+504,9,,Records the number of times the trainer has come in first place overall in the Pokéathlon over wirelss.
+505,9,,Records the number of times the trainer has come in last place overall in the Pokéathlon over wireless.
+506,9,,Records the number of times the trainer has come in first across all Pokéathlon events.
+507,9,,Records the number of times the trainer has come in last across all Pokéathlon events.
+508,9,,Records the number of times the trainer has switched Pokémon in the Pokéathlon.
+509,9,,Records the number of times the trainer has come in first in the Pokéathlon Goal Roll.
+510,9,,Records the number of times the trainer's Pokémon received prizes in the Pokéathlon.
+511,9,,Records the number of times the trainer has instructed Pokémon in the Pokéathlon.
+512,9,,Records the total time spent in the Pokéathlon.
+513,9,,Does nothing.
+514,9,,Does nothing.
+515,9,,Used to send short messages to other players via Pokémon trading.
+516,9,,Used to send short messages to other players via Pokémon trading.
+517,9,,Used to send short messages to other players via Pokémon trading.
+518,9,,Used to send short messages to other players via Pokémon trading.
+519,9,,Used to send short messages to other players via Pokémon trading.
+520,9,,Used to send short messages to other players via Pokémon trading.
+521,9,,Used to send short messages to other players via Pokémon trading.
+522,9,,Used to send short messages to other players via Pokémon trading.
+523,9,,Used to send short messages to other players via Pokémon trading.
+524,9,,Used to send short messages to other players via Pokémon trading.
+525,9,,Used to send short messages to other players via Pokémon trading.
+526,9,,Used to send short messages to other players via Pokémon trading.
+527,9,,Increases movement speed outside or in caves.  Faster than the :item:`Acro Bike`.  Allows the trainer to ascend muddy slopes.
+528,9,,"Increases movement speed outside or in caves.  Slower than the :item:`Mach Bike`.  Can perform various tricks, allowing the trainer to reach certain special areas."
+529,9,,Waters Berry plants.
+530,9,,Contains a machine part to be delivered to Captain Stern.
+531,9,,Collects soot when walking through tall grass on :location:`Route 113`.
+532,9,,Stores Pokéblocks.
+533,9,,Contains a letter to be delivered to Steven.
+534,9,,"Provides access to :location:`Southern Island` and either :pokemon:`Latias` or :pokemon:`Latios`, whichever is not available roaming around Hoenn."
+535,9,,May be traded to Captain Stern for a :item:`DeepSeaTooth` or a :item:`DeepSeaScale`.
+536,9,,Allows the trainer to enter the desert on :location:`Route 111`.
+537,9,,"RSE: May be traded to Professor Cozmo for :item:`TM27`.
+
+FRLG: A meteorite to be delivered to Lostelle's father."
+538,9,,Unlocks room 1 on the :location:`Abandoned Ship`.
+539,9,,Unlocks room 2 on the :location:`Abandoned Ship`.
+540,9,,Unlocks room 4 on the :location:`Abandoned Ship`.
+541,9,,Unlocks room 6 on the :location:`Abandoned Ship`.
+542,9,,Reveals invisble :pokemon:`Kecleon` on the overworld.
+543,9,,A parcel to be delivered to Professor Oak for a Pokédex.
+544,9,,Wakes up :mechanic:`sleeping` Pokémon.  Required to wake up sleeping :pokemon:`Snorlax` on the overworld.
+545,9,,May be traded for a :item:`Bicycle`.
+546,9,,"The Safari Zone warden's teeth, to be returned to him for :item:`HM04`."
+547,9,,Operates the elevator in the Celadon Rocket Hideout.
+548,9,,Identifies ghosts in :location:`Pokémon Tower`.
+549,9,,Records information on various famous people.
+550,9,,Stores TMs and HMs.
+551,9,,Stores Berries.
+552,9,,Teaches beginning trainers basic information.
+553,9,,Provides access to the first three Sevii Islands.
+554,9,,Provides access to the Sevii Islands.
+555,9,,Used to bribe the :location:`Saffron City` guards for entry to the city.
+556,9,,"Provides access to :location:`Navel Rock`, :pokemon:`Ho-Oh`, and :pokemon:`Lugia`."
+557,9,,Provides access to :location:`Birth Island` and :pokemon:`Deoxys`.
+558,9,,Holds Berry Powder from Berry Crushing.
+559,9,,Deliver to Celio for use in the Network Machine.
+560,9,,Deliver to Celio for use in the Network Machine.
+561,9,,Provides access to the :location:`Team Magma Hideout` in the :location:`Jagged Pass`.
+562,9,,Provides access to :location:`Faraway Island` and :pokemon:`Mew`.
+563,9,,Not yet known. [[B/W item 116]]
+564,9,,Not yet known. [[B/W item 117]]
+565,9,,Not yet known. [[B/W item 118]]
+566,9,,Not yet known. [[B/W item 119]]
+567,9,,Not yet known. [[B/W item 134]]
+568,9,,Not yet known. [[B/W item 137]]
+569,9,,Not yet known. [[B/W item 138]]
+570,9,,Not yet known. [[B/W item 139]]
+571,9,,Not yet known. [[B/W item 140]]
+572,9,,Not yet known. [[B/W item 141]]
+573,9,,Not yet known. [[B/W item 142]]
+574,9,,Not yet known. [[B/W item 143]]
+575,9,,Not yet known. [[B/W item 144]]
+576,9,,Not yet known. [[B/W item 145]]
+577,9,,Not yet known. [[B/W item 146]]
+578,9,,Not yet known. [[B/W item 147]]
+579,9,,Not yet known. [[B/W item 148]]
+580,9,,Not yet known. [[B/W item 537]]
+581,9,,Not yet known. [[B/W item 538]]
+582,9,,Not yet known. [[B/W item 539]]
+583,9,,Not yet known. [[B/W item 540]]
+584,9,,Not yet known. [[B/W item 541]]
+585,9,,Not yet known. [[B/W item 542]]
+586,9,,Not yet known. [[B/W item 543]]
+587,9,,Not yet known. [[B/W item 544]]
+588,9,,Not yet known. [[B/W item 545]]
+589,9,,Not yet known. [[B/W item 546]]
+590,9,,Not yet known. [[B/W item 547]]
+591,9,,Not yet known. [[B/W item 548]]
+592,9,,Not yet known. [[B/W item 549]]
+593,9,,Not yet known. [[B/W item 550]]
+594,9,,Not yet known. [[B/W item 551]]
+595,9,,Not yet known. [[B/W item 552]]
+596,9,,Not yet known. [[B/W item 553]]
+597,9,,Not yet known. [[B/W item 554]]
+598,9,,Not yet known. [[B/W item 555]]
+599,9,,Not yet known. [[B/W item 556]]
+600,9,,Not yet known. [[B/W item 557]]
+601,9,,Not yet known. [[B/W item 558]]
+602,9,,Not yet known. [[B/W item 559]]
+603,9,,Not yet known. [[B/W item 560]]
+604,9,,Not yet known. [[B/W item 562]]
+605,9,,Not yet known. [[B/W item 563]]
+606,9,,Not yet known. [[B/W item 565]]
+607,9,,Not yet known. [[B/W item 566]]
+608,9,,Not yet known. [[B/W item 567]]
+609,9,,Not yet known. [[B/W item 568]]
+610,9,,Not yet known. [[B/W item 569]]
+611,9,,Not yet known. [[B/W item 570]]
+612,9,,Not yet known. [[B/W item 571]]
+613,9,,Not yet known. [[B/W item 572]]
+614,9,,Not yet known. [[B/W item 573]]
+615,9,,Not yet known. [[B/W item 574]]
+616,9,,Not yet known. [[B/W item 575]]
+617,9,,Not yet known. [[B/W item 576]]
+618,9,,Not yet known. [[B/W item 577]]
+619,9,,Not yet known. [[B/W item 578]]
+620,9,,Not yet known. [[B/W item 579]]
+621,9,,Not yet known. [[B/W item 580]]
+622,9,,Not yet known. [[B/W item 581]]
+623,9,,Not yet known. [[B/W item 582]]
+624,9,,Not yet known. [[B/W item 583]]
+625,9,,Not yet known. [[B/W item 584]]
+626,9,,Not yet known. [[B/W item 585]]
+627,9,,Not yet known. [[B/W item 586]]
+628,9,,Not yet known. [[B/W item 587]]
+629,9,,Not yet known. [[B/W item 588]]
+630,9,,Not yet known. [[B/W item 589]]
+631,9,,Not yet known. [[B/W item 590]]
+632,9,,Not yet known. [[B/W item 591]]
+633,9,,Not yet known. [[B/W item 592]]
+634,9,,Not yet known. [[B/W item 593]]
+635,9,,Not yet known. [[B/W item 594]]
+636,9,,Not yet known. [[B/W item 595]]
+637,9,,Not yet known. [[B/W item 596]]
+638,9,,Not yet known. [[B/W item 597]]
+639,9,,Not yet known. [[B/W item 598]]
+640,9,,Not yet known. [[B/W item 599]]
+641,9,,Not yet known. [[B/W item 600]]
+642,9,,Not yet known. [[B/W item 601]]
+643,9,,Not yet known. [[B/W item 602]]
+644,9,,Not yet known. [[B/W item 603]]
+645,9,,Not yet known. [[B/W item 604]]
+646,9,,Not yet known. [[B/W item 605]]
+647,9,,Not yet known. [[B/W item 606]]
+648,9,,Not yet known. [[B/W item 607]]
+649,9,,Not yet known. [[B/W item 608]]
+650,9,,Not yet known. [[B/W item 609]]
+651,9,,Not yet known. [[B/W item 610]]
+652,9,,Not yet known. [[B/W item 611]]
+653,9,,Not yet known. [[B/W item 612]]
+654,9,,Not yet known. [[B/W item 613]]
+655,9,,Not yet known. [[B/W item 614]]
+656,9,,Not yet known. [[B/W item 615]]
+657,9,,Not yet known. [[B/W item 616]]
+658,9,,Not yet known. [[B/W item 617]]
+659,9,,Not yet known. [[B/W item 618]]
+660,9,,Not yet known. [[B/W item 619]]
+661,9,,Not yet known. [[B/W item 620]]
+662,9,,Not yet known. [[B/W item 621]]
+663,9,,Not yet known. [[B/W item 622]]
+664,9,,Not yet known. [[B/W item 623]]
+665,9,,Not yet known. [[B/W item 624]]
+666,9,,Not yet known. [[B/W item 625]]
+668,9,,Not yet known. [[B/W item 562]]
+669,9,,Not yet known. [[B/W item 563]]

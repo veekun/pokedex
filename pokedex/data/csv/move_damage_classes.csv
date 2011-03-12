@@ -1,4 +1,4 @@
-id,name,description
-1,non-damaging,No damage
-2,physical,"Physical damage, controlled by Attack and Defense"
-3,special,"Special damage, controlled by Special Attack and Special Defense"
+id,identifier
+1,non-damaging
+2,physical
+3,special

@@ -1,11 +1,11 @@
-id,name,description
-1,Level up,Learned when a Pokémon reaches a certain level.
-2,Egg,"Appears on a newly-hatched Pokémon, if the father had the same move."
-3,Tutor,Can be taught at any time by an NPC.
-4,Machine,Can be taught at any time by using a TM or HM.
-5,Stadium: Surfing Pikachu,"Learned when a non-rental Pikachu helps beat Prime Cup Master Ball R-2.  It must participate in every battle, and you must win with no continues."
-6,Volt Tackle Pichu,Appears on a Pichu whose mother was holding a Light Ball.  The father cannot be Ditto.
-7,Colosseum: Purification,Appears on a Shadow Pokémon as it becomes increasingly purified.
-8,XD: Shadow,Appears on a Snatched Shadow Pokémon.
-9,XD: Purification,Appears on a Shadow Pokémon as it becomes increasingly purified.
-10,Rotom Form,Appears when Rotom changes to this form.  Disappears if Rotom becomes another form and this move can only be learned by form change.
+id,identifier
+1,level-up
+2,egg
+3,tutor
+4,machine
+5,stadium-surfing-pikachu
+6,volt-tackle-pichu
+7,colosseum-purification
+8,xd-shadow
+9,xd-purification
+10,rotom-form

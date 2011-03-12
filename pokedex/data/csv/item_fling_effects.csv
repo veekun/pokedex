@@ -1,8 +1,8 @@
-id,effect
-1,Badly poisons the target.
-2,Burns the target.
-3,Immediately activates the berry's effect on the target.
-4,Immediately activates the herb's effect on the target.
-5,Paralyzes the target.
-6,Poisons the target.
-7,Target will flinch if it has not yet gone this turn.
+id
+1
+2
+3
+4
+5
+6
+7

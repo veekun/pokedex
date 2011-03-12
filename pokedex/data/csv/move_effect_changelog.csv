@@ -1,25 +1,25 @@
-effect_id,changed_in_version_group_id,effect
-8,11,"Halves the target's [Defense]{mechanic} for damage calculation, which is similar to doubling the attack's [power]{mechanic}."
-18,3,Hits Pokémon under the effects of [Dig]{move} and [Fly]{move}.
-29,3,Does nothing in trainer battles.
-38,8,Works while asleep through [Sleep Talk]{move} if not at full health.
-46,3,"If this move misses, the user takes 1 point of damage in recoil."
-46,11,"If this move misses, the user takes half of the damage it would have inflicted in recoil."
-82,3,"Locks the user into this move.  Due to a bug, if this move misses, its [accuracy]{mechanic} drops to 1/256 as long as the user is still locked in."
-84,3,Can call any move except for [Struggle]{move} and itself.
-109,3,Does not interact with [Stomp]{move}.
-109,11,Raises [evasion]{mechanic} by one stage.
-146,3,Does not raise [Defense]{mechanic}.
-148,3,Does not hit Pokémon under the effects of [Dig]{move}.
-150,3,Does not hit Pokémon under the effects of [Fly]{move}.
-151,3,Does not interact with [Minimize]{move}.
-153,3,Does not hit Pokémon under the effects of [Fly]{move}.
-155,11,Determines damage using each participant's base [Attack]{mechanic} and the opponent's base [Defense]{mechanic} in place of calculated stats.
-156,3,"[Swift]{move} can hit the user while in the air, and no other moves can.  Due to a bug, if the user fails to carry out the move's second turn, e.g. due to [paralysis]{mechanic}, it remains in the air until it switches out or uses Fly again successfully.  It can act as if it were on the ground in the meantime, but moves still miss it."
-161,8,Does not raise [Defense]{mechanic} or [Special Defense]{mechanic}.
-175,8,Does not raise the user's [Special Defense]{mechanic}.
-180,11,Heals replacement Pokémon by half of their max HP.
-255,3,Inflicts [normal]{type}-type damage and the user receives 1/2 of damage dealt in recoil.
-257,3,"[Swift]{move} can hit the user while underground, and no other moves can.  Due to a bug, if the user fails to carry out the move's second turn, e.g. due to [paralysis]{mechanic}, it remains underground until it switches out or uses Dig again successfully.  It can act as if it were aboveground in the meantime, but moves still miss it."
-261,8,Does not interact with [Hail]{move}.
-274,11,Ignores [Wonder Guard]{ability}.
+id,effect_id,changed_in_version_group_id
+1,8,11
+2,18,3
+3,29,3
+4,38,8
+5,46,3
+6,46,11
+7,82,3
+8,84,3
+9,109,3
+10,109,11
+11,146,3
+12,148,3
+13,150,3
+14,151,3
+15,153,3
+16,155,11
+17,156,3
+18,161,8
+19,175,8
+20,180,11
+21,255,3
+22,257,3
+23,261,8
+24,274,11

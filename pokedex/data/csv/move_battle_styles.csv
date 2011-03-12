@@ -1,4 +1,4 @@
-id,name
-1,Attack
-2,Defense
-3,Support
+id,identifier
+1,attack
+2,defense
+3,support

@@ -1,38 +1,38 @@
-id,name,can_affect_user
-1,Regular damage,1
-2,Power varies,1
-3,Special damage,1
-4,Double damage,1
-5,Faints,1
-6,Critical,0
-7,Ignores type,0
-8,Ignores accuracy modifiers,0
-9,Meta,1
-10,Multiple turns/hits,0
-11,Charge or recovery turn,0
-12,Heals HP,1
-13,Cures status,1
-14,Protection,1
-15,Attack up,1
-16,Attack down,1
-17,Defense up,1
-18,Defense down,1
-19,Special Attack up,1
-20,Special Attack down,1
-21,Special Defense up,1
-22,Special Defense down,1
-23,Speed up,1
-24,Speed down,1
-25,Accuracy up,1
-26,Accuracy down,1
-27,Evasion up,1
-28,Evasion down,1
-29,Sleep,1
-30,Burn,1
-31,Paralysis,1
-32,Freeze,1
-33,Poison,1
-34,Confusion,1
-35,Flinch,1
-36,Trap,1
-37,Weather,0
+id,identifier,can_affect_user
+1,regular-damage,1
+2,power-varies,1
+3,special-damage,1
+4,double-damage,1
+5,faints,1
+6,critical,0
+7,ignores-type,0
+8,ignores-accuracy-modifiers,0
+9,meta,1
+10,multiple-turnshits,0
+11,charge-or-recovery-turn,0
+12,heals-hp,1
+13,cures-status,1
+14,protection,1
+15,attack-up,1
+16,attack-down,1
+17,defense-up,1
+18,defense-down,1
+19,special-attack-up,1
+20,special-attack-down,1
+21,special-defense-up,1
+22,special-defense-down,1
+23,speed-up,1
+24,speed-down,1
+25,accuracy-up,1
+26,accuracy-down,1
+27,evasion-up,1
+28,evasion-down,1
+29,sleep,1
+30,burn,1
+31,paralysis,1
+32,freeze,1
+33,poison,1
+34,confusion,1
+35,flinch,1
+36,trap,1
+37,weather,0

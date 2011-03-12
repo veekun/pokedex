@@ -1,21 +1,21 @@
-id,name
--1,????
+id,identifier
+-1,unknown
 0,none
-1,Paralysis
-2,Sleep
-3,Freeze
-4,Burn
-5,Poison
-6,Confusion
-7,Infatuation
-8,Trap
-9,Nightmare
-12,Torment
-13,Disable
-14,Yawn
-15,Heal Block
-17,No type immunity
-18,Leech Seed
-19,Embargo
-20,Perish Song
-21,Ingrain
+1,paralysis
+2,sleep
+3,freeze
+4,burn
+5,poison
+6,confusion
+7,infatuation
+8,trap
+9,nightmare
+12,torment
+13,disable
+14,yawn
+15,heal-block
+17,no-type-immunity
+18,leech-seed
+19,embargo
+20,perish-song
+21,ingrain

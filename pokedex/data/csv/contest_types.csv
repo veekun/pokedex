@@ -1,6 +1,6 @@
-id,name,flavor,color
-1,cool,spicy,red
-2,beauty,dry,blue
-3,cute,sweet,pink
-4,smart,bitter,green
-5,tough,sour,yellow
+id,identifier
+1,cool
+2,beauty
+3,cute
+4,smart
+5,tough
