@@ -715,19 +715,32 @@ class MoveFlavorText(TableBase, LanguageSpecific):
 class MoveMeta(TableBase):
     u"""Metadata for move effects, sorta-kinda ripped straight from the game"""
     __tablename__ = 'move_meta'
-    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
-    meta_category_id = Column(Integer, ForeignKey('move_meta_categories.id'), nullable=False)
-    meta_ailment_id = Column(Integer, ForeignKey('move_meta_ailments.id'), nullable=False)
-    min_hits = Column(Integer, nullable=True, index=True)
-    max_hits = Column(Integer, nullable=True, index=True)
-    min_turns = Column(Integer, nullable=True, index=True)
-    max_turns = Column(Integer, nullable=True, index=True)
-    recoil = Column(Integer, nullable=False, index=True)
-    healing = Column(Integer, nullable=False, index=True)
-    crit_rate = Column(Integer, nullable=False, index=True)
-    ailment_chance = Column(Integer, nullable=False, index=True)
-    flinch_chance = Column(Integer, nullable=False, index=True)
-    stat_chance = Column(Integer, nullable=False, index=True)
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="A numeric ID"))
+    meta_category_id = Column(Integer, ForeignKey('move_meta_categories.id'), nullable=False,
+        info=dict(description="ID of the move category"))
+    meta_ailment_id = Column(Integer, ForeignKey('move_meta_ailments.id'), nullable=False,
+        info=dict(description="ID of the caused ailment"))
+    min_hits = Column(Integer, nullable=True, index=True,
+        info=dict(description="Minimum number of hits per use"))
+    max_hits = Column(Integer, nullable=True, index=True,
+        info=dict(description="Maximum number of hits per use"))
+    min_turns = Column(Integer, nullable=True, index=True,
+        info=dict(description="Minimum number of turns the user is forced to use the move"))
+    max_turns = Column(Integer, nullable=True, index=True,
+        info=dict(description="Maximum number of turns the user is forced to use the move"))
+    recoil = Column(Integer, nullable=False, index=True,
+        info=dict(description="Recoil damage, in percent of damage done"))
+    healing = Column(Integer, nullable=False, index=True,
+        info=dict(description="Healing, in percent of user's max HP"))
+    crit_rate = Column(Integer, nullable=False, index=True,
+        info=dict(description="Critical hit rate bonus"))
+    ailment_chance = Column(Integer, nullable=False, index=True,
+        info=dict(description="Chance to cause an ailment, in percent"))
+    flinch_chance = Column(Integer, nullable=False, index=True,
+        info=dict(description="Chance to cause flinching, in percent"))
+    stat_chance = Column(Integer, nullable=False, index=True,
+        info=dict(description="Chance to cause a stat change, in percent"))
 
 class MoveMetaAilment(TableBase, OfficiallyNamed):
     u"""Common status ailments moves can inflict on a single Pokémon, including
@@ -735,22 +748,29 @@ class MoveMetaAilment(TableBase, OfficiallyNamed):
     """
     __tablename__ = 'move_meta_ailments'
     __singlename__ = 'move_meta_ailment'
-    id = Column(Integer, primary_key=True, nullable=False)
-    identifier = Column(Unicode(24), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    identifier = Column(Unicode(24), nullable=False,
+        info=dict(description="An identifier", format='identifier'))
 
 class MoveMetaCategory(TableBase):
     u"""Very general categories that loosely group move effects."""
     __tablename__ = 'move_meta_categories'
     __singlename__ = 'move_meta_category'
-    id = Column(Integer, primary_key=True, nullable=False)
-    description = ProseColumn(Unicode(64), plural='descriptions', nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    description = ProseColumn(Unicode(64), plural='descriptions', nullable=False,
+        info=dict(description="A description of the category"))
 
 class MoveMetaStatChange(TableBase):
     u"""Stat changes moves (may) make."""
     __tablename__ = 'move_meta_stat_changes'
-    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False)
-    stat_id = Column(Integer, ForeignKey('stats.id'), primary_key=True, nullable=False, autoincrement=False)
-    change = Column(Integer, nullable=False, index=True)
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the move"))
+    stat_id = Column(Integer, ForeignKey('stats.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the stat"))
+    change = Column(Integer, nullable=False, index=True,
+        info=dict(description="Amount of increase/decrease, in stages"))
 
 class MoveTarget(TableBase, UnofficiallyNamed):
     u"""Targetting or "range" of a move, e.g. "Affects all opponents" or "Affects user".
@@ -1329,11 +1349,14 @@ class StatHint(TableBase):
     """
     __tablename__ = 'stat_hints'
     __singlename__ = 'stat_hint'
-    id = Column(Integer, primary_key=True, nullable=False)
-    stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False)
-    gene_mod_5 = Column(Integer, nullable=False, index=True)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
+    stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False,
+        info=dict(description=u"ID of the highest stat"))
+    gene_mod_5 = Column(Integer, nullable=False, index=True,
+        info=dict(description=u"Value of the highest stat modulo 5"))
     text = TextColumn(Unicode(24), plural='texts', nullable=False, index=True, unique=True,
-        info=dict(description=u"The English text displayed", official=True, format='plaintext'))
+        info=dict(description=u"The text displayed", official=True, format='plaintext'))
 
 class SuperContestCombo(TableBase):
     u"""Combo of two moves in a Super Contest.
