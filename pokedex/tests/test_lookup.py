@@ -150,5 +150,5 @@ def test_random_lookup():
 
 def test_crash_empty_prefix():
     """Searching for ':foo' used to crash, augh!"""
-    results = lookup.lookup(u'Eevee')
+    results = lookup.lookup(u':Eevee')
     assert_equal(results[0].object.name, u'Eevee', u'Empty prefix dun crash')
