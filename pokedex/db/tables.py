@@ -28,7 +28,7 @@ The singular-name property returns the name in the default language, English.
 
 import collections
 
-from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table
+from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table, UniqueConstraint
 from sqlalchemy.ext.declarative import (
         declarative_base, declared_attr, DeclarativeMeta,
     )
@@ -688,6 +688,11 @@ class MoveEffectChangelog(TableBase):
         info=dict(description="The ID of the version group in which the effect changed"))
     effect = ProseColumn(markdown.MarkdownColumn(512), plural='effects', nullable=False,
         info=dict(description="A description of the old behavior", format='markdown'))
+
+    __table_args__ = (
+        UniqueConstraint(effect_id, changed_in_version_group_id),
+        {},
+    )
 
 class MoveFlag(TableBase):
     u"""Maps a move flag to a move
