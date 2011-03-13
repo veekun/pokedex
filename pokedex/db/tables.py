@@ -18,6 +18,8 @@ Columns have a info dictionary with these keys:
 """
 # XXX: Check if "gametext" is set correctly everywhere
 
+import operator
+
 from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
 from sqlalchemy.ext.associationproxy import association_proxy
@@ -63,10 +65,13 @@ class LanguageSpecific(object):
 
 class LanguageSpecificColumn(object):
     """A column that will not appear in the table it's defined in, but in a related one"""
+    _ordering = [1]
     def __init__(self, *args, **kwargs):
         self.args = args
         self.plural = kwargs.pop('plural')
         self.kwargs = kwargs
+        self.order = self._ordering[0]
+        self._ordering[0] += 1
 
     def makeSAColumn(self):
         return Column(*self.args, **self.kwargs)
@@ -1828,22 +1833,34 @@ def makeTextTable(object_table, name_plural, name_singular, columns, lazy):
     return Strings
 
 for table in all_tables():
-    text_columns = []
-    prose_columns = []
+    # Find all the language-specific columns, keeping them in the order they
+    # were defined
+    all_columns = []
     for colname in dir(table):
         column = getattr(table, colname)
+        if isinstance(column, LanguageSpecificColumn):
+            all_columns.append((colname, column))
+    all_columns.sort(key=lambda pair: pair[1].order)
+
+    # Break them into text and prose columns
+    text_columns = []
+    prose_columns = []
+    for colname, column in all_columns:
+        spec = colname, column.plural, column.makeSAColumn()
         if isinstance(column, TextColumn):
-            text_columns.append((colname, column.plural, column.makeSAColumn()))
+            text_columns.append(spec)
         elif isinstance(column, ProseColumn):
-            prose_columns.append((colname, column.plural, column.makeSAColumn()))
+            prose_columns.append(spec)
+
+    if (text_columns or prose_columns) and issubclass(table, LanguageSpecific):
+        raise AssertionError("Language-specific table %s shouldn't have explicit language-specific columns" % table)
+
     if text_columns:
         string_table = makeTextTable(table, 'texts', 'text', text_columns, lazy=False)
         globals()[string_table.__name__] = string_table
     if prose_columns:
         string_table = makeTextTable(table, 'prose', 'prose', prose_columns, lazy=True)
         globals()[string_table.__name__] = string_table
-    if (text_columns or prose_columns) and issubclass(table, LanguageSpecific):
-        raise AssertionError("Language-specific table %s shouldn't have explicit language-specific columns" % table)
 
 ### Add language relations
 for table in all_tables():
