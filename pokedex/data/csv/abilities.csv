@@ -113,7 +113,7 @@ Overworld: If the lead Pokémon has this ability, wild Pokémon have a 50% chanc
 
 This ability does not prevent any stat losses other than [stat modifiers]{mechanic}, such as the [Speed]{mechanic} cut from [paralysis]{mechanic}; nor self-inflicted stat drops, such as the [Attack]{mechanic} and [Defense]{mechanic} drops from [Superpower]{move}; nor opponent-triggered stat boosts, such as the Attack boost from [Swagger]{move}.  This Pokémon can still be passed negative stat modifiers through [Guard Swap]{move}, [Heart Swap]{move}, or [Power Swap]{move}.
 
-This ability functions identically to [White Smoke]{ability} in battle.",Protects against opponent-inflicted stat drops.
+This ability functions identically to [White Smoke]{ability} in battle.",Prevents stats from being [lowered]{mechanic:stat modifier} by other Pokémon.
 30,Natural Cure,3,"This Pokémon is cured of any [major status ailment]{mechanic} upon leaving battle.
 
 If this ability is acquired during battle, the Pokémon is cured upon leaving battle before losing the temporary ability.",Cures any [major status ailment]{mechanic} upon leaving battle.
@@ -185,12 +185,12 @@ Overworld: If any Pokémon in the party has this ability, each egg in the party 
 
 This ability does not prevent any accuracy losses other than [stat modifiers]{mechanic}, such as the accuracy cut from [fog]{mechanic}; nor does it prevent other Pokémon's [evasion]{mechanic} from making this Pokémon's moves less accurate.  This Pokémon can still be passed negative accuracy modifiers through [Heart Swap]{move}.
 
-Overworld: If the lead Pokémon has this ability, lower-levelled Pokémon have their encounter rate increased.",Protects against [accuracy]{mechanic} [drops]{mechanic:stat modifier}.
+Overworld: If the lead Pokémon has this ability, lower-levelled Pokémon have their encounter rate increased.",Prevents [accuracy]{mechanic} from being [lowered]{mechanic:stat modifier}.
 52,Hyper Cutter,3,"This Pokémon cannot have its [Attack]{mechanic} [lowered]{mechanic:stat modifier} by other Pokémon.
 
 This ability does not prevent any Attack losses other than [stat modifiers]{mechanic}, such as the Attack cut from a [burn]{mechanic}; nor self-inflicted Attack drops, such as the Attack drop from [Superpower]{move}; nor opponent-triggered Attack boosts, such as the Attack boost from [Swagger]{move}.  This Pokémon can still be passed negative Attack modifiers through [Heart Swap]{move} or [Power Swap]{move}.
 
-Overworld: In Pokémon Emerald, if any Pokémon in the party has this ability, [Cut]{move}'s radius for cutting grass is doubled.  (After Generation III, Cut can no longer cut down tall grass.)",Protects against opponent-inflicted [Attack]{mechanic} [drops]{mechanic:stat modifiers}.
+Overworld: In Pokémon Emerald, if any Pokémon in the party has this ability, [Cut]{move}'s radius for cutting grass is doubled.  (After Generation III, Cut can no longer cut down tall grass.)",Prevents [Attack]{mechanic} from being [lowered]{mechanic:stat modifiers} by other Pokémon.
 53,Pickup,3,"At the end of each turn, if another Pokémon consumed or [Flung]{move:Fling} a held item that turn, this Pokémon picks up the item if it is not already holding one.  After each battle, this Pokémon has a 10% chance of picking up an item if it is not already holding one.
 
 The [Air Balloon]{item} and [Eject Button]{item} cannot be picked up.
@@ -269,7 +269,7 @@ This ability does not prevent any stat losses other than [stat modifiers]{mechan
 
 This ability functions identically to [Clear Body]{ability} in battle.
 
-Overworld: If the lead Pokémon has this ability, the wild encounter rate is decreased.",Protects against opponent-inflicted stat drops.
+Overworld: If the lead Pokémon has this ability, the wild encounter rate is decreased.",Prevents stats from being [lowered]{mechanic:stat modifier} by other Pokémon.
 74,Pure Power,3,"This Pokémon's [Attack]{mechanic} is doubled in battle.
 
 This bonus does not count as a [stat modifier]{mechanic}.
@@ -454,7 +454,7 @@ This ability triggers on every hit of a multiple-hit move.",Raises [Speed]{mecha
 137,Toxic Boost,5,This Pokémon has 1.5× its [Attack]{mechanic} when [poisoned]{mechanic:poison}.,Increases [Attack]{mechanic} to 1.5× when [poisoned]{mechanic:poison}.
 138,Flare Boost,5,This Pokémon has 1.5× its [Special Attack]{mechanic} when [burned]{mechanic:burn}.,Increases [Special Attack]{mechanic} to 1.5× when [burned]{mechanic:burn}.
 139,Harvest,5,"After each turn, if this Pokémon ate a held Berry or used it with [Natural Gift]{move} that turn, the Pokémon regains its Berry.  If the Pokémon then meets the requirements to eat the Berry again, it will do so immediately, and will not be able restore the Berry again.",Restores any held Berry after the turn on which it is used.
-140,Telepathy,5,"This Pokémon does not take damage from friendly Pokémon's moves, including single-targed moves aimed at it.",Protects against damaging moves from friendly Pokémon.
+140,Telepathy,5,"This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it.",Protects against friendly Pokémon's damaging moves.
 141,Moody,5,"After each turn, one of this Pokémon's stats at random rises two [stages]{mechanic:stat modifier}, and another falls one stage.",Raises a random stat two [stages]{mechanic:stat modifier} and lowers another one stage after each turn.
 142,Overcoat,5,This Pokémon does not take damage from [weather]{mechanic}.,Protects against damage from [weather]{mechanic}.
 143,Poison Touch,5,This Pokémon's contact moves have a 20% chance of [poisoning]{mechanic:poison} the target with each hit.,Has a 20% chance of [poisoning]{mechanic:poison} Pokémon upon contact when attacking.
@@ -470,13 +470,13 @@ Other damage, e.g. from [weather]{mechanic} or [Spikes]{move}, does not break th
 If the party order becomes temporarily shuffled around as Pokémon are switched out in battle, this ability chooses the last Pokémon according to that shuffled order.",Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move.
 150,Imposter,5,This Pokémon uses [Transform]{move} upon entering battle.,[Transforms]{move:Transform} upon entering battle.
 151,Infiltrator,5,"This Pokémon's moves ignore [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}.","Ignores [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}."
-152,Mummy,5,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to mummify.",Changes attacking Pokémon's abilities to mummify on contact.
+152,Mummy,5,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to Mummy.",Changes attacking Pokémon's abilities to Mummy on contact.
 153,Moxie,5,"This Pokémon's [Attack]{mechanic} rises one stage upon knocking out another Pokémon, even a friendly Pokémon.
 
 This ability does not take effect when the Pokémon indirectly causes another Pokémon to faint, e.g. through [poison]{mechanic} or [Spikes]{move}.",Raises [Attack]{mechanic} one stage upon KOing a Pokémon.
 154,Justified,5,"Whenever a [Dark]{type}-type move hits this Pokémon, its [Attack]{mechanic} rises one [stage]{mechanic:stat modifier}.
 
-The move is not negated in any way.",Raises Attack when hit by dark-type moves.
+The move is not negated in any way.",Raises [Attack]{mechanic} one stage upon being hit by a [Dark]{type} move.
 155,Rattled,5,"This Pokémon's [Speed]{mechanic} rises one stage with each hit from a damaging [Dark]{type}-, [Ghost]{type}-, or [Bug]{type}-type move.","Raises [Speed]{mechanic} one [stage]{mechanic:stat modifier} upon being hit by a [Dark]{type}, [Ghost]{type}, or [Bug]{type} move."
 156,Magic Bounce,5,"When this Pokémon is targeted by a non-damaging move flagged as being reflectable, as most non-damaging, non-self-targetted moves are, the move is redirected to its user.
 
@@ -487,9 +487,9 @@ This ability cannot reflect moves that have already been reflected by another Po
 160,Iron Barbs,5,"Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum [HP]{mechanic} in damage.
 
 This ability functions identically to [Rough Skin]{ability}.",Damages attacking Pokémon for 1/8 their max [HP]{mechanic} on contact.
-161,Zen Mode,5,"This Pokémon changes to daruma mode when it falls below 50% of its maximum [HP]{mechanic}.
+161,Zen Mode,5,"This Pokémon changes to Zen Mode when it falls below 50% of its maximum [HP]{mechanic}.
 
-This ability has no effect if this Pokémon is not a [Darmanitan]{pokemon}.",Changes [Darmanitan]{pokemon} to daruma mode below 50% max [HP]{mechanic}.
-162,Victory Star,5,"All friendly Pokémon's moves, including this Pokémon's own moves, have 1.1× their usual accuracy while this Pokémon is in battle.",Raises moves' accuracy to 1.1× for friendly Pokémon.
+This ability has no effect if this Pokémon is not a [Darmanitan]{pokemon}.",Changes [Darmanitan]{pokemon} to Zen Mode below 50% max [HP]{mechanic}.
+162,Victory Star,5,"All friendly Pokémon's moves, including this Pokémon's own moves, have 1.1× their usual accuracy while this Pokémon is in battle.",Increases moves' accuracy to 1.1× for friendly Pokémon.
 163,Turboblaze,5,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Makes moves ignore targets' abilities if they could hinder or prevent them.
 164,Teravolt,5,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Makes moves ignore targets' abilities if they could hinder or prevent them.
