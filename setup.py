@@ -8,7 +8,7 @@ setup(
         'pokedex': ['data/csv/*.csv']
     },
     install_requires=[
-        'SQLAlchemy>=0.6',
+        'SQLAlchemy>=0.6.6',
         'whoosh>=1.1.0',
         'markdown',
         'construct',

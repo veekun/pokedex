@@ -1,6 +1,6 @@
-id,name
-1,Kanto
-2,Johto
-3,Hoenn
-4,Sinnoh
-5,Unova
+id,identifier
+1,kanto
+2,johto
+3,hoenn
+4,sinnoh
+5,unova

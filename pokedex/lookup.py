@@ -222,25 +222,24 @@ class PokedexLookup(object):
                         add(row.pokemon_name, None, u'en', u'us')
                     continue
 
-                add(row.name, None, u'en', u'us')
-
                 # Some things also have other languages' names
                 # XXX other language form names..?
-                for foreign_name in getattr(row, 'foreign_names', []):
-                    moonspeak = foreign_name.name
-                    if row.name == moonspeak:
-                        # Don't add the English name again as a different
+                seen = set()
+                for language, name in getattr(row, 'names', []).items():
+                    if name in seen:
+                        # Don't add the name again as a different
                         # language; no point and it makes spell results
                         # confusing
                         continue
+                    seen.add(name)
 
-                    add(moonspeak, foreign_name.language.name,
-                                   foreign_name.language.iso639,
-                                   foreign_name.language.iso3166)
+                    add(name, language.name,
+                              language.iso639,
+                              language.iso3166)
 
                     # Add Roomaji too
-                    if foreign_name.language.name == 'Japanese':
-                        roomaji = romanize(foreign_name.name)
+                    if language.identifier == 'ja':
+                        roomaji = romanize(name)
                         add(roomaji, u'Roomaji', u'ja', u'jp')
 
         writer.commit()

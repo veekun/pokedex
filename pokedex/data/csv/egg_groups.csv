@@ -1,16 +1,16 @@
-id,name
-1,Monster
-2,Water 1
-3,Bug
-4,Flying
-5,Ground
-6,Fairy
-7,Plant
-8,Humanshape
-9,Water 3
-10,Mineral
-11,Indeterminate
-12,Water 2
-13,Ditto
-14,Dragon
-15,No Eggs
+id,identifier
+1,monster
+2,water-1
+3,bug
+4,flying
+5,ground
+6,fairy
+7,plant
+8,humanshape
+9,water-3
+10,mineral
+11,indeterminate
+12,water-2
+13,ditto
+14,dragon
+15,no-eggs

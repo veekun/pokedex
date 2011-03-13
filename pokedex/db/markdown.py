@@ -57,13 +57,33 @@ class MarkdownString(object):
         return self.source_text
 
 
-class MoveEffectProperty(object):
-    """Property that wraps a move effect.  Used like this:
+class _MoveEffects(object):
+    def __init__(self, effect_column, move):
+        self.effect_column = effect_column
+        self.move = move
 
-        MoveClass.effect = MoveEffectProperty('effect')
+    def __contains__(self, lang):
+        return lang in self.move.move_effect.prose
 
-        some_move.effect            # returns a MarkdownString
-        some_move.effect.as_html    # returns a chunk of HTML
+    def __getitem__(self, lang):
+        try:
+            effect_text = getattr(self.move.move_effect.prose[lang], self.effect_column)
+        except AttributeError:
+            return None
+        effect_text = effect_text.replace(
+            u'$effect_chance',
+            unicode(self.move.effect_chance),
+        )
+
+        return MarkdownString(effect_text)
+
+class MoveEffectsProperty(object):
+    """Property that wraps move effects.  Used like this:
+
+        MoveClass.effects = MoveEffectProperty('effect')
+
+        some_move.effects[lang]            # returns a MarkdownString
+        some_move.effects[lang].as_html    # returns a chunk of HTML
 
     This class also performs simple substitution on the effect, replacing
     `$effect_chance` with the move's actual effect chance.
@@ -73,13 +93,7 @@ class MoveEffectProperty(object):
         self.effect_column = effect_column
 
     def __get__(self, move, move_class):
-        effect_text = getattr(move.move_effect, self.effect_column)
-        effect_text = effect_text.replace(
-            u'$effect_chance',
-            unicode(move.effect_chance),
-        )
-
-        return MarkdownString(effect_text)
+        return _MoveEffects(self.effect_column, move)
 
 class MarkdownColumn(sqlalchemy.types.TypeDecorator):
     """Generic SQLAlchemy column type for Markdown text.

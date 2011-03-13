@@ -1,0 +1,17 @@
+encounter_condition_value_id,language_id,name
+1,9,During a swarm
+2,9,Not during a swarm
+3,9,In the morning
+4,9,During the day
+5,9,At night
+6,9,Using PokéRadar
+7,9,Not using PokéRadar
+8,9,No game in slot 2
+9,9,Ruby in slot 2
+10,9,Sapphire in slot 2
+11,9,Emerald in slot 2
+12,9,FireRed in slot 2
+13,9,LeafGreen in slot 2
+14,9,Radio off
+15,9,Hoenn radio
+16,9,Sinnoh radio

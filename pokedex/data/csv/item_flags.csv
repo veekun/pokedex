@@ -1,9 +1,9 @@
-id,identifier,name
-1,countable,Has a count in the bag
-2,consumable,Consumed when used
-3,usable_overworld,Usable outside battle
-4,usable_in_battle,Usable in battle
-5,holdable,Can be held by a Pokémon
-6,holdable_passive,Works passively when held
-7,holdable_active,Usable by a Pokémon when held
-8,underground,Appears in Sinnoh Underground
+id,identifier
+1,countable
+2,consumable
+3,usable-overworld
+4,usable-in-battle
+5,holdable
+6,holdable-passive
+7,holdable-active
+8,underground

@@ -1,8 +1,8 @@
-id,name
-1,Walking in tall grass or a cave
-2,Fishing with an Old Rod
-3,Fishing with a Good Rod
-4,Fishing with a Super Rod
-5,Surfing
-6,Smashing rocks
-7,Headbutting trees
+id,identifier
+1,walking-in-tall-grass-or-a-cave
+2,fishing-with-an-old-rod
+3,fishing-with-a-good-rod
+4,fishing-with-a-super-rod
+5,surfing
+6,smashing-rocks
+7,headbutting-trees

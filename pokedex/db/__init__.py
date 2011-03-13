@@ -15,7 +15,7 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
 
     # If we didn't get a uri, fall back to the default
     if uri is None:
-        uri = engine_args[engine_prefix + 'url']
+        uri = engine_args.get(engine_prefix + 'url', None)
     if uri is None:
         uri = get_default_db_uri()
 

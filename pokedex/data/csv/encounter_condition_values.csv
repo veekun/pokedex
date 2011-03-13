@@ -1,17 +1,17 @@
-id,encounter_condition_id,name,is_default
-1,1,During a swarm,0
-2,1,Not during a swarm,1
-3,2,In the morning,0
-4,2,During the day,1
-5,2,At night,0
-6,3,Using PokéRadar,0
-7,3,Not using PokéRadar,1
-8,4,No game in slot 2,1
-9,4,Ruby in slot 2,0
-10,4,Sapphire in slot 2,0
-11,4,Emerald in slot 2,0
-12,4,FireRed in slot 2,0
-13,4,LeafGreen in slot 2,0
-14,5,Radio off,1
-15,5,Hoenn radio,0
-16,5,Sinnoh radio,0
+id,encounter_condition_id,identifier,is_default
+1,1,during-a-swarm,0
+2,1,not-during-a-swarm,1
+3,2,in-the-morning,0
+4,2,during-the-day,1
+5,2,at-night,0
+6,3,using-pokeradar,0
+7,3,not-using-pokeradar,1
+8,4,no-game-in-slot-2,1
+9,4,ruby-in-slot-2,0
+10,4,sapphire-in-slot-2,0
+11,4,emerald-in-slot-2,0
+12,4,firered-in-slot-2,0
+13,4,leafgreen-in-slot-2,0
+14,5,radio-off,1
+15,5,hoenn-radio,0
+16,5,sinnoh-radio,0

@@ -1,9 +1,9 @@
-id,identifier,name
-1,misc,Items
-2,medicine,Medicine
-3,pokeballs,Poké Balls
-4,machines,TMs and HMs
-5,berries,Berries
-6,mail,Mail
-7,battle,Battle Items
-8,key,Key Items
+id,identifier
+1,misc
+2,medicine
+3,pokeballs
+4,machines
+5,berries
+6,mail
+7,battle
+8,key

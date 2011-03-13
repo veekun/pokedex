@@ -1,44 +1,44 @@
-id,pocket_id,name
-1,7,Stat boosts
-2,5,Effort drop
-3,5,Medicine
-4,5,Other
-5,5,In a pinch
-6,5,Picky healing
-7,5,Type protection
-8,5,Baking only
-9,1,Collectibles
-10,1,Evolution
-11,1,Spelunking
-12,1,Held items
-13,1,Choice
-14,1,Effort training
-15,1,Bad held items
-16,1,Training
-17,1,Plates
-18,1,Species-specific
-19,1,Type enhancement
-20,8,Event items
-21,8,Gameplay
-22,8,Plot advancement
-23,8,Unused
-24,1,Loot
+id,pocket_id,identifier
+1,7,stat-boosts
+2,5,effort-drop
+3,5,medicine
+4,5,other
+5,5,in-a-pinch
+6,5,picky-healing
+7,5,type-protection
+8,5,baking-only
+9,1,collectibles
+10,1,evolution
+11,1,spelunking
+12,1,held-items
+13,1,choice
+14,1,effort-training
+15,1,bad-held-items
+16,1,training
+17,1,plates
+18,1,species-specific
+19,1,type-enhancement
+20,8,event-items
+21,8,gameplay
+22,8,plot-advancement
+23,8,unused
+24,1,loot
 25,6,
-26,2,Vitamins
-27,2,Healing
-28,2,PP recovery
-29,2,Revival
-30,2,Status cures
-32,1,Mulch
-33,3,Special balls
-34,3,Standard balls
-35,1,Dex completion
-36,1,Scarves
+26,2,vitamins
+27,2,healing
+28,2,pp-recovery
+29,2,revival
+30,2,status-cures
+32,1,mulch
+33,3,special-balls
+34,3,standard-balls
+35,1,dex-completion
+36,1,scarves
 37,4,
-38,7,Flutes
-39,3,Apricorn balls
-40,8,Apricorn Box
-41,8,Data Cards
-42,1,Jewels
-43,7,Miracle Shooter
-44,8,B/W unknown
+38,7,flutes
+39,3,apricorn-balls
+40,8,apricorn-box
+41,8,data-cards
+42,1,jewels
+43,7,miracle-shooter
+44,8,bw-unknown

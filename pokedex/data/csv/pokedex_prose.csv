@@ -1,0 +1,9 @@
+pokedex_id,language_id,name,description
+1,9,National,Entire National dex
+2,9,Kanto,Red/Blue/Yellow Kanto dex
+3,9,Original Johto,"Gold/Silver/Crystal Johto dex—called the ""New"" Pokédex in-game"
+4,9,Hoenn,Ruby/Sapphire/Emerald Hoenn dex
+5,9,Original Sinnoh,Diamond/Pearl Sinnoh dex
+6,9,Extended Sinnoh,Platinum Sinnoh dex—an extended version of Diamond and Pearl's
+7,9,Updated Johto,"HeartGold/SoulSilver Johto dex—Gold/Silver/Crystal's, extended to add move-based Generation IV evolutions"
+8,9,Unova,Black/White Unova dex

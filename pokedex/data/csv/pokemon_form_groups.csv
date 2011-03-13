@@ -1,20 +1,20 @@
-pokemon_id,term,is_battle_only,description
-172,,0,"Spiky-eared Pichu can only be received by taking the shiny Pichu from an official promotion to [Celebi]{pokemon}'s shrine in [Ilex Forest]{location}.  Spiky-eared Pichu is always female, cannot evolve, and cannot be taken into the Wi-Fi Club or the Union Room, but is otherwise a normal Pichu."
-201,,0,Forms only affect appearance.  A form is determined at random before a wild encounter and cannot be changed.
-351,Form,1,"Form changes along with type to match the [weather]{mechanic} in battle, due to [Forecast]{ability}.  Castform is always in its normal form outside of battle, regardless of weather."
-386,Forme,0,"Forms have different stats and movepools.  In Generation III, Deoxys's form depends on the game: Normal Forme in Ruby and Sapphire, Attack Forme in FireRed, Defense Forme in LeafGreen, and Speed Forme in Emerald.  In Generation IV, every form exists: form is preserved when transferring via [Pal Park]{location}, and meteorites in the southeast corner of [Veilstone City]{location} or at the west end of [Route 3]{location} can be used to switch between forms."
-412,Cloak,0,"Forms only affect appearance, although they become permanent upon evolution.  Wild and newly-hatched Burmy are always in a Plant Cloak.  Burmy's cloak changes to match the terrain after a battle it participated in: Plant Cloak by default; Sandy Cloak in sandy or rocky areas, such as beaches, caves, and trails; and Trash Cloak in buildings."
-413,Cloak,0,"Forms have different stats and movepools.  During evolution, Burmy's current cloak becomes Wormadam's form, and can no longer be changed."
-421,Form,1,"Sunshine form is active during [strong sunlight]{mechanic}.  Otherwise, Cherrim defaults to its Overcast form."
-422,Sea,0,"Forms only affect appearance.  A form is determined before a wild encounter based on whether the battle is in western or eastern Sinnoh, or inherited from the mother when breeding, and cannot be changed."
-423,Sea,0,Forms only affect appearance.  A form is determined before a wild encounter based on whether the battle is in western or eastern Sinnoh and cannot be changed.
-479,Form,0,"Forms have different signature moves, and the appliance forms' stats are different from the normal form's.  When switching forms, the old signature move (if any) is removed and the new one must be learned, overwriting another move if need be, or the switch will be cancelled; however, it can be forgotten while in the new form.  There are appliances for switching forms in a secret room in the Team Galactic Eterna Building or the Silph Co. Office Building; the room in the Galactic Building requires a [Secret Key]{item}, but the room in Silph Co. is freely accessible when walking with Rotom.  Rotom can be returned to its normal form by checking the space its appliance occupied.  It also reverts to its normal form upon entering the Wi-Fi Club or the Union Room."
-487,Forme,0,"Forms have different stats.  Giratina transforms into Origin Forme in the [Distortion World]{location} or while holding a [Griseous Orb]{item}.  Otherwise, it assumes its Altered Forme.  The Griseous Orb returns to the bag upon entering the Wi-Fi Club or the Union Room."
-492,Forme,0,"Forms have different stats and movepools.  Shaymin transforms into Sky Forme with the use of a [Gracidea]{item}.  It is limited to Land Forme at night, when [frozen]{mechanic}, in the storage system boxes, in the Wi-Fi Club, and in the Union Room; under these conditions, Sky Shaymin reverts to Land Forme, and the Gracidea has no effect.  The Gracidea must be used again to return to Sky Forme.  A Gracidea may be received by showing a woman in southwest [Floaroma Town]{location} or the [Goldenrod City]{location} flower shop a Shaymin met in a fateful encounter."
-493,Type,0,"Form changes along with type to match a held Plate, due to [Multitype]{ability}."
-550,Form,0,"Forms have one different ability and different wild held items. Blue-Striped Basculin are rarer in Black Version, and Red-Striped Basculin in White Version."
-555,Mode,0,"Forms have different stats and types.  Darmanitan changes to Zen Mode below 50% HP if it has [Zen Mode]{ability} as its ability, and back to Standard Mode above 50% HP."
-585,Form,0,"Form changes to match the season.  To switch forms, Deerling must be in the party when loading the game."
-586,Form,0,"Form changes to match the season.  To switch forms, Sawsbuck must be in the party when loading the game."
-648,Forme,0,"Forms have different stats and types.  Meloetta changes form upon using [Relic Song]{move} in battle, and reverts to Aria Forme outside of battle."
-649,Drive,0,Form changes to match Genesect's held Drive.  The only differences are the color of its weapon and [Techno Blast]{move}'s type.
+pokemon_id,is_battle_only
+172,0
+201,0
+351,1
+386,0
+412,0
+413,0
+421,1
+422,0
+423,0
+479,0
+487,0
+492,0
+493,0
+550,0
+555,0
+585,0
+586,0
+648,0
+649,0

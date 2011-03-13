@@ -1,0 +1,7 @@
+growth_rate_id,language_id,name
+1,9,slow
+2,9,medium
+3,9,fast
+4,9,medium slow
+5,9,slow then very fast
+6,9,fast then very slow

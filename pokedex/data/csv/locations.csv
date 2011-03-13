@@ -1,333 +1,333 @@
-id,region_id,name
-1,4,Canalave City
-2,4,Eterna City
-3,4,Pastoria City
-4,4,Sunyshore City
-5,4,Pokémon League
-6,4,Oreburgh Mine
-7,4,Valley Windworks
-8,4,Eterna Forest
-9,4,Fuego Ironworks
-10,4,Mt. Coronet
-11,4,Great Marsh
-12,4,Solaceon Ruins
-13,4,Victory Road
-14,4,Ravaged Path
-15,4,Oreburgh Gate
-16,4,Stark Mountain
-17,4,Spring Path
-18,4,Turnback Cave
-19,4,Snowpoint Temple
-20,4,Wayward Cave
-22,4,Ruin Maniac Cave
-23,4,Trophy Garden
-24,4,Iron Island
-25,4,Old Chateau
-26,4,Lake Verity
-27,4,Lake Valor
-28,4,Lake Acuity
-29,4,Valor Lakefront
-30,4,Acuity Lakefront
-31,4,Route 201
-32,4,Route 202
-33,4,Route 203
-34,4,Route 204
-35,4,Route 205
-36,4,Route 206
-37,4,Route 207
-38,4,Route 208
-39,4,Route 209
-40,4,Lost Tower
-41,4,Route 210
-42,4,Route 211
-43,4,Route 212
-44,4,Route 213
-45,4,Route 214
-46,4,Route 215
-47,4,Route 216
-48,4,Route 217
-49,4,Route 218
-50,4,Route 219
-51,4,Route 221
-52,4,Route 222
-53,4,Route 224
-54,4,Route 225
-55,4,Route 227
-56,4,Route 228
-57,4,Route 229
-58,4,Twinleaf Town
-59,4,Celestic Town
-60,4,Resort Area
-61,4,Sea Route 220
-62,4,Sea Route 223
-63,4,Sea Route 226
-64,4,Sea Route 230
-65,2,Blackthorn City
-66,2,Burned Tower
-67,1,Celadon City
-68,1,Cerulean City
-69,2,Cherrygrove City
-70,2,Cianwood City
-71,1,Cinnabar Island
-72,2,Dark Cave
-73,1,Diglett's Cave
-74,2,Dragon's Den
-75,2,Ecruteak City
-76,1,Fuchsia City
-77,2,Ice Path
-78,2,Ilex Forest
-79,2,Lake of Rage
-80,1,Mt. Moon
-81,2,Mt. Mortar
-82,2,Mt. Silver
-83,2,National Park
-84,2,New Bark Town
-85,2,Olivine City
-86,1,Pallet Town
-87,1,Rock Tunnel
-88,1,Route 1
-89,1,Route 10
-90,1,Route 11
-91,1,Route 12
-92,1,Route 13
-93,1,Route 14
-94,1,Route 15
-95,1,Route 16
-96,1,Route 17
-97,1,Route 18
-98,1,Sea Route 19
-99,1,Route 2
-100,1,Sea Route 20
-101,1,Sea Route 21
-102,1,Route 22
-103,1,Route 24
-104,1,Route 25
-105,1,Route 26
-106,1,Route 27
-107,1,Route 28
-108,2,Route 29
-109,1,Route 3
-110,2,Route 30
-111,2,Route 31
-112,2,Route 32
-113,2,Route 33
-114,2,Route 34
-115,2,Route 35
-116,2,Route 36
-117,2,Route 37
-118,2,Route 38
-119,2,Route 39
-120,1,Route 4
-121,2,Sea Route 40
-122,2,Sea Route 41
-123,2,Route 42
-124,2,Route 43
-125,2,Route 44
-126,2,Route 45
-127,2,Route 46
-128,2,Route 47
-129,2,Route 48
-130,1,Route 5
-131,1,Route 6
-132,1,Route 7
-133,1,Route 8
-134,1,Route 9
-135,2,Ruins of Alph
-136,1,Seafoam Islands
-137,2,Slowpoke Well
-138,2,Sprout Tower
-139,2,Bell Tower
-140,2,Tohjo Falls
-141,2,Union Cave
-147,1,Cerulean Cave
-148,2,Unknown; all Poliwag
-149,2,Unknown; all Rattata
-150,2,Unknown; all bugs
-151,1,Vermilion City
-152,1,Victory Road
-153,2,Violet City
-154,1,Viridian City
-155,1,Viridian Forest
-156,2,Whirl Islands
-157,1,Route 23
-158,1,Power Plant
-159,1,Victory Road
-160,1,Pokémon Tower
-161,1,Pokémon Mansion
-162,1,Safari Zone
-163,4,Sandgem Town
-164,4,Floaroma Town
-165,4,Solaceon Town
-167,4,Jubilife City
-168,4,Oreburgh City
-169,4,Hearthome City
-170,4,Veilstone City
-171,4,Snowpoint City
-172,4,Spear Pillar
-173,4,Pal Park
-174,4,Amity Square
-175,4,Floaroma Meadow
-177,4,Fullmoon Island
-178,4,Sendoff Spring
-179,4,Flower Paradise
-180,4,Maniac Tunnel
-181,4,Galactic HQ
-182,4,Verity Lakefront
-183,4,Newmoon Island
-184,4,Battle Tower
-185,4,Fight Area
-186,4,Survival Area
-187,4,Seabreak Path
-188,4,Hall of Origin
-189,4,Hall of Origin
-190,4,Verity Cavern
-191,4,Valor Cavern
-192,4,Acuity Cavern
-193,4,Jubilife TV
-194,4,Pokétch Co.
-195,4,GTS
-196,4,Trainers’ School
-197,4,Mining Museum
-198,4,Flower Shop
-199,4,Cycle Shop
-200,4,Contest Hall
-201,4,Poffin House
-202,4,Foreign Building
-203,4,Pokémon Day Care
-204,4,Veilstone Store
-205,4,Game Corner
-206,4,Canalave Library
-207,4,Vista Lighthouse
-208,4,Sunyshore Market
-209,4,Footstep House
-210,4,Café
-211,4,Grand Lake
-212,4,Restaurant
-213,4,Battle Park
-214,4,Battle Frontier
-215,4,Battle Factory
-216,4,Battle Castle
-217,4,Battle Arcade
-218,4,Battle Hall
-219,4,Distortion World
-220,4,Global Terminal
-221,4,Villa
-222,4,Battleground
-223,4,ROTOM's Room
-224,4,T.G. Eterna Bldg
-225,4,Iron Ruins
-226,4,Iceberg Ruins
-227,4,Rock Peak Ruins
-228,2,Azalea Town
-229,2,Goldenrod City
-230,2,Mahogany Town
-231,2,Pewter City
-232,2,Lavender Town
-233,2,Indigo Plateau
-234,2,Saffron City
-236,2,Lighthouse
-237,2,Team Rocket HQ
-238,2,Goldenrod Tunnel
-239,2,Mt. Silver Cave
-241,2,Pokéathlon Dome
-242,2,S.S. Aqua
-243,2,Safari Zone Gate
-244,2,Cliff Cave
-245,2,Frontier Access
-246,2,Bellchime Trail
-247,2,Sinjoh Ruins
-248,2,Embedded Tower
-249,2,Pokéwalker
-250,2,Cliff Edge Gate
-252,2,Radio Tower
-253,,Day-Care Couple
-254,,Link trade (arrive)
-255,,Link trade (met)
-256,,Kanto
-257,,Johto
-258,,Hoenn
-259,,Sinnoh
-260,,Distant land
-261,,Traveling Man
-262,,Riley
-263,,Cynthia
-264,,Mystery Zone
-265,,Lovely place
-266,,Pokémon Ranger
-267,,Faraway place
-268,,Pokémon Movie
-269,,Pokémon Movie 06
-270,,Pokémon Movie 07
-271,,Pokémon Movie 08
-272,,Pokémon Movie 09
-273,,Pokémon Movie 10
-274,,Pokémon Movie 11
-275,,Pokémon Movie 12
-276,,Pokémon Movie 13
-277,,Pokémon Movie 14
-278,,Pokémon Movie 15
-279,,Pokémon Movie 16
-280,,Pokémon Cartoon
-281,,Space World
-282,,Space World 06
-283,,Space World 07
-284,,Space World 08
-285,,Space World 09
-286,,Space World 10
-287,,Space World 11
-288,,Space World 12
-289,,Space World 13
-290,,Space World 14
-291,,Space World 15
-292,,Space World 16
-293,,Pokémon Festa
-294,,Pokémon Festa 06
-295,,Pokémon Festa 07
-296,,Pokémon Festa 08
-297,,Pokémon Festa 09
-298,,Pokémon Festa 10
-299,,Pokémon Festa 11
-300,,Pokémon Festa 12
-301,,Pokémon Festa 13
-302,,Pokémon Festa 14
-303,,Pokémon Festa 15
-304,,Pokémon Festa 16
-305,,POKéPARK
-306,,POKéPARK 06
-307,,POKéPARK 07
-308,,POKéPARK 08
-309,,POKéPARK 09
-310,,POKéPARK 10
-311,,POKéPARK 11
-312,,POKéPARK 12
-313,,POKéPARK 13
-314,,POKéPARK 14
-315,,POKéPARK 15
-316,,POKéPARK 16
-317,,Pokémon Center
-318,,PC Tokyo
-319,,PC Osaka
-320,,PC Fukuoka
-321,,PC Nagoya
-322,,PC Sapporo
-323,,PC Yokohama
-324,,Nintendo World
-325,,Pokémon Event
-326,,Pokémon Event 06
-327,,Pokémon Event 07
-328,,Pokémon Event 08
-329,,Pokémon Event 09
-330,,Pokémon Event 10
-331,,Pokémon Event 11
-332,,Pokémon Event 12
-333,,Pokémon Event 13
-334,,Pokémon Event 14
-335,,Pokémon Event 15
-336,,Pokémon Event 16
-337,,Wi-Fi Event
-338,,Wi-Fi Gift
-339,,Pokémon Fan Club
-340,,Event Site
-341,,Concert Event
-342,,Mr. Pokémon
-343,,Primo
+id,region_id,identifier
+1,4,canalave-city
+2,4,eterna-city
+3,4,pastoria-city
+4,4,sunyshore-city
+5,4,pokemon-league
+6,4,oreburgh-mine
+7,4,valley-windworks
+8,4,eterna-forest
+9,4,fuego-ironworks
+10,4,mt-coronet
+11,4,great-marsh
+12,4,solaceon-ruins
+13,4,victory-road
+14,4,ravaged-path
+15,4,oreburgh-gate
+16,4,stark-mountain
+17,4,spring-path
+18,4,turnback-cave
+19,4,snowpoint-temple
+20,4,wayward-cave
+22,4,ruin-maniac-cave
+23,4,trophy-garden
+24,4,iron-island
+25,4,old-chateau
+26,4,lake-verity
+27,4,lake-valor
+28,4,lake-acuity
+29,4,valor-lakefront
+30,4,acuity-lakefront
+31,4,route-201
+32,4,route-202
+33,4,route-203
+34,4,route-204
+35,4,route-205
+36,4,route-206
+37,4,route-207
+38,4,route-208
+39,4,route-209
+40,4,lost-tower
+41,4,route-210
+42,4,route-211
+43,4,route-212
+44,4,route-213
+45,4,route-214
+46,4,route-215
+47,4,route-216
+48,4,route-217
+49,4,route-218
+50,4,route-219
+51,4,route-221
+52,4,route-222
+53,4,route-224
+54,4,route-225
+55,4,route-227
+56,4,route-228
+57,4,route-229
+58,4,twinleaf-town
+59,4,celestic-town
+60,4,resort-area
+61,4,sea-route-220
+62,4,sea-route-223
+63,4,sea-route-226
+64,4,sea-route-230
+65,2,blackthorn-city
+66,2,burned-tower
+67,1,celadon-city
+68,1,cerulean-city
+69,2,cherrygrove-city
+70,2,cianwood-city
+71,1,cinnabar-island
+72,2,dark-cave
+73,1,digletts-cave
+74,2,dragons-den
+75,2,ecruteak-city
+76,1,fuchsia-city
+77,2,ice-path
+78,2,ilex-forest
+79,2,lake-of-rage
+80,1,mt-moon
+81,2,mt-mortar
+82,2,mt-silver
+83,2,national-park
+84,2,new-bark-town
+85,2,olivine-city
+86,1,pallet-town
+87,1,rock-tunnel
+88,1,route-1
+89,1,route-10
+90,1,route-11
+91,1,route-12
+92,1,route-13
+93,1,route-14
+94,1,route-15
+95,1,route-16
+96,1,route-17
+97,1,route-18
+98,1,sea-route-19
+99,1,route-2
+100,1,sea-route-20
+101,1,sea-route-21
+102,1,route-22
+103,1,route-24
+104,1,route-25
+105,1,route-26
+106,1,route-27
+107,1,route-28
+108,2,route-29
+109,1,route-3
+110,2,route-30
+111,2,route-31
+112,2,route-32
+113,2,route-33
+114,2,route-34
+115,2,route-35
+116,2,route-36
+117,2,route-37
+118,2,route-38
+119,2,route-39
+120,1,route-4
+121,2,sea-route-40
+122,2,sea-route-41
+123,2,route-42
+124,2,route-43
+125,2,route-44
+126,2,route-45
+127,2,route-46
+128,2,route-47
+129,2,route-48
+130,1,route-5
+131,1,route-6
+132,1,route-7
+133,1,route-8
+134,1,route-9
+135,2,ruins-of-alph
+136,1,seafoam-islands
+137,2,slowpoke-well
+138,2,sprout-tower
+139,2,bell-tower
+140,2,tohjo-falls
+141,2,union-cave
+147,1,cerulean-cave
+148,2,unknown-all-poliwag
+149,2,unknown-all-rattata
+150,2,unknown-all-bugs
+151,1,vermilion-city
+152,1,victory-road
+153,2,violet-city
+154,1,viridian-city
+155,1,viridian-forest
+156,2,whirl-islands
+157,1,route-23
+158,1,power-plant
+159,1,victory-road
+160,1,pokemon-tower
+161,1,pokemon-mansion
+162,1,safari-zone
+163,4,sandgem-town
+164,4,floaroma-town
+165,4,solaceon-town
+167,4,jubilife-city
+168,4,oreburgh-city
+169,4,hearthome-city
+170,4,veilstone-city
+171,4,snowpoint-city
+172,4,spear-pillar
+173,4,pal-park
+174,4,amity-square
+175,4,floaroma-meadow
+177,4,fullmoon-island
+178,4,sendoff-spring
+179,4,flower-paradise
+180,4,maniac-tunnel
+181,4,galactic-hq
+182,4,verity-lakefront
+183,4,newmoon-island
+184,4,battle-tower
+185,4,fight-area
+186,4,survival-area
+187,4,seabreak-path
+188,4,hall-of-origin
+189,4,hall-of-origin
+190,4,verity-cavern
+191,4,valor-cavern
+192,4,acuity-cavern
+193,4,jubilife-tv
+194,4,poketch-co
+195,4,gts
+196,4,trainers-school
+197,4,mining-museum
+198,4,flower-shop
+199,4,cycle-shop
+200,4,contest-hall
+201,4,poffin-house
+202,4,foreign-building
+203,4,pokemon-day-care
+204,4,veilstone-store
+205,4,game-corner
+206,4,canalave-library
+207,4,vista-lighthouse
+208,4,sunyshore-market
+209,4,footstep-house
+210,4,cafe
+211,4,grand-lake
+212,4,restaurant
+213,4,battle-park
+214,4,battle-frontier
+215,4,battle-factory
+216,4,battle-castle
+217,4,battle-arcade
+218,4,battle-hall
+219,4,distortion-world
+220,4,global-terminal
+221,4,villa
+222,4,battleground
+223,4,rotoms-room
+224,4,tg-eterna-bldg
+225,4,iron-ruins
+226,4,iceberg-ruins
+227,4,rock-peak-ruins
+228,2,azalea-town
+229,2,goldenrod-city
+230,2,mahogany-town
+231,2,pewter-city
+232,2,lavender-town
+233,2,indigo-plateau
+234,2,saffron-city
+236,2,lighthouse
+237,2,team-rocket-hq
+238,2,goldenrod-tunnel
+239,2,mt-silver-cave
+241,2,pokeathlon-dome
+242,2,ss-aqua
+243,2,safari-zone-gate
+244,2,cliff-cave
+245,2,frontier-access
+246,2,bellchime-trail
+247,2,sinjoh-ruins
+248,2,embedded-tower
+249,2,pokewalker
+250,2,cliff-edge-gate
+252,2,radio-tower
+253,,day-care-couple
+254,,link-trade-arrive
+255,,link-trade-met
+256,,kanto
+257,,johto
+258,,hoenn
+259,,sinnoh
+260,,distant-land
+261,,traveling-man
+262,,riley
+263,,cynthia
+264,,mystery-zone
+265,,lovely-place
+266,,pokemon-ranger
+267,,faraway-place
+268,,pokemon-movie
+269,,pokemon-movie-06
+270,,pokemon-movie-07
+271,,pokemon-movie-08
+272,,pokemon-movie-09
+273,,pokemon-movie-10
+274,,pokemon-movie-11
+275,,pokemon-movie-12
+276,,pokemon-movie-13
+277,,pokemon-movie-14
+278,,pokemon-movie-15
+279,,pokemon-movie-16
+280,,pokemon-cartoon
+281,,space-world
+282,,space-world-06
+283,,space-world-07
+284,,space-world-08
+285,,space-world-09
+286,,space-world-10
+287,,space-world-11
+288,,space-world-12
+289,,space-world-13
+290,,space-world-14
+291,,space-world-15
+292,,space-world-16
+293,,pokemon-festa
+294,,pokemon-festa-06
+295,,pokemon-festa-07
+296,,pokemon-festa-08
+297,,pokemon-festa-09
+298,,pokemon-festa-10
+299,,pokemon-festa-11
+300,,pokemon-festa-12
+301,,pokemon-festa-13
+302,,pokemon-festa-14
+303,,pokemon-festa-15
+304,,pokemon-festa-16
+305,,pokepark
+306,,pokepark-06
+307,,pokepark-07
+308,,pokepark-08
+309,,pokepark-09
+310,,pokepark-10
+311,,pokepark-11
+312,,pokepark-12
+313,,pokepark-13
+314,,pokepark-14
+315,,pokepark-15
+316,,pokepark-16
+317,,pokemon-center
+318,,pc-tokyo
+319,,pc-osaka
+320,,pc-fukuoka
+321,,pc-nagoya
+322,,pc-sapporo
+323,,pc-yokohama
+324,,nintendo-world
+325,,pokemon-event
+326,,pokemon-event-06
+327,,pokemon-event-07
+328,,pokemon-event-08
+329,,pokemon-event-09
+330,,pokemon-event-10
+331,,pokemon-event-11
+332,,pokemon-event-12
+333,,pokemon-event-13
+334,,pokemon-event-14
+335,,pokemon-event-15
+336,,pokemon-event-16
+337,,wi-fi-event
+338,,wi-fi-gift
+339,,pokemon-fan-club
+340,,event-site
+341,,concert-event
+342,,mr-pokemon
+343,,primo
