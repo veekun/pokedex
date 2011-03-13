@@ -930,7 +930,7 @@ More than 4× the target's Speed  |   150
 "
 295,Changes the target's type to Water.,"Changes the target to pure [Water]{type}-type until it leaves the field.  If the target has [Multitype]{ability}, this move will fail."
 296,Inflicts regular damage.  Raises the user's Speed by one stage.,Inflicts [regular damage]{mechanic}.  Raises the user's [Speed]{mechanic} by one [stage]{mechanic}.
-297,Lowers the target's Special Defense by one stage.,Inflicts [regular damage]{mechanic}.  Lowers the target's [Special Defense]{mechanic} by two [stages]{mechanic:stage}.
+297,Lowers the target's Special Defense by two stages.,Inflicts [regular damage]{mechanic}.  Lowers the target's [Special Defense]{mechanic} by two [stages]{mechanic:stage}.
 298,Calculates damage with the target's attacking stat.,Inflicts [regular damage]{mechanic}.  Damage is calculated using the target's attacking stat rather than the user's.
 299,Changes the target's ability to Simple.,Changes the target's ability to [Simple]{ability}.
 300,Copies the user's ability onto the target.,Changes the target's ability to match the user's.  This effect ends when the target leaves battle.
