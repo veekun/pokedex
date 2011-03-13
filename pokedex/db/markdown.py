@@ -77,27 +77,6 @@ class _MoveEffects(object):
 
         return MarkdownString(effect_text)
 
-class MoveEffectProperty(object):
-    """Property that wraps a move effect.  Used like this:
-
-        MoveClass.effect = MoveEffectProperty('effect')
-
-        some_move.effect            # returns a MarkdownString
-        some_move.effect.as_html    # returns a chunk of HTML
-
-    This class also performs simple substitution on the effect, replacing
-    `$effect_chance` with the move's actual effect chance.
-    """
-
-    def __init__(self, effect_column):
-        self.effect_column = effect_column
-
-    def __get__(self, move, move_class):
-        if move is None:
-            # Don't crash with getattr on the class
-            return NotImplemented
-        return _MoveEffects(self.effect_column, move)['en']
-
 class MoveEffectsProperty(object):
     """Property that wraps move effects.  Used like this:
 
