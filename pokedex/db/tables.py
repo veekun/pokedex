@@ -1365,7 +1365,7 @@ class StatHint(TableBase):
         info=dict(description=u"ID of the highest stat"))
     gene_mod_5 = Column(Integer, nullable=False, index=True,
         info=dict(description=u"Value of the highest stat modulo 5"))
-    text = TextColumn(Unicode(24), plural='texts', nullable=False, index=True, unique=True,
+    message = TextColumn(Unicode(24), plural='messages', nullable=False, index=True, unique=True,
         info=dict(description=u"The text displayed", official=True, format='plaintext'))
 
 class SuperContestCombo(TableBase):
