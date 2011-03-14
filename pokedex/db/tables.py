@@ -60,6 +60,7 @@ metadata = MetaData()
 TableBase = declarative_base(metadata=metadata, metaclass=TableMetaclass)
 
 ### Helper classes
+# XXX this stuff isn't covered anywhere; maybe put it in TableBase??
 class Named(object):
     """Mixin for objects that have names"""
     def __unicode__(self):
@@ -73,12 +74,6 @@ class Named(object):
 
     def __repr__(self):
         return str(self)
-
-class OfficiallyNamed(Named):
-    """Mixin for stuff with official names"""
-
-class UnofficiallyNamed(Named):
-    """Mixin for stuff with unofficial names"""
 
 class LanguageSpecific(object):
     """Mixin for prose and text tables"""
@@ -109,7 +104,7 @@ class TextColumn(LanguageSpecificColumn):
 
 ### The actual tables
 
-class Ability(TableBase, OfficiallyNamed):
+class Ability(TableBase):
     u"""An ability a Pokémon can have, such as Static or Pressure.
     """
     __tablename__ = 'abilities'
@@ -124,6 +119,8 @@ class Ability(TableBase, OfficiallyNamed):
         info=dict(description="A detailed description of this ability's effect", format='markdown'))
     short_effect = ProseColumn(markdown.MarkdownColumn(255), plural='short_effects', nullable=False,
         info=dict(description="A short summary of this ability's effect", format='markdown'))
+    name = TextColumn(Unicode(24), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
 class AbilityChangelog(TableBase):
     """History of changes to abilities across main game versions."""
@@ -176,7 +173,7 @@ class Berry(TableBase):
     smoothness = Column(Integer, nullable=False,
         info=dict(description="The smoothness of this Berry, used in making Pokéblocks or Poffins"))
 
-class BerryFirmness(TableBase, OfficiallyNamed):
+class BerryFirmness(TableBase):
     u"""A Berry firmness, such as "hard" or "very soft".
     """
     __tablename__ = 'berry_firmness'
@@ -185,6 +182,8 @@ class BerryFirmness(TableBase, OfficiallyNamed):
         info=dict(description="A unique ID for this firmness"))
     identifier = Column(Unicode(10), nullable=False,
         info=dict(description="An identifier", format='identifier'))
+    name = TextColumn(Unicode(10), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
 class BerryFlavor(TableBase):
     u"""A Berry flavor level.
@@ -222,7 +221,7 @@ class ContestEffect(TableBase):
     effect = ProseColumn(Unicode(255), plural='effects', nullable=False,
         info=dict(description="A detailed description of the effect", format='plaintext'))
 
-class ContestType(TableBase, OfficiallyNamed):
+class ContestType(TableBase):
     u"""A Contest type, such as "cool" or "smart", and their associated Berry flavors and Pokéblock colors.
     """
     __tablename__ = 'contest_types'
@@ -235,8 +234,10 @@ class ContestType(TableBase, OfficiallyNamed):
         info=dict(description="The name of the corresponding Berry flavor", official=True, format='plaintext'))
     color = TextColumn(Unicode(6), nullable=False, plural='colors',
         info=dict(description=u"The name of the corresponding Pokéblock color", official=True, format='plaintext'))
+    name = TextColumn(Unicode(6), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
-class EggGroup(TableBase, UnofficiallyNamed):
+class EggGroup(TableBase):
     u"""An Egg group. Usually, two Pokémon can breed if they share an Egg Group.
 
     (exceptions are the Ditto and No Eggs groups)
@@ -247,6 +248,8 @@ class EggGroup(TableBase, UnofficiallyNamed):
         info=dict(description="A unique ID for this group"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier.", format='identifier'))
+    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class Encounter(TableBase):
     u"""Encounters with wild Pokémon.
@@ -288,7 +291,7 @@ class Encounter(TableBase):
     max_level = Column(Integer, nullable=False, autoincrement=False,
         info=dict(description=u"The maxmum level of the encountered Pokémon"))
 
-class EncounterCondition(TableBase, UnofficiallyNamed):
+class EncounterCondition(TableBase):
     u"""A conditions in the game world that affects Pokémon encounters, such as time of day.
     """
 
@@ -298,8 +301,10 @@ class EncounterCondition(TableBase, UnofficiallyNamed):
         info=dict(description="A unique ID for this condition"))
     identifier = Column(Unicode(64), nullable=False,
         info=dict(description="An identifier", format='identifier'))
+    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
-class EncounterConditionValue(TableBase, UnofficiallyNamed):
+class EncounterConditionValue(TableBase):
     u"""A possible state for a condition; for example, the state of 'swarm' could be 'swarm' or 'no swarm'.
     """
 
@@ -313,6 +318,8 @@ class EncounterConditionValue(TableBase, UnofficiallyNamed):
         info=dict(description="An identifier", format='identifier'))
     is_default = Column(Boolean, nullable=False,
         info=dict(description='Set if this value is the default state for the condition'))
+    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class EncounterConditionValueMap(TableBase):
     u"""Maps encounters to the specific conditions under which they occur.
@@ -323,7 +330,7 @@ class EncounterConditionValueMap(TableBase):
     encounter_condition_value_id = Column(Integer, ForeignKey('encounter_condition_values.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="The ID of the encounter condition value"))
 
-class EncounterTerrain(TableBase, UnofficiallyNamed):
+class EncounterTerrain(TableBase):
     u"""A way the player can enter a wild encounter, e.g., surfing, fishing, or walking through tall grass.
     """
 
@@ -333,6 +340,8 @@ class EncounterTerrain(TableBase, UnofficiallyNamed):
         info=dict(description="A unique ID for the terrain"))
     identifier = Column(Unicode(64), nullable=False,
         info=dict(description="An identifier", format='identifier'))
+    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class EncounterSlot(TableBase):
     u"""An abstract "slot" within a terrain, associated with both some set of conditions and a rarity.
@@ -364,7 +373,7 @@ class EvolutionChain(TableBase):
     baby_trigger_item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
         info=dict(description="Item that a parent must hold while breeding to produce a baby"))
 
-class EvolutionTrigger(TableBase, UnofficiallyNamed):
+class EvolutionTrigger(TableBase):
     u"""An evolution type, such as "level" or "trade".
     """
     __tablename__ = 'evolution_triggers'
@@ -373,6 +382,8 @@ class EvolutionTrigger(TableBase, UnofficiallyNamed):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description="An identifier", format='identifier'))
+    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class Experience(TableBase):
     u"""EXP needed for a certain level with a certain growth rate
@@ -385,7 +396,7 @@ class Experience(TableBase):
     experience = Column(Integer, nullable=False,
         info=dict(description="The number of EXP points needed to get to that level"))
 
-class Generation(TableBase, OfficiallyNamed):
+class Generation(TableBase):
     u"""A Generation of the Pokémon franchise
     """
     __tablename__ = 'generations'
@@ -398,8 +409,10 @@ class Generation(TableBase, OfficiallyNamed):
         info=dict(description=u"ID of the Pokédex this generation's main games use by default"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u'An identifier', format='identifier'))
+    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
-class GrowthRate(TableBase, UnofficiallyNamed):
+class GrowthRate(TableBase):
     u"""Growth rate of a Pokémon, i.e. the EXP → level function.
     """
     __tablename__ = 'growth_rates'
@@ -410,8 +423,10 @@ class GrowthRate(TableBase, UnofficiallyNamed):
         info=dict(description="An identifier", format='identifier'))
     formula = Column(Unicode(500), nullable=False,
         info=dict(description="The formula", format='latex'))
+    name = ProseColumn(Unicode(20), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
-class Item(TableBase, OfficiallyNamed):
+class Item(TableBase):
     u"""An Item from the games, like "Poké Ball" or "Bicycle".
     """
     __tablename__ = 'items'
@@ -432,6 +447,8 @@ class Item(TableBase, OfficiallyNamed):
         info=dict(description="A short summary of the effect", format='plaintext'))
     effect = ProseColumn(markdown.MarkdownColumn(5120), plural='effects', nullable=False,
         info=dict(description=u"Detailed description of the item's effect.", format='markdown'))
+    name = TextColumn(Unicode(20), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
     @property
     def appears_underground(self):
@@ -439,7 +456,7 @@ class Item(TableBase, OfficiallyNamed):
         """
         return any(flag.identifier == u'underground' for flag in self.flags)
 
-class ItemCategory(TableBase, UnofficiallyNamed):
+class ItemCategory(TableBase):
     u"""An item category
     """
     # XXX: This is fanon, right?
@@ -451,8 +468,10 @@ class ItemCategory(TableBase, UnofficiallyNamed):
         info=dict(description="ID of the pocket these items go to"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description="An identifier", format='identifier'))
+    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
-class ItemFlag(TableBase, UnofficiallyNamed):
+class ItemFlag(TableBase):
     u"""An item attribute such as "consumable" or "holdable".
     """
     __tablename__ = 'item_flags'
@@ -463,6 +482,8 @@ class ItemFlag(TableBase, UnofficiallyNamed):
         info=dict(description="Identifier of the flag", format='identifier'))
     description = ProseColumn(Unicode(64), plural='descriptions', nullable=False,
         info=dict(description="Short description of the flag", format='plaintext'))
+    name = ProseColumn(Unicode(24), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class ItemFlagMap(TableBase):
     u"""Maps an item flag to its item.
@@ -506,7 +527,7 @@ class ItemInternalID(TableBase):
     internal_id = Column(Integer, nullable=False,
         info=dict(description="Internal ID of the item in the generation"))
 
-class ItemPocket(TableBase, OfficiallyNamed):
+class ItemPocket(TableBase):
     u"""A pocket that categorizes items
     """
     __tablename__ = 'item_pockets'
@@ -515,8 +536,10 @@ class ItemPocket(TableBase, OfficiallyNamed):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description="An identifier of this pocket", format='identifier'))
+    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
-class Language(TableBase, OfficiallyNamed):
+class Language(TableBase):
     u"""A language the Pokémon games have been transleted into
     """
     __tablename__ = 'languages'
@@ -533,6 +556,8 @@ class Language(TableBase, OfficiallyNamed):
         info=dict(description=u"True iff games are produced in the language."))
     order = Column(Integer, nullable=True,
         info=dict(description=u"Order for sorting in foreign name lists."))
+    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
     # Languages compare equal to its identifier, so a dictionary of
     # translations, with a Language as the key, can be indexed by the identifier
@@ -552,7 +577,7 @@ class Language(TableBase, OfficiallyNamed):
     def __hash__(self):
         return hash(self.identifier)
 
-class Location(TableBase, OfficiallyNamed):
+class Location(TableBase):
     u"""A place in the Pokémon world
     """
     __tablename__ = 'locations'
@@ -563,8 +588,10 @@ class Location(TableBase, OfficiallyNamed):
         info=dict(description="ID of the region this location is in"))
     identifier = Column(Unicode(64), nullable=False,
         info=dict(description="An identifier", format='identifier'))
+    name = TextColumn(Unicode(64), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
-class LocationArea(TableBase, UnofficiallyNamed):
+class LocationArea(TableBase):
     u"""A sub-area of a location
     """
     __tablename__ = 'location_areas'
@@ -577,6 +604,8 @@ class LocationArea(TableBase, UnofficiallyNamed):
         info=dict(description="ID the games ude for this area"))
     identifier = Column(Unicode(64), nullable=True,
         info=dict(description="An identifier", format='identifier'))
+    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class LocationAreaEncounterRate(TableBase):
     # XXX: What's this exactly? Someone add the docstring & revise the descriptions
@@ -620,7 +649,7 @@ class Machine(TableBase):
         """
         return self.machine_number >= 100
 
-class MoveBattleStyle(TableBase, UnofficiallyNamed):
+class MoveBattleStyle(TableBase):
     u"""A battle style of a move"""  # XXX: Explain better
     __tablename__ = 'move_battle_styles'
     __singlename__ = 'move_battle_style'
@@ -628,8 +657,10 @@ class MoveBattleStyle(TableBase, UnofficiallyNamed):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(8), nullable=False,
         info=dict(description="An identifier", format='identifier'))
+    name = ProseColumn(Unicode(8), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
-class MoveEffectCategory(TableBase, UnofficiallyNamed):
+class MoveEffectCategory(TableBase):
     u"""Category of a move effect
     """
     __tablename__ = 'move_effect_categories'
@@ -640,6 +671,8 @@ class MoveEffectCategory(TableBase, UnofficiallyNamed):
         info=dict(description="An identifier", format='identifier'))
     can_affect_user = Column(Boolean, nullable=False,
         info=dict(description="Set if the user can be affected"))
+    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class MoveEffectCategoryMap(TableBase):
     u"""Maps a move effect category to a move effect
@@ -652,7 +685,7 @@ class MoveEffectCategoryMap(TableBase):
     affects_user = Column(Boolean, primary_key=True, nullable=False,
         info=dict(description="Set if the user is affected"))
 
-class MoveDamageClass(TableBase, UnofficiallyNamed):
+class MoveDamageClass(TableBase):
     u"""Any of the damage classes moves can have, i.e. physical, special, or non-damaging.
     """
     __tablename__ = 'move_damage_classes'
@@ -663,6 +696,8 @@ class MoveDamageClass(TableBase, UnofficiallyNamed):
         info=dict(description="An identifier", format='identifier'))
     description = ProseColumn(Unicode(64), plural='descriptions', nullable=False,
         info=dict(description="A description of the class", format='plaintext'))
+    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class MoveEffect(TableBase):
     u"""An effect of a move
@@ -705,7 +740,7 @@ class MoveFlag(TableBase):
     move_flag_type_id = Column(Integer, ForeignKey('move_flag_types.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="ID of the flag"))
 
-class MoveFlagType(TableBase, UnofficiallyNamed):
+class MoveFlagType(TableBase):
     u"""A Move attribute such as "snatchable" or "contact".
     """
     __tablename__ = 'move_flag_types'
@@ -716,6 +751,8 @@ class MoveFlagType(TableBase, UnofficiallyNamed):
         info=dict(description="A short identifier for the flag", format='identifier'))
     description = ProseColumn(markdown.MarkdownColumn(128), plural='descriptions', nullable=False,
         info=dict(description="A short description of the flag", format='markdown'))
+    name = ProseColumn(Unicode(32), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class MoveFlavorText(TableBase, LanguageSpecific):
     u"""In-game description of a move
@@ -758,7 +795,7 @@ class MoveMeta(TableBase):
     stat_chance = Column(Integer, nullable=False, index=True,
         info=dict(description="Chance to cause a stat change, in percent"))
 
-class MoveMetaAilment(TableBase, OfficiallyNamed):
+class MoveMetaAilment(TableBase):
     u"""Common status ailments moves can inflict on a single Pokémon, including
     major ailments like paralysis and minor ailments like trapping.
     """
@@ -768,6 +805,8 @@ class MoveMetaAilment(TableBase, OfficiallyNamed):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(24), nullable=False,
         info=dict(description="An identifier", format='identifier'))
+    name = TextColumn(Unicode(24), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
 class MoveMetaCategory(TableBase):
     u"""Very general categories that loosely group move effects."""
@@ -788,7 +827,7 @@ class MoveMetaStatChange(TableBase):
     change = Column(Integer, nullable=False, index=True,
         info=dict(description="Amount of increase/decrease, in stages"))
 
-class MoveTarget(TableBase, UnofficiallyNamed):
+class MoveTarget(TableBase):
     u"""Targetting or "range" of a move, e.g. "Affects all opponents" or "Affects user".
     """
     __tablename__ = 'move_targets'
@@ -799,8 +838,10 @@ class MoveTarget(TableBase, UnofficiallyNamed):
         info=dict(description="An identifier", format='identifier'))
     description = ProseColumn(Unicode(128), plural='descriptions', nullable=False,
         info=dict(description="A description", format='plaintext'))
+    name = ProseColumn(Unicode(32), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
-class Move(TableBase, OfficiallyNamed):
+class Move(TableBase):
     u"""A Move: technique or attack a Pokémon can learn to use
     """
     __tablename__ = 'moves'
@@ -835,6 +876,8 @@ class Move(TableBase, OfficiallyNamed):
         info=dict(description="ID of the move's Contest effect"))
     super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=True,
         info=dict(description="ID of the move's Super Contest effect"))
+    name = TextColumn(Unicode(24), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
 class MoveChangelog(TableBase):
     """History of changes to moves across main game versions."""
@@ -857,7 +900,7 @@ class MoveChangelog(TableBase):
     effect_chance = Column(Integer, nullable=True,
         info=dict(description="Prior effect chance, or NULL if unchanged"))
 
-class Nature(TableBase, OfficiallyNamed):
+class Nature(TableBase):
     u"""A nature a Pokémon can have, such as Calm or Brave
     """
     __tablename__ = 'natures'
@@ -874,6 +917,8 @@ class Nature(TableBase, OfficiallyNamed):
         info=dict(description=u"ID of the Berry flavor the Pokémon hates (if likes_flavor_id is the same, the effects cancel out)"))
     likes_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False,
         info=dict(description=u"ID of the Berry flavor the Pokémon likes (if hates_flavor_id is the same, the effects cancel out)"))
+    name = TextColumn(Unicode(8), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
     @property
     def is_neutral(self):
@@ -909,7 +954,7 @@ class NaturePokeathlonStat(TableBase):
     max_change = Column(Integer, nullable=False,
         info=dict(description="Maximum change"))
 
-class PokeathlonStat(TableBase, OfficiallyNamed):
+class PokeathlonStat(TableBase):
     u"""A Pokéathlon stat, such as "Stamina" or "Jump".
     """
     __tablename__ = 'pokeathlon_stats'
@@ -918,8 +963,10 @@ class PokeathlonStat(TableBase, OfficiallyNamed):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(8), nullable=False,
         info=dict(description="An identifier", format='identifier'))
+    name = TextColumn(Unicode(8), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
-class Pokedex(TableBase, UnofficiallyNamed):
+class Pokedex(TableBase):
     u"""A collection of Pokémon species ordered in a particular way
     """
     __tablename__ = 'pokedexes'
@@ -932,8 +979,10 @@ class Pokedex(TableBase, UnofficiallyNamed):
         info=dict(description=u"An identifier", format='identifier'))
     description = ProseColumn(Unicode(512), plural='descriptions', nullable=False,
         info=dict(description=u"A longer description of the Pokédex", format='plaintext'))
+    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
-class Pokemon(TableBase, OfficiallyNamed):
+class Pokemon(TableBase):
     u"""A species of Pokémon.  The core to this whole mess.
     """
     __tablename__ = 'pokemon'
@@ -975,6 +1024,8 @@ class Pokemon(TableBase, OfficiallyNamed):
         info=dict(description=u"Set iff the species exhibits enough sexual dimorphism to have separate sets of sprites in Gen IV and beyond."))
     order = Column(Integer, nullable=False, index=True,
         info=dict(description=u"Order for sorting. Almost national order, except families and forms are grouped together."))
+    name = TextColumn(Unicode(20), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
     ### Stuff to handle alternate Pokémon forms
 
@@ -1074,7 +1125,7 @@ class PokemonAbility(TableBase):
     slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"The ability slot, i.e. 1 or 2 for gen. IV"))
 
-class PokemonColor(TableBase, OfficiallyNamed):
+class PokemonColor(TableBase):
     u"""The "Pokédex color" of a Pokémon species. Usually based on the Pokémon's color.
     """
     __tablename__ = 'pokemon_colors'
@@ -1083,6 +1134,8 @@ class PokemonColor(TableBase, OfficiallyNamed):
         info=dict(description=u"ID of the Pokémon"))
     identifier = Column(Unicode(6), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
+    name = TextColumn(Unicode(6), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
 class PokemonDexNumber(TableBase):
     u"""The number of a Pokémon in a particular Pokédex (e.g. Jigglypuff is #138 in Hoenn's 'dex)
@@ -1153,7 +1206,7 @@ class PokemonFlavorText(TableBase, LanguageSpecific):
     flavor_text = Column(Unicode(255), nullable=False,
         info=dict(description=u"ID of the version that has this flavor text", official=True, format='gametext'))
 
-class PokemonForm(TableBase, OfficiallyNamed):
+class PokemonForm(TableBase):
     u"""An individual form of a Pokémon.
 
     Pokémon that do not have separate forms are still given a single row to
@@ -1175,6 +1228,8 @@ class PokemonForm(TableBase, OfficiallyNamed):
         info=dict(description=u'Set for exactly one form used as the default for each species.'))
     order = Column(Integer, nullable=False, autoincrement=False,
         info=dict(description=u'The order in which forms should be sorted.  Multiple forms may have equal order, in which case they should fall back on sorting by name.'))
+    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
     @property
     def pokemon(self):
@@ -1233,7 +1288,7 @@ class PokemonFormPokeathlonStat(TableBase):
     maximum_stat = Column(Integer, nullable=False, autoincrement=False,
         info=dict(description=u'The maximum value for this stat for this Pokémon form.'))
 
-class PokemonHabitat(TableBase, OfficiallyNamed):
+class PokemonHabitat(TableBase):
     u"""The habitat of a Pokémon, as given in the FireRed/LeafGreen version Pokédex
     """
     __tablename__ = 'pokemon_habitats'
@@ -1242,6 +1297,8 @@ class PokemonHabitat(TableBase, OfficiallyNamed):
         info=dict(description=u"A numeric ID"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
+    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
 class PokemonInternalID(TableBase):
     u"""The number of a Pokémon a game uses internally
@@ -1289,7 +1346,7 @@ class PokemonMove(TableBase):
         {},
     )
 
-class PokemonMoveMethod(TableBase, UnofficiallyNamed):
+class PokemonMoveMethod(TableBase):
     u"""A method a move can be learned by, such as "Level up" or "Tutor".
     """
     __tablename__ = 'pokemon_move_methods'
@@ -1300,8 +1357,10 @@ class PokemonMoveMethod(TableBase, UnofficiallyNamed):
         info=dict(description=u"An identifier", format='identifier'))
     description = ProseColumn(Unicode(255), plural='descriptions', nullable=False,
         info=dict(description=u"A detailed description of how the method works", format='plaintext'))
+    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
-class PokemonShape(TableBase, UnofficiallyNamed):
+class PokemonShape(TableBase):
     u"""The shape of a Pokémon's body, as used in generation IV Pokédexes.
     """
     __tablename__ = 'pokemon_shapes'
@@ -1312,6 +1371,8 @@ class PokemonShape(TableBase, UnofficiallyNamed):
         info=dict(description=u"An identifier", format='identifier'))
     awesome_name = ProseColumn(Unicode(16), plural='awesome_names', nullable=False,
         info=dict(description=u"A splendiferous name of the body shape", format='plaintext'))
+    name = ProseColumn(Unicode(24), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=False))
 
 class PokemonStat(TableBase):
     u"""A stat value of a Pokémon
@@ -1337,7 +1398,7 @@ class PokemonType(TableBase):
     slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"The type's slot, 1 or 2, used to sort types if there are two of them"))
 
-class Region(TableBase, OfficiallyNamed):
+class Region(TableBase):
     u"""Major areas of the world: Kanto, Johto, etc.
     """
     __tablename__ = 'regions'
@@ -1346,8 +1407,10 @@ class Region(TableBase, OfficiallyNamed):
         info=dict(description=u"A numeric ID"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
+    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
-class Stat(TableBase, OfficiallyNamed):
+class Stat(TableBase):
     u"""A Stat, such as Attack or Speed
     """
     __tablename__ = 'stats'
@@ -1358,6 +1421,8 @@ class Stat(TableBase, OfficiallyNamed):
         info=dict(description=u"For offensive and defensive stats, the damage this stat relates to; otherwise None (the NULL value)"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
+    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
 class StatHint(TableBase):
     u"""Flavor text for genes that appears in a Pokémon's summary.  Sometimes
@@ -1407,7 +1472,7 @@ class TypeEfficacy(TableBase):
     damage_factor = Column(Integer, nullable=False,
         info=dict(description=u"The multiplier, as a percentage of damage inflicted."))
 
-class Type(TableBase, OfficiallyNamed):
+class Type(TableBase):
     u"""Any of the elemental types Pokémon and moves can have."""
     __tablename__ = 'types'
     __singlename__ = 'type'
@@ -1419,6 +1484,8 @@ class Type(TableBase, OfficiallyNamed):
         info=dict(description=u"The ID of the generation this type first appeared in."))
     damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=True,
         info=dict(description=u"The ID of the damage class this type's moves had before Generation IV, null if not applicable (e.g. ???)."))
+    name = TextColumn(Unicode(12), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
 class VersionGroup(TableBase):
     u"""A group of versions, containing either two paired versions (such as Red
@@ -1440,7 +1507,7 @@ class VersionGroupRegion(TableBase):
     region_id = Column(Integer, ForeignKey('regions.id'), primary_key=True, nullable=False,
         info=dict(description=u"The ID of the region."))
 
-class Version(TableBase, OfficiallyNamed):
+class Version(TableBase):
     u"""An individual main-series Pokémon game."""
     __tablename__ = 'versions'
     __singlename__ = 'version'
@@ -1450,6 +1517,8 @@ class Version(TableBase, OfficiallyNamed):
         info=dict(description=u"The ID of the version group this game belongs to."))
     identifier = Column(Unicode(32), nullable=False,
         info=dict(description=u'And identifier', format='identifier'))
+    name = TextColumn(Unicode(32), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
 
 
 ### Relations down here, to avoid ordering problems
@@ -1780,19 +1849,6 @@ VersionGroup.regions = association_proxy('version_group_regions', 'region')
 VersionGroup.pokedex = relation(Pokedex, back_populates='version_groups')
 
 
-### Add name tables
-for table in list(table_classes):
-    if issubclass(table, OfficiallyNamed):
-        cls = TextColumn
-        info=dict(description="The name", format='plaintext', official=True)
-    elif issubclass(table, UnofficiallyNamed):
-        cls = ProseColumn
-        info=dict(description="The name", format='plaintext', official=False)
-    else:
-        continue
-    table.name = cls(Unicode(class_mapper(table).c.identifier.type.length),
-        plural='names', index=True, nullable=False, info=info)
-
 ### Add text/prose tables
 
 default_lang = u'en'
@@ -1845,6 +1901,7 @@ def makeTextTable(object_table, name_plural, name_singular, columns, lazy):
             collection_class=attribute_mapped_collection('language'),
             lazy=lazy,
         ))
+    str(getattr(object_table, name_plural))  # [MORE MAGIC].  aka do not remove, or entire app fails.  XXX what the fuck man
     Strings.object = getattr(Strings, safe_name)
 
     # Link the tables themselves, so we can get them if needed
@@ -1964,6 +2021,7 @@ for table in list(table_classes):
         column = getattr(table, colname)
         if isinstance(column, LanguageSpecificColumn):
             all_columns.append((colname, column))
+            delattr(table, colname)
     all_columns.sort(key=lambda pair: pair[1].order)
 
     # Break them into text and prose columns
