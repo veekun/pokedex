@@ -168,6 +168,36 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
         reader = csv.reader(csvfile, lineterminator='\n')
         column_names = [unicode(column) for column in reader.next()]
 
+        if not safe and session.connection().dialect.name == 'postgresql':
+            """
+            Postgres' CSV dialect is nearly the same as ours, except that it
+            treats completely empty values as NULL, and empty quoted
+            strings ("") as an empty strings.
+            Pokedex dump does not quote empty strings. So, both empty strings
+            and NULLs are read in as NULL.
+            For an empty string in a NOT NULL column, the load will fail, and
+            load will fall back to the cross-backend row-by-row loading. And in
+            nullable columns, we already load empty stings as NULL.
+            """
+            session.commit()
+            not_null_cols = [c for c in column_names if not table_obj.c[c].nullable]
+            if not_null_cols:
+                force_not_null = 'FORCE NOT NULL ' + ','.join('"%s"' % c for c in not_null_cols)
+            else:
+                force_not_null = ''
+            command = "COPY {table_name} ({columns}) FROM '{csvpath}' CSV HEADER {force_not_null}"
+            session.connection().execute(
+                    command.format(
+                            table_name=table_name,
+                            csvpath=csvpath,
+                            columns=','.join('"%s"' % c for c in column_names),
+                            force_not_null=force_not_null,
+                        )
+                )
+            session.commit()
+            print_done()
+            continue
+
         # Self-referential tables may contain rows with foreign keys of other
         # rows in the same table that do not yet exist.  Pull these out and add
         # them to the session last
