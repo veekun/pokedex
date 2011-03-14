@@ -1884,24 +1884,22 @@ def makeTextTable(object_table, name_plural, name_singular, columns, lazy):
         )
 
     mapper(Strings, table,
-            properties={
-                    "object_id": synonym(safe_name + '_id'),
-                    "language": relation(
-                            Language,
-                            primaryjoin=table.c.language_id == Language.id,
-                        ),
-                },
-        )
+        properties={
+            "object_id": synonym(safe_name + '_id'),
+            "language": relation(Language,
+                primaryjoin=table.c.language_id == Language.id,
+            ),
+            safe_name: relation(object_table,
+                primaryjoin=(object_table.id == table.c[safe_name + "_id"]),
+                backref=backref(name_plural,
+                    collection_class=attribute_mapped_collection('language'),
+                    lazy=lazy,
+                ),
+            ),
+        },
+    )
 
     # The relation to the object
-    setattr(object_table, name_plural, relation(
-            Strings,
-            primaryjoin=(object_table.id == Strings.object_id),
-            backref=safe_name,
-            collection_class=attribute_mapped_collection('language'),
-            lazy=lazy,
-        ))
-    str(getattr(object_table, name_plural))  # [MORE MAGIC].  aka do not remove, or entire app fails.  XXX what the fuck man
     Strings.object = getattr(Strings, safe_name)
 
     # Link the tables themselves, so we can get them if needed
