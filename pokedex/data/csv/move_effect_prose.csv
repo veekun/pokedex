@@ -418,7 +418,7 @@ This move cannot be copied by [Mirror Move]{move}, nor selected by [Assist]{move
 146,9,Raises the user's Defense by one stage.  User charges for one turn before attacking.,"Inflicts [regular damage]{mechanic}.  Raises the user's [Defense]{mechanic} by one [stage]{mechanic}.  User then charges for one turn before attacking.
 
 This move cannot be selected by [Sleep Talk]{move}."
-147,9,Has chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to make each target [flinch]{mechanic}.
+147,9,Has a $effect_chance% chance to make the target flinch.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to make each target [flinch]{mechanic}.
 
 If the target is under the effect of [Bounce]{move}, [Fly]{move}, or [Sky Drop]{move}, this move will hit with double power."
 148,9,Inflicts regular damage and can hit Dig users.,"Inflicts [regular damage]{mechanic}.
