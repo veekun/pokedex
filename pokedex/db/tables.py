@@ -56,25 +56,34 @@ class TableMetaclass(DeclarativeMeta):
         if hasattr(cls, '__tablename__'):
             table_classes.append(cls)
 
-metadata = MetaData()
-TableBase = declarative_base(metadata=metadata, metaclass=TableMetaclass)
-
-### Helper classes
-# XXX this stuff isn't covered anywhere; maybe put it in TableBase??
-class Named(object):
-    """Mixin for objects that have names"""
+class TableSuperclass(object):
+    """Superclass for declarative tables, to give them some generic niceties
+    like stringification.
+    """
     def __unicode__(self):
+        """Be as useful as possible.  Show the primary key, and an identifier
+        if we've got one.
+        """
+        typename = u'.'.join((__name__, type(self).__name__))
+
+        pk_constraint = self.__table__.primary_key
+        if not pk_constraint:
+            return u"<%s object at %x>" % (typename, id(self))
+
+        pk = u', '.join(unicode(getattr(self, column.name))
+            for column in pk_constraint.columns)
         try:
-            return '<%s: %s>' % (type(self).__name__, self.identifier)
+            return u"<%s object (%s): %s>" % (typename, pk, self.identifier)
         except AttributeError:
-            return '<%s>' % type(self).__name__
+            return u"<%s object (%s)>" % (typename, pk)
 
     def __str__(self):
-        return unicode(self).encode('utf-8')
+        return unicode(self).encode('utf8')
 
-    def __repr__(self):
-        return str(self)
+metadata = MetaData()
+TableBase = declarative_base(metadata=metadata, cls=TableSuperclass, metaclass=TableMetaclass)
 
+### Helper classes
 class LanguageSpecific(object):
     """Mixin for prose and text tables"""
     @declared_attr
