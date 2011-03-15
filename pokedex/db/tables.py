@@ -1918,91 +1918,20 @@ def makeTextTable(object_table, name_plural, name_singular, columns, lazy):
     for colname, pluralname, column in columns:
         # Provide a property with all the names, and an English accessor
         # for backwards compatibility
-        setattr(object_table, pluralname, StringProperty(
-                object_table, Strings, colname,
-            ))
+        def text_string_creator(language_code, string):
+            row = Strings()
+            row._language_identifier = language_code
+            setattr(row, colname, string)
+            return row
+
+        setattr(object_table, pluralname,
+            association_proxy(name_plural, colname, creator=text_string_creator))
         setattr(object_table, colname, DefaultLangProperty(pluralname))
 
         if colname == 'name':
             object_table.name_table = Strings
 
     return Strings
-
-class StringProperty(object):
-    def __init__(self, cls, stringclass, colname):
-        self.cls = cls
-        self.colname = colname
-        self.stringclass = stringclass
-
-    def __get__(self, instance, cls):
-        if instance:
-            return StringMapping(instance, self)
-        else:
-            return self
-
-    def __getitem__(self, lang):
-        return StringExpression(self, lang)
-
-    def __str__(self):
-        return '<StringDict %s.%s>' % (self.cls, self.colname)
-
-class StringMapping(collections.MutableMapping):
-    def __init__(self, instance, prop):
-        self.stringclass = prop.stringclass
-        self.instance = instance
-        self.strings = getattr(instance, prop.stringclass._attrname)
-        self.colname = prop.colname
-
-    def __len__(self):
-        return len(self.strings)
-
-    def __iter__(self):
-        return iter(self.strings)
-
-    def __contains__(self, lang):
-        return lang in self.strings
-
-    def __getitem__(self, lang):
-        return getattr(self.strings[lang], self.colname)
-
-    def __setitem__(self, lang, value):
-        try:
-            # Modifying an existing row
-            row = self.strings[lang]
-        except KeyError:
-            # We need do add a whole row for the language
-            row = self.stringclass()
-            row.object_id = self.instance.id
-            session = object_session(self.instance)
-            if isinstance(lang, basestring):
-                lang = session.query(Language).filter_by(
-                        identifier=lang).one()
-            row.language = lang
-            self.strings[lang] = row
-            session.add(row)
-        return setattr(row, self.colname, value)
-
-    def __delitem__(self, lang):
-        raise NotImplementedError('Cannot delete a single string. '
-                'Perhaps you wan to delete all of %s.%s?' %
-                (self.instance, self.stringclass._attrname)
-            )
-
-class StringExpression(ColumnOperators):
-    def __init__(self, prop, lang):
-        self.prop = prop
-        self.column = getattr(prop.stringclass, prop.colname)
-        self.lang_column = prop.stringclass._language_identifier
-        if isinstance(lang, basestring):
-            self.lang = lang
-        else:
-            self.lang = lang.identifier
-
-    def operate(self, op, *values, **kwargs):
-        return getattr(self.prop.cls, self.prop.stringclass._attrname).any(and_(
-                self.lang_column == self.lang,
-                op(self.column, *values, **kwargs),
-            ))
 
 class DefaultLangProperty(object):
     def __init__(self, colname):
