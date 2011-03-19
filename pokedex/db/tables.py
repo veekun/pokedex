@@ -1862,7 +1862,7 @@ VersionGroup.pokedex = relation(Pokedex, back_populates='version_groups')
 
 default_lang = u'en'
 
-def makeTextTable(foreign_table_class, table_suffix_plural, table_suffix_singular, columns, lazy):
+def makeTextTable(foreign_table_class, table_suffix_plural, table_suffix_singular, columns, lazy, Language=Language):
     # With "Language", we'd have two language_id. So, rename one to 'lang'
     foreign_key_name = foreign_table_class.__singlename__
     if foreign_key_name == 'language':
@@ -1882,7 +1882,7 @@ def makeTextTable(foreign_table_class, table_suffix_plural, table_suffix_singula
             # one by one without the DB complaining about missing values
             column.default = ColumnDefault(u'')
 
-    table = Table(table_name, metadata,
+    table = Table(table_name, foreign_table_class.__table__.metadata,
             Column(foreign_key_name + '_id', Integer, ForeignKey(foreign_table_class.id),
                     primary_key=True, nullable=False),
             Column('language_id', Integer, ForeignKey(Language.id),
@@ -1899,7 +1899,7 @@ def makeTextTable(foreign_table_class, table_suffix_plural, table_suffix_singula
             foreign_key_name: relation(foreign_table_class,
                 primaryjoin=(foreign_table_class.id == table.c[foreign_key_name + "_id"]),
                 backref=backref(table_suffix_plural,
-                    collection_class=attribute_mapped_collection('language'),
+                    collection_class=attribute_mapped_collection('_language_identifier'),
                     lazy=lazy,
                 ),
             ),
