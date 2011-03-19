@@ -34,7 +34,7 @@ from sqlalchemy.ext.declarative import (
     )
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import (
-        backref, eagerload_all, relation, class_mapper, synonym, mapper,
+        backref, compile_mappers, eagerload_all, relation, class_mapper, synonym, mapper,
     )
 from sqlalchemy.orm.session import Session, object_session
 from sqlalchemy.orm.collections import attribute_mapped_collection
@@ -1862,45 +1862,43 @@ VersionGroup.pokedex = relation(Pokedex, back_populates='version_groups')
 
 default_lang = u'en'
 
-def makeTextTable(object_table, name_plural, name_singular, columns, lazy):
+def makeTextTable(foreign_table_class, table_suffix_plural, table_suffix_singular, columns, lazy):
     # With "Language", we'd have two language_id. So, rename one to 'lang'
-    safe_name = object_table.__singlename__
-    if safe_name == 'language':
-        safe_name = 'lang'
+    foreign_key_name = foreign_table_class.__singlename__
+    if foreign_key_name == 'language':
+        foreign_key_name = 'lang'
 
-    tablename = object_table.__singlename__ + '_' + name_plural
-    singlename = object_table.__singlename__ + '_' + name_singular
+    table_name = foreign_table_class.__singlename__ + '_' + table_suffix_plural
 
-    class Strings(object):
-        __tablename__ = tablename
-        __singlename__ = singlename
-        _attrname = name_plural
+    class TranslatedStringsTable(object):
+        __tablename__ = table_name
+        _attrname = table_suffix_plural
         _language_identifier = association_proxy('language', 'identifier')
 
-    for name, plural, column in columns:
-        column.name = name
+    for column_name, column_name_plural, column in columns:
+        column.name = column_name
         if not column.nullable:
             # A Python side default value, so that the strings can be set
             # one by one without the DB complaining about missing values
             column.default = ColumnDefault(u'')
 
-    table = Table(tablename, metadata,
-            Column(safe_name + '_id', Integer, ForeignKey(object_table.id),
+    table = Table(table_name, metadata,
+            Column(foreign_key_name + '_id', Integer, ForeignKey(foreign_table_class.id),
                     primary_key=True, nullable=False),
             Column('language_id', Integer, ForeignKey(Language.id),
                     primary_key=True, index=True, nullable=False),
             *(column for name, plural, column in columns)
         )
 
-    mapper(Strings, table,
+    mapper(TranslatedStringsTable, table,
         properties={
-            "object_id": synonym(safe_name + '_id'),
+            "object_id": synonym(foreign_key_name + '_id'),
             "language": relation(Language,
                 primaryjoin=table.c.language_id == Language.id,
             ),
-            safe_name: relation(object_table,
-                primaryjoin=(object_table.id == table.c[safe_name + "_id"]),
-                backref=backref(name_plural,
+            foreign_key_name: relation(foreign_table_class,
+                primaryjoin=(foreign_table_class.id == table.c[foreign_key_name + "_id"]),
+                backref=backref(table_suffix_plural,
                     collection_class=attribute_mapped_collection('language'),
                     lazy=lazy,
                 ),
@@ -1909,39 +1907,41 @@ def makeTextTable(object_table, name_plural, name_singular, columns, lazy):
     )
 
     # The relation to the object
-    Strings.object = getattr(Strings, safe_name)
+    TranslatedStringsTable.object = getattr(TranslatedStringsTable, foreign_key_name)
 
     # Link the tables themselves, so we can get them if needed
-    Strings.object_table = object_table
-    setattr(object_table, name_singular + '_table', Strings)
+    TranslatedStringsTable.foreign_table_class = foreign_table_class
+    setattr(foreign_table_class, table_suffix_singular + '_table', TranslatedStringsTable)
 
-    for colname, pluralname, column in columns:
+    for column_name, column_name_plural, column in columns:
         # Provide a property with all the names, and an English accessor
         # for backwards compatibility
         def text_string_creator(language_code, string):
-            row = Strings()
+            row = TranslatedStringsTable()
             row._language_identifier = language_code
-            setattr(row, colname, string)
+            setattr(row, column_name, string)
             return row
 
-        setattr(object_table, pluralname,
-            association_proxy(name_plural, colname, creator=text_string_creator))
-        setattr(object_table, colname, DefaultLangProperty(pluralname))
+        setattr(foreign_table_class, column_name_plural,
+            association_proxy(table_suffix_plural, column_name, creator=text_string_creator))
+        setattr(foreign_table_class, column_name, DefaultLangProperty(column_name_plural))
 
-        if colname == 'name':
-            object_table.name_table = Strings
+        if column_name == 'name':
+            foreign_table_class.name_table = TranslatedStringsTable
 
-    return Strings
+    compile_mappers()
+    return TranslatedStringsTable
 
 class DefaultLangProperty(object):
-    def __init__(self, colname):
-        self.colname = colname
+    def __init__(self, column_name):
+        self.column_name = column_name
 
     def __get__(self, instance, cls):
         if instance:
-            return getattr(instance, self.colname)[default_lang]
+            return getattr(instance, self.column_name)[default_lang]
         else:
-            return getattr(cls, self.colname)[default_lang]
+            # TODO I think this is kind of broken
+            return getattr(cls, self.column_name)[default_lang]
 
     def __set__(self, instance, value):
         getattr(instance, self.colname)[default_lang] = value
@@ -1976,7 +1976,7 @@ for table in list(table_classes):
     if text_columns:
         string_table = makeTextTable(table, 'texts', 'text', text_columns, lazy=False)
     if prose_columns:
-        string_table = makeTextTable(table, 'prose', 'prose', prose_columns, lazy=True)
+        string_table = makeTextTable(table, 'prose', 'prose', prose_columns, lazy='select')
 
 ### Add language relations
 for table in list(table_classes):
