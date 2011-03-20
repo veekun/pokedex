@@ -27,6 +27,7 @@ The singular-name property returns the name in the default language, English.
 # XXX: Check if "gametext" is set correctly everywhere
 
 import collections
+from functools import partial
 
 from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table, UniqueConstraint
 from sqlalchemy.ext.declarative import (
@@ -37,10 +38,11 @@ from sqlalchemy.orm import (
         backref, compile_mappers, eagerload_all, relation, class_mapper, synonym, mapper,
     )
 from sqlalchemy.orm.session import Session, object_session
-from sqlalchemy.orm.collections import attribute_mapped_collection
-from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm.interfaces import AttributeExtension
+from sqlalchemy.orm.collections import attribute_mapped_collection, MappedCollection, collection, collection_adapter
+from sqlalchemy.ext.associationproxy import _AssociationDict, association_proxy
 from sqlalchemy.sql import and_
-from sqlalchemy.sql.expression import ColumnOperators
+from sqlalchemy.sql.expression import ColumnOperators, bindparam
 from sqlalchemy.schema import ColumnDefault
 from sqlalchemy.types import *
 from inspect import isclass
@@ -1861,6 +1863,175 @@ VersionGroup.pokedex = relation(Pokedex, back_populates='version_groups')
 ### Add text/prose tables
 
 default_lang = u'en'
+
+def create_translation_table(_table_name, foreign_class,
+    _language_class=Language, **kwargs):
+    """Creates a table that represents some kind of data attached to the given
+    foreign class, but translated across several languages.  Returns the new
+    table's mapped class.
+TODO give it a __table__ or __init__?
+
+    `foreign_class` must have a `__singlename__`, currently only used to create
+    the name of the foreign key column.
+TODO remove this requirement
+
+    Also supports the notion of a default language, which is attached to the
+    session.  This is English by default, for historical and practical reasons.
+
+    Usage looks like this:
+
+        class Foo(Base): ...
+
+        create_translation_table('foo_bars', Foo,
+            name = Column(...),
+        )
+
+        # Now you can do the following:
+        foo.name
+        foo.name_map['en']
+        foo.foo_bars['en']
+
+        foo.name_map['en'] = "new name"
+        del foo.name_map['en']
+
+        q.options(joinedload(Foo.default_translation))
+        q.options(joinedload(Foo.foo_bars))
+
+    In the above example, the following attributes are added to Foo:
+
+    - `foo_bars`, a relation to the new table.  It uses a dict-based collection
+      class, where the keys are language identifiers and the values are rows in
+      the created tables.
+    - `foo_bars_local`, a relation to the row in the new table that matches the
+      current default language.
+
+    Note that these are distinct relations.  Even though the former necessarily
+    includes the latter, SQLAlchemy doesn't treat them as linked; loading one
+    will not load the other.  Modifying both within the same transaction has
+    undefined behavior.
+
+    For each column provided, the following additional attributes are added to
+    Foo:
+
+    - `(column)_map`, an association proxy onto `foo_bars`.
+    - `(column)`, an association proxy onto `foo_bars_local`.
+
+    Pardon the naming disparity, but the grammar suffers otherwise.
+
+    Modifying these directly is not likely to be a good idea.
+    """
+    # n.b.: _language_class only exists for the sake of tests, which sometimes
+    # want to create tables entirely separate from the pokedex metadata
+
+    foreign_key_name = foreign_class.__singlename__ + '_id'
+    # A foreign key "language_id" will clash with the language_id we naturally
+    # put in every table.  Rename it something else
+    if foreign_key_name == 'language_id':
+        # TODO change language_id below instead and rename this
+        foreign_key_name = 'lang_id'
+
+    Translations = type(_table_name, (object,), {
+        '_language_identifier': association_proxy('language', 'identifier'),
+    })
+    
+    # Create the table object
+    table = Table(_table_name, foreign_class.__table__.metadata,
+        Column(foreign_key_name, Integer, ForeignKey(foreign_class.id),
+            primary_key=True, nullable=False),
+        Column('language_id', Integer, ForeignKey(_language_class.id),
+            primary_key=True, nullable=False),
+    )
+
+    # Add ye columns
+    # Column objects have a _creation_order attribute in ascending order; use
+    # this to get the (unordered) kwargs sorted correctly
+    kwitems = kwargs.items()
+    kwitems.sort(key=lambda kv: kv[1]._creation_order)
+    for name, column in kwitems:
+        column.name = name
+        table.append_column(column)
+
+    # Construct ye mapper
+    mapper(Translations, table, properties={
+        # TODO change to foreign_id
+        'object_id': synonym(foreign_key_name),
+        # TODO change this as appropriate
+        'language': relation(_language_class,
+            primaryjoin=table.c.language_id == _language_class.id,
+            lazy='joined',
+            innerjoin=True),
+        # TODO does this need to join to the original table?
+    })
+
+    # Add full-table relations to the original class
+    # Class.foo_bars
+    class LanguageMapping(MappedCollection):
+        """Baby class that converts a language identifier key into an actual
+        language object, allowing for `foo.bars['en'] = Translations(...)`.
+
+        Needed for per-column association proxies to function as setters.
+        """
+        @collection.internally_instrumented
+        def __setitem__(self, key, value, _sa_initiator=None):
+            if key in self:
+                raise NotImplementedError("Can't replace the whole row, sorry!")
+
+            # Only do this nonsense if the value is a dangling object; if it's
+            # in the db it already has its language_id
+            if not object_session(value):
+                # This took quite some source-diving to find, but it oughta be
+                # the object that actually owns this collection.
+                obj = collection_adapter(self).owner_state.obj()
+                session = object_session(obj)
+                value.language = session.query(_language_class) \
+                    .filter_by(identifier=key).one()
+
+            super(LanguageMapping, self).__setitem__(key, value, _sa_initiator)
+
+    setattr(foreign_class, _table_name, relation(Translations,
+        primaryjoin=foreign_class.id == Translations.object_id,
+        #collection_class=attribute_mapped_collection('_language_identifier'),
+        collection_class=partial(LanguageMapping,
+            lambda obj: obj._language_identifier),
+        # TODO
+        lazy='select',
+    ))
+    # Class.foo_bars_local
+    # This is a bit clever; it uses bindparam() to make the join clause
+    # modifiable on the fly.  db sessions know the current language identifier
+    # populates the bindparam.
+    local_relation_name = _table_name + '_local'
+    setattr(foreign_class, local_relation_name, relation(Translations,
+        primaryjoin=and_(
+            foreign_class.id == Translations.object_id,
+            Translations._language_identifier ==
+                bindparam('_default_language', required=True),
+        ),
+        uselist=False,
+        # TODO MORESO HERE
+        lazy='select',
+    ))
+
+    # Add per-column proxies to the original class
+    for name, column in kwitems:
+        # TODO should these proxies be mutable?
+
+        # Class.(column) -- accessor for the default language's value
+        setattr(foreign_class, name,
+            association_proxy(local_relation_name, name))
+
+        # Class.(column)_map -- accessor for the language dict
+        # Need a custom creator since Translations doesn't have an init, and
+        # these are passed as *args anyway
+        def creator(language_code, value):
+            row = Translations()
+            setattr(row, name, value)
+            return row
+        setattr(foreign_class, name + '_map',
+            association_proxy(_table_name, name, creator=creator))
+
+    # Done
+    return Translations
 
 def makeTextTable(foreign_table_class, table_suffix_plural, table_suffix_singular, columns, lazy, Language=Language):
     # With "Language", we'd have two language_id. So, rename one to 'lang'

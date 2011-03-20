@@ -3,6 +3,7 @@ from nose.tools import *
 import unittest
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.orm import class_mapper, joinedload, sessionmaker
+from sqlalchemy.orm.session import Session
 from sqlalchemy.ext.declarative import declarative_base
 
 from pokedex.db import tables, markdown
@@ -30,7 +31,7 @@ def test_i18n_table_creation():
     various proxies and columns works.
     """
     Base = declarative_base()
-    engine = create_engine("sqlite:///:memory:")
+    engine = create_engine("sqlite:///:memory:", echo=True)
 
     Base.metadata.bind = engine
 
@@ -45,26 +46,30 @@ def test_i18n_table_creation():
         __singlename__ = 'foo'
         id = Column(Integer, primary_key=True, nullable=False)
 
-    FooText = tables.makeTextTable(
-        foreign_table_class=Foo,
-        table_suffix_plural='blorp',
-        table_suffix_singular='klink',
-        columns=[
-            ('name', 'names', Column(String(100))),
-        ],
-        lazy='select',
-        Language=Language,
+    FooText = tables.create_translation_table('foo_text', Foo,
+        _language_class=Language,
+        name = Column(String(100)),
     )
+
+    # TODO move this to the real code
+    class DurpSession(Session):
+        def execute(self, clause, params=None, *args, **kwargs):
+            if not params:
+                params = {}
+            params.setdefault('_default_language', 'en')
+            return super(DurpSession, self).execute(clause, params, *args, **kwargs)
 
     # OK, create all the tables and gimme a session
     Base.metadata.create_all()
-    sess = sessionmaker(engine)()
+    sess = sessionmaker(engine, class_=DurpSession)()
 
     # Create some languages and foos to bind together
     lang_en = Language(identifier='en')
     sess.add(lang_en)
     lang_jp = Language(identifier='jp')
     sess.add(lang_jp)
+    lang_ru = Language(identifier='ru')
+    sess.add(lang_ru)
 
     foo = Foo()
     sess.add(foo)
@@ -89,11 +94,11 @@ def test_i18n_table_creation():
     sess.commit()
 
     ### Test 1: re-fetch foo and check its attributes
-    foo = sess.query(Foo).one()
+    foo = sess.query(Foo).params(_default_language='en').one()
 
     # Dictionary of language identifiers => names
-    assert foo.names['en'] == 'english'
-    assert foo.names['jp'] == 'nihongo'
+    assert foo.name_map['en'] == 'english'
+    assert foo.name_map['jp'] == 'nihongo'
 
     # Default language, currently English
     assert foo.name == 'english'
@@ -101,34 +106,38 @@ def test_i18n_table_creation():
     sess.expire_all()
 
     ### Test 2: joinedload on the default name should appear to work
+    # THIS SHOULD WORK SOMEDAY
+    #    .options(joinedload(Foo.name)) \
     foo = sess.query(Foo) \
-        .options(joinedload(Foo.name)) \
-        .first
+        .options(joinedload(Foo.foo_text_local)) \
+        .one()
 
     assert foo.name == 'english'
 
     sess.expire_all()
 
     ### Test 3: joinedload on all the names should appear to work
+    # THIS SHOULD ALSO WORK SOMEDAY
+    #    .options(joinedload(Foo.name_map)) \
     foo = sess.query(Foo) \
-        .options(joinedload(Foo.names)) \
-        .first
+        .options(joinedload(Foo.foo_text)) \
+        .one()
 
-    assert foo.names['en'] == 'english'
-    assert foo.names['jp'] == 'nihongo'
+    assert foo.name_map['en'] == 'english'
+    assert foo.name_map['jp'] == 'nihongo'
 
     sess.expire_all()
 
     ### Test 4: Mutating the dict collection should work
-    foo = sess.query(Foo).first
+    foo = sess.query(Foo).one()
 
-    foo.names['en'] = 'different english'
-    del foo.names['jp']
+    foo.name_map['en'] = 'different english'
+    foo.name_map['ru'] = 'new russian'
 
     sess.commit()
 
-    assert foo.names['en'] == 'different english'
-    assert 'jp' not in foo.names
+    assert foo.name_map['en'] == 'different english'
+    assert foo.name_map['ru'] == 'new russian'
 
 def test_texts():
     """Check DB schema for integrity of text columns & translations.
