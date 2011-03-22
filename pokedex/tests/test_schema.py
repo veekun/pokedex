@@ -7,6 +7,8 @@ from sqlalchemy.orm.session import Session
 from sqlalchemy.ext.declarative import declarative_base
 
 from pokedex.db import tables, markdown
+from pokedex.db.multilang import create_translation_table
+from pokedex.db.tables import create_translation_table
 
 def test_variable_names():
     """We want pokedex.db.tables to export tables using the class name"""
@@ -46,7 +48,7 @@ def test_i18n_table_creation():
         __singlename__ = 'foo'
         id = Column(Integer, primary_key=True, nullable=False)
 
-    FooText = tables.create_translation_table('foo_text', Foo,
+    FooText = create_translation_table('foo_text', Foo,
         _language_class=Language,
         name = Column(String(100)),
     )
@@ -97,15 +99,22 @@ def test_i18n_table_creation():
     foo = sess.query(Foo).params(_default_language='en').one()
 
     # Dictionary of language identifiers => names
-    assert foo.name_map['en'] == 'english'
-    assert foo.name_map['jp'] == 'nihongo'
+    assert foo.name_map[lang_en] == 'english'
+    assert foo.name_map[lang_jp] == 'nihongo'
 
     # Default language, currently English
     assert foo.name == 'english'
 
     sess.expire_all()
 
-    ### Test 2: joinedload on the default name should appear to work
+    ### Test 2: querying by default language name should work
+    foo = sess.query(Foo).filter_by(name='english').one()
+
+    assert foo.name == 'english'
+
+    sess.expire_all()
+
+    ### Test 3: joinedload on the default name should appear to work
     # THIS SHOULD WORK SOMEDAY
     #    .options(joinedload(Foo.name)) \
     foo = sess.query(Foo) \
@@ -116,28 +125,28 @@ def test_i18n_table_creation():
 
     sess.expire_all()
 
-    ### Test 3: joinedload on all the names should appear to work
+    ### Test 4: joinedload on all the names should appear to work
     # THIS SHOULD ALSO WORK SOMEDAY
     #    .options(joinedload(Foo.name_map)) \
     foo = sess.query(Foo) \
         .options(joinedload(Foo.foo_text)) \
         .one()
 
-    assert foo.name_map['en'] == 'english'
-    assert foo.name_map['jp'] == 'nihongo'
+    assert foo.name_map[lang_en] == 'english'
+    assert foo.name_map[lang_jp] == 'nihongo'
 
     sess.expire_all()
 
-    ### Test 4: Mutating the dict collection should work
+    ### Test 5: Mutating the dict collection should work
     foo = sess.query(Foo).one()
 
-    foo.name_map['en'] = 'different english'
-    foo.name_map['ru'] = 'new russian'
+    foo.name_map[lang_en] = 'different english'
+    foo.name_map[lang_ru] = 'new russian'
 
     sess.commit()
 
-    assert foo.name_map['en'] == 'different english'
-    assert foo.name_map['ru'] == 'new russian'
+    assert foo.name_map[lang_en] == 'different english'
+    assert foo.name_map[lang_ru] == 'new russian'
 
 def test_texts():
     """Check DB schema for integrity of text columns & translations.

@@ -570,24 +570,6 @@ class Language(TableBase):
     name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
         info=dict(description="The name", format='plaintext', official=True))
 
-    # Languages compare equal to its identifier, so a dictionary of
-    # translations, with a Language as the key, can be indexed by the identifier
-    def __eq__(self, other):
-        try:
-            return (
-                    self is other or
-                    self.identifier == other or
-                    self.identifier == other.identifier
-                )
-        except AttributeError:
-            return NotImplemented
-
-    def __ne__(self, other):
-        return not (self == other)
-
-    def __hash__(self):
-        return hash(self.identifier)
-
 class Location(TableBase):
     u"""A place in the Pokémon world
     """
@@ -1965,34 +1947,9 @@ TODO remove this requirement
 
     # Add full-table relations to the original class
     # Class.foo_bars
-    class LanguageMapping(MappedCollection):
-        """Baby class that converts a language identifier key into an actual
-        language object, allowing for `foo.bars['en'] = Translations(...)`.
-
-        Needed for per-column association proxies to function as setters.
-        """
-        @collection.internally_instrumented
-        def __setitem__(self, key, value, _sa_initiator=None):
-            if key in self:
-                raise NotImplementedError("Can't replace the whole row, sorry!")
-
-            # Only do this nonsense if the value is a dangling object; if it's
-            # in the db it already has its language_id
-            if not object_session(value):
-                # This took quite some source-diving to find, but it oughta be
-                # the object that actually owns this collection.
-                obj = collection_adapter(self).owner_state.obj()
-                session = object_session(obj)
-                value.language = session.query(_language_class) \
-                    .filter_by(identifier=key).one()
-
-            super(LanguageMapping, self).__setitem__(key, value, _sa_initiator)
-
     setattr(foreign_class, _table_name, relation(Translations,
         primaryjoin=foreign_class.id == Translations.object_id,
-        #collection_class=attribute_mapped_collection('_language_identifier'),
-        collection_class=partial(LanguageMapping,
-            lambda obj: obj._language_identifier),
+        collection_class=attribute_mapped_collection('language'),
         # TODO
         lazy='select',
     ))
@@ -2014,8 +1971,6 @@ TODO remove this requirement
 
     # Add per-column proxies to the original class
     for name, column in kwitems:
-        # TODO should these proxies be mutable?
-
         # Class.(column) -- accessor for the default language's value
         setattr(foreign_class, name,
             association_proxy(local_relation_name, name))
@@ -2023,8 +1978,9 @@ TODO remove this requirement
         # Class.(column)_map -- accessor for the language dict
         # Need a custom creator since Translations doesn't have an init, and
         # these are passed as *args anyway
-        def creator(language_code, value):
+        def creator(language, value):
             row = Translations()
+            row.language = language
             setattr(row, name, value)
             return row
         setattr(foreign_class, name + '_map',
