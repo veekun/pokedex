@@ -47,7 +47,7 @@ from sqlalchemy.schema import ColumnDefault
 from sqlalchemy.types import *
 from inspect import isclass
 
-from pokedex.db import markdown
+from pokedex.db import markdown, multilang
 
 # A list of all table classes will live in table_classes
 table_classes = []
@@ -113,6 +113,30 @@ class TextColumn(LanguageSpecificColumn):
     """A column that will appear in the corresponding _text table"""
 
 
+### Need Language first, to create the partial() below
+
+class Language(TableBase):
+    u"""A language the Pokémon games have been transleted into
+    """
+    __tablename__ = 'languages'
+    __singlename__ = 'language'
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    iso639 = Column(Unicode(2), nullable=False,
+        info=dict(description="The two-letter code of the country where this language is spoken. Note that it is not unique.", format='identifier'))
+    iso3166 = Column(Unicode(2), nullable=False,
+        info=dict(description="The two-letter code of the language. Note that it is not unique.", format='identifier'))
+    identifier = Column(Unicode(16), nullable=False,
+        info=dict(description="An identifier", format='identifier'))
+    official = Column(Boolean, nullable=False, index=True,
+        info=dict(description=u"True iff games are produced in the language."))
+    order = Column(Integer, nullable=True,
+        info=dict(description=u"Order for sorting in foreign name lists."))
+    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
+        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table = partial(multilang.create_translation_table, language_class=Language)
+
 ### The actual tables
 
 class Ability(TableBase):
@@ -126,12 +150,17 @@ class Ability(TableBase):
         info=dict(description="An identifier", format='identifier'))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description="The ID of the generation this ability was introduced in", detail=True))
-    effect = ProseColumn(markdown.MarkdownColumn(5120), plural='effects', nullable=False,
-        info=dict(description="A detailed description of this ability's effect", format='markdown'))
-    short_effect = ProseColumn(markdown.MarkdownColumn(255), plural='short_effects', nullable=False,
-        info=dict(description="A short summary of this ability's effect", format='markdown'))
-    name = TextColumn(Unicode(24), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('ability_texts', Ability, 'names',
+    name = Column(Unicode(24), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
+create_translation_table('ability_prose', Ability, 'prose',
+    effect = Column(markdown.MarkdownColumn(5120), nullable=False,
+        info=dict(description="A detailed description of this ability's effect", format='markdown')),
+    short_effect = Column(markdown.MarkdownColumn(255), nullable=False,
+        info=dict(description="A short summary of this ability's effect", format='markdown')),
+)
 
 class AbilityChangelog(TableBase):
     """History of changes to abilities across main game versions."""
@@ -550,26 +579,6 @@ class ItemPocket(TableBase):
     name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
         info=dict(description="The name", format='plaintext', official=True))
 
-class Language(TableBase):
-    u"""A language the Pokémon games have been transleted into
-    """
-    __tablename__ = 'languages'
-    __singlename__ = 'language'
-    id = Column(Integer, primary_key=True, nullable=False,
-        info=dict(description="A numeric ID"))
-    iso639 = Column(Unicode(2), nullable=False,
-        info=dict(description="The two-letter code of the country where this language is spoken. Note that it is not unique.", format='identifier'))
-    iso3166 = Column(Unicode(2), nullable=False,
-        info=dict(description="The two-letter code of the language. Note that it is not unique.", format='identifier'))
-    identifier = Column(Unicode(16), nullable=False,
-        info=dict(description="An identifier", format='identifier'))
-    official = Column(Boolean, nullable=False, index=True,
-        info=dict(description=u"True iff games are produced in the language."))
-    order = Column(Integer, nullable=True,
-        info=dict(description=u"Order for sorting in foreign name lists."))
-    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
-
 class Location(TableBase):
     u"""A place in the Pokémon world
     """
@@ -869,8 +878,12 @@ class Move(TableBase):
         info=dict(description="ID of the move's Contest effect"))
     super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=True,
         info=dict(description="ID of the move's Super Contest effect"))
-    name = TextColumn(Unicode(24), nullable=False, index=True, plural='names',
+
+create_translation_table('move_texts', Move, 'names',
+    name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True))
+)
+
 
 class MoveChangelog(TableBase):
     """History of changes to moves across main game versions."""
@@ -992,9 +1005,6 @@ class Pokemon(TableBase):
         info=dict(description=u"The height of the Pokémon, in decimeters (tenths of a meter)"))
     weight = Column(Integer, nullable=False,
         info=dict(description=u"The weight of the Pokémon, in tenths of a kilogram (decigrams)"))
-    species = TextColumn(Unicode(16), nullable=False, plural='species_names',
-        info=dict(description=u'The short flavor text, such as "Seed" or "Lizard"; usually affixed with the word "Pokémon"',
-        official=True, format='plaintext'))
     color_id = Column(Integer, ForeignKey('pokemon_colors.id'), nullable=False,
         info=dict(description=u"ID of this Pokémon's Pokédex color, as used for a gimmick search function in the games."))
     pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=True,
@@ -1017,8 +1027,6 @@ class Pokemon(TableBase):
         info=dict(description=u"Set iff the species exhibits enough sexual dimorphism to have separate sets of sprites in Gen IV and beyond."))
     order = Column(Integer, nullable=False, index=True,
         info=dict(description=u"Order for sorting. Almost national order, except families and forms are grouped together."))
-    name = TextColumn(Unicode(20), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
 
     ### Stuff to handle alternate Pokémon forms
 
@@ -1101,6 +1109,14 @@ class Pokemon(TableBase):
             return spec.stat.damage_class
         else:
             return None
+
+create_translation_table('pokemon_texts', Pokemon, 'names',
+    name = Column(Unicode(20), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+    species = Column(Unicode(16), nullable=False,
+        info=dict(description=u'The short flavor text, such as "Seed" or "Lizard"; usually affixed with the word "Pokémon"',
+        official=True, format='plaintext')),
+)
 
 class PokemonAbility(TableBase):
     u"""Maps an ability to a Pokémon that can have it
@@ -1524,7 +1540,7 @@ Ability.generation = relation(Generation, backref='abilities')
 Ability.all_pokemon = relation(Pokemon,
     secondary=PokemonAbility.__table__,
     order_by=Pokemon.order,
-    back_populates='all_abilities',
+    #back_populates='all_abilities',
 )
 Ability.pokemon = relation(Pokemon,
     secondary=PokemonAbility.__table__,
@@ -1533,7 +1549,7 @@ Ability.pokemon = relation(Pokemon,
         PokemonAbility.is_dream == False
     ),
     order_by=Pokemon.order,
-    back_populates='abilities',
+    #back_populates='abilities',
 )
 Ability.dream_pokemon = relation(Pokemon,
     secondary=PokemonAbility.__table__,
@@ -1542,7 +1558,7 @@ Ability.dream_pokemon = relation(Pokemon,
         PokemonAbility.is_dream == True
     ),
     order_by=Pokemon.order,
-    back_populates='dream_ability',
+    #back_populates='dream_ability',
 )
 
 AbilityChangelog.changed_in = relation(VersionGroup, backref='ability_changelog')
@@ -1578,7 +1594,7 @@ EncounterSlot.version_group = relation(VersionGroup)
 
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 EvolutionChain.baby_trigger_item = relation(Item, backref='evolution_chains')
-EvolutionChain.pokemon = relation(Pokemon, order_by=Pokemon.order, back_populates='evolution_chain')
+EvolutionChain.pokemon = relation(Pokemon, order_by=Pokemon.order)#, back_populates='evolution_chain')
 
 Experience.growth_rate = relation(GrowthRate, backref='experience_table')
 
@@ -1638,7 +1654,7 @@ Move.super_contest_effect = relation(SuperContestEffect, backref='moves')
 Move.super_contest_combo_next = association_proxy('super_contest_combo_first', 'second')
 Move.super_contest_combo_prev = association_proxy('super_contest_combo_second', 'first')
 Move.target = relation(MoveTarget, backref='moves')
-Move.type = relation(Type, back_populates='moves')
+Move.type = relation(Type)#, back_populates='moves')
 
 MoveChangelog.changed_in = relation(VersionGroup, backref='move_changelog')
 MoveChangelog.move_effect = relation(MoveEffect, backref='move_changelog')
@@ -1681,7 +1697,7 @@ NatureBattleStylePreference.battle_style = relation(MoveBattleStyle, backref='na
 NaturePokeathlonStat.pokeathlon_stat = relation(PokeathlonStat, backref='nature_effects')
 
 Pokedex.region = relation(Region, backref='pokedexes')
-Pokedex.version_groups = relation(VersionGroup, order_by=VersionGroup.id, back_populates='pokedex')
+Pokedex.version_groups = relation(VersionGroup, order_by=VersionGroup.id)#, back_populates='pokedex')
 
 Pokemon.all_abilities = relation(Ability,
     secondary=PokemonAbility.__table__,
@@ -1709,7 +1725,7 @@ Pokemon.dex_numbers = relation(PokemonDexNumber, order_by=PokemonDexNumber.poked
 Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,
                                         backref=backref('pokemon', order_by=Pokemon.order))
-Pokemon.evolution_chain = relation(EvolutionChain, back_populates='pokemon')
+Pokemon.evolution_chain = relation(EvolutionChain)#, back_populates='pokemon')
 Pokemon.child_pokemon = relation(Pokemon,
     primaryjoin=Pokemon.id==PokemonEvolution.from_pokemon_id,
     secondary=PokemonEvolution.__table__,
@@ -1731,7 +1747,7 @@ Pokemon.shape = relation(PokemonShape, backref='pokemon')
 Pokemon.stats = relation(PokemonStat, backref='pokemon', order_by=PokemonStat.stat_id.asc())
 Pokemon.types = relation(Type, secondary=PokemonType.__table__,
                                order_by=PokemonType.slot.asc(),
-                               back_populates='pokemon')
+                               )#back_populates='pokemon')
 
 PokemonDexNumber.pokedex = relation(Pokedex)
 
@@ -1829,7 +1845,7 @@ Type.generation = relation(Generation, backref='types')
 Type.damage_class = relation(MoveDamageClass, backref='types')
 Type.pokemon = relation(Pokemon, secondary=PokemonType.__table__,
                                  order_by=Pokemon.order,
-                                 back_populates='types')
+                                 )#back_populates='types')
 Type.moves = relation(Move, back_populates='type', order_by=Move.id)
 
 Version.version_group = relation(VersionGroup, back_populates='versions')
@@ -1845,149 +1861,6 @@ VersionGroup.pokedex = relation(Pokedex, back_populates='version_groups')
 ### Add text/prose tables
 
 default_lang = u'en'
-
-def create_translation_table(_table_name, foreign_class,
-    _language_class=Language, **kwargs):
-    """Creates a table that represents some kind of data attached to the given
-    foreign class, but translated across several languages.  Returns the new
-    table's mapped class.
-TODO give it a __table__ or __init__?
-
-    `foreign_class` must have a `__singlename__`, currently only used to create
-    the name of the foreign key column.
-TODO remove this requirement
-
-    Also supports the notion of a default language, which is attached to the
-    session.  This is English by default, for historical and practical reasons.
-
-    Usage looks like this:
-
-        class Foo(Base): ...
-
-        create_translation_table('foo_bars', Foo,
-            name = Column(...),
-        )
-
-        # Now you can do the following:
-        foo.name
-        foo.name_map['en']
-        foo.foo_bars['en']
-
-        foo.name_map['en'] = "new name"
-        del foo.name_map['en']
-
-        q.options(joinedload(Foo.default_translation))
-        q.options(joinedload(Foo.foo_bars))
-
-    In the above example, the following attributes are added to Foo:
-
-    - `foo_bars`, a relation to the new table.  It uses a dict-based collection
-      class, where the keys are language identifiers and the values are rows in
-      the created tables.
-    - `foo_bars_local`, a relation to the row in the new table that matches the
-      current default language.
-
-    Note that these are distinct relations.  Even though the former necessarily
-    includes the latter, SQLAlchemy doesn't treat them as linked; loading one
-    will not load the other.  Modifying both within the same transaction has
-    undefined behavior.
-
-    For each column provided, the following additional attributes are added to
-    Foo:
-
-    - `(column)_map`, an association proxy onto `foo_bars`.
-    - `(column)`, an association proxy onto `foo_bars_local`.
-
-    Pardon the naming disparity, but the grammar suffers otherwise.
-
-    Modifying these directly is not likely to be a good idea.
-    """
-    # n.b.: _language_class only exists for the sake of tests, which sometimes
-    # want to create tables entirely separate from the pokedex metadata
-
-    foreign_key_name = foreign_class.__singlename__ + '_id'
-    # A foreign key "language_id" will clash with the language_id we naturally
-    # put in every table.  Rename it something else
-    if foreign_key_name == 'language_id':
-        # TODO change language_id below instead and rename this
-        foreign_key_name = 'lang_id'
-
-    Translations = type(_table_name, (object,), {
-        '_language_identifier': association_proxy('language', 'identifier'),
-    })
-    
-    # Create the table object
-    table = Table(_table_name, foreign_class.__table__.metadata,
-        Column(foreign_key_name, Integer, ForeignKey(foreign_class.id),
-            primary_key=True, nullable=False),
-        Column('language_id', Integer, ForeignKey(_language_class.id),
-            primary_key=True, nullable=False),
-    )
-
-    # Add ye columns
-    # Column objects have a _creation_order attribute in ascending order; use
-    # this to get the (unordered) kwargs sorted correctly
-    kwitems = kwargs.items()
-    kwitems.sort(key=lambda kv: kv[1]._creation_order)
-    for name, column in kwitems:
-        column.name = name
-        table.append_column(column)
-
-    # Construct ye mapper
-    mapper(Translations, table, properties={
-        # TODO change to foreign_id
-        'object_id': synonym(foreign_key_name),
-        # TODO change this as appropriate
-        'language': relation(_language_class,
-            primaryjoin=table.c.language_id == _language_class.id,
-            lazy='joined',
-            innerjoin=True),
-        # TODO does this need to join to the original table?
-    })
-
-    # Add full-table relations to the original class
-    # Class.foo_bars
-    setattr(foreign_class, _table_name, relation(Translations,
-        primaryjoin=foreign_class.id == Translations.object_id,
-        collection_class=attribute_mapped_collection('language'),
-        # TODO
-        lazy='select',
-    ))
-    # Class.foo_bars_local
-    # This is a bit clever; it uses bindparam() to make the join clause
-    # modifiable on the fly.  db sessions know the current language identifier
-    # populates the bindparam.
-    local_relation_name = _table_name + '_local'
-    setattr(foreign_class, local_relation_name, relation(Translations,
-        primaryjoin=and_(
-            foreign_class.id == Translations.object_id,
-            Translations._language_identifier ==
-                bindparam('_default_language', required=True),
-        ),
-        uselist=False,
-        # TODO MORESO HERE
-        lazy='select',
-    ))
-
-    # Add per-column proxies to the original class
-    for name, column in kwitems:
-        # Class.(column) -- accessor for the default language's value
-        setattr(foreign_class, name,
-            association_proxy(local_relation_name, name))
-
-        # Class.(column)_map -- accessor for the language dict
-        # Need a custom creator since Translations doesn't have an init, and
-        # these are passed as *args anyway
-        def creator(language, value):
-            row = Translations()
-            row.language = language
-            setattr(row, name, value)
-            return row
-        setattr(foreign_class, name + '_map',
-            association_proxy(_table_name, name, creator=creator))
-
-    # Done
-    return Translations
 
 def makeTextTable(foreign_table_class, table_suffix_plural, table_suffix_singular, columns, lazy, Language=Language):
     # With "Language", we'd have two language_id. So, rename one to 'lang'

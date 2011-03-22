@@ -8,7 +8,6 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from pokedex.db import tables, markdown
 from pokedex.db.multilang import create_translation_table
-from pokedex.db.tables import create_translation_table
 
 def test_variable_names():
     """We want pokedex.db.tables to export tables using the class name"""
@@ -49,21 +48,20 @@ def test_i18n_table_creation():
         id = Column(Integer, primary_key=True, nullable=False)
 
     FooText = create_translation_table('foo_text', Foo,
-        _language_class=Language,
+        language_class=Language,
         name = Column(String(100)),
     )
 
-    # TODO move this to the real code
-    class DurpSession(Session):
+    class FauxSession(Session):
         def execute(self, clause, params=None, *args, **kwargs):
             if not params:
                 params = {}
             params.setdefault('_default_language', 'en')
-            return super(DurpSession, self).execute(clause, params, *args, **kwargs)
+            return super(FauxSession, self).execute(clause, params, *args, **kwargs)
 
     # OK, create all the tables and gimme a session
     Base.metadata.create_all()
-    sess = sessionmaker(engine, class_=DurpSession)()
+    sess = sessionmaker(engine, class_=FauxSession)()
 
     # Create some languages and foos to bind together
     lang_en = Language(identifier='en')
