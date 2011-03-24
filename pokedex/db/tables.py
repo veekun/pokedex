@@ -49,15 +49,6 @@ from inspect import isclass
 
 from pokedex.db import markdown, multilang
 
-# A list of all table classes will live in table_classes
-table_classes = []
-
-class TableMetaclass(DeclarativeMeta):
-    def __init__(cls, name, bases, attrs):
-        super(TableMetaclass, cls).__init__(name, bases, attrs)
-        if hasattr(cls, '__tablename__'):
-            table_classes.append(cls)
-
 class TableSuperclass(object):
     """Superclass for declarative tables, to give them some generic niceties
     like stringification.
@@ -83,15 +74,7 @@ class TableSuperclass(object):
         return unicode(self).encode('utf8')
 
 metadata = MetaData()
-TableBase = declarative_base(metadata=metadata, cls=TableSuperclass, metaclass=TableMetaclass)
-
-### Helper classes
-class LanguageSpecific(object):
-    """Mixin for prose and text tables"""
-    @declared_attr
-    def language_id(cls):
-        return Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False,
-            info=dict(description="The language"))
+TableBase = declarative_base(metadata=metadata, cls=TableSuperclass)
 
 
 ### Need Language first, to create the partial() below
@@ -162,7 +145,7 @@ create_translation_table('ability_changelog_prose', AbilityChangelog, 'prose',
         info=dict(description="A description of the old behavior", format='markdown'))
 )
 
-class AbilityFlavorText(TableBase, LanguageSpecific):
+class AbilityFlavorText(TableBase):
     u"""In-game flavor text of an ability
     """
     __tablename__ = 'ability_flavor_text'
@@ -170,6 +153,8 @@ class AbilityFlavorText(TableBase, LanguageSpecific):
         info=dict(description="The ID of the ability"))
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="The ID of the version group this flavor text is taken from"))
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False,
+        info=dict(description="The language"))
     flavor_text = Column(Unicode(64), nullable=False,
         info=dict(description="The actual flavor text", official=True, format='gametext'))
 
@@ -562,7 +547,7 @@ class ItemFlagMap(TableBase):
     item_flag_id = Column(Integer, ForeignKey('item_flags.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description="The ID of the item flag"))
 
-class ItemFlavorText(TableBase, LanguageSpecific):
+class ItemFlavorText(TableBase):
     u"""An in-game description of an item
     """
     __tablename__ = 'item_flavor_text'
@@ -571,6 +556,8 @@ class ItemFlavorText(TableBase, LanguageSpecific):
         info=dict(description="The ID of the item"))
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description="ID of the version group that sports this text"))
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False,
+        info=dict(description="The language"))
     flavor_text = Column(Unicode(255), nullable=False,
         info=dict(description="The flavor text itself", official=True, format='gametext'))
 
@@ -814,7 +801,7 @@ create_translation_table('move_flag_type_prose', MoveFlagType, 'prose',
         info=dict(description="A short description of the flag", format='markdown')),
 )
 
-class MoveFlavorText(TableBase, LanguageSpecific):
+class MoveFlavorText(TableBase):
     u"""In-game description of a move
     """
     __tablename__ = 'move_flavor_text'
@@ -822,6 +809,8 @@ class MoveFlavorText(TableBase, LanguageSpecific):
         info=dict(description="ID of the move"))
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="ID of the version group this text appears in"))
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False,
+        info=dict(description="The language"))
     flavor_text = Column(Unicode(255), nullable=False,
         info=dict(description="The flavor text", official=True, format='gametext'))
 
@@ -1283,7 +1272,7 @@ class PokemonEvolution(TableBase):
     trade_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=True,
         info=dict(description=u"The ID of the Pokémon for which this Pokémon must be traded."))
 
-class PokemonFlavorText(TableBase, LanguageSpecific):
+class PokemonFlavorText(TableBase):
     u"""In-game Pokédex descrption of a Pokémon.
     """
     __tablename__ = 'pokemon_flavor_text'
@@ -1291,6 +1280,8 @@ class PokemonFlavorText(TableBase, LanguageSpecific):
         info=dict(description=u"ID of the Pokémon"))
     version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"ID of the version that has this flavor text"))
+    language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False,
+        info=dict(description="The language"))
     flavor_text = Column(Unicode(255), nullable=False,
         info=dict(description=u"ID of the version that has this flavor text", official=True, format='gametext'))
 
@@ -1679,6 +1670,7 @@ Ability.dream_pokemon = relation(Pokemon,
 AbilityChangelog.changed_in = relation(VersionGroup, backref='ability_changelog')
 
 AbilityFlavorText.version_group = relation(VersionGroup)
+AbilityFlavorText.language = relation(Language)
 
 Berry.berry_firmness = relation(BerryFirmness, backref='berries')
 Berry.firmness = association_proxy('berry_firmness', 'name')
@@ -1732,6 +1724,7 @@ ItemCategory.items = relation(Item, order_by=Item.identifier)
 ItemCategory.pocket = relation(ItemPocket)
 
 ItemFlavorText.version_group = relation(VersionGroup)
+ItemFlavorText.language = relation(Language)
 
 ItemInternalID.item = relation(Item, backref='internal_ids')
 ItemInternalID.generation = relation(Generation)
@@ -1788,6 +1781,7 @@ MoveEffectChangelog.changed_in = relation(VersionGroup, backref='move_effect_cha
 MoveFlag.flag = relation(MoveFlagType)
 
 MoveFlavorText.version_group = relation(VersionGroup)
+MoveFlavorText.language = relation(Language)
 
 MoveMeta.category = relation(MoveMetaCategory, backref='move_meta')
 MoveMeta.ailment = relation(MoveMetaAilment, backref='move_meta')
@@ -1902,6 +1896,7 @@ PokemonEvolution.trade_pokemon = relation(Pokemon,
 )
 
 PokemonFlavorText.version = relation(Version)
+PokemonFlavorText.language = relation(Language)
 
 PokemonForm.form_base_pokemon = relation(Pokemon, primaryjoin=PokemonForm.form_base_pokemon_id==Pokemon.id)
 PokemonForm.unique_pokemon = relation(Pokemon, backref=backref('unique_form', uselist=False),
@@ -1971,12 +1966,6 @@ VersionGroup.generation = relation(Generation, backref='version_groups')
 VersionGroup.version_group_regions = relation(VersionGroupRegion, backref='version_group')
 VersionGroup.regions = association_proxy('version_group_regions', 'region')
 VersionGroup.pokedex = relation(Pokedex, back_populates='version_groups')
-
-
-### Add language relations
-for table in list(table_classes):
-    if issubclass(table, LanguageSpecific):
-        table.language = relation(Language, primaryjoin=table.language_id == Language.id)
 
 Move.effect = markdown.MoveEffectProperty('effect')
 Move.effect_map = markdown.MoveEffectProperty('effect_map')
