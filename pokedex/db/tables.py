@@ -93,25 +93,6 @@ class LanguageSpecific(object):
         return Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False,
             info=dict(description="The language"))
 
-class LanguageSpecificColumn(object):
-    """A column that will not appear in the table it's defined in, but in a related one"""
-    _ordering = [1]
-    def __init__(self, *args, **kwargs):
-        self.args = args
-        self.plural = kwargs.pop('plural')
-        self.kwargs = kwargs
-        self.order = self._ordering[0]
-        self._ordering[0] += 1
-
-    def makeSAColumn(self):
-        return Column(*self.args, **self.kwargs)
-
-class ProseColumn(LanguageSpecificColumn):
-    """A column that will appear in the corresponding _prose table"""
-
-class TextColumn(LanguageSpecificColumn):
-    """A column that will appear in the corresponding _text table"""
-
 
 ### Need Language first, to create the partial() below
 
@@ -132,10 +113,13 @@ class Language(TableBase):
         info=dict(description=u"True iff games are produced in the language."))
     order = Column(Integer, nullable=True,
         info=dict(description=u"Order for sorting in foreign name lists."))
-    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
 
 create_translation_table = partial(multilang.create_translation_table, language_class=Language)
+
+create_translation_table('language_texts', Language, 'names',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 ### The actual tables
 
@@ -172,8 +156,11 @@ class AbilityChangelog(TableBase):
         info=dict(description="The ID of the ability that changed"))
     changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False,
         info=dict(description="The ID of the version group in which the ability changed"))
-    effect = ProseColumn(markdown.MarkdownColumn(255), plural='effects', nullable=False,
+
+create_translation_table('ability_changelog_prose', AbilityChangelog, 'prose',
+    effect = Column(markdown.MarkdownColumn(255), nullable=False,
         info=dict(description="A description of the old behavior", format='markdown'))
+)
 
 class AbilityFlavorText(TableBase, LanguageSpecific):
     u"""In-game flavor text of an ability
@@ -222,8 +209,11 @@ class BerryFirmness(TableBase):
         info=dict(description="A unique ID for this firmness"))
     identifier = Column(Unicode(10), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    name = TextColumn(Unicode(10), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('berry_firmness_texts', BerryFirmness, 'names',
+    name = Column(Unicode(10), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class BerryFlavor(TableBase):
     u"""A Berry flavor level.
@@ -256,10 +246,13 @@ class ContestEffect(TableBase):
         info=dict(description="The base number of hearts the user of this move gets"))
     jam = Column(SmallInteger, nullable=False,
         info=dict(description="The base number of hearts the user's opponent loses"))
-    flavor_text = ProseColumn(Unicode(64), plural='flavor_texts', nullable=False,
-        info=dict(description="The in-game description of this effect", official=True, format='gametext'))
-    effect = ProseColumn(Unicode(255), plural='effects', nullable=False,
-        info=dict(description="A detailed description of the effect", format='plaintext'))
+
+create_translation_table('contest_effect_prose', ContestEffect, 'prose',
+    effect = Column(Unicode(255), nullable=False,
+        info=dict(description="A detailed description of the effect", format='plaintext')),
+    flavor_text = Column(Unicode(64), nullable=False,
+        info=dict(description="The in-game description of this effect", official=True, format='gametext')),
+)
 
 class ContestType(TableBase):
     u"""A Contest type, such as "cool" or "smart", and their associated Berry flavors and Pokéblock colors.
@@ -270,12 +263,15 @@ class ContestType(TableBase):
         info=dict(description="A unique ID for this Contest type"))
     identifier = Column(Unicode(6), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    flavor = TextColumn(Unicode(6), nullable=False, plural='flavors',
-        info=dict(description="The name of the corresponding Berry flavor", official=True, format='plaintext'))
-    color = TextColumn(Unicode(6), nullable=False, plural='colors',
-        info=dict(description=u"The name of the corresponding Pokéblock color", official=True, format='plaintext'))
-    name = TextColumn(Unicode(6), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('contest_type_texts', ContestType, 'names',
+    flavor = Column(Unicode(6), nullable=False,
+        info=dict(description="The name of the corresponding Berry flavor", official=True, format='plaintext')),
+    color = Column(Unicode(6), nullable=False,
+        info=dict(description=u"The name of the corresponding Pokéblock color", official=True, format='plaintext')),
+    name = Column(Unicode(6), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class EggGroup(TableBase):
     u"""An Egg group. Usually, two Pokémon can breed if they share an Egg Group.
@@ -288,8 +284,11 @@ class EggGroup(TableBase):
         info=dict(description="A unique ID for this group"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier.", format='identifier'))
-    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('egg_group_prose', EggGroup, 'names',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class Encounter(TableBase):
     u"""Encounters with wild Pokémon.
@@ -341,8 +340,11 @@ class EncounterCondition(TableBase):
         info=dict(description="A unique ID for this condition"))
     identifier = Column(Unicode(64), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('encounter_condition_prose', EncounterCondition, 'prose',
+    name = Column(Unicode(64), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class EncounterConditionValue(TableBase):
     u"""A possible state for a condition; for example, the state of 'swarm' could be 'swarm' or 'no swarm'.
@@ -358,8 +360,11 @@ class EncounterConditionValue(TableBase):
         info=dict(description="An identifier", format='identifier'))
     is_default = Column(Boolean, nullable=False,
         info=dict(description='Set if this value is the default state for the condition'))
-    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('encounter_condition_value_prose', EncounterConditionValue, 'prose',
+    name = Column(Unicode(64), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class EncounterConditionValueMap(TableBase):
     u"""Maps encounters to the specific conditions under which they occur.
@@ -380,8 +385,11 @@ class EncounterTerrain(TableBase):
         info=dict(description="A unique ID for the terrain"))
     identifier = Column(Unicode(64), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('encounter_terrain_prose', EncounterTerrain, 'prose',
+    name = Column(Unicode(64), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class EncounterSlot(TableBase):
     u"""An abstract "slot" within a terrain, associated with both some set of conditions and a rarity.
@@ -422,8 +430,11 @@ class EvolutionTrigger(TableBase):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('evolution_trigger_prose', EvolutionTrigger, 'prose',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class Experience(TableBase):
     u"""EXP needed for a certain level with a certain growth rate
@@ -449,8 +460,11 @@ class Generation(TableBase):
         info=dict(description=u"ID of the Pokédex this generation's main games use by default"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u'An identifier', format='identifier'))
-    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('generation_texts', Generation, 'names',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class GrowthRate(TableBase):
     u"""Growth rate of a Pokémon, i.e. the EXP → level function.
@@ -463,8 +477,11 @@ class GrowthRate(TableBase):
         info=dict(description="An identifier", format='identifier'))
     formula = Column(Unicode(500), nullable=False,
         info=dict(description="The formula", format='latex'))
-    name = ProseColumn(Unicode(20), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('growth_rate_prose', GrowthRate, 'prose',
+    name = Column(Unicode(20), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class Item(TableBase):
     u"""An Item from the games, like "Poké Ball" or "Bicycle".
@@ -483,18 +500,23 @@ class Item(TableBase):
         info=dict(description=u"Power of the move Fling when used with this item."))
     fling_effect_id = Column(Integer, ForeignKey('item_fling_effects.id'), nullable=True,
         info=dict(description=u"ID of the fling-effect of the move Fling when used with this item. Note that these are different from move effects."))
-    short_effect = ProseColumn(Unicode(256), plural='short_effects', nullable=False,
-        info=dict(description="A short summary of the effect", format='plaintext'))
-    effect = ProseColumn(markdown.MarkdownColumn(5120), plural='effects', nullable=False,
-        info=dict(description=u"Detailed description of the item's effect.", format='markdown'))
-    name = TextColumn(Unicode(20), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
 
     @property
     def appears_underground(self):
         u"""True if the item appears underground, as specified by the appropriate flag
         """
         return any(flag.identifier == u'underground' for flag in self.flags)
+
+create_translation_table('item_texts', Item, 'names',
+    name = Column(Unicode(20), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
+create_translation_table('item_prose', Item, 'prose',
+    short_effect = Column(Unicode(256), nullable=False,
+        info=dict(description="A short summary of the effect", format='plaintext')),
+    effect = Column(markdown.MarkdownColumn(5120), nullable=False,
+        info=dict(description=u"Detailed description of the item's effect.", format='markdown')),
+)
 
 class ItemCategory(TableBase):
     u"""An item category
@@ -508,8 +530,11 @@ class ItemCategory(TableBase):
         info=dict(description="ID of the pocket these items go to"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('item_category_prose', ItemCategory, 'prose',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class ItemFlag(TableBase):
     u"""An item attribute such as "consumable" or "holdable".
@@ -520,10 +545,13 @@ class ItemFlag(TableBase):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(24), nullable=False,
         info=dict(description="Identifier of the flag", format='identifier'))
-    description = ProseColumn(Unicode(64), plural='descriptions', nullable=False,
-        info=dict(description="Short description of the flag", format='plaintext'))
-    name = ProseColumn(Unicode(24), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('item_flag_prose', ItemFlag, 'prose',
+    name = Column(Unicode(24), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+    description = Column(Unicode(64), nullable=False,
+        info=dict(description="Short description of the flag", format='plaintext')),
+)
 
 class ItemFlagMap(TableBase):
     u"""Maps an item flag to its item.
@@ -553,8 +581,11 @@ class ItemFlingEffect(TableBase):
     __singlename__ = 'item_fling_effect'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
-    effect = ProseColumn(Unicode(255), plural='effects', nullable=False,
-        info=dict(description="Description of the effect", format='plaintext'))
+
+create_translation_table('item_fling_effect_prose', ItemFlingEffect, 'prose',
+    effect = Column(Unicode(255), nullable=False,
+        info=dict(description="Description of the effect", format='plaintext')),
+)
 
 class ItemInternalID(TableBase):
     u"""The internal ID number a game uses for an item
@@ -576,8 +607,11 @@ class ItemPocket(TableBase):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description="An identifier of this pocket", format='identifier'))
-    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('item_pocket_texts', ItemPocket, 'names',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class Location(TableBase):
     u"""A place in the Pokémon world
@@ -590,8 +624,11 @@ class Location(TableBase):
         info=dict(description="ID of the region this location is in"))
     identifier = Column(Unicode(64), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    name = TextColumn(Unicode(64), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('location_texts', Location, 'names',
+    name = Column(Unicode(64), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class LocationArea(TableBase):
     u"""A sub-area of a location
@@ -606,8 +643,11 @@ class LocationArea(TableBase):
         info=dict(description="ID the games ude for this area"))
     identifier = Column(Unicode(64), nullable=True,
         info=dict(description="An identifier", format='identifier'))
-    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('location_area_prose', LocationArea, 'prose',
+    name = Column(Unicode(64), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class LocationAreaEncounterRate(TableBase):
     # XXX: What's this exactly? Someone add the docstring & revise the descriptions
@@ -659,8 +699,11 @@ class MoveBattleStyle(TableBase):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(8), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    name = ProseColumn(Unicode(8), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('move_battle_style_prose', MoveBattleStyle, 'prose',
+    name = Column(Unicode(8), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class MoveEffectCategory(TableBase):
     u"""Category of a move effect
@@ -673,8 +716,11 @@ class MoveEffectCategory(TableBase):
         info=dict(description="An identifier", format='identifier'))
     can_affect_user = Column(Boolean, nullable=False,
         info=dict(description="Set if the user can be affected"))
-    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('move_effect_category_prose', MoveEffectCategory, 'prose',
+    name = Column(Unicode(64), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class MoveEffectCategoryMap(TableBase):
     u"""Maps a move effect category to a move effect
@@ -696,10 +742,13 @@ class MoveDamageClass(TableBase):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    description = ProseColumn(Unicode(64), plural='descriptions', nullable=False,
-        info=dict(description="A description of the class", format='plaintext'))
-    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('move_damage_class_prose', MoveDamageClass, 'prose',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+    description = Column(Unicode(64), nullable=False,
+        info=dict(description="A description of the class", format='plaintext')),
+)
 
 class MoveEffect(TableBase):
     u"""An effect of a move
@@ -708,10 +757,13 @@ class MoveEffect(TableBase):
     __singlename__ = 'move_effect'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
-    short_effect = ProseColumn(Unicode(256), plural='short_effects', nullable=False,
-        info=dict(description="A short summary of the effect", format='plaintext'))
-    effect = ProseColumn(Unicode(5120), plural='effects', nullable=False,
-        info=dict(description="A detailed description of the effect", format='plaintext'))
+
+create_translation_table('move_effect_prose', MoveEffect, 'prose',
+    short_effect = Column(Unicode(256), nullable=False,
+        info=dict(description="A short summary of the effect", format='plaintext')),
+    effect = Column(Unicode(5120), nullable=False,
+        info=dict(description="A detailed description of the effect", format='plaintext')),
+)
 
 class MoveEffectChangelog(TableBase):
     """History of changes to move effects across main game versions."""
@@ -723,13 +775,16 @@ class MoveEffectChangelog(TableBase):
         info=dict(description="The ID of the effect that changed"))
     changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False,
         info=dict(description="The ID of the version group in which the effect changed"))
-    effect = ProseColumn(markdown.MarkdownColumn(512), plural='effects', nullable=False,
-        info=dict(description="A description of the old behavior", format='markdown'))
 
     __table_args__ = (
         UniqueConstraint(effect_id, changed_in_version_group_id),
         {},
     )
+
+create_translation_table('move_effect_changelog_prose', MoveEffectChangelog, 'prose',
+    effect = Column(markdown.MarkdownColumn(512), nullable=False,
+        info=dict(description="A description of the old behavior", format='markdown')),
+)
 
 class MoveFlag(TableBase):
     u"""Maps a move flag to a move
@@ -751,10 +806,13 @@ class MoveFlagType(TableBase):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(32), nullable=False,
         info=dict(description="A short identifier for the flag", format='identifier'))
-    description = ProseColumn(markdown.MarkdownColumn(128), plural='descriptions', nullable=False,
-        info=dict(description="A short description of the flag", format='markdown'))
-    name = ProseColumn(Unicode(32), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('move_flag_type_prose', MoveFlagType, 'prose',
+    name = Column(Unicode(32), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+    description = Column(markdown.MarkdownColumn(128), nullable=False,
+        info=dict(description="A short description of the flag", format='markdown')),
+)
 
 class MoveFlavorText(TableBase, LanguageSpecific):
     u"""In-game description of a move
@@ -807,8 +865,11 @@ class MoveMetaAilment(TableBase):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(24), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    name = TextColumn(Unicode(24), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('move_meta_ailment_texts', MoveMetaAilment, 'names',
+    name = Column(Unicode(24), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class MoveMetaCategory(TableBase):
     u"""Very general categories that loosely group move effects."""
@@ -816,8 +877,11 @@ class MoveMetaCategory(TableBase):
     __singlename__ = 'move_meta_category'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
-    description = ProseColumn(Unicode(64), plural='descriptions', nullable=False,
-        info=dict(description="A description of the category"))
+
+create_translation_table('move_meta_category_prose', MoveMetaCategory, 'prose',
+    description = Column(Unicode(64), nullable=False,
+        info=dict(description="A description of the category")),
+)
 
 class MoveMetaStatChange(TableBase):
     u"""Stat changes moves (may) make."""
@@ -838,10 +902,13 @@ class MoveTarget(TableBase):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(32), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    description = ProseColumn(Unicode(128), plural='descriptions', nullable=False,
-        info=dict(description="A description", format='plaintext'))
-    name = ProseColumn(Unicode(32), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('move_target_prose', MoveTarget, 'prose',
+    name = Column(Unicode(32), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+    description = Column(Unicode(128), nullable=False,
+        info=dict(description="A description", format='plaintext')),
+)
 
 class Move(TableBase):
     u"""A Move: technique or attack a Pokémon can learn to use
@@ -923,8 +990,6 @@ class Nature(TableBase):
         info=dict(description=u"ID of the Berry flavor the Pokémon hates (if likes_flavor_id is the same, the effects cancel out)"))
     likes_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False,
         info=dict(description=u"ID of the Berry flavor the Pokémon likes (if hates_flavor_id is the same, the effects cancel out)"))
-    name = TextColumn(Unicode(8), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
 
     @property
     def is_neutral(self):
@@ -932,6 +997,11 @@ class Nature(TableBase):
         bestow taste preferences, etc.
         """
         return self.increased_stat_id == self.decreased_stat_id
+
+create_translation_table('nature_texts', Nature, 'names',
+    name = Column(Unicode(8), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class NatureBattleStylePreference(TableBase):
     u"""Battle Palace move preference
@@ -969,8 +1039,11 @@ class PokeathlonStat(TableBase):
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(8), nullable=False,
         info=dict(description="An identifier", format='identifier'))
-    name = TextColumn(Unicode(8), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('pokeathlon_stat_texts', PokeathlonStat, 'names',
+    name = Column(Unicode(8), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class Pokedex(TableBase):
     u"""A collection of Pokémon species ordered in a particular way
@@ -983,10 +1056,13 @@ class Pokedex(TableBase):
         info=dict(description=u"ID of the region this Pokédex is used in, or None if it's global"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
-    description = ProseColumn(Unicode(512), plural='descriptions', nullable=False,
-        info=dict(description=u"A longer description of the Pokédex", format='plaintext'))
-    name = ProseColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('pokedex_prose', Pokedex, 'prose',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+    description = Column(Unicode(512), nullable=False,
+        info=dict(description=u"A longer description of the Pokédex", format='plaintext')),
+)
 
 class Pokemon(TableBase):
     u"""A species of Pokémon.  The core to this whole mess.
@@ -1143,8 +1219,11 @@ class PokemonColor(TableBase):
         info=dict(description=u"ID of the Pokémon"))
     identifier = Column(Unicode(6), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
-    name = TextColumn(Unicode(6), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('pokemon_color_texts', PokemonColor, 'names',
+    name = Column(Unicode(6), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class PokemonDexNumber(TableBase):
     u"""The number of a Pokémon in a particular Pokédex (e.g. Jigglypuff is #138 in Hoenn's 'dex)
@@ -1237,8 +1316,6 @@ class PokemonForm(TableBase):
         info=dict(description=u'Set for exactly one form used as the default for each species.'))
     order = Column(Integer, nullable=False, autoincrement=False,
         info=dict(description=u'The order in which forms should be sorted.  Multiple forms may have equal order, in which case they should fall back on sorting by name.'))
-    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
 
     @property
     def pokemon(self):
@@ -1269,19 +1346,28 @@ class PokemonForm(TableBase):
         else:
             return self.form_base_pokemon.name
 
+create_translation_table('pokemon_form_texts', PokemonForm, 'names',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
+
 class PokemonFormGroup(TableBase):
     u"""Information about a Pokémon's forms as a group."""
     __tablename__ = 'pokemon_form_groups'
     __singlename__ = 'pokemon_form_group'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"ID of the base form Pokémon"))
-    term = ProseColumn(Unicode(16), plural='terms', nullable=True,
-        info=dict(description=u"The term for this Pokémon's forms, e.g. \"Cloak\" for Burmy or \"Forme\" for Deoxys.", official=True, format='plaintext'))
     is_battle_only = Column(Boolean, nullable=False,
         info=dict(description=u"Set iff the forms only change in battle"))
-    description = ProseColumn(markdown.MarkdownColumn(1024), plural='descriptions', nullable=False,
-        info=dict(description=u"Description of how the forms work", format='markdown'))
+# FIXME remooove
 PokemonFormGroup.id = PokemonFormGroup.pokemon_id
+
+create_translation_table('pokemon_form_group_prose', PokemonFormGroup, 'prose',
+    term = Column(Unicode(16), nullable=True,
+        info=dict(description=u"The term for this Pokémon's forms, e.g. \"Cloak\" for Burmy or \"Forme\" for Deoxys.", official=True, format='plaintext')),
+    description = Column(markdown.MarkdownColumn(1024), nullable=False,
+        info=dict(description=u"Description of how the forms work", format='markdown')),
+)
 
 class PokemonFormPokeathlonStat(TableBase):
     u"""A Pokémon form's performance in one Pokéathlon stat."""
@@ -1306,8 +1392,11 @@ class PokemonHabitat(TableBase):
         info=dict(description=u"A numeric ID"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
-    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('pokemon_habitat_texts', PokemonHabitat, 'names',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class PokemonInternalID(TableBase):
     u"""The number of a Pokémon a game uses internally
@@ -1364,10 +1453,14 @@ class PokemonMoveMethod(TableBase):
         info=dict(description=u"A numeric ID"))
     identifier = Column(Unicode(64), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
-    description = ProseColumn(Unicode(255), plural='descriptions', nullable=False,
-        info=dict(description=u"A detailed description of how the method works", format='plaintext'))
-    name = ProseColumn(Unicode(64), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('pokemon_move_method_prose', PokemonMoveMethod, 'prose',
+    name = Column(Unicode(64), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+    description = Column(Unicode(255), nullable=False,
+        info=dict(description=u"A detailed description of how the method works", format='plaintext')),
+)
+
 
 class PokemonShape(TableBase):
     u"""The shape of a Pokémon's body, as used in generation IV Pokédexes.
@@ -1378,10 +1471,13 @@ class PokemonShape(TableBase):
         info=dict(description=u"A numeric ID"))
     identifier = Column(Unicode(24), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
-    awesome_name = ProseColumn(Unicode(16), plural='awesome_names', nullable=False,
-        info=dict(description=u"A splendiferous name of the body shape", format='plaintext'))
-    name = ProseColumn(Unicode(24), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=False))
+
+create_translation_table('pokemon_shape_prose', PokemonShape, 'prose',
+    awesome_name = Column(Unicode(16), nullable=False,
+        info=dict(description=u"A splendiferous name of the body shape", format='plaintext')),
+    name = Column(Unicode(24), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class PokemonStat(TableBase):
     u"""A stat value of a Pokémon
@@ -1416,8 +1512,11 @@ class Region(TableBase):
         info=dict(description=u"A numeric ID"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
-    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('region_texts', Region, 'names',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class Stat(TableBase):
     u"""A Stat, such as Attack or Speed
@@ -1430,8 +1529,11 @@ class Stat(TableBase):
         info=dict(description=u"For offensive and defensive stats, the damage this stat relates to; otherwise None (the NULL value)"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
-    name = TextColumn(Unicode(16), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('stat_texts', Stat, 'names',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class StatHint(TableBase):
     u"""Flavor text for genes that appears in a Pokémon's summary.  Sometimes
@@ -1445,8 +1547,11 @@ class StatHint(TableBase):
         info=dict(description=u"ID of the highest stat"))
     gene_mod_5 = Column(Integer, nullable=False, index=True,
         info=dict(description=u"Value of the highest stat modulo 5"))
-    message = TextColumn(Unicode(24), plural='messages', nullable=False, index=True, unique=True,
-        info=dict(description=u"The text displayed", official=True, format='plaintext'))
+
+create_translation_table('stat_hint_texts', StatHint, 'names',
+    message = Column(Unicode(24), nullable=False, index=True,
+        info=dict(description=u"The text displayed", official=True, format='plaintext')),
+)
 
 class SuperContestCombo(TableBase):
     u"""Combo of two moves in a Super Contest.
@@ -1466,8 +1571,12 @@ class SuperContestEffect(TableBase):
         info=dict(description=u"This effect's unique ID."))
     appeal = Column(SmallInteger, nullable=False,
         info=dict(description=u"The number of hearts the user gains."))
-    flavor_text = ProseColumn(Unicode(64), plural='flavor_texts', nullable=False,
-        info=dict(description=u"A description of the effect.", format='plaintext'))
+
+create_translation_table('super_contest_effect_prose', SuperContestEffect, 'prose',
+    flavor_text = Column(Unicode(64), nullable=False,
+        info=dict(description=u"A description of the effect.", format='plaintext')),
+)
+
 
 class TypeEfficacy(TableBase):
     u"""The damage multiplier used when a move of a particular type damages a
@@ -1493,8 +1602,11 @@ class Type(TableBase):
         info=dict(description=u"The ID of the generation this type first appeared in."))
     damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=True,
         info=dict(description=u"The ID of the damage class this type's moves had before Generation IV, null if not applicable (e.g. ???)."))
-    name = TextColumn(Unicode(12), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('type_texts', Type, 'names',
+    name = Column(Unicode(12), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 class VersionGroup(TableBase):
     u"""A group of versions, containing either two paired versions (such as Red
@@ -1526,8 +1638,11 @@ class Version(TableBase):
         info=dict(description=u"The ID of the version group this game belongs to."))
     identifier = Column(Unicode(32), nullable=False,
         info=dict(description=u'And identifier', format='identifier'))
-    name = TextColumn(Unicode(32), nullable=False, index=True, plural='names',
-        info=dict(description="The name", format='plaintext', official=True))
+
+create_translation_table('version_texts', Version, 'names',
+    name = Column(Unicode(32), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
+)
 
 
 ### Relations down here, to avoid ordering problems
@@ -1848,7 +1963,7 @@ Type.pokemon = relation(Pokemon, secondary=PokemonType.__table__,
                                  )#back_populates='types')
 Type.moves = relation(Move, back_populates='type', order_by=Move.id)
 
-Version.version_group = relation(VersionGroup, back_populates='versions')
+Version.version_group = relation(VersionGroup)#, back_populates='versions')
 Version.generation = association_proxy('version_group', 'generation')
 
 VersionGroup.versions = relation(Version, order_by=Version.id, back_populates='version_group')
@@ -1858,137 +1973,17 @@ VersionGroup.regions = association_proxy('version_group_regions', 'region')
 VersionGroup.pokedex = relation(Pokedex, back_populates='version_groups')
 
 
-### Add text/prose tables
-
-default_lang = u'en'
-
-def makeTextTable(foreign_table_class, table_suffix_plural, table_suffix_singular, columns, lazy, Language=Language):
-    # With "Language", we'd have two language_id. So, rename one to 'lang'
-    foreign_key_name = foreign_table_class.__singlename__
-    if foreign_key_name == 'language':
-        foreign_key_name = 'lang'
-
-    table_name = foreign_table_class.__singlename__ + '_' + table_suffix_plural
-
-    class TranslatedStringsTable(object):
-        __tablename__ = table_name
-        _attrname = table_suffix_plural
-        _language_identifier = association_proxy('language', 'identifier')
-
-    for column_name, column_name_plural, column in columns:
-        column.name = column_name
-        if not column.nullable:
-            # A Python side default value, so that the strings can be set
-            # one by one without the DB complaining about missing values
-            column.default = ColumnDefault(u'')
-
-    table = Table(table_name, foreign_table_class.__table__.metadata,
-            Column(foreign_key_name + '_id', Integer, ForeignKey(foreign_table_class.id),
-                    primary_key=True, nullable=False),
-            Column('language_id', Integer, ForeignKey(Language.id),
-                    primary_key=True, index=True, nullable=False),
-            *(column for name, plural, column in columns)
-        )
-
-    mapper(TranslatedStringsTable, table,
-        properties={
-            "object_id": synonym(foreign_key_name + '_id'),
-            "language": relation(Language,
-                primaryjoin=table.c.language_id == Language.id,
-            ),
-            foreign_key_name: relation(foreign_table_class,
-                primaryjoin=(foreign_table_class.id == table.c[foreign_key_name + "_id"]),
-                backref=backref(table_suffix_plural,
-                    collection_class=attribute_mapped_collection('_language_identifier'),
-                    lazy=lazy,
-                ),
-            ),
-        },
-    )
-
-    # The relation to the object
-    TranslatedStringsTable.object = getattr(TranslatedStringsTable, foreign_key_name)
-
-    # Link the tables themselves, so we can get them if needed
-    TranslatedStringsTable.foreign_table_class = foreign_table_class
-    setattr(foreign_table_class, table_suffix_singular + '_table', TranslatedStringsTable)
-
-    for column_name, column_name_plural, column in columns:
-        # Provide a property with all the names, and an English accessor
-        # for backwards compatibility
-        def text_string_creator(language_code, string):
-            row = TranslatedStringsTable()
-            row._language_identifier = language_code
-            setattr(row, column_name, string)
-            return row
-
-        setattr(foreign_table_class, column_name_plural,
-            association_proxy(table_suffix_plural, column_name, creator=text_string_creator))
-        setattr(foreign_table_class, column_name, DefaultLangProperty(column_name_plural))
-
-        if column_name == 'name':
-            foreign_table_class.name_table = TranslatedStringsTable
-
-    compile_mappers()
-    return TranslatedStringsTable
-
-class DefaultLangProperty(object):
-    def __init__(self, column_name):
-        self.column_name = column_name
-
-    def __get__(self, instance, cls):
-        if instance:
-            return getattr(instance, self.column_name)[default_lang]
-        else:
-            # TODO I think this is kind of broken
-            return getattr(cls, self.column_name)[default_lang]
-
-    def __set__(self, instance, value):
-        getattr(instance, self.colname)[default_lang] = value
-
-    def __delete__(self, instance):
-        del getattr(instance, self.colname)[default_lang]
-
-for table in list(table_classes):
-    # Find all the language-specific columns, keeping them in the order they
-    # were defined
-    all_columns = []
-    for colname in dir(table):
-        column = getattr(table, colname)
-        if isinstance(column, LanguageSpecificColumn):
-            all_columns.append((colname, column))
-            delattr(table, colname)
-    all_columns.sort(key=lambda pair: pair[1].order)
-
-    # Break them into text and prose columns
-    text_columns = []
-    prose_columns = []
-    for colname, column in all_columns:
-        spec = colname, column.plural, column.makeSAColumn()
-        if isinstance(column, TextColumn):
-            text_columns.append(spec)
-        elif isinstance(column, ProseColumn):
-            prose_columns.append(spec)
-
-    if (text_columns or prose_columns) and issubclass(table, LanguageSpecific):
-        raise AssertionError("Language-specific table %s shouldn't have explicit language-specific columns" % table)
-
-    if text_columns:
-        string_table = makeTextTable(table, 'texts', 'text', text_columns, lazy=False)
-    if prose_columns:
-        string_table = makeTextTable(table, 'prose', 'prose', prose_columns, lazy='select')
-
 ### Add language relations
 for table in list(table_classes):
     if issubclass(table, LanguageSpecific):
         table.language = relation(Language, primaryjoin=table.language_id == Language.id)
 
-Move.effect = DefaultLangProperty('effects')
-Move.effects = markdown.MoveEffectsProperty('effect')
-Move.short_effect = DefaultLangProperty('short_effects')
-Move.short_effects = markdown.MoveEffectsProperty('short_effect')
+Move.effect = markdown.MoveEffectProperty('effect')
+Move.effect_map = markdown.MoveEffectProperty('effect_map')
+Move.short_effect = markdown.MoveEffectProperty('short_effect')
+Move.short_effect_map = markdown.MoveEffectProperty('short_effect_map')
 
-MoveChangelog.effect = DefaultLangProperty('effects')
-MoveChangelog.effects = markdown.MoveEffectsProperty('effect')
-MoveChangelog.short_effect = DefaultLangProperty('short_effects')
-MoveChangelog.short_effects = markdown.MoveEffectsProperty('short_effect')
+MoveChangelog.effect = markdown.MoveEffectProperty('effect')
+MoveChangelog.effect_map = markdown.MoveEffectProperty('effect_map')
+MoveChangelog.short_effect = markdown.MoveEffectProperty('short_effect')
+MoveChangelog.short_effect_map = markdown.MoveEffectProperty('short_effect_map')

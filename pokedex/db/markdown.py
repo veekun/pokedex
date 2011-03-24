@@ -56,34 +56,25 @@ class MarkdownString(object):
         """
         return self.source_text
 
+def _markdownify_effect_text(move, effect_text):
+    effect_text = effect_text.replace(
+        u'$effect_chance',
+        unicode(move.effect_chance),
+    )
 
-class _MoveEffects(object):
-    def __init__(self, effect_column, move):
-        self.effect_column = effect_column
-        self.move = move
+    return MarkdownString(effect_text)
 
-    def __contains__(self, lang):
-        return lang in self.move.move_effect.prose
-
-    def __getitem__(self, lang):
-        try:
-            effect_text = getattr(self.move.move_effect.prose[lang], self.effect_column)
-        except AttributeError:
-            return None
-        effect_text = effect_text.replace(
-            u'$effect_chance',
-            unicode(self.move.effect_chance),
-        )
-
-        return MarkdownString(effect_text)
-
-class MoveEffectsProperty(object):
+class MoveEffectProperty(object):
     """Property that wraps move effects.  Used like this:
 
-        MoveClass.effects = MoveEffectProperty('effect')
+        MoveClass.effect = MoveEffectProperty('effect')
 
-        some_move.effects[lang]            # returns a MarkdownString
-        some_move.effects[lang].as_html    # returns a chunk of HTML
+        some_move.effect            # returns a MarkdownString
+        some_move.effect.as_html    # returns a chunk of HTML
+
+    This class attempts to detect if the wrapped property is a dict-based
+    association proxy, and will act like such a dict if so.  Don't rely on it
+    for querying, of course.
 
     This class also performs simple substitution on the effect, replacing
     `$effect_chance` with the move's actual effect chance.
@@ -92,8 +83,17 @@ class MoveEffectsProperty(object):
     def __init__(self, effect_column):
         self.effect_column = effect_column
 
-    def __get__(self, move, move_class):
-        return _MoveEffects(self.effect_column, move)
+    def __get__(self, obj, cls):
+        prop = getattr(obj.move_effect, self.effect_column)
+        if isinstance(prop, dict):
+            # Looks like a dict proxy; markdownify everyone
+            newdict = dict(prop)
+            for key in newdict:
+                newdict[key] = _markdownify_effect_text(obj, newdict[key])
+            return newdict
+
+        # Otherwise, scalar prop.  Boring
+        return _markdownify_effect_text(obj, prop)
 
 class MarkdownColumn(sqlalchemy.types.TypeDecorator):
     """Generic SQLAlchemy column type for Markdown text.

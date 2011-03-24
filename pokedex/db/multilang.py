@@ -1,11 +1,11 @@
 from functools import partial
 
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import compile_mappers, mapper, relationship, synonym
+from sqlalchemy.orm import aliased, compile_mappers, mapper, relationship, synonym
 from sqlalchemy.orm.collections import attribute_mapped_collection
 from sqlalchemy.orm.session import Session, object_session
 from sqlalchemy.schema import Column, ForeignKey, Table
-from sqlalchemy.sql.expression import and_, bindparam
+from sqlalchemy.sql.expression import and_, bindparam, select
 from sqlalchemy.types import Integer
 
 def create_translation_table(_table_name, foreign_class, relation_name,
@@ -48,6 +48,7 @@ TODO remove this requirement
       are rows in the created tables.
     - `(relation_name)_local`, a relation to the row in the new table that
       matches the current default language.
+    - `(relation_name)_class`, the class created by this function.
 
     Note that these are distinct relations.  Even though the former necessarily
     includes the latter, SQLAlchemy doesn't treat them as linked; loading one
@@ -77,7 +78,7 @@ TODO remove this requirement
     Translations = type(_table_name, (object,), {
         '_language_identifier': association_proxy('language', 'identifier'),
     })
-    
+
     # Create the table object
     table = Table(_table_name, foreign_class.__table__.metadata,
         Column(foreign_key_name, Integer, ForeignKey(foreign_class.id),
@@ -109,6 +110,8 @@ TODO remove this requirement
     })
 
     # Add full-table relations to the original class
+    # Foo.bars_table
+    setattr(foreign_class, relation_name + '_table', Translations)
     # Foo.bars
     setattr(foreign_class, relation_name, relationship(Translations,
         primaryjoin=foreign_class.id == Translations.object_id,
@@ -119,13 +122,19 @@ TODO remove this requirement
     # Foo.bars_local
     # This is a bit clever; it uses bindparam() to make the join clause
     # modifiable on the fly.  db sessions know the current language identifier
-    # populates the bindparam.
+    # populates the bindparam.  The manual alias and join are (a) to make the
+    # condition nice (sqla prefers an EXISTS) and to make the columns play nice
+    # when foreign_class == language_class.
     local_relation_name = relation_name + '_local'
+    language_class_a = aliased(language_class)
     setattr(foreign_class, local_relation_name, relationship(Translations,
         primaryjoin=and_(
             foreign_class.id == Translations.object_id,
-            Translations._language_identifier ==
-                bindparam('_default_language', required=True),
+            Translations.language_id == select(
+                [language_class_a.id],
+                language_class_a.identifier ==
+                    bindparam('_default_language', required=True),
+            ),
         ),
         uselist=False,
         # TODO MORESO HERE
@@ -153,11 +162,7 @@ TODO remove this requirement
     return Translations
 
 class MultilangSession(Session):
-    """A tiny Session subclass that adds support for a default language.
-
-    Change the default_language attribute to whatever language's IDENTIFIER you
-    would like to be the default.
-    """
+    """A tiny Session subclass that adds support for a default language."""
     default_language = 'en'
 
     def execute(self, clause, params=None, *args, **kwargs):
