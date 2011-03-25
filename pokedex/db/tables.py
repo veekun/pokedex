@@ -233,10 +233,10 @@ class ContestEffect(TableBase):
         info=dict(description="The base number of hearts the user's opponent loses"))
 
 create_translation_table('contest_effect_prose', ContestEffect, 'prose',
-    effect = Column(Unicode(255), nullable=False,
-        info=dict(description="A detailed description of the effect", format='plaintext')),
     flavor_text = Column(Unicode(64), nullable=False,
         info=dict(description="The in-game description of this effect", official=True, format='gametext')),
+    effect = Column(Unicode(255), nullable=False,
+        info=dict(description="A detailed description of the effect", format='plaintext')),
 )
 
 class ContestType(TableBase):
@@ -250,12 +250,12 @@ class ContestType(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('contest_type_texts', ContestType, 'names',
+    name = Column(Unicode(6), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=True)),
     flavor = Column(Unicode(6), nullable=False,
         info=dict(description="The name of the corresponding Berry flavor", official=True, format='plaintext')),
     color = Column(Unicode(6), nullable=False,
         info=dict(description=u"The name of the corresponding Pokéblock color", official=True, format='plaintext')),
-    name = Column(Unicode(6), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=True)),
 )
 
 class EggGroup(TableBase):
@@ -1464,10 +1464,10 @@ class PokemonShape(TableBase):
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('pokemon_shape_prose', PokemonShape, 'prose',
-    awesome_name = Column(Unicode(16), nullable=False,
-        info=dict(description=u"A splendiferous name of the body shape", format='plaintext')),
     name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
+    awesome_name = Column(Unicode(16), nullable=False,
+        info=dict(description=u"A splendiferous name of the body shape", format='plaintext')),
 )
 
 class PokemonStat(TableBase):
