@@ -574,15 +574,15 @@ create_translation_table('item_fling_effect_prose', ItemFlingEffect, 'prose',
         info=dict(description="Description of the effect", format='plaintext')),
 )
 
-class ItemInternalID(TableBase):
+class ItemGameIndex(TableBase):
     u"""The internal ID number a game uses for an item
     """
-    __tablename__ = 'item_internal_ids'
+    __tablename__ = 'item_game_indices'
     item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description="The database ID of the item"))
     generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description="ID of the generation of games"))
-    internal_id = Column(Integer, nullable=False,
+    game_index = Column(Integer, nullable=False,
         info=dict(description="Internal ID of the item in the generation"))
 
 class ItemPocket(TableBase):
@@ -626,7 +626,7 @@ class LocationArea(TableBase):
         info=dict(description="A numeric ID"))
     location_id = Column(Integer, ForeignKey('locations.id'), nullable=False,
         info=dict(description="ID of the location this area is part of"))
-    internal_id = Column(Integer, nullable=False,
+    game_index = Column(Integer, nullable=False,
         info=dict(description="ID the games ude for this area"))
     identifier = Column(Unicode(64), nullable=True,
         info=dict(description="An identifier", format='identifier'))
@@ -648,15 +648,15 @@ class LocationAreaEncounterRate(TableBase):
     rate = Column(Integer, nullable=True,
         info=dict(description="The encounter rate"))  # units?
 
-class LocationInternalID(TableBase):
+class LocationGameIndex(TableBase):
     u"""IDs the games use internally for locations
     """
-    __tablename__ = 'location_internal_ids'
+    __tablename__ = 'location_game_indices'
     location_id = Column(Integer, ForeignKey('locations.id'), nullable=False, primary_key=True,
         info=dict(description="Database ID of the locaion"))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False, primary_key=True,
         info=dict(description="ID of the generation this entry to"))
-    internal_id = Column(Integer, nullable=False,
+    game_index = Column(Integer, nullable=False,
         info=dict(description="Internal game ID of the location"))
 
 class Machine(TableBase):
@@ -1389,15 +1389,15 @@ create_translation_table('pokemon_habitat_names', PokemonHabitat, 'names',
         info=dict(description="The name", format='plaintext', official=True)),
 )
 
-class PokemonInternalID(TableBase):
+class PokemonGameIndex(TableBase):
     u"""The number of a Pokémon a game uses internally
     """
-    __tablename__ = 'pokemon_internal_ids'
+    __tablename__ = 'pokemon_game_indices'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description=u"Database ID of the Pokémon"))
     generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description=u"Database ID of the generation"))
-    internal_id = Column(Integer, nullable=False,
+    game_index = Column(Integer, nullable=False,
         info=dict(description=u"Internal ID the generation's games use for the Pokémon"))
 
 class PokemonItem(TableBase):
@@ -1726,8 +1726,8 @@ ItemCategory.pocket = relation(ItemPocket)
 ItemFlavorText.version_group = relation(VersionGroup)
 ItemFlavorText.language = relation(Language)
 
-ItemInternalID.item = relation(Item, backref='internal_ids')
-ItemInternalID.generation = relation(Generation)
+ItemGameIndex.item = relation(Item, backref='game_indices')
+ItemGameIndex.generation = relation(Generation)
 
 ItemPocket.categories = relation(ItemCategory, order_by=ItemCategory.identifier)
 
@@ -1735,8 +1735,8 @@ Location.region = relation(Region, backref='locations')
 
 LocationArea.location = relation(Location, backref='areas')
 
-LocationInternalID.location = relation(Location, backref='internal_ids')
-LocationInternalID.generation = relation(Generation)
+LocationGameIndex.location = relation(Location, backref='game_indices')
+LocationGameIndex.generation = relation(Generation)
 
 Machine.item = relation(Item)
 Machine.version_group = relation(VersionGroup)

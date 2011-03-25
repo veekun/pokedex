@@ -1,4 +1,4 @@
-id,location_id,internal_id,identifier
+id,location_id,game_index,identifier
 1,1,1,
 2,2,2,
 3,3,3,
