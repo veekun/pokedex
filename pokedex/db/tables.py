@@ -99,7 +99,7 @@ class Language(TableBase):
 
 create_translation_table = partial(multilang.create_translation_table, language_class=Language)
 
-create_translation_table('language_texts', Language, 'names',
+create_translation_table('language_names', Language, 'names',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -118,7 +118,7 @@ class Ability(TableBase):
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description="The ID of the generation this ability was introduced in", detail=True))
 
-create_translation_table('ability_texts', Ability, 'names',
+create_translation_table('ability_names', Ability, 'names',
     name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -195,7 +195,7 @@ class BerryFirmness(TableBase):
     identifier = Column(Unicode(10), nullable=False,
         info=dict(description="An identifier", format='identifier'))
 
-create_translation_table('berry_firmness_texts', BerryFirmness, 'names',
+create_translation_table('berry_firmness_names', BerryFirmness, 'names',
     name = Column(Unicode(10), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -249,7 +249,7 @@ class ContestType(TableBase):
     identifier = Column(Unicode(6), nullable=False,
         info=dict(description="An identifier", format='identifier'))
 
-create_translation_table('contest_type_texts', ContestType, 'names',
+create_translation_table('contest_type_names', ContestType, 'names',
     name = Column(Unicode(6), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
     flavor = Column(Unicode(6), nullable=False,
@@ -446,7 +446,7 @@ class Generation(TableBase):
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u'An identifier', format='identifier'))
 
-create_translation_table('generation_texts', Generation, 'names',
+create_translation_table('generation_names', Generation, 'names',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -492,7 +492,7 @@ class Item(TableBase):
         """
         return any(flag.identifier == u'underground' for flag in self.flags)
 
-create_translation_table('item_texts', Item, 'names',
+create_translation_table('item_names', Item, 'names',
     name = Column(Unicode(20), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -595,7 +595,7 @@ class ItemPocket(TableBase):
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description="An identifier of this pocket", format='identifier'))
 
-create_translation_table('item_pocket_texts', ItemPocket, 'names',
+create_translation_table('item_pocket_names', ItemPocket, 'names',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -612,7 +612,7 @@ class Location(TableBase):
     identifier = Column(Unicode(64), nullable=False,
         info=dict(description="An identifier", format='identifier'))
 
-create_translation_table('location_texts', Location, 'names',
+create_translation_table('location_names', Location, 'names',
     name = Column(Unicode(64), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -855,7 +855,7 @@ class MoveMetaAilment(TableBase):
     identifier = Column(Unicode(24), nullable=False,
         info=dict(description="An identifier", format='identifier'))
 
-create_translation_table('move_meta_ailment_texts', MoveMetaAilment, 'names',
+create_translation_table('move_meta_ailment_names', MoveMetaAilment, 'names',
     name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -935,7 +935,7 @@ class Move(TableBase):
     super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=True,
         info=dict(description="ID of the move's Super Contest effect"))
 
-create_translation_table('move_texts', Move, 'names',
+create_translation_table('move_names', Move, 'names',
     name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True))
 )
@@ -987,7 +987,7 @@ class Nature(TableBase):
         """
         return self.increased_stat_id == self.decreased_stat_id
 
-create_translation_table('nature_texts', Nature, 'names',
+create_translation_table('nature_names', Nature, 'names',
     name = Column(Unicode(8), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1029,7 +1029,7 @@ class PokeathlonStat(TableBase):
     identifier = Column(Unicode(8), nullable=False,
         info=dict(description="An identifier", format='identifier'))
 
-create_translation_table('pokeathlon_stat_texts', PokeathlonStat, 'names',
+create_translation_table('pokeathlon_stat_names', PokeathlonStat, 'names',
     name = Column(Unicode(8), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1175,7 +1175,7 @@ class Pokemon(TableBase):
         else:
             return None
 
-create_translation_table('pokemon_texts', Pokemon, 'names',
+create_translation_table('pokemon_names', Pokemon, 'names',
     name = Column(Unicode(20), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
     species = Column(Unicode(16), nullable=False,
@@ -1209,7 +1209,7 @@ class PokemonColor(TableBase):
     identifier = Column(Unicode(6), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
 
-create_translation_table('pokemon_color_texts', PokemonColor, 'names',
+create_translation_table('pokemon_color_names', PokemonColor, 'names',
     name = Column(Unicode(6), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1337,7 +1337,7 @@ class PokemonForm(TableBase):
         else:
             return self.form_base_pokemon.name
 
-create_translation_table('pokemon_form_texts', PokemonForm, 'names',
+create_translation_table('pokemon_form_names', PokemonForm, 'names',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1384,7 +1384,7 @@ class PokemonHabitat(TableBase):
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
 
-create_translation_table('pokemon_habitat_texts', PokemonHabitat, 'names',
+create_translation_table('pokemon_habitat_names', PokemonHabitat, 'names',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1504,7 +1504,7 @@ class Region(TableBase):
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
 
-create_translation_table('region_texts', Region, 'names',
+create_translation_table('region_names', Region, 'names',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1521,7 +1521,7 @@ class Stat(TableBase):
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
 
-create_translation_table('stat_texts', Stat, 'names',
+create_translation_table('stat_names', Stat, 'names',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1539,7 +1539,7 @@ class StatHint(TableBase):
     gene_mod_5 = Column(Integer, nullable=False, index=True,
         info=dict(description=u"Value of the highest stat modulo 5"))
 
-create_translation_table('stat_hint_texts', StatHint, 'names',
+create_translation_table('stat_hint_names', StatHint, 'names',
     message = Column(Unicode(24), nullable=False, index=True,
         info=dict(description=u"The text displayed", official=True, format='plaintext')),
 )
@@ -1594,7 +1594,7 @@ class Type(TableBase):
     damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=True,
         info=dict(description=u"The ID of the damage class this type's moves had before Generation IV, null if not applicable (e.g. ???)."))
 
-create_translation_table('type_texts', Type, 'names',
+create_translation_table('type_names', Type, 'names',
     name = Column(Unicode(12), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1630,7 +1630,7 @@ class Version(TableBase):
     identifier = Column(Unicode(32), nullable=False,
         info=dict(description=u'And identifier', format='identifier'))
 
-create_translation_table('version_texts', Version, 'names',
+create_translation_table('version_names', Version, 'names',
     name = Column(Unicode(32), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
