@@ -30,22 +30,14 @@ import collections
 from functools import partial
 
 from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table, UniqueConstraint
-from sqlalchemy.ext.declarative import (
-        declarative_base, declared_attr, DeclarativeMeta,
-    )
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import (
-        backref, compile_mappers, eagerload_all, relation, class_mapper, synonym, mapper,
-    )
-from sqlalchemy.orm.session import Session, object_session
+from sqlalchemy.orm import backref, relation
+from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.interfaces import AttributeExtension
-from sqlalchemy.orm.collections import attribute_mapped_collection, MappedCollection, collection, collection_adapter
-from sqlalchemy.ext.associationproxy import _AssociationDict, association_proxy
 from sqlalchemy.sql import and_
-from sqlalchemy.sql.expression import ColumnOperators, bindparam
 from sqlalchemy.schema import ColumnDefault
 from sqlalchemy.types import *
-from inspect import isclass
 
 from pokedex.db import markdown, multilang
 
