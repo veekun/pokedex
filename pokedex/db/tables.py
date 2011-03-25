@@ -1635,29 +1635,6 @@ Ability.changelog = relation(AbilityChangelog,
 )
 Ability.flavor_text = relation(AbilityFlavorText, order_by=AbilityFlavorText.version_group_id, backref='ability')
 Ability.generation = relation(Generation, backref='abilities')
-Ability.all_pokemon = relation(Pokemon,
-    secondary=PokemonAbility.__table__,
-    order_by=Pokemon.order,
-    #back_populates='all_abilities',
-)
-Ability.pokemon = relation(Pokemon,
-    secondary=PokemonAbility.__table__,
-    primaryjoin=and_(
-        PokemonAbility.ability_id == Ability.id,
-        PokemonAbility.is_dream == False
-    ),
-    order_by=Pokemon.order,
-    #back_populates='abilities',
-)
-Ability.dream_pokemon = relation(Pokemon,
-    secondary=PokemonAbility.__table__,
-    primaryjoin=and_(
-        PokemonAbility.ability_id == Ability.id,
-        PokemonAbility.is_dream == True
-    ),
-    order_by=Pokemon.order,
-    #back_populates='dream_ability',
-)
 
 AbilityChangelog.changed_in = relation(VersionGroup, backref='ability_changelog')
 
@@ -1693,7 +1670,6 @@ EncounterSlot.version_group = relation(VersionGroup)
 
 EvolutionChain.growth_rate = relation(GrowthRate, backref='evolution_chains')
 EvolutionChain.baby_trigger_item = relation(Item, backref='evolution_chains')
-EvolutionChain.pokemon = relation(Pokemon, order_by=Pokemon.order)#, back_populates='evolution_chain')
 
 Experience.growth_rate = relation(GrowthRate, backref='experience_table')
 
@@ -1754,11 +1730,21 @@ Move.super_contest_effect = relation(SuperContestEffect, backref='moves')
 Move.super_contest_combo_next = association_proxy('super_contest_combo_first', 'second')
 Move.super_contest_combo_prev = association_proxy('super_contest_combo_second', 'first')
 Move.target = relation(MoveTarget, backref='moves')
-Move.type = relation(Type)#, back_populates='moves')
+Move.type = relation(Type, backref='moves')
+
+Move.effect = markdown.MoveEffectProperty('effect')
+Move.effect_map = markdown.MoveEffectProperty('effect_map')
+Move.short_effect = markdown.MoveEffectProperty('short_effect')
+Move.short_effect_map = markdown.MoveEffectProperty('short_effect_map')
 
 MoveChangelog.changed_in = relation(VersionGroup, backref='move_changelog')
 MoveChangelog.move_effect = relation(MoveEffect, backref='move_changelog')
 MoveChangelog.type = relation(Type, backref='move_changelog')
+
+MoveChangelog.effect = markdown.MoveEffectProperty('effect')
+MoveChangelog.effect_map = markdown.MoveEffectProperty('effect_map')
+MoveChangelog.short_effect = markdown.MoveEffectProperty('short_effect')
+MoveChangelog.short_effect_map = markdown.MoveEffectProperty('short_effect_map')
 
 MoveEffect.category_map = relation(MoveEffectCategoryMap)
 MoveEffect.categories = association_proxy('category_map', 'category')
@@ -1798,11 +1784,14 @@ NatureBattleStylePreference.battle_style = relation(MoveBattleStyle, backref='na
 NaturePokeathlonStat.pokeathlon_stat = relation(PokeathlonStat, backref='nature_effects')
 
 Pokedex.region = relation(Region, backref='pokedexes')
-Pokedex.version_groups = relation(VersionGroup, order_by=VersionGroup.id)#, back_populates='pokedex')
+Pokedex.version_groups = relation(VersionGroup, order_by=VersionGroup.id, backref='pokedex')
 
 Pokemon.all_abilities = relation(Ability,
     secondary=PokemonAbility.__table__,
     order_by=PokemonAbility.slot,
+    backref=backref('all_pokemon',
+        order_by=Pokemon.order,
+    ),
 )
 Pokemon.abilities = relation(Ability,
     secondary=PokemonAbility.__table__,
@@ -1811,6 +1800,9 @@ Pokemon.abilities = relation(Ability,
         PokemonAbility.is_dream == False,
     ),
     order_by=PokemonAbility.slot,
+    backref=backref('pokemon',
+        order_by=Pokemon.order,
+    ),
 )
 Pokemon.dream_ability = relation(Ability,
     secondary=PokemonAbility.__table__,
@@ -1819,6 +1811,9 @@ Pokemon.dream_ability = relation(Ability,
         PokemonAbility.is_dream == True,
     ),
     uselist=False,
+    backref=backref('dream_pokemon',
+        order_by=Pokemon.order,
+    ),
 )
 Pokemon.pokemon_color = relation(PokemonColor, backref='pokemon')
 Pokemon.color = association_proxy('pokemon_color', 'name')
@@ -1826,7 +1821,7 @@ Pokemon.dex_numbers = relation(PokemonDexNumber, order_by=PokemonDexNumber.poked
 Pokemon.egg_groups = relation(EggGroup, secondary=PokemonEggGroup.__table__,
                                         order_by=PokemonEggGroup.egg_group_id,
                                         backref=backref('pokemon', order_by=Pokemon.order))
-Pokemon.evolution_chain = relation(EvolutionChain)#, back_populates='pokemon')
+Pokemon.evolution_chain = relation(EvolutionChain, backref=backref('pokemon', order_by=Pokemon.order))
 Pokemon.child_pokemon = relation(Pokemon,
     primaryjoin=Pokemon.id==PokemonEvolution.from_pokemon_id,
     secondary=PokemonEvolution.__table__,
@@ -1846,9 +1841,11 @@ Pokemon.items = relation(PokemonItem, backref='pokemon')
 Pokemon.generation = relation(Generation, backref='pokemon')
 Pokemon.shape = relation(PokemonShape, backref='pokemon')
 Pokemon.stats = relation(PokemonStat, backref='pokemon', order_by=PokemonStat.stat_id.asc())
-Pokemon.types = relation(Type, secondary=PokemonType.__table__,
-                               order_by=PokemonType.slot.asc(),
-                               )#back_populates='pokemon')
+Pokemon.types = relation(Type,
+    secondary=PokemonType.__table__,
+    order_by=PokemonType.slot.asc(),
+    backref=backref('pokemon', order_by=Pokemon.order),
+)
 
 PokemonDexNumber.pokedex = relation(Pokedex)
 
@@ -1945,26 +1942,10 @@ Type.target_efficacies = relation(TypeEfficacy,
 
 Type.generation = relation(Generation, backref='types')
 Type.damage_class = relation(MoveDamageClass, backref='types')
-Type.pokemon = relation(Pokemon, secondary=PokemonType.__table__,
-                                 order_by=Pokemon.order,
-                                 )#back_populates='types')
-Type.moves = relation(Move, back_populates='type', order_by=Move.id)
 
-Version.version_group = relation(VersionGroup)#, back_populates='versions')
 Version.generation = association_proxy('version_group', 'generation')
 
-VersionGroup.versions = relation(Version, order_by=Version.id, back_populates='version_group')
+VersionGroup.versions = relation(Version, order_by=Version.id, backref='version_group')
 VersionGroup.generation = relation(Generation, backref='version_groups')
 VersionGroup.version_group_regions = relation(VersionGroupRegion, backref='version_group')
 VersionGroup.regions = association_proxy('version_group_regions', 'region')
-VersionGroup.pokedex = relation(Pokedex, back_populates='version_groups')
-
-Move.effect = markdown.MoveEffectProperty('effect')
-Move.effect_map = markdown.MoveEffectProperty('effect_map')
-Move.short_effect = markdown.MoveEffectProperty('short_effect')
-Move.short_effect_map = markdown.MoveEffectProperty('short_effect_map')
-
-MoveChangelog.effect = markdown.MoveEffectProperty('effect')
-MoveChangelog.effect_map = markdown.MoveEffectProperty('effect_map')
-MoveChangelog.short_effect = markdown.MoveEffectProperty('short_effect')
-MoveChangelog.short_effect_map = markdown.MoveEffectProperty('short_effect_map')
