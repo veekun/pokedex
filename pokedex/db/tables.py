@@ -879,7 +879,7 @@ class MoveMetaCategory(TableBase):
 create_translation_table('move_meta_category_prose', MoveMetaCategory, 'prose',
     relation_lazy='joined',
     description = Column(Unicode(64), nullable=False,
-        info=dict(description="A description of the category")),
+        info=dict(description="A description of the category", format="plaintext", official=False)),
 )
 
 class MoveMetaStatChange(TableBase):

@@ -77,9 +77,11 @@ def create_translation_table(_table_name, foreign_class, relation_name,
     # Create the table object
     table = Table(_table_name, foreign_class.__table__.metadata,
         Column(foreign_key_name, Integer, ForeignKey(foreign_class.id),
-            primary_key=True, nullable=False),
+            primary_key=True, nullable=False,
+            info=dict(description="ID of the %s these texts relate to" % foreign_class.__singlename__)),
         Column('local_language_id', Integer, ForeignKey(language_class.id),
-            primary_key=True, nullable=False),
+            primary_key=True, nullable=False,
+            info=dict(description="Language these texts are in")),
     )
     Translations.__table__ = table
 
