@@ -329,7 +329,7 @@ The following move effects are passed:
 * [Substitute]{move}; the doll's HP is unchanged
 
 The replacement Pokémon does not trigger effects that respond to Pokémon switching in."
-129,9,"If the target leaves battle this turn, user will hit the target with double power and then hit its replacement normally.","Inflicts [regular damage]{mechanic}.  If the target attempts to [switch out]{mechanic} this turn before the user moves, and the user is not prevented from doing so, the user will hit the target with doubled power as it leaves.  Otherwise, this move does not act specially.
+129,9,"Has double power against, and can hit, Pokémon attempting to switch out.","Inflicts [regular damage]{mechanic}.  If the target attempts to [switch out]{mechanic} this turn before the user acts, this move hits the target before it leaves and has double power.
 
 This effect can still hit a Pokémon that [switches out]{mechanic} when it has a [Substitute]{move} up or when an ally has used [Follow Me]{move}."
 130,9,"Frees the user from binding moves, removes Leech Seed, and blows away Spikes.","Inflicts [regular damage]{mechanic}.  Removes [Leech Seed]{move} from the user, frees the user from [Bind]{move}, [Clamp]{move}, [Fire Spin]{move}, [Magma Storm]{move}, [Sand Tomb]{move}, [Whirlpool]{move}, and [Wrap]{move}, and clears [Spikes]{move}, [Stealth Rock]{move}, and [Toxic Spikes]{move} from the user's side of the [field]{mechanic}.  If this move misses or has [no effect]{mechanic}, its effect doesn't activate."
