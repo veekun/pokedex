@@ -26,6 +26,16 @@ def test_variable_names():
     for table in tables.mapped_classes:
         assert getattr(tables, table.__name__) is table
 
+def test_class_order():
+    """The declarative classes should be defined in alphabetical order.
+    Except for Language which should be first.
+    """
+    class_names = [table.__name__ for table in tables.mapped_classes]
+    def key(name):
+        return name != 'Language', name
+    print [(a,b) for (a,b) in zip(class_names, sorted(class_names, key=key)) if a!=b]
+    assert class_names == sorted(class_names, key=key)
+
 def test_i18n_table_creation():
     """Creates and manipulates a magical i18n table, completely independent of
     the existing schema and data.  Makes sure that the expected behavior of the
