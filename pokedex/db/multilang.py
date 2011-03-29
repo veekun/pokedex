@@ -145,6 +145,9 @@ def create_translation_table(_table_name, foreign_class, relation_name,
         setattr(foreign_class, name + '_map',
             association_proxy(relation_name, name, creator=creator))
 
+    # Add to the list of translation classes
+    foreign_class.translation_classes.append(Translations)
+
     # Done
     return Translations
 

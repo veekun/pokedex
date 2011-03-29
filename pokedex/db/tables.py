@@ -25,7 +25,7 @@ import collections
 from functools import partial
 
 from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table, UniqueConstraint
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import backref, relation
 from sqlalchemy.orm.session import Session
@@ -60,8 +60,16 @@ class TableSuperclass(object):
     def __str__(self):
         return unicode(self).encode('utf8')
 
+mapped_classes = []
+class TableMetaclass(DeclarativeMeta):
+    def __init__(cls, name, bases, attrs):
+        super(TableMetaclass, cls).__init__(name, bases, attrs)
+        if hasattr(cls, '__tablename__'):
+            mapped_classes.append(cls)
+            cls.translation_classes = []
+
 metadata = MetaData()
-TableBase = declarative_base(metadata=metadata, cls=TableSuperclass)
+TableBase = declarative_base(metadata=metadata, cls=TableSuperclass, metaclass=TableMetaclass)
 
 
 ### Need Language first, to create the partial() below
