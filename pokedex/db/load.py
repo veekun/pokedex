@@ -185,15 +185,15 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
                 force_not_null = 'FORCE NOT NULL ' + ','.join('"%s"' % c for c in not_null_cols)
             else:
                 force_not_null = ''
-            command = "COPY {table_name} ({columns}) FROM '{csvpath}' CSV HEADER {force_not_null}"
+            command = "COPY %(table_name)s (%(columns)s) FROM '%(csvpath)s' CSV HEADER %(force_not_null)s"
             session.connection().execute(
-                    command.format(
-                            table_name=table_name,
-                            csvpath=csvpath,
-                            columns=','.join('"%s"' % c for c in column_names),
-                            force_not_null=force_not_null,
-                        )
+                command % dict(
+                    table_name=table_name,
+                    csvpath=csvpath,
+                    columns=','.join('"%s"' % c for c in column_names),
+                    force_not_null=force_not_null,
                 )
+            )
             session.commit()
             print_done()
             continue

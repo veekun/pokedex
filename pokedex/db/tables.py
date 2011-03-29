@@ -1150,7 +1150,7 @@ class Pokemon(TableBase):
         u"""Returns the Pokémon's name, including its form if applicable."""
 
         if self.form_name:
-            return u'{0} {1}'.format(self.form_name, self.name)
+            return u'%s %s' % (self.form_name, self.name)
         else:
             return self.name
 
@@ -1354,7 +1354,7 @@ class PokemonForm(TableBase):
         if not self.name:
             return None
         elif self.form_group and self.form_group.term:
-            return u'{0} {1}'.format(self.name, self.form_group.term)
+            return u'%s %s' % (self.name, self.form_group.term)
         else:
             return self.name
 
@@ -1365,7 +1365,7 @@ class PokemonForm(TableBase):
         """
 
         if self.name:
-            return u'{0} {1}'.format(self.name, self.form_base_pokemon.name)
+            return u'%s %s' % (self.name, self.form_base_pokemon.name)
         else:
             return self.form_base_pokemon.name
 
