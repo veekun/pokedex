@@ -12,4 +12,4 @@ move_flag_type_id,local_language_id,name,description
 11,9,Defrosts when used,This move can be used while frozen to force the Pokémon to defrost.
 12,9,Targets opposite side in triples,"In triple battles, this move can be used on either side to target the farthest away opposing Pokémon."
 13,9,Heals,This move is blocked by [Heal Block]{move}.
-14,9,Does ... something.,This flag exists.
+14,9,Ignores Substitute,This move ignores the target's [Substitute]{move}.
