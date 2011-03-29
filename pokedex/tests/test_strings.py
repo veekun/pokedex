@@ -16,16 +16,6 @@ class TestStrings(object):
                 tables.Pokemon.name == u"Marowak")
         assert q.one().identifier == 'marowak'
 
-    def test_gt(self):
-        # Assuming that the identifiers are just lowercase names
-        q1 = self.connection.query(tables.Pokemon).filter(
-                tables.Pokemon.name > u"Xatu").order_by(
-                tables.Pokemon.id)
-        q2 = self.connection.query(tables.Pokemon).filter(
-                tables.Pokemon.identifier > u"xatu").order_by(
-                tables.Pokemon.id)
-        assert q1.all() == q2.all()
-
     def test_languages(self):
         q = self.connection.query(tables.Pokemon).filter(
                 tables.Pokemon.name == u"Mightyena")
