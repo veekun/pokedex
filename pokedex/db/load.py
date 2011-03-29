@@ -140,12 +140,16 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
     # Drop all tables if requested
     if drop_tables:
         print_start('Dropping tables')
-        for table in reversed(table_objs):
+        for n, table in enumerate(reversed(table_objs)):
             table.drop(checkfirst=True)
+            print_status('%s/%s' % (n, len(table_objs)))
         print_done()
 
-    for table in table_objs:
+    print_start('Creating tables')
+    for n, table in enumerate(table_objs):
         table.create()
+        print_status('%s/%s' % (n, len(table_objs)))
+    print_done()
     connection = session.connection()
 
     # Okay, run through the tables and actually load the data now
