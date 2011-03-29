@@ -1,4 +1,4 @@
-move_meta_ailment_id,language_id,name
+move_meta_ailment_id,local_language_id,name
 -1,9,????
 0,9,none
 1,9,Paralysis

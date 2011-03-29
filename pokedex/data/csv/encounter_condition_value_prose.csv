@@ -1,4 +1,4 @@
-encounter_condition_value_id,language_id,name
+encounter_condition_value_id,local_language_id,name
 1,9,During a swarm
 2,9,Not during a swarm
 3,9,In the morning

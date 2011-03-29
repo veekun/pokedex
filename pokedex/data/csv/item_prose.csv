@@ -1,4 +1,4 @@
-item_id,language_id,short_effect,effect
+item_id,local_language_id,short_effect,effect
 1,9,,In battle: Captures one Pokémon without fail.  Has a capture rate of 255.
 2,9,,In battle: Attempts to capture one Pokémon.  Has a capture rate of 2.
 3,9,,In battle: Attempts to capture one Pokémon.  Has a capture rate of 1.5.

@@ -128,8 +128,8 @@ class SaveFilePokemon(object):
 
         self._held_item = None
         if st.held_item_id:
-            self._held_item = session.query(tables.ItemInternalID) \
-                .filter_by(generation_id = 4, internal_id = st.held_item_id).one().item
+            self._held_item = session.query(tables.ItemGameIndex) \
+                .filter_by(generation_id = 4, game_index = st.held_item_id).one().item
 
         self._stats = []
         for pokemon_stat in self._pokemon.stats:
@@ -173,19 +173,19 @@ class SaveFilePokemon(object):
             pokeball_id = st.hgss_pokeball - 17 + 492
         else:
             pokeball_id = st.dppt_pokeball
-        self._pokeball = session.query(tables.ItemInternalID) \
-            .filter_by(generation_id = 4, internal_id = pokeball_id).one().item
+        self._pokeball = session.query(tables.ItemGameIndex) \
+            .filter_by(generation_id = 4, game_index = pokeball_id).one().item
 
         egg_loc_id = st.pt_egg_location_id or st.dp_egg_location_id
         met_loc_id = st.pt_met_location_id or st.dp_met_location_id
 
         self._egg_location = None
         if egg_loc_id:
-            self._egg_location = session.query(tables.LocationInternalID) \
-                .filter_by(generation_id = 4, internal_id = egg_loc_id).one().location
+            self._egg_location = session.query(tables.LocationGameIndex) \
+                .filter_by(generation_id = 4, game_index = egg_loc_id).one().location
 
-        self._met_location = session.query(tables.LocationInternalID) \
-            .filter_by(generation_id = 4, internal_id = met_loc_id).one().location
+        self._met_location = session.query(tables.LocationGameIndex) \
+            .filter_by(generation_id = 4, game_index = met_loc_id).one().location
 
     @property
     def species(self):

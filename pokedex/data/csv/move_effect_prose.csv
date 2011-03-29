@@ -1,4 +1,4 @@
-move_effect_id,language_id,short_effect,effect
+move_effect_id,local_language_id,short_effect,effect
 1,9,Inflicts regular damage with no additional effect.,Inflicts [regular damage]{mechanic}.
 2,9,Puts the target to sleep.,Puts the target to [sleep]{mechanic}.
 3,9,Has a $effect_chance% chance to poison the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [poison]{mechanic} the target.

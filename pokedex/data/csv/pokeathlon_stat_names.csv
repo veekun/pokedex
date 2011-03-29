@@ -1,4 +1,4 @@
-pokeathlon_stat_id,language_id,name
+pokeathlon_stat_id,local_language_id,name
 1,9,Speed
 2,9,Power
 3,9,Skill

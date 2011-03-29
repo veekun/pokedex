@@ -225,7 +225,7 @@ class PokedexLookup(object):
                 # Some things also have other languages' names
                 # XXX other language form names..?
                 seen = set()
-                for language, name in getattr(row, 'names', []).items():
+                for language, name in getattr(row, 'name_map', {}).items():
                     if name in seen:
                         # Don't add the name again as a different
                         # language; no point and it makes spell results

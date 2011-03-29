@@ -1,4 +1,4 @@
-item_pocket_id,language_id,name
+item_pocket_id,local_language_id,name
 1,9,Items
 2,9,Medicine
 3,9,Poké Balls

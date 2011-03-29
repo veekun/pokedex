@@ -1,4 +1,4 @@
-pokemon_move_method_id,language_id,name,description
+pokemon_move_method_id,local_language_id,name,description
 1,9,Level up,Learned when a Pokémon reaches a certain level.
 2,9,Egg,"Appears on a newly-hatched Pokémon, if the father had the same move."
 3,9,Tutor,Can be taught at any time by an NPC.

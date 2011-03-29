@@ -1,4 +1,4 @@
-stat_id,language_id,name
+stat_id,local_language_id,name
 1,9,HP
 2,9,Attack
 3,9,Defense

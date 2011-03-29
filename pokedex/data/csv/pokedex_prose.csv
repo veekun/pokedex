@@ -1,4 +1,4 @@
-pokedex_id,language_id,name,description
+pokedex_id,local_language_id,name,description
 1,9,National,Entire National dex
 2,9,Kanto,Red/Blue/Yellow Kanto dex
 3,9,Original Johto,"Gold/Silver/Crystal Johto dex—called the ""New"" Pokédex in-game"

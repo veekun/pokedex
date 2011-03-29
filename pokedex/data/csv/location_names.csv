@@ -1,4 +1,4 @@
-location_id,language_id,name
+location_id,local_language_id,name
 1,9,Canalave City
 2,9,Eterna City
 3,9,Pastoria City

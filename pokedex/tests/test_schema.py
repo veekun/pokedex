@@ -1,9 +1,13 @@
 # encoding: utf8
 from nose.tools import *
 import unittest
-from sqlalchemy.orm import class_mapper
+from sqlalchemy import Column, Integer, String, create_engine
+from sqlalchemy.orm import class_mapper, joinedload, sessionmaker
+from sqlalchemy.orm.session import Session
+from sqlalchemy.ext.declarative import declarative_base
 
 from pokedex.db import tables, markdown
+from pokedex.db.multilang import create_translation_table
 
 def test_variable_names():
     """We want pokedex.db.tables to export tables using the class name"""
@@ -21,6 +25,126 @@ def test_variable_names():
             assert varname == classname, '%s refers to %s' % (varname, classname)
     for table in tables.table_classes:
         assert getattr(tables, table.__name__) is table
+
+def test_i18n_table_creation():
+    """Creates and manipulates a magical i18n table, completely independent of
+    the existing schema and data.  Makes sure that the expected behavior of the
+    various proxies and columns works.
+    """
+    Base = declarative_base()
+    engine = create_engine("sqlite:///:memory:", echo=True)
+
+    Base.metadata.bind = engine
+
+    # Need this for the foreign keys to work!
+    class Language(Base):
+        __tablename__ = 'languages'
+        id = Column(Integer, primary_key=True, nullable=False)
+        identifier = Column(String(2), nullable=False, unique=True)
+
+    class Foo(Base):
+        __tablename__ = 'foos'
+        __singlename__ = 'foo'
+        id = Column(Integer, primary_key=True, nullable=False)
+
+    FooText = create_translation_table('foo_text', Foo,
+        language_class=Language,
+        name = Column(String(100)),
+    )
+
+    class FauxSession(Session):
+        def execute(self, clause, params=None, *args, **kwargs):
+            if not params:
+                params = {}
+            params.setdefault('_default_language', 'en')
+            return super(FauxSession, self).execute(clause, params, *args, **kwargs)
+
+    # OK, create all the tables and gimme a session
+    Base.metadata.create_all()
+    sess = sessionmaker(engine, class_=FauxSession)()
+
+    # Create some languages and foos to bind together
+    lang_en = Language(identifier='en')
+    sess.add(lang_en)
+    lang_jp = Language(identifier='jp')
+    sess.add(lang_jp)
+    lang_ru = Language(identifier='ru')
+    sess.add(lang_ru)
+
+    foo = Foo()
+    sess.add(foo)
+
+    # Commit so the above get primary keys filled in
+    sess.commit()
+
+    # Give our foo some names, as directly as possible
+    foo_text = FooText()
+    foo_text.object_id = foo.id
+    foo_text.language_id = lang_en.id
+    foo_text.name = 'english'
+    sess.add(foo_text)
+
+    foo_text = FooText()
+    foo_text.object_id = foo.id
+    foo_text.language_id = lang_jp.id
+    foo_text.name = 'nihongo'
+    sess.add(foo_text)
+
+    # Commit!  This will expire all of the above.
+    sess.commit()
+
+    ### Test 1: re-fetch foo and check its attributes
+    foo = sess.query(Foo).params(_default_language='en').one()
+
+    # Dictionary of language identifiers => names
+    assert foo.name_map[lang_en] == 'english'
+    assert foo.name_map[lang_jp] == 'nihongo'
+
+    # Default language, currently English
+    assert foo.name == 'english'
+
+    sess.expire_all()
+
+    ### Test 2: querying by default language name should work
+    foo = sess.query(Foo).filter_by(name='english').one()
+
+    assert foo.name == 'english'
+
+    sess.expire_all()
+
+    ### Test 3: joinedload on the default name should appear to work
+    # THIS SHOULD WORK SOMEDAY
+    #    .options(joinedload(Foo.name)) \
+    foo = sess.query(Foo) \
+        .options(joinedload(Foo.foo_text_local)) \
+        .one()
+
+    assert foo.name == 'english'
+
+    sess.expire_all()
+
+    ### Test 4: joinedload on all the names should appear to work
+    # THIS SHOULD ALSO WORK SOMEDAY
+    #    .options(joinedload(Foo.name_map)) \
+    foo = sess.query(Foo) \
+        .options(joinedload(Foo.foo_text)) \
+        .one()
+
+    assert foo.name_map[lang_en] == 'english'
+    assert foo.name_map[lang_jp] == 'nihongo'
+
+    sess.expire_all()
+
+    ### Test 5: Mutating the dict collection should work
+    foo = sess.query(Foo).one()
+
+    foo.name_map[lang_en] = 'different english'
+    foo.name_map[lang_ru] = 'new russian'
+
+    sess.commit()
+
+    assert foo.name_map[lang_en] == 'different english'
+    assert foo.name_map[lang_ru] == 'new russian'
 
 def test_texts():
     """Check DB schema for integrity of text columns & translations.

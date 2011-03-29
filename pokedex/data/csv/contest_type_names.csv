@@ -1,4 +1,4 @@
-contest_type_id,language_id,name,flavor,color
+contest_type_id,local_language_id,name,flavor,color
 1,9,Cool,Spicy,Red
 2,9,Beauty,Dry,Blue
 3,9,Cute,Sweet,Pink

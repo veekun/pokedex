@@ -1,4 +1,4 @@
-move_target_id,language_id,name,description
+move_target_id,local_language_id,name,description
 1,9,Specific move,One specific move.  How this move is chosen depends upon on the move being used.
 2,9,Selected Pokémon,"One other Pokémon on the field, selected by the trainer.  Stolen moves reuse the same target."
 3,9,Ally,The user's ally (if any).
