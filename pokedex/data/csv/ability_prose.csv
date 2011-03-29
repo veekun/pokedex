@@ -114,9 +114,9 @@ Overworld: If the lead Pokémon has this ability, wild Pokémon have a 50% chanc
 This ability does not prevent any stat losses other than [stat modifiers]{mechanic}, such as the [Speed]{mechanic} cut from [paralysis]{mechanic}; nor self-inflicted stat drops, such as the [Attack]{mechanic} and [Defense]{mechanic} drops from [Superpower]{move}; nor opponent-triggered stat boosts, such as the Attack boost from [Swagger]{move}.  This Pokémon can still be passed negative stat modifiers through [Guard Swap]{move}, [Heart Swap]{move}, or [Power Swap]{move}.
 
 This ability functions identically to [White Smoke]{ability} in battle.",Prevents stats from being [lowered]{mechanic:stat modifier} by other Pokémon.
-30,9,"This Pokémon is cured of any [major status ailment]{mechanic} upon leaving battle.
+30,9,"This Pokémon is cured of any [major status ailment]{mechanic} when it is switched out for another Pokémon.
 
-If this ability is acquired during battle, the Pokémon is cured upon leaving battle before losing the temporary ability.",Cures any [major status ailment]{mechanic} upon leaving battle.
+If this ability is acquired during battle, the Pokémon is cured upon leaving battle before losing the temporary ability.",Cures any [major status ailment]{mechanic} upon switching out.
 31,9,"All other Pokémon's single-target [Electric]{type}-type moves are redirected to this Pokémon if it is an eligible target.  Other Pokémon's Electric moves raise this Pokémon's [Special Attack]{mechanic} one [stage]{mechanic:stat modifier}, negating any other effect on it, and cannot miss it.
 
 [Follow Me]{move} takes precedence over this ability.  If the Pokémon is a [Ground]{type}-type and thus immune to Electric moves, its immunity prevents the Special Attack boost.","Redirects single-target [Electric]{type} moves to this Pokémon where possible.  Absorbs Electric moves, raising [Special Attack]{mechanic} one [stage]{mechanic:stat modifier}."
@@ -362,13 +362,13 @@ The [Speed]{mechanic} cut from the [Iron Ball]{item} and the effort items (the [
 Other moves that use the held item, such as [Natural Gift]{move} and [Switcheroo]{move}, work as usual.",Prevents the Pokémon from using its held item in battle.
 104,9,"This Pokémon's moves completely ignore abilities that could hinder or prevent their effect on the target.
 
-This Pokémon's moves ignore abilities that would negate them, such as [Water Absorb]{ability}; abilities that would prevent any of their effects, such as [Clear Body]{ability}, [Shell Armor]{ability}, or [Sticky Hold]{ability}; and abilities that grant any protective benefit, such as [Simple]{ability}, [Snow Cloak]{ability}, or [Thick Fat]{ability}.  If an ability could either hinder or help this Pokémon's moves, e.g. [Dry Skin]{ability} or [Unaware]{ability}, the ability is ignored either way.
+For example, this Pokémon's moves ignore abilities that would fully negate them, such as [Water Absorb]{ability}; abilities that would prevent any of their effects, such as [Clear Body]{ability}, [Shell Armor]{ability}, or [Sticky Hold]{ability}; and abilities that grant any general protective benefit, such as [Simple]{ability}, [Snow Cloak]{ability}, or [Thick Fat]{ability}.  If an ability could either hinder or help this Pokémon's moves, e.g. [Dry Skin]{ability} or [Unaware]{ability}, the ability is ignored either way.
 
-An ability ignored by this ability is only nullified for the duration of the move.  For example, this Pokémon's moves can [paralyze]{mechanic:paralysis} a Pokémon with [Limber]{ability}, but Limber will activate and heal the paralysis immediately thereafter, and this Pokémon's [Spikes]{move} are not affected by this ability after they have been placed.
+Abilities that do not fit this description, even if they could hinder moves in some other way, are not affected.  For example, [Cursed Body]{ability} only affects potential future uses of the move, and [Liquid Ooze]{ability} only hinders the move's effect on the user, not the target.  This ablity cannot ignore type or form changes granted by abilities, for example [Color Change]{ability} or [Forecast]{ability}; nor effects that were caused by abilities but are no longer tied to an ability, such as the rain from [Drizzle]{ability}.  This ability cannot ignore [Multitype]{ability} at all.
 
-This ablity does not in any way ignore type changes granted by abilities such as [Color Change]{ability}; nor effects that were caused by abilities but are no longer tied to an ability, such as the rain from [Drizzle]{ability}; nor abilities that hinder moves' effects on the user but not the target, such as [Liquid Ooze]{ability}.  This ability cannot ignore [Multitype]{ability} at all.
+An ability ignored by this ability is only nullified while the move is being used.  For example, this Pokémon's moves can [paralyze]{mechanic:paralysis} a Pokémon with [Limber]{ability}, but Limber will activate and heal the paralysis immediately thereafter, and this Pokémon's [Spikes]{move} are not affected by this ability after they have been placed.
 
-When this Pokémon enters battle, all participating trainers are notified that it has this ability.",Makes moves ignore targets' abilities if they could hinder or prevent them.
+When this Pokémon enters battle, all participating trainers are notified that it has this ability.",Bypasses targets' abilities if they could hinder or prevent a move.
 105,9,This Pokémon's moves have [critical hit]{mechanic} rates one stage higher than normal.,Raises moves' [critical hit]{mechanic} rates one stage.
 106,9,"When this Pokémon is knocked out by a move that makes contact, the move's user takes 1/4 its maximum [HP]{mechanic} in damage.",Damages the attacker for 1/4 its max [HP]{mechanic} when knocked out by a contact move.
 107,9,"When this Pokémon enters battle, if one of its opponents has a move that is [super effective]{mechanic} against it, [Selfdestruct]{move}, [Explosion]{move}, or a one-hit knockout move, all participating trainers are notified.
@@ -458,7 +458,7 @@ This ability triggers on every hit of a multiple-hit move.",Raises [Speed]{mecha
 141,9,"After each turn, one of this Pokémon's stats at random rises two [stages]{mechanic:stat modifier}, and another falls one stage.",Raises a random stat two [stages]{mechanic:stat modifier} and lowers another one stage after each turn.
 142,9,This Pokémon does not take damage from [weather]{mechanic}.,Protects against damage from [weather]{mechanic}.
 143,9,This Pokémon's contact moves have a 20% chance of [poisoning]{mechanic:poison} the target with each hit.,Has a 20% chance of [poisoning]{mechanic:poison} Pokémon upon contact when attacking.
-144,9,This Pokémon regains 1/3 of its maximum [HP]{mechanic} upon leaving battle.,Heals for 1/3 max [HP]{mechanic} upon leaving battle.
+144,9,This Pokémon regains 1/3 of its maximum [HP]{mechanic} when it is switched out for another Pokémon.,Heals for 1/3 max [HP]{mechanic} upon switching out.
 145,9,This Pokémon's [Defense]{mechanic} cannot be [lowered]{mechanic:stat modifiers}.,Protects against [Defense]{mechanic} drops.
 146,9,This Pokémon's [Speed]{mechanic} is doubled during a [sandstorm]{mechanic}.,Doubles [Speed]{mechanic} during a [sandstorm]{mechanic}.
 147,9,"Non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}, such as [Thunder Wave]{move}, have a 50% chance of failing against this Pokémon.",Has a 50% chance of protecting against non-damaging moves that inflict [major status ailments]{mechanic:major status ailment}.
@@ -469,7 +469,7 @@ Other damage, e.g. from [weather]{mechanic} or [Spikes]{move}, does not break th
 
 If the party order becomes temporarily shuffled around as Pokémon are switched out in battle, this ability chooses the last Pokémon according to that shuffled order.",Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move.
 150,9,This Pokémon uses [Transform]{move} upon entering battle.,[Transforms]{move:Transform} upon entering battle.
-151,9,"This Pokémon's moves ignore [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}.","Ignores [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}."
+151,9,"This Pokémon's moves ignore [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}.","Bypasses [Light Screen]{move}, [Reflect]{move}, and [Safeguard]{move}."
 152,9,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to Mummy.",Changes attacking Pokémon's abilities to Mummy on contact.
 153,9,"This Pokémon's [Attack]{mechanic} rises one stage upon knocking out another Pokémon, even a friendly Pokémon.
 
@@ -478,9 +478,11 @@ This ability does not take effect when the Pokémon indirectly causes another Po
 
 The move is not negated in any way.",Raises [Attack]{mechanic} one stage upon being hit by a [Dark]{type} move.
 155,9,"This Pokémon's [Speed]{mechanic} rises one stage with each hit from a damaging [Dark]{type}-, [Ghost]{type}-, or [Bug]{type}-type move.","Raises [Speed]{mechanic} one [stage]{mechanic:stat modifier} upon being hit by a [Dark]{type}, [Ghost]{type}, or [Bug]{type} move."
-156,9,"When this Pokémon is targeted by a non-damaging move flagged as being reflectable, as most non-damaging, non-self-targetted moves are, the move is redirected to its user.
+156,9,"When this Pokémon is targeted by a move flagged as being reflectable, the move is redirected to its user.
 
-This ability cannot reflect moves that have already been reflected by another Pokémon with this ability.",Reflects most non-damaging moves back at their user.
+All reflectable moves are non-damaging, and most non-damaging moves that target other Pokémon are reflectable.
+
+A move reflected by this ability or [Magic Coat]{move} cannot be reflected back.",Reflects most non-damaging moves back at their user.
 157,9,"Whenever a [Grass]{type}-type move hits this Pokémon, its [Attack]{mechanic} rises one [stage]{mechanic:stat modifier}, negating any other effect on it.","Absorbs [Grass]{type} moves, raising [Attack]{mechanic} one [stage]{mechanic:stat modifier}."
 158,9,This Pokémon's non-damaging moves have their priority increased by one stage.,Raises non-damaging moves' priority by one stage.
 159,9,"During a [sandstorm]{mechanic}, this Pokémon's [Rock]{type}-, [Ground]{type}-, and [Steel]{type}-type moves have 1.3× their base power.  This Pokémon does not take sandstorm damage, regardless of type.","Strengthens [Rock]{type}, [Ground]{type}, and [Steel]{type} moves to 1.3× their power during a [sandstorm]{mechanic}."
@@ -491,5 +493,5 @@ This ability functions identically to [Rough Skin]{ability}.",Damages attacking 
 
 This ability has no effect if this Pokémon is not a [Darmanitan]{pokemon}.",Changes [Darmanitan]{pokemon} to Zen Mode below 50% max [HP]{mechanic}.
 162,9,"All friendly Pokémon's moves, including this Pokémon's own moves, have 1.1× their usual accuracy while this Pokémon is in battle.",Increases moves' accuracy to 1.1× for friendly Pokémon.
-163,9,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Makes moves ignore targets' abilities if they could hinder or prevent them.
-164,9,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Makes moves ignore targets' abilities if they could hinder or prevent them.
+163,9,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Bypasses targets' abilities if they could hinder or prevent moves.
+164,9,"When this Pokémon acts, if the target has an ability that would hinder or prevent this Pokémon's selected move, that ability is ignored.",Bypasses targets' abilities if they could hinder or prevent moves.
