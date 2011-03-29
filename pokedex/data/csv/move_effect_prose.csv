@@ -28,7 +28,7 @@ This move cannot be selected by [Assist]{move}, [Metronome]{move}, or [Sleep Tal
 26,9,"Resets all Pokémon's stats, accuracy, and evasion.","Removes [stat]{mechanic}, [accuracy]{mechanic}, and [evasion]{mechanic} modifiers from every Pokémon on the [field]{mechanic}.
 
 This does not count as a stat reduction for the purposes of [Clear Body]{ability} or [White Smoke]{ability}."
-27,9,"User waits for 2-3 turns, then hits back for twice the damage it took.","User waits for two turns.  On the third turn, the user inflicts twice the damage it accumulated on the last Pokémon to hit it.  Damage inflicted is [typeless]{mechanic}.
+27,9,"User waits for two turns, then hits back for twice the damage it took.","User waits for two turns.  On the second turn, the user inflicts twice the damage it accumulated on the last Pokémon to hit it.  Damage inflicted is [typeless]{mechanic}.
 
 This move cannot be selected by [Sleep Talk]{move}."
 28,9,"Hits every turn for 2-3 turns, then confuses the user.","Inflicts [regular damage]{mechanic}.  User is forced to attack with this move for 2–3 turns,selected at random.  After the last hit, the user becomes [confused]{mechanic}.
@@ -719,7 +719,7 @@ Specifically, [Flying]{type} Pokémon and those with [Levitate]{ability} or that
 221,9,User faints.  Its replacement has its HP fully restored and any major status effect removed.,"User faints.  Its replacement's [HP]{mechanic} is fully restored, and any [major status effect]{mechanic} is removed.  If the replacement Pokémon is immediately fainted by a switch-in effect, the next replacement is healed by this move instead."
 222,9,Has double power against Pokémon that have less than half their max HP remaining.,"Inflicts [regular damage]{mechanic}.  If the target has less than half its max [HP]{mechanic} remaining, this move has double power."
 223,9,Power and type depend on the held berry.,"Inflicts [regular damage]{mechanic}.  Power and type are determined by the user's held berry.  The berry is consumed.  If the user is not holding a berry, this move will fail."
-224,9,Only works if the target uses Protect or Detect on this turn.,"Inflicts [regular damage]{mechanic}.  Removes the effect of [Detect]{move} or [Protect]{move} from the target until the end of this turn.  If the target is not currently protected by either of these moves, this move will fail.
+224,9,Hits through Protect and Detect.,"Inflicts [regular damage]{mechanic}.  Removes the effects of [Detect]{move} or [Protect]{move} from the target before hitting.
 
 This move cannot be copied by [Mirror Move]{move}, nor selected by [Assist]{move} or [Metronome]{move}."
 225,9,"If target has a berry, inflicts double damage and uses the berry.","Inflicts [regular damage]{mechanic}.  If the target is holding a berry, this move has double power, and the user takes the berry and uses it immediately.
@@ -873,9 +873,9 @@ This move cannot be copied by [Mimic]{move}, [Mirror Move]{move}, or [Sketch]{mo
 270,9,User receives 1/2 the damage inflicted in recoil.,Inflicts [regular damage]{mechanic}.  User takes 1/2 the damage it inflicts in recoil.
 271,9,"User faints, and its replacement is fully healed.","User [faint]{mechanic}s.  Its replacement's [HP]{mechanic} and [PP]{mechanic} are fully restored, and any [major status effect]{mechanic} is removed."
 272,9,Has a $effect_chance% chance to lower the target's Special Defense by two stages.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to lower the target's [Special Defense]{mechanic} by two [stages]{mechanic:stage}.
-273,9,"User vanishes, dodging all attacks, and hits next turn.  Works against Protect and Detect.","Inflicts [regular damage]{mechanic}.  User vanishes for one turn, becoming immune to attack, and hits on the second turn.
+273,9,"User vanishes, dodging all attacks, and hits next turn.  Hits through Protect and Detect.","Inflicts [regular damage]{mechanic}.  User vanishes for one turn, becoming immune to attack, and hits on the second turn.
 
-This move breaks through [Detect]{move} and [Protect]{move}.
+This move ignores the effects of [Detect]{move} and [Protect]{move}.
 
 This move cannot be selected by [Sleep Talk]{move}."
 274,9,Has a $effect_chance% chance to [burn]{mechanic} the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic}.

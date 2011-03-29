@@ -23,3 +23,5 @@ move_effect_changelog_id,local_language_id,effect
 22,9,"[Swift]{move} can hit the user while underground, and no other moves can.  Due to a bug, if the user fails to carry out the move's second turn, e.g. due to [paralysis]{mechanic}, it remains underground until it switches out or uses Dig again successfully.  It can act as if it were aboveground in the meantime, but moves still miss it."
 23,9,Does not interact with [Hail]{move}.
 24,9,Ignores [Wonder Guard]{ability}.
+25,9,Lasts either two or three turns.
+26,9,"If the target is not under the effect of [Detect]{move} or [Protect]{move}, this move will fail."
