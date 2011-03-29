@@ -122,6 +122,8 @@ def command_load(*args):
     parser = get_parser(verbose=True)
     parser.add_option('-d', '--directory', dest='directory', default=None)
     parser.add_option('-D', '--drop-tables', dest='drop_tables', default=False, action='store_true')
+    parser.add_option('-S', '--safe', dest='safe', default=False, action='store_true',
+        help="Do not use backend-specific optimalizations.")
     options, tables = parser.parse_args(list(args))
 
     if not options.engine_uri:
@@ -138,7 +140,7 @@ def command_load(*args):
                                   drop_tables=options.drop_tables,
                                   tables=tables,
                                   verbose=options.verbose,
-                                  safe=False)
+                                  safe=options.safe)
 
 def command_reindex(*args):
     parser = get_parser(verbose=True)
