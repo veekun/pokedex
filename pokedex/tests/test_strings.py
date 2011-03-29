@@ -78,15 +78,6 @@ class TestStrings(object):
         item.name_map[language] = u"xyzzy"
         assert item.name_map[language] == "xyzzy"
 
-    @raises(AssertionError)
-    def test_delstring(self):
-        item = self.connection.query(tables.Item).filter_by(
-                identifier=u"jade-orb").one()
-        language = self.connection.query(tables.Language).filter_by(
-                identifier=u"en").one()
-        del item.name_map[language]
-        self.connection.commit()
-
     def test_markdown(self):
         move = self.connection.query(tables.Move).filter_by(
                 identifier=u"thunderbolt").one()
