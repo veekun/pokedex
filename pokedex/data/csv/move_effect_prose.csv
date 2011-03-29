@@ -733,7 +733,7 @@ If this move is [super effective]{mechanic} and the target is holding a berry th
 If the target has a [Substitute]{move}, this move will have no effect, even if the user is the target.
 
 This move cannot be copied by [Mirror Move]{move}."
-228,9,Strikes back at the last Pokémon to hit the user this turn with double the damage.,"Targets the last opposing Pokémon to hit the user with a damaging move this turn.  Inflicts twice the damage that move did to the user.  If there is no eligible target, this move will [fail]{mechanic}.  Type immunity applies, but other type effects are ignored."
+228,9,Strikes back at the last Pokémon to hit the user this turn with 1.5× the damage.,"Targets the last opposing Pokémon to hit the user with a damaging move this turn.  Inflicts 1.5× the damage that move did to the user.  If there is no eligible target, this move will [fail]{mechanic}.  Type immunity applies, but other type effects are ignored."
 229,9,User must switch out after attacking.,"Inflicts [regular damage]{mechanic}, then the user immediately [switches out]{mechanic}, and the trainer selects a replacement Pokémon from the party.  If the target [faint]{mechanic}s from this attack, the user's trainer selects the new Pokémon to send out first.  If the user is the last Pokémon in its party that can battle, it will not [switch out]{mechanic}.
 
 The user may be hit by [Pursuit]{move} when it [switches out]{mechanic}, if it has been targeted and [Pursuit]{move} has not yet been used.
