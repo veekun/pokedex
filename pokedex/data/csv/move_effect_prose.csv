@@ -608,7 +608,7 @@ If the target has [Multitype]{ability} or [Sticky Hold]{ability}, it will take d
 If either Pokémon has [Multitype]{ability} or [Wonder Guard]{ability}, this move will fail."
 193,9,Prevents the target from using any moves that the user also knows.,"Prevents any Pokémon on the opposing side of the [field]{mechanic} from using any move the user knows until the user leaves the [field]{mechanic}.  This effect is live; if the user obtains new moves while on the [field]{mechanic}, these moves become restricted.  If no opposing Pokémon knows any of the user's moves when this move is used, this move will fail."
 194,9,"Cleanses the user of a burn, paralysis, or poison.","Removes a [burn]{mechanic}, [paralysis]{mechanic}, or [poison]{mechanic} from the user."
-195,9,"When the user faints, the PP of the move that fainted it will be reduced to 0.","If the user [faint]{mechanic}s before it next moves, the move that fainted it will have its [PP]{mechanic} dropped to 0.  End-of-turn damage does not trigger this effect."
+195,9,"If the user faints this turn, the PP of the move that fainted it drops to 0.","If the user [faint]{mechanic}s before it next acts, the move that fainted it will have its [PP]{mechanic} dropped to 0.  End-of-turn damage does not trigger this effect."
 196,9,"Steals the target's move, if it's self-targeted.","The next time a Pokémon uses a beneficial move on itself or itself and its ally this turn, the user of this move will steal the move and use it itself.  Moves which may be stolen by this move are identified by the ""snatchable"" flag.
 
 If two Pokémon use this move on the same turn, the faster Pokémon will steal the first beneficial move, and the slower Pokémon will then steal it again—thus, only the slowest Pokémon using this move ultimately gains a stolen move's effect.
@@ -987,7 +987,7 @@ If the target is under the effect of [Ingrain]{move} or [Suction Cups]{ability},
 329,9,Raises the user's Defense by three stages.,Raises the user's [Defense]{mechanic} by three [stages]{mechanic:stage}.
 330,9,Has a $effect_chance% chance to put the target to sleep.,"Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to put the target to [sleep]{mechanic}.
 If the user is a [Meloetta]{pokemon}, it will toggle between Aria and Pirouette Forme."
-331,9,Lowers the target's Speed by one stage.,Inflicts [regular damage]{mechanic}.  Lowers the target's [Speed]{mechanic} by one [stage]{mechanic}.
+331,9,Lowers the target's Speed by two stages.,Inflicts [regular damage]{mechanic}.  Lowers the target's [Speed]{mechanic} by two [stages]{mechanic:stage}.
 332,9,Requires a turn to charge before attacking.  Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralysis} the target.  User charges for one turn before attacking.
 333,9,Requires a turn to charge before attacking.  Has a $effect_chance% chance to [burn]{mechanic} the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [burn]{mechanic} the target.  User charges for one turn before attacking.
 335,9,"Lowers the user's Defense, Special Defense, and Speed by one stage each.","Inflicts [regular damage]{mechanic}.  Lowers the user's [Defense]{mechanic}, [Special Defense]{mechanic}, and [Speed]{mechanic} by one [stage]{mechanic} each."
