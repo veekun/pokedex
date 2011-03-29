@@ -1,4 +1,4 @@
-pokemon_shape_id,language_id,name,awesome_name
+pokemon_shape_id,local_language_id,name,awesome_name
 1,9,Ball,Pomaceous
 2,9,Squiggle,Caudal
 3,9,Fish,Ichthyic

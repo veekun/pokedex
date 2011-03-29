@@ -1,4 +1,4 @@
-move_flag_type_id,language_id,name,description
+move_flag_type_id,local_language_id,name,description
 1,9,Makes contact,"User touches the target.  This triggers some abilities (e.g., [Static]{ability}) and items (e.g., [Sticky Barb]{item})."
 2,9,Has a charging turn,This move has a charging turn that can be skipped with a [Power Herb]{item}.
 3,9,Must recharge,"The turn after this move is used, the Pokémon's action is skipped so it can recharge."

@@ -1,4 +1,4 @@
-pokemon_id,language_id,name,species
+pokemon_id,local_language_id,name,species
 1,1,フシギダネ,
 1,2,Fushigidane,
 1,3,이상해씨,

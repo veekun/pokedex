@@ -1,4 +1,4 @@
-item_id,language_id,name
+item_id,local_language_id,name
 1,1,マスターボール
 1,5,Master Ball
 1,6,Meisterball

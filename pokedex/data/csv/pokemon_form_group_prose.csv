@@ -1,4 +1,4 @@
-pokemon_form_group_id,language_id,term,description
+pokemon_form_group_id,local_language_id,term,description
 172,9,,"Spiky-eared Pichu can only be received by taking the shiny Pichu from an official promotion to [Celebi]{pokemon}'s shrine in [Ilex Forest]{location}.  Spiky-eared Pichu is always female, cannot evolve, and cannot be taken into the Wi-Fi Club or the Union Room, but is otherwise a normal Pichu."
 201,9,,Forms only affect appearance.  A form is determined at random before a wild encounter and cannot be changed.
 351,9,Form,"Form changes along with type to match the [weather]{mechanic} in battle, due to [Forecast]{ability}.  Castform is always in its normal form outside of battle, regardless of weather."

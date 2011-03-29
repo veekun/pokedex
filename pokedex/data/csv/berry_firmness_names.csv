@@ -1,4 +1,4 @@
-berry_firmness_id,language_id,name
+berry_firmness_id,local_language_id,name
 1,9,Very Soft
 2,9,Soft
 3,9,Hard

@@ -1,4 +1,4 @@
-growth_rate_id,language_id,name
+growth_rate_id,local_language_id,name
 1,9,slow
 2,9,medium
 3,9,fast

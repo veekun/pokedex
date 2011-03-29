@@ -1,4 +1,4 @@
-type_id,language_id,name
+type_id,local_language_id,name
 1,1,ノーマル
 1,5,Normal
 1,6,Normal

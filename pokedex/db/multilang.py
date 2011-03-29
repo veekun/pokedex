@@ -17,7 +17,6 @@ def create_translation_table(_table_name, foreign_class, relation_name,
 
     `foreign_class` must have a `__singlename__`, currently only used to create
     the name of the foreign key column.
-TODO remove this requirement
 
     Also supports the notion of a default language, which is attached to the
     session.  This is English by default, for historical and practical reasons.
@@ -69,21 +68,16 @@ TODO remove this requirement
     # want to create tables entirely separate from the pokedex metadata
 
     foreign_key_name = foreign_class.__singlename__ + '_id'
-    # A foreign key "language_id" will clash with the language_id we naturally
-    # put in every table.  Rename it something else
-    if foreign_key_name == 'language_id':
-        # TODO change language_id below instead and rename this
-        foreign_key_name = 'lang_id'
 
     Translations = type(_table_name, (object,), {
-        '_language_identifier': association_proxy('language', 'identifier'),
+        '_language_identifier': association_proxy('local_language', 'identifier'),
     })
 
     # Create the table object
     table = Table(_table_name, foreign_class.__table__.metadata,
         Column(foreign_key_name, Integer, ForeignKey(foreign_class.id),
             primary_key=True, nullable=False),
-        Column('language_id', Integer, ForeignKey(language_class.id),
+        Column('local_language_id', Integer, ForeignKey(language_class.id),
             primary_key=True, nullable=False),
     )
     Translations.__table__ = table
@@ -99,14 +93,11 @@ TODO remove this requirement
 
     # Construct ye mapper
     mapper(Translations, table, properties={
-        # TODO change to foreign_id
-        'object_id': synonym(foreign_key_name),
-        # TODO change this as appropriate
-        'language': relationship(language_class,
-            primaryjoin=table.c.language_id == language_class.id,
+        'foreign_id': synonym(foreign_key_name),
+        'local_language': relationship(language_class,
+            primaryjoin=table.c.local_language_id == language_class.id,
             lazy='joined',
             innerjoin=True),
-        # TODO does this need to join to the original table?
     })
 
     # Add full-table relations to the original class
@@ -114,8 +105,8 @@ TODO remove this requirement
     setattr(foreign_class, relation_name + '_table', Translations)
     # Foo.bars
     setattr(foreign_class, relation_name, relationship(Translations,
-        primaryjoin=foreign_class.id == Translations.object_id,
-        collection_class=attribute_mapped_collection('language'),
+        primaryjoin=foreign_class.id == Translations.foreign_id,
+        collection_class=attribute_mapped_collection('local_language'),
         # TODO
         lazy='select',
     ))
@@ -129,8 +120,8 @@ TODO remove this requirement
     language_class_a = aliased(language_class)
     setattr(foreign_class, local_relation_name, relationship(Translations,
         primaryjoin=and_(
-            foreign_class.id == Translations.object_id,
-            Translations.language_id == select(
+            foreign_class.id == Translations.foreign_id,
+            Translations.local_language_id == select(
                 [language_class_a.id],
                 language_class_a.identifier ==
                     bindparam('_default_language', required=True),
@@ -152,7 +143,7 @@ TODO remove this requirement
         # these are passed as *args anyway
         def creator(language, value):
             row = Translations()
-            row.language = language
+            row.local_language = language
             setattr(row, name, value)
             return row
         setattr(foreign_class, name + '_map',

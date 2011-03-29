@@ -1,4 +1,4 @@
-encounter_condition_id,language_id,name
+encounter_condition_id,local_language_id,name
 1,9,Swarm
 2,9,Time of day
 3,9,PokeRadar

@@ -1,4 +1,4 @@
-move_effect_changelog_id,language_id,effect
+move_effect_changelog_id,local_language_id,effect
 1,9,"Halves the target's [Defense]{mechanic} for damage calculation, which is similar to doubling the attack's [power]{mechanic}."
 2,9,Hits Pokémon under the effects of [Dig]{move} and [Fly]{move}.
 3,9,Does nothing in trainer battles.

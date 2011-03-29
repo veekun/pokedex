@@ -264,7 +264,7 @@ class EggGroup(TableBase):
 
 create_translation_table('egg_group_prose', EggGroup, 'names',
     name = Column(Unicode(16), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=False)),
+        info=dict(description="The name", format='plaintext', official=True)),
 )
 
 class Encounter(TableBase):
@@ -1557,7 +1557,7 @@ class SuperContestEffect(TableBase):
 
 create_translation_table('super_contest_effect_prose', SuperContestEffect, 'prose',
     flavor_text = Column(Unicode(64), nullable=False,
-        info=dict(description=u"A description of the effect.", format='plaintext')),
+        info=dict(description=u"A description of the effect.", format='plaintext', official=True)),
 )
 
 
