@@ -660,7 +660,7 @@ Waterfall      | Puts target to [sleep]{mechanic}
 199,9,User receives 1/3 the damage inflicted in recoil.,Inflicts [regular damage]{mechanic}.  User takes 1/3 the damage it inflicts in recoil.
 200,9,Confuses the target.,[Confuse]{mechanic}s all targets.
 201,9,Has an increased chance for a critical hit and a $effect_chance% chance to [burn]{mechanic} the target.,Inflicts [regular damage]{mechanic}.  User's [critical hit]{mechanic} rate is one level higher when using this move. Has a $effect_chance% chance to [burn]{mechanic} the target.
-202,9,All damage from Electric moves is halved until the end of the battle.,"[Electric]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
+202,9,Halves all Electric-type damage.,"[Electric]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
 203,9,Has a $effect_chance% chance to badly poison the target.,Inflicts [regular damage]{mechanic}.  Has a $effect_chance% chance to [badly poison]{mechanic} the target.
 204,9,"If there be weather, this move has doubled power and the weather's type.","Inflicts [regular damage]{mechanic}.  If a weather move is active, this move has double power, and its type becomes the type of the weather move.  [Shadow Sky]{move} is typeless for the purposes of this move."
 205,9,Lowers the user's Special Attack by two stages after inflicting damage.,"Inflicts [regular damage]{mechanic}, then lowers the user's [Special Attack]{mechanic} by two [stages]{mechanic:stage}."
@@ -671,7 +671,7 @@ Waterfall      | Puts target to [sleep]{mechanic}
 This move can hit Pokémon under the effect of [Bounce]{move}, [Fly]{move}, or [Sky Drop]{move}."
 209,9,Raises the user's Attack and Defense by one stage.,Raises the user's [Attack]{mechanic} and [Defense]{mechanic} by one [stage]{mechanic} each.
 210,9,Has an increased chance for a critical hit and a $effect_chance% chance to poison the target.,Inflicts [regular damage]{mechanic}.  User's [critical hit]{mechanic} rate is one level higher when using this move. Has a $effect_chance% chance to [poison]{mechanic} the target.
-211,9,All damage from Fire moves is halved until the end of the battle.,"[Fire]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
+211,9,Halves all Fire-type damage.,"[Fire]{type} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic}, this effect ends."
 212,9,Raises the user's Special Attack and Special Defense by one stage.,Raises the user's [Special Attack]{mechanic} and [Special Defense]{mechanic} by one [stage]{mechanic} each.
 213,9,Raises the user's Attack and Speed by one stage.,Raises the user's [Attack]{mechanic} and [Speed]{mechanic} by one [stage]{mechanic} each.
 214,9,User's type changes to match the terrain.,"User's type changes according to the terrain.
