@@ -16,13 +16,8 @@ Columns have a info dictionary with these keys:
     for translation.
   - latex: A formula in LaTeX syntax.
 
-A localizable text column is visible as two properties:
-The plural-name property (e.g. Pokemon.names) is a language-to-name dictionary:
-  bulbasaur.names['en'] == "Bulbasaur" and bulbasaur.names['de'] == "Bisasam".
-  You can use Pokemon.names['en'] to filter a query.
-The singular-name property returns the name in the default language, English.
-  For example bulbasaur.name == "Bulbasaur"
-  Setting pokedex.db.tables.default_lang changes the default language.
+See `pokedex.db.multilang` for how localizable text columns work.  The session
+classes in that module can be used to change the default language.
 """
 # XXX: Check if "gametext" is set correctly everywhere
 
@@ -72,7 +67,7 @@ TableBase = declarative_base(metadata=metadata, cls=TableSuperclass)
 ### Need Language first, to create the partial() below
 
 class Language(TableBase):
-    u"""A language the Pokémon games have been transleted into
+    u"""A language the Pokémon games have been translated into
     """
     __tablename__ = 'languages'
     __singlename__ = 'language'
