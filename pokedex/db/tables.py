@@ -15,6 +15,8 @@ Columns have a info dictionary with these keys:
   - identifier: A fan-made identifier in the [-_a-z0-9]* format. Not intended
     for translation.
   - latex: A formula in LaTeX syntax.
+- ripped: True for text that has been ripped from the games, and can be ripped
+  again for new versions or languages
 
 See `pokedex.db.multilang` for how localizable text columns work.  The session
 classes in that module can be used to change the default language.
@@ -116,7 +118,7 @@ class Ability(TableBase):
 create_translation_table('ability_names', Ability, 'names',
     relation_lazy='joined',
     name = Column(Unicode(24), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=True)),
+        info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 create_translation_table('ability_prose', Ability, 'prose',
     effect = Column(markdown.MarkdownColumn(5120), nullable=False,
@@ -495,7 +497,7 @@ class Item(TableBase):
 create_translation_table('item_names', Item, 'names',
     relation_lazy='joined',
     name = Column(Unicode(20), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=True)),
+        info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 create_translation_table('item_prose', Item, 'prose',
     short_effect = Column(Unicode(256), nullable=False,
@@ -505,7 +507,7 @@ create_translation_table('item_prose', Item, 'prose',
 )
 create_translation_table('item_flavor_summaries', Item, 'flavor_summaries',
     flavor_summary = Column(Unicode(512), nullable=True,
-        info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext'))
+        info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext', ripped=True)),
 )
 
 class ItemCategory(TableBase):
@@ -727,11 +729,11 @@ class Move(TableBase):
 create_translation_table('move_names', Move, 'names',
     relation_lazy='joined',
     name = Column(Unicode(24), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=True))
+        info=dict(description="The name", format='plaintext', official=True, ripped=True))
 )
 create_translation_table('move_flavor_summaries', Move, 'flavor_summaries',
     flavor_summary = Column(Unicode(512), nullable=True,
-        info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext'))
+        info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext', ripped=True)),
 )
 
 class MoveBattleStyle(TableBase):
@@ -1011,7 +1013,7 @@ class Nature(TableBase):
 create_translation_table('nature_names', Nature, 'names',
     relation_lazy='joined',
     name = Column(Unicode(8), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=True)),
+        info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 
 class NatureBattleStylePreference(TableBase):
@@ -1201,14 +1203,14 @@ class Pokemon(TableBase):
 create_translation_table('pokemon_names', Pokemon, 'names',
     relation_lazy='joined',
     name = Column(Unicode(20), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=True)),
+        info=dict(description="The name", format='plaintext', official=True, ripped=True)),
     species = Column(Unicode(16), nullable=False,
         info=dict(description=u'The short flavor text, such as "Seed" or "Lizard"; usually affixed with the word "Pokémon"',
         official=True, format='plaintext')),
 )
 create_translation_table('pokemon_flavor_summaries', Pokemon, 'flavor_summaries',
     flavor_summary = Column(Unicode(512), nullable=True,
-        info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext'))
+        info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext', ripped=True)),
 )
 
 class PokemonAbility(TableBase):
