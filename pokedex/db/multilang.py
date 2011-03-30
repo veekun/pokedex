@@ -9,7 +9,7 @@ from sqlalchemy.sql.expression import and_, bindparam, select
 from sqlalchemy.types import Integer
 
 def create_translation_table(_table_name, foreign_class, relation_name,
-    language_class, **kwargs):
+    language_class, relation_lazy='select', **kwargs):
     """Creates a table that represents some kind of data attached to the given
     foreign class, but translated across several languages.  Returns the new
     table's mapped class.  It won't be declarative, but it will have a
@@ -107,8 +107,6 @@ def create_translation_table(_table_name, foreign_class, relation_name,
     setattr(foreign_class, relation_name, relationship(Translations,
         primaryjoin=foreign_class.id == Translations.foreign_id,
         collection_class=attribute_mapped_collection('local_language'),
-        # TODO
-        lazy='select',
     ))
     # Foo.bars_local
     # This is a bit clever; it uses bindparam() to make the join clause
@@ -128,8 +126,8 @@ def create_translation_table(_table_name, foreign_class, relation_name,
             ),
         ),
         uselist=False,
-        # TODO MORESO HERE
-        lazy='select',
+        #innerjoin=True,
+        lazy=relation_lazy,
     ))
 
     # Add per-column proxies to the original class

@@ -111,6 +111,7 @@ class Ability(TableBase):
         info=dict(description="The ID of the generation this ability was introduced in", detail=True))
 
 create_translation_table('ability_names', Ability, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -188,6 +189,7 @@ class BerryFirmness(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('berry_firmness_names', BerryFirmness, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(10), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -242,6 +244,7 @@ class ContestType(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('contest_type_names', ContestType, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(6), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
     flavor = Column(Unicode(6), nullable=False,
@@ -263,6 +266,7 @@ class EggGroup(TableBase):
         info=dict(description=u"An identifier.", format='identifier'))
 
 create_translation_table('egg_group_prose', EggGroup, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -439,6 +443,7 @@ class Generation(TableBase):
         info=dict(description=u'An identifier', format='identifier'))
 
 create_translation_table('generation_names', Generation, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -485,6 +490,7 @@ class Item(TableBase):
         return any(flag.identifier == u'underground' for flag in self.flags)
 
 create_translation_table('item_names', Item, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(20), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -509,6 +515,7 @@ class ItemCategory(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('item_category_prose', ItemCategory, 'prose',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
 )
@@ -588,6 +595,7 @@ class ItemPocket(TableBase):
         info=dict(description="An identifier of this pocket", format='identifier'))
 
 create_translation_table('item_pocket_names', ItemPocket, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -605,6 +613,7 @@ class Location(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('location_names', Location, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(64), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -624,6 +633,7 @@ class LocationArea(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('location_area_prose', LocationArea, 'prose',
+    relation_lazy='joined',
     name = Column(Unicode(64), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
 )
@@ -680,6 +690,7 @@ class MoveBattleStyle(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('move_battle_style_prose', MoveBattleStyle, 'prose',
+    relation_lazy='joined',
     name = Column(Unicode(8), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
 )
@@ -723,6 +734,7 @@ class MoveDamageClass(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('move_damage_class_prose', MoveDamageClass, 'prose',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
     description = Column(Unicode(64), nullable=False,
@@ -787,6 +799,7 @@ class MoveFlagType(TableBase):
         info=dict(description="A short identifier for the flag", format='identifier'))
 
 create_translation_table('move_flag_type_prose', MoveFlagType, 'prose',
+    relation_lazy='joined',
     name = Column(Unicode(32), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
     description = Column(markdown.MarkdownColumn(128), nullable=False,
@@ -848,6 +861,7 @@ class MoveMetaAilment(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('move_meta_ailment_names', MoveMetaAilment, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -860,6 +874,7 @@ class MoveMetaCategory(TableBase):
         info=dict(description="A numeric ID"))
 
 create_translation_table('move_meta_category_prose', MoveMetaCategory, 'prose',
+    relation_lazy='joined',
     description = Column(Unicode(64), nullable=False,
         info=dict(description="A description of the category")),
 )
@@ -885,6 +900,7 @@ class MoveTarget(TableBase):
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('move_target_prose', MoveTarget, 'prose',
+    relation_lazy='joined',
     name = Column(Unicode(32), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
     description = Column(Unicode(128), nullable=False,
@@ -928,6 +944,7 @@ class Move(TableBase):
         info=dict(description="ID of the move's Super Contest effect"))
 
 create_translation_table('move_names', Move, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True))
 )
@@ -980,6 +997,7 @@ class Nature(TableBase):
         return self.increased_stat_id == self.decreased_stat_id
 
 create_translation_table('nature_names', Nature, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(8), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1039,6 +1057,7 @@ class Pokedex(TableBase):
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('pokedex_prose', Pokedex, 'prose',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
     description = Column(Unicode(512), nullable=False,
@@ -1168,6 +1187,7 @@ class Pokemon(TableBase):
             return None
 
 create_translation_table('pokemon_names', Pokemon, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(20), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
     species = Column(Unicode(16), nullable=False,
@@ -1202,6 +1222,7 @@ class PokemonColor(TableBase):
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('pokemon_color_names', PokemonColor, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(6), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1330,6 +1351,7 @@ class PokemonForm(TableBase):
             return self.form_base_pokemon.name
 
 create_translation_table('pokemon_form_names', PokemonForm, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1377,6 +1399,7 @@ class PokemonHabitat(TableBase):
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('pokemon_habitat_names', PokemonHabitat, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1438,6 +1461,7 @@ class PokemonMoveMethod(TableBase):
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('pokemon_move_method_prose', PokemonMoveMethod, 'prose',
+    relation_lazy='joined',
     name = Column(Unicode(64), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
     description = Column(Unicode(255), nullable=False,
@@ -1456,6 +1480,7 @@ class PokemonShape(TableBase):
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('pokemon_shape_prose', PokemonShape, 'prose',
+    relation_lazy='joined',
     name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
     awesome_name = Column(Unicode(16), nullable=False,
@@ -1497,6 +1522,7 @@ class Region(TableBase):
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('region_names', Region, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1514,6 +1540,7 @@ class Stat(TableBase):
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('stat_names', Stat, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(16), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1532,6 +1559,7 @@ class StatHint(TableBase):
         info=dict(description=u"Value of the highest stat modulo 5"))
 
 create_translation_table('stat_hint_names', StatHint, 'names',
+    relation_lazy='joined',
     message = Column(Unicode(24), nullable=False, index=True,
         info=dict(description=u"The text displayed", official=True, format='plaintext')),
 )
@@ -1587,6 +1615,7 @@ class Type(TableBase):
         info=dict(description=u"The ID of the damage class this type's moves had before Generation IV, null if not applicable (e.g. ???)."))
 
 create_translation_table('type_names', Type, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(12), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
@@ -1623,6 +1652,7 @@ class Version(TableBase):
         info=dict(description=u'And identifier', format='identifier'))
 
 create_translation_table('version_names', Version, 'names',
+    relation_lazy='joined',
     name = Column(Unicode(32), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
