@@ -216,17 +216,17 @@ In HeartGold and SoulSilver, trade one for a [Durin Berry]{item}, a [Hondew Berr
 79,9,,"Used outside of battle
 :   Trainer will skip encounters with wild Pokémon of a lower level than the lead party Pokémon.  This effect wears off after the trainer takes 100 steps."
 80,9,,"Used on a party Pokémon
-:   Evolves a [Gloom]{pokemon} into [Bellossom]{pokemon} or a [Sunkern]{pokemon} into [Sunflora]{pokemon}."
+:   Evolves a [Cottonee]{pokemon} into [Whimsicott]{pokemon}, a [Gloom]{pokemon} into [Bellossom]{pokemon}, a [Petilil]{pokemon} into [Lilligant]{pokemon}, or a [Sunkern]{pokemon} into [Sunflora]{pokemon}."
 81,9,,"Used on a party Pokémon
-:   Evolves a [Clefairy]{pokemon} into [Clefable]{pokemon}, [Jigglypuff]{pokemon} into [Wigglytuff]{pokemon}, [Nidorina]{pokemon} into [Nidoqueen]{pokemon}, [Nidorino]{pokemon} into [Nidoking]{pokemon}, or [Skitty]{pokemon} into [Delcatty]{pokemon}."
+:   Evolves a [Clefairy]{pokemon} into [Clefable]{pokemon}, a [Jigglypuff]{pokemon} into [Wigglytuff]{pokemon}, a [Munna]{pokemon} into [Musharna]{pokemon}, a [Nidorina]{pokemon} into [Nidoqueen]{pokemon}, a [Nidorino]{pokemon} into [Nidoking]{pokemon}, or a [Skitty]{pokemon} into [Delcatty]{pokemon}."
 82,9,,"Used on a party Pokémon
-:   Evolves an [Eevee]{pokemon} into [Flareon]{pokemon}, a [Growlithe]{pokemon} into [Arcanine]{pokemon}, or a [Vulpix]{pokemon} into [Ninetales]{pokemon}."
+:   Evolves an [Eevee]{pokemon} into [Flareon]{pokemon}, a [Growlithe]{pokemon} into [Arcanine]{pokemon}, a [Pansear]{pokemon} into [Simisear]{pokemon}, or a [Vulpix]{pokemon} into [Ninetales]{pokemon}."
 83,9,,"Used on a party Pokémon
-:   Evolves an [Eevee]{pokemon} into [Jolteon]{pokemon} or a [Pikachu]{pokemon} into [Raichu]{pokemon}."
+:   Evolves an [Eelektrik]{pokemon} into [Eelektross]{pokemon}, an [Eevee]{pokemon} into [Jolteon]{pokemon}, or a [Pikachu]{pokemon} into [Raichu]{pokemon}."
 84,9,,"Used on a party Pokémon
-:   Evolves an [Eevee]{pokemon} into [Vaporeon]{pokemon}, a [Lombre]{pokemon} into [Ludicolo]{pokemon}, a [Poliwhirl]{pokemon} into [Poliwrath]{pokemon}, a [Shellder]{pokemon} into [Cloyster]{pokemon}, or a [Staryu]{pokemon} into [Starmie]{pokemon}."
+:   Evolves an [Eevee]{pokemon} into [Vaporeon]{pokemon}, a [Lombre]{pokemon} into [Ludicolo]{pokemon}, a [Panpour]{pokemon} into [Simipour]{pokemon}, a [Poliwhirl]{pokemon} into [Poliwrath]{pokemon}, a [Shellder]{pokemon} into [Cloyster]{pokemon}, or a [Staryu]{pokemon} into [Starmie]{pokemon}."
 85,9,,"Used on a party Pokémon
-:   Evolves an [Exeggcute]{pokemon} into [Exeggutor]{pokemon}, a [Gloom]{pokemon} into [Vileplume]{pokemon}, a [Nuzleaf]{pokemon} into [Shiftry]{pokemon}, or a [Weepinbell]{pokemon} into [Victreebel]{pokemon}."
+:   Evolves an [Exeggcute]{pokemon} into [Exeggutor]{pokemon}, a [Gloom]{pokemon} into [Vileplume]{pokemon}, a [Nuzleaf]{pokemon} into [Shiftry]{pokemon}, a [Pansage]{pokemon} into [Simisage]{pokemon}, or a [Weepinbell]{pokemon} into [Victreebel]{pokemon}."
 86,9,Vendor trash.,Vendor trash.
 87,9,Vendor trash.,Vendor trash.
 88,9,Vendor trash.,Vendor trash.
@@ -256,9 +256,9 @@ Can be smeared on sweet-smelling trees to attract tree-dwelling Pokémon after s
 105,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:Mining Museum} or [Pewter Museum of Science]{location:Pewter City} to receive a [Cranidos]{pokemon}.
 106,9,Vendor trash.,Vendor trash.
 107,9,,"Used on a party Pokémon
-:   Evolves a [Roselia]{pokemon} into [Roserade]{pokemon} or a [Togetic]{pokemon} into [Togekiss]{pokemon}."
+:   Evolves a [Minccino]{pokemon} into [Cinccino]{pokemon}, a [Roselia]{pokemon} into [Roserade]{pokemon}, or a [Togetic]{pokemon} into [Togekiss]{pokemon}."
 108,9,,"Used on a party Pokémon
-:   Evolves a [Misdreavus]{pokemon} into [Mismagius]{pokemon} or a [Murkrow]{pokemon} into [Honchkrow]{pokemon}."
+:   Evolves a [Lampent]{pokemon} into [Chandelure]{pokemon}, a [Misdreavus]{pokemon} into [Mismagius]{pokemon}, or a [Murkrow]{pokemon} into [Honchkrow]{pokemon}."
 109,9,,"Used on a party Pokémon
 :   Evolves a male [Kirlia]{pokemon} into [Gallade]{pokemon} or a female [Snorunt]{pokemon} into [Froslass]{pokemon}."
 110,9,,"Held by [Happiny]{pokemon}
@@ -950,14 +950,14 @@ FRLG: A meteorite to be delivered to Lostelle's father."
 560,9,,Deliver to Celio for use in the Network Machine.
 561,9,,Provides access to the :location:`Team Magma Hideout` in the :location:`Jagged Pass`.
 562,9,,Provides access to :location:`Faraway Island` and :pokemon:`Mew`.
-563,9,"Grants genosekuto a blue, Water-type techno buster.","Held by [genosekuto]{pokemon}
-:   Holder's buster is blue, and its [techno buster]{move} is [Water]{type}-type."
-564,9,"Grants genosekuto a yellow, Electric-type techno buster.","Held by [genosekuto]{pokemon}
-:   Holder's buster is yellow, and its [techno buster]{move} is [Electric]{type}-type."
-565,9,"Grants genosekuto a red, Fire-type techno buster.","Held by [genosekuto]{pokemon}
-:   Holder's buster is red, and its [techno buster]{move} is [Fire]{type}-type."
-566,9,"Grants genosekuto a white, Ice-type techno buster.","Held by [genosekuto]{pokemon}
-:   Holder's buster is white, and its [techno buster]{move} becomes [Ice]{type}-type."
+563,9,"Grants Genesect a blue, Water-type Techno Blast.","Held by [Genesect]{pokemon}
+:   Holder's buster is blue, and its [Techno Blast]{move} is [Water]{type}-type."
+564,9,"Grants Genesect a yellow, Electric-type Techno Blast.","Held by [Genesect]{pokemon}
+:   Holder's buster is yellow, and its [Techno Blast]{move} is [Electric]{type}-type."
+565,9,"Grants Genesect a red, Fire-type Techno Blast.","Held by [Genesect]{pokemon}
+:   Holder's buster is red, and its [Techno Blast]{move} is [Fire]{type}-type."
+566,9,"Grants Genesect a white, Ice-type Techno Blast.","Held by [Genesect]{pokemon}
+:   Holder's buster is white, and its [Techno Blast]{move} becomes [Ice]{type}-type."
 567,9,,Not yet known. [[B/W item 134]]
 568,9,Lets a Trainer write a message and send it via Pokémon trade.,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
 
@@ -1078,8 +1078,8 @@ This effect does not activate if another effect prevents the holder from switchi
 611,9,Increases [Speed]{mechanic} [effort]{mechanic} by 1.,"Used on a party Pokémon
 :   Increases the target's [Speed]{mechanic} [effort]{mechanic} by 1."
 612,9,Vendor trash.,Vendor trash.
-613,9,Can be revived into a [purotooga]{pokemon}.,Give to a scientist in a museum to receive a [putotooga]{pokemon}.
-614,9,Can be revived into a [aaken]{pokemon}.,Give to a scientist in a museum to receive a [aaken]{pokemon}.
+613,9,Can be revived into a [Tirtouga]{pokemon}.,Give to a scientist in a museum to receive a [Tirtouga]{pokemon}.
+614,9,Can be revived into a [Archen]{pokemon}.,Give to a scientist in a museum to receive a [Archen]{pokemon}.
 615,9,,Some kind of event item for Victini.  [[B/W item 574]]
 616,9,,Not yet known. [[B/W item 575]]
 617,9,,Not yet known. [[B/W item 576]]
@@ -1099,70 +1099,70 @@ This effect does not activate if another effect prevents the holder from switchi
 630,9,Cult vendor trash.,Cult vendor trash.
 631,9,Cult vendor trash.,Cult vendor trash.
 632,9,,Not yet known. [[B/W item 591]]
-633,9,Raises [critical hit]{mechanic} rate by two [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+633,9,Raises [critical hit]{mechanic} rate by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [critical hit]{mechanic} rate by two [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-634,9,Raises [Speed]{mechanic} by two [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+634,9,Raises [Speed]{mechanic} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Speed]{mechanic} by two [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-635,9,Raises [Special Attack]{mechanic} by two [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+635,9,Raises [Special Attack]{mechanic} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Special Attack]{mechanic} by two [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-636,9,Raises [Special Defense]{mechanic} by two [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+636,9,Raises [Special Defense]{mechanic} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Special Defense]{mechanic} by two [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-637,9,Raises [Defense]{mechanic} by two [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+637,9,Raises [Defense]{mechanic} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Defense]{mechanic} by two [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-638,9,Raises [Attack]{mechanic} by two [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+638,9,Raises [Attack]{mechanic} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Attack]{mechanic} by two [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-639,9,Raises [accuracy]{mechanic} by two [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+639,9,Raises [accuracy]{mechanic} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [accuracy]{mechanic} by two [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-640,9,Raises [Speed]{mechanic} by three [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+640,9,Raises [Speed]{mechanic} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Speed]{mechanic} by three [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-641,9,Raises [Special Attack]{mechanic} by three [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+641,9,Raises [Special Attack]{mechanic} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Special Attack]{mechanic} by three [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-642,9,Raises [Special Defense]{mechanic} by three [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+642,9,Raises [Special Defense]{mechanic} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Special Defense]{mechanic} by three [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-643,9,Raises [Defense]{mechanic} by three [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+643,9,Raises [Defense]{mechanic} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Defense]{mechanic} by three [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-644,9,Raises [Attack]{mechanic} by three [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+644,9,Raises [Attack]{mechanic} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Attack]{mechanic} by three [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-645,9,Raises [accuracy]{mechanic} by three [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+645,9,Raises [accuracy]{mechanic} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [accuracy]{mechanic} by three [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-646,9,Raises [Speed]{mechanic} by six [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+646,9,Raises [Speed]{mechanic} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Speed]{mechanic} by six [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-647,9,Raises [Special Attack]{mechanic} by six [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+647,9,Raises [Special Attack]{mechanic} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Special Attack]{mechanic} by six [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-648,9,Raises [Special Defense]{mechanic} by six [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+648,9,Raises [Special Defense]{mechanic} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Special Defense]{mechanic} by six [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-649,9,Raises [Defense]{mechanic} by six [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+649,9,Raises [Defense]{mechanic} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Defense]{mechanic} by six [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-650,9,Raises [Attack]{mechanic} by six [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+650,9,Raises [Attack]{mechanic} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Attack]{mechanic} by six [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
-651,9,Raises [accuracy]{mechanic} by six [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+This item can only be obtained or used via the Wonder Launcher."
+651,9,Raises [accuracy]{mechanic} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [accuracy]{mechanic} by six [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
+This item can only be obtained or used via the Wonder Launcher."
 652,9,,Not yet known. [[B/W item 611]]
 653,9,,Not yet known. [[B/W item 612]]
 654,9,,Not yet known. [[B/W item 613]]
 655,9,,Not yet known. [[B/W item 614]]
-656,9,Raises [critical hit]{mechanic} rate by three [stages]{mechanic:stage} in battle.  Miracle Shooter only.,"Used on a party Pokémon in battle
+656,9,Raises [critical hit]{mechanic} rate by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [critical hit]{mechanic} rate by three [stages]{mechanic:stage}.
-This item can only be obtained or used via Miracle Shooter."
+This item can only be obtained or used via the Wonder Launcher."
 657,9,,Key item related to Reshiram? [[B/W item 616]]
 658,9,,Key item related to Zekrom? [[B/W item 617]]
 659,9,,Not yet known. [[B/W item 618]]
