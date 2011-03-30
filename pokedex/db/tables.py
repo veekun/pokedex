@@ -1533,6 +1533,8 @@ class Stat(TableBase):
         info=dict(description=u"For offensive and defensive stats, the damage this stat relates to; otherwise None (the NULL value)"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
+    is_battle_only = Column(Boolean, nullable=False,
+        info=dict(description=u"Whether this stat only exists within a battle"))
 
 create_translation_table('stat_names', Stat, 'names',
     relation_lazy='joined',
