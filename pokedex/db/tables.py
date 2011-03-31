@@ -850,7 +850,7 @@ class MoveMetaAilment(TableBase):
     """
     __tablename__ = 'move_meta_ailments'
     __singlename__ = 'move_meta_ailment'
-    id = Column(Integer, primary_key=True, nullable=False,
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(24), nullable=False,
         info=dict(description="An identifier", format='identifier'))
