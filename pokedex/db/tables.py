@@ -503,6 +503,10 @@ create_translation_table('item_prose', Item, 'prose',
     effect = Column(markdown.MarkdownColumn(5120), nullable=False,
         info=dict(description=u"Detailed description of the item's effect.", format='markdown')),
 )
+create_translation_table('item_flavor_summaries', Item, 'flavor_summaries',
+    flavor_summary = Column(Unicode(512), nullable=True,
+        info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext'))
+)
 
 class ItemCategory(TableBase):
     u"""An item category
@@ -554,6 +558,7 @@ class ItemFlavorText(TableBase):
     """
     __tablename__ = 'item_flavor_text'
     __singlename__ = 'item_flavor_text'
+    summary_column = Item.flavor_summaries_table, 'flavor_summary'
     item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description="The ID of the item"))
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, autoincrement=False, nullable=False,
@@ -724,6 +729,10 @@ create_translation_table('move_names', Move, 'names',
     name = Column(Unicode(24), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True))
 )
+create_translation_table('move_flavor_summaries', Move, 'flavor_summaries',
+    flavor_summary = Column(Unicode(512), nullable=True,
+        info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext'))
+)
 
 class MoveBattleStyle(TableBase):
     u"""A battle style of a move"""  # XXX: Explain better
@@ -876,6 +885,7 @@ class MoveFlavorText(TableBase):
     u"""In-game description of a move
     """
     __tablename__ = 'move_flavor_text'
+    summary_column = Move.flavor_summaries_table, 'flavor_summary'
     move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="ID of the move"))
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False,
@@ -1196,6 +1206,10 @@ create_translation_table('pokemon_names', Pokemon, 'names',
         info=dict(description=u'The short flavor text, such as "Seed" or "Lizard"; usually affixed with the word "Pokémon"',
         official=True, format='plaintext')),
 )
+create_translation_table('pokemon_flavor_summaries', Pokemon, 'flavor_summaries',
+    flavor_summary = Column(Unicode(512), nullable=True,
+        info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext'))
+)
 
 class PokemonAbility(TableBase):
     u"""Maps an ability to a Pokémon that can have it
@@ -1291,6 +1305,7 @@ class PokemonFlavorText(TableBase):
     u"""In-game Pokédex descrption of a Pokémon.
     """
     __tablename__ = 'pokemon_flavor_text'
+    summary_column = Pokemon.flavor_summaries_table, 'flavor_summary'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"ID of the Pokémon"))
     version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, nullable=False, autoincrement=False,
@@ -1298,7 +1313,7 @@ class PokemonFlavorText(TableBase):
     language_id = Column(Integer, ForeignKey('languages.id'), primary_key=True, nullable=False,
         info=dict(description="The language"))
     flavor_text = Column(Unicode(255), nullable=False,
-        info=dict(description=u"ID of the version that has this flavor text", official=True, format='gametext'))
+        info=dict(description=u"The flavor text", official=True, format='gametext'))
 
 class PokemonForm(TableBase):
     u"""An individual form of a Pokémon.
