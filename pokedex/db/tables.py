@@ -1078,7 +1078,7 @@ class Pokemon(TableBase):
         info=dict(description=u"The weight of the Pokémon, in tenths of a kilogram (decigrams)"))
     color_id = Column(Integer, ForeignKey('pokemon_colors.id'), nullable=False,
         info=dict(description=u"ID of this Pokémon's Pokédex color, as used for a gimmick search function in the games."))
-    pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=True,
+    pokemon_shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=False,
         info=dict(description=u"ID of this Pokémon's body shape, as used for a gimmick search function in the games."))
     habitat_id = Column(Integer, ForeignKey('pokemon_habitats.id'), nullable=True,
         info=dict(description=u"ID of this Pokémon's habitat, as used for a gimmick search function in the games."))
