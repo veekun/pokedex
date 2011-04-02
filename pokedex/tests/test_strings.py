@@ -16,16 +16,6 @@ class TestStrings(object):
                 tables.Pokemon.name == u"Marowak")
         assert q.one().identifier == 'marowak'
 
-    def test_gt(self):
-        # Assuming that the identifiers are just lowercase names
-        q1 = self.connection.query(tables.Pokemon).filter(
-                tables.Pokemon.name > u"Xatu").order_by(
-                tables.Pokemon.id)
-        q2 = self.connection.query(tables.Pokemon).filter(
-                tables.Pokemon.identifier > u"xatu").order_by(
-                tables.Pokemon.id)
-        assert q1.all() == q2.all()
-
     def test_languages(self):
         q = self.connection.query(tables.Pokemon).filter(
                 tables.Pokemon.name == u"Mightyena")
@@ -36,7 +26,9 @@ class TestStrings(object):
                 ('roomaji', u'Guraena'),
                 ('fr', u'Grahyèna'),
             ):
-            assert pkmn.names[lang] == name
+            language = self.connection.query(tables.Language).filter_by(
+                    identifier=lang).one()
+            assert pkmn.name_map[language] == name
 
     @raises(KeyError)
     def test_bad_lang(self):
@@ -50,12 +42,10 @@ class TestStrings(object):
                 identifier=u"jade-orb").one()
         language = self.connection.query(tables.Language).filter_by(
                 identifier=u"de").one()
-        item.names['de'] = u"foo"
-        assert item.names['de'] == "foo"
-        assert item.names[language] == "foo"
-        item.names[language] = u"xyzzy"
-        assert item.names['de'] == "xyzzy"
-        assert item.names[language] == "xyzzy"
+        item.name_map[language] = u"foo"
+        assert item.name_map[language] == "foo"
+        item.name_map[language] = u"xyzzy"
+        assert item.name_map[language] == "xyzzy"
 
     def test_mutating_default(self):
         item = self.connection.query(tables.Item).filter_by(
@@ -66,14 +56,12 @@ class TestStrings(object):
     def test_string_mapping(self):
         item = self.connection.query(tables.Item).filter_by(
                 identifier=u"jade-orb").one()
-        assert len(item.names) == len(item.texts)
-        for lang in item.texts:
-            assert item.names[lang] == item.texts[lang].name
-            assert item.names[lang] == item.names[lang.identifier]
-            assert lang in item.names
-            assert lang.identifier in item.names
-        assert "language that doesn't exist" not in item.names
-        assert tables.Language() not in item.names
+        assert len(item.name_map) == len(item.names)
+        for lang in item.names:
+            assert item.name_map[lang] == item.names[lang].name
+            assert lang in item.name_map
+        assert "language that doesn't exist" not in item.name_map
+        assert tables.Language() not in item.name_map
 
     def test_new_language(self):
         item = self.connection.query(tables.Item).filter_by(
@@ -84,23 +72,16 @@ class TestStrings(object):
         language.iso639 = language.iso3166 = u'--'
         language.official = False
         self.connection.add(language)
-        item.names[u'test'] = u"foo"
-        assert item.names[language] == "foo"
-        assert item.names['test'] == "foo"
-        assert 'de' in item.names
-        assert language in item.names
-        item.names[language] = u"xyzzy"
-        assert item.names[language] == "xyzzy"
-        assert item.names['test'] == "xyzzy"
-
-    @raises(NotImplementedError)
-    def test_delstring(self):
-        item = self.connection.query(tables.Item).filter_by(
-                identifier=u"jade-orb").one()
-        del item.names['en']
+        item.name_map[language] = u"foo"
+        assert item.name_map[language] == "foo"
+        assert language in item.name_map
+        item.name_map[language] = u"xyzzy"
+        assert item.name_map[language] == "xyzzy"
 
     def test_markdown(self):
         move = self.connection.query(tables.Move).filter_by(
                 identifier=u"thunderbolt").one()
+        language = self.connection.query(tables.Language).filter_by(
+                identifier=u"en").one()
         assert '10%' in move.effect.as_text
-        assert '10%' in move.effects['en'].as_text
+        assert '10%' in move.effect_map[language].as_text

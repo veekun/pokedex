@@ -23,8 +23,18 @@ def test_variable_names():
         classname = table.__name__
         if classname and varname[0].isupper():
             assert varname == classname, '%s refers to %s' % (varname, classname)
-    for table in tables.table_classes:
+    for table in tables.mapped_classes:
         assert getattr(tables, table.__name__) is table
+
+def test_class_order():
+    """The declarative classes should be defined in alphabetical order.
+    Except for Language which should be first.
+    """
+    class_names = [table.__name__ for table in tables.mapped_classes]
+    def key(name):
+        return name != 'Language', name
+    print [(a,b) for (a,b) in zip(class_names, sorted(class_names, key=key)) if a!=b]
+    assert class_names == sorted(class_names, key=key)
 
 def test_i18n_table_creation():
     """Creates and manipulates a magical i18n table, completely independent of
@@ -46,8 +56,9 @@ def test_i18n_table_creation():
         __tablename__ = 'foos'
         __singlename__ = 'foo'
         id = Column(Integer, primary_key=True, nullable=False)
+        translation_classes = []
 
-    FooText = create_translation_table('foo_text', Foo,
+    FooText = create_translation_table('foo_text', Foo, 'texts',
         language_class=Language,
         name = Column(String(100)),
     )
@@ -79,14 +90,14 @@ def test_i18n_table_creation():
 
     # Give our foo some names, as directly as possible
     foo_text = FooText()
-    foo_text.object_id = foo.id
-    foo_text.language_id = lang_en.id
+    foo_text.foreign_id = foo.id
+    foo_text.local_language_id = lang_en.id
     foo_text.name = 'english'
     sess.add(foo_text)
 
     foo_text = FooText()
-    foo_text.object_id = foo.id
-    foo_text.language_id = lang_jp.id
+    foo_text.foo_id = foo.id
+    foo_text.local_language_id = lang_jp.id
     foo_text.name = 'nihongo'
     sess.add(foo_text)
 
@@ -116,7 +127,7 @@ def test_i18n_table_creation():
     # THIS SHOULD WORK SOMEDAY
     #    .options(joinedload(Foo.name)) \
     foo = sess.query(Foo) \
-        .options(joinedload(Foo.foo_text_local)) \
+        .options(joinedload(Foo.texts_local)) \
         .one()
 
     assert foo.name == 'english'
@@ -127,7 +138,7 @@ def test_i18n_table_creation():
     # THIS SHOULD ALSO WORK SOMEDAY
     #    .options(joinedload(Foo.name_map)) \
     foo = sess.query(Foo) \
-        .options(joinedload(Foo.foo_text)) \
+        .options(joinedload(Foo.texts)) \
         .one()
 
     assert foo.name_map[lang_en] == 'english'
@@ -152,15 +163,19 @@ def test_texts():
     Mostly protects against copy/paste oversights and rebase hiccups.
     If there's a reason to relax the tests, do it
     """
-    for table in sorted(tables.table_classes, key=lambda t: t.__name__):
-        if issubclass(table, tables.LanguageSpecific):
+    classes = []
+    for cls in tables.mapped_classes:
+        classes.append(cls)
+        classes += cls.translation_classes
+    for cls in classes:
+        if hasattr(cls, 'local_language') or hasattr(cls, 'language'):
             good_formats = 'markdown plaintext gametext'.split()
             assert_text = '%s is language-specific'
         else:
             good_formats = 'identifier latex'.split()
             assert_text = '%s is not language-specific'
-        mapper = class_mapper(table)
-        for column in sorted(mapper.c, key=lambda c: c.name):
+        columns = sorted(cls.__table__.c, key=lambda c: c.name)
+        for column in columns:
             format = column.info.get('format', None)
             if format is not None:
                 if format not in good_formats:
@@ -185,11 +200,8 @@ def test_identifiers_with_names():
 
     ...have either names or identifiers.
     """
-    for table in sorted(tables.table_classes, key=lambda t: t.__name__):
-        if issubclass(table, tables.Named):
-            assert issubclass(table, tables.OfficiallyNamed) or issubclass(table, tables.UnofficiallyNamed), table
+    for table in sorted(tables.mapped_classes, key=lambda t: t.__name__):
+        if hasattr(table, 'name'):
             assert hasattr(table, 'identifier'), table
         else:
             assert not hasattr(table, 'identifier'), table
-            if not issubclass(table, tables.LanguageSpecific):
-                assert not hasattr(table, 'name'), table

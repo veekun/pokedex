@@ -174,14 +174,10 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
         if not safe and session.connection().dialect.name == 'postgresql':
             """
-            Postgres' CSV dialect is nearly the same as ours, except that it
-            treats completely empty values as NULL, and empty quoted
-            strings ("") as an empty strings.
-            Pokedex dump does not quote empty strings. So, both empty strings
-            and NULLs are read in as NULL.
-            For an empty string in a NOT NULL column, the load will fail, and
-            load will fall back to the cross-backend row-by-row loading. And in
-            nullable columns, we already load empty stings as NULL.
+            Postgres' CSV dialect works with our data, if we mark the not-null
+            columns with FORCE NOT NULL.
+            COPY is only allowed for DB superusers. If you're not one, use safe
+            loading (pokedex load -S).
             """
             session.commit()
             not_null_cols = [c for c in column_names if not table_obj.c[c].nullable]
