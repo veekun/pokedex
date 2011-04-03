@@ -285,10 +285,10 @@ class Encounter(TableBase):
     "slot" they are in and the state of the game world.
 
     What the player is doing to get an encounter, such as surfing or walking
-    through tall grass, is called terrain.  Each terrain has its own set of
+    through tall grass, is called a method.  Each method has its own set of
     encounter slots.
 
-    Within a terrain, slots are defined primarily by rarity.  Each slot can
+    Within a method, slots are defined primarily by rarity.  Each slot can
     also be affected by world conditions; for example, the 20% slot for walking
     in tall grass is affected by whether a swarm is in effect in that area.
     "Is there a swarm?" is a condition; "there is a swarm" and "there is not a
@@ -308,7 +308,7 @@ class Encounter(TableBase):
     location_area_id = Column(Integer, ForeignKey('location_areas.id'), nullable=False, autoincrement=False,
         info=dict(description="The ID of the location of this encounter"))
     encounter_slot_id = Column(Integer, ForeignKey('encounter_slots.id'), nullable=False, autoincrement=False,
-        info=dict(description="The ID of the encounter slot, which determines terrain and rarity"))
+        info=dict(description="The ID of the encounter slot, which determines method and rarity"))
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, autoincrement=False,
         info=dict(description=u"The ID of the encountered Pokémon"))
     min_level = Column(Integer, nullable=False, autoincrement=False,
@@ -361,8 +361,24 @@ class EncounterConditionValueMap(TableBase):
     encounter_condition_value_id = Column(Integer, ForeignKey('encounter_condition_values.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="The ID of the encounter condition value"))
 
+class EncounterMethod(TableBase):
+    u"""A way the player can enter a wild encounter, e.g., surfing, fishing, or walking through tall grass.
+    """
+
+    __tablename__ = 'encounter_methods'
+    __singlename__ = 'encounter_method'
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A unique ID for the method"))
+    identifier = Column(Unicode(16), nullable=False, unique=True,
+        info=dict(description="An identifier", format='identifier'))
+
+create_translation_table('encounter_method_prose', EncounterMethod, 'prose',
+    name = Column(Unicode(64), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
+
 class EncounterSlot(TableBase):
-    u"""An abstract "slot" within a terrain, associated with both some set of conditions and a rarity.
+    u"""An abstract "slot" within a method, associated with both some set of conditions and a rarity.
 
     Note that there are two encounters per slot, so the rarities will only add
     up to 50.
@@ -373,28 +389,12 @@ class EncounterSlot(TableBase):
         info=dict(description="A unique ID for this slot"))
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False, autoincrement=False,
         info=dict(description="The ID of the version group this slot is in"))
-    encounter_terrain_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=False, nullable=False, autoincrement=False,
-        info=dict(description="The ID of the terrain"))
+    encounter_method_id = Column(Integer, ForeignKey('encounter_methods.id'), primary_key=False, nullable=False, autoincrement=False,
+        info=dict(description="The ID of the method"))
     slot = Column(Integer, nullable=True,
-        info=dict(description="This slot's order for the location and terrain"))
+        info=dict(description="This slot's order for the location and method"))
     rarity = Column(Integer, nullable=False,
         info=dict(description="The chance of the encounter as a percentage"))
-
-class EncounterTerrain(TableBase):
-    u"""A way the player can enter a wild encounter, e.g., surfing, fishing, or walking through tall grass.
-    """
-
-    __tablename__ = 'encounter_terrain'
-    __singlename__ = __tablename__
-    id = Column(Integer, primary_key=True, nullable=False,
-        info=dict(description="A unique ID for the terrain"))
-    identifier = Column(Unicode(64), nullable=False,
-        info=dict(description="An identifier", format='identifier'))
-
-create_translation_table('encounter_terrain_prose', EncounterTerrain, 'prose',
-    name = Column(Unicode(64), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=False)),
-)
 
 class EvolutionChain(TableBase):
     u"""A family of Pokémon that are linked by evolution
@@ -653,8 +653,8 @@ class LocationAreaEncounterRate(TableBase):
     __tablename__ = 'location_area_encounter_rates'
     location_area_id = Column(Integer, ForeignKey('location_areas.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="ID of the area"))
-    encounter_terrain_id = Column(Integer, ForeignKey('encounter_terrain.id'), primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description="ID of the terrain"))
+    encounter_method_id = Column(Integer, ForeignKey('encounter_methods.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the method"))
     version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, autoincrement=False,
         info=dict(description="ID of the version"))
     rate = Column(Integer, nullable=True,
@@ -1744,7 +1744,7 @@ EncounterConditionValueMap.condition_value = relation(EncounterConditionValue,
     innerjoin=True, lazy='joined',
     backref='encounter_map')
 
-EncounterSlot.terrain = relation(EncounterTerrain,
+EncounterSlot.method = relation(EncounterMethod,
     innerjoin=True, lazy='joined',
     backref='slots')
 EncounterSlot.version_group = relation(VersionGroup, innerjoin=True)
