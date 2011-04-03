@@ -301,6 +301,15 @@ Load options:
     -D|--drop-tables    Drop all tables before loading data.
     -S|--safe           Disable engine-specific optimizations.
     -r|--recursive      Load (and drop) all dependent tables.
+    -l|--langs          Load translations for the given languages.
+                        By default, all available translations are loaded.
+                        Separate multiple languages by a comma (-l en,de,fr)
+
+Dump options:
+    -l|--langs          Dump unofficial texts for given languages.
+                        By default, English (en) is dumped.
+                        Separate multiple languages by a comma (-l en,de,fr)
+                        Use 'none' to not dump any unofficial texts.
 
     Additionally, load and dump accept a list of table names (possibly with
     wildcards) and/or csv fileames as an argument list.
