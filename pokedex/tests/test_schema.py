@@ -171,6 +171,7 @@ def test_texts():
             good_formats = 'identifier latex'.split()
             assert_text = '%s is not language-specific'
         columns = sorted(cls.__table__.c, key=lambda c: c.name)
+        text_columns = []
         for column in columns:
             format = column.info.get('format', None)
             if format is not None:
@@ -183,6 +184,7 @@ def test_texts():
                     raise AssertionError('%s: identifier column name/type mismatch' % column)
                 if column.info.get('official', None) and format not in 'gametext plaintext':
                     raise AssertionError('%s: official text with bad format' % column)
+                text_columns.append(column)
             else:
                 if isinstance(column.type, (markdown.MarkdownColumn, tables.Unicode)):
                     raise AssertionError('%s: text column without format' % column)
@@ -190,6 +192,11 @@ def test_texts():
                 raise AssertionError('%s: non-plaintext name' % column)
             # No mention of English in the description
             assert 'English' not in column.info['description'], column
+        # If there's more than one text column in a translation table,
+        # they have to be nullable, to support missing translations
+        if hasattr(cls, 'local_language') and len(text_columns) > 1:
+            for column in text_columns:
+                assert column.nullable
 
 def test_identifiers_with_names():
     """Test that named tables have identifiers, and non-named tables don't
