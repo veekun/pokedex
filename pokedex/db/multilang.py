@@ -159,12 +159,15 @@ class MultilangSession(Session):
 
     @property
     def default_language(self):
-        # XXX need to get the right mapped class for this to work
-        raise NotImplementedError
+        # Need to import tables here to avoid a circular dependency
+        from pokedex.db import tables
+        query = self.query(tables.Language)
+        query = query.filter_by(id=self._default_language_id)
+        return query.one()
 
     @default_language.setter
     def default_language(self, new):
-        self._default_language_id = new#.id
+        self._default_language_id = new.id
 
     @default_language.deleter
     def default_language(self):
