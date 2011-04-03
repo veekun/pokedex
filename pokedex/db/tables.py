@@ -668,7 +668,7 @@ class LocationGameIndex(TableBase):
         info=dict(description="Database ID of the locaion"))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False, primary_key=True,
         info=dict(description="ID of the generation this entry to"))
-    game_index = Column(Integer, nullable=False,
+    game_index = Column(Integer, nullable=False, primary_key=True, autoincrement=False,
         info=dict(description="Internal game ID of the location"))
 
 class Machine(TableBase):
