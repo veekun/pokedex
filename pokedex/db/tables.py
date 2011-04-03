@@ -501,7 +501,7 @@ create_translation_table('item_names', Item, 'names',
 )
 create_translation_table('item_prose', Item, 'prose',
     short_effect = Column(markdown.MarkdownColumn(256), nullable=False,
-        info=dict(description="A short summary of the effect", format='plaintext')),
+        info=dict(description="A short summary of the effect", format='markdown')),
     effect = Column(markdown.MarkdownColumn(5120), nullable=False,
         info=dict(description=u"Detailed description of the item's effect.", format='markdown')),
 )
