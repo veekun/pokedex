@@ -130,6 +130,9 @@ def command_load(*args):
     parser.add_option('-r', '--recursive', dest='recursive', default=False, action='store_true')
     parser.add_option('-S', '--safe', dest='safe', default=False, action='store_true',
         help="Do not use backend-specific optimalizations.")
+    parser.add_option('-l', '--langs', dest='langs', default=None,
+        help="Comma-separated list of extra languages to load, or 'none' for none. "
+            "Default is to load 'em all. Example: 'fr,de'")
     options, tables = parser.parse_args(list(args))
 
     if not options.engine_uri:
@@ -139,6 +142,13 @@ def command_load(*args):
         print "`pokedex setup` to do both at once."
         print
 
+    if options.langs == 'none':
+        langs = []
+    elif options.langs is None:
+        langs = None
+    else:
+        langs = [l.strip() for l in options.langs.split(',')]
+
     session = get_session(options)
     get_csv_directory(options)
 
@@ -147,7 +157,8 @@ def command_load(*args):
                                   tables=tables,
                                   verbose=options.verbose,
                                   safe=options.safe,
-                                  recursive=options.recursive)
+                                  recursive=options.recursive,
+                                  langs=langs)
 
 def command_reindex(*args):
     parser = get_parser(verbose=True)

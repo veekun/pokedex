@@ -96,7 +96,7 @@ def _get_verbose_prints(verbose):
     return print_start, print_status, print_done
 
 
-def load(session, tables=[], directory=None, drop_tables=False, verbose=False, safe=True, recursive=False):
+def load(session, tables=[], directory=None, drop_tables=False, verbose=False, safe=True, recursive=True, langs=None):
     """Load data from CSV files into the given database session.
 
     Tables are created automatically.
@@ -123,6 +123,9 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     `recursive`
         If set to True, load all dependent tables too.
+
+    `langs`
+        List of identifiers of extra language to load, or None to load them all
     """
 
     # First take care of verbosity
@@ -299,6 +302,23 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
         session.commit()
 
         print_done()
+
+
+    print_start('Translations')
+    transl = translations.Translations(csv_directory=directory)
+
+    new_row_count = 0
+    for translation_class, rows in transl.get_load_data(langs):
+        table_obj = translation_class.__table__
+        if table_obj in table_objs:
+            insert_stmt = table_obj.insert()
+            session.connection().execute(insert_stmt, rows)
+            session.commit()
+            # We don't have a total, but at least show some increasing number
+            new_row_count += len(rows)
+            print_status(str(new_row_count))
+
+    print_done()
 
     # SQLite check
     if session.connection().dialect.name == 'sqlite':
