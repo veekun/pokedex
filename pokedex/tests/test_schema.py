@@ -7,7 +7,8 @@ from sqlalchemy.orm.session import Session
 from sqlalchemy.ext.declarative import declarative_base
 
 from pokedex.db import tables, markdown
-from pokedex.db.multilang import create_translation_table
+from pokedex.db.multilang import MultilangScopedSession, MultilangSession, \
+    create_translation_table
 
 def test_variable_names():
     """We want pokedex.db.tables to export tables using the class name"""
@@ -63,16 +64,10 @@ def test_i18n_table_creation():
         name = Column(String(100)),
     )
 
-    class FauxSession(Session):
-        def execute(self, clause, params=None, *args, **kwargs):
-            if not params:
-                params = {}
-            params.setdefault('_default_language', 'en')
-            return super(FauxSession, self).execute(clause, params, *args, **kwargs)
-
     # OK, create all the tables and gimme a session
     Base.metadata.create_all()
-    sess = sessionmaker(engine, class_=FauxSession)()
+    sm = sessionmaker(class_=MultilangSession)
+    sess = MultilangScopedSession(sm)
 
     # Create some languages and foos to bind together
     lang_en = Language(identifier='en')
@@ -87,6 +82,7 @@ def test_i18n_table_creation():
 
     # Commit so the above get primary keys filled in
     sess.commit()
+    sess.default_language = lang_en.id
 
     # Give our foo some names, as directly as possible
     foo_text = FooText()
