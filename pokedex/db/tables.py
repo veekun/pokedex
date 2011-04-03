@@ -62,6 +62,9 @@ class TableSuperclass(object):
     def __str__(self):
         return unicode(self).encode('utf8')
 
+    def __repr__(self):
+        return unicode(self).encode('utf8')
+
 mapped_classes = []
 class TableMetaclass(DeclarativeMeta):
     def __init__(cls, name, bases, attrs):
