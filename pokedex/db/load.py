@@ -8,8 +8,8 @@ from sqlalchemy.orm.attributes import instrumentation_registry
 import sqlalchemy.sql.util
 import sqlalchemy.types
 
-from pokedex.db import metadata
-import pokedex.db.tables as tables
+import pokedex
+from pokedex.db import metadata, tables, translations
 from pokedex.defaults import get_default_csv_dir
 from pokedex.db.dependencies import find_dependent_tables
 
@@ -306,7 +306,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
 
 
-def dump(session, tables=[], directory=None, verbose=False):
+def dump(session, tables=[], directory=None, verbose=False, langs=['en']):
     """Dumps the contents of a database to a set of CSV files.  Probably not
     useful to anyone besides a developer.
 
@@ -322,11 +322,15 @@ def dump(session, tables=[], directory=None, verbose=False):
 
     `verbose`
         If set to True, status messages will be printed to stdout.
+
+    `langs`
+        List of identifiers of languages to dump unofficial texts for
     """
 
     # First take care of verbosity
     print_start, print_status, print_done = _get_verbose_prints(verbose)
 
+    languages = dict((l.id, l) for l in session.query(pokedex.db.tables.Language))
 
     if not directory:
         directory = get_default_csv_dir()
@@ -342,25 +346,43 @@ def dump(session, tables=[], directory=None, verbose=False):
         writer = csv.writer(open("%s/%s.csv" % (directory, table_name), 'wb'),
                             lineterminator='\n')
         columns = [col.name for col in table.columns]
+
+        # For name tables, dump rows for official languages, as well as
+        # for those in `langs`.
+        # For other translation tables, only dump rows for languages in `langs`
+        # For non-translation tables, dump all rows.
+        if 'local_language_id' in columns:
+            if any(col.info.get('official') for col in table.columns):
+                def include_row(row):
+                    return (languages[row.local_language_id].official or
+                            languages[row.local_language_id].identifier in langs)
+            else:
+                def include_row(row):
+                    return languages[row.local_language_id].identifier in langs
+        else:
+            def include_row(row):
+                return True
+
         writer.writerow(columns)
 
         primary_key = table.primary_key
         for row in session.query(table).order_by(*primary_key).all():
-            csvs = []
-            for col in columns:
-                # Convert Pythony values to something more universal
-                val = getattr(row, col)
-                if val == None:
-                    val = ''
-                elif val == True:
-                    val = '1'
-                elif val == False:
-                    val = '0'
-                else:
-                    val = unicode(val).encode('utf-8')
+            if include_row(row):
+                csvs = []
+                for col in columns:
+                    # Convert Pythony values to something more universal
+                    val = getattr(row, col)
+                    if val == None:
+                        val = ''
+                    elif val == True:
+                        val = '1'
+                    elif val == False:
+                        val = '0'
+                    else:
+                        val = unicode(val).encode('utf-8')
 
-                csvs.append(val)
+                    csvs.append(val)
 
-            writer.writerow(csvs)
+                writer.writerow(csvs)
 
         print_done()

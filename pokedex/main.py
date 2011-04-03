@@ -108,14 +108,20 @@ def get_csv_directory(options):
 def command_dump(*args):
     parser = get_parser(verbose=True)
     parser.add_option('-d', '--directory', dest='directory', default=None)
+    parser.add_option('-l', '--langs', dest='langs', default='en',
+        help="Comma-separated list of languages to dump all strings for. "
+            "Default is English ('en')")
     options, tables = parser.parse_args(list(args))
 
     session = get_session(options)
     get_csv_directory(options)
 
+    langs = [l.strip() for l in options.langs.split(',')]
+
     pokedex.db.load.dump(session, directory=options.directory,
                                   tables=tables,
-                                  verbose=options.verbose)
+                                  verbose=options.verbose,
+                                  langs=langs)
 
 def command_load(*args):
     parser = get_parser(verbose=True)
