@@ -1,3 +1,6 @@
+# encoding: utf-8
+import re
+
 from sqlalchemy import MetaData, Table, engine_from_config, orm
 
 from ..defaults import get_default_db_uri
@@ -45,3 +48,33 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
     session = MultilangScopedSession(sm)
 
     return session
+
+def identifier_from_name(name):
+    """Make a string safe to use as an identifier.
+
+    Valid characters are lowercase alphanumerics and "-". This function may
+    raise ValueError if it can't come up with a suitable identifier.
+
+    This function is useful for scripts which add things with names.
+    """
+    if isinstance(name, str):
+        identifier = name.decode('utf-8')
+    else:
+        identifier = name
+    identifier = identifier.lower()
+    identifier = identifier.replace(u'+', u' plus ')
+    identifier = re.sub(u'[ _–]+', u'-', identifier)
+    identifier = re.sub(u"['./;’(),:]", u'', identifier)
+    identifier = identifier.replace(u'é', u'e')
+    identifier = identifier.replace(u'♀', u'-f')
+    identifier = identifier.replace(u'♂', u'-m')
+    if identifier in (u'???', u'????'):
+        identifier = u'unknown'
+    elif identifier == u'!':
+        identifier = u'exclamation'
+    elif identifier == u'?':
+        identifier = u'question'
+
+    if not identifier.replace(u"-", u"").isalnum():
+        raise ValueError(identifier)
+    return identifier
