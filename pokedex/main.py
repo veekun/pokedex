@@ -282,6 +282,7 @@ System options:
 
 Load options:
     -D|--drop-tables    Drop all tables before loading data.
+    -S|--safe           Disable engine-specific optimizations.
     -r|--recursive      Load (and drop) all dependent tables.
 
     Additionally, load and dump accept a list of table names (possibly with
