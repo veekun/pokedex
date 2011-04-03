@@ -72,12 +72,10 @@ class MoveEffectProperty(object):
         some_move.effect            # returns a MarkdownString
         some_move.effect.as_html    # returns a chunk of HTML
 
-    This class attempts to detect if the wrapped property is a dict-based
-    association proxy, and will act like such a dict if so.  Don't rely on it
-    for querying, of course.
-
     This class also performs simple substitution on the effect, replacing
     `$effect_chance` with the move's actual effect chance.
+
+    Use `MoveEffectPropertyMap` for dict-like association proxies.
     """
 
     def __init__(self, effect_column):
@@ -85,15 +83,18 @@ class MoveEffectProperty(object):
 
     def __get__(self, obj, cls):
         prop = getattr(obj.move_effect, self.effect_column)
-        if isinstance(prop, dict):
-            # Looks like a dict proxy; markdownify everyone
-            newdict = dict(prop)
-            for key in newdict:
-                newdict[key] = _markdownify_effect_text(obj, newdict[key])
-            return newdict
-
-        # Otherwise, scalar prop.  Boring
         return _markdownify_effect_text(obj, prop)
+
+class MoveEffectPropertyMap(MoveEffectProperty):
+    """Similar to `MoveEffectProperty`, but works on dict-like association
+    proxies.
+    """
+    def __get__(self, obj, cls):
+        prop = getattr(obj.move_effect, self.effect_column)
+        newdict = dict(prop)
+        for key in newdict:
+            newdict[key] = _markdownify_effect_text(obj, newdict[key])
+        return newdict
 
 class MarkdownColumn(sqlalchemy.types.TypeDecorator):
     """Generic SQLAlchemy column type for Markdown text.

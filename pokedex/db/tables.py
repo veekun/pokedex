@@ -1781,18 +1781,18 @@ Move.target = relation(MoveTarget, backref='moves')
 Move.type = relation(Type, backref='moves')
 
 Move.effect = markdown.MoveEffectProperty('effect')
-Move.effect_map = markdown.MoveEffectProperty('effect_map')
+Move.effect_map = markdown.MoveEffectPropertyMap('effect_map')
 Move.short_effect = markdown.MoveEffectProperty('short_effect')
-Move.short_effect_map = markdown.MoveEffectProperty('short_effect_map')
+Move.short_effect_map = markdown.MoveEffectPropertyMap('short_effect_map')
 
 MoveChangelog.changed_in = relation(VersionGroup, backref='move_changelog')
 MoveChangelog.move_effect = relation(MoveEffect, backref='move_changelog')
 MoveChangelog.type = relation(Type, backref='move_changelog')
 
 MoveChangelog.effect = markdown.MoveEffectProperty('effect')
-MoveChangelog.effect_map = markdown.MoveEffectProperty('effect_map')
+MoveChangelog.effect_map = markdown.MoveEffectPropertyMap('effect_map')
 MoveChangelog.short_effect = markdown.MoveEffectProperty('short_effect')
-MoveChangelog.short_effect_map = markdown.MoveEffectProperty('short_effect_map')
+MoveChangelog.short_effect_map = markdown.MoveEffectPropertyMap('short_effect_map')
 
 MoveEffect.category_map = relation(MoveEffectCategoryMap)
 MoveEffect.categories = association_proxy('category_map', 'category')
