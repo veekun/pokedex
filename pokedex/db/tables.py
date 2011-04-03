@@ -393,7 +393,7 @@ class EncounterSlot(TableBase):
         info=dict(description="The ID of the method"))
     slot = Column(Integer, nullable=True,
         info=dict(description="This slot's order for the location and method"))
-    rarity = Column(Integer, nullable=False,
+    rarity = Column(Integer, nullable=True,
         info=dict(description="The chance of the encounter as a percentage"))
 
 class EvolutionChain(TableBase):
@@ -1820,6 +1820,12 @@ Location.region = relation(Region,
 LocationArea.location = relation(Location,
     innerjoin=True, lazy='joined',
     backref='areas')
+
+LocationAreaEncounterRate.location_area = relation(LocationArea,
+    innerjoin=True,
+    backref='encounter_rates')
+LocationAreaEncounterRate.method = relation(EncounterMethod,
+    innerjoin=True)
 
 LocationGameIndex.location = relation(Location,
     innerjoin=True, lazy='joined',
