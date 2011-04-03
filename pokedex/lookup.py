@@ -563,25 +563,18 @@ class PokedexLookup(object):
             table_names = self.indexed_tables.keys()
             table_names.remove('pokemon_forms')
 
-        # Rather than create an array of many hundred items and pick randomly
-        # from it, just pick a number up to the total number of potential
-        # items, then pick randomly from that, and partition the whole range
-        # into chunks.  This also avoids the slight problem that the index
-        # contains more rows (for languages) for some items than others.
-        # XXX ought to cache this (in the index?) if possible
-        total = 0
-        partitions = []
-        for table_name in table_names:
-            count = self.session.query(self.indexed_tables[table_name]).count()
-            total += count
-            partitions.append((table_name, count))
+        # Pick a random table, then pick a random item from it.  Small tables
+        # like Type will have an unnatural bias.  The alternative is that a
+        # simple search for "random" will do some eight queries, counting the
+        # rows in every single indexed table, and that's awful.
+        # XXX Can we improve on this, reasonably?
+        table_name = random.choice(table_names)
+        count = self.session.query(self.indexed_tables[table_name]).count()
+        id, = self.session.query(self.indexed_tables[table_name].id) \
+            .offset(random.randint(0, count - 1)) \
+            .first()
 
-        n = random.randint(1, total)
-        while n > partitions[0][1]:
-            n -= partitions[0][1]
-            partitions.pop(0)
-
-        return self.lookup(unicode(n), valid_types=[ partitions[0][0] ])
+        return self.lookup(unicode(id), valid_types=[table_name])
 
     def prefix_lookup(self, prefix, valid_types=[]):
         """Returns terms starting with the given exact prefix.
