@@ -21,7 +21,7 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
         uri = get_default_db_uri()
 
     ### Do some fixery for MySQL
-    if uri[0:5] == 'mysql':
+    if uri.startswith('mysql:'):
         # MySQL uses latin1 for connections by default even if the server is
         # otherwise oozing with utf8; charset fixes this
         if 'charset' not in uri:
