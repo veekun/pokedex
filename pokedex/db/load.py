@@ -213,6 +213,8 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
         new_rows = []
         def insert_and_commit():
+            if not new_rows:
+                return
             session.connection().execute(insert_stmt, new_rows)
             session.commit()
             new_rows[:] = []
