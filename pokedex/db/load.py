@@ -11,6 +11,7 @@ import sqlalchemy.types
 from pokedex.db import metadata
 import pokedex.db.tables as tables
 from pokedex.defaults import get_default_csv_dir
+from pokedex.db.dependencies import find_dependent_tables
 
 
 def _get_table_names(metadata, patterns):
@@ -95,7 +96,7 @@ def _get_verbose_prints(verbose):
     return print_start, print_status, print_done
 
 
-def load(session, tables=[], directory=None, drop_tables=False, verbose=False, safe=True):
+def load(session, tables=[], directory=None, drop_tables=False, verbose=False, safe=True, recursive=False):
     """Load data from CSV files into the given database session.
 
     Tables are created automatically.
@@ -119,6 +120,9 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
     `safe`
         If set to False, load can be faster, but can corrupt the database if
         it crashes or is interrupted.
+
+    `recursive`
+        If set to True, load all dependent tables too.
     """
 
     # First take care of verbosity
@@ -128,8 +132,13 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
     if directory is None:
         directory = get_default_csv_dir()
 
+    # XXX why isn't this done in command_load
     table_names = _get_table_names(metadata, tables)
     table_objs = [metadata.tables[name] for name in table_names]
+
+    if recursive:
+        table_objs.extend(find_dependent_tables(table_objs))
+
     table_objs = sqlalchemy.sql.util.sort_tables(table_objs)
 
     # SQLite speed tweaks

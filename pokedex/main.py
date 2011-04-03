@@ -121,6 +121,7 @@ def command_load(*args):
     parser = get_parser(verbose=True)
     parser.add_option('-d', '--directory', dest='directory', default=None)
     parser.add_option('-D', '--drop-tables', dest='drop_tables', default=False, action='store_true')
+    parser.add_option('-r', '--recursive', dest='recursive', default=False, action='store_true')
     parser.add_option('-S', '--safe', dest='safe', default=False, action='store_true',
         help="Do not use backend-specific optimalizations.")
     options, tables = parser.parse_args(list(args))
@@ -139,7 +140,8 @@ def command_load(*args):
                                   drop_tables=options.drop_tables,
                                   tables=tables,
                                   verbose=options.verbose,
-                                  safe=options.safe)
+                                  safe=options.safe,
+                                  recursive=options.recursive)
 
 def command_reindex(*args):
     parser = get_parser(verbose=True)
@@ -277,7 +279,10 @@ System options:
     -d|--directory=DIR  By default, load and dump will use the CSV files in the
                         pokedex install directory.  Use this option to specify
                         a different directory.
-    -D|--drop-tables    With load, drop all tables before loading data.
+
+Load options:
+    -D|--drop-tables    Drop all tables before loading data.
+    -r|--recursive      Load (and drop) all dependent tables.
 
     Additionally, load and dump accept a list of table names (possibly with
     wildcards) and/or csv fileames as an argument list.
