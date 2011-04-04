@@ -958,7 +958,8 @@ FRLG: A meteorite to be delivered to Lostelle's father."
 :   Holder's buster is red, and its [Techno Blast]{move} is [Fire]{type}-type."
 566,9,"Grants Genesect a white, Ice-type Techno Blast.","Held by [Genesect]{pokemon}
 :   Holder's buster is white, and its [Techno Blast]{move} becomes [Ice]{type}-type."
-567,9,,Not yet known. [[B/W item 134]]
+567,9,Restores 20 HP.,"Used on a friendly Pokémon
+:   Restores 20 [HP]{mechanic}."
 568,9,Lets a Trainer write a message and send it via Pokémon trade.,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
 
 Held
@@ -1080,13 +1081,16 @@ This effect does not activate if another effect prevents the holder from switchi
 612,9,Vendor trash.,Vendor trash.
 613,9,Can be revived into a [Tirtouga]{pokemon}.,Give to a scientist in a museum to receive a [Tirtouga]{pokemon}.
 614,9,Can be revived into a [Archen]{pokemon}.,Give to a scientist in a museum to receive a [Archen]{pokemon}.
-615,9,,Some kind of event item for Victini.  [[B/W item 574]]
-616,9,,Not yet known. [[B/W item 575]]
-617,9,,Not yet known. [[B/W item 576]]
+615,9,Unlocks the [Victini]{pokemon} event.,"Allows passage on the [Castelia City]{location} ship, which leads to [Liberty Garden]{location} and [Victini]{pokemon}."
+616,9,Activates Pass Powers.,Acts as currency to activate Pass Powers in the Entralink.
+617,9,Catches Pokémon found in the Dream World.,"Can only be used in Entree Forest, to catch Pokémon encountered in the Dream World.
+
+Used in battle
+:   [Catches]{mechanic:catch} a wild Pokémon without fail."
 618,9,Ends a wild battle.,"Used in battle
 :   Ends a wild battle.  Cannot be used in trainer battles."
-619,9,,Stores accessories for your Pokémon to wear for the musical?  [[B/W item 578]]
-620,9,,Some key item.  Not yet known. [[B/W item 579]]
+619,9,Stores props for the Pokémon Musical.,Stores props for the Pokémon Musical.
+620,9,No effect.,Only used as a plot point; this item is given to the player and taken away in the same cutscene.
 621,9,Cult vendor trash.,Cult vendor trash.
 622,9,Cult vendor trash.,Cult vendor trash.
 623,9,Cult vendor trash.,Cult vendor trash.
@@ -1098,7 +1102,8 @@ This effect does not activate if another effect prevents the holder from switchi
 629,9,Cult vendor trash.,Cult vendor trash.
 630,9,Cult vendor trash.,Cult vendor trash.
 631,9,Cult vendor trash.,Cult vendor trash.
-632,9,,Not yet known. [[B/W item 591]]
+632,9,Cures any status ailment and confusion.,"Used on a party Pokémon
+:   Cures any [status ailment]{mechanic} and [confusion]{mechanic}."
 633,9,Raises [critical hit]{mechanic} rate by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [critical hit]{mechanic} rate by two [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
@@ -1152,27 +1157,41 @@ This item can only be obtained or used via the Wonder Launcher."
 This item can only be obtained or used via the Wonder Launcher."
 650,9,Raises [Attack]{mechanic} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Attack]{mechanic} by six [stages]{mechanic:stage}.
+
 This item can only be obtained or used via the Wonder Launcher."
 651,9,Raises [accuracy]{mechanic} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [accuracy]{mechanic} by six [stages]{mechanic:stage}.
+
 This item can only be obtained or used via the Wonder Launcher."
-652,9,,Not yet known. [[B/W item 611]]
-653,9,,Not yet known. [[B/W item 612]]
-654,9,,Not yet known. [[B/W item 613]]
-655,9,,Not yet known. [[B/W item 614]]
+652,9,Forcibly activates a friendly Pokémon's ability.,"Used on a party Pokémon in battle
+:   Selects another friendly Pokémon at random.  If that Pokémon's ability is normally activated by some condition—i.e., is not continuous and passive—its effect is forcibly activated.
+
+This item can only be obtained or used via the Wonder Launcher."
+653,9,Forces a friendly Pokémon to drop its held item.,"Used on a party Pokémon in battle
+:   Selects another friendly Pokémon at random.  If that Pokémon is holding an item, that item is removed for the duration of the battle.
+
+This item can only be obtained or used via the Wonder Launcher."
+654,9,Forcibly activates a friendly Pokémon's held item.,"Used on a party Pokémon in battle
+:   Selects another friendly Pokémon at random.  If that Pokémon is holding an item normally activated by some condition—i.e., not continuous and passive—its effect is forcibly activated.
+
+This item can only be obtained or used via the Wonder Launcher."
+655,9,Resets a friendly Pokémon's stat changes.,"Used on a party Pokémon in battle
+:   Selects another friendly Pokémon at random.  Removes all of that Pokémon's stat changes.
+
+This item can only be obtained or used via the Wonder Launcher."
 656,9,Raises [critical hit]{mechanic} rate by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [critical hit]{mechanic} rate by three [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
-657,9,,Key item related to Reshiram? [[B/W item 616]]
-658,9,,Key item related to Zekrom? [[B/W item 617]]
-659,9,,Not yet known. [[B/W item 618]]
-660,9,,Not yet known. [[B/W item 619]]
-661,9,,Not yet known. [[B/W item 620]]
-662,9,,Not yet known. [[B/W item 621]]
-663,9,,Not yet known. [[B/W item 622]]
-664,9,,Not yet known. [[B/W item 623]]
-665,9,,Not yet known. [[B/W item 624]]
-666,9,,Not yet known. [[B/W item 625]]
+657,9,Summons [Reshiram]{pokemon} for the final battle against N.,Summons [Reshiram]{pokemon} for the final battle against N.
+658,9,Summons [Zekrom]{pokemon} for the final battle against N.,Summons [Zekrom]{pokemon} for the final battle against N.
+659,9,Teaches [Wild Charge]{move} to a compatible Pokémon.,Teaches [Wild Charge]{move} to a compatible Pokémon.
+660,9,Teaches [Rock Smash]{move} to a compatible Pokémon.,Teaches [Rock Smash]{move} to a compatible Pokémon.
+661,9,Teaches [Snarl]{move} to a compatible Pokémon.,Teaches [Snarl]{move} to a compatible Pokémon.
+662,9,Makes four-way video calls.,"Makes four-way video calls.  Used for plot advancement in-game, but also works with other players via the C-Gear."
+663,9,Unknown.  Currently unused.,Unknown.  Currently unused.
+664,9,Part of a sidequest to obtain [TM89]{item}.,"Give to the [Wingull]{pokemon} on [Route 13]{location}, along with [Gram 2]{item} and [Gram 3]{item}, to receive [TM89]{item}."
+665,9,Part of a sidequest to obtain [TM89]{item}.,"Give to the [Wingull]{pokemon} on [Route 13]{location}, along with [Gram 1]{item} and [Gram 3]{item}, to receive [TM89]{item}."
+666,9,Part of a sidequest to obtain [TM89]{item}.,"Give to the [Wingull]{pokemon} on [Route 13]{location}, along with [Gram 1]{item} and [Gram 2]{item}, to receive [TM89]{item}."
 668,9,"Held: When the holder uses a damaging [Dragon]{type}-type move, the move has 1.5× power and this item is consumed.","Held
 :   When the holder uses a damaging [Dragon]{type}-type move, the move has 1.5× power and this item is consumed."
 669,9,"Held: When the holder uses a damaging [Normal]{type}-type move, the move has 1.5× power and this item is consumed.","Held
