@@ -157,11 +157,21 @@ class MultilangSession(Session):
     """A tiny Session subclass that adds support for a default language."""
     _default_language_id = 9  # English.  XXX magic constant
 
+    def __init__(self, *args, **kwargs):
+        try:
+            self.language_class = kwargs.pop('language_class')
+        except KeyError:
+            # Set the default language_class
+            # We need to import here, to prevent a circular depencency
+            from pokedex.db.tables import Language
+            self.language_class = Language
+        super(MultilangSession, self).__init__(*args, **kwargs)
+
     @property
     def default_language(self):
         # Need to import tables here to avoid a circular dependency
         from pokedex.db import tables
-        query = self.query(tables.Language)
+        query = self.query(self.language_class)
         query = query.filter_by(id=self._default_language_id)
         return query.one()
 

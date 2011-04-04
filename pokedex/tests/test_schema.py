@@ -66,7 +66,7 @@ def test_i18n_table_creation():
 
     # OK, create all the tables and gimme a session
     Base.metadata.create_all()
-    sm = sessionmaker(class_=MultilangSession)
+    sm = sessionmaker(class_=MultilangSession, language_class=Language)
     sess = MultilangScopedSession(sm)
 
     # Create some languages and foos to bind together
@@ -82,7 +82,7 @@ def test_i18n_table_creation():
 
     # Commit so the above get primary keys filled in
     sess.commit()
-    sess.default_language = lang_en.id
+    sess.default_language = lang_en
 
     # Give our foo some names, as directly as possible
     foo_text = FooText()
