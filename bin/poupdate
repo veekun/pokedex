@@ -318,6 +318,11 @@ if __name__ == '__main__':
     transl = translations.Translations.from_parsed_options(options)
 
     gettext_directory = options.gettext_directory
+
+    if (options.pots or options.pos) and not os.path.exists(gettext_directory):
+        print "Error: Gettext directory doesn't exist. Skipping pot/po creation"
+        options.pots = options.pos = False
+
     if options.pots:
         if options.verbose:
             print 'Creating pots in', gettext_directory
@@ -337,27 +342,28 @@ if __name__ == '__main__':
         for lang, stream in csv_streams.items():
             streams[lang].append(stream)
 
-        # Merge in the PO files
-        if options.langs:
-            langs = options.langs.split(',')
-        else:
-            langs = all_langs(gettext_directory)
+        if os.path.exists(gettext_directory):
+            # Merge in the PO files
+            if options.langs:
+                langs = options.langs.split(',')
+            else:
+                langs = all_langs(gettext_directory)
 
-        for lang in langs:
-            language_directory = os.path.join(gettext_directory, lang)
-            if options.verbose:
-                print 'Merging translations for %s in %s' % (lang, language_directory)
-            pos = merge_pos(transl, lang, language_directory)
-
-            if options.pos:
+            for lang in langs:
+                language_directory = os.path.join(gettext_directory, lang)
                 if options.verbose:
-                    print 'Writing POs for %s' % lang
-                save_pos(pos, lang, gettext_directory=gettext_directory)
+                    print 'Merging translations for %s in %s' % (lang, language_directory)
+                pos = merge_pos(transl, lang, language_directory)
 
-                if options.verbose:
-                    print_stats(pos)
+                if options.pos:
+                    if options.verbose:
+                        print 'Writing POs for %s' % lang
+                    save_pos(pos, lang, gettext_directory=gettext_directory)
 
-            streams[lang].append(yield_po_messages(pos))
+                    if options.verbose:
+                        print_stats(pos)
+
+                streams[lang].append(yield_po_messages(pos))
 
     if options.csv:
         for lang, lang_streams in streams.items():
