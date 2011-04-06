@@ -1,7 +1,7 @@
-from sqlalchemy import MetaData, Table, engine_from_config, orm
+from sqlalchemy import engine_from_config, orm
 
 from ..defaults import get_default_db_uri
-from .tables import metadata
+from .tables import Language, metadata
 from .multilang import MultilangSession, MultilangScopedSession
 
 
@@ -41,7 +41,13 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
 
     all_session_args = dict(autoflush=True, autocommit=False, bind=engine)
     all_session_args.update(session_args)
-    sm = orm.sessionmaker(class_=MultilangSession, **all_session_args)
+    sm = orm.sessionmaker(class_=MultilangSession, language_class=Language,
+        **all_session_args)
     session = MultilangScopedSession(sm)
+
+    # Default to English
+    session.default_language = session.query(Language) \
+        .filter_by(identifier=u'en') \
+        .one()
 
     return session
