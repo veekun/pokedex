@@ -200,7 +200,3 @@ class MultilangScopedSession(ScopedSession):
     @default_language.setter
     def default_language(self, new):
         self.registry().default_language = new
-
-    def remove(self):
-        del self.registry().default_language
-        super(MultilangScopedSession, self).remove()
