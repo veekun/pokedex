@@ -31,11 +31,17 @@ class MarkdownString(object):
     def __unicode__(self):
         return self.source_text
 
+    def __str__(self):
+        return unicode(self.source_text).encode()
+
+    def __html__(self):
+        return self.as_html
+
     @property
     def as_html(self):
         """Returns the string as HTML4."""
 
-        if self._as_html:
+        if self._as_html is not None:
             return self._as_html
 
         md = markdown.Markdown(

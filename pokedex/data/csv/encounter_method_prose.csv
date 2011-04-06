@@ -1,4 +1,4 @@
-encounter_terrain_id,local_language_id,name
+encounter_method_id,local_language_id,name
 1,9,Walking in tall grass or a cave
 2,9,Fishing with an Old Rod
 3,9,Fishing with a Good Rod

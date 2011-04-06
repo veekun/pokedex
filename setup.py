@@ -16,7 +16,7 @@ setup(
 
     entry_points = {
         'console_scripts': [
-            'pokedex = pokedex:main',
+            'pokedex = pokedex.main:main',
         ],
     },
 )

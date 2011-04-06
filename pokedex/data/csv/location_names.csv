@@ -331,3 +331,275 @@ location_id,local_language_id,name
 341,9,Concert Event
 342,9,Mr. Pokémon
 343,9,Primo
+344,1,なぞの場所
+344,9,Mystery Zone
+345,1,遠い場所
+345,9,Faraway place
+346,1,カノコタウン
+346,9,Nuvema Town
+347,1,カラクサタウン
+347,9,Accumula Town
+348,1,サンヨウシティ
+348,9,Striaton City
+349,1,シッポウシティ
+349,9,Nacrene City
+350,1,ヒウンシティ
+350,9,Castelia City
+351,1,ライモンシティ
+351,9,Nimbasa City
+352,1,ホドモエシティ
+352,9,Driftveil City
+353,1,フキヨセシティ
+353,9,Mistralton City
+354,1,セッカシティ
+354,9,Icirrus City
+355,1,ソウリュウシティ
+355,9,Opelucid City
+356,1,１番道路
+356,9,Route 1
+357,1,２番道路
+357,9,Route 2
+358,1,３番道路
+358,9,Route 3
+359,1,４番道路
+359,9,Route 4
+360,1,５番道路
+360,9,Route 5
+361,1,６番道路
+361,9,Route 6
+362,1,７番道路
+362,9,Route 7
+363,1,８番道路
+363,9,Route 8
+364,1,９番道路
+364,9,Route 9
+365,1,１０番道路
+365,9,Route 10
+366,1,１１番道路
+366,9,Route 11
+367,1,１２番道路
+367,9,Route 12
+368,1,１３番道路
+368,9,Route 13
+369,1,１４番道路
+369,9,Route 14
+370,1,１５番道路
+370,9,Route 15
+371,1,１６番道路
+371,9,Route 16
+372,1,１７番水道
+372,9,Route 17
+373,1,１８番道路
+373,9,Route 18
+374,1,夢の跡地
+374,9,Dreamyard
+375,1,ヤグルマの森
+375,9,Pinwheel Forest
+376,1,リゾートデザート
+376,9,Desert Resort
+377,1,古代の城
+377,9,Relic Castle
+378,1,冷凍コンテナ
+378,9,Cold Storage
+379,1,電気石の洞穴
+379,9,Chargestone Cave
+380,1,ネジ山
+380,9,Twist Mountain
+381,1,リュウラセンの塔
+381,9,Dragonspiral Tower
+382,1,チャンピオンロード
+382,9,Victory Road
+383,1,カゴメタウン
+383,9,Lacunosa Town
+384,1,サザナミタウン
+384,9,Undella Town
+385,1,カナワタウン
+385,9,Anville Town
+386,1,ポケモンリーグ
+386,9,Pokémon League
+387,1,Ｎの城
+387,9,N's Castle
+388,1,ロイヤルイッシュ号
+388,9,Royal Unova
+389,1,ギアステーション
+389,9,Gear Station
+390,1,バトルサブウェイ
+390,9,Battle Subway
+391,1,ミュージカルホール
+391,9,Musical Theater
+392,1,ブラックシティ
+392,9,Black City
+393,1,ホワイトフォレスト
+393,9,White Forest
+394,1,ユナイテッドタワー
+394,9,Unity Tower
+395,1,地下水脈の穴
+395,9,Wellspring Cave
+396,1,フキヨセの洞穴
+396,9,Mistralton Cave
+397,1,思索の原
+397,9,Rumination Field
+398,1,タワーオブヘブン
+398,9,Celestial Tower
+399,1,セッカの湿原
+399,9,Moor of Icirrus
+400,1,ショッピングモール
+400,9,Shopping Mall
+401,1,修行の岩屋
+401,9,Challenger's Cave
+402,1,シフトファクトリー
+402,9,Poké Transfer Lab
+403,1,ジャイアントホール
+403,9,Giant Chasm
+404,1,リバティガーデン島
+404,9,Liberty Garden
+405,1,Ｐ２ラボ
+405,9,P2 Laboratory
+406,1,スカイアローブリッジ
+406,9,Skyarrow Bridge
+407,1,ホドモエの跳ね橋
+407,9,Driftveil Drawbridge
+408,1,シリンダーブリッジ
+408,9,Tubeline Bridge
+409,1,ビレッジブリッジ
+409,9,Village Bridge
+410,1,ワンダーブリッジ
+410,9,Marvelous Bridge
+411,1,ハイリンク
+411,9,Entralink
+412,1,ほうじょうの社
+412,9,Abundant Shrine
+413,1,サザナミ湾
+413,9,Undella Bay
+414,1,迷いの森
+414,9,Lostlorn Forest
+415,1,試練の室
+415,9,Trial Chamber
+416,1,導の間
+416,9,Guidance Chamber
+417,1,ハイリンクの森
+417,9,Entree Forest
+418,1,カラクサゲート
+418,9,Accumula Gate
+419,1,サザナミゲート
+419,9,Undella Gate
+420,1,シッポウゲート
+420,9,Nacrene Gate
+421,1,ヒウンゲート
+421,9,Castelia Gate
+422,1,ライモンゲート
+422,9,Nimbasa Gate
+423,1,ソウリュウゲート
+423,9,Opelucid Gate
+424,1,ブラックゲート
+424,9,Black Gate
+425,1,ホワイトゲート
+425,9,White Gate
+426,1,ブリッジゲート
+426,9,Bridge Gate
+427,1,ロードゲート
+427,9,Route Gate
+428,1,海底遺跡
+428,9,Abyssal Ruins
+429,9,Petalburg City
+430,9,Slateport City
+431,9,Lilycove City
+432,9,Mossdeep City
+433,9,Sootopolis City
+434,9,Ever Grande City
+435,9,Meteor Falls
+436,9,Rusturf Tunnel
+437,9,Granite Cave
+438,9,Petalburg Woods
+439,9,Jagged Pass
+440,9,Fiery Pass
+441,9,Mt. Pyre
+442,9,Seafloor Cavern
+443,9,Cave of Origin
+444,9,Victory Road
+445,9,Shoal Cave
+446,9,New Mauville
+447,9,Abandoned Ship
+448,9,Sky Pillar
+449,9,Route 101
+450,9,Route 102
+451,9,Route 103
+452,9,Route 104
+453,9,Route 105
+454,9,Route 106
+455,9,Route 107
+456,9,Route 108
+457,9,Route 109
+458,9,Route 110
+459,9,Route 111
+460,9,Route 112
+461,9,Route 113
+462,9,Route 114
+463,9,Route 115
+464,9,Route 116
+465,9,Route 117
+466,9,Route 118
+467,9,Route 119
+468,9,Route 120
+469,9,Route 121
+470,9,Route 122
+471,9,Route 123
+472,9,Route 124
+473,9,Route 125
+474,9,Route 126
+475,9,Route 127
+476,9,Route 128
+477,9,Route 129
+478,9,Route 130
+479,9,Route 131
+480,9,Route 132
+481,9,Route 133
+482,9,Route 134
+483,9,Safari Zone
+484,9,Dewford Town
+485,9,Pacifidlog Town
+486,9,Magma Hideout
+487,9,Mirage Tower
+488,9,Desert Underpass
+489,9,Artisan Cave
+490,9,Altering Cave
+491,9,Monean Chamber
+492,9,Liptoo Chamber
+493,9,Weepth Chamber
+494,9,Dilford Chamber
+495,9,Scufib Chamber
+496,9,Rixy Chamber
+497,9,Viapos Chamber
+498,9,S.S. Anne
+499,9,Victory Road
+500,9,Mt. Ember
+501,9,Berry Forest
+502,9,Icefall Cave
+503,9,Patern Bush
+504,9,Lost Cave
+505,9,Kindle Road
+506,9,Treasure Beach
+507,9,Cape Brink
+508,9,Bond Bridge
+509,9,Three Isle Port
+510,9,Resort Gorgeous
+511,9,Water Labyrinth
+512,9,Five Isle Meadow
+513,9,Memorial Pillar
+514,9,Outcast Island
+515,9,Green Path
+516,9,Water Path
+517,9,Ruin Valley
+518,9,Trainer Tower
+519,9,Canyon Entrance
+520,9,Sevault Canyon
+521,9,Tanoby Ruins
+522,9,Route 19
+523,9,Route 20
+524,9,Route 21
+525,9,Vermillion City
+526,9,One Island
+527,9,Four Island
+528,9,Five Island
+529,9,Altering Cave
+530,9,Victory Road
