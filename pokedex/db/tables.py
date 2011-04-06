@@ -62,6 +62,9 @@ class TableSuperclass(object):
     def __str__(self):
         return unicode(self).encode('utf8')
 
+    def __repr__(self):
+        return unicode(self).encode('utf8')
+
 mapped_classes = []
 class TableMetaclass(DeclarativeMeta):
     def __init__(cls, name, bases, attrs):
@@ -121,9 +124,9 @@ create_translation_table('ability_names', Ability, 'names',
         info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 create_translation_table('ability_prose', Ability, 'prose',
-    effect = Column(markdown.MarkdownColumn(5120), nullable=False,
+    effect = Column(markdown.MarkdownColumn(5120), nullable=True,
         info=dict(description="A detailed description of this ability's effect", format='markdown')),
-    short_effect = Column(markdown.MarkdownColumn(255), nullable=False,
+    short_effect = Column(markdown.MarkdownColumn(255), nullable=True,
         info=dict(description="A short summary of this ability's effect", format='markdown')),
 )
 
@@ -232,9 +235,9 @@ class ContestEffect(TableBase):
         info=dict(description="The base number of hearts the user's opponent loses"))
 
 create_translation_table('contest_effect_prose', ContestEffect, 'prose',
-    flavor_text = Column(Unicode(64), nullable=False,
+    flavor_text = Column(Unicode(64), nullable=True,
         info=dict(description="The in-game description of this effect", official=True, format='gametext')),
-    effect = Column(Unicode(255), nullable=False,
+    effect = Column(Unicode(255), nullable=True,
         info=dict(description="A detailed description of the effect", format='plaintext')),
 )
 
@@ -250,11 +253,11 @@ class ContestType(TableBase):
 
 create_translation_table('contest_type_names', ContestType, 'names',
     relation_lazy='joined',
-    name = Column(Unicode(6), nullable=False, index=True,
+    name = Column(Unicode(6), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
-    flavor = Column(Unicode(6), nullable=False,
+    flavor = Column(Unicode(6), nullable=True,
         info=dict(description="The name of the corresponding Berry flavor", official=True, format='plaintext')),
-    color = Column(Unicode(6), nullable=False,
+    color = Column(Unicode(6), nullable=True,
         info=dict(description=u"The name of the corresponding Pokéblock color", official=True, format='plaintext')),
 )
 
@@ -500,9 +503,9 @@ create_translation_table('item_names', Item, 'names',
         info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 create_translation_table('item_prose', Item, 'prose',
-    short_effect = Column(markdown.MarkdownColumn(256), nullable=False,
-        info=dict(description="A short summary of the effect", format='plaintext')),
-    effect = Column(markdown.MarkdownColumn(5120), nullable=False,
+    short_effect = Column(markdown.MarkdownColumn(256), nullable=True,
+        info=dict(description="A short summary of the effect", format='markdown')),
+    effect = Column(markdown.MarkdownColumn(5120), nullable=True,
         info=dict(description=u"Detailed description of the item's effect.", format='markdown')),
 )
 create_translation_table('item_flavor_summaries', Item, 'flavor_summaries',
@@ -540,9 +543,9 @@ class ItemFlag(TableBase):
         info=dict(description="Identifier of the flag", format='identifier'))
 
 create_translation_table('item_flag_prose', ItemFlag, 'prose',
-    name = Column(Unicode(24), nullable=False, index=True,
+    name = Column(Unicode(24), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    description = Column(Unicode(64), nullable=False,
+    description = Column(Unicode(64), nullable=True,
         info=dict(description="Short description of the flag", format='plaintext')),
 )
 
@@ -784,9 +787,9 @@ class MoveDamageClass(TableBase):
 
 create_translation_table('move_damage_class_prose', MoveDamageClass, 'prose',
     relation_lazy='joined',
-    name = Column(Unicode(16), nullable=False, index=True,
+    name = Column(Unicode(16), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    description = Column(Unicode(64), nullable=False,
+    description = Column(Unicode(64), nullable=True,
         info=dict(description="A description of the class", format='plaintext')),
 )
 
@@ -799,9 +802,9 @@ class MoveEffect(TableBase):
         info=dict(description="A numeric ID"))
 
 create_translation_table('move_effect_prose', MoveEffect, 'prose',
-    short_effect = Column(Unicode(256), nullable=False,
+    short_effect = Column(Unicode(256), nullable=True,
         info=dict(description="A short summary of the effect", format='plaintext')),
-    effect = Column(Unicode(5120), nullable=False,
+    effect = Column(Unicode(5120), nullable=True,
         info=dict(description="A detailed description of the effect", format='plaintext')),
 )
 
@@ -877,9 +880,9 @@ class MoveFlagType(TableBase):
 
 create_translation_table('move_flag_type_prose', MoveFlagType, 'prose',
     relation_lazy='joined',
-    name = Column(Unicode(32), nullable=False, index=True,
+    name = Column(Unicode(32), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    description = Column(markdown.MarkdownColumn(128), nullable=False,
+    description = Column(markdown.MarkdownColumn(128), nullable=True,
         info=dict(description="A short description of the flag", format='markdown')),
 )
 
@@ -979,9 +982,9 @@ class MoveTarget(TableBase):
 
 create_translation_table('move_target_prose', MoveTarget, 'prose',
     relation_lazy='joined',
-    name = Column(Unicode(32), nullable=False, index=True,
+    name = Column(Unicode(32), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    description = Column(Unicode(128), nullable=False,
+    description = Column(Unicode(128), nullable=True,
         info=dict(description="A description", format='plaintext')),
 )
 
@@ -1072,9 +1075,9 @@ class Pokedex(TableBase):
 
 create_translation_table('pokedex_prose', Pokedex, 'prose',
     relation_lazy='joined',
-    name = Column(Unicode(16), nullable=False, index=True,
+    name = Column(Unicode(16), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    description = Column(Unicode(512), nullable=False,
+    description = Column(Unicode(512), nullable=True,
         info=dict(description=u"A longer description of the Pokédex", format='plaintext')),
 )
 
@@ -1202,9 +1205,9 @@ class Pokemon(TableBase):
 
 create_translation_table('pokemon_names', Pokemon, 'names',
     relation_lazy='joined',
-    name = Column(Unicode(20), nullable=False, index=True,
+    name = Column(Unicode(20), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=True, ripped=True)),
-    species = Column(Unicode(16), nullable=False,
+    species = Column(Unicode(16), nullable=True,
         info=dict(description=u'The short flavor text, such as "Seed" or "Lizard"; usually affixed with the word "Pokémon"',
         official=True, format='plaintext')),
 )
@@ -1389,7 +1392,7 @@ PokemonFormGroup.id = PokemonFormGroup.pokemon_id
 create_translation_table('pokemon_form_group_prose', PokemonFormGroup, 'prose',
     term = Column(Unicode(16), nullable=True,
         info=dict(description=u"The term for this Pokémon's forms, e.g. \"Cloak\" for Burmy or \"Forme\" for Deoxys.", official=True, format='plaintext')),
-    description = Column(markdown.MarkdownColumn(1024), nullable=False,
+    description = Column(markdown.MarkdownColumn(1024), nullable=True,
         info=dict(description=u"Description of how the forms work", format='markdown')),
 )
 
@@ -1481,9 +1484,9 @@ class PokemonMoveMethod(TableBase):
 
 create_translation_table('pokemon_move_method_prose', PokemonMoveMethod, 'prose',
     relation_lazy='joined',
-    name = Column(Unicode(64), nullable=False, index=True,
+    name = Column(Unicode(64), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    description = Column(Unicode(255), nullable=False,
+    description = Column(Unicode(255), nullable=True,
         info=dict(description=u"A detailed description of how the method works", format='plaintext')),
 )
 
@@ -1499,9 +1502,9 @@ class PokemonShape(TableBase):
 
 create_translation_table('pokemon_shape_prose', PokemonShape, 'prose',
     relation_lazy='joined',
-    name = Column(Unicode(24), nullable=False, index=True,
+    name = Column(Unicode(24), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    awesome_name = Column(Unicode(16), nullable=False,
+    awesome_name = Column(Unicode(16), nullable=True,
         info=dict(description=u"A splendiferous name of the body shape", format='plaintext')),
 )
 

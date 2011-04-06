@@ -106,6 +106,9 @@ class MarkdownColumn(sqlalchemy.types.TypeDecorator):
     impl = sqlalchemy.types.Unicode
 
     def process_bind_param(self, value, dialect):
+        if value is None:
+            return None
+
         if not isinstance(value, basestring):
             # Can't assign, e.g., MarkdownString objects yet
             raise NotImplementedError
@@ -113,4 +116,7 @@ class MarkdownColumn(sqlalchemy.types.TypeDecorator):
         return unicode(value)
 
     def process_result_value(self, value, dialect):
+        if value is None:
+            return None
+
         return MarkdownString(value)

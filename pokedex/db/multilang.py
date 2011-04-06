@@ -155,17 +155,26 @@ def create_translation_table(_table_name, foreign_class, relation_name,
     return Translations
 
 class MultilangSession(Session):
-    """A tiny Session subclass that adds support for a default language."""
-    _default_language_id = 9  # English.  XXX magic constant
+    """A tiny Session subclass that adds support for a default language.
+
+    Caller will need to assign something to `default_language` before this will
+    actually work.
+    """
+    _default_language_id = 0  # Better fill this in, caller
+
+    def __init__(self, *args, **kwargs):
+        self.language_class = kwargs.pop('language_class')
+        super(MultilangSession, self).__init__(*args, **kwargs)
 
     @property
     def default_language(self):
-        # XXX need to get the right mapped class for this to work
-        raise NotImplementedError
+        return self.query(self.language_class) \
+            .filter_by(id=self._default_language_id) \
+            .one()
 
     @default_language.setter
     def default_language(self, new):
-        self._default_language_id = new#.id
+        self._default_language_id = new.id
 
     @default_language.deleter
     def default_language(self):
