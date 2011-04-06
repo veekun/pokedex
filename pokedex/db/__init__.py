@@ -45,9 +45,9 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
         **all_session_args)
     session = MultilangScopedSession(sm)
 
-    # Default to English
-    session.default_language = session.query(Language) \
-        .filter_by(identifier=u'en') \
-        .one()
+    # Default to English.  Warning, magic constant, blah blah.  Trying to fetch
+    # English here would kinda break on new databases.  TODO still not an ideal
+    # solution, I guess.
+    session._default_language_id = 9
 
     return session
