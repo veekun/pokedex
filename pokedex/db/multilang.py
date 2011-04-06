@@ -99,7 +99,8 @@ def create_translation_table(_table_name, foreign_class, relation_name,
         'foreign_id': synonym(foreign_key_name),
         'local_language': relationship(language_class,
             primaryjoin=table.c.local_language_id == language_class.id,
-            innerjoin=True),
+            innerjoin=True,
+            lazy='joined'),
     })
 
     # Add full-table relations to the original class
