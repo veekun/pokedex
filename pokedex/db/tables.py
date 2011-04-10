@@ -808,34 +808,6 @@ create_translation_table('move_effect_prose', MoveEffect, 'prose',
         info=dict(description="A detailed description of the effect", format='plaintext')),
 )
 
-class MoveEffectCategory(TableBase):
-    u"""Category of a move effect
-    """
-    __tablename__ = 'move_effect_categories'
-    __singlename__ = 'move_effect_category'
-    id = Column(Integer, primary_key=True, nullable=False,
-        info=dict(description="A numeric ID"))
-    identifier = Column(Unicode(64), nullable=False,
-        info=dict(description="An identifier", format='identifier'))
-    can_affect_user = Column(Boolean, nullable=False,
-        info=dict(description="Set if the user can be affected"))
-
-create_translation_table('move_effect_category_prose', MoveEffectCategory, 'prose',
-    name = Column(Unicode(64), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=False)),
-)
-
-class MoveEffectCategoryMap(TableBase):
-    u"""Maps a move effect category to a move effect
-    """
-    __tablename__ = 'move_effect_category_map'
-    move_effect_id = Column(Integer, ForeignKey('move_effects.id'), primary_key=True, nullable=False,
-        info=dict(description="ID of the move effect"))
-    move_effect_category_id = Column(Integer, ForeignKey('move_effect_categories.id'), primary_key=True, nullable=False,
-        info=dict(description="ID of the category"))
-    affects_user = Column(Boolean, primary_key=True, nullable=False,
-        info=dict(description="Set if the user is affected"))
-
 class MoveEffectChangelog(TableBase):
     """History of changes to move effects across main game versions."""
     __tablename__ = 'move_effect_changelog'
@@ -1902,12 +1874,9 @@ MoveChangelog.effect_map = markdown.MoveEffectPropertyMap('effect_map')
 MoveChangelog.short_effect = markdown.MoveEffectProperty('short_effect')
 MoveChangelog.short_effect_map = markdown.MoveEffectPropertyMap('short_effect_map')
 
-MoveEffect.category_map = relation(MoveEffectCategoryMap)
-MoveEffect.categories = association_proxy('category_map', 'category')
 MoveEffect.changelog = relation(MoveEffectChangelog,
     order_by=MoveEffectChangelog.changed_in_version_group_id.desc(),
     backref='move_effect')
-MoveEffectCategoryMap.category = relation(MoveEffectCategory)
 
 MoveEffectChangelog.changed_in = relation(VersionGroup,
     innerjoin=True, lazy='joined',
