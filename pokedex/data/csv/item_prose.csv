@@ -460,19 +460,46 @@ Used on a party Pokémon
 :   When the holder takes [physical]{mechanic} damage, it consumes this item to damage the attacking Pokémon for 1/8 its max [HP]{mechanic}."
 189,9,,"Held in battle
 :   When the holder takes [special]{mechanic} damage, it consumes this item to damage the attacking Pokémon for 1/8 its max [HP]{mechanic}."
-190,9,,"Held: Raises the holder's Evasion 10% (added, not multiplied)."
-191,9,,"Held: After each move, if any of the holder's stats are below normal, this item is consumed and restores them to normal."
-192,9,,Held: Doubles the effort the holder earns.  Halves the holder's Speed.
-193,9,,"Held: The holder counts as having participated in the battle when Exp is distributed, whether or not it actually did."
-194,9,,"Held: The holder has a 3/16 chance to move first within its move's priority bracket, regardless of Speed."
-195,9,,Held: Doubles any Happiness earned by the holder.
-196,9,,"Held: When the holder becomes Attracted, this Berry is consumed and cures the Attraction."
-197,9,,"Held: Increases the holder's Attack by 50%, but restricts it to the first move it uses until it leaves battle or loses this item.  If this item is swapped for another Choice item via Trick or Switcheroo, the holder's restriction is still lifted, but it will again be restricted to the next move it uses.
-(Quirk: If the holder is switched in by U-Turn and it also knows U-Turn, U-Turn becomes its restricted move.)"
-198,9,,"Held: When the holder attacks with most damaging moves, provides an extra 11.7% (30/256) chance for the target to flinch.
-Held by Poliwhirl or Slowbro: Evolves the holder into Politoed or Slowking when traded, respectively."
-199,9,,Held: Increases the power of the holder's Bug moves by 20%.
-200,9,,Held: Doubles the money the trainer receives after an in-game trainer battle.  This effect cannot apply more than once to the same battle.
+190,9,Increases the holder's evasion by 11 1/9%.,"Held in battle
+:   Moves targeting the holder have 0.9× [chance to hit]{mechanic}."
+191,9,"Held: Resets lowered stats to normal at end of turn, but only once.","Held in battle
+:   At the end of each turn, if any of the holder's stats have a negative [stat modifier]{mechanic}, the holder consumes this item to remove the modifiers from those stats."
+192,9,"Held: Holder gains double effort from battles, but has halved Speed.","Held
+:   When the holder would gain [effort]{mechanic} due to battle, it gains double that effort instead.
+
+Held in battle
+:   Holder has half its [Speed]{mechanic}."
+193,9,Held: Half the experience from a battle is split between Pokémon holding this item.,"Held
+:   [Experience]{mechanic} is split across two groups: Pokémon who participated in battle, and Pokémon holding this item.  Each Pokémon earns experience as though it had battled alone, divided by the number of Pokémon in its group, then divided by the number of groups. Pokémon holding this item who also participated in battle effectively earn experience twice.
+
+    [Fainted]{mechanic} Pokémon never earn experience, and empty groups are
+ignored; thus, if a single Pokémon is holding this item and the only Pokémon who battled faints from [Explosion]{move}, the holder will gain full experience."
+194,9,Held: Holder has a 3/16 chance to move first.,"Held in battle
+:   Whenever the holder attempts to use a move, it has a 3/16 chance to act first among moves with the same [priority]{mechanic}.  If multiple Pokémon have this effect at the same time, [Speed]{mechanic} is the tie-breaker as normal, but the effect of [Trick Room]{move} is ignored."
+195,9,Held: Doubles the happiness earned by the holder.,"Held
+:   When the holder would earn [happiness]{mechanic} for any reason, it earns twice that amount instead."
+196,9,Held: Consumed to cure attraction.,"Held in battle
+:   When the holder is [attracted]{move:Attract}, it consumes this item to cure the attraction."
+197,9,"Held: Increases Attack by 50%, but restricts the holder to only one move.","Held in battle
+:   Holder has 1.5× its [Attack]{mechanic}.  When the holder attempts to use a move, all its other moves are disabled until it leaves battle or loses this item.
+
+    The restriction ends even if this item is swapped for another Choice item
+via [Trick]{move} or [Switcheroo]{move}."
+198,9,Held: Damaging moves gain a 10% chance to make their target flinch.,"Held in battle
+:   Holder's damaging moves have a 10% chance to make their target [flinch]{mechanic}.  This chance applies independently to each hit of a multi-hit move.
+
+    This item's chance is rolled independently of any other move effects;
+e.g., a move with a 30% chance to flinch normally will have a 37% total chance to flinch when used with this item, because 3% of the time, both effects activate.
+
+Held by [Poliwhirl]{pokemon} or [Slowbro]{pokemon}
+:   Holder evolves into [Politoed]{pokemon} or [Slowking]{pokemon}, respectively, when traded."
+199,9,Held: Bug-type moves have 20% more power.,"Held in battle
+:   Holder's [Bug]{type}-type moves have 1.2× their power.
+"
+200,9,Held: Doubles the money earned from a battle.,"Held
+:   If the holder participated in a trainer battle, the trainer earns twice the usual prize money.  This effect applies even if the holder [fainted]{mechanic}.
+
+    This effect does not stack with any other similar effect."
 201,9,,Held by lead Pokémon: Prevents wild battles with Pokémon that are lower level than the holder.
 202,9,,Held by Latias or Latios: Increases the holder's Special Attack and Special Defense by 50%.
 203,9,,Held by Clamperl: Doubles the holder's Special Attack.  Evolves the holder into Huntail when traded.
