@@ -7,6 +7,8 @@ from ..defaults import get_default_db_uri
 from .tables import Language, metadata
 from .multilang import MultilangSession, MultilangScopedSession
 
+ENGLISH_ID = 9
+
 
 def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
     """Connects to the requested URI.  Returns a session object.
@@ -44,14 +46,9 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
 
     all_session_args = dict(autoflush=True, autocommit=False, bind=engine)
     all_session_args.update(session_args)
-    sm = orm.sessionmaker(class_=MultilangSession, language_class=Language,
-        **all_session_args)
+    sm = orm.sessionmaker(class_=MultilangSession,
+        default_language_id=ENGLISH_ID, **all_session_args)
     session = MultilangScopedSession(sm)
-
-    # Default to English.  Warning, magic constant, messing with internals,
-    # blah blah.  Trying to fetch English here would kinda break on new
-    # databases.  TODO still not an ideal solution, I guess.
-    session.registry()._default_language_id = 9
 
     return session
 

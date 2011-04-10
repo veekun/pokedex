@@ -66,7 +66,7 @@ def test_i18n_table_creation():
 
     # OK, create all the tables and gimme a session
     Base.metadata.create_all()
-    sm = sessionmaker(class_=MultilangSession, language_class=Language)
+    sm = sessionmaker(class_=MultilangSession)
     sess = MultilangScopedSession(sm)
 
     # Create some languages and foos to bind together
@@ -80,9 +80,12 @@ def test_i18n_table_creation():
     foo = Foo()
     sess.add(foo)
 
-    # Commit so the above get primary keys filled in
+    # Commit so the above get primary keys filled in, then give the
+    # session the language id
     sess.commit()
-    sess.default_language = lang_en
+    # Note that this won't apply to sessions created in other threads, but that
+    # ought not be a problem!
+    sess.default_language_id = lang_en.id
 
     # Give our foo some names, as directly as possible
     foo_text = FooText()
