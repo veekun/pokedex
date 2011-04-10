@@ -1068,6 +1068,8 @@ class Pokemon(TableBase):
         info=dict(description=u"ID of the generation this species first appeared in"))
     evolution_chain_id = Column(Integer, ForeignKey('evolution_chains.id'),
         info=dict(description=u"ID of the species' evolution chain (a.k.a. family)"))
+    evolves_from_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=True,
+        info=dict(description=u"The Pokémon species from which this one evolves"))
     height = Column(Integer, nullable=False,
         info=dict(description=u"The height of the Pokémon, in decimeters (tenths of a meter)"))
     weight = Column(Integer, nullable=False,
@@ -1249,9 +1251,8 @@ class PokemonEvolution(TableBase):
     Any condition may be null if it does not apply for a particular Pokémon.
     """
     __tablename__ = 'pokemon_evolution'
-    from_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False,
-        info=dict(description=u"The ID of the pre-evolution Pokémon."))
-    to_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
+    id = Column(Integer, primary_key=True, nullable=False)
+    evolved_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False,
         info=dict(description=u"The ID of the post-evolution Pokémon."))
     evolution_trigger_id = Column(Integer, ForeignKey('evolution_triggers.id'), nullable=False,
         info=dict(description=u"The ID of the evolution trigger."))
@@ -1988,11 +1989,13 @@ Pokemon.egg_groups = relation(EggGroup,
 Pokemon.evolution_chain = relation(EvolutionChain,
     innerjoin=True,
     backref=backref('pokemon', order_by=Pokemon.order.asc()))
-Pokemon.child_pokemon = relation(Pokemon,
-    primaryjoin=Pokemon.id==PokemonEvolution.from_pokemon_id,
-    secondary=PokemonEvolution.__table__,
-    secondaryjoin=PokemonEvolution.to_pokemon_id==Pokemon.id,
-    backref=backref('parent_pokemon', uselist=False))
+Pokemon.parent_pokemon = relation(Pokemon,
+    primaryjoin=Pokemon.evolves_from_pokemon_id==Pokemon.id,
+    remote_side=[Pokemon.id],
+    backref='child_pokemon')
+Pokemon.evolutions = relation(PokemonEvolution,
+    primaryjoin=Pokemon.id==PokemonEvolution.evolved_pokemon_id,
+    backref=backref('evolved_pokemon', innerjoin=True, lazy='joined'))
 Pokemon.flavor_text = relation(PokemonFlavorText,
     order_by=PokemonFlavorText.version_id.asc(),
     backref='pokemon')
@@ -2028,20 +2031,6 @@ Pokemon.types = relation(Type,
 PokemonDexNumber.pokedex = relation(Pokedex,
     innerjoin=True, lazy='joined')
 
-PokemonEvolution.from_pokemon = relation(Pokemon,
-    primaryjoin=PokemonEvolution.from_pokemon_id==Pokemon.id,
-    innerjoin=True,
-    backref='child_evolutions')
-PokemonEvolution.to_pokemon = relation(Pokemon,
-    primaryjoin=PokemonEvolution.to_pokemon_id==Pokemon.id,
-    innerjoin=True,
-    backref=backref('parent_evolution', uselist=False))
-PokemonEvolution.child_evolutions = relation(PokemonEvolution,
-    primaryjoin=PokemonEvolution.from_pokemon_id==PokemonEvolution.to_pokemon_id,
-    foreign_keys=[PokemonEvolution.to_pokemon_id],
-    backref=backref('parent_evolution',
-        remote_side=[PokemonEvolution.from_pokemon_id],
-        uselist=False))
 PokemonEvolution.trigger = relation(EvolutionTrigger,
     innerjoin=True, lazy='joined',
     backref='evolutions')
