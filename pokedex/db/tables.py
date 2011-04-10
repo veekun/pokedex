@@ -938,7 +938,7 @@ class MoveMetaAilment(TableBase):
     __singlename__ = 'move_meta_ailment'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="A numeric ID"))
-    identifier = Column(Unicode(24), nullable=False,
+    identifier = Column(Unicode(24), nullable=False, index=True, unique=True,
         info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('move_meta_ailment_names', MoveMetaAilment, 'names',
@@ -953,6 +953,8 @@ class MoveMetaCategory(TableBase):
     __singlename__ = 'move_meta_category'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
+    identifier = Column(Unicode(32), nullable=False, index=True, unique=True,
+        info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('move_meta_category_prose', MoveMetaCategory, 'prose',
     relation_lazy='joined',
