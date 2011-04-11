@@ -295,7 +295,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
             session.connection().execute(
                 insert_stmt.values(**row_data)
             )
-            seen_ids[row_data['id']] = 1
+            seen_ids.add(row_data['id'])
         session.commit()
 
         print_done()
