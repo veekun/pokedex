@@ -5,8 +5,9 @@ The language used is a variation of Markdown and Markdown Extra.  There are
 docs for each at http://daringfireball.net/projects/markdown/ and
 http://michelf.com/projects/php-markdown/extra/ respectively.
 
-Pokédex links are represented with the extended syntax `[name]{type}`, e.g.,
-`[Eevee]{pokemon}`.  The actual code that parses these is in spline-pokedex.
+Pokédex links are represented with the syntax `[text]{type:identifier}`, e.g.,
+`[Eevee]{pokemon:eevee}`.  The actual code that parses these is in
+spline-pokedex.
 """
 from __future__ import absolute_import
 
