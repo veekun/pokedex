@@ -202,12 +202,8 @@ def test_texts():
                 assert column.nullable
 
 def test_identifiers_with_names():
-    """Test that named tables have identifiers, and non-named tables don't
-
-    ...have either names or identifiers.
+    """Test that named tables have identifiers
     """
     for table in sorted(tables.mapped_classes, key=lambda t: t.__name__):
         if hasattr(table, 'name'):
             assert hasattr(table, 'identifier'), table
-        else:
-            assert not hasattr(table, 'identifier'), table

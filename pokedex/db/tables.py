@@ -1251,7 +1251,8 @@ class PokemonEvolution(TableBase):
     Any condition may be null if it does not apply for a particular Pokémon.
     """
     __tablename__ = 'pokemon_evolution'
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
     evolved_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False,
         info=dict(description=u"The ID of the post-evolution Pokémon."))
     evolution_trigger_id = Column(Integer, ForeignKey('evolution_triggers.id'), nullable=False,
