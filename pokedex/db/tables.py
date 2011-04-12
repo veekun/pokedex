@@ -805,7 +805,7 @@ create_translation_table('move_effect_prose', MoveEffect, 'prose',
     short_effect = Column(Unicode(256), nullable=True,
         info=dict(description="A short summary of the effect", format='plaintext')),
     effect = Column(Unicode(5120), nullable=True,
-        info=dict(description="A detailed description of the effect", format='plaintext')),
+        info=dict(description="A detailed description of the effect", format='markdown')),
 )
 
 class MoveEffectChangelog(TableBase):

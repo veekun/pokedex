@@ -181,7 +181,8 @@ def test_texts():
                 if format not in good_formats:
                     raise AssertionError(assert_text % column)
                 is_markdown = isinstance(column.type, markdown.MarkdownColumn)
-                if is_markdown != (format == 'markdown'):
+                if is_markdown and (format != 'markdown'):
+                    # Note: regular string with markdown syntax is allowed
                     raise AssertionError('%s: markdown format/column type mismatch' % column)
                 if (format != 'identifier') and (column.name == 'identifier'):
                     raise AssertionError('%s: identifier column name/type mismatch' % column)
