@@ -126,7 +126,7 @@ create_translation_table('ability_names', Ability, 'names',
 create_translation_table('ability_prose', Ability, 'prose',
     effect = Column(markdown.MarkdownColumn(5120), nullable=True,
         info=dict(description="A detailed description of this ability's effect", format='markdown')),
-    short_effect = Column(markdown.MarkdownColumn(255), nullable=True,
+    short_effect = Column(markdown.MarkdownColumn(512), nullable=True,
         info=dict(description="A short summary of this ability's effect", format='markdown')),
 )
 
@@ -854,7 +854,7 @@ create_translation_table('move_flag_type_prose', MoveFlagType, 'prose',
     relation_lazy='joined',
     name = Column(Unicode(32), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    description = Column(markdown.MarkdownColumn(128), nullable=True,
+    description = Column(markdown.MarkdownColumn(256), nullable=True,
         info=dict(description="A short description of the flag", format='markdown')),
 )
 
