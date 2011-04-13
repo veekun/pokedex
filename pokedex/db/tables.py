@@ -32,7 +32,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import backref, relation
 from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.interfaces import AttributeExtension
-from sqlalchemy.sql import and_
+from sqlalchemy.sql import and_, or_
 from sqlalchemy.schema import ColumnDefault
 from sqlalchemy.types import *
 
@@ -1320,13 +1320,6 @@ class PokemonForm(TableBase):
         info=dict(description=u'The order in which forms should be sorted.  Multiple forms may have equal order, in which case they should fall back on sorting by name.'))
 
     @property
-    def pokemon(self):
-        u"""Returns the Pokémon for this form, using the form base as fallback.
-        """
-
-        return self.unique_pokemon or self.form_base_pokemon
-
-    @property
     def full_name(self):
         u"""Returns the full name of this form, e.g. "Plant Cloak"."""
 
@@ -2060,6 +2053,12 @@ PokemonForm.form_base_pokemon = relation(Pokemon,
 PokemonForm.unique_pokemon = relation(Pokemon,
     primaryjoin=PokemonForm.unique_pokemon_id==Pokemon.id,
     backref=backref('unique_form', uselist=False))
+PokemonForm.pokemon = relation(Pokemon,
+    primaryjoin=or_(
+        PokemonForm.unique_pokemon_id==Pokemon.id,
+        and_(PokemonForm.unique_pokemon_id==None, 
+            PokemonForm.form_base_pokemon_id==Pokemon.id)
+        ), uselist=False)
 PokemonForm.version_group = relation(VersionGroup,
     innerjoin=True)
 PokemonForm.form_group = association_proxy('form_base_pokemon', 'form_group')
