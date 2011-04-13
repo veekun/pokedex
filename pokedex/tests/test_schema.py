@@ -181,7 +181,8 @@ def test_texts():
                 if format not in good_formats:
                     raise AssertionError(assert_text % column)
                 is_markdown = isinstance(column.type, markdown.MarkdownColumn)
-                if is_markdown != (format == 'markdown'):
+                if is_markdown and (format != 'markdown'):
+                    # Note: regular string with markdown syntax is allowed
                     raise AssertionError('%s: markdown format/column type mismatch' % column)
                 if (format != 'identifier') and (column.name == 'identifier'):
                     raise AssertionError('%s: identifier column name/type mismatch' % column)
@@ -202,12 +203,8 @@ def test_texts():
                 assert column.nullable
 
 def test_identifiers_with_names():
-    """Test that named tables have identifiers, and non-named tables don't
-
-    ...have either names or identifiers.
+    """Test that named tables have identifiers
     """
     for table in sorted(tables.mapped_classes, key=lambda t: t.__name__):
         if hasattr(table, 'name'):
             assert hasattr(table, 'identifier'), table
-        else:
-            assert not hasattr(table, 'identifier'), table

@@ -126,7 +126,7 @@ create_translation_table('ability_names', Ability, 'names',
 create_translation_table('ability_prose', Ability, 'prose',
     effect = Column(markdown.MarkdownColumn(5120), nullable=True,
         info=dict(description="A detailed description of this ability's effect", format='markdown')),
-    short_effect = Column(markdown.MarkdownColumn(255), nullable=True,
+    short_effect = Column(markdown.MarkdownColumn(512), nullable=True,
         info=dict(description="A short summary of this ability's effect", format='markdown')),
 )
 
@@ -805,7 +805,7 @@ create_translation_table('move_effect_prose', MoveEffect, 'prose',
     short_effect = Column(Unicode(256), nullable=True,
         info=dict(description="A short summary of the effect", format='plaintext')),
     effect = Column(Unicode(5120), nullable=True,
-        info=dict(description="A detailed description of the effect", format='plaintext')),
+        info=dict(description="A detailed description of the effect", format='markdown')),
 )
 
 class MoveEffectChangelog(TableBase):
@@ -854,7 +854,7 @@ create_translation_table('move_flag_type_prose', MoveFlagType, 'prose',
     relation_lazy='joined',
     name = Column(Unicode(32), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    description = Column(markdown.MarkdownColumn(128), nullable=True,
+    description = Column(markdown.MarkdownColumn(256), nullable=True,
         info=dict(description="A short description of the flag", format='markdown')),
 )
 
@@ -1251,7 +1251,8 @@ class PokemonEvolution(TableBase):
     Any condition may be null if it does not apply for a particular Pokémon.
     """
     __tablename__ = 'pokemon_evolution'
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A numeric ID"))
     evolved_pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False,
         info=dict(description=u"The ID of the post-evolution Pokémon."))
     evolution_trigger_id = Column(Integer, ForeignKey('evolution_triggers.id'), nullable=False,
