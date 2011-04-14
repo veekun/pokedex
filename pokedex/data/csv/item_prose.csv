@@ -18,7 +18,7 @@ item_id,local_language_id,short_effect,effect
 5,9,Tries to catch a wild Pokémon in the Great Marsh or Safari Zone.  Success rate is 1.5×.,"Used in battle
 :   Attempts to [catch]{mechanic:catch} a wild Pokémon, using a catch rate of 1.5×.
 
-This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari Zone]{location:Safari Zone}."
+This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari Zone]{location:kanto-safari-zone}."
 6,9,Tries to catch a wild Pokémon.  Success rate is 3× for water and bug Pokémon.,"Used in battle
 :   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If the wild Pokémon is [water]{type:water}- or [bug]{type:bug}-type, this ball has a catch rate of 3×.  Otherwise, it has a catch rate of 1×.
 
@@ -212,7 +212,7 @@ In HeartGold and SoulSilver, trade one for a [Durin Berry]{item:durin-berry}, a 
 77,9,,"Used outside of battle
 :   Trainer will skip encounters with wild Pokémon of a lower level than the lead party Pokémon.  This effect wears off after the trainer takes 250 steps."
 78,9,,"Used outside of battle
-:   Transports the trainer to the last-entered dungeon entrance.  Cannot be used outside, in buildings, or in [Distortion World]{location:distortion-world}, [Hall of Origin]{location:Hall of Origin}, [Spear Pillar]{location:spear-pillar}, or [Turnback Cave]{location:turnback-cave}."
+:   Transports the trainer to the last-entered dungeon entrance.  Cannot be used outside, in buildings, or in [Distortion World]{location:distortion-world}, [Hall of Origin]{location:sinnoh-hall-of-origin-1}, [Spear Pillar]{location:spear-pillar}, or [Turnback Cave]{location:turnback-cave}."
 79,9,,"Used outside of battle
 :   Trainer will skip encounters with wild Pokémon of a lower level than the lead party Pokémon.  This effect wears off after the trainer takes 100 steps."
 80,9,,"Used on a party Pokémon
@@ -1216,9 +1216,9 @@ This item can only be obtained or used via the Wonder Launcher."
 661,9,Teaches [Snarl]{move:snarl} to a compatible Pokémon.,Teaches [Snarl]{move:snarl} to a compatible Pokémon.
 662,9,Makes four-way video calls.,"Makes four-way video calls.  Used for plot advancement in-game, but also works with other players via the C-Gear."
 663,9,Unknown.  Currently unused.,Unknown.  Currently unused.
-664,9,Part of a sidequest to obtain [TM89]{item:tm89}.,"Give to the [Wingull]{pokemon:wingull} on [Route 13]{location:Route 13}, along with [Gram 2]{item:gram-2} and [Gram 3]{item:gram-3}, to receive [TM89]{item:tm89}."
-665,9,Part of a sidequest to obtain [TM89]{item:tm89}.,"Give to the [Wingull]{pokemon:wingull} on [Route 13]{location:Route 13}, along with [Gram 1]{item:gram-1} and [Gram 3]{item:gram-3}, to receive [TM89]{item:tm89}."
-666,9,Part of a sidequest to obtain [TM89]{item:tm89}.,"Give to the [Wingull]{pokemon:wingull} on [Route 13]{location:Route 13}, along with [Gram 1]{item:gram-1} and [Gram 2]{item:gram-2}, to receive [TM89]{item:tm89}."
+664,9,Part of a sidequest to obtain [TM89]{item:tm89}.,"Give to the [Wingull]{pokemon:wingull} on [Route 13]{location:unova-route-13}, along with [Gram 2]{item:gram-2} and [Gram 3]{item:gram-3}, to receive [TM89]{item:tm89}."
+665,9,Part of a sidequest to obtain [TM89]{item:tm89}.,"Give to the [Wingull]{pokemon:wingull} on [Route 13]{location:unova-route-13}, along with [Gram 1]{item:gram-1} and [Gram 3]{item:gram-3}, to receive [TM89]{item:tm89}."
+666,9,Part of a sidequest to obtain [TM89]{item:tm89}.,"Give to the [Wingull]{pokemon:wingull} on [Route 13]{location:unova-route-13}, along with [Gram 1]{item:gram-1} and [Gram 2]{item:gram-2}, to receive [TM89]{item:tm89}."
 668,9,"Held: When the holder uses a damaging [Dragon]{type:dragon}-type move, the move has 1.5× power and this item is consumed.","Held
 :   When the holder uses a damaging [Dragon]{type:dragon}-type move, the move has 1.5× power and this item is consumed."
 669,9,"Held: When the holder uses a damaging [Normal]{type:normal}-type move, the move has 1.5× power and this item is consumed.","Held
