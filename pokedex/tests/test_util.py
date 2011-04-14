@@ -3,7 +3,7 @@ from nose.tools import *
 import unittest
 
 from pokedex.db import connect, tables
-from pokedex.util import get
+from pokedex.util import get, simple
 
 session = connect()
 
@@ -46,30 +46,30 @@ def test_get_pokemon_other_form_identifier():
         if poke.form.unique_pokemon_id:
             assert poke.form.identifier == form_identifier
 
-def test_pokemon():
-    pokemon = get.pokemon(session)
-    assert pokemon[0].identifier == 'bulbasaur'
-    assert pokemon[-1].identifier == 'genesect'
-
-def test_pokemon_by_name():
-    pokemon = get.pokemon(session, order=tables.Pokemon.name)
-    assert pokemon[0].identifier == 'abomasnow'
-    assert pokemon[-1].identifier == 'zweilous'
-
 def test_types_french_order():
     french = get.get(session, tables.Language, 'fr')
-    types = get.types(session, order=None)
+    types = session.query(tables.Type).filter(tables.Type.id < 10000)
     types = list(get.order_by_name(types, tables.Type, language=french))
     assert types[0].name_map[french] == 'Acier', types[0].name_map[french]
     assert types[-1].name_map[french] == 'Vol', types[-1].name_map[french]
 
-def test_moves():
-    moves = get.moves(session)
+def test_simple_pokemon():
+    pokemon = simple.pokemon(session)
+    assert pokemon[0].identifier == 'bulbasaur'
+    assert pokemon[-1].identifier == 'genesect'
+
+def test_simple_types():
+    types = simple.types(session)
+    assert types[0].identifier == 'bug'
+    assert types[-1].identifier == 'water'
+
+def test_simple_moves():
+    moves = simple.moves(session)
     assert moves[0].identifier == 'absorb'
     assert moves[-1].identifier == 'zen-headbutt'
 
-def test_items():
-    items = get.items(session)
+def test_simple_items():
+    items = simple.items(session)
     assert items[0].identifier == 'ability-urge'
     assert items[-1].identifier == 'zoom-lens'
 

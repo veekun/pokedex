@@ -1,15 +1,14 @@
-"""Provides simple functions for common queries
+"""Helpers for common ways to work with pokedex queries
 
 These include identifier- and name-based lookup, filtering out base forms
-of pokemon, ordering by name, and getting canonical "pokedex" lists (i.e.
-ordered and without cruft like alternate pokemon forms or Shadow moves)
+of pokemon, and filtering/ordering by name.
 """
 
 from sqlalchemy.orm import aliased
 
 from pokedex.db import tables
 
-### Getters
+### Getter
 
 def get(session, table, identifier=None, name=None, id=None,
         form_identifier=None, form_name=None, language=None, is_pokemon=None):
@@ -122,54 +121,3 @@ def order_by_name(query, table, language=None, *extra_languages):
         query = query.order_by(names_table.name)
     query = query.order_by(table.identifier)
     return query
-
-_name = object()
-def get_all(session, table, order=_name):
-    """Shortcut to get an ordered query from table.
-
-    session: The session to use
-    table: The table to select from
-    order: A clause to order by, or None for no ordering.
-        The default is to order by name; this can also be specified explicitly
-        with the table's name property (e.g. tables.Pokemon.name). Be aware
-        that the query's order_by will not order by name this way.
-    """
-    query = session.query(table)
-    if order is table.name or order is _name:
-        query = order_by_name(query, table)
-    elif order is not None:
-        query = query.order_by(order)
-    return query
-
-### Shortcuts
-
-def pokemon(session, order=tables.Pokemon.id):
-    """Return a query for all base form pokemon, ordered by id by default
-
-    See get_all for the session and order arguments (but note the default for
-    pokemon is to order by id).
-    """
-    query = get_all(session, tables.Pokemon, order=order)
-    query = query.filter(tables.Pokemon.forms.any())
-    return query
-
-def moves(session, order=_name):
-    """Return a query for moves in the mainline games (i.e. no Shadow moves)
-
-    See get_all for the session and order arguments.
-    """
-    return get_all(session, tables.Move, order=order).filter(tables.Move.id < 10000)
-
-def types(session, order=_name):
-    """Return a query for sane types (i.e. not ???, Shadow)
-
-    See get_all for the session and order arguments.
-    """
-    return get_all(session, tables.Type, order=order).filter(tables.Type.id < 10000)
-
-def items(session, order=_name):
-    """Return a query for items
-
-    See get_all for the session and order arguments.
-    """
-    return get_all(session, tables.Item, order=order)
