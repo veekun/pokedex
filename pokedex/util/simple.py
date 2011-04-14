@@ -12,7 +12,7 @@ of what to watch out for.
 """
 
 from pokedex.db import tables
-from pokedex.util.get import filter_base_forms, order_by_name
+from pokedex.db.util import filter_base_forms, order_by_name
 
 def pokemon(session):
     """Get a "sane" list of pokemon
