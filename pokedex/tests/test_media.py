@@ -14,7 +14,8 @@ from nose.plugins.skip import SkipTest
 import nose
 import pkg_resources
 
-from pokedex.db import tables, connect, media
+from pokedex.db import tables, connect
+from pokedex.util import media
 
 session = connect()
 basedir = pkg_resources.resource_filename('pokedex', 'data/media')
