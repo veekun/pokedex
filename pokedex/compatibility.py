@@ -1,4 +1,7 @@
-"""Functions missing from Python 2.5"""
+"""Things missing from older versions of Python
+
+Currently these are functions missing from Python 2.5.
+"""
 
 try:
     from itertools import permutations

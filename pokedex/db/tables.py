@@ -1100,12 +1100,6 @@ class Pokemon(TableBase):
     ### Stuff to handle alternate Pokémon forms
 
     @property
-    def form(self):
-        u"""Returns the Pokémon's form, using its default form as fallback."""
-
-        return self.unique_form or self.default_form
-
-    @property
     def is_base_form(self):
         u"""Returns True iff the Pokémon is the base form for its species,
         e.g. Land Shaymin.
@@ -2021,6 +2015,14 @@ Pokemon.types = relation(Type,
     innerjoin=True,
     order_by=PokemonType.slot.asc(),
     backref=backref('pokemon', order_by=Pokemon.order))
+Pokemon.form = relation(PokemonForm,
+    primaryjoin=or_(
+        PokemonForm.unique_pokemon_id==Pokemon.id,
+        and_(PokemonForm.unique_pokemon_id==None, 
+            PokemonForm.form_base_pokemon_id==Pokemon.id,
+            PokemonForm.is_default==True)
+        ),
+        uselist=False)
 
 PokemonDexNumber.pokedex = relation(Pokedex,
     innerjoin=True, lazy='joined')

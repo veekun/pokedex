@@ -12,7 +12,7 @@ import struct
 
 from pokedex.db import tables
 from pokedex.formulae import calculated_hp, calculated_stat
-from pokedex.util import namedtuple, permutations
+from pokedex.compatibility import namedtuple, permutations
 from pokedex.struct._pokemon_struct import pokemon_struct
 
 def pokemon_prng(seed):

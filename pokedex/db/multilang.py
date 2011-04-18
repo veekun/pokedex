@@ -48,7 +48,7 @@ def create_translation_table(_table_name, foreign_class, relation_name,
       are rows in the created tables.
     - `(relation_name)_local`, a relation to the row in the new table that
       matches the current default language.
-    - `(relation_name)_class`, the class created by this function.
+    - `(relation_name)_table`, the class created by this function.
 
     Note that these are distinct relations.  Even though the former necessarily
     includes the latter, SQLAlchemy doesn't treat them as linked; loading one

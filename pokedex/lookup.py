@@ -14,7 +14,7 @@ from whoosh.qparser import QueryParser
 import whoosh.scoring
 import whoosh.spelling
 
-from pokedex.util import namedtuple
+from pokedex.compatibility import namedtuple
 
 from pokedex.db import connect
 import pokedex.db.tables as tables
