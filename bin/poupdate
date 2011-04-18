@@ -1,0 +1,374 @@
+#! /usr/bin/env python
+# Encoding: UTF-8
+
+u"""Creation and loading of GNU Gettext language files.
+
+poupdate [options] [file1.csv file2.csv ...]
+
+Use this script to
+- Create .pot files (in pokedex/i18n/)
+- Update the .po files (in pokedex/i18n/<lang>)
+- Update the pokedex .csv files in (pokedex/data/csv/translations)
+
+To make pos for a new language, make sure it is in the database, make
+a directory for it in pokedex/i18n/, and run this.
+
+You can also give one or more translation CSVs as arguments.
+These are in the same format as veekun's main database CSVs, for example
+pokedex/data/csv/ability_prose.csv. Be sure to set the correct language
+ID (which implies the language must be in the database).
+Also be sure to have the correct column order: first an appropriately named
+foreign key, then local_language_id, and then the text columns.
+
+"""
+
+# Everything related to Gettext files, and the CLI interface, is here.
+# General message handling and CSV I/O is in the pokedex library.
+
+# Notes on how we use PO format:
+# The source information is stored in the occurences fields, using
+# "table_name.column_name" for file and object ID for line number. This is used
+# as a message key, instead of the source string. So it's important not to
+# discard location information. It also means "obsolete" and "fuzzy" mean
+# pretty much the same in our context.
+#
+# Also note that a pot file is just a po file with all strings untranslated.
+# So some functions here will work on either.
+#
+# Gettext context (msgctxt) is written to the files so that tools don't merge
+# unrelated strings together. It is ignored when reading the PO files.
+
+# Also of note, "polib" means "(do) kiss!" in Czech.
+
+import os
+import re
+import sys
+from datetime import datetime
+from optparse import OptionParser
+from collections import defaultdict
+
+import pkg_resources
+
+from pokedex.db import tables, translations
+from pokedex.defaults import get_default_csv_dir
+
+try:
+    import polib
+except ImportError:
+    if __name__ == '__main__':
+        exit('This utility needs polib installed.\n$ pip install polib')
+    raise
+
+number_replacement_flag = '-pokedex-number-replacement'
+
+default_gettext_directory = pkg_resources.resource_filename('pokedex', 'i18n')
+
+mapped_class_dict = dict((c.__name__, c) for c in tables.mapped_classes)
+for cls in tables.mapped_classes:
+    mapped_class_dict.update(dict((c.__name__, cls) for c in cls.translation_classes))
+
+class PokedexPot(polib.POFile):
+    def __init__(self, name):
+        super(PokedexPot, self).__init__()
+        self.metadata = {
+                'Project-Id-Version': 'pokedex-%s 0.1' % name,
+                'Report-Msgid-Bugs-To': 'encukou@gmail.com',
+                'POT-Creation-Date': datetime.now().isoformat(),
+                'PO-Revision-Date': 'YEAR-MO-DA HO:MI+ZONE',
+                'MIME-Version': '1.0',
+                'Content-Type': 'text/plain; charset=utf-8',
+                'Content-Transfer-Encoding': '8bit',
+                'Generated-By': "The pokedex",
+            }
+        self.seen_entries = {}
+
+    def append(self, entry):
+        """Append an entry. POEntries that only differ in numbers are merged.
+
+        For example "Route 1", "Route 2", etc. are replaced by a single
+        "Route {num}".
+
+        Multiple numbers might be replaced, for example in "{num}--{num}
+        different Unown caught"
+
+        Entries without numbers are merged as well (e.g. "Has no overworld
+        effect" appears quite a few times in in AbilityChangelog)
+        """
+        replaced = translations.number_re.sub('{num}', entry.msgid)
+        try:
+            common_entry = self.seen_entries[(entry.msgctxt, replaced)]
+        except KeyError:
+            self.seen_entries[(entry.msgctxt, replaced)] = entry
+        else:
+            common_entry.occurrences += entry.occurrences
+            # Only now is the actual entry replaced. So we get
+            # "Route {num}", but "Porygon2" because there's no Porygon3.
+            common_entry.msgid = replaced
+            common_entry.msgstr = translations.number_re.sub('{num}', common_entry.msgstr)
+            if replaced != entry.msgid and number_replacement_flag not in common_entry.flags:
+                common_entry.flags.append(number_replacement_flag)
+            return
+        self += [entry]
+
+class PotDict(dict):
+    """A defaultdict of pot files"""
+    def __missing__(self, name):
+        pot = PokedexPot(name)
+        self[name] = pot
+        return pot
+
+def yield_po_messages(pos):
+    """Yield messages from all given .po files
+    """
+    merger = translations.Merge()
+    for po in pos.values():
+        merger.add_iterator(_yield_one_po_messages(po, merger))
+    return merger
+
+def entry_sort_key(entry):
+    try:
+        cls_col, line = entry.occurrences[0]
+    except IndexError:
+        return
+    else:
+        if line:
+            classname, col = cls_col.split('.')
+            fuzzy = entry.obsolete or 'fuzzy' in entry.flags
+            try:
+                cls = mapped_class_dict[classname]
+            except KeyError, k:
+                # Renamed table?
+                print 'Warning: Unknown class %s' % classname
+                return '', int(line), col, fuzzy
+            else:
+                return cls.__name__, int(line), col, fuzzy
+
+def _yield_one_po_messages(pofile, merger):
+    # Yield messages from one po file
+    #
+    # Messages in our po files are ordered by the first occurrence.
+    # The occurrences of a single message are also ordered.
+    # So just merge all the subsequences as we go
+    for entry in sorted(pofile, key=entry_sort_key):
+        if entry.msgstr:
+            fuzzy = (entry.obsolete or 'fuzzy' in entry.flags)
+            messages = []
+            for occurrence in entry.occurrences:
+                cls_colname, id = occurrence
+                if id:
+                    clsname, colname = cls_colname.split('.')
+                    cls = mapped_class_dict[clsname]
+                    messages.append(translations.Message(
+                            mapped_class_dict[clsname].__name__,
+                            int(id),
+                            colname,
+                            entry.msgstr,
+                            source=entry.msgid,
+                            number_replacement=number_replacement_flag in entry.flags,
+                            origin='PO file',
+                            fuzzy=fuzzy,
+                        ))
+            if messages[1:]:
+                # Spawn extra iterators before yielding
+                merger.add_iterator(messages[1:])
+            if messages:
+                yield messages[0]
+
+def create_pots(source, *translation_streams):
+    """Convert an iterator of Messages to a dictionary of pot/po files
+
+    If translations are given, they're merged, and any exact matches are put
+    in the po file. Give some for po files, don't give any for pot files.
+    """
+    obsolete = []
+    pots = PotDict()
+    merged = translations.merge_translations(source, *translation_streams, unused=obsolete.append)
+    for source, sourcehash, string, exact in merged:
+        ctxt = '.'.join((source.cls, source.colname))
+        entry = polib.POEntry(
+                msgid=source.string,
+                occurrences=[(ctxt, source.id)],
+                msgctxt=ctxt,
+            )
+        if string:
+            entry.msgstr = string
+            if not exact:
+                entry.flags.append('fuzzy')
+        pots[source.pot].append(entry)
+    for message in obsolete:
+        ctxt = '.'.join((message.cls, message.colname))
+        entry = polib.POEntry(
+                msgid=message.source or '???',
+                occurrences=[(ctxt, message.id)],
+                msgctxt=ctxt,
+                obsolete=True,
+            )
+    return pots
+
+def save_pots(pots, gettext_directory=default_gettext_directory):
+    """Save pot files to a directory."""
+    for name, pot in pots.items():
+        pot.save(os.path.join(gettext_directory, 'pokedex-%s.pot' % name))
+
+def save_pos(pos, lang, gettext_directory=default_gettext_directory):
+    """Save po files to the appropriate directory."""
+    for name, po in pos.items():
+        po.save(os.path.join(gettext_directory, lang, 'pokedex-%s.po' % name))
+
+def read_pots(directory=default_gettext_directory, extension='.pot'):
+    """Read all files from the given directory with the given extension as pofiles
+
+    Works on pos or pots.
+    """
+    pots = {}
+    for filename in os.listdir(directory):
+        basename, ext = os.path.splitext(filename)
+        if ext == extension:
+            pots[basename] = polib.pofile(os.path.join(directory, filename))
+
+    return pots
+
+def all_langs(gettext_directory=default_gettext_directory):
+    return [
+            d for d in os.listdir(gettext_directory)
+            if os.path.isdir(os.path.join(gettext_directory, d))
+        ]
+
+def merge_pos(transl, lang, language_directory):
+    """Update all po files for the given language
+
+    Takes into account the source, the official translations from the database,
+    the existing PO files, and the current translation CSV, in that order.
+
+    Returns a name -> pofile dict
+    """
+    return create_pots(
+            transl.source,
+            transl.official_messages(lang),
+            yield_po_messages(pos=read_pots(language_directory, '.po')),
+            transl.yield_target_messages(lang),
+        )
+
+def bar(fraction, size, done_char='=', split_char='|', notdone_char='-'):
+    """Build an ASCII art progress bar
+    """
+    size -= 1
+    if fraction == 1:
+        split_char = done_char
+    completed = int(round(size * fraction))
+    bar = [done_char] * completed
+    bar.append(split_char)
+    bar += notdone_char * (size - completed)
+    return ''.join(bar)
+
+def print_stats(pos):
+    """Print out some fun stats about a set of po files
+    """
+    template = u"{0:>10}: {1:4}/{2:4} {3:6.2f}% [{4}]"
+    total_translated = 0
+    total = 0
+    for name, po in pos.items():
+        num_translated = len(po.translated_entries())
+        total_translated += num_translated
+        fraction_translated = 1. * num_translated / len(po)
+        total += len(po)
+        print template.format(
+                name,
+                num_translated,
+                len(po),
+                100 * fraction_translated,
+                bar(fraction_translated, 47),
+            ).encode('utf-8')
+    fraction_translated = 1. * total_translated / total
+    print template.format(
+            'Total',
+            total_translated,
+            total,
+            100 * fraction_translated,
+            bar(fraction_translated, 47),
+        ).encode('utf-8')
+
+
+if __name__ == '__main__':
+    parser = OptionParser(__doc__)
+
+    parser.add_option('-l', '--langs', dest='langs',
+            help="List of languages to handle, separated by commas (example: -l 'en,de,ja') (default: all in gettext directory)")
+    parser.add_option('-P', '--no-pots', dest='pots', action='store_false', default=True,
+            help='Do not create POT files (templates)')
+    parser.add_option('-p', '--no-pos', dest='pos', action='store_false', default=True,
+            help='Do not update PO files (message catalogs)')
+
+    parser.add_option('-c', '--no-csv', dest='csv', action='store_false', default=True,
+            help='Do not update pokedex translations files')
+
+    parser.add_option('-d', '--directory', dest='directory',
+            help='Veekun data directory')
+    parser.add_option('-L', '--source-language', dest='source_lang',
+            help="Source language identifier (default: 'en')")
+
+    parser.add_option('-g', '--gettext-dir', dest='gettext_directory', default=default_gettext_directory,
+            help='Gettext directory (default: pokedex/i18n/)')
+
+    parser.add_option('-q', '--quiet', dest='verbose', default=True, action='store_false',
+            help="Don't print what's going on")
+
+    options, arguments = parser.parse_args()
+
+    transl = translations.Translations.from_parsed_options(options)
+
+    gettext_directory = options.gettext_directory
+
+    if (options.pots or options.pos) and not os.path.exists(gettext_directory):
+        print "Error: Gettext directory doesn't exist. Skipping pot/po creation"
+        options.pots = options.pos = False
+
+    if options.pots:
+        if options.verbose:
+            print 'Creating pots in', gettext_directory
+        save_pots(create_pots(transl.source), gettext_directory=gettext_directory)
+
+    if options.pos or options.csv:
+        # Merge in CSV files from command line
+        csv_streams = defaultdict(translations.Merge)
+        for argument in arguments:
+            # Add each message in its own stream, to sort them.
+            file = open(argument, 'rb')
+            with file:
+                for message in translations.yield_guessed_csv_messages(file):
+                    lang = transl.language_identifiers[message.language_id]
+                    csv_streams[lang].add_iterator([message])
+        streams = defaultdict(list)
+        for lang, stream in csv_streams.items():
+            streams[lang].append(stream)
+
+        if os.path.exists(gettext_directory):
+            # Merge in the PO files
+            if options.langs:
+                langs = options.langs.split(',')
+            else:
+                langs = all_langs(gettext_directory)
+
+            for lang in langs:
+                language_directory = os.path.join(gettext_directory, lang)
+                if options.verbose:
+                    print 'Merging translations for %s in %s' % (lang, language_directory)
+                pos = merge_pos(transl, lang, language_directory)
+
+                if options.pos:
+                    if options.verbose:
+                        print 'Writing POs for %s' % lang
+                    save_pos(pos, lang, gettext_directory=gettext_directory)
+
+                    if options.verbose:
+                        print_stats(pos)
+
+                streams[lang].append(yield_po_messages(pos))
+
+    if options.csv:
+        for lang, lang_streams in streams.items():
+            if options.verbose:
+                print "Merging %s translation stream/s for '%s'" % (len(lang_streams), lang)
+            existing_messages = list(transl.yield_target_messages(lang))
+            lang_streams.append(existing_messages)
+            transl.write_translations(lang, *lang_streams)

@@ -108,14 +108,20 @@ def get_csv_directory(options):
 def command_dump(*args):
     parser = get_parser(verbose=True)
     parser.add_option('-d', '--directory', dest='directory', default=None)
+    parser.add_option('-l', '--langs', dest='langs', default='en',
+        help="Comma-separated list of languages to dump all strings for. "
+            "Default is English ('en')")
     options, tables = parser.parse_args(list(args))
 
     session = get_session(options)
     get_csv_directory(options)
 
+    langs = [l.strip() for l in options.langs.split(',')]
+
     pokedex.db.load.dump(session, directory=options.directory,
                                   tables=tables,
-                                  verbose=options.verbose)
+                                  verbose=options.verbose,
+                                  langs=langs)
 
 def command_load(*args):
     parser = get_parser(verbose=True)
@@ -124,6 +130,9 @@ def command_load(*args):
     parser.add_option('-r', '--recursive', dest='recursive', default=False, action='store_true')
     parser.add_option('-S', '--safe', dest='safe', default=False, action='store_true',
         help="Do not use backend-specific optimalizations.")
+    parser.add_option('-l', '--langs', dest='langs', default=None,
+        help="Comma-separated list of extra languages to load, or 'none' for none. "
+            "Default is to load 'em all. Example: 'fr,de'")
     options, tables = parser.parse_args(list(args))
 
     if not options.engine_uri:
@@ -133,6 +142,13 @@ def command_load(*args):
         print "`pokedex setup` to do both at once."
         print
 
+    if options.langs == 'none':
+        langs = []
+    elif options.langs is None:
+        langs = None
+    else:
+        langs = [l.strip() for l in options.langs.split(',')]
+
     session = get_session(options)
     get_csv_directory(options)
 
@@ -141,7 +157,8 @@ def command_load(*args):
                                   tables=tables,
                                   verbose=options.verbose,
                                   safe=options.safe,
-                                  recursive=options.recursive)
+                                  recursive=options.recursive,
+                                  langs=langs)
 
 def command_reindex(*args):
     parser = get_parser(verbose=True)
@@ -284,6 +301,15 @@ Load options:
     -D|--drop-tables    Drop all tables before loading data.
     -S|--safe           Disable engine-specific optimizations.
     -r|--recursive      Load (and drop) all dependent tables.
+    -l|--langs          Load translations for the given languages.
+                        By default, all available translations are loaded.
+                        Separate multiple languages by a comma (-l en,de,fr)
+
+Dump options:
+    -l|--langs          Dump unofficial texts for given languages.
+                        By default, English (en) is dumped.
+                        Separate multiple languages by a comma (-l en,de,fr)
+                        Use 'none' to not dump any unofficial texts.
 
     Additionally, load and dump accept a list of table names (possibly with
     wildcards) and/or csv fileames as an argument list.
