@@ -5,6 +5,8 @@ of pokemon, and filtering/ordering by name.
 """
 
 from sqlalchemy.orm import aliased
+from sqlalchemy.sql.expression import func
+from sqlalchemy.sql.functions import coalesce
 
 from pokedex.db import tables
 
@@ -108,9 +110,10 @@ def order_by_name(query, table, language=None, *extra_languages):
 
     Uses the identifier as a fallback ordering.
     """
+    order_columns = []
     if language is None:
         query = query.outerjoin(table.names_local)
-        query = query.order_by(table.names_table.name)
+        order_columns.append(func.lower(table.names_table.name))
     else:
         extra_languages = (language, ) + extra_languages
     for language in extra_languages:
@@ -118,6 +121,7 @@ def order_by_name(query, table, language=None, *extra_languages):
         query = query.outerjoin(names_table)
         query = query.filter(names_table.foreign_id == table.id)
         query = query.filter(names_table.local_language_id == language.id)
-        query = query.order_by(names_table.name)
-    query = query.order_by(table.identifier)
+        order_columns.append(func.lower(names_table.name))
+    order_columns.append(table.identifier)
+    query = query.order_by(coalesce(*order_columns))
     return query
