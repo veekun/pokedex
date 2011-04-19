@@ -923,7 +923,7 @@ class MoveMetaCategory(TableBase):
     u"""Very general categories that loosely group move effects."""
     __tablename__ = 'move_meta_categories'
     __singlename__ = 'move_meta_category'
-    id = Column(Integer, primary_key=True, nullable=False,
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(32), nullable=False, index=True, unique=True,
         info=dict(description="An identifier", format='identifier'))

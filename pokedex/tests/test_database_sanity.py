@@ -1,8 +1,9 @@
 from nose.tools import *
 import unittest
 from sqlalchemy.orm import aliased
+from sqlalchemy.orm.exc import NoResultFound
 
-from pokedex.db import connect, tables
+from pokedex.db import connect, tables, util
 
 def test_encounter_slots():
     # Encounters have a version, which has a version group; encounters also
@@ -22,3 +23,19 @@ def test_encounter_slots():
 
     assert_equal(sanity_q.count(), 0,
         "Encounter slots all match the encounters they belong to")
+
+def test_nonzero_autoincrement_ids():
+    """Check that autoincrementing ids don't contain zeroes
+
+    MySQL doesn't like these, see e.g. bug #580
+    """
+
+    session = connect()
+    for cls in tables.mapped_classes:
+        if 'id' in cls.__table__.c:
+            if cls.__table__.c.id.autoincrement:
+                @raises(NoResultFound)
+                def nonzero_id(cls):
+                    util.get(session, cls, id=0)
+                nonzero_id.description = "No zero id in %s" % cls.__name__
+                yield nonzero_id, cls
