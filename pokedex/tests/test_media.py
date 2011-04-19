@@ -8,6 +8,7 @@ This, of course, takes a lot of time to run.
 
 import os
 import re
+from functools import wraps
 
 from nose.tools import *
 from nose.plugins.skip import SkipTest
@@ -22,47 +23,66 @@ basedir = pkg_resources.resource_filename('pokedex', 'data/media')
 
 path_re = re.compile('^[-a-z0-9./]*$')
 
+root = pkg_resources.resource_filename('pokedex', 'data/media')
+
+media_available = media.BaseMedia(root).available
+
+def if_available(func):
+    @wraps(func)
+    def if_available_wrapper(*args, **kwargs):
+        if not media_available:
+            raise SkipTest('Media not available at %s' % root)
+        else:
+            func(*args, **kwargs)
+    return if_available_wrapper
+
+@if_available
 def test_totodile():
     """Totodile's female sprite -- same as male"""
     totodile = session.query(tables.Pokemon).filter_by(identifier=u'totodile').one()
-    accessor = media.PokemonMedia(totodile)
+    accessor = media.PokemonMedia(root, totodile)
     assert accessor.sprite() == accessor.sprite(female=True)
 
+@if_available
 def test_chimecho():
     """Chimecho's Platinum female backsprite -- diffeent from male"""
     chimecho = session.query(tables.Pokemon).filter_by(identifier=u'chimecho').one()
-    accessor = media.PokemonMedia(chimecho)
+    accessor = media.PokemonMedia(root, chimecho)
     male = accessor.sprite('platinum', back=True, frame=2)
     female = accessor.sprite('platinum', back=True, female=True, frame=2)
     assert male != female
 
+@if_available
 def test_venonat():
     """Venonat's shiny Yellow sprite -- same as non-shiny"""
     venonat = session.query(tables.Pokemon).filter_by(identifier=u'venonat').one()
-    accessor = media.PokemonMedia(venonat)
+    accessor = media.PokemonMedia(root, venonat)
     assert accessor.sprite('yellow') == accessor.sprite('yellow', shiny=True)
 
+@if_available
 def test_arceus_icon():
     """Arceus fire-form icon -- same as base icon"""
     arceus = session.query(tables.Pokemon).filter_by(identifier=u'arceus').one()
-    accessor = media.PokemonMedia(arceus)
+    accessor = media.PokemonMedia(root, arceus)
     fire_arceus = [f for f in arceus.forms if f.identifier == 'fire'][0]
-    fire_accessor = media.PokemonFormMedia(fire_arceus)
+    fire_accessor = media.PokemonFormMedia(root, fire_arceus)
     assert accessor.icon() == fire_accessor.icon()
 
+@if_available
 @raises(ValueError)
 def test_strict_castform():
     """Castform rainy form overworld with strict -- unavailable"""
     castform = session.query(tables.Pokemon).filter_by(identifier=u'castform').first()
     rainy_castform = [f for f in castform.forms if f.identifier == 'rainy'][0]
-    rainy_castform = media.PokemonFormMedia(rainy_castform)
+    rainy_castform = media.PokemonFormMedia(root, rainy_castform)
     rainy_castform.overworld('up', strict=True)
 
+@if_available
 @raises(ValueError)
 def test_strict_exeggcute():
     """Exeggcutes's female backsprite, with strict -- unavailable"""
     exeggcute = session.query(tables.Pokemon).filter_by(identifier=u'exeggcute').one()
-    accessor = media.PokemonMedia(exeggcute)
+    accessor = media.PokemonMedia(root, exeggcute)
     accessor.sprite(female=True, strict=True)
 
 
@@ -73,6 +93,7 @@ def get_all_filenames():
     all_filenames = set()
 
     for dirpath, dirnames, filenames in os.walk(basedir):
+        dirnames[:] = [dirname for dirname in dirnames if dirname != '.git']
         for filename in filenames:
             path = os.path.join(dirpath, filename)
             assert path_re.match(path), path
@@ -101,6 +122,7 @@ def hit(filenames, method, *args, **kwargs):
         pass
     return True
 
+@if_available
 def check_get_everything():
     """
     For every the accessor method, loop over the Cartesian products of all
@@ -121,23 +143,23 @@ def check_get_everything():
     # Some small stuff first
 
     for damage_class in session.query(tables.MoveDamageClass).all():
-        assert hit(filenames, media.DamageClassMedia(damage_class).icon)
+        assert hit(filenames, media.DamageClassMedia(root, damage_class).icon)
 
     for habitat in session.query(tables.PokemonHabitat).all():
-        assert hit(filenames, media.HabitatMedia(habitat).icon)
+        assert hit(filenames, media.HabitatMedia(root, habitat).icon)
 
     for shape in session.query(tables.PokemonShape).all():
-        assert hit(filenames, media.ShapeMedia(shape).icon)
+        assert hit(filenames, media.ShapeMedia(root, shape).icon)
 
     for item_pocket in session.query(tables.ItemPocket).all():
-        assert hit(filenames, media.ItemPocketMedia(item_pocket).icon)
-        assert hit(filenames, media.ItemPocketMedia(item_pocket).icon, selected=True)
+        assert hit(filenames, media.ItemPocketMedia(root, item_pocket).icon)
+        assert hit(filenames, media.ItemPocketMedia(root, item_pocket).icon, selected=True)
 
     for contest_type in session.query(tables.ContestType).all():
-        assert hit(filenames, media.ContestTypeMedia(contest_type).icon)
+        assert hit(filenames, media.ContestTypeMedia(root, contest_type).icon)
 
     for elemental_type in session.query(tables.Type).all():
-        assert hit(filenames, media.TypeMedia(elemental_type).icon)
+        assert hit(filenames, media.TypeMedia(root, elemental_type).icon)
 
     # Items
     versions_for_items = [
@@ -146,7 +168,7 @@ def check_get_everything():
         ]
 
     for item in session.query(tables.Item).all():
-        accessor = media.ItemMedia(item)
+        accessor = media.ItemMedia(root, item)
         assert hit(filenames, accessor.berry_image) or not item.berry
         for rotation in (0, 90, 180, 270):
             assert hit(filenames, accessor.underground, rotation=rotation) or (
@@ -158,11 +180,11 @@ def check_get_everything():
 
     for color in 'red green blue pale prism'.split():
         for big in (True, False):
-            accessor = media.UndergroundSphereMedia(color=color, big=big)
+            accessor = media.UndergroundSphereMedia(root, color=color, big=big)
             assert hit(filenames, accessor.underground)
 
     for rock_type in 'i ii o o-big s t z'.split():
-        accessor = media.UndergroundRockMedia(rock_type)
+        accessor = media.UndergroundRockMedia(root, rock_type)
         for rotation in (0, 90, 180, 270):
             success = hit(filenames, accessor.underground, rotation=rotation)
             assert success or rotation
@@ -170,19 +192,17 @@ def check_get_everything():
     # Pokemon!
     accessors = []
 
-    accessors.append(media.UnknownPokemonMedia())
-    accessors.append(media.EggMedia())
+    accessors.append(media.UnknownPokemonMedia(root))
+    accessors.append(media.EggMedia(root))
     manaphy = session.query(tables.Pokemon).filter_by(identifier=u'manaphy').one()
-    accessors.append(media.EggMedia(manaphy))
-    accessors.append(media.SubstituteMedia())
-
-    print 'Loading pokemon'
+    accessors.append(media.EggMedia(root, manaphy))
+    accessors.append(media.SubstituteMedia(root))
 
     for form in session.query(tables.PokemonForm).filter(tables.PokemonForm.identifier != '').all():
-        accessors.append(media.PokemonFormMedia(form))
+        accessors.append(media.PokemonFormMedia(root, form))
 
     for pokemon in session.query(tables.Pokemon).all():
-        accessors.append(media.PokemonMedia(pokemon))
+        accessors.append(media.PokemonMedia(root, pokemon))
 
     for accessor in accessors:
         assert hit(filenames, accessor.footprint) or not accessor.form

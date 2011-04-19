@@ -1,7 +1,12 @@
 
 """Media accessors
 
-Most media accessor __init__s take an ORM object from the pokedex package.
+All media accessor __init__s take a `root` argument, which should be a path
+to the root of the media directory.
+Alternatively, `root` can be a custom MediaFile subclass.
+
+Most __init__s take an ORM object as a second argument.
+
 Their various methods take a number of arguments specifying exactly which
 file you want (such as the female sprite, backsprite, etc.).
 ValueError is raised when the specified file cannot be found.
@@ -26,22 +31,25 @@ All images are in the PNG format, except animations (GIF). All sounds are OGGs.
 """
 
 import os
-import pkg_resources
+from functools import partial
 
 class MediaFile(object):
     """Represents a file: picture, sound, etc.
 
     Attributes:
-    relative_path: Filesystem path relative to the media directory
+    path_elements: List of directory/file names that make up relative_path
+    relative_path: Filesystem path relative to the root
     path: Absolute path to the file
 
     exists: True if the file exists
 
+    media_available: false if no media is available at the given root.
+
     open(): Open the file
     """
-    def __init__(self, *path_elements):
+    def __init__(self, root, *path_elements):
         self.path_elements = path_elements
-        self._dexpath = '/'.join(('data', 'media') + path_elements)
+        self.root = root
 
     @property
     def relative_path(self):
@@ -49,7 +57,7 @@ class MediaFile(object):
 
     @property
     def path(self):
-        return pkg_resources.resource_filename('pokedex', self._dexpath)
+        return os.path.join(self.root, *self.path_elements)
 
     def open(self):
         """Open this file for reading, in the appropriate mode (i.e. binary)
@@ -58,7 +66,11 @@ class MediaFile(object):
 
     @property
     def exists(self):
-        return pkg_resources.resource_exists('pokedex', self._dexpath)
+        return os.path.exists(self.path)
+
+    @property
+    def media_available(self):
+        return os.path.isdir(self.root)
 
     def __eq__(self, other):
         return self.path == other.path
@@ -70,15 +82,25 @@ class MediaFile(object):
         return '<Pokedex file %s>' % self.relative_path
 
 class BaseMedia(object):
+    def __init__(self, root):
+        if isinstance(root, basestring):
+            self.file_class = partial(MediaFile, root)
+        else:
+            self.file_class = root
+
+    @property
+    def available(self):
+        return self.file_class().media_available
+
     def from_path_elements(self, path_elements, basename, extension,
             surely_exists=False):
         filename = basename + extension
         path_elements = [self.toplevel_dir] + path_elements + [filename]
-        mfile = MediaFile(*path_elements)
+        mfile = self.file_class(*path_elements)
         if surely_exists or mfile.exists:
             return mfile
         else:
-            raise ValueError('File %s not found' % mfile.relative_path)
+            raise ValueError('File %s not found' % mfile.path)
 
 class _BasePokemonMedia(BaseMedia):
     toplevel_dir = 'pokemon'
@@ -104,8 +126,8 @@ class _BasePokemonMedia(BaseMedia):
             'black-white': (5, set('back shiny female'.split())),
         }
 
-    def __init__(self, pokemon_id, form_postfix=None):
-        BaseMedia.__init__(self)
+    def __init__(self, root, pokemon_id, form_postfix=None):
+        BaseMedia.__init__(self, root)
         self.pokemon_id = str(pokemon_id)
         self.form_postfix = form_postfix
 
@@ -316,13 +338,13 @@ class _BasePokemonMedia(BaseMedia):
 class PokemonFormMedia(_BasePokemonMedia):
     """Media related to a Pokemon form
     """
-    def __init__(self, pokemon_form):
+    def __init__(self, root, pokemon_form):
         pokemon_id = pokemon_form.form_base_pokemon_id
         if pokemon_form.identifier:
             form_postfix = '-' + pokemon_form.identifier
         else:
             form_postfix = None
-        _BasePokemonMedia.__init__(self, pokemon_id, form_postfix)
+        _BasePokemonMedia.__init__(self, root, pokemon_id, form_postfix)
         self.form = pokemon_form
         pokemon = pokemon_form.form_base_pokemon
         self.has_gender_differences = pokemon.has_gender_differences
@@ -331,8 +353,8 @@ class PokemonFormMedia(_BasePokemonMedia):
 class PokemonMedia(_BasePokemonMedia):
     """Media related to a Pokemon
     """
-    def __init__(self, pokemon):
-        _BasePokemonMedia.__init__(self, pokemon.id)
+    def __init__(self, root, pokemon):
+        _BasePokemonMedia.__init__(self, root, pokemon.id)
         self.form = pokemon.default_form
         self.has_gender_differences = (pokemon.has_gender_differences)
         self.introduced_in = pokemon.generation_id
@@ -342,8 +364,8 @@ class UnknownPokemonMedia(_BasePokemonMedia):
 
     Note that not a lot of files are available for it.
     """
-    def __init__(self):
-        _BasePokemonMedia.__init__(self, '0')
+    def __init__(self, root):
+        _BasePokemonMedia.__init__(self, root, '0')
 
 class EggMedia(_BasePokemonMedia):
     """Media related to a pokemon egg
@@ -352,20 +374,20 @@ class EggMedia(_BasePokemonMedia):
 
     Give a Manaphy as `pokemon` to get the Manaphy egg.
     """
-    def __init__(self, pokemon=None):
+    def __init__(self, root, pokemon=None):
         if pokemon and pokemon.identifier == 'manaphy':
             postfix = '-manaphy'
         else:
             postfix = None
-        _BasePokemonMedia.__init__(self, 'egg', postfix)
+        _BasePokemonMedia.__init__(self, root, 'egg', postfix)
 
 class SubstituteMedia(_BasePokemonMedia):
     """Media related to the Substitute sprite
 
     Note that not a lot of files are available for Substitute.
     """
-    def __init__(self):
-        _BasePokemonMedia.__init__(self, 'substitute')
+    def __init__(self, root):
+        _BasePokemonMedia.__init__(self, root, 'substitute')
 
 class _BaseItemMedia(BaseMedia):
     toplevel_dir = 'items'
@@ -383,7 +405,8 @@ class _BaseItemMedia(BaseMedia):
 class ItemMedia(_BaseItemMedia):
     """Media related to an item
     """
-    def __init__(self, item):
+    def __init__(self, root, item):
+        _BaseItemMedia.__init__(self, root)
         self.item = item
         self.identifier = item.identifier
 
@@ -459,7 +482,8 @@ class UndergroundRockMedia(_BaseItemMedia):
 
     rock_type can be one of: i, ii, o, o-big, s, t, z
     """
-    def __init__(self, rock_type):
+    def __init__(self, root, rock_type):
+        _BaseItemMedia.__init__(self, root)
         self.identifier = 'rock-%s' % rock_type
 
 class UndergroundSphereMedia(_BaseItemMedia):
@@ -467,13 +491,15 @@ class UndergroundSphereMedia(_BaseItemMedia):
 
     color can be one of: red, blue, green, pale, prism
     """
-    def __init__(self, color, big=False):
+    def __init__(self, root, color, big=False):
+        _BaseItemMedia.__init__(self, root)
         self.identifier = '%s-sphere' % color
         if big:
             self.identifier += '-big'
 
 class _SimpleIconMedia(BaseMedia):
-    def __init__(self, thing):
+    def __init__(self, root, thing):
+        BaseMedia.__init__(self, root)
         self.identifier = thing.identifier
 
     def icon(self):
