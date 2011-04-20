@@ -10,7 +10,6 @@ def setup():
     # Recreate data
     global lookup
     lookup = PokedexLookup()
-    lookup.rebuild_index()
 
 def test_exact_lookup():
     tests = [
