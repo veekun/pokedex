@@ -64,6 +64,8 @@ class MarkdownString(object):
         return self.source_text
 
 def _markdownify_effect_text(move, effect_text):
+    if effect_text is None:
+        return effect_text
     effect_text = effect_text.replace(
         u'$effect_chance',
         unicode(move.effect_chance),
