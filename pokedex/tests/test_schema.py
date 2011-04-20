@@ -180,17 +180,13 @@ def test_texts():
             if format is not None:
                 if format not in good_formats:
                     raise AssertionError(assert_text % column)
-                is_markdown = isinstance(column.type, markdown.MarkdownColumn)
-                if is_markdown and (format != 'markdown'):
-                    # Note: regular string with markdown syntax is allowed
-                    raise AssertionError('%s: markdown format/column type mismatch' % column)
                 if (format != 'identifier') and (column.name == 'identifier'):
                     raise AssertionError('%s: identifier column name/type mismatch' % column)
                 if column.info.get('official', None) and format not in 'gametext plaintext':
                     raise AssertionError('%s: official text with bad format' % column)
                 text_columns.append(column)
             else:
-                if isinstance(column.type, (markdown.MarkdownColumn, tables.Unicode)):
+                if isinstance(column.type, tables.Unicode):
                     raise AssertionError('%s: text column without format' % column)
             if column.name == 'name' and format != 'plaintext':
                 raise AssertionError('%s: non-plaintext name' % column)

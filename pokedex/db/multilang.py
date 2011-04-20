@@ -9,6 +9,8 @@ from sqlalchemy.schema import Column, ForeignKey, Table
 from sqlalchemy.sql.expression import and_, bindparam, select
 from sqlalchemy.types import Integer
 
+from pokedex.db import markdown
+
 def create_translation_table(_table_name, foreign_class, relation_name,
     language_class, relation_lazy='select', **kwargs):
     """Creates a table that represents some kind of data attached to the given
@@ -64,6 +66,9 @@ def create_translation_table(_table_name, foreign_class, relation_name,
     Pardon the naming disparity, but the grammar suffers otherwise.
 
     Modifying these directly is not likely to be a good idea.
+
+    For Markdown-formatted columns, `(column)_map` and `(column)` will give
+    Markdown objects.
     """
     # n.b.: language_class only exists for the sake of tests, which sometimes
     # want to create tables entirely separate from the pokedex metadata
@@ -132,9 +137,26 @@ def create_translation_table(_table_name, foreign_class, relation_name,
 
     # Add per-column proxies to the original class
     for name, column in kwitems:
+        string_getter = column.info.get('string_getter')
+        if string_getter:
+            def getset_factory(underlying_type, instance):
+                def getter(translations):
+                    text = getattr(translations, column.name)
+                    session = object_session(translations)
+                    language = translations.local_language
+                    return string_getter(text, session, language)
+                def setter(translations, value):
+                    # The string must be set on the Translation directly.
+                    raise AttributeError("Cannot set %s" % column.name)
+                return getter, setter
+            getset_factory = getset_factory
+        else:
+            getset_factory = None
+
         # Class.(column) -- accessor for the default language's value
         setattr(foreign_class, name,
-            association_proxy(local_relation_name, name))
+            association_proxy(local_relation_name, name,
+                    getset_factory=getset_factory))
 
         # Class.(column)_map -- accessor for the language dict
         # Need a custom creator since Translations doesn't have an init, and
@@ -145,7 +167,8 @@ def create_translation_table(_table_name, foreign_class, relation_name,
             setattr(row, name, value)
             return row
         setattr(foreign_class, name + '_map',
-            association_proxy(relation_name, name, creator=creator))
+            association_proxy(relation_name, name, creator=creator,
+                    getset_factory=getset_factory))
 
     # Add to the list of translation classes
     foreign_class.translation_classes.append(Translations)
@@ -163,6 +186,8 @@ class MultilangSession(Session):
     def __init__(self, *args, **kwargs):
         if 'default_language_id' in kwargs:
             self.default_language_id = kwargs.pop('default_language_id')
+
+        self.pokedex_link_maker = markdown.MarkdownLinkMaker(self)
 
         super(MultilangSession, self).__init__(*args, **kwargs)
 
@@ -189,3 +214,13 @@ class MultilangScopedSession(ScopedSession):
     @default_language_id.setter
     def default_language_id(self, new):
         self.registry().default_language_id = new
+
+    @property
+    def pokedex_link_maker(self):
+        """Passes the new link maker through to the current session.
+        """
+        return self.registry().pokedex_link_maker
+
+    @pokedex_link_maker.setter
+    def pokedex_link_maker(self, new):
+        self.registry().pokedex_link_maker = new

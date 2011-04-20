@@ -2,7 +2,7 @@
 
 from nose.tools import *
 
-from pokedex.db import tables, connect
+from pokedex.db import tables, connect, util, markdown
 
 class TestStrings(object):
     def setup(self):
@@ -83,5 +83,22 @@ class TestStrings(object):
                 identifier=u"thunderbolt").one()
         language = self.connection.query(tables.Language).filter_by(
                 identifier=u"en").one()
-        assert '10%' in move.effect.as_text
-        assert '10%' in move.effect_map[language].as_text
+        assert '10%' in move.effect.as_text()
+        assert '10%' in move.effect_map[language].as_text()
+        assert '10%' in move.effect.as_html()
+        assert '10%' in move.effect_map[language].as_html()
+        assert '10%' in unicode(move.effect)
+        assert '10%' in unicode(move.effect_map[language])
+        assert '10%' in move.effect.__html__()
+        assert '10%' in move.effect_map[language].__html__()
+
+    def test_markdown_string(self):
+        en = util.get(self.connection, tables.Language, 'en')
+        md = markdown.MarkdownString('[]{move:thunderbolt} [paralyzes]{mechanic:paralysis}', self.connection, en)
+        assert unicode(md) == 'Thunderbolt paralyzes'
+        assert md.as_html() == '<p><span>Thunderbolt</span> <span>paralyzes</span></p>'
+        assert md.as_html(object_url=lambda category, obj: "%s/%s" % (category, obj.identifier)) == (
+                '<p><a href="move/thunderbolt">Thunderbolt</a> <span>paralyzes</span></p>')
+        print md.as_html(identifier_url=lambda category, ident: "%s/%s" % (category, ident))
+        assert md.as_html(identifier_url=lambda category, ident: "%s/%s" % (category, ident)) == (
+                '<p><a href="move/thunderbolt">Thunderbolt</a> <a href="mechanic/paralysis">paralyzes</a></p>')
