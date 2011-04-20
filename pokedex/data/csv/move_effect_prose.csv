@@ -1,11 +1,11 @@
 move_effect_id,local_language_id,short_effect,effect
 1,9,Inflicts regular damage with no additional effect.,Inflicts [regular damage]{mechanic:regular-damage}.
 2,9,Puts the target to sleep.,Puts the target to [sleep]{mechanic:sleep}.
-3,9,Has a $effect_chance% chance to poison the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [poison]{mechanic:poison} the target.
+3,9,Has a $effect_chance% chance to [poison]{mechanic:poison} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [poison]{mechanic:poison} the target.
 4,9,Heals the user by half the damage inflicted.,Inflicts [regular damage]{mechanic:regular-damage}.  Heals the user for half the damage inflicted.
-5,9,Has a $effect_chance% chance to [burn]{mechanic} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.
-6,9,Has a $effect_chance% chance to freeze the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [freeze]{mechanic:freeze} the target.
-7,9,Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralyze} the target.
+5,9,Has a $effect_chance% chance to [burn]{mechanic:burn} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.
+6,9,Has a $effect_chance% chance to [freeze]{mechanic:freeze} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [freeze]{mechanic:freeze} the target.
+7,9,Has a $effect_chance% chance to [paralyze]{mechanic:paralysis} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralyze} the target.
 8,9,User faints.,"User [faint]{mechanic:faint}s, even if the attack [fail]{mechanic:fail}s or [miss]{mechanic:miss}es.  Inflicts [regular damage]{mechanic:regular-damage}."
 9,9,Only works on sleeping Pokémon.  Heals the user by half the damage inflicted.,Only works on [sleep]{mechanic:sleep}ing Pokémon.  Inflicts [regular damage]{mechanic:regular-damage}.  Heals the user for half the damage inflicted.
 10,9,Uses the target's last used move.,"Uses the last move targeted at the user by a Pokémon still on the [field]{mechanic:field}.  A move counts as targeting the user even if it hit multiple Pokémon, as long as the user was one of them; however, moves targeting the [field]{mechanic:field} itself do not count.  If the user has not been targeted by an appropriate move since entering the [field]{mechanic:field}, or if no Pokémon that targeted the user remains on the [field]{mechanic:field}, this move will [fail]{mechanic:fail}.
@@ -50,7 +50,7 @@ Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 t
 If the user is holding []{item:light-clay}, the barrier lasts for eight turns.
 
 []{move:brick-break} or []{move:defog} used by an opponent will destroy the barrier."
-37,9,"Has a $effect_chance% chance to [burn]{mechanic}, [freeze]{mechanic}, or [paralyze]{mechanic} the target.","Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn}, [freeze]{mechanic:freeze}, or [paralyze]{mechanic:paralyze} the target.  One of these effects is selected at random; they do not each have independent chances to occur."
+37,9,"Has a $effect_chance% chance to [burn]{mechanic:burn}, [freeze]{mechanic:freeze}, or [paralyze]{mechanic:paralysis} the target.","Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn}, [freeze]{mechanic:freeze}, or [paralyze]{mechanic:paralyze} the target.  One of these effects is selected at random; they do not each have independent chances to occur."
 38,9,"User sleeps for two turns, completely healing itself.","User falls to [sleep]{mechanic:sleep} and immediately regains all its [HP]{mechanic:hp}.  If the user has another [major status effect]{mechanic:major-status-effect}, [sleep]{mechanic:sleep} will replace it.  The user will always wake up after two turns, or one turn with []{ability:early-bird}.
 
 This move fails if the Pokémon cannot fall asleep due to []{move:uproar}, []{ability:insomnia}, or []{ability:vital-spirit}.  It also fails if the Pokémon is at full health or is already asleep."
@@ -296,7 +296,7 @@ If []{move:yawn} is used while this move is in effect, it will immediately fail.
 []{move:defog} used by an opponent will end this effect.
 
 This effect does not prevent the [confusion]{mechanic:confusion} caused by []{move:outrage}, []{move:petal-dance}, or []{move:thrash}."
-126,9,Has a $effect_chance% chance to [burn]{mechanic} the target.  Lets frozen Pokémon thaw themselves.,"Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  [Frozen]{mechanic:frozen} Pokémon may use this move, in which case they will thaw."
+126,9,Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  Lets frozen Pokémon thaw themselves.,"Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  [Frozen]{mechanic:frozen} Pokémon may use this move, in which case they will thaw."
 127,9,Power varies randomly from 10 to 150.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power is selected at random between 10 and 150, with an average of 64:
 
 Magnitude | Power | Chance
@@ -659,7 +659,7 @@ Waterfall      | Puts target to [sleep]{mechanic:sleep}
 "
 199,9,User receives 1/3 the damage inflicted in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/3 the damage it inflicts in recoil.
 200,9,Confuses the target.,[Confuse]{mechanic:confuse}s all targets.
-201,9,Has an increased chance for a critical hit and a $effect_chance% chance to [burn]{mechanic} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move. Has a $effect_chance% chance to [burn]{mechanic:burn} the target.
+201,9,Has an increased chance for a critical hit and a $effect_chance% chance to [burn]{mechanic:burn} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move. Has a $effect_chance% chance to [burn]{mechanic:burn} the target.
 202,9,Halves all Electric-type damage.,"[]{type:electric} moves inflict half damage, regardless of target.  If the user leaves the [field]{mechanic:field}, this effect ends."
 203,9,Has a $effect_chance% chance to badly poison the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [badly poison]{mechanic:badly-poison} the target.
 204,9,"If there be weather, this move has doubled power and the weather's type.","Inflicts [regular damage]{mechanic:regular-damage}.  If a weather move is active, this move has double power, and its type becomes the type of the weather move.  []{move:shadow-sky} is typeless for the purposes of this move."
@@ -813,7 +813,7 @@ If the user is under the effect of []{move:ingrain} or has []{ability:levitate},
 This effect is temporarily disabled by and cannot be used during []{move:gravity}.
 
 This effect is passed on by []{move:baton-pass}."
-254,9,User takes 1/3 the damage inflicted in recoil.  Has a $effect_chance% chance to [burn]{mechanic} the target.,"Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/3 the damage it inflicts in recoil.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  [Frozen]{mechanic:frozen} Pokémon may use this move, in which case they will thaw."
+254,9,User takes 1/3 the damage inflicted in recoil.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.,"Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/3 the damage it inflicts in recoil.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  [Frozen]{mechanic:frozen} Pokémon may use this move, in which case they will thaw."
 255,9,User takes 1/4 its max HP in recoil.,"Inflicts [typeless]{mechanic:typeless} [regular damage]{mechanic:regular-damage}.  User takes 1/4 its max [HP]{mechanic:hp} in recoil.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
 
 This move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no [PP]{mechanic:pp} remaining or being under the effect of both []{move:encore} and []{move:torment} at the same time.
@@ -878,7 +878,7 @@ This move cannot be copied by []{move:mimic}, []{move:mirror-move}, or []{move:s
 This move ignores the effects of []{move:detect} and []{move:protect}.
 
 This move cannot be selected by []{move:sleep-talk}."
-274,9,Has a $effect_chance% chance to [burn]{mechanic} the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic:flinch}.
+274,9,Has a $effect_chance% chance to [burn]{mechanic:burn} the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic:flinch}.
 275,9,Has a $effect_chance% chance to freeze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [freeze]{mechanic:freeze} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic:flinch}.
 276,9,Has a $effect_chance% chance to paralyze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralyze} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic:flinch}.
 277,9,Has a $effect_chance% chance to raise the user's Special Attack by one stage.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to raise the user's [Special Attack]{mechanic:special-attack} by one [stage]{mechanic:stage}.
@@ -989,7 +989,7 @@ If the target is under the effect of []{move:ingrain} or []{ability:suction-cups
 If the user is a []{pokemon:meloetta}, it will toggle between Aria and Pirouette Forme."
 331,9,Lowers the target's Speed by two stages.,Inflicts [regular damage]{mechanic:regular-damage}.  Lowers the target's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.
 332,9,Requires a turn to charge before attacking.  Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralysis} the target.  User charges for one turn before attacking.
-333,9,Requires a turn to charge before attacking.  Has a $effect_chance% chance to [burn]{mechanic} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  User charges for one turn before attacking.
+333,9,Requires a turn to charge before attacking.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  User charges for one turn before attacking.
 335,9,"Lowers the user's Defense, Special Defense, and Speed by one stage each.","Inflicts [regular damage]{mechanic:regular-damage}.  Lowers the user's [Defense]{mechanic:defense}, [Special Defense]{mechanic:special-defense}, and [Speed]{mechanic:speed} by one [stage]{mechanic:stage} each."
 336,9,"With [Fusion Bolt]{move:fusion-bolt}, inflicts double damage.","Inflicts [regular damage]{mechanic:regular-damage}.  If a friendly Pokémon used []{move:fusion-bolt} earlier this turn, this move has double power."
 337,9,"With [Fusion Flare]{move:fusion-flare}, inflicts double damage.","Inflicts [regular damage]{mechanic:regular-damage}.  If a friendly Pokémon used []{move:fusion-flare} earlier this turn, this move has double power."
