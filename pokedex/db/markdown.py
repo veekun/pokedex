@@ -11,6 +11,8 @@ spline-pokedex.
 """
 from __future__ import absolute_import
 
+import re
+
 import markdown
 import sqlalchemy.types
 
@@ -18,16 +20,14 @@ class MarkdownString(object):
     """Wraps a Markdown string.  Stringifies to the original text, but .as_html
     will return an HTML rendering.
 
-    To add extensions to the rendering (which is necessary for rendering links
-    correctly, and which spline-pokedex does), you must append to this class's
-    `markdown_extensions` list.  Yep, that's gross.
+    To make the __html__ property work, you must set this class's
+    `default_link_extension` to a PokedexLinkExtension.  Yep, that's gross.
     """
 
-    markdown_extensions = ['extra']
+    default_link_extension = None
 
     def __init__(self, source_text):
         self.source_text = source_text
-        self._as_html = None
 
     def __unicode__(self):
         return self.source_text
@@ -36,32 +36,40 @@ class MarkdownString(object):
         return unicode(self.source_text).encode()
 
     def __html__(self):
-        return self.as_html
+        return self.as_html(extension=self.default_link_extension)
 
-    @property
-    def as_html(self):
-        """Returns the string as HTML4."""
+    def as_html(self, session=None, object_url=None, identifier_url=None, language=None, extension=None):
+        """Returns the string as HTML.
 
-        if self._as_html is not None:
-            return self._as_html
+        Pass in current session, and optionally URL-making functions and the
+        language. See PokedexLinkExtension for how they work.
+
+        Alternatively, pass in a PokedexLinkExtension instance.
+        """
+
+        if not extension:
+            extension = ParametrizedLinkExtension(session, object_url, identifier_url, language)
 
         md = markdown.Markdown(
-            extensions=self.markdown_extensions,
+            extensions=['extra', extension],
             safe_mode='escape',
             output_format='xhtml1',
         )
 
-        self._as_html = md.convert(self.source_text)
+        return md.convert(self.source_text)
 
-        return self._as_html
-
-    @property
-    def as_text(self):
+    def as_text(self, session):
         """Returns the string in a plaintext-friendly form.
-
-        At the moment, this is just the original source text.
         """
-        return self.source_text
+        # Since Markdown is pretty readable by itself, we just have to replace
+        # the links by their text.
+        # XXX: The tables get unaligned
+        extension = ParametrizedLinkExtension(session)
+        pattern = extension.link_pattern
+        regex = '()%s()' % pattern.regex
+        def handleMatch(m):
+            return pattern.handleMatch(m).text
+        return re.sub(regex, handleMatch, self.source_text)
 
 def _markdownify_effect_text(move, effect_text):
     if effect_text is None:
@@ -129,3 +137,105 @@ class MarkdownColumn(sqlalchemy.types.TypeDecorator):
             return None
 
         return MarkdownString(value)
+
+class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
+    """Matches [label]{category:target}.
+    """
+    regex = ur'(?x) \[ ([^]]*) \] \{ ([-a-z0-9]+) : ([-a-z0-9]+) \}'
+
+    def __init__(self, extension):
+        markdown.inlinepatterns.Pattern.__init__(self, self.regex)
+        self.extension = extension
+
+    def handleMatch(self, m):
+        from pokedex.db import tables, util
+        start, label, category, target, end = m.groups()
+        try:
+            table = dict(
+                    ability=tables.Ability,
+                    item=tables.Item,
+                    location=tables.Location,
+                    move=tables.Move,
+                    pokemon=tables.Pokemon,
+                    type=tables.Type,
+                )[category]
+        except KeyError:
+            obj = name = target
+            url = self.extension.identifier_url(category, obj)
+        else:
+            session = self.extension.session
+            obj = util.get(self.extension.session, table, target)
+            url = self.extension.object_url(category, obj)
+            if table in [tables.Type]:
+                # Type wants to be localized to the same language as the text
+                language = self.extension.language
+                name = None
+                try:
+                    name = obj.name_map[language]
+                except KeyError:
+                    pass
+                if not name:
+                    name = obj.name
+            else:
+                name = obj.name
+        if url:
+            el = self.extension.make_link(category, obj, url, label or name)
+        else:
+            el = markdown.etree.Element('span')
+            el.text = markdown.AtomicString(label or name)
+        return el
+
+class PokedexLinkExtension(markdown.Extension):
+    """Plugs the [foo]{bar:baz} syntax into the markdown parser.
+
+    Subclases need to set the `session` attribute to the current session,
+    and `language` to the language of the strings.
+
+    To get links, subclasses must override object_url and/or identifier_url.
+    If these return None, <span>s are used instead of <a>.
+    """
+    language = None
+
+    def __init__(self):
+        markdown.Extension.__init__(self)
+        self.link_pattern = PokedexLinkPattern(self)
+
+    def extendMarkdown(self, md, md_globals):
+        md.inlinePatterns['pokedex-link'] = self.link_pattern
+
+    def make_link(self, category, obj, url, text):
+        """Make an <a> element
+
+        Override this to set custom attributes, e.g. title.
+        """
+        el = markdown.etree.Element('a')
+        el.set('href', url)
+        el.text = markdown.AtomicString(text)
+        return el
+
+    def identifier_url(self, category, identifier):
+        """Return the URL for the given {category:identifier} link
+
+        For ORM objects, object_url is used instead (but may fall back to
+        identifier_url).
+
+        Returns None by default, which causes <span> to be used in place of <a>
+        """
+        return None
+
+    def object_url(self, category, obj):
+        """Return the URL for the ORM object obj
+
+        Calls identifier_url by default.
+        """
+        return self.identifier_url(category, obj.identifier)
+
+class ParametrizedLinkExtension(PokedexLinkExtension):
+    def __init__(self, session, object_url=None, identifier_url=None, language=None):
+        PokedexLinkExtension.__init__(self)
+        self.language = language
+        self.session = session
+        if object_url:
+            self.object_url = object_url
+        if identifier_url:
+            self.identifier_url = identifier_url
