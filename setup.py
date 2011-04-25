@@ -12,6 +12,7 @@ setup(
         'whoosh>=2.2.2',
         'markdown',
         'construct',
+        'argparse',
     ],
 
     entry_points = {
