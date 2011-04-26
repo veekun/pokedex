@@ -871,6 +871,9 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
         cost += search.costs['egg'] * len(moves)
         cost += search.costs['breed-penalty'] * len(search.egg_moves - moves)
         gender_rate = search.gender_rates[evo_chain]
+        goal_family = search.goal_evolution_chain
+        goal_groups = search.egg_groups[goal_family]
+        goal_compatible = set(goal_groups).intersection(egg_groups)
         if 0 <= gender_rate:
             # Only pokemon that have males can pas down moves to other species
             # (and the other species must have females: checked in BreedNode)
@@ -882,7 +885,8 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
             # Since the target family is not included in our breed graph, we
             # breed with it explicitly. But again, there must be a female to
             # breed with.
-            if search.gender_rates[search.goal_evolution_chain] > 0:
+            if goal_compatible and search.gender_rates[
+                        search.goal_evolution_chain] > 0:
                 yield cost, None, GoalBreedNode(search=self.search, dummy='g',
                         version_group_=self.version_group_, moves_=self.moves_)
         elif evo_chain == search.goal_evolution_chain:
