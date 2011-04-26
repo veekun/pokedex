@@ -259,9 +259,10 @@ class MovesetSearch(object):
         self.pokemon_by_evolution_chain: maps evolution chains to their pokemon
         self.unbreedable: set of unbreedable pokemon
 
-        self.evolution_parents: maps pokemon to their pre-evolved form
-        self.evolutions: maps pokemon to lists of (trigger, move, level, child)
-        self.evolution_moves: maps evolution_chains to their evolution moves
+        self.evolution_parents[pokemon] = the pre-evolved form
+        self.evolutions[pokemon] = list of (trigger, move, level, child)
+        self.evolution_moves[evolution_chain] = move required for evolution
+        self.babies[egg_group_id] = set of baby pokemon
         """
         eg1 = tables.PokemonEggGroup
         eg2 = aliased(tables.PokemonEggGroup)
@@ -271,7 +272,9 @@ class MovesetSearch(object):
                 tables.Pokemon.evolves_from_pokemon_id,
                 eg1.egg_group_id,
                 eg2.egg_group_id,
+                tables.EvolutionChain.baby_trigger_item_id,
             )
+        query = query.join(tables.Pokemon.evolution_chain)
         query = query.join((eg1, eg1.pokemon_id == tables.Pokemon.id))
         query = query.outerjoin((eg2, and_(
                 eg2.pokemon_id == tables.Pokemon.id,
@@ -283,17 +286,24 @@ class MovesetSearch(object):
         self.egg_groups = defaultdict(tuple)
         self.evolution_chains = dict()
         self.pokemon_by_evolution_chain = defaultdict(set)
-        for pokemon, evolution_chain, parent, g1, g2 in query:
+        self.babies = defaultdict(set)
+        item_baby_chains = set()  # evolution chains with baby-trigger items
+        for pokemon, evolution_chain, parent, g1, g2, baby_item in query:
+            groups = (g1, g2) if g2 else (g1, )
             if g1 in bad_groups:
                 unbreedable.add(pokemon)
             else:
-                new_groups = (g1, g2) if g2 else (g1, )
-                if len(self.egg_groups.get(evolution_chain, ())) <= len(new_groups):
-                    self.egg_groups[evolution_chain] = new_groups
+                if len(self.egg_groups.get(evolution_chain, ())) <= len(groups):
+                    self.egg_groups[evolution_chain] = groups
             self.evolution_chains[pokemon] = evolution_chain
             self.pokemon_by_evolution_chain[evolution_chain].add(pokemon)
             if parent:
                 self.evolution_parents[pokemon] = parent
+                if baby_item:
+                    item_baby_chains.add(evolution_chain)
+            else:
+                for group in groups:
+                    self.babies[group].add(pokemon)
         self.unbreedable = frozenset(unbreedable)
 
         self.evolutions = defaultdict(set)
@@ -319,6 +329,15 @@ class MovesetSearch(object):
                     len(self.evolutions),
                 )
             print 'Evolution moves: %s' % self.evolution_moves
+
+        # Chains with item-triggered alternate babies
+        for item_baby_chain in item_baby_chains:
+            for item_baby in self.pokemon_by_evolution_chain[item_baby_chain]:
+                if item_baby not in self.evolution_parents:
+                    for regular_baby in self.evolutions[item_baby]:
+                        for group in self.egg_groups[item_baby_chain]:
+                            self.babies[group].add(pokemon)
+
 
     def construct_breed_graph(self):
         """Fills breeds_required
