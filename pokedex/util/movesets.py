@@ -45,14 +45,12 @@ class MovesetSearch(object):
     def __init__(self, session, pokemon, version, moves, level=100, costs=None,
             exclude_versions=(), exclude_pokemon=(), debug=False):
 
-        self.generator = self.error = None
+        self.generator = None
 
         if not moves:
-            self.error = NoMoves('No moves specified.')
-            return
+            raise NoMoves('No moves specified.')
         elif len(moves) > 4:
-            self.error = NoMoves('Too many moves specified.')
-            return
+            raise NoMoves('Too many moves specified.')
 
         self.debug = debug
 
@@ -75,14 +73,6 @@ class MovesetSearch(object):
         self.excluded_families = frozenset(p.evolution_chain_id
                 for p in exclude_pokemon)
 
-        if pokemon:
-            self.goal_evolution_chain = pokemon.evolution_chain_id
-            if self.goal_evolution_chain in self.excluded_families:
-                self.error = TargetExcluded('The target pokemon was excluded.')
-                return
-        else:
-            self.goal_evolution_chain = None
-
         if debug:
             print 'Specified moves:', [move.id for move in moves]
 
@@ -90,6 +80,13 @@ class MovesetSearch(object):
         self.goal_moves = frozenset(move.id for move in moves)
         self.goal_version_group = version.version_group_id
         self.goal_level = level
+
+        if pokemon:
+            self.goal_evolution_chain = pokemon.evolution_chain_id
+            if self.goal_evolution_chain in self.excluded_families:
+                raise TargetExcluded('The target pokemon was excluded.')
+        else:
+            self.goal_evolution_chain = None
 
         # Fill self.generation_id_by_version_group
         self.load_version_groups(version.version_group_id,
@@ -294,6 +291,8 @@ class MovesetSearch(object):
         self.evolutions[pokemon] = list of (trigger, move, level, child)
         self.evolution_moves[evolution_chain] = move required for evolution
         self.babies[egg_group_id] = set of baby pokemon
+        self.hatch_counters[pokemon] = hatch counter
+        self.gender_rates[pokemon] = gender rate
         """
         eg1 = tables.PokemonEggGroup
         eg2 = aliased(tables.PokemonEggGroup)
@@ -304,6 +303,8 @@ class MovesetSearch(object):
                 eg1.egg_group_id,
                 eg2.egg_group_id,
                 tables.EvolutionChain.baby_trigger_item_id,
+                tables.Pokemon.hatch_counter,
+                tables.Pokemon.gender_rate,
             )
         query = query.join(tables.Pokemon.evolution_chain)
         query = query.join((eg1, eg1.pokemon_id == tables.Pokemon.id))
@@ -312,29 +313,32 @@ class MovesetSearch(object):
                 eg1.egg_group_id < eg2.egg_group_id,
             )))
         bad_groups = (self.no_eggs_group, self.ditto_group)
-        unbreedable = set()
+        unbreedable = dict()  # pokemon->evolution chain
         self.evolution_parents = dict()
         self.egg_groups = defaultdict(tuple)
         self.evolution_chains = dict()
         self.pokemon_by_evolution_chain = defaultdict(set)
         self.babies = defaultdict(set)
+        self.hatch_counters = dict()
+        self.gender_rates = dict()
         item_baby_chains = set()  # evolution chains with baby-trigger items
-        for pokemon, evolution_chain, parent, g1, g2, baby_item in query:
-            groups = (g1, g2) if g2 else (g1, )
+        for pokemon, evolution_chain, parent, g1, g2, baby_item, hatch_counter, gender_rate in query:
+            self.hatch_counters[pokemon] = hatch_counter
+            self.gender_rates[pokemon] = gender_rate
             if g1 in bad_groups:
-                unbreedable.add(pokemon)
+                unbreedable[pokemon] = evolution_chain
             else:
+                groups = (g1, g2) if g2 else (g1, )
                 if len(self.egg_groups.get(evolution_chain, ())) <= len(groups):
                     self.egg_groups[evolution_chain] = groups
+                for group in groups:
+                    self.babies[group].add(pokemon)
             self.evolution_chains[pokemon] = evolution_chain
             self.pokemon_by_evolution_chain[evolution_chain].add(pokemon)
             if parent:
                 self.evolution_parents[pokemon] = parent
                 if baby_item:
                     item_baby_chains.add(evolution_chain)
-            else:
-                for group in groups:
-                    self.babies[group].add(pokemon)
         self.unbreedable = frozenset(unbreedable)
 
         self.evolutions = defaultdict(set)
@@ -360,6 +364,13 @@ class MovesetSearch(object):
                     len(self.evolutions),
                 )
             print 'Evolution moves: %s' % self.evolution_moves
+
+        # Chains with unbreedable babies
+        for baby, evolution_chain in unbreedable.items():
+            if baby not in self.evolution_parents:
+                groups = self.egg_groups[evolution_chain]
+                for group in groups:
+                    self.babies[group].add(baby)
 
         # Chains with item-triggered alternate babies
         for item_baby_chain in item_baby_chains:
@@ -522,10 +533,7 @@ class MovesetSearch(object):
         self._astar_debug_notify_counter += 1
 
     def __iter__(self):
-        if self.generator:
-            return self.generator
-        else:
-            raise self.error
+        return self.generator
 
     def get_by_id(self, table, id):
         key = table, 'id', id
@@ -593,6 +601,16 @@ default_costs = {
     'forget': 300,  # Deleting a move. (Not needed unless deleting an evolution move.)
     'relearn': 150,  # Also a pain, though not as big as breeding.
     'per-level': 1,  # Prefer less grinding. This is for all lv-ups but the final “grow”
+
+    # Breeding for moves the target pokemon leans easily is kind of stupid.
+    # (Though not *very* stupid, and since the program considers evolution
+    # chains as a group, the penalty should be much smaller than normal move cost.)
+    'egg': 3,  # General cost of breeding a move
+    'per-hatch-counter': 1,  # penalty for 1 initial hatch counter point (these range from 5 to 120)
+
+    # Penalty for *not* breeding a required egg move; this makes parents
+    # with more required moves gain a big advantage over the competition
+    'breed-penalty': 100,
 }
 
 ###
@@ -681,6 +699,13 @@ class GrowAction(Action, namedtuple('GrowAction', 'search level')):
     def __str__(self):
         return "Grow to level {0.level}".format(self)
 
+class BreedAction(Action, namedtuple('BreedAction', 'search pokemon_ moves_')):
+    keyword = 'grow'
+
+    def __str__(self):
+        mvs = ', '.join(m.name for m in self.moves)
+        return "Breed {0.pokemon.name} with {1}".format(self, mvs)
+
 ###
 ### Search space nodes
 ###
@@ -693,17 +718,24 @@ class InitialNode(Node, namedtuple('InitialNode', 'search')):
             if any(search.breeds_required[group] for group in egg_groups):
                 for version_group in version_groups:
                     action = StartAction(search, pokemon, version_group)
-                    node = PokemonNode(search, pokemon, 0, version_group,
-                            frozenset(), False)
+                    node = PokemonNode(
+                            search=search,
+                            pokemon_=pokemon,
+                            level=0,
+                            version_group_=version_group,
+                            moves_=frozenset(),
+                            new_level=False,
+                        )
                     yield 0, action, node
 
 class PokemonNode(Node, Facade, namedtuple('PokemonNode',
-        'search pokemon_ level version_group_ moves_ new_level')):
+        'pokemon_ level version_group_ new_level moves_ search')):
 
     def __str__(self):
-        return "lv.{level:3}{s} {pokemon_:<5} in {version_group_:3} with {moves}".format(
+        return "lv.{level:3}{s} {self.pokemon.identifier:<10.10} in {version_group_:3} with {moves}".format(
                 s='*' if self.new_level else ' ',
-                moves=sorted(self.moves_),
+                moves=','.join(sorted(move.identifier for move in self.moves)) or '---',
+                self=self,
                 **self._asdict())
 
     def expand(self):
@@ -720,6 +752,7 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                 self.expand_trade(),
                 self.expand_grow(),
                 self.expand_evolutions(),
+                self.expand_breed(),
             )
 
     def expand_learn(self):
@@ -749,12 +782,15 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                     # ignored here
                     pass
                 elif method == 'light-ball-egg':
-                    if self.level == 0:
+                    if self.level == 0 and self.new_level:
                         for level, cost in levels_costs:
                             yield self._learn(move, method, cost)
                 elif method == 'stadium-surfing-pikachu':
                     for level, cost in levels_costs:
                         yield self._learn(move, method, cost, new_level=False)
+                elif method == 'form-change':
+                    # XXX: Form changes
+                    pass
                 else:
                     raise ValueError('Unknown move method %s' % method)
 
@@ -822,6 +858,54 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
             yield cost, EvolutionAction(search, child, trigger), self._replace(
                     **kwargs)
 
+    def expand_breed(self):
+        search = self.search
+        if self.pokemon_ in search.unbreedable:
+            return
+        evo_chain = search.evolution_chains[self.pokemon_]
+        egg_groups = search.egg_groups[evo_chain]
+        breeds_required = search.breeds_required
+        moves = self.moves_
+        for group in egg_groups:
+            if moves in breeds_required[group] or evo_chain == search.goal_evolution_chain:
+                cost = search.costs['breed']
+                cost += search.costs['egg'] * len(moves)
+                cost += search.costs['breed-penalty'] * len(search.egg_moves - moves)
+                yield cost, None, BreedNode(search=self.search, dummy='b', group_=group,
+                        version_group_=self.version_group_, moves_=self.moves_)
+
+class BreedNode(Node, namedtuple('BreedNode',
+        'group_ version_group_ dummy search moves_')):
+    """Breed node
+    This serves to prevent duplicate breeds, by storing only the needed info
+    in the namedtuple.
+    Also, the base breed cost was already paid, so the breeding tends to happen
+    later in the algorithm.
+    """
+    def expand(self):
+        search = self.search
+        moves = self.moves_
+        vg = self.version_group_
+        gen = search.generation_id_by_version_group[vg]
+        hatch_level = 5 if (gen < 4) else 1
+        for baby in search.babies[self.group_]:
+            gender_rate = search.gender_rates[baby]
+            baby_chain = search.evolution_chains[baby]
+            if moves.issubset(search.movepools[baby_chain]):
+                cost = search.costs['per-hatch-counter'] * search.hatch_counters[baby]
+                yield 0, BreedAction(self.search, baby, moves), PokemonNode(
+                        search=self.search, pokemon_=baby, level=hatch_level,
+                        version_group_=vg, moves_=moves, new_level=True)
+        return
+        yield
+
+    @property
+    def pokemon(self):
+        return None
+
+    def estimate(self, g):
+        return 0
+
 class GoalNode(PokemonNode):
     def expand(self):
         return ()
@@ -885,7 +969,7 @@ def main(argv):
             except NoResultFound:
                 print>>sys.stderr, ('%s %s not found. Please use '
                         'the identifier.' % (name, ident))
-                return 2
+                return False
         return result
 
     pokemon = _get_list(tables.Pokemon, [args.pokemon], 'Pokemon')[0]
@@ -897,40 +981,45 @@ def main(argv):
     if args.debug:
         print 'Starting search'
 
-    search = MovesetSearch(session, pokemon, version, moves, args.level,
-        exclude_versions=excl_versions, exclude_pokemon=excl_pokemon,
-        debug=args.debug)
+    no_results = True
+    try:
+        search = MovesetSearch(session, pokemon, version, moves, args.level,
+            exclude_versions=excl_versions, exclude_pokemon=excl_pokemon,
+            debug=args.debug)
+    except IllegalMoveCombination, e:
+        print 'Error:', e
+    else:
+        if args.debug:
+            print 'Setup done'
 
-    if args.debug:
-        print 'Setup done'
-
-    template = "{cost:4} {action:50.50} {pokemon:10}{level:>3}{nl:1}{versions:2} {moves}"
-    first_result = True
-    for result in search:
-        print
-        if first_result:
-            if search.output_objects:
-                print '**warning: search looked up output objects**'
-            first_result = False
-        print template.format(cost='Cost', action='Action', pokemon='Pokemon',
-                level='Lv.', nl='V', versions='er',
-                moves=''.join(m.name[0].lower() for m in moves))
-        for cost, action, node in reversed(list(result)):
-            print template.format(
-                    cost=cost,
-                    action=action,
-                    pokemon=node.pokemon.name,
-                    nl='.' if node.new_level else ' ',
-                    level=node.level,
-                    versions=''.join(v.name[0] for v in node.versions),
-                    moves=''.join('.' if m in node.moves else ' ' for m in moves) +
-                        ''.join(m.name[0].lower() for m in node.moves if m not in moves),
+        template = "{cost:4} {action:50.50} {pokemon:10}{level:>3}{nl:1}{versions:2} {moves}"
+        for result in search:
+            print '-' * 79
+            if no_results:
+                if search.output_objects:
+                    print '**warning: search looked up output objects**'
+                no_results = False
+            print template.format(cost='Cost', action='Action', pokemon='Pokemon',
+                    level='Lv.', nl='V', versions='er',
+                    moves=''.join(m.name[0].lower() for m in moves))
+            for cost, action, node in reversed(list(result)):
+                if action:
+                    print template.format(
+                        cost=cost,
+                        action=action,
+                        pokemon=node.pokemon.name,
+                        nl='.' if node.new_level else ' ',
+                        level=node.level,
+                        versions=''.join(v.name[0] for v in node.versions),
+                        moves=''.join('.' if m in node.moves else ' ' for m in moves) +
+                            ''.join(m.name[0].lower() for m in node.moves if m not in moves),
                 )
 
-    print
+        if args.debug:
+            print
+            print 'Done'
 
-    if args.debug:
-        print 'Done'
+    return (not no_results)
 
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+    sys.exit(not main(sys.argv[1:]))
