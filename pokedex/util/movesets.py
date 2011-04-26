@@ -4,7 +4,7 @@
 import sys
 import argparse
 import itertools
-from collections import defaultdict
+from collections import defaultdict, namedtuple
 
 from sqlalchemy.orm import aliased
 from sqlalchemy.orm.exc import NoResultFound
@@ -13,7 +13,11 @@ from sqlalchemy.sql.expression import not_, and_, or_
 from pokedex.db import connect, tables, util
 
 from pokedex.util import querytimer
-from pokedex.util.astar import a_star
+from pokedex.util.astar import a_star, Node
+
+###
+### Illegal Moveset exceptions
+###
 
 class IllegalMoveCombination(ValueError): pass
 class TooManyMoves(IllegalMoveCombination): pass
@@ -22,12 +26,20 @@ class MovesNotLearnable(IllegalMoveCombination): pass
 class NoParent(IllegalMoveCombination): pass
 class TargetExcluded(IllegalMoveCombination): pass
 
+###
+### Generic helpers
+###
+
 def powerset(iterable):
     # recipe from: http://docs.python.org/library/itertools.html
     "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
     s = list(iterable)
     return itertools.chain.from_iterable(itertools.combinations(s, r)
             for r in range(len(s)+1))
+
+###
+### Search information object
+###
 
 class MovesetSearch(object):
     def __init__(self, session, pokemon, version, moves, level=100, costs=None,
@@ -57,6 +69,8 @@ class MovesetSearch(object):
         else:
             self.costs = costs
 
+        self.load_pokemon()
+
         self.excluded_families = frozenset(p.evolution_chain_id
                 for p in exclude_pokemon)
 
@@ -74,8 +88,6 @@ class MovesetSearch(object):
         self.goal_moves = frozenset(move.id for move in moves)
         self.goal_version_group = version.version_group_id
 
-        self.load_pokemon()
-
         # Fill self.generation_id_by_version_group
         self.load_version_groups(version.version_group_id,
                 [v.version_group_id for v in exclude_versions])
@@ -84,7 +96,7 @@ class MovesetSearch(object):
                 lambda: defaultdict(  # key: version_group
                     lambda: defaultdict(  # key: move
                         lambda: defaultdict(  # key: method
-                            list))))  # list of (level, cost)
+                            list))))  # ordered list of (level, cost)
         self.movepools = defaultdict(dict)  # evo chain -> move -> best cost
         self.learnpools = defaultdict(set)  # evo chain -> move, w/o egg moves
 
@@ -100,6 +112,12 @@ class MovesetSearch(object):
         self.construct_breed_graph()
 
         self.find_duplicate_versions()
+
+        kwargs = dict()
+        if debug:
+            self._astar_debug_notify_counter = 0
+            kwargs['notify'] = self.astar_debug_notify
+        self.generator = InitialNode(self).find_all_paths(**kwargs)
 
     def load_version_groups(self, version, excluded):
         """Load generation_id_by_version_group
@@ -186,20 +204,43 @@ class MovesetSearch(object):
         easy_moves = set()
         non_egg_moves = set()
         self.smeargle_families = set()
+        costs = self.costs
+        movepools = self.movepools
+        learnpools = self.learnpools
+        sketch_cost = costs['sketch']
+        breed_cost = costs['breed']
         for pokemon, move, vg, method, level, chain in query:
-            if move in self.goal_moves or move == self.sketch:
-                cost = self.learn_cost(method, vg)
-                self.movepools[chain][move] = min(
-                        self.movepools[chain].get(move, cost), cost)
+            if move in self.goal_moves:
+                if method == 'level-up':
+                    cost = costs['level-up']
+                else:
+                    gen = self.generation_id_by_version_group[vg]
+                    if method == 'machine' and gen < 5:
+                        cost = costs['machine-once']
+                    elif method == 'tutor' and gen == 3:
+                        cost = costs['tutor-once']
+                    elif method == 'egg':
+                        cost = costs['breed']
+                    else:
+                        cost = costs[method]
+                movepools[chain][move] = min(
+                        movepools[chain].get(move, cost), cost)
                 if method != 'egg':
-                    self.learnpools[chain].add(move)
+                    learnpools[chain].add(move)
                     non_egg_moves.add(move)
-                    if cost < self.costs['breed']:
+                    if cost < breed_cost:
                         easy_moves.add(move)
-            else:
-                cost = -1
-            if move == self.sketch:
+            elif move == self.sketch:
+                cost = sketch_cost
                 self.smeargle_families.add(self.evolution_chains[pokemon])
+            else:
+                # An evolution move. We need to use it anyway if we need
+                # the evolution, so the cost can be an arbitrary positive
+                # number. But, do check if this family actually needs the move.
+                evolution_chain = self.evolution_chains[pokemon]
+                if move != self.evolution_moves.get(evolution_chain):
+                    continue
+                cost = 1
             self.pokemon_moves[pokemon][vg][move][method].append((level, cost))
         if self.debug and selection == 'family':
             print 'Easy moves:', sorted(easy_moves)
@@ -207,21 +248,6 @@ class MovesetSearch(object):
         if self.debug:
             print 'Smeargle families:', sorted(self.smeargle_families)
         return easy_moves, non_egg_moves
-
-    def learn_cost(self, method, version_group):
-        """Return cost of learning a move by method (identifier) in ver. group
-        """
-        if method == 'level-up':
-            return self.costs['level-up']
-        gen = self.generation_id_by_version_group[version_group]
-        if method == 'machine' and gen < 5:
-            return self.costs['machine-once']
-        elif method == 'tutor' and gen == 3:
-            return self.costs['tutor-once']
-        elif method == 'egg':
-            return self.costs['breed']
-        else:
-            return self.costs[method]
 
     def trade_cost(self, version_group_from, version_group_to, *thing_generations):
         """Return cost of trading between versions, None if impossibble
@@ -338,7 +364,6 @@ class MovesetSearch(object):
                         for group in self.egg_groups[item_baby_chain]:
                             self.babies[group].add(pokemon)
 
-
     def construct_breed_graph(self):
         """Fills breeds_required
 
@@ -347,7 +372,10 @@ class MovesetSearch(object):
             with the goal moveset.
             The score cannot get lower by learning new moves, only by breeding.
             If missing, breeding or raising the pokemon won't do any good.
+        Exceptions:
             For pokemon in the target family, breeds_required doesn't apply.
+            For the empty moveset just check if any moveset is worthwhile (i.e.
+            bool(breeds_required[egg_group])).
         """
 
         # Part I. Determining what moves can be passed/learned
@@ -470,6 +498,23 @@ class MovesetSearch(object):
         if self.debug:
             print 'Deduplicated %s version groups' % counter
 
+    def astar_debug_notify(self, cost, node, setsize, heapsize):
+        counter = self._astar_debug_notify_counter
+        if counter % 100 == 0:
+            print 'A* iteration %s, cost %s; remaining: %s(%s)     \r' % (
+                    counter, cost, setsize, heapsize),
+        self._astar_debug_notify_counter += 1
+
+    def __iter__(self):
+        if self.generator:
+            return self.generator
+        else:
+            raise self.error
+
+###
+### Costs
+###
+
 default_costs = {
     # Costs for learning a move in verious ways
     'level-up': 20,  # The normal way
@@ -477,7 +522,12 @@ default_costs = {
     'machine-once': 2000,  # before gen. 5, TMs only work once. Avoid.
     'tutor': 60,  # Tutors are slightly more inconvenient than TMs – can't carry them around
     'tutor-once': 2100,  # gen III: tutors only work once (well except Emerald frontier ones)
-    'sketch': 10,  # Quite cheap. (Doesn't include learning Sketch itself)
+
+    # For technical reasons, 'sketch' is also used for learning Sketch and
+    # evolution-inducing moves by normal means, if they aren't included in the
+    # target moveset.
+    # So the actual cost of a sketched move will be double this number.
+    'sketch': 5,  # Cheap. Exclude Smeargle if you think it's too cheap.
 
     # Gimmick moves – we need to use this method to learn the move anyway,
     # so make a big-ish dent in the score if missing
@@ -497,10 +547,102 @@ default_costs = {
     'breed': 400,  # Breeding's a pain.
     'trade': 200,  # Trading's a pain, but not as much as breeding.
     'transfer': 200,  # *in addition* to trade. For one-way cross-generation transfers
-    'delete': 300,  # Deleting a move. (Not needed unless deleting an evolution move.)
+    'forget': 300,  # Deleting a move. (Not needed unless deleting an evolution move.)
     'relearn': 150,  # Also a pain, though not as big as breeding.
     'per-level': 1,  # Prefer less grinding. This is for all lv-ups but the final “grow”
 }
+
+###
+### Search space transitions
+###
+
+class Action(object):
+    pass
+
+class StartAction(Action, namedtuple('StartAcion', 'pokemon version_group')):
+    keyword = 'start'
+
+class LearnAction(Action, namedtuple('LearnAction', 'move method')):
+    keyword = 'start'
+
+class ForgetAction(Action, namedtuple('ForgetAction', 'move')):
+    keyword = 'forget'
+
+###
+### Search space nodes
+###
+
+class InitialNode(Node, namedtuple('InitialNode', 'search')):
+    def expand(self):
+        search = self.search
+        for pokemon, version_groups in search.pokemon_moves.items():
+            egg_groups = search.egg_groups[search.evolution_chains[pokemon]]
+            if any(search.breeds_required[group] for group in egg_groups):
+                for version_group in version_groups:
+                    yield 0, StartAction(pokemon, version_group), PokemonNode(
+                        search, pokemon, 0, version_group, frozenset(), False)
+
+class PokemonNode(Node, namedtuple('PokemonNode',
+        'search pokemon level version_group moves new_level')):
+    def expand(self):
+        #print 'expand', self
+        if not self.moves:
+            # Learn something first
+            # (other expand_* may rely on there being a move)
+            return self.expand_learn()
+        elif len(self.moves) < 4:
+            return self.expand_learn()
+        else:
+            return self.expand_forget()
+        return ()
+
+    def expand_learn(self):
+        search = self.search
+        moves = search.pokemon_moves[self.pokemon][self.version_group]
+        for move, methods in moves.items():
+            if move in self.moves:
+                continue
+            for method, levels_costs in methods.items():
+                if method == 'level-up':
+                    for level, cost in levels_costs:
+                        level_difference = level - self.level
+                        if level_difference > 0 or (
+                                level_difference == 0 and self.new_level):
+                            cost += level_difference * search.costs['per-level']
+                            yield self._learn(move, method, cost,
+                                level=level, new_level=True)
+                        else:
+                            yield self._learn(move, 'relearn',
+                                search.costs['relearn'], new_level=False)
+                elif method in 'machine tutor'.split():
+                    for level, cost in levels_costs:
+                        yield self._learn(move, method, cost, new_level=False)
+                elif method == 'egg':
+                    # ignored here
+                    pass
+                elif method == 'light-ball-egg':
+                    if self.level == 0:
+                        for level, cost in levels_costs:
+                            yield self._learn(move, method, cost)
+                elif method == 'stadium-surfing-pikachu':
+                    for level, cost in levels_costs:
+                        yield self._learn(move, method, cost, new_level=False)
+                else:
+                    raise ValueError('Unknown move method %s' % method)
+
+    def _learn(self, move, method, cost, **kwargs):
+        kwargs['moves'] = self.moves.union([move])
+        return cost, LearnAction(move, method), self._replace(**kwargs)
+
+    def expand_forget(self):
+        cost = self.search.costs['forget']
+        for move in self.moves:
+            yield cost, ForgetAction(move), self._replace(
+                    moves=self.moves.difference([move]), new_level=False)
+
+###
+### CLI interface
+###
 
 def main(argv):
     parser = argparse.ArgumentParser(description=
@@ -570,9 +712,14 @@ def main(argv):
         exclude_versions=excl_versions, exclude_pokemon=excl_pokemon,
         debug=args.debug)
 
-    if search.error:
-        print 'Error:', search.error
-        return 1
+    if args.debug:
+        print 'Setup done'
+
+    for result in search:
+        print
+        print result
+
+    print
 
     if args.debug:
         print 'Done'
