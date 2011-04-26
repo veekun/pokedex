@@ -3,6 +3,7 @@
 
 import sys
 import argparse
+import itertools
 from collections import defaultdict
 
 from sqlalchemy.orm import aliased
@@ -20,6 +21,13 @@ class NoMoves(IllegalMoveCombination): pass
 class MovesNotLearnable(IllegalMoveCombination): pass
 class NoParent(IllegalMoveCombination): pass
 class TargetExcluded(IllegalMoveCombination): pass
+
+def powerset(iterable):
+    # recipe from: http://docs.python.org/library/itertools.html
+    "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
+    s = list(iterable)
+    return itertools.chain.from_iterable(itertools.combinations(s, r)
+            for r in range(len(s)+1))
 
 class MovesetSearch(object):
     def __init__(self, session, pokemon, version, moves, level=100, costs=None,
@@ -84,7 +92,7 @@ class MovesetSearch(object):
                 self.goal_evolution_chain, 'family')
 
         hard_moves = self.goal_moves - easy_moves
-        egg_moves = self.goal_moves - non_egg_moves
+        self.egg_moves = self.goal_moves - non_egg_moves
         if hard_moves:
             # Have to breed!
             self.load_pokemon_moves(self.goal_evolution_chain, 'others')
@@ -311,6 +319,18 @@ class MovesetSearch(object):
             print 'Evolution moves: %s' % self.evolution_moves
 
     def construct_breed_graph(self):
+        """Fills breeds_required
+
+        breeds_required[egg_group][moveset] = minimum number of breeds needed
+            from a pokemon in this group with this moveset to the goal pokemon
+            with the goal moveset.
+            The score cannot get lower by learning new moves, only by breeding.
+            If missing, breeding or raising the pokemon won't do any good.
+            For pokemon in the target family, breeds_required doesn't apply.
+        """
+
+        # Part I. Determining what moves can be passed/learned
+
         # eg1_movepools[egg_group_id] = set of moves passable by pkmn in that group
         eg1_movepools = defaultdict(set)
         # eg2_movepools[b_g_id1, b_g_id2] = ditto for pkmn in *both* groups
@@ -349,6 +369,53 @@ class MovesetSearch(object):
                     if eg2_movepools[g1, g2]:
                         print " %2s/%2s pass: %s" % (g1, g2, sorted(eg2_movepools[g1, g2]))
             print 'Goal groups:', goal_egg_groups
+
+        # Part II. Determining which moves are worthwhile to pass
+
+        # We want *all* paths, not just shortest ones, so use DFS.
+        breeds_required = defaultdict(dict)
+        def handle(group, moves, path):
+            """
+            group: the group of the parent
+            moves: moves the parent should pass down
+            path: previously visited groups - to prevent cycles
+            """
+            if not moves:
+                # No more moves needed to pass down: success!
+                return True
+            if breeds_required[group].get(moves, 999) <= len(path):
+                # Already done
+                return True
+            success = False
+            # Breed some more
+            path = path + (group, )
+            for new_group in all_groups.difference(path):
+                new_groups = tuple(sorted([group, new_group]))
+                # Can we pass down all the requested moves?
+                if moves.issubset(eg1_movepools[new_group]):
+                    # Learn some of the moves: they don't have to be passed to us
+                    for learned in powerset(moves & learn_pools[new_group]):
+                        new_moves = moves.difference(learned)
+                        local_success = handle(new_group, new_moves, path)
+                        # If this chain eventually ended up being successful,
+                        # it means that it is useful to pass this moveset
+                        # to this group.
+                        if local_success:
+                            breeds_required[group][moves] = min(breeds_required[group].get(moves, 999), len(path) - 1)
+                            success = True
+            return success
+        for group in goal_egg_groups:
+            handle(group, self.goal_moves, ())
+            for moves in powerset(self.goal_moves.difference(self.egg_moves)):
+                if moves:
+                    breeds_required[group][frozenset(moves) | self.egg_moves] = 1
+        self.breeds_required = breeds_required
+
+        if self.debug:
+            for group, movesetlist in breeds_required.items():
+                print 'From egg group', group
+                for moveset, cost in movesetlist.items():
+                    print "   %s breeds with %s" % (cost, sorted(moveset))
 
 default_costs = {
     # Costs for learning a move in verious ways
