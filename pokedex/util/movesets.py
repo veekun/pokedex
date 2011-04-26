@@ -724,7 +724,7 @@ class InitialNode(Node, namedtuple('InitialNode', 'search')):
                             level=0,
                             version_group_=version_group,
                             moves_=frozenset(),
-                            new_level=False,
+                            new_level=True,
                         )
                     yield 0, action, node
 
@@ -884,18 +884,23 @@ class BreedNode(Node, namedtuple('BreedNode',
     """
     def expand(self):
         search = self.search
-        moves = self.moves_
         vg = self.version_group_
         gen = search.generation_id_by_version_group[vg]
         hatch_level = 5 if (gen < 4) else 1
         for baby in search.babies[self.group_]:
+            bred_moves = self.moves_
             gender_rate = search.gender_rates[baby]
             baby_chain = search.evolution_chains[baby]
-            if moves.issubset(search.movepools[baby_chain]):
+            if bred_moves.issubset(search.movepools[baby_chain]):
+                if len(bred_moves) < 4:
+                    moves = search.pokemon_moves[baby][self.version_group_]
+                    for move, methods in moves.items():
+                        if 'light-ball-pichu' in methods:
+                            bred_moves.add(move)
                 cost = search.costs['per-hatch-counter'] * search.hatch_counters[baby]
                 yield 0, BreedAction(self.search, baby, moves), PokemonNode(
                         search=self.search, pokemon_=baby, level=hatch_level,
-                        version_group_=vg, moves_=moves, new_level=True)
+                        version_group_=vg, moves_=bred_moves, new_level=True)
         return
         yield
 
