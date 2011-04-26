@@ -625,6 +625,15 @@ default_costs = {
 ###
 
 class Facade(object):
+    """Facade for optput objects
+
+    The main algorithm uses integers (and tiny strings, and sets, dicts,
+    tuples you get the picture...).
+    The rest of the world uses ORM objects.
+    So, all objects that are returned in results have "object ID" attributes
+    ending in an underscore (e.g. pokemon_), and this base class adds
+    underscore-less properties that get the underlying object.
+    """
     @property
     def pokemon(self):
         return self.search.session.query(tables.Pokemon).filter_by(id=self.pokemon_).one()
