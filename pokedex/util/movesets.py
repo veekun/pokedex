@@ -81,8 +81,8 @@ class MovesetSearch(object):
                 [v.version_group_id for v in exclude_versions])
 
         self.pokemon_moves = defaultdict(  # key: pokemon
-                lambda: defaultdict(  # key: move
-                    lambda: defaultdict(  # key: version_group
+                lambda: defaultdict(  # key: version_group
+                    lambda: defaultdict(  # key: move
                         lambda: defaultdict(  # key: method
                             list))))  # list of (level, cost)
         self.movepools = defaultdict(dict)  # evo chain -> move -> best cost
@@ -98,6 +98,8 @@ class MovesetSearch(object):
             self.load_pokemon_moves(self.goal_evolution_chain, 'others')
 
         self.construct_breed_graph()
+
+        self.find_duplicate_versions()
 
     def load_version_groups(self, version, excluded):
         """Load generation_id_by_version_group
@@ -198,7 +200,7 @@ class MovesetSearch(object):
                 cost = -1
             if move == self.sketch:
                 self.smeargle_families.add(self.evolution_chains[pokemon])
-            self.pokemon_moves[pokemon][move][vg][method].append((level, cost))
+            self.pokemon_moves[pokemon][vg][move][method].append((level, cost))
         if self.debug and selection == 'family':
             print 'Easy moves:', sorted(easy_moves)
             print 'Non-egg moves:', sorted(non_egg_moves)
@@ -360,6 +362,7 @@ class MovesetSearch(object):
                 eg2_movepools[groups].update(pool)
 
         if self.debug:
+            print 'Egg group summary:'
             for group in sorted(all_groups):
                 print "%2s can pass: %s" % (group, sorted(eg1_movepools[group]))
                 if learn_pools[group] != eg1_movepools[group]:
@@ -416,6 +419,37 @@ class MovesetSearch(object):
                 print 'From egg group', group
                 for moveset, cost in movesetlist.items():
                     print "   %s breeds with %s" % (cost, sorted(moveset))
+
+    def find_duplicate_versions(self):
+        """Fill `duplicate_versions`
+
+        duplicate_versions[pokemon][version_group] = set of version groups that
+            are identical as far as the pokemon learning those moves is
+            concerned, and are in the same generation.
+            Thus, trading between them is unnecessary.
+        """
+        self.duplicate_versions = dict()
+
+        counter = 0
+        for pokemon, vg_moves in self.pokemon_moves.items():
+            dupes = self.duplicate_versions[pokemon] = dict()
+            last = None
+            last_moves = None
+            last_gen = None
+            for version_group, moves in vg_moves.items():
+                gen = self.generation_id_by_version_group[version_group]
+                if gen == last_gen and moves == last_moves:
+                    last.add(version_group)
+                    dupes[version_group] = last
+                    counter += 1
+                else:
+                    last = set([version_group])
+                    dupes[version_group] = last
+                    last_moves = moves
+                    last_gen = gen
+
+        if self.debug:
+            print 'Deduplicated %s version groups' % counter
 
 default_costs = {
     # Costs for learning a move in verious ways
