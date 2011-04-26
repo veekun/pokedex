@@ -22,6 +22,7 @@ def test_cases():
             OK crawdaunt brick-break rock-slide facade toxic -v platinum
             NO cleffa tickle wish amnesia splash
             OK tyrogue pursuit
+            NO happiny softboiled
             NO mamoswine bite body-slam curse double-edge
             OK raichu volt-tackle
             OK raichu surf -v gold

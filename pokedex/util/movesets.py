@@ -665,59 +665,59 @@ class Action(Facade):
 class StartAction(Action, namedtuple('StartAcion', 'search pokemon_ version_group_')):
     keyword = 'start'
 
-    def __str__(self):
+    def __unicode__(self):
         vers = ' or '.join(v.name for v in self.versions)
-        return "Start with {0.pokemon.name} in {1}".format(self, vers)
+        return u"Start with {0.pokemon.name} in {1}".format(self, vers)
 
 class LearnAction(Action, namedtuple('LearnAction', 'search move_ move_method_')):
     keyword = 'start'
 
-    def __str__(self):
-        return "Learn {0.move.name} by {0.move_method.name}".format(self)
+    def __unicode__(self):
+        return u"Learn {0.move.name} by {0.move_method.name}".format(self)
 
 class RelearnAction(Action, namedtuple('RelearnAction', 'search move_')):
     keyword = 'start'
 
-    def __str__(self):
-        return "Relearn {0.move.name}".format(self)
+    def __unicode__(self):
+        return u"Relearn {0.move.name}".format(self)
 
 class ForgetAction(Action, namedtuple('ForgetAction', 'search move_')):
     keyword = 'forget'
 
-    def __str__(self):
-        return "Forget {0.move.name}".format(self)
+    def __unicode__(self):
+        return u"Forget {0.move.name}".format(self)
 
 class TradeAction(Action, namedtuple('TradeAction', 'search version_group_')):
     keyword = 'trade'
 
-    def __str__(self):
+    def __unicode__(self):
         vers = ' or '.join(v.name for v in self.versions)
-        return "Trade to {1}".format(self, vers)
+        return u"Trade to {1}".format(self, vers)
 
 class EvolutionAction(Action, namedtuple('EvolutionAction', 'search pokemon_ evolution_trigger_')):
     keyword = 'evolution'
 
-    def __str__(self):
-        return "Evolve to {0.pokemon.name} by {0.evolution_trigger.name}".format(self)
+    def __unicode__(self):
+        return u"Evolve to {0.pokemon.name} by {0.evolution_trigger.name}".format(self)
 
 class GrowAction(Action, namedtuple('GrowAction', 'search level')):
     keyword = 'grow'
 
-    def __str__(self):
-        return "Grow to level {0.level}".format(self)
+    def __unicode__(self):
+        return u"Grow to level {0.level}".format(self)
 
 class SketchAction(Action, namedtuple('SketchAction', 'search move_')):
     keyword = 'grow'
 
-    def __str__(self):
-        return "Sketch {0.move.name}".format(self)
+    def __unicode__(self):
+        return u"Sketch {0.move.name}".format(self)
 
 class BreedAction(Action, namedtuple('BreedAction', 'search pokemon_ moves_')):
     keyword = 'grow'
 
-    def __str__(self):
+    def __unicode__(self):
         mvs = ', '.join(m.name for m in self.moves)
-        return "Breed {0.pokemon.name} with {1}".format(self, mvs)
+        return u"Breed {0.pokemon.name} with {1}".format(self, mvs)
 
 ###
 ### Search space nodes
@@ -888,7 +888,7 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
         goal_family = search.goal_evolution_chain
         goal_groups = search.egg_groups[goal_family]
         goal_compatible = set(goal_groups).intersection(egg_groups)
-        if 0 <= gender_rate:
+        if 0 < gender_rate:
             # Only pokemon that have males can pas down moves to other species
             # (and the other species must have females: checked in BreedNode)
             for group in egg_groups:
@@ -900,7 +900,7 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
             # breed with it explicitly. But again, there must be a female to
             # breed with.
             if goal_compatible and search.gender_rates[
-                        search.goal_evolution_chain] > 0:
+                        search.goal_evolution_chain] < 8:
                 yield cost, None, GoalBreedNode(search=self.search, dummy='g',
                         version_group_=self.version_group_, moves_=self.moves_)
         elif evo_chain == search.goal_evolution_chain:
@@ -970,7 +970,7 @@ class BreedNode(BaseBreedNode, namedtuple('BreedNode',
                     search.gender_rates[baby_chain] > 0):
                 yield baby
 
-class GoalBreedNode(BaseBreedNode, namedtuple('InbreedNode',
+class GoalBreedNode(BaseBreedNode, namedtuple('GoalBreedNode',
         'search dummy version_group_ moves_')):
     def babies(self):
         search = self.search
@@ -1066,7 +1066,7 @@ def main(argv):
         if args.debug:
             print 'Setup done'
 
-        template = "{cost:4} {action:50.50}{long:1} {pokemon:10}{level:>3}{nl:1}{versions:2} {moves}"
+        template = u"{cost:4} {action:50.50}{long:1} {pokemon:10}{level:>3}{nl:1}{versions:2} {moves}"
         for result in search:
             print '-' * 79
             if no_results:
