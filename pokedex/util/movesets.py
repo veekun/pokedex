@@ -25,6 +25,7 @@ class NoMoves(IllegalMoveCombination): pass
 class MovesNotLearnable(IllegalMoveCombination): pass
 class NoParent(IllegalMoveCombination): pass
 class TargetExcluded(IllegalMoveCombination): pass
+class DuplicateMoves(IllegalMoveCombination): pass
 
 ###
 ### Generic helpers
@@ -57,6 +58,10 @@ class MovesetSearch(object):
         self.session = session
 
         self.sketch = util.get(session, tables.Move, identifier=u'sketch').id
+        self.unsketchable = set([
+                util.get(session, tables.Move, identifier=u'struggle').id,
+                util.get(session, tables.Move, identifier=u'chatter').id,
+            ])
         self.no_eggs_group = util.get(session, tables.EggGroup,
                 identifier=u'no-eggs').id
         self.ditto_group = util.get(session, tables.EggGroup,
@@ -81,6 +86,9 @@ class MovesetSearch(object):
         self.goal_version_group = version.version_group_id
         self.goal_level = level
 
+        if len(self.goal_moves) < len(moves):
+            raise DuplicateMoves('Cannot learn duplicate moves')
+
         if pokemon:
             self.goal_evolution_chain = pokemon.evolution_chain_id
             if self.goal_evolution_chain in self.excluded_families:
@@ -103,9 +111,9 @@ class MovesetSearch(object):
         easy_moves, non_egg_moves = self.load_pokemon_moves(
                 self.goal_evolution_chain, 'family')
 
-        hard_moves = self.goal_moves - easy_moves
+        self.hard_moves = self.goal_moves - easy_moves
         self.egg_moves = self.goal_moves - non_egg_moves
-        if hard_moves:
+        if self.hard_moves:
             # Have to breed!
             self.load_pokemon_moves(self.goal_evolution_chain, 'others')
 
@@ -482,7 +490,7 @@ class MovesetSearch(object):
                             success = True
             return success
         for group in goal_egg_groups:
-            handle(group, self.goal_moves, ())
+            handle(group, self.hard_moves, ())
             for moves in powerset(self.goal_moves):
                 if moves:
                     breeds_required[group][frozenset(moves)] = 1
@@ -575,10 +583,9 @@ default_costs = {
     'tutor-once': 2100,  # gen III: tutors only work once (well except Emerald frontier ones)
 
     # For technical reasons, 'sketch' is also used for learning Sketch and
-    # evolution-inducing moves by normal means, if they aren't included in the
-    # target moveset.
+    # by normal means, if it isn't included in the target moveset.
     # So the actual cost of a sketched move will be double this number.
-    'sketch': 5,  # Cheap. Exclude Smeargle if you think it's too cheap.
+    'sketch': 100,  # Cheap. Exclude Smeargle if you think it's too cheap.
 
     # Gimmick moves – we need to use this method to learn the move anyway,
     # so make a big-ish dent in the score if missing
@@ -699,6 +706,12 @@ class GrowAction(Action, namedtuple('GrowAction', 'search level')):
     def __str__(self):
         return "Grow to level {0.level}".format(self)
 
+class SketchAction(Action, namedtuple('SketchAction', 'search move_')):
+    keyword = 'grow'
+
+    def __str__(self):
+        return "Sketch {0.move.name}".format(self)
+
 class BreedAction(Action, namedtuple('BreedAction', 'search pokemon_ moves_')):
     keyword = 'grow'
 
@@ -754,6 +767,7 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                 self.expand_grow(),
                 self.expand_evolutions(),
                 self.expand_breed(),
+                self.expand_sketch(),
             )
 
     def expand_learn(self):
@@ -896,6 +910,23 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
             yield cost, None, GoalBreedNode(search=self.search, dummy='g',
                     version_group_=self.version_group_, moves_=self.moves_)
 
+    def expand_sketch(self):
+        moves = self.moves_
+        for sketch in moves:
+            if sketch == self.search.sketch:
+                for sketched in self.search.goal_moves:
+                    if sketched in self.search.unsketchable:
+                        continue
+                    if sketched not in moves:
+                        moves = set(moves)
+                        moves.remove(sketch)
+                        moves.add(sketched)
+                        action = SketchAction(self.search, sketched)
+                        cost = self.search.costs['sketch']
+                        yield cost, action, self._replace(
+                                new_level=False, moves_=frozenset(moves))
+                        return
+
 class BaseBreedNode(Node):
     """Breed node
     This serves to prevent duplicate breeds, by storing only the needed info
@@ -1035,7 +1066,7 @@ def main(argv):
         if args.debug:
             print 'Setup done'
 
-        template = "{cost:4} {action:50.50} {pokemon:10}{level:>3}{nl:1}{versions:2} {moves}"
+        template = "{cost:4} {action:50.50}{long:1} {pokemon:10}{level:>3}{nl:1}{versions:2} {moves}"
         for result in search:
             print '-' * 79
             if no_results:
@@ -1043,13 +1074,14 @@ def main(argv):
                     print '**warning: search looked up output objects**'
                 no_results = False
             print template.format(cost='Cost', action='Action', pokemon='Pokemon',
-                    level='Lv.', nl='V', versions='er',
+                    long='',level='Lv.', nl='V', versions='er',
                     moves=''.join(m.name[0].lower() for m in moves))
             for cost, action, node in reversed(list(result)):
                 if action:
                     print template.format(
                         cost=cost,
                         action=action,
+                        long='>' if len(str(action)) > 50 else '',
                         pokemon=node.pokemon.name,
                         nl='.' if node.new_level else ' ',
                         level=node.level,
