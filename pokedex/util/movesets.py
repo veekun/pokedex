@@ -292,7 +292,7 @@ class MovesetSearch(object):
         self.evolution_moves[evolution_chain] = move required for evolution
         self.babies[egg_group_id] = set of baby pokemon
         self.hatch_counters[pokemon] = hatch counter
-        self.gender_rates[pokemon] = gender rate
+        self.gender_rates[evolution_chain] = gender rate
         """
         eg1 = tables.PokemonEggGroup
         eg2 = aliased(tables.PokemonEggGroup)
@@ -324,7 +324,7 @@ class MovesetSearch(object):
         item_baby_chains = set()  # evolution chains with baby-trigger items
         for pokemon, evolution_chain, parent, g1, g2, baby_item, hatch_counter, gender_rate in query:
             self.hatch_counters[pokemon] = hatch_counter
-            self.gender_rates[pokemon] = gender_rate
+            self.gender_rates[evolution_chain] = gender_rate
             if g1 in bad_groups:
                 unbreedable[pokemon] = evolution_chain
             else:
@@ -483,9 +483,9 @@ class MovesetSearch(object):
             return success
         for group in goal_egg_groups:
             handle(group, self.goal_moves, ())
-            for moves in powerset(self.goal_moves.difference(self.egg_moves)):
+            for moves in powerset(self.goal_moves):
                 if moves:
-                    breeds_required[group][frozenset(moves) | self.egg_moves] = 1
+                    breeds_required[group][frozenset(moves)] = 1
         self.breeds_required = breeds_required
 
         if self.debug:
@@ -567,7 +567,7 @@ class MovesetSearch(object):
 ###
 
 default_costs = {
-    # Costs for learning a move in verious ways
+    # Costs for learning a move in various ways
     'level-up': 20,  # The normal way
     'machine': 40,  # Machines are slightly inconvenient.
     'machine-once': 2000,  # before gen. 5, TMs only work once. Avoid.
@@ -592,7 +592,7 @@ default_costs = {
     'form-change': 100,
 
     # Other actions.
-    # Breeding should cost more than 3 times than a lv-up/machine/tutor move.
+    # Breeding should cost more than 3 times a lv-up/machine/tutor move.
     'evolution': 100,  # We have to do this anyway, usually.
     'evolution-delayed': 50,  # *in addition* to evolution. Who wants to mash B on every level.
     'breed': 400,  # Breeding's a pain.
@@ -620,7 +620,7 @@ default_costs = {
 class Facade(object):
     @property
     def pokemon(self):
-        return self.search.get_by_id(tables.Pokemon, self.pokemon_)
+        return self.search.session.query(tables.Pokemon).filter_by(id=self.pokemon_).one()
 
     @property
     def version_group(self):
@@ -768,7 +768,7 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                         level_difference = level - self.level
                         if level_difference > 0 or (
                                 level_difference == 0 and self.new_level):
-                            cost += level_difference * search.costs['per-level']
+                            cost += level - self.level * search.costs['per-level']
                             yield self._learn(move, method, cost,
                                 level=level, new_level=True)
                         else:
@@ -870,14 +870,29 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
         cost = search.costs['breed']
         cost += search.costs['egg'] * len(moves)
         cost += search.costs['breed-penalty'] * len(search.egg_moves - moves)
-        for group in egg_groups:
-            if moves in breeds_required[group]:
-                yield cost, None, BreedNode(search=self.search, dummy='breed',
-                        group_=group, version_group_=self.version_group_,
-                        moves_=self.moves_)
+        gender_rate = search.gender_rates[evo_chain]
+        if 0 <= gender_rate:
+            # Only pokemon that have males can pas down moves to other species
+            # (and the other species must have females: checked in BreedNode)
+            for group in egg_groups:
+                if moves in breeds_required[group]:
+                    yield cost, None, BreedNode(search=self.search, dummy='b',
+                            group_=group, version_group_=self.version_group_,
+                            moves_=self.moves_)
+            # Since the target family is not included in our breed graph, we
+            # breed with it explicitly. But again, there must be a female to
+            # breed with.
+            if search.gender_rates[search.goal_evolution_chain] > 0:
+                yield cost, None, GoalBreedNode(search=self.search, dummy='g',
+                        version_group_=self.version_group_, moves_=self.moves_)
+        elif evo_chain == search.goal_evolution_chain:
+            # Single-gender & genderless pokemon can pass on moves via
+            # breeding with Ditto, to produce the same species again. Obviously
+            # this is only useful when breeding the goal species.
+            yield cost, None, GoalBreedNode(search=self.search, dummy='g',
+                    version_group_=self.version_group_, moves_=self.moves_)
 
-class BreedNode(Node, namedtuple('BreedNode',
-        'search dummy group_ version_group_ moves_')):
+class BaseBreedNode(Node):
     """Breed node
     This serves to prevent duplicate breeds, by storing only the needed info
     in the namedtuple.
@@ -889,22 +904,19 @@ class BreedNode(Node, namedtuple('BreedNode',
         vg = self.version_group_
         gen = search.generation_id_by_version_group[vg]
         hatch_level = 5 if (gen < 4) else 1
-        for baby in search.babies[self.group_]:
+        for baby in self.babies():
             bred_moves = self.moves_
-            gender_rate = search.gender_rates[baby]
-            baby_chain = search.evolution_chains[baby]
-            if bred_moves.issubset(search.movepools[baby_chain]):
-                if len(bred_moves) < 4:
-                    moves = search.pokemon_moves[baby][self.version_group_]
-                    for move, methods in moves.items():
-                        if 'light-ball-pichu' in methods:
-                            bred_moves.add(move)
-                cost = search.costs['per-hatch-counter'] * search.hatch_counters[baby]
-                yield 0, BreedAction(self.search, baby, bred_moves), PokemonNode(
-                        search=self.search, pokemon_=baby, level=hatch_level,
-                        version_group_=vg, moves_=bred_moves, new_level=True)
-        return
-        yield
+            moves = search.pokemon_moves[baby][vg]
+            if not bred_moves.issubset(moves):
+                continue
+            if len(bred_moves) < 4:
+                for move, methods in moves.items():
+                    if 'light-ball-pichu' in methods:
+                        bred_moves.add(move)
+            cost = search.costs['per-hatch-counter'] * search.hatch_counters[baby]
+            yield 0, BreedAction(self.search, baby, bred_moves), PokemonNode(
+                    search=self.search, pokemon_=baby, level=hatch_level,
+                    version_group_=vg, moves_=bred_moves, new_level=True)
 
     @property
     def pokemon(self):
@@ -912,6 +924,26 @@ class BreedNode(Node, namedtuple('BreedNode',
 
     def estimate(self, g):
         return 0
+
+class BreedNode(BaseBreedNode, namedtuple('BreedNode',
+        'search dummy group_ version_group_ moves_')):
+    def babies(self):
+        search = self.search
+        for baby in search.babies[self.group_]:
+            baby_chain = search.evolution_chains[baby]
+            if self.moves_.issubset(search.movepools[baby_chain]) and (
+                    search.gender_rates[baby_chain] > 0):
+                yield baby
+
+class GoalBreedNode(BaseBreedNode, namedtuple('InbreedNode',
+        'search dummy version_group_ moves_')):
+    def babies(self):
+        search = self.search
+        goal_family = search.goal_evolution_chain
+        group = search.egg_groups[goal_family][0]
+        for baby in search.pokemon_by_evolution_chain[goal_family]:
+            if baby in search.babies[group]:
+                yield baby
 
 class GoalNode(PokemonNode):
     def expand(self):
