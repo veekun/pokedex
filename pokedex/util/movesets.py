@@ -89,6 +89,8 @@ class MovesetSearch(object):
             # Have to breed!
             self.load_pokemon_moves(self.goal_evolution_chain, 'others')
 
+        self.construct_breed_graph()
+
     def load_version_groups(self, version, excluded):
         """Load generation_id_by_version_group
         """
@@ -125,7 +127,7 @@ class MovesetSearch(object):
                 print
 
     def load_pokemon_moves(self, evolution_chain, selection):
-        """Load pokemon_moves, movepools, learnpools
+        """Load pokemon_moves, movepools, learnpools, smeargle_families
 
         `selection`:
             'family' for loading only pokemon in evolution_chain
@@ -173,6 +175,7 @@ class MovesetSearch(object):
         query = query.order_by(tables.PokemonMove.level)
         easy_moves = set()
         non_egg_moves = set()
+        self.smeargle_families = set()
         for pokemon, move, vg, method, level, chain in query:
             if move in self.goal_moves or move == self.sketch:
                 cost = self.learn_cost(method, vg)
@@ -185,10 +188,14 @@ class MovesetSearch(object):
                         easy_moves.add(move)
             else:
                 cost = -1
+            if move == self.sketch:
+                self.smeargle_families.add(self.evolution_chains[pokemon])
             self.pokemon_moves[pokemon][move][vg][method].append((level, cost))
         if self.debug and selection == 'family':
             print 'Easy moves:', sorted(easy_moves)
             print 'Non-egg moves:', sorted(non_egg_moves)
+        if self.debug:
+            print 'Smeargle families:', sorted(self.smeargle_families)
         return easy_moves, non_egg_moves
 
     def learn_cost(self, method, version_group):
@@ -236,7 +243,8 @@ class MovesetSearch(object):
     def load_pokemon(self):
         """Load pokemon breed groups and evolutions
 
-        self.egg_groups: maps evolution chains to their egg groups
+        self.egg_groups: maps evolution chains to their sorted egg groups
+            (wil contain empty tuple for no-eggs or ditto)
         self.evolution_chains: maps pokemon to their evolution chains
         self.pokemon_by_evolution_chain: maps evolution chains to their pokemon
         self.unbreedable: set of unbreedable pokemon
@@ -259,7 +267,6 @@ class MovesetSearch(object):
                 eg2.pokemon_id == tables.Pokemon.id,
                 eg1.egg_group_id < eg2.egg_group_id,
             )))
-        query = query.order_by(eg1.egg_group_id != None)
         bad_groups = (self.no_eggs_group, self.ditto_group)
         unbreedable = set()
         self.evolution_parents = dict()
@@ -270,7 +277,9 @@ class MovesetSearch(object):
             if g1 in bad_groups:
                 unbreedable.add(pokemon)
             else:
-                self.egg_groups[evolution_chain] = (g1, g2) if g2 else (g1, )
+                new_groups = (g1, g2) if g2 else (g1, )
+                if len(self.egg_groups.get(evolution_chain, ())) <= len(new_groups):
+                    self.egg_groups[evolution_chain] = new_groups
             self.evolution_chains[pokemon] = evolution_chain
             self.pokemon_by_evolution_chain[evolution_chain].add(pokemon)
             if parent:
@@ -300,6 +309,46 @@ class MovesetSearch(object):
                     len(self.evolutions),
                 )
             print 'Evolution moves: %s' % self.evolution_moves
+
+    def construct_breed_graph(self):
+        # eg1_movepools[egg_group_id] = set of moves passable by pkmn in that group
+        eg1_movepools = defaultdict(set)
+        # eg2_movepools[b_g_id1, b_g_id2] = ditto for pkmn in *both* groups
+        eg2_movepools = defaultdict(set)
+        # non_egg_pools = as eg1_movepools but for *learnable* moves
+        learn_pools = defaultdict(set)
+
+        goal_egg_groups = self.egg_groups[self.goal_evolution_chain]
+        all_groups = set()
+
+        for family, groups in self.egg_groups.iteritems():
+            if not groups:
+                continue
+            if family == self.goal_evolution_chain:
+                continue
+            elif family in self.smeargle_families:
+                pool = self.goal_moves
+            else:
+                pool = self.movepools[family]
+                pool = set(pool) & self.goal_moves
+            learnpool = self.learnpools[family] & pool
+            for group in groups:
+                eg1_movepools[group].update(pool)
+                learn_pools[group].update(learnpool)
+                all_groups.add(group)
+            if len(groups) >= 2:
+                eg2_movepools[groups].update(pool)
+
+        if self.debug:
+            for group in sorted(all_groups):
+                print "%2s can pass: %s" % (group, sorted(eg1_movepools[group]))
+                if learn_pools[group] != eg1_movepools[group]:
+                    print "  but learn: %s" % sorted(learn_pools[group])
+            for g2 in sorted(all_groups):
+                for g1 in sorted(all_groups):
+                    if eg2_movepools[g1, g2]:
+                        print " %2s/%2s pass: %s" % (g1, g2, sorted(eg2_movepools[g1, g2]))
+            print 'Goal groups:', goal_egg_groups
 
 default_costs = {
     # Costs for learning a move in verious ways
