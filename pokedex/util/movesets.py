@@ -116,6 +116,8 @@ class MovesetSearch(object):
 
         self.find_duplicate_versions()
 
+        self.output_objects = dict()
+
         kwargs = dict()
         if debug:
             self._astar_debug_notify_counter = 0
@@ -525,6 +527,33 @@ class MovesetSearch(object):
         else:
             raise self.error
 
+    def get_by_id(self, table, id):
+        key = table, 'id', id
+        try:
+            return self.output_objects[key]
+        except KeyError:
+            o = self.output_objects[key] = util.get(self.session, table, id=id)
+            return o
+
+    def get_by_identifier(self, table, ident):
+        key = table, 'identifier', ident
+        try:
+            return self.output_objects[key]
+        except KeyError:
+            o = self.output_objects[key] = util.get(self.session,
+                    table, identifier=ident)
+            return o
+
+    def get_list(self, table, ids):
+        key = table, 'list', ids
+        try:
+            return self.output_objects[key]
+        except KeyError:
+            o = self.output_objects[key] = sorted(
+                    (util.get(self.session, table, id=id) for id in ids),
+                    key=lambda x: x.identifier)
+            return o
+
 ###
 ### Costs
 ###
@@ -567,29 +596,90 @@ default_costs = {
 }
 
 ###
+### Result objects
+###
+
+class Facade(object):
+    @property
+    def pokemon(self):
+        return self.search.get_by_id(tables.Pokemon, self.pokemon_)
+
+    @property
+    def version_group(self):
+        return self.search.get_by_id(tables.VersionGroup, self.version_group_)
+
+    @property
+    def versions(self):
+        return self.version_group.versions
+
+    @property
+    def move(self):
+        return self.search.get_by_id(tables.Move, self.move_)
+
+    @property
+    def moves(self):
+        return self.search.get_list(tables.Move, self.moves_)
+
+    @property
+    def move_method(self):
+        return self.search.get_by_identifier(tables.PokemonMoveMethod,
+                self.move_method_)
+
+    @property
+    def evolution_trigger(self):
+        return self.search.get_by_identifier(tables.EvolutionTrigger,
+                self.evolution_trigger_)
+
+###
 ### Search space transitions
 ###
 
-class Action(object):
+class Action(Facade):
     pass
 
-class StartAction(Action, namedtuple('StartAcion', 'pokemon version_group')):
+class StartAction(Action, namedtuple('StartAcion', 'search pokemon_ version_group_')):
     keyword = 'start'
 
-class LearnAction(Action, namedtuple('LearnAction', 'move method')):
+    def __str__(self):
+        vers = ' or '.join(v.name for v in self.versions)
+        return "Start with {0.pokemon.name} in {1}".format(self, vers)
+
+class LearnAction(Action, namedtuple('LearnAction', 'search move_ move_method_')):
     keyword = 'start'
 
-class ForgetAction(Action, namedtuple('ForgetAction', 'move')):
+    def __str__(self):
+        return "Learn {0.move.name} by {0.move_method.name}".format(self)
+
+class RelearnAction(Action, namedtuple('RelearnAction', 'search move_')):
+    keyword = 'start'
+
+    def __str__(self):
+        return "Relearn {0.move.name}".format(self)
+
+class ForgetAction(Action, namedtuple('ForgetAction', 'search move_')):
     keyword = 'forget'
 
-class TradeAction(Action, namedtuple('TradeAction', 'version_group')):
+    def __str__(self):
+        return "Forget {0.move.name}".format(self)
+
+class TradeAction(Action, namedtuple('TradeAction', 'search version_group_')):
     keyword = 'trade'
 
-class EvolutionAction(Action, namedtuple('EvolutionAction', 'pokemon trigger')):
+    def __str__(self):
+        vers = ' or '.join(v.name for v in self.versions)
+        return "Trade to {1}".format(self, vers)
+
+class EvolutionAction(Action, namedtuple('EvolutionAction', 'search pokemon_ evolution_trigger_')):
     keyword = 'evolution'
 
-class GrowAction(Action, namedtuple('GrowAction', 'level')):
+    def __str__(self):
+        return "Evolve to {0.pokemon.name} by {0.evolution_trigger.name}".format(self)
+
+class GrowAction(Action, namedtuple('GrowAction', 'search level')):
     keyword = 'grow'
+
+    def __str__(self):
+        return "Grow to level {0.level}".format(self)
 
 ###
 ### Search space nodes
@@ -602,18 +692,26 @@ class InitialNode(Node, namedtuple('InitialNode', 'search')):
             egg_groups = search.egg_groups[search.evolution_chains[pokemon]]
             if any(search.breeds_required[group] for group in egg_groups):
                 for version_group in version_groups:
-                    yield 0, StartAction(pokemon, version_group), PokemonNode(
-                        search, pokemon, 0, version_group, frozenset(), False)
+                    action = StartAction(search, pokemon, version_group)
+                    node = PokemonNode(search, pokemon, 0, version_group,
+                            frozenset(), False)
+                    yield 0, action, node
 
-class PokemonNode(Node, namedtuple('PokemonNode',
-        'search pokemon level version_group moves new_level')):
+class PokemonNode(Node, Facade, namedtuple('PokemonNode',
+        'search pokemon_ level version_group_ moves_ new_level')):
+
+    def __str__(self):
+        return "lv.{level:3}{s} {pokemon_:<5} in {version_group_:3} with {moves}".format(
+                s='*' if self.new_level else ' ',
+                moves=sorted(self.moves_),
+                **self._asdict())
+
     def expand(self):
-        #print 'expand', self
-        if not self.moves:
+        if not self.moves_:
             # Learn something first
             # (other expand_* may rely on there being a move)
             return self.expand_learn()
-        elif len(self.moves) < 4:
+        elif len(self.moves_) < 4:
             expand_moves = self.expand_learn
         else:
             expand_moves = self.expand_forget
@@ -626,9 +724,9 @@ class PokemonNode(Node, namedtuple('PokemonNode',
 
     def expand_learn(self):
         search = self.search
-        moves = search.pokemon_moves[self.pokemon][self.version_group]
+        moves = search.pokemon_moves[self.pokemon_][self.version_group_]
         for move, methods in moves.items():
-            if move in self.moves:
+            if move in self.moves_:
                 continue
             for method, levels_costs in methods.items():
                 if method == 'level-up':
@@ -641,7 +739,9 @@ class PokemonNode(Node, namedtuple('PokemonNode',
                                 level=level, new_level=True)
                         else:
                             yield self._learn(move, 'relearn',
-                                search.costs['relearn'], new_level=False)
+                                search.costs['relearn'],
+                                action=RelearnAction(self.search, move),
+                                new_level=False)
                 elif method in 'machine tutor'.split():
                     for level, cost in levels_costs:
                         yield self._learn(move, method, cost, new_level=False)
@@ -658,51 +758,49 @@ class PokemonNode(Node, namedtuple('PokemonNode',
                 else:
                     raise ValueError('Unknown move method %s' % method)
 
-    def _learn(self, move, method, cost, **kwargs):
-        kwargs['moves'] = self.moves.union([move])
-        return cost, LearnAction(move, method), self._replace(**kwargs)
+    def _learn(self, move, method, cost, action=None, **kwargs):
+        kwargs['moves_'] = self.moves_.union([move])
+        if action is None:
+            action = LearnAction(self.search, move, method)
+        return cost, action, self._replace(
+                **kwargs)
 
     def expand_forget(self):
         cost = self.search.costs['forget']
-        for move in self.moves:
-            yield cost, ForgetAction(move), self._replace(
-                    moves=self.moves.difference([move]), new_level=False)
+        for move in self.moves_:
+            yield cost, ForgetAction(self.search, move), self._replace(
+                    moves_=self.moves_.difference([move]), new_level=False)
 
     def expand_trade(self):
         search = self.search
-        target_vgs = set(search.pokemon_moves[self.pokemon])
+        target_vgs = set(search.pokemon_moves[self.pokemon_])
         target_vgs.add(search.goal_version_group)
+        target_vgs.discard(self.version_group_)
         for version_group in target_vgs:
-            cost = search.trade_cost(self.version_group, version_group,
-                    *(search.move_generations[m] for m in self.moves)
+            cost = search.trade_cost(self.version_group_, version_group,
+                    *(search.move_generations[m] for m in self.moves_)
                 )
             if cost is not None:
-                yield cost, TradeAction(version_group), self._replace(
-                        version_group=version_group, new_level=False)
+                yield cost, TradeAction(search, version_group), self._replace(
+                        version_group_=version_group, new_level=False)
 
     def expand_grow(self):
         search = self.search
-        if (self.pokemon == search.goal_pokemon and
-                self.version_group == search.goal_version_group and
-                self.moves == search.goal_moves and
+        if (self.pokemon_ == search.goal_pokemon and
+                self.version_group_ == search.goal_version_group and
+                self.moves_ == search.goal_moves and
                 self.level <= search.goal_level):
             kwargs = self._asdict()
             kwargs['level'] = search.goal_level
             kwargs['new_level'] = True
-            yield 0, GrowAction(search.goal_level), GoalNode(**kwargs)
+            yield 0, GrowAction(search, search.goal_level), GoalNode(**kwargs)
 
     def expand_evolutions(self):
         search = self.search
-        for trigger, move, level, child in search.evolutions[self.pokemon]:
-            kwargs = dict(pokemon=child)
+        for trigger, move, level, child in search.evolutions[self.pokemon_]:
+            kwargs = dict(pokemon_=child)
             cost = search.costs['evolution']
-            if trigger in 'level-up use-item'.split():
-                pass
-            elif trigger == 'trade':
-                kwargs['new_level'] = False
-            else:
-                raise ValueError('Unknown evolution trigger %s' % trigger)
-            if move and move not in self.moves:
+            if move and move not in self.moves_:
                 continue
             if level:
                 if level > self.level:
@@ -712,8 +810,17 @@ class PokemonNode(Node, namedtuple('PokemonNode',
                     pass
                 else:
                     cost += search.costs['evolution-delayed']
-            replace = self._replace
-            yield cost, EvolutionAction(child, trigger), replace(**kwargs)
+            if trigger in 'level-up use-item'.split():
+                pass
+            elif trigger == 'trade':
+                kwargs['new_level'] = False
+            elif trigger == 'shed':
+                # XXX: Shedinja!!
+                pass
+            else:
+                raise ValueError('Unknown evolution trigger %s' % trigger)
+            yield cost, EvolutionAction(search, child, trigger), self._replace(
+                    **kwargs)
 
 class GoalNode(PokemonNode):
     def expand(self):
@@ -797,9 +904,28 @@ def main(argv):
     if args.debug:
         print 'Setup done'
 
+    template = "{cost:4} {action:50.50} {pokemon:10}{level:>3}{nl:1}{versions:2} {moves}"
+    first_result = True
     for result in search:
         print
-        print result
+        if first_result:
+            if search.output_objects:
+                print '**warning: search looked up output objects**'
+            first_result = False
+        print template.format(cost='Cost', action='Action', pokemon='Pokemon',
+                level='Lv.', nl='V', versions='er',
+                moves=''.join(m.name[0].lower() for m in moves))
+        for cost, action, node in reversed(list(result)):
+            print template.format(
+                    cost=cost,
+                    action=action,
+                    pokemon=node.pokemon.name,
+                    nl='.' if node.new_level else ' ',
+                    level=node.level,
+                    versions=''.join(v.name[0] for v in node.versions),
+                    moves=''.join('.' if m in node.moves else ' ' for m in moves) +
+                        ''.join(m.name[0].lower() for m in node.moves if m not in moves),
+                )
 
     print
 
