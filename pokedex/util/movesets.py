@@ -715,7 +715,8 @@ class InitialNode(Node, namedtuple('InitialNode', 'search')):
         search = self.search
         for pokemon, version_groups in search.pokemon_moves.items():
             egg_groups = search.egg_groups[search.evolution_chains[pokemon]]
-            if any(search.breeds_required[group] for group in egg_groups):
+            if any(search.breeds_required[group] for group in egg_groups) or (
+                    search.evolution_chains[pokemon] == search.goal_evolution_chain):
                 for version_group in version_groups:
                     action = StartAction(search, pokemon, version_group)
                     node = PokemonNode(
@@ -729,7 +730,7 @@ class InitialNode(Node, namedtuple('InitialNode', 'search')):
                     yield 0, action, node
 
 class PokemonNode(Node, Facade, namedtuple('PokemonNode',
-        'pokemon_ level version_group_ new_level moves_ search')):
+        'search pokemon_ level version_group_ new_level moves_')):
 
     def __str__(self):
         return "lv.{level:3}{s} {self.pokemon.identifier:<10.10} in {version_group_:3} with {moves}".format(
@@ -866,16 +867,17 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
         egg_groups = search.egg_groups[evo_chain]
         breeds_required = search.breeds_required
         moves = self.moves_
+        cost = search.costs['breed']
+        cost += search.costs['egg'] * len(moves)
+        cost += search.costs['breed-penalty'] * len(search.egg_moves - moves)
         for group in egg_groups:
-            if moves in breeds_required[group] or evo_chain == search.goal_evolution_chain:
-                cost = search.costs['breed']
-                cost += search.costs['egg'] * len(moves)
-                cost += search.costs['breed-penalty'] * len(search.egg_moves - moves)
-                yield cost, None, BreedNode(search=self.search, dummy='b', group_=group,
-                        version_group_=self.version_group_, moves_=self.moves_)
+            if moves in breeds_required[group]:
+                yield cost, None, BreedNode(search=self.search, dummy='breed',
+                        group_=group, version_group_=self.version_group_,
+                        moves_=self.moves_)
 
 class BreedNode(Node, namedtuple('BreedNode',
-        'group_ version_group_ dummy search moves_')):
+        'search dummy group_ version_group_ moves_')):
     """Breed node
     This serves to prevent duplicate breeds, by storing only the needed info
     in the namedtuple.
@@ -898,7 +900,7 @@ class BreedNode(Node, namedtuple('BreedNode',
                         if 'light-ball-pichu' in methods:
                             bred_moves.add(move)
                 cost = search.costs['per-hatch-counter'] * search.hatch_counters[baby]
-                yield 0, BreedAction(self.search, baby, moves), PokemonNode(
+                yield 0, BreedAction(self.search, baby, bred_moves), PokemonNode(
                         search=self.search, pokemon_=baby, level=hatch_level,
                         version_group_=vg, moves_=bred_moves, new_level=True)
         return
@@ -1018,7 +1020,7 @@ def main(argv):
                         versions=''.join(v.name[0] for v in node.versions),
                         moves=''.join('.' if m in node.moves else ' ' for m in moves) +
                             ''.join(m.name[0].lower() for m in node.moves if m not in moves),
-                )
+                    )
 
         if args.debug:
             print
