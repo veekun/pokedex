@@ -70,6 +70,7 @@ class MovesetSearch(object):
             self.costs = costs
 
         self.load_pokemon()
+        self.load_moves()
 
         self.excluded_families = frozenset(p.evolution_chain_id
                 for p in exclude_pokemon)
@@ -85,8 +86,10 @@ class MovesetSearch(object):
         if debug:
             print 'Specified moves:', [move.id for move in moves]
 
+        self.goal_pokemon = pokemon.id
         self.goal_moves = frozenset(move.id for move in moves)
         self.goal_version_group = version.version_group_id
+        self.goal_level = level
 
         # Fill self.generation_id_by_version_group
         self.load_version_groups(version.version_group_id,
@@ -169,7 +172,7 @@ class MovesetSearch(object):
         Otherwise, these are empty sets.
         """
         if self.debug:
-            print 'Loading moves, c%s %s' % (evolution_chain, selection)
+            print 'Loading pokemon moves, %s %s' % (evolution_chain, selection)
         query = self.session.query(
                 tables.PokemonMove.pokemon_id,
                 tables.PokemonMove.move_id,
@@ -260,10 +263,10 @@ class MovesetSearch(object):
         gen_to = self.generation_id_by_version_group[version_group_to]
         if gen_from == gen_to:
             return self.costs['trade']
-        elif any(gen > gen_to for gen in thing_generations):
-            return None
         elif gen_from in (1, 2):
-            if gen_to in (1, 2):
+            if any(gen > gen_to for gen in thing_generations):
+                return None
+            elif gen_to in (1, 2):
                 return self.costs['trade']
             else:
                 return None
@@ -363,6 +366,17 @@ class MovesetSearch(object):
                     for regular_baby in self.evolutions[item_baby]:
                         for group in self.egg_groups[item_baby_chain]:
                             self.babies[group].add(pokemon)
+
+    def load_moves(self):
+        """Load move_generations"""
+        query = self.session.query(
+                tables.Move.id,
+                tables.Move.generation_id,
+            )
+        self.move_generations = dict(query)
+
+        if self.debug:
+            print 'Loaded %s moves' % len(self.move_generations)
 
     def construct_breed_graph(self):
         """Fills breeds_required
@@ -501,7 +515,7 @@ class MovesetSearch(object):
     def astar_debug_notify(self, cost, node, setsize, heapsize):
         counter = self._astar_debug_notify_counter
         if counter % 100 == 0:
-            print 'A* iteration %s, cost %s; remaining: %s(%s)     \r' % (
+            print 'A* iteration %s, cost %s; remaining: %s (%s)     \r' % (
                     counter, cost, setsize, heapsize),
         self._astar_debug_notify_counter += 1
 
@@ -568,6 +582,15 @@ class LearnAction(Action, namedtuple('LearnAction', 'move method')):
 class ForgetAction(Action, namedtuple('ForgetAction', 'move')):
     keyword = 'forget'
 
+class TradeAction(Action, namedtuple('TradeAction', 'version_group')):
+    keyword = 'trade'
+
+class EvolutionAction(Action, namedtuple('EvolutionAction', 'pokemon trigger')):
+    keyword = 'evolution'
+
+class GrowAction(Action, namedtuple('GrowAction', 'level')):
+    keyword = 'grow'
+
 ###
 ### Search space nodes
 ###
@@ -591,10 +614,15 @@ class PokemonNode(Node, namedtuple('PokemonNode',
             # (other expand_* may rely on there being a move)
             return self.expand_learn()
         elif len(self.moves) < 4:
-            return self.expand_learn()
+            expand_moves = self.expand_learn
         else:
-            return self.expand_forget()
-        return ()
+            expand_moves = self.expand_forget
+        return itertools.chain(
+                expand_moves(),
+                self.expand_trade(),
+                self.expand_grow(),
+                self.expand_evolutions(),
+            )
 
     def expand_learn(self):
         search = self.search
@@ -639,6 +667,60 @@ class PokemonNode(Node, namedtuple('PokemonNode',
         for move in self.moves:
             yield cost, ForgetAction(move), self._replace(
                     moves=self.moves.difference([move]), new_level=False)
+
+    def expand_trade(self):
+        search = self.search
+        target_vgs = set(search.pokemon_moves[self.pokemon])
+        target_vgs.add(search.goal_version_group)
+        for version_group in target_vgs:
+            cost = search.trade_cost(self.version_group, version_group,
+                    *(search.move_generations[m] for m in self.moves)
+                )
+            if cost is not None:
+                yield cost, TradeAction(version_group), self._replace(
+                        version_group=version_group, new_level=False)
+
+    def expand_grow(self):
+        search = self.search
+        if (self.pokemon == search.goal_pokemon and
+                self.version_group == search.goal_version_group and
+                self.moves == search.goal_moves and
+                self.level <= search.goal_level):
+            kwargs = self._asdict()
+            kwargs['level'] = search.goal_level
+            kwargs['new_level'] = True
+            yield 0, GrowAction(search.goal_level), GoalNode(**kwargs)
+
+    def expand_evolutions(self):
+        search = self.search
+        for trigger, move, level, child in search.evolutions[self.pokemon]:
+            kwargs = dict(pokemon=child)
+            cost = search.costs['evolution']
+            if trigger in 'level-up use-item'.split():
+                pass
+            elif trigger == 'trade':
+                kwargs['new_level'] = False
+            else:
+                raise ValueError('Unknown evolution trigger %s' % trigger)
+            if move and move not in self.moves:
+                continue
+            if level:
+                if level > self.level:
+                    kwargs['level'] = level
+                    kwargs['new_level'] = True
+                elif level == self.level and self.new_level:
+                    pass
+                else:
+                    cost += search.costs['evolution-delayed']
+            replace = self._replace
+            yield cost, EvolutionAction(child, trigger), replace(**kwargs)
+
+class GoalNode(PokemonNode):
+    def expand(self):
+        return ()
+
+    def is_goal(self, g):
+        return True
 
 ###
 ### CLI interface
