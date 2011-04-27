@@ -901,58 +901,45 @@ class Action(Facade):
     pass
 
 class StartAction(Action, namedtuple('StartAcion', 'search pokemon_ version_group_')):
-    keyword = 'start'
-
     def __unicode__(self):
         vers = ' or '.join(v.name for v in self.versions)
         return u"Start with {0.pokemon.name} in {1}".format(self, vers)
 
 class LearnAction(Action, namedtuple('LearnAction', 'search move_ move_method_')):
-    keyword = 'start'
-
     def __unicode__(self):
         return u"Learn {0.move.name} by {0.move_method.name}".format(self)
 
 class RelearnAction(Action, namedtuple('RelearnAction', 'search move_')):
-    keyword = 'start'
-
     def __unicode__(self):
         return u"Relearn {0.move.name}".format(self)
 
 class ForgetAction(Action, namedtuple('ForgetAction', 'search move_')):
-    keyword = 'forget'
-
     def __unicode__(self):
         return u"Forget {0.move.name}".format(self)
 
 class TradeAction(Action, namedtuple('TradeAction', 'search version_group_')):
-    keyword = 'trade'
-
     def __unicode__(self):
         vers = ' or '.join(v.name for v in self.versions)
         return u"Trade to {1}".format(self, vers)
 
-class EvolutionAction(Action, namedtuple('EvolutionAction', 'search pokemon_ evolution_trigger_')):
-    keyword = 'evolution'
-
+class EvolutionAction(Action, namedtuple('EvolutionAction', 'search pokemon_ evolution_trigger_ moves_')):
     def __unicode__(self):
         return u"Evolve to {0.pokemon.name} by {0.evolution_trigger.name}".format(self)
 
-class GrowAction(Action, namedtuple('GrowAction', 'search level')):
-    keyword = 'grow'
+class ShedEvolutionAction(EvolutionAction, namedtuple('EvolutionAction', 'search pokemon_ evolution_trigger_ moves_')):
+    def __unicode__(self):
+        mvs = ', '.join(m.name for m in self.moves)
+        return u"Co-evolve to {0.pokemon.name}, learning {1}".format(self, mvs)
 
+class GrowAction(Action, namedtuple('GrowAction', 'search level')):
     def __unicode__(self):
         return u"Grow to level {0.level}".format(self)
 
 class SketchAction(Action, namedtuple('SketchAction', 'search move_')):
-    keyword = 'grow'
-
     def __unicode__(self):
         return u"Sketch {0.move.name}".format(self)
 
 class BreedAction(Action, namedtuple('BreedAction', 'search pokemon_ moves_')):
-    keyword = 'grow'
-
     def __unicode__(self):
         mvs = ', '.join(m.name for m in self.moves)
         return u"Breed {0.pokemon.name} with {1}".format(self, mvs)
@@ -964,21 +951,31 @@ class BreedAction(Action, namedtuple('BreedAction', 'search pokemon_ moves_')):
 class InitialNode(Node, namedtuple('InitialNode', 'search')):
     def expand(self):
         search = self.search
+        pokemon_vgs = []
         for pokemon, version_groups in search.pokemon_moves.items():
             egg_groups = search.egg_groups[search.evolution_chains[pokemon]]
-            if any(search.breeds_required[group] for group in egg_groups) or (
-                    search.evolution_chains[pokemon] == search.goal_evolution_chain):
+            if any(search.breeds_required[group] for group in egg_groups):
                 for version_group in version_groups:
-                    action = StartAction(search, pokemon, version_group)
-                    node = PokemonNode(
-                            search=search,
-                            pokemon_=pokemon,
-                            level=0,
-                            version_group_=version_group,
-                            moves_=frozenset(),
-                            new_level=True,
-                        )
-                    yield 0, action, node
+                    pokemon_vgs.append((pokemon, version_group))
+        for pokemon in search.pokemon_by_evolution_chain[search.goal_evolution_chain]:
+            # We treat Shedinja as learning Ninjask moves by evolution itself.
+            # Nincada doesn't learn the moves and therefore may not be in
+            # pokemon_moves, but is required for getting them. So we have to
+            # include Nincada among the initial nodes explicitly.
+            # (For everybody else, three duplicate nodes aren't a problem)
+            for version_group in search.generation_id_by_version_group:
+                pokemon_vgs.append((pokemon, version_group))
+        for pokemon, version_group in pokemon_vgs:
+            action = StartAction(search, pokemon, version_group)
+            node = PokemonNode(
+                    search=search,
+                    pokemon_=pokemon,
+                    level=0,
+                    version_group_=version_group,
+                    moves_=frozenset(),
+                    new_level=True,
+                )
+            yield 0, action, node
 
     def is_goal(self):
         return False
@@ -998,8 +995,12 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
         evo_chain = search.evolution_chains[self.pokemon_]
         if not self.moves_:
             # Learn something first
-            # (other expand_* may rely on there being a move)
-            return self.expand_learn()
+            # (other expand_* than listed here may rely on there being a move)
+            return itertools.chain(
+                    self.expand_learn(),
+                    # Shedinja actually learns stuff by evolution
+                    self.expand_evolutions(),
+                )
         elif self.moves_.difference(self.search.goal_moves):
             # Learned too much!
             # Moves that aren't in the goal set are either Sketch or evolution
@@ -1114,12 +1115,25 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
             cost = search.costs['evolution']
             if move and move not in self.moves_:
                 continue
+            if trigger == 'shed':
+                # Shedinja uses Ninjask's minimum level
+                for trigger2, move2, level2, child2 in search.evolutions[self.pokemon_]:
+                    if child2 == child:
+                        continue
+                    level = level2
             if level:
                 if level > self.level:
                     kwargs['level'] = level
                     kwargs['new_level'] = True
-                elif level == self.level and self.new_level:
-                    pass
+                elif level == self.level:
+                    if self.new_level:
+                        # We just grew here
+                        pass
+                    else:
+                        # Have to gain a level
+                        kwargs['level'] = level + 1
+                        kwargs['new_level'] = True
+                        cost += search.costs['evolution-delayed']
                 else:
                     cost += search.costs['evolution-delayed']
             if trigger in 'level-up use-item'.split():
@@ -1127,11 +1141,29 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
             elif trigger == 'trade':
                 kwargs['new_level'] = False
             elif trigger == 'shed':
-                # XXX: Shedinja!!
-                pass
+                # Find the Ninjask
+                for trigger2, move2, level2, child2 in search.evolutions[self.pokemon_]:
+                    if child2 == child:
+                        continue
+                    additional_moves = defaultdict(set)  # level -> moves
+                    # Get all of Ninjask's moves nicely sorted
+                    for move, levels_costs in search.pokemon_moves[child2][self.version_group_].items():
+                        for level, cost in levels_costs.get('level-up', []):
+                            additional_moves[level].add(move)
+                    # Figure out at which level we're *really* evolving here
+                    for new_level, moves in additional_moves.items():
+                        if level >= level2:
+                            shed_kwargs = dict(kwargs)
+                            shed_kwargs['level'] = new_level
+                            for shed_moves in powerset(moves):
+                                shed_kwargs['moves_'] = new_moves = self.moves_.union(shed_moves)
+                                yield cost, ShedEvolutionAction(search, child, trigger, new_moves), self._replace(
+                                        **shed_kwargs)
             else:
                 raise ValueError('Unknown evolution trigger %s' % trigger)
-            yield cost, EvolutionAction(search, child, trigger), self._replace(
+            # N.B. The Shedinja evolution relies on kwargs being final.
+            # Don't add anything between 'shed' and this!
+            yield cost, EvolutionAction(search, child, trigger, self.moves_), self._replace(
                     **kwargs)
 
     def expand_breed(self):

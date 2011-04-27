@@ -27,6 +27,7 @@ NO happiny softboiled
 NO mamoswine bite body-slam curse double-edge
 OK shedinja swords-dance
 NO shedinja swords-dance screech
+OK shedinja baton-pass grudge
 OK shedinja screech double-team fury-cutter x-scissor
 OK raichu volt-tackle
 OK raichu surf -v gold
@@ -78,5 +79,9 @@ if __name__ == '__main__':
     cases = list(test_cases())
     cProfile.runctx("[(run_case(f, argv)) for f, argv in cases]",
             globals(), locals(), filename=filename)
-    print "{0} tests: {1[0]} OK, {1[1]} failed".format(sum(ok_fail), ok_fail)
+    if ok_fail[1]:
+        print '*** FAILED ***'
+        print "{0} tests: {1[0]} OK, {1[1]} failed".format(sum(ok_fail), ok_fail)
+    else:
+        print "{0} tests: OK".format(sum(ok_fail), ok_fail)
     print 'Profile stats saved to', filename
