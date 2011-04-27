@@ -45,7 +45,7 @@ class MovesetSearch(object):
     _cache = WeakKeyDictionary()
 
     def __init__(self, session, pokemon, version, moves, level=100, costs=None,
-            exclude_versions=(), exclude_pokemon=(), debug_level=False):
+            exclude_versions=(), exclude_pokemon=(), debug_level=0):
 
         self.session = session
 
@@ -1263,8 +1263,22 @@ class GoalNode(PokemonNode):
         return True
 
 ###
-### CLI interface
+### Interface
 ###
+
+def verify_moveset(session, pokemon, version, moves, level=100, **kwargs):
+    """Verify the given moveset.
+
+    Returns a result with a hint on how to obtain the moveset, if it is valid.
+    Otherwise, returns a false value.
+    """
+    try:
+        search = MovesetSearch(session, pokemon, version, moves, level, **kwargs)
+    except IllegalMoveCombination, e:
+        return False
+    else:
+        for result in search:
+            return result
 
 def print_result(result, moves=()):
     template = u"{cost:4} {est:4} {action:45.45}{long:1} {pokemon:10}{level:>3}{nl:1}{versions:2} {moves}"
@@ -1304,6 +1318,10 @@ def main(argv, session=None):
         default='black',
         help='Version to search in.')
 
+    parser.add_argument('-q', '--quiet', action='store_true', default=False,
+        help="Don't print out the result, only indicate it by the return "
+            "value.")
+
     parser.add_argument('-V', '--exclude-version', metavar='VER', type=unicode,
         action='append', default=[],
         help='Versions to exclude (along with their '
@@ -1316,8 +1334,8 @@ def main(argv, session=None):
 
     parser.add_argument('-d', '--debug', action='append_const', const=1,
         default=[],
-        help='Output timing and debugging information (can be specified more '
-            'than once).')
+        help='Output timing and debugging information. Can be specified more '
+            'than once for even more verbosity.')
 
     args = parser.parse_args(argv)
     args.debug = len(args.debug)
@@ -1331,54 +1349,57 @@ def main(argv, session=None):
     if args.debug:
         print 'Parsing arguments'
 
+    class BadArgs(ValueError): pass
+
     def _get_list(table, idents, name):
+        if not idents:
+            return []
         result = []
+        query = session.query(table).filter(table.identifier.in_(idents))
+        query = query.order_by(table.id.desc())  # overwrite pokemon alt. forms
+        ident_map = dict((thing.identifier, thing) for thing in query)
         for ident in idents:
             try:
-                result.append(util.get(session, table, identifier=ident))
-            except NoResultFound:
+                result.append(ident_map[ident])
+            except KeyError:
                 print>>sys.stderr, ('%s %s not found. Please use '
                         'the identifier.' % (name, ident))
-                return False
+                raise BadArgs
         return result
 
-    pokemon = _get_list(tables.Pokemon, [args.pokemon], 'Pokemon')[0]
-    moves = _get_list(tables.Move, args.move, 'Move')
-    version = _get_list(tables.Version, [args.version], 'Version')[0]
-    excl_versions = _get_list(tables.Version, args.exclude_version, 'Version')
-    excl_pokemon = _get_list(tables.Pokemon, args.exclude_pokemon, 'Pokemon')
+    try:
+        all_pokemon = _get_list(tables.Pokemon,
+                [args.pokemon] + args.exclude_pokemon, 'Pokemon')
+        all_versions = _get_list(tables.Version,
+                [args.version] + args.exclude_version, 'Version')
+
+        pokemon = all_pokemon[0]
+        moves = _get_list(tables.Move, args.move, 'Move')
+        version = all_versions[0]
+        excl_versions = all_versions[1:]
+        excl_pokemon = all_pokemon[1:]
+    except BadArgs:
+        return False
 
     if args.debug:
         print 'Starting search'
 
-    no_results = True
-    try:
-        search = MovesetSearch(session, pokemon, version, moves, args.level,
-            exclude_versions=excl_versions, exclude_pokemon=excl_pokemon,
-            debug_level=args.debug)
-    except IllegalMoveCombination, e:
-        print 'Error:', e
+    result = verify_moveset(session, pokemon, version, moves, args.level,
+        exclude_versions=excl_versions, exclude_pokemon=excl_pokemon,
+        debug_level=args.debug)
+    # XXX: Support more than one result
+    if result:
+        if args.debug:
+            print '-' * 79
+        if not args.quiet:
+            print_result(result, moves=moves)
     else:
         if args.debug:
-            print 'Setup done'
+            print ' ' * 79
+        if not args.quiet:
+            print 'Illegal move combination.'
 
-        for result in search:
-            if args.debug and search.output_objects:
-                print '**warning: search looked up output objects**'
-            no_results = False
-            print '-' * 79
-            print_result(result, moves=moves)
-            # XXX: Support more than one result
-            break
-
-        if args.debug:
-            print
-            print 'Done'
-
-    if no_results:
-        print 'Illegal move combination.'
-
-    return (not no_results)
+    return result
 
 if __name__ == '__main__':
     sys.exit(not main(sys.argv[1:]))
