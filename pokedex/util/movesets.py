@@ -1289,7 +1289,7 @@ def print_result(result, moves=()):
                     ''.join(m.name[0].lower() for m in node.moves if m not in moves),
             )
 
-def main(argv):
+def main(argv, session=None):
     parser = argparse.ArgumentParser(description=
         'Find out if the specified moveset is valid, and provide a suggestion '
         'on how to obtain it.')
@@ -1328,7 +1328,8 @@ def main(argv):
     if args.debug:
         print 'Connecting'
 
-    session = connect(engine_args={'echo': args.debug > 2})
+    if session is None:
+        session = connect(engine_args={'echo': args.debug > 2})
 
     if args.debug:
         print 'Parsing arguments'

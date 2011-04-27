@@ -1,9 +1,11 @@
 
+from pokedex.db import connect
 from pokedex.util.movesets import main
 
 result_map = {'OK': True, 'NO': False}
 
 def test_cases():
+    session = connect()
     for argstring in u"""
             NO muk
             NO beedrill rage pursuit agility endeavor toxic
@@ -43,7 +45,7 @@ def test_cases():
             """.strip().splitlines():
         def run_test(argstring):
             args = argstring.split()
-            assert main(args[1:]) == result_map[args[0]]
+            assert main(args[1:], session=session) == result_map[args[0]]
         run_test.description = 'Moveset checker test: ' + argstring.strip()
         yield run_test, argstring.strip()
 
@@ -55,6 +57,6 @@ if __name__ == '__main__':
     def header(str):
         print
         print str
-    cProfile.runctx("[(header(arg), f(arg)) for f, arg in test_cases()]",
+    cProfile.runctx("[(header(argv), f(argv)) for f, argv in test_cases()]",
             globals(), locals(), filename=filename)
     print 'Profile stats saved to', filename
