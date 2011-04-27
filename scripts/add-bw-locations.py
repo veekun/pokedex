@@ -1,4 +1,8 @@
 #!/usr/bin/env python2
+"""
+This is an unmaintained one-shot script, only included in the repo for
+reference.
+"""
 
 from codecs import open
 

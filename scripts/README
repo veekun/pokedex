@@ -1,0 +1,6 @@
+This directory contains scripts that are (or were once) used to maintain the
+database. Most of them will not work any more, since whatever they did was
+already done. They're included here for reference, should something similar be
+needed again.
+
+Make sure you know what you are doing when running these.

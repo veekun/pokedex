@@ -9,6 +9,9 @@ Creates autoincrement-style IDs when missing
 Sets text language to 9 (en), except when it sets to 1 (jp)
 
 And looks good doing it!
+
+This is an unmaintained one-shot script, only included in the repo for
+reference.
 """
 
 import csv
