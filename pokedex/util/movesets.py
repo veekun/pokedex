@@ -1362,6 +1362,9 @@ def main(argv):
             print
             print 'Done'
 
+    if no_results:
+        print 'Illegal move combination.'
+
     return (not no_results)
 
 if __name__ == '__main__':
