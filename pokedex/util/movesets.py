@@ -1040,10 +1040,9 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
 
     def expand_forget(self):
         cost = self.search.costs['forget']
-        for move in self.moves_:
-            if move not in self.search.goal_moves:
-                yield cost, ForgetAction(self.search, move), self._replace(
-                        moves_=self.moves_.difference([move]), new_level=False)
+        for move in self.moves_.difference(self.search.goal_moves):
+            yield cost, ForgetAction(self.search, move), self._replace(
+                    moves_=self.moves_.difference([move]), new_level=False)
 
     def expand_trade(self):
         search = self.search
@@ -1135,20 +1134,20 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
 
     def expand_sketch(self):
         moves = self.moves_
-        for sketch in moves:
-            if sketch == self.search.sketch:
-                for sketched in sorted(self.search.goal_moves):
-                    if sketched in self.search.unsketchable:
-                        continue
-                    if sketched not in moves:
-                        moves = set(moves)
-                        moves.remove(sketch)
-                        moves.add(sketched)
-                        action = SketchAction(self.search, sketched)
-                        cost = self.search.costs['sketch']
-                        yield cost, action, self._replace(
-                                new_level=False, moves_=frozenset(moves))
-                        return
+        sketch = self.search.sketch
+        if sketch in moves:
+            for sketched in sorted(self.search.goal_moves):
+                if sketched in self.search.unsketchable:
+                    continue
+                if sketched not in moves:
+                    moves = set(moves)
+                    moves.remove(sketch)
+                    moves.add(sketched)
+                    action = SketchAction(self.search, sketched)
+                    cost = self.search.costs['sketch']
+                    yield cost, action, self._replace(
+                            new_level=False, moves_=frozenset(moves))
+                    return
 
     def estimate(self, g):
         # Given good estimates, A* finds solutions much faster.
@@ -1163,12 +1162,6 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
         if trade_cost is None:
             trade_cost = search.costs['trade'] * 2
         return trade_cost
-        evo_chain = search.evolution_chains[self.pokemon_]
-        if evo_chain == search.goal_evolution_chain:
-            breed_cost = 0
-        else:
-            breed_cost = search.costs['breed']
-        return trade_cost + breed_cost
 
 class BaseBreedNode(Node):
     """Breed node
