@@ -1124,6 +1124,7 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
             if level:
                 if level > self.level:
                     kwargs['level'] = level
+                    cost += search.costs['per-level'] * (level - self.level)
                     kwargs['new_level'] = True
                 elif level == self.level:
                     if self.new_level:
@@ -1156,6 +1157,8 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                             shed_kwargs = dict(kwargs)
                             shed_kwargs['level'] = new_level
                             for shed_moves in powerset(moves):
+                                if not shed_moves:
+                                    continue
                                 shed_kwargs['moves_'] = new_moves = self.moves_.union(shed_moves)
                                 yield cost, ShedEvolutionAction(search, child, trigger, new_moves), self._replace(
                                         **shed_kwargs)
