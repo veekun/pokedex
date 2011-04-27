@@ -30,12 +30,10 @@ def test_cases():
             OK gyarados flail thrash iron-head outrage
             OK drifblim memento gust thunderbolt pain-split
             OK crobat nasty-plot brave-bird
-            OK crobat brave-bird hypnosis
             NO crobat nasty-plot hypnosis
             OK garchomp double-edge thrash outrage
             OK nidoking counter disable amnesia head-smash
             OK aggron stomp smellingsalt screech fire-punch
-            NO aggron endeavor body-slam
             OK tyranitar dragon-dance outrage thunder-wave surf
             NO butterfree morning-sun harden
             OK pikachu reversal bide nasty-plot discharge
