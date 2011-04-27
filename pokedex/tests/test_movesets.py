@@ -11,6 +11,7 @@ NO ditto psystrike aeroblast mist-ball judgment
 OK metapod tackle harden
 OK lugia aeroblast punishment dive snore
 OK yanmega bug-bite bug-buzz tackle whirlwind
+OK yanmega whirlwind
 OK crobat brave-bird quick-attack gust zen-headbutt
 OK bagon defense-curl fire-fang hydro-pump shadow-claw
 OK volcarona endure toxic fly fire-blast
@@ -45,6 +46,15 @@ OK pikachu reversal bide nasty-plot discharge
 NO pikachu surf charge
 NO blissey wish counter
 NO clefairy copycat dynamicpunch
+OK rotom overheat
+OK rotom blizzard
+NO rotom overheat blizzard
+OK deoxys superpower amnesia  spikes taunt
+OK deoxys counter extremespeed spikes pursuit
+OK pikachu reversal bide nasty-plot discharge
+NO pikachu surf charge
+OK pikachu volt-tackle encore headbutt grass-knot
+OK suicune extremespeed dig icy-wind bite
 """
 
 result_map = {'OK': True, 'NO': False}
