@@ -975,21 +975,39 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                 **self._asdict())
 
     def expand(self):
+        search = self.search
+        evo_chain = search.evolution_chains[self.pokemon_]
         if not self.moves_:
             # Learn something first
             # (other expand_* may rely on there being a move)
             return self.expand_learn()
-        elif len(self.moves_) < 4:
-            expand_moves = self.expand_learn
+        elif self.moves_.difference(self.search.goal_moves):
+            # Learned too much!
+            # Moves that aren't in the goal set are either Sketch or evolution
+            # moves.
+            # For the former, use the sketch; for the latter, evolve and
+            # forget the move.
+            return itertools.chain(
+                    self.expand_sketch(),
+                    self.expand_forget(),
+                    self.expand_evolutions(),
+                )
+        elif evo_chain != search.goal_evolution_chain:
+            if not any(self.moves_ in search.breeds_required[group]
+                    for group in search.egg_groups[evo_chain]):
+                # It doesn't make sense to train this any more, since there's
+                # no way to pass the moves to the goal pokemon.
+                return ()
+        if len(self.moves_) == 4:
+            learns = ()
         else:
-            expand_moves = self.expand_forget
+            learns = self.expand_learn()
         return itertools.chain(
-                expand_moves(),
+                learns,
                 self.expand_trade(),
                 self.expand_grow(),
                 self.expand_evolutions(),
                 self.expand_breed(),
-                self.expand_sketch(),
             )
 
     def expand_learn(self):
