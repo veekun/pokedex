@@ -45,4 +45,16 @@ def test_cases():
             args = argstring.split()
             assert main(args[1:]) == result_map[args[0]]
         run_test.description = 'Moveset checker test: ' + argstring.strip()
-        yield run_test, argstring
+        yield run_test, argstring.strip()
+
+
+if __name__ == '__main__':
+    filename = 'movesets.profile'
+    print 'Profiling the moveset checker'
+    import cProfile
+    def header(str):
+        print
+        print str
+    cProfile.runctx("[(header(arg), f(arg)) for f, arg in test_cases()]",
+            globals(), locals(), filename=filename)
+    print 'Profile stats saved to', filename
