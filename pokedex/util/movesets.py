@@ -775,7 +775,11 @@ def a_star(initial, expand, is_goal, estimate=lambda x: 0, notify=None,
     opened[initial] = (est, 0, est)
     came_from = {initial: None}  # node -> (prev_node, came_from[prev_node])
     while True:  # _HeapDict will raise StopIteration for us
-        x, (f, g, h) = opened.pop()
+        try:
+            x, (f, g, h) = opened.pop()
+        except IndexError:
+            raise StopIteration
+
         closed.add(x)
 
         if notify is not None:
@@ -837,20 +841,13 @@ class _HeapDict(object):
     def pop(self):
         """Return (key, value) with the smallest value.
 
-        Raise StopIteration (!!) if empty
+        Raises IndexError if empty
         """
         while True:
-            try:
-                value, key = heapq.heappop(self.heap)
-                if value is self.dict[key]:
-                    del self.dict[key]
-                    return key, value
-            except KeyError:
-                # deleted from dict = not here
-                pass
-            except IndexError:
-                # nothing more to pop
-                raise StopIteration
+            value, key = heapq.heappop(self.heap)  # raises IndexError for us
+            if key in self.dict:
+                del self.dict[key]
+                return key, value
 
 ###
 ### Result objects
