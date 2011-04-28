@@ -247,13 +247,13 @@ Can be smeared on sweet-smelling trees to attract tree-dwelling Pokémon after s
 :   Fully-grown plant will last 25% longer before dying and possibly regrowing."
 98,9,,"Used on a path of soil
 :   Plant will regrow after dying 25% more times."
-99,9,,Give to a scientist in the {location:mining-museum} in {location:oreburgh-city} or the Museum of Science in {location:pewter-city} to receive a []{pokemon:lileep}.
-100,9,,Give to a scientist in the {location:mining-museum} in {location:oreburgh-city} or the Museum of Science in {location:pewter-city} to receive a []{pokemon:anorith}.
-101,9,,Give to a scientist in the {location:mining-museum} in {location:oreburgh-city} or the Museum of Science in {location:pewter-city} to receive a []{pokemon:omanyte}.
-102,9,,Give to a scientist in the {location:mining-museum} in {location:oreburgh-city} or the Museum of Science in {location:pewter-city} to receive a []{pokemon:kabuto}.
-103,9,,Give to a scientist in the {location:mining-museum} in {location:oreburgh-city} or the Museum of Science in {location:pewter-city} to receive a []{pokemon:aerodactyl}.
-104,9,,Give to a scientist in the {location:mining-museum} in {location:oreburgh-city} or the Museum of Science in {location:pewter-city} to receive a []{pokemon:shieldon}.
-105,9,,Give to a scientist in the {location:mining-museum} in {location:oreburgh-city} or the Museum of Science in {location:pewter-city} to receive a []{pokemon:cranidos}.
+99,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:lileep}.
+100,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:anorith}.
+101,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:omanyte}.
+102,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:kabuto}.
+103,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:aerodactyl}.
+104,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:shieldon}.
+105,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:cranidos}.
 106,9,Vendor trash.,Vendor trash.
 107,9,,"Used on a party Pokémon
 :   Evolves a []{pokemon:minccino} into []{pokemon:cinccino}, a []{pokemon:roselia} into []{pokemon:roserade}, or a []{pokemon:togetic} into []{pokemon:togekiss}."

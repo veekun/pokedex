@@ -1,6 +1,7 @@
 # Encoding: UTF-8
 
 from nose.tools import *
+from sqlalchemy.orm.exc import NoResultFound
 
 from pokedex.db import tables, connect, util, markdown
 
@@ -102,3 +103,48 @@ class TestStrings(object):
         print md.as_html(identifier_url=lambda category, ident: "%s/%s" % (category, ident))
         assert md.as_html(identifier_url=lambda category, ident: "%s/%s" % (category, ident)) == (
                 '<p><a href="move/thunderbolt">Thunderbolt</a> <a href="mechanic/paralysis">paralyzes</a></p>')
+
+    def test_markdown_values(self):
+        """Check all markdown values
+
+        Scans the database schema for Markdown columns, runs through every value
+        in each, and ensures that it's valid Markdown.
+        """
+
+        # Move effects have their own special wrappers.  Explicitly test them separately
+        yield self.check_markdown_column, tables.Move, None, 'effect'
+        yield self.check_markdown_column, tables.Move, None, 'short_effect'
+
+        for cls in tables.mapped_classes:
+            for translation_cls in cls.translation_classes:
+                for column in translation_cls.__table__.c:
+                    if column.info.get('string_getter') == markdown.MarkdownString:
+                        yield self.check_markdown_column, cls, translation_cls, column.name
+
+    def check_markdown_column(self, parent_class, translation_class, column_name):
+        """Implementation for the above"""
+        query = self.connection.query(parent_class)
+        if translation_class:
+            query = query.join(translation_class)
+        for item in query:
+            for language, markdown in getattr(item, column_name + '_map').items():
+
+                if markdown is None:
+                    continue
+
+                key = u"Markdown in {0} #{1}'s {2} (lang={3})".format(
+                        parent_class.__name__, item.id, column_name, language.identifier)
+
+                try:
+                    text = markdown.as_text()
+                except NoResultFound:
+                    assert False, u"{0} references something that doesn't exist:\n{1}".format(
+                            key, markdown.source_text)
+                except AttributeError:
+                    print markdown
+                    raise
+
+                error_message = u"{0} leaves syntax cruft:\n{1}"
+                error_message = error_message.format(key, text)
+
+                ok_(not any(char in text for char in '[]{}'), error_message)
