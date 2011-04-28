@@ -964,28 +964,28 @@ language_id,table,id,column,source_crc,string
 10,MoveEffect,338,short_effect,11cd0067,Má $effect_chance% šanci zmást protivníka.
 10,MoveEffect,10004,short_effect,c028872e,Sníží protivníkovu Mrštnost o dva stupně.
 10,MoveEffect,10006,short_effect,b2988a39,Na pět kol zatemní oblohu.
-10,MoveFlagType,1,description,66523335,Uživatel se dotkne cíle.  Toto zaktivuje některé schopnosti (např. [Static]{ability}) a věci (např. [Sticky Barb]{item}).
-10,MoveFlagType,1,name,e34fed78,Způsobí dotek
-10,MoveFlagType,2,description,d88ae74f,"Tento útok má nabíjecí kolo, které lze přeskočit pomocí [Power Herbu]{item:Power Herb}."
-10,MoveFlagType,2,name,877244e9,Má nabíjecí kolo
-10,MoveFlagType,3,description,6cea8671,"Kolo po použití tohoto útoku přeskočí Pokémon svůj tah, aby se mohl dobít."
-10,MoveFlagType,3,name,80fd2238,Má dobíjecí kolo
-10,MoveFlagType,4,description,102038da,"Tento útok nebude fungovat, použil-li cíl toto kolo [Detect]{move} či [Protect]{move}."
-10,MoveFlagType,4,name,d249c071,Blokované Detectem a Protectem
-10,MoveFlagType,5,name,b343310a,Odrazitelný
-10,MoveFlagType,6,description,6d5f5422,"Tento útok bude ukraden, pokud jiný Pokémon toto kolo použil [Snatch]{move}"
-10,MoveFlagType,6,name,3a15243a,Ukradnutelný
-10,MoveFlagType,7,description,25e3b9d0,Pokémon co je cílem tohoto útoku ho může zkopírovat pomocí [Mirror Move]{move}
-10,MoveFlagType,7,name,c4e8a756,Kopírovatelný Mirror Movem
-10,MoveFlagType,8,name,ae7d93f1,Úderový
-10,MoveFlagType,9,description,b34264c8,Pokémoni s [Soundproof]{ability} jsou proti tomuto útoku odolní.
-10,MoveFlagType,9,name,752347d8,Zvukový
-10,MoveFlagType,10,description,ee78fc04,Tento útok nelze použít při [zvýšené gravitaci]{move:Gravity} 
-10,MoveFlagType,10,name,05543fc0,Nepoužitelný s Gravitací
-10,MoveFlagType,11,description,e68d87da,Tento útok může zmražený pokémon použít k rozmrznutí.
-10,MoveFlagType,11,name,a2a771b1,Rozmrazí při použití
-10,MoveFlagType,13,description,5660882a,Tento útok bude blokován [Heal Blockem]{move:Heal Block}.
-10,MoveFlagType,13,name,eb08469e,Léčí
+10,MoveFlag,1,description,66523335,Uživatel se dotkne cíle.  Toto zaktivuje některé schopnosti (např. [Static]{ability}) a věci (např. [Sticky Barb]{item}).
+10,MoveFlag,1,name,e34fed78,Způsobí dotek
+10,MoveFlag,2,description,d88ae74f,"Tento útok má nabíjecí kolo, které lze přeskočit pomocí [Power Herbu]{item:Power Herb}."
+10,MoveFlag,2,name,877244e9,Má nabíjecí kolo
+10,MoveFlag,3,description,6cea8671,"Kolo po použití tohoto útoku přeskočí Pokémon svůj tah, aby se mohl dobít."
+10,MoveFlag,3,name,80fd2238,Má dobíjecí kolo
+10,MoveFlag,4,description,102038da,"Tento útok nebude fungovat, použil-li cíl toto kolo [Detect]{move} či [Protect]{move}."
+10,MoveFlag,4,name,d249c071,Blokované Detectem a Protectem
+10,MoveFlag,5,name,b343310a,Odrazitelný
+10,MoveFlag,6,description,6d5f5422,"Tento útok bude ukraden, pokud jiný Pokémon toto kolo použil [Snatch]{move}"
+10,MoveFlag,6,name,3a15243a,Ukradnutelný
+10,MoveFlag,7,description,25e3b9d0,Pokémon co je cílem tohoto útoku ho může zkopírovat pomocí [Mirror Move]{move}
+10,MoveFlag,7,name,c4e8a756,Kopírovatelný Mirror Movem
+10,MoveFlag,8,name,ae7d93f1,Úderový
+10,MoveFlag,9,description,b34264c8,Pokémoni s [Soundproof]{ability} jsou proti tomuto útoku odolní.
+10,MoveFlag,9,name,752347d8,Zvukový
+10,MoveFlag,10,description,ee78fc04,Tento útok nelze použít při [zvýšené gravitaci]{move:Gravity} 
+10,MoveFlag,10,name,05543fc0,Nepoužitelný s Gravitací
+10,MoveFlag,11,description,e68d87da,Tento útok může zmražený pokémon použít k rozmrznutí.
+10,MoveFlag,11,name,a2a771b1,Rozmrazí při použití
+10,MoveFlag,13,description,5660882a,Tento útok bude blokován [Heal Blockem]{move:Heal Block}.
+10,MoveFlag,13,name,eb08469e,Léčí
 10,MoveMetaAilment,1,name,5134bb3b,Paralýza
 10,MoveMetaAilment,2,name,cef2eda8,Spánek
 10,MoveMetaAilment,6,name,4a28e9d1,Zmatení

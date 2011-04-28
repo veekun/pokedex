@@ -834,27 +834,25 @@ create_translation_table('move_effect_changelog_prose', MoveEffectChangelog, 'pr
 )
 
 class MoveFlag(TableBase):
-    u"""Maps a move flag to a move
-    """
-    # XXX: Other flags have a ___Flag class for the actual flag and ___FlagMap for the map,
-    # these, somewhat confusingly, have MoveFlagType and MoveFlag
-    __tablename__ = 'move_flags'
-    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description="ID of the move"))
-    move_flag_type_id = Column(Integer, ForeignKey('move_flag_types.id'), primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description="ID of the flag"))
-
-class MoveFlagType(TableBase):
     u"""A Move attribute such as "snatchable" or "contact".
     """
-    __tablename__ = 'move_flag_types'
-    __singlename__ = 'move_flag_type'
+    __tablename__ = 'move_flags'
+    __singlename__ = 'move_flag'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(32), nullable=False,
         info=dict(description="A short identifier for the flag", format='identifier'))
 
-create_translation_table('move_flag_type_prose', MoveFlagType, 'prose',
+class MoveFlagMap(TableBase):
+    u"""Maps a move flag to a move
+    """
+    __tablename__ = 'move_flag_map'
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the move"))
+    move_flag_id = Column(Integer, ForeignKey('move_flags.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the flag"))
+
+create_translation_table('move_flag_prose', MoveFlag, 'prose',
     relation_lazy='joined',
     name = Column(Unicode(32), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
@@ -1836,7 +1834,7 @@ Move.meta_stat_changes = relationship(MoveMetaStatChange)
 Move.move_effect = relationship(MoveEffect,
     innerjoin=True,
     backref='moves')
-Move.move_flags = relationship(MoveFlag,
+Move.move_flags = relationship(MoveFlagMap,
     backref='move')
 Move.super_contest_effect = relationship(SuperContestEffect,
     backref='moves')
@@ -1875,7 +1873,7 @@ MoveEffectChangelog.changed_in = relationship(VersionGroup,
     innerjoin=True, lazy='joined',
     backref='move_effect_changelog')
 
-MoveFlag.flag = relationship(MoveFlagType, innerjoin=True, lazy='joined')
+MoveFlagMap.flag = relationship(MoveFlag, innerjoin=True, lazy='joined')
 
 MoveFlavorText.version_group = relationship(VersionGroup,
     innerjoin=True, lazy='joined')
