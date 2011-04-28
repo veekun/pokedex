@@ -29,7 +29,7 @@ from functools import partial
 from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import backref, relation
+from sqlalchemy.orm import backref, relationship
 from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.interfaces import AttributeExtension
 from sqlalchemy.sql import and_, or_
@@ -1643,100 +1643,100 @@ class VersionGroupRegion(TableBase):
         info=dict(description=u"The ID of the region."))
 
 
-### Relations down here, to avoid dependency ordering problems
+### Relationships down here, to avoid dependency ordering problems
 
-Ability.changelog = relation(AbilityChangelog,
+Ability.changelog = relationship(AbilityChangelog,
     order_by=AbilityChangelog.changed_in_version_group_id.desc(),
     backref=backref('ability', innerjoin=True, lazy='joined'))
-Ability.flavor_text = relation(AbilityFlavorText,
+Ability.flavor_text = relationship(AbilityFlavorText,
     order_by=AbilityFlavorText.version_group_id,
     backref=backref('ability', innerjoin=True, lazy='joined'))
-Ability.generation = relation(Generation,
+Ability.generation = relationship(Generation,
     innerjoin=True,
     backref='abilities')
 
-AbilityChangelog.changed_in = relation(VersionGroup,
+AbilityChangelog.changed_in = relationship(VersionGroup,
     innerjoin=True, lazy='joined',
     backref='ability_changelog')
 
-AbilityFlavorText.version_group = relation(VersionGroup,
+AbilityFlavorText.version_group = relationship(VersionGroup,
     innerjoin=True)
-AbilityFlavorText.language = relation(Language,
+AbilityFlavorText.language = relationship(Language,
     innerjoin=True, lazy='joined')
 
 
-Berry.berry_firmness = relation(BerryFirmness,
+Berry.berry_firmness = relationship(BerryFirmness,
     innerjoin=True,
     backref='berries')
 Berry.firmness = association_proxy('berry_firmness', 'name')
-Berry.flavors = relation(BerryFlavor,
+Berry.flavors = relationship(BerryFlavor,
     order_by=BerryFlavor.contest_type_id,
     backref=backref('berry', innerjoin=True))
-Berry.natural_gift_type = relation(Type, innerjoin=True)
+Berry.natural_gift_type = relationship(Type, innerjoin=True)
 
-BerryFlavor.contest_type = relation(ContestType, innerjoin=True)
+BerryFlavor.contest_type = relationship(ContestType, innerjoin=True)
 
 
-ContestCombo.first = relation(Move,
+ContestCombo.first = relationship(Move,
     primaryjoin=ContestCombo.first_move_id==Move.id,
     innerjoin=True, lazy='joined',
     backref='contest_combo_first')
-ContestCombo.second = relation(Move,
+ContestCombo.second = relationship(Move,
     primaryjoin=ContestCombo.second_move_id==Move.id,
     innerjoin=True, lazy='joined',
     backref='contest_combo_second')
 
 
-Encounter.condition_value_map = relation(EncounterConditionValueMap,
+Encounter.condition_value_map = relationship(EncounterConditionValueMap,
     backref='encounter')
 Encounter.condition_values = association_proxy('condition_value_map', 'condition_value')
-Encounter.location_area = relation(LocationArea,
+Encounter.location_area = relationship(LocationArea,
     innerjoin=True, lazy='joined',
     backref='encounters')
-Encounter.pokemon = relation(Pokemon,
+Encounter.pokemon = relationship(Pokemon,
     innerjoin=True, lazy='joined',
     backref='encounters')
-Encounter.version = relation(Version,
+Encounter.version = relationship(Version,
     innerjoin=True, lazy='joined',
     backref='encounters')
-Encounter.slot = relation(EncounterSlot,
+Encounter.slot = relationship(EncounterSlot,
     innerjoin=True, lazy='joined',
     backref='encounters')
 
-EncounterConditionValue.condition = relation(EncounterCondition,
+EncounterConditionValue.condition = relationship(EncounterCondition,
     innerjoin=True, lazy='joined',
     backref='values')
-EncounterConditionValueMap.condition_value = relation(EncounterConditionValue,
+EncounterConditionValueMap.condition_value = relationship(EncounterConditionValue,
     innerjoin=True, lazy='joined',
     backref='encounter_map')
 
-EncounterSlot.method = relation(EncounterMethod,
+EncounterSlot.method = relationship(EncounterMethod,
     innerjoin=True, lazy='joined',
     backref='slots')
-EncounterSlot.version_group = relation(VersionGroup, innerjoin=True)
+EncounterSlot.version_group = relationship(VersionGroup, innerjoin=True)
 
 
-EvolutionChain.growth_rate = relation(GrowthRate,
+EvolutionChain.growth_rate = relationship(GrowthRate,
     innerjoin=True,
     backref='evolution_chains')
-EvolutionChain.baby_trigger_item = relation(Item,
+EvolutionChain.baby_trigger_item = relationship(Item,
     backref='evolution_chains')
 
 
-Experience.growth_rate = relation(GrowthRate,
+Experience.growth_rate = relationship(GrowthRate,
     innerjoin=True, lazy='joined',
     backref='experience_table')
 
 
-Generation.canonical_pokedex = relation(Pokedex,
+Generation.canonical_pokedex = relationship(Pokedex,
     backref='canonical_for_generation')
-Generation.versions = relation(Version,
+Generation.versions = relationship(Version,
     secondary=VersionGroup.__table__,
     innerjoin=True)
-Generation.main_region = relation(Region, innerjoin=True)
+Generation.main_region = relationship(Region, innerjoin=True)
 
 
-GrowthRate.max_experience_obj = relation(Experience,
+GrowthRate.max_experience_obj = relationship(Experience,
     primaryjoin=and_(
         Experience.growth_rate_id == GrowthRate.id,
         Experience.level == 100),
@@ -1744,104 +1744,104 @@ GrowthRate.max_experience_obj = relation(Experience,
 GrowthRate.max_experience = association_proxy('max_experience_obj', 'experience')
 
 
-Item.berry = relation(Berry,
+Item.berry = relationship(Berry,
     uselist=False,
     backref='item')
-Item.flags = relation(ItemFlag,
+Item.flags = relationship(ItemFlag,
     secondary=ItemFlagMap.__table__)
-Item.flavor_text = relation(ItemFlavorText,
+Item.flavor_text = relationship(ItemFlavorText,
     order_by=ItemFlavorText.version_group_id.asc(),
     backref=backref('item', innerjoin=True, lazy='joined'))
-Item.fling_effect = relation(ItemFlingEffect,
+Item.fling_effect = relationship(ItemFlingEffect,
     backref='items')
-Item.machines = relation(Machine,
+Item.machines = relationship(Machine,
     order_by=Machine.version_group_id.asc())
-Item.category = relation(ItemCategory,
+Item.category = relationship(ItemCategory,
     innerjoin=True,
     backref=backref('items', order_by=Item.identifier.asc()))
 Item.pocket = association_proxy('category', 'pocket')
 
-ItemCategory.pocket = relation(ItemPocket, innerjoin=True)
+ItemCategory.pocket = relationship(ItemPocket, innerjoin=True)
 
-ItemFlavorText.version_group = relation(VersionGroup,
+ItemFlavorText.version_group = relationship(VersionGroup,
     innerjoin=True, lazy='joined')
-ItemFlavorText.language = relation(Language,
+ItemFlavorText.language = relationship(Language,
     innerjoin=True, lazy='joined')
 
-ItemGameIndex.item = relation(Item,
+ItemGameIndex.item = relationship(Item,
     innerjoin=True, lazy='joined',
     backref='game_indices')
-ItemGameIndex.generation = relation(Generation,
+ItemGameIndex.generation = relationship(Generation,
     innerjoin=True, lazy='joined')
 
-ItemPocket.categories = relation(ItemCategory,
+ItemPocket.categories = relationship(ItemCategory,
     innerjoin=True,
     order_by=ItemCategory.identifier.asc())
 
 
-Location.region = relation(Region,
+Location.region = relationship(Region,
     innerjoin=True,
     backref='locations')
 
-LocationArea.location = relation(Location,
+LocationArea.location = relationship(Location,
     innerjoin=True, lazy='joined',
     backref='areas')
 
-LocationAreaEncounterRate.location_area = relation(LocationArea,
+LocationAreaEncounterRate.location_area = relationship(LocationArea,
     innerjoin=True,
     backref='encounter_rates')
-LocationAreaEncounterRate.method = relation(EncounterMethod,
+LocationAreaEncounterRate.method = relationship(EncounterMethod,
     innerjoin=True)
 
-LocationGameIndex.location = relation(Location,
+LocationGameIndex.location = relationship(Location,
     innerjoin=True, lazy='joined',
     backref='game_indices')
-LocationGameIndex.generation = relation(Generation,
+LocationGameIndex.generation = relationship(Generation,
     innerjoin=True, lazy='joined')
 
 
-Machine.item = relation(Item)
-Machine.version_group = relation(VersionGroup,
+Machine.item = relationship(Item)
+Machine.version_group = relationship(VersionGroup,
     innerjoin=True, lazy='joined')
 
 
-Move.changelog = relation(MoveChangelog,
+Move.changelog = relationship(MoveChangelog,
     order_by=MoveChangelog.changed_in_version_group_id.desc(),
     backref=backref('move', innerjoin=True, lazy='joined'))
-Move.contest_effect = relation(ContestEffect,
+Move.contest_effect = relationship(ContestEffect,
     backref='moves')
 Move.contest_combo_next = association_proxy('contest_combo_first', 'second')
 Move.contest_combo_prev = association_proxy('contest_combo_second', 'first')
-Move.contest_type = relation(ContestType,
+Move.contest_type = relationship(ContestType,
     backref='moves')
-Move.damage_class = relation(MoveDamageClass,
+Move.damage_class = relationship(MoveDamageClass,
     innerjoin=True,
     backref='moves')
 Move.flags = association_proxy('move_flags', 'flag')
-Move.flavor_text = relation(MoveFlavorText,
+Move.flavor_text = relationship(MoveFlavorText,
     order_by=MoveFlavorText.version_group_id, backref='move')
-Move.generation = relation(Generation,
+Move.generation = relationship(Generation,
     innerjoin=True,
     backref='moves')
-Move.machines = relation(Machine,
+Move.machines = relationship(Machine,
     backref='move')
-Move.meta = relation(MoveMeta,
+Move.meta = relationship(MoveMeta,
     uselist=False, innerjoin=True,
     backref='move')
-Move.meta_stat_changes = relation(MoveMetaStatChange)
-Move.move_effect = relation(MoveEffect,
+Move.meta_stat_changes = relationship(MoveMetaStatChange)
+Move.move_effect = relationship(MoveEffect,
     innerjoin=True,
     backref='moves')
-Move.move_flags = relation(MoveFlag,
+Move.move_flags = relationship(MoveFlag,
     backref='move')
-Move.super_contest_effect = relation(SuperContestEffect,
+Move.super_contest_effect = relationship(SuperContestEffect,
     backref='moves')
 Move.super_contest_combo_next = association_proxy('super_contest_combo_first', 'second')
 Move.super_contest_combo_prev = association_proxy('super_contest_combo_second', 'first')
-Move.target = relation(MoveTarget,
+Move.target = relationship(MoveTarget,
     innerjoin=True,
     backref='moves')
-Move.type = relation(Type,
+Move.type = relationship(Type,
     innerjoin=True,
     backref='moves')
 
@@ -1850,12 +1850,12 @@ Move.effect_map = markdown.MoveEffectPropertyMap('effect_map')
 Move.short_effect = markdown.MoveEffectProperty('short_effect')
 Move.short_effect_map = markdown.MoveEffectPropertyMap('short_effect_map')
 
-MoveChangelog.changed_in = relation(VersionGroup,
+MoveChangelog.changed_in = relationship(VersionGroup,
     innerjoin=True, lazy='joined',
     backref='move_changelog')
-MoveChangelog.move_effect = relation(MoveEffect,
+MoveChangelog.move_effect = relationship(MoveEffect,
     backref='move_changelog')
-MoveChangelog.type = relation(Type,
+MoveChangelog.type = relationship(Type,
     backref='move_changelog')
 
 MoveChangelog.effect = markdown.MoveEffectProperty('effect')
@@ -1863,74 +1863,74 @@ MoveChangelog.effect_map = markdown.MoveEffectPropertyMap('effect_map')
 MoveChangelog.short_effect = markdown.MoveEffectProperty('short_effect')
 MoveChangelog.short_effect_map = markdown.MoveEffectPropertyMap('short_effect_map')
 
-MoveEffect.changelog = relation(MoveEffectChangelog,
+MoveEffect.changelog = relationship(MoveEffectChangelog,
     order_by=MoveEffectChangelog.changed_in_version_group_id.desc(),
     backref='move_effect')
 
-MoveEffectChangelog.changed_in = relation(VersionGroup,
+MoveEffectChangelog.changed_in = relationship(VersionGroup,
     innerjoin=True, lazy='joined',
     backref='move_effect_changelog')
 
-MoveFlag.flag = relation(MoveFlagType, innerjoin=True, lazy='joined')
+MoveFlag.flag = relationship(MoveFlagType, innerjoin=True, lazy='joined')
 
-MoveFlavorText.version_group = relation(VersionGroup,
+MoveFlavorText.version_group = relationship(VersionGroup,
     innerjoin=True, lazy='joined')
-MoveFlavorText.language = relation(Language,
+MoveFlavorText.language = relationship(Language,
     innerjoin=True, lazy='joined')
 
-MoveMeta.category = relation(MoveMetaCategory,
+MoveMeta.category = relationship(MoveMetaCategory,
     innerjoin=True, lazy='joined',
     backref='move_meta')
-MoveMeta.ailment = relation(MoveMetaAilment,
+MoveMeta.ailment = relationship(MoveMetaAilment,
     innerjoin=True, lazy='joined',
     backref='move_meta')
 
-MoveMetaStatChange.stat = relation(Stat,
+MoveMetaStatChange.stat = relationship(Stat,
     innerjoin=True, lazy='joined',
     backref='move_meta_stat_changes')
 
 
-Nature.decreased_stat = relation(Stat,
+Nature.decreased_stat = relationship(Stat,
     primaryjoin=Nature.decreased_stat_id==Stat.id,
     innerjoin=True,
     backref='decreasing_natures')
-Nature.increased_stat = relation(Stat,
+Nature.increased_stat = relationship(Stat,
     primaryjoin=Nature.increased_stat_id==Stat.id,
     innerjoin=True,
     backref='increasing_natures')
-Nature.hates_flavor = relation(ContestType,
+Nature.hates_flavor = relationship(ContestType,
     primaryjoin=Nature.hates_flavor_id==ContestType.id,
     innerjoin=True,
     backref='hating_natures')
-Nature.likes_flavor = relation(ContestType,
+Nature.likes_flavor = relationship(ContestType,
     primaryjoin=Nature.likes_flavor_id==ContestType.id,
     innerjoin=True,
     backref='liking_natures')
-Nature.battle_style_preferences = relation(NatureBattleStylePreference,
+Nature.battle_style_preferences = relationship(NatureBattleStylePreference,
     order_by=NatureBattleStylePreference.move_battle_style_id.asc(),
     backref='nature')
-Nature.pokeathlon_effects = relation(NaturePokeathlonStat,
+Nature.pokeathlon_effects = relationship(NaturePokeathlonStat,
     order_by=NaturePokeathlonStat.pokeathlon_stat_id.asc())
 
-NatureBattleStylePreference.battle_style = relation(MoveBattleStyle,
+NatureBattleStylePreference.battle_style = relationship(MoveBattleStyle,
     innerjoin=True, lazy='joined',
     backref='nature_preferences')
 
-NaturePokeathlonStat.pokeathlon_stat = relation(PokeathlonStat,
+NaturePokeathlonStat.pokeathlon_stat = relationship(PokeathlonStat,
     innerjoin=True, lazy='joined',
     backref='nature_effects')
 
 
-Pokedex.region = relation(Region,
+Pokedex.region = relationship(Region,
     innerjoin=True,
     backref='pokedexes')
-Pokedex.version_groups = relation(VersionGroup,
+Pokedex.version_groups = relationship(VersionGroup,
     innerjoin=True,
     order_by=VersionGroup.id.asc(),
     backref='pokedex')
 
 
-Pokemon.all_abilities = relation(Ability,
+Pokemon.all_abilities = relationship(Ability,
     secondary=PokemonAbility.__table__,
     order_by=PokemonAbility.slot.asc(),
     innerjoin=True,
@@ -1938,7 +1938,7 @@ Pokemon.all_abilities = relation(Ability,
         order_by=Pokemon.order.asc(),
     ),
 )
-Pokemon.abilities = relation(Ability,
+Pokemon.abilities = relationship(Ability,
     secondary=PokemonAbility.__table__,
     primaryjoin=and_(
         Pokemon.id == PokemonAbility.pokemon_id,
@@ -1950,7 +1950,7 @@ Pokemon.abilities = relation(Ability,
         order_by=Pokemon.order.asc(),
     ),
 )
-Pokemon.dream_ability = relation(Ability,
+Pokemon.dream_ability = relationship(Ability,
     secondary=PokemonAbility.__table__,
     primaryjoin=and_(
         Pokemon.id == PokemonAbility.pokemon_id,
@@ -1961,61 +1961,61 @@ Pokemon.dream_ability = relation(Ability,
         order_by=Pokemon.order,
     ),
 )
-Pokemon.pokemon_color = relation(PokemonColor,
+Pokemon.pokemon_color = relationship(PokemonColor,
     innerjoin=True,
     backref='pokemon')
 Pokemon.color = association_proxy('pokemon_color', 'name')
-Pokemon.dex_numbers = relation(PokemonDexNumber,
+Pokemon.dex_numbers = relationship(PokemonDexNumber,
     innerjoin=True,
     order_by=PokemonDexNumber.pokedex_id.asc(),
     backref='pokemon')
-Pokemon.egg_groups = relation(EggGroup,
+Pokemon.egg_groups = relationship(EggGroup,
     secondary=PokemonEggGroup.__table__,
     innerjoin=True,
     order_by=PokemonEggGroup.egg_group_id.asc(),
     backref=backref('pokemon', order_by=Pokemon.order.asc()))
-Pokemon.evolution_chain = relation(EvolutionChain,
+Pokemon.evolution_chain = relationship(EvolutionChain,
     innerjoin=True,
     backref=backref('pokemon', order_by=Pokemon.order.asc()))
-Pokemon.parent_pokemon = relation(Pokemon,
+Pokemon.parent_pokemon = relationship(Pokemon,
     primaryjoin=Pokemon.evolves_from_pokemon_id==Pokemon.id,
     remote_side=[Pokemon.id],
     backref='child_pokemon')
-Pokemon.evolutions = relation(PokemonEvolution,
+Pokemon.evolutions = relationship(PokemonEvolution,
     primaryjoin=Pokemon.id==PokemonEvolution.evolved_pokemon_id,
     backref=backref('evolved_pokemon', innerjoin=True, lazy='joined'))
-Pokemon.flavor_text = relation(PokemonFlavorText,
+Pokemon.flavor_text = relationship(PokemonFlavorText,
     order_by=PokemonFlavorText.version_id.asc(),
     backref='pokemon')
-Pokemon.forms = relation(PokemonForm,
+Pokemon.forms = relationship(PokemonForm,
     primaryjoin=Pokemon.id==PokemonForm.form_base_pokemon_id,
     order_by=(PokemonForm.order.asc(), PokemonForm.identifier.asc()))
-Pokemon.default_form = relation(PokemonForm,
+Pokemon.default_form = relationship(PokemonForm,
     primaryjoin=and_(
         Pokemon.id==PokemonForm.form_base_pokemon_id,
         PokemonForm.is_default==True),
     uselist=False)
-Pokemon.pokemon_habitat = relation(PokemonHabitat,
+Pokemon.pokemon_habitat = relationship(PokemonHabitat,
     backref='pokemon')
 Pokemon.habitat = association_proxy('pokemon_habitat', 'name')
-Pokemon.items = relation(PokemonItem,
+Pokemon.items = relationship(PokemonItem,
     backref='pokemon')
-Pokemon.generation = relation(Generation,
+Pokemon.generation = relationship(Generation,
     innerjoin=True,
     backref='pokemon')
-Pokemon.shape = relation(PokemonShape,
+Pokemon.shape = relationship(PokemonShape,
     innerjoin=True,
     backref='pokemon')
-Pokemon.stats = relation(PokemonStat,
+Pokemon.stats = relationship(PokemonStat,
     innerjoin=True,
     order_by=PokemonStat.stat_id.asc(),
     backref='pokemon')
-Pokemon.types = relation(Type,
+Pokemon.types = relationship(Type,
     secondary=PokemonType.__table__,
     innerjoin=True,
     order_by=PokemonType.slot.asc(),
     backref=backref('pokemon', order_by=Pokemon.order))
-Pokemon.form = relation(PokemonForm,
+Pokemon.form = relationship(PokemonForm,
     primaryjoin=or_(
         PokemonForm.unique_pokemon_id==Pokemon.id,
         and_(PokemonForm.unique_pokemon_id==None, 
@@ -2024,133 +2024,133 @@ Pokemon.form = relation(PokemonForm,
         ),
         uselist=False)
 
-PokemonDexNumber.pokedex = relation(Pokedex,
+PokemonDexNumber.pokedex = relationship(Pokedex,
     innerjoin=True, lazy='joined')
 
-PokemonEvolution.trigger = relation(EvolutionTrigger,
+PokemonEvolution.trigger = relationship(EvolutionTrigger,
     innerjoin=True, lazy='joined',
     backref='evolutions')
-PokemonEvolution.trigger_item = relation(Item,
+PokemonEvolution.trigger_item = relationship(Item,
     primaryjoin=PokemonEvolution.trigger_item_id==Item.id,
     backref='triggered_evolutions')
-PokemonEvolution.held_item = relation(Item,
+PokemonEvolution.held_item = relationship(Item,
     primaryjoin=PokemonEvolution.held_item_id==Item.id,
     backref='required_for_evolutions')
-PokemonEvolution.location = relation(Location,
+PokemonEvolution.location = relationship(Location,
     backref='triggered_evolutions')
-PokemonEvolution.known_move = relation(Move,
+PokemonEvolution.known_move = relationship(Move,
     backref='triggered_evolutions')
-PokemonEvolution.party_pokemon = relation(Pokemon,
+PokemonEvolution.party_pokemon = relationship(Pokemon,
     primaryjoin=PokemonEvolution.party_pokemon_id==Pokemon.id,
     backref='triggered_evolutions')
-PokemonEvolution.trade_pokemon = relation(Pokemon,
+PokemonEvolution.trade_pokemon = relationship(Pokemon,
     primaryjoin=PokemonEvolution.trade_pokemon_id==Pokemon.id)
 
-PokemonFlavorText.version = relation(Version, innerjoin=True, lazy='joined')
-PokemonFlavorText.language = relation(Language, innerjoin=True, lazy='joined')
+PokemonFlavorText.version = relationship(Version, innerjoin=True, lazy='joined')
+PokemonFlavorText.language = relationship(Language, innerjoin=True, lazy='joined')
 
-PokemonForm.form_base_pokemon = relation(Pokemon,
+PokemonForm.form_base_pokemon = relationship(Pokemon,
     primaryjoin=PokemonForm.form_base_pokemon_id==Pokemon.id,
     innerjoin=True)
-PokemonForm.unique_pokemon = relation(Pokemon,
+PokemonForm.unique_pokemon = relationship(Pokemon,
     primaryjoin=PokemonForm.unique_pokemon_id==Pokemon.id,
     backref=backref('unique_form', uselist=False))
-PokemonForm.pokemon = relation(Pokemon,
+PokemonForm.pokemon = relationship(Pokemon,
     primaryjoin=or_(
         PokemonForm.unique_pokemon_id==Pokemon.id,
         and_(PokemonForm.unique_pokemon_id==None, 
             PokemonForm.form_base_pokemon_id==Pokemon.id)
         ), uselist=False)
-PokemonForm.version_group = relation(VersionGroup,
+PokemonForm.version_group = relationship(VersionGroup,
     innerjoin=True)
 PokemonForm.form_group = association_proxy('form_base_pokemon', 'form_group')
-PokemonForm.pokeathlon_stats = relation(PokemonFormPokeathlonStat,
+PokemonForm.pokeathlon_stats = relationship(PokemonFormPokeathlonStat,
     order_by=PokemonFormPokeathlonStat.pokeathlon_stat_id,
     backref='pokemon_form')
 
-PokemonFormGroup.pokemon = relation(Pokemon,
+PokemonFormGroup.pokemon = relationship(Pokemon,
     innerjoin=True,
     backref=backref('form_group', uselist=False))
 
-PokemonFormPokeathlonStat.pokeathlon_stat = relation(PokeathlonStat,
+PokemonFormPokeathlonStat.pokeathlon_stat = relationship(PokeathlonStat,
     innerjoin=True, lazy='joined')
 
-PokemonItem.item = relation(Item,
+PokemonItem.item = relationship(Item,
     innerjoin=True, lazy='joined',
     backref='pokemon')
-PokemonItem.version = relation(Version,
+PokemonItem.version = relationship(Version,
     innerjoin=True, lazy='joined')
 
-PokemonMove.pokemon = relation(Pokemon,
+PokemonMove.pokemon = relationship(Pokemon,
     innerjoin=True, lazy='joined',
     backref='pokemon_moves')
-PokemonMove.version_group = relation(VersionGroup,
+PokemonMove.version_group = relationship(VersionGroup,
     innerjoin=True, lazy='joined')
-PokemonMove.machine = relation(Machine,
+PokemonMove.machine = relationship(Machine,
     primaryjoin=and_(
         Machine.version_group_id==PokemonMove.version_group_id,
         Machine.move_id==PokemonMove.move_id),
     foreign_keys=[Machine.version_group_id, Machine.move_id],
     uselist=False,
     backref='pokemon_moves')
-PokemonMove.move = relation(Move,
+PokemonMove.move = relationship(Move,
     innerjoin=True, lazy='joined',
     backref='pokemon_moves')
-PokemonMove.method = relation(PokemonMoveMethod,
+PokemonMove.method = relationship(PokemonMoveMethod,
     innerjoin=True, lazy='joined')
 
-PokemonStat.stat = relation(Stat,
+PokemonStat.stat = relationship(Stat,
     innerjoin=True, lazy='joined')
 
 
-Region.generation = relation(Generation, uselist=False)
-Region.version_group_regions = relation(VersionGroupRegion,
+Region.generation = relationship(Generation, uselist=False)
+Region.version_group_regions = relationship(VersionGroupRegion,
     order_by=VersionGroupRegion.version_group_id.asc(),
     backref='region')
 Region.version_groups = association_proxy('version_group_regions', 'version_group')
 
 
-Stat.damage_class = relation(MoveDamageClass,
+Stat.damage_class = relationship(MoveDamageClass,
     backref='stats')
 
-StatHint.stat = relation(Stat,
+StatHint.stat = relationship(Stat,
     innerjoin=True,
     backref='hints')
 
 
-SuperContestCombo.first = relation(Move,
+SuperContestCombo.first = relationship(Move,
     primaryjoin=SuperContestCombo.first_move_id==Move.id,
     innerjoin=True, lazy='joined',
     backref='super_contest_combo_first')
-SuperContestCombo.second = relation(Move,
+SuperContestCombo.second = relationship(Move,
     primaryjoin=SuperContestCombo.second_move_id==Move.id,
     innerjoin=True, lazy='joined',
     backref='super_contest_combo_second')
 
 
-Type.damage_efficacies = relation(TypeEfficacy,
+Type.damage_efficacies = relationship(TypeEfficacy,
     primaryjoin=Type.id==TypeEfficacy.damage_type_id,
     backref=backref('damage_type', innerjoin=True, lazy='joined'))
-Type.target_efficacies = relation(TypeEfficacy,
+Type.target_efficacies = relationship(TypeEfficacy,
     primaryjoin=Type.id==TypeEfficacy.target_type_id,
     backref=backref('target_type', innerjoin=True, lazy='joined'))
 
-Type.generation = relation(Generation,
+Type.generation = relationship(Generation,
     innerjoin=True,
     backref='types')
-Type.damage_class = relation(MoveDamageClass,
+Type.damage_class = relationship(MoveDamageClass,
     backref='types')
 
 
 Version.generation = association_proxy('version_group', 'generation')
 
-VersionGroup.versions = relation(Version,
+VersionGroup.versions = relationship(Version,
     innerjoin=True,
     order_by=Version.id,
     backref=backref('version_group', lazy='joined'))
-VersionGroup.generation = relation(Generation,
+VersionGroup.generation = relationship(Generation,
     innerjoin=True, lazy='joined',
     backref='version_groups')
-VersionGroup.version_group_regions = relation(VersionGroupRegion,
+VersionGroup.version_group_regions = relationship(VersionGroupRegion,
     backref='version_group')
 VersionGroup.regions = association_proxy('version_group_regions', 'region')
