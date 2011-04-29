@@ -18,9 +18,9 @@ item_id,local_language_id,short_effect,effect
 5,9,Tries to catch a wild Pokémon in the Great Marsh or Safari Zone.  Success rate is 1.5×.,"Used in battle
 :   Attempts to [catch]{mechanic:catch} a wild Pokémon, using a catch rate of 1.5×.
 
-This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari Zone]{location:kanto-safari-zone}."
+This item can only be used in the []{location:great-marsh} or []{location:kanto-safari-zone}."
 6,9,Tries to catch a wild Pokémon.  Success rate is 3× for water and bug Pokémon.,"Used in battle
-:   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If the wild Pokémon is [water]{type:water}- or [bug]{type:bug}-type, this ball has a catch rate of 3×.  Otherwise, it has a catch rate of 1×.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If the wild Pokémon is []{type:water}- or []{type:bug}-type, this ball has a catch rate of 3×.  Otherwise, it has a catch rate of 1×.
 
     If used in a trainer battle, nothing happens and the ball is lost."
 7,9,Tries to catch a wild Pokémon.  Success rate is 3.5× when fishing or surfing.,"Used in battle
@@ -52,7 +52,7 @@ This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari
 
     If used in a trainer battle, nothing happens and the ball is lost."
 14,9,Tries to catch a wild Pokémon.  Caught Pokémon are immediately healed.,"Used in battle
-:   Attempts to [catch]{mechanic:catch} a wild Pokémon, using a catch rate of 1×.  The caught Pokémon's [HP]{mechanic:hp} is immediately restored, [PP]{mechanic:pp} for all its moves is restored, and any [status ailment]{mechanic:status ailment} is cured.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon, using a catch rate of 1×.  The caught Pokémon's [HP]{mechanic:hp} is immediately restored, [PP]{mechanic:pp} for all its moves is restored, and any [status ailment]{mechanic:status-ailment} is cured.
 
     If used in a trainer battle, nothing happens and the ball is lost."
 15,9,"Tries to catch a wild Pokémon.  Success rate is 4×, but only on the first turn.","Used in battle
@@ -76,7 +76,7 @@ This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari
 22,9,Cures paralysis.,"Used on a party Pokémon
 :   Cures [paralysis]{mechanic:paralysis}."
 23,9,Restores HP to full and cures any status ailment and confusion.,"Used on a party Pokémon
-:   Restores [HP]{mechanic:hp} to full and cures any [status ailment]{mechanic:status ailment} and [confusion]{mechanic:confusion}."
+:   Restores [HP]{mechanic:hp} to full and cures any [status ailment]{mechanic:status-ailment} and [confusion]{mechanic:confusion}."
 24,9,Restores HP to full.,"Used on a party Pokémon
 :   Restores [HP]{mechanic:hp} to full."
 25,9,Restores 200 HP.,"Used on a party Pokémon
@@ -84,7 +84,7 @@ This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari
 26,9,Restores 50 HP.,"Used on a party Pokémon
 :   Restores 50 [HP]{mechanic:hp}."
 27,9,Cures any status ailment and confusion.,"Used on a party Pokémon
-:   Cures any [status ailment]{mechanic:status ailment} and [confusion]{mechanic:confusion}."
+:   Cures any [status ailment]{mechanic:status-ailment} and [confusion]{mechanic:confusion}."
 28,9,Revives with half HP.,"Used on a party Pokémon
 :   Revives the Pokémon and restores half its [HP]{mechanic:hp}."
 29,9,Revives with full HP.,"Used on a party Pokémon
@@ -102,7 +102,7 @@ This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari
 35,9,"Restores 200 HP, but lowers happiness.","Used on a party Pokémon
 :   Restores 200 [HP]{mechanic:hp}.  Decreases [happiness]{mechanic:happiness} by 10/10/15."
 36,9,"Cures any status ailment, but lowers happiness.","Used on a party Pokémon
-:   Cures any [status ailment]{mechanic:status ailment}.  Decreases [happiness]{mechanic:happiness} by 5/5/10."
+:   Cures any [status ailment]{mechanic:status-ailment}.  Decreases [happiness]{mechanic:happiness} by 5/5/10."
 37,9,"Revives with full HP, but lowers happiness.","Used on a party Pokémon
 :   Revives a [fainted]{mechanic:faint} Pokémon and restores its [HP]{mechanic:hp} to full.  Decreases [happiness]{mechanic:happiness} by 10/10/15."
 38,9,Restores 10 PP for one move.,"Used on a party Pokémon
@@ -114,7 +114,7 @@ This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari
 41,9,Restores PP to full for each move.,"Used on a party Pokémon
 :   Restores [PP]{mechanic:pp} to full for each move."
 42,9,Cures any status ailment and confusion.,"Used on a party Pokémon
-:   Cures any [status ailment]{mechanic:status ailment} and [confusion]{mechanic:confusion}."
+:   Cures any [status ailment]{mechanic:status-ailment} and [confusion]{mechanic:confusion}."
 43,9,Restores 20 HP.,"Used on a party Pokémon
 :   Restores 20 [HP]{mechanic:hp}."
 44,9,Revives all fainted Pokémon with full HP.,"Used
@@ -128,21 +128,21 @@ This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari
 48,9,Raises Speed effort and happiness.,"Used on a party Pokémon
 :   Increases [Speed]{mechanic:speed} [effort]{mechanic:effort} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic:happiness} by 5/3/2."
 49,9,Raises Special Attack effort and happiness.,"Used on a party Pokémon
-:   Increases [Special Attack]{mechanic:special attack} [effort]{mechanic:effort} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic:happiness} by 5/3/2."
+:   Increases [Special Attack]{mechanic:special-attack} [effort]{mechanic:effort} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic:happiness} by 5/3/2."
 50,9,Causes a level-up and raises happiness.,"Used on a party Pokémon
 :   Increases level by 1.  Increases [happiness]{mechanic:happiness} by 5/3/2."
 51,9,Raises a move's max PP by 20%.,"Used on a party Pokémon
 :   Increases a selected move's max [PP]{mechanic:pp} by 20% its original max PP, to a maximum of 1.6×.  Increases [happiness]{mechanic:happiness} by 5/3/2."
 52,9,Raises Special Defense and happiness.,"Used on a party Pokémon
-:   Increases [Special Defense]{mechanic:special defense} [effort]{mechanic:effort} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic:happiness} by 5/3/2."
+:   Increases [Special Defense]{mechanic:special-defense} [effort]{mechanic:effort} by 10, but won't increase it beyond 100.  Increases [happiness]{mechanic:happiness} by 5/3/2."
 53,9,Raises a move's max PP by 60%.,"Used on a party Pokémon
 :   Increases a selected move's max [PP]{mechanic:pp} to 1.6× its original max PP.  Increases [happiness]{mechanic:happiness} by 5/3/2."
 54,9,Cures any status ailment and confusion.,"Used on a party Pokémon
-:   Cures any [status ailment]{mechanic:status ailment} and [confusion]{mechanic:confusion}."
+:   Cures any [status ailment]{mechanic:status-ailment} and [confusion]{mechanic:confusion}."
 55,9,Prevents stat changes in battle for five turns in battle.  Raises happiness.,"Used on a party Pokémon in battle
 :   Protects the target's stats from being [lowered]{mechanic:lower} for the next five turns.  Increases happiness by 1/1/0."
 56,9,Increases the chance of a critical hit in battle.  Raises happiness.,"Used on a party Pokémon in battle
-:   Increases the target's [critical hit chance]{mechanic:critical hit chance} by one stage until it leaves the field.  Increases happiness by 1/1/0."
+:   Increases the target's [critical hit chance]{mechanic:critical-hit-chance} by one stage until it leaves the field.  Increases happiness by 1/1/0."
 57,9,Raises Attack by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
 :   [Raises]{mechanic:raise} the target's [Attack]{mechanic:attack} by one stage.  Increases happiness by 1/1/0."
 58,9,Raises Defense by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
@@ -152,9 +152,9 @@ This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari
 60,9,Raises accuracy by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
 :   [Raises]{mechanic:raise} the target's [accuracy]{mechanic:accuracy} by one stage.  Increases happiness by 1/1/0."
 61,9,Raises Special Attack by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
-:   [Raises]{mechanic:raise} the target's [Special Attack]{mechanic:special attack} by one stage.  Increases happiness by 1/1/0."
+:   [Raises]{mechanic:raise} the target's [Special Attack]{mechanic:special-attack} by one stage.  Increases happiness by 1/1/0."
 62,9,Raises Special Defense by one stage in battle.  Raises happiness.,"Used on a party Pokémon in battle
-:   [Raises]{mechanic:raise} the target's [Special Defense]{mechanic:special defense} by one stage.  Increases happiness by 1/1/0."
+:   [Raises]{mechanic:raise} the target's [Special Defense]{mechanic:special-defense} by one stage.  Increases happiness by 1/1/0."
 63,9,Ends a wild battle.,"Used in battle
 :   Ends a wild battle.  Cannot be used in trainer battles."
 64,9,Ends a wild battle.,"Used in battle
@@ -173,60 +173,60 @@ This item can only be used in the [Great Marsh]{location:great-marsh} or [Safari
 71,9,No effect.,No effect.
 72,9,No effect.,"No effect.
 
-In Diamond and Pearl, trade ten for a [Sunny Day]{move:sunny-day} [TM]{item:tm11} in the house midway along the southern section of [Route 212]{location:sinnoh-route-212}.
+In Diamond and Pearl, trade ten for a []{move:sunny-day} [TM]{item:tm11} in the house midway along the southern section of []{location:sinnoh-route-212}.
 
-In Platinum, trade to [move tutors]{mechanic:move tutor} on [Route 212]{location:sinnoh-route-212}, in [Snowpoint City]{location:snowpoint-city}, and in the [Survival Area]{location:survival-area}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
+In Platinum, trade to [move tutors]{mechanic:move-tutor} on []{location:sinnoh-route-212}, in []{location:snowpoint-city}, and in the []{location:survival-area}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
 
-In HeartGold and SoulSilver, trade one for a [Cheri Berry]{item:cheri-berry}, a [Leppa Berry]{item:leppa-berry}, and a [Pecha Berry]{item:pecha-berry} with the Juggler near the Pokémon Center in [Violet City]{location:violet-city}.
+In HeartGold and SoulSilver, trade one for a []{item:cheri-berry}, a []{item:leppa-berry}, and a []{item:pecha-berry} with the Juggler near the Pokémon Center in []{location:violet-city}.
 
-In HeartGold and SoulSilver, trade one for a [Persim Berry]{item:persim-berry}, a [Pomeg Berry]{item:pomeg-berry}, and a [Razz Berry]{item:razz-berry} with the Juggler near the [Pal Park]{location:pal-park} entrance in [Fuchsia City]{location:fuchsia-city}."
+In HeartGold and SoulSilver, trade one for a []{item:persim-berry}, a []{item:pomeg-berry}, and a []{item:razz-berry} with the Juggler near the []{location:pal-park} entrance in []{location:fuchsia-city}."
 73,9,No effect.,"No effect.
 
-In Diamond and Pearl, trade ten for a [Rain Dance]{move:rain-dance} [TM]{item:tm18} in the house midway along the southern section of [Route 212]{location:sinnoh-route-212}.
+In Diamond and Pearl, trade ten for a []{move:rain-dance} [TM]{item:tm18} in the house midway along the southern section of []{location:sinnoh-route-212}.
 
-In Platinum, trade to [move tutors]{mechanic:move tutor} on [Route 212]{location:sinnoh-route-212}, in [Snowpoint City]{location:snowpoint-city}, and in the [Survival Area]{location:survival-area}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
+In Platinum, trade to [move tutors]{mechanic:move-tutor} on []{location:sinnoh-route-212}, in []{location:snowpoint-city}, and in the []{location:survival-area}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
 
-In HeartGold and SoulSilver, trade one for a [Chesto Berry]{item:chesto-berry}, an [Oran Berry]{item:oran-berry}, and a [Wiki Berry]{item:wiki-berry} with the Juggler near the Pokémon Center in [Violet City]{location:violet-city}.
+In HeartGold and SoulSilver, trade one for a []{item:chesto-berry}, an []{item:oran-berry}, and a []{item:wiki-berry} with the Juggler near the Pokémon Center in []{location:violet-city}.
 
-In HeartGold and SoulSilver, trade one for a [Bluk Berry]{item:bluk-berry}, a [Cornn Berry]{item:cornn-berry}, and a [Kelpsy Berry]{item:kelpsy-berry} with the Juggler near the [Pal Park]{location:pal-park} entrance in [Fuchsia City]{location:fuchsia-city}."
+In HeartGold and SoulSilver, trade one for a []{item:bluk-berry}, a []{item:cornn-berry}, and a []{item:kelpsy-berry} with the Juggler near the []{location:pal-park} entrance in []{location:fuchsia-city}."
 74,9,No effect.,"No effect.
 
-In Diamond and Pearl, trade ten for a [Sandstorm]{move:sandstorm} [TM]{item:tm37} in the house midway along the southern section of [Route 212]{location:sinnoh-route-212}.
+In Diamond and Pearl, trade ten for a []{move:sandstorm} [TM]{item:tm37} in the house midway along the southern section of []{location:sinnoh-route-212}.
 
-In Platinum, trade to [move tutors]{mechanic:move tutor} on [Route 212]{location:sinnoh-route-212}, in [Snowpoint City]{location:snowpoint-city}, and in the [Survival Area]{location:survival-area}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
+In Platinum, trade to [move tutors]{mechanic:move-tutor} on []{location:sinnoh-route-212}, in []{location:snowpoint-city}, and in the []{location:survival-area}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
 
-In HeartGold and SoulSilver, trade one for an [Aspear Berry]{item:aspear-berry}, a [Iapapa Berry]{item:iapapa-berry}, and a [Sitrus Berry]{item:sitrus-berry} with the Juggler near the Pokémon Center in [Violet City]{location:violet-city}.
+In HeartGold and SoulSilver, trade one for an []{item:aspear-berry}, a []{item:iapapa-berry}, and a []{item:sitrus-berry} with the Juggler near the Pokémon Center in []{location:violet-city}.
 
-In HeartGold and SoulSilver, trade one for a [Grepa Berry]{item:grepa-berry}, a [Nomel Berry]{item:nomel-berry}, and a [Pinap Berry]{item:pinap-berry} with the Juggler near the [Pal Park]{location:pal-park} entrance in [Fuchsia City]{location:fuchsia-city}."
+In HeartGold and SoulSilver, trade one for a []{item:grepa-berry}, a []{item:nomel-berry}, and a []{item:pinap-berry} with the Juggler near the []{location:pal-park} entrance in []{location:fuchsia-city}."
 75,9,No effect.,"No effect.
 
-In Diamond and Pearl, trade ten for a [Hail]{move:hail} [TM]{item:tm07} in the house midway along the southern section of [Route 212]{location:sinnoh-route-212}.
+In Diamond and Pearl, trade ten for a []{move:hail} [TM]{item:tm07} in the house midway along the southern section of []{location:sinnoh-route-212}.
 
-In Platinum, trade to [move tutors]{mechanic:move tutor} on [Route 212]{location:sinnoh-route-212}, in [Snowpoint City]{location:snowpoint-city}, and in the [Survival Area]{location:survival-area}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
+In Platinum, trade to [move tutors]{mechanic:move-tutor} on []{location:sinnoh-route-212}, in []{location:snowpoint-city}, and in the []{location:survival-area}.  Eight shards total are required per tutelage, but the particular combination of colors varies by move.
 
-In HeartGold and SoulSilver, trade one for an [Aguav Berry]{item:aguav-berry}, a [Lum Berry]{item:lum-berry}, and a [Rawst Berry]{item:rawst-berry} with the Juggler near the Pokémon Center in [Violet City]{location:violet-city}.
+In HeartGold and SoulSilver, trade one for an []{item:aguav-berry}, a []{item:lum-berry}, and a []{item:rawst-berry} with the Juggler near the Pokémon Center in []{location:violet-city}.
 
-In HeartGold and SoulSilver, trade one for a [Durin Berry]{item:durin-berry}, a [Hondew Berry]{item:hondew-berry}, and a [Wepear Berry]{item:wepear-berry} with the Juggler near the [Pal Park]{location:pal-park} entrance in [Fuchsia City]{location:fuchsia-city}."
+In HeartGold and SoulSilver, trade one for a []{item:durin-berry}, a []{item:hondew-berry}, and a []{item:wepear-berry} with the Juggler near the []{location:pal-park} entrance in []{location:fuchsia-city}."
 76,9,,"Used outside of battle
 :   Trainer will skip encounters with wild Pokémon of a lower level than the lead party Pokémon.  This effect wears off after the trainer takes 200 steps."
 77,9,,"Used outside of battle
 :   Trainer will skip encounters with wild Pokémon of a lower level than the lead party Pokémon.  This effect wears off after the trainer takes 250 steps."
 78,9,,"Used outside of battle
-:   Transports the trainer to the last-entered dungeon entrance.  Cannot be used outside, in buildings, or in [Distortion World]{location:distortion-world}, [Hall of Origin]{location:sinnoh-hall-of-origin-1}, [Spear Pillar]{location:spear-pillar}, or [Turnback Cave]{location:turnback-cave}."
+:   Transports the trainer to the last-entered dungeon entrance.  Cannot be used outside, in buildings, or in []{location:distortion-world}, []{location:sinnoh-hall-of-origin-1}, []{location:spear-pillar}, or []{location:turnback-cave}."
 79,9,,"Used outside of battle
 :   Trainer will skip encounters with wild Pokémon of a lower level than the lead party Pokémon.  This effect wears off after the trainer takes 100 steps."
 80,9,,"Used on a party Pokémon
-:   Evolves a [Cottonee]{pokemon:cottonee} into [Whimsicott]{pokemon:whimsicott}, a [Gloom]{pokemon:gloom} into [Bellossom]{pokemon:bellossom}, a [Petilil]{pokemon:petilil} into [Lilligant]{pokemon:lilligant}, or a [Sunkern]{pokemon:sunkern} into [Sunflora]{pokemon:sunflora}."
+:   Evolves a []{pokemon:cottonee} into []{pokemon:whimsicott}, a []{pokemon:gloom} into []{pokemon:bellossom}, a []{pokemon:petilil} into []{pokemon:lilligant}, or a []{pokemon:sunkern} into []{pokemon:sunflora}."
 81,9,,"Used on a party Pokémon
-:   Evolves a [Clefairy]{pokemon:clefairy} into [Clefable]{pokemon:clefable}, a [Jigglypuff]{pokemon:jigglypuff} into [Wigglytuff]{pokemon:wigglytuff}, a [Munna]{pokemon:munna} into [Musharna]{pokemon:musharna}, a [Nidorina]{pokemon:nidorina} into [Nidoqueen]{pokemon:nidoqueen}, a [Nidorino]{pokemon:nidorino} into [Nidoking]{pokemon:nidoking}, or a [Skitty]{pokemon:skitty} into [Delcatty]{pokemon:delcatty}."
+:   Evolves a []{pokemon:clefairy} into []{pokemon:clefable}, a []{pokemon:jigglypuff} into []{pokemon:wigglytuff}, a []{pokemon:munna} into []{pokemon:musharna}, a []{pokemon:nidorina} into []{pokemon:nidoqueen}, a []{pokemon:nidorino} into []{pokemon:nidoking}, or a []{pokemon:skitty} into []{pokemon:delcatty}."
 82,9,,"Used on a party Pokémon
-:   Evolves an [Eevee]{pokemon:eevee} into [Flareon]{pokemon:flareon}, a [Growlithe]{pokemon:growlithe} into [Arcanine]{pokemon:arcanine}, a [Pansear]{pokemon:pansear} into [Simisear]{pokemon:simisear}, or a [Vulpix]{pokemon:vulpix} into [Ninetales]{pokemon:ninetales}."
+:   Evolves an []{pokemon:eevee} into []{pokemon:flareon}, a []{pokemon:growlithe} into []{pokemon:arcanine}, a []{pokemon:pansear} into []{pokemon:simisear}, or a []{pokemon:vulpix} into []{pokemon:ninetales}."
 83,9,,"Used on a party Pokémon
-:   Evolves an [Eelektrik]{pokemon:eelektrik} into [Eelektross]{pokemon:eelektross}, an [Eevee]{pokemon:eevee} into [Jolteon]{pokemon:jolteon}, or a [Pikachu]{pokemon:pikachu} into [Raichu]{pokemon:raichu}."
+:   Evolves an []{pokemon:eelektrik} into []{pokemon:eelektross}, an []{pokemon:eevee} into []{pokemon:jolteon}, or a []{pokemon:pikachu} into []{pokemon:raichu}."
 84,9,,"Used on a party Pokémon
-:   Evolves an [Eevee]{pokemon:eevee} into [Vaporeon]{pokemon:vaporeon}, a [Lombre]{pokemon:lombre} into [Ludicolo]{pokemon:ludicolo}, a [Panpour]{pokemon:panpour} into [Simipour]{pokemon:simipour}, a [Poliwhirl]{pokemon:poliwhirl} into [Poliwrath]{pokemon:poliwrath}, a [Shellder]{pokemon:shellder} into [Cloyster]{pokemon:cloyster}, or a [Staryu]{pokemon:staryu} into [Starmie]{pokemon:starmie}."
+:   Evolves an []{pokemon:eevee} into []{pokemon:vaporeon}, a []{pokemon:lombre} into []{pokemon:ludicolo}, a []{pokemon:panpour} into []{pokemon:simipour}, a []{pokemon:poliwhirl} into []{pokemon:poliwrath}, a []{pokemon:shellder} into []{pokemon:cloyster}, or a []{pokemon:staryu} into []{pokemon:starmie}."
 85,9,,"Used on a party Pokémon
-:   Evolves an [Exeggcute]{pokemon:exeggcute} into [Exeggutor]{pokemon:exeggutor}, a [Gloom]{pokemon:gloom} into [Vileplume]{pokemon:vileplume}, a [Nuzleaf]{pokemon:nuzleaf} into [Shiftry]{pokemon:shiftry}, a [Pansage]{pokemon:pansage} into [Simisage]{pokemon:simisage}, or a [Weepinbell]{pokemon:weepinbell} into [Victreebel]{pokemon:victreebel}."
+:   Evolves an []{pokemon:exeggcute} into []{pokemon:exeggutor}, a []{pokemon:gloom} into []{pokemon:vileplume}, a []{pokemon:nuzleaf} into []{pokemon:shiftry}, a []{pokemon:pansage} into []{pokemon:simisage}, or a []{pokemon:weepinbell} into []{pokemon:victreebel}."
 86,9,Vendor trash.,Vendor trash.
 87,9,Vendor trash.,Vendor trash.
 88,9,Vendor trash.,Vendor trash.
@@ -234,7 +234,7 @@ In HeartGold and SoulSilver, trade one for a [Durin Berry]{item:durin-berry}, a 
 90,9,Vendor trash.,Vendor trash.
 91,9,Vendor trash.,Vendor trash.
 92,9,Vendor trash.,Vendor trash.
-93,9,,Trade one to the Move Relearner near the shore in [Pastoria City]{location:pastoria-city} or with the Move Deleter in [Blackthorn City]{location:blackthorn-city} to teach one party Pokémon a prior level-up move.
+93,9,,Trade one to the Move Relearner near the shore in []{location:pastoria-city} or with the Move Deleter in []{location:blackthorn-city} to teach one party Pokémon a prior level-up move.
 94,9,,"Used outside of battle
 :   Immediately triggers a wild Pokémon battle, as long as the trainer is somewhere with wild Pokémon—i.e., in tall grass, in a cave, or surfing.
 
@@ -247,27 +247,27 @@ Can be smeared on sweet-smelling trees to attract tree-dwelling Pokémon after s
 :   Fully-grown plant will last 25% longer before dying and possibly regrowing."
 98,9,,"Used on a path of soil
 :   Plant will regrow after dying 25% more times."
-99,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:mining-museum} or [Pewter Museum of Science]{location:pewter-city} to receive a [Lileep]{pokemon:lileep}.
-100,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:mining-museum} or [Pewter Museum of Science]{location:pewter-city} to receive a [Anorith]{pokemon:anorith}.
-101,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:mining-museum} or [Pewter Museum of Science]{location:pewter-city} to receive a [Omanyte]{pokemon:omanyte}.
-102,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:mining-museum} or [Pewter Museum of Science]{location:pewter-city} to receive a [Kabuto]{pokemon:kabuto}.
-103,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:mining-museum} or [Pewter Museum of Science]{location:pewter-city} to receive a [Aerodactyl]{pokemon:aerodactyl}.
-104,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:mining-museum} or [Pewter Museum of Science]{location:pewter-city} to receive a [Shieldon]{pokemon:shieldon}.
-105,9,,Give to a scientist in the [Oreburgh Mining Museum]{location:mining-museum} or [Pewter Museum of Science]{location:pewter-city} to receive a [Cranidos]{pokemon:cranidos}.
+99,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:lileep}.
+100,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:anorith}.
+101,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:omanyte}.
+102,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:kabuto}.
+103,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:aerodactyl}.
+104,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:shieldon}.
+105,9,,Give to a scientist in the []{location:mining-museum} in []{location:oreburgh-city} or the Museum of Science in []{location:pewter-city} to receive a []{pokemon:cranidos}.
 106,9,Vendor trash.,Vendor trash.
 107,9,,"Used on a party Pokémon
-:   Evolves a [Minccino]{pokemon:minccino} into [Cinccino]{pokemon:cinccino}, a [Roselia]{pokemon:roselia} into [Roserade]{pokemon:roserade}, or a [Togetic]{pokemon:togetic} into [Togekiss]{pokemon:togekiss}."
+:   Evolves a []{pokemon:minccino} into []{pokemon:cinccino}, a []{pokemon:roselia} into []{pokemon:roserade}, or a []{pokemon:togetic} into []{pokemon:togekiss}."
 108,9,,"Used on a party Pokémon
-:   Evolves a [Lampent]{pokemon:lampent} into [Chandelure]{pokemon:chandelure}, a [Misdreavus]{pokemon:misdreavus} into [Mismagius]{pokemon:mismagius}, or a [Murkrow]{pokemon:murkrow} into [Honchkrow]{pokemon:honchkrow}."
+:   Evolves a []{pokemon:lampent} into []{pokemon:chandelure}, a []{pokemon:misdreavus} into []{pokemon:mismagius}, or a []{pokemon:murkrow} into []{pokemon:honchkrow}."
 109,9,,"Used on a party Pokémon
-:   Evolves a male [Kirlia]{pokemon:kirlia} into [Gallade]{pokemon:gallade} or a female [Snorunt]{pokemon:snorunt} into [Froslass]{pokemon:froslass}."
-110,9,,"Held by [Happiny]{pokemon:happiny}
-:   Holder evolves into [Chansey]{pokemon:chansey} when it levels up during the daytime."
-111,9,,"Place in the tower on [Route 209]{location:sinnoh-route-209}.  Check the stone to encounter a [Spiritomb]{pokemon:spiritomb}, as long as the trainer's Underground status card counts at least 32 greetings."
-112,9,,"Held by [Dialga]{pokemon:dialga}
-:   Holder's [dragon]{type:dragon}- and [steel]{type:steel}-type moves have 1.2× their usual power."
-113,9,,"Held by [Palkia]{pokemon:palkia}
-:   Holder's [dragon]{type:dragon}- and [water]{type:water}-type moves have 1.2× their usual power."
+:   Evolves a male []{pokemon:kirlia} into []{pokemon:gallade} or a female []{pokemon:snorunt} into []{pokemon:froslass}."
+110,9,,"Held by []{pokemon:happiny}
+:   Holder evolves into []{pokemon:chansey} when it levels up during the daytime."
+111,9,,"Place in the tower on []{location:sinnoh-route-209}.  Check the stone to encounter a []{pokemon:spiritomb}, as long as the trainer's Underground status card counts at least 32 greetings."
+112,9,,"Held by []{pokemon:dialga}
+:   Holder's []{type:dragon}- and []{type:steel}-type moves have 1.2× their usual power."
+113,9,,"Held by []{pokemon:palkia}
+:   Holder's []{type:dragon}- and []{type:water}-type moves have 1.2× their usual power."
 114,9,Lets a Trainer write a message and send it via Pokémon trade.,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
 
 Held
@@ -357,10 +357,10 @@ Used on a party Pokémon
 Used on a party Pokémon
 :   Cures [confusion]{mechanic:confusion}."
 134,9,,"Held in battle
-:   When the holder is afflicted with a [major status ailment]{mechanic:major status ailment}, it consumes this item to cure the ailment.
+:   When the holder is afflicted with a [major status ailment]{mechanic:major-status-ailment}, it consumes this item to cure the ailment.
 
 Used on a party Pokémon
-:   Cures any [major status ailment]{mechanic:major status ailment}."
+:   Cures any [major status ailment]{mechanic:major-status-ailment}."
 135,9,,"Held in battle
 :   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/4 its max HP.
 
@@ -369,11 +369,11 @@ Used on a party Pokémon
 136,9,,"Held in battle
 :   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes spicy flavors (i.e., has a nature that lowers [Attack]{mechanic:attack}), it will also become [confused]{mechanic:confusion}."
 137,9,,"Held in battle
-:   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes dry flavors (i.e., has a nature that lowers [Special Attack]{mechanic:special attack}), it will also become [confused]{mechanic:confusion}."
+:   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes dry flavors (i.e., has a nature that lowers [Special Attack]{mechanic:special-attack}), it will also become [confused]{mechanic:confusion}."
 138,9,,"Held in battle
 :   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes sweet flavors (i.e., has a nature that lowers [Speed]{mechanic:speed}), it will also become [confused]{mechanic:confusion}."
 139,9,,"Held in battle
-:   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes bitter flavors (i.e., has a nature that lowers [Special Defense]{mechanic:special defense}), it will also become [confused]{mechanic:confusion}."
+:   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes bitter flavors (i.e., has a nature that lowers [Special Defense]{mechanic:special-defense}), it will also become [confused]{mechanic:confusion}."
 140,9,,"Held in battle
 :   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes sour flavors (i.e., has a nature that lowers [Defense]{mechanic:defense}), it will also become [confused]{mechanic:confusion}."
 141,9,,No effect; only useful for planting and cooking.
@@ -388,9 +388,9 @@ Used on a party Pokémon
 148,9,,"Used on a party Pokémon
 :   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Defense]{mechanic:defense} [effort]{mechanic:effort} by 10."
 149,9,,"Used on a party Pokémon
-:   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Special Attack]{mechanic:special attack} [effort]{mechanic:effort} by 10."
+:   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Special Attack]{mechanic:special-attack} [effort]{mechanic:effort} by 10."
 150,9,,"Used on a party Pokémon
-:   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Special Defense]{mechanic:special defense} [effort]{mechanic:effort} by 10."
+:   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Special Defense]{mechanic:special-defense} [effort]{mechanic:effort} by 10."
 151,9,,"Used on a party Pokémon
 :   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Speed]{mechanic:speed} [effort]{mechanic:effort} by 10."
 152,9,,No effect; only useful for planting and cooking.
@@ -403,39 +403,39 @@ Used on a party Pokémon
 159,9,,No effect; only useful for planting and cooking.
 160,9,,No effect; only useful for planting and cooking.
 161,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [fire]{type:fire}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:fire}-type damage, it consumes this item to halve the amount of damage taken."
 162,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [water]{type:water}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:water}-type damage, it consumes this item to halve the amount of damage taken."
 163,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [electric]{type:electric}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:electric}-type damage, it consumes this item to halve the amount of damage taken."
 164,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [grass]{type:grass}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:grass}-type damage, it consumes this item to halve the amount of damage taken."
 165,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [ice]{type:ice}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:ice}-type damage, it consumes this item to halve the amount of damage taken."
 166,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [fighting]{type:fighting}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:fighting}-type damage, it consumes this item to halve the amount of damage taken."
 167,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [poison]{type:poison}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:poison}-type damage, it consumes this item to halve the amount of damage taken."
 168,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [ground]{type:ground}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:ground}-type damage, it consumes this item to halve the amount of damage taken."
 169,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [flying]{type:flying}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:flying}-type damage, it consumes this item to halve the amount of damage taken."
 170,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [psychic]{type:psychic}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:psychic}-type damage, it consumes this item to halve the amount of damage taken."
 171,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [bug]{type:bug}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:bug}-type damage, it consumes this item to halve the amount of damage taken."
 172,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [rock]{type:rock}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:rock}-type damage, it consumes this item to halve the amount of damage taken."
 173,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [ghost]{type:ghost}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:ghost}-type damage, it consumes this item to halve the amount of damage taken."
 174,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [dragon]{type:dragon}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:dragon}-type damage, it consumes this item to halve the amount of damage taken."
 175,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [dark]{type:dark}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:dark}-type damage, it consumes this item to halve the amount of damage taken."
 176,9,,"Held in battle
-:   When the holder would take [super-effective]{mechanic:super-effective} [steel]{type:steel}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take [super-effective]{mechanic:super-effective} []{type:steel}-type damage, it consumes this item to halve the amount of damage taken."
 177,9,,"Held in battle
-:   When the holder would take [normal]{type:normal}-type damage, it consumes this item to halve the amount of damage taken."
+:   When the holder would take []{type:normal}-type damage, it consumes this item to halve the amount of damage taken."
 178,9,,"Held in battle
 :   When the holder has 1/4 its max [HP]{mechanic:hp} remaining or less, it consumes this item to [raise]{mechanic:raise} its [Attack]{mechanic:attack} by one stage."
 179,9,,"Held in battle
@@ -443,11 +443,11 @@ Used on a party Pokémon
 180,9,,"Held in battle
 :   When the holder has 1/4 its max [HP]{mechanic:hp} remaining or less, it consumes this item to [raise]{mechanic:raise} its [Speed]{mechanic:speed} by one stage."
 181,9,,"Held in battle
-:   When the holder has 1/4 its max [HP]{mechanic:hp} remaining or less, it consumes this item to [raise]{mechanic:raise} its [Special Attack]{mechanic:special attack} by one stage."
+:   When the holder has 1/4 its max [HP]{mechanic:hp} remaining or less, it consumes this item to [raise]{mechanic:raise} its [Special Attack]{mechanic:special-attack} by one stage."
 182,9,,"Held in battle
-:   When the holder has 1/4 its max [HP]{mechanic:hp} remaining or less, it consumes this item to [raise]{mechanic:raise} its [Special Defense]{mechanic:special defense} by one stage."
+:   When the holder has 1/4 its max [HP]{mechanic:hp} remaining or less, it consumes this item to [raise]{mechanic:raise} its [Special Defense]{mechanic:special-defense} by one stage."
 183,9,,"Held in battle
-:   When the holder has 1/4 its max [HP]{mechanic:hp} remaining or less, it consumes this item to [raise]{mechanic:raise} its [critical hit chance]{mechanic:critical hit chance} by one stage."
+:   When the holder has 1/4 its max [HP]{mechanic:hp} remaining or less, it consumes this item to [raise]{mechanic:raise} its [critical hit chance]{mechanic:critical-hit-chance} by one stage."
 184,9,,"Held in battle
 :   When the holder has 1/4 its max [HP]{mechanic:hp} remaining or less, it consumes this item to [raise]{mechanic:raise} a random stat by two stages."
 185,9,,"Held in battle
@@ -461,9 +461,9 @@ Used on a party Pokémon
 189,9,,"Held in battle
 :   When the holder takes [special]{mechanic:special} damage, it consumes this item to damage the attacking Pokémon for 1/8 its max [HP]{mechanic:hp}."
 190,9,Increases the holder's evasion by 11 1/9%.,"Held in battle
-:   Moves targeting the holder have 0.9× [chance to hit]{mechanic:chance to hit}."
+:   Moves targeting the holder have 0.9× [chance to hit]{mechanic:chance-to-hit}."
 191,9,"Held: Resets lowered stats to normal at end of turn, but only once.","Held in battle
-:   At the end of each turn, if any of the holder's stats have a negative [stat modifier]{mechanic:stat modifier}, the holder consumes this item to remove the modifiers from those stats."
+:   At the end of each turn, if any of the holder's stats have a negative [stat modifier]{mechanic:stat-modifier}, the holder consumes this item to remove the modifiers from those stats."
 192,9,"Held: Holder gains double effort from battles, but has halved Speed.","Held
 :   When the holder would gain [effort]{mechanic:effort} due to battle, it gains double that effort instead.
 
@@ -473,9 +473,9 @@ Held in battle
 :   [Experience]{mechanic:experience} is split across two groups: Pokémon who participated in battle, and Pokémon holding this item.  Each Pokémon earns experience as though it had battled alone, divided by the number of Pokémon in its group, then divided by the number of groups. Pokémon holding this item who also participated in battle effectively earn experience twice.
 
     [Fainted]{mechanic:fainted} Pokémon never earn experience, and empty groups are
-ignored; thus, if a single Pokémon is holding this item and the only Pokémon who battled faints from [Explosion]{move:explosion}, the holder will gain full experience."
+ignored; thus, if a single Pokémon is holding this item and the only Pokémon who battled faints from []{move:explosion}, the holder will gain full experience."
 194,9,Held: Holder has a 3/16 chance to move first.,"Held in battle
-:   Whenever the holder attempts to use a move, it has a 3/16 chance to act first among moves with the same [priority]{mechanic:priority}.  If multiple Pokémon have this effect at the same time, [Speed]{mechanic:speed} is the tie-breaker as normal, but the effect of [Trick Room]{move:trick-room} is ignored."
+:   Whenever the holder attempts to use a move, it has a 3/16 chance to act first among moves with the same [priority]{mechanic:priority}.  If multiple Pokémon have this effect at the same time, [Speed]{mechanic:speed} is the tie-breaker as normal, but the effect of []{move:trick-room} is ignored."
 195,9,Held: Doubles the happiness earned by the holder.,"Held
 :   When the holder would earn [happiness]{mechanic:happiness} for any reason, it earns twice that amount instead."
 196,9,Held: Consumed to cure attraction.,"Held in battle
@@ -484,17 +484,17 @@ ignored; thus, if a single Pokémon is holding this item and the only Pokémon w
 :   Holder has 1.5× its [Attack]{mechanic:attack}.  When the holder attempts to use a move, all its other moves are disabled until it leaves battle or loses this item.
 
     The restriction ends even if this item is swapped for another Choice item
-via [Trick]{move:trick} or [Switcheroo]{move:switcheroo}."
+via []{move:trick} or []{move:switcheroo}."
 198,9,Held: Damaging moves gain a 10% chance to make their target flinch.,"Held in battle
 :   Holder's damaging moves have a 10% chance to make their target [flinch]{mechanic:flinch}.  This chance applies independently to each hit of a multi-hit move.
 
     This item's chance is rolled independently of any other move effects;
 e.g., a move with a 30% chance to flinch normally will have a 37% total chance to flinch when used with this item, because 3% of the time, both effects activate.
 
-Held by [Poliwhirl]{pokemon:poliwhirl} or [Slowbro]{pokemon:slowbro}
-:   Holder evolves into [Politoed]{pokemon:politoed} or [Slowking]{pokemon:slowking}, respectively, when traded."
+Held by []{pokemon:poliwhirl} or []{pokemon:slowbro}
+:   Holder evolves into []{pokemon:politoed} or []{pokemon:slowking}, respectively, when traded."
 199,9,Held: Bug-type moves have 20% more power.,"Held in battle
-:   Holder's [Bug]{type:bug}-type moves have 1.2× their power.
+:   Holder's []{type:bug}-type moves have 1.2× their power.
 "
 200,9,Held: Doubles the money earned from a battle.,"Held
 :   If the holder participated in a trainer battle, the trainer earns twice the usual prize money.  This effect applies even if the holder [fainted]{mechanic:fainted}.
@@ -977,14 +977,14 @@ FRLG: A meteorite to be delivered to Lostelle's father."
 560,9,,Deliver to Celio for use in the Network Machine.
 561,9,,Provides access to the :location:`Team Magma Hideout` in the :location:`Jagged Pass`.
 562,9,,Provides access to :location:`Faraway Island` and :pokemon:`Mew`.
-563,9,"Grants Genesect a blue, Water-type Techno Blast.","Held by [Genesect]{pokemon:genesect}
-:   Holder's buster is blue, and its [Techno Blast]{move:techno-blast} is [Water]{type:water}-type."
-564,9,"Grants Genesect a yellow, Electric-type Techno Blast.","Held by [Genesect]{pokemon:genesect}
-:   Holder's buster is yellow, and its [Techno Blast]{move:techno-blast} is [Electric]{type:electric}-type."
-565,9,"Grants Genesect a red, Fire-type Techno Blast.","Held by [Genesect]{pokemon:genesect}
-:   Holder's buster is red, and its [Techno Blast]{move:techno-blast} is [Fire]{type:fire}-type."
-566,9,"Grants Genesect a white, Ice-type Techno Blast.","Held by [Genesect]{pokemon:genesect}
-:   Holder's buster is white, and its [Techno Blast]{move:techno-blast} becomes [Ice]{type:ice}-type."
+563,9,"Grants Genesect a blue, Water-type Techno Blast.","Held by []{pokemon:genesect}
+:   Holder's buster is blue, and its []{move:techno-blast} is []{type:water}-type."
+564,9,"Grants Genesect a yellow, Electric-type Techno Blast.","Held by []{pokemon:genesect}
+:   Holder's buster is yellow, and its []{move:techno-blast} is []{type:electric}-type."
+565,9,"Grants Genesect a red, Fire-type Techno Blast.","Held by []{pokemon:genesect}
+:   Holder's buster is red, and its []{move:techno-blast} is []{type:fire}-type."
+566,9,"Grants Genesect a white, Ice-type Techno Blast.","Held by []{pokemon:genesect}
+:   Holder's buster is white, and its []{move:techno-blast} becomes []{type:ice}-type."
 567,9,Restores 20 HP.,"Used on a friendly Pokémon
 :   Restores 20 [HP]{mechanic:hp}."
 568,9,Lets a Trainer write a message and send it via Pokémon trade.,"Used to send short messages to other players via Pokémon trading.  Trainer may compose a message from a finite list of words when giving this item to a Pokémon.  Once taken and read, a message may be erased and this item can be reused, or the message may be stored in the trainer's PC.
@@ -1035,80 +1035,80 @@ Held
 
 Held
 :   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
-580,9,Traded on a Feebas: Holder evolves into Milotic.,"Held by [Feebas]{pokemon:feebas}
-:   Holder evolves into [Milotic]{pokemon:milotic} when traded."
+580,9,Traded on a Feebas: Holder evolves into Milotic.,"Held by []{pokemon:feebas}
+:   Holder evolves into []{pokemon:milotic} when traded."
 581,9,"Held: Holder has 1.5× Defense and Special Defense, as long as it's not fully evolved.","Held by a Pokémon that is not fully evolved
-:   Holder has 1.5× [Defense]{mechanic:defense} and [Special Defense]{mechanic:special defense}."
+:   Holder has 1.5× [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense}."
 582,9,Held: Holder has 0.5× weight.,"Held
 :   Holder has 0.5× weight."
 583,9,"Held: When the holder is hit by a [contact]{mechanic:contact} move, the attacking Pokémon takes 1/6 its max [HP]{mechanic:hp} in damage.","Held
 :   When the holder is hit by a [contact]{mechanic:contact} move, the attacking Pokémon takes 1/6 its max [HP]{mechanic:hp} in damage."
-584,9,Holder is immune to [Ground]{type:ground}-type moves.  Consumed when the holder takes damage from a move.,"Held
-:   Holder is immune to [Ground]{type:ground}-type moves, [Spikes]{move:spikes}, [Toxic Spikes]{move:toxic-spikes}, and [Arena Trap]{ability:arena-trap}.
+584,9,Holder is immune to []{type:ground}-type moves.  Consumed when the holder takes damage from a move.,"Held
+:   Holder is immune to []{type:ground}-type moves, []{move:spikes}, []{move:toxic-spikes}, and []{ability:arena-trap}.
 
-    This effect does not apply during [Gravity]{move:gravity} or [Ingrain]{move:ingrain}.
+    This effect does not apply during []{move:gravity} or []{move:ingrain}.
 
     When the holder takes damage from a move, this item is consumed."
 585,9,"Held: When the holder takes damage from a move, it switches out for another random party Pokémon.","Held
-:   When the holder takes damage directly from a move and does not faint, it [switches out]{mechanic:switching out} for another random, non-fainted Pokémon in its party.
+:   When the holder takes damage directly from a move and does not faint, it [switches out]{mechanic:switching-out} for another random, non-fainted Pokémon in its party.
 This effect does not activate if another effect prevents the holder from switching out."
 586,9,Held: Negates the holder's type immunities.,"Held
 :   When one of the user's types would render it immune to damage, that type is ignored for damage calculation."
 587,9,Held: Doubles the per-turn damage of multi-turn trapping moves.,"Held
-:   Moves used by the holder that trap and damage a target for multiple turns (e.g. [Bind]{move:bind}, [Fire Spin]{move:fire-spin}) inflict twice their usual per-turn damage."
-588,9,Held: Raises the holder's [Special Attack]{mechanic:special attack} by one [stage]{mechanic:stage} when it takes [Water]{type:water}-type damage.,"Held
-:   When the holder takes [Water]{type:water}-type damage from a move, its [Special Attack]{mechanic:special attack} rises by one [stage]{mechanic:stage} and this item is consumed."
-589,9,Held: Raises the holder's [Attack]{mechanic:attack} by one [stage]{mechanic:stage} when it takes [Electric]{type:electric}-type damage.,"Held
-:   When the holder takes [Electric]{type:electric}-type damage from a move, its [Attack]{mechanic:attack} rises by one [stage]{mechanic:stage} and this item is consumed."
+:   Moves used by the holder that trap and damage a target for multiple turns (e.g. []{move:bind}, []{move:fire-spin}) inflict twice their usual per-turn damage."
+588,9,Held: Raises the holder's [Special Attack]{mechanic:special-attack} by one [stage]{mechanic:stage} when it takes []{type:water}-type damage.,"Held
+:   When the holder takes []{type:water}-type damage from a move, its [Special Attack]{mechanic:special-attack} rises by one [stage]{mechanic:stage} and this item is consumed."
+589,9,Held: Raises the holder's [Attack]{mechanic:attack} by one [stage]{mechanic:stage} when it takes []{type:electric}-type damage.,"Held
+:   When the holder takes []{type:electric}-type damage from a move, its [Attack]{mechanic:attack} rises by one [stage]{mechanic:stage} and this item is consumed."
 590,9,"Held: When the holder takes damage from a move, it switches out for a party Pokémon of the Trainer's choice.","Held
-:   When the holder takes damage directly from a move and does not faint, it [switches out]{mechanic:switching out} for another non-fainted Pokémon in its party, as chosen by the Trainer.
+:   When the holder takes damage directly from a move and does not faint, it [switches out]{mechanic:switching-out} for another non-fainted Pokémon in its party, as chosen by the Trainer.
 This effect does not activate if another effect prevents the holder from switching out."
-591,9,"Held: When the holder uses a damaging [Fire]{type:fire}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Fire]{type:fire}-type move, the move has 1.5× power and this item is consumed."
-592,9,"Held: When the holder uses a damaging [Water]{type:water}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Water]{type:water}-type move, the move has 1.5× power and this item is consumed."
-593,9,"Held: When the holder uses a damaging [Electric]{type:electric}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Electric]{type:electric}-type move, the move has 1.5× power and this item is consumed."
-594,9,"Held: When the holder uses a damaging [Grass]{type:grass}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Grass]{type:grass}-type move, the move has 1.5× power and this item is consumed."
-595,9,"Held: When the holder uses a damaging [Ice]{type:ice}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Ice]{type:ice}-type move, the move has 1.5× power and this item is consumed."
-596,9,"Held: When the holder uses a damaging [Fighting]{type:fighting}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Fighting]{type:fighting}-type move, the move has 1.5× power and this item is consumed."
-597,9,"Held: When the holder uses a damaging [Poison]{type:poison}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Poison]{type:poison}-type move, the move has 1.5× power and this item is consumed."
-598,9,"Held: When the holder uses a damaging [Ground]{type:ground}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Ground]{type:ground}-type move, the move has 1.5× power and this item is consumed."
-599,9,"Held: When the holder uses a damaging [Flying]{type:flying}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Flying]{type:flying}-type move, the move has 1.5× power and this item is consumed."
-600,9,"Held: When the holder uses a damaging [Psychic]{type:psychic}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Psychic]{type:psychic}-type move, the move has 1.5× power and this item is consumed."
-601,9,"Held: When the holder uses a damaging [Bug]{type:bug}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Bug]{type:bug}-type move, the move has 1.5× power and this item is consumed."
-602,9,"Held: When the holder uses a damaging [Rock]{type:rock}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Rock]{type:rock}-type move, the move has 1.5× power and this item is consumed."
-603,9,"Held: When the holder uses a damaging [Ghost]{type:ghost}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Ghost]{type:ghost}-type move, the move has 1.5× power and this item is consumed."
-604,9,"Held: When the holder uses a damaging [Dark]{type:dark}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Dark]{type:dark}-type move, the move has 1.5× power and this item is consumed."
-605,9,"Held: When the holder uses a damaging [Steel]{type:steel}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Steel]{type:steel}-type move, the move has 1.5× power and this item is consumed."
+591,9,"Held: When the holder uses a damaging []{type:fire}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:fire}-type move, the move has 1.5× power and this item is consumed."
+592,9,"Held: When the holder uses a damaging []{type:water}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:water}-type move, the move has 1.5× power and this item is consumed."
+593,9,"Held: When the holder uses a damaging []{type:electric}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:electric}-type move, the move has 1.5× power and this item is consumed."
+594,9,"Held: When the holder uses a damaging []{type:grass}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:grass}-type move, the move has 1.5× power and this item is consumed."
+595,9,"Held: When the holder uses a damaging []{type:ice}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:ice}-type move, the move has 1.5× power and this item is consumed."
+596,9,"Held: When the holder uses a damaging []{type:fighting}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:fighting}-type move, the move has 1.5× power and this item is consumed."
+597,9,"Held: When the holder uses a damaging []{type:poison}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:poison}-type move, the move has 1.5× power and this item is consumed."
+598,9,"Held: When the holder uses a damaging []{type:ground}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:ground}-type move, the move has 1.5× power and this item is consumed."
+599,9,"Held: When the holder uses a damaging []{type:flying}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:flying}-type move, the move has 1.5× power and this item is consumed."
+600,9,"Held: When the holder uses a damaging []{type:psychic}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:psychic}-type move, the move has 1.5× power and this item is consumed."
+601,9,"Held: When the holder uses a damaging []{type:bug}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:bug}-type move, the move has 1.5× power and this item is consumed."
+602,9,"Held: When the holder uses a damaging []{type:rock}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:rock}-type move, the move has 1.5× power and this item is consumed."
+603,9,"Held: When the holder uses a damaging []{type:ghost}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:ghost}-type move, the move has 1.5× power and this item is consumed."
+604,9,"Held: When the holder uses a damaging []{type:dark}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:dark}-type move, the move has 1.5× power and this item is consumed."
+605,9,"Held: When the holder uses a damaging []{type:steel}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:steel}-type move, the move has 1.5× power and this item is consumed."
 606,9,Increases [HP]{mechanic:hp} [effort]{mechanic:effort} by 1.,"Used on a party Pokémon
 :   Increases the target's [HP]{mechanic:hp} [effort]{mechanic:effort} by 1."
 607,9,Increases [Attack]{mechanic:attack} [effort]{mechanic:effort} by 1.,"Used on a party Pokémon
 :   Increases the target's [Attack]{mechanic:attack} [effort]{mechanic:effort} by 1."
 608,9,Increases [Defense]{mechanic:defense} [effort]{mechanic:effort} by 1.,"Used on a party Pokémon
 :   Increases the target's [Defense]{mechanic:defense} [effort]{mechanic:effort} by 1."
-609,9,Increases [Special Attack]{mechanic:special attack} [effort]{mechanic:effort} by 1.,"Used on a party Pokémon
-:   Increases the target's [Special Attack]{mechanic:special attack} [effort]{mechanic:effort} by 1."
-610,9,Increases [Special Defense]{mechanic:special defense} [effort]{mechanic:effort} by 1.,"Used on a party Pokémon
-:   Increases the target's [Special Defense]{mechanic:special defense} [effort]{mechanic:effort} by 1."
+609,9,Increases [Special Attack]{mechanic:special-attack} [effort]{mechanic:effort} by 1.,"Used on a party Pokémon
+:   Increases the target's [Special Attack]{mechanic:special-attack} [effort]{mechanic:effort} by 1."
+610,9,Increases [Special Defense]{mechanic:special-defense} [effort]{mechanic:effort} by 1.,"Used on a party Pokémon
+:   Increases the target's [Special Defense]{mechanic:special-defense} [effort]{mechanic:effort} by 1."
 611,9,Increases [Speed]{mechanic:speed} [effort]{mechanic:effort} by 1.,"Used on a party Pokémon
 :   Increases the target's [Speed]{mechanic:speed} [effort]{mechanic:effort} by 1."
 612,9,Vendor trash.,Vendor trash.
-613,9,Can be revived into a [Tirtouga]{pokemon:tirtouga}.,Give to a scientist in a museum to receive a [Tirtouga]{pokemon:tirtouga}.
-614,9,Can be revived into a [Archen]{pokemon:archen}.,Give to a scientist in a museum to receive a [Archen]{pokemon:archen}.
-615,9,Unlocks the [Victini]{pokemon:victini} event.,"Allows passage on the [Castelia City]{location:castelia-city} ship, which leads to [Liberty Garden]{location:liberty-garden} and [Victini]{pokemon:victini}."
+613,9,Can be revived into a []{pokemon:tirtouga}.,Give to a scientist in a museum to receive a []{pokemon:tirtouga}.
+614,9,Can be revived into a []{pokemon:archen}.,Give to a scientist in a museum to receive a []{pokemon:archen}.
+615,9,Unlocks the []{pokemon:victini} event.,"Allows passage on the []{location:castelia-city} ship, which leads to []{location:liberty-garden} and []{pokemon:victini}."
 616,9,Activates Pass Powers.,Acts as currency to activate Pass Powers in the Entralink.
 617,9,Catches Pokémon found in the Dream World.,"Can only be used in Entree Forest, to catch Pokémon encountered in the Dream World.
 
@@ -1130,18 +1130,18 @@ Used in battle
 630,9,Cult vendor trash.,Cult vendor trash.
 631,9,Cult vendor trash.,Cult vendor trash.
 632,9,Cures any status ailment and confusion.,"Used on a party Pokémon
-:   Cures any [status ailment]{mechanic:status ailment} and [confusion]{mechanic:confusion}."
-633,9,Raises [critical hit]{mechanic:critical hit} rate by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
-:   Raises the target's [critical hit]{mechanic:critical hit} rate by two [stages]{mechanic:stage}.
+:   Cures any [status ailment]{mechanic:status-ailment} and [confusion]{mechanic:confusion}."
+633,9,Raises [critical hit]{mechanic:critical-hit} rate by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
+:   Raises the target's [critical hit]{mechanic:critical-hit} rate by two [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
 634,9,Raises [Speed]{mechanic:speed} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
-635,9,Raises [Special Attack]{mechanic:special attack} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
-:   Raises the target's [Special Attack]{mechanic:special attack} by two [stages]{mechanic:stage}.
+635,9,Raises [Special Attack]{mechanic:special-attack} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
+:   Raises the target's [Special Attack]{mechanic:special-attack} by two [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
-636,9,Raises [Special Defense]{mechanic:special defense} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
-:   Raises the target's [Special Defense]{mechanic:special defense} by two [stages]{mechanic:stage}.
+636,9,Raises [Special Defense]{mechanic:special-defense} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
+:   Raises the target's [Special Defense]{mechanic:special-defense} by two [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
 637,9,Raises [Defense]{mechanic:defense} by two [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Defense]{mechanic:defense} by two [stages]{mechanic:stage}.
@@ -1155,11 +1155,11 @@ This item can only be obtained or used via the Wonder Launcher."
 640,9,Raises [Speed]{mechanic:speed} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Speed]{mechanic:speed} by three [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
-641,9,Raises [Special Attack]{mechanic:special attack} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
-:   Raises the target's [Special Attack]{mechanic:special attack} by three [stages]{mechanic:stage}.
+641,9,Raises [Special Attack]{mechanic:special-attack} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
+:   Raises the target's [Special Attack]{mechanic:special-attack} by three [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
-642,9,Raises [Special Defense]{mechanic:special defense} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
-:   Raises the target's [Special Defense]{mechanic:special defense} by three [stages]{mechanic:stage}.
+642,9,Raises [Special Defense]{mechanic:special-defense} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
+:   Raises the target's [Special Defense]{mechanic:special-defense} by three [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
 643,9,Raises [Defense]{mechanic:defense} by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Defense]{mechanic:defense} by three [stages]{mechanic:stage}.
@@ -1173,11 +1173,11 @@ This item can only be obtained or used via the Wonder Launcher."
 646,9,Raises [Speed]{mechanic:speed} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Speed]{mechanic:speed} by six [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
-647,9,Raises [Special Attack]{mechanic:special attack} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
-:   Raises the target's [Special Attack]{mechanic:special attack} by six [stages]{mechanic:stage}.
+647,9,Raises [Special Attack]{mechanic:special-attack} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
+:   Raises the target's [Special Attack]{mechanic:special-attack} by six [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
-648,9,Raises [Special Defense]{mechanic:special defense} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
-:   Raises the target's [Special Defense]{mechanic:special defense} by six [stages]{mechanic:stage}.
+648,9,Raises [Special Defense]{mechanic:special-defense} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
+:   Raises the target's [Special Defense]{mechanic:special-defense} by six [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
 649,9,Raises [Defense]{mechanic:defense} by six [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
 :   Raises the target's [Defense]{mechanic:defense} by six [stages]{mechanic:stage}.
@@ -1206,20 +1206,20 @@ This item can only be obtained or used via the Wonder Launcher."
 :   Selects another friendly Pokémon at random.  Removes all of that Pokémon's stat changes.
 
 This item can only be obtained or used via the Wonder Launcher."
-656,9,Raises [critical hit]{mechanic:critical hit} rate by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
-:   Raises the target's [critical hit]{mechanic:critical hit} rate by three [stages]{mechanic:stage}.
+656,9,Raises [critical hit]{mechanic:critical-hit} rate by three [stages]{mechanic:stage} in battle.  Wonder Launcher only.,"Used on a party Pokémon in battle
+:   Raises the target's [critical hit]{mechanic:critical-hit} rate by three [stages]{mechanic:stage}.
 This item can only be obtained or used via the Wonder Launcher."
-657,9,Summons [Reshiram]{pokemon:reshiram} for the final battle against N.,Summons [Reshiram]{pokemon:reshiram} for the final battle against N.
-658,9,Summons [Zekrom]{pokemon:zekrom} for the final battle against N.,Summons [Zekrom]{pokemon:zekrom} for the final battle against N.
-659,9,Teaches [Wild Charge]{move:wild-charge} to a compatible Pokémon.,Teaches [Wild Charge]{move:wild-charge} to a compatible Pokémon.
-660,9,Teaches [Rock Smash]{move:rock-smash} to a compatible Pokémon.,Teaches [Rock Smash]{move:rock-smash} to a compatible Pokémon.
-661,9,Teaches [Snarl]{move:snarl} to a compatible Pokémon.,Teaches [Snarl]{move:snarl} to a compatible Pokémon.
+657,9,Summons []{pokemon:reshiram} for the final battle against N.,Summons []{pokemon:reshiram} for the final battle against N.
+658,9,Summons []{pokemon:zekrom} for the final battle against N.,Summons []{pokemon:zekrom} for the final battle against N.
+659,9,Teaches []{move:wild-charge} to a compatible Pokémon.,Teaches []{move:wild-charge} to a compatible Pokémon.
+660,9,Teaches []{move:rock-smash} to a compatible Pokémon.,Teaches []{move:rock-smash} to a compatible Pokémon.
+661,9,Teaches []{move:snarl} to a compatible Pokémon.,Teaches []{move:snarl} to a compatible Pokémon.
 662,9,Makes four-way video calls.,"Makes four-way video calls.  Used for plot advancement in-game, but also works with other players via the C-Gear."
 663,9,Unknown.  Currently unused.,Unknown.  Currently unused.
-664,9,Part of a sidequest to obtain [TM89]{item:tm89}.,"Give to the [Wingull]{pokemon:wingull} on [Route 13]{location:unova-route-13}, along with [Gram 2]{item:gram-2} and [Gram 3]{item:gram-3}, to receive [TM89]{item:tm89}."
-665,9,Part of a sidequest to obtain [TM89]{item:tm89}.,"Give to the [Wingull]{pokemon:wingull} on [Route 13]{location:unova-route-13}, along with [Gram 1]{item:gram-1} and [Gram 3]{item:gram-3}, to receive [TM89]{item:tm89}."
-666,9,Part of a sidequest to obtain [TM89]{item:tm89}.,"Give to the [Wingull]{pokemon:wingull} on [Route 13]{location:unova-route-13}, along with [Gram 1]{item:gram-1} and [Gram 2]{item:gram-2}, to receive [TM89]{item:tm89}."
-668,9,"Held: When the holder uses a damaging [Dragon]{type:dragon}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Dragon]{type:dragon}-type move, the move has 1.5× power and this item is consumed."
-669,9,"Held: When the holder uses a damaging [Normal]{type:normal}-type move, the move has 1.5× power and this item is consumed.","Held
-:   When the holder uses a damaging [Normal]{type:normal}-type move, the move has 1.5× power and this item is consumed."
+664,9,Part of a sidequest to obtain []{item:tm89}.,"Give to the []{pokemon:wingull} on []{location:unova-route-13}, along with []{item:gram-2} and []{item:gram-3}, to receive []{item:tm89}."
+665,9,Part of a sidequest to obtain []{item:tm89}.,"Give to the []{pokemon:wingull} on []{location:unova-route-13}, along with []{item:gram-1} and []{item:gram-3}, to receive []{item:tm89}."
+666,9,Part of a sidequest to obtain []{item:tm89}.,"Give to the []{pokemon:wingull} on []{location:unova-route-13}, along with []{item:gram-1} and []{item:gram-2}, to receive []{item:tm89}."
+668,9,"Held: When the holder uses a damaging []{type:dragon}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:dragon}-type move, the move has 1.5× power and this item is consumed."
+669,9,"Held: When the holder uses a damaging []{type:normal}-type move, the move has 1.5× power and this item is consumed.","Held
+:   When the holder uses a damaging []{type:normal}-type move, the move has 1.5× power and this item is consumed."

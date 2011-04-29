@@ -18,6 +18,10 @@ Columns have a info dictionary with these keys:
 - ripped: True for text that has been ripped from the games, and can be ripped
   again for new versions or languages
 
+ - string_getter: for translation columns, a function taking (text, session,
+    language) that is used for properties on the main table. Used for Markdown
+    text.
+
 See `pokedex.db.multilang` for how localizable text columns work.  The session
 classes in that module can be used to change the default language.
 """
@@ -124,10 +128,10 @@ create_translation_table('ability_names', Ability, 'names',
         info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 create_translation_table('ability_prose', Ability, 'prose',
-    effect = Column(markdown.MarkdownColumn(5120), nullable=True,
-        info=dict(description="A detailed description of this ability's effect", format='markdown')),
-    short_effect = Column(markdown.MarkdownColumn(512), nullable=True,
-        info=dict(description="A short summary of this ability's effect", format='markdown')),
+    effect = Column(Unicode(5120), nullable=True,
+        info=dict(description="A detailed description of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
+    short_effect = Column(Unicode(512), nullable=True,
+        info=dict(description="A short summary of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
 )
 
 class AbilityChangelog(TableBase):
@@ -142,8 +146,8 @@ class AbilityChangelog(TableBase):
         info=dict(description="The ID of the version group in which the ability changed"))
 
 create_translation_table('ability_changelog_prose', AbilityChangelog, 'prose',
-    effect = Column(markdown.MarkdownColumn(255), nullable=False,
-        info=dict(description="A description of the old behavior", format='markdown'))
+    effect = Column(Unicode(255), nullable=False,
+        info=dict(description="A description of the old behavior", format='markdown', string_getter=markdown.MarkdownString))
 )
 
 class AbilityFlavorText(TableBase):
@@ -503,10 +507,10 @@ create_translation_table('item_names', Item, 'names',
         info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 create_translation_table('item_prose', Item, 'prose',
-    short_effect = Column(markdown.MarkdownColumn(256), nullable=True,
-        info=dict(description="A short summary of the effect", format='markdown')),
-    effect = Column(markdown.MarkdownColumn(5120), nullable=True,
-        info=dict(description=u"Detailed description of the item's effect.", format='markdown')),
+    short_effect = Column(Unicode(256), nullable=True,
+        info=dict(description="A short summary of the effect", format='markdown', string_getter=markdown.MarkdownString)),
+    effect = Column(Unicode(5120), nullable=True,
+        info=dict(description=u"Detailed description of the item's effect.", format='markdown', string_getter=markdown.MarkdownString)),
 )
 create_translation_table('item_flavor_summaries', Item, 'flavor_summaries',
     flavor_summary = Column(Unicode(512), nullable=True,
@@ -803,7 +807,7 @@ class MoveEffect(TableBase):
 
 create_translation_table('move_effect_prose', MoveEffect, 'prose',
     short_effect = Column(Unicode(256), nullable=True,
-        info=dict(description="A short summary of the effect", format='plaintext')),
+        info=dict(description="A short summary of the effect", format='markdown')),
     effect = Column(Unicode(5120), nullable=True,
         info=dict(description="A detailed description of the effect", format='markdown')),
 )
@@ -825,37 +829,35 @@ class MoveEffectChangelog(TableBase):
     )
 
 create_translation_table('move_effect_changelog_prose', MoveEffectChangelog, 'prose',
-    effect = Column(markdown.MarkdownColumn(512), nullable=False,
-        info=dict(description="A description of the old behavior", format='markdown')),
+    effect = Column(Unicode(512), nullable=False,
+        info=dict(description="A description of the old behavior", format='markdown', string_getter=markdown.MarkdownString)),
 )
 
 class MoveFlag(TableBase):
-    u"""Maps a move flag to a move
-    """
-    # XXX: Other flags have a ___Flag class for the actual flag and ___FlagMap for the map,
-    # these, somewhat confusingly, have MoveFlagType and MoveFlag
-    __tablename__ = 'move_flags'
-    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description="ID of the move"))
-    move_flag_type_id = Column(Integer, ForeignKey('move_flag_types.id'), primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description="ID of the flag"))
-
-class MoveFlagType(TableBase):
     u"""A Move attribute such as "snatchable" or "contact".
     """
-    __tablename__ = 'move_flag_types'
-    __singlename__ = 'move_flag_type'
+    __tablename__ = 'move_flags'
+    __singlename__ = 'move_flag'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(32), nullable=False,
         info=dict(description="A short identifier for the flag", format='identifier'))
 
-create_translation_table('move_flag_type_prose', MoveFlagType, 'prose',
+class MoveFlagMap(TableBase):
+    u"""Maps a move flag to a move
+    """
+    __tablename__ = 'move_flag_map'
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the move"))
+    move_flag_id = Column(Integer, ForeignKey('move_flags.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="ID of the flag"))
+
+create_translation_table('move_flag_prose', MoveFlag, 'prose',
     relation_lazy='joined',
     name = Column(Unicode(32), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
-    description = Column(markdown.MarkdownColumn(256), nullable=True,
-        info=dict(description="A short description of the flag", format='markdown')),
+    description = Column(Unicode(256), nullable=True,
+        info=dict(description="A short description of the flag", format='markdown', string_getter=markdown.MarkdownString)),
 )
 
 class MoveFlavorText(TableBase):
@@ -1355,8 +1357,8 @@ PokemonFormGroup.id = PokemonFormGroup.pokemon_id
 create_translation_table('pokemon_form_group_prose', PokemonFormGroup, 'prose',
     term = Column(Unicode(16), nullable=True,
         info=dict(description=u"The term for this Pokémon's forms, e.g. \"Cloak\" for Burmy or \"Forme\" for Deoxys.", official=True, format='plaintext')),
-    description = Column(markdown.MarkdownColumn(1024), nullable=True,
-        info=dict(description=u"Description of how the forms work", format='markdown')),
+    description = Column(Unicode(1024), nullable=True,
+        info=dict(description=u"Description of how the forms work", format='markdown', string_getter=markdown.MarkdownString)),
 )
 
 class PokemonFormPokeathlonStat(TableBase):
@@ -1832,7 +1834,7 @@ Move.meta_stat_changes = relationship(MoveMetaStatChange)
 Move.move_effect = relationship(MoveEffect,
     innerjoin=True,
     backref='moves')
-Move.move_flags = relationship(MoveFlag,
+Move.move_flags = relationship(MoveFlagMap,
     backref='move')
 Move.super_contest_effect = relationship(SuperContestEffect,
     backref='moves')
@@ -1871,7 +1873,7 @@ MoveEffectChangelog.changed_in = relationship(VersionGroup,
     innerjoin=True, lazy='joined',
     backref='move_effect_changelog')
 
-MoveFlag.flag = relationship(MoveFlagType, innerjoin=True, lazy='joined')
+MoveFlagMap.flag = relationship(MoveFlag, innerjoin=True, lazy='joined')
 
 MoveFlavorText.version_group = relationship(VersionGroup,
     innerjoin=True, lazy='joined')

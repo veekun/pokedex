@@ -1,7 +1,11 @@
 # Encoding: UTF-8
-"""Rewrite Markdown strings to use identifiers instead of names
+"""Rewrite markdown links from [Label]{category:thing} to just {category:thing}
 
-This is an unmaintained one-shot script, only included in the repo for reference.
+There was a version of this script that rewrote stuff from an even earlier
+format. Git log should find it without problems.
+
+This is an unmaintained one-shot script, only included in the repo for
+reference.
 
 """
 
@@ -12,7 +16,7 @@ import re
 from sqlalchemy.orm.exc import MultipleResultsFound
 from sqlalchemy.sql.expression import func
 
-from pokedex.db import connect, tables
+from pokedex.db import connect, tables, util
 
 sanity_re = re.compile(ur"^[-A-Za-z0-9 é\[\]{}.%':;,×/()\"|–`—!*♂♀\\]$")
 
@@ -20,12 +24,12 @@ sanity_re = re.compile(ur"^[-A-Za-z0-9 é\[\]{}.%':;,×/()\"|–`—!*♂♀\\]$
 fuzzy_link_re = re.compile(r"""
     \[
         [^]]+
-    \]
+    \]?
     \{
         [^}]+
     \}""", re.VERBOSE)
 
-# Very specific RE that matches links that appear in our Markdown strings
+# Very specific RE that matches links that appear in source Markdown strings
 strict_link_re = re.compile(r"""
             \[
                 (?P<label>
@@ -36,57 +40,56 @@ strict_link_re = re.compile(r"""
                 (?P<category>
                     [a-z]{,20}
                 )
-                (
-                    :
-                    (?P<target>
-                        [A-Za-z 0-9]{,20}
-                    )
-                )?
+            :
+                (?P<target>
+                    [-a-z 0-9]{,40}
+                )
             \}
+        """, re.VERBOSE)
+
+# Format of the resulting links
+result_link_re = re.compile(r"""
+        ^
+            \[
+                (?P<label>
+                    [^]]*
+                )
+            \]
+            \{
+                (?P<category>
+                    [a-z]+
+                )
+            :
+                (?P<target>
+                    [-a-z0-9]+
+                )
+            \}
+        $
         """, re.VERBOSE)
 
 english_id = 9
 
+manual_replacements = {
+        '[Pewter Museum of Science]{location:pewter-city}':
+                'the Museum of Science in {location:pewter-city}',
+        '[Oreburgh Mining Museum]{location:mining-museum}':
+                '{location:mining-museum} in {location:oreburgh-city}',
+    }
+
 def is_md_col(column):
     return column.info.get('format') == 'markdown'
 
-manual_replacements = {
-    (
-        u'Used in battle\n:   Attempts to [catch]{mechanic} a wild Pok\xe9mon, using a catch rate of 1.5\xd7.\n\nThis item can only be used in the [Great Marsh]{location} or [Safari Zone]{location}.',
-        u'[Safari Zone]{location}',
-    ): 'in a Safari Zone',
-    (
-        u'Used outside of battle\n:   Transports the trainer to the last-entered dungeon entrance.  Cannot be used outside, in buildings, or in [Distortion World]{location}, [Hall of Origin]{location}, [Spear Pillar]{location}, or [Turnback Cave]{location}.',
-        u'[Hall of Origin]{location}',
-    ): '[Hall of Origin]{location:hall-of-origin-1}',
-    (
-        u'Give to the [Wingull]{pokemon} on [Route 13]{location}, along with [Gram 2]{item} and [Gram 3]{item}, to receive [TM89]{item}.',
-        u'[Route 13]{location}',
-    ): u'[Route 13]{location:unova-route-13}',
-    (
-        u'Give to the [Wingull]{pokemon} on [Route 13]{location}, along with [Gram 1]{item} and [Gram 3]{item}, to receive [TM89]{item}.',
-        u'[Route 13]{location}',
-    ): u'[Route 13]{location:unova-route-13}',
-    (
-        u'Give to the [Wingull]{pokemon} on [Route 13]{location}, along with [Gram 1]{item} and [Gram 2]{item}, to receive [TM89]{item}.',
-        u'[Route 13]{location}',
-    ): u'[Route 13]{location:unova-route-13}',
-    (
-        u"Forms have different stats and movepools.  In Generation III, Deoxys's form depends on the game: Normal Forme in Ruby and Sapphire, Attack Forme in FireRed, Defense Forme in LeafGreen, and Speed Forme in Emerald.  In Generation IV, every form exists: form is preserved when transferring via [Pal Park]{location}, and meteorites in the southeast corner of [Veilstone City]{location} or at the west end of [Route 3]{location} can be used to switch between forms.",
-        u'[Route 3]{location}',
-    ): u'[Route 3]{location:kanto-route-13}',
-}
-
-def get_replacement(session, entire_text, matchobj):
-    print "%-30s" % matchobj.group(0),
+def get_replacement(session, entire_text, context, matchobj):
     label = matchobj.group('label')
     category = matchobj.group('category')
     target = matchobj.group('target') or label
     try:
-        result = manual_replacements[entire_text, matchobj.group(0)]
+        result = manual_replacements[matchobj.group(0)]
     except KeyError:
         if category == 'mechanic':
             target = target.lower()
+            target = target.replace(' ', '-')
+            wanted_label = ''
         else:
             query = None
             if category == 'item':
@@ -99,7 +102,6 @@ def get_replacement(session, entire_text, matchobj):
                 table = tables.Type
             elif category == 'pokemon':
                 table = tables.Pokemon
-                query = session.query(table).filter(tables.Pokemon.id < 10000)
             elif category == 'location':
                 table = tables.Location
             else:
@@ -107,20 +109,24 @@ def get_replacement(session, entire_text, matchobj):
                 print repr(entire_text)
                 print repr(matchobj.group(0))
                 raise ValueError('Category %s not implemented' % category)
-            if not query:
-                query = session.query(table)
-            query = query.join(table.names_local)
-            query = query.filter(func.lower(table.names_table.name) == target.lower())
             try:
-                thingy = query.one()
-                target = thingy.identifier
+                thingy = util.get(session, table, target)
+                wanted_label = thingy.name
             except:
                 print
                 print repr(entire_text)
                 print repr(matchobj.group(0))
                 raise
-    result = "[%s]{%s:%s}" % (label, category, target)
-    print result
+        if wanted_label.lower() == label.lower():
+            result = "[]{%s:%s}" % (category, target)
+        else:
+            result = "[%s]{%s:%s}" % (label, category, target)
+            if wanted_label:
+                print
+                print context
+                print "%-40s" % matchobj.group(0),
+                print '%s != %s' % (label, wanted_label)
+        assert result_link_re.match(result), result
     return result
 
 def main(argv):
@@ -144,10 +150,11 @@ def main(argv):
                     if not links:
                         continue
                     for link in links:
-                        assert strict_link_re.findall(link), [link]
+                        assert strict_link_re.findall(link), (strict_link_re.findall(link), [link])
                     # Do the replacement
+                    context = '%s %s %s' % (translation_class.__name__, row.foreign_id, column.name)
                     replaced = strict_link_re.sub(
-                            partial(get_replacement, session, text),
+                            partial(get_replacement, session, text, context),
                             text,
                         )
                     setattr(row, column.name, replaced)
