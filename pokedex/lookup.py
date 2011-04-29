@@ -103,7 +103,7 @@ class PokedexLookup(object):
             tables.Location,
             tables.Move,
             tables.Nature,
-            tables.Pokemon,
+            tables.PokemonSpecies,
             tables.PokemonForm,
             tables.Type,
         )
@@ -193,7 +193,7 @@ class PokedexLookup(object):
         # Index every name in all our tables of interest
         speller_entries = set()
         for cls in self.indexed_tables.values():
-            q = self.session.query(cls)
+            q = self.session.query(cls).order_by(cls.id)
 
             for row in q.yield_per(5):
                 row_key = dict(table=unicode(cls.__tablename__),
@@ -211,21 +211,17 @@ class PokedexLookup(object):
                     speller_entries.add(normalized_name)
 
 
-                # Add the basic English name to the index
-                if cls == tables.Pokemon:
-                    # Don't re-add alternate forms of the same Pokémon; they'll
-                    # be added as Pokémon forms instead
-                    if not row.is_base_form:
-                        continue
-                elif cls == tables.PokemonForm:
-                    if row.name:
-                        add(row.pokemon_name, None, u'en', u'us')
-                    continue
+                if cls == tables.PokemonForm:
+                    name_map = 'pokemon_name_map'
+                else:
+                    name_map = 'name_map'
 
-                # Some things also have other languages' names
-                # XXX other language form names..?
-                seen = set()
-                for language, name in getattr(row, 'name_map', {}).items():
+                seen = set([None])
+                for language, name in sorted(getattr(row, name_map, {}).items(),
+                        # Sort English first for now
+                        key=lambda (l, n): (l.identifier != 'en', not l.official)):
+                    if not name:
+                        continue
                     if name in seen:
                         # Don't add the name again as a different
                         # language; no point and it makes spell results
@@ -301,6 +297,11 @@ class PokedexLookup(object):
                 prefix = prefix.strip()
                 if prefix:
                     user_valid_types.append(prefix)
+                if prefix == 'pokemon':
+                    # When the user says 'pokemon', they really meant both
+                    # species & form.
+                    user_valid_types.append('pokemon_species')
+                    user_valid_types.append('pokemon_form')
 
         # Merge the valid types together.  Only types that appear in BOTH lists
         # may be used.
@@ -413,9 +414,6 @@ class PokedexLookup(object):
         This function currently ONLY does fuzzy matching if there are no exact
         matches.
 
-        Formes are not returned unless requested; "Shaymin" will return only
-        grass Shaymin.
-
         Extraneous whitespace is removed with extreme prejudice.
 
         Recognizes:
@@ -430,7 +428,6 @@ class PokedexLookup(object):
         - Language restrictions.  "@fr:charge" will only return Tackle, which
           is called "Charge" in French.  These can be combined with type
           restrictions, e.g., "@fr,move:charge".
-        - Alternate formes can be specified merely like "wash rotom".
 
         `input`
             Name of the thing to look for.
@@ -448,7 +445,6 @@ class PokedexLookup(object):
 
         name = self.normalize_name(input)
         exact = True
-        form = None
 
         # Pop off any type prefix and merge with valid_types
         name, merged_valid_types, type_term = \
