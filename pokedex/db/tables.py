@@ -1073,45 +1073,13 @@ class Pokemon(TableBase):
     order = Column(Integer, nullable=False, index=True,
         info=dict(description=u"Order for sorting. Almost national order, except families are grouped together."))
 
-    ### Stuff to handle alternate Pokémon forms
-
     @property
-    def is_base_form(self):
+    def name(self):
         u"""Returns True iff the Pokémon is the base form for its species,
         e.g. Land Shaymin.
         """
 
-        return self.unique_form is None or self.unique_form.is_default
-
-    @property
-    def form_name(self):
-        u"""Returns the Pokémon's form name if it represents a particular form
-        and that form has a name, or None otherwise.
-        """
-
-        # If self.unique_form is None, the short-circuit "and" will go ahead
-        # and return that.  Otherwise, it'll return the form's name, which may
-        # also be None.
-        return self.unique_form and self.unique_form.name
-
-    @property
-    def full_name(self):
-        u"""Returns the Pokémon's name, including its form if applicable."""
-
-        if self.form_name:
-            return u'%s %s' % (self.form_name, self.name)
-        else:
-            return self.name
-
-    @property
-    def normal_form(self):
-        u"""Returns the normal form for this Pokémon; i.e., this will return
-        regular Deoxys when called on any Deoxys form.
-        """
-
-        if self.unique_form:
-            return self.unique_form.form_base_pokemon
-        return self
+        return self.default_form.pokemon_name or self.species.name
 
     ### Not forms!
 
@@ -1268,9 +1236,9 @@ class PokemonForm(TableBase):
 
 create_translation_table('pokemon_form_names', PokemonForm, 'names',
     relation_lazy='joined',
-    form_name = Column(Unicode(32), nullable=False, index=True,
+    form_name = Column(Unicode(32), nullable=True, index=True,
         info=dict(description=u"The full form name, e.g. 'Sky Forme', for pokémon with different forms", format='plaintext', official=True)),
-    pokemon_name = Column(Unicode(32), nullable=False, index=True,
+    pokemon_name = Column(Unicode(32), nullable=True, index=True,
         info=dict(description=u"The full pokémon name, e.g. 'Sky Shaymin', for pokémon with different forms", format='plaintext', official=True)),
 )
 
@@ -1700,9 +1668,6 @@ EncounterSlot.method = relationship(EncounterMethod,
 EncounterSlot.version_group = relationship(VersionGroup, innerjoin=True)
 
 
-EvolutionChain.growth_rate = relationship(GrowthRate,
-    innerjoin=True,
-    backref='evolution_chains')
 EvolutionChain.baby_trigger_item = relationship(Item,
     backref='evolution_chains')
 
@@ -1945,22 +1910,6 @@ Pokemon.dream_ability = relationship(Ability,
         order_by=Pokemon.order,
     ),
 )
-Pokemon.pokemon_color = relationship(PokemonColor,
-    innerjoin=True,
-    backref='pokemon')
-Pokemon.color = association_proxy('pokemon_color', 'name')
-Pokemon.dex_numbers = relationship(PokemonDexNumber,
-    innerjoin=True,
-    order_by=PokemonDexNumber.pokedex_id.asc(),
-    backref='pokemon')
-Pokemon.egg_groups = relationship(EggGroup,
-    secondary=PokemonEggGroup.__table__,
-    innerjoin=True,
-    order_by=PokemonEggGroup.egg_group_id.asc(),
-    backref=backref('pokemon', order_by=Pokemon.order.asc()))
-Pokemon.evolution_chain = relationship(EvolutionChain,
-    innerjoin=True,
-    backref=backref('pokemon', order_by=Pokemon.order.asc()))
 Pokemon.forms = relationship(PokemonForm,
     primaryjoin=Pokemon.id==PokemonForm.pokemon_id,
     order_by=(PokemonForm.order.asc(), PokemonForm.form_identifier.asc()))
@@ -1969,24 +1918,18 @@ Pokemon.default_form = relationship(PokemonForm,
         Pokemon.id==PokemonForm.pokemon_id,
         PokemonForm.is_default==True),
     uselist=False)
-Pokemon.pokemon_habitat = relationship(PokemonHabitat,
-    backref='pokemon')
-Pokemon.habitat = association_proxy('pokemon_habitat', 'name')
 Pokemon.items = relationship(PokemonItem,
-    backref='pokemon')
-Pokemon.generation = relationship(Generation,
-    innerjoin=True,
-    backref='pokemon')
-Pokemon.shape = relationship(PokemonShape,
-    innerjoin=True,
     backref='pokemon')
 Pokemon.stats = relationship(PokemonStat,
     innerjoin=True,
     order_by=PokemonStat.stat_id.asc(),
     backref='pokemon')
+Pokemon.species = relationship(PokemonSpecies,
+    innerjoin=True,
+    backref='pokemon')
 Pokemon.types = relationship(Type,
     secondary=PokemonType.__table__,
-    innerjoin=True,
+    innerjoin=True, lazy='joined',
     order_by=PokemonType.slot.asc(),
     backref=backref('pokemon', order_by=Pokemon.order))
 
@@ -2012,15 +1955,12 @@ PokemonEvolution.party_species = relationship(PokemonSpecies,
 PokemonEvolution.trade_species = relationship(PokemonSpecies,
     primaryjoin=PokemonEvolution.trade_species_id==PokemonSpecies.id)
 
-PokemonSpeciesFlavorText.version = relationship(Version, innerjoin=True, lazy='joined')
-PokemonSpeciesFlavorText.language = relationship(Language, innerjoin=True, lazy='joined')
-
 PokemonForm.pokemon = relationship(Pokemon,
     primaryjoin=PokemonForm.pokemon_id==Pokemon.id,
     innerjoin=True)
+PokemonForm.species = association_proxy('pokemon', 'species')
 PokemonForm.version_group = relationship(VersionGroup,
     innerjoin=True)
-PokemonForm.form_group = association_proxy('form_base_pokemon', 'form_group')
 PokemonForm.pokeathlon_stats = relationship(PokemonFormPokeathlonStat,
     order_by=PokemonFormPokeathlonStat.pokeathlon_stat_id,
     backref='pokemon_form')
@@ -2064,7 +2004,43 @@ PokemonSpecies.evolutions = relationship(PokemonEvolution,
     backref=backref('evolved_species', innerjoin=True, lazy='joined'))
 PokemonSpecies.flavor_text = relationship(PokemonSpeciesFlavorText,
     order_by=PokemonSpeciesFlavorText.version_id.asc(),
-    backref='pokemon')
+    backref='species')
+PokemonSpecies.growth_rate = relationship(GrowthRate,
+    innerjoin=True,
+    backref='evolution_chains')
+PokemonSpecies.pokemon_habitat = relationship(PokemonHabitat,
+    backref='species')
+PokemonSpecies.habitat = association_proxy('pokemon_habitat', 'name')
+PokemonSpecies.pokemon_color = relationship(PokemonColor,
+    innerjoin=True,
+    backref='species')
+PokemonSpecies.color = association_proxy('pokemon_color', 'name')
+PokemonSpecies.egg_groups = relationship(EggGroup,
+    secondary=PokemonEggGroup.__table__,
+    innerjoin=True,
+    order_by=PokemonEggGroup.egg_group_id.asc(),
+    backref=backref('species', order_by=Pokemon.order.asc()))
+PokemonSpecies.forms = relationship(PokemonForm,
+    secondary=Pokemon.__table__,
+    primaryjoin=PokemonSpecies.id==Pokemon.species_id,
+    secondaryjoin=Pokemon.id==PokemonForm.pokemon_id,
+    order_by=Pokemon.order.asc())
+PokemonSpecies.evolution_chain = relationship(EvolutionChain,
+    innerjoin=True,
+    backref=backref('species', order_by=Pokemon.order.asc()))
+PokemonSpecies.dex_numbers = relationship(PokemonDexNumber,
+    innerjoin=True,
+    order_by=PokemonDexNumber.pokedex_id.asc(),
+    backref='species')
+PokemonSpecies.generation = relationship(Generation,
+    innerjoin=True,
+    backref='species')
+PokemonSpecies.shape = relationship(PokemonShape,
+    innerjoin=True,
+    backref='species')
+
+PokemonSpeciesFlavorText.version = relationship(Version, innerjoin=True, lazy='joined')
+PokemonSpeciesFlavorText.language = relationship(Language, innerjoin=True, lazy='joined')
 
 Region.generation = relationship(Generation, uselist=False)
 Region.version_group_regions = relationship(VersionGroupRegion,
