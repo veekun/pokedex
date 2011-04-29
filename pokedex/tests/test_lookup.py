@@ -14,29 +14,29 @@ def setup():
 def test_exact_lookup():
     tests = [
         # Simple lookups
-        (u'Eevee',          'pokemon',      133),
+        (u'Eevee',          'pokemon_species',133),
         (u'Scratch',        'moves',        10),
         (u'Master Ball',    'items',        1),
         (u'normal',         'types',        1),
         (u'Run Away',       'abilities',    50),
 
         # Funny characters
-        (u'Mr. Mime',       'pokemon',      122),
-        (u"Farfetch'd",     'pokemon',      83),
-        (u'Poké Ball',      'items',        4),
+        (u'Mr. Mime',       'pokemon_species', 122),
+        (u"Farfetch'd",     'pokemon_species', 83),
+        (u'Poké Ball',      'items',           4),
 
         # Forms
-        (u'Rotom',          'pokemon',      479),
-        (u'Wash Rotom',     'pokemon_forms',10059),
-        (u'East Shellos',   'pokemon_forms',10039),
+        (u'Rotom',          'pokemon_species', 479),
+        (u'Wash Rotom',     'pokemon_forms',   708),
+        (u'East Shellos',   'pokemon_forms',   688),
 
         # Other languages
-        (u'イーブイ',       'pokemon',      133),
-        (u'Iibui',          'pokemon',      133),
-        (u'Eievui',         'pokemon',      133),
-        (u'이브이',         'pokemon',      133),
-        (u'伊布',           'pokemon',      133),
-        (u'Evoli',          'pokemon',      133),
+        (u'イーブイ',       'pokemon_species', 133),
+        (u'Iibui',          'pokemon_species', 133),
+        (u'Eievui',         'pokemon_species', 133),
+        (u'이브이',         'pokemon_species', 133),
+        (u'伊布',           'pokemon_species', 133),
+        (u'Evoli',          'pokemon_species', 133),
     ]
 
     for input, table, id in tests:
@@ -63,13 +63,13 @@ def test_multi_lookup():
 
 def test_type_lookup():
     results = lookup.lookup(u'pokemon:1')
-    assert_equal(results[0].object.__tablename__, 'pokemon',
+    assert_equal(results[0].object.__tablename__, 'pokemon_species',
                                                 u'Type restriction works correctly')
     assert_equal(len(results), 1,               u'Only one id result when type is specified')
     assert_equal(results[0].object.name, u'Bulbasaur',
                                                 u'Type + id returns the right result')
 
-    results = lookup.lookup(u'1', valid_types=['pokemon'])
+    results = lookup.lookup(u'1', valid_types=['pokemon_species'])
     assert_equal(results[0].object.name, u'Bulbasaur',
                                                 u'valid_types works as well as type: prefix')
 
@@ -141,7 +141,7 @@ def test_random_lookup():
         results = lookup.lookup(u'random')
         assert_equal(len(results), 1,           u'Random returns one result')
 
-    for table_name in [u'pokemon', u'moves', u'items', u'abilities', u'types']:
+    for table_name in [u'pokemon_species', u'moves', u'items', u'abilities', u'types']:
         results = lookup.lookup(u'random', valid_types=[table_name])
         assert_equal(len(results), 1,           u'Constrained random returns one result')
         assert_equal(results[0].object.__tablename__, table_name,

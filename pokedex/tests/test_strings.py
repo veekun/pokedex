@@ -13,13 +13,13 @@ class TestStrings(object):
         self.connection.rollback()
 
     def test_filter(self):
-        q = self.connection.query(tables.Pokemon).filter(
-                tables.Pokemon.name == u"Marowak")
+        q = self.connection.query(tables.PokemonSpecies).filter(
+                tables.PokemonSpecies.name == u"Marowak")
         assert q.one().identifier == 'marowak'
 
     def test_languages(self):
-        q = self.connection.query(tables.Pokemon).filter(
-                tables.Pokemon.name == u"Mightyena")
+        q = self.connection.query(tables.PokemonSpecies).filter(
+                tables.PokemonSpecies.name == u"Mightyena")
         pkmn = q.one()
         for lang, name in (
                 ('en', u'Mightyena'),
@@ -33,8 +33,8 @@ class TestStrings(object):
 
     @raises(KeyError)
     def test_bad_lang(self):
-        q = self.connection.query(tables.Pokemon).filter(
-                tables.Pokemon.name == u"Mightyena")
+        q = self.connection.query(tables.PokemonSpecies).filter(
+                tables.PokemonSpecies.name == u"Mightyena")
         pkmn = q.one()
         pkmn.names["identifier of a language that doesn't exist"]
 

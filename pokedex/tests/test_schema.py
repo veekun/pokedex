@@ -202,5 +202,6 @@ def test_identifiers_with_names():
     """Test that named tables have identifiers
     """
     for table in sorted(tables.mapped_classes, key=lambda t: t.__name__):
-        if hasattr(table, 'name'):
-            assert hasattr(table, 'identifier'), table
+        for translation_class in table.translation_classes:
+            if hasattr(translation_class, 'name'):
+                assert hasattr(table, 'identifier'), table
