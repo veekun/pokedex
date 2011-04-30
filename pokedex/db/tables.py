@@ -1072,16 +1072,12 @@ class Pokemon(TableBase):
         info=dict(description=u"The base EXP gained when defeating this Pokémon"))  # XXX: Is this correct?
     order = Column(Integer, nullable=False, index=True,
         info=dict(description=u"Order for sorting. Almost national order, except families are grouped together."))
+    is_default = Column(Boolean, nullable=False, index=True,
+        info=dict(description=u'Set for exactly one pokemon used as the default for each species.'))
 
     @property
     def name(self):
-        u"""Returns True iff the Pokémon is the base form for its species,
-        e.g. Land Shaymin.
-        """
-
         return self.default_form.pokemon_name or self.species.name
-
-    ### Not forms!
 
     def stat(self, stat_name):
         u"""Returns a PokemonStat record for the given stat name (or Stat row
@@ -1218,13 +1214,13 @@ class PokemonForm(TableBase):
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u'A unique ID for this form.'))
     form_identifier = Column(Unicode(16), nullable=True,
-        info=dict(description=u"An identifier of the form, uniue among a species", format='identifier'))
+        info=dict(description=u"An identifier of the form, uniue among a species. May be None for the default form of the species.", format='identifier'))
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, autoincrement=False,
         info=dict(description=u'The ID of the base Pokémon for this form.'))
     introduced_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), autoincrement=False,
         info=dict(description=u'The ID of the version group in which this form first appeared.'))
     is_default = Column(Boolean, nullable=False,
-        info=dict(description=u'Set for exactly one form used as the default for each species.'))
+        info=dict(description=u'Set for exactly one form used as the default for each pokemon (not necessarily species).'))
     is_battle_only = Column(Boolean, nullable=False,
         info=dict(description=u'Set iff the form can only appear in battle.'))
     order = Column(Integer, nullable=False, autoincrement=False,
@@ -1917,7 +1913,7 @@ Pokemon.default_form = relationship(PokemonForm,
     primaryjoin=and_(
         Pokemon.id==PokemonForm.pokemon_id,
         PokemonForm.is_default==True),
-    uselist=False)
+    uselist=False, lazy='joined')
 Pokemon.items = relationship(PokemonItem,
     backref='pokemon')
 Pokemon.stats = relationship(PokemonStat,
@@ -1957,7 +1953,7 @@ PokemonEvolution.trade_species = relationship(PokemonSpecies,
 
 PokemonForm.pokemon = relationship(Pokemon,
     primaryjoin=PokemonForm.pokemon_id==Pokemon.id,
-    innerjoin=True)
+    innerjoin=True, lazy='joined')
 PokemonForm.species = association_proxy('pokemon', 'species')
 PokemonForm.version_group = relationship(VersionGroup,
     innerjoin=True)
@@ -1995,7 +1991,7 @@ PokemonMove.method = relationship(PokemonMoveMethod,
 PokemonStat.stat = relationship(Stat,
     innerjoin=True, lazy='joined')
 
-PokemonSpecies.parent_pokemon = relationship(PokemonSpecies,
+PokemonSpecies.parent_species = relationship(PokemonSpecies,
     primaryjoin=PokemonSpecies.evolves_from_species_id==PokemonSpecies.id,
     remote_side=[PokemonSpecies.id],
     backref='child_species')
@@ -2008,13 +2004,11 @@ PokemonSpecies.flavor_text = relationship(PokemonSpeciesFlavorText,
 PokemonSpecies.growth_rate = relationship(GrowthRate,
     innerjoin=True,
     backref='evolution_chains')
-PokemonSpecies.pokemon_habitat = relationship(PokemonHabitat,
+PokemonSpecies.habitat = relationship(PokemonHabitat,
     backref='species')
-PokemonSpecies.habitat = association_proxy('pokemon_habitat', 'name')
-PokemonSpecies.pokemon_color = relationship(PokemonColor,
+PokemonSpecies.color = relationship(PokemonColor,
     innerjoin=True,
     backref='species')
-PokemonSpecies.color = association_proxy('pokemon_color', 'name')
 PokemonSpecies.egg_groups = relationship(EggGroup,
     secondary=PokemonEggGroup.__table__,
     innerjoin=True,
@@ -2024,10 +2018,22 @@ PokemonSpecies.forms = relationship(PokemonForm,
     secondary=Pokemon.__table__,
     primaryjoin=PokemonSpecies.id==Pokemon.species_id,
     secondaryjoin=Pokemon.id==PokemonForm.pokemon_id,
-    order_by=Pokemon.order.asc())
+    order_by=(PokemonForm.order.asc(), PokemonForm.form_identifier.asc()))
+PokemonSpecies.default_form = relationship(PokemonForm,
+    secondary=Pokemon.__table__,
+    primaryjoin=and_(PokemonSpecies.id==Pokemon.species_id,
+            Pokemon.is_default==True),
+    secondaryjoin=and_(Pokemon.id==PokemonForm.pokemon_id,
+            PokemonForm.is_default==True),
+    uselist=False)
+PokemonSpecies.default_pokemon = relationship(Pokemon,
+    primaryjoin=and_(
+        PokemonSpecies.id==Pokemon.species_id,
+        Pokemon.is_default==True),
+    uselist=False, lazy='joined')
 PokemonSpecies.evolution_chain = relationship(EvolutionChain,
     innerjoin=True,
-    backref=backref('species', order_by=Pokemon.order.asc()))
+    backref=backref('species', order_by=PokemonSpecies.id.asc()))
 PokemonSpecies.dex_numbers = relationship(PokemonDexNumber,
     innerjoin=True,
     order_by=PokemonDexNumber.pokedex_id.asc(),
