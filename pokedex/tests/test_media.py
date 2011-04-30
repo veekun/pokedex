@@ -39,15 +39,15 @@ def if_available(func):
 @if_available
 def test_totodile():
     """Totodile's female sprite -- same as male"""
-    totodile = session.query(tables.Pokemon).filter_by(identifier=u'totodile').one()
-    accessor = media.PokemonMedia(root, totodile)
+    totodile = session.query(tables.PokemonSpecies).filter_by(identifier=u'totodile').one()
+    accessor = media.PokemonSpeciesMedia(root, totodile)
     assert accessor.sprite() == accessor.sprite(female=True)
 
 @if_available
 def test_chimecho():
     """Chimecho's Platinum female backsprite -- diffeent from male"""
-    chimecho = session.query(tables.Pokemon).filter_by(identifier=u'chimecho').one()
-    accessor = media.PokemonMedia(root, chimecho)
+    chimecho = session.query(tables.PokemonSpecies).filter_by(identifier=u'chimecho').one()
+    accessor = media.PokemonSpeciesMedia(root, chimecho)
     male = accessor.sprite('platinum', back=True, frame=2)
     female = accessor.sprite('platinum', back=True, female=True, frame=2)
     assert male != female
@@ -55,16 +55,16 @@ def test_chimecho():
 @if_available
 def test_venonat():
     """Venonat's shiny Yellow sprite -- same as non-shiny"""
-    venonat = session.query(tables.Pokemon).filter_by(identifier=u'venonat').one()
-    accessor = media.PokemonMedia(root, venonat)
+    venonat = session.query(tables.PokemonSpecies).filter_by(identifier=u'venonat').one()
+    accessor = media.PokemonSpeciesMedia(root, venonat)
     assert accessor.sprite('yellow') == accessor.sprite('yellow', shiny=True)
 
 @if_available
 def test_arceus_icon():
     """Arceus fire-form icon -- same as base icon"""
-    arceus = session.query(tables.Pokemon).filter_by(identifier=u'arceus').one()
-    accessor = media.PokemonMedia(root, arceus)
-    fire_arceus = [f for f in arceus.forms if f.identifier == 'fire'][0]
+    arceus = session.query(tables.PokemonSpecies).filter_by(identifier=u'arceus').one()
+    accessor = media.PokemonSpeciesMedia(root, arceus)
+    fire_arceus = [f for f in arceus.forms if f.form_identifier == 'fire'][0]
     fire_accessor = media.PokemonFormMedia(root, fire_arceus)
     assert accessor.icon() == fire_accessor.icon()
 
@@ -72,8 +72,9 @@ def test_arceus_icon():
 @raises(ValueError)
 def test_strict_castform():
     """Castform rainy form overworld with strict -- unavailable"""
-    castform = session.query(tables.Pokemon).filter_by(identifier=u'castform').first()
-    rainy_castform = [f for f in castform.forms if f.identifier == 'rainy'][0]
+    castform = session.query(tables.PokemonSpecies).filter_by(identifier=u'castform').first()
+    rainy_castform = [f for f in castform.forms if f.form_identifier == 'rainy'][0]
+    print rainy_castform
     rainy_castform = media.PokemonFormMedia(root, rainy_castform)
     rainy_castform.overworld('up', strict=True)
 
@@ -81,8 +82,8 @@ def test_strict_castform():
 @raises(ValueError)
 def test_strict_exeggcute():
     """Exeggcutes's female backsprite, with strict -- unavailable"""
-    exeggcute = session.query(tables.Pokemon).filter_by(identifier=u'exeggcute').one()
-    accessor = media.PokemonMedia(root, exeggcute)
+    exeggcute = session.query(tables.PokemonSpecies).filter_by(identifier=u'exeggcute').one()
+    accessor = media.PokemonSpeciesMedia(root, exeggcute)
     accessor.sprite(female=True, strict=True)
 
 
@@ -194,26 +195,26 @@ def check_get_everything():
 
     accessors.append(media.UnknownPokemonMedia(root))
     accessors.append(media.EggMedia(root))
-    manaphy = session.query(tables.Pokemon).filter_by(identifier=u'manaphy').one()
+    manaphy = session.query(tables.PokemonSpecies).filter_by(identifier=u'manaphy').one()
     accessors.append(media.EggMedia(root, manaphy))
     accessors.append(media.SubstituteMedia(root))
 
-    for form in session.query(tables.PokemonForm).filter(tables.PokemonForm.identifier != '').all():
+    for form in session.query(tables.PokemonForm).all():
         accessors.append(media.PokemonFormMedia(root, form))
 
-    for pokemon in session.query(tables.Pokemon).all():
-        accessors.append(media.PokemonMedia(root, pokemon))
+    for pokemon in session.query(tables.PokemonSpecies).all():
+        accessors.append(media.PokemonSpeciesMedia(root, pokemon))
 
     for accessor in accessors:
-        assert hit(filenames, accessor.footprint) or not accessor.form
-        assert hit(filenames, accessor.trozei) or not accessor.form or (
-                accessor.form.pokemon.generation.id > 3)
-        assert hit(filenames, accessor.cry) or not accessor.form
-        assert hit(filenames, accessor.cropped_sprite) or not accessor.form
+        assert hit(filenames, accessor.footprint) or not accessor.is_proper
+        assert hit(filenames, accessor.trozei) or not accessor.is_proper or (
+                accessor.introduced_in > 3)
+        assert hit(filenames, accessor.cry) or not accessor.is_proper
+        assert hit(filenames, accessor.cropped_sprite) or not accessor.is_proper
         for female in (True, False):
-            assert hit(filenames, accessor.icon, female=female) or not accessor.form
+            assert hit(filenames, accessor.icon, female=female) or not accessor.is_proper
             assert hit(filenames, accessor.sugimori, female=female) or (
-                    not accessor.form or accessor.form.pokemon.id >= 647)
+                    not accessor.is_proper or int(accessor.species_id) >= 647)
             for shiny in (True, False):
                 for frame in (1, 2):
                     for direction in 'up down left right'.split():
@@ -222,8 +223,8 @@ def check_get_everything():
                                 shiny=shiny,
                                 female=female,
                                 frame=frame,
-                            ) or not accessor.form or (
-                                    accessor.form.pokemon.generation.id > 4)
+                            ) or not accessor.is_proper or (
+                                    accessor.introduced_in > 4)
                     for version in versions:
                         for animated in (True, False):
                             for back in (True, False):
@@ -243,8 +244,8 @@ def check_get_everything():
                                         shiny and not female and
                                         frame == 1):
                                         # All pokemon are in Black
-                                        assert success or not accessor.form
-                                    if (str(accessor.pokemon_id) == '1'
+                                        assert success or not accessor.is_proper
+                                    if (str(accessor.species_id) == '1'
                                         and not animated and not color and
                                         frame == 1):
                                         # Bulbasaur is in all versions

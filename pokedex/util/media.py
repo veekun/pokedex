@@ -105,7 +105,8 @@ class BaseMedia(object):
 class _BasePokemonMedia(BaseMedia):
     toplevel_dir = 'pokemon'
     has_gender_differences = False
-    form = None
+    is_species = False
+    is_proper = False
     introduced_in = 0
 
     # Info about of what's inside the pokemon main sprite directories, so we
@@ -126,13 +127,13 @@ class _BasePokemonMedia(BaseMedia):
             'black-white': (5, set('back shiny female'.split())),
         }
 
-    def __init__(self, root, pokemon_id, form_postfix=None):
+    def __init__(self, root, species_id, form_postfix=None):
         BaseMedia.__init__(self, root)
-        self.pokemon_id = str(pokemon_id)
+        self.species_id = str(species_id)
         self.form_postfix = form_postfix
 
     def _get_file(self, path_elements, extension, strict, surely_exists=False):
-        basename = str(self.pokemon_id)
+        basename = str(self.species_id)
         if self.form_postfix:
             fullname = basename + self.form_postfix
             try:
@@ -195,7 +196,7 @@ class _BasePokemonMedia(BaseMedia):
                 generation, info = self._pokemon_sprite_info[version_dir]
         if generation < self.introduced_in:
             raise ValueError("Pokemon %s didn't exist in %s" % (
-                    self.pokemon_id, version_dir))
+                    self.species_id, version_dir))
         path_elements = ['main-sprites', version_dir]
         if animated:
             if 'animated' not in info:
@@ -235,7 +236,7 @@ class _BasePokemonMedia(BaseMedia):
             # Chimecho's female back frame 2 sprite has one hand in
             # a slightly different pose, in Platinum and HGSS
             # (we have duplicate sprites frame 1, for convenience)
-            if self.pokemon_id == '358' and back and version_dir in (
+            if self.species_id == '358' and back and version_dir in (
                     'platinum', 'heartgold-soulsilver'):
                 female_sprite = True
             female_sprite = female_sprite and 'female' in info
@@ -243,7 +244,7 @@ class _BasePokemonMedia(BaseMedia):
                 path_elements.append('female')
             elif strict:
                 raise ValueError(
-                    'Pokemon %s has no gender differences' % self.pokemon_id)
+                    'Pokemon %s has no gender differences' % self.species_id)
         if not frame or frame == 1:
             pass
         elif frame == 2:
@@ -255,9 +256,8 @@ class _BasePokemonMedia(BaseMedia):
             raise ValueError("Bad frame %s" % frame)
         return self._get_file(path_elements, extension, strict=strict,
                 # Avoid a stat in the common case
-                surely_exists=(self.form and version_dir == 'black-white'
-                    and not back and not female
-                    and not self.form_postfix))
+                surely_exists=(self.is_species and version_dir == 'black-white'
+                    and not back and not female))
 
     def _maybe_female(self, path_elements, female, strict):
         if female:
@@ -270,7 +270,7 @@ class _BasePokemonMedia(BaseMedia):
                         raise
             elif strict:
                 raise ValueError(
-                    'Pokemon %s has no gender differences' % self.pokemon_id)
+                    'Pokemon %s has no gender differences' % self.species_id)
         return self._get_file(path_elements, '.png', strict=strict)
 
     def icon(self, female=False, strict=False):
@@ -336,28 +336,32 @@ class _BasePokemonMedia(BaseMedia):
         return self._get_file(['cropped'], '.png', strict=strict)
 
 class PokemonFormMedia(_BasePokemonMedia):
-    """Media related to a Pokemon form
+    """Media related to a PokemonForm
     """
+    is_proper = True
+
     def __init__(self, root, pokemon_form):
-        pokemon_id = pokemon_form.form_base_pokemon_id
-        if pokemon_form.identifier:
-            form_postfix = '-' + pokemon_form.identifier
+        species_id = pokemon_form.species.id
+        if pokemon_form.form_identifier:
+            form_postfix = '-' + pokemon_form.form_identifier
         else:
             form_postfix = None
-        _BasePokemonMedia.__init__(self, root, pokemon_id, form_postfix)
+        _BasePokemonMedia.__init__(self, root, species_id, form_postfix)
         self.form = pokemon_form
-        pokemon = pokemon_form.form_base_pokemon
-        self.has_gender_differences = pokemon.has_gender_differences
-        self.introduced_in = pokemon.generation_id
+        species = pokemon_form.species
+        self.has_gender_differences = species.has_gender_differences
+        self.introduced_in = pokemon_form.version_group.generation_id
 
-class PokemonMedia(_BasePokemonMedia):
-    """Media related to a Pokemon
+class PokemonSpeciesMedia(_BasePokemonMedia):
+    """Media related to a PokemonSpecies
     """
-    def __init__(self, root, pokemon):
-        _BasePokemonMedia.__init__(self, root, pokemon.id)
-        self.form = pokemon.default_form
-        self.has_gender_differences = (pokemon.has_gender_differences)
-        self.introduced_in = pokemon.generation_id
+    is_species = True
+    is_proper = True
+
+    def __init__(self, root, species):
+        _BasePokemonMedia.__init__(self, root, species.id)
+        self.has_gender_differences = species.has_gender_differences
+        self.introduced_in = species.generation_id
 
 class UnknownPokemonMedia(_BasePokemonMedia):
     """Media related to the unknown Pokemon ("?")
@@ -372,10 +376,10 @@ class EggMedia(_BasePokemonMedia):
 
     Note that not a lot of files are available for these.
 
-    Give a Manaphy as `pokemon` to get the Manaphy egg.
+    Give a Manaphy as `species` to get the Manaphy egg.
     """
-    def __init__(self, root, pokemon=None):
-        if pokemon and pokemon.identifier == 'manaphy':
+    def __init__(self, root, species=None):
+        if species and species.identifier == 'manaphy':
             postfix = '-manaphy'
         else:
             postfix = None
