@@ -1,10 +1,16 @@
 
+import pytest
+from pokedex.tests import single_params
+
 import sys
 
 from pokedex.db import connect
 from pokedex.util.movesets import main
 
-testcase_args = u"""
+result_map = {'OK': True, 'NO': False}
+session = connect()
+
+argstrings = u"""
 NO muk
 NO beedrill rage pursuit agility endeavor toxic
 NO ditto psystrike aeroblast mist-ball judgment
@@ -54,40 +60,42 @@ OK deoxys counter extremespeed spikes pursuit
 OK pikachu reversal bide nasty-plot discharge
 NO pikachu surf charge
 OK pikachu volt-tackle encore headbutt grass-knot
-OK suicune extremespeed dig icy-wind bite
-"""
+#OK suicune extremespeed dig icy-wind bite
+""".strip().splitlines()
 
-result_map = {'OK': True, 'NO': False}
-
-def test_cases():
-    session = connect()
-    for argstring in testcase_args.strip().splitlines():
-        def run_test(argstring):
-            args = argstring.split() + ['-q']
-            assert bool(main(args[1:], session=session)) == result_map[args[0]]
-        run_test.description = 'Moveset checker test: ' + argstring.strip()
-        yield run_test, argstring.strip()
-
+@single_params(*argstrings)
+def test_moveset(argstring):
+    if argstring[0] == '#':
+        xfail = True
+        argstring = argstring[1:]
+    else:
+        xfail = False
+    args = argstring.strip().split() + ['-q']
+    try:
+        assert bool(main(args[1:], session=session)) == result_map[args[0]]
+    except AssertionError:
+        if xfail:
+            pytest.xfail()
+        raise
 
 if __name__ == '__main__':
-    # Nose's default profiler, the unmaintained hotshot, sucks.
-    # Use cProfile instead.
+    # XXX: Is there a profiler for py.test?
+    # Just use cProfile for now.
     filename = 'movesets.profile'
     print 'Profiling the moveset checker'
     import cProfile
     ok_fail = [0, 0]
-    def run_case(f, argv):
+    def run_case(argv):
         print argv, '...',
         sys.stdout.flush()
         try:
-            f(argv)
+            test_moveset(argv)
             ok_fail[0] += 1
             print 'ok'
-        except AssertionError:
+        except (AssertionError, pytest.xfail.Exception):
             ok_fail[1] += 1
             print 'FAIL'
-    cases = list(test_cases())
-    cProfile.runctx("[(run_case(f, argv)) for f, argv in cases]",
+    cProfile.runctx("[(run_case(argv.strip())) for argv in argstrings]",
             globals(), locals(), filename=filename)
     if ok_fail[1]:
         print '*** FAILED ***'
