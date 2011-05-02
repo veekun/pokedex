@@ -279,6 +279,19 @@ class MovesetSearch(object):
                         cost = costs['tutor-once']
                     elif method == 'egg':
                         cost = costs['breed']
+                    elif method == 'form-change':
+                        cost = costs[method]
+                        # XXX: Ugly
+                        # Prevent Rotom from breeding.
+                        # Since it's genderless and doesn't evolve, breeding
+                        # would be unnecessary. The normal algorithm would
+                        # give its form-change move to the baby Rotom, though,
+                        # which would allow it to learn another one... aaaaa
+                        # The alternative is checking moves for 'form-change'
+                        # on every breed, or making form-change entirely
+                        # separate :(
+                        self.unbreedable = self.unbreedable.union(
+                                self.switchable_form_pokemon[pokemon])
                     else:
                         cost = costs[method]
                 movepools[chain][move] = min(
@@ -322,6 +335,7 @@ class MovesetSearch(object):
         self.babies[egg_group_id] = set of baby pokemon
         self.hatch_counters[pokemon] = hatch counter
         self.gender_rates[evolution_chain] = gender rate
+        self.switchable_form_pokemon[pokemon] = set of pokemon for switchable forms
         """
         eg1 = tables.PokemonEggGroup
         eg2 = aliased(tables.PokemonEggGroup)
@@ -331,6 +345,8 @@ class MovesetSearch(object):
         query = self.session.query(
                 tables.Pokemon.id,
                 tables.PokemonSpecies.evolution_chain_id,
+                tables.PokemonSpecies.id,
+                tables.PokemonSpecies.forms_switchable,
                 parent_pokemon.id,
                 eg1.egg_group_id,
                 eg2.egg_group_id,
@@ -356,8 +372,11 @@ class MovesetSearch(object):
         self.babies = defaultdict(set)
         self.hatch_counters = dict()
         self.gender_rates = dict()
+        self.switchable_form_pokemon = dict()
+        switchable_pokemon_by_species = defaultdict(set)
         item_baby_chains = set()  # evolution chains with baby-trigger items
-        for pokemon, evolution_chain, parent, g1, g2, baby_item, hatch_counter, gender_rate in query:
+        for (pokemon, evolution_chain, species, forms_switchable, parent,
+                g1, g2, baby_item, hatch_counter, gender_rate) in query:
             self.hatch_counters[pokemon] = hatch_counter
             self.gender_rates[evolution_chain] = gender_rate
             if g1 in bad_groups:
@@ -374,6 +393,15 @@ class MovesetSearch(object):
                 self.evolution_parents[pokemon] = parent
                 if baby_item:
                     item_baby_chains.add(evolution_chain)
+            if forms_switchable:
+                # Each form-swithable species shares a set of the switchable
+                # pokemon. When adding a pokémon we assign the set to it,
+                # and add the pokémon to it (mutating the shared copy).
+                # So in the end, each of the pokémon ends up with the complete
+                # set for its species.
+                switchable = switchable_pokemon_by_species[species]
+                self.switchable_form_pokemon[pokemon] = switchable
+                switchable.add(pokemon)
         self.unbreedable = frozenset(unbreedable)
 
         self.evolutions = defaultdict(set)
@@ -642,6 +670,7 @@ default_costs = {
     'forget': 300,  # Deleting a move. (Not needed unless deleting an evolution move.)
     'relearn': 150,  # Also a pain, though not as big as breeding.
     'per-level': 1,  # Prefer less grinding. This is for all lv-ups but the final “grow”
+    'form-switch': 5,  # Not a big deal
 
     # Breeding for moves the target pokemon leans easily is kind of stupid.
     # (Though not *very* stupid, and since the program considers evolution
@@ -941,6 +970,10 @@ class ShedEvolutionAction(EvolutionAction, namedtuple('EvolutionAction', 'search
         mvs = ', '.join(m.name for m in self.moves)
         return u"Co-evolve to {0.pokemon.name}, learning {1}".format(self, mvs)
 
+class FormSwitchAction(Action, namedtuple('EvolutionAction', 'search pokemon_')):
+    def __unicode__(self):
+        return u"Switch to {0.pokemon.name}".format(self)
+
 class GrowAction(Action, namedtuple('GrowAction', 'search level')):
     def __unicode__(self):
         return u"Grow to level {0.level}".format(self)
@@ -1039,6 +1072,7 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                 self.expand_trade(),
                 self.expand_grow(),
                 self.expand_evolutions(),
+                self.expand_form_change(),
                 self.expand_breed(),
             )
 
@@ -1076,8 +1110,15 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                     for level, cost in levels_costs:
                         yield self._learn(move, method, cost, new_level=False)
                 elif method == 'form-change':
-                    # XXX: Form changes
-                    pass
+                    for level, cost in levels_costs:
+                        # Learn this at level 100, but only if the current
+                        # level is strictly lower.
+                        # That'll prevent the pokémon to learn more than one
+                        # of these without us having to keep track of the other
+                        # forms and their moves.
+                        if self.level < 100:
+                            yield self._learn(move, method, cost,
+                                level=100, new_level=True)
                 else:
                     raise ValueError('Unknown move method %s' % method)
 
@@ -1117,7 +1158,7 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                 self.level <= search.goal_level):
             kwargs = self._asdict()
             kwargs['level'] = search.goal_level
-            kwargs['new_level'] = True
+            kwargs['new_level'] = 'G'
             yield 0, GrowAction(search, search.goal_level), GoalNode(**kwargs)
 
     def expand_evolutions(self):
@@ -1181,6 +1222,13 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
             yield cost, EvolutionAction(search, child, trigger, self.moves_), self._replace(
                     **kwargs)
 
+    def expand_form_change(self):
+        search = self.search
+        for pokemon in search.switchable_form_pokemon.get(self.pokemon_, ()):
+            if pokemon != self.pokemon_:
+                yield search.costs['form-switch'], FormSwitchAction(
+                        search, pokemon), self._replace(pokemon_=pokemon, new_level=False)
+
     def expand_breed(self):
         search = self.search
         if self.pokemon_ in search.unbreedable:
@@ -1197,7 +1245,7 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
         goal_groups = search.egg_groups[goal_family]
         goal_compatible = set(goal_groups).intersection(egg_groups)
         if 0 < gender_rate:
-            # Only pokemon that have males can pas down moves to other species
+            # Only pokemon that have males can pass down moves to other species
             # (and the other species must have females: checked in BreedNode)
             for group in egg_groups:
                 if moves in breeds_required[group]:
