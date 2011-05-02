@@ -86,7 +86,7 @@ class MovesetSearch(object):
         else:
             self.costs = costs
 
-        self.excluded_families = frozenset(p.evolution_chain_id
+        self.excluded_families = frozenset(p.species.evolution_chain_id
                 for p in exclude_pokemon)
 
         if debug_level > 1:
@@ -101,7 +101,7 @@ class MovesetSearch(object):
             raise DuplicateMoves('Cannot learn duplicate moves')
 
         if pokemon:
-            self.goal_evolution_chain = pokemon.evolution_chain_id
+            self.goal_evolution_chain = pokemon.species.evolution_chain_id
             if self.goal_evolution_chain in self.excluded_families:
                 raise TargetExcluded('The target pokemon was excluded.')
         else:
@@ -122,6 +122,7 @@ class MovesetSearch(object):
         easy_moves, non_egg_moves = self.load_pokemon_moves(
                 self.goal_evolution_chain, 'family')
 
+        # Hard moves: ones we have to breed for or do somehing even costlier
         self.hard_moves = self.goal_moves - easy_moves
         self.egg_moves = self.goal_moves - non_egg_moves
         if self.hard_moves:
@@ -232,9 +233,10 @@ class MovesetSearch(object):
                 tables.PokemonMove.version_group_id,
                 tables.PokemonMoveMethod.identifier,
                 tables.PokemonMove.level,
-                tables.Pokemon.evolution_chain_id,
+                tables.PokemonSpecies.evolution_chain_id,
             )
         query = query.join(tables.PokemonMove.pokemon)
+        query = query.join(tables.Pokemon.species)
         query = query.filter(tables.PokemonMoveMethod.id == 
                 tables.PokemonMove.pokemon_move_method_id)
         query = query.filter(tables.PokemonMove.version_group_id.in_(
@@ -247,14 +249,14 @@ class MovesetSearch(object):
                             self.evolution_moves.values()),
                 ))
         if self.excluded_families:
-            query = query.filter(not_(tables.Pokemon.evolution_chain_id.in_(
+            query = query.filter(not_(tables.PokemonSpecies.evolution_chain_id.in_(
                     self.excluded_families)))
         if evolution_chain:
             if selection == 'family':
-                query = query.filter(tables.Pokemon.evolution_chain_id == (
+                query = query.filter(tables.PokemonSpecies.evolution_chain_id == (
                         evolution_chain))
             elif selection == 'others':
-                query = query.filter(tables.Pokemon.evolution_chain_id != (
+                query = query.filter(tables.PokemonSpecies.evolution_chain_id != (
                         evolution_chain))
         query = query.order_by(tables.PokemonMove.level)
         easy_moves = set()
@@ -323,20 +325,26 @@ class MovesetSearch(object):
         """
         eg1 = tables.PokemonEggGroup
         eg2 = aliased(tables.PokemonEggGroup)
+        # Gotta do little species dance to get the evolution parent pokemon
+        parent_species = aliased(tables.PokemonSpecies)
+        parent_pokemon = aliased(tables.Pokemon)
         query = self.session.query(
                 tables.Pokemon.id,
-                tables.Pokemon.evolution_chain_id,
-                tables.Pokemon.evolves_from_pokemon_id,
+                tables.PokemonSpecies.evolution_chain_id,
+                parent_pokemon.id,
                 eg1.egg_group_id,
                 eg2.egg_group_id,
                 tables.EvolutionChain.baby_trigger_item_id,
-                tables.Pokemon.hatch_counter,
-                tables.Pokemon.gender_rate,
+                tables.PokemonSpecies.hatch_counter,
+                tables.PokemonSpecies.gender_rate,
             )
-        query = query.join(tables.Pokemon.evolution_chain)
-        query = query.join((eg1, eg1.pokemon_id == tables.Pokemon.id))
+        query = query.join(tables.Pokemon.species)
+        query = query.join(tables.PokemonSpecies.evolution_chain)
+        query = query.outerjoin((parent_species, tables.PokemonSpecies.parent_species))
+        query = query.outerjoin((parent_pokemon, parent_species.pokemon))
+        query = query.join((eg1, eg1.species_id == tables.PokemonSpecies.id))
         query = query.outerjoin((eg2, and_(
-                eg2.pokemon_id == tables.Pokemon.id,
+                eg2.species_id == tables.PokemonSpecies.id,
                 eg1.egg_group_id < eg2.egg_group_id,
             )))
         bad_groups = (self.no_eggs_group, self.ditto_group)
@@ -371,12 +379,14 @@ class MovesetSearch(object):
         self.evolutions = defaultdict(set)
         self.evolution_moves = dict()
         query = self.session.query(
-                tables.PokemonEvolution.evolved_pokemon_id,
+                tables.Pokemon.id,
                 tables.EvolutionTrigger.identifier,
                 tables.PokemonEvolution.known_move_id,
                 tables.PokemonEvolution.minimum_level,
             )
         query = query.join(tables.PokemonEvolution.trigger)
+        query = query.join(tables.PokemonEvolution.evolved_species)
+        query = query.join(tables.PokemonSpecies.pokemon)
         for child, trigger, move, level in query:
             self.evolutions[self.evolution_parents[child]].add(
                     (trigger, move, level, child))
@@ -984,10 +994,12 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
         'search pokemon_ level version_group_ new_level moves_')):
 
     def __str__(self):
-        return "lv.{level:3}{s} {self.pokemon.identifier:<10.10} in {version_group_:3} with {moves}".format(
+        return "lv.{level:3}{s} {species:<10.10}{form:3.3} in {version_group_:3} with {moves}".format(
                 s='*' if self.new_level else ' ',
                 moves=','.join(sorted(move.identifier for move in self.moves)) or '---',
                 self=self,
+                species=self.pokemon.species.identifier,
+                form=self.pokemon.default_form.form_identifier or '',
                 **self._asdict())
 
     def expand(self):
@@ -1386,13 +1398,15 @@ def main(argv, session=None):
 
     class BadArgs(ValueError): pass
 
-    def _get_list(table, idents, name):
+    def _get_list(table, idents, name, query=None):
         if not idents:
             return []
         result = []
-        query = session.query(table).filter(table.identifier.in_(idents))
-        query = query.order_by(table.id.desc())  # overwrite pokemon alt. forms
-        ident_map = dict((thing.identifier, thing) for thing in query)
+        if not query:
+            query = session.query(table.identifier, table)
+        query = query.filter(table.identifier.in_(idents))
+        query = query.order_by(table.id.desc())
+        ident_map = dict(query)
         for ident in idents:
             try:
                 result.append(ident_map[ident])
@@ -1403,8 +1417,14 @@ def main(argv, session=None):
         return result
 
     try:
-        all_pokemon = _get_list(tables.Pokemon,
-                [args.pokemon] + args.exclude_pokemon, 'Pokemon')
+        pokemon_query = session.query(tables.PokemonSpecies.identifier,
+                tables.Pokemon)
+        pokemon_query = pokemon_query.filter(
+                tables.PokemonSpecies.id == tables.Pokemon.species_id)
+        all_pokemon = _get_list(tables.PokemonSpecies,
+                [args.pokemon] + args.exclude_pokemon, 'Pokemon',
+                query=pokemon_query)
+
         all_versions = _get_list(tables.Version,
                 [args.version] + args.exclude_version, 'Version')
 
