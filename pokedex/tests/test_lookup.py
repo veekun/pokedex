@@ -1,18 +1,12 @@
-# encoding: utf8
-from nose.tools import *
-import unittest
+# Encoding: UTF-8
+
+from pokedex.tests import *
 
 from pokedex.lookup import PokedexLookup
 
-lookup = None
+lookup = PokedexLookup()
 
-def setup():
-    # Recreate data
-    global lookup
-    lookup = PokedexLookup()
-
-def test_exact_lookup():
-    tests = [
+@positional_params(
         # Simple lookups
         (u'Eevee',          'pokemon_species',133),
         (u'Scratch',        'moves',        10),
@@ -37,68 +31,61 @@ def test_exact_lookup():
         (u'이브이',         'pokemon_species', 133),
         (u'伊布',           'pokemon_species', 133),
         (u'Evoli',          'pokemon_species', 133),
-    ]
+    )
+def test_exact_lookup(input, table, id):
+    results = lookup.lookup(input)
+    assert len(results) == 1
+    assert results[0].exact == True
 
-    for input, table, id in tests:
-        results = lookup.lookup(input)
-        assert_equal(len(results), 1,           u"'%s' returns one result" % input)
-        assert_equal(results[0].exact, True,    u"'%s' match exactly" % input)
-
-        row = results[0].object
-        assert_equal(row.__tablename__, table,  u"'%s' is in the right table" % input)
-        assert_equal(row.id, id,                u"'%s' returns the right id" % input)
+    row = results[0].object
+    assert row.__tablename__ == table
+    assert row.id == id
 
 
 def test_id_lookup():
     results = lookup.lookup(u'1')
-    assert_true(len(results) >= 5,              u'At least five things have id 1')
-    assert_true(all(_.object.id == 1 for _ in results),
-                                                u'All results have id 1')
+    assert len(results) >= 5
+    assert all(result.object.id == 1 for result in results)
+
 
 def test_multi_lookup():
     results = lookup.lookup(u'Metronome')
-    assert_equal(len(results), 2,               u'Two things called "Metronome"')
-    assert_true(results[0].exact,               u'Metronome matches are exact')
+    assert len(results) == 2
+    assert results[0].exact
 
 
 def test_type_lookup():
     results = lookup.lookup(u'pokemon:1')
-    assert_equal(results[0].object.__tablename__, 'pokemon_species',
-                                                u'Type restriction works correctly')
-    assert_equal(len(results), 1,               u'Only one id result when type is specified')
-    assert_equal(results[0].object.name, u'Bulbasaur',
-                                                u'Type + id returns the right result')
+    assert results[0].object.__tablename__ == 'pokemon_species'
+    assert len(results) == 1
+    assert results[0].object.name == u'Bulbasaur'
 
     results = lookup.lookup(u'1', valid_types=['pokemon_species'])
-    assert_equal(results[0].object.name, u'Bulbasaur',
-                                                u'valid_types works as well as type: prefix')
+    assert results[0].object.name == u'Bulbasaur'
+
 
 def test_language_lookup():
     # There are two objects named "charge": the move Charge, and the move
     # Tackle, which is called "Charge" in French.
     results = lookup.lookup(u'charge')
-    assert_true(len(results) > 1,               u'There are multiple "charge"s')
+    assert len(results) > 1
 
     results = lookup.lookup(u'@fr:charge')
-    assert_equal(results[0].iso639, u'fr',      u'Language restriction works correctly')
-    assert_equal(len(results), 1,               u'Only one "charge" result when language is specified')
-    assert_equal(results[0].object.name, u'Tackle',
-                                                u'Language + vague name returns the right result')
+    assert results[0].iso639 == u'fr'
+    assert len(results) == 1
+    assert results[0].object.name == u'Tackle'
 
     results = lookup.lookup(u'charge', valid_types=['@fr'])
-    assert_equal(results[0].object.name, u'Tackle',
-                                                u'valid_types works as well as @lang: prefix')
+    assert results[0].object.name == u'Tackle'
 
     results = lookup.lookup(u'@fr,move:charge')
-    assert_equal(results[0].object.name, u'Tackle',
-                                                u'Languages and types both work together')
+    assert results[0].object.name == u'Tackle'
 
     results = lookup.lookup(u'@fr:charge', valid_types=['move'])
-    assert_equal(results[0].object.name, u'Tackle',
-                                                u'valid_types and language prefixes get along')
+    assert results[0].object.name, u'Tackle'
 
-def test_fuzzy_lookup():
-    tests = [
+
+@positional_params(
         # Regular English names
         (u'chamander',          u'Charmander'),
         (u'pokeball',           u'Poké Ball'),
@@ -110,44 +97,51 @@ def test_fuzzy_lookup():
         # Sufficiently long foreign names
         (u'カクレオ',           u'Kecleon'),
         (u'Yamikrasu',          u'Murkrow'),
-    ]
+    )
+def test_fuzzy_lookup(misspelling, name):
+    results = lookup.lookup(misspelling)
+    first_result = results[0]
+    assert first_result.object.name == name
 
-    for misspelling, name in tests:
-        results = lookup.lookup(misspelling)
-        first_result = results[0]
-        assert_equal(first_result.object.name, name,
-                                                u'Simple misspellings are corrected')
 
+def test_nidoran():
     results = lookup.lookup(u'Nidoran')
-    top_names = [_.object.name for _ in results[0:2]]
-    assert_true(u'Nidoran♂' in top_names,       u'Nidoran♂ is a top result for "Nidoran"')
-    assert_true(u'Nidoran♀' in top_names,       u'Nidoran♀ is a top result for "Nidoran"')
+    top_names = [result.object.name for result in results[0:2]]
+    assert u'Nidoran♂' in top_names
+    assert u'Nidoran♀' in top_names
 
-def test_wildcard_lookup():
-    tests = [
+
+@positional_params(
         (u'pokemon:*meleon',    u'Charmeleon'),
         (u'item:master*',       u'Master Ball'),
         (u'ee?ee',              u'Eevee'),
-    ]
+    )
+def test_wildcard_lookup(wildcard, name):
+    results = lookup.lookup(wildcard)
+    first_result = results[0]
+    assert first_result.object.name == name
 
-    for wildcard, name in tests:
-        results = lookup.lookup(wildcard)
-        first_result = results[0]
-        assert_equal(first_result.object.name, name,
-                                                u'Wildcards work correctly')
 
-def test_random_lookup():
-    for _ in xrange(5):
+def test_bare_random():
+    for i in range(5):
         results = lookup.lookup(u'random')
-        assert_equal(len(results), 1,           u'Random returns one result')
+        assert len(results) == 1
 
-    for table_name in [u'pokemon_species', u'moves', u'items', u'abilities', u'types']:
-        results = lookup.lookup(u'random', valid_types=[table_name])
-        assert_equal(len(results), 1,           u'Constrained random returns one result')
-        assert_equal(results[0].object.__tablename__, table_name,
-                                                u'Constrained random returns result from the right table')
+
+@positional_params(
+        [u'pokemon_species'],
+        [u'moves'],
+        [u'items'],
+        [u'abilities'],
+        [u'types'],
+    )
+def test_qualified_random(table_name):
+    results = lookup.lookup(u'random', valid_types=[table_name])
+    assert len(results) == 1
+    assert results[0].object.__tablename__ == table_name
+
 
 def test_crash_empty_prefix():
     """Searching for ':foo' used to crash, augh!"""
     results = lookup.lookup(u':Eevee')
-    assert_equal(results[0].object.name, u'Eevee', u'Empty prefix dun crash')
+    assert results[0].object.name == u'Eevee'

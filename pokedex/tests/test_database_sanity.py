@@ -1,5 +1,6 @@
-from nose.tools import *
-import unittest
+
+import pytest
+
 from sqlalchemy.orm import aliased
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -21,8 +22,8 @@ def test_encounter_slots():
         .join((version_group_b, tables.Version.version_group)) \
         .filter(version_group_a.id != version_group_b.id)
 
-    assert_equal(sanity_q.count(), 0,
-        "Encounter slots all match the encounters they belong to")
+    # Encounter slots all match the encounters they belong to
+    assert sanity_q.count() == 0
 
 def test_nonzero_autoincrement_ids():
     """Check that autoincrementing ids don't contain zeroes
@@ -34,8 +35,8 @@ def test_nonzero_autoincrement_ids():
     for cls in tables.mapped_classes:
         if 'id' in cls.__table__.c:
             if cls.__table__.c.id.autoincrement:
-                @raises(NoResultFound)
                 def nonzero_id(cls):
-                    util.get(session, cls, id=0)
+                    with pytest.raises(NoResultFound):
+                        util.get(session, cls, id=0)
                 nonzero_id.description = "No zero id in %s" % cls.__name__
                 yield nonzero_id, cls

@@ -1,12 +1,9 @@
 # encoding: utf8
-from nose.tools import *
-import unittest
 
 import pokedex.roomaji
+from pokedex.tests import positional_params
 
-
-def test_roomaji():
-    tests = [
+@positional_params(
         (u'ヤミカラス',         'yamikarasu'),
 
         # Elongated vowel
@@ -24,14 +21,13 @@ def test_roomaji():
         (u'ラティアス',         'ratiasu'),
         (u'ウィー',             'wii'),
         (u'セレビィ',           'sereby'),
-    ]
+    )
+def test_roomaji(kana, roomaji):
+    result = pokedex.roomaji.romanize(kana)
+    assert result == roomaji
 
-    for kana, roomaji in tests:
-        result = pokedex.roomaji.romanize(kana)
-        assert_equal(result, roomaji, u"'%s' romanizes correctly" % roomaji)
 
-def test_roomaji_cs():
-    tests = [
+@positional_params(
         (u'ヤミカラス',         u'jamikarasu'),
 
         # Elongated vowel
@@ -49,8 +45,7 @@ def test_roomaji_cs():
         (u'ラティアス',         u'ratiasu'),
         (u'ウィー',             u'wí'),
         (u'セレビィ',           u'serebí'),
-    ]
-
-    for kana, roomaji in tests:
-        result = pokedex.roomaji.romanize(kana, 'cs')
-        assert_equal(result, roomaji, u"'%s' romanizes correctly for Czech" % roomaji)
+    )
+def test_roomaji_cs(kana, roomaji):
+    result = pokedex.roomaji.romanize(kana, 'cs')
+    assert result == roomaji

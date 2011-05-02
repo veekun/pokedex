@@ -1,4 +1,3 @@
-
 """Test the media accessors.
 
 If run directly from the command line, also tests the accessors and the names
@@ -6,45 +5,33 @@ of all the media by getting just about everything in a naive brute-force way.
 This, of course, takes a lot of time to run.
 """
 
+import pytest
+
 import os
 import re
-from functools import wraps
-
-from nose.tools import *
-from nose.plugins.skip import SkipTest
-import nose
-import pkg_resources
 
 from pokedex.db import tables, connect
 from pokedex.util import media
 
+def pytest_funcarg__root(request):
+    root = request.config.option.media_root
+    if not root:
+        root = os.path.join(os.path.dirname(__file__), *'../data/media'.split('/'))
+        if not media.BaseMedia(root).available:
+            raise pytest.skip("Media unavailable")
+    return root
+
 session = connect()
-basedir = pkg_resources.resource_filename('pokedex', 'data/media')
 
 path_re = re.compile('^[-a-z0-9./]*$')
 
-root = pkg_resources.resource_filename('pokedex', 'data/media')
-
-media_available = media.BaseMedia(root).available
-
-def if_available(func):
-    @wraps(func)
-    def if_available_wrapper(*args, **kwargs):
-        if not media_available:
-            raise SkipTest('Media not available at %s' % root)
-        else:
-            func(*args, **kwargs)
-    return if_available_wrapper
-
-@if_available
-def test_totodile():
+def test_totodile(root):
     """Totodile's female sprite -- same as male"""
     totodile = session.query(tables.PokemonSpecies).filter_by(identifier=u'totodile').one()
     accessor = media.PokemonSpeciesMedia(root, totodile)
     assert accessor.sprite() == accessor.sprite(female=True)
 
-@if_available
-def test_chimecho():
+def test_chimecho(root):
     """Chimecho's Platinum female backsprite -- diffeent from male"""
     chimecho = session.query(tables.PokemonSpecies).filter_by(identifier=u'chimecho').one()
     accessor = media.PokemonSpeciesMedia(root, chimecho)
@@ -52,15 +39,13 @@ def test_chimecho():
     female = accessor.sprite('platinum', back=True, female=True, frame=2)
     assert male != female
 
-@if_available
-def test_venonat():
+def test_venonat(root):
     """Venonat's shiny Yellow sprite -- same as non-shiny"""
     venonat = session.query(tables.PokemonSpecies).filter_by(identifier=u'venonat').one()
     accessor = media.PokemonSpeciesMedia(root, venonat)
     assert accessor.sprite('yellow') == accessor.sprite('yellow', shiny=True)
 
-@if_available
-def test_arceus_icon():
+def test_arceus_icon(root):
     """Arceus fire-form icon -- same as base icon"""
     arceus = session.query(tables.PokemonSpecies).filter_by(identifier=u'arceus').one()
     accessor = media.PokemonSpeciesMedia(root, arceus)
@@ -68,32 +53,28 @@ def test_arceus_icon():
     fire_accessor = media.PokemonFormMedia(root, fire_arceus)
     assert accessor.icon() == fire_accessor.icon()
 
-@if_available
-@raises(ValueError)
-def test_strict_castform():
+def test_strict_castform(root):
     """Castform rainy form overworld with strict -- unavailable"""
-    castform = session.query(tables.PokemonSpecies).filter_by(identifier=u'castform').first()
-    rainy_castform = [f for f in castform.forms if f.form_identifier == 'rainy'][0]
-    print rainy_castform
-    rainy_castform = media.PokemonFormMedia(root, rainy_castform)
-    rainy_castform.overworld('up', strict=True)
+    with pytest.raises(ValueError):
+        castform = session.query(tables.PokemonSpecies).filter_by(identifier=u'castform').first()
+        rainy_castform = [f for f in castform.forms if f.form_identifier == 'rainy'][0]
+        print rainy_castform
+        rainy_castform = media.PokemonFormMedia(root, rainy_castform)
+        rainy_castform.overworld('up', strict=True)
 
-@if_available
-@raises(ValueError)
-def test_strict_exeggcute():
+def test_strict_exeggcute(root):
     """Exeggcutes's female backsprite, with strict -- unavailable"""
-    exeggcute = session.query(tables.PokemonSpecies).filter_by(identifier=u'exeggcute').one()
-    accessor = media.PokemonSpeciesMedia(root, exeggcute)
-    accessor.sprite(female=True, strict=True)
+    with pytest.raises(ValueError):
+        exeggcute = session.query(tables.PokemonSpecies).filter_by(identifier=u'exeggcute').one()
+        accessor = media.PokemonSpeciesMedia(root, exeggcute)
+        accessor.sprite(female=True, strict=True)
 
 
 
-def get_all_filenames():
-    print 'Reading all filenames...'
-
+def get_all_filenames(root):
     all_filenames = set()
 
-    for dirpath, dirnames, filenames in os.walk(basedir):
+    for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = [dirname for dirname in dirnames if dirname != '.git']
         for filename in filenames:
             path = os.path.join(dirpath, filename)
@@ -123,8 +104,8 @@ def hit(filenames, method, *args, **kwargs):
         pass
     return True
 
-@if_available
-def check_get_everything():
+@pytest.mark.skipif("not config.getvalue('all')", reason='`--all` not specified')
+def test_get_everything(root, pytestconfig):
     """
     For every the accessor method, loop over the Cartesian products of all
     possible values for its arguments.
@@ -133,13 +114,14 @@ def check_get_everything():
 
     Well, there are exceptions of course.
     """
+    assert pytestconfig.getvalue('all')
 
     versions = list(session.query(tables.Version).all())
     versions.append('red-green')
 
     black = session.query(tables.Version).filter_by(identifier=u'black').one()
 
-    filenames = get_all_filenames()
+    filenames = get_all_filenames(root)
 
     # Some small stuff first
 
@@ -252,26 +234,21 @@ def check_get_everything():
                                         assert success
 
     # Remove exceptions
-    exceptions = [os.path.join(basedir, dirname) for dirname in
+    exceptions = [os.path.join(root, dirname) for dirname in
             'chrome fonts ribbons'.split()]
-    exceptions.append(os.path.join(basedir, 'items', 'hm-'))
+    exceptions.append(os.path.join(root, 'items', 'hm-'))
     exceptions = tuple(exceptions)
 
-    for filename in tuple(filenames):
+    unaccessed_filenames = set(filenames)
+    for filename in filenames:
         if filename.startswith(exceptions):
-            filenames.remove(filename)
+            unaccessed_filenames.remove(filename)
 
-    if len(filenames):
-        print
-        print '-----------------'
-        print 'Unaccessed stuff:'
-        for filename in sorted(filenames):
+    if unaccessed_filenames:
+        print 'Unaccessed files:'
+        for filename in unaccessed_filenames:
             print filename
-        print len(filenames), 'unaccessed files :('
+
+    assert unaccessed_filenames == set()
 
     return (not filenames)
-
-if __name__ == '__main__':
-    result = nose.run(defaultTest=__file__)
-    result = result and check_get_everything()
-    exit(not result)
