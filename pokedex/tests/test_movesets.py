@@ -65,6 +65,9 @@ OK pikachu volt-tackle encore headbutt grass-knot
 NO nidoran-m horn-drill head-smash -l 5 -v platinum --pomeg-glitch
 NO bulbasaur charm skull-bash
 NO chansey aromatherapy counter copycat
+OK magnemite thundershock -v platinum
+NO magnemite thundershock -v platinum -l 5
+OK magnemite thundershock -v platinum -l 5 --pomeg-glitch
 """.strip().splitlines()
 
 @single_params(*argstrings)

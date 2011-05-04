@@ -45,6 +45,7 @@ class MovesetSearch(object):
     _cache = WeakKeyDictionary()
 
     def __init__(self, session, pokemon, version, moves, level=100, costs=None,
+            pomeg_glitch=False,
             exclude_versions=(), exclude_pokemon=(), debug_level=0):
 
         self.session = session
@@ -75,6 +76,8 @@ class MovesetSearch(object):
             MovesetSearch._cache[session] = self.__dict__
 
         self.debug_level = debug_level
+
+        self.pomeg_glitch = pomeg_glitch
 
         if not moves:
             raise NoMoves('No moves specified.')
@@ -998,6 +1001,13 @@ class InitialNode(Node, namedtuple('InitialNode', 'search')):
             # (For everybody else, three duplicate nodes aren't a problem)
             for version_group in search.generation_id_by_version_group:
                 pokemon_vgs.append((pokemon, version_group))
+            # And for the Pomeg glitch, it we may need to start by breeding
+            # an empty moveset
+            if search.pomeg_glitch:
+                for version_group in search.generation_id_by_version_group:
+                    cost = search.costs['breed']
+                    yield cost, None, GoalBreedNode(search=search, dummy='g',
+                        version_group_=version_group, moves_=frozenset())
         for pokemon, version_group in pokemon_vgs:
             action = StartAction(search, pokemon, version_group)
             node = PokemonNode(
@@ -1327,14 +1337,15 @@ class BaseBreedNode(Node):
                         if method == 'light-ball-egg':
                             extra_moves.add(move)
                         elif method == 'level-up':
-                            # The bred pokémon starts out with starting
+                            # The bred pokémon starts out with "starting"
                             # level-up moves
                             # XXX: these may get overwritten. This doesn't
                             # affect moveset legality because games with
                             # breeding have move relearners, but the
                             # instructions won't be right.
-                            if any(level <= hatch_level for level, cost
-                                    in levels_costs):
+                            if (search.pomeg_glitch and gen == 3) or any(
+                                    level <= hatch_level
+                                        for level, cost in levels_costs):
                                 extra_moves.add(move)
             cost = search.costs['per-hatch-counter'] * search.hatch_counters[baby]
             for extra in powerset(extra_moves):
@@ -1446,6 +1457,11 @@ def main(argv, session=None):
         help='Pokemon to exclude (along with their families, e.g. `pichu` '
             'will also exclude Pikachu and Raichu).')
 
+    parser.add_argument('-p', '--pomeg-glitch', action='store_true', default=False,
+        help='Allow the Pomeg glitch, i.e. levelling up eggs in the 3rd '
+            "generation. (Note that the printouts won't mention the glitch "
+            'explicitly.)')
+
     parser.add_argument('-d', '--debug', action='append_const', const=1,
         default=[],
         help='Output timing and debugging information. Can be specified more '
@@ -1508,6 +1524,7 @@ def main(argv, session=None):
 
     result = verify_moveset(session, pokemon, version, moves, args.level,
         exclude_versions=excl_versions, exclude_pokemon=excl_pokemon,
+        pomeg_glitch=args.pomeg_glitch,
         debug_level=args.debug)
     # XXX: Support more than one result
     if result:
