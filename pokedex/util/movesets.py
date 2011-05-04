@@ -1091,7 +1091,8 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                             cost += level - self.level * search.costs['per-level']
                             yield self._learn(move, method, cost,
                                 level=level, new_level=True)
-                        else:
+                        elif search.generation_id_by_version_group[
+                                    self.version_group_] > 1:
                             yield self._learn(move, 'relearn',
                                 search.costs['relearn'],
                                 action=RelearnAction(self.search, move),
@@ -1232,6 +1233,8 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
     def expand_breed(self):
         search = self.search
         if self.pokemon_ in search.unbreedable:
+            return
+        if search.generation_id_by_version_group[self.version_group_] == 1:
             return
         evo_chain = search.evolution_chains[self.pokemon_]
         egg_groups = search.egg_groups[evo_chain]
