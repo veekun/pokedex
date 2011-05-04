@@ -279,19 +279,6 @@ class MovesetSearch(object):
                         cost = costs['tutor-once']
                     elif method == 'egg':
                         cost = costs['breed']
-                    elif method == 'form-change':
-                        cost = costs[method]
-                        # XXX: Ugly
-                        # Prevent Rotom from breeding.
-                        # Since it's genderless and doesn't evolve, breeding
-                        # would be unnecessary. The normal algorithm would
-                        # give its form-change move to the baby Rotom, though,
-                        # which would allow it to learn another one... aaaaa
-                        # The alternative is checking moves for 'form-change'
-                        # on every breed, or making form-change entirely
-                        # separate :(
-                        self.unbreedable = self.unbreedable.union(
-                                self.switchable_form_pokemon[pokemon])
                     else:
                         cost = costs[method]
                 movepools[chain][move] = min(
@@ -1112,14 +1099,14 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                         yield self._learn(move, method, cost, new_level=False)
                 elif method == 'form-change':
                     for level, cost in levels_costs:
-                        # Learn this at level 100, but only if the current
+                        # Learn this at goal level, but only if the current
                         # level is strictly lower.
                         # That'll prevent the pokémon to learn more than one
                         # of these without us having to keep track of the other
                         # forms and their moves.
-                        if self.level < 100:
+                        if self.level < search.goal_level:
                             yield self._learn(move, method, cost,
-                                level=100, new_level=True)
+                                level=search.goal_level, new_level=True)
                 else:
                     raise ValueError('Unknown move method %s' % method)
 
@@ -1321,14 +1308,42 @@ class BaseBreedNode(Node):
             moves = search.pokemon_moves[baby][vg]
             if not bred_moves.issubset(moves):
                 continue
+            learns = True
+            for move in bred_moves:
+                learns = False
+                for method, levels_costs in moves[move].items():
+                    if method in ('egg', 'machine'):
+                        learns = True
+                        break
+                if not learns:
+                    continue
+            if not learns:
+                continue
+            extra_moves = set()
             if len(bred_moves) < 4:
                 for move, methods in moves.items():
-                    if 'light-ball-egg' in methods:
-                        bred_moves = bred_moves.union([move])
+                    for method, levels_costs in moves[move].items():
+                        if method == 'light-ball-egg':
+                            extra_moves.add(move)
+                        elif method == 'level-up':
+                            # The bred pokémon starts out with starting
+                            # level-up moves
+                            # XXX: these may get overwritten. This doesn't
+                            # affect moveset legality because games with
+                            # breeding have move relearners, but the
+                            # instructions won't be right.
+                            if any(level <= hatch_level for level, cost
+                                    in levels_costs):
+                                extra_moves.add(move)
             cost = search.costs['per-hatch-counter'] * search.hatch_counters[baby]
-            yield 0, BreedAction(self.search, baby, bred_moves), PokemonNode(
-                    search=self.search, pokemon_=baby, level=hatch_level,
-                    version_group_=vg, moves_=bred_moves, new_level=True)
+            for extra in powerset(extra_moves):
+                all_bred_moves = bred_moves.union(extra)
+                if len(all_bred_moves) <= 4:
+                    action = BreedAction(self.search, baby, all_bred_moves)
+                    node = PokemonNode(search=self.search, pokemon_=baby,
+                            level=hatch_level, version_group_=vg,
+                            moves_=all_bred_moves, new_level=True)
+                    yield 0, action, node
 
     def is_goal(self):
         return False
