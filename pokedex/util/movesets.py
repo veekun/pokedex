@@ -1196,6 +1196,10 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                         cost += search.costs['evolution-delayed']
                 else:
                     cost += search.costs['evolution-delayed']
+            elif trigger == 'level-up':
+                    # Have to gain a level
+                    kwargs['level'] = self.level + 1
+                    kwargs['new_level'] = True
             if trigger in 'level-up use-item'.split():
                 pass
             elif trigger == 'trade':
@@ -1354,7 +1358,7 @@ class BaseBreedNode(Node):
                     action = BreedAction(self.search, baby, all_bred_moves)
                     node = PokemonNode(search=self.search, pokemon_=baby,
                             level=hatch_level, version_group_=vg,
-                            moves_=all_bred_moves, new_level=True)
+                            moves_=all_bred_moves, new_level=False)
                     yield 0, action, node
 
     def is_goal(self):
