@@ -7,6 +7,7 @@ of pokemon, and filtering/ordering by name.
 from sqlalchemy.orm import aliased
 from sqlalchemy.sql.expression import func
 from sqlalchemy.sql.functions import coalesce
+from sqlalchemy.orm.exc import NoResultFound
 
 from pokedex.db import tables
 
@@ -40,7 +41,13 @@ def get(session, table, identifier=None, name=None, id=None, language=None):
         query = filter_name(query, table, name, language)
 
     if id is not None:
-        query = query.filter_by(id=id)
+        # ASSUMPTION: id is the primary key of the table.
+        result = query.get(id)
+        if result is None:
+            # Keep the API
+            raise NoResultFound
+        else:
+            return result
 
     return query.one()
 
