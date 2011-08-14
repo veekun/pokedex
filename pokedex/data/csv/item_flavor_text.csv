@@ -273,7 +273,7 @@ any status problem."
 caught Pokémon’s HP and eliminates
 any status problem."
 14,11,1,"A remedial Poké Ball that restores the
-caught Pokémon's HP and eliminates
+caught Pokémon’s HP and eliminates
 any status problem."
 15,8,9,"A somewhat different Poké Ball that
 provides a better catch rate if it is
@@ -535,7 +535,7 @@ Pokémon. It restores half the
 Pokémon’s maximum HP."
 28,11,1,"A medicine that revives a fainted
 Pokémon. It restores half the
-Pokémon's maximum HP."
+Pokémon’s maximum HP."
 29,5,9,"Revives a fainted
 POKéMON with all
 its HP."
@@ -555,7 +555,7 @@ Pokémon. It fully restores the
 Pokémon’s HP."
 29,11,1,"A medicine that revives a fainted
 Pokémon. It fully restores the
-Pokémon's HP."
+Pokémon’s HP."
 30,5,9,"A mineral water
 that restores HP
 by 50 points."
@@ -741,7 +741,7 @@ selected move by a maximum of
 38,10,9,"It restores the PP of a Pokémon’s
 selected move by a maximum of
 10 points."
-38,11,1,"It restores the PP of a Pokémon's
+38,11,1,"It restores the PP of a Pokémon’s
 selected move by a maximum of
 10 points."
 39,5,9,"Fully restores the
@@ -820,7 +820,7 @@ one Pokémon."
 42,10,9,"Lavaridge Town’s local specialty.
 It heals all the status problems of
 one Pokémon."
-42,11,1,"Lavaridge Town's local specialty.
+42,11,1,"Lavaridge Town’s local specialty.
 It heals all the status problems of
 one Pokémon."
 43,5,9,"A 100% pure juice
@@ -1059,7 +1059,7 @@ single Pokémon."
 54,10,9,"Old Chateau’s hidden specialty.
 It heals all the status problems of a
 single Pokémon."
-54,11,1,"Old Chateau's hidden specialty.
+54,11,1,"Old Chateau’s hidden specialty.
 It heals all the status problems of a
 single Pokémon."
 55,5,9,"Prevents stat
@@ -1081,7 +1081,7 @@ for five turns after use."
 among the Trainer’s party Pokémon
 for five turns after use."
 55,11,1,"An item that prevents stat reduction
-among the Trainer's party Pokémon
+among the Trainer’s party Pokémon
 for five turns after use."
 56,5,9,"Raises the
 critical-hit ratio
@@ -2348,7 +2348,7 @@ move’s PP by 10."
 131,10,9,"It may be used or held by a Pokémon to
 restore a move’s PP by 10."
 131,11,1,"If held by a Pokémon,
-it restores a move's PP by 10."
+it restores a move’s PP by 10."
 132,5,9,"A hold item that
 restores 10 HP in
 battle."
@@ -2420,7 +2420,7 @@ user’s HP a little."
 135,10,9,"It may be used or held by a Pokémon to
 heal the user’s HP a little."
 135,11,1,"If held by a Pokémon,
-it heals the user's HP a little."
+it heals the user’s HP a little."
 136,5,9,"A hold item that
 restores HP but
 may confuse."
@@ -2439,7 +2439,7 @@ a pinch, but may also cause confusion."
 user’s HP in a pinch, but will cause
 confusion if it hates spicy food."
 136,11,1,"If held by a Pokémon, it restores the
-user's HP in a pinch, but will cause
+user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 137,5,9,"A hold item that
 restores HP but
@@ -2459,7 +2459,7 @@ a pinch, but may also cause confusion."
 user’s HP in a pinch, but will cause
 confusion if it hates dry food."
 137,11,1,"If held by a Pokémon, it restores the
-user's HP in a pinch, but will cause
+user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 138,5,9,"A hold item that
 restores HP but
@@ -2479,7 +2479,7 @@ a pinch, but may also cause confusion."
 user’s HP in a pinch, but will cause
 confusion if it hates sweet food."
 138,11,1,"If held by a Pokémon, it restores the
-user's HP in a pinch, but will cause
+user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 139,5,9,"A hold item that
 restores HP but
@@ -2499,7 +2499,7 @@ a pinch, but may also cause confusion."
 user’s HP in a pinch, but will cause
 confusion if it hates bitter food."
 139,11,1,"If held by a Pokémon, it restores the
-user's HP in a pinch, but will cause
+user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 140,5,9,"A hold item that
 restores HP but
@@ -2519,7 +2519,7 @@ a pinch, but may also cause confusion."
 user’s HP in a pinch, but may cause
 confusion if it hates sour food."
 140,11,1,"If held by a Pokémon, it restores the
-user's HP in a pinch, but will cause
+user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 141,5,9,"POKéBLOCK ingredient.
 Plant in loamy soil
@@ -3299,7 +3299,7 @@ It casts a tricky glare that lowers
 the opponent’s accuracy."
 190,11,1,"An item to be held by a Pokémon.
 It casts a tricky glare that lowers
-the opponent's accuracy."
+the opponent’s accuracy."
 191,5,9,"A hold item that
 restores any
 lowered stat."
@@ -3361,7 +3361,7 @@ Exp. Points without battling."
 The holder gets a share of a battle’s
 Exp. Points without battling."
 193,11,1,"An item to be held by a Pokémon.
-The holder gets a share of a battle's
+The holder gets a share of a battle’s
 Exp. Points without battling."
 194,5,9,"A hold item that
 occasionally allows
@@ -3508,7 +3508,7 @@ the holding Pokémon joins in."
 It doubles a battle’s prize money if
 the holding Pokémon joins in."
 200,11,1,"An item to be held by a Pokémon.
-It doubles a battle's prize money if
+It doubles a battle’s prize money if
 the holding Pokémon joins in."
 201,5,9,"A hold item that
 helps repel wild
@@ -3697,7 +3697,7 @@ critical-hit ratio."
 It is a lens that boosts the holder’s
 critical-hit ratio."
 209,11,1,"An item to be held by a Pokémon.
-It is a lens that boosts the holder's
+It is a lens that boosts the holder’s
 critical-hit ratio."
 210,5,9,"A hold item that
 raises the power of
@@ -3739,7 +3739,7 @@ during battle."
 The holder’s HP is gradually restored
 during battle."
 211,11,1,"An item to be held by a Pokémon.
-The holder's HP is gradually restored
+The holder’s HP is gradually restored
 during battle."
 212,5,9,"A strange scale
 held by DRAGON-
@@ -4136,7 +4136,7 @@ every time it inflicts damage."
 The holder’s HP is restored a little
 every time it inflicts damage."
 230,11,1,"An item to be held by a Pokémon.
-The holder's HP is restored a little
+The holder’s HP is restored a little
 every time it inflicts damage."
 231,5,9,"A hold item that
 slightly boosts
@@ -4199,7 +4199,7 @@ critical-hit ratio."
 pair of gloves that boosts CHANSEY’s
 critical-hit ratio."
 233,11,1,"An item to be held by Chansey. It is a
-pair of gloves that boosts Chansey's
+pair of gloves that boosts Chansey’s
 critical-hit ratio."
 234,5,9,"A hold item that
 raises DEFENSE."
@@ -4260,7 +4260,7 @@ that boosts the critical-hit ratio."
 236,10,9,"An item to be held by FARFETCH’D. It is
 a very long and stiff stalk of leek
 that boosts the critical-hit ratio."
-236,11,1,"An item to be held by Farfetch'd. It is
+236,11,1,"An item to be held by Farfetch’d. It is
 a very long and stiff stalk of leek
 that boosts the critical-hit ratio."
 237,5,9,"A hold item that
@@ -5026,7 +5026,7 @@ the holding Pokémon joins in."
 It doubles a battle’s prize money if
 the holding Pokémon joins in."
 296,11,1,"An item to be held by a Pokémon.
-It doubles a battle's prize money if
+It doubles a battle’s prize money if
 the holding Pokémon joins in."
 297,8,9,"An item to be held by a Pokémon.
 It helps keep wild Pokémon away if the
@@ -5111,7 +5111,7 @@ It is a sharply hooked claw that ups
 the holder’s critical-hit ratio."
 303,11,1,"An item to be held by a Pokémon.
 It is a sharply hooked claw that ups
-the holder's critical-hit ratio."
+the holder’s critical-hit ratio."
 304,8,9,"An item to be held by a Pokémon.
 It may cause the foe to flinch when
 the holder inflicts damage."
@@ -5627,7 +5627,7 @@ tail of steel. It may also lower the
 target’s Defense stat if it hits."
 327,11,1,"The user throws a stone or projectile
 to attack an opponent. A flying Pokémon
-will fall to the ground when it's hit."
+will fall to the ground when it’s hit."
 328,5,9,"A powerful electric
 attack that may
 cause paralysis."
@@ -5758,7 +5758,7 @@ force. It may also reduce the foe’s
 Sp. Def stat."
 333,11,1,"The target is hit by a strong
 telekinetic force. It may also reduce
-the target's Sp. Def stat."
+the target’s Sp. Def stat."
 334,5,9,"Hurls a dark lump
 at the foe. It may
 lower SP. DEF."
@@ -5779,7 +5779,7 @@ Sp. Def stat."
 foe. It may also lower the foe’s
 Sp. Def stat."
 334,11,1,"The user hurls a shadowy blob at the
-target. It may also lower the target's
+target. It may also lower the target’s
 Sp. Def stat."
 335,5,9,"Destroys barriers
 like LIGHT SCREEN
@@ -5976,7 +5976,7 @@ Speed."
 to inflict damage. It lowers the foe’s
 Speed."
 343,11,1,"Boulders are hurled at the target. It
-also lowers the target's Speed by
+also lowers the target’s Speed by
 preventing its movement."
 344,5,9,"An extremely fast
 attack that can’t
@@ -6065,7 +6065,7 @@ vary depending on the user’s
 environment."
 347,11,1,"The user cloaks itself with flame and
 attacks. Building up more power,
-it raises the user's Speed stat."
+it raises the user’s Speed stat."
 348,5,9,"The user sleeps for
 2 turns to restore
 health and status."
@@ -6086,7 +6086,7 @@ and heals any status problem."
 turns. It fully restores the user’s HP
 and heals any status problem."
 348,11,1,"The user goes to sleep for two
-turns. It fully restores the user's HP
+turns. It fully restores the user’s HP
 and heals any status problem."
 349,5,9,"Makes it tough to
 attack a foe of the
@@ -6130,8 +6130,8 @@ steal if the user holds an item."
 held item simultaneously. It can’t
 steal if the user holds an item."
 350,11,1,"The user attacks and steals the
-target's held item simultaneously. It
-can't steal if the user holds an item."
+target’s held item simultaneously. It
+can’t steal if the user holds an item."
 351,5,9,"Spreads hard-edged
 wings and slams
 into the foe."
@@ -6151,8 +6151,8 @@ stat."
 351,10,9,"The foe is hit with wings of steel.
 It may also raise the user’s Defense
 stat."
-351,11,1,"The user attacks the target's legs
-swiftly, reducing the target's
+351,11,1,"The user attacks the target’s legs
+swiftly, reducing the target’s
 Speed stat."
 352,5,9,"Switches abilities
 with the foe on the
@@ -6218,8 +6218,8 @@ sharply reduces the user’s Sp. Atk."
 power using fiery energy. It also
 sharply reduces the user’s Sp. Atk."
 354,11,1,"The user attacks the target at full
-power. The attack's recoil harshly
-reduces the user's Sp. Atk stat."
+power. The attack’s recoil harshly
+reduces the user’s Sp. Atk stat."
 355,8,9,"The user lands and rests its body.
 It restores the user’s HP by up to
 half of its top HP."
@@ -6243,7 +6243,7 @@ It may also lower the foe’s Sp. Def
 stat if it hits."
 356,11,1,"The user heightens its mental focus and
 unleashes its power.
-It may also lower the target's Sp. Def."
+It may also lower the target’s Sp. Def."
 357,8,9,"The user draws power from nature and
 fires it at the foe. It may also lower
 the target’s Sp. Def."
@@ -6255,7 +6255,7 @@ fires it at the foe. It may also lower
 the target’s Sp. Def."
 357,11,1,"The user draws power from nature and
 fires it at the target. It may also
-lower the target's Sp. Def."
+lower the target’s Sp. Def."
 358,8,9,"A restrained attack that prevents the
 foe from fainting. The target is left
 with at least 1 HP."
@@ -6421,7 +6421,7 @@ that has been used in battle so it can
 be used again."
 371,11,1,"The user gets revenge for a fainted
 ally. If an ally fainted in the previous
-turn, this attack's damage increases."
+turn, this attack’s damage increases."
 372,8,9,"The user charges the foe using every
 bit of its power. It must rest on the
 next turn to recover."
@@ -6456,7 +6456,7 @@ illuminate caves."
 foe’s accuracy. It can also be used to
 illuminate caves."
 374,11,1,"The user flashes a bright light that
-cuts the target's accuracy.
+cuts the target’s accuracy.
 It can also be used to illuminate caves."
 375,8,9,"The user stabs the foe with a
 sharpened stone from below. It has
@@ -6516,7 +6516,7 @@ Attack stat."
 spirit. It sharply raises the user’s
 Attack stat."
 379,11,1,"A frenetic dance to uplift the fighting
-spirit. It sharply raises the user's
+spirit. It sharply raises the user’s
 Attack stat."
 380,8,9,"The user lays a trap of levitating
 stones around the foe. The trap hurts
@@ -6528,7 +6528,7 @@ foes that switch into battle."
 stones around the foe. The trap hurts
 foes that switch into battle."
 380,11,1,"Resisting, the user attacks the
-opposing Pokémon. The targets' Sp. Atk
+opposing Pokémon. The targets’ Sp. Atk
 stat is reduced."
 381,8,9,"The user hypnotizes itself into
 copying any stat change made
@@ -6553,7 +6553,7 @@ user, the foe is charmed into sharply
 lowering its Sp. Atk stat."
 382,11,1,"The user stomps down on the ground
 and attacks everything in the area.
-The targets' Speed stat is reduced."
+The targets’ Speed stat is reduced."
 383,8,9,"The user releases a horrible aura
 imbued with dark thoughts. It may also
 make the target flinch."
@@ -6636,7 +6636,7 @@ sleeping foe. It absorbs half the
 damage caused to heal the user’s HP."
 389,11,1,"The user eats the dreams of a sleeping
 target. It absorbs half the damage
-caused to heal the user's HP."
+caused to heal the user’s HP."
 390,8,9,"The user snares the foe with grass
 and trips it. The heavier the foe, the
 greater the damage."
@@ -6660,7 +6660,7 @@ confusion. However, it also sharply
 raises the foe’s Attack stat."
 391,11,1,"The user enrages and confuses the
 target. However, it also sharply raises
-the target's Attack stat."
+the target’s Attack stat."
 392,8,9,"The user pecks the foe. If the foe is
 holding a Berry, the user plucks it and
 gains its effect."
@@ -6696,7 +6696,7 @@ some of its HP. The copy serves as
 the user’s decoy."
 394,11,1,"The user makes a copy of itself using
 some of its HP. The copy serves as
-the user's decoy."
+the user’s decoy."
 395,8,9,"The user gathers all its light energy
 and releases it in one shot. It may
 also lower the foe’s Sp. Def stat."
@@ -6708,7 +6708,7 @@ and releases it in one shot. It may
 also lower the foe’s Sp. Def stat."
 395,11,1,"The user gathers all its light energy
 and releases it at once. It may also
-lower the target's Sp. Def stat."
+lower the target’s Sp. Def stat."
 396,8,9,"The user creates a bizarre space in
 which slower Pokémon get to move
 first for five turns."
@@ -7391,7 +7391,7 @@ Veilstone City."
 440,10,9,"The key to Team Galactic’s sinister
 warehouse located at the edge of
 Veilstone City."
-440,11,1,"The key to Team Galactic's sinister
+440,11,1,"The key to Team Galactic’s sinister
 warehouse located at the edge of
 Veilstone City."
 441,8,9,"A fantastic medicine dispensed by the
@@ -7518,7 +7518,7 @@ It has a nice, sweet scent."
 463,10,9,"A white Apricorn.
 It doesn’t smell like anything."
 463,11,1,"A white Apricorn.
-It doesn't smell like anything."
+It doesn’t smell like anything."
 464,10,9,"A black Apricorn
 It has an indescribable scent."
 464,11,1,"A black Apricorn
@@ -7592,7 +7592,7 @@ of Unown."
 472,10,9,"A card to save points for the
 Buena’s Password show."
 472,11,1,"A card to save points for the
-Buena's Password show."
+Buena’s Password show."
 473,10,9,"A very tasty tail of something.
 It sells for a high price."
 473,11,1,"A very tasty tail of something.
@@ -7636,7 +7636,7 @@ Train. It allows you to ride whenever
 and however much you’d like."
 479,11,1,"A ticket required for riding the Magnet
 Train. It allows you to ride whenever
-and however much you'd like."
+and however much you’d like."
 480,10,9,"An important machine part for the
 Power Plant that was stolen."
 480,11,1,"An important machine part for the
@@ -7652,12 +7652,12 @@ that sparkles."
 483,10,9,"A mysterious Egg obtained from Mr.
 Pokémon. What’s in the Egg is unknown."
 483,11,1,"A mysterious Egg obtained from Mr.
-Pokémon. What's in the Egg is unknown."
+Pokémon. What’s in the Egg is unknown."
 484,10,9,"A music player that allows you to listen
 to nostalgic songs. It’s operated with
 a single switch."
 484,11,1,"A music player that allows you to listen
-to nostalgic songs. It's operated with
+to nostalgic songs. It’s operated with
 a single switch."
 485,10,9,"An old-fashioned bell with a gentle,
 soothing sound."
@@ -7666,164 +7666,164 @@ gentle ringing."
 486,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many victories
 you’ve had."
-486,11,1,"It holds Pokéathlon records. It's a
+486,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many victories
-you've had."
+you’ve had."
 487,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many
 losses you’ve had."
-487,11,1,"It holds Pokéathlon records. It's a
+487,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many
-losses you've had."
+losses you’ve had."
 488,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have dashed."
-488,11,1,"It holds Pokéathlon records. It's a
+488,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have dashed."
 489,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have jumped."
-489,11,1,"It holds Pokéathlon records. It's a
+489,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have jumped."
 490,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won the Hurdle Dash."
-490,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+490,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won the Hurdle Dash."
 491,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won the Relay Run."
-491,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+491,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won the Relay Run."
 492,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won Pennant Capture."
-492,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+492,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won Pennant Capture."
 493,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won Block Smash."
-493,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+493,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won Block Smash."
 494,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won Disc Catch."
-494,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+494,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won Disc Catch."
 495,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won Snow Throw."
-495,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+495,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won Snow Throw."
 496,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many points
 your Pokémon scored."
-496,11,1,"It holds Pokéathlon records. It's a
+496,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many points
 your Pokémon scored."
 497,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have failed."
-497,11,1,"It holds Pokéathlon records. It's a
+497,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have failed."
 498,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon impeded themselves."
-498,11,1,"It holds Pokéathlon records. It's a
+498,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon impeded themselves."
 499,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have tackled."
-499,11,1,"It holds Pokéathlon records. It's a
+499,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have tackled."
 500,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have fallen down."
-500,11,1,"It holds Pokéathlon records. It's a
+500,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon have fallen down."
 501,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won Ring Drop."
-501,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+501,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won Ring Drop."
 502,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won Lamp Jump."
-502,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+502,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won Lamp Jump."
 503,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won Circle Push."
-503,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+503,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won Circle Push."
 504,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many 
 Link Pokéathlon wins you’ve had."
-504,11,1,"It holds Pokéathlon records. It's a
+504,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many 
-Link Pokéathlon wins you've had."
+Link Pokéathlon wins you’ve had."
 505,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many
 Link Pokéathlon losses you’ve had."
-505,11,1,"It holds Pokéathlon records. It's a
+505,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many
-Link Pokéathlon losses you've had."
+Link Pokéathlon losses you’ve had."
 506,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times
 you’ve won an event."
-506,11,1,"It holds Pokéathlon records. It's a
+506,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many times
-you've won an event."
+you’ve won an event."
 507,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times 
 you’ve lost an event."
-507,11,1,"It holds Pokéathlon records. It's a
+507,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many times 
-you've lost an event."
+you’ve lost an event."
 508,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 switched Pokémon."
-508,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+508,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 switched Pokémon."
 509,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 won Goal Roll."
-509,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+509,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 won Goal Roll."
 510,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon won individual prizes."
-510,11,1,"It holds Pokéathlon records. It's a
+510,11,1,"It holds Pokéathlon records. It’s a
 card that shows how many times your
 Pokémon won individual prizes."
 511,10,9,"It holds Pokéathlon records. It’s a
 card that shows how many times you’ve
 instructed your Pokémon."
-511,11,1,"It holds Pokéathlon records. It's a
-card that shows how many times you've
+511,11,1,"It holds Pokéathlon records. It’s a
+card that shows how many times you’ve
 instructed your Pokémon."
 512,10,9,"It holds Pokéathlon records. It’s a
 card that shows how much time you’ve
 spent in the Pokéathlon."
-512,11,1,"It holds Pokéathlon records. It's a
-card that shows how much time you've
+512,11,1,"It holds Pokéathlon records. It’s a
+card that shows how much time you’ve
 spent in the Pokéathlon."
 513,10,9,"A sturdy Capsule that can only be
 opened with a special key."
@@ -8339,7 +8339,7 @@ stat of a single Pokémon."
 611,11,1,"An item for use on a Pokémon. It
 slightly increases the base Speed stat
 of a single Pokémon."
-612,11,1,"Though this feather is beautiful, it's
+612,11,1,"Though this feather is beautiful, it’s
 just a regular feather and has no
 effect on Pokémon."
 613,11,1,"A fossil of an ancient Pokémon that
@@ -8397,7 +8397,7 @@ A maniac will buy it for a high price."
 631,11,1,"A crown made in a civilization
 about 3,000 years ago.
 A maniac will buy it for a high price."
-632,11,1,"Castelia City's specialty, soft-serve
+632,11,1,"Castelia City’s specialty, soft-serve
 ice cream. It heals all the status
 problems of a single Pokémon."
 633,11,1,"It can be used many times to raise the
@@ -8466,12 +8466,12 @@ to use its held item."
 655,11,1,"When used, it restores any stat
 changes of an ally Pokémon."
 656,11,1,"It can be used many times to greatly
-raise a Pokémon's critical-hit ratio. It
+raise a Pokémon’s critical-hit ratio. It
 wears off if the Pokémon is withdrawn."
-657,11,1,"Reshiram's body was destroyed and
+657,11,1,"Reshiram’s body was destroyed and
 changed into this stone. It is said to
 be waiting for the emergence of a hero."
-658,11,1,"Zekrom's body was destroyed and
+658,11,1,"Zekrom’s body was destroyed and
 changed into this stone. It is said to
 be waiting for the emergence of a hero."
 659,11,1,"The user shrouds itself in electricity
@@ -8479,9 +8479,9 @@ and smashes into its target.
 It also damages the user a little."
 660,11,1,"The user attacks with a punch that can
 shatter a rock. It may also lower the
-target's Defense stat."
+target’s Defense stat."
 661,11,1,"The user yells as if it is ranting about
-something, making the target's Sp. Atk
+something, making the target’s Sp. Atk
 stat decrease."
 662,11,1,"A high-tech transceiver with a 
 camera function. It allows up to

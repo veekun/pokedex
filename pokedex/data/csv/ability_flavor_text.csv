@@ -85,7 +85,7 @@ evasion in a sandstorm."
 evasion in a sandstorm."
 8,10,9,"Boosts the Pokémon’s
 evasion in a sandstorm."
-8,11,1,"Boosts the Pokémon's
+8,11,1,"Boosts the Pokémon’s
 evasion in a sandstorm."
 9,5,9,Paralyzes on contact.
 9,6,9,Paralyzes on contact.
@@ -151,7 +151,7 @@ boosted."
 boosted."
 14,10,9,"The Pokémon’s accuracy
 is boosted."
-14,11,1,"The Pokémon's accuracy
+14,11,1,"The Pokémon’s accuracy
 is boosted."
 15,5,9,Prevents sleep.
 15,6,9,Prevents sleep.
@@ -173,8 +173,8 @@ type to the foe’s move."
 type to the foe’s move."
 16,10,9,"Changes the Pokémon’s
 type to the foe’s move."
-16,11,1,"Changes the Pokémon's
-type to the foe's move."
+16,11,1,"Changes the Pokémon’s
+type to the foe’s move."
 17,5,9,Prevents poisoning.
 17,6,9,Prevents poisoning.
 17,7,9,Prevents poisoning.
@@ -196,7 +196,7 @@ if hit by a fire move."
 18,10,9,"It powers up Fire-type
 moves if it’s hit by one."
 18,11,1,"It powers up Fire-type
-moves if it's hit by one."
+moves if it’s hit by one."
 19,5,9,Prevents added effects.
 19,6,9,Prevents added effects.
 19,7,9,Prevents added effects.
@@ -239,7 +239,7 @@ stat."
 stat."
 22,10,9,"Lowers the foe’s
 Attack stat."
-22,11,1,"Lowers the foe's
+22,11,1,"Lowers the foe’s
 Attack stat."
 23,5,9,Prevents the foe’s escape.
 23,6,9,Prevents the foe’s escape.
@@ -360,7 +360,7 @@ Speed in rain."
 Speed in rain."
 33,10,9,"Boosts the Pokémon’s
 Speed in rain."
-33,11,1,"Boosts the Pokémon's
+33,11,1,"Boosts the Pokémon’s
 Speed in rain."
 34,5,9,Raises SPEED in sunshine.
 34,6,9,Raises SPEED in sunshine.
@@ -371,7 +371,7 @@ Speed in sunshine."
 Speed in sunshine."
 34,10,9,"Boosts the Pokémon’s
 Speed in sunshine."
-34,11,1,"Boosts the Pokémon's
+34,11,1,"Boosts the Pokémon’s
 Speed in sunshine."
 35,5,9,Encounter rate increases.
 35,6,9,Encounter rate increases.
@@ -394,7 +394,7 @@ foe’s ability."
 36,10,9,"The Pokémon copies the
 foe’s ability."
 36,11,1,"The Pokémon copies a
-foe's Ability."
+foe’s Ability."
 37,5,9,Raises ATTACK.
 37,6,9,Raises ATTACK.
 37,7,9,Raises ATTACK.
@@ -404,7 +404,7 @@ Attack stat."
 Attack stat."
 37,10,9,"Raises the Pokémon’s
 Attack stat."
-37,11,1,"Raises the Pokémon's
+37,11,1,"Raises the Pokémon’s
 Attack stat."
 38,5,9,Poisons foe on contact.
 38,6,9,Poisons foe on contact.
@@ -504,7 +504,7 @@ foe’s PP usage."
 46,10,9,"The Pokémon raises the
 foe’s PP usage."
 46,11,1,"The Pokémon raises the
-foe's PP usage."
+foe’s PP usage."
 47,5,9,Heat-and-cold protection.
 47,6,9,Heat-and-cold protection.
 47,7,9,Heat-and-cold protection.
@@ -591,7 +591,7 @@ on consecutive turns."
 on consecutive turns."
 54,10,9,"Pokémon can’t attack
 on consecutive turns."
-54,11,1,"Pokémon can't attack
+54,11,1,"Pokémon can’t attack
 on consecutive turns."
 55,5,9,Trades accuracy for power.
 55,6,9,Trades accuracy for power.
@@ -811,7 +811,7 @@ physical attacks."
 physical attacks."
 74,10,9,"Boosts the power of
 physical attacks."
-74,11,1,"Raises the Pokémon's
+74,11,1,"Raises the Pokémon’s
 Attack stat."
 75,5,9,Blocks critical hits.
 75,6,9,Blocks critical hits.
@@ -930,7 +930,7 @@ to the foe’s ability."
 88,10,9,"Adjusts power according
 to the foe’s ability."
 88,11,1,"Adjusts power according
-to a foe's defenses."
+to a foe’s defenses."
 89,8,9,"Boosts the power of
 punching moves."
 89,9,9,"Boosts the power of
@@ -993,7 +993,7 @@ become the Normal type."
 become the Normal type."
 96,10,9,"All the Pokémon’s moves
 become the Normal type."
-96,11,1,"All the Pokémon's moves
+96,11,1,"All the Pokémon’s moves
 become the Normal type."
 97,8,9,"Powers up moves if they
 become critical hits."
@@ -1033,7 +1033,7 @@ weaker moves."
 weaker moves."
 101,10,9,"Powers up the Pokémon’s
 weaker moves."
-101,11,1,"Powers up the Pokémon's
+101,11,1,"Powers up the Pokémon’s
 weaker moves."
 102,8,9,"Prevents status problems
 in sunny weather."
@@ -1049,7 +1049,7 @@ any held items."
 any held items."
 103,10,9,"The Pokémon can’t use
 any held items."
-103,11,1,"The Pokémon can't use
+103,11,1,"The Pokémon can’t use
 any held items."
 104,8,9,"Moves can be used
 regardless of abilities."
@@ -1081,7 +1081,7 @@ dangerous moves."
 dangerous moves."
 107,10,9,"Senses the foe’s
 dangerous moves."
-107,11,1,"Senses a foe's
+107,11,1,"Senses a foe’s
 dangerous moves."
 108,8,9,"Determines what moves
 the foe has."
@@ -1106,7 +1106,7 @@ effective” moves."
 110,10,9,"Powers up “not very
 effective” moves."
 110,11,1,"Powers up “not very
-effective"" moves."
+effective” moves."
 111,8,9,"Powers down super­
 effective moves."
 111,9,9,"Powers down super­
@@ -1178,7 +1178,7 @@ the foe’s held item."
 119,10,9,"The Pokémon can check
 the foe’s held item."
 119,11,1,"The Pokémon can check
-a foe's held item."
+a foe’s held item."
 120,8,9,"Powers up moves that
 have recoil damage."
 120,9,9,"Powers up moves that
@@ -1210,7 +1210,7 @@ HP."
 123,10,9,"Reduces a sleeping
 foe’s HP."
 123,11,1,"Reduces a sleeping
-foe's HP."
+foe’s HP."
 124,11,1,"Steals an item when hit
 by another Pokémon."
 125,11,1,"Removes added effects to
@@ -1225,15 +1225,15 @@ its Attack increases."
 becomes half or less."
 130,11,1,"May disable a move used
 on the Pokémon."
-131,11,1,"May heal an ally's status
+131,11,1,"May heal an ally’s status
 conditions."
 132,11,1,"Reduces damage done
 to allies."
 133,11,1,"Physical attacks lower
 Defense and raise Speed."
-134,11,1,"Doubles the Pokémon's
+134,11,1,"Doubles the Pokémon’s
 weight."
-135,11,1,"Halves the Pokémon's
+135,11,1,"Halves the Pokémon’s
 weight."
 136,11,1,"Reduces damage when HP
 is full."
@@ -1243,7 +1243,7 @@ attacks when poisoned."
 when burned."
 139,11,1,"May create another
 Berry after one is used."
-140,11,1,"Anticipates an ally's
+140,11,1,"Anticipates an ally’s
 attack and dodges it."
 141,11,1,"Raises one stat and
 lowers another."
@@ -1255,7 +1255,7 @@ Pokémon makes contact."
 withdrawn from battle."
 145,11,1,"Protects the Pokémon from
 Defense-lowering attacks."
-146,11,1,"Boosts the Pokémon's
+146,11,1,"Boosts the Pokémon’s
 Speed in a sandstorm."
 147,11,1,"Makes status-changing
 moves more likely to miss."
@@ -1265,7 +1265,7 @@ the Pokémon moves last."
 the Pokémon in back."
 150,11,1,"It transforms itself into
 the Pokémon it is facing."
-151,11,1,"Passes through the foe's
+151,11,1,"Passes through the foe’s
 barrier and strikes."
 152,11,1,"Contact with this Pokémon
 spreads this Ability."
@@ -1281,11 +1281,11 @@ changing moves."
 a Grass-type move."
 158,11,1,"Gives priority to a
 status move."
-159,11,1,"Boosts certain moves'
+159,11,1,"Boosts certain moves’
 power in a sandstorm."
 160,11,1,"Inflicts damage to the
 Pokémon on contact."
-161,11,1,"Changes the Pokémon's
+161,11,1,"Changes the Pokémon’s
 shape when HP is halved."
 162,11,1,"Boosts the accuracy of its
 allies and itself."
