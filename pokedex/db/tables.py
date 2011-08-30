@@ -1057,6 +1057,11 @@ create_translation_table('pokedex_prose', Pokedex, 'prose',
 
 class Pokemon(TableBase):
     u"""A Pokémon.  The core to this whole mess.
+
+    This table defines "Pokémon" the same way the games do: a form with
+    different types, moves, or other game-changing properties counts as a
+    different Pokémon.  For example, this table contains four rows for Deoxys,
+    but only one for Unown.
     """
     __tablename__ = 'pokemon'
     __singlename__ = 'pokemon'
@@ -1204,10 +1209,10 @@ class PokemonEvolution(TableBase):
         info=dict(description=u"The ID of the species for which this one must be traded."))
 
 class PokemonForm(TableBase):
-    u"""An individual form of a Pokémon.
-
-    Pokémon that do not have separate forms are still given a single row to
-    represent their single form.
+    u"""An individual form of a Pokémon.  This includes *every* variant (except
+    color differences) of every Pokémon, regardless of how the games treat
+    them.  Even Pokémon with no alternate forms have one row in this table, to
+    represent their lone "normal" form.
     """
     __tablename__ = 'pokemon_forms'
     __singlename__ = 'pokemon_form'
@@ -1333,7 +1338,8 @@ create_translation_table('pokemon_move_method_prose', PokemonMoveMethod, 'prose'
 )
 
 class PokemonShape(TableBase):
-    u"""The shape of a Pokémon's body, as used in generation IV Pokédexes.
+    u"""The shape of a Pokémon's body.  Used for flavor in generation IV and V
+    Pokédexes.
     """
     __tablename__ = 'pokemon_shapes'
     __singlename__ = 'pokemon_shape'
@@ -1351,7 +1357,7 @@ create_translation_table('pokemon_shape_prose', PokemonShape, 'prose',
 )
 
 class PokemonSpecies(TableBase):
-    u"""A Pokémon species: group of Pokémon with the same Pokédex number
+    u"""A Pokémon species: the standard 1–151.  Or 649.  Whatever.
     """
     __tablename__ = 'pokemon_species'
     __singlename__ = 'pokemon_species'
