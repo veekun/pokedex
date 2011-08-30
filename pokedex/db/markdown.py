@@ -14,7 +14,6 @@ from __future__ import absolute_import
 import re
 
 import markdown
-import sqlalchemy.types
 from sqlalchemy.orm.session import object_session
 
 class MarkdownString(object):

@@ -4,7 +4,6 @@ import fnmatch
 import os.path
 import sys
 
-from sqlalchemy.orm.attributes import instrumentation_registry
 import sqlalchemy.sql.util
 import sqlalchemy.types
 

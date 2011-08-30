@@ -1,6 +1,7 @@
 # Encoding: UTF-8
 
 import pytest
+from sqlalchemy.orm.exc import NoResultFound
 
 from pokedex.tests import positional_params
 
