@@ -188,7 +188,7 @@ class Berry(TableBase):
     soil_dryness = Column(Integer, nullable=False,
         info=dict(description="The speed at which this Berry dries out the soil as it grows.  A higher rate means the soil dries more quickly."))
     smoothness = Column(Integer, nullable=False,
-        info=dict(description="The smoothness of this Berry, used in making Pokéblocks or Poffins"))
+        info=dict(description=u"The smoothness of this Berry, used in making Pokéblocks or Poffins"))
 
 class BerryFirmness(TableBase):
     u"""A Berry firmness, such as "hard" or "very soft".
