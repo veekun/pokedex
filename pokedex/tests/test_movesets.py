@@ -61,6 +61,7 @@ OK pikachu reversal bide nasty-plot discharge
 NO pikachu surf charge
 OK pikachu volt-tackle encore headbutt grass-knot
 #OK suicune extremespeed dig icy-wind bite
+NO nidoran-m horn-drill head-smash -l 5 -v platinum --pomeg-glitch
 """.strip().splitlines()
 
 @single_params(*argstrings)

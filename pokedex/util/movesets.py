@@ -1257,21 +1257,19 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                     version_group_=self.version_group_, moves_=self.moves_)
 
     def expand_sketch(self):
-        moves = self.moves_
         sketch = self.search.sketch
-        if sketch in moves:
+        if sketch in self.moves_:
             for sketched in sorted(self.search.goal_moves):
                 if sketched in self.search.unsketchable:
                     continue
-                if sketched not in moves:
-                    moves = set(moves)
+                if sketched not in self.moves_:
+                    moves = set(self.moves_)
                     moves.remove(sketch)
                     moves.add(sketched)
                     action = SketchAction(self.search, sketched)
                     cost = self.search.costs['sketch']
                     yield cost, action, self._replace(
                             new_level=False, moves_=frozenset(moves))
-                    return
 
     def estimate(self):
         # Given good estimates, A* finds solutions much faster.
@@ -1316,7 +1314,7 @@ class BaseBreedNode(Node):
                         learns = True
                         break
                 if not learns:
-                    continue
+                    break
             if not learns:
                 continue
             extra_moves = set()
