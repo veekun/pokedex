@@ -987,7 +987,7 @@ If the target is under the effect of []{move:ingrain} or []{ability:suction-cups
 329,9,Raises the user's Defense by three stages.,Raises the user's [Defense]{mechanic:defense} by three [stages]{mechanic:stage}.
 330,9,Has a $effect_chance% chance to put the target to sleep.,"Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to put the target to [sleep]{mechanic:sleep}.
 If the user is a []{pokemon:meloetta}, it will toggle between Aria and Pirouette Forme."
-331,9,Lowers the target's Speed by two stages.,Inflicts [regular damage]{mechanic:regular-damage}.  Lowers the target's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.
+331,9,Lowers the target's Speed by one stage.,Inflicts [regular damage]{mechanic:regular-damage}.  Lowers the target's [Speed]{mechanic:speed} by one [stage]{mechanic:stage}.
 332,9,Requires a turn to charge before attacking.  Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralysis} the target.  User charges for one turn before attacking.
 333,9,Requires a turn to charge before attacking.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  User charges for one turn before attacking.
 335,9,"Lowers the user's Defense, Special Defense, and Speed by one stage each.","Inflicts [regular damage]{mechanic:regular-damage}.  Lowers the user's [Defense]{mechanic:defense}, [Special Defense]{mechanic:special-defense}, and [Speed]{mechanic:speed} by one [stage]{mechanic:stage} each."
