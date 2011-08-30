@@ -869,7 +869,9 @@ This move cannot be selected by []{move:sleep-talk}."
 268,9,Has a higher chance to confuse the target when the recorded sound is louder.,"Inflicts [regular damage]{mechanic:regular-damage}.  Has either a 1%, 11%, or 31% chance to [confuse]{mechanic:confuse} the target, based on the volume of the recording made for this move; louder recordings increase the chance of [confusion]{mechanic:confusion}.  If the user is not a []{pokemon:chatot}, this move will not cause [confusion]{mechanic:confusion}.
 
 This move cannot be copied by []{move:mimic}, []{move:mirror-move}, or []{move:sketch}, nor selected by []{move:assist}, []{move:metronome}, or []{move:sleep-talk}."
-269,9,"If the user is holding a plate, the damage inflicted will match it.","Inflicts [regular damage]{mechanic:regular-damage}.  If the user is holding a plate, this move's type is the type corresponding to the plate."
+269,9,"If the user is holding a appropriate plate or drive, the damage inflicted will match it.","Inflicts [regular damage]{mechanic:regular-damage}.  If the user is holding a plate or a drive, this move's type is the type corresponding to that item.
+
+Note: This effect is technically shared by both []{move:techno-blast} and []{move:judgment}; however, Techno Blast is only affected by drives, and Judgment is only affected by plates."
 270,9,User receives 1/2 the damage inflicted in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 the damage it inflicts in recoil.
 271,9,"User faints, and its replacement is fully healed.","User [faint]{mechanic:faint}s.  Its replacement's [HP]{mechanic:hp} and [PP]{mechanic:pp} are fully restored, and any [major status effect]{mechanic:major-status-effect} is removed."
 272,9,Has a $effect_chance% chance to lower the target's Special Defense by two stages.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to lower the target's [Special Defense]{mechanic:special-defense} by two [stages]{mechanic:stage}.
