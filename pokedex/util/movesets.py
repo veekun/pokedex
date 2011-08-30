@@ -123,6 +123,8 @@ class MovesetSearch(object):
                 self.goal_evolution_chain, 'family')
 
         # Hard moves: ones we have to breed for or do somehing even costlier
+        # (we might also have to breed for the easy moves, but only within
+        # the family)
         self.hard_moves = self.goal_moves - easy_moves
         self.egg_moves = self.goal_moves - non_egg_moves
         if self.hard_moves:
@@ -372,8 +374,9 @@ class MovesetSearch(object):
                 groups = (g1, g2) if g2 else (g1, )
                 if len(self.egg_groups.get(evolution_chain, ())) <= len(groups):
                     self.egg_groups[evolution_chain] = groups
-                for group in groups:
-                    self.babies[group].add(pokemon)
+                if not parent:
+                    for group in groups:
+                        self.babies[group].add(pokemon)
             self.evolution_chains[pokemon] = evolution_chain
             self.pokemon_by_evolution_chain[evolution_chain].add(pokemon)
             if parent:
@@ -1050,6 +1053,11 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
                 # It doesn't make sense to train this any more, since there's
                 # no way to pass the moves to the goal pokemon.
                 return ()
+            gender_rate = search.gender_rates[evo_chain]
+            if gender_rate == 8 or gender_rate < 0:
+                # Female-only and genderless pokémon can not pass moves down at
+                # all.
+                return ()
         if len(self.moves_) == 4:
             learns = ()
         else:
@@ -1224,35 +1232,30 @@ class PokemonNode(Node, Facade, namedtuple('PokemonNode',
         if search.generation_id_by_version_group[self.version_group_] == 1:
             return
         evo_chain = search.evolution_chains[self.pokemon_]
+        gender_rate = search.gender_rates[evo_chain]
+        if gender_rate == 8 or gender_rate < 0:
+            # Female-only and genderless pokémon can not pass moves down at
+            # all.
+            return
         egg_groups = search.egg_groups[evo_chain]
         breeds_required = search.breeds_required
         moves = self.moves_
         cost = search.costs['breed']
         cost += search.costs['egg'] * len(moves)
         cost += search.costs['breed-penalty'] * len(search.egg_moves - moves)
-        gender_rate = search.gender_rates[evo_chain]
         goal_family = search.goal_evolution_chain
         goal_groups = search.egg_groups[goal_family]
         goal_compatible = set(goal_groups).intersection(egg_groups)
-        if 0 < gender_rate:
-            # Only pokemon that have males can pass down moves to other species
-            # (and the other species must have females: checked in BreedNode)
-            for group in egg_groups:
-                if moves in breeds_required[group]:
-                    yield cost, None, BreedNode(search=self.search, dummy='b',
-                            group_=group, version_group_=self.version_group_,
-                            moves_=self.moves_)
-            # Since the target family is not included in our breed graph, we
-            # breed with it explicitly. But again, there must be a female to
-            # breed with.
-            if goal_compatible and search.gender_rates[
-                        search.goal_evolution_chain] < 8:
-                yield cost, None, GoalBreedNode(search=self.search, dummy='g',
-                        version_group_=self.version_group_, moves_=self.moves_)
-        elif evo_chain == search.goal_evolution_chain:
-            # Single-gender & genderless pokemon can pass on moves via
-            # breeding with Ditto, to produce the same species again. Obviously
-            # this is only useful when breeding the goal species.
+        for group in egg_groups:
+            if moves in breeds_required[group]:
+                yield cost, None, BreedNode(search=self.search, dummy='b',
+                        group_=group, version_group_=self.version_group_,
+                        moves_=self.moves_)
+        # Since the target family is not included in our breed graph, we
+        # breed with it explicitly. There must be a female to breed with,
+        # unless this is already the target family so we can breed w/ Ditto.
+        if goal_compatible and (goal_family == evo_chain or
+                0 <= search.gender_rates[search.goal_evolution_chain] < 8):
             yield cost, None, GoalBreedNode(search=self.search, dummy='g',
                     version_group_=self.version_group_, moves_=self.moves_)
 

@@ -5,7 +5,7 @@ from pokedex.tests import single_params
 import sys
 
 from pokedex.db import connect
-from pokedex.util.movesets import main
+from pokedex.util.movesets import main, print_result
 
 result_map = {'OK': True, 'NO': False}
 session = connect()
@@ -59,9 +59,12 @@ OK deoxys superpower amnesia  spikes taunt
 OK deoxys counter extremespeed spikes pursuit
 OK pikachu reversal bide nasty-plot discharge
 NO pikachu surf charge
+NO nosepass head-smash
 OK pikachu volt-tackle encore headbutt grass-knot
 #OK suicune extremespeed dig icy-wind bite
 NO nidoran-m horn-drill head-smash -l 5 -v platinum --pomeg-glitch
+NO bulbasaur charm skull-bash
+NO chansey aromatherapy counter copycat
 """.strip().splitlines()
 
 @single_params(*argstrings)
@@ -73,7 +76,10 @@ def test_moveset(argstring):
         xfail = False
     args = argstring.strip().split() + ['-q']
     try:
-        assert bool(main(args[1:], session=session)) == result_map[args[0]]
+        result = main(args[1:], session=session)
+        if result and not result_map[args[0]]:
+            print_result(result)
+        assert bool(result) == result_map[args[0]]
     except AssertionError:
         if xfail:
             pytest.xfail()
