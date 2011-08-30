@@ -52,6 +52,7 @@ move_id,changed_in_version_group_id,type_id,power,pp,accuracy,effect_id,effect_c
 170,11,,,40,,,
 174,11,10001,,,,,
 178,11,,,,85,,
+184,11,,,,90,,
 192,8,,100,,,,
 200,8,,90,,,,
 202,8,,,5,,,
