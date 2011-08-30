@@ -154,7 +154,7 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
                     item=tables.Item,
                     location=tables.Location,
                     move=tables.Move,
-                    pokemon=tables.Pokemon,
+                    pokemon=tables.PokemonSpecies,
                     type=tables.Type,
                 )[category]
         except KeyError:

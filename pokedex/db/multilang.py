@@ -141,6 +141,8 @@ def create_translation_table(_table_name, foreign_class, relation_name,
         if string_getter:
             def getset_factory(underlying_type, instance):
                 def getter(translations):
+                    if translations is None:
+                        return None
                     text = getattr(translations, column.name)
                     if text is None:
                         return text

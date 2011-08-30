@@ -2,7 +2,7 @@
 
 import csv
 
-from nose.tools import *
+import pytest
 
 from pokedex.db import translations, tables
 

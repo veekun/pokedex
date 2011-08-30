@@ -1,6 +1,7 @@
 # encoding: utf8
-from nose.tools import *
-import unittest
+
+from pokedex.tests import single_params
+
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.orm import class_mapper, joinedload, sessionmaker
 from sqlalchemy.orm.session import Session
@@ -10,22 +11,23 @@ from pokedex.db import tables, markdown
 from pokedex.db.multilang import MultilangScopedSession, MultilangSession, \
     create_translation_table
 
-def test_variable_names():
+@single_params(*dir(tables))
+def test_variable_names(varname):
     """We want pokedex.db.tables to export tables using the class name"""
-    for varname in dir(tables):
-        if not varname[0].isupper():
-            continue
-        table = getattr(tables, varname)
-        try:
-            if not issubclass(table, tables.TableBase) or table is tables.TableBase:
-                continue
-        except TypeError:
-            continue
-        classname = table.__name__
-        if classname and varname[0].isupper():
-            assert varname == classname, '%s refers to %s' % (varname, classname)
-    for table in tables.mapped_classes:
-        assert getattr(tables, table.__name__) is table
+    table = getattr(tables, varname)
+    try:
+        if not issubclass(table, tables.TableBase) or table is tables.TableBase:
+            return
+    except TypeError:
+        return
+    classname = table.__name__
+    if classname and varname[0].isupper():
+        assert varname == classname, '%s refers to %s' % (varname, classname)
+
+@single_params(*tables.mapped_classes)
+def test_variable_names_2(table):
+    """We also want all of the tables exported"""
+    assert getattr(tables, table.__name__) is table
 
 def test_class_order():
     """The declarative classes should be defined in alphabetical order.
@@ -156,51 +158,52 @@ def test_i18n_table_creation():
     assert foo.name_map[lang_en] == 'different english'
     assert foo.name_map[lang_ru] == 'new russian'
 
-def test_texts():
+classes = []
+for cls in tables.mapped_classes:
+    classes.append(cls)
+    classes += cls.translation_classes
+@single_params(*classes)
+def test_texts(cls):
     """Check DB schema for integrity of text columns & translations.
 
     Mostly protects against copy/paste oversights and rebase hiccups.
     If there's a reason to relax the tests, do it
     """
-    classes = []
-    for cls in tables.mapped_classes:
-        classes.append(cls)
-        classes += cls.translation_classes
-    for cls in classes:
-        if hasattr(cls, 'local_language') or hasattr(cls, 'language'):
-            good_formats = 'markdown plaintext gametext'.split()
-            assert_text = '%s is language-specific'
+    if hasattr(cls, 'local_language') or hasattr(cls, 'language'):
+        good_formats = 'markdown plaintext gametext'.split()
+        assert_text = '%s is language-specific'
+    else:
+        good_formats = 'identifier latex'.split()
+        assert_text = '%s is not language-specific'
+    columns = sorted(cls.__table__.c, key=lambda c: c.name)
+    text_columns = []
+    for column in columns:
+        format = column.info.get('format', None)
+        if format is not None:
+            if format not in good_formats:
+                raise AssertionError(assert_text % column)
+            if (format != 'identifier') and (column.name == 'identifier'):
+                raise AssertionError('%s: identifier column name/type mismatch' % column)
+            if column.info.get('official', None) and format not in 'gametext plaintext':
+                raise AssertionError('%s: official text with bad format' % column)
+            text_columns.append(column)
         else:
-            good_formats = 'identifier latex'.split()
-            assert_text = '%s is not language-specific'
-        columns = sorted(cls.__table__.c, key=lambda c: c.name)
-        text_columns = []
-        for column in columns:
-            format = column.info.get('format', None)
-            if format is not None:
-                if format not in good_formats:
-                    raise AssertionError(assert_text % column)
-                if (format != 'identifier') and (column.name == 'identifier'):
-                    raise AssertionError('%s: identifier column name/type mismatch' % column)
-                if column.info.get('official', None) and format not in 'gametext plaintext':
-                    raise AssertionError('%s: official text with bad format' % column)
-                text_columns.append(column)
-            else:
-                if isinstance(column.type, tables.Unicode):
-                    raise AssertionError('%s: text column without format' % column)
-            if column.name == 'name' and format != 'plaintext':
-                raise AssertionError('%s: non-plaintext name' % column)
-            # No mention of English in the description
-            assert 'English' not in column.info['description'], column
-        # If there's more than one text column in a translation table,
-        # they have to be nullable, to support missing translations
-        if hasattr(cls, 'local_language') and len(text_columns) > 1:
-            for column in text_columns:
-                assert column.nullable
+            if isinstance(column.type, tables.Unicode):
+                raise AssertionError('%s: text column without format' % column)
+        if column.name == 'name' and format != 'plaintext':
+            raise AssertionError('%s: non-plaintext name' % column)
+        # No mention of English in the description
+        assert 'English' not in column.info['description'], column
+    # If there's more than one text column in a translation table,
+    # they have to be nullable, to support missing translations
+    if hasattr(cls, 'local_language') and len(text_columns) > 1:
+        for column in text_columns:
+            assert column.nullable
 
-def test_identifiers_with_names():
+@single_params(*tables.mapped_classes)
+def test_identifiers_with_names(table):
     """Test that named tables have identifiers
     """
-    for table in sorted(tables.mapped_classes, key=lambda t: t.__name__):
-        if hasattr(table, 'name'):
+    for translation_class in table.translation_classes:
+        if hasattr(translation_class, 'name'):
             assert hasattr(table, 'identifier'), table

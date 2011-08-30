@@ -1,4 +1,4 @@
-id,evolved_pokemon_id,evolution_trigger_id,trigger_item_id,minimum_level,gender,location_id,held_item_id,time_of_day,known_move_id,minimum_happiness,minimum_beauty,relative_physical_stats,party_pokemon_id,trade_pokemon_id
+id,evolved_species_id,evolution_trigger_id,trigger_item_id,minimum_level,gender,location_id,held_item_id,time_of_day,known_move_id,minimum_happiness,minimum_beauty,relative_physical_stats,party_species_id,trade_species_id
 1,2,1,,16,,,,,,,,,,
 2,3,1,,32,,,,,,,,,,
 3,5,1,,16,,,,,,,,,,

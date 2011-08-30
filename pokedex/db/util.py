@@ -7,13 +7,13 @@ of pokemon, and filtering/ordering by name.
 from sqlalchemy.orm import aliased
 from sqlalchemy.sql.expression import func
 from sqlalchemy.sql.functions import coalesce
+from sqlalchemy.orm.exc import NoResultFound
 
 from pokedex.db import tables
 
 ### Getter
 
-def get(session, table, identifier=None, name=None, id=None,
-        form_identifier=None, form_name=None, language=None, is_pokemon=None):
+def get(session, table, identifier=None, name=None, id=None, language=None):
     """Get one object from the database.
 
     session: The session to use (from pokedex.db.connect())
@@ -22,25 +22,15 @@ def get(session, table, identifier=None, name=None, id=None,
     identifier: Identifier of the object
     name: The name of the object
     id: The ID number of the object
-    form_identifier: For pokemon, identifier of the form
-    form_name: For pokemon, name of the form
 
     language: A Language to use for name and form_name
-    is_pokemon: If true, specifies that the table should be treated as a
-        pokemon table (handling forms specially). If None and table is the
-        (unaliased) Pokemon, it is set to True. Otherwise, the pokemon forms
-        aren't handled.
 
     All conditions must match, so it's not a good idea to specify more than one
     of identifier/name/id at once.
 
     If zero or more than one objects matching the criteria are found, the
     appropriate SQLAlchemy exception is raised.
-    Exception: for pokemon, selects the form base unless form_* is given.
     """
-
-    if is_pokemon is None:
-        is_pokemon = (table is tables.Pokemon)
 
     query = session.query(table)
 
@@ -51,54 +41,42 @@ def get(session, table, identifier=None, name=None, id=None,
         query = filter_name(query, table, name, language)
 
     if id is not None:
-        query = query.filter_by(id=id)
-
-    if form_identifier is not None or form_name is not None:
-        if is_pokemon:
-            query = query.join(table.unique_form)
-            if form_identifier is not None:
-                query = query.filter(tables.PokemonForm.identifier ==
-                        form_identifier)
-            if form_name is not None:
-                query = filter_name(query, table, form_name, language)
+        # ASSUMPTION: id is the primary key of the table.
+        result = query.get(id)
+        if result is None:
+            # Keep the API
+            raise NoResultFound
         else:
-            raise ValueError(
-                "form_identifier and form_name only make sense for pokemon")
-    elif is_pokemon:
-        query = filter_base_forms(query)
+            return result
 
     return query.one()
 
 ### Helpers
 
-def filter_name(query, table, name, language):
+def filter_name(query, table, name, language, name_attribute='name'):
     """Filter a query by name, return the resulting query
 
     query: The query to filter
     table: The table of named objects
     name: The name to look for. May be a tuple of alternatives.
     language: The language for "name", or None for the session default
+    name_attribute: the attribute to use; defaults to 'name'
     """
     if language is None:
-        query = query.filter(table.name == name)
+        query = query.filter(getattr(table, name_attribute) == name)
     else:
         names_table = table.names_table
+        name_column = getattr(names_table, name_attribute)
         query = query.join(names_table)
         query = query.filter(names_table.foreign_id == table.id)
         query = query.filter(names_table.local_language_id == language.id)
         if isinstance(name, tuple):
-            query = query.filter(names_table.name in name)
+            query = query.filter(name_column in name)
         else:
-            query = query.filter(names_table.name == name)
+            query = query.filter(name_column == name)
     return query
 
-def filter_base_forms(query):
-    """Filter only base forms of pokemon, and return the resulting query
-    """
-    query = query.filter(tables.Pokemon.forms.any())
-    return query
-
-def order_by_name(query, table, language=None, *extra_languages):
+def order_by_name(query, table, language=None, *extra_languages, **kwargs):
     """Order a query by name.
 
     query: The query to order
@@ -108,12 +86,17 @@ def order_by_name(query, table, language=None, *extra_languages):
     extra_languages: Extra languages to order by, should the translations for
         `language` be incomplete (or ambiguous).
 
+    name_attribute (keyword argument): the attribute to use; defaults to 'name'
+
     Uses the identifier as a fallback ordering.
     """
+    name_attribute = kwargs.pop('name', 'name')
+    if kwargs:
+        raise ValueError('Unexpected keyword arguments: %s' % kwargs.keys())
     order_columns = []
     if language is None:
         query = query.outerjoin(table.names_local)
-        order_columns.append(func.lower(table.names_table.name))
+        order_columns.append(func.lower(getattr(table.names_table, name_attribute)))
     else:
         extra_languages = (language, ) + extra_languages
     for language in extra_languages:
@@ -121,7 +104,7 @@ def order_by_name(query, table, language=None, *extra_languages):
         query = query.outerjoin(names_table)
         query = query.filter(names_table.foreign_id == table.id)
         query = query.filter(names_table.local_language_id == language.id)
-        order_columns.append(func.lower(names_table.name))
+        order_columns.append(func.lower(getattr(names_table, name_attribute)))
     order_columns.append(table.identifier)
     query = query.order_by(coalesce(*order_columns))
     return query
