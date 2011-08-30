@@ -15,6 +15,12 @@ import re
 
 import markdown
 from sqlalchemy.orm.session import object_session
+try:
+    # Markdown 2.1+
+    from markdown.util import etree, AtomicString
+except ImportError:
+    # Old Markdown
+    from markdown import etree, AtomicString
 
 class MarkdownString(object):
     """Wraps a Markdown string.
@@ -195,8 +201,8 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
         if url:
             el = self.factory.make_link(category, obj, url, label or name)
         else:
-            el = markdown.etree.Element('span')
-            el.text = markdown.AtomicString(label or name)
+            el = etree.Element('span')
+            el.text = AtomicString(label or name)
         return el
 
 class PokedexLinkExtension(markdown.Extension):
@@ -218,9 +224,9 @@ class PokedexLinkExtension(markdown.Extension):
 
         Override this to set custom attributes, e.g. title.
         """
-        el = markdown.etree.Element('a')
+        el = etree.Element('a')
         el.set('href', url)
-        el.text = markdown.AtomicString(text)
+        el.text = AtomicString(text)
         return el
 
     def identifier_url(self, category, identifier):
