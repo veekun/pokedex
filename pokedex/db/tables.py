@@ -1084,19 +1084,19 @@ class Pokemon(TableBase):
     def name(self):
         return self.default_form.pokemon_name or self.species.name
 
-    def stat(self, stat_name):
+    def stat(self, stat_identifier):
         u"""Returns a PokemonStat record for the given stat name (or Stat row
         object).  Uses the normal has-many machinery, so all the stats are
         effectively cached.
         """
-        if isinstance(stat_name, Stat):
-            stat_name = stat_name.name
+        if isinstance(stat_identifier, Stat):
+            stat_identifier = stat_identifier.identifier
 
         for pokemon_stat in self.stats:
-            if pokemon_stat.stat.name == stat_name:
+            if pokemon_stat.stat.identifier == stat_identifier:
                 return pokemon_stat
 
-        raise KeyError(u'No stat named %s' % stat_name)
+        raise KeyError(u'No stat named %s' % stat_identifier)
 
     @property
     def better_damage_class(self):
@@ -1106,8 +1106,8 @@ class Pokemon(TableBase):
         If the attack stats are about equal (within 5), returns None.  The
         value None, not the damage class called 'None'.
         """
-        phys = self.stat(u'Attack')
-        spec = self.stat(u'Special Attack')
+        phys = self.stat(u'attack')
+        spec = self.stat(u'special-attack')
 
         diff = phys.base_stat - spec.base_stat
 
