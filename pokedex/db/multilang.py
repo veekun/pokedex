@@ -1,7 +1,7 @@
 from functools import partial
 
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import aliased, compile_mappers, mapper, relationship, synonym
+from sqlalchemy.orm import Query, aliased, mapper, relationship, synonym
 from sqlalchemy.orm.collections import attribute_mapped_collection
 from sqlalchemy.orm.scoping import ScopedSession
 from sqlalchemy.orm.session import Session, object_session
@@ -180,6 +180,13 @@ def create_translation_table(_table_name, foreign_class, relation_name,
     # Done
     return Translations
 
+class MultilangQuery(Query):
+    def __iter__(self):
+        if '_default_language_id' not in self._params:
+            self._params = self._params.copy()
+            self._params['_default_language_id'] = self.session.default_language_id
+        return super(MultilangQuery, self).__iter__()
+
 class MultilangSession(Session):
     """A tiny Session subclass that adds support for a default language.
 
@@ -193,21 +200,12 @@ class MultilangSession(Session):
 
         self.pokedex_link_maker = markdown.MarkdownLinkMaker(self)
 
+        kwargs.setdefault('query_cls', MultilangQuery)
+
         super(MultilangSession, self).__init__(*args, **kwargs)
-
-    def execute(self, clause, params=None, *args, **kwargs):
-        if not params:
-            params = {}
-        params.setdefault('_default_language_id', self.default_language_id)
-
-        return super(MultilangSession, self).execute(
-            clause, params, *args, **kwargs)
 
 class MultilangScopedSession(ScopedSession):
     """Dispatches language selection to the attached Session."""
-
-    def __init__(self, *args, **kwargs):
-        super(MultilangScopedSession, self).__init__(*args, **kwargs)
 
     @property
     def default_language_id(self):
@@ -224,7 +222,3 @@ class MultilangScopedSession(ScopedSession):
         """Passes the new link maker through to the current session.
         """
         return self.registry().pokedex_link_maker
-
-    @pokedex_link_maker.setter
-    def pokedex_link_maker(self, new):
-        self.registry().pokedex_link_maker = new
