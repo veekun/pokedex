@@ -1,7 +1,7 @@
 
 import pytest
 
-from sqlalchemy.orm import aliased
+from sqlalchemy.orm import aliased, joinedload
 from sqlalchemy.orm.exc import NoResultFound
 
 from pokedex.db import connect, tables, util
@@ -40,3 +40,27 @@ def test_nonzero_autoincrement_ids():
                         util.get(session, cls, id=0)
                 nonzero_id.description = "No zero id in %s" % cls.__name__
                 yield nonzero_id, cls
+
+def test_unique_form_order():
+    """Check that tone PokemonForm.order value isn't used for more species
+    """
+
+    session = connect()
+
+    species_by_form_order = {}
+
+    query = session.query(tables.PokemonForm)
+    query = query.options(joinedload('pokemon.species'))
+
+    for form in query:
+        print form.name
+        try:
+            previous_species = species_by_form_order[form.order]
+        except KeyError:
+            species_by_form_order[form.order] = form.species
+        else:
+            assert previous_species == form.species, (
+                "PokemonForm.order == %s is used for %s and %s" % (
+                        form.order,
+                        species_by_form_order[form.order].name,
+                        form.species.name))
