@@ -193,12 +193,14 @@ class MultilangSession(Session):
     Needs to be used with `MultilangScopedSession`, below.
     """
     default_language_id = None
+    markdown_extension_class = markdown.PokedexLinkExtension
 
     def __init__(self, *args, **kwargs):
         if 'default_language_id' in kwargs:
             self.default_language_id = kwargs.pop('default_language_id')
 
-        self.pokedex_link_maker = markdown.MarkdownLinkMaker(self)
+        if 'markdown_extension_class' in kwargs:
+            self.markdown_extension_class = kwargs.pop('markdown_extension_class')
 
         kwargs.setdefault('query_cls', MultilangQuery)
 
@@ -218,7 +220,5 @@ class MultilangScopedSession(ScopedSession):
         self.registry().default_language_id = new
 
     @property
-    def pokedex_link_maker(self):
-        """Passes the new link maker through to the current session.
-        """
-        return self.registry().pokedex_link_maker
+    def markdown_extension_class(self):
+        return self.registry().markdown_extension_class

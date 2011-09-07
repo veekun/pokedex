@@ -47,19 +47,17 @@ class MarkdownString(object):
     def __html__(self):
         return self.as_html()
 
-    def as_html(self, object_url=None, identifier_url=None, make_link=None):
+    def as_html(self, extension_cls=None):
         """Returns the string as HTML.
 
-        If given, the optional arguments will be used instead of those in the
-        session's pokedex_link_maker. See MarkdownLinkMaker for documentation.
+        Pass a custom `extension_cls` to use your own class to generate links.
+        The default (and recommended superclass) is `PokedexLinkExtension`,
+        described below.
         """
 
-        extension = self.session.pokedex_link_maker.get_extension(
-                self.language,
-                object_url=object_url,
-                identifier_url=identifier_url,
-                make_link=make_link,
-            )
+        if extension_cls is None:
+            extension_cls = self.session.markdown_extension_class
+        extension = extension_cls(self.session)
 
         md = markdown.Markdown(
             extensions=['extra', extension],
@@ -78,8 +76,8 @@ class MarkdownString(object):
         # the links by their text.
         # XXX: The tables get unaligned
 
-        link_maker = MarkdownLinkMaker(self.session)
-        pattern = PokedexLinkPattern(link_maker, self.language)
+        link_maker = PokedexLinkExtension(self.session)
+        pattern = PokedexLinkPattern(link_maker, self.session, self.language)
         regex = '()%s()' % pattern.regex
         def handleMatch(m):
             return pattern.handleMatch(m).text
@@ -130,6 +128,7 @@ class MoveEffectPropertyMap(MoveEffectProperty):
             newdict[key] = _markdownify_effect_text(obj, newdict[key], key)
         return newdict
 
+
 class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
     """Matches [label]{category:target}.
 
@@ -137,10 +136,10 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
     """
     regex = ur'(?x) \[ ([^]]*) \] \{ ([-a-z0-9]+) : ([-a-z0-9]+) \}'
 
-    def __init__(self, factory, string_language, game_language=None):
+    def __init__(self, factory, session, string_language=None, game_language=None):
         markdown.inlinepatterns.Pattern.__init__(self, self.regex)
         self.factory = factory
-        self.session = factory.session
+        self.session = session
         self.string_language = string_language
         self.game_language = game_language
 
@@ -167,7 +166,7 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
             name = None
             # Translations can be incomplete; in which case we want to use a
             # fallback.
-            if table in [tables.Type]:
+            if table in [tables.Type] and self.string_language:
                 # Type wants to be localized to the same language as the text
                 name = obj.name_map.get(self.string_language)
             if not name and self.game_language:
@@ -181,31 +180,19 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
             el.text = markdown.AtomicString(label or name)
         return el
 
-class MarkdownLinkMaker(object):
-    """Creates Markdown extensions for handling links for the given session.
+class PokedexLinkExtension(markdown.Extension):
+    u"""Markdown extension that translates the syntax used in effect text:
 
-    There are two ways to customize the link handling: either override the
-    *_url methods in a subclass, or give them as arguments to get_extension
-    (or MarkdownString.as_html).
+    `[label]{category:identifier}` is treated as a link to a Pokédex object,
+    where `category` is the table's singular name, and `label` is an optional
+    link title that defaults to the object's name in the current language.
     """
-    def __init__(self, session=None):
+    def __init__(self, session):
         self.session = session
 
-    def get_extension(self, language=None, object_url=None, identifier_url=None,
-            make_link=None):
-        """Get a Markdown extension that handles links using the given language.
-        """
-        link_maker = self
-        class LinkExtension(markdown.Extension):
-            def extendMarkdown(self, md, md_globals):
-                self.identifier_url = identifier_url or link_maker.identifier_url
-                self.object_url = object_url or link_maker.object_url
-                self.make_link = make_link or link_maker.make_link
-                self.session = link_maker.session
-                pattern = PokedexLinkPattern(self, language)
-                md.inlinePatterns['pokedex-link'] = pattern
-
-        return LinkExtension()
+    def extendMarkdown(self, md, md_globals):
+        pattern = PokedexLinkPattern(self, self.session)
+        md.inlinePatterns['pokedex-link'] = pattern
 
     def make_link(self, category, obj, url, text):
         """Make an <a> element
@@ -218,17 +205,17 @@ class MarkdownLinkMaker(object):
         return el
 
     def identifier_url(self, category, identifier):
-        """Return the URL for the given {category:identifier} link
+        """Return the URL for the given {category:identifier} link.  For ORM
+        objects, object_url is tried first.
 
-        For ORM objects, object_url is tried first
-
-        Returns None by default, which causes <span> to be used in place of <a>
+        Returns None by default, which causes <span> to be used in place of
+        <a>.
         """
         return None
 
     def object_url(self, category, obj):
-        """Return the URL for the ORM object obj
+        """Return the URL for the ORM object `obj`.
 
-        Returns None by default, which causes identifier_url to be used
+        Returns None by default, which causes identifier_url to be tried.
         """
         return None

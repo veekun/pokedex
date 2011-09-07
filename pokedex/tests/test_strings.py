@@ -95,10 +95,18 @@ def test_markdown_string():
     md = markdown.MarkdownString('[]{move:thunderbolt} [paralyzes]{mechanic:paralysis}', connection, en)
     assert unicode(md) == 'Thunderbolt paralyzes'
     assert md.as_html() == '<p><span>Thunderbolt</span> <span>paralyzes</span></p>'
-    assert md.as_html(object_url=lambda category, obj: "%s/%s" % (category, obj.identifier)) == (
+
+    class ObjectTestExtension(markdown.PokedexLinkExtension):
+        def object_url(self, category, obj):
+            return "%s/%s" % (category, obj.identifier)
+
+    class IdentifierTestExtension(markdown.PokedexLinkExtension):
+        def identifier_url(self, category, ident):
+             return "%s/%s" % (category, ident)
+
+    assert md.as_html(extension_cls=ObjectTestExtension) == (
             '<p><a href="move/thunderbolt">Thunderbolt</a> <span>paralyzes</span></p>')
-    print md.as_html(identifier_url=lambda category, ident: "%s/%s" % (category, ident))
-    assert md.as_html(identifier_url=lambda category, ident: "%s/%s" % (category, ident)) == (
+    assert md.as_html(extension_cls=IdentifierTestExtension) == (
             '<p><a href="move/thunderbolt">Thunderbolt</a> <a href="mechanic/paralysis">paralyzes</a></p>')
 
 def markdown_column_params():
