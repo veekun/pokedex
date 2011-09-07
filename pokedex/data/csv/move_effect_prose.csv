@@ -45,7 +45,7 @@ Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 t
 33,9,Heals the user by half its max HP.,Heals the user for half its max [HP]{mechanic:hp}.
 34,9,"Badly poisons the target, inflicting more damage every turn.",[Badly poisons]{mechanic:badly-poisons} the target.
 35,9,Scatters money on the ground worth five times the user's level.,"Inflicts [regular damage]{mechanic:regular-damage}.  After the battle ends, the winner receives five times the user's level in extra money for each time this move was used."
-36,9,Reduces damage from special attacks by 50% for five turns..,"Erects a barrier around the user's side of the field that reduces damage from [special]{mechanic:special} attacks by half for five turns.  In double battles, the reduction is 1/3.  [Critical hit]{mechanic:critical-hit}s are not affected by the barrier.
+36,9,Reduces damage from special attacks by 50% for five turns.,"Erects a barrier around the user's side of the field that reduces damage from [special]{mechanic:special} attacks by half for five turns.  In double battles, the reduction is 1/3.  [Critical hit]{mechanic:critical-hit}s are not affected by the barrier.
 
 If the user is holding []{item:light-clay}, the barrier lasts for eight turns.
 
