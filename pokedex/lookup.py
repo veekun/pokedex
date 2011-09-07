@@ -13,6 +13,7 @@ import whoosh.index
 from whoosh.qparser import QueryParser
 import whoosh.scoring
 import whoosh.spelling
+from whoosh.support import levenshtein
 
 from pokedex.compatibility import namedtuple
 
@@ -86,12 +87,6 @@ class PokedexLookup(object):
     MAX_EXACT_RESULTS = 43
     INTERMEDIATE_FACTOR = 2
 
-    # The speller only checks how much the input matches a word; there can be
-    # all manner of extra unmatched junk, and it won't affect the weighting.
-    # To compensate, greatly boost the weighting of matches at the beginning
-    # and end, so nearly-full-word-matches are much better
-    SPELLER_OPTIONS = dict(booststart=10.0, boostend=9.0)
-
     # Dictionary of table name => table class.
     # Need the table name so we can get the class from the table name after we
     # retrieve something from the index
@@ -124,8 +119,7 @@ class PokedexLookup(object):
             `pokedex setup`.
         """
 
-        # By the time this returns, self.index, self.speller, and self.session
-        # must be set
+        # By the time this returns, self.index and self.session must be set
 
         # If a directory was not given, use the default
         if directory is None:
@@ -144,7 +138,6 @@ class PokedexLookup(object):
             # rebuild_index before doing anything.  Provide a dummy object that
             # complains when used
             self.index = UninitializedIndex()
-            self.speller = UninitializedIndex()
             return
 
         # Otherwise, already exists; should be an index!  Bam, done.
@@ -158,17 +151,11 @@ class PokedexLookup(object):
                 "Please use a dedicated directory for the lookup index."
             )
 
-        # Create speller, and done
-        spell_store = whoosh.filedb.filestore.FileStorage(directory)
-        self.speller = whoosh.spelling.SpellChecker(spell_store,
-            **self.SPELLER_OPTIONS)
-
-
     def rebuild_index(self):
         """Creates the index from scratch."""
 
         schema = whoosh.fields.Schema(
-            name=whoosh.fields.ID(stored=True),
+            name=whoosh.fields.ID(stored=True, spelling=True),
             table=whoosh.fields.ID(stored=True),
             row_id=whoosh.fields.ID(stored=True),
             language=whoosh.fields.STORED,
@@ -191,7 +178,6 @@ class PokedexLookup(object):
         writer = self.index.writer()
 
         # Index every name in all our tables of interest
-        speller_entries = set()
         for cls in self.indexed_tables.values():
             q = self.session.query(cls).order_by(cls.id)
 
@@ -207,9 +193,6 @@ class PokedexLookup(object):
                         language=language, iso639=iso639, iso3166=iso3166,
                         **row_key
                     )
-
-                    speller_entries.add(normalized_name)
-
 
                 if cls == tables.PokemonForm:
                     name_map = 'pokemon_name_map'
@@ -239,13 +222,6 @@ class PokedexLookup(object):
                         add(roomaji, u'Roomaji', u'ja', u'jp')
 
         writer.commit()
-
-        # Construct and populate a spell-checker index.  Quicker to do it all
-        # at once, as every call to add_* does a commit(), and those seem to be
-        # expensive
-        self.speller = whoosh.spelling.SpellChecker(self.index.storage, mingram=2,
-            **self.SPELLER_OPTIONS)
-        self.speller.add_words(speller_entries)
 
 
     def normalize_name(self, name):
@@ -509,16 +485,12 @@ class PokedexLookup(object):
             fuzzy_query_parts = []
             fuzzy_weights = {}
             min_weight = [None]
-            for suggestion, _, weight in self.speller.suggestions_and_scores(name):
-                # Only allow the top 50% of scores; otherwise there will always
-                # be a lot of trailing junk
-                if min_weight[0] is None:
-                    min_weight[0] = weight * 0.5
-                elif weight < min_weight[0]:
-                    break
+            corrector = searcher.corrector('name')
+            for suggestion in corrector.suggest(name, limit=max_results):
 
                 fuzzy_query_parts.append(whoosh.query.Term('name', suggestion))
-                fuzzy_weights[suggestion] = weight
+                distance = levenshtein.relative(name, suggestion)
+                fuzzy_weights[suggestion] = distance
 
             if not fuzzy_query_parts:
                 # Nothing at all; don't try querying
