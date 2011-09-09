@@ -54,13 +54,14 @@ class LanguageWeighting(whoosh.scoring.Weighting):
     before foreign results.
     """
 
-    def __init__(self, extra_weights={}, *args, **kwargs):
+    def __init__(self, locale_ident, extra_weights={}, *args, **kwargs):
         """`extra_weights` may be a dictionary of weights which will be
         factored in.
 
         Intended for use with spelling corrections, which come along with their
         own weightings.
         """
+        self.locale_ident = locale_ident
         self.extra_weights = extra_weights
         super(LanguageWeighting, self).__init__(*args, **kwargs)
 
@@ -70,16 +71,18 @@ class LanguageWeighting(whoosh.scoring.Weighting):
         # Apply extra weight
         weight = weight * self.extra_weights.get(text, 1.0)
 
-        language = doc.get('language')
-        if language is None:
-            # English (well, "default"); leave it at 1
-            return weight
-        elif language == u'Roomaji':
-            # Give Roomaji a little boost; it's most likely to be searched
-            return weight * 0.9
-        else:
-            # Everything else can drop down the totem pole
-            return weight * 0.8
+        doc_language = doc.get('language')
+
+        if doc_language == self.locale_ident:
+            # Bump up names in the current locale
+            return weight * 2.0
+        elif doc_language == u'roomaji':
+            # Given that the Japanese names are the originals, it seems likely
+            # that basically anyone might want to look them up.  Boost them a
+            # little bit.
+            return weight * 1.4
+
+        return weight
 
 
 class PokedexLookup(object):
@@ -199,27 +202,19 @@ class PokedexLookup(object):
                 else:
                     name_map = 'name_map'
 
-                seen = set([None])
-                for language, name in sorted(getattr(row, name_map, {}).items(),
-                        # Sort English first for now
-                        key=lambda (l, n): (l.identifier != 'en', not l.official)):
+                for language, name in getattr(row, name_map, {}).items():
                     if not name:
                         continue
-                    if name in seen:
-                        # Don't add the name again as a different
-                        # language; no point and it makes spell results
-                        # confusing
-                        continue
-                    seen.add(name)
 
-                    add(name, language.name,
+                    add(name, language.identifier,
                               language.iso639,
                               language.iso3166)
 
-                    # Add Roomaji too
+                    # Add generated Roomaji too
+                    # XXX this should be a first-class concept, not
+                    # piggybacking on Japanese
                     if language.identifier == 'ja':
-                        roomaji = romanize(name)
-                        add(roomaji, u'Roomaji', u'ja', u'jp')
+                        add(romanize(name), language.identifier, language.iso639, language.iso3166)
 
         writer.commit()
 
@@ -353,6 +348,11 @@ class PokedexLookup(object):
         """Converts a list of whoosh's indexed records to LookupResult tuples
         containing database objects.
         """
+        # XXX cache me?
+        languages = dict(
+            (row.identifier, row)
+            for row in self.session.query(tables.Language)
+        )
         # XXX this 'exact' thing is getting kinda leaky.  would like a better
         # way to handle it, since only lookup() cares about fuzzy results
         seen = {}
@@ -364,18 +364,24 @@ class PokedexLookup(object):
                 continue
             seen[seen_key] = True
 
+            # XXX minimize queries here?
             cls = self.indexed_tables[record['table']]
             obj = self.session.query(cls).get(record['row_id'])
 
             results.append(LookupResult(object=obj,
                                         indexed_name=record['name'],
                                         name=record['display_name'],
-                                        language=record.get('language'),
+                                        language=languages[record['language']],
                                         iso639=record['iso639'],
                                         iso3166=record['iso3166'],
                                         exact=exact))
 
         return results
+
+    def _get_current_locale(self):
+        """Returns the session's current default language, as an ORM row."""
+        return self.session.query(tables.Language).get(
+            self.session.default_language_id)
 
 
     def lookup(self, input, valid_types=[], exact_only=False):
@@ -470,7 +476,9 @@ class PokedexLookup(object):
         else:
             max_results = self.MAX_FUZZY_RESULTS
 
-        searcher = self.index.searcher(weighting=LanguageWeighting())
+        locale = self._get_current_locale()
+        searcher = self.index.searcher(
+            weighting=LanguageWeighting(locale.identifier))
         results = searcher.search(
             query,
             limit=int(max_results * self.INTERMEDIATE_FACTOR),
@@ -500,7 +508,8 @@ class PokedexLookup(object):
             if type_term:
                 fuzzy_query = fuzzy_query & type_term
 
-            searcher.weighting = LanguageWeighting(extra_weights=fuzzy_weights)
+            searcher.weighting = LanguageWeighting(
+                locale.identifier, extra_weights=fuzzy_weights)
             results = searcher.search(fuzzy_query)
 
         ### Convert results to db objects
@@ -559,8 +568,9 @@ class PokedexLookup(object):
         if type_term:
             query = query & type_term
 
+        locale = self._get_current_locale()
         searcher = self.index.searcher()
-        searcher.weighting = LanguageWeighting()
+        searcher.weighting = LanguageWeighting(locale.identifier)
         results = searcher.search(query)  # XXX , limit=self.MAX_LOOKUP_RESULTS)
 
         return self._whoosh_records_to_results(results)
