@@ -12,6 +12,7 @@ import whoosh.filedb.fileindex
 import whoosh.index
 from whoosh.qparser import QueryParser
 import whoosh.scoring
+import whoosh.sorting
 import whoosh.spelling
 from whoosh.support import levenshtein
 
@@ -49,40 +50,51 @@ class UninitializedIndex(object):
             "or lookup.rebuild_index() to create it."
         )
 
-class LanguageWeighting(whoosh.scoring.Weighting):
-    """A scoring class that forces otherwise-equal English results to come
-    before foreign results.
+def LanguageFacet(locale_ident, extra_weights={}):
+    """Constructs a sorting function that bubbles results from the current
+    locale (given by `locale_ident`) to the top of the list.
+
+    `extra_weights` may be a dictionary of weights which will be factored in.
+    Intended for use with spelling corrections, which come along with their own
+    weightings.
     """
-
-    def __init__(self, locale_ident, extra_weights={}, *args, **kwargs):
-        """`extra_weights` may be a dictionary of weights which will be
-        factored in.
-
-        Intended for use with spelling corrections, which come along with their
-        own weightings.
-        """
-        self.locale_ident = locale_ident
-        self.extra_weights = extra_weights
-        super(LanguageWeighting, self).__init__(*args, **kwargs)
-
-    def score(self, searcher, fieldnum, text, docnum, weight, QTF=1):
+    def score(searcher, docnum):
         doc = searcher.stored_fields(docnum)
+        weight = extra_weights.get(doc['name'], 1.0)
 
-        # Apply extra weight
-        weight = weight * self.extra_weights.get(text, 1.0)
-
-        doc_language = doc.get('language')
-
-        if doc_language == self.locale_ident:
+        doc_language = doc['language']
+        if doc_language == locale_ident:
             # Bump up names in the current locale
-            return weight * 2.0
+            weight *= 2.0
         elif doc_language == u'roomaji':
             # Given that the Japanese names are the originals, it seems likely
             # that basically anyone might want to look them up.  Boost them a
             # little bit.
-            return weight * 1.4
+            weight *= 1.4
 
-        return weight
+        # Higher weights should come FIRST, but sorts are ascending.  Negate
+        # the weight to fix this
+        return -weight
+
+    return whoosh.sorting.FunctionFacet(score)
+
+_table_order = dict(
+    pokemon_species=1,
+    pokemon_forms=1,
+    moves=2,
+    abilities=3,
+    items=4,
+    types=5,
+    locations=6,
+    natures=7,
+)
+def _table_facet_impl(searcher, docnum):
+    u"""Implements a sort that puts different "types" of results in a
+    relatively natural order: Pokémon first, then moves, etc.
+    """
+    doc = searcher.stored_fields(docnum)
+    return _table_order[doc['table']]
+table_facet = whoosh.sorting.FunctionFacet(_table_facet_impl)
 
 
 class PokedexLookup(object):
@@ -468,21 +480,22 @@ class PokedexLookup(object):
         # Fuzzy are capped at 10, beyond which something is probably very
         # wrong.  Exact matches -- that is, wildcards and ids -- are far less
         # constrained.
-        # Also, exact matches are sorted by name, since weight doesn't matter.
-        sort_by = dict()
         if exact_only:
             max_results = self.MAX_EXACT_RESULTS
-            sort_by['sortedby'] = (u'table', u'name')
         else:
             max_results = self.MAX_FUZZY_RESULTS
 
         locale = self._get_current_locale()
-        searcher = self.index.searcher(
-            weighting=LanguageWeighting(locale.identifier))
+        facet = whoosh.sorting.MultiFacet([
+            LanguageFacet(locale.identifier),
+            table_facet,
+            "name",
+        ])
+        searcher = self.index.searcher()
         results = searcher.search(
             query,
             limit=int(max_results * self.INTERMEDIATE_FACTOR),
-            **sort_by
+            sortedby=facet,
         )
 
         # Look for some fuzzy matches if necessary
@@ -492,10 +505,8 @@ class PokedexLookup(object):
 
             fuzzy_query_parts = []
             fuzzy_weights = {}
-            min_weight = [None]
             corrector = searcher.corrector('name')
             for suggestion in corrector.suggest(name, limit=max_results):
-
                 fuzzy_query_parts.append(whoosh.query.Term('name', suggestion))
                 distance = levenshtein.relative(name, suggestion)
                 fuzzy_weights[suggestion] = distance
@@ -508,9 +519,9 @@ class PokedexLookup(object):
             if type_term:
                 fuzzy_query = fuzzy_query & type_term
 
-            searcher.weighting = LanguageWeighting(
+            sorter = LanguageFacet(
                 locale.identifier, extra_weights=fuzzy_weights)
-            results = searcher.search(fuzzy_query)
+            results = searcher.search(fuzzy_query, sortedby=sorter)
 
         ### Convert results to db objects
         objects = self._whoosh_records_to_results(results, exact=exact)
@@ -570,7 +581,7 @@ class PokedexLookup(object):
 
         locale = self._get_current_locale()
         searcher = self.index.searcher()
-        searcher.weighting = LanguageWeighting(locale.identifier)
-        results = searcher.search(query)  # XXX , limit=self.MAX_LOOKUP_RESULTS)
+        facet = LanguageFacet(locale.identifier)
+        results = searcher.search(query, sortedby=facet)  # XXX , limit=self.MAX_LOOKUP_RESULTS)
 
         return self._whoosh_records_to_results(results)
