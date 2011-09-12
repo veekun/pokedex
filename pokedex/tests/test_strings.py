@@ -92,9 +92,9 @@ def test_markdown():
 
 def test_markdown_string():
     en = util.get(connection, tables.Language, 'en')
-    md = markdown.MarkdownString('[]{move:thunderbolt} [paralyzes]{mechanic:paralysis} []{form:sky shaymin}', connection, en)
-    assert unicode(md) == 'Thunderbolt paralyzes Sky Shaymin'
-    assert md.as_html() == '<p><span>Thunderbolt</span> <span>paralyzes</span> <span>Sky Shaymin</span></p>'
+    md = markdown.MarkdownString('[]{move:thunderbolt} [paralyzes]{mechanic:paralysis} []{form:sky shaymin}. []{pokemon:mewthree} does not exist.', connection, en)
+    assert unicode(md) == 'Thunderbolt paralyzes Sky Shaymin. mewthree does not exist.'
+    assert md.as_html() == '<p><span>Thunderbolt</span> <span>paralyzes</span> <span>Sky Shaymin</span>. <span>mewthree</span> does not exist.</p>'
 
     class ObjectTestExtension(markdown.PokedexLinkExtension):
         def object_url(self, category, obj):
@@ -106,12 +106,12 @@ def test_markdown_string():
 
     class IdentifierTestExtension(markdown.PokedexLinkExtension):
         def identifier_url(self, category, ident):
-             return "%s/%s" % (category, ident)
+            return "%s/%s" % (category, ident)
 
     assert md.as_html(extension_cls=ObjectTestExtension) == (
-            '<p><a href="move/thunderbolt">Thunderbolt</a> <span>paralyzes</span> <a href="form/sky shaymin">Sky Shaymin</a></p>')
+            '<p><a href="move/thunderbolt">Thunderbolt</a> <span>paralyzes</span> <a href="form/sky shaymin">Sky Shaymin</a>. <span>mewthree</span> does not exist.</p>')
     assert md.as_html(extension_cls=IdentifierTestExtension) == (
-            '<p><a href="move/thunderbolt">Thunderbolt</a> <a href="mechanic/paralysis">paralyzes</a> <a href="form/sky shaymin">Sky Shaymin</a></p>')
+            '<p><a href="move/thunderbolt">Thunderbolt</a> <a href="mechanic/paralysis">paralyzes</a> <a href="form/sky shaymin">Sky Shaymin</a>. <a href="pokemon/mewthree">mewthree</a> does not exist.</p>')
 
 def markdown_column_params():
     """Check all markdown values
@@ -136,23 +136,28 @@ def test_markdown_values(parent_class, translation_class, column_name):
     query = connection.query(parent_class)
     if translation_class:
         query = query.join(translation_class)
-    for item in query:
-        for language, markdown in getattr(item, column_name + '_map').items():
 
-            if markdown is None:
+    for item in query:
+        for language, md_text in getattr(item, column_name + '_map').items():
+
+            if md_text is None:
                 continue
 
             key = u"Markdown in {0} #{1}'s {2} (lang={3})".format(
                     parent_class.__name__, item.id, column_name, language.identifier)
 
-            try:
-                text = markdown.as_text()
-            except NoResultFound:
-                assert False, u"{0} references something that doesn't exist:\n{1}".format(
-                        key, markdown.source_text)
-            except AttributeError:
-                print markdown
-                raise
+            class TestExtension(markdown.PokedexLinkExtension):
+                def object_url(self, category, obj):
+                    "Swallow good links"
+                    return 'ok'
+
+                def identifier_url(self, category, ident):
+                    "Only allow mechanic links here (good links handled in object_url)"
+                    assert category == 'mechanic', (
+                            '%s: unknown link target: {%s:%s}' %
+                            (key, category, ident))
+
+            text = md_text.as_html(extension_cls=TestExtension)
 
             error_message = u"{0} leaves syntax cruft:\n{1}"
             error_message = error_message.format(key, text)

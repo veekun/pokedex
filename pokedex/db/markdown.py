@@ -170,21 +170,27 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
                 query = query.join(tables.Pokemon.species)
                 query = query.filter(
                         tables.PokemonSpecies.identifier == pokemon_ident)
-                obj = query.one()
             else:
-                obj = util.get(self.session, table, target)
-            url = self.factory.object_url(category, obj)
-            url = url or self.factory.identifier_url(category, target)
-            name = None
-            # Translations can be incomplete; in which case we want to use a
-            # fallback.
-            if table in [tables.Type] and self.string_language:
-                # Type wants to be localized to the same language as the text
-                name = obj.name_map.get(self.string_language)
-            if not name and self.game_language:
-                name = obj.name_map.get(self.game_language)
-            if not name:
-                name = obj.name
+                query = session.query(table)
+                query = query.filter(table.identifier == target)
+            try:
+                obj = query.one()
+            except Exception:
+                obj = name = target
+                url = self.factory.identifier_url(category, obj)
+            else:
+                url = self.factory.object_url(category, obj)
+                url = url or self.factory.identifier_url(category, target)
+                name = None
+                # Translations can be incomplete; in which case we want to use
+                # a fallback.
+                if table in [tables.Type] and self.string_language:
+                    # Type wants to be localized to the text language
+                    name = obj.name_map.get(self.string_language)
+                if not name and self.game_language:
+                    name = obj.name_map.get(self.game_language)
+                if not name:
+                    name = obj.name
         if url:
             el = self.factory.make_link(category, obj, url, label or name)
         else:
@@ -222,12 +228,18 @@ class PokedexLinkExtension(markdown.Extension):
 
         Returns None by default, which causes <span> to be used in place of
         <a>.
+
+        This method is also called for non-existent objects, e.g.
+        []{pokemon:bogus}.
         """
         return None
 
     def object_url(self, category, obj):
-        """Return the URL for the ORM object `obj`.
+        u"""Return the URL for the ORM object `obj`.
 
         Returns None by default, which causes identifier_url to be tried.
+
+        Note that obj may be a Pokémon form. Unlike other returned objects,
+        these do not have identifiers. Be sure to test this case.
         """
         return None
