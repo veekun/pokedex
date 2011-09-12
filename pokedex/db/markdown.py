@@ -134,7 +134,7 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
 
     Handles matches using factory
     """
-    regex = ur'(?x) \[ ([^]]*) \] \{ ([-a-z0-9]+) : ([-a-z0-9]+) \}'
+    regex = ur'(?x) \[ ([^]]*) \] \{ ([-a-z0-9]+) : ([-a-z0-9 ]+) \}'
 
     def __init__(self, factory, session, string_language=None, game_language=None):
         markdown.inlinepatterns.Pattern.__init__(self, self.regex)
@@ -154,15 +154,27 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
                     move=tables.Move,
                     pokemon=tables.PokemonSpecies,
                     type=tables.Type,
+                    form=tables.PokemonForm,
                 )[category]
         except KeyError:
             obj = name = target
             url = self.factory.identifier_url(category, obj)
         else:
             session = self.session
-            obj = util.get(self.session, table, target)
+            if table is tables.PokemonForm:
+                form_ident, pokemon_ident = target.split()
+                query = session.query(table)
+                query = query.filter(
+                        tables.PokemonForm.form_identifier == form_ident)
+                query = query.join(tables.PokemonForm.pokemon)
+                query = query.join(tables.Pokemon.species)
+                query = query.filter(
+                        tables.PokemonSpecies.identifier == pokemon_ident)
+                obj = query.one()
+            else:
+                obj = util.get(self.session, table, target)
             url = self.factory.object_url(category, obj)
-            url = url or self.factory.identifier_url(category, obj.identifier)
+            url = url or self.factory.identifier_url(category, target)
             name = None
             # Translations can be incomplete; in which case we want to use a
             # fallback.

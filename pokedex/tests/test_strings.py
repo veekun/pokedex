@@ -92,22 +92,26 @@ def test_markdown():
 
 def test_markdown_string():
     en = util.get(connection, tables.Language, 'en')
-    md = markdown.MarkdownString('[]{move:thunderbolt} [paralyzes]{mechanic:paralysis}', connection, en)
-    assert unicode(md) == 'Thunderbolt paralyzes'
-    assert md.as_html() == '<p><span>Thunderbolt</span> <span>paralyzes</span></p>'
+    md = markdown.MarkdownString('[]{move:thunderbolt} [paralyzes]{mechanic:paralysis} []{form:sky shaymin}', connection, en)
+    assert unicode(md) == 'Thunderbolt paralyzes Sky Shaymin'
+    assert md.as_html() == '<p><span>Thunderbolt</span> <span>paralyzes</span> <span>Sky Shaymin</span></p>'
 
     class ObjectTestExtension(markdown.PokedexLinkExtension):
         def object_url(self, category, obj):
-            return "%s/%s" % (category, obj.identifier)
+            if isinstance(obj, tables.PokemonForm):
+                return "%s/%s %s" % (category, obj.form_identifier,
+                        obj.species.identifier)
+            else:
+                return "%s/%s" % (category, obj.identifier)
 
     class IdentifierTestExtension(markdown.PokedexLinkExtension):
         def identifier_url(self, category, ident):
              return "%s/%s" % (category, ident)
 
     assert md.as_html(extension_cls=ObjectTestExtension) == (
-            '<p><a href="move/thunderbolt">Thunderbolt</a> <span>paralyzes</span></p>')
+            '<p><a href="move/thunderbolt">Thunderbolt</a> <span>paralyzes</span> <a href="form/sky shaymin">Sky Shaymin</a></p>')
     assert md.as_html(extension_cls=IdentifierTestExtension) == (
-            '<p><a href="move/thunderbolt">Thunderbolt</a> <a href="mechanic/paralysis">paralyzes</a></p>')
+            '<p><a href="move/thunderbolt">Thunderbolt</a> <a href="mechanic/paralysis">paralyzes</a> <a href="form/sky shaymin">Sky Shaymin</a></p>')
 
 def markdown_column_params():
     """Check all markdown values
