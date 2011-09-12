@@ -205,8 +205,10 @@ class MultilangSession(Session):
         if 'default_language_id' in kwargs:
             self.default_language_id = kwargs.pop('default_language_id')
 
-        if 'markdown_extension_class' in kwargs:
-            self.markdown_extension_class = kwargs.pop('markdown_extension_class')
+        markdown_extension_class = kwargs.pop('markdown_extension_class',
+                self.markdown_extension_class)
+
+        self.markdown_extension = markdown_extension_class(self)
 
         kwargs.setdefault('query_cls', MultilangQuery)
 
@@ -226,5 +228,5 @@ class MultilangScopedSession(ScopedSession):
         self.registry().default_language_id = new
 
     @property
-    def markdown_extension_class(self):
-        return self.registry().markdown_extension_class
+    def markdown_extension(self):
+        return self.registry().markdown_extension

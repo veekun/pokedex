@@ -108,9 +108,9 @@ def test_markdown_string():
         def identifier_url(self, category, ident):
             return "%s/%s" % (category, ident)
 
-    assert md.as_html(extension_cls=ObjectTestExtension) == (
+    assert md.as_html(extension=ObjectTestExtension(connection)) == (
             '<p><a href="move/thunderbolt">Thunderbolt</a> <span>paralyzes</span> <a href="form/sky shaymin">Sky Shaymin</a>. <span>mewthree</span> does not exist.</p>')
-    assert md.as_html(extension_cls=IdentifierTestExtension) == (
+    assert md.as_html(extension=IdentifierTestExtension(connection)) == (
             '<p><a href="move/thunderbolt">Thunderbolt</a> <a href="mechanic/paralysis">paralyzes</a> <a href="form/sky shaymin">Sky Shaymin</a>. <a href="pokemon/mewthree">mewthree</a> does not exist.</p>')
 
 def markdown_column_params():
@@ -137,6 +137,21 @@ def test_markdown_values(parent_class, translation_class, column_name):
     if translation_class:
         query = query.join(translation_class)
 
+
+    class TestExtension(markdown.PokedexLinkExtension):
+        def object_url(self, category, obj):
+            "Swallow good links"
+            return 'ok'
+
+        def identifier_url(self, category, ident):
+            "Only allow mechanic links here (good links handled in object_url)"
+            # Note: 'key' is a closed variable that gets set in the loop below
+            assert category == 'mechanic', (
+                    '%s: unknown link target: {%s:%s}' %
+                    (key, category, ident))
+
+    test_extension = TestExtension(connection)
+
     for item in query:
         for language, md_text in getattr(item, column_name + '_map').items():
 
@@ -146,18 +161,7 @@ def test_markdown_values(parent_class, translation_class, column_name):
             key = u"Markdown in {0} #{1}'s {2} (lang={3})".format(
                     parent_class.__name__, item.id, column_name, language.identifier)
 
-            class TestExtension(markdown.PokedexLinkExtension):
-                def object_url(self, category, obj):
-                    "Swallow good links"
-                    return 'ok'
-
-                def identifier_url(self, category, ident):
-                    "Only allow mechanic links here (good links handled in object_url)"
-                    assert category == 'mechanic', (
-                            '%s: unknown link target: {%s:%s}' %
-                            (key, category, ident))
-
-            text = md_text.as_html(extension_cls=TestExtension)
+            text = md_text.as_html(extension=test_extension)
 
             error_message = u"{0} leaves syntax cruft:\n{1}"
             error_message = error_message.format(key, text)

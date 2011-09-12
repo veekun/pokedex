@@ -47,17 +47,18 @@ class MarkdownString(object):
     def __html__(self):
         return self.as_html()
 
-    def as_html(self, extension_cls=None):
+    def as_html(self, extension=None):
         """Returns the string as HTML.
 
-        Pass a custom `extension_cls` to use your own class to generate links.
-        The default (and recommended superclass) is `PokedexLinkExtension`,
-        described below.
+        Pass a custom `extension` to use your own extension object to generate
+        links.
+        The default is the session's markdown_extension. Usually that's a
+        `PokedexLinkExtension` described below, which is also the recommended
+        superclass.
         """
 
-        if extension_cls is None:
-            extension_cls = self.session.markdown_extension_class
-        extension = extension_cls(self.session)
+        if extension is None:
+            extension = self.session.markdown_extension
 
         md = markdown.Markdown(
             extensions=['extra', extension],
