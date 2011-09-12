@@ -11,6 +11,26 @@ from sqlalchemy.types import Integer
 
 from pokedex.db import markdown
 
+def _getset_factory_factory(column_name, string_getter):
+    """Hello!  I am a factory for creating getset_factory functions for SQLA.
+    I exist to avoid the closure-in-a-loop problem.
+    """
+    def getset_factory(underlying_type, instance):
+        def getter(translations):
+            if translations is None:
+                return None
+            text = getattr(translations, column_name)
+            if text is None:
+                return text
+            session = object_session(translations)
+            language = translations.local_language
+            return string_getter(text, session, language)
+        def setter(translations, value):
+            # The string must be set on the Translation directly.
+            raise AttributeError("Cannot set %s" % column_name)
+        return getter, setter
+    return getset_factory
+
 def create_translation_table(_table_name, foreign_class, relation_name,
     language_class, relation_lazy='select', **kwargs):
     """Creates a table that represents some kind of data attached to the given
@@ -137,25 +157,11 @@ def create_translation_table(_table_name, foreign_class, relation_name,
 
     # Add per-column proxies to the original class
     for name, column in kwitems:
+        getset_factory = None
         string_getter = column.info.get('string_getter')
         if string_getter:
-            def getset_factory(underlying_type, instance):
-                def getter(translations):
-                    if translations is None:
-                        return None
-                    text = getattr(translations, column.name)
-                    if text is None:
-                        return text
-                    session = object_session(translations)
-                    language = translations.local_language
-                    return string_getter(text, session, language)
-                def setter(translations, value):
-                    # The string must be set on the Translation directly.
-                    raise AttributeError("Cannot set %s" % column.name)
-                return getter, setter
-            getset_factory = getset_factory
-        else:
-            getset_factory = None
+            getset_factory = _getset_factory_factory(
+                column.name, string_getter)
 
         # Class.(column) -- accessor for the default language's value
         setattr(foreign_class, name,
