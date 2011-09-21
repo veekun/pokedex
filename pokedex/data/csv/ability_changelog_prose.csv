@@ -8,7 +8,7 @@ ability_changelog_id,local_language_id,effect
 7,9,Has no overworld effect.
 8,9,Has no overworld effect.
 9,9,Does not take effect if acquired after entering battle.
-10,9,Has no overworld effect.
+10,9,Affects other Pokémon with this ability.
 11,9,Inflicts only 1/16 of the attacker's maximum [HP]{mechanic:hp} in damage.
 12,9,[]{move:fire-fang} and moves that inflict [typeless damage]{mechanic:typeless-damage} ignore this ability regardless of type.
 13,9,Has no overworld effect.
@@ -50,3 +50,4 @@ ability_changelog_id,local_language_id,effect
 49,9,[]{move:triple-kick} is unaffected.
 50,9,[]{move:struggle} is unaffected.  []{move:helping-hand} and []{move:defense-curl} are not taken into account.
 51,9,Has no overworld effect.
+52,9,Chance of taking effect is 33%.

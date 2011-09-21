@@ -8,7 +8,7 @@ id,ability_id,changed_in_version_group_id
 7,21,6
 8,22,6
 9,22,8
-10,23,6
+10,23,8
 11,24,8
 12,25,11
 13,28,6
@@ -50,3 +50,4 @@ id,ability_id,changed_in_version_group_id
 49,92,11
 50,101,11
 51,14,6
+52,61,8
