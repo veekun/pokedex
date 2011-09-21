@@ -37,8 +37,16 @@ ability_changelog_id,local_language_id,effect
 36,9,Has no overworld effect.
 37,9,Has no overworld effect.
 38,9,[Poison]{mechanic:poison} still damages the Pokémon outside of battle.
-39,9,"Paralysis cannot prevent the Pokémon from moving, though the [Speed]{mechanic:speed} cut is unaffected."
+39,9,"[Paralysis]{mechanic:paralysis} cannot prevent the Pokémon from moving, though the [Speed]{mechanic:speed} cut is unaffected.  [Poison]{mechanic:poison} still damages the Pokémon outside of battle."
 40,9,"Due to a glitch, moves affected by this ability have a (100 - accuracy)% chance to hit through []{move:detect} or []{move:protect}."
 41,9,[]{move:rest} works as usual during [strong sunlight]{mechanic:strong-sunlight}.
 42,9,[]{move:fling} can be used as usual.
 43,9,Redirects []{type:water} moves without negating them or granting any [Special Attack]{mechanic:special-attack} boost.  Does not redirect []{move:hidden-power}.
+44,9,Can copy []{ability:flower-gift} and []{ability:wonder-guard}.
+45,9,Can copy []{ability:forecast} and []{ability:trace}.
+46,9,Powers up only when paired with []{ability:minus}.
+47,9,Powers up only when paired with []{ability:plus}.
+48,9,Chance of taking effect is 30%.
+49,9,[]{move:triple-kick} is unaffected.
+50,9,[]{move:struggle} is unaffected.  []{move:helping-hand} and []{move:defense-curl} are not taken into account.
+51,9,Has no overworld effect.
