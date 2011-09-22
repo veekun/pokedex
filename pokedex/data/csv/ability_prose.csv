@@ -465,7 +465,7 @@ This ability triggers on every hit of a multiple-hit move.",Raises [Speed]{mecha
 136,9,This Pokémon takes half as much damage when it is hit having full [HP]{mechanic:hp}.,Halves damage taken from full [HP]{mechanic:hp}.
 137,9,This Pokémon has 1.5× its [Attack]{mechanic:attack} when [poisoned]{mechanic:poison}.,Increases [Attack]{mechanic:attack} to 1.5× when [poisoned]{mechanic:poison}.
 138,9,This Pokémon has 1.5× its [Special Attack]{mechanic:special-attack} when [burned]{mechanic:burn}.,Increases [Special Attack]{mechanic:special-attack} to 1.5× when [burned]{mechanic:burn}.
-139,9,"After each turn, if the last item this Pokémon consumed was a Berry and it is not currently holding an item, it has a 50% chance of regaining that Berry, or a 100% chance during [strong sunlight]{mechanic:strong-sunlight}.","Has a 50% chance of restoring a used Berry after each turn if the Pokémon has held no items in the meantime."
+139,9,"After each turn, if the last item this Pokémon consumed was a Berry and it is not currently holding an item, it has a 50% chance of regaining that Berry, or a 100% chance during [strong sunlight]{mechanic:strong-sunlight}.",Has a 50% chance of restoring a used Berry after each turn if the Pokémon has held no items in the meantime.
 140,9,"This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it.",Protects against friendly Pokémon's damaging moves.
 141,9,"After each turn, one of this Pokémon's stats at random rises two [stages]{mechanic:stat-modifier}, and another falls one stage.
 
