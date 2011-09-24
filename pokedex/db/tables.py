@@ -7,14 +7,15 @@ Columns have a info dictionary with these keys:
 - official: True if the values appear in games or official material; False if
   they are fan-created or fan-written. This flag is currently only set for
   official text columns.
-- markup: The format of a text column. Can be one of:
-  - plaintext: Normal Unicode text (widely used in names)
+- format: The format of a text column. Can be one of:
+  - plaintext: Normal, translatable Unicode text (widely used in names)
   - markdown: Veekun's Markdown flavor (generally used in effect descriptions)
   - gametext: Transcription of in-game text that strives to be both
     human-readable and represent the original text exactly.
   - identifier: A fan-made identifier in the [-_a-z0-9]* format. Not intended
     for translation.
   - latex: A formula in LaTeX syntax.
+  - as-is: Plaintext that is not up for translation
 - ripped: True for text that has been ripped from the games, and can be ripped
   again for new versions or languages
 
@@ -403,6 +404,37 @@ class EncounterSlot(TableBase):
     rarity = Column(Integer, nullable=True,
         info=dict(description="The chance of the encounter as a percentage"))
 
+class EventPokemon(TableBase):
+    u"""A Pokémon received through an event giveaway or special encounter
+    """
+    __tablename__ = 'event_pokemon'
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    nickname = Column(Unicode(10), nullable=True,
+        info=dict(description=u"Nickame of the pokémon; None if not nicknamed.", format='as-is'))
+    pokemon_form_id = Column(Integer, ForeignKey('pokemon_forms.id'),nullable=False,
+        info=dict(description=u"Form of the pokémon (implies species)"))
+    ability_id = Column(Integer, ForeignKey('abilities.id'), nullable=True,
+        info=dict(description=u"The ability. None if random or not applicable."))
+    nature_id = Column(Integer, ForeignKey('natures.id'), nullable=True,
+        info=dict(description=u"The nature. None if random or not applicable."))
+    item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
+        info=dict(description=u"The held item. None if random or not applicable."))
+    level = Column(Integer, nullable=True,
+        info=dict(description=u"The pokémon's level. None if not always the same."))
+    gender_id = Column(Integer, ForeignKey('genders.id'), nullable=True,
+        info=dict(description=u"The pokémon's gender. None if random or not applicable."))
+    pokeball_id = Column(Integer, ForeignKey('items.id'), nullable=True,
+        info=dict(description=u"The pokéball the pokémon is caught in. None if not applicable."))
+    personality = Column(Integer, nullable=True,
+        info=dict(description=u"The personality value. None if random, unknown, or not applicable."))
+    is_shiny = Column(Boolean, nullable=True,
+        info=dict(description=u"True if the pokémon is shiny. None if shininess is random or unknown."))
+    is_egg = Column(Boolean, nullable=False,
+        info=dict(description=u"True if the pokémon comes in an egg."))
+    original_trainer_id = Column(Integer, ForeignKey('trainers.id'),  nullable=True,
+        info=dict(description=u"The Original Trainer of this pokémon. None if not applicable or unknown."))
+
 class EvolutionChain(TableBase):
     u"""A family of Pokémon that are linked by evolution
     """
@@ -437,6 +469,25 @@ class Experience(TableBase):
         info=dict(description="The level"))
     experience = Column(Integer, nullable=False,
         info=dict(description="The number of EXP points needed to get to that level"))
+
+class Gender(TableBase):
+    u"""A gender (male, female, or none)
+    """
+    __tablename__ = 'genders'
+    __singlename__ = 'gender'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description="A numeric ID"))
+    identifier = Column(Unicode(6), unique=True, nullable=False,
+        info=dict(description="An identifier", format='identifier'))
+    symbol = Column(Unicode(2), unique=True, nullable=False,
+        info=dict(description=u"A symbol (♂, ♀ or —)", format='as-is'))
+    opposite_gender_id = Column(Integer, ForeignKey('genders.id'), nullable=True,
+        info=dict(description=u"The opposite gender, or None for genderless"))
+
+create_translation_table('gender_names', Gender, 'names',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class Generation(TableBase):
     u"""A Generation of the Pokémon franchise
@@ -1528,6 +1579,24 @@ create_translation_table('super_contest_effect_prose', SuperContestEffect, 'pros
         info=dict(description=u"A description of the effect.", format='plaintext', official=True)),
 )
 
+class Trainer(TableBase):
+    u"""Trainer, as used for Original Trainer information
+    """
+    __tablename__ = 'trainers'
+    __singlename__ = 'trainer'
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u"A surrogate key. See `number` for what's commonly called Trainer ID."))
+    number = Column(Integer, nullable=True,
+        info=dict(description=u"The number of the trainer, commonly called Trainer ID. None if unknown or varying."))
+    gender_id = Column(Integer, ForeignKey('genders.id'), nullable=True,
+        info=dict(description=u"The gender of the trainer. None if not applicable."))
+
+create_translation_table('trainer_names', Trainer, 'names',
+    name = Column(Unicode(10), nullable=True,
+        info=dict(description=u"The name of the trainer.", format='plaintext'))
+)
+
+
 class Type(TableBase):
     u"""Any of the elemental types Pokémon and moves can have."""
     __tablename__ = 'types'
@@ -1677,6 +1746,23 @@ EvolutionChain.baby_trigger_item = relationship(Item,
 Experience.growth_rate = relationship(GrowthRate,
     innerjoin=True, lazy='joined',
     backref='experience_table')
+
+
+EventPokemon.pokemon_form = relationship(PokemonForm,
+    backref='event_pokemon')
+EventPokemon.ability = relationship(Ability,
+    backref='event_pokemon')
+EventPokemon.nature = relationship(Nature,
+    backref='event_pokemon')
+EventPokemon.item = relationship(Item,
+    primaryjoin=(EventPokemon.item_id == Item.id),
+    backref='event_pokemon')
+EventPokemon.gender = relationship(Gender)
+EventPokemon.pokeball = relationship(Item,
+    primaryjoin=(EventPokemon.pokeball_id == Item.id),
+    backref='event_pokemon_in_pokeball')
+EventPokemon.original_trainer = relationship(Trainer,
+    backref='event_pokemon')
 
 
 Generation.canonical_pokedex = relationship(Pokedex,
@@ -2077,6 +2163,9 @@ SuperContestCombo.second = relationship(Move,
     primaryjoin=SuperContestCombo.second_move_id==Move.id,
     innerjoin=True, lazy='joined',
     backref='super_contest_combo_second')
+
+
+Trainer.gender = relationship(Gender)
 
 
 Type.damage_efficacies = relationship(TypeEfficacy,
