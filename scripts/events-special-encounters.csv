@@ -1,0 +1,52 @@
+For use with load-events-special-encounters.py,Versions: RBY GSC RSE-CoXd-FL DPPt BW,,,,,,,,Stat order is HP/Atk/Def/Spd/SpA/SpD.     Gen. I-II genes are Atk/Def/Spd/Sp.,,,,,,,,,Real World
+Method,Version,Species/Form,Lv.,Item,Move(s),♂♀,⁂,Egg,Genes,Place,Trade for,Name,OT Name,OT №,Cost,Shadow mvs,Ribbons,Location,Distribution dates,Notes,Wonder Card title,Wonder Card text
+starter,RB,"bulbasaur, ivysaur, venusaur",5,,,,,,,pallet-town,,,,,,,,,,choice of 1
+starter,Y,pikachu,5,,,,,,,pallet-town,,,,,,,,,,"(Has happiness, unable to evolve, etc)"
+gift,Y,bulbasaur,10,,,,,,,cerulean-city,,,,,,,,,,(Pikachu's happiness high)
+gift,Y,charmander,10,,,,,,,kanto-route-24
+gift,Y,squirtle,10,,,,,,,vermillion-city,,,,,,,,,,(Thunder Badge required)
+gift,RBY,"hitmonchan, hitmonlee",30,,,,,,,saffron-city,,,,,,,,,,choice of 1; Fighting Dojo
+gift,RBY,lapras,15,,,,,,,saffron-city,,,,,,,,,,Silph Co.
+gift,RBY,eevee,25,,,,,,,celadon-city,,,,,,,,,,Celadon Mansion
+fossil,RBY,"omanyte, kabuto",30,,,,,,,cinnabar-island,,,,,,,,,,choice of 1; Pokémon Lab; fossil from Mt. Moon
+fossil,RBY,aerodactyl,30,,,,,,,cinnabar-island,,,,,,,,,,Pokémon Lab; fossil from behind Pewter Museum (need Cut)
+overworld,RBY,snorlax,30,,,,,,,"kanto-route-12, kanto-route-16",,,,,,,,,,Nedd to be awakened by Poké Flute
+overworld,RBY,articuno,50,,,,,,,seafoam-islands
+overworld,RBY,zapdos,50,,,,,,,power-plant
+overworld,RBY,moltres,50,,,,,,,kanto-victory-road-1 2f
+overworld,RBY,mewtwo,70,,,,,,,cerulean-cave b1f
+purchase,RBY,magikarp,,,,,,,,kanto-route-4,,,,,500
+trade,RB,farfetchd,,,,,,,,vermillion-city,spearow,DUX,TRAINER
+trade,RB,lickitung,,,,,,,,kanto-route-18,slowbro,MARC,TRAINER
+trade,RB,mr-mime,,,,,,,,kanto-route-2,abra,MARCEL,TRAINER
+trade,Y,mr-mime,,,,,,,,kanto-route-2,clefairy,MILES,TRAINER
+trade,RB,jynx,,,,,,,,cerulean-city,poliwhirl,LOLA,TRAINER
+trade,RB,nidoran-f,,,,,,,,kanto-route-5,nidoran-m,SPOT,TRAINER
+trade,RB,nidorina,,,,,,,,kanto-route-11,nidorino,TERRY,TRAINER
+trade,Y,parasect,,,,,,,,kanto-route-18,tangela,SPIKE,TRAINER
+trade,Y,dugtrio,,,,,,,,kanto-route-11,lickitung,GURIO,TRAINER
+trade,Y,machoke,,,,,,,,kanto-route-5,cubone,RICKY,TRAINER,,,,,,,(evolves immediately)
+trade,RB,seel,,,,,,,,cinnabar-island,ponyta,SAILOR,TRAINER
+trade,Y,dewgong,,,,,,,,cinnabar-island,growlithe,CEZANNE,TRAINER
+trade,Y,muk,,,,,,,,cinnabar-island,kangaskhan,STICKY,TRAINER
+trade,RB,electrode,,,,,,,,cinnabar-island,raichu,DORIS,TRAINER
+trade,Y,rhydon,,,,,,,,cinnabar-island,golduck,BUFFY,TRAINER
+trade,RB,tangela,,,,,,,,cinnabar-island,venonat,CRINKLES,TRAINER
+prize,R,nidorina,17,,,,,,,celadon-city,,,,,1200
+prize,B,nidorino,17,,,,,,,celadon-city,,,,,1200
+prize,R,clefairy,8,,,,,,,celadon-city,,,,,500
+prize,B,clefairy,12,,,,,,,celadon-city,,,,,750
+prize,Y,vulpix,18,,,,,,,celadon-city,,,,,1000
+prize,Y,wigglytuff,22,,,,,,,celadon-city,,,,,2680
+prize,R,abra,9,,,,,,,celadon-city,,,,,180
+prize,B,abra,6,,,,,,,celadon-city,,,,,120
+prize,Y,abra,15,,,,,,,celadon-city,,,,,230
+prize,R,scyther,25,,,,,,,celadon-city,,,,,5500
+prize,Y,scyther,30,,,,,,,celadon-city,,,,,6500
+prize,B,pinsir,20,,,,,,,celadon-city,,,,,2500
+prize,Y,pinsir,30,,,,,,,celadon-city,,,,,6500
+prize,R,porygon,26,,,,,,,celadon-city,,,,,9999
+prize,B,porygon,18,,,,,,,celadon-city,,,,,4600
+prize,Y,porygon,26,,,,,,,celadon-city,,,,,9999
+prize,R,dratini,18,,,,,,,celadon-city,,,,,2800
+prize,B,dratini,24,,,,,,,celadon-city,,,,,4600
