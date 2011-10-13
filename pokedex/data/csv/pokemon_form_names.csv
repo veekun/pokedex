@@ -420,8 +420,8 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 419,9,,
 420,9,,
 421,9,Overcast Form,Overcast Cherrim
-422,9,West Sea,Western Shellos
-423,9,West Sea,Western Gastrodon
+422,9,West Sea,West Shellos
+423,9,West Sea,West Gastrodon
 424,9,,
 425,9,,
 426,9,,
@@ -712,7 +712,7 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 711,9,Mow Form,Mow Rotom
 712,9,Origin Forme,Origin Giratina
 713,9,Sky Forme,Sky Shaymin
-714,9,Spiky-eared Form,Spiky-eared Pichu
+714,9,Spiky-eared,Spiky-eared Pichu
 715,9,Blue-Striped Form,Blue-Striped Basculin
 716,9,Zen Mode,Zen Darmanitan
 717,9,Summer Form,Summer Deerling
