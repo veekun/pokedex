@@ -3,7 +3,7 @@
 for you to fiddle with it, then convert back to csv and replace the original
 file.
 
-Run me as: $0 some_file.csv
+Run me as: $0 some_file.csv [other_file.csv ...]
 
 The editor used is $EDITOR, of course.
 
@@ -17,6 +17,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import shlex
 
 try:
     import yaml
@@ -47,20 +48,37 @@ yaml.add_representer(
 )
 
 ### Do actual work!
-infilename, = sys.argv[1:]
+infilenames = sys.argv[1:]
 
-data = []
-with open(infilename) as infile:
-    reader = csv.reader(infile, lineterminator='\n')
-    column_names = [unicode(column) for column in next(reader)]
+all_data = []
+for infilename in infilenames:
+    data = []
+    with open(infilename) as infile:
+        reader = csv.reader(infile, lineterminator='\n')
+        column_names = [unicode(column) for column in next(reader)]
 
-    # Read data...
-    for row in reader:
-        datum = odict()
-        for col, value in zip(column_names, row):
-            datum[col] = value.decode('utf-8')
+        # Read data...
+        for row in reader:
+            datum = odict()
+            for col, value in zip(column_names, row):
+                # Skip empty values
+                if value:
+                    datum[col] = value.decode('utf-8')
+                    try:
+                        # Numbers to numbers
+                        if unicode(int(value)) == value:
+                            datum[col] = int(value)
+                    except ValueError:
+                        pass
 
-        data.append(datum)
+            data.append(datum)
+
+        file_info = odict((
+                ('name', infilename),
+                ('column_names', column_names),
+                ('rows', data),
+            ))
+    all_data.append(file_info)
 
 
 # Monkeypatch yaml to use > syntax for multiline text; easier to edit
@@ -76,7 +94,7 @@ Emitter.choose_scalar_style = new_choose_scalar_style
 
 # Write to a tempfile
 with tempfile.NamedTemporaryFile(suffix='.yml') as tmp:
-    yaml.safe_dump(data, tmp,
+    yaml.safe_dump(all_data, tmp,
         default_flow_style=False,
         allow_unicode=True,
         indent=4,
@@ -85,17 +103,21 @@ with tempfile.NamedTemporaryFile(suffix='.yml') as tmp:
 
     error_line = ''  # used on errors
     while True:
-        args = [os.environ['EDITOR'], tmp.name]
-        if 'vim' in os.environ['EDITOR']:
+        editor = shlex.split(os.environ['EDITOR'])
+        args = editor + [tmp.name]
+        if 'vim' in editor[0]:
             # vim has an arg for jumping to a line:
             args.append("+{0}".format(error_line))
+        elif 'kate' in editor[0]:
+            # so does kate!
+            args.append("-l {0}".format(error_line))
 
         # Run the user's editor and wait for it to close
         subprocess.Popen(args).wait()
         tmp.seek(0)
 
         try:
-            new_data = yaml.safe_load(tmp)
+            all_new_data = yaml.safe_load(tmp)
             break
         except yaml.YAMLError as e:
             if hasattr(e, 'problem_mark'):
@@ -111,11 +133,15 @@ with tempfile.NamedTemporaryFile(suffix='.yml') as tmp:
             print "Press Enter to try again, or I guess ctrl-c to bail."
             raw_input()
 
-with open(infilename, 'wb') as outfile:
-    writer = csv.writer(outfile, lineterminator='\n')
-    writer.writerow([ column.encode('utf8') for column in column_names ])
+for dct in all_new_data:
+    filename = dct['name']
+    new_data = dct['rows']
+    column_names = dct['column_names']
+    with open(filename, 'wb') as outfile:
+        writer = csv.writer(outfile, lineterminator='\n')
+        writer.writerow([ column.encode('utf8') for column in column_names ])
 
-    for datum in new_data:
-        writer.writerow([
-            datum[column].encode('utf8') for column in column_names
-        ])
+        for datum in new_data:
+            writer.writerow([
+                unicode(datum.get(column, '')).encode('utf-8') for column in column_names
+            ])
