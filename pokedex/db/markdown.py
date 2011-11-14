@@ -121,6 +121,8 @@ class MoveEffectProperty(object):
         self.effect_column = effect_column
 
     def __get__(self, obj, cls):
+        if obj.move_effect is None:
+            return None
         prop = getattr(obj.move_effect, self.effect_column)
         return _markdownify_effect_text(obj, prop)
 
