@@ -35,7 +35,7 @@ here, but if you intend to do some serious work, do read SQLAlchemy's docs.
 
 XXX: write the rest of this
 
-..::
+.. commented out old stuff
 
     Pokédex tables
     --------------
