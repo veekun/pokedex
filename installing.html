@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing the pokedex library &mdash; pokedex v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pokedex v0.1 documentation" href="index.html" />
+    <link rel="next" title="Using pokedex" href="usage.html" />
+    <link rel="prev" title="The pokedex documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Using pokedex"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="The pokedex documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pokedex v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installing-the-pokedex-library">
+<h1>Installing the pokedex library<a class="headerlink" href="#installing-the-pokedex-library" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quick-startup-with-ubuntu-debian-like-systems">
+<h2>Quick startup with Ubuntu/Debian-like systems<a class="headerlink" href="#quick-startup-with-ubuntu-debian-like-systems" title="Permalink to this headline">¶</a></h2>
+<p>Run the following from an empty directory:</p>
+<div class="highlight-python"><pre>$ sudo apt-get install git python python-pip python-sqlalchemy
+$ git clone git://git.veekun.com/pokedex.git
+$ pip install -E env -e pokedex
+$ source env/bin/activate
+(env)$ pokedex setup -v
+(env)$ pokedex lookup eevee</pre>
+</div>
+<p>If it all goes smoothly, you can now use <tt class="docutils literal"><span class="pre">env/bin/pokedex</span></tt>, the command-line
+tool, and <tt class="docutils literal"><span class="pre">env/bin/python</span></tt>, a Python interpreter configured to use the
+pokedex library.</p>
+<p>That is all you need. Feel free to skip the rest of this chapter if you&#8217;re not
+interested in the details.</p>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p>Ubuntu/Debian users should run the following:</p>
+<div class="highlight-python"><pre>$ sudo apt-get install git python python-pip</pre>
+</div>
+<p>With other Linuxes, install the packages for git, python (2.6 or 2.7,
+<em>not</em> 3.x), and python-pip.</p>
+<p>If you succeeded, skip the Detailed instructions.</p>
+</div>
+<div class="section" id="detailed-instructions">
+<h3>Detailed instructions<a class="headerlink" href="#detailed-instructions" title="Permalink to this headline">¶</a></h3>
+<p>You should know what a command line is and how to work with it.
+The here we assume you&#8217;re using Linux <a class="footnote-reference" href="#id3" id="id1">[1]</a>, if that&#8217;s not the case, make
+sure you have enough computer knowledge to translate the instructions to your
+operating system.</p>
+<p>Pokedex is distributed via <a class="reference external" href="http://git-scm.com/">Git</a>. So, get Git.</p>
+<p>You will also need <a class="reference external" href="http://www.python.org/">Python</a> 2; the language pokedex is written in. Be sure to get
+version <strong>2.6</strong> or <strong>2.7</strong>. Pokedex does not work with Python 3.x yet, and it
+most likely won&#8217;t work with 2.5 or earlier.</p>
+<p>Next, get <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a>, a tool to install Python packages. Experts can use another
+tool, of course.</p>
+<p>Make sure git and pip are on your path.</p>
+<p>Optionally you can install <a class="reference external" href="www.sqlalchemy.org/">SQLAlchemy</a>, <a class="reference external" href="http://www.freewisdom.org/projects/python-markdown/">Python markdown</a>, <a class="reference external" href="http://whoosh.ca/">Whoosh</a>,
+or <a class="reference external" href="pypi.python.org/pypi/construct">construct</a>. If you don&#8217;t, pip will atuomatically download and install a copy
+for you, but some are pretty big so you might want to install it system-wide.
+(Unfortunately, many distros have outdated versions of these libraries, so pip
+will install pokedex&#8217;s own copy anyway.)</p>
+</div>
+</div>
+<div class="section" id="getting-and-installing-pokedex">
+<h2>Getting and installing pokedex<a class="headerlink" href="#getting-and-installing-pokedex" title="Permalink to this headline">¶</a></h2>
+<p>Run the following from an empty directory:</p>
+<div class="highlight-python"><pre>$ git clone git://git.veekun.com/pokedex.git
+$ pip install -E env -e pokedex</pre>
+</div>
+<p>This will give you two directories: pokedex (containing the source code and
+data), and env (a <a class="reference external" href="http://www.virtualenv.org/en/latest/">virtualenv</a>).</p>
+<p>In env/bin, there are three interesting files:</p>
+<ul class="simple">
+<li>pokedex: The pokedex program</li>
+<li>python: A copy of Python that knows about pokedex and its prerequisites.
+Using the system python won&#8217;t work.</li>
+<li>activate: Typing <tt class="docutils literal"><span class="pre">source</span> <span class="pre">env/bin/activate</span></tt> in a shell will put
+pokedex and our bin/python on the $PATH, and generally set things up to work
+with them. Your prompt will change to let you know of this. You can end such
+a session by typing <tt class="docutils literal"><span class="pre">deactivate</span></tt>.</li>
+</ul>
+<p>This documentation will assume that you&#8217;ve activated the virtualenv, so
+<tt class="docutils literal"><span class="pre">pokedex</span></tt> means <tt class="docutils literal"><span class="pre">env/bin/pokedex</span></tt>.</p>
+<div class="section" id="advanced">
+<h3>Advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h3>
+<p>You can of course install into an existing virtualenv, by either using its pip
+and leaving out the <tt class="docutils literal"><span class="pre">-E</span> <span class="pre">env</span></tt>, or running the setup script directly:</p>
+<div class="highlight-python"><pre>(anotherenv)$ cd pokedex
+(anotherenv)pokedex$ python setup.py develop</pre>
+</div>
+<p>It is also possible to install pokedex system-wide. There are problems with
+that. Don&#8217;t do it. The only time you need <tt class="docutils literal"><span class="pre">sudo</span></tt> is for getting the
+prerequisites.</p>
+</div>
+</div>
+<div class="section" id="loading-the-database">
+<h2>Loading the database<a class="headerlink" href="#loading-the-database" title="Permalink to this headline">¶</a></h2>
+<p>Before you can do anything useful with pokedex, you need to load the database:</p>
+<div class="highlight-python"><pre>$ pokedex setup -v</pre>
+</div>
+<p>This will load the data into a default SQLite database and create a default
+Whoosh index.</p>
+<div class="section" id="id2">
+<h3>Advanced<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>If you want to use another database, make sure you have the corresponding
+<a class="reference external" href="http://www.sqlalchemy.org/docs/core/engines.html">SQLAlchemy engine</a> for it and either use the <tt class="docutils literal"><span class="pre">-e</span></tt> switch, (e.g.
+<tt class="docutils literal"><span class="pre">-e</span> <span class="pre">postgresql://&#64;/pokedex</span></tt>), or set the <tt class="docutils literal"><span class="pre">POKEDEX_DB_ENGINE</span></tt> environment
+variable.</p>
+<p>To use another lookup index directory, specify it with <tt class="docutils literal"><span class="pre">-i</span></tt> or the
+<tt class="docutils literal"><span class="pre">POKEDEX_INDEX_DIR</span></tt> variable.</p>
+<p>Make sure you always use the same options whenever you use pokedex.</p>
+<p>If you&#8217;re confused about what pokedex thinks its settings are, check
+<tt class="docutils literal"><span class="pre">pokedex</span> <span class="pre">status</span></tt>.</p>
+<p>See <tt class="docutils literal"><span class="pre">pokedex</span> <span class="pre">help</span></tt> for even more options.</p>
+</div>
+</div>
+<div class="section" id="all-done">
+<h2>All done<a class="headerlink" href="#all-done" title="Permalink to this headline">¶</a></h2>
+<p>To verify that all went smoothly, check that the pokedex tool finds your
+favorite pokémon:</p>
+<div class="highlight-python"><pre>$ pokedex lookup eevee</pre>
+</div>
+<p>Yes, that was a bit anti-climatic. The command-line tool doesn&#8217;t do much,
+currently.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>If you write instructions for another OS, well be happy to include them
+here. The reason your OS is not listed here is because the author doesn&#8217;t
+use it, so naturally he can&#8217;t write instructions for it.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installing the pokedex library</a><ul>
+<li><a class="reference internal" href="#quick-startup-with-ubuntu-debian-like-systems">Quick startup with Ubuntu/Debian-like systems</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#detailed-instructions">Detailed instructions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getting-and-installing-pokedex">Getting and installing pokedex</a><ul>
+<li><a class="reference internal" href="#advanced">Advanced</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loading-the-database">Loading the database</a><ul>
+<li><a class="reference internal" href="#id2">Advanced</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#all-done">All done</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">The pokedex documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="next chapter">Using pokedex</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/installing.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Using pokedex"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="The pokedex documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">pokedex v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
