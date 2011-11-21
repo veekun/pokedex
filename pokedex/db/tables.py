@@ -2234,9 +2234,9 @@ ContestCombo.second = relationship(Move,
     innerjoin=True, lazy='joined',
     backref='contest_combo_second')
 
-Encounter.condition_value_map = relationship(EncounterConditionValueMap,
-    backref='encounter')
-Encounter.condition_values = association_proxy('condition_value_map', 'condition_value')
+
+Encounter.condition_values = relationship(EncounterConditionValue,
+    secondary=EncounterConditionValueMap.__table__)
 Encounter.location_area = relationship(LocationArea,
     innerjoin=True, lazy='joined',
     backref='encounters')
@@ -2253,9 +2253,6 @@ Encounter.slot = relationship(EncounterSlot,
 EncounterConditionValue.condition = relationship(EncounterCondition,
     innerjoin=True, lazy='joined',
     backref='values')
-EncounterConditionValueMap.condition_value = relationship(EncounterConditionValue,
-    innerjoin=True, lazy='joined',
-    backref='encounter_map')
 
 EncounterSlot.method = relationship(EncounterMethod,
     innerjoin=True, lazy='joined',
