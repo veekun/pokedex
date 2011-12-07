@@ -779,6 +779,8 @@ class EncounterMethod(TableBase):
         info=dict(description="A unique ID for the method"))
     identifier = Column(Unicode(16), nullable=False, unique=True,
         info=dict(description="An identifier", format='identifier'))
+    order = Column(Integer, unique=True, nullable=False,
+        info=dict(description="A good column for sorting on"))
 
 create_translation_table('encounter_method_prose', EncounterMethod, 'prose',
     name = Column(Unicode(64), nullable=False, index=True,

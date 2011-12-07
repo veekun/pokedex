@@ -15,3 +15,7 @@ encounter_condition_value_id,local_language_id,name
 14,9,Radio off
 15,9,Hoenn radio
 16,9,Sinnoh radio
+17,9,During Spring
+18,9,During Summer
+19,9,During Autumn
+20,9,During Winter
