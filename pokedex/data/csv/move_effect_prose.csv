@@ -602,7 +602,7 @@ Neither the user nor the target can recover its item with []{move:recycle}.
 
 If the target has []{ability:multitype} or []{ability:sticky-hold}, it will take damage but not lose its item."
 190,9,Lowers the target's HP to equal the user's.,"Inflicts exactly enough damage to lower the target's [HP]{mechanic:hp} to equal the user's.  If the target's HP is not higher than the user's, this move has no effect.  Type immunity applies, but other type effects are ignored.  This effect counts as damage for moves that respond to damage."
-191,9,"Inflicts more damage when the user has more HP remaining, with a maximum of 150 power.","Inflicts [regular damage]{mechanic:regular-damage}.  Power increases with the user's remaining [HP]{mechanic:hp} and is given by `150 * HP / max HP`, to a maximum of 150 when the user has full [HP]{mechanic:hp}."
+191,9,"Inflicts more damage when the user has more HP remaining, with a maximum of 150 power.","Inflicts [regular damage]{mechanic:regular-damage}.  Power increases with the user's remaining [HP]{mechanic:hp} and is given by `150 * HP / max HP`, to a maximum of 150 when the user has full HP."
 192,9,User and target swap abilities.,"User and target switch abilities.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
 
 If either Pokémon has []{ability:multitype} or []{ability:wonder-guard}, this move will [fail]{mechanic:fail}."
