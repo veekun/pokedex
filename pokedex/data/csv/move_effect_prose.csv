@@ -40,7 +40,7 @@ Doesn't affect Pokémon with []{ability:suction-cups} or under the effect of []{
 30,9,Hits 2-5 times in one turn.,"Inflicts [regular damage]{mechanic:regular-damage}.  Hits 2–5 times in one turn.
 
 Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 times.  Averages to 3 hits per use."
-31,9,User's type changes to the type of one of its moves at random.,"User's [type]{mechanic:type} changes to the [type]{mechanic:type} of one of its moves, selected at random.  []{move:hidden-power} and []{move:weather-ball} are treated as []{type:normal}.  Only moves with a different [type]{mechanic:type} are eligible, and []{move:curse} is never eligible.  If the user has no suitable moves, this move will fail."
+31,9,User's type changes to the type of one of its moves at random.,"User's [type]{mechanic:type} changes to the [type]{mechanic:type} of one of its moves, selected at random.  []{move:hidden-power} and []{move:weather-ball} are treated as []{type:normal}.  Only moves with a different [type]{mechanic:type} are eligible, and []{move:curse} is never eligible.  If the user has no suitable moves, this move will [fail]{mechanic:fail}."
 32,9,Has a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to make the target []{mechanic:flinch}.
 33,9,Heals the user by half its max HP.,Heals the user for half its max [HP]{mechanic:hp}.
 34,9,"Badly poisons the target, inflicting more damage every turn.",[Badly poisons]{mechanic:badly-poisons} the target.
@@ -53,7 +53,7 @@ If the user is holding []{item:light-clay}, the barrier lasts for eight turns.
 37,9,"Has a $effect_chance% chance to [burn]{mechanic:burn}, [freeze]{mechanic:freeze}, or [paralyze]{mechanic:paralysis} the target.","Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn}, [freeze]{mechanic:freeze}, or [paralyze]{mechanic:paralyze} the target.  One of these effects is selected at random; they do not each have independent chances to occur."
 38,9,"User sleeps for two turns, completely healing itself.","User falls to [sleep]{mechanic:sleep} and immediately regains all its [HP]{mechanic:hp}.  If the user has another [major status effect]{mechanic:major-status-effect}, [sleep]{mechanic:sleep} will replace it.  The user will always wake up after two turns, or one turn with []{ability:early-bird}.
 
-This move fails if the Pokémon cannot fall asleep due to []{move:uproar}, []{ability:insomnia}, or []{ability:vital-spirit}.  It also fails if the Pokémon is at full health or is already asleep."
+This move [fail]{mechanic:fail}s if the Pokémon cannot fall asleep due to []{move:uproar}, []{ability:insomnia}, or []{ability:vital-spirit}.  It also fails if the Pokémon is at full health or is already asleep."
 39,9,Causes a one-hit KO.,"Inflicts damage equal to the target's max [HP]{mechanic:hp}.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.  This move's [accuracy]{mechanic:accuracy} is 30% plus 1% for each level the user is higher than the target.  If the user is a lower level than the target, this move will [fail]{mechanic:fail}.
 
 Because this move inflicts a specific and finite amount of damage, []{move:endure} still prevents the target from fainting.
@@ -79,7 +79,7 @@ This move cannot be used while []{move:gravity} is in effect."
 []{move:guard-swap}, []{move:heart-swap}, and []{move:power-swap} may still be used.
 
 []{move:defog} used by an opponent will end this effect."
-48,9,Increases the user's chance to score a critical hit.,"User's [critical hit]{mechanic:critical-hit} rate is two levels higher until it leaves the field.  If the user has already used []{move:focus-energy} since entering the field, this move will fail.
+48,9,Increases the user's chance to score a critical hit.,"User's [critical hit]{mechanic:critical-hit} rate is two levels higher until it leaves the field.  If the user has already used []{move:focus-energy} since entering the field, this move will [fail]{mechanic:fail}.
 
 This effect is passed on by []{move:baton-pass}."
 49,9,User receives 1/4 the damage it inflicts in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/4 the damage it inflicts in recoil.
@@ -117,7 +117,7 @@ This move cannot be selected by []{move:sleep-talk}."
 77,9,Has a $effect_chance% chance to confuse the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [confuse]{mechanic:confuse} the target.
 78,9,Hits twice in the same turn.  Has a $effect_chance% chance to poison the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Hits twice in the same turn.  Has a $effect_chance% chance to [poison]{mechanic:poison} the target.
 79,9,Never misses.,Inflicts [regular damage]{mechanic:regular-damage}.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
-80,9,"Transfers 1/4 of the user's max HP into a doll, protecting the user from further damage or status changes until it breaks.","Transfers 1/4 the user's max [HP]{mechanic:hp} into a doll that absorbs damage and causes most negative move effects to fail.  If the user leaves the [field]{mechanic:field}, the doll will vanish.  If the user cannot pay the [HP]{mechanic:hp} cost, this move will fail.
+80,9,"Transfers 1/4 of the user's max HP into a doll, protecting the user from further damage or status changes until it breaks.","Transfers 1/4 the user's max [HP]{mechanic:hp} into a doll that absorbs damage and causes most negative move effects to [fail]{mechanic:fail}.  If the user leaves the [field]{mechanic:field}, the doll will vanish.  If the user cannot pay the [HP]{mechanic:hp} cost, this move will fail.
 
 The doll takes damage as normal, using the user's stats and types, and will break when its [HP]{mechanic:hp} reaches zero.  Self-inflicted damage from [confusion]{mechanic:confusion} or recoil is not absorbed.  Healing effects from opponents ignore the doll and heal the user as normal.  Moves that work based on the user's [HP]{mechanic:hp} still do so; the doll's [HP]{mechanic:hp} does not influence any move.
 
@@ -138,9 +138,9 @@ The doll is passed on by []{move:baton-pass}.  It keeps its existing [HP]{mechan
 All other effects work as normal."
 81,9,User foregoes its next turn to recharge.,"Inflicts [regular damage]{mechanic:regular-damage}.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic:switch} out during that turn."
 82,9,"If the user is hit after using this move, its Attack rises by one stage.","Inflicts [regular damage]{mechanic:regular-damage}.  Every time the user is hit after it uses this move but before its next action, its [Attack]{mechanic:attack} raises by one [stage]{mechanic:stage}."
-83,9,Copies the target's last used move.,"This move is replaced by the target's last successfully used move, and its PP changes to 5.  If the target hasn't used a move since entering the field, if it tried to use a move this turn and [failed]{mechanic:failed}, or if the user already knows the targeted move, this move will fail.  This effect vanishes when the user leaves the field.
+83,9,Copies the target's last used move.,"This move is replaced by the target's last successfully used move, and its PP changes to 5.  If the target hasn't used a move since entering the field, if it tried to use a move this turn and [failed]{mechanic:fail}, or if the user already knows the targeted move, this move will fail.  This effect vanishes when the user leaves the field.
 
-If []{move:chatter}, []{move:metronome}, []{move:mimic}, []{move:sketch}, or []{move:struggle} is selected, this move will fail.
+If []{move:chatter}, []{move:metronome}, []{move:mimic}, []{move:sketch}, or []{move:struggle} is selected, this move will [fail]{mechanic:fail}.
 
 This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assist} or []{move:metronome}, nor forced by []{move:encore}."
 84,9,Randomly selects and uses any move in the game.,"Selects any move at random and uses it.  Moves the user already knows are not eligible.  Assist, meta, protection, and reflection moves are also not eligible; specifically, []{move:assist}, []{move:chatter}, []{move:copycat}, []{move:counter}, []{move:covet}, []{move:destiny-bond}, []{move:detect}, []{move:endure}, []{move:feint}, []{move:focus-punch}, []{move:follow-me}, []{move:helping-hand}, []{move:me-first}, []{move:metronome}, []{move:mimic}, []{move:mirror-coat}, []{move:mirror-move}, []{move:protect}, []{move:quick-guard}, []{move:sketch}, []{move:sleep-talk}, []{move:snatch}, []{move:struggle}, []{move:switcheroo}, []{move:thief}, []{move:trick}, and []{move:wide-guard} will not be selected by this move.
@@ -167,9 +167,9 @@ This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assi
 If the target hasn't used a move since entering the [field]{mechanic:field}, if it tried to use a move this turn and [failed]{mechanic:failed}, if it does not know the selected move, or if the selected move has 0 [PP]{mechanic:pp} remaining, this move will fail.  If the target's last used move was []{move:encore}, []{move:mimic}, []{move:mirror-move}, []{move:sketch}, []{move:struggle}, or []{move:transform}, this move will fail."
 92,9,Sets the user's and targets's HP to the average of their current HP.,"Changes the user's and target's remaining [HP]{mechanic:hp} to the average of their current remaining [HP]{mechanic:hp}.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.  This effect does not count as inflicting damage for other moves and effects that respond to damage taken.
 
-This effect fails against a []{move:substitute}."
+This effect [fail]{mechanic:fail}s against a []{move:substitute}."
 93,9,Has a $effect_chance% chance to make the target flinch.  Only works if the user is sleeping.,Only usable if the user is [sleep]{mechanic:sleep}ing.  Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to make the target []{mechanic:flinch}.
-94,9,Changes the user's type to a random type either resistant or immune to the last move used against it.,"Changes the user's type to a type either resistant or immune to the last damaging move that hit it.  The new type is selected at random and cannot be a type the user already is.  If there is no eligible new type, this move will fail."
+94,9,Changes the user's type to a random type either resistant or immune to the last move used against it.,"Changes the user's type to a type either resistant or immune to the last damaging move that hit it.  The new type is selected at random and cannot be a type the user already is.  If there is no eligible new type, this move will [fail]{mechanic:fail}."
 95,9,Ensures that the user's next move will hit the target.,"If the user targets the same target again before the end of the next turn, the move it uses is guaranteed to hit.  This move itself also ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
 
 One-hit KO moves are also guaranteed to hit, as long as the user is equal or higher level than the target.  This effect also allows the user to hit Pokémon that are off the field due to moves such as []{move:dig} or []{move:fly}.
@@ -177,7 +177,7 @@ One-hit KO moves are also guaranteed to hit, as long as the user is equal or hig
 If the target uses []{move:detect} or []{move:protect} while under the effect of this move, the user is not guaranteed to hit, but has a (100 - accuracy)% chance to break through the protection.
 
 This effect is passed on by []{move:baton-pass}."
-96,9,Permanently becomes the target's last used move.,"Permanently replaces itself with the target's last used move.  If that move is []{move:chatter} or []{move:struggle}, this move will fail.
+96,9,Permanently becomes the target's last used move.,"Permanently replaces itself with the target's last used move.  If that move is []{move:chatter} or []{move:struggle}, this move will [fail]{mechanic:fail}.
 
 This move cannot be copied by []{move:mimic} or []{move:mirror-move}, nor selected by []{move:assist} or []{move:metronome}, nor forced by []{move:encore}."
 98,9,Randomly uses one of the user's other three moves.  Only works if the user is sleeping.,"Only usable if the user is [sleep]{mechanic:sleep}ing.  Randomly selects and uses one of the user's other three moves.  Use of the selected move requires and costs 0 [PP]{mechanic:pp}.
@@ -230,9 +230,9 @@ Otherwise: Lowers the user's [Speed]{mechanic:speed} by one [stage]{mechanic:sta
 The curse effect is passed on by []{move:baton-pass}.
 
 This move cannot be copied by []{move:mirror-move}."
-112,9,Prevents any moves from hitting the user this turn.,"No moves will hit the user for the remainder of this turn.  If the user is last to act this turn, this move will fail.
+112,9,Prevents any moves from hitting the user this turn.,"No moves will hit the user for the remainder of this turn.  If the user is last to act this turn, this move will [fail]{mechanic:fail}.
 
-If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to fail.
+If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to [fail]{mechanic:fail}.
 
 []{move:lock-on}, []{move:mind-reader}, and []{ability:no-guard} provide a (100 – accuracy)% chance for moves to break through this move.  This does not apply to one-hit KO moves ([]{move:fissure}, []{move:guillotine}, []{move:horn-drill}, and []{move:sheer-cold}); those are always blocked by this move.
 
@@ -268,7 +268,7 @@ This move cannot be copied by []{move:mirror-move}."
 []{move:moonlight}, []{move:morning-sun}, and []{move:synthesis} only heal 1/4 the user's max [HP]{mechanic:hp}."
 117,9,Prevents the user's HP from lowering below 1 this turn.,"The user's [HP]{mechanic:hp} cannot be lowered below 1 by any means for the remainder of this turn.
 
-If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to fail.
+If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to [fail]{mechanic:fail}.
 
 This move cannot be selected by []{move:assist} or []{move:metronome}."
 118,9,"Power doubles every turn this move is used in succession after the first, resetting after five turns.","Inflicts [regular damage]{mechanic:regular-damage}.  User is forced to use this move for five turns.  Power doubles every time this move is used in succession to a maximum of 16x, and resets to normal after the lock-in ends.  If this move misses or becomes unusable, the lock-in ends.
@@ -276,7 +276,7 @@ This move cannot be selected by []{move:assist} or []{move:metronome}."
 If the user has used []{move:defense-curl} since entering the field, this move has double power."
 119,9,Raises the target's Attack by two stages and confuses the target.,"Raises the target's [Attack]{mechanic:attack} by two [stages]{mechanic:stage}, then [confuses]{mechanic:confuses} it.  If the target's [Attack]{mechanic:attack} cannot be [raised]{mechanic:raised} by two [stages]{mechanic:stage}, the [confusion]{mechanic:confusion} is not applied."
 120,9,"Power doubles every turn this move is used in succession after the first, maxing out after five turns.","Inflicts [regular damage]{mechanic:regular-damage}.  Power doubles after every time this move is used, whether consecutively or not, maxing out at 16x.  If this move misses or the user leaves the [field]{mechanic:field}, power resets."
-121,9,"Target falls in love if it has the opposite gender, and has a 50% chance to refuse attacking the user.","Causes the target to fall in love with the user, giving it a 50% chance to do nothing each turn.  If the user and target are the same gender, or either is genderless, this move will fail.  If either Pokémon leaves the [field]{mechanic:field}, this effect ends."
+121,9,"Target falls in love if it has the opposite gender, and has a 50% chance to refuse attacking the user.","Causes the target to fall in love with the user, giving it a 50% chance to do nothing each turn.  If the user and target are the same gender, or either is genderless, this move will [fail]{mechanic:fail}.  If either Pokémon leaves the [field]{mechanic:field}, this effect ends."
 122,9,"Power increases with happiness, up to a maximum of 102.","Inflicts [regular damage]{mechanic:regular-damage}.  Power increases with [happiness]{mechanic:happiness}, given by `happiness * 2 / 5`, to a maximum of 102.  Power bottoms out at 1."
 123,9,Randomly inflicts damage with power from 40 to 120 or heals the target for 1/4 its max HP.,"Randomly uses one of the following effects.
 
@@ -291,7 +291,7 @@ On average, this move inflicts [regular damage]{mechanic:regular-damage} with 52
 124,9,"Power increases as happiness decreases, up to a maximum of 102.","Inflicts [regular damage]{mechanic:regular-damage}.  Power increases inversely with [happiness]{mechanic:happiness}, given by `(255 - happiness) * 2 / 5`, to a maximum of 102.  Power bottoms out at 1."
 125,9,Protects the user's field from major status ailments and confusion for five turns.,"Protects Pokémon on the user's side of the [field]{mechanic:field} from [major status]{mechanic:major-status} effects and [confusion]{mechanic:confusion} for five turns.  Does not cancel existing ailments.  This effect remains even if the user leaves the [field]{mechanic:field}.
 
-If []{move:yawn} is used while this move is in effect, it will immediately fail.
+If []{move:yawn} is used while this move is in effect, it will immediately [fail]{mechanic:fail}.
 
 []{move:defog} used by an opponent will end this effect.
 
@@ -408,7 +408,7 @@ Pokémon with []{ability:solar-power} have their original [Special Attack]{mecha
 139,9,Has a $effect_chance% chance to raise the user's Defense by one stage.,Inflicts [regular damage]{mechanic:regular-damage}. Has a $effect_chance% chance to raise the user's [Defense]{mechanic:defense} one [stage]{mechanic:stage}.
 140,9,Has a $effect_chance% chance to raise the user's Attack by one stage.,Inflicts [regular damage]{mechanic:regular-damage}. Has a $effect_chance% chance to raise the user's [Attack]{mechanic:attack} one [stage]{mechanic:stage}.
 141,9,Has a $effect_chance% chance to raise all of the user's stats by one stage.,Inflicts [regular damage]{mechanic:regular-damage}. Has a $effect_chance% chance to raise all of the user's stats one [stage]{mechanic:stage}.
-143,9,User pays half its max HP to max out its Attack.,"User pays half its max [HP]{mechanic:hp} to raise its [Attack]{mechanic:attack} to +6 [stages]{mechanic:stage}.  If the user cannot pay the [HP]{mechanic:hp} cost, this move will fail."
+143,9,User pays half its max HP to max out its Attack.,"User pays half its max [HP]{mechanic:hp} to raise its [Attack]{mechanic:attack} to +6 [stages]{mechanic:stage}.  If the user cannot pay the [HP]{mechanic:hp} cost, this move will [fail]{mechanic:fail}."
 144,9,Discards the user's stat changes and copies the target's.,"Discards the user's [stat changes]{mechanic:stat-changes} and copies the target's.
 
 This move cannot be copied by []{move:mirror-move}."
@@ -428,7 +428,7 @@ If the target is in the first turn of []{move:dig}, this move will hit with doub
 
 This effect breaks through []{ability:wonder-guard}.
 
-If the target is protected by []{move:protect} or []{move:detect} on the turn this move is used, this move will fail.  However, the damage on the third turn will break through protection.
+If the target is protected by []{move:protect} or []{move:detect} on the turn this move is used, this move will [fail]{mechanic:fail}.  However, the damage on the third turn will break through protection.
 
 The damage is applied at the end of the turn, so it ignores []{move:endure} and []{item:focus-sash}.
 
@@ -478,10 +478,10 @@ This move cannot be selected by []{move:sleep-talk}."
 161,9,Stores energy up to three times for use with Spit Up and Swallow.,"Raises the user's [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} by one [stage]{mechanic:stage} each.  Stores energy for use with []{move:spit-up} and []{move:swallow}.  Up to three levels of energy can be stored, and all are lost if the user leaves the [field]{mechanic:field}.  Energy is still stored even if the stat boosts cannot be applied.
 
 If the user uses []{move:baton-pass}, the stat boosts are passed as normal, but the stored energy is not."
-162,9,Power is 100 times the amount of energy Stockpiled.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power is equal to 100 times the amount of energy stored by []{move:stockpile}.  Ignores the random factor in the damage formula.  Stored energy is consumed, and the user's [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} are reset to what they would be if []{move:stockpile} had not been used.  If the user has no energy stored, this move will fail.
+162,9,Power is 100 times the amount of energy Stockpiled.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power is equal to 100 times the amount of energy stored by []{move:stockpile}.  Ignores the random factor in the damage formula.  Stored energy is consumed, and the user's [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} are reset to what they would be if []{move:stockpile} had not been used.  If the user has no energy stored, this move will [fail]{mechanic:fail}.
 
 This move cannot be copied by []{move:mirror-move}."
-163,9,"Recovers 1/4 HP after one Stockpile, 1/2 HP after two Stockpiles, or full HP after three Stockpiles.","Heals the user depending on the amount of energy stored by []{move:stockpile}: 1/4 its max [HP]{mechanic:hp} after one use, 1/2 its max [HP]{mechanic:hp} after two uses, or fully after three uses.  Stored energy is consumed, and the user's [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} are reset to what they would be if []{move:stockpile} had not been used.  If the user has no energy stored, this move will fail."
+163,9,"Recovers 1/4 HP after one Stockpile, 1/2 HP after two Stockpiles, or full HP after three Stockpiles.","Heals the user depending on the amount of energy stored by []{move:stockpile}: 1/4 its max [HP]{mechanic:hp} after one use, 1/2 its max [HP]{mechanic:hp} after two uses, or fully after three uses.  Stored energy is consumed, and the user's [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} are reset to what they would be if []{move:stockpile} had not been used.  If the user has no energy stored, this move will [fail]{mechanic:fail}."
 165,9,Changes the weather to a hailstorm for five turns.,"Changes the weather to hail for five turns, during which non-[]{type:ice} Pokémon are damaged for 1/16 their max [HP]{mechanic:hp} at the end of every turn.
 
 If the user is holding []{item:icy-rock}, this effect lasts for eight turns.
@@ -498,7 +498,7 @@ If the target is forced to attempt a repeated move due to []{item:choice-band}, 
 168,9,Burns the target.,[Burns]{mechanic:burns} the target.
 169,9,Lowers the target's Attack and Special Attack by two stages.  User faints.,Lowers the target's [Attack]{mechanic:attack} and [Special Attack]{mechanic:special-attack} by two [stages]{mechanic:stage}.  User faints.
 170,9,"Power doubles if user is burned, paralyzed, or poisoned.","Inflicts [regular damage]{mechanic:regular-damage}.  If the user is [burned]{mechanic:burned}, [paralyzed]{mechanic:paralyzed}, or [poisoned]{mechanic:poisoned}, this move has double power."
-171,9,"If the user takes damage before attacking, the attack is canceled.","Inflicts [regular damage]{mechanic:regular-damage}.  If the user takes damage this turn before hitting, this move will fail.
+171,9,"If the user takes damage before attacking, the attack is canceled.","Inflicts [regular damage]{mechanic:regular-damage}.  If the user takes damage this turn before hitting, this move will [fail]{mechanic:fail}.
 
 This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assist}, []{move:metronome}, or []{move:sleep-talk}."
 172,9,"If the target is paralyzed, inflicts double damage and cures the paralysis.","Inflicts [regular damage]{mechanic:regular-damage}.  If the user is [paralyzed]{mechanic:paralyzed}, this move has double power, and the user is cured of its [paralysis]{mechanic:paralysis}."
@@ -549,9 +549,9 @@ This move cannot be copied by []{move:mirror-move}."
 177,9,Ally's next move inflicts half more damage.,"Boosts the power of the target's moves by 50% until the end of this turn.
 
 This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assist} or []{move:metronome}."
-178,9,User and target swap items.,"User and target permanently swap [held item]{mechanic:held-item}s.  Works even if one of the Pokémon isn't holding anything.  If either Pokémon is holding mail, this move will fail.
+178,9,User and target swap items.,"User and target permanently swap [held item]{mechanic:held-item}s.  Works even if one of the Pokémon isn't holding anything.  If either Pokémon is holding mail, this move will [fail]{mechanic:fail}.
 
-If either Pokémon has []{ability:multitype} or []{ability:sticky-hold}, this move will fail.
+If either Pokémon has []{ability:multitype} or []{ability:sticky-hold}, this move will [fail]{mechanic:fail}.
 
 If this move results in a Pokémon obtaining []{item:choice-band}, []{item:choice-scarf}, or []{item:choice-specs}, and that Pokémon was the latter of the pair to move this turn, then the move it used this turn becomes its chosen forced move.  This applies even if both Pokémon had a choice item before this move was used.  If the first of the two Pokémon gains a choice item, it may select whatever choice move it wishes next turn.
 
@@ -560,11 +560,11 @@ Neither the user nor the target can recover its item with []{move:recycle}.
 This move cannot be selected by []{move:assist} or []{move:metronome}."
 179,9,Copies the target's ability.,"User's ability is replaced with the target's until the user leaves the [field]{mechanic:field}.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
 
-If the target has []{ability:wonder-guard}, this move will fail.
+If the target has []{ability:wonder-guard}, this move will [fail]{mechanic:fail}.
 
 This move cannot be copied by []{move:mirror-move}."
 180,9,User will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will be healed for half its max [HP]{mechanic:hp}.  If the user is [switched out]{mechanic:switched-out}, its replacement will be healed instead for half of the user's max HP.  If the user [faint]{mechanic:faint}s or is forcefully switched by []{move:roar} or []{move:whirlwind}, this effect will not activate."
-181,9,Randomly selects and uses one of the trainer's other Pokémon's moves.,"Uses a move from another Pokémon in the user's party, both selected at random.  Moves from fainted Pokémon can be used.  If there are no eligible Pokémon or moves, this move will fail.
+181,9,Randomly selects and uses one of the trainer's other Pokémon's moves.,"Uses a move from another Pokémon in the user's party, both selected at random.  Moves from fainted Pokémon can be used.  If there are no eligible Pokémon or moves, this move will [fail]{mechanic:fail}.
 
 This move will not select []{move:assist}, []{move:chatter}, []{move:circle-throw}, []{move:copycat}, []{move:counter}, []{move:covet}, []{move:destiny-bond}, []{move:detect}, []{move:dragon-tail}, []{move:endure}, []{move:feint}, []{move:focus-punch}, []{move:follow-me}, []{move:helping-hand}, []{move:me-first}, []{move:metronome}, []{move:mimic}, []{move:mirror-coat}, []{move:mirror-move}, []{move:protect}, []{move:quick-guard}, []{move:sketch}, []{move:sleep-talk}, []{move:snatch}, []{move:struggle}, []{move:switcheroo}, []{move:thief}, []{move:trick}, or []{move:wide-guard}.
 
@@ -584,18 +584,18 @@ This effect can be passed with []{move:baton-pass}."
 []{move:attract}, []{move:flatter}, []{move:gastro-acid}, []{move:leech-seed}, []{move:swagger}, []{move:worry-seed}, and []{move:yawn} are reflected.
 
 This move cannot be copied by []{move:mirror-move}."
-185,9,User recovers the item it last used up.,"User recovers the last item consumed by the user or a Pokémon in its position on the [field]{mechanic:field}.  The item must be used again before it can be recovered by this move again.  If the user is holding an item, this move fails.
+185,9,User recovers the item it last used up.,"User recovers the last item consumed by the user or a Pokémon in its position on the [field]{mechanic:field}.  The item must be used again before it can be recovered by this move again.  If the user is holding an item, this move [fail]{mechanic:fail}s.
 
 Items taken or given away by []{move:covet}, []{move:knock-off}, []{move:switcheroo}, []{move:thief}, or []{move:trick} may not be recovered."
 186,9,Inflicts double damage if the user takes damage before attacking this turn.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target damaged the user this turn and was the last to do so, this move has double power.
 
 []{move:pain-split} does not count as damaging the user."
 187,9,Destroys Reflect and Light Screen.,"Destroys any []{move:light-screen} or []{move:reflect} on the target's side of the [field]{mechanic:field}, then inflicts [regular damage]{mechanic:regular-damage}.  The barriers are destroyed even if this move has [no effect]{mechanic:no-effect}."
-188,9,Target sleeps at the end of the next turn.,"Puts the target to [sleep]{mechanic:sleep} at the end of the next turn.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.  If the target leaves the [field]{mechanic:field}, this effect is canceled.  If the target has a status effect when this move is used, this move will fail.
+188,9,Target sleeps at the end of the next turn.,"Puts the target to [sleep]{mechanic:sleep} at the end of the next turn.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.  If the target leaves the [field]{mechanic:field}, this effect is canceled.  If the target has a status effect when this move is used, this move will [fail]{mechanic:fail}.
 
-If the target is protected by []{move:safeguard} when this move is used, this move will fail.
+If the target is protected by []{move:safeguard} when this move is used, this move will [fail]{mechanic:fail}.
 
-[]{ability:insomnia} and []{ability:vital-spirit} prevent the [sleep]{mechanic:sleep} if the target has either at the end of the next turn, but will not cause this move to fail on use."
+[]{ability:insomnia} and []{ability:vital-spirit} prevent the [sleep]{mechanic:sleep} if the target has either at the end of the next turn, but will not cause this move to [fail]{mechanic:fail} on use."
 189,9,Target drops its held item.,"Inflicts [regular damage]{mechanic:regular-damage}.  Target loses its [held item]{mechanic:held-item}.
 
 Neither the user nor the target can recover its item with []{move:recycle}.
@@ -605,8 +605,8 @@ If the target has []{ability:multitype} or []{ability:sticky-hold}, it will take
 191,9,"Inflicts more damage when the user has more HP remaining, with a maximum of 150 power.","Inflicts [regular damage]{mechanic:regular-damage}.  Power increases with the user's remaining [HP]{mechanic:hp} and is given by `150 * HP / max HP`, to a maximum of 150 when the user has full [HP]{mechanic:hp}."
 192,9,User and target swap abilities.,"User and target switch abilities.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
 
-If either Pokémon has []{ability:multitype} or []{ability:wonder-guard}, this move will fail."
-193,9,Prevents the target from using any moves that the user also knows.,"Prevents any Pokémon on the opposing side of the [field]{mechanic:field} from using any move the user knows until the user leaves the [field]{mechanic:field}.  This effect is live; if the user obtains new moves while on the [field]{mechanic:field}, these moves become restricted.  If no opposing Pokémon knows any of the user's moves when this move is used, this move will fail."
+If either Pokémon has []{ability:multitype} or []{ability:wonder-guard}, this move will [fail]{mechanic:fail}."
+193,9,Prevents the target from using any moves that the user also knows.,"Prevents any Pokémon on the opposing side of the [field]{mechanic:field} from using any move the user knows until the user leaves the [field]{mechanic:field}.  This effect is live; if the user obtains new moves while on the [field]{mechanic:field}, these moves become restricted.  If no opposing Pokémon knows any of the user's moves when this move is used, this move will [fail]{mechanic:fail}."
 194,9,"Cleanses the user of a burn, paralysis, or poison.","Removes a [burn]{mechanic:burn}, [paralysis]{mechanic:paralysis}, or [poison]{mechanic:poison} from the user."
 195,9,"If the user faints this turn, the PP of the move that fainted it drops to 0.","If the user [faint]{mechanic:faint}s before it next acts, the move that fainted it will have its [PP]{mechanic:pp} dropped to 0.  End-of-turn damage does not trigger this effect."
 196,9,"Steals the target's move, if it's self-targeted.","The next time a Pokémon uses a beneficial move on itself or itself and its ally this turn, the user of this move will steal the move and use it itself.  Moves which may be stolen by this move are identified by the ""snatchable"" flag.
@@ -718,7 +718,7 @@ Specifically, []{type:flying} Pokémon and those with []{ability:levitate} or th
 220,9,"Power raises when the user has lower Speed, up to a maximum of 150.","Inflicts [regular damage]{mechanic:regular-damage}.  Power increases with the target's current [Speed]{mechanic:speed} compared to the user, given by `1 + 25 * target Speed / user Speed`, capped at 150."
 221,9,User faints.  Its replacement has its HP fully restored and any major status effect removed.,"User faints.  Its replacement's [HP]{mechanic:hp} is fully restored, and any [major status effect]{mechanic:major-status-effect} is removed.  If the replacement Pokémon is immediately fainted by a switch-in effect, the next replacement is healed by this move instead."
 222,9,Has double power against Pokémon that have less than half their max HP remaining.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target has less than half its max [HP]{mechanic:hp} remaining, this move has double power."
-223,9,Power and type depend on the held berry.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's held berry.  The berry is consumed.  If the user is not holding a berry, this move will fail."
+223,9,Power and type depend on the held berry.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's held berry.  The berry is consumed.  If the user is not holding a berry, this move will [fail]{mechanic:fail}."
 224,9,Hits through Protect and Detect.,"Inflicts [regular damage]{mechanic:regular-damage}.  Removes the effects of []{move:detect} or []{move:protect} from the target before hitting.
 
 This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assist} or []{move:metronome}."
@@ -728,7 +728,7 @@ If the target is holding a []{item:jaboca-berry} or []{item:rowap-berry}, the be
 
 If this move is [super effective]{mechanic:super-effective} and the target is holding a berry that can reduce this move's damage, it will do so, and will not be stolen."
 226,9,"For three turns, friendly Pokémon have doubled Speed.","For the next three turns, all Pokémon on the user's side of the [field]{mechanic:field} have their original [Speed]{mechanic:speed} doubled.  This effect remains if the user leaves the [field]{mechanic:field}."
-227,9,Raises one of a friendly Pokémon's stats at random by two stages.,"Raises one of the target's stats by two [stages]{mechanic:stage}.  The raised stat is chosen at random from any stats that can be raised by two stages.  If no stat is eligible, this move will fail.
+227,9,Raises one of a friendly Pokémon's stats at random by two stages.,"Raises one of the target's stats by two [stages]{mechanic:stage}.  The raised stat is chosen at random from any stats that can be raised by two stages.  If no stat is eligible, this move will [fail]{mechanic:fail}.
 
 If the target has a []{move:substitute}, this move will have no effect, even if the user is the target.
 
@@ -744,14 +744,14 @@ This move may be used even if the user is under the effect of []{move:ingrain}. 
 232,9,Power is doubled if the target has already received damage this turn.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target takes damage this turn for any reason before this move is used, this move has double power."
 233,9,Target cannot use held items.,"Target cannot use its held item for five turns.  If the target leaves the [field]{mechanic:field}, this effect ends.
 
-If a Pokémon under this effect uses []{move:bug-bite} or []{move:pluck} on a Pokémon holding a berry, the berry is destroyed but not used.  If a Pokémon under this effect uses []{move:fling}, it will fail.
+If a Pokémon under this effect uses []{move:bug-bite} or []{move:pluck} on a Pokémon holding a berry, the berry is destroyed but not used.  If a Pokémon under this effect uses []{move:fling}, it will [fail]{mechanic:fail}.
 
 This effect is passed by []{move:baton-pass}."
-234,9,Throws held item at the target; power depends on the item.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's [held item]{mechanic:held-item}.  The item is consumed.  If the user is not holding an item, or its item has no set type and power, this move will fail.
+234,9,Throws held item at the target; power depends on the item.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's [held item]{mechanic:held-item}.  The item is consumed.  If the user is not holding an item, or its item has no set type and power, this move will [fail]{mechanic:fail}.
 
 This move ignores []{ability:sticky-hold}.
 
-If the user is under the effect of []{move:embargo}, this move will fail."
+If the user is under the effect of []{move:embargo}, this move will [fail]{mechanic:fail}."
 235,9,Transfers the user's major status effect to the target.,"If the user has a [major status effect]{mechanic:major-status-effect} and the target does not, the user's status is transferred to the target."
 236,9,"Power increases when this move has less PP, up to a maximum of 200.","Inflicts [regular damage]{mechanic:regular-damage}.  Power is determined by the [PP]{mechanic:pp} remaining for this move, after its [PP]{mechanic:pp} cost is deducted.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
 
@@ -775,7 +775,7 @@ This effect is passed on by []{move:baton-pass}."
 241,9,Prevents the target from scoring critical hits for five turns.,"For five turns, opposing Pokémon cannot score [critical hits]{mechanic:critical-hit}."
 242,9,"Uses the target's move against it before it attacks, with power increased by half.","If the target has selected a damaging move this turn, the user will copy that move and use it against the target, with a 50% increase in power.
 
-If the target moves before the user, this move will fail.
+If the target moves before the user, this move will [fail]{mechanic:fail}.
 
 This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assist}, []{move:metronome}, or []{move:sleep-talk}."
 243,9,Uses the target's last used move.,"Uses the last move that was used successfully by any Pokémon, including the user.
@@ -786,11 +786,11 @@ This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assi
 244,9,User swaps Attack and Special Attack changes with the target.,User swaps its [Attack]{mechanic:attack} and [Special Attack]{mechanic:special-attack} [stat modifiers]{mechanic:stat-modifiers} modifiers with the target.
 245,9,User swaps Defense and Special Defense changes with the target.,User swaps its [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} modifiers with the target.
 246,9,"Power increases against targets with more raised stats, up to a maximum of 200.","Inflicts [regular damage]{mechanic:regular-damage}.  Power starts at 60 and is increased by 20 for every [stage]{mechanic:stage} any of the target's stats has been raised, capping at 200.  [Accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers do not increase this move's power."
-247,9,Can only be used after all of the user's other moves have been used.,"Inflicts [regular damage]{mechanic:regular-damage}.  This move can only be used if each of the user's other moves has been used at least once since the user entered the [field]{mechanic:field}.  If this is the user's only move, this move will fail."
+247,9,Can only be used after all of the user's other moves have been used.,"Inflicts [regular damage]{mechanic:regular-damage}.  This move can only be used if each of the user's other moves has been used at least once since the user entered the [field]{mechanic:field}.  If this is the user's only move, this move will [fail]{mechanic:fail}."
 248,9,Changes the target's ability to Insomnia.,"Changes the target's ability to []{ability:insomnia}.
 
-If the target's ability is []{ability:truant} or []{ability:multitype}, this move will fail."
-249,9,Only works if the target is about to use a damaging move.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target has not selected a damaging move this turn, or if the target has already acted this turn, this move will fail.
+If the target's ability is []{ability:truant} or []{ability:multitype}, this move will [fail]{mechanic:fail}."
+249,9,Only works if the target is about to use a damaging move.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target has not selected a damaging move this turn, or if the target has already acted this turn, this move will [fail]{mechanic:fail}.
 
 This move is not affected by []{ability:iron-fist}."
 250,9,"Scatters poisoned spikes, poisoning opposing Pokémon that switch in.","Scatters poisoned spikes around the opposing [field]{mechanic:field}, which [poison]{mechanic:poison} opposing Pokémon that enter the [field]{mechanic:field}.  A second layer of these spikes may be laid down, in which case Pokémon will be [badly poison]{mechanic:badly-poison}ed instead.  Pokémon immune to either []{type:ground} moves or being [poison]{mechanic:poison}ed are immune to this effect.  Pokémon otherwise immune to []{type:ground} moves are affected during []{move:gravity}.
@@ -808,7 +808,7 @@ Pokémon entering the [field]{mechanic:field} due to []{move:baton-pass} are not
 This effect is passed on by []{move:baton-pass}."
 253,9,User is immune to Ground moves and effects for five turns.,"For five turns, the user is immune to []{type:ground} moves.
 
-If the user is under the effect of []{move:ingrain} or has []{ability:levitate}, this move will fail.
+If the user is under the effect of []{move:ingrain} or has []{ability:levitate}, this move will [fail]{mechanic:fail}.
 
 This effect is temporarily disabled by and cannot be used during []{move:gravity}.
 
@@ -862,7 +862,7 @@ The user may be hit during its immune turn if under the effect of []{move:lock-o
 This move cannot be used while []{move:gravity} is in effect.
 
 This move cannot be selected by []{move:sleep-talk}."
-266,9,Lowers the target's Special Attack by two stages if it's the opposite gender.,"Lowers the target's [Special Attack]{mechanic:special-attack} by two [stages]{mechanic:stage}.  If the user and target are the same gender, or either is genderless, this move will fail."
+266,9,Lowers the target's Special Attack by two stages if it's the opposite gender.,"Lowers the target's [Special Attack]{mechanic:special-attack} by two [stages]{mechanic:stage}.  If the user and target are the same gender, or either is genderless, this move will [fail]{mechanic:fail}."
 267,9,Causes damage when opposing Pokémon switch in.,"Spreads sharp rocks around the opposing [field]{mechanic:field}, damaging any Pokémon that enters the [field]{mechanic:field} for 1/8 its max [HP]{mechanic:hp}.  This damage is affected by the entering Pokémon's susceptibility to []{type:rock} moves.
 
 []{move:rapid-spin} removes this effect from its user's side of the [field]{mechanic:field}."
@@ -885,9 +885,9 @@ This move cannot be selected by []{move:sleep-talk}."
 276,9,Has a $effect_chance% chance to paralyze the target and a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralyze} the target and a separate $effect_chance% chance to make the target [flinch]{mechanic:flinch}.
 277,9,Has a $effect_chance% chance to raise the user's Special Attack by one stage.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to raise the user's [Special Attack]{mechanic:special-attack} by one [stage]{mechanic:stage}.
 278,9,Raises the user's Attack and accuracy by one stage.,Raises the user's [Attack]{mechanic:attack} and [accuracy]{mechanic:accuracy} by one [stage]{mechanic:stage}.
-279,9,Prevents any multi-target moves from hitting friendly Pokémon this turn.,"Moves with multiple targets will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will fail.
+279,9,Prevents any multi-target moves from hitting friendly Pokémon this turn.,"Moves with multiple targets will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will [fail]{mechanic:fail}.
 
-If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to fail.
+If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to [fail]{mechanic:fail}.
 
 This move cannot be selected by []{move:assist} or []{move:metronome}."
 280,9,Averages Defense and Special Defense with the target.,Averages the user's unmodified [Defense]{mechanic:defense} with the target's unmodified Defense; the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic:special-defense} is averaged the same way.
@@ -900,11 +900,11 @@ This effect applies before any other persistent changes to unmodified Attack or 
 285,9,Raises the user's Speed by two stages and halves the user's weight.,Raises the user's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.  Halves the user's weight; this effect does not stack.
 286,9,Moves have 100% accuracy against the target for three turns.,"For three turns (including this one), moves used against the target have 100% [accuracy]{mechanic:accuracy}, but the target is immune to []{type:ground} damage.  Accuracy of one-hit KO moves is exempt from this effect.
 
-This effect is removed by []{move:gravity}.  If Gravity is already in effect, this move will fail."
+This effect is removed by []{move:gravity}.  If Gravity is already in effect, this move will [fail]{mechanic:fail}."
 287,9,Negates held items for five turns.,"For five turns (including this one), passive effects of held items are ignored, and Pokémon will not use their held items."
 288,9,Removes any immunity to Ground damage.,"Inflicts [regular damage]{mechanic:regular-damage}.  Removes the target's [immunity]{mechanic:immune} to []{type:ground}-type damage.  This effect removes any existing Ground immunity due to []{ability:levitate}, []{move:magnet-rise}, or []{move:telekinesis}, and causes the target's []{type:flying} type to be ignored when it takes Ground damage.
 
-If the target isn't immune to Ground damage, this move will fail.
+If the target isn't immune to Ground damage, this move will [fail]{mechanic:fail}.
 
 This move can hit Pokémon under the effect of []{move:bounce}, []{move:fly}, or []{move:sky-drop}, and ends the effect of Bounce or Fly."
 289,9,Always scores a critical hit.,Inflicts [regular damage]{mechanic:regular-damage}.  Always scores a [critical hit]{mechanic:critical-hit}.
@@ -930,26 +930,26 @@ Up to 3× the target's Speed      |    80
 Up to 4× the target's Speed      |   120
 More than 4× the target's Speed  |   150
 "
-295,9,Changes the target's type to Water.,"Changes the target to pure []{type:water}-type until it leaves the field.  If the target has []{ability:multitype}, this move will fail."
+295,9,Changes the target's type to Water.,"Changes the target to pure []{type:water}-type until it leaves the field.  If the target has []{ability:multitype}, this move will [fail]{mechanic:fail}."
 296,9,Inflicts regular damage.  Raises the user's Speed by one stage.,Inflicts [regular damage]{mechanic:regular-damage}.  Raises the user's [Speed]{mechanic:speed} by one [stage]{mechanic:stage}.
 297,9,Lowers the target's Special Defense by two stages.,Inflicts [regular damage]{mechanic:regular-damage}.  Lowers the target's [Special Defense]{mechanic:special-defense} by two [stages]{mechanic:stage}.
 298,9,Calculates damage with the target's attacking stat.,Inflicts [regular damage]{mechanic:regular-damage}.  Damage is calculated using the target's attacking stat rather than the user's.
 299,9,Changes the target's ability to Simple.,Changes the target's ability to []{ability:simple}.
 300,9,Copies the user's ability onto the target.,Changes the target's ability to match the user's.  This effect ends when the target leaves battle.
 301,9,Makes the target act next this turn.,"The target will act next this turn, regardless of [Speed]{mechanic:speed} or move priority.
-If the target has already acted this turn, this move will fail."
+If the target has already acted this turn, this move will [fail]{mechanic:fail}."
 302,9,Has double power if it's used more than once per turn.,"Inflicts [regular damage]{mechanic:regular-damage}.  If []{move:round} has already been used this turn, this move's power is doubled.  After this move is used, any other Pokémon using it this turn will immediately do so (in the order they would otherwise act), regardless of [Speed]{mechanic:speed} or priority.  Pokémon using other moves will then continue to act as usual."
 303,9,"Power increases by 100% for each consecutive use by any friendly Pokémon, to a maximum of 200.","Inflicts [regular damage]{mechanic:regular-damage}.  If any friendly Pokémon used this move earlier this turn or on the previous turn, that use's power is added to this move's power, to a maximum of 200."
 304,9,Ignores the target's stat modifiers.,"Inflicts [regular damage]{mechanic:regular-damage}.  Damage calculation ignores the target's [stat modifiers]{mechanic:stat-modifiers}, including [evasion]{mechanic:evasion}."
 305,9,Removes all of the target's stat modifiers.,Inflicts [regular damage]{mechanic:regular-damage}.  All of the target's [stat modifiers]{mechanic:stat-modifiers} are reset to zero.
 306,9,"Power is higher the more the user's stats have been raised, to a maximum of 31×.","Inflicts [regular damage]{mechanic:regular-damage}.  Power is increased by 100% its original value for every [stage]{mechanic:stage} any of the user's stats have been raised.  [Accuracy]{mechanic:accuracy}, [evasion]{mechanic:evasion}, and lowered stats do not affect this move's power.  For a Pokémon with all five stats modified to +6, this move's power is 31×."
-307,9,Prevents any priority moves from hitting friendly Pokémon this turn.,"Moves with priority greater than 0 will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will fail.
+307,9,Prevents any priority moves from hitting friendly Pokémon this turn.,"Moves with priority greater than 0 will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will [fail]{mechanic:fail}.
 
-If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to fail.
+If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to [fail]{mechanic:fail}.
 
 This move cannot be selected by []{move:assist} or []{move:metronome}.
 "
-308,9,User switches places with the friendly Pokémon opposite it.,"User switches position on the field with the friendly Pokémon opposite it.  If the user is in the middle position in a triple battle, or there are no other friendly Pokémon, this move will fail."
+308,9,User switches places with the friendly Pokémon opposite it.,"User switches position on the field with the friendly Pokémon opposite it.  If the user is in the middle position in a triple battle, or there are no other friendly Pokémon, this move will [fail]{mechanic:fail}."
 309,9,"Raises user's Attack, Special Attack, and Speed by two stages.  Lower user's Defense and Special Defense by one stage.","Raises the user's [Attack]{mechanic:attack}, [Special Attack]{mechanic:special-attack}, and [Speed]{mechanic:speed} by two [stages]{mechanic:stage} each.  Lowers the user's [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} by one []{mechanic:stage} each."
 310,9,Heals the target for half its max HP.,Heals the target for half its max [HP]{mechanic:hp}.
 311,9,Has double power if the target has a major status ailment.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target has a [major status ailment]{mechanic:major-status-ailment}, this move has double power."
@@ -973,7 +973,7 @@ This move cannot be selected by []{move:sleep-talk}.
 
 If the target is under the effect of []{move:ingrain} or []{ability:suction-cups}, or it has a []{move:substitute}, or its Trainer has no more usable Pokémon, it will not be switched out.  If the target is a wild Pokémon, the battle ends instead."
 315,9,Destroys the target's held berry.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target is [holding]{mechanic:held-item} a [berry]{mechanic:berry}, it's destroyed and cannot be used in response to this move."
-316,9,Makes the target act last this turn.,"Forces the target to act last this turn, regardless of [Speed]{mechanic:speed} or move [priority]{mechanic:priority}.  If the target has already acted this turn, this move will fail."
+316,9,Makes the target act last this turn.,"Forces the target to act last this turn, regardless of [Speed]{mechanic:speed} or move [priority]{mechanic:priority}.  If the target has already acted this turn, this move will [fail]{mechanic:fail}."
 317,9,Raises the user's Attack and Special Attack by one stage.,"Raises the user's [Attack]{mechanic:attack} and [Special Attack]{mechanic:special-attack} by one [stage]{mechanic:stage} each.  During []{move:sunny-day}, raises both stats by two stages."
 318,9,Has double power if the user has no held item.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the user has no [held item]{mechanic:held-item}, this move has double power."
 319,9,User becomes the target's type.,User's type changes to match the target's.
@@ -981,7 +981,7 @@ If the target is under the effect of []{move:ingrain} or []{ability:suction-cups
 321,9,Inflicts damage equal to the user's remaining HP.  User faints.,Inflicts damage equal to the user's remaining [HP]{mechanic:hp}.  User faints.
 322,9,Raises the user's Special Attack by three stages.,Raises the user's [Special Attack]{mechanic:special-attack} by three [stages]{mechanic:stage}.
 323,9,"Raises the user's Attack, Defense, and accuracy by one stage each.","Raises the user's [Attack]{mechanic:attack}, [Defense]{mechanic:defense}, and [accuracy]{mechanic:accuracy} by one [stage]{mechanic:stage} each."
-324,9,Gives the user's held item to the target.,"Transfers the user's [held item]{mechanic:held-item} to the target.  If the user has no held item, or the target already has a held item, this move will fail."
+324,9,Gives the user's held item to the target.,"Transfers the user's [held item]{mechanic:held-item} to the target.  If the user has no held item, or the target already has a held item, this move will [fail]{mechanic:fail}."
 325,9,"With [Grass Pledge]{move:grass-pledge}, halves opposing Pokémon's Speed for four turns.","Inflicts [regular damage]{mechanic:regular-damage}.  If a friendly Pokémon used []{move:grass-pledge} earlier this turn, all opposing Pokémon have halved [Speed]{mechanic:speed} for four turns (including this one)."
 326,9,"With [Water Pledge]{move:water-pledge}, doubles the effect chance of friendly Pokémon's moves for four turns.","Inflicts [regular damage]{mechanic:regular-damage}.  If a friendly Pokémon used []{move:water-pledge} earlier this turn, moves used by any friendly Pokémon have doubled effect chance for four turns (including this one)."
 327,9,"With [Fire Pledge]{move:fire-pledge}, damages opposing Pokémon for 1/8 their max HP every turn for four turns.","Inflicts [regular damage]{mechanic:regular-damage}.  If a friendly Pokémon used []{move:fire-pledge} earlier this turn, all opposing Pokémon will take 1/8 their max [HP]{mechanic:hp} in damage at the end of every turn for four turns (including this one)."
