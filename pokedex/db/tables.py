@@ -1082,7 +1082,13 @@ class Pokemon(TableBase):
 
     @property
     def name(self):
-        return self.default_form.pokemon_name or self.species.name
+        u"""Returns a name for this Pokémon, specifiying the form iff it
+        represents a specific PokemonForm.
+        """
+        if any(not form.is_default for form in self.forms):
+            return self.species.name
+        else:
+            return self.default_form.pokemon_name or self.species.name
 
     def stat(self, stat_identifier):
         u"""Returns a PokemonStat record for the given stat name (or Stat row
