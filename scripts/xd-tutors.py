@@ -98,11 +98,12 @@ for move_identifier, pokemon_identifiers in xd_tutor_data.items():
         session.add(pokemon_move)
 
 # And unfortunately, we have to copy level-up moves. To both XD and Colosseum.
-for pokemon_id, move_id, level in set(
+for pokemon_id, move_id, level, order in set(
         session.query(
                 tables.PokemonMove.pokemon_id,
                 tables.PokemonMove.move_id,
                 tables.PokemonMove.level,
+                tables.PokemonMove.order,
             )
         .filter_by(method=level_up)
         .filter_by(version_group=emerald_version_group)
@@ -114,6 +115,7 @@ for pokemon_id, move_id, level in set(
         pokemon_move.move_id = move_id
         pokemon_move.method = level_up
         pokemon_move.level = level
+        pokemon_move.order = order
         pokemon_move.version_group = version_group
         session.add(pokemon_move)
 
