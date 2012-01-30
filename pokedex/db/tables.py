@@ -1587,6 +1587,8 @@ class VersionGroup(TableBase):
         info=dict(description=u"The ID of the generation the games in this group belong to."))
     pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), nullable=False,
         info=dict(description=u"The ID of the regional Pokédex used in this version group."))
+    order = Column(Integer, nullable=True,
+        info=dict(description=u"Order for sorting. Almost by date of release, except similar versions are grouped together."))
 
 class VersionGroupRegion(TableBase):
     u"""Maps a version group to a region that appears in it."""
