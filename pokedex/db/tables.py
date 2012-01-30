@@ -1879,7 +1879,7 @@ Pokedex.region = relationship(Region,
     backref='pokedexes')
 Pokedex.version_groups = relationship(VersionGroup,
     innerjoin=True,
-    order_by=VersionGroup.id.asc(),
+    order_by=VersionGroup.order.asc(),
     backref='pokedex')
 
 
@@ -2060,7 +2060,9 @@ Region.generation = relationship(Generation, uselist=False)
 Region.version_group_regions = relationship(VersionGroupRegion,
     order_by=VersionGroupRegion.version_group_id.asc(),
     backref='region')
-Region.version_groups = association_proxy('version_group_regions', 'version_group')
+Region.version_groups = relationship(VersionGroup,
+    secondary=VersionGroupRegion.__table__,
+    order_by=VersionGroup.order)
 
 
 Stat.damage_class = relationship(MoveDamageClass,
@@ -2103,7 +2105,7 @@ VersionGroup.versions = relationship(Version,
     backref=backref('version_group', lazy='joined'))
 VersionGroup.generation = relationship(Generation,
     innerjoin=True, lazy='joined',
-    backref='version_groups')
+    backref=backref('version_groups', order_by=VersionGroup.order))
 VersionGroup.version_group_regions = relationship(VersionGroupRegion,
     backref='version_group')
 VersionGroup.regions = association_proxy('version_group_regions', 'region')
