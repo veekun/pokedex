@@ -1590,6 +1590,18 @@ class VersionGroup(TableBase):
     order = Column(Integer, nullable=True,
         info=dict(description=u"Order for sorting. Almost by date of release, except similar versions are grouped together."))
 
+class VersionGroupPokemonMoveMethod(TableBase):
+    u"""Maps a version group to a move learn methods it supports.
+
+    "Supporting" means simply that the method appears in the game.
+    For example, Breeding didn't exist in Gen.I, so it's not in this table.
+    """
+    __tablename__ = 'version_group_pokemon_move_methods'
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False,
+        info=dict(description=u"The ID of the version group."))
+    pokemon_move_method_id = Column(Integer, ForeignKey('pokemon_move_methods.id'), primary_key=True, nullable=False,
+        info=dict(description=u"The ID of the move method."))
+
 class VersionGroupRegion(TableBase):
     u"""Maps a version group to a region that appears in it."""
     __tablename__ = 'version_group_regions'
@@ -2109,3 +2121,14 @@ VersionGroup.generation = relationship(Generation,
 VersionGroup.version_group_regions = relationship(VersionGroupRegion,
     backref='version_group')
 VersionGroup.regions = association_proxy('version_group_regions', 'region')
+VersionGroup.pokemon_move_methods = relationship(PokemonMoveMethod,
+    secondary=VersionGroupPokemonMoveMethod.__table__,
+    primaryjoin=and_(VersionGroup.id == VersionGroupPokemonMoveMethod.version_group_id),
+    secondaryjoin=and_(PokemonMoveMethod.id == VersionGroupPokemonMoveMethod.pokemon_move_method_id),
+    backref="version_groups")
+
+
+VersionGroupPokemonMoveMethod.version_group = relationship(VersionGroup,
+    backref='version_group_move_methods')
+VersionGroupPokemonMoveMethod.pokemon_move_method = relationship(PokemonMoveMethod,
+    backref='version_group_move_methods')
