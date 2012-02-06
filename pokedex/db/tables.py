@@ -643,7 +643,7 @@ class LocationArea(TableBase):
     location_id = Column(Integer, ForeignKey('locations.id'), nullable=False,
         info=dict(description="ID of the location this area is part of"))
     game_index = Column(Integer, nullable=False,
-        info=dict(description="ID the games ude for this area"))
+        info=dict(description="ID the games use for this area"))
     identifier = Column(Unicode(64), nullable=True,
         info=dict(description="An identifier", format='identifier'))
 
