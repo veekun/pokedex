@@ -714,7 +714,7 @@ id,form_identifier,pokemon_id,introduced_in_version_group_id,is_default,is_battl
 713,sky,655,9,1,0,534
 714,spiky-eared,172,10,0,0,26
 715,blue-striped,665,11,1,0,593
-716,zen,666,11,1,0,599
+716,zen,666,11,1,1,599
 717,summer,585,11,0,0,629
 718,autumn,585,11,0,0,629
 719,winter,585,11,0,0,629
