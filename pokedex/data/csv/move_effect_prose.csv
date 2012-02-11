@@ -297,7 +297,7 @@ If []{move:yawn} is used while this move is in effect, it will immediately fail.
 
 This effect does not prevent the [confusion]{mechanic:confusion} caused by []{move:outrage}, []{move:petal-dance}, or []{move:thrash}."
 126,9,Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  Lets frozen Pokémon thaw themselves.,"Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [burn]{mechanic:burn} the target.  [Frozen]{mechanic:frozen} Pokémon may use this move, in which case they will thaw."
-127,9,Power varies randomly from 10 to 150.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power is selected at random between 10 and 150, with an average of 64:
+127,9,Power varies randomly from 10 to 150.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power is selected at random between 10 and 150, with an average of 71:
 
 Magnitude | Power | Chance
 --------: | ----: | -----:
@@ -765,7 +765,7 @@ PP remaining | Power
 
 If this move is activated by another move, the activating move's [PP]{mechanic:pp} is used to calculate power."
 237,9,Prevents target from restoring its HP for five turns.,"For the next five turns, the target may not use any moves that only restore [HP]{mechanic:hp}, and move effects that heal the target are disabled.  Moves that steal [HP]{mechanic:hp} may still be used, but will only inflict damage and not heal the target."
-238,9,"Power increases against targets with more HP remaining, up to a maximum of 110 power.","Inflicts [regular damage]{mechanic:regular-damage}.  Power directly relates to the target's relative remaining [HP]{mechanic:hp}, given by `1 + 120 * current HP / max HP`, to a maximum of 121."
+238,9,"Power increases against targets with more HP remaining, up to a maximum of 121 power.","Inflicts [regular damage]{mechanic:regular-damage}.  Power directly relates to the target's relative remaining [HP]{mechanic:hp}, given by `1 + 120 * current HP / max HP`, to a maximum of 121."
 239,9,User swaps Attack and Defense.,"The user's original [Attack]{mechanic:attack} and [Defense]{mechanic:defense} are swapped.
 
 This effect is passed on by []{move:baton-pass}."
