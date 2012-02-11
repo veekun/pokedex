@@ -121,6 +121,8 @@ class MoveEffectProperty(object):
         self.effect_column = effect_column
 
     def __get__(self, obj, cls):
+        if obj is None:
+            return self
         if obj.move_effect is None:
             return None
         prop = getattr(obj.move_effect, self.effect_column)
@@ -131,6 +133,8 @@ class MoveEffectPropertyMap(MoveEffectProperty):
     proxies.
     """
     def __get__(self, obj, cls):
+        if obj is None:
+            return self
         prop = getattr(obj.move_effect, self.effect_column)
         newdict = dict(prop)
         for key in newdict:
