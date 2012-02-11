@@ -32,6 +32,7 @@ from functools import partial
 from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import backref, relationship
 from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.interfaces import AttributeExtension
@@ -1351,8 +1352,8 @@ class MoveMeta(TableBase):
         doc=u"Minimum number of turns the user is forced to use the move")
     max_turns = Column(Integer, nullable=True, index=True,
         doc=u"Maximum number of turns the user is forced to use the move")
-    recoil = Column(Integer, nullable=False, index=True,
-        doc=u"Recoil damage, in percent of damage done")
+    drain = Column(Integer, nullable=False, index=True,
+        doc=u"HP drain (if positive) or Recoil damage (if negative), in percent of damage done")
     healing = Column(Integer, nullable=False, index=True,
         doc=u"Healing, in percent of user's max HP")
     crit_rate = Column(Integer, nullable=False, index=True,
@@ -1363,6 +1364,11 @@ class MoveMeta(TableBase):
         doc=u"Chance to cause flinching, in percent")
     stat_chance = Column(Integer, nullable=False, index=True,
         doc=u"Chance to cause a stat change, in percent")
+
+    @hybrid_property
+    def recoil(self):
+        u"""Recoil damage or HP drain; the opposite of `drain`. """
+        return -self.drain
 
 class MoveMetaAilment(TableBase):
     u"""Common status ailments moves can inflict on a single Pokémon, including
