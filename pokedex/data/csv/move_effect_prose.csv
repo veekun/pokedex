@@ -818,6 +818,8 @@ This effect is passed on by []{move:baton-pass}."
 
 This move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no [PP]{mechanic:pp} remaining or being under the effect of both []{move:encore} and []{move:torment} at the same time.
 
+This move's recoil is not treated as recoil for the purposes of anything that affects recoil, such as the ability []{ability:rock-head}.  It also is not prevented by []{ability:magic-guard}.
+
 This move cannot be copied by []{move:mimic}, []{move:mirror-move}, or []{move:sketch}, nor selected by []{move:assist} or []{move:metronome}, nor forced by []{move:encore}."
 256,9,"User dives underwater, dodging all attacks, and hits next turn.","Inflicts [regular damage]{mechanic:regular-damage}.  User dives underwater for one turn, becoming immune to attack, and hits on the second turn.
 

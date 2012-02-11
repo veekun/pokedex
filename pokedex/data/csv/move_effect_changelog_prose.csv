@@ -19,9 +19,10 @@ move_effect_changelog_id,local_language_id,effect
 18,9,Does not raise [Defense]{mechanic:defense} or [Special Defense]{mechanic:special-defense}.
 19,9,Does not raise the user's [Special Defense]{mechanic:special-defense}.
 20,9,Heals replacement Pokémon by half of their max HP.
-21,9,Inflicts []{type:normal}-type damage and the user receives 1/2 of damage dealt in recoil.
+21,9,Inflicts []{type:normal}-type damage.
 22,9,"[]{move:swift} can hit the user while underground, and no other moves can.  Due to a bug, if the user fails to carry out the move's second turn, e.g. due to [paralysis]{mechanic:paralysis}, it remains underground until it switches out or uses Dig again successfully.  It can act as if it were aboveground in the meantime, but moves still miss it."
 23,9,Does not interact with []{move:hail}.
 24,9,Ignores []{ability:wonder-guard}.
 25,9,Lasts either two or three turns.
 26,9,"If the target is not under the effect of []{move:detect} or []{move:protect}, this move will fail."
+27,9,The user receieves 1/2 of the damage dealt in recoil.
