@@ -1249,6 +1249,16 @@ create_translation_table('pokemon_form_names', PokemonForm, 'names',
         info=dict(description=u"The full pokémon name, e.g. 'Sky Shaymin', for pokémon with different forms", format='plaintext', official=True)),
 )
 
+class PokemonFormGeneration(TableBase):
+    u"""Links Pokémon forms to the generations they exist in"""
+    __tablename__ = 'pokemon_form_generations'
+    pokemon_form_id = Column(Integer, ForeignKey('pokemon_forms.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u'The ID of the Pokémon form.'))
+    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u'The ID of the generation.'))
+    game_index = Column(Integer, nullable=False,
+        info=dict(description=u'The internal ID the games use for this form.'))
+
 class PokemonFormPokeathlonStat(TableBase):
     u"""A Pokémon form's performance in one Pokéathlon stat."""
     __tablename__ = 'pokemon_form_pokeathlon_stats'
@@ -1977,6 +1987,13 @@ PokemonForm.pokeathlon_stats = relationship(PokemonFormPokeathlonStat,
 
 PokemonFormPokeathlonStat.pokeathlon_stat = relationship(PokeathlonStat,
     innerjoin=True, lazy='joined')
+
+PokemonFormGeneration.form = relationship(PokemonForm,
+    backref=backref('pokemon_form_generations',
+        order_by=PokemonFormGeneration.generation_id))
+PokemonFormGeneration.generation = relationship(Generation,
+    backref=backref('pokemon_form_generations',
+        order_by=PokemonFormGeneration.game_index))
 
 PokemonItem.item = relationship(Item,
     innerjoin=True, lazy='joined',
