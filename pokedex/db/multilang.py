@@ -1,15 +1,36 @@
 from functools import partial
 
-from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.ext.associationproxy import association_proxy, AssociationProxy
 from sqlalchemy.orm import Query, aliased, mapper, relationship, synonym
 from sqlalchemy.orm.collections import attribute_mapped_collection
 from sqlalchemy.orm.scoping import ScopedSession
 from sqlalchemy.orm.session import Session, object_session
 from sqlalchemy.schema import Column, ForeignKey, Table
-from sqlalchemy.sql.expression import and_, bindparam, select
+from sqlalchemy.sql.expression import and_, bindparam, select, exists
+from sqlalchemy.sql.operators import ColumnOperators
 from sqlalchemy.types import Integer
 
 from pokedex.db import markdown
+
+class LocalAssociationProxy(AssociationProxy, ColumnOperators):
+    """An association proxy for names in the default language
+
+    Over the regular association_proxy, this provides sorting and filtering
+    capabilities, implemented via SQL subqueries.
+    """
+    def __clause_element__(self):
+        q = select([self.remote_attr])
+        q = q.where(self.target_class.foreign_id == self.owning_class.id)
+        q = q.where(self.target_class.local_language_id == bindparam('_default_language_id'))
+        return q
+
+    def operate(self, op, *other, **kwargs):
+        q = select([self.remote_attr])
+        q = q.where(self.target_class.foreign_id == self.owning_class.id)
+        q = q.where(self.target_class.local_language_id == bindparam('_default_language_id'))
+        q = q.where(op(self.remote_attr, *other))
+        return exists(q)
+
 
 def _getset_factory_factory(column_name, string_getter):
     """Hello!  I am a factory for creating getset_factory functions for SQLA.
@@ -165,7 +186,7 @@ def create_translation_table(_table_name, foreign_class, relation_name,
 
         # Class.(column) -- accessor for the default language's value
         setattr(foreign_class, name,
-            association_proxy(local_relation_name, name,
+            LocalAssociationProxy(local_relation_name, name,
                     getset_factory=getset_factory))
 
         # Class.(column)_map -- accessor for the language dict
