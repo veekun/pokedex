@@ -7,7 +7,7 @@ Quick startup with Ubuntu/Debian-like systems
 Run the following from an empty directory::
 
     $ sudo apt-get install git python python-pip python-sqlalchemy
-    $ git clone git://git.veekun.com/pokedex.git
+    $ git clone git://github.com/veekun/pokedex.git
     $ pip install -E env -e pokedex
     $ source env/bin/activate
     (env)$ pokedex setup -v
@@ -75,7 +75,6 @@ In env/bin, there are three interesting files:
 
 * pokedex: The pokedex program
 * python: A copy of Python that knows about pokedex and its prerequisites.
-  Using the system python won't work.
 * activate: Typing ``source env/bin/activate`` in a shell will put
   pokedex and our bin/python on the $PATH, and generally set things up to work
   with them. Your prompt will change to let you know of this. You can end such

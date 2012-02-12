@@ -3,28 +3,31 @@ The pokédex tables
 
 .. module:: pokedex.db.tables
 
-All the tables listed here are classes defined with SQLAlchemy's
+The :mod:`pokedex.db.tables` module defines all of the tables in the Pokédex.
+They are all defined with SQLAlchemy's
 :mod:`~sqlalchemy.ext.declarative` extension.
+
+To introspect the tables programmatically, you can use the following:
+
+.. data:: mapped_classes
+
+    A list of all the classes you see below.
 
 .. data:: metadata
 
     The SQLAlchemy :class:`~sqlalchemy.schema.MetaData` containing all the
     tables.
 
-.. data:: mapped_classes
-
-    A list of all the classes you see below.
-
-Each of these classes has a ``translation_classes`` attribute: a potentially
+Each of the classes has a ``translation_classes`` attribute: a potentially
 empty list of translation classes. See :mod:`pokedex.db.multilang` for how
 these work.
 
 Many tables have these columns:
 
 - **id**: An integer primary key. Sometimes it's semantically meaningful, most
-    often it isn't.
+  often it isn't.
 - **identifier**: A string identifier of the class, and the preferred way to
-    access individual items.
+  access individual items.
 - **name**: A name (uses the multilang functionality)
 
 Pokémon
@@ -42,7 +45,6 @@ Moves
 .. dex-table:: Move
 .. dex-table:: MoveEffect
 .. dex-table:: MoveMeta
-.. dex-table:: MoveVersion
 
 Items
 -----
@@ -104,7 +106,6 @@ Enum tables
 .. dex-table:: EvolutionTrigger
 .. dex-table:: GrowthRate
 .. dex-table:: ItemCategory
-.. dex-table:: ItemFlag
 .. dex-table:: ItemFlingEffect
 .. dex-table:: ItemPocket
 .. dex-table:: MoveBattleStyle
@@ -123,6 +124,7 @@ Changelogs
 
 .. dex-table:: AbilityChangelog
 .. dex-table:: MoveEffectChangelog
+.. dex-table:: MoveChangelog
 
 Flavor text
 -----------
@@ -137,6 +139,7 @@ Association tables
 
 .. dex-table:: BerryFlavor
 .. dex-table:: EncounterConditionValueMap
+.. dex-table:: ItemFlag
 .. dex-table:: ItemFlagMap
 .. dex-table:: Machine
 .. dex-table:: MoveFlag

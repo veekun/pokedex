@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installing the pokedex library &mdash; pokedex v0.1 documentation</title>
+    <title>Installing the pokedex library &mdash; pokedex 0.1 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pokedex v0.1 documentation" href="index.html" />
+    <link rel="top" title="pokedex 0.1 documentation" href="index.html" />
     <link rel="next" title="Using pokedex" href="usage.html" />
     <link rel="prev" title="The pokedex documentation" href="index.html" /> 
   </head>
@@ -42,7 +45,7 @@
         <li class="right" >
           <a href="index.html" title="The pokedex documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pokedex v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,7 +60,7 @@
 <h2>Quick startup with Ubuntu/Debian-like systems<a class="headerlink" href="#quick-startup-with-ubuntu-debian-like-systems" title="Permalink to this headline">¶</a></h2>
 <p>Run the following from an empty directory:</p>
 <div class="highlight-python"><pre>$ sudo apt-get install git python python-pip python-sqlalchemy
-$ git clone git://git.veekun.com/pokedex.git
+$ git clone git://github.com/veekun/pokedex.git
 $ pip install -E env -e pokedex
 $ source env/bin/activate
 (env)$ pokedex setup -v
@@ -111,8 +114,7 @@ data), and env (a <a class="reference external" href="http://www.virtualenv.org/
 <p>In env/bin, there are three interesting files:</p>
 <ul class="simple">
 <li>pokedex: The pokedex program</li>
-<li>python: A copy of Python that knows about pokedex and its prerequisites.
-Using the system python won&#8217;t work.</li>
+<li>python: A copy of Python that knows about pokedex and its prerequisites.</li>
 <li>activate: Typing <tt class="docutils literal"><span class="pre">source</span> <span class="pre">env/bin/activate</span></tt> in a shell will put
 pokedex and our bin/python on the $PATH, and generally set things up to work
 with them. Your prompt will change to let you know of this. You can end such
@@ -215,7 +217,7 @@ use it, so naturally he can&#8217;t write instructions for it.</td></tr>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -244,11 +246,11 @@ use it, so naturally he can&#8217;t write instructions for it.</td></tr>
         <li class="right" >
           <a href="index.html" title="The pokedex documentation"
              >previous</a> |</li>
-        <li><a href="index.html">pokedex v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

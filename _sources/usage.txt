@@ -33,243 +33,161 @@ The object :func:`~pokedex.db.connect` gives you is actually a
 full power of SQLAlchemy for working with the data. We'll cover some basics
 here, but if you intend to do some serious work, do read SQLAlchemy's docs.
 
-XXX: write the rest of this
+Pokédex tables
+--------------
 
-.. commented out old stuff
+Data in the pokédex is organized in tables, defined in
+:mod:`pokedex.db.tables`.
+There is quite a few or them. To get you started, here are a few common ones:
 
-    Pokédex tables
-    --------------
+* :class:`~pokedex.db.tables.PokemonSpecies`
+* :class:`~pokedex.db.tables.Move`
+* :class:`~pokedex.db.tables.Item`
+* :class:`~pokedex.db.tables.Type`
 
-    Data in the pokédex is organized in tables, defined in
-    :mod:`pokedex.db.tables`.
-    There is quite a few or them. To get you started, here are a few common ones:
+Getting things
+--------------
 
-    * :class:`~pokedex.db.tables.Pokemon` (includes some alternate forms)
-    * :class:`~pokedex.db.tables.Move`
-    * :class:`~pokedex.db.tables.Item`
-    * :class:`~pokedex.db.tables.Type`
+If you know what you want from the pokédex, you can use the
+:func:`pokedex.db.util.get` function. It looks up a thing in a table, based on
+its identifier, name, or ID, and returns it.
 
-    Getting things
-    --------------
+.. testcode::
 
-    If you know what you want from the pokédex, you can use the
-    :func:`pokedex.db.util.get` function. It looks up a thing in a table, based on
-    its identifier, name, or ID, and returns it.
+    def print_pokemon(pokemon):
+        print u'{0.name}, the {0.genus} Pokemon'.format(pokemon)
 
-    .. testcode::
+    print_pokemon(util.get(session, tables.PokemonSpecies, identifier='eevee'))
+    print_pokemon(util.get(session, tables.PokemonSpecies, name=u'Ho-Oh'))
+    print_pokemon(util.get(session, tables.PokemonSpecies, id=50))
 
-        def print_pokemon(pokemon):
-            print u'{0.name}, the {0.genus} Pokemon'.format(pokemon)
+    def print_item(item):
+        print u'{0.name}: ${0.cost}'.format(item)
 
-        print_pokemon(util.get(session, tables.PokemonSpecies, identifier='eevee'))
-        print_pokemon(util.get(session, tables.PokemonSpecies, name=u'Ho-Oh'))
-        print_pokemon(util.get(session, tables.PokemonSpecies, id=50))
+    print_item(util.get(session, tables.Item, identifier='great-ball'))
+    print_item(util.get(session, tables.Item, name='Potion'))
+    print_item(util.get(session, tables.Item, id=30))
 
-        def print_item(item):
-            print u'{0.name}: ${0.cost}'.format(item)
+.. testoutput::
 
-        print_item(util.get(session, tables.Item, identifier='great-ball'))
-        print_item(util.get(session, tables.Item, name='Potion'))
-        print_item(util.get(session, tables.Item, id=30))
+    Eevee, the Evolution Pokemon
+    Ho-Oh, the Rainbow Pokemon
+    Diglett, the Mole Pokemon
+    Great Ball: $600
+    Potion: $300
+    Fresh Water: $200
 
-    .. testoutput::
+Querying
+--------
 
-        Eevee, the Evolution Pokemon
-        Ho-Oh, the Rainbow Pokemon
-        Diglett, the Mole Pokemon
-        Great Ball: $600
-        Potion: $300
-        Fresh Water: $200
+So, how do you get data from the session? You use the session's
+:meth:`~sqlalchemy.orm.session.Session.query` method, and give it a pokédex
+Table as an argument. This will give you a :class:`SQLAlchemy query
+<sqlalchemy.orm.query.Query>`.
 
-    .. :
-        Simple lists
-        ------------
+Ordering
+^^^^^^^^
 
-        .. note::
+As always with SQL, you should not rely on query results being in some
+particular order – unless you have ordered the query first. This means that
+you'll want to sort just about every query you will make.
 
-            These functions are only included for convenience in experiments and simple
-            scripts.
-            If you want to do something specific, please query the pokédex as explained
-            in the following sections.
+For example, you can get a list of all pokémon species, sorted by their
+:attr:`~pokedex.db.tables.PokemonSpecies.id`, like so:
 
-        If you want to get a simple list of pokémon without needing to worry about
-        things like the different forms and sorting the list, you can use the
-        :func:`pokedex.util.simple.pokemon` function.
+.. testcode::
 
-        .. testcode::
+    for pokemon in session.query(tables.PokemonSpecies).order_by(tables.PokemonSpecies.id):
+        print pokemon.name
 
-            from pokedex.util import simple
-            for pokemon in simple.pokemon(session):
-                print u'{0.name}, the {0.species} Pokemon'.format(pokemon)
+.. testoutput::
 
-        .. testoutput::
+    Bulbasaur
+    Ivysaur
+    Venusaur
+    Charmander
+    Charmeleon
+    ...
+    Keldeo
+    Meloetta
+    Genesect
 
-            Bulbasaur, the Seed Pokemon
-            Ivysaur, the Seed Pokemon
-            ...
-            Meloetta, the Melody Pokemon
-            Genesect, the Paleozoic Pokemon
+Or to order by :attr:`~pokedex.db.tables.PokemonSpecies.name`:
 
-        Similar functions exist for :func:`~pokedex.util.simple.moves`,
-        :func:`~pokedex.util.simple.items` and :func:`~pokedex.util.simple.types`.
+.. testcode::
 
-        All of these give you quick simple lists, basically something a pokédex would
-        show you. They filter out things you probably won't need (such as Shadow moves
-        or duplicate Pokémon moves), and sort the results in some sane way, but they
-        can't guess your needs exactly, and their guesses might change in future
-        versions.
-        If you want to do some serious work with the pokédex, read on.
+    for pokemon in session.query(tables.PokemonSpecies).order_by(tables.PokemonSpecies.name):
+        print pokemon.name
 
-        Querying
-        --------
+.. testoutput::
 
-        So, how do you get data from the session? You use the session's
-        :meth:`~sqlalchemy.orm.session.Session.query` method, and give it a pokédex
-        Table as an argument. This will give you a :class:`SQLAlchemy query
-        <sqlalchemy.orm.query.Query>`.
+        Abomasnow
+        ...
+        Zweilous
 
-        To get you started, we'll cover some common query operations below. If you
-        need to do more, consult the `SQLAlchemy documentation`_.
 
-        Ordering
-        ^^^^^^^^
+Filtering
+^^^^^^^^^
 
-        As always with SQL, you should not rely on query results being in some
-        particular order – unless you have ordered the query first. This means that
-        you'll likely want to sort every query you will make.
+Another major operation on queries is filtering, using the query's
+:meth:`~sqlalchemy.orm.query.Query.filter` or
+:meth:`~sqlalchemy.orm.query.Query.filter_by` methods:
 
-        For example, you can get a list of all pokémon, sorted by their
-        :attr:`~pokedex.db.tables.Pokemon.order`, like so:
+.. testcode::
 
-        .. testcode::
+    for move in session.query(tables.Move).filter(tables.Move.power > 200):
+        print move.name
 
-            for pokemon in session.query(tables.Pokemon).order_by(tables.Pokemon.order):
-                print pokemon.name
+.. testoutput::
 
-        .. testoutput::
+    Explosion
 
-            Bulbasaur
-            Ivysaur
-            Venusaur
-            Charmander
-            Charmeleon
-            ...
-            Pichu
-            Pikachu
-            Raichu
-            ...
-            Keldeo
-            Aria Meloetta
-            Pirouette Meloetta
-            Genesect
+Joining
+^^^^^^^
 
-        Ordering by name
-        ****************
+The final operation we'll cover here is joining other tables to the query,
+using the query's :meth:`~sqlalchemy.orm.query.Query.join`.
+You will usually want to join on a relationship, such as in the following
+example:
 
-        Since the pokédex can be used in other languages than English, working with
-        texts such as names is sometimes tricky.
+.. testcode::
 
-        The “name” attribute is actually a relation that uses the connection's
-        default language to select an appropriate translation. It usually works the
-        same way as a normal attribute, but ordering is an exception to this:
+    query = session.query(tables.Move)
+    query = query.join(tables.Move.type)
+    query = query.filter(tables.Type.identifier == 'grass')
+    query = query.filter(tables.Move.power >= 100)
+    query = query.order_by(tables.Move.power)
+    query = query.order_by(tables.Move.name)
 
-        .. testcode::
+    print 'The most powerful Grass-type moves:'
+    for move in query:
+        print u'{0.name} ({0.power})'.format(move)
 
-            for pokemon in session.query(tables.Pokemon).order_by(tables.Pokemon.name):
-                print pokemon.name
+.. testoutput::
 
-        .. testoutput::
+    The most powerful Grass-type moves:
+    Petal Dance (120)
+    Power Whip (120)
+    Seed Flare (120)
+    SolarBeam (120)
+    Wood Hammer (120)
+    Leaf Storm (140)
+    Frenzy Plant (150)
 
-            Traceback (most recent call last):
-                ...
-            ArgumentError: SQL expression object or string expected.
+That concludes our brief tutorial.
+If you need to do more, consult the `SQLAlchemy documentation`_.
 
-        This means that to order by name, you either have to explicitly join the
-        translation table and sort by that, or use
-        :func:`pokedex.db.util.order_by_name`:
+API documentation
+-----------------
 
+.. autofunction:: pokedex.db.connect
 
-        .. testcode::
+    See :class:`sqlalchemy.orm.session.Session` for more documentation on the
+    returned object.
 
-            from pokedex.db import util
-            for pokemon in util.order_by_name(session.query(tables.Pokemon), tables.Pokemon):
-                print pokemon.name
+.. autofunction:: pokedex.db.util.get
 
-        .. testoutput::
 
-            Abomasnow
-            ...
-            Zweilous
-
-        Filtering
-        ^^^^^^^^^
-
-        Another major operation on queries is filtering, using the query's
-        :meth:`~sqlalchemy.orm.query.Query.filter` or
-        :meth:`~sqlalchemy.orm.query.Query.filter_by` methods:
-
-        .. testcode::
-
-            for move in session.query(tables.Move).filter(tables.Move.power > 200):
-                print move.name
-
-        .. testoutput::
-
-            Explosion
-
-        Joining
-        ^^^^^^^
-
-        The final operation we'll cover here is joining other tables to the query,
-        using the query's :meth:`~sqlalchemy.orm.query.Query.join`.
-        You will usually want to join on a relationship, such as in the following
-        example:
-
-        .. testcode::
-
-            query = session.query(tables.Move)
-            query = query.join(tables.Move.type)
-            query = query.filter(tables.Type.identifier == 'grass')
-            query = query.filter(tables.Move.power >= 100)
-            query = query.order_by(tables.Move.power)
-            query = util.order_by_name(query, tables.Move)
-
-            print 'The most powerful Grass moves:'
-            for move in query:
-                print u'{0.name} ({0.power})'.format(move)
-
-        .. testoutput::
-
-            The most powerful Grass moves:
-            Petal Dance (120)
-            Power Whip (120)
-            Seed Flare (120)
-            SolarBeam (120)
-            Wood Hammer (120)
-            Leaf Storm (140)
-            Frenzy Plant (150)
-
-
-        API documentation
-        -----------------
-
-        .. autofunction:: pokedex.db.connect
-
-            See :class:`sqlalchemy.orm.session.Session` for more documentation on the
-            returned object.
-
-        .. autofunction:: pokedex.db.util.get
-        .. autofunction:: pokedex.db.util.order_by_name
-
-        Simple lists
-        ^^^^^^^^^^^^
-
-        .. autofunction:: pokedex.util.simple.pokemon
-        .. autofunction:: pokedex.util.simple.moves
-        .. autofunction:: pokedex.util.simple.items
-        .. autofunction:: pokedex.util.simple.types
-
-
-        .. _Python: http://www.python.org
-        .. _SQLAlchemy: http://www.sqlalchemy.org
-        .. _`SQLAlchemy documentation`: http://www.sqlalchemy.org/docs/orm/tutorial.html
+.. _Python: http://www.python.org
+.. _SQLAlchemy: http://www.sqlalchemy.org
+.. _`SQLAlchemy documentation`: http://www.sqlalchemy.org/docs/orm/tutorial.html

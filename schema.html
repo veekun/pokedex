@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The database schema &mdash; pokedex v0.1 documentation</title>
+    <title>The database schema &mdash; pokedex 0.1 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pokedex v0.1 documentation" href="index.html" />
+    <link rel="top" title="pokedex 0.1 documentation" href="index.html" />
     <link rel="next" title="The pokédex tables" href="main-tables.html" />
     <link rel="prev" title="Using pokedex" href="usage.html" /> 
   </head>
@@ -42,7 +45,7 @@
         <li class="right" >
           <a href="usage.html" title="Using pokedex"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pokedex v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -68,7 +71,6 @@
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-move">Move</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-moveeffect">MoveEffect</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-movemeta">MoveMeta</a></li>
-<li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-moveversion">MoveVersion</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="main-tables.html#items">Items</a><ul>
@@ -121,7 +123,6 @@
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-evolutiontrigger">EvolutionTrigger</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-growthrate">GrowthRate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-itemcategory">ItemCategory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-itemflag">ItemFlag</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-itemflingeffect">ItemFlingEffect</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-itempocket">ItemPocket</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-movebattlestyle">MoveBattleStyle</a></li>
@@ -139,6 +140,7 @@
 <li class="toctree-l2"><a class="reference internal" href="main-tables.html#changelogs">Changelogs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-abilitychangelog">AbilityChangelog</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-moveeffectchangelog">MoveEffectChangelog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-movechangelog">MoveChangelog</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="main-tables.html#flavor-text">Flavor text</a><ul>
@@ -151,6 +153,7 @@
 <li class="toctree-l2"><a class="reference internal" href="main-tables.html#association-tables">Association tables</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-berryflavor">BerryFlavor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-encounterconditionvaluemap">EncounterConditionValueMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-itemflag">ItemFlag</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-itemflagmap">ItemFlagMap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-machine">Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main-tables.html#dex-table-moveflag">MoveFlag</a></li>
@@ -209,7 +212,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -238,11 +241,11 @@
         <li class="right" >
           <a href="usage.html" title="Using pokedex"
              >previous</a> |</li>
-        <li><a href="index.html">pokedex v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>
