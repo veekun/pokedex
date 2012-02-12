@@ -30,7 +30,8 @@ classes in that module can be used to change the default language.
 import collections
 from functools import partial
 
-from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table, UniqueConstraint
+from sqlalchemy import (Column, ForeignKey, MetaData, PrimaryKeyConstraint,
+    Table, UniqueConstraint)
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import backref, relationship
@@ -76,6 +77,7 @@ class TableMetaclass(DeclarativeMeta):
         if hasattr(cls, '__tablename__'):
             mapped_classes.append(cls)
             cls.translation_classes = []
+        cls.relationship_info = {}
 
 metadata = MetaData()
 TableBase = declarative_base(metadata=metadata, cls=TableSuperclass, metaclass=TableMetaclass)
@@ -1400,6 +1402,69 @@ class PokemonSpecies(TableBase):
     forms_switchable = Column(Boolean, nullable=False,
         info=dict(description=u"True iff a particular individual of this species can switch beween its different forms."))
 
+    @staticmethod
+    def _add_relationships(add_relationship, **kwargs):
+        add_relationship('parent_species', PokemonSpecies,
+            primaryjoin=PokemonSpecies.evolves_from_species_id==PokemonSpecies.id,
+            remote_side=[PokemonSpecies.id],
+            backref='child_species',
+            info=dict(
+                description=u"The species from which this one evolves"))
+        add_relationship('evolutions', PokemonEvolution,
+            primaryjoin=PokemonSpecies.id==PokemonEvolution.evolved_species_id,
+            backref=backref('evolved_species',
+                innerjoin=True,
+                lazy='joined'))
+        add_relationship('flavor_text', PokemonSpeciesFlavorText,
+            order_by=PokemonSpeciesFlavorText.version_id.asc(),
+            backref='species')
+        add_relationship('growth_rate', GrowthRate,
+            innerjoin=True,
+            backref='evolution_chains')
+        add_relationship('habitat', PokemonHabitat,
+            backref='species')
+        add_relationship('color', PokemonColor,
+            innerjoin=True,
+            backref='species')
+        add_relationship('egg_groups', EggGroup,
+            secondary=PokemonEggGroup.__table__,
+            innerjoin=True,
+            order_by=PokemonEggGroup.egg_group_id.asc(),
+            backref=backref('species', order_by=Pokemon.order.asc()))
+        add_relationship('forms', PokemonForm,
+            secondary=Pokemon.__table__,
+            primaryjoin=PokemonSpecies.id==Pokemon.species_id,
+            secondaryjoin=Pokemon.id==PokemonForm.pokemon_id,
+            order_by=(PokemonForm.order.asc(),
+                PokemonForm.form_identifier.asc()))
+        add_relationship('default_form', PokemonForm,
+            secondary=Pokemon.__table__,
+            primaryjoin=and_(PokemonSpecies.id==Pokemon.species_id,
+                    Pokemon.is_default==True),
+            secondaryjoin=and_(Pokemon.id==PokemonForm.pokemon_id,
+                    PokemonForm.is_default==True),
+            uselist=False,
+            info=dict(
+                description=u"A representative form of this species"))
+        add_relationship('default_pokemon', Pokemon,
+            primaryjoin=and_(
+                PokemonSpecies.id==Pokemon.species_id,
+                Pokemon.is_default==True),
+            uselist=False, lazy='joined')
+        add_relationship('evolution_chain', EvolutionChain,
+            innerjoin=True,
+            backref=backref('species', order_by=PokemonSpecies.id.asc()))
+        add_relationship('dex_numbers', PokemonDexNumber,
+            innerjoin=True,
+            order_by=PokemonDexNumber.pokedex_id.asc(),
+            backref='species')
+        add_relationship('generation', Generation,
+            innerjoin=True,
+            backref='species')
+        add_relationship('shape', PokemonShape,
+            innerjoin=True,
+            backref='species')
+
 create_translation_table('pokemon_species_names', PokemonSpecies, 'names',
     relation_lazy='joined',
     name = Column(Unicode(20), nullable=True, index=True,
@@ -1606,6 +1671,27 @@ class VersionGroupRegion(TableBase):
 
 
 ### Relationships down here, to avoid dependency ordering problems
+
+def add_relationships():
+    for cls in mapped_classes:
+        try:
+            add_relationships = cls._add_relationships
+        except AttributeError:
+            pass
+        else:
+            def add_relationship(name, argument, secondary=None, **kwargs):
+                cls.relationship_info.setdefault('_order', [])
+                cls.relationship_info['_order'].append(name)
+                cls.relationship_info[name] = kwargs.pop('info', {})
+                cls.relationship_info[name].update(kwargs)
+                cls.relationship_info[name].update(dict(
+                        type='relationship',
+                        argument=argument,
+                        secondary=secondary))
+                setattr(cls, name, relationship(argument, secondary=secondary,
+                        **kwargs))
+            add_relationships(add_relationship=add_relationship)
+add_relationships()
 
 Ability.changelog = relationship(AbilityChangelog,
     order_by=AbilityChangelog.changed_in_version_group_id.desc(),
@@ -2004,60 +2090,6 @@ PokemonMove.method = relationship(PokemonMoveMethod,
 
 PokemonStat.stat = relationship(Stat,
     innerjoin=True, lazy='joined')
-
-PokemonSpecies.parent_species = relationship(PokemonSpecies,
-    primaryjoin=PokemonSpecies.evolves_from_species_id==PokemonSpecies.id,
-    remote_side=[PokemonSpecies.id],
-    backref='child_species')
-PokemonSpecies.evolutions = relationship(PokemonEvolution,
-    primaryjoin=PokemonSpecies.id==PokemonEvolution.evolved_species_id,
-    backref=backref('evolved_species', innerjoin=True, lazy='joined'))
-PokemonSpecies.flavor_text = relationship(PokemonSpeciesFlavorText,
-    order_by=PokemonSpeciesFlavorText.version_id.asc(),
-    backref='species')
-PokemonSpecies.growth_rate = relationship(GrowthRate,
-    innerjoin=True,
-    backref='evolution_chains')
-PokemonSpecies.habitat = relationship(PokemonHabitat,
-    backref='species')
-PokemonSpecies.color = relationship(PokemonColor,
-    innerjoin=True,
-    backref='species')
-PokemonSpecies.egg_groups = relationship(EggGroup,
-    secondary=PokemonEggGroup.__table__,
-    innerjoin=True,
-    order_by=PokemonEggGroup.egg_group_id.asc(),
-    backref=backref('species', order_by=Pokemon.order.asc()))
-PokemonSpecies.forms = relationship(PokemonForm,
-    secondary=Pokemon.__table__,
-    primaryjoin=PokemonSpecies.id==Pokemon.species_id,
-    secondaryjoin=Pokemon.id==PokemonForm.pokemon_id,
-    order_by=(PokemonForm.order.asc(), PokemonForm.form_identifier.asc()))
-PokemonSpecies.default_form = relationship(PokemonForm,
-    secondary=Pokemon.__table__,
-    primaryjoin=and_(PokemonSpecies.id==Pokemon.species_id,
-            Pokemon.is_default==True),
-    secondaryjoin=and_(Pokemon.id==PokemonForm.pokemon_id,
-            PokemonForm.is_default==True),
-    uselist=False)
-PokemonSpecies.default_pokemon = relationship(Pokemon,
-    primaryjoin=and_(
-        PokemonSpecies.id==Pokemon.species_id,
-        Pokemon.is_default==True),
-    uselist=False, lazy='joined')
-PokemonSpecies.evolution_chain = relationship(EvolutionChain,
-    innerjoin=True,
-    backref=backref('species', order_by=PokemonSpecies.id.asc()))
-PokemonSpecies.dex_numbers = relationship(PokemonDexNumber,
-    innerjoin=True,
-    order_by=PokemonDexNumber.pokedex_id.asc(),
-    backref='species')
-PokemonSpecies.generation = relationship(Generation,
-    innerjoin=True,
-    backref='species')
-PokemonSpecies.shape = relationship(PokemonShape,
-    innerjoin=True,
-    backref='species')
 
 PokemonSpeciesFlavorText.version = relationship(Version, innerjoin=True, lazy='joined')
 PokemonSpeciesFlavorText.language = relationship(Language, innerjoin=True, lazy='joined')
