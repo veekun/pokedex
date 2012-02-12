@@ -1337,7 +1337,20 @@ class PokemonForm(TableBase):
 
     @property
     def name(self):
+        """Name of this form: the form_name, if set; otherwise the species name"""
         return self.pokemon_name or self.species.name
+
+    @staticmethod
+    def _add_relationships(add_relationship, add_association_proxy, **kwargs):
+        add_relationship('pokemon', Pokemon,
+            primaryjoin=PokemonForm.pokemon_id==Pokemon.id,
+            innerjoin=True, lazy='joined')
+        add_association_proxy('species', 'pokemon', 'species')
+        add_relationship('version_group', VersionGroup,
+            innerjoin=True)
+        add_relationship('pokeathlon_stats', PokemonFormPokeathlonStat,
+            order_by=PokemonFormPokeathlonStat.pokeathlon_stat_id,
+            backref='pokemon_form')
 
 create_translation_table('pokemon_form_names', PokemonForm, 'names',
     relation_lazy='joined',
@@ -1818,7 +1831,19 @@ def add_relationships():
                     argument.relationship_info[backref_name] = backref_info
                 setattr(cls, name, relationship(argument, secondary=secondary,
                         **kwargs))
-            add_relationships(add_relationship=add_relationship)
+            def add_association_proxy(name, target_collection, attr, **kwargs):
+                cls.relationship_info.setdefault('_order', [])
+                cls.relationship_info['_order'].append(name)
+                cls.relationship_info[name] = info = kwargs.pop('info', {})
+                info.update(kwargs)
+                info.update(dict(
+                        type='association_proxy',
+                        target_collection=target_collection,
+                        attr=attr))
+                setattr(cls, name, association_proxy(name, target_collection,
+                        **kwargs))
+            add_relationships(add_relationship=add_relationship,
+                    add_association_proxy=add_association_proxy)
 add_relationships()
 
 Ability.changelog = relationship(AbilityChangelog,

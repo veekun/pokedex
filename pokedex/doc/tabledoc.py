@@ -79,8 +79,10 @@ def column_header(c, class_name=None, transl_name=None, show_type=True,
         for fk in c.foreign_keys:
             if fk.column in column_to_cls:
                 foreign_cls = column_to_cls[fk.column]
-                if relation_name:
+                if relation_name and relation_name + '_id' == c.name:
                     result.append(u'(%s →' % c.name)
+                elif relation_name:
+                    result.append(u'(**%s** →' % c.name)
                 else:
                     result.append(u'(→')
                 result.append(u':class:`~pokedex.db.tables.%s`.%s)' % (
@@ -168,8 +170,8 @@ def generate_columns(cls, remaining_attrs):
         relation_name = c.name[:-3]
         if c.name.endswith('_id') and relation_name in remaining_attrs:
             relation = getattr(cls, relation_name)
-            yield (column_header(c, name,
-                    relation=relation, relation_name=relation_name) + ':')
+            yield column_header(c, name,
+                    relation=relation, relation_name=relation_name)
             remaining_attrs.remove(relation_name)
         else:
             yield column_header(c, name) + ':'
@@ -187,7 +189,7 @@ def generate_strings(cls, remaining_attrs):
                 if c.name in common_columns:
                     continue
                 yield column_header(c, cls.__name__,
-                        translation_class.__table__.name) + ':'
+                        translation_class.__table__.name)
                 yield u''
                 yield u'  ' + unicode(c.info['description'])
                 yield u''
@@ -204,33 +206,43 @@ def generate_relationships(cls, remaining_attrs):
     for rel_name, info in infos:
         if rel_name in remaining_attrs:
             info = cls.relationship_info.get(rel_name)
-            yield u'%s.\ **%s**' % (cls.__name__, rel_name)
-            class_name = u':class:`~pokedex.db.tables.%s`' % info['argument'].__name__
-            if info.get('uselist', True):
-                class_name = u'[%s]' % class_name
-            yield u'(→ %s)' % class_name
-            if 'description' in info:
-                yield u''
-                yield u'  ' + unicode(info['description'])
-            '''
-            if info.get('secondary') is not None:
-                yield u''
-                yield '  Association table: ``%s``' % info['secondary']
-            if 'primaryjoin' in info:
-                yield u'')
-                yield '  Join condition: ``%s``' % info['primaryjoin']
-                if 'secondaryjoin' in info:
-                    yield '  , ``%s``' % info['secondaryjoin']
-            '''
-            if 'order_by' in info:
-                yield u''
-                try:
-                    order = iter(info['order_by'])
-                except TypeError:
-                    order = [info['order_by']]
-                yield u'  '
-                yield '  Ordered by: ' + u', '.join(
-                        u'``%s``' % o for o in order)
+            if info['type'] in ('relationship', 'backref'):
+                yield u'%s.\ **%s**' % (cls.__name__, rel_name)
+                class_name = u':class:`~pokedex.db.tables.%s`' % info['argument'].__name__
+                if info.get('uselist', True):
+                    class_name = u'[%s]' % class_name
+                yield u'(→ %s)' % class_name
+                if 'description' in info:
+                    yield u''
+                    yield u'  ' + unicode(info['description'])
+                '''
+                if info.get('secondary') is not None:
+                    yield u''
+                    yield '  Association table: ``%s``' % info['secondary']
+                if 'primaryjoin' in info:
+                    yield u'')
+                    yield '  Join condition: ``%s``' % info['primaryjoin']
+                    if 'secondaryjoin' in info:
+                        yield '  , ``%s``' % info['secondaryjoin']
+                '''
+                if 'order_by' in info:
+                    yield u''
+                    try:
+                        order = iter(info['order_by'])
+                    except TypeError:
+                        order = [info['order_by']]
+                    yield u'  '
+                    yield '  Ordered by: ' + u', '.join(
+                            u'``%s``' % o for o in order)
+            elif info['type'] == 'association_proxy':
+                yield u'%s.\ **%s**:' % (cls.__name__, rel_name)
+                yield '``{info[attr]}`` of ``self.{info[target_collection]}``'.format(
+                        info=info)
+                if 'description' in info:
+                    yield u''
+                    yield u'  ' + unicode(info['description'])
+            else:
+                continue
             yield u''
             remaining_attrs.remove(rel_name)
 
