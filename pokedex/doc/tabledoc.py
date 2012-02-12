@@ -194,8 +194,14 @@ def generate_strings(cls, remaining_attrs):
 
 @with_header(u'Relationships')
 def generate_relationships(cls, remaining_attrs):
-    for rel_name in [c for c in cls.relationship_info.get('_order', [])
-            if c in remaining_attrs]:
+    order = cls.relationship_info.get('_order', [])
+    def sort_key((key, value)):
+        try:
+            return 0, order.index(key)
+        except ValueError:
+            return 1, key
+    infos = sorted(cls.relationship_info.items(), key=sort_key)
+    for rel_name, info in infos:
         if rel_name in remaining_attrs:
             info = cls.relationship_info.get(rel_name)
             yield u'%s.\ **%s**' % (cls.__name__, rel_name)

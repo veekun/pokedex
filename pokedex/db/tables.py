@@ -1407,9 +1407,9 @@ class PokemonSpecies(TableBase):
         add_relationship('parent_species', PokemonSpecies,
             primaryjoin=PokemonSpecies.evolves_from_species_id==PokemonSpecies.id,
             remote_side=[PokemonSpecies.id],
-            backref='child_species',
-            info=dict(
-                description=u"The species from which this one evolves"))
+            backref=backref('child_species',
+                info=dict(description=u"The species to which this one evolves")),
+            info=dict(description=u"The species from which this one evolves"))
         add_relationship('evolutions', PokemonEvolution,
             primaryjoin=PokemonSpecies.id==PokemonEvolution.evolved_species_id,
             backref=backref('evolved_species',
@@ -1682,12 +1682,27 @@ def add_relationships():
             def add_relationship(name, argument, secondary=None, **kwargs):
                 cls.relationship_info.setdefault('_order', [])
                 cls.relationship_info['_order'].append(name)
-                cls.relationship_info[name] = kwargs.pop('info', {})
+                cls.relationship_info[name] = info = kwargs.pop('info', {})
                 cls.relationship_info[name].update(kwargs)
                 cls.relationship_info[name].update(dict(
                         type='relationship',
                         argument=argument,
                         secondary=secondary))
+                the_backref = kwargs.get('backref')
+                if isinstance(the_backref, basestring):
+                    the_backref = backref(the_backref)
+                if the_backref:
+                    # XXX: This line exploits a SQLA implementation detail,
+                    # after all relationships are converted we should make our
+                    # own backref wrapper with known semantics.
+                    backref_name, backref_kwargs = the_backref
+
+                    backref_info = dict(
+                            type='backref',
+                            argument=cls,
+                            secondary=secondary)
+                    backref_info.update(backref_kwargs.pop('info', {}))
+                    argument.relationship_info[backref_name] = backref_info
                 setattr(cls, name, relationship(argument, secondary=secondary,
                         **kwargs))
             add_relationships(add_relationship=add_relationship)
