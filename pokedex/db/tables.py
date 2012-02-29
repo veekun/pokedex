@@ -1944,7 +1944,8 @@ Pokemon.dream_ability = relationship(Ability,
 )
 Pokemon.forms = relationship(PokemonForm,
     primaryjoin=Pokemon.id==PokemonForm.pokemon_id,
-    order_by=(PokemonForm.order.asc(), PokemonForm.form_identifier.asc()))
+    order_by=(PokemonForm.order.asc(), PokemonForm.form_identifier.asc()),
+    lazy='joined')
 Pokemon.default_form = relationship(PokemonForm,
     primaryjoin=and_(
         Pokemon.id==PokemonForm.pokemon_id,
