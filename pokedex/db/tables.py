@@ -1494,6 +1494,8 @@ class Stat(TableBase):
         info=dict(description=u"An identifier", format='identifier'))
     is_battle_only = Column(Boolean, nullable=False,
         info=dict(description=u"Whether this stat only exists within a battle"))
+    game_index = Column(Integer, nullable=True,
+        info=dict(description=u"The stat order the games use internally for the persistent stats.  NULL for battle-only stats."))
 
 create_translation_table('stat_names', Stat, 'names',
     relation_lazy='joined',
