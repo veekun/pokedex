@@ -193,7 +193,10 @@ class _BasePokemonMedia(BaseMedia):
                 version_group = version.version_group
                 version_dir = '-'.join(
                         v.identifier for v in version_group.versions)
-                generation, info = self._pokemon_sprite_info[version_dir]
+                try:
+                    generation, info = self._pokemon_sprite_info[version_dir]
+                except KeyError:
+                    raise ValueError('Version directory %s not found', version_dir)
         if generation < self.introduced_in:
             raise ValueError("Pokemon %s didn't exist in %s" % (
                     self.species_id, version_dir))

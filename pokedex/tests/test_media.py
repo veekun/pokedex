@@ -13,6 +13,11 @@ import re
 from pokedex.db import tables, connect
 from pokedex.util import media
 
+def pytest_addoption(parser):
+    group = parser.getgroup("pokedex")
+    group.addoption("--media-root", dest="media_root", action="store", default=None,
+        help="path to pokedex-media")
+
 def pytest_funcarg__root(request):
     root = request.config.option.media_root
     if not root:
@@ -118,6 +123,10 @@ def test_get_everything(root, pytestconfig):
 
     versions = list(session.query(tables.Version).all())
     versions.append('red-green')
+
+    # We don't have any graphics for Colosseum or XD
+    versions.remove(session.query(tables.Version).filter_by(identifier=u'colosseum').one())
+    versions.remove(session.query(tables.Version).filter_by(identifier=u'xd').one())
 
     black = session.query(tables.Version).filter_by(identifier=u'black').one()
 
@@ -242,6 +251,8 @@ def test_get_everything(root, pytestconfig):
     unaccessed_filenames = set(filenames)
     for filename in filenames:
         if filename.startswith(exceptions):
+            unaccessed_filenames.remove(filename)
+        if filename.endswith('-beta.png'):
             unaccessed_filenames.remove(filename)
 
     if unaccessed_filenames:
