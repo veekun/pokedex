@@ -1020,6 +1020,23 @@ class NaturePokeathlonStat(TableBase):
     max_change = Column(Integer, nullable=False,
         info=dict(description="Maximum change"))
 
+class PalPark(TableBase):
+    u"""Pal Park encounter info
+    """
+
+    __tablename__ = 'pal_park'
+    __singlename__ = 'pal_park'
+
+    species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True,
+        info=dict(description="ID of the Pokémon species this data pertains to"))
+
+    area = Column(Enum('forest', 'field', 'mountain', 'pond', 'sea', name='pal_park_areas'), nullable=False,
+        info=dict(description="The area in which this Pokémon can be found"))
+    base_score = Column(Integer, nullable=False,
+        info=dict(description="Value used in calculating the player's score in a Pal Park run"))
+    rate = Column(Integer, nullable=False,
+        info=dict(description="Base rate for encountering this Pokémon"))
+
 class PokeathlonStat(TableBase):
     u"""A Pokéathlon stat, such as "Stamina" or "Jump".
     """
@@ -2089,6 +2106,9 @@ PokemonSpecies.generation = relationship(Generation,
     backref='species')
 PokemonSpecies.shape = relationship(PokemonShape,
     innerjoin=True,
+    backref='species')
+PokemonSpecies.pal_park = relationship(PalPark,
+    uselist=False,
     backref='species')
 
 PokemonSpeciesFlavorText.version = relationship(Version, innerjoin=True, lazy='joined')
