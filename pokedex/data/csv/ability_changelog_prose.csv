@@ -10,7 +10,7 @@ ability_changelog_id,local_language_id,effect
 9,9,Does not take effect if acquired after entering battle.
 10,9,Affects other Pokémon with this ability.
 11,9,Inflicts only 1/16 of the attacker's maximum [HP]{mechanic:hp} in damage.
-12,9,[]{move:fire-fang} and moves that inflict [typeless damage]{mechanic:typeless-damage} ignore this ability regardless of type.
+12,9,[]{move:fire-fang} and moves that inflict [typeless damage]{mechanic:typeless-damage} ignore this ability regardless of type.  Can be copied by []{ability:trace}.
 13,9,Has no overworld effect.
 14,9,Cannot influence the natures of Pokémon encountered by interacting with them on the overworld.
 15,9,Passes back bad [poison]{mechanic:poison} as regular poison.
@@ -51,3 +51,5 @@ ability_changelog_id,local_language_id,effect
 50,9,[]{move:struggle} is unaffected.  []{move:helping-hand} and []{move:defense-curl} are not taken into account.
 51,9,Has no overworld effect.
 52,9,Chance of taking effect is 33%.
+53,9,"This ability is not tied to []{pokemon:cherrim}'s form change; Cherrim will switch forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim.  Stat boosts do not stack.  Can be copied by []{ability:trace}."
+54,9,"The doubling effect is applied live; the stored [stat modifiers]{mechanic:stat-modifiers} are unaffected.  Stat modifiers received from other Pokémon and already-accumulated stat modifiers come under this effect, and other Pokémon cannot inherit doubled stats from this Pokémon.  Stat modifiers are still capped at ±6 stages after doubling."
