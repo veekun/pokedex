@@ -463,7 +463,7 @@ Used on a party Pokémon
 190,9,Increases the holder's evasion by 11 1/9%.,"Held in battle
 :   Moves targeting the holder have 0.9× [chance to hit]{mechanic:chance-to-hit}."
 191,9,"Held: Resets lowered stats to normal at end of turn, but only once.","Held in battle
-:   At the end of each turn, if any of the holder's stats have a negative [stat modifier]{mechanic:stat-modifier}, the holder consumes this item to remove the modifiers from those stats."
+:   At the end of each turn, if any of the holder's stats have a negative [stat modifier]{mechanic:stat-stage}, the holder consumes this item to remove the modifiers from those stats."
 192,9,"Held: Holder gains double effort from battles, but has halved Speed.","Held
 :   When the holder would gain [effort]{mechanic:effort} due to battle, it gains double that effort instead.
 

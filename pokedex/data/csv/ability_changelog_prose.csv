@@ -52,4 +52,4 @@ ability_changelog_id,local_language_id,effect
 51,9,Has no overworld effect.
 52,9,Chance of taking effect is 33%.
 53,9,"This ability is not tied to []{pokemon:cherrim}'s form change; Cherrim will switch forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim.  Stat boosts do not stack.  Can be copied by []{ability:trace}."
-54,9,"The doubling effect is applied live; the stored [stat modifiers]{mechanic:stat-modifiers} are unaffected.  Stat modifiers received from other Pokémon and already-accumulated stat modifiers come under this effect, and other Pokémon cannot inherit doubled stats from this Pokémon.  Stat modifiers are still capped at ±6 stages after doubling."
+54,9,"The doubling effect is applied live; the stored [stat stages]{mechanic:stat-stages} are unaffected.  Stat stages received from other Pokémon and already-accumulated stat stages come under this effect, and other Pokémon cannot inherit doubled stats from this Pokémon.  Stats are still capped at ±6 stages after doubling."

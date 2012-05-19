@@ -783,7 +783,7 @@ This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assi
 This move cannot copy itself.
 
 This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assist}, []{move:metronome}, or []{move:sleep-talk}."
-244,9,User swaps Attack and Special Attack changes with the target.,User swaps its [Attack]{mechanic:attack} and [Special Attack]{mechanic:special-attack} [stat modifiers]{mechanic:stat-modifiers} modifiers with the target.
+244,9,User swaps Attack and Special Attack changes with the target.,User swaps its [Attack]{mechanic:attack} and [Special Attack]{mechanic:special-attack} [stat modifiers]{mechanic:stat-stages} modifiers with the target.
 245,9,User swaps Defense and Special Defense changes with the target.,User swaps its [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} modifiers with the target.
 246,9,"Power increases against targets with more raised stats, up to a maximum of 200.","Inflicts [regular damage]{mechanic:regular-damage}.  Power starts at 60 and is increased by 20 for every [stage]{mechanic:stage} any of the target's stats has been raised, capping at 200.  [Accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers do not increase this move's power."
 247,9,Can only be used after all of the user's other moves have been used.,"Inflicts [regular damage]{mechanic:regular-damage}.  This move can only be used if each of the user's other moves has been used at least once since the user entered the [field]{mechanic:field}.  If this is the user's only move, this move will fail."
@@ -802,7 +802,7 @@ If a []{type:poison} Pokémon not immune to []{type:ground} moves enters a [fiel
 This move does not trigger []{ability:synchronize}, unless the Pokémon with []{ability:synchronize} was forced to enter the [field]{mechanic:field} by another effect such as []{move:roar}.
 
 Pokémon entering the [field]{mechanic:field} due to []{move:baton-pass} are not affected by this effect."
-251,9,User and target swap stat changes.,User swaps its [stat modifiers]{mechanic:stat-modifiers} with the target.
+251,9,User and target swap stat changes.,User swaps its [stat modifiers]{mechanic:stat-stages} with the target.
 252,9,Restores 1/16 of the user's max HP each turn.,"Restores 1/16 of the user's max [HP]{mechanic:hp} at the end of each turn.  If the user leaves the [field]{mechanic:field}, this effect ends.
 
 This effect is passed on by []{move:baton-pass}."
@@ -942,8 +942,8 @@ More than 4× the target's Speed  |   150
 If the target has already acted this turn, this move will fail."
 302,9,Has double power if it's used more than once per turn.,"Inflicts [regular damage]{mechanic:regular-damage}.  If []{move:round} has already been used this turn, this move's power is doubled.  After this move is used, any other Pokémon using it this turn will immediately do so (in the order they would otherwise act), regardless of [Speed]{mechanic:speed} or priority.  Pokémon using other moves will then continue to act as usual."
 303,9,"Power increases by 100% for each consecutive use by any friendly Pokémon, to a maximum of 200.","Inflicts [regular damage]{mechanic:regular-damage}.  If any friendly Pokémon used this move earlier this turn or on the previous turn, that use's power is added to this move's power, to a maximum of 200."
-304,9,Ignores the target's stat modifiers.,"Inflicts [regular damage]{mechanic:regular-damage}.  Damage calculation ignores the target's [stat modifiers]{mechanic:stat-modifiers}, including [evasion]{mechanic:evasion}."
-305,9,Removes all of the target's stat modifiers.,Inflicts [regular damage]{mechanic:regular-damage}.  All of the target's [stat modifiers]{mechanic:stat-modifiers} are reset to zero.
+304,9,Ignores the target's stat modifiers.,"Inflicts [regular damage]{mechanic:regular-damage}.  Damage calculation ignores the target's [stat modifiers]{mechanic:stat-stages}, including [evasion]{mechanic:evasion}."
+305,9,Removes all of the target's stat modifiers.,Inflicts [regular damage]{mechanic:regular-damage}.  All of the target's [stat modifiers]{mechanic:stat-stages} are reset to zero.
 306,9,"Power is higher the more the user's stats have been raised, to a maximum of 31×.","Inflicts [regular damage]{mechanic:regular-damage}.  Power is increased by 100% its original value for every [stage]{mechanic:stage} any of the user's stats have been raised.  [Accuracy]{mechanic:accuracy}, [evasion]{mechanic:evasion}, and lowered stats do not affect this move's power.  For a Pokémon with all five stats modified to +6, this move's power is 31×."
 307,9,Prevents any priority moves from hitting friendly Pokémon this turn.,"Moves with priority greater than 0 will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will fail.
 
