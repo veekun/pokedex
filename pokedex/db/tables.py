@@ -1030,12 +1030,28 @@ class PalPark(TableBase):
     species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True,
         info=dict(description="ID of the Pokémon species this data pertains to"))
 
-    area = Column(Enum('forest', 'field', 'mountain', 'pond', 'sea', name='pal_park_areas'), nullable=False,
+    area_id = Column(Integer, ForeignKey('pal_park_areas.id'), nullable=False,
         info=dict(description="The area in which this Pokémon can be found"))
     base_score = Column(Integer, nullable=False,
         info=dict(description="Value used in calculating the player's score in a Pal Park run"))
     rate = Column(Integer, nullable=False,
         info=dict(description="Base rate for encountering this Pokémon"))
+
+class PalParkArea(TableBase):
+    u"""Pal Park areas enum
+    """
+    __tablename__ = 'pal_park_areas'
+    __singlename__ = 'pal_park_area'
+
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    identifier = Column(Unicode(8), nullable=False,
+        info=dict(description="An identifier"))
+
+create_translation_table('pal_park_area_names', PalParkArea, 'names',
+    name = Column(Unicode(8), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
 
 class PokeathlonStat(TableBase):
     u"""A Pokéathlon stat, such as "Stamina" or "Jump".
@@ -1919,6 +1935,10 @@ NatureBattleStylePreference.battle_style = relationship(MoveBattleStyle,
 NaturePokeathlonStat.pokeathlon_stat = relationship(PokeathlonStat,
     innerjoin=True, lazy='joined',
     backref='nature_effects')
+
+
+PalPark.area = relationship(PalParkArea,
+    innerjoin=True, lazy='joined')
 
 
 Pokedex.region = relationship(Region,
