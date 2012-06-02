@@ -1,0 +1,40 @@
+#!/usr/bin/env python2
+
+import sys
+
+from sqlalchemy.sql import func
+from sqlalchemy.types import Integer
+
+from pokedex.db import connect
+from pokedex.db.tables import mapped_classes
+
+import optparse
+
+parser = optparse.OptionParser()
+parser.add_option('-v', '--verbose', action='store_true', default=False,
+    help="verbose output")
+parser.add_option('-e', '--engine', dest='engine_uri', default=None,
+    help="database engine uri")
+
+options, _ = parser.parse_args(sys.argv[1:])
+
+session = connect(options.engine_uri)
+
+assert session.connection().dialect.name == 'postgresql'
+
+def sequence_columns(table):
+    for c in table.__table__.primary_key:
+        if c.autoincrement and not c.foreign_keys and \
+           isinstance(c.type, Integer):
+            yield c
+
+for table in sorted(mapped_classes):
+    table_name = table.__tablename__
+    for c in sequence_columns(table):
+        max_value, = session.query(func.max(c)).one()
+        if options.verbose:
+            print "%s.%s <- %s" % (table_name, c.name, max_value)
+        session.execute(func.setval(
+            func.pg_get_serial_sequence(table_name, c.name),
+            max_value,
+        ))
