@@ -130,6 +130,8 @@ create_translation_table('ability_names', Ability, 'names',
 create_translation_table('ability_prose', Ability, 'prose',
     effect = Column(Unicode(5120), nullable=True,
         info=dict(description="A detailed description of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
+    overworld_effect = Column(Unicode(512), nullable=True,
+        info=dict(description="A detailed description of this ability's overworld effect", format='markdown', string_getter=markdown.MarkdownString)),
     short_effect = Column(Unicode(512), nullable=True,
         info=dict(description="A short summary of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
 )
