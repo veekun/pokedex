@@ -115,9 +115,7 @@ An effect chance is a move's chance to inflict a [status ailment]{mechanic:statu
 []{move:secret-power} is unaffected.",,Doubles the chance of moves' extra effects occurring.
 33,9,This Pokémon's [Speed]{mechanic:speed} is doubled during [rain]{mechanic:rain}.,,Doubles [Speed]{mechanic:speed} during [rain]{mechanic:rain}.
 34,9,This Pokémon's [Speed]{mechanic:speed} is doubled during [strong sunlight]{mechanic:strong-sunlight}.,,Doubles [Speed]{mechanic:speed} during [strong sunlight]{mechanic:strong-sunlight}.
-35,9,,"If the lead Pokémon has this ability, the wild encounter rate is doubled.
-
-This ability has no effect in battle.",Doubles the wild encounter rate.
+35,9,This ability has no effect in battle.,"If the lead Pokémon has this ability, the wild encounter rate is doubled.",Doubles the wild encounter rate.
 36,9,"When this Pokémon enters battle, it copies a random opponent's ability.
 
 This ability cannot copy []{ability:flower-gift}, []{ability:forecast}, []{ability:illusion}, []{ability:imposter}, []{ability:multitype}, []{ability:trace}, []{ability:wonder-guard}, or []{ability:zen-mode}.",,Copies an opponent's ability upon entering battle.
@@ -161,11 +159,11 @@ This ability does not prevent the accuracy of this Pokémon's moves from being l
 52,9,"This Pokémon's [Attack]{mechanic:attack} cannot be [lowered]{mechanic:stat-stage} by other Pokémon.
 
 This ability does not prevent any Attack losses other than [stat stages]{mechanic:stat-stages}, such as the Attack cut from a [burn]{mechanic:burn}.  This Pokémon can still be passed negative Attack stages through []{move:heart-swap} or []{move:power-swap}.",,Prevents [Attack]{mechanic:attack} from being [lowered]{mechanic:stat-stages} by other Pokémon.
-53,9,"At the end of each turn, if another Pokémon consumed or [Flung]{move:fling} a held item that turn, this Pokémon picks up the item if it is not already holding one.  After each battle, this Pokémon has a 10% chance of picking up an item if it is not already holding one.
+53,9,"At the end of each turn, if another Pokémon consumed or [Flung]{move:fling} a held item that turn, this Pokémon picks up the item if it is not already holding one.
 
-The []{item:air-balloon} and []{item:eject-button} cannot be picked up.
+The []{item:air-balloon} and []{item:eject-button} cannot be picked up.","After each battle, this Pokémon has a 10% chance of picking up an item if it is not already holding one.
 
-The items that may be found vary by game, and, since Pokémon Emerald, by the Pokémon's level.  This ability is checked after the battle ends, at which point any temporary ability changes have worn off.",,Picks up other Pokémon's used and [Flung]{move:fling} held items.  May also pick up an item after battle.
+The items that may be found vary by game, and, since Pokémon Emerald, by the Pokémon's level.  This ability is checked after the battle ends, at which point any temporary ability changes have worn off.",Picks up other Pokémon's used and [Flung]{move:fling} held items.  May also pick up an item after battle.
 54,9,"Every second turn on which this Pokémon should attempt to use a move, it will instead do nothing (""loaf around"").
 
 Loafing around interrupts moves that take multiple turns the same way [paralysis]{mechanic:paralysis}, [flinching]{mechanic:flinching}, etc do.  Most such moves, for example []{move:bide} or []{move:rollout}, are simply cut off upon loafing around.  Attacks with a recharge turn, such as []{move:hyper-beam}, do not have to recharge; attacks with a preparation turn, such as []{move:fly}, do not end up being used.  Moves that are forced over multiple turns and keep going through failure, such as []{move:outrage}, []{move:uproar}, or any move forced by []{move:encore}, keep going as usual.
@@ -356,9 +354,9 @@ This ability functions identically to []{ability:filter}.",,Decreases damage tak
 117,9,"The [weather]{mechanic:weather} changes to [hail]{mechanic:hail} when this Pokémon enters battle and does not end unless cancelled by another weather condition.
 
 If multiple Pokémon with this ability, []{ability:drizzle}, []{ability:drought}, or []{ability:sand-stream} are sent out at the same time, the abilities will activate in order of [Speed]{mechanic:speed}, respecting []{move:trick-room}.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay.",,Summons [hail]{mechanic:hail} that lasts indefinitely upon entering battle.
-118,9,"This Pokémon has a chance of picking up []{item:honey} after each battle.  This chance starts at 5% and rises another 5% after every tenth level: 5% from level 1–10, 10% from 11–20, and so on, up to 50% from 91–100.
+118,9,This ability has no effect in battle.,"This Pokémon has a chance of picking up []{item:honey} after each battle.  This chance starts at 5% and rises another 5% after every tenth level: 5% from level 1–10, 10% from 11–20, and so on, up to 50% from 91–100.
 
-This ability is checked after the battle ends, at which point any temporary ability changes have worn off.",,The Pokémon may pick up []{item:honey} after battle.
+This ability is checked after the battle ends, at which point any temporary ability changes have worn off.",The Pokémon may pick up []{item:honey} after battle.
 119,9,"When this Pokémon enters battle, it reveals an opposing Pokémon's held item to all participating trainers.
 
 In a double battle, if one opponent has an item, this Pokémon will Frisk that Pokémon; if both have an item, it will Frisk one at random.",,Reveals an opponent's held item upon entering battle.
