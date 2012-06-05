@@ -139,6 +139,10 @@ def generate_table_header(cls, remaining_attrs):
         pass
     yield u''
 
+    yield u'Primary key: %s.' % u', '.join(
+        u'**%s**' % col.key for col in cls.__table__.primary_key.columns)
+    yield u''
+
 def generate_common(cls, remaining_attrs):
     common_col_headers = []
     for c in cls.__table__.c:
