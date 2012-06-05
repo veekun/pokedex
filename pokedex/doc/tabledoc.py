@@ -197,44 +197,55 @@ def generate_strings(cls, remaining_attrs):
 
 @with_header(u'Relationships')
 def generate_relationships(cls, remaining_attrs):
+    def isrelationship(prop):
+        return isinstance(prop, InstrumentedAttribute) and isinstance(prop.property, RelationshipProperty)
+
+    relationships = []
+    for attr_name in remaining_attrs:
+        prop = getattr(cls, attr_name)
+        if isrelationship(prop):
+            relationships.append((attr_name, prop.property))
+    relationships.sort(key=lambda x: x[1]._creation_order)
+
+    for attr_name, rel in relationships:
+        yield u'%s.\ **%s**' % (cls.__name__, attr_name)
+        class_name = u':class:`~pokedex.db.tables.%s`' % rel.mapper.class_.__name__
+        if rel.uselist:
+            class_name = u'[%s]' % class_name
+        yield u'(→ %s)' % class_name
+        if rel.doc:
+            yield u''
+            yield u'  ' + unicode(rel.doc)
+        if rel.secondary is not None:
+            yield u''
+            yield '  Association table: ``%s``' % rel.secondary
+        #if rel.primaryjoin is not None:
+        #    yield u''
+        #    yield '  Join condition: ``%s``' % rel.primaryjoin
+        #    if rel.secondaryjoin is not None:
+        #        yield '  , ``%s``' % rel.secondaryjoin
+        if rel.order_by:
+            yield u''
+            yield u'  '
+            yield '  Ordered by: ' + u', '.join(
+                    u'``%s``' % o for o in rel.order_by)
+        yield u''
+        remaining_attrs.remove(attr_name)
+
+@with_header(u'Association Proxies')
+def generate_associationproxies(cls, remaining_attrs):
     for attr_name in sorted(remaining_attrs):
         prop = getattr(cls, attr_name)
-        def isrelationship(prop):
-            return isinstance(prop, InstrumentedAttribute) and isinstance(prop.property, RelationshipProperty)
-        if isrelationship(prop):
-            rel = prop.property
-            yield u'%s.\ **%s**' % (cls.__name__, attr_name)
-            class_name = u':class:`~pokedex.db.tables.%s`' % rel.mapper.class_.__name__
-            if rel.uselist:
-                class_name = u'[%s]' % class_name
-            yield u'(→ %s)' % class_name
-            if prop.__doc__:
-                yield u''
-                yield u'  ' + unicode(prop.__doc__)
-            if rel.secondary is not None:
-                yield u''
-                yield '  Association table: ``%s``' % rel.secondary
-            #if rel.primaryjoin is not None:
-            #    yield u''
-            #    yield '  Join condition: ``%s``' % rel.primaryjoin
-            #    if rel.secondaryjoin is not None:
-            #        yield '  , ``%s``' % rel.secondaryjoin
-            if rel.order_by:
-                yield u''
-                yield u'  '
-                yield '  Ordered by: ' + u', '.join(
-                        u'``%s``' % o for o in rel.order_by)
-        elif isinstance(prop, AssociationProxy):
+        if isinstance(prop, AssociationProxy):
             yield u'%s.\ **%s**:' % (cls.__name__, attr_name)
-            yield '``{prop.remote_attr.key}`` of ``self.{prop.target_collection}``'.format(
+            yield '``{prop.remote_attr.key}`` of ``self.{prop.local_attr.key}``'.format(
                     prop=prop)
             '''if 'description' in info:
                 yield u''
                 yield u'  ' + unicode(info['description'])'''
-        else:
-            continue
-        yield u''
-        remaining_attrs.remove(attr_name)
+            yield u''
+            remaining_attrs.remove(attr_name)
+
 
 @with_header(u'Undocumented')
 def generate_undocumented(cls, remaining_attrs):
@@ -290,7 +301,7 @@ class DexTable(PyClasslike):
 
         remaining_attrs = set(x for x in dir(cls) if not x.startswith('_'))
         remaining_attrs.difference_update(['metadata', 'translation_classes',
-                'add_relationships', 'relationship_info', 'summary_column'])
+                'add_relationships', 'summary_column'])
         for transl_class in cls.translation_classes:
             remaining_attrs.difference_update([
                     transl_class.relation_name,
@@ -305,6 +316,7 @@ class DexTable(PyClasslike):
         generated_content.extend(generate_columns(cls, remaining_attrs))
         generated_content.extend(generate_strings(cls, remaining_attrs))
         generated_content.extend(generate_relationships(cls, remaining_attrs))
+        generated_content.extend(generate_associationproxies(cls, remaining_attrs))
         generated_content.extend(generate_undocumented(cls, remaining_attrs))
         generated_content.extend(generate_other(cls, remaining_attrs))
 

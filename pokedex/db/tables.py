@@ -77,7 +77,6 @@ class TableMetaclass(DeclarativeMeta):
         if hasattr(cls, '__tablename__'):
             mapped_classes.append(cls)
             cls.translation_classes = []
-        cls.relationship_info = {}
 
 metadata = MetaData()
 TableBase = declarative_base(metadata=metadata, cls=TableSuperclass, metaclass=TableMetaclass)
@@ -1806,41 +1805,19 @@ def add_relationships():
             pass
         else:
             def add_relationship(name, argument, secondary=None, **kwargs):
-                cls.relationship_info.setdefault('_order', [])
-                cls.relationship_info['_order'].append(name)
-                cls.relationship_info[name] = info = kwargs.pop('info', {})
-                info.update(kwargs)
-                info.update(dict(
-                        type='relationship',
-                        argument=argument,
-                        secondary=secondary))
-                the_backref = kwargs.get('backref')
-                if isinstance(the_backref, basestring):
-                    the_backref = backref(the_backref)
-                if the_backref:
-                    # XXX: This line exploits a SQLA implementation detail,
-                    # after all relationships are converted we should make our
-                    # own backref wrapper with known semantics.
-                    backref_name, backref_kwargs = the_backref
-
-                    backref_info = dict(
-                            type='backref',
-                            argument=cls,
-                            secondary=secondary)
-                    backref_info.update(backref_kwargs.pop('info', {}))
-                    argument.relationship_info[backref_name] = backref_info
+                info = kwargs.pop('info', {})
                 doc = info.get('description', None)
+                backref_ = kwargs.get('backref')
+                if type(backref_) == tuple:
+                    backref_name, backref_kwargs = backref_
+                    backref_info = backref_kwargs.pop('info', {})
+                    backref_kwargs['doc'] = backref_info.get('doc', None)
+                    backref_ = backref(backref_name, **backref_kwargs)
+                    kwargs['backref'] = backref_
                 setattr(cls, name, relationship(argument, secondary=secondary, doc=doc,
                         **kwargs))
             def add_association_proxy(name, target_collection, attr, **kwargs):
-                cls.relationship_info.setdefault('_order', [])
-                cls.relationship_info['_order'].append(name)
-                cls.relationship_info[name] = info = kwargs.pop('info', {})
-                info.update(kwargs)
-                info.update(dict(
-                        type='association_proxy',
-                        target_collection=target_collection,
-                        attr=attr))
+                info = kwargs.pop('info', {})
                 setattr(cls, name, association_proxy(target_collection, attr,
                         **kwargs))
             add_relationships(add_relationship=add_relationship,
