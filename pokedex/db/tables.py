@@ -1829,7 +1829,8 @@ def add_relationships():
                             secondary=secondary)
                     backref_info.update(backref_kwargs.pop('info', {}))
                     argument.relationship_info[backref_name] = backref_info
-                setattr(cls, name, relationship(argument, secondary=secondary,
+                doc = info.get('description', None)
+                setattr(cls, name, relationship(argument, secondary=secondary, doc=doc,
                         **kwargs))
             def add_association_proxy(name, target_collection, attr, **kwargs):
                 cls.relationship_info.setdefault('_order', [])
@@ -1840,7 +1841,7 @@ def add_relationships():
                         type='association_proxy',
                         target_collection=target_collection,
                         attr=attr))
-                setattr(cls, name, association_proxy(name, target_collection,
+                setattr(cls, name, association_proxy(target_collection, attr,
                         **kwargs))
             add_relationships(add_relationship=add_relationship,
                     add_association_proxy=add_association_proxy)

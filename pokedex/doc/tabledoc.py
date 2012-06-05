@@ -20,7 +20,8 @@ from sphinx.ext.autodoc import ClassLevelDocumenter
 
 from sqlalchemy import types
 from sqlalchemy.orm.attributes import InstrumentedAttribute
-from sqlalchemy.orm import configure_mappers
+from sqlalchemy.orm.properties import RelationshipProperty
+from sqlalchemy.orm import Mapper, configure_mappers
 from sqlalchemy.ext.associationproxy import AssociationProxy
 from pokedex.db.markdown import MoveEffectPropertyMap, MoveEffectProperty
 
@@ -196,55 +197,44 @@ def generate_strings(cls, remaining_attrs):
 
 @with_header(u'Relationships')
 def generate_relationships(cls, remaining_attrs):
-    order = cls.relationship_info.get('_order', [])
-    def sort_key((key, value)):
-        try:
-            return 0, order.index(key)
-        except ValueError:
-            return 1, key
-    infos = sorted(cls.relationship_info.items(), key=sort_key)
-    for rel_name, info in infos:
-        if rel_name in remaining_attrs:
-            info = cls.relationship_info.get(rel_name)
-            if info['type'] in ('relationship', 'backref'):
-                yield u'%s.\ **%s**' % (cls.__name__, rel_name)
-                class_name = u':class:`~pokedex.db.tables.%s`' % info['argument'].__name__
-                if info.get('uselist', True):
-                    class_name = u'[%s]' % class_name
-                yield u'(→ %s)' % class_name
-                if 'description' in info:
-                    yield u''
-                    yield u'  ' + unicode(info['description'])
-                '''
-                if info.get('secondary') is not None:
-                    yield u''
-                    yield '  Association table: ``%s``' % info['secondary']
-                if 'primaryjoin' in info:
-                    yield u'')
-                    yield '  Join condition: ``%s``' % info['primaryjoin']
-                    if 'secondaryjoin' in info:
-                        yield '  , ``%s``' % info['secondaryjoin']
-                '''
-                if 'order_by' in info:
-                    yield u''
-                    try:
-                        order = iter(info['order_by'])
-                    except TypeError:
-                        order = [info['order_by']]
-                    yield u'  '
-                    yield '  Ordered by: ' + u', '.join(
-                            u'``%s``' % o for o in order)
-            elif info['type'] == 'association_proxy':
-                yield u'%s.\ **%s**:' % (cls.__name__, rel_name)
-                yield '``{info[attr]}`` of ``self.{info[target_collection]}``'.format(
-                        info=info)
-                if 'description' in info:
-                    yield u''
-                    yield u'  ' + unicode(info['description'])
-            else:
-                continue
-            yield u''
-            remaining_attrs.remove(rel_name)
+    for attr_name in sorted(remaining_attrs):
+        prop = getattr(cls, attr_name)
+        def isrelationship(prop):
+            return isinstance(prop, InstrumentedAttribute) and isinstance(prop.property, RelationshipProperty)
+        if isrelationship(prop):
+            rel = prop.property
+            yield u'%s.\ **%s**' % (cls.__name__, attr_name)
+            class_name = u':class:`~pokedex.db.tables.%s`' % rel.mapper.class_.__name__
+            if rel.uselist:
+                class_name = u'[%s]' % class_name
+            yield u'(→ %s)' % class_name
+            if prop.__doc__:
+                yield u''
+                yield u'  ' + unicode(prop.__doc__)
+            if rel.secondary is not None:
+                yield u''
+                yield '  Association table: ``%s``' % rel.secondary
+            #if rel.primaryjoin is not None:
+            #    yield u''
+            #    yield '  Join condition: ``%s``' % rel.primaryjoin
+            #    if rel.secondaryjoin is not None:
+            #        yield '  , ``%s``' % rel.secondaryjoin
+            if rel.order_by:
+                yield u''
+                yield u'  '
+                yield '  Ordered by: ' + u', '.join(
+                        u'``%s``' % o for o in rel.order_by)
+        elif isinstance(prop, AssociationProxy):
+            yield u'%s.\ **%s**:' % (cls.__name__, attr_name)
+            yield '``{prop.remote_attr.key}`` of ``self.{prop.target_collection}``'.format(
+                    prop=prop)
+            '''if 'description' in info:
+                yield u''
+                yield u'  ' + unicode(info['description'])'''
+        else:
+            continue
+        yield u''
+        remaining_attrs.remove(attr_name)
 
 @with_header(u'Undocumented')
 def generate_undocumented(cls, remaining_attrs):
