@@ -204,14 +204,11 @@ def generate_relationships(cls, remaining_attrs):
     def isrelationship(prop):
         return isinstance(prop, InstrumentedAttribute) and isinstance(prop.property, RelationshipProperty)
 
-    relationships = []
-    for attr_name in remaining_attrs:
+    for attr_name in sorted(remaining_attrs):
         prop = getattr(cls, attr_name)
-        if isrelationship(prop):
-            relationships.append((attr_name, prop.property))
-    relationships.sort(key=lambda x: x[1]._creation_order)
-
-    for attr_name, rel in relationships:
+        if not isrelationship(prop):
+            continue
+        rel = prop.property
         yield u'%s.\ **%s**' % (cls.__name__, attr_name)
         class_name = u':class:`~pokedex.db.tables.%s`' % rel.mapper.class_.__name__
         if rel.uselist:
