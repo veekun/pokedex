@@ -6,4 +6,5 @@ pokedex_id,local_language_id,name,description
 5,9,Original Sinnoh,Diamond/Pearl Sinnoh dex
 6,9,Extended Sinnoh,Platinum Sinnoh dex—an extended version of Diamond and Pearl's
 7,9,Updated Johto,"HeartGold/SoulSilver Johto dex—Gold/Silver/Crystal's, extended to add move-based Generation IV evolutions"
-8,9,Unova,Black/White Unova dex
+8,9,Original Unova,Black/White Unova dex
+9,9,Updated Unova,Black 2/White 2 Unova dex
