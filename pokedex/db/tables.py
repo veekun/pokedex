@@ -1234,8 +1234,11 @@ class PokemonForm(TableBase):
         info=dict(description=u'Set for exactly one form used as the default for each pokemon (not necessarily species).'))
     is_battle_only = Column(Boolean, nullable=False,
         info=dict(description=u'Set iff the form can only appear in battle.'))
+    form_order = Column(Integer, nullable=False, autoincrement=False,
+        info=dict(description=u"The order in which forms should be sorted within a species' forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.  "
+                              u"order` and `pokemon.order` are generated from this."))
     order = Column(Integer, nullable=False, autoincrement=False,
-        info=dict(description=u'The order in which forms should be sorted.  Multiple forms may have equal order, in which case they should fall back on sorting by name.'))
+        info=dict(description=u'The order in which forms should be sorted within all forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.'))
 
     @property
     def name(self):
