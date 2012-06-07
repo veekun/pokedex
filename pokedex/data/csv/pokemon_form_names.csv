@@ -1280,15 +1280,15 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 640,5,,
 640,9,,
 641,5,,
-641,9,,
+641,9,keshin forme,keshin Tornadus
 642,5,,
-642,9,,
+642,9,keshin forme,keshin Thundurus
 643,5,,
 643,9,,
 644,5,,
 644,9,,
 645,5,,
-645,9,,
+645,9,keshin forme,keshin Landorus
 646,5,,
 646,9,,
 647,5,,
@@ -1453,3 +1453,8 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 726,9,Burn Drive,Burn Genesect
 727,5,Module Cryo,Genesect Cryo
 727,9,Chill Drive,Chill Genesect
+728,9,reijuu forme,reijuu Tornadus
+729,9,reijuu forme,reijuu Thundurus
+730,9,reijuu forme,reijuu Landorus
+731,9,Black forme,Black Kyurem
+732,9,White forme,White Kyurem
