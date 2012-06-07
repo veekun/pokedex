@@ -6,7 +6,8 @@ by evolutionary stage.
 pokemon_species.id happens to match National ID, and it so happens that the
 only time Pokémon are out of evolutionary order if you sort by Nat'l ID is when
 they're pre-evos added to an already-existing family, which are always babies.
-So sort babies first, and then the rest of the family in Nat'l order.
+So sort babies first, and then the rest of the family in Nat'l order.  (Evo
+chain IDs happen to already be in the right order, too.)
 */
 
 UPDATE pokemon_species ps
