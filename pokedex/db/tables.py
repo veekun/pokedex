@@ -1412,6 +1412,8 @@ class PokemonSpecies(TableBase):
         info=dict(description="ID of the growth rate for this family"))
     forms_switchable = Column(Boolean, nullable=False,
         info=dict(description=u"True iff a particular individual of this species can switch beween its different forms."))
+    order = Column(Integer, nullable=False, index=True,
+        info=dict(description=u'The order in which species should be sorted.  Based on National Dex order, except families are grouped together and sorted by stage.'))
 
 create_translation_table('pokemon_species_names', PokemonSpecies, 'names',
     relation_lazy='joined',
