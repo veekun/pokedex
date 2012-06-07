@@ -2064,7 +2064,7 @@ PokemonSpecies.egg_groups = relationship(EggGroup,
     secondary=PokemonEggGroup.__table__,
     innerjoin=True,
     order_by=PokemonEggGroup.egg_group_id.asc(),
-    backref=backref('species', order_by=Pokemon.order.asc()))
+    backref=backref('species', order_by=PokemonSpecies.order.asc()))
 PokemonSpecies.forms = relationship(PokemonForm,
     secondary=Pokemon.__table__,
     primaryjoin=PokemonSpecies.id==Pokemon.species_id,
