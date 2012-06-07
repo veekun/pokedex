@@ -1,13 +1,10 @@
 /*
 Pokémon species order: National dex order, except that families are grouped
-together around whichever member has the lowest National ID, and then ordered
-by evolutionary stage.
+together around whichever member has the lowest National ID, with babies first.
 
-pokemon_species.id happens to match National ID, and it so happens that the
-only time Pokémon are out of evolutionary order if you sort by Nat'l ID is when
-they're pre-evos added to an already-existing family, which are always babies.
-So sort babies first, and then the rest of the family in Nat'l order.  (Evo
-chain IDs happen to already be in the right order, too.)
+Technically, the idea is to sort each evolutionary tree topologically, but
+National ID with babies first does the right thing.  The id column happens to
+match Nat'l order, and the evolutionary chain IDs are in the right order too.
 */
 
 UPDATE pokemon_species ps
