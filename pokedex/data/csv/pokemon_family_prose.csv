@@ -1,6 +1,8 @@
 pokemon_family_id,local_language_id,description
 10,9,"Spiky-eared Pichu can only be received by taking the shiny Pichu from an official promotion to []{pokemon:celebi}'s shrine in []{location:ilex-forest}.  Spiky-eared Pichu is always female, cannot evolve, and cannot be taken into the Wi-Fi Club or the Union Room, but is otherwise a normal Pichu."
+12,9,Nidoran♀ produces both Nidoran♂ and Nidoran♀ eggs. Neither Nidorina nor Nidoqueen can breed.
 99,9,Forms only affect appearance.  A form is determined at random before a wild encounter and cannot be changed.
+156,9,Illumise produces both Volbeat and Illumise eggs.
 179,9,"Form changes along with type to match the [weather]{mechanic:weather} in battle, due to []{ability:forecast}.  Castform is always in its normal form outside of battle, regardless of weather."
 202,9,"Forms have different stats and movepools.  In Generation III, Deoxys's form depends on the game: Normal Forme in Ruby and Sapphire, Attack Forme in FireRed, Defense Forme in LeafGreen, and Speed Forme in Emerald.  In Generation IV, every form exists: form is preserved when transferring via []{location:pal-park}, and meteorites in the southeast corner of []{location:veilstone-city} or at the west end of []{location:unova-route-3} can be used to switch between forms."
 213,9,"Burmy: Forms only affect appearance, although they become permanent upon evolution.  Wild and newly-hatched Burmy are always in a Plant Cloak.  Burmy's cloak changes to match the terrain after a battle it participated in: Plant Cloak by default; Sandy Cloak in sandy or rocky areas, such as beaches, caves, and trails; and Trash Cloak in buildings.
