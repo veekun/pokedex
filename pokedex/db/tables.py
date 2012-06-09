@@ -1021,24 +1021,24 @@ class NaturePokeathlonStat(TableBase):
         info=dict(description="Maximum change"))
 
 class PalPark(TableBase):
-    u"""Pal Park encounter info
+    u"""Data for the Pal Park mini-game in Generation IV
     """
 
     __tablename__ = 'pal_park'
     __singlename__ = 'pal_park'
 
     species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True,
-        info=dict(description="ID of the Pokémon species this data pertains to"))
+        info=dict(description="The Pokémon species this data pertains to"))
 
     area_id = Column(Integer, ForeignKey('pal_park_areas.id'), nullable=False,
-        info=dict(description="The area in which this Pokémon can be found"))
+        info=dict(description="The area in which this Pokémon is found"))
     base_score = Column(Integer, nullable=False,
-        info=dict(description="Value used in calculating the player's score in a Pal Park run"))
+        info=dict(description="Used in calculating the player's score at the end of a Pal Park run"))
     rate = Column(Integer, nullable=False,
         info=dict(description="Base rate for encountering this Pokémon"))
 
 class PalParkArea(TableBase):
-    u"""Pal Park areas enum
+    u"""A distinct area of Pal Park in which Pokémon appear.
     """
     __tablename__ = 'pal_park_areas'
     __singlename__ = 'pal_park_area'
@@ -1046,7 +1046,7 @@ class PalParkArea(TableBase):
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description="A numeric ID"))
     identifier = Column(Unicode(8), nullable=False,
-        info=dict(description="An identifier"))
+        info=dict(description="An identifier", format='identifier'))
 
 create_translation_table('pal_park_area_names', PalParkArea, 'names',
     name = Column(Unicode(8), nullable=False, index=True,
