@@ -118,6 +118,7 @@ def create_translation_table(_table_name, foreign_class, relation_name,
 
     Translations = type(_table_name, (object,), {
         '_language_identifier': association_proxy('local_language', 'identifier'),
+        'relation_name': relation_name,
     })
 
     # Create the table object
