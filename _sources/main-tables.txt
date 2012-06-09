@@ -114,6 +114,7 @@ Enum tables
 .. dex-table:: MoveMetaCategory
 .. dex-table:: MoveTarget
 .. dex-table:: Nature
+.. dex-table:: PalParkArea
 .. dex-table:: PokemonColor
 .. dex-table:: PokemonMoveMethod
 .. dex-table:: PokemonShape
@@ -157,6 +158,7 @@ Association tables
 .. dex-table:: PokemonItem
 .. dex-table:: PokemonType
 .. dex-table:: TypeEfficacy
+.. dex-table:: VersionGroupPokemonMoveMethod
 .. dex-table:: VersionGroupRegion
 
 Index maps
@@ -165,11 +167,13 @@ Index maps
 .. dex-table:: ItemGameIndex
 .. dex-table:: LocationGameIndex
 .. dex-table:: PokemonDexNumber
+.. dex-table:: PokemonFormGeneration
 .. dex-table:: PokemonGameIndex
 
 Mics tables
 -----------
 
 .. dex-table:: Experience
+.. dex-table:: PalPark
 .. dex-table:: StatHint
 
