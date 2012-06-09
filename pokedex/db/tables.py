@@ -403,30 +403,6 @@ class EncounterSlot(TableBase):
     rarity = Column(Integer, nullable=True,
         info=dict(description="The chance of the encounter as a percentage"))
 
-class EvolutionChain(TableBase):
-    u"""A family of Pokémon that are linked by evolution
-    """
-    __tablename__ = 'evolution_chains'
-    id = Column(Integer, primary_key=True, nullable=False,
-        info=dict(description="A numeric ID"))
-    baby_trigger_item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
-        info=dict(description="Item that a parent must hold while breeding to produce a baby"))
-
-class EvolutionTrigger(TableBase):
-    u"""An evolution type, such as "level" or "trade".
-    """
-    __tablename__ = 'evolution_triggers'
-    __singlename__ = 'evolution_trigger'
-    id = Column(Integer, primary_key=True, nullable=False,
-        info=dict(description="A numeric ID"))
-    identifier = Column(Unicode(16), nullable=False,
-        info=dict(description="An identifier", format='identifier'))
-
-create_translation_table('evolution_trigger_prose', EvolutionTrigger, 'prose',
-    name = Column(Unicode(16), nullable=False, index=True,
-        info=dict(description="The name", format='plaintext', official=False)),
-)
-
 class Experience(TableBase):
     u"""EXP needed for a certain level with a certain growth rate
     """
@@ -1220,7 +1196,7 @@ class PokemonEvolution(TableBase):
         info=dict(description=u"A numeric ID"))
     evolved_species_id = Column(Integer, ForeignKey('pokemon_species.id'), nullable=False,
         info=dict(description=u"The ID of the post-evolution species."))
-    evolution_trigger_id = Column(Integer, ForeignKey('evolution_triggers.id'), nullable=False,
+    trigger_id = Column(Integer, ForeignKey('pokemon_evolution_triggers.id'), nullable=False,
         info=dict(description=u"The ID of the evolution trigger."))
     trigger_item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
         info=dict(description=u"The ID of the item that must be used on the Pokémon."))
@@ -1246,6 +1222,31 @@ class PokemonEvolution(TableBase):
         info=dict(description=u"The ID of the species that must be present in the party."))
     trade_species_id = Column(Integer, ForeignKey('pokemon_species.id'), nullable=True,
         info=dict(description=u"The ID of the species for which this one must be traded."))
+
+class PokemonEvolutionTrigger(TableBase):
+    u"""An evolution type, such as "level" or "trade".
+    """
+    __tablename__ = 'pokemon_evolution_triggers'
+    __singlename__ = 'pokemon_evolution_trigger'
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    identifier = Column(Unicode(16), nullable=False,
+        info=dict(description="An identifier", format='identifier'))
+
+create_translation_table('pokemon_evolution_trigger_prose', PokemonEvolutionTrigger, 'prose',
+    name = Column(Unicode(16), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
+
+class PokemonFamily(TableBase):
+    u"""A group of Pokémon that are linked by evolution or breeding
+    """
+    __tablename__ = 'pokemon_families'
+    __singlename__ = 'pokemon_family'
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    baby_trigger_item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
+        info=dict(description="Item that a parent must hold while breeding to produce a baby"))
 
 class PokemonForm(TableBase):
     u"""An individual form of a Pokémon.  This includes *every* variant (except
@@ -1419,8 +1420,8 @@ class PokemonSpecies(TableBase):
         info=dict(description=u"ID of the generation this species first appeared in"))
     evolves_from_species_id = Column(Integer, ForeignKey('pokemon_species.id'), nullable=True,
         info=dict(description=u"The species from which this one evolves"))
-    evolution_chain_id = Column(Integer, ForeignKey('evolution_chains.id'),
-        info=dict(description=u"ID of the species' evolution chain (a.k.a. family)"))
+    family_id = Column(Integer, ForeignKey('pokemon_families.id'),
+        info=dict(description=u"ID of the species' evolution family"))
     color_id = Column(Integer, ForeignKey('pokemon_colors.id'), nullable=False,
         info=dict(description=u"ID of this Pokémon's Pokédex color, as used for a gimmick search function in the games."))
     shape_id = Column(Integer, ForeignKey('pokemon_shapes.id'), nullable=False,
@@ -1440,7 +1441,7 @@ class PokemonSpecies(TableBase):
     has_gender_differences = Column(Boolean, nullable=False,
         info=dict(description=u"Set iff the species exhibits enough sexual dimorphism to have separate sets of sprites in Gen IV and beyond."))
     growth_rate_id = Column(Integer, ForeignKey('growth_rates.id'), nullable=False,
-        info=dict(description="ID of the growth rate for this family"))
+        info=dict(description="ID of the growth rate for this species"))
     forms_switchable = Column(Boolean, nullable=False,
         info=dict(description=u"True iff a particular individual of this species can switch beween its different forms."))
 
@@ -1735,10 +1736,6 @@ EncounterSlot.method = relationship(EncounterMethod,
 EncounterSlot.version_group = relationship(VersionGroup, innerjoin=True)
 
 
-EvolutionChain.baby_trigger_item = relationship(Item,
-    backref='evolution_chains')
-
-
 Experience.growth_rate = relationship(GrowthRate,
     innerjoin=True, lazy='joined',
     backref='experience_table')
@@ -2004,7 +2001,7 @@ Pokemon.types = relationship(Type,
 PokemonDexNumber.pokedex = relationship(Pokedex,
     innerjoin=True, lazy='joined')
 
-PokemonEvolution.trigger = relationship(EvolutionTrigger,
+PokemonEvolution.trigger = relationship(PokemonEvolutionTrigger,
     innerjoin=True, lazy='joined',
     backref='evolutions')
 PokemonEvolution.trigger_item = relationship(Item,
@@ -2022,6 +2019,9 @@ PokemonEvolution.party_species = relationship(PokemonSpecies,
     backref='triggered_evolutions')
 PokemonEvolution.trade_species = relationship(PokemonSpecies,
     primaryjoin=PokemonEvolution.trade_species_id==PokemonSpecies.id)
+
+PokemonFamily.baby_trigger_item = relationship(Item,
+    backref='pokemon_families')
 
 PokemonForm.pokemon = relationship(Pokemon,
     primaryjoin=PokemonForm.pokemon_id==Pokemon.id,
@@ -2084,7 +2084,7 @@ PokemonSpecies.flavor_text = relationship(PokemonSpeciesFlavorText,
     backref='species')
 PokemonSpecies.growth_rate = relationship(GrowthRate,
     innerjoin=True,
-    backref='evolution_chains')
+    backref='species')
 PokemonSpecies.habitat = relationship(PokemonHabitat,
     backref='species')
 PokemonSpecies.color = relationship(PokemonColor,
@@ -2113,7 +2113,7 @@ PokemonSpecies.default_pokemon = relationship(Pokemon,
         PokemonSpecies.id==Pokemon.species_id,
         Pokemon.is_default==True),
     uselist=False, lazy='joined')
-PokemonSpecies.evolution_chain = relationship(EvolutionChain,
+PokemonSpecies.family = relationship(PokemonFamily,
     innerjoin=True,
     backref=backref('species', order_by=PokemonSpecies.id.asc()))
 PokemonSpecies.dex_numbers = relationship(PokemonDexNumber,

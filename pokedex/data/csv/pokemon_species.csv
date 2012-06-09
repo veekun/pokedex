@@ -1,4 +1,4 @@
-id,identifier,generation_id,evolves_from_species_id,evolution_chain_id,color_id,shape_id,habitat_id,gender_rate,capture_rate,base_happiness,is_baby,hatch_counter,has_gender_differences,growth_rate_id,forms_switchable
+id,identifier,generation_id,evolves_from_species_id,family_id,color_id,shape_id,habitat_id,gender_rate,capture_rate,base_happiness,is_baby,hatch_counter,has_gender_differences,growth_rate_id,forms_switchable
 1,bulbasaur,1,,1,5,8,3,1,45,70,0,20,0,4,0
 2,ivysaur,1,1,1,5,8,3,1,45,70,0,20,0,4,0
 3,venusaur,1,2,1,5,8,3,1,45,70,0,20,1,4,0

@@ -36,7 +36,7 @@ Pokémon
 .. dex-table:: PokemonSpecies
 .. dex-table:: Pokemon
 .. dex-table:: PokemonForm
-.. dex-table:: EvolutionChain
+.. dex-table:: PokemonFamily
 .. dex-table:: PokemonEvolution
 
 Moves
@@ -103,7 +103,6 @@ Enum tables
 .. dex-table:: BerryFirmness
 .. dex-table:: ContestType
 .. dex-table:: EggGroup
-.. dex-table:: EvolutionTrigger
 .. dex-table:: GrowthRate
 .. dex-table:: ItemCategory
 .. dex-table:: ItemFlingEffect
@@ -116,6 +115,7 @@ Enum tables
 .. dex-table:: Nature
 .. dex-table:: PalParkArea
 .. dex-table:: PokemonColor
+.. dex-table:: PokemonEvolutionTrigger
 .. dex-table:: PokemonMoveMethod
 .. dex-table:: PokemonShape
 .. dex-table:: Stat
