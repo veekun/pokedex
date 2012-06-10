@@ -1248,6 +1248,11 @@ class PokemonFamily(TableBase):
     baby_trigger_item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
         info=dict(description="Item that a parent must hold while breeding to produce a baby"))
 
+create_translation_table('pokemon_family_prose', PokemonFamily, 'prose',
+    description = Column(Unicode(1024), nullable=True,
+        info=dict(description=u"Any special notes about this family's forms, evolution methods, or breeding quirks.", format='markdown', string_getter=markdown.MarkdownString)),
+)
+
 class PokemonForm(TableBase):
     u"""An individual form of a Pokémon.  This includes *every* variant (except
     color differences) of every Pokémon, regardless of how the games treat
@@ -1456,10 +1461,6 @@ create_translation_table('pokemon_species_names', PokemonSpecies, 'names',
 create_translation_table('pokemon_species_flavor_summaries', PokemonSpecies, 'flavor_summaries',
     flavor_summary = Column(Unicode(512), nullable=True,
         info=dict(description=u"Text containing facts from all flavor texts, for languages without official game translations", official=False, format='plaintext', ripped=True)),
-)
-create_translation_table('pokemon_species_prose', PokemonSpecies, 'prose',
-    form_description = Column(Unicode(1024), nullable=True,
-        info=dict(description=u"Description of how the forms work", format='markdown', string_getter=markdown.MarkdownString)),
 )
 
 class PokemonSpeciesFlavorText(TableBase):
