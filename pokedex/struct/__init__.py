@@ -13,7 +13,7 @@ import struct
 from pokedex.db import tables
 from pokedex.formulae import calculated_hp, calculated_stat
 from pokedex.compatibility import namedtuple, permutations
-from pokedex.struct._pokemon_struct import pokemon_struct
+from pokedex.struct._pokemon_struct import make_pokemon_struct
 
 def pokemon_prng(seed):
     u"""Creates a generator that simulates the main Pokémon PRNG."""
@@ -22,43 +22,54 @@ def pokemon_prng(seed):
         seed &= 0xFFFFFFFF
         yield seed >> 16
 
-
 class SaveFilePokemon(object):
-    u"""Represents an individual Pokémon, from the game's point of view.
+    u"""Base class for an individual Pokémon, from the game's point of view.
 
     Handles translating between the on-disk encrypted form, the in-RAM blob
     (also used by pokesav), and something vaguely intelligible.
     """
-
     Stat = namedtuple('Stat', ['stat', 'base', 'gene', 'exp', 'calc'])
 
-    def __init__(self, blob, encrypted=False):
+    def __init__(self, blob=None, encrypted=False, session=None):
         u"""Wraps a Pokémon save struct in a friendly object.
 
         If `encrypted` is True, the blob will be decrypted as though it were an
         on-disk save.  Otherwise, the blob is taken to be already decrypted and
         is left alone.
 
-        `session` is an optional database session.
+        `session` is an optional database session. Either give it or fill it
+            later with `use_database_session`
         """
 
-        if encrypted:
-            # Decrypt it.
-            # Interpret as one word (pid), followed by a bunch of shorts
-            struct_def = "I" + "H" * ((len(blob) - 4) / 2)
-            shuffled = list( struct.unpack(struct_def, blob) )
+        try:
+            self.generation_id
+        except AttributeError:
+            raise NotImplementedError(
+                "Use generation-specific subclass of SaveFilePokemon")
 
-            # Apply standard Pokémon decryption, undo the block shuffling, and
-            # done
-            self.reciprocal_crypt(shuffled)
-            words = self.shuffle_chunks(shuffled, reverse=True)
-            self.blob = struct.pack(struct_def, *words)
+        if blob:
+            if encrypted:
+                # Decrypt it.
+                # Interpret as one word (pid), followed by a bunch of shorts
+                struct_def = "I" + "H" * ((len(blob) - 4) / 2)
+                shuffled = list( struct.unpack(struct_def, blob) )
 
+                # Apply standard Pokémon decryption, undo the block shuffling, and
+                # done
+                self.reciprocal_crypt(shuffled)
+                words = self.shuffle_chunks(shuffled, reverse=True)
+                self.blob = struct.pack(struct_def, *words)
+
+            else:
+                # Already decrypted
+                self.blob = blob
+
+            self.structure = self.pokemon_struct.parse(self.blob)
         else:
-            # Already decrypted
-            self.blob = blob
+            self.structure = self.pokemon_struct.parse('\0' * (32 * 4 + 8))
 
-        self.structure = pokemon_struct.parse(self.blob)
+        if session:
+            self.use_database_session(session)
 
     @property
     def as_struct(self):
@@ -98,64 +109,72 @@ class SaveFilePokemon(object):
 
     def use_database_session(self, session):
         """Remembers the given database session, and prefetches a bunch of
-        database stuff.  Gotta call this before you use the database properties
-        like `species`, etc.
+        database stuff.  Gotta call this (or give it to `__init__`) before
+        you use the database properties like `species`, etc.
         """
         self._session = session
 
         st = self.structure
-        self._pokemon = session.query(tables.Pokemon).get(st.national_id)
-        self._pokemon_form = session.query(tables.PokemonForm) \
-            .with_parent(self._pokemon) \
-            .filter_by(name=st.alternate_form) \
-            .one()
+
+        if st.national_id:
+            self._pokemon = session.query(tables.Pokemon).get(st.national_id)
+            self._pokemon_form = session.query(tables.PokemonForm) \
+                .with_parent(self._pokemon) \
+                .filter_by(form_identifier=st.alternate_form) \
+                .one()
+        else:
+            self._pokemon = self._pokemon_form = None
         self._ability = self._session.query(tables.Ability).get(st.ability_id)
 
-        growth_rate = self._pokemon.evolution_chain.growth_rate
-        self._experience_rung = session.query(tables.Experience) \
-            .filter(tables.Experience.growth_rate == growth_rate) \
-            .filter(tables.Experience.experience <= st.exp) \
-            .order_by(tables.Experience.level.desc()) \
-            [0]
-        level = self._experience_rung.level
-
-        self._next_experience_rung = None
-        if level < 100:
-            self._next_experience_rung = session.query(tables.Experience) \
+        if self._pokemon:
+            growth_rate = self._pokemon.species.growth_rate
+            self._experience_rung = session.query(tables.Experience) \
                 .filter(tables.Experience.growth_rate == growth_rate) \
-                .filter(tables.Experience.level == level + 1) \
-                .one()
+                .filter(tables.Experience.experience <= st.exp) \
+                .order_by(tables.Experience.level.desc()) \
+                [0]
+            level = self._experience_rung.level
+
+            self._next_experience_rung = None
+            if level < 100:
+                self._next_experience_rung = session.query(tables.Experience) \
+                    .filter(tables.Experience.growth_rate == growth_rate) \
+                    .filter(tables.Experience.level == level + 1) \
+                    .one()
 
         self._held_item = None
         if st.held_item_id:
             self._held_item = session.query(tables.ItemGameIndex) \
                 .filter_by(generation_id = 4, game_index = st.held_item_id).one().item
 
-        self._stats = []
-        for pokemon_stat in self._pokemon.stats:
-            structure_name = pokemon_stat.stat.name.lower().replace(' ', '_')
-            gene = st.ivs['iv_' + structure_name]
-            exp  = st['effort_' + structure_name]
+        if self._pokemon:
+            self._stats = []
+            for pokemon_stat in self._pokemon.stats:
+                structure_name = pokemon_stat.stat.name.lower().replace(' ', '_')
+                gene = st.ivs['iv_' + structure_name]
+                exp  = st['effort_' + structure_name]
 
-            if pokemon_stat.stat.name == u'HP':
-                calc = calculated_hp
-            else:
-                calc = calculated_stat
+                if pokemon_stat.stat.name == u'HP':
+                    calc = calculated_hp
+                else:
+                    calc = calculated_stat
 
-            stat_tup = self.Stat(
-                stat = pokemon_stat.stat,
-                base = pokemon_stat.base_stat,
-                gene = gene,
-                exp  = exp,
-                calc = calc(
-                    pokemon_stat.base_stat,
-                    level = level,
-                    iv = gene,
-                    effort = exp,
-                ),
-            )
+                stat_tup = self.Stat(
+                    stat = pokemon_stat.stat,
+                    base = pokemon_stat.base_stat,
+                    gene = gene,
+                    exp  = exp,
+                    calc = calc(
+                        pokemon_stat.base_stat,
+                        level = level,
+                        iv = gene,
+                        effort = exp,
+                    ),
+                )
 
-            self._stats.append(stat_tup)
+                self._stats.append(stat_tup)
+        else:
+            self._stats = [0] * 6
 
 
         move_ids = (
@@ -171,10 +190,13 @@ class SaveFilePokemon(object):
 
         if st.hgss_pokeball >= 17:
             pokeball_id = st.hgss_pokeball - 17 + 492
-        else:
+        elif st.dppt_pokeball:
             pokeball_id = st.dppt_pokeball
-        self._pokeball = session.query(tables.ItemGameIndex) \
-            .filter_by(generation_id = 4, game_index = pokeball_id).one().item
+        else:
+            pokeball_id = None
+        if pokeball_id:
+            self._pokeball = session.query(tables.ItemGameIndex) \
+                .filter_by(generation_id = 4, game_index = pokeball_id).one().item
 
         egg_loc_id = st.pt_egg_location_id or st.dp_egg_location_id
         met_loc_id = st.pt_met_location_id or st.dp_met_location_id
@@ -182,15 +204,25 @@ class SaveFilePokemon(object):
         self._egg_location = None
         if egg_loc_id:
             self._egg_location = session.query(tables.LocationGameIndex) \
-                .filter_by(generation_id = 4, game_index = egg_loc_id).one().location
+                .filter_by(generation_id = self.generation_id, game_index = egg_loc_id).one().location
 
-        self._met_location = session.query(tables.LocationGameIndex) \
-            .filter_by(generation_id = 4, game_index = met_loc_id).one().location
+        if met_loc_id:
+            self._met_location = session.query(tables.LocationGameIndex) \
+                .filter_by(generation_id = self.generation_id, game_index = met_loc_id).one().location
+        else:
+            self._met_location = None
 
     @property
     def species(self):
-        # XXX forme!
-        return self._pokemon
+        return self._pokemon_form.species
+
+    @property
+    def pokemon(self):
+        return self._pokemon_form.pokemon
+
+    @property
+    def form(self):
+        return self._pokemon_form
 
     @property
     def species_form(self):
@@ -207,16 +239,6 @@ class SaveFilePokemon(object):
     @property
     def met_location(self):
         return self._met_location
-
-    @property
-    def shiny_leaves(self):
-        return (
-            self.structure.shining_leaves.leaf1,
-            self.structure.shining_leaves.leaf2,
-            self.structure.shining_leaves.leaf3,
-            self.structure.shining_leaves.leaf4,
-            self.structure.shining_leaves.leaf5,
-        )
 
     @property
     def level(self):
@@ -319,3 +341,42 @@ class SaveFilePokemon(object):
                 words[i] ^= next(prng)
 
         return
+
+
+class SaveFilePokemonGen4(SaveFilePokemon):
+    generation_id = 4
+    pokemon_struct = make_pokemon_struct(generation=generation_id)
+
+    @property
+    def shiny_leaves(self):
+        return (
+            self.structure.shining_leaves.leaf1,
+            self.structure.shining_leaves.leaf2,
+            self.structure.shining_leaves.leaf3,
+            self.structure.shining_leaves.leaf4,
+            self.structure.shining_leaves.leaf5,
+        )
+
+
+class SaveFilePokemonGen5(SaveFilePokemon):
+    generation_id = 5
+    pokemon_struct = make_pokemon_struct(generation=generation_id)
+
+    def use_database_session(self, session):
+        super(SaveFilePokemonGen5, self).use_database_session(session)
+
+        st = self.structure
+
+        if st.nature_id:
+            self._nature = session.query(tables.Nature) \
+                .filter_by(game_index = st.nature_id).one()
+
+    @property
+    def nature(self):
+        return self._nature
+
+
+save_file_pokemon_classes = {
+    4: SaveFilePokemonGen4,
+    5: SaveFilePokemonGen5,
+}
