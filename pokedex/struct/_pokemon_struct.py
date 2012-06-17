@@ -18,7 +18,7 @@ from construct import *
 # - personality indirectly influences IVs due to PRNG use
 
 # The entire gen 4 character table:
-character_table = {
+character_table_gen4 = {
     0x0002: u'ぁ',
     0x0003: u'あ',
     0x0004: u'ぃ',
@@ -465,10 +465,64 @@ character_table = {
     0x25bd: u'\r',
 }
 
-# And the reverse dict, used with str.translate()
-inverse_character_table = dict()
-for in_, out in character_table.iteritems():
-    inverse_character_table[ord(out)] = in_
+# Generation 5 uses UCS-16, with a few exceptions
+character_table_gen5 = {
+    # Here nintendo just didn't do their homework:
+    0x247d: u'☂',
+    0x247b: u'☁',
+    0x247a: u'☀',
+    0x2479: u'♪',
+    0x2478: u'◇',
+    0x2477: u'△',
+    0x2476: u'□',
+    0x2475: u'○',
+    0x2474: u'◎',
+    0x2473: u'★',
+    0x2472: u'♦',
+    0x2471: u'♥',
+    0x2470: u'♣',
+    0x246f: u'♠',
+    0x246e: u'♀',
+    0x246d: u'♂',
+    0x246c: u'…',
+    0x2468: u'÷',
+    0x2467: u'×',
+    0x21d4: u'⤴',
+    0x2200: u'⤵',
+
+    # These aren't direct equivalents, but better than nothing:
+    0x0024: u'$',  # pokémoney sign
+    0x21d2: u'☹',  # frowny face
+    0x2203: u'ℤ',  # ZZ ligature
+    0x2227: u'☺',  # smiling face
+    0x2228: u'😁',  # grinning face
+    0xffe2: u'😭',  # hurt face
+
+    # The following duplicates & weird characters get to keep their positions
+    # ①..⑦
+    # 0x2460: halfwidth smiling face
+    # 0x2461: grinning face
+    # 0x2462: hurt face
+    # 0x2463: frowny face
+    # 0x2464: ⤴
+    # 0x2465: ⤵
+    # 0x2466: ZZ ligature
+    # ⑩..⑫
+    # 0x2469: superscript er
+    # 0x246a: superscript re
+    # 0x246b: superscript r
+    # ⑾..⒇
+    # 0x247e: halfwidth smiling face
+    # 0x247f: halfwidth grinning face
+    # 0x2480: halfwidth hurt face
+    # 0x2481: halfwidth frowny face
+    # 0x2482: halfwidth ⤴
+    # 0x2483: halfwidth ⤵
+    # 0x2484: halfwidth ZZ ligature
+    # 0x2485: superscript e
+    # 0x2486: PK ligature
+    # 0x2487: MN ligature
+}
 
 
 def LittleEndianBitStruct(*args):
@@ -488,8 +542,9 @@ def LittleEndianBitStruct(*args):
     )
 
 class PokemonStringAdapter(Adapter):
-    u"""Adapter that encodes/decodes Pokémon-formatted text stored in a regular
-    String struct.
+    u"""Base adapter for names
+
+    Encodes/decodes Pokémon-formatted text stored in a regular String struct.
     """
     def _decode(self, obj, context):
         decoded_text = obj.decode('utf16')
@@ -499,13 +554,25 @@ class PokemonStringAdapter(Adapter):
             decoded_text = decoded_text[0:decoded_text.index(u'\uffff')]
             # XXX save "trash bytes" somewhere..?
 
-        return decoded_text.translate(character_table)
+        return decoded_text.translate(self.character_table)
 
     def _encode(self, obj, context):
-        #padded_text = (obj + u'\xffff' + '\x00' * 12)
-        padded_text = obj
-        decoded_text = padded_text.translate(inverse_character_table)
+        padded_text = (obj + u'\uffff' + '\x00' * 20)
+        decoded_text = padded_text.translate(self.inverse_character_table)
         return decoded_text.encode('utf16')
+
+
+def make_pokemon_string_adapter(table, generation):
+    class _SpecificAdapter(PokemonStringAdapter):
+        character_table = table
+        inverse_character_table = dict((ord(v), k) for k, v in
+            table.iteritems())
+    _SpecificAdapter.__name__ = 'PokemonStringAdapterGen%s' % generation
+    return _SpecificAdapter
+
+PokemonStringAdapterGen4 = make_pokemon_string_adapter(character_table_gen4, 4)
+PokemonStringAdapterGen5 = make_pokemon_string_adapter(character_table_gen5, 5)
+
 
 class DateAdapter(Adapter):
     """Converts between a three-byte string and a Python date.
@@ -601,6 +668,11 @@ def make_pokemon_struct(generation):
     padding_or_hidden_ability = {
         4: Padding(1),
         5: Flag('hidden_ability'),
+    }[generation]
+
+    PokemonStringAdapter = {
+        4: PokemonStringAdapterGen4,
+        5: PokemonStringAdapterGen5,
     }[generation]
 
     return Struct('pokemon_struct',
