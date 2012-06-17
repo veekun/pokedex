@@ -541,25 +541,47 @@ def LittleEndianBitStruct(*args):
         resizer=lambda _: _,
     )
 
+
+class _String(unicode):
+    pass
+
+
 class PokemonStringAdapter(Adapter):
     u"""Base adapter for names
 
     Encodes/decodes Pokémon-formatted text stored in a regular String struct.
+
+    Returns an unicode subclass that has an ``original`` attribute with the
+    original unencoded value, complete with trash bytes.
+    On write, if the ``original`` is found, it is written with no regard to the
+    string value.
+    This ensures the trash bytes get written back untouched if the string is
+    unchanged.
     """
+    def __init__(self, field, length):
+        super(PokemonStringAdapter, self).__init__(field)
+        self.length = length
+
     def _decode(self, obj, context):
         decoded_text = obj.decode('utf16')
 
         # Real string ends at the \uffff character
         if u'\uffff' in decoded_text:
             decoded_text = decoded_text[0:decoded_text.index(u'\uffff')]
-            # XXX save "trash bytes" somewhere..?
 
-        return decoded_text.translate(self.character_table)
+        result = _String(decoded_text.translate(self.character_table))
+        result.original = obj  # save original with "trash bytes"
+        return result
 
     def _encode(self, obj, context):
-        padded_text = (obj + u'\uffff' + '\x00' * 20)
+        try:
+            return obj.original
+        except AttributeError:
+            pass
+        length = self.length
+        padded_text = (obj + u'\uffff' + '\x00' * length)
         decoded_text = padded_text.translate(self.inverse_character_table)
-        return decoded_text.encode('utf16')
+        return decoded_text.encode('utf16')[:length]
 
 
 def make_pokemon_string_adapter(table, generation):
@@ -640,7 +662,7 @@ class PokemonFormAdapter(Adapter):
         try:
             forms = self.pokemon_forms[ context['national_id'] ]
         except KeyError:
-            return None
+            return 0
 
         return forms.index(obj) << 3
 
@@ -830,7 +852,7 @@ def make_pokemon_struct(generation):
         ULInt16('pt_met_location_id'),
 
         # Block C
-        PokemonStringAdapter(String('nickname', 22)),
+        PokemonStringAdapter(String('nickname', 22), 22),
         Padding(1),
         Enum(ULInt8('original_version'),
             _unset = 0,
@@ -872,7 +894,7 @@ def make_pokemon_struct(generation):
         Padding(4),
 
         # Block D
-        PokemonStringAdapter(String('original_trainer_name', 16)),
+        PokemonStringAdapter(String('original_trainer_name', 16), 16),
         DateAdapter(String('date_egg_received', 3)),
         DateAdapter(String('date_met', 3)),
         ULInt16('dp_egg_location_id'),
