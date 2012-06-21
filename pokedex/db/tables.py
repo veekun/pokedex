@@ -1020,6 +1020,39 @@ class NaturePokeathlonStat(TableBase):
     max_change = Column(Integer, nullable=False,
         info=dict(description="Maximum change"))
 
+class PalPark(TableBase):
+    u"""Data for the Pal Park mini-game in Generation IV
+    """
+
+    __tablename__ = 'pal_park'
+    __singlename__ = 'pal_park'
+
+    species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True,
+        info=dict(description="The Pokémon species this data pertains to"))
+
+    area_id = Column(Integer, ForeignKey('pal_park_areas.id'), nullable=False,
+        info=dict(description="The area in which this Pokémon is found"))
+    base_score = Column(Integer, nullable=False,
+        info=dict(description="Used in calculating the player's score at the end of a Pal Park run"))
+    rate = Column(Integer, nullable=False,
+        info=dict(description="Base rate for encountering this Pokémon"))
+
+class PalParkArea(TableBase):
+    u"""A distinct area of Pal Park in which Pokémon appear.
+    """
+    __tablename__ = 'pal_park_areas'
+    __singlename__ = 'pal_park_area'
+
+    id = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description="A numeric ID"))
+    identifier = Column(Unicode(8), nullable=False,
+        info=dict(description="An identifier", format='identifier'))
+
+create_translation_table('pal_park_area_names', PalParkArea, 'names',
+    name = Column(Unicode(8), nullable=False, index=True,
+        info=dict(description="The name", format='plaintext', official=False)),
+)
+
 class PokeathlonStat(TableBase):
     u"""A Pokéathlon stat, such as "Stamina" or "Jump".
     """
@@ -1234,11 +1267,15 @@ class PokemonForm(TableBase):
         info=dict(description=u'Set for exactly one form used as the default for each pokemon (not necessarily species).'))
     is_battle_only = Column(Boolean, nullable=False,
         info=dict(description=u'Set iff the form can only appear in battle.'))
+    form_order = Column(Integer, nullable=False, autoincrement=False,
+        info=dict(description=u"The order in which forms should be sorted within a species' forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.  "
+                              u"Used in generating `pokemon_forms.order` and `pokemon.order`."))
     order = Column(Integer, nullable=False, autoincrement=False,
-        info=dict(description=u'The order in which forms should be sorted.  Multiple forms may have equal order, in which case they should fall back on sorting by name.'))
+        info=dict(description=u'The order in which forms should be sorted within all forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.'))
 
     @property
     def name(self):
+        """Name of this form: the form_name, if set; otherwise the species name"""
         return self.pokemon_name or self.species.name
 
 create_translation_table('pokemon_form_names', PokemonForm, 'names',
@@ -1409,6 +1446,8 @@ class PokemonSpecies(TableBase):
         info=dict(description="ID of the growth rate for this family"))
     forms_switchable = Column(Boolean, nullable=False,
         info=dict(description=u"True iff a particular individual of this species can switch beween its different forms."))
+    order = Column(Integer, nullable=False, index=True,
+        info=dict(description=u'The order in which species should be sorted.  Based on National Dex order, except families are grouped together and sorted by stage.'))
 
 create_translation_table('pokemon_species_names', PokemonSpecies, 'names',
     relation_lazy='joined',
@@ -1672,7 +1711,6 @@ ContestCombo.second = relationship(Move,
     innerjoin=True, lazy='joined',
     backref='contest_combo_second')
 
-
 Encounter.condition_value_map = relationship(EncounterConditionValueMap,
     backref='encounter')
 Encounter.condition_values = association_proxy('condition_value_map', 'condition_value')
@@ -1904,6 +1942,10 @@ NaturePokeathlonStat.pokeathlon_stat = relationship(PokeathlonStat,
     backref='nature_effects')
 
 
+PalPark.area = relationship(PalParkArea,
+    innerjoin=True, lazy='joined')
+
+
 Pokedex.region = relationship(Region,
     innerjoin=True,
     backref='pokedexes')
@@ -1917,10 +1959,8 @@ Pokemon.all_abilities = relationship(Ability,
     secondary=PokemonAbility.__table__,
     order_by=PokemonAbility.slot.asc(),
     innerjoin=True,
-    backref=backref('all_pokemon',
-        order_by=Pokemon.order.asc(),
-    ),
-)
+    backref=backref('all_pokemon', order_by=Pokemon.order.asc()),
+    doc=u"All abilities the Pokémon can have, including the Hidden Ability")
 Pokemon.abilities = relationship(Ability,
     secondary=PokemonAbility.__table__,
     primaryjoin=and_(
@@ -1929,10 +1969,8 @@ Pokemon.abilities = relationship(Ability,
     ),
     innerjoin=True,
     order_by=PokemonAbility.slot.asc(),
-    backref=backref('pokemon',
-        order_by=Pokemon.order.asc(),
-    ),
-)
+    backref=backref('pokemon', order_by=Pokemon.order.asc()),
+    doc=u"Abilities the Pokémon can have in the wild")
 Pokemon.dream_ability = relationship(Ability,
     secondary=PokemonAbility.__table__,
     primaryjoin=and_(
@@ -1940,10 +1978,8 @@ Pokemon.dream_ability = relationship(Ability,
         PokemonAbility.is_dream == True,
     ),
     uselist=False,
-    backref=backref('dream_pokemon',
-        order_by=Pokemon.order,
-    ),
-)
+    backref=backref('dream_pokemon', order_by=Pokemon.order),
+    doc=u"The Pokémon's Hidden Ability")
 Pokemon.forms = relationship(PokemonForm,
     primaryjoin=Pokemon.id==PokemonForm.pokemon_id,
     order_by=(PokemonForm.order.asc(), PokemonForm.form_identifier.asc()),
@@ -1952,9 +1988,11 @@ Pokemon.default_form = relationship(PokemonForm,
     primaryjoin=and_(
         Pokemon.id==PokemonForm.pokemon_id,
         PokemonForm.is_default==True),
-    uselist=False, lazy='joined')
+    uselist=False, lazy='joined',
+    doc=u"A representative form of this pokémon")
 Pokemon.items = relationship(PokemonItem,
-    backref='pokemon')
+    backref='pokemon',
+    doc=u"Info about items this pokémon holds in the wild")
 Pokemon.stats = relationship(PokemonStat,
     innerjoin=True,
     order_by=PokemonStat.stat_id.asc(),
@@ -2040,7 +2078,9 @@ PokemonStat.stat = relationship(Stat,
 PokemonSpecies.parent_species = relationship(PokemonSpecies,
     primaryjoin=PokemonSpecies.evolves_from_species_id==PokemonSpecies.id,
     remote_side=[PokemonSpecies.id],
-    backref='child_species')
+    backref=backref('child_species',
+        doc=u"The species to which this one evolves"),
+    doc=u"The species from which this one evolves")
 PokemonSpecies.evolutions = relationship(PokemonEvolution,
     primaryjoin=PokemonSpecies.id==PokemonEvolution.evolved_species_id,
     backref=backref('evolved_species', innerjoin=True, lazy='joined'))
@@ -2059,7 +2099,7 @@ PokemonSpecies.egg_groups = relationship(EggGroup,
     secondary=PokemonEggGroup.__table__,
     innerjoin=True,
     order_by=PokemonEggGroup.egg_group_id.asc(),
-    backref=backref('species', order_by=Pokemon.order.asc()))
+    backref=backref('species', order_by=PokemonSpecies.order.asc()))
 PokemonSpecies.forms = relationship(PokemonForm,
     secondary=Pokemon.__table__,
     primaryjoin=PokemonSpecies.id==Pokemon.species_id,
@@ -2071,7 +2111,8 @@ PokemonSpecies.default_form = relationship(PokemonForm,
             Pokemon.is_default==True),
     secondaryjoin=and_(Pokemon.id==PokemonForm.pokemon_id,
             PokemonForm.is_default==True),
-    uselist=False)
+    uselist=False,
+    doc=u"A representative form of this species")
 PokemonSpecies.default_pokemon = relationship(Pokemon,
     primaryjoin=and_(
         PokemonSpecies.id==Pokemon.species_id,
@@ -2089,6 +2130,9 @@ PokemonSpecies.generation = relationship(Generation,
     backref='species')
 PokemonSpecies.shape = relationship(PokemonShape,
     innerjoin=True,
+    backref='species')
+PokemonSpecies.pal_park = relationship(PalPark,
+    uselist=False,
     backref='species')
 
 PokemonSpeciesFlavorText.version = relationship(Version, innerjoin=True, lazy='joined')
