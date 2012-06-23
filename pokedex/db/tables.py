@@ -1992,6 +1992,7 @@ Pokemon.default_form = relationship(PokemonForm,
     doc=u"A representative form of this pokémon")
 Pokemon.items = relationship(PokemonItem,
     backref='pokemon',
+    order_by=PokemonItem.rarity.desc(),
     doc=u"Info about items this pokémon holds in the wild")
 Pokemon.stats = relationship(PokemonStat,
     innerjoin=True,
