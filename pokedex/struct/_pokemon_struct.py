@@ -792,7 +792,7 @@ def make_pokemon_struct(generation):
         ULInt8('move3_pp_ups'),
         ULInt8('move4_pp_ups'),
 
-        LittleEndianBitStruct('ivs',
+        Embed(LittleEndianBitStruct('ivs',
             Flag('is_nicknamed'),
             Flag('is_egg'),
             BitField('iv_special_defense', 5),
@@ -801,7 +801,7 @@ def make_pokemon_struct(generation):
             BitField('iv_defense', 5),
             BitField('iv_attack', 5),
             BitField('iv_hp', 5),
-        ),
+        )),
         LittleEndianBitStruct('hoenn_ribbons',
             Flag('world_ribbon'),
             Flag('earth_ribbon'),
@@ -836,7 +836,7 @@ def make_pokemon_struct(generation):
             Flag('cool_ribbon_super'),
             Flag('cool_ribbon'),
         ),
-        EmbeddedBitStruct(
+        Embed(EmbeddedBitStruct(
             PokemonFormAdapter(BitField('alternate_form', 5)),
             Enum(BitField('gender', 2),
                 genderless = 2,
@@ -844,7 +844,7 @@ def make_pokemon_struct(generation):
                 female = 1,
             ),
             Flag('fateful_encounter'),
-        ),
+        )),
         leaves_or_nature,
         padding_or_hidden_ability,
         Padding(1),
