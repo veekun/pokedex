@@ -10,7 +10,7 @@ Here is a small example of using pokedex:
 
     from pokedex.db import connect, tables, util
     session = connect()
-    pokemon = util.get(session, tables.PokemonSpecies, 'bulbasaur')
+    pokemon = util.get(session, tables.PokemonSpecies, u'bulbasaur')
     print u'{0.name}, the {0.genus} Pokemon'.format(pokemon)
 
 Running this will give you some Bulbasaur info:
@@ -25,8 +25,8 @@ Connecting
 To get information out of the Pokédex, you will need to create a
 :class:`Session <pokedex.db.multilang.MultilangSession>`. To do that, use
 :func:`pokedex.db.connect`. For simple uses, you don't need to give it any
-arguments: it the database that ``pokedex load`` fills up by default. If you
-need to select another database, give its URI as the first argument.
+arguments: it uses the database that ``pokedex load`` fills up by default. If
+you need to select another database, give its URI as the first argument.
 
 The object :func:`~pokedex.db.connect` gives you is actually a
 :class:`SQLAlchemy session <sqlalchemy.orm.session.Session>`, giving you the
@@ -57,15 +57,15 @@ its identifier, name, or ID, and returns it.
     def print_pokemon(pokemon):
         print u'{0.name}, the {0.genus} Pokemon'.format(pokemon)
 
-    print_pokemon(util.get(session, tables.PokemonSpecies, identifier='eevee'))
+    print_pokemon(util.get(session, tables.PokemonSpecies, identifier=u'eevee'))
     print_pokemon(util.get(session, tables.PokemonSpecies, name=u'Ho-Oh'))
     print_pokemon(util.get(session, tables.PokemonSpecies, id=50))
 
     def print_item(item):
         print u'{0.name}: ${0.cost}'.format(item)
 
-    print_item(util.get(session, tables.Item, identifier='great-ball'))
-    print_item(util.get(session, tables.Item, name='Potion'))
+    print_item(util.get(session, tables.Item, identifier=u'great-ball'))
+    print_item(util.get(session, tables.Item, name=u'Potion'))
     print_item(util.get(session, tables.Item, id=30))
 
 .. testoutput::
@@ -154,7 +154,7 @@ example:
 
     query = session.query(tables.Move)
     query = query.join(tables.Move.type)
-    query = query.filter(tables.Type.identifier == 'grass')
+    query = query.filter(tables.Type.identifier == u'grass')
     query = query.filter(tables.Move.power >= 100)
     query = query.order_by(tables.Move.power)
     query = query.order_by(tables.Move.name)
