@@ -217,6 +217,48 @@ class BerryFlavor(TableBase):
     flavor = Column(Integer, nullable=False,
         info=dict(description="The level of the flavor in the berry"))
 
+class ConquestKingdom(TableBase):
+    u"""A kingdom in Pokémon Conquest.
+    """
+    __tablename__ = 'conquest_kingdoms'
+    __singlename__ = 'kingdom'
+    id = Column(Integer, primary_key=True,
+        info=dict(description="An ID for this kingdom."))
+    identifier = Column(Unicode(9), nullable=False,
+        info=dict(description="A readable identifier for this kingdom.", format='identifier'))
+    type_id = Column(Integer, ForeignKey('types.id'), nullable=False,
+        info=dict(description="The type associated with this kingdom in-game."))
+
+create_translation_table('conquest_kingdom_names', ConquestKingdom, 'names',
+    relation_lazy='joined',
+    name=Column(Unicode(9), nullable=False, index=True,
+        info=dict(description='The name.', format='plaintext', official=True))
+)
+
+class ConquestPokemonEvolution(TableBase):
+    u"""The conditions under which a Pokémon must successfully complete an
+    action to evolve in Pokémon Conquest.
+
+    Any condition may be null if it does not apply for a particular Pokémon.
+    """
+    __tablename__ = 'conquest_pokemon_evolution'
+    evolved_species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True, nullable=False,
+        info=dict(description=u"The ID of the post-evolution species."))
+    required_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=True,
+        info=dict(description=u"The ID of the stat which minimum_stat applies to."))
+    minimum_stat = Column(Integer, nullable=True,
+        info=dict(description=u"The minimum value the Pokémon must have in a particular stat."))
+    minimum_link = Column(Integer, nullable=True,
+        info=dict(description=u"The minimum link percentage the Pokémon must have with its warrior."))
+    kingdom_id = Column(Integer, ForeignKey('conquest_kingdoms.id'), nullable=True,
+        info=dict(description=u"The ID of the kingdom in which this Pokémon must complete an action after meeting all other requirements."))
+    warrior_gender = Column(Enum('male', 'female', name='conquest_warrior_gender'), nullable=True,
+        info=dict(description=u"The required gender for the Pokémon's warrior."))
+    item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
+        info=dict(description=u"The ID of the item the Pokémon's warrior must have equipped."))
+    recruiting_ko_required = Column(Boolean, nullable=False, server_default='False',
+        info=dict(description=u"If true, the Pokémon must KO a Pokémon under the right conditions to recruit that Pokémon's warrior."))
+
 class ContestCombo(TableBase):
     u"""Combo of two moves in a Contest.
     """
