@@ -1,4 +1,4 @@
-evolved_species_id,required_stat_id,minimum_stat,minimum_link,kingdom_id,warrior_gender,item_id,recruiting_ko_required
+evolved_species_id,required_stat_id,minimum_stat,minimum_link,kingdom_id,warrior_gender_id,item_id,recruiting_ko_required
 5,2,50,,,,,0
 6,2,83,,,,,0
 24,2,59,,,,,0
@@ -68,9 +68,9 @@ evolved_species_id,required_stat_id,minimum_stat,minimum_link,kingdom_id,warrior
 464,,,,,,298,1
 470,3,94,,5,,,0
 471,2,91,,6,,,0
-475,,,,,male,109,0
+475,,,,,2,109,0
 477,,,,,,302,1
-478,,,,,female,109,0
+478,,,,,1,109,0
 496,6,54,,,,,0
 497,6,104,,,,,0
 499,2,41,,,,,0

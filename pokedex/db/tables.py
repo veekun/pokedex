@@ -252,8 +252,8 @@ class ConquestPokemonEvolution(TableBase):
         info=dict(description=u"The minimum link percentage the Pokémon must have with its warrior."))
     kingdom_id = Column(Integer, ForeignKey('conquest_kingdoms.id'), nullable=True,
         info=dict(description=u"The ID of the kingdom in which this Pokémon must complete an action after meeting all other requirements."))
-    warrior_gender = Column(Enum('male', 'female', name='conquest_warrior_gender'), nullable=True,
-        info=dict(description=u"The required gender for the Pokémon's warrior."))
+    warrior_gender_id = Column(Integer, ForeignKey('genders.id'), nullable=True,
+        info=dict(description=u"The ID of the gender the Pokémon's warrior must be."))
     item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
         info=dict(description=u"The ID of the item the Pokémon's warrior must have equipped."))
     recruiting_ko_required = Column(Boolean, nullable=False, server_default='False',
@@ -479,6 +479,16 @@ class Experience(TableBase):
         info=dict(description="The level"))
     experience = Column(Integer, nullable=False,
         info=dict(description="The number of EXP points needed to get to that level"))
+
+class Gender(TableBase):
+    u"""A gender.
+    """
+    __tablename__ = 'genders'
+    __singlename__ = 'gender'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True,
+        info=dict(description='An ID for this gender.'))
+    identifier = Column(Unicode(10), nullable=False,
+        info=dict(description='A readable identifier for this gender.'))
 
 class Generation(TableBase):
     u"""A Generation of the Pokémon franchise
@@ -1268,8 +1278,8 @@ class PokemonEvolution(TableBase):
         info=dict(description=u"The ID of the item that must be used on the Pokémon."))
     minimum_level = Column(Integer, nullable=True,
         info=dict(description=u"The minimum level for the Pokémon."))
-    gender = Column(Enum('male', 'female', name='pokemon_evolution_gender'), nullable=True,
-        info=dict(description=u"The Pokémon's required gender, or None if gender doesn't matter"))
+    gender_id = Column(Integer, ForeignKey('genders.id'), nullable=True,
+        info=dict(description=u"The ID of the Pokémon's required gender, or None if gender doesn't matter"))
     location_id = Column(Integer, ForeignKey('locations.id'), nullable=True,
         info=dict(description=u"The ID of the location the evolution must be triggered at."))
     held_item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
@@ -2070,6 +2080,8 @@ PokemonEvolution.party_species = relationship(PokemonSpecies,
     backref='triggered_evolutions')
 PokemonEvolution.trade_species = relationship(PokemonSpecies,
     primaryjoin=PokemonEvolution.trade_species_id==PokemonSpecies.id)
+PokemonEvolution.gender = relationship(Gender,
+    backref='required_for_evolutions')
 
 PokemonForm.pokemon = relationship(Pokemon,
     primaryjoin=PokemonForm.pokemon_id==Pokemon.id,
