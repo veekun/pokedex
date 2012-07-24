@@ -222,7 +222,7 @@ class ConquestKingdom(TableBase):
     """
     __tablename__ = 'conquest_kingdoms'
     __singlename__ = 'kingdom'
-    id = Column(Integer, primary_key=True,
+    id = Column(Integer, primary_key=True, autoincrement=True,
         info=dict(description="An ID for this kingdom."))
     identifier = Column(Unicode(9), nullable=False,
         info=dict(description="A readable identifier for this kingdom.", format='identifier'))
@@ -258,6 +258,76 @@ class ConquestPokemonEvolution(TableBase):
         info=dict(description=u"The ID of the item the Pokémon's warrior must have equipped."))
     recruiting_ko_required = Column(Boolean, nullable=False, server_default='False',
         info=dict(description=u"If true, the Pokémon must KO a Pokémon under the right conditions to recruit that Pokémon's warrior."))
+
+class ConquestWarrior(TableBase):
+    u"""A warrior in Pokémon Conquest.
+    """
+    __tablename__ = 'conquest_warriors'
+    __singlename__ = 'warrior'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True,
+        info=dict(description='An ID for this warrior.'))
+    identifier = Column(Unicode(13), nullable=False,
+        info=dict(description='A readable identifier for this warrior.', format='identifier'))
+    gender_id = Column(Integer, ForeignKey('genders.id'), nullable=False,
+        info=dict(description="The ID of the warrior's gender."))
+
+create_translation_table('conquest_warrior_names', ConquestWarrior, 'names',
+    relation_lazy='joined',
+    name=Column(Unicode(15), nullable=False, index=True,
+        info=dict(description='The name.', format='plaintext', official=True))
+)
+
+class ConquestWarriorRank(TableBase):
+    u"""A warrior rank in Pokémon Conquest.
+
+    These are used for whatever changes between ranks, much like Pokémon forms.
+    Generic warriors who have only one rank are also represented here, with a
+    single row.
+
+    To clarify, each warrior's ranks are individually called "warrior ranks"
+    here; for example, "Rank 2 Nobunaga" is an example of a warrior rank, not
+    just "Rank 2".
+    """
+    __tablename__ = 'conquest_warrior_ranks'
+    __singlename__ = 'warrior_rank'
+    warrior_id = Column(Integer, ForeignKey('conquest_warriors.id'), primary_key=True, nullable=False,
+        info=dict(description=u'The ID of the warrior.'))
+    rank = Column(Integer, primary_key=True, nullable=False,
+        info=dict(description=u'The rank number.'))
+    skill_id = Column(Integer, ForeignKey('conquest_warrior_skills.id'), nullable=False,
+        info=dict(description=u"The ID of this warrior rank's warrior skill."))
+    capacity = Column(Integer, nullable=False,
+        info=dict(description=u'The number of Pokémon this warrior rank can be linked with at a time.'))
+
+class ConquestWarriorSkill(TableBase):
+    u"""A warrior skill in Pokémon Conquest.
+    """
+    __tablename__ = 'conquest_warrior_skills'
+    __singlename__ = 'skill'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True,
+        info=dict(description='An ID for this skill.'))
+    identifier = Column(Unicode(15), nullable=False,
+        info=dict(description='A readable identifier for this skill.', format='identifier'))
+
+create_translation_table('conquest_warrior_skill_names', ConquestWarriorSkill, 'names',
+    relation_lazy='joined',
+    name=Column(Unicode(15), nullable=False, index=True,
+        info=dict(description='The name.', format='plaintext', official=True))
+)
+
+class ConquestWarriorSpecialty(TableBase):
+    u"""A warrior's specialty types in Pokémon Conquest.
+
+    These have no actual effect on gameplay; they just indicate which types of
+    Pokémon each warrior generally has strong maximum links with.
+    """
+    __tablename__ = 'conquest_warrior_specialties'
+    warrior_id = Column(Integer, ForeignKey('conquest_warriors.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u'The ID of the warrior.'))
+    type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u'The ID of the type.'))
+    slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"The order in which the warrior's types are listed."))
 
 class ContestCombo(TableBase):
     u"""Combo of two moves in a Contest.
