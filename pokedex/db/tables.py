@@ -271,11 +271,27 @@ class ConquestPokemonEvolution(TableBase):
     recruiting_ko_required = Column(Boolean, nullable=False, server_default='False',
         info=dict(description=u"If true, the Pokémon must KO a Pokémon under the right conditions to recruit that Pokémon's warrior."))
 
+class ConquestPokemonStat(TableBase):
+    u"""A Pokémon's base stat in Pokémon Conquest.
+
+    The main four base stats in Conquest are derived from level 100 stats in
+    the main series (ignoring effort, genes, and natures).  Attack matches
+    either Attack or Special Attack, and Defense matches the average of Defense
+    and Special Defense.  HP and Speed are the same.
+    """
+    __tablename__ = 'conquest_pokemon_stats'
+    pokemon_species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True, autoincrement=False,
+        info=dict(description=u'The ID of the Pokémon species.'))
+    conquest_stat_id = Column(Integer, ForeignKey('conquest_stats.id'), primary_key=True, autoincrement=False,
+        info=dict(description=u'The ID of the stat.'))
+    stat = Column(Integer, nullable=False,
+        info=dict(description=u'The base stat.'))
+
 class ConquestStat(TableBase):
-    u"""A stat for Pokémon in Pokémon Conquest.
+    u"""A stat Pokémon have in Pokémon Conquest.
     """
     __tablename__ = 'conquest_stats'
-    __singlename__ = 'conquest_stat'
+    __singlename__ = 'conquest_stat'  # To be safe
     id = Column(Integer, primary_key=True, autoincrement=True,
         info=dict(desription=u'An ID for this stat.'))
     identifier = Column(Unicode(7), nullable=False,
