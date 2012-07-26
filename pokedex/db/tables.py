@@ -247,6 +247,17 @@ class ConquestMaxLink(TableBase):
     max_link = Column(Integer, nullable=False,
         info=dict(description='The maximum link percentage this warrior rank and Pokémon can reach.'))
 
+class ConquestPokemonAbility(TableBase):
+    u"""An ability a Pokémon species has in Pokémon Conquest.
+    """
+    __tablename__ = 'conquest_pokemon_abilities'
+    pokemon_species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u'The ID of the Pokémon species with this ability.'))
+    slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
+        info=dict(description=u"The order abilities are listed in.  Upon evolution, if a Pokémon's abilities change, it will receive the one in the same slot."))
+    ability_id = Column(Integer, ForeignKey('abilities.id'), nullable=False,
+        info=dict(description=u'The ID of the ability.'))
+
 class ConquestPokemonEvolution(TableBase):
     u"""The conditions under which a Pokémon must successfully complete an
     action to evolve in Pokémon Conquest.
@@ -270,6 +281,17 @@ class ConquestPokemonEvolution(TableBase):
         info=dict(description=u"The ID of the item the Pokémon's warrior must have equipped."))
     recruiting_ko_required = Column(Boolean, nullable=False, server_default='False',
         info=dict(description=u"If true, the Pokémon must KO a Pokémon under the right conditions to recruit that Pokémon's warrior."))
+
+class ConquestPokemonMove(TableBase):
+    u"""A Pokémon's move in Pokémon Conquest.
+
+    Yes, "move"; each Pokémon has exactly one.
+    """
+    __tablename__ = 'conquest_pokemon_moves'
+    pokemon_species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True, autoincrement=False,
+        info=dict(description=u'The ID of the Pokémon species.'))
+    move_id = Column(Integer, ForeignKey('moves.id'), nullable=False,
+        info=dict(description=u'The ID of the move.'))
 
 class ConquestPokemonStat(TableBase):
     u"""A Pokémon's base stat in Pokémon Conquest.
