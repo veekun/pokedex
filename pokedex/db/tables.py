@@ -235,6 +235,18 @@ create_translation_table('conquest_kingdom_names', ConquestKingdom, 'names',
         info=dict(description='The name.', format='plaintext', official=True))
 )
 
+class ConquestMaxLink(TableBase):
+    u"""The maximum link a warrior rank can reach with a Pokémon in Pokémon
+    Conquest.
+    """
+    __tablename__ = 'conquest_max_links'
+    warrior_rank_id = Column(Integer, ForeignKey('conquest_warrior_ranks.id'), primary_key=True,
+        info=dict(description="The ID of the warrior rank."))
+    pokemon_species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True,
+        info=dict(description='The ID of the Pokémon species.'))
+    max_link = Column(Integer, nullable=False,
+        info=dict(description='The maximum link percentage this warrior rank and Pokémon can reach.'))
+
 class ConquestPokemonEvolution(TableBase):
     u"""The conditions under which a Pokémon must successfully complete an
     action to evolve in Pokémon Conquest.
@@ -278,7 +290,7 @@ create_translation_table('conquest_warrior_names', ConquestWarrior, 'names',
 )
 
 class ConquestWarriorRank(TableBase):
-    u"""A warrior rank in Pokémon Conquest.
+    u"""A warrior at a particular rank in Pokémon Conquest.
 
     These are used for whatever changes between ranks, much like Pokémon forms.
     Generic warriors who have only one rank are also represented here, with a
@@ -290,14 +302,21 @@ class ConquestWarriorRank(TableBase):
     """
     __tablename__ = 'conquest_warrior_ranks'
     __singlename__ = 'warrior_rank'
-    warrior_id = Column(Integer, ForeignKey('conquest_warriors.id'), primary_key=True, nullable=False,
+    id = Column(Integer, primary_key=True, autoincrement=True,
+        info=dict(description=u'An ID for this warrior rank.'))
+    warrior_id = Column(Integer, ForeignKey('conquest_warriors.id'), nullable=False,
         info=dict(description=u'The ID of the warrior.'))
-    rank = Column(Integer, primary_key=True, nullable=False,
+    rank = Column(Integer, nullable=False,
         info=dict(description=u'The rank number.'))
     skill_id = Column(Integer, ForeignKey('conquest_warrior_skills.id'), nullable=False,
         info=dict(description=u"The ID of this warrior rank's warrior skill."))
     capacity = Column(Integer, nullable=False,
         info=dict(description=u'The number of Pokémon this warrior rank can be linked with at a time.'))
+
+    __table_args__ = (
+        UniqueConstraint(warrior_id, rank),
+        {},
+    )
 
 class ConquestWarriorSkill(TableBase):
     u"""A warrior skill in Pokémon Conquest.
