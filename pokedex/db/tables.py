@@ -334,14 +334,14 @@ class ConquestWarrior(TableBase):
     __singlename__ = 'warrior'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True,
         info=dict(description='An ID for this warrior.'))
-    identifier = Column(Unicode(13), nullable=False,
+    identifier = Column(Unicode(10), nullable=False,
         info=dict(description='A readable identifier for this warrior.', format='identifier'))
     gender_id = Column(Integer, ForeignKey('genders.id'), nullable=False,
         info=dict(description="The ID of the warrior's gender."))
 
 create_translation_table('conquest_warrior_names', ConquestWarrior, 'names',
     relation_lazy='joined',
-    name=Column(Unicode(15), nullable=False, index=True,
+    name=Column(Unicode(10), nullable=False, index=True,
         info=dict(description='The name.', format='plaintext', official=True))
 )
 
