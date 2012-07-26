@@ -87,6 +87,8 @@ _table_order = dict(
     types=5,
     locations=6,
     natures=7,
+    conquest_warriors=8,
+    conquest_kingdoms=9,
 )
 def _table_facet_impl(searcher, docnum):
     u"""Implements a sort that puts different "types" of results in a
@@ -116,6 +118,9 @@ class PokedexLookup(object):
             tables.PokemonSpecies,
             tables.PokemonForm,
             tables.Type,
+
+            tables.ConquestKingdom,
+            tables.ConquestWarrior
         )
     )
 
