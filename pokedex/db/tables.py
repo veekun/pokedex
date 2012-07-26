@@ -256,7 +256,7 @@ class ConquestPokemonEvolution(TableBase):
     __tablename__ = 'conquest_pokemon_evolution'
     evolved_species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True, nullable=False,
         info=dict(description=u"The ID of the post-evolution species."))
-    required_stat_id = Column(Integer, ForeignKey('stats.id'), nullable=True,
+    required_stat_id = Column(Integer, ForeignKey('conquest_stats.id'), nullable=True,
         info=dict(description=u"The ID of the stat which minimum_stat applies to."))
     minimum_stat = Column(Integer, nullable=True,
         info=dict(description=u"The minimum value the Pokémon must have in a particular stat."))
@@ -270,6 +270,24 @@ class ConquestPokemonEvolution(TableBase):
         info=dict(description=u"The ID of the item the Pokémon's warrior must have equipped."))
     recruiting_ko_required = Column(Boolean, nullable=False, server_default='False',
         info=dict(description=u"If true, the Pokémon must KO a Pokémon under the right conditions to recruit that Pokémon's warrior."))
+
+class ConquestStat(TableBase):
+    u"""A stat for Pokémon in Pokémon Conquest.
+    """
+    __tablename__ = 'conquest_stats'
+    __singlename__ = 'conquest_stat'
+    id = Column(Integer, primary_key=True, autoincrement=True,
+        info=dict(desription=u'An ID for this stat.'))
+    identifier = Column(Unicode(7), nullable=False,
+        info=dict(description=u'A readable identifier for this stat.', format='identifier'))
+    is_base = Column(Boolean, nullable=False,
+        info=dict(description=u'True iff this is one of the main stats, calculated for individual Pokémon.'))
+
+create_translation_table('conquest_stat_names', ConquestStat, 'names',
+    relation_lazy='joined',
+    name=Column(Unicode(10), nullable=False, index=True,
+        info=dict(description='The name.', format='plaintext', official=True))
+)
 
 class ConquestWarrior(TableBase):
     u"""A warrior in Pokémon Conquest.
