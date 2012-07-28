@@ -374,6 +374,16 @@ class ConquestWarriorRank(TableBase):
         {},
     )
 
+class ConquestWarriorRankStatMap(TableBase):
+    u"""Any of a warrior rank's warrior stats in Pokémon Conquest."""
+    __tablename__ = 'conquest_warrior_rank_stat_map'
+    warrior_rank_id = Column(Integer, ForeignKey('conquest_warrior_ranks.id'), primary_key=True, autoincrement=False,
+        info=dict(description=u'The ID of the warrior rank.'))
+    warrior_stat_id = Column(Integer, ForeignKey('conquest_warrior_stats.id'), primary_key=True, autoincrement=False,
+        info=dict(description=u'The ID of the warrior stat.'))
+    stat = Column(Integer, nullable=False,
+        info=dict(description=u'The stat.'))
+
 class ConquestWarriorSkill(TableBase):
     u"""A warrior skill in Pokémon Conquest.
     """
@@ -403,6 +413,21 @@ class ConquestWarriorSpecialty(TableBase):
         info=dict(description=u'The ID of the type.'))
     slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"The order in which the warrior's types are listed."))
+
+class ConquestWarriorStat(TableBase):
+    u"""A stat that warriors have in Pokémon Conquest."""
+    __tablename__ = 'conquest_warrior_stats'
+    __singlename__ = 'warrior_stat'
+    id = Column(Integer, primary_key=True, autoincrement=True,
+        info=dict(description=u'An ID for this stat.'))
+    identifier = Column(Unicode(8), nullable=False,
+        info=dict(description=u'A readable identifier for this stat.'))
+
+create_translation_table('conquest_warrior_stat_names', ConquestWarriorStat, 'names',
+    relation_lazy='joined',
+    name=Column(Unicode(15), nullable=False, index=True,
+        info=dict(description='The name.', format='plaintext', official=True))
+)
 
 class ContestCombo(TableBase):
     u"""Combo of two moves in a Contest.
