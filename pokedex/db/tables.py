@@ -306,7 +306,7 @@ class ConquestPokemonStat(TableBase):
         info=dict(description=u'The ID of the Pokémon species.'))
     conquest_stat_id = Column(Integer, ForeignKey('conquest_stats.id'), primary_key=True, autoincrement=False,
         info=dict(description=u'The ID of the stat.'))
-    stat = Column(Integer, nullable=False,
+    base_stat = Column(Integer, nullable=False,
         info=dict(description=u'The base stat.'))
 
 class ConquestStat(TableBase):
@@ -1924,6 +1924,58 @@ Berry.natural_gift_type = relationship(Type, innerjoin=True)
 BerryFlavor.contest_type = relationship(ContestType, innerjoin=True)
 
 
+ConquestKingdom.type = relationship(Type,
+    uselist=False,
+    innerjoin=True, lazy='joined',
+    backref=backref('conquest_kingdom', uselist=False))
+
+ConquestMaxLink.pokemon = relationship(PokemonSpecies,
+    uselist=False,
+    innerjoin=True, lazy='joined',
+    backref=backref('conquest_max_links', lazy='dynamic',
+                    order_by=ConquestMaxLink.warrior_rank_id))
+ConquestMaxLink.warrior_rank = relationship(ConquestWarriorRank,
+    uselist=False,
+    innerjoin=True, lazy='joined',
+    backref='max_links')
+ConquestMaxLink.warrior = association_proxy('warrior_rank', 'warrior')
+
+ConquestPokemonEvolution.gender = relationship(Gender,
+    backref='conquest_evolutions')
+ConquestPokemonEvolution.item = relationship(Item,
+    backref='conquest_evolutions')
+ConquestPokemonEvolution.kingdom = relationship(ConquestKingdom,
+    backref='evolutions')
+ConquestPokemonEvolution.stat = relationship(ConquestStat,
+    backref='evolutions')
+
+ConquestPokemonStat.pokemon = relationship(PokemonSpecies,
+    uselist=False,
+    backref='conquest_stats')
+ConquestPokemonStat.stat = relationship(ConquestStat,
+    uselist=False,
+    backref='pokemon_stats')
+
+ConquestWarrior.ranks = relationship(ConquestWarriorRank,
+    order_by=ConquestWarriorRank.rank,
+    innerjoin=True, lazy='joined',
+    backref=backref('warrior', uselist=False))
+ConquestWarrior.types = relationship(Type,
+    secondary=ConquestWarriorSpecialty.__table__,
+    order_by=ConquestWarriorSpecialty.slot,
+    innerjoin=True, lazy='joined',
+    backref='conquest_warriors')
+
+ConquestWarriorRank.skill = relationship(ConquestWarriorSkill,
+    uselist=False,
+    innerjoin=True, lazy='joined',
+    backref='warrior_ranks')
+ConquestWarriorRank.stats = relationship(ConquestWarriorRankStatMap,
+    innerjoin=True, lazy='joined',
+    order_by = ConquestWarriorRankStatMap.warrior_stat_id,
+    backref=backref('warrior_rank', uselist=False, innerjoin=True))
+
+
 ContestCombo.first = relationship(Move,
     primaryjoin=ContestCombo.first_move_id==Move.id,
     innerjoin=True, lazy='joined',
@@ -2359,6 +2411,26 @@ PokemonSpecies.shape = relationship(PokemonShape,
 PokemonSpecies.pal_park = relationship(PalPark,
     uselist=False,
     backref='species')
+
+PokemonSpecies.conquest_abilities = relationship(Ability,
+    secondary=ConquestPokemonAbility.__table__,
+    order_by=ConquestPokemonAbility.slot,
+    backref=backref('conquest_pokemon', order_by=PokemonSpecies.conquest_order,
+                    innerjoin=True))
+PokemonSpecies.conquest_move = relationship(Move,
+    secondary=ConquestPokemonMove.__table__,
+    uselist=False,
+    backref=backref('conquest_pokemon', order_by=PokemonSpecies.conquest_order))
+PokemonSpecies.conquest_evolution = relationship(ConquestPokemonEvolution,
+    uselist=False,
+    backref=backref('conquest_evolved_species', innerjoin=True, lazy='joined'))
+#PokemonSpecies.conquest_main_stats = relationship(ConquestPokemonStat,
+#    primaryjoin=and_(PokemonSpecies.id == ConquestPokemonStat.pokemon_species_id,
+#                     ConquestPokemonStat.stat.is_base == True))
+#PokemonSpecies.conquest_range = relationship(ConquestPokemonStat,
+#    primaryjoin=and_(PokemonSpecies.id == ConquestPokemonStat.pokemon_species_id,
+#                     ConquestPokemonStat.stat.identifier == 'range'),
+#    uselist=False)
 
 PokemonSpeciesFlavorText.version = relationship(Version, innerjoin=True, lazy='joined')
 PokemonSpeciesFlavorText.language = relationship(Language, innerjoin=True, lazy='joined')
