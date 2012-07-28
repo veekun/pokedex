@@ -1301,6 +1301,8 @@ class Pokedex(TableBase):
         info=dict(description=u"ID of the region this Pokédex is used in, or None if it's global"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
+    is_main_series = Column(Boolean, nullable=False,
+        info=dict(description=u'True if this Pokédex appears in the main series.'))
 
 create_translation_table('pokedex_prose', Pokedex, 'prose',
     relation_lazy='joined',
@@ -1670,6 +1672,8 @@ class PokemonSpecies(TableBase):
         info=dict(description=u"True iff a particular individual of this species can switch beween its different forms."))
     order = Column(Integer, nullable=False, index=True,
         info=dict(description=u'The order in which species should be sorted.  Based on National Dex order, except families are grouped together and sorted by stage.'))
+    conquest_order = Column(Integer, nullable=True, index=True,
+        info=dict(description=u'The order in which species should be sorted for Pokémon Conquest-related tables.  Matches gallery order.'))
 
 create_translation_table('pokemon_species_names', PokemonSpecies, 'names',
     relation_lazy='joined',
