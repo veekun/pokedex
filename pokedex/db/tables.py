@@ -338,12 +338,29 @@ class ConquestWarrior(TableBase):
         info=dict(description='A readable identifier for this warrior.', format='identifier'))
     gender_id = Column(Integer, ForeignKey('genders.id'), nullable=False,
         info=dict(description="The ID of the warrior's gender."))
+    archetype_id = Column(Integer, ForeignKey('conquest_warrior_archetypes.id'), nullable=True,
+        info=dict(description="The ID of this warrior's archetype.  Null for unique warriors."))
 
 create_translation_table('conquest_warrior_names', ConquestWarrior, 'names',
     relation_lazy='joined',
     name=Column(Unicode(10), nullable=False, index=True,
         info=dict(description='The name.', format='plaintext', official=True))
 )
+
+class ConquestWarriorArchetype(TableBase):
+    u"""An archetype that generic warriors in Pokémon Conquest can have.  All
+    warriors of a particular archetype share sprites and dialogue.
+
+    Some of these are unused as warriors because they exist only as NPCs.  They
+    should still be kept because we have their sprites and may eventually get
+    their dialogue.
+    """
+    __tablename__ = 'conquest_warrior_archetypes'
+    __singlename__ = 'archetype'
+    id = Column(Integer, primary_key=True, autoincrement=True,
+        info=dict(description='An ID for this archetype.'))
+    identifier = Column(Unicode(15), nullable=False,
+        info=dict(description='A readable identifier describing this archetype.', format='identifier'))
 
 class ConquestWarriorRank(TableBase):
     u"""A warrior at a particular rank in Pokémon Conquest.
