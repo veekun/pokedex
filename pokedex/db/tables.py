@@ -398,7 +398,7 @@ class ConquestWarriorRankStatMap(TableBase):
         info=dict(description=u'The ID of the warrior rank.'))
     warrior_stat_id = Column(Integer, ForeignKey('conquest_warrior_stats.id'), primary_key=True, autoincrement=False,
         info=dict(description=u'The ID of the warrior stat.'))
-    stat = Column(Integer, nullable=False,
+    base_stat = Column(Integer, nullable=False,
         info=dict(description=u'The stat.'))
 
 class ConquestWarriorSkill(TableBase):
@@ -1958,7 +1958,7 @@ ConquestMaxLink.pokemon = relationship(PokemonSpecies,
 ConquestMaxLink.warrior_rank = relationship(ConquestWarriorRank,
     uselist=False,
     innerjoin=True, lazy='joined',
-    backref='max_links')
+    backref=backref('max_links', lazy='dynamic'))
 ConquestMaxLink.warrior = association_proxy('warrior_rank', 'warrior')
 
 ConquestPokemonEvolution.gender = relationship(Gender,
@@ -1977,6 +1977,9 @@ ConquestPokemonStat.stat = relationship(ConquestStat,
     uselist=False,
     backref='pokemon_stats')
 
+ConquestWarrior.archetype = relationship(ConquestWarriorArchetype,
+    uselist=False,
+    backref=backref('warriors'))
 ConquestWarrior.ranks = relationship(ConquestWarriorRank,
     order_by=ConquestWarriorRank.rank,
     innerjoin=True, lazy='joined',
@@ -1990,11 +1993,16 @@ ConquestWarrior.types = relationship(Type,
 ConquestWarriorRank.skill = relationship(ConquestWarriorSkill,
     uselist=False,
     innerjoin=True, lazy='joined',
-    backref='warrior_ranks')
+    backref=backref('warrior_ranks', order_by=ConquestWarriorRank.id))
 ConquestWarriorRank.stats = relationship(ConquestWarriorRankStatMap,
     innerjoin=True, lazy='joined',
     order_by = ConquestWarriorRankStatMap.warrior_stat_id,
     backref=backref('warrior_rank', uselist=False, innerjoin=True))
+
+ConquestWarriorRankStatMap.stat = relationship(ConquestWarriorStat,
+    innerjoin=True, lazy='joined',
+    uselist=False,
+    backref='stat_map')
 
 
 ContestCombo.first = relationship(Move,
