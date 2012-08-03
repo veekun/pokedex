@@ -247,6 +247,69 @@ class ConquestMaxLink(TableBase):
     max_link = Column(Integer, nullable=False,
         info=dict(description='The maximum link percentage this warrior rank and Pokémon can reach.'))
 
+class ConquestMoveData(TableBase):
+    u"""Data about a move in Pokémon Conquest.
+    """
+    __tablename__ = 'conquest_move_data'
+    move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, autoincrement=False,
+        info=dict(description=u'The ID of the move.'))
+    power = Column(Integer, nullable=True,
+        info=dict(description=u"The move's power, null if it does no damage."))
+    accuracy = Column(Integer, nullable=True,
+        info=dict(description=u"The move's base accuracy, null if it is self-targetted or never misses."))
+    effect_chance = Column(Integer, nullable=True,
+        info=dict(description=u"The chance as a percentage that the move's secondary effect will trigger."))
+    effect_id = Column(Integer, ForeignKey('conquest_move_effects.id'), nullable=False,
+        info=dict(description=u"The ID of the move's effect."))
+    range_id = Column(Integer, ForeignKey('conquest_move_ranges.id'), nullable=False,
+        info=dict(description=u"The ID of the move's range."))
+    displacement_id = Column(Integer, ForeignKey('conquest_move_displacements.id'), nullable=True,
+        info=dict(description=u"The ID of the move's displacement."))
+
+    @property
+    def star_rating(self):
+        """Return the move's in-game power rating as a number of stars."""
+        if not self.power:
+            return 0
+        else:
+            stars = (self.power - 1) // 10
+            stars = min(stars, 5)  # i.e. maximum of 5 stars
+            stars = max(stars, 1)  # And minimum of 1
+            return stars
+
+class ConquestMoveEffect(TableBase):
+    u"""An effect moves can have in Pokémon Conquest.
+    """
+    __tablename__ = 'conquest_move_effects'
+    __singlename__ = 'conquest_move_effect'
+    id = Column(Integer, primary_key=True, autoincrement=True,
+        info=dict(description=u'An ID for this effect.'))
+
+class ConquestMoveRange(TableBase):
+    u"""A range moves can have in Pokémon Conquest."""
+    __tablename__ = 'conquest_move_ranges'
+    __singlename__ = 'conquest_move_range'
+    id = Column(Integer, primary_key=True, autoincrement=True,
+        info=dict(description=u'An ID for this range.'))
+    identifier = Column(Unicode(16), nullable=False,
+        info=dict(description=u'A readable identifier for this range.'))
+
+class ConquestMoveDisplacement(TableBase):
+    u"""A way in which a move can cause the user or target to move to a
+    different tile.
+
+    If a move displaces its user, the move's range is relative to the user's
+    original position.
+    """
+    __tablename__ = 'conquest_move_displacements'
+    __singlename__ = 'move_displacement'
+    id = Column(Integer, primary_key=True, autoincrement=True,
+        info=dict(description=u'An ID for this displacement.'))
+    identifier = Column(Unicode(11), nullable=False,
+        info=dict(description=u'A readable identifier for this displacement.'))
+    affects_target = Column(Boolean, nullable=False,
+        info=dict(description=u'True iff the move displaces its target(s) and not its user.'))
+
 class ConquestPokemonAbility(TableBase):
     u"""An ability a Pokémon species has in Pokémon Conquest.
     """
@@ -1960,6 +2023,15 @@ ConquestMaxLink.warrior_rank = relationship(ConquestWarriorRank,
     innerjoin=True, lazy='joined',
     backref=backref('max_links', lazy='dynamic'))
 ConquestMaxLink.warrior = association_proxy('warrior_rank', 'warrior')
+
+ConquestMoveData.effect = relationship(ConquestMoveEffect,
+    uselist=False,
+    innerjoin=True, lazy='joined',
+    backref='moves')
+ConquestMoveData.move = relationship(Move,
+    uselist=False,
+    innerjoin=True, lazy='joined',
+    backref='conquest_data')
 
 ConquestPokemonEvolution.gender = relationship(Gender,
     backref='conquest_evolutions')
