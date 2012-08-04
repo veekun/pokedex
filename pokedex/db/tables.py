@@ -293,13 +293,15 @@ create_translation_table('conquest_move_effect_prose', ConquestMoveEffect, 'pros
 )
 
 class ConquestMoveRange(TableBase):
-    u"""A range moves can have in Pokémon Conquest."""
+    u"""A set of tiles moves can target in Pokémon Conquest."""
     __tablename__ = 'conquest_move_ranges'
     __singlename__ = 'conquest_move_range'
     id = Column(Integer, primary_key=True, autoincrement=True,
         info=dict(description=u'An ID for this range.'))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u'A readable identifier for this range.'))
+    targets = Column(Integer, nullable=False,
+        info=dict(description=u'The number of tiles this range targets.'))
 
 create_translation_table('conquest_move_range_prose', ConquestMoveRange, 'prose',
     name = Column(Unicode(20), nullable=True,
