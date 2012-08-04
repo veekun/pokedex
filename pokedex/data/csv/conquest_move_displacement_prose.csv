@@ -1,0 +1,5 @@
+move_displacement_id,local_language_id,short_effect,effect
+1,9,User advances one tile.,"The user moves to the tile directly in front of it.  If the user cannot occupy that tile or another Pokémon is already occupying that tile, the move cannot be used."
+2,9,User jumps ahead two tiles.,"The user jumps ahead two tiles without crossing the tile in-between.  If the user cannot occupy that tile or another Pokémon is already occupying that tile, the move cannot be used."
+3,9,"User retreats one tile, switching places with any Pokémon already there.","The user moves to the tile behind it, if it can occupy that tile.  If another Pokémon is already occupying that tile, the user switches places with it."
+4,9,Deals knockback.,All targets are knocked one tile backward in the direction the user is facing.

@@ -285,6 +285,13 @@ class ConquestMoveEffect(TableBase):
     id = Column(Integer, primary_key=True, autoincrement=True,
         info=dict(description=u'An ID for this effect.'))
 
+create_translation_table('conquest_move_effect_prose', ConquestMoveEffect, 'prose',
+    short_effect = Column(Unicode(256), nullable=True,
+        info=dict(description="A short summary of the effect", format='markdown')),
+    effect = Column(Unicode(5120), nullable=True,
+        info=dict(description="A detailed description of the effect", format='markdown')),
+)
+
 class ConquestMoveRange(TableBase):
     u"""A range moves can have in Pokémon Conquest."""
     __tablename__ = 'conquest_move_ranges'
@@ -293,6 +300,13 @@ class ConquestMoveRange(TableBase):
         info=dict(description=u'An ID for this range.'))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u'A readable identifier for this range.'))
+
+create_translation_table('conquest_move_range_prose', ConquestMoveRange, 'prose',
+    name = Column(Unicode(20), nullable=True,
+        info=dict(description="A short name briefly describing the range", format='plaintext')),
+    description = Column(Unicode(256), nullable=True,
+        info=dict(description="A detailed description of the range", format='plaintext')),
+)
 
 class ConquestMoveDisplacement(TableBase):
     u"""A way in which a move can cause the user or target to move to a
@@ -309,6 +323,13 @@ class ConquestMoveDisplacement(TableBase):
         info=dict(description=u'A readable identifier for this displacement.'))
     affects_target = Column(Boolean, nullable=False,
         info=dict(description=u'True iff the move displaces its target(s) and not its user.'))
+
+create_translation_table('conquest_move_displacement_prose', ConquestMoveDisplacement, 'prose',
+    short_effect = Column(Unicode(128), nullable=True,
+        info=dict(description="A short summary of how the displacement works, to be used with the move's short effect.", format='plaintext')),
+    effect = Column(Unicode(256), nullable=True,
+        info=dict(description="A detailed description of how the displacement works, to be used with the move's long effect.", format='plaintext')),
+)
 
 class ConquestPokemonAbility(TableBase):
     u"""An ability a Pokémon species has in Pokémon Conquest.
