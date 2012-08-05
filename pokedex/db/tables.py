@@ -321,16 +321,18 @@ class ConquestMoveDisplacement(TableBase):
     __singlename__ = 'move_displacement'
     id = Column(Integer, primary_key=True, autoincrement=True,
         info=dict(description=u'An ID for this displacement.'))
-    identifier = Column(Unicode(11), nullable=False,
+    identifier = Column(Unicode(18), nullable=False,
         info=dict(description=u'A readable identifier for this displacement.'))
     affects_target = Column(Boolean, nullable=False,
         info=dict(description=u'True iff the move displaces its target(s) and not its user.'))
 
 create_translation_table('conquest_move_displacement_prose', ConquestMoveDisplacement, 'prose',
+    name = Column(Unicode(20), nullable=True,
+        info=dict(description='A name for the displacement.', format='plaintext')),
     short_effect = Column(Unicode(128), nullable=True,
-        info=dict(description="A short summary of how the displacement works, to be used with the move's short effect.", format='plaintext')),
+        info=dict(description="A short summary of how the displacement works, to be used in the move's short effect.", format='markdown')),
     effect = Column(Unicode(256), nullable=True,
-        info=dict(description="A detailed description of how the displacement works, to be used with the move's long effect.", format='plaintext')),
+        info=dict(description="A detailed description of how the displacement works, to be used alongside the move's long effect.", format='markdown')),
 )
 
 class ConquestPokemonAbility(TableBase):
@@ -2047,14 +2049,28 @@ ConquestMaxLink.warrior_rank = relationship(ConquestWarriorRank,
     backref=backref('max_links', lazy='dynamic'))
 ConquestMaxLink.warrior = association_proxy('warrior_rank', 'warrior')
 
-ConquestMoveData.effect = relationship(ConquestMoveEffect,
+ConquestMoveData.move_displacement = relationship(ConquestMoveDisplacement,
     uselist=False,
-    innerjoin=True, lazy='joined',
-    backref='moves')
+    backref='move_data')
 ConquestMoveData.move = relationship(Move,
     uselist=False,
     innerjoin=True, lazy='joined',
-    backref='conquest_data')
+    backref=backref('conquest_data', uselist=False))
+ConquestMoveData.move_effect = relationship(ConquestMoveEffect,
+    innerjoin=True,
+    backref='move_data')
+ConquestMoveData.range = relationship(ConquestMoveRange,
+    innerjoin=True,
+    backref='move_data')
+
+ConquestMoveData.effect = markdown.MoveEffectProperty(('move_effect', 'effect'))
+ConquestMoveData.effect_map = markdown.MoveEffectPropertyMap(('move_effect', 'effect_map'))
+ConquestMoveData.short_effect = markdown.MoveEffectProperty(
+    ('move_effect', 'short_effect'),
+    ('move_displacement', 'short_effect')
+)
+ConquestMoveData.short_effect_map = markdown.MoveEffectPropertyMap(('move_effect', 'short_effect_map'))
+ConquestMoveData.displacement = markdown.MoveEffectProperty(('move_displacement', 'effect'))
 
 ConquestPokemonEvolution.gender = relationship(Gender,
     backref='conquest_evolutions')

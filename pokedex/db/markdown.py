@@ -99,9 +99,20 @@ def _markdownify_effect_text(move, effect_text, language=None):
     effect_text = effect_text.replace(
         u'$effect_chance',
         unicode(move.effect_chance),
+    ).replace(
+        u'$target',
+        _target_labels[move.range.targets > 1]
+    ).replace(
+        u'$Target',
+        _target_labels[move.range.targets > 1].capitalize()
     )
 
     return MarkdownString(effect_text, session, language)
+
+_target_labels = {
+    False: 'the target',
+    True: 'each target'
+}
 
 class MoveEffectProperty(object):
     """Property that wraps move effects.  Used like this:
@@ -117,16 +128,26 @@ class MoveEffectProperty(object):
     Use `MoveEffectPropertyMap` for dict-like association proxies.
     """
 
-    def __init__(self, effect_column):
-        self.effect_column = effect_column
+    def __init__(self, *effect_columns):
+        self.effect_columns = effect_columns
 
     def __get__(self, obj, cls):
         if obj is None:
             return self
         if obj.move_effect is None:
             return None
-        prop = getattr(obj.move_effect, self.effect_column)
-        return _markdownify_effect_text(obj, prop)
+        props = []
+        for prop, column in self.effect_columns:
+            prop = getattr(obj, prop)
+            if prop is None:
+                continue
+
+            column = getattr(prop, column)
+            if column is None:
+                print(prop)
+            props.append(column)
+
+        return _markdownify_effect_text(obj, '  '.join(prop for prop in props))
 
 class MoveEffectPropertyMap(MoveEffectProperty):
     """Similar to `MoveEffectProperty`, but works on dict-like association
