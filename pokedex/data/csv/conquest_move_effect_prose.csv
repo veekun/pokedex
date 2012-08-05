@@ -53,3 +53,4 @@ This move still misses Pokémon under the effects of []{move:dig} or []{move:sky
 66,9,Has a $effect_chance% chance to poison $target and an increased chance for a critical hit.,
 67,9,Heals the user by half the damage inflicted.  Only works if $target is asleep.,"Inflicts damage if $target is asleep, and fails otherwise.  Heals the user for half as many HP as it dealt in damage."
 68,9,Hits twice in one turn.  Has a $effect_chance% chance to poison $target with each hit.,Inflicts regular damage.  Hits twice in one turn.  Has a $effect_chance% chance to poison $target with each hit.
+69,9,Does nothing.,Does nothing.
