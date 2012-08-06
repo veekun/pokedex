@@ -128,26 +128,18 @@ class MoveEffectProperty(object):
     Use `MoveEffectPropertyMap` for dict-like association proxies.
     """
 
-    def __init__(self, *effect_columns):
-        self.effect_columns = effect_columns
+    def __init__(self, effect_column, relationship='move_effect'):
+        self.effect_column = effect_column
+        self.relationship = relationship
 
     def __get__(self, obj, cls):
         if obj is None:
             return self
         if obj.move_effect is None:
             return None
-        props = []
-        for prop, column in self.effect_columns:
-            prop = getattr(obj, prop)
-            if prop is None:
-                continue
-
-            column = getattr(prop, column)
-            if column is None:
-                print(prop)
-            props.append(column)
-
-        return _markdownify_effect_text(obj, '  '.join(prop for prop in props))
+        thing = getattr(obj, self.relationship)
+        prop = getattr(thing, self.effect_column)
+        return _markdownify_effect_text(obj, prop)
 
 class MoveEffectPropertyMap(MoveEffectProperty):
     """Similar to `MoveEffectProperty`, but works on dict-like association

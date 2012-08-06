@@ -2063,14 +2063,11 @@ ConquestMoveData.range = relationship(ConquestMoveRange,
     innerjoin=True,
     backref='move_data')
 
-ConquestMoveData.effect = markdown.MoveEffectProperty(('move_effect', 'effect'))
-ConquestMoveData.effect_map = markdown.MoveEffectPropertyMap(('move_effect', 'effect_map'))
-ConquestMoveData.short_effect = markdown.MoveEffectProperty(
-    ('move_effect', 'short_effect'),
-    ('move_displacement', 'short_effect')
-)
-ConquestMoveData.short_effect_map = markdown.MoveEffectPropertyMap(('move_effect', 'short_effect_map'))
-ConquestMoveData.displacement = markdown.MoveEffectProperty(('move_displacement', 'effect'))
+ConquestMoveData.effect = markdown.MoveEffectProperty('effect')
+ConquestMoveData.effect_map = markdown.MoveEffectPropertyMap('effect_map')
+ConquestMoveData.short_effect = markdown.MoveEffectProperty('short_effect')
+ConquestMoveData.short_effect_map = markdown.MoveEffectPropertyMap('short_effect_map')
+ConquestMoveData.displacement = markdown.MoveEffectProperty('effect', relationship='move_displacement')
 
 ConquestPokemonEvolution.gender = relationship(Gender,
     backref='conquest_evolutions')
