@@ -99,13 +99,18 @@ def _markdownify_effect_text(move, effect_text, language=None):
     effect_text = effect_text.replace(
         u'$effect_chance',
         unicode(move.effect_chance),
-    ).replace(
-        u'$target',
-        _target_labels[move.range.targets > 1]
-    ).replace(
-        u'$Target',
-        _target_labels[move.range.targets > 1].capitalize()
     )
+
+    # "The target" vs "each target"; for Conquest, but hopefully main series
+    # moves too eventually
+    if hasattr(move, 'range'):
+        effect_text = effect_text.replace(
+            u'$target',
+            _target_labels[move.range.targets > 1]
+        ).replace(
+            u'$Target',
+            _target_labels[move.range.targets > 1].capitalize()
+        )
 
     return MarkdownString(effect_text, session, language)
 
