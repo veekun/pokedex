@@ -471,8 +471,6 @@ class ConquestWarriorRank(TableBase):
         info=dict(description=u'The rank number.'))
     skill_id = Column(Integer, ForeignKey('conquest_warrior_skills.id'), nullable=False,
         info=dict(description=u"The ID of this warrior rank's warrior skill."))
-    capacity = Column(Integer, nullable=False,
-        info=dict(description=u'The number of Pokémon this warrior rank can be linked with at a time.'))
 
     __table_args__ = (
         UniqueConstraint(warrior_id, rank),
