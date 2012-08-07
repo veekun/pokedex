@@ -2055,10 +2055,10 @@ ConquestMoveData.move = relationship(Move,
     innerjoin=True, lazy='joined',
     backref=backref('conquest_data', uselist=False))
 ConquestMoveData.move_effect = relationship(ConquestMoveEffect,
-    innerjoin=True,
+    innerjoin=True, lazy='joined',
     backref='move_data')
 ConquestMoveData.range = relationship(ConquestMoveRange,
-    innerjoin=True,
+    innerjoin=True, lazy='joined',
     backref='move_data')
 
 ConquestMoveData.effect = markdown.MoveEffectProperty('effect')
@@ -2078,9 +2078,11 @@ ConquestPokemonEvolution.stat = relationship(ConquestStat,
 
 ConquestPokemonStat.pokemon = relationship(PokemonSpecies,
     uselist=False,
+    innerjoin=True, lazy='joined',
     backref='conquest_stats')
 ConquestPokemonStat.stat = relationship(ConquestStat,
     uselist=False,
+    innerjoin=True, lazy='joined',
     backref='pokemon_stats')
 
 ConquestWarrior.archetype = relationship(ConquestWarriorArchetype,
@@ -2088,12 +2090,12 @@ ConquestWarrior.archetype = relationship(ConquestWarriorArchetype,
     backref=backref('warriors'))
 ConquestWarrior.ranks = relationship(ConquestWarriorRank,
     order_by=ConquestWarriorRank.rank,
-    innerjoin=True, lazy='joined',
+    innerjoin=True,
     backref=backref('warrior', uselist=False))
 ConquestWarrior.types = relationship(Type,
     secondary=ConquestWarriorSpecialty.__table__,
     order_by=ConquestWarriorSpecialty.slot,
-    innerjoin=True, lazy='joined',
+    innerjoin=True,
     backref='conquest_warriors')
 
 ConquestWarriorRank.skill = relationship(ConquestWarriorSkill,
@@ -2101,9 +2103,9 @@ ConquestWarriorRank.skill = relationship(ConquestWarriorSkill,
     innerjoin=True, lazy='joined',
     backref=backref('warrior_ranks', order_by=ConquestWarriorRank.id))
 ConquestWarriorRank.stats = relationship(ConquestWarriorRankStatMap,
-    innerjoin=True, lazy='joined',
-    order_by = ConquestWarriorRankStatMap.warrior_stat_id,
-    backref=backref('warrior_rank', uselist=False, innerjoin=True))
+    innerjoin=True,
+    order_by=ConquestWarriorRankStatMap.warrior_stat_id,
+    backref=backref('warrior_rank', uselist=False, innerjoin=True, lazy='joined'))
 
 ConquestWarriorRankStatMap.stat = relationship(ConquestWarriorStat,
     innerjoin=True, lazy='joined',
@@ -2272,7 +2274,7 @@ Move.target = relationship(MoveTarget,
     innerjoin=True,
     backref='moves')
 Move.type = relationship(Type,
-    innerjoin=True,
+    innerjoin=True, lazy='joined',
     backref='moves')
 
 Move.effect = markdown.MoveEffectProperty('effect')
@@ -2558,14 +2560,7 @@ PokemonSpecies.conquest_move = relationship(Move,
     backref=backref('conquest_pokemon', order_by=PokemonSpecies.conquest_order))
 PokemonSpecies.conquest_evolution = relationship(ConquestPokemonEvolution,
     uselist=False,
-    backref=backref('conquest_evolved_species', innerjoin=True, lazy='joined'))
-#PokemonSpecies.conquest_main_stats = relationship(ConquestPokemonStat,
-#    primaryjoin=and_(PokemonSpecies.id == ConquestPokemonStat.pokemon_species_id,
-#                     ConquestPokemonStat.stat.is_base == True))
-#PokemonSpecies.conquest_range = relationship(ConquestPokemonStat,
-#    primaryjoin=and_(PokemonSpecies.id == ConquestPokemonStat.pokemon_species_id,
-#                     ConquestPokemonStat.stat.identifier == 'range'),
-#    uselist=False)
+    backref=backref('evolved_species', innerjoin=True, lazy='joined', uselist=False))
 
 PokemonSpeciesFlavorText.version = relationship(Version, innerjoin=True, lazy='joined')
 PokemonSpeciesFlavorText.language = relationship(Language, innerjoin=True, lazy='joined')
