@@ -217,6 +217,38 @@ class BerryFlavor(TableBase):
     flavor = Column(Integer, nullable=False,
         info=dict(description="The level of the flavor in the berry"))
 
+class ConquestEpisode(TableBase):
+    u"""An episode from Pokémon Conquest: one of a bunch of mini-stories
+    featuring a particular warrior.
+
+    The main story, "The Legend of Ransei", also counts, even though it's not
+    in the episode select menu and there's no way to replay it.
+    """
+    __tablename__ = 'conquest_episodes'
+    __singlename__ = 'episode'
+    id = Column(Integer, primary_key=True, autoincrement=True,
+        info=dict(description=u'An ID for this episode.'))
+    identifier = Column(Unicode(30), nullable=False,
+        info=dict(description=u'A readable identifier for this episode.', format='identifier'))
+
+create_translation_table('conquest_episode_names', ConquestEpisode, 'names',
+    relation_lazy='joined',
+    name=Column(Unicode(30), nullable=False, index=True,
+        info=dict(description='The name.', format='plaintext', official=True))
+)
+
+class ConquestEpisodeWarrior(TableBase):
+    u"""A warrior featured in an episode in Pokémon Conquest.
+
+    This needs its own table because of the player having two episodes and
+    there being two players.
+    """
+    __tablename__ = 'conquest_episode_warriors'
+    episode_id = Column(Integer, ForeignKey('conquest_episodes.id'), primary_key=True,
+        info=dict(description=u'The ID of the episode.'))
+    warrior_id = Column(Integer, ForeignKey('conquest_warriors.id'), primary_key=True,
+        info=dict(description=u'The ID of the warrior.'))
+
 class ConquestKingdom(TableBase):
     u"""A kingdom in Pokémon Conquest.
     """
@@ -415,6 +447,31 @@ create_translation_table('conquest_stat_names', ConquestStat, 'names',
         info=dict(description='The name.', format='plaintext', official=True))
 )
 
+class ConquestTransformationPokemon(TableBase):
+    u"""A Pokémon that satisfies a warrior transformation's link condition.
+
+    If a warrior has one or more Pokémon listed here, they only need to raise
+    one of them to the required link.
+    """
+    __tablename__ = 'conquest_transformation_pokemon'
+    transformation_id = Column(Integer, ForeignKey('conquest_warrior_transformation.transformed_warrior_rank_id'), primary_key=True,
+        info=dict(description=u'The ID of the corresponding transformation, in turn a warrior rank ID.'))
+    pokemon_species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True,
+        info=dict(description=u'The ID of the Pokémon species.'))
+
+class ConquestTransformationWarrior(TableBase):
+    u"""A warrior who must be present in the same nation as another warrior for
+    the latter to transform into their next rank.
+
+    If a warrior has one or more other warriors listed here, they *all* need to
+    gather in the same nation for the transformation to take place.
+    """
+    __tablename__ = 'conquest_transformation_warriors'
+    transformation_id = Column(Integer, ForeignKey('conquest_warrior_transformation.transformed_warrior_rank_id'), primary_key=True,
+        info=dict(description=u'The ID of the corresponding transformation, in turn a warrior rank ID.'))
+    present_warrior_id = Column(Integer, ForeignKey('conquest_warriors.id'), primary_key=True,
+        info=dict(description=u'The ID of the other warrior who must be present.'))
+
 class ConquestWarrior(TableBase):
     u"""A warrior in Pokémon Conquest.
     """
@@ -531,6 +588,35 @@ create_translation_table('conquest_warrior_stat_names', ConquestWarriorStat, 'na
     name=Column(Unicode(15), nullable=False, index=True,
         info=dict(description='The name.', format='plaintext', official=True))
 )
+
+class ConquestWarriorTransformation(TableBase):
+    u"""The conditions under which a warrior must perform an action in order
+    to transform to the next rank.
+
+    Or most of them, anyway.  See also ConquestTransformationPokemon and
+    ConquestTransformationWarrior.
+    """
+    __tablename__ = 'conquest_warrior_transformation'
+    transformed_warrior_rank_id = Column(Integer, ForeignKey('conquest_warrior_ranks.id'), primary_key=True,
+        info=dict(description=u'The ID of the post-transformation warrior rank.'))
+    is_automatic = Column(Boolean, nullable=False,
+        info=dict(description=u'True iff the transformation happens automatically in the story with no further requirements.'))
+    required_link = Column(Integer, nullable=True,
+        info=dict(description=u'The link percentage the warrior must reach with one of several specific Pokémon, if any.'))
+    completed_episode_id = Column(Integer, ForeignKey('conquest_episodes.id'), nullable=True,
+        info=dict(description=u'The ID of the episode the player must have completed, if any.'))
+    current_episode_id = Column(Integer, ForeignKey('conquest_episodes.id'), nullable=True,
+        info=dict(description=u'The ID of the episode the player must currently be playing, if any.'))
+    distant_warrior_id = Column(Integer, ForeignKey('conquest_warriors.id'), nullable=True,
+        info=dict(description=u'The ID of another warrior who must be in the army, but not in the same kingdom or in any adjacent kingdom.'))
+    female_warlord_count = Column(Integer, nullable=True,
+        info=dict(description=u'The number of female warlords who must be in the same nation.'))
+    pokemon_count = Column(Integer, nullable=True,
+        info=dict(description=u'The number of Pokémon that must be registered in the gallery.'))
+    collection_type_id = Column(Integer, ForeignKey('types.id'), nullable=True,
+        info=dict(description=u'The ID of a type all Pokémon of which must be registered in the gallery.'))
+    warrior_count = Column(Integer, nullable=True,
+        info=dict(description=u'The number of warriors that must be registered in the gallery.'))
 
 class ContestCombo(TableBase):
     u"""Combo of two moves in a Contest.
@@ -2031,6 +2117,11 @@ Berry.natural_gift_type = relationship(Type, innerjoin=True)
 BerryFlavor.contest_type = relationship(ContestType, innerjoin=True)
 
 
+ConquestEpisode.warriors = relationship(ConquestWarrior,
+    secondary=ConquestEpisodeWarrior.__table__,
+    innerjoin=True,
+    backref='episodes')
+
 ConquestKingdom.type = relationship(Type,
     uselist=False,
     innerjoin=True, lazy='joined',
@@ -2111,6 +2202,27 @@ ConquestWarriorRankStatMap.stat = relationship(ConquestWarriorStat,
     innerjoin=True, lazy='joined',
     uselist=False,
     backref='stat_map')
+
+ConquestWarriorTransformation.completed_episode = relationship(ConquestEpisode,
+    primaryjoin=ConquestWarriorTransformation.completed_episode_id==ConquestEpisode.id,
+    uselist=False)
+ConquestWarriorTransformation.current_episode = relationship(ConquestEpisode,
+    primaryjoin=ConquestWarriorTransformation.current_episode_id==ConquestEpisode.id,
+    uselist=False)
+ConquestWarriorTransformation.distant_warrior = relationship(ConquestWarrior,
+    uselist=False)
+ConquestWarriorTransformation.pokemon = relationship(PokemonSpecies,
+    secondary=ConquestTransformationPokemon.__table__,
+    order_by=PokemonSpecies.conquest_order)
+ConquestWarriorTransformation.present_warriors = relationship(ConquestWarrior,
+    secondary=ConquestTransformationWarrior.__table__,
+    order_by=ConquestWarrior.id)
+ConquestWarriorTransformation.type = relationship(Type,
+    uselist=False)
+ConquestWarriorTransformation.warrior_rank = relationship(ConquestWarriorRank,
+    uselist=False,
+    innerjoin=True, lazy='joined',
+    backref=backref('transformation', uselist=False, innerjoin=True))
 
 
 ContestCombo.first = relationship(Move,
