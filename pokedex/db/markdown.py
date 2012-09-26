@@ -101,7 +101,23 @@ def _markdownify_effect_text(move, effect_text, language=None):
         unicode(move.effect_chance),
     )
 
+    # "The target" vs "each target"; for Conquest, but hopefully main series
+    # moves too eventually
+    if hasattr(move, 'range'):
+        effect_text = effect_text.replace(
+            u'$target',
+            _target_labels[move.range.targets > 1]
+        ).replace(
+            u'$Target',
+            _target_labels[move.range.targets > 1].capitalize()
+        )
+
     return MarkdownString(effect_text, session, language)
+
+_target_labels = {
+    False: 'the target',
+    True: 'each target'
+}
 
 class MoveEffectProperty(object):
     """Property that wraps move effects.  Used like this:
@@ -117,15 +133,17 @@ class MoveEffectProperty(object):
     Use `MoveEffectPropertyMap` for dict-like association proxies.
     """
 
-    def __init__(self, effect_column):
+    def __init__(self, effect_column, relationship='move_effect'):
         self.effect_column = effect_column
+        self.relationship = relationship
 
     def __get__(self, obj, cls):
         if obj is None:
             return self
         if obj.move_effect is None:
             return None
-        prop = getattr(obj.move_effect, self.effect_column)
+        thing = getattr(obj, self.relationship)
+        prop = getattr(thing, self.effect_column)
         return _markdownify_effect_text(obj, prop)
 
 class MoveEffectPropertyMap(MoveEffectProperty):
