@@ -104,6 +104,7 @@ Enum tables
 .. dex-table:: ContestType
 .. dex-table:: EggGroup
 .. dex-table:: EvolutionTrigger
+.. dex-table:: Gender
 .. dex-table:: GrowthRate
 .. dex-table:: ItemCategory
 .. dex-table:: ItemFlingEffect
@@ -177,3 +178,29 @@ Mics tables
 .. dex-table:: PalPark
 .. dex-table:: StatHint
 
+Conquest tables
+---------------
+
+.. dex-table:: ConquestEpisode
+.. dex-table:: ConquestEpisodeWarrior
+.. dex-table:: ConquestKingdom
+.. dex-table:: ConquestMaxLink
+.. dex-table:: ConquestMoveData
+.. dex-table:: ConquestMoveDisplacement
+.. dex-table:: ConquestMoveEffect
+.. dex-table:: ConquestMoveRange
+.. dex-table:: ConquestPokemonAbility
+.. dex-table:: ConquestPokemonEvolution
+.. dex-table:: ConquestPokemonMove
+.. dex-table:: ConquestPokemonStat
+.. dex-table:: ConquestStat
+.. dex-table:: ConquestTransformationPokemon
+.. dex-table:: ConquestTransformationWarrior
+.. dex-table:: ConquestWarrior
+.. dex-table:: ConquestWarriorArchetype
+.. dex-table:: ConquestWarriorRank
+.. dex-table:: ConquestWarriorRankStatMap
+.. dex-table:: ConquestWarriorSkill
+.. dex-table:: ConquestWarriorSpecialty
+.. dex-table:: ConquestWarriorStat
+.. dex-table:: ConquestWarriorTransformation
