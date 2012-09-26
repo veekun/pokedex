@@ -309,6 +309,31 @@ class ConquestMoveData(TableBase):
             stars = max(stars, 1)  # And minimum of 1
             return stars
 
+class ConquestMoveDisplacement(TableBase):
+    u"""A way in which a move can cause the user or target to move to a
+    different tile.
+
+    If a move displaces its user, the move's range is relative to the user's
+    original position.
+    """
+    __tablename__ = 'conquest_move_displacements'
+    __singlename__ = 'move_displacement'
+    id = Column(Integer, primary_key=True, autoincrement=True,
+        info=dict(description=u'An ID for this displacement.'))
+    identifier = Column(Unicode(18), nullable=False,
+        info=dict(description=u'A readable identifier for this displacement.', format='identifier'))
+    affects_target = Column(Boolean, nullable=False,
+        info=dict(description=u'True iff the move displaces its target(s) and not its user.'))
+
+create_translation_table('conquest_move_displacement_prose', ConquestMoveDisplacement, 'prose',
+    name = Column(Unicode(20), nullable=True,
+        info=dict(description='A name for the displacement.', format='plaintext')),
+    short_effect = Column(Unicode(128), nullable=True,
+        info=dict(description="A short summary of how the displacement works, to be used in the move's short effect.", format='markdown')),
+    effect = Column(Unicode(256), nullable=True,
+        info=dict(description="A detailed description of how the displacement works, to be used alongside the move's long effect.", format='markdown')),
+)
+
 class ConquestMoveEffect(TableBase):
     u"""An effect moves can have in Pokémon Conquest.
     """
@@ -331,7 +356,7 @@ class ConquestMoveRange(TableBase):
     id = Column(Integer, primary_key=True, autoincrement=True,
         info=dict(description=u'An ID for this range.'))
     identifier = Column(Unicode(16), nullable=False,
-        info=dict(description=u'A readable identifier for this range.'))
+        info=dict(description=u'A readable identifier for this range.', format='identifier'))
     targets = Column(Integer, nullable=False,
         info=dict(description=u'The number of tiles this range targets.'))
 
@@ -340,31 +365,6 @@ create_translation_table('conquest_move_range_prose', ConquestMoveRange, 'prose'
         info=dict(description="A short name briefly describing the range", format='plaintext')),
     description = Column(Unicode(256), nullable=True,
         info=dict(description="A detailed description of the range", format='plaintext')),
-)
-
-class ConquestMoveDisplacement(TableBase):
-    u"""A way in which a move can cause the user or target to move to a
-    different tile.
-
-    If a move displaces its user, the move's range is relative to the user's
-    original position.
-    """
-    __tablename__ = 'conquest_move_displacements'
-    __singlename__ = 'move_displacement'
-    id = Column(Integer, primary_key=True, autoincrement=True,
-        info=dict(description=u'An ID for this displacement.'))
-    identifier = Column(Unicode(18), nullable=False,
-        info=dict(description=u'A readable identifier for this displacement.'))
-    affects_target = Column(Boolean, nullable=False,
-        info=dict(description=u'True iff the move displaces its target(s) and not its user.'))
-
-create_translation_table('conquest_move_displacement_prose', ConquestMoveDisplacement, 'prose',
-    name = Column(Unicode(20), nullable=True,
-        info=dict(description='A name for the displacement.', format='plaintext')),
-    short_effect = Column(Unicode(128), nullable=True,
-        info=dict(description="A short summary of how the displacement works, to be used in the move's short effect.", format='markdown')),
-    effect = Column(Unicode(256), nullable=True,
-        info=dict(description="A detailed description of how the displacement works, to be used alongside the move's long effect.", format='markdown')),
 )
 
 class ConquestPokemonAbility(TableBase):
@@ -435,7 +435,7 @@ class ConquestStat(TableBase):
     __tablename__ = 'conquest_stats'
     __singlename__ = 'conquest_stat'  # To be safe
     id = Column(Integer, primary_key=True, autoincrement=True,
-        info=dict(desription=u'An ID for this stat.'))
+        info=dict(description=u'An ID for this stat.'))
     identifier = Column(Unicode(7), nullable=False,
         info=dict(description=u'A readable identifier for this stat.', format='identifier'))
     is_base = Column(Boolean, nullable=False,
@@ -581,7 +581,7 @@ class ConquestWarriorStat(TableBase):
     id = Column(Integer, primary_key=True, autoincrement=True,
         info=dict(description=u'An ID for this stat.'))
     identifier = Column(Unicode(8), nullable=False,
-        info=dict(description=u'A readable identifier for this stat.'))
+        info=dict(description=u'A readable identifier for this stat.', format='identifier'))
 
 create_translation_table('conquest_warrior_stat_names', ConquestWarriorStat, 'names',
     relation_lazy='joined',
@@ -847,7 +847,7 @@ class Gender(TableBase):
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True,
         info=dict(description='An ID for this gender.'))
     identifier = Column(Unicode(10), nullable=False,
-        info=dict(description='A readable identifier for this gender.'))
+        info=dict(description='A readable identifier for this gender.', format='identifier'))
 
 class Generation(TableBase):
     u"""A Generation of the Pokémon franchise
