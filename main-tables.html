@@ -138,6 +138,12 @@ access individual items.</li>
 <p>PokemonSpecies.<strong>forms_switchable</strong> (<em>bool</em>):</p>
 <blockquote>
 <div>True iff a particular individual of this species can switch beween its different forms.</div></blockquote>
+<p>PokemonSpecies.<strong>order</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The order in which species should be sorted.  Based on National Dex order, except families are grouped together and sorted by stage.</div></blockquote>
+<p>PokemonSpecies.<strong>conquest_order</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The order in which species should be sorted for Pokémon Conquest-related tables.  Matches gallery order.</div></blockquote>
 <hr><p>Internationalized strings:</p>
 <p>PokemonSpecies.<strong>genus</strong> (<em>unicode – plaintext</em>) via <em>pokemon_species_names</em></p>
 <blockquote>
@@ -153,6 +159,24 @@ access individual items.</li>
 (→ [<a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>])</p>
 <blockquote>
 <div>The species to which this one evolves</div></blockquote>
+<p>PokemonSpecies.<strong>conquest_abilities</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.Ability" title="pokedex.db.tables.Ability"><tt class="xref py py-class docutils literal"><span class="pre">Ability</span></tt></a>])</p>
+<blockquote>
+<div><p>Association table: <tt class="docutils literal"><span class="pre">conquest_pokemon_abilities</span></tt></p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">conquest_pokemon_abilities.slot</span></tt></p>
+</div></blockquote>
+<p>PokemonSpecies.<strong>conquest_evolution</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestPokemonEvolution" title="pokedex.db.tables.ConquestPokemonEvolution"><tt class="xref py py-class docutils literal"><span class="pre">ConquestPokemonEvolution</span></tt></a>)</p>
+<p>PokemonSpecies.<strong>conquest_max_links</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestMaxLink" title="pokedex.db.tables.ConquestMaxLink"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMaxLink</span></tt></a>])</p>
+<blockquote>
+<div>Ordered by: <tt class="docutils literal"><span class="pre">conquest_max_links.warrior_rank_id</span></tt></div></blockquote>
+<p>PokemonSpecies.<strong>conquest_move</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.Move" title="pokedex.db.tables.Move"><tt class="xref py py-class docutils literal"><span class="pre">Move</span></tt></a>)</p>
+<blockquote>
+<div>Association table: <tt class="docutils literal"><span class="pre">conquest_pokemon_moves</span></tt></div></blockquote>
+<p>PokemonSpecies.<strong>conquest_stats</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestPokemonStat" title="pokedex.db.tables.ConquestPokemonStat"><tt class="xref py py-class docutils literal"><span class="pre">ConquestPokemonStat</span></tt></a>])</p>
 <p>PokemonSpecies.<strong>default_form</strong>
 (→ <a class="reference internal" href="#pokedex.db.tables.PokemonForm" title="pokedex.db.tables.PokemonForm"><tt class="xref py py-class docutils literal"><span class="pre">PokemonForm</span></tt></a>)</p>
 <blockquote>
@@ -264,7 +288,9 @@ but only one for Unown.</p>
 <p>Pokemon.<strong>items</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.PokemonItem" title="pokedex.db.tables.PokemonItem"><tt class="xref py py-class docutils literal"><span class="pre">PokemonItem</span></tt></a>])</p>
 <blockquote>
-<div>Info about items this pokémon holds in the wild</div></blockquote>
+<div><p>Info about items this pokémon holds in the wild</p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_items.rarity</span> <span class="pre">DESC</span></tt></p>
+</div></blockquote>
 <p>Pokemon.<strong>pokemon_moves</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.PokemonMove" title="pokedex.db.tables.PokemonMove"><tt class="xref py py-class docutils literal"><span class="pre">PokemonMove</span></tt></a>])</p>
 <p>Pokemon.<strong>stats</strong>
@@ -334,9 +360,12 @@ represent their lone &#8220;normal&#8221; form.</p>
 <p>PokemonForm.<strong>is_battle_only</strong> (<em>bool</em>):</p>
 <blockquote>
 <div>Set iff the form can only appear in battle.</div></blockquote>
+<p>PokemonForm.<strong>form_order</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The order in which forms should be sorted within a species&#8217; forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.  Used in generating <cite>pokemon_forms.order</cite> and <cite>pokemon.order</cite>.</div></blockquote>
 <p>PokemonForm.<strong>order</strong> (<em>int</em>):</p>
 <blockquote>
-<div>The order in which forms should be sorted.  Multiple forms may have equal order, in which case they should fall back on sorting by name.</div></blockquote>
+<div>The order in which forms should be sorted within all forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.</div></blockquote>
 <hr><p>Internationalized strings:</p>
 <p>PokemonForm.<strong>form_name</strong> (<em>unicode – plaintext</em>) via <em>pokemon_form_names</em></p>
 <blockquote>
@@ -414,9 +443,9 @@ must occur to cause a Pokémon to evolve.</p>
 <p>PokemonEvolution.<strong>minimum_level</strong> (<em>int</em>):</p>
 <blockquote>
 <div>The minimum level for the Pokémon.</div></blockquote>
-<p>PokemonEvolution.<strong>gender</strong> (<em>enum: [male, female]</em>):</p>
+<p>PokemonEvolution.<strong>gender</strong> (gender_id → <a class="reference internal" href="#pokedex.db.tables.Gender" title="pokedex.db.tables.Gender"><tt class="xref py py-class docutils literal"><span class="pre">Gender</span></tt></a>.id)</p>
 <blockquote>
-<div>The Pokémon&#8217;s required gender, or None if gender doesn&#8217;t matter</div></blockquote>
+<div>The ID of the Pokémon&#8217;s required gender, or None if gender doesn&#8217;t matter</div></blockquote>
 <p>PokemonEvolution.<strong>location</strong> (location_id → <a class="reference internal" href="#pokedex.db.tables.Location" title="pokedex.db.tables.Location"><tt class="xref py py-class docutils literal"><span class="pre">Location</span></tt></a>.id)</p>
 <blockquote>
 <div>The ID of the location the evolution must be triggered at.</div></blockquote>
@@ -513,6 +542,14 @@ must occur to cause a Pokémon to evolve.</p>
 (→ [<a class="reference internal" href="#pokedex.db.tables.MoveChangelog" title="pokedex.db.tables.MoveChangelog"><tt class="xref py py-class docutils literal"><span class="pre">MoveChangelog</span></tt></a>])</p>
 <blockquote>
 <div>Ordered by: <tt class="docutils literal"><span class="pre">move_changelog.changed_in_version_group_id</span> <span class="pre">DESC</span></tt></div></blockquote>
+<p>Move.<strong>conquest_data</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestMoveData" title="pokedex.db.tables.ConquestMoveData"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMoveData</span></tt></a>)</p>
+<p>Move.<strong>conquest_pokemon</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>])</p>
+<blockquote>
+<div><p>Association table: <tt class="docutils literal"><span class="pre">conquest_pokemon_moves</span></tt></p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_species.conquest_order</span></tt></p>
+</div></blockquote>
 <p>Move.<strong>contest_combo_first</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.ContestCombo" title="pokedex.db.tables.ContestCombo"><tt class="xref py py-class docutils literal"><span class="pre">ContestCombo</span></tt></a>])</p>
 <p>Move.<strong>contest_combo_second</strong>
@@ -683,6 +720,8 @@ must occur to cause a Pokémon to evolve.</p>
 <hr><p>Relationships:</p>
 <p>Item.<strong>berry</strong>
 (→ <a class="reference internal" href="#pokedex.db.tables.Berry" title="pokedex.db.tables.Berry"><tt class="xref py py-class docutils literal"><span class="pre">Berry</span></tt></a>)</p>
+<p>Item.<strong>conquest_evolutions</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestPokemonEvolution" title="pokedex.db.tables.ConquestPokemonEvolution"><tt class="xref py py-class docutils literal"><span class="pre">ConquestPokemonEvolution</span></tt></a>])</p>
 <p>Item.<strong>evolution_chains</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.EvolutionChain" title="pokedex.db.tables.EvolutionChain"><tt class="xref py py-class docutils literal"><span class="pre">EvolutionChain</span></tt></a>])</p>
 <p>Item.<strong>flags</strong>
@@ -788,6 +827,12 @@ must occur to cause a Pokémon to evolve.</p>
 <blockquote>
 <div>The ID of the damage class this type&#8217;s moves had before Generation IV, null if not applicable (e.g. ???).</div></blockquote>
 <hr><p>Relationships:</p>
+<p>Type.<strong>conquest_kingdom</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestKingdom" title="pokedex.db.tables.ConquestKingdom"><tt class="xref py py-class docutils literal"><span class="pre">ConquestKingdom</span></tt></a>)</p>
+<p>Type.<strong>conquest_warriors</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestWarrior" title="pokedex.db.tables.ConquestWarrior"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarrior</span></tt></a>])</p>
+<blockquote>
+<div>Association table: <tt class="docutils literal"><span class="pre">conquest_warrior_specialties</span></tt></div></blockquote>
 <p>Type.<strong>damage_efficacies</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.TypeEfficacy" title="pokedex.db.tables.TypeEfficacy"><tt class="xref py py-class docutils literal"><span class="pre">TypeEfficacy</span></tt></a>])</p>
 <p>Type.<strong>move_changelog</strong>
@@ -841,6 +886,12 @@ must occur to cause a Pokémon to evolve.</p>
 (→ [<a class="reference internal" href="#pokedex.db.tables.AbilityChangelog" title="pokedex.db.tables.AbilityChangelog"><tt class="xref py py-class docutils literal"><span class="pre">AbilityChangelog</span></tt></a>])</p>
 <blockquote>
 <div>Ordered by: <tt class="docutils literal"><span class="pre">ability_changelog.changed_in_version_group_id</span> <span class="pre">DESC</span></tt></div></blockquote>
+<p>Ability.<strong>conquest_pokemon</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>])</p>
+<blockquote>
+<div><p>Association table: <tt class="docutils literal"><span class="pre">conquest_pokemon_abilities</span></tt></p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_species.conquest_order</span></tt></p>
+</div></blockquote>
 <p>Ability.<strong>dream_pokemon</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.Pokemon" title="pokedex.db.tables.Pokemon"><tt class="xref py py-class docutils literal"><span class="pre">Pokemon</span></tt></a>])</p>
 <blockquote>
@@ -1024,6 +1075,9 @@ and Blue) or a single game (such as Yellow.)</p>
 <p>Pokedex.<strong>region</strong> (region_id → <a class="reference internal" href="#pokedex.db.tables.Region" title="pokedex.db.tables.Region"><tt class="xref py py-class docutils literal"><span class="pre">Region</span></tt></a>.id)</p>
 <blockquote>
 <div>ID of the region this Pokédex is used in, or None if it&#8217;s global</div></blockquote>
+<p>Pokedex.<strong>is_main_series</strong> (<em>bool</em>):</p>
+<blockquote>
+<div>True if this Pokédex appears in the main series.</div></blockquote>
 <hr><p>Internationalized strings:</p>
 <p>Pokedex.<strong>description</strong> (<em>unicode – plaintext</em>) via <em>pokedex_prose</em></p>
 <blockquote>
@@ -1467,7 +1521,7 @@ up to 50.</p>
 (→ [<a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>])</p>
 <blockquote>
 <div><p>Association table: <tt class="docutils literal"><span class="pre">pokemon_egg_groups</span></tt></p>
-<p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon.&quot;order&quot;</span> <span class="pre">ASC</span></tt></p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_species.&quot;order&quot;</span> <span class="pre">ASC</span></tt></p>
 </div></blockquote>
 </dd></dl>
 
@@ -1485,6 +1539,25 @@ up to 50.</p>
 <strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>evolution_trigger_prose</em>.</p>
 <hr><p>Relationships:</p>
 <p>EvolutionTrigger.<strong>evolutions</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.PokemonEvolution" title="pokedex.db.tables.PokemonEvolution"><tt class="xref py py-class docutils literal"><span class="pre">PokemonEvolution</span></tt></a>])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-gender">
+<h3>Gender<a class="headerlink" href="#dex-table-gender" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.Gender">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">Gender</tt><a class="headerlink" href="#pokedex.db.tables.Gender" title="Permalink to this definition">¶</a></dt>
+<dd><p>A gender.</p>
+<p>Table name: <em>genders</em>
+(single: <em>gender</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong> and <strong>identifier</strong>.</p>
+<hr><p>Relationships:</p>
+<p>Gender.<strong>conquest_evolutions</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestPokemonEvolution" title="pokedex.db.tables.ConquestPokemonEvolution"><tt class="xref py py-class docutils literal"><span class="pre">ConquestPokemonEvolution</span></tt></a>])</p>
+<p>Gender.<strong>required_for_evolutions</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.PokemonEvolution" title="pokedex.db.tables.PokemonEvolution"><tt class="xref py py-class docutils literal"><span class="pre">PokemonEvolution</span></tt></a>])</p>
 </dd></dl>
 
@@ -1730,7 +1803,7 @@ bestow taste preferences, etc.</p>
 <dl class="dex-table">
 <dt id="pokedex.db.tables.PalParkArea">
 <tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">PalParkArea</tt><a class="headerlink" href="#pokedex.db.tables.PalParkArea" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pal Park areas enum</p>
+<dd><p>A distinct area of Pal Park in which Pokémon appear.</p>
 <p>Table name: <em>pal_park_areas</em>
 (single: <em>pal_park_area</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -2674,20 +2747,20 @@ For example, Breeding didn&#8217;t exist in Gen.I, so it&#8217;s not in this tab
 <dl class="dex-table">
 <dt id="pokedex.db.tables.PalPark">
 <tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">PalPark</tt><a class="headerlink" href="#pokedex.db.tables.PalPark" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pal Park encounter info</p>
+<dd><p>Data for the Pal Park mini-game in Generation IV</p>
 <p>Table name: <em>pal_park</em>
 (single: <em>pal_park</em>)</p>
 <p>Primary key: <strong>species_id</strong>.</p>
 <hr><p>Columns:</p>
 <p>PalPark.<strong>species</strong> (species_id → <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id)</p>
 <blockquote>
-<div>ID of the Pokémon species this data pertains to</div></blockquote>
+<div>The Pokémon species this data pertains to</div></blockquote>
 <p>PalPark.<strong>area</strong> (area_id → <a class="reference internal" href="#pokedex.db.tables.PalParkArea" title="pokedex.db.tables.PalParkArea"><tt class="xref py py-class docutils literal"><span class="pre">PalParkArea</span></tt></a>.id)</p>
 <blockquote>
-<div>The area in which this Pokémon can be found</div></blockquote>
+<div>The area in which this Pokémon is found</div></blockquote>
 <p>PalPark.<strong>base_score</strong> (<em>int</em>):</p>
 <blockquote>
-<div>Value used in calculating the player&#8217;s score in a Pal Park run</div></blockquote>
+<div>Used in calculating the player&#8217;s score at the end of a Pal Park run</div></blockquote>
 <p>PalPark.<strong>rate</strong> (<em>int</em>):</p>
 <blockquote>
 <div>Base rate for encountering this Pokémon</div></blockquote>
@@ -2717,6 +2790,646 @@ called &#8220;characteristics&#8221;.</p>
 <p>StatHint.<strong>message</strong> (<em>unicode – plaintext</em>) via <em>stat_hint_names</em></p>
 <blockquote>
 <div>The text displayed</div></blockquote>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="conquest-tables">
+<h2>Conquest tables<a class="headerlink" href="#conquest-tables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dex-table-conquestepisode">
+<h3>ConquestEpisode<a class="headerlink" href="#dex-table-conquestepisode" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestEpisode">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestEpisode</tt><a class="headerlink" href="#pokedex.db.tables.ConquestEpisode" title="Permalink to this definition">¶</a></dt>
+<dd><p>An episode from Pokémon Conquest: one of a bunch of mini-stories
+featuring a particular warrior.</p>
+<p>The main story, &#8220;The Legend of Ransei&#8221;, also counts, even though it&#8217;s not
+in the episode select menu and there&#8217;s no way to replay it.</p>
+<p>Table name: <em>conquest_episodes</em>
+(single: <em>episode</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>conquest_episode_names</em>.</p>
+<hr><p>Relationships:</p>
+<p>ConquestEpisode.<strong>warriors</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestWarrior" title="pokedex.db.tables.ConquestWarrior"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarrior</span></tt></a>])</p>
+<blockquote>
+<div>Association table: <tt class="docutils literal"><span class="pre">conquest_episode_warriors</span></tt></div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestepisodewarrior">
+<h3>ConquestEpisodeWarrior<a class="headerlink" href="#dex-table-conquestepisodewarrior" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestEpisodeWarrior">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestEpisodeWarrior</tt><a class="headerlink" href="#pokedex.db.tables.ConquestEpisodeWarrior" title="Permalink to this definition">¶</a></dt>
+<dd><p>A warrior featured in an episode in Pokémon Conquest.</p>
+<p>This needs its own table because of the player having two episodes and
+there being two players.</p>
+<p>Table name: <em>conquest_episode_warriors</em></p>
+<p>Primary key: <strong>episode_id</strong>, <strong>warrior_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestEpisodeWarrior.<strong>episode_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestEpisode" title="pokedex.db.tables.ConquestEpisode"><tt class="xref py py-class docutils literal"><span class="pre">ConquestEpisode</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the episode.</div></blockquote>
+<p>ConquestEpisodeWarrior.<strong>warrior_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarrior" title="pokedex.db.tables.ConquestWarrior"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarrior</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the warrior.</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestkingdom">
+<h3>ConquestKingdom<a class="headerlink" href="#dex-table-conquestkingdom" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestKingdom">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestKingdom</tt><a class="headerlink" href="#pokedex.db.tables.ConquestKingdom" title="Permalink to this definition">¶</a></dt>
+<dd><p>A kingdom in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_kingdoms</em>
+(single: <em>kingdom</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>conquest_kingdom_names</em>.</p>
+<hr><p>Columns:</p>
+<p>ConquestKingdom.<strong>type</strong> (type_id → <a class="reference internal" href="#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><tt class="xref py py-class docutils literal"><span class="pre">Type</span></tt></a>.id)</p>
+<blockquote>
+<div>The type associated with this kingdom in-game.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestKingdom.<strong>evolutions</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestPokemonEvolution" title="pokedex.db.tables.ConquestPokemonEvolution"><tt class="xref py py-class docutils literal"><span class="pre">ConquestPokemonEvolution</span></tt></a>])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestmaxlink">
+<h3>ConquestMaxLink<a class="headerlink" href="#dex-table-conquestmaxlink" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestMaxLink">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestMaxLink</tt><a class="headerlink" href="#pokedex.db.tables.ConquestMaxLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum link a warrior rank can reach with a Pokémon in Pokémon
+Conquest.</p>
+<p>Table name: <em>conquest_max_links</em></p>
+<p>Primary key: <strong>warrior_rank_id</strong>, <strong>pokemon_species_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestMaxLink.<strong>warrior_rank</strong> (warrior_rank_id → <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorRank" title="pokedex.db.tables.ConquestWarriorRank"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorRank</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the warrior rank.</div></blockquote>
+<p>ConquestMaxLink.<strong>pokemon_species_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the Pokémon species.</div></blockquote>
+<p>ConquestMaxLink.<strong>max_link</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The maximum link percentage this warrior rank and Pokémon can reach.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestMaxLink.<strong>pokemon</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>)</p>
+<hr><p>Association Proxies:</p>
+<p>ConquestMaxLink.<strong>warrior</strong>:
+<tt class="docutils literal"><span class="pre">warrior</span></tt> of <tt class="docutils literal"><span class="pre">self.warrior_rank</span></tt></p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestmovedata">
+<h3>ConquestMoveData<a class="headerlink" href="#dex-table-conquestmovedata" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestMoveData">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestMoveData</tt><a class="headerlink" href="#pokedex.db.tables.ConquestMoveData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data about a move in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_move_data</em></p>
+<p>Primary key: <strong>move_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestMoveData.<strong>move</strong> (move_id → <a class="reference internal" href="#pokedex.db.tables.Move" title="pokedex.db.tables.Move"><tt class="xref py py-class docutils literal"><span class="pre">Move</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the move.</div></blockquote>
+<p>ConquestMoveData.<strong>power</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The move&#8217;s power, null if it does no damage.</div></blockquote>
+<p>ConquestMoveData.<strong>accuracy</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The move&#8217;s base accuracy, null if it is self-targetted or never misses.</div></blockquote>
+<p>ConquestMoveData.<strong>effect_chance</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The chance as a percentage that the move&#8217;s secondary effect will trigger.</div></blockquote>
+<p>ConquestMoveData.<strong>effect</strong> (effect_id → <a class="reference internal" href="#pokedex.db.tables.ConquestMoveEffect" title="pokedex.db.tables.ConquestMoveEffect"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMoveEffect</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the move&#8217;s effect.</div></blockquote>
+<p>ConquestMoveData.<strong>range</strong> (range_id → <a class="reference internal" href="#pokedex.db.tables.ConquestMoveRange" title="pokedex.db.tables.ConquestMoveRange"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMoveRange</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the move&#8217;s range.</div></blockquote>
+<p>ConquestMoveData.<strong>displacement</strong> (displacement_id → <a class="reference internal" href="#pokedex.db.tables.ConquestMoveDisplacement" title="pokedex.db.tables.ConquestMoveDisplacement"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMoveDisplacement</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the move&#8217;s displacement.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestMoveData.<strong>move_displacement</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestMoveDisplacement" title="pokedex.db.tables.ConquestMoveDisplacement"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMoveDisplacement</span></tt></a>)</p>
+<p>ConquestMoveData.<strong>move_effect</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestMoveEffect" title="pokedex.db.tables.ConquestMoveEffect"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMoveEffect</span></tt></a>)</p>
+<hr><p>Undocumented:</p>
+<p>ConquestMoveData.<strong>effect_map</strong></p>
+<p>ConquestMoveData.<strong>short_effect</strong></p>
+<p>ConquestMoveData.<strong>short_effect_map</strong></p>
+<hr><dl class="attribute">
+<dt id="pokedex.db.tables.ConquestMoveData.star_rating">
+<tt class="descname">star_rating</tt><a class="headerlink" href="#pokedex.db.tables.ConquestMoveData.star_rating" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the move&#8217;s in-game power rating as a number of stars.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestmovedisplacement">
+<h3>ConquestMoveDisplacement<a class="headerlink" href="#dex-table-conquestmovedisplacement" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestMoveDisplacement">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestMoveDisplacement</tt><a class="headerlink" href="#pokedex.db.tables.ConquestMoveDisplacement" title="Permalink to this definition">¶</a></dt>
+<dd><p>A way in which a move can cause the user or target to move to a
+different tile.</p>
+<p>If a move displaces its user, the move&#8217;s range is relative to the user&#8217;s
+original position.</p>
+<p>Table name: <em>conquest_move_displacements</em>
+(single: <em>move_displacement</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>conquest_move_displacement_prose</em>.</p>
+<hr><p>Columns:</p>
+<p>ConquestMoveDisplacement.<strong>affects_target</strong> (<em>bool</em>):</p>
+<blockquote>
+<div>True iff the move displaces its target(s) and not its user.</div></blockquote>
+<hr><p>Internationalized strings:</p>
+<p>ConquestMoveDisplacement.<strong>short_effect</strong> (<em>unicode – markdown</em>) via <em>conquest_move_displacement_prose</em></p>
+<blockquote>
+<div>A short summary of how the displacement works, to be used in the move&#8217;s short effect.</div></blockquote>
+<p>ConquestMoveDisplacement.<strong>effect</strong> (<em>unicode – markdown</em>) via <em>conquest_move_displacement_prose</em></p>
+<blockquote>
+<div>A detailed description of how the displacement works, to be used alongside the move&#8217;s long effect.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestMoveDisplacement.<strong>move_data</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestMoveData" title="pokedex.db.tables.ConquestMoveData"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMoveData</span></tt></a>])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestmoveeffect">
+<h3>ConquestMoveEffect<a class="headerlink" href="#dex-table-conquestmoveeffect" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestMoveEffect">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestMoveEffect</tt><a class="headerlink" href="#pokedex.db.tables.ConquestMoveEffect" title="Permalink to this definition">¶</a></dt>
+<dd><p>An effect moves can have in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_move_effects</em>
+(single: <em>conquest_move_effect</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>.</p>
+<hr><p>Internationalized strings:</p>
+<p>ConquestMoveEffect.<strong>short_effect</strong> (<em>unicode – markdown</em>) via <em>conquest_move_effect_prose</em></p>
+<blockquote>
+<div>A short summary of the effect</div></blockquote>
+<p>ConquestMoveEffect.<strong>effect</strong> (<em>unicode – markdown</em>) via <em>conquest_move_effect_prose</em></p>
+<blockquote>
+<div>A detailed description of the effect</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestMoveEffect.<strong>move_data</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestMoveData" title="pokedex.db.tables.ConquestMoveData"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMoveData</span></tt></a>])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestmoverange">
+<h3>ConquestMoveRange<a class="headerlink" href="#dex-table-conquestmoverange" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestMoveRange">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestMoveRange</tt><a class="headerlink" href="#pokedex.db.tables.ConquestMoveRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>A set of tiles moves can target in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_move_ranges</em>
+(single: <em>conquest_move_range</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>conquest_move_range_prose</em>.</p>
+<hr><p>Columns:</p>
+<p>ConquestMoveRange.<strong>targets</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The number of tiles this range targets.</div></blockquote>
+<hr><p>Internationalized strings:</p>
+<p>ConquestMoveRange.<strong>description</strong> (<em>unicode – plaintext</em>) via <em>conquest_move_range_prose</em></p>
+<blockquote>
+<div>A detailed description of the range</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestMoveRange.<strong>move_data</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestMoveData" title="pokedex.db.tables.ConquestMoveData"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMoveData</span></tt></a>])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestpokemonability">
+<h3>ConquestPokemonAbility<a class="headerlink" href="#dex-table-conquestpokemonability" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestPokemonAbility">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestPokemonAbility</tt><a class="headerlink" href="#pokedex.db.tables.ConquestPokemonAbility" title="Permalink to this definition">¶</a></dt>
+<dd><p>An ability a Pokémon species has in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_pokemon_abilities</em></p>
+<p>Primary key: <strong>pokemon_species_id</strong>, <strong>slot</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestPokemonAbility.<strong>pokemon_species_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the Pokémon species with this ability.</div></blockquote>
+<p>ConquestPokemonAbility.<strong>slot</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The order abilities are listed in.  Upon evolution, if a Pokémon&#8217;s abilities change, it will receive the one in the same slot.</div></blockquote>
+<p>ConquestPokemonAbility.<strong>ability_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Ability" title="pokedex.db.tables.Ability"><tt class="xref py py-class docutils literal"><span class="pre">Ability</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the ability.</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestpokemonevolution">
+<h3>ConquestPokemonEvolution<a class="headerlink" href="#dex-table-conquestpokemonevolution" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestPokemonEvolution">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestPokemonEvolution</tt><a class="headerlink" href="#pokedex.db.tables.ConquestPokemonEvolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>The conditions under which a Pokémon must successfully complete an
+action to evolve in Pokémon Conquest.</p>
+<p>Any condition may be null if it does not apply for a particular Pokémon.</p>
+<p>Table name: <em>conquest_pokemon_evolution</em></p>
+<p>Primary key: <strong>evolved_species_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestPokemonEvolution.<strong>evolved_species</strong> (evolved_species_id → <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the post-evolution species.</div></blockquote>
+<p>ConquestPokemonEvolution.<strong>required_stat_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestStat" title="pokedex.db.tables.ConquestStat"><tt class="xref py py-class docutils literal"><span class="pre">ConquestStat</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the stat which minimum_stat applies to.</div></blockquote>
+<p>ConquestPokemonEvolution.<strong>minimum_stat</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The minimum value the Pokémon must have in a particular stat.</div></blockquote>
+<p>ConquestPokemonEvolution.<strong>minimum_link</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The minimum link percentage the Pokémon must have with its warrior.</div></blockquote>
+<p>ConquestPokemonEvolution.<strong>kingdom</strong> (kingdom_id → <a class="reference internal" href="#pokedex.db.tables.ConquestKingdom" title="pokedex.db.tables.ConquestKingdom"><tt class="xref py py-class docutils literal"><span class="pre">ConquestKingdom</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the kingdom in which this Pokémon must complete an action after meeting all other requirements.</div></blockquote>
+<p>ConquestPokemonEvolution.<strong>warrior_gender_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Gender" title="pokedex.db.tables.Gender"><tt class="xref py py-class docutils literal"><span class="pre">Gender</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the gender the Pokémon&#8217;s warrior must be.</div></blockquote>
+<p>ConquestPokemonEvolution.<strong>item</strong> (item_id → <a class="reference internal" href="#pokedex.db.tables.Item" title="pokedex.db.tables.Item"><tt class="xref py py-class docutils literal"><span class="pre">Item</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the item the Pokémon&#8217;s warrior must have equipped.</div></blockquote>
+<p>ConquestPokemonEvolution.<strong>recruiting_ko_required</strong> (<em>bool</em>):</p>
+<blockquote>
+<div>If true, the Pokémon must KO a Pokémon under the right conditions to recruit that Pokémon&#8217;s warrior.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestPokemonEvolution.<strong>gender</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.Gender" title="pokedex.db.tables.Gender"><tt class="xref py py-class docutils literal"><span class="pre">Gender</span></tt></a>)</p>
+<p>ConquestPokemonEvolution.<strong>stat</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestStat" title="pokedex.db.tables.ConquestStat"><tt class="xref py py-class docutils literal"><span class="pre">ConquestStat</span></tt></a>)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestpokemonmove">
+<h3>ConquestPokemonMove<a class="headerlink" href="#dex-table-conquestpokemonmove" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestPokemonMove">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestPokemonMove</tt><a class="headerlink" href="#pokedex.db.tables.ConquestPokemonMove" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Pokémon&#8217;s move in Pokémon Conquest.</p>
+<p>Yes, &#8220;move&#8221;; each Pokémon has exactly one.</p>
+<p>Table name: <em>conquest_pokemon_moves</em></p>
+<p>Primary key: <strong>pokemon_species_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestPokemonMove.<strong>pokemon_species_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the Pokémon species.</div></blockquote>
+<p>ConquestPokemonMove.<strong>move_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Move" title="pokedex.db.tables.Move"><tt class="xref py py-class docutils literal"><span class="pre">Move</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the move.</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestpokemonstat">
+<h3>ConquestPokemonStat<a class="headerlink" href="#dex-table-conquestpokemonstat" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestPokemonStat">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestPokemonStat</tt><a class="headerlink" href="#pokedex.db.tables.ConquestPokemonStat" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Pokémon&#8217;s base stat in Pokémon Conquest.</p>
+<p>The main four base stats in Conquest are derived from level 100 stats in
+the main series (ignoring effort, genes, and natures).  Attack matches
+either Attack or Special Attack, and Defense matches the average of Defense
+and Special Defense.  HP and Speed are the same.</p>
+<p>Table name: <em>conquest_pokemon_stats</em></p>
+<p>Primary key: <strong>pokemon_species_id</strong>, <strong>conquest_stat_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestPokemonStat.<strong>pokemon_species_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the Pokémon species.</div></blockquote>
+<p>ConquestPokemonStat.<strong>conquest_stat_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestStat" title="pokedex.db.tables.ConquestStat"><tt class="xref py py-class docutils literal"><span class="pre">ConquestStat</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the stat.</div></blockquote>
+<p>ConquestPokemonStat.<strong>base_stat</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The base stat.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestPokemonStat.<strong>pokemon</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>)</p>
+<p>ConquestPokemonStat.<strong>stat</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestStat" title="pokedex.db.tables.ConquestStat"><tt class="xref py py-class docutils literal"><span class="pre">ConquestStat</span></tt></a>)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conqueststat">
+<h3>ConquestStat<a class="headerlink" href="#dex-table-conqueststat" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestStat">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestStat</tt><a class="headerlink" href="#pokedex.db.tables.ConquestStat" title="Permalink to this definition">¶</a></dt>
+<dd><p>A stat Pokémon have in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_stats</em>
+(single: <em>conquest_stat</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>conquest_stat_names</em>.</p>
+<hr><p>Columns:</p>
+<p>ConquestStat.<strong>is_base</strong> (<em>bool</em>):</p>
+<blockquote>
+<div>True iff this is one of the main stats, calculated for individual Pokémon.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestStat.<strong>evolutions</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestPokemonEvolution" title="pokedex.db.tables.ConquestPokemonEvolution"><tt class="xref py py-class docutils literal"><span class="pre">ConquestPokemonEvolution</span></tt></a>])</p>
+<p>ConquestStat.<strong>pokemon_stats</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestPokemonStat" title="pokedex.db.tables.ConquestPokemonStat"><tt class="xref py py-class docutils literal"><span class="pre">ConquestPokemonStat</span></tt></a>])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquesttransformationpokemon">
+<h3>ConquestTransformationPokemon<a class="headerlink" href="#dex-table-conquesttransformationpokemon" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestTransformationPokemon">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestTransformationPokemon</tt><a class="headerlink" href="#pokedex.db.tables.ConquestTransformationPokemon" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Pokémon that satisfies a warrior transformation&#8217;s link condition.</p>
+<p>If a warrior has one or more Pokémon listed here, they only need to raise
+one of them to the required link.</p>
+<p>Table name: <em>conquest_transformation_pokemon</em></p>
+<p>Primary key: <strong>transformation_id</strong>, <strong>pokemon_species_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestTransformationPokemon.<strong>transformation_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorTransformation" title="pokedex.db.tables.ConquestWarriorTransformation"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorTransformation</span></tt></a>.transformed_warrior_rank_id):</p>
+<blockquote>
+<div>The ID of the corresponding transformation, in turn a warrior rank ID.</div></blockquote>
+<p>ConquestTransformationPokemon.<strong>pokemon_species_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the Pokémon species.</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquesttransformationwarrior">
+<h3>ConquestTransformationWarrior<a class="headerlink" href="#dex-table-conquesttransformationwarrior" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestTransformationWarrior">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestTransformationWarrior</tt><a class="headerlink" href="#pokedex.db.tables.ConquestTransformationWarrior" title="Permalink to this definition">¶</a></dt>
+<dd><p>A warrior who must be present in the same nation as another warrior for
+the latter to transform into their next rank.</p>
+<p>If a warrior has one or more other warriors listed here, they <em>all</em> need to
+gather in the same nation for the transformation to take place.</p>
+<p>Table name: <em>conquest_transformation_warriors</em></p>
+<p>Primary key: <strong>transformation_id</strong>, <strong>present_warrior_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestTransformationWarrior.<strong>transformation_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorTransformation" title="pokedex.db.tables.ConquestWarriorTransformation"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorTransformation</span></tt></a>.transformed_warrior_rank_id):</p>
+<blockquote>
+<div>The ID of the corresponding transformation, in turn a warrior rank ID.</div></blockquote>
+<p>ConquestTransformationWarrior.<strong>present_warrior_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarrior" title="pokedex.db.tables.ConquestWarrior"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarrior</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the other warrior who must be present.</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestwarrior">
+<h3>ConquestWarrior<a class="headerlink" href="#dex-table-conquestwarrior" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestWarrior">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestWarrior</tt><a class="headerlink" href="#pokedex.db.tables.ConquestWarrior" title="Permalink to this definition">¶</a></dt>
+<dd><p>A warrior in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_warriors</em>
+(single: <em>warrior</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>conquest_warrior_names</em>.</p>
+<hr><p>Columns:</p>
+<p>ConquestWarrior.<strong>gender_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Gender" title="pokedex.db.tables.Gender"><tt class="xref py py-class docutils literal"><span class="pre">Gender</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the warrior&#8217;s gender.</div></blockquote>
+<p>ConquestWarrior.<strong>archetype</strong> (archetype_id → <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorArchetype" title="pokedex.db.tables.ConquestWarriorArchetype"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorArchetype</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of this warrior&#8217;s archetype.  Null for unique warriors.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestWarrior.<strong>episodes</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestEpisode" title="pokedex.db.tables.ConquestEpisode"><tt class="xref py py-class docutils literal"><span class="pre">ConquestEpisode</span></tt></a>])</p>
+<blockquote>
+<div>Association table: <tt class="docutils literal"><span class="pre">conquest_episode_warriors</span></tt></div></blockquote>
+<p>ConquestWarrior.<strong>ranks</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestWarriorRank" title="pokedex.db.tables.ConquestWarriorRank"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorRank</span></tt></a>])</p>
+<blockquote>
+<div>Ordered by: <tt class="docutils literal"><span class="pre">conquest_warrior_ranks.rank</span></tt></div></blockquote>
+<p>ConquestWarrior.<strong>types</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><tt class="xref py py-class docutils literal"><span class="pre">Type</span></tt></a>])</p>
+<blockquote>
+<div><p>Association table: <tt class="docutils literal"><span class="pre">conquest_warrior_specialties</span></tt></p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">conquest_warrior_specialties.slot</span></tt></p>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestwarriorarchetype">
+<h3>ConquestWarriorArchetype<a class="headerlink" href="#dex-table-conquestwarriorarchetype" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestWarriorArchetype">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestWarriorArchetype</tt><a class="headerlink" href="#pokedex.db.tables.ConquestWarriorArchetype" title="Permalink to this definition">¶</a></dt>
+<dd><p>An archetype that generic warriors in Pokémon Conquest can have.  All
+warriors of a particular archetype share sprites and dialogue.</p>
+<p>Some of these are unused as warriors because they exist only as NPCs.  They
+should still be kept because we have their sprites and may eventually get
+their dialogue.</p>
+<p>Table name: <em>conquest_warrior_archetypes</em>
+(single: <em>archetype</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong> and <strong>identifier</strong>.</p>
+<hr><p>Relationships:</p>
+<p>ConquestWarriorArchetype.<strong>warriors</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestWarrior" title="pokedex.db.tables.ConquestWarrior"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarrior</span></tt></a>])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestwarriorrank">
+<h3>ConquestWarriorRank<a class="headerlink" href="#dex-table-conquestwarriorrank" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestWarriorRank">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestWarriorRank</tt><a class="headerlink" href="#pokedex.db.tables.ConquestWarriorRank" title="Permalink to this definition">¶</a></dt>
+<dd><p>A warrior at a particular rank in Pokémon Conquest.</p>
+<p>These are used for whatever changes between ranks, much like Pokémon forms.
+Generic warriors who have only one rank are also represented here, with a
+single row.</p>
+<p>To clarify, each warrior&#8217;s ranks are individually called &#8220;warrior ranks&#8221;
+here; for example, &#8220;Rank 2 Nobunaga&#8221; is an example of a warrior rank, not
+just &#8220;Rank 2&#8221;.</p>
+<p>Table name: <em>conquest_warrior_ranks</em>
+(single: <em>warrior_rank</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestWarriorRank.<strong>warrior</strong> (warrior_id → <a class="reference internal" href="#pokedex.db.tables.ConquestWarrior" title="pokedex.db.tables.ConquestWarrior"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarrior</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the warrior.</div></blockquote>
+<p>ConquestWarriorRank.<strong>rank</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The rank number.</div></blockquote>
+<p>ConquestWarriorRank.<strong>skill</strong> (skill_id → <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorSkill" title="pokedex.db.tables.ConquestWarriorSkill"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorSkill</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of this warrior rank&#8217;s warrior skill.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestWarriorRank.<strong>max_links</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestMaxLink" title="pokedex.db.tables.ConquestMaxLink"><tt class="xref py py-class docutils literal"><span class="pre">ConquestMaxLink</span></tt></a>])</p>
+<p>ConquestWarriorRank.<strong>stats</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestWarriorRankStatMap" title="pokedex.db.tables.ConquestWarriorRankStatMap"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorRankStatMap</span></tt></a>])</p>
+<blockquote>
+<div>Ordered by: <tt class="docutils literal"><span class="pre">conquest_warrior_rank_stat_map.warrior_stat_id</span></tt></div></blockquote>
+<p>ConquestWarriorRank.<strong>transformation</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorTransformation" title="pokedex.db.tables.ConquestWarriorTransformation"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorTransformation</span></tt></a>)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestwarriorrankstatmap">
+<h3>ConquestWarriorRankStatMap<a class="headerlink" href="#dex-table-conquestwarriorrankstatmap" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestWarriorRankStatMap">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestWarriorRankStatMap</tt><a class="headerlink" href="#pokedex.db.tables.ConquestWarriorRankStatMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any of a warrior rank&#8217;s warrior stats in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_warrior_rank_stat_map</em></p>
+<p>Primary key: <strong>warrior_rank_id</strong>, <strong>warrior_stat_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestWarriorRankStatMap.<strong>warrior_rank</strong> (warrior_rank_id → <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorRank" title="pokedex.db.tables.ConquestWarriorRank"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorRank</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the warrior rank.</div></blockquote>
+<p>ConquestWarriorRankStatMap.<strong>warrior_stat_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorStat" title="pokedex.db.tables.ConquestWarriorStat"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorStat</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the warrior stat.</div></blockquote>
+<p>ConquestWarriorRankStatMap.<strong>base_stat</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The stat.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestWarriorRankStatMap.<strong>stat</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorStat" title="pokedex.db.tables.ConquestWarriorStat"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorStat</span></tt></a>)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestwarriorskill">
+<h3>ConquestWarriorSkill<a class="headerlink" href="#dex-table-conquestwarriorskill" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestWarriorSkill">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestWarriorSkill</tt><a class="headerlink" href="#pokedex.db.tables.ConquestWarriorSkill" title="Permalink to this definition">¶</a></dt>
+<dd><p>A warrior skill in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_warrior_skills</em>
+(single: <em>skill</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>conquest_warrior_skill_names</em>.</p>
+<hr><p>Relationships:</p>
+<p>ConquestWarriorSkill.<strong>warrior_ranks</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestWarriorRank" title="pokedex.db.tables.ConquestWarriorRank"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorRank</span></tt></a>])</p>
+<blockquote>
+<div>Ordered by: <tt class="docutils literal"><span class="pre">conquest_warrior_ranks.id</span></tt></div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestwarriorspecialty">
+<h3>ConquestWarriorSpecialty<a class="headerlink" href="#dex-table-conquestwarriorspecialty" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestWarriorSpecialty">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestWarriorSpecialty</tt><a class="headerlink" href="#pokedex.db.tables.ConquestWarriorSpecialty" title="Permalink to this definition">¶</a></dt>
+<dd><p>A warrior&#8217;s specialty types in Pokémon Conquest.</p>
+<p>These have no actual effect on gameplay; they just indicate which types of
+Pokémon each warrior generally has strong maximum links with.</p>
+<p>Table name: <em>conquest_warrior_specialties</em></p>
+<p>Primary key: <strong>warrior_id</strong>, <strong>type_id</strong>, <strong>slot</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestWarriorSpecialty.<strong>warrior_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarrior" title="pokedex.db.tables.ConquestWarrior"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarrior</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the warrior.</div></blockquote>
+<p>ConquestWarriorSpecialty.<strong>type_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><tt class="xref py py-class docutils literal"><span class="pre">Type</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the type.</div></blockquote>
+<p>ConquestWarriorSpecialty.<strong>slot</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The order in which the warrior&#8217;s types are listed.</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestwarriorstat">
+<h3>ConquestWarriorStat<a class="headerlink" href="#dex-table-conquestwarriorstat" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestWarriorStat">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestWarriorStat</tt><a class="headerlink" href="#pokedex.db.tables.ConquestWarriorStat" title="Permalink to this definition">¶</a></dt>
+<dd><p>A stat that warriors have in Pokémon Conquest.</p>
+<p>Table name: <em>conquest_warrior_stats</em>
+(single: <em>warrior_stat</em>)</p>
+<p>Primary key: <strong>id</strong>.</p>
+<p>Has
+<strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>conquest_warrior_stat_names</em>.</p>
+<hr><p>Relationships:</p>
+<p>ConquestWarriorStat.<strong>stat_map</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestWarriorRankStatMap" title="pokedex.db.tables.ConquestWarriorRankStatMap"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorRankStatMap</span></tt></a>])</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-conquestwarriortransformation">
+<h3>ConquestWarriorTransformation<a class="headerlink" href="#dex-table-conquestwarriortransformation" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.ConquestWarriorTransformation">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">ConquestWarriorTransformation</tt><a class="headerlink" href="#pokedex.db.tables.ConquestWarriorTransformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The conditions under which a warrior must perform an action in order
+to transform to the next rank.</p>
+<p>Or most of them, anyway.  See also ConquestTransformationPokemon and
+ConquestTransformationWarrior.</p>
+<p>Table name: <em>conquest_warrior_transformation</em></p>
+<p>Primary key: <strong>transformed_warrior_rank_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>ConquestWarriorTransformation.<strong>transformed_warrior_rank_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorRank" title="pokedex.db.tables.ConquestWarriorRank"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorRank</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the post-transformation warrior rank.</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>is_automatic</strong> (<em>bool</em>):</p>
+<blockquote>
+<div>True iff the transformation happens automatically in the story with no further requirements.</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>required_link</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The link percentage the warrior must reach with one of several specific Pokémon, if any.</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>completed_episode</strong> (completed_episode_id → <a class="reference internal" href="#pokedex.db.tables.ConquestEpisode" title="pokedex.db.tables.ConquestEpisode"><tt class="xref py py-class docutils literal"><span class="pre">ConquestEpisode</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the episode the player must have completed, if any.</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>current_episode</strong> (current_episode_id → <a class="reference internal" href="#pokedex.db.tables.ConquestEpisode" title="pokedex.db.tables.ConquestEpisode"><tt class="xref py py-class docutils literal"><span class="pre">ConquestEpisode</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the episode the player must currently be playing, if any.</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>distant_warrior</strong> (distant_warrior_id → <a class="reference internal" href="#pokedex.db.tables.ConquestWarrior" title="pokedex.db.tables.ConquestWarrior"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarrior</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of another warrior who must be in the army, but not in the same kingdom or in any adjacent kingdom.</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>female_warlord_count</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The number of female warlords who must be in the same nation.</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>pokemon_count</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The number of Pokémon that must be registered in the gallery.</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>collection_type_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><tt class="xref py py-class docutils literal"><span class="pre">Type</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of a type all Pokémon of which must be registered in the gallery.</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>warrior_count</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The number of warriors that must be registered in the gallery.</div></blockquote>
+<hr><p>Relationships:</p>
+<p>ConquestWarriorTransformation.<strong>pokemon</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>])</p>
+<blockquote>
+<div><p>Association table: <tt class="docutils literal"><span class="pre">conquest_transformation_pokemon</span></tt></p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_species.conquest_order</span></tt></p>
+</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>present_warriors</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.ConquestWarrior" title="pokedex.db.tables.ConquestWarrior"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarrior</span></tt></a>])</p>
+<blockquote>
+<div><p>Association table: <tt class="docutils literal"><span class="pre">conquest_transformation_warriors</span></tt></p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">conquest_warriors.id</span></tt></p>
+</div></blockquote>
+<p>ConquestWarriorTransformation.<strong>type</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><tt class="xref py py-class docutils literal"><span class="pre">Type</span></tt></a>)</p>
+<p>ConquestWarriorTransformation.<strong>warrior_rank</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.ConquestWarriorRank" title="pokedex.db.tables.ConquestWarriorRank"><tt class="xref py py-class docutils literal"><span class="pre">ConquestWarriorRank</span></tt></a>)</p>
 </dd></dl>
 
 </div>
@@ -2794,6 +3507,7 @@ called &#8220;characteristics&#8221;.</p>
 <li><a class="reference internal" href="#dex-table-contesttype">ContestType</a></li>
 <li><a class="reference internal" href="#dex-table-egggroup">EggGroup</a></li>
 <li><a class="reference internal" href="#dex-table-evolutiontrigger">EvolutionTrigger</a></li>
+<li><a class="reference internal" href="#dex-table-gender">Gender</a></li>
 <li><a class="reference internal" href="#dex-table-growthrate">GrowthRate</a></li>
 <li><a class="reference internal" href="#dex-table-itemcategory">ItemCategory</a></li>
 <li><a class="reference internal" href="#dex-table-itemflingeffect">ItemFlingEffect</a></li>
@@ -2861,6 +3575,32 @@ called &#8220;characteristics&#8221;.</p>
 <li><a class="reference internal" href="#dex-table-experience">Experience</a></li>
 <li><a class="reference internal" href="#dex-table-palpark">PalPark</a></li>
 <li><a class="reference internal" href="#dex-table-stathint">StatHint</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conquest-tables">Conquest tables</a><ul>
+<li><a class="reference internal" href="#dex-table-conquestepisode">ConquestEpisode</a></li>
+<li><a class="reference internal" href="#dex-table-conquestepisodewarrior">ConquestEpisodeWarrior</a></li>
+<li><a class="reference internal" href="#dex-table-conquestkingdom">ConquestKingdom</a></li>
+<li><a class="reference internal" href="#dex-table-conquestmaxlink">ConquestMaxLink</a></li>
+<li><a class="reference internal" href="#dex-table-conquestmovedata">ConquestMoveData</a></li>
+<li><a class="reference internal" href="#dex-table-conquestmovedisplacement">ConquestMoveDisplacement</a></li>
+<li><a class="reference internal" href="#dex-table-conquestmoveeffect">ConquestMoveEffect</a></li>
+<li><a class="reference internal" href="#dex-table-conquestmoverange">ConquestMoveRange</a></li>
+<li><a class="reference internal" href="#dex-table-conquestpokemonability">ConquestPokemonAbility</a></li>
+<li><a class="reference internal" href="#dex-table-conquestpokemonevolution">ConquestPokemonEvolution</a></li>
+<li><a class="reference internal" href="#dex-table-conquestpokemonmove">ConquestPokemonMove</a></li>
+<li><a class="reference internal" href="#dex-table-conquestpokemonstat">ConquestPokemonStat</a></li>
+<li><a class="reference internal" href="#dex-table-conqueststat">ConquestStat</a></li>
+<li><a class="reference internal" href="#dex-table-conquesttransformationpokemon">ConquestTransformationPokemon</a></li>
+<li><a class="reference internal" href="#dex-table-conquesttransformationwarrior">ConquestTransformationWarrior</a></li>
+<li><a class="reference internal" href="#dex-table-conquestwarrior">ConquestWarrior</a></li>
+<li><a class="reference internal" href="#dex-table-conquestwarriorarchetype">ConquestWarriorArchetype</a></li>
+<li><a class="reference internal" href="#dex-table-conquestwarriorrank">ConquestWarriorRank</a></li>
+<li><a class="reference internal" href="#dex-table-conquestwarriorrankstatmap">ConquestWarriorRankStatMap</a></li>
+<li><a class="reference internal" href="#dex-table-conquestwarriorskill">ConquestWarriorSkill</a></li>
+<li><a class="reference internal" href="#dex-table-conquestwarriorspecialty">ConquestWarriorSpecialty</a></li>
+<li><a class="reference internal" href="#dex-table-conquestwarriorstat">ConquestWarriorStat</a></li>
+<li><a class="reference internal" href="#dex-table-conquestwarriortransformation">ConquestWarriorTransformation</a></li>
 </ul>
 </li>
 </ul>
