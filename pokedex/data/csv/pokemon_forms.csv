@@ -645,7 +645,7 @@ id,form_identifier,pokemon_id,introduced_in_version_group_id,is_default,is_battl
 644,,644,11,1,0,1,703
 645,incarnate,645,11,1,0,1,704
 646,,646,11,1,0,1,706
-647,regular,647,11,1,0,1,709
+647,ordinary,647,11,1,0,1,709
 648,aria,648,11,1,0,1,711
 649,,649,11,1,0,1,713
 650,b,201,3,0,0,2,232
@@ -731,4 +731,4 @@ id,form_identifier,pokemon_id,introduced_in_version_group_id,is_default,is_battl
 730,therian,670,14,1,0,2,705
 731,black,671,14,1,0,2,707
 732,white,672,14,1,0,3,708
-733,resolution,673,14,1,0,2,710
+733,resolute,673,14,1,0,2,710
