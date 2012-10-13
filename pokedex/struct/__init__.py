@@ -47,10 +47,14 @@ def struct_frozenset_proxy(name):
         bitstruct = getattr(self.structure, name)
         return frozenset(k for k, v in bitstruct.items() if v)
 
-    def setter(self, value):
+    def setter(self, new_set):
+        new_set = set(new_set)
         struct = getattr(self.structure, name)
         for key in struct:
-            setattr(struct, key, key in value)
+            setattr(struct, key, key in new_set)
+            new_set.discard(key)
+        if new_set:
+            raise ValueError('Unknown values: {0}'.format(', '.join(ribbons)))
         del self.blob
 
     return property(getter, setter)
@@ -449,6 +453,8 @@ class SaveFilePokemon(object):
         if 'egg received' in dct:
             self.date_egg_received = datetime.datetime.strptime(
                 dct['egg received'], '%Y-%m-%d').date()
+        if 'ribbons' in dct:
+            self.ribbons = (r.replace(' ', '_') for r in dct['ribbons'])
         if 'moves' in dct:
             pp_reset_indices = []
             for i, movedict in enumerate(dct['moves']):
@@ -785,7 +791,19 @@ class SaveFilePokemon(object):
             self.sinnoh_ribbons |
             self.hoenn_ribbons |
             self.sinnoh_contest_ribbons)
-    # XXX: ribbons setter
+
+    @ribbons.setter
+    def ribbons(self, ribbons):
+        ribbons = set(ribbons)
+        for ribbonset_name in (
+                'sinnoh_ribbons', 'hoenn_ribbons', 'sinnoh_contest_ribbons'):
+            ribbonset = self.structure[ribbonset_name]
+            print ribbonset
+            for ribbon_name in ribbonset:
+                ribbonset[ribbon_name] = (ribbon_name in ribbons)
+                ribbons.discard(ribbon_name)
+        if ribbons:
+            raise ValueError('Unknown ribbons: {0}'.format(', '.join(ribbons)))
 
     @property
     def nickname(self):
