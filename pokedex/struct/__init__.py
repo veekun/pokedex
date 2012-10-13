@@ -12,6 +12,7 @@ import struct
 import base64
 import datetime
 import contextlib
+from operator import attrgetter
 
 import sqlalchemy.orm.exc
 
@@ -219,19 +220,48 @@ class SaveFilePokemon(object):
         """
         st = self.structure
 
-        def save_trash(result, name, string):
+        NO_VALUE = object()
+        def save(target_dict, key, value=NO_VALUE, transform=None,
+                condition=lambda x: x):
+            """Set a dict key to a value, if a condition is true
+
+            If value is not given, it is looked up on self.
+            The value can be transformed by a function before setting.
+            """
+            if value is NO_VALUE:
+                attrname = key.replace(' ', '_')
+                value = getattr(self, attrname)
+            if condition(value):
+                if transform:
+                    value = transform(value)
+                target_dict[key] = value
+
+        def save_string(target_dict, string_key, trash_key, string):
+            """Save a string, including trash bytes"""
+            target_dict[string_key] = unicode(string)
             trash = getattr(string, 'original', None)
             if trash:
                 expected = (string + u'\uffff').encode('utf-16LE')
                 if trash.rstrip('\0') != expected:
-                    result[name] = base64.b64encode(trash)
+                    target_dict[trash_key] = base64.b64encode(trash)
+
+        def save_object(target_dict, key, value=NO_VALUE, **extra):
+            """Objects are represented as dicts with "name" and a bunch of IDs
+
+            The name is for humans. The ID is the number from the struct.
+            """
+            save(target_dict, key, value=value, transform=lambda value:
+                dict(name=value.name, **extra))
 
         result = dict(
             species=dict(id=self.species.id, name=self.species.name),
         )
-        ability = self.ability
-        if ability:
-            result['ability'] = dict(id=st.ability_id, name=ability.name)
+        if self.form != self.species.default_form:
+            result['form'] = dict(id=st.form_id, name=self.form.form_name)
+
+        save_object(result, 'ability', id=st.ability_id)
+        save_object(result, 'held item', id=st.held_item_id)
+        save_object(result, 'pokeball', id=st.dppt_pokeball or st.hgss_pokeball)
 
         trainer = dict(
                 id=self.original_trainer_id,
@@ -239,86 +269,52 @@ class SaveFilePokemon(object):
                 name=unicode(self.original_trainer_name),
                 gender=self.original_trainer_gender
             )
-        save_trash(trainer, 'name trash', self.original_trainer_name)
+        save_string(trainer, 'name', 'name trash', self.original_trainer_name)
         if (trainer['id'] or trainer['secret'] or
                 trainer['name'].strip('\0') or trainer['gender'] != 'male'):
             result['oiginal trainer'] = trainer
 
-        if self.form != self.species.default_form:
-            result['form'] = dict(id=st.form_id, name=self.form.form_name)
-        if self.held_item:
-            result['held item'] = dict(id=st.held_item_id, name=self.held_item.name)
-        if self.exp:
-            result['exp'] = self.exp
-        if self.happiness:
-            result['happiness'] = self.happiness
-        if self.markings:
-            result['markings'] = sorted(self.markings)
-        if self.original_country and self.original_country != '_unset':
-            result['original country'] = self.original_country
-        if self.original_version and self.original_version != '_unset':
-            result['original version'] = self.original_version
-        if self.encounter_type and self.encounter_type != 'special':
-            result['encounter type'] = self.encounter_type
-        if self.nickname:
-            result['nickname'] = unicode(self.nickname)
-        save_trash(result, 'nickname trash', self.nickname)
-        if self.egg_location:
-            result['egg location'] = dict(
-                id=st.pt_egg_location_id or st.dp_egg_location_id,
-                name=self.egg_location.name)
-        elif st.pt_egg_location_id or st.dp_egg_location_id:
-            result['egg location'] = dict(
-                id=st.pt_egg_location_id or st.dp_egg_location_id)
-        if st.dp_egg_location_id:
-            result['egg location slot'] = 'dp'
-        if self.met_location:
-            result['met location'] = dict(
-                id=st.pt_met_location_id or st.dp_met_location_id,
-                name=self.met_location.name)
-        elif st.pt_met_location_id or st.dp_met_location_id:
-            result['egg location'] = dict(
-                id=st.pt_met_location_id or st.dp_met_location_id)
-        if st.dp_met_location_id:
-            result['met location slot'] = 'dp'
-        if self.date_egg_received:
-            result['egg received'] = self.date_egg_received.isoformat()
-        if self.date_met:
-            result['date met'] = self.date_met.isoformat()
-        if self.pokerus:
-            result['pokerus data'] = self.pokerus
-        if self.pokeball:
-            result['pokeball'] = dict(
-                id=st.dppt_pokeball or st.hgss_pokeball,
-                name=self.pokeball.name)
-        if self.met_at_level:
-            result['met at level'] = self.met_at_level
+        save(result, 'exp')
+        save(result, 'happiness')
+        save(result, 'markings', transform=sorted)
+        save(result, 'original country')
+        save(result, 'original version')
+        save(result, 'encounter type', condition=lambda et:
+                (et and et != 'special'))
+        save_string(result, 'nickname', 'nickname trash', self.nickname)
+        save(result, 'egg received', self.date_egg_received,
+            transform=lambda x: x.isoformat())
+        save(result, 'date met',
+            transform=lambda x: x.isoformat())
+        save(result, 'pokerus data', self.pokerus)
+        save(result, 'met at level')
+        save(result, 'nicknamed', self.is_nicknamed)
+        save(result, 'is egg')
+        save(result, 'fateful encounter')
+        save(result, 'personality')
+        save(result, 'gender', condition=lambda g: g != 'genderless')
+        save(result, 'has hidden ability', self.hidden_ability)
+        save(result, 'ribbons',
+            sorted(r.replace('_', ' ') for r in self.ribbons))
 
-        if self.is_nicknamed:
-            result['nicknamed'] = True
-        if self.is_egg:
-            result['is egg'] = True
-        if self.fateful_encounter:
-            result['fateful encounter'] = True
-        if self.personality:
-            result['personality'] = self.personality
-        if self.gender != 'genderless':
-            result['gender'] = self.gender
-
-        if st.hidden_ability:
-            result['has hidden ability'] = st.hidden_ability
+        for loc_type in 'egg', 'met':
+            loc_dict = dict()
+            save(loc_dict, 'id_pt', st['pt_{0}_location_id'.format(loc_type)])
+            save(loc_dict, 'id_dp', st['dp_{0}_location_id'.format(loc_type)])
+            save(loc_dict, 'name',
+                getattr(self, '{0}_location'.format(loc_type)),
+                transform=attrgetter('name'))
+            save(result, '{0} location'.format(loc_type), loc_dict)
 
         moves = result['moves'] = []
         for i, move_object in enumerate(self.moves, 1):
             move = {}
-            if move_object:
-                move['id'] = move_object.id
-                move['name'] = move_object.name
-            move['pp'] = st['move%s_pp' % i]
-            pp_up = st['move%s_pp_ups' % i]
-            if pp_up:
-                move['pp ups'] = pp_up
-            if move:
+            save(move, 'id', move_object, transform=attrgetter('id'))
+            save(move, 'name', move_object, transform=attrgetter('name'))
+            save(move, 'pp ups', st['move%s_pp_ups' % i])
+            pp = st['move%s_pp' % i]
+            if move or pp:
+                move['pp'] = pp
                 moves.append(move)
 
         effort = {}
@@ -332,16 +328,10 @@ class SaveFilePokemon(object):
             effort[dct_stat_identifier] = st['effort_' + st_stat_identifier]
         for contest_stat in 'cool', 'beauty', 'cute', 'smart', 'tough', 'sheen':
             contest_stats[contest_stat] = st['contest_' + contest_stat]
-        if any(effort.values()):
-            result['effort'] = effort
-        if any(genes.values()):
-            result['genes'] = genes
-        if any(contest_stats.values()):
-            result['contest stats'] = contest_stats
+        save(result, 'effort', effort, condition=any)
+        save(result, 'genes', genes, condition=any)
+        save(result, 'contest stats', contest_stats, condition=any)
 
-        ribbons = sorted(r.replace('_', ' ') for r in self.ribbons)
-        if ribbons:
-            result['ribbons'] = ribbons
         return result
 
     def update(self, dct, **kwargs):
@@ -434,18 +424,14 @@ class SaveFilePokemon(object):
                 is_nicknamed='nicknamed',
             )
         for loc_type in 'egg', 'met':
-            key = '{0} location'.format(loc_type)
-            if key in dct:
+            loc_dict = dct.get('{0} location'.format(loc_type))
+            if loc_dict:
                 dp_attr = 'dp_{0}_location_id'.format(loc_type)
                 pt_attr = 'pt_{0}_location_id'.format(loc_type)
-                if dct.get('{0} location slot'.format(loc_type)) == 'dp':
-                    attr = dp_attr
-                    other_attr = pt_attr
-                else:
-                    attr = pt_attr
-                    other_attr = dp_attr
-                st[attr] = dct[key]['id']
-                st[other_attr] = 0
+                if 'id_dp' in loc_dict:
+                    st[dp_attr] = loc_dict['id_dp']
+                if 'id_pt' in loc_dict:
+                    st[pt_attr] = loc_dict['id_pt']
                 delattr(self, '{0}_location'.format(loc_type))
         if 'date met' in dct:
             self.date_met = datetime.datetime.strptime(
@@ -798,7 +784,6 @@ class SaveFilePokemon(object):
         for ribbonset_name in (
                 'sinnoh_ribbons', 'hoenn_ribbons', 'sinnoh_contest_ribbons'):
             ribbonset = self.structure[ribbonset_name]
-            print ribbonset
             for ribbon_name in ribbonset:
                 ribbonset[ribbon_name] = (ribbon_name in ribbons)
                 ribbons.discard(ribbon_name)
@@ -948,7 +933,8 @@ class SaveFilePokemonGen5(SaveFilePokemon):
         if 'nature' in dct:
             self.structure.nature_id = dct['nature']['id']
         if 'has hidden ability' not in dct:
-            self.hidden_ability = (self.pokemon.dream_ability == self.ability)
+            self.hidden_ability = (self.ability == self.pokemon.dream_ability
+                and self.ability not in self.pokemon.abilities)
 
     @cached_property
     def nature(self):
