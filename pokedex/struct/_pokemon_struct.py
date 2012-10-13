@@ -648,6 +648,21 @@ class DateAdapter(Adapter):
         y, m, d = obj.year - 2000, obj.month, obj.day
         return ''.join(chr(n) for n in (y, m, d))
 
+class LeakyEnum(Adapter):
+    """An Enum that allows unknown values"""
+    def __init__(self, sub, **values):
+        super(LeakyEnum, self).__init__(sub)
+        self.values = values
+        self.inverted_values = dict((v, k) for k, v in values.items())
+        assert len(values) == len(self.inverted_values)
+
+    def _encode(self, obj, context):
+        return self.inverted_values.get(obj, obj)
+
+    def _decode(self, obj, context):
+        return self.values.get(obj, obj)
+
+
 # Docs: http://projectpokemon.org/wiki/Pokemon_NDS_Structure
 # http://projectpokemon.org/wiki/Pokemon_Black/White_NDS_Structure
 # http://projectpokemon.org/forums/showthread.php?11474-Hex-Values-and-Trashbytes-in-B-W#post93598
@@ -701,7 +716,7 @@ def make_pokemon_struct(generation):
             Flag('triangle'),
             Flag('circle'),
         ),
-        Enum(ULInt8('original_country'),
+        LeakyEnum(ULInt8('original_country'),
             _unset = 0,
             jp=1,
             us=2,
@@ -710,7 +725,6 @@ def make_pokemon_struct(generation):
             de=5,
             es=7,
             kr=8,
-            unknown_193=193,
         ),
 
         # XXX sum cannot surpass 510
@@ -836,7 +850,7 @@ def make_pokemon_struct(generation):
         # Block C
         PokemonStringAdapter(String('nickname', 22), 22),
         Padding(1),
-        Enum(ULInt8('original_version'),
+        LeakyEnum(ULInt8('original_version'),
             _unset = 0,
             sapphire = 1,
             ruby = 2,
@@ -849,7 +863,6 @@ def make_pokemon_struct(generation):
             pearl = 11,
             platinum = 12,
             orre = 15,
-            event_20 = 20,
         ),
         LittleEndianBitStruct('sinnoh_contest_ribbons',
             Padding(12),
@@ -891,7 +904,7 @@ def make_pokemon_struct(generation):
             ),
             BitField('met_at_level', 7),
         ),
-        Enum(ULInt8('encounter_type'),
+        LeakyEnum(ULInt8('encounter_type'),
             special = 0,        # egg; pal park; event; honey tree; shaymin
             grass = 2,          # or darkrai
             dialga_palkia = 4,
