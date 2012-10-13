@@ -17,6 +17,38 @@ from construct import *
 # - higher-level validation; see XXXes below
 # - personality indirectly influences IVs due to PRNG use
 
+pokemon_forms = {
+    # Unown
+    201: 'abcdefghijklmnopqrstuvwxyz!?',
+
+    # Deoxys
+    386: ['normal', 'attack', 'defense', 'speed'],
+
+    # Burmy and Wormadam
+    412: ['plant', 'sandy', 'trash'],
+    413: ['plant', 'sandy', 'trash'],
+
+    # Shellos and Gastrodon
+    422: ['west', 'east'],
+    423: ['west', 'east'],
+
+    # Rotom
+    479: ['normal', 'heat', 'wash', 'frost', 'fan', 'cut'],
+
+    # Giratina
+    487: ['altered', 'origin'],
+
+    # Shaymin
+    492: ['land', 'sky'],
+
+    # Arceus
+    493: [
+        'normal', 'fighting', 'flying', 'poison', 'ground', 'rock',
+        'bug', 'ghost', 'steel', 'fire', 'water', 'grass',
+        'thunder', 'psychic', 'ice', 'dragon', 'dark', '???',
+    ],
+}
+
 # The entire gen 4 character table:
 character_table_gen4 = {
     0x0002: u'ぁ',
@@ -616,57 +648,6 @@ class DateAdapter(Adapter):
         y, m, d = obj.year - 2000, obj.month, obj.day
         return ''.join(chr(n) for n in (y, m, d))
 
-class PokemonFormAdapter(Adapter):
-    """Converts form ids to form names, and vice versa."""
-    pokemon_forms = {
-        # Unown
-        201: 'abcdefghijklmnopqrstuvwxyz!?',
-
-        # Deoxys
-        386: ['normal', 'attack', 'defense', 'speed'],
-
-        # Burmy and Wormadam
-        412: ['plant', 'sandy', 'trash'],
-        413: ['plant', 'sandy', 'trash'],
-
-        # Shellos and Gastrodon
-        422: ['west', 'east'],
-        423: ['west', 'east'],
-
-        # Rotom
-        479: ['normal', 'heat', 'wash', 'frost', 'fan', 'cut'],
-
-        # Giratina
-        487: ['altered', 'origin'],
-
-        # Shaymin
-        492: ['land', 'sky'],
-
-        # Arceus
-        493: [
-            'normal', 'fighting', 'flying', 'poison', 'ground', 'rock',
-            'bug', 'ghost', 'steel', 'fire', 'water', 'grass',
-            'thunder', 'psychic', 'ice', 'dragon', 'dark', '???',
-        ],
-    }
-
-    def _decode(self, obj, context):
-        try:
-            forms = self.pokemon_forms[ context['national_id'] ]
-        except KeyError:
-            return None
-
-        return forms[obj >> 3]
-
-    def _encode(self, obj, context):
-        try:
-            forms = self.pokemon_forms[ context['national_id'] ]
-        except KeyError:
-            return 0
-
-        return forms.index(obj) << 3
-
-
 # Docs: http://projectpokemon.org/wiki/Pokemon_NDS_Structure
 # http://projectpokemon.org/wiki/Pokemon_Black/White_NDS_Structure
 # http://projectpokemon.org/forums/showthread.php?11474-Hex-Values-and-Trashbytes-in-B-W#post93598
@@ -729,6 +710,7 @@ def make_pokemon_struct(generation):
             de=5,
             es=7,
             kr=8,
+            unknown_193=193,
         ),
 
         # XXX sum cannot surpass 510
@@ -837,7 +819,7 @@ def make_pokemon_struct(generation):
             Flag('cool_ribbon'),
         ),
         Embed(EmbeddedBitStruct(
-            PokemonFormAdapter(BitField('alternate_form', 5)),
+            BitField('alternate_form_id', 5),
             Enum(BitField('gender', 2),
                 genderless = 2,
                 male = 0,
@@ -867,6 +849,7 @@ def make_pokemon_struct(generation):
             pearl = 11,
             platinum = 12,
             orre = 15,
+            event_20 = 20,
         ),
         LittleEndianBitStruct('sinnoh_contest_ribbons',
             Padding(12),

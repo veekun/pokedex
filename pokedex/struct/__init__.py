@@ -9,11 +9,14 @@ derived.
 """
 
 import struct
+import base64
+import datetime
+import contextlib
 
-from pokedex.db import tables
+from pokedex.db import tables, util
 from pokedex.formulae import calculated_hp, calculated_stat
 from pokedex.compatibility import namedtuple, permutations
-from pokedex.struct._pokemon_struct import make_pokemon_struct
+from pokedex.struct._pokemon_struct import make_pokemon_struct, pokemon_forms
 
 def pokemon_prng(seed):
     u"""Creates a generator that simulates the main Pokémon PRNG."""
@@ -23,25 +26,111 @@ def pokemon_prng(seed):
         yield seed >> 16
 
 
-def _struct_proxy(name):
+def struct_proxy(name, dependent=[]):
     def getter(self):
         return getattr(self.structure, name)
 
     def setter(self, value):
         setattr(self.structure, name, value)
+        for dep in dependent:
+            delattr(self, dep)
+        del self.blob
 
     return property(getter, setter)
 
-def _struct_frozenset_proxy(name):
+
+def struct_frozenset_proxy(name):
     def getter(self):
         bitstruct = getattr(self.structure, name)
         return frozenset(k for k, v in bitstruct.items() if v)
 
     def setter(self, value):
-        bitstruct = dict((k, True) for k in value)
+        bitstruct = dict.fromkeys(value, True)
         setattr(self.structure, name, bitstruct)
+        del self.blob
 
     return property(getter, setter)
+
+
+class cached_property(object):
+    def __init__(self, getter, setter=None):
+        self._getter = getter
+        self._setter = setter
+        self.cache_setter_value = True
+
+    def setter(self, func):
+        """With this setter, the value being set is automatically cached
+        """
+        self._setter = func
+        self.cache_setter_value = True
+        return self
+
+    def complete_setter(self, func):
+        """Setter without automatic caching of the set value
+        """
+        self._setter = func
+        self.cache_setter_value = False
+        return self
+
+    def __get__(self, instance, owner):
+        if instance is None:
+            return self
+        else:
+            try:
+                return instance._cached_properties[self]
+            except AttributeError:
+                instance._cached_properties = {}
+            except KeyError:
+                pass
+            result = self._getter(instance)
+            instance._cached_properties[self] = result
+            return result
+
+    def __set__(self, instance, value):
+        if self._setter is None:
+            raise AttributeError('Cannot set attribute')
+        else:
+            self._setter(instance, value)
+            if self.cache_setter_value:
+                try:
+                    instance._cached_properties[self] = value
+                except AttributeError:
+                    instance._cached_properties = {self: value}
+            del instance.blob
+
+    def __delete__(self, instance):
+        try:
+            del instance._cached_properties[self]
+        except (AttributeError, KeyError):
+            pass
+
+
+class InstrumentedList(object):
+    def __init__(self, callback, initial=()):
+        self.list = list(initial)
+        self.callback = callback
+
+    def __getitem__(self, index):
+        return self.list[index]
+
+    def __setitem__(self, index, value):
+        self.list[index] = value
+        self.callback()
+
+    def __delitem__(self, index, value):
+        self.list[index] = value
+        self.callback()
+
+    def append(self, item):
+        self.list.append(item)
+        self.callback()
+
+    def extend(self, extralist):
+        self.list.extend(extralist)
+        self.callback()
+
+    def __iter__(self):
+        return iter(self.list)
 
 
 class SaveFilePokemon(object):
@@ -52,7 +141,7 @@ class SaveFilePokemon(object):
     """
     Stat = namedtuple('Stat', ['stat', 'base', 'gene', 'exp', 'calc'])
 
-    def __init__(self, blob=None, encrypted=False, session=None):
+    def __init__(self, blob=None, dict_=None, encrypted=False, session=None):
         u"""Wraps a Pokémon save struct in a friendly object.
 
         If `encrypted` is True, the blob will be decrypted as though it were an
@@ -86,14 +175,16 @@ class SaveFilePokemon(object):
                 # Already decrypted
                 self.blob = blob
 
-            self.structure = self.pokemon_struct.parse(self.blob)
         else:
-            self.structure = self.pokemon_struct.parse('\0' * (32 * 4 + 8))
+            self.blob = '\0' * (32 * 4 + 8)
 
         if session:
-            self.use_database_session(session)
+            self.session = session
         else:
-            self._session = None
+            self.session = None
+
+        if dict_:
+            self.update(dict_)
 
     @property
     def as_struct(self):
@@ -115,27 +206,32 @@ class SaveFilePokemon(object):
         # Stuff back into a string, and done
         return struct.pack(struct_def, *shuffled)
 
-    def export(self):
+    def export_dict(self):
         """Exports the pokemon as a YAML/JSON-compatible dict
         """
         st = self.structure
 
         result = dict(
             species=dict(id=self.species.id, name=self.species.name),
-            ability=dict(id=self.ability.id, name=self.ability.name),
         )
+        ability = self.ability
+        if ability:
+            result['ability'] = dict(id=st.ability_id, name=ability.name)
 
-        result['original trainer'] = dict(
+        trainer = dict(
                 id=self.original_trainer_id,
                 secret=self.original_trainer_secret_id,
                 name=unicode(self.original_trainer_name),
                 gender=self.original_trainer_gender
             )
+        if (trainer['id'] or trainer['secret'] or
+                trainer['name'].strip('\0') or trainer['gender'] != 'male'):
+            result['oiginal trainer'] = trainer
 
         if self.form != self.species.default_form:
-            result['form'] = dict(id=self.form.id, name=self.form.form_name)
+            result['form'] = dict(id=st.form_id, name=self.form.form_name)
         if self.held_item:
-            result['item'] = dict(id=self.item.id, name=self.item.name)
+            result['item'] = dict(id=st.held_item_id, name=self.item.name)
         if self.exp:
             result['exp'] = self.exp
         if self.happiness:
@@ -146,15 +242,17 @@ class SaveFilePokemon(object):
             result['original country'] = self.original_country
         if self.original_version and self.original_version != '_unset':
             result['original version'] = self.original_version
-        if self.encounter_type and self.encounter_type != '_unset':
+        if self.encounter_type and self.encounter_type != 'special':
             result['encounter type'] = self.encounter_type
         if self.nickname:
             result['nickname'] = unicode(self.nickname)
         if self.egg_location:
-            result['egg location'] = dict(id=self.egg_location.id,
+            result['egg location'] = dict(
+                id=st.pt_egg_location_id or st.dp_egg_location_id,
                 name=self.egg_location.name)
         if self.met_location:
-            result['met location'] = dict(id=self.egg_location.id,
+            result['met location'] = dict(
+                id=st.pt_met_location_id or st.dp_met_location_id,
                 name=self.met_location.name)
         if self.date_egg_received:
             result['egg received'] = self.date_egg_received.isoformat()
@@ -163,13 +261,13 @@ class SaveFilePokemon(object):
         if self.pokerus:
             result['pokerus data'] = self.pokerus
         if self.pokeball:
-            result['pokeball'] = dict(id=self.pokeball.id,
+            result['pokeball'] = dict(id=st.pokeball_id,
                 name=self.pokeball.name)
         if self.met_at_level:
             result['met at level'] = self.met_at_level
 
-        if not self.is_nicknamed:
-            result['not nicknamed'] = True
+        if self.is_nicknamed:
+            result['nicknamed'] = True
         if self.is_egg:
             result['is egg'] = True
         if self.fateful_encounter:
@@ -195,12 +293,14 @@ class SaveFilePokemon(object):
         effort = {}
         genes = {}
         contest_stats = {}
-        for pokemon_stat in self._pokemon.stats:
-            stat_identifier = pokemon_stat.stat.identifier.replace('-', '_')
-            if st['iv_' + stat_identifier]:
-                genes[stat_identifier] = st['iv_' + stat_identifier]
-            if st['effort_' + stat_identifier]:
-                effort[stat_identifier] = st['effort_' + stat_identifier]
+        for pokemon_stat in self.pokemon.stats:
+            stat_identifier = pokemon_stat.stat.identifier
+            st_stat_identifier = stat_identifier.replace('-', '_')
+            dct_stat_identifier = stat_identifier.replace('-', ' ')
+            if st['iv_' + st_stat_identifier]:
+                genes[dct_stat_identifier] = st['iv_' + st_stat_identifier]
+            if st['effort_' + st_stat_identifier]:
+                effort[dct_stat_identifier] = st['effort_' + st_stat_identifier]
         for contest_stat in 'cool', 'beauty', 'cute', 'smart', 'tough', 'sheen':
             if st['contest_' + contest_stat]:
                 contest_stats[contest_stat] = st['contest_' + contest_stat]
@@ -209,12 +309,123 @@ class SaveFilePokemon(object):
         if genes:
             result['genes'] = genes
         if contest_stats:
-            result['contest_stats'] = contest_stats
+            result['contest stats'] = contest_stats
 
         ribbons = list(self.ribbons)
         if ribbons:
             result['ribbons'] = ribbons
         return result
+
+    def update(self, dct, **kwargs):
+        """Updates the pokemon from a YAML/JSON-compatible dict
+
+        Dicts that don't specify all the data are allowed. They update the
+        structure with the information they contain.
+
+        Keyword arguments with single keys are allowed. The semantics are
+        similar to dict.update.
+
+        Unlike setting properties directly, the this method tries more to keep
+        the result sensible, e.g. when species is updated, it can switch
+        to/from genderless.
+        """
+        st = self.structure
+        session = self.session
+        dct.update(kwargs)
+        reset_form = False
+        if 'ability' in dct:
+            st.ability_id = dct['ability']['id']
+            del self.ability
+        if 'form' in dct:
+            st.alternate_form = dct['form']
+            reset_form = True
+        if 'species' in dct:
+            st.national_id = dct['species']['id']
+            if 'form' not in dct:
+                st.alternate_form = 0
+            reset_form = True
+        if reset_form:
+            del self.form
+            if not self.is_nicknamed:
+                self.nickname = self.species.name
+                self.is_nicknamed = False
+            if self.species.gender_rate == -1:
+                self.gender = 'genderless'
+            elif self.gender == 'genderless':
+                # make id=0 the default, sorry if it looks sexist
+                self.gender = 'male'
+        if 'held item' in dct:
+            st.item_id = dct['held item']['id']
+            del self.item
+        if 'pokeball' in dct:
+            st.dppt_pokeball = dct['pokeball']['id']
+            del self.pokeball
+        def _load_values(source, **values):
+            for attrname, key in values.iteritems():
+                try:
+                    value = source[key]
+                except KeyError:
+                    pass
+                else:
+                    setattr(self, attrname, value)
+        if 'oiginal trainer' in dct:
+            _load_values(dct['oiginal trainer'],
+                    original_trainer_id='id',
+                    original_trainer_secret_id='secret',
+                    original_trainer_name='name',
+                    original_trainer_gender='gender',
+                )
+        n = self.is_nicknamed
+        _load_values(dct,
+                exp='exp',
+                happiness='happiness',
+                markings='markings',
+                original_country='original country',
+                original_version='original version',
+                encounter_type='encounter type',
+                nickname='nickname',
+                pokerus='pokerus data',
+                met_at_level='met at level',
+                is_nicknamed='nicknamed',
+                is_egg='is egg',
+                fateful_encounter='fateful encounter',
+                gender='gender',
+            )
+        self.is_nicknamed = n
+        if 'egg location' in dct:
+            st.pt_egg_location_id = dct['egg location']['id']
+            del self.egg_location
+        if 'met location' in dct:
+            st.pt_met_location_id = dct['met location']['id']
+            del self.met_location
+        if 'date met' in dct:
+            self.date_met = datetime.datetime.strptime(
+                dct['date met'], '%Y-%m-%d').date()
+        if 'date egg received' in dct:
+            self.egg_received = datetime.datetime.strptime(
+                dct['date egg received'], '%Y-%m-%d').date()
+        if 'moves' in dct:
+            pp_reset_indices = []
+            for i, movedict in enumerate(dct['moves']):
+                setattr(st, 'move{0}_id'.format(i + 1), movedict['id'])
+                if 'pp' in movedict:
+                    setattr(st, 'move{0}_pp'.format(i + 1), movedict['pp'])
+                else:
+                    pp_sets.append(i)
+            for i in range(i + 1, 4):
+                # Reset the rest of the moves
+                setattr(st, 'move{0}_id'.format(i + 1), 0)
+                setattr(st, 'move{0}_pp'.format(i + 1), 0)
+            del self.moves
+            del self.move_pp
+            for i in pp_reset_indices:
+                # Set default PP here, when the moves dict is regenerated
+                setattr(st, 'move{0}_pp'.format(i + 1), self.moves[i].pp)
+        for key, prefix in (('genes', 'iv'), ('effort', 'ev'),
+                ('contest stats', 'contest')):
+            for name, value in dct.get(key, {}).items():
+                st['{}_{}'.format(prefix, name.replace(' ', '_'))] = value
+        return self
 
     ### Delicious data
     @property
@@ -237,82 +448,105 @@ class SaveFilePokemon(object):
         database stuff.  Gotta call this (or give session to `__init__`) before
         you use the database properties like `species`, etc.
         """
-        self._session = session
+        if self.session and self.session is not session:
+            raise ValueError('Re-setting a session is not supported')
+        self.session = session
 
+    @cached_property
+    def stats(self):
+        stats = []
+        for pokemon_stat in self.pokemon.stats:
+            stat_identifier = pokemon_stat.stat.identifier.replace('-', '_')
+            gene = st['iv_' + stat_identifier]
+            exp  = st['effort_' + stat_identifier]
+
+            if pokemon_stat.stat.identifier == u'hp':
+                calc = calculated_hp
+            else:
+                calc = calculated_stat
+
+            stat_tup = self.Stat(
+                stat = pokemon_stat.stat,
+                base = pokemon_stat.base_stat,
+                gene = gene,
+                exp  = exp,
+                calc = calc(
+                    pokemon_stat.base_stat,
+                    level = level,
+                    iv = gene,
+                    effort = exp,
+                ),
+            )
+
+            stats.append(stat_tup)
+        return tuple(stats)
+
+    @property
+    def alternate_form(self):
         st = self.structure
+        forms = pokemon_forms.get(st.national_id)
+        if forms:
+            return forms[st.alternate_form_id]
+        else:
+            return None
 
+    @alternate_form.setter
+    def alternate_form(self, alternate_form):
+        st = self.structure
+        forms = pokemon_forms.get(st.national_id)
+        if forms:
+            st.alternate_form_id = forms.index(alternate_form)
+        else:
+            st.alternate_form_id = 0
+        del self.form
+
+    @property
+    def species(self):
+        if self.form:
+            return self.form.species
+        else:
+            return None
+
+    @species.setter
+    def species(self, species):
+        self.form = species.default_form
+
+    @property
+    def pokemon(self):
+        if self.form:
+            return self.form.pokemon
+        else:
+            return None
+
+    @pokemon.setter
+    def pokemon(self, pokemon):
+        self.form = pokemon.default_form
+
+    @cached_property
+    def form(self):
+        st = self.structure
+        session = self.session
         if st.national_id:
-            self._pokemon = session.query(tables.Pokemon).get(st.national_id)
-            self._pokemon_form = session.query(tables.PokemonForm) \
-                .with_parent(self._pokemon) \
-                .filter_by(form_identifier=st.alternate_form) \
+            pokemon = session.query(tables.Pokemon).get(st.national_id)
+            return session.query(tables.PokemonForm) \
+                .with_parent(pokemon) \
+                .filter_by(form_identifier=self.alternate_form) \
                 .one()
         else:
-            self._pokemon = self._pokemon_form = None
-        self._ability = self._session.query(tables.Ability).get(st.ability_id)
+            return None
 
-        if self._pokemon:
-            growth_rate = self._pokemon.species.growth_rate
-            self._experience_rung = session.query(tables.Experience) \
-                .filter(tables.Experience.growth_rate == growth_rate) \
-                .filter(tables.Experience.experience <= st.exp) \
-                .order_by(tables.Experience.level.desc()) \
-                [0]
-            level = self._experience_rung.level
+    @form.setter
+    def form(self, form):
+        self.structure.national_id = form.species.id
+        self.structure.alternate_form = form.form_identifier
+        del self.species
+        del self.pokemon
+        del self.ability
+        self._reset()
 
-            self._next_experience_rung = None
-            if level < 100:
-                self._next_experience_rung = session.query(tables.Experience) \
-                    .filter(tables.Experience.growth_rate == growth_rate) \
-                    .filter(tables.Experience.level == level + 1) \
-                    .one()
-
-        self._held_item = None
-        if st.held_item_id:
-            self._held_item = session.query(tables.ItemGameIndex) \
-                .filter_by(generation_id = 4, game_index = st.held_item_id).one().item
-
-        if self._pokemon:
-            self._stats = []
-            for pokemon_stat in self._pokemon.stats:
-                stat_identifier = pokemon_stat.stat.identifier.replace('-', '_')
-                gene = st['iv_' + stat_identifier]
-                exp  = st['effort_' + stat_identifier]
-
-                if pokemon_stat.stat.identifier == u'hp':
-                    calc = calculated_hp
-                else:
-                    calc = calculated_stat
-
-                stat_tup = self.Stat(
-                    stat = pokemon_stat.stat,
-                    base = pokemon_stat.base_stat,
-                    gene = gene,
-                    exp  = exp,
-                    calc = calc(
-                        pokemon_stat.base_stat,
-                        level = level,
-                        iv = gene,
-                        effort = exp,
-                    ),
-                )
-
-                self._stats.append(stat_tup)
-        else:
-            self._stats = [0] * 6
-
-
-        move_ids = (
-            self.structure.move1_id,
-            self.structure.move2_id,
-            self.structure.move3_id,
-            self.structure.move4_id,
-        )
-        move_rows = self._session.query(tables.Move).filter(tables.Move.id.in_(move_ids))
-        moves_dict = dict((move.id, move) for move in move_rows)
-
-        self._moves = [moves_dict.get(move_id, None) for move_id in move_ids]
-
+    @property
+    def pokeball(self):
+        st = self.structure
         if st.hgss_pokeball >= 17:
             pokeball_id = st.hgss_pokeball - 17 + 492
         elif st.dppt_pokeball:
@@ -320,88 +554,125 @@ class SaveFilePokemon(object):
         else:
             pokeball_id = None
         if pokeball_id:
-            self._pokeball = session.query(tables.ItemGameIndex) \
-                .filter_by(generation_id = 4, game_index = pokeball_id).one().item
+            self._pokeball = self.session.query(tables.ItemGameIndex) \
+                .filter_by(generation_id = self.generation_id,
+                    game_index = pokeball_id).one().item
 
-        egg_loc_id = st.pt_egg_location_id or st.dp_egg_location_id
-        met_loc_id = st.pt_met_location_id or st.dp_met_location_id
-
-        self._egg_location = None
-        if egg_loc_id:
-            self._egg_location = session.query(tables.LocationGameIndex) \
-                .filter_by(generation_id = self.generation_id, game_index = egg_loc_id).one().location
-
-        if met_loc_id:
-            self._met_location = session.query(tables.LocationGameIndex) \
-                .filter_by(generation_id = self.generation_id, game_index = met_loc_id).one().location
-        else:
-            self._met_location = None
-
-    @property
-    def species(self):
-        return self._pokemon_form.species
-
-    @property
-    def pokemon(self):
-        return self._pokemon_form.pokemon
-
-    @property
-    def form(self):
-        return self._pokemon_form
-
-    @property
-    def species_form(self):
-        return self._pokemon_form
-
-    @property
-    def pokeball(self):
-        return self._pokeball
-
-    @property
+    @cached_property
     def egg_location(self):
-        return self._egg_location
+        st = self.structure
+        egg_loc_id = st.pt_egg_location_id or st.dp_egg_location_id
+        if egg_loc_id:
+            return self.session.query(tables.LocationGameIndex) \
+                .filter_by(generation_id=4,
+                    game_index = egg_loc_id).one().location
+        else:
+            return None
 
-    @property
+    @cached_property
     def met_location(self):
-        return self._met_location
+        st = self.structure
+        met_loc_id = st.pt_met_location_id or st.dp_met_location_id
+        if met_loc_id:
+            return self.session.query(tables.LocationGameIndex) \
+                .filter_by(generation_id=4,
+                    game_index=met_loc_id).one().location
+        else:
+            return None
 
     @property
     def level(self):
-        return self._experience_rung.level
+        return self.experience_rung.level
+
+    @cached_property
+    def experience_rung(self):
+        growth_rate = self.species.growth_rate
+        return (session.query(tables.Experience)
+            .filter(tables.Experience.growth_rate == growth_rate)
+            .filter(tables.Experience.experience <= self.exp)
+            .order_by(tables.Experience.level.desc())
+            [0])
+
+    @cached_property
+    def next_experience_rung(self):
+        level = self.level
+        if level < 100:
+            return (session.query(tables.Experience)
+                .filter(tables.Experience.growth_rate == growth_rate)
+                .filter(tables.Experience.level == level + 1)
+                .one())
+        else:
+            return None
 
     @property
     def exp_to_next(self):
-        if self._next_experience_rung:
-            return self._next_experience_rung.experience - self.structure.exp
+        if self.next_experience_rung:
+            return self.next_experience_rung.experience - self.exp
         else:
             return 0
 
     @property
     def progress_to_next(self):
-        if self._next_experience_rung:
-            return 1.0 \
-                * (self.structure.exp - self._experience_rung.experience) \
-                / (self._next_experience_rung.experience - self._experience_rung.experience)
+        if self.next_experience_rung:
+            rung = self.experience_rung
+            return (1.0 *
+                (self.exp - rung.experience) /
+                (self.next_experience_rung.experience - rung.experience))
         else:
             return 0.0
 
-    @property
+    @cached_property
     def ability(self):
-        return self._ability
+        return self.session.query(tables.Ability).get(self.structure.ability_id)
 
-    @property
+    @ability.setter
+    def ability(self, ability):
+        self.structure.ability_id = ability.id
+
+    @cached_property
     def held_item(self):
-        return self._held_item
+        held_item_id = self.structure.held_item_id
+        if held_item_id:
+            return session.query(tables.ItemGameIndex) \
+                .filter_by(generation_id=self.generation_id,
+                    game_index=held_item_id) \
+                .one().item
 
-    @property
-    def stats(self):
-        return self._stats
-
-    @property
+    @cached_property
     def moves(self):
-        return self._moves
+        move_ids = (
+            self.structure.move1_id,
+            self.structure.move2_id,
+            self.structure.move3_id,
+            self.structure.move4_id,
+        )
+        move_rows = (self.session.query(tables.Move)
+            .filter(tables.Move.id.in_(move_ids)))
+        moves_dict = dict((move.id, move) for move in move_rows)
 
-    @property
+        def callback():
+            def get(index):
+                try:
+                    return result[x].id
+                except AttributeError:
+                    return 0
+            self.structure.move1_id = get(0)
+            self.structure.move2_id = get(1)
+            self.structure.move3_id = get(2)
+            self.structure.move4_id = get(3)
+            self._reset()
+
+        result = InstrumentedList(
+            callback,
+            [moves_dict.get(move_id, None) for move_id in move_ids])
+
+        return result
+
+    @moves.complete_setter
+    def moves(self, new_moves):
+        self.moves[:] = new_moves
+
+    @cached_property
     def move_pp(self):
         return (
             self.structure.move1_pp,
@@ -410,36 +681,42 @@ class SaveFilePokemon(object):
             self.structure.move4_pp,
         )
 
-    @property
+    @move_pp.complete_setter
+    def move_pp(self, new_pps):
+        self.move_pp[:] = new_pps
+
+    @cached_property
     def markings(self):
         return frozenset(k for k, v in self.structure.markings.items() if v)
 
-    @markings.setter
+    @markings.complete_setter
     def markings(self, value):
         self.structure.markings = dict((k, True) for k in value)
+        del self.markings
 
-    original_trainer_id = _struct_proxy('original_trainer_id')
-    original_trainer_secret_id = _struct_proxy('original_trainer_secret_id')
-    original_trainer_name = _struct_proxy('original_trainer_name')
-    exp = _struct_proxy('exp')
-    happiness = _struct_proxy('happiness')
-    original_country = _struct_proxy('original_country')
-    is_nicknamed = _struct_proxy('is_nicknamed')
-    is_egg = _struct_proxy('is_egg')
-    fateful_encounter = _struct_proxy('fateful_encounter')
-    gender = _struct_proxy('gender')
-    original_version = _struct_proxy('original_version')
-    date_egg_received = _struct_proxy('date_egg_received')
-    date_met = _struct_proxy('date_met')
-    pokerus = _struct_proxy('pokerus')
-    met_at_level = _struct_proxy('met_at_level')
-    original_trainer_gender = _struct_proxy('original_trainer_gender')
-    encounter_type = _struct_proxy('encounter_type')
+    original_trainer_id = struct_proxy('original_trainer_id')
+    original_trainer_secret_id = struct_proxy('original_trainer_secret_id')
+    original_trainer_name = struct_proxy('original_trainer_name')
+    exp = struct_proxy('exp',
+        dependent=['experience_rung', 'next_experience_rung'])
+    happiness = struct_proxy('happiness')
+    original_country = struct_proxy('original_country')
+    is_nicknamed = struct_proxy('is_nicknamed')
+    is_egg = struct_proxy('is_egg')
+    fateful_encounter = struct_proxy('fateful_encounter')
+    gender = struct_proxy('gender')
+    original_version = struct_proxy('original_version')
+    date_egg_received = struct_proxy('date_egg_received')
+    date_met = struct_proxy('date_met')
+    pokerus = struct_proxy('pokerus')
+    met_at_level = struct_proxy('met_at_level')
+    original_trainer_gender = struct_proxy('original_trainer_gender')
+    encounter_type = struct_proxy('encounter_type')
 
-    markings = _struct_frozenset_proxy('markings')
-    sinnoh_ribbons = _struct_frozenset_proxy('sinnoh_ribbons')
-    hoenn_ribbons = _struct_frozenset_proxy('hoenn_ribbons')
-    sinnoh_contest_ribbons = _struct_frozenset_proxy('sinnoh_contest_ribbons')
+    markings = struct_frozenset_proxy('markings')
+    sinnoh_ribbons = struct_frozenset_proxy('sinnoh_ribbons')
+    hoenn_ribbons = struct_frozenset_proxy('hoenn_ribbons')
+    sinnoh_contest_ribbons = struct_frozenset_proxy('sinnoh_contest_ribbons')
 
     @property
     def ribbons(self):
@@ -456,12 +733,14 @@ class SaveFilePokemon(object):
     @nickname.setter
     def nickname(self, value):
         self.structure.nickname = value
-        self.structure.is_nicknamed = True
+        self.is_nicknamed = True
+        del self.blob
 
     @nickname.deleter
     def nickname(self, value):
         self.structure.nickname = ''
-        self.structure.is_nicknamed = False
+        self.is_nicknamed = False
+        del self.blob
 
     ### Utility methods
 
@@ -519,30 +798,37 @@ class SaveFilePokemon(object):
 
         return
 
-    def _reset(self):
-        """Update self with modified pokemon_struct
-
-        Rebuilds the blob; recalculates checksum; if a session was set,
-        re-fetches the DB objects.
+    @cached_property
+    def blob(self):
+        """Update the blob and checksum with modified structure
         """
-        self.blob = self.pokemon_struct.build(self.structure)
-        self.structure = self.pokemon_struct.parse(self.blob)
-        checksum = sum(struct.unpack('H' * 0x40, self.blob[8:0x88])) & 0xffff
+        blob = self.pokemon_struct.build(self.structure)
+        self.structure = self.pokemon_struct.parse(blob)
+        checksum = sum(struct.unpack('H' * 0x40, blob[8:0x88])) & 0xffff
         self.structure.checksum = checksum
-        self.blob = self.blob[:6] + struct.pack('H', checksum) + self.blob[8:]
-        if self._session:
-            self.use_database_session(self._session)
+        blob = blob[:6] + struct.pack('H', checksum) + blob[8:]
+        return blob
+
+    @blob.setter
+    def blob(self, blob):
+        self.structure = self.pokemon_struct.parse(blob)
 
 
 class SaveFilePokemonGen4(SaveFilePokemon):
     generation_id = 4
     pokemon_struct = make_pokemon_struct(generation=generation_id)
 
-    def export(self):
-        result = super(SaveFilePokemonGen5, self).export()
+    def export_dict(self):
+        result = super(SaveFilePokemonGen5, self).export_dict()
         if any(self.shiny_leaves):
             result['shiny leaves'] = self.shiny_leaves
         return result
+
+    def update(self, dct, **kwargs):
+        dct.update(kwargs)
+        if 'shiny leaves' in dct:
+            self.shiny_leaves = dct['shiny leaves']
+        super(SaveFilePokemonGen4, self).update(dct)
 
     @property
     def shiny_leaves(self):
@@ -565,37 +851,41 @@ class SaveFilePokemonGen4(SaveFilePokemon):
             self.structure.shining_leaves.leaf5,
             self.structure.shining_leaves.crown,
         ) = new_values
-        self._reset()
+        del self.blob
 
 
 class SaveFilePokemonGen5(SaveFilePokemon):
     generation_id = 5
     pokemon_struct = make_pokemon_struct(generation=generation_id)
 
-    def use_database_session(self, session):
-        super(SaveFilePokemonGen5, self).use_database_session(session)
-
-        st = self.structure
-
-        if st.nature_id:
-            self._nature = session.query(tables.Nature) \
-                .filter_by(game_index = st.nature_id).one()
-
-    def export(self):
-        result = super(SaveFilePokemonGen5, self).export()
-        result['nature'] = dict(id=self.nature.id, name=self.nature.name)
+    def export_dict(self):
+        result = super(SaveFilePokemonGen5, self).export_dict()
+        if self.nature:
+            result['nature'] = dict(
+                id=self.structure.nature_id, name=self.nature.name)
         return result
+
+    def update(self, dct, **kwargs):
+        dct.update(kwargs)
+        if 'nature' in dct:
+            self.structure.nature_id = dct['nature']['id']
+            del self.nature
+        super(SaveFilePokemonGen5, self).update(dct)
 
     # XXX: Ability setter must set hidden ability flag
 
-    @property
+    @cached_property
     def nature(self):
-        return self._nature
+        st = self.structure
+        if st.nature_id:
+            return (self.session.query(tables.Nature)
+                .filter_by(game_index = st.nature_id).one())
+        else:
+            return None
 
     @nature.setter
     def nature(self, new_nature):
         self.structure.nature_id = int(new_nature.game_index)
-        self._reset()
 
 
 save_file_pokemon_classes = {
