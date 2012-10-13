@@ -13,10 +13,13 @@ import base64
 import datetime
 import contextlib
 
+import sqlalchemy.orm.exc
+
 from pokedex.db import tables, util
 from pokedex.formulae import calculated_hp, calculated_stat
 from pokedex.compatibility import namedtuple, permutations
-from pokedex.struct._pokemon_struct import make_pokemon_struct, pokemon_forms
+from pokedex.struct._pokemon_struct import (make_pokemon_struct, pokemon_forms,
+    StringWithOriginal)
 
 def pokemon_prng(seed):
     u"""Creates a generator that simulates the main Pokémon PRNG."""
@@ -45,8 +48,9 @@ def struct_frozenset_proxy(name):
         return frozenset(k for k, v in bitstruct.items() if v)
 
     def setter(self, value):
-        bitstruct = dict.fromkeys(value, True)
-        setattr(self.structure, name, bitstruct)
+        struct = getattr(self.structure, name)
+        for key in struct:
+            setattr(struct, key, key in value)
         del self.blob
 
     return property(getter, setter)
@@ -211,6 +215,13 @@ class SaveFilePokemon(object):
         """
         st = self.structure
 
+        def save_trash(result, name, string):
+            trash = getattr(string, 'original', None)
+            if trash:
+                expected = (string + u'\uffff').encode('utf-16LE')
+                if trash.rstrip('\0') != expected:
+                    result[name] = base64.b64encode(trash)
+
         result = dict(
             species=dict(id=self.species.id, name=self.species.name),
         )
@@ -224,6 +235,7 @@ class SaveFilePokemon(object):
                 name=unicode(self.original_trainer_name),
                 gender=self.original_trainer_gender
             )
+        save_trash(trainer, 'name trash', self.original_trainer_name)
         if (trainer['id'] or trainer['secret'] or
                 trainer['name'].strip('\0') or trainer['gender'] != 'male'):
             result['oiginal trainer'] = trainer
@@ -231,7 +243,7 @@ class SaveFilePokemon(object):
         if self.form != self.species.default_form:
             result['form'] = dict(id=st.form_id, name=self.form.form_name)
         if self.held_item:
-            result['item'] = dict(id=st.held_item_id, name=self.item.name)
+            result['held item'] = dict(id=st.held_item_id, name=self.held_item.name)
         if self.exp:
             result['exp'] = self.exp
         if self.happiness:
@@ -246,14 +258,25 @@ class SaveFilePokemon(object):
             result['encounter type'] = self.encounter_type
         if self.nickname:
             result['nickname'] = unicode(self.nickname)
+        save_trash(result, 'nickname trash', self.nickname)
         if self.egg_location:
             result['egg location'] = dict(
                 id=st.pt_egg_location_id or st.dp_egg_location_id,
                 name=self.egg_location.name)
+        elif st.pt_egg_location_id or st.dp_egg_location_id:
+            result['egg location'] = dict(
+                id=st.pt_egg_location_id or st.dp_egg_location_id)
+        if st.dp_egg_location_id:
+            result['egg location slot'] = 'dp'
         if self.met_location:
             result['met location'] = dict(
                 id=st.pt_met_location_id or st.dp_met_location_id,
                 name=self.met_location.name)
+        elif st.pt_met_location_id or st.dp_met_location_id:
+            result['egg location'] = dict(
+                id=st.pt_met_location_id or st.dp_met_location_id)
+        if st.dp_met_location_id:
+            result['met location slot'] = 'dp'
         if self.date_egg_received:
             result['egg received'] = self.date_egg_received.isoformat()
         if self.date_met:
@@ -261,7 +284,8 @@ class SaveFilePokemon(object):
         if self.pokerus:
             result['pokerus data'] = self.pokerus
         if self.pokeball:
-            result['pokeball'] = dict(id=st.pokeball_id,
+            result['pokeball'] = dict(
+                id=st.dppt_pokeball or st.hgss_pokeball,
                 name=self.pokeball.name)
         if self.met_at_level:
             result['met at level'] = self.met_at_level
@@ -272,8 +296,13 @@ class SaveFilePokemon(object):
             result['is egg'] = True
         if self.fateful_encounter:
             result['fateful encounter'] = True
+        if self.personality:
+            result['personality'] = self.personality
         if self.gender != 'genderless':
             result['gender'] = self.gender
+
+        if st.hidden_ability:
+            result['has hidden ability'] = st.hidden_ability
 
         moves = result['moves'] = []
         for i, move_object in enumerate(self.moves, 1):
@@ -281,12 +310,10 @@ class SaveFilePokemon(object):
             if move_object:
                 move['id'] = move_object.id
                 move['name'] = move_object.name
-            pp = st['move%s_pp' % i]
-            if pp:
-                move['pp'] = pp
+            move['pp'] = st['move%s_pp' % i]
             pp_up = st['move%s_pp_ups' % i]
             if pp_up:
-                move['pp_up'] = pp_up
+                move['pp ups'] = pp_up
             if move:
                 moves.append(move)
 
@@ -297,21 +324,18 @@ class SaveFilePokemon(object):
             stat_identifier = pokemon_stat.stat.identifier
             st_stat_identifier = stat_identifier.replace('-', '_')
             dct_stat_identifier = stat_identifier.replace('-', ' ')
-            if st['iv_' + st_stat_identifier]:
-                genes[dct_stat_identifier] = st['iv_' + st_stat_identifier]
-            if st['effort_' + st_stat_identifier]:
-                effort[dct_stat_identifier] = st['effort_' + st_stat_identifier]
+            genes[dct_stat_identifier] = st['iv_' + st_stat_identifier]
+            effort[dct_stat_identifier] = st['effort_' + st_stat_identifier]
         for contest_stat in 'cool', 'beauty', 'cute', 'smart', 'tough', 'sheen':
-            if st['contest_' + contest_stat]:
-                contest_stats[contest_stat] = st['contest_' + contest_stat]
-        if effort:
+            contest_stats[contest_stat] = st['contest_' + contest_stat]
+        if any(effort.values()):
             result['effort'] = effort
-        if genes:
+        if any(genes.values()):
             result['genes'] = genes
-        if contest_stats:
+        if any(contest_stats.values()):
             result['contest stats'] = contest_stats
 
-        ribbons = list(self.ribbons)
+        ribbons = sorted(r.replace('_', ' ') for r in self.ribbons)
         if ribbons:
             result['ribbons'] = ribbons
         return result
@@ -332,10 +356,10 @@ class SaveFilePokemon(object):
         st = self.structure
         session = self.session
         dct.update(kwargs)
-        reset_form = False
         if 'ability' in dct:
             st.ability_id = dct['ability']['id']
             del self.ability
+        reset_form = False
         if 'form' in dct:
             st.alternate_form = dct['form']
             reset_form = True
@@ -355,10 +379,10 @@ class SaveFilePokemon(object):
                 # make id=0 the default, sorry if it looks sexist
                 self.gender = 'male'
         if 'held item' in dct:
-            st.item_id = dct['held item']['id']
-            del self.item
+            st.held_item_id = dct['held item']['id']
+            del self.held_item
         if 'pokeball' in dct:
-            st.dppt_pokeball = dct['pokeball']['id']
+            self.pokeball = self._get_pokeball(dct['pokeball']['id'])
             del self.pokeball
         def _load_values(source, **values):
             for attrname, key in values.iteritems():
@@ -368,14 +392,23 @@ class SaveFilePokemon(object):
                     pass
                 else:
                     setattr(self, attrname, value)
+        def load_name(attr_name, dct, string_key, trash_key):
+            if string_key in dct:
+                if trash_key in dct:
+                    name = StringWithOriginal(unicode(dct[string_key]))
+                    name.original = base64.b64decode(dct[trash_key])
+                    setattr(self, attr_name, name)
+                else:
+                    setattr(self, attr_name, unicode(dct[string_key]))
         if 'oiginal trainer' in dct:
-            _load_values(dct['oiginal trainer'],
+            trainer = dct['oiginal trainer']
+            _load_values(trainer,
                     original_trainer_id='id',
                     original_trainer_secret_id='secret',
-                    original_trainer_name='name',
                     original_trainer_gender='gender',
                 )
-        n = self.is_nicknamed
+            load_name('original_trainer_name', trainer, 'name', 'name trash')
+        was_nicknamed = self.is_nicknamed
         _load_values(dct,
                 exp='exp',
                 happiness='happiness',
@@ -383,45 +416,60 @@ class SaveFilePokemon(object):
                 original_country='original country',
                 original_version='original version',
                 encounter_type='encounter type',
-                nickname='nickname',
                 pokerus='pokerus data',
                 met_at_level='met at level',
-                is_nicknamed='nicknamed',
                 is_egg='is egg',
                 fateful_encounter='fateful encounter',
                 gender='gender',
+                personality='personality',
+                hidden_ability='has hidden ability',
             )
-        self.is_nicknamed = n
-        if 'egg location' in dct:
-            st.pt_egg_location_id = dct['egg location']['id']
-            del self.egg_location
-        if 'met location' in dct:
-            st.pt_met_location_id = dct['met location']['id']
-            del self.met_location
+        load_name('nickname', dct, 'nickname', 'nickname trash')
+        self.is_nicknamed = was_nicknamed
+        _load_values(dct,
+                is_nicknamed='nicknamed',
+            )
+        for loc_type in 'egg', 'met':
+            key = '{0} location'.format(loc_type)
+            if key in dct:
+                dp_attr = 'dp_{0}_location_id'.format(loc_type)
+                pt_attr = 'pt_{0}_location_id'.format(loc_type)
+                if dct.get('{0} location slot'.format(loc_type)) == 'dp':
+                    attr = dp_attr
+                    other_attr = pt_attr
+                else:
+                    attr = pt_attr
+                    other_attr = dp_attr
+                st[attr] = dct[key]['id']
+                st[other_attr] = 0
+                delattr(self, '{0}_location'.format(loc_type))
         if 'date met' in dct:
             self.date_met = datetime.datetime.strptime(
                 dct['date met'], '%Y-%m-%d').date()
-        if 'date egg received' in dct:
-            self.egg_received = datetime.datetime.strptime(
-                dct['date egg received'], '%Y-%m-%d').date()
+        if 'egg received' in dct:
+            self.date_egg_received = datetime.datetime.strptime(
+                dct['egg received'], '%Y-%m-%d').date()
         if 'moves' in dct:
             pp_reset_indices = []
             for i, movedict in enumerate(dct['moves']):
-                setattr(st, 'move{0}_id'.format(i + 1), movedict['id'])
+                st['move{0}_id'.format(i + 1)] = movedict['id']
                 if 'pp' in movedict:
-                    setattr(st, 'move{0}_pp'.format(i + 1), movedict['pp'])
+                    st['move{0}_pp'.format(i + 1)] = movedict['pp']
                 else:
-                    pp_sets.append(i)
+                    pp_reset_indices.append(i)
+                if 'pp ups' in movedict:
+                    st['move{0}_pp_ups'.format(i + 1)] = movedict['pp ups']
             for i in range(i + 1, 4):
                 # Reset the rest of the moves
-                setattr(st, 'move{0}_id'.format(i + 1), 0)
-                setattr(st, 'move{0}_pp'.format(i + 1), 0)
+                st['move{0}_id'.format(i + 1)] = 0
+                st['move{0}_pp'.format(i + 1)] = 0
+                st['move{0}_pp_up'.format(i + 1)] = 0
             del self.moves
             del self.move_pp
             for i in pp_reset_indices:
                 # Set default PP here, when the moves dict is regenerated
-                setattr(st, 'move{0}_pp'.format(i + 1), self.moves[i].pp)
-        for key, prefix in (('genes', 'iv'), ('effort', 'ev'),
+                st['move{0}_pp'.format(i + 1)] = self.moves[i].pp
+        for key, prefix in (('genes', 'iv'), ('effort', 'effort'),
                 ('contest stats', 'contest')):
             for name, value in dct.get(key, {}).items():
                 st['{}_{}'.format(prefix, name.replace(' ', '_'))] = value
@@ -528,10 +576,13 @@ class SaveFilePokemon(object):
         session = self.session
         if st.national_id:
             pokemon = session.query(tables.Pokemon).get(st.national_id)
-            return session.query(tables.PokemonForm) \
-                .with_parent(pokemon) \
-                .filter_by(form_identifier=self.alternate_form) \
-                .one()
+            if self.alternate_form:
+                return session.query(tables.PokemonForm) \
+                    .with_parent(pokemon) \
+                    .filter_by(form_identifier=self.alternate_form) \
+                    .one()
+            else:
+                return pokemon.default_form
         else:
             return None
 
@@ -541,10 +592,9 @@ class SaveFilePokemon(object):
         self.structure.alternate_form = form.form_identifier
         del self.species
         del self.pokemon
-        del self.ability
         self._reset()
 
-    @property
+    @cached_property
     def pokeball(self):
         st = self.structure
         if st.hgss_pokeball >= 17:
@@ -552,20 +602,36 @@ class SaveFilePokemon(object):
         elif st.dppt_pokeball:
             pokeball_id = st.dppt_pokeball
         else:
-            pokeball_id = None
-        if pokeball_id:
-            self._pokeball = self.session.query(tables.ItemGameIndex) \
-                .filter_by(generation_id = self.generation_id,
-                    game_index = pokeball_id).one().item
+            return None
+        return self._get_pokeball(pokeball_id)
+
+    def _get_pokeball(self, pokeball_id):
+        return (self.session.query(tables.ItemGameIndex)
+            .filter_by(generation_id=4, game_index = pokeball_id).one().item)
+
+    @pokeball.setter
+    def pokeball(self, pokeball):
+        st = self.structure
+        st.hgss_pokeball = st.dppt_pokeball = 0
+        if pokeball:
+            pokeball_id = pokeball.id
+            boundary = 492 - 17
+            if pokeball_id >= boundary:
+                st.hgss_pokeball = pokeball_id - boundary
+            else:
+                st.dppt_pokeball = pokeball_id
 
     @cached_property
     def egg_location(self):
         st = self.structure
         egg_loc_id = st.pt_egg_location_id or st.dp_egg_location_id
         if egg_loc_id:
-            return self.session.query(tables.LocationGameIndex) \
-                .filter_by(generation_id=4,
-                    game_index = egg_loc_id).one().location
+            try:
+                return self.session.query(tables.LocationGameIndex) \
+                    .filter_by(generation_id=4,
+                        game_index = egg_loc_id).one().location
+            except sqlalchemy.orm.exc.NoResultFound:
+                return None
         else:
             return None
 
@@ -574,9 +640,12 @@ class SaveFilePokemon(object):
         st = self.structure
         met_loc_id = st.pt_met_location_id or st.dp_met_location_id
         if met_loc_id:
-            return self.session.query(tables.LocationGameIndex) \
-                .filter_by(generation_id=4,
-                    game_index=met_loc_id).one().location
+            try:
+                return self.session.query(tables.LocationGameIndex) \
+                    .filter_by(generation_id=4,
+                        game_index=met_loc_id).one().location
+            except sqlalchemy.orm.exc.NoResultFound:
+                return None
         else:
             return None
 
@@ -633,7 +702,7 @@ class SaveFilePokemon(object):
     def held_item(self):
         held_item_id = self.structure.held_item_id
         if held_item_id:
-            return session.query(tables.ItemGameIndex) \
+            return self.session.query(tables.ItemGameIndex) \
                 .filter_by(generation_id=self.generation_id,
                     game_index=held_item_id) \
                 .one().item
@@ -685,15 +754,6 @@ class SaveFilePokemon(object):
     def move_pp(self, new_pps):
         self.move_pp[:] = new_pps
 
-    @cached_property
-    def markings(self):
-        return frozenset(k for k, v in self.structure.markings.items() if v)
-
-    @markings.complete_setter
-    def markings(self, value):
-        self.structure.markings = dict((k, True) for k in value)
-        del self.markings
-
     original_trainer_id = struct_proxy('original_trainer_id')
     original_trainer_secret_id = struct_proxy('original_trainer_secret_id')
     original_trainer_name = struct_proxy('original_trainer_name')
@@ -712,6 +772,7 @@ class SaveFilePokemon(object):
     met_at_level = struct_proxy('met_at_level')
     original_trainer_gender = struct_proxy('original_trainer_gender')
     encounter_type = struct_proxy('encounter_type')
+    personality = struct_proxy('personality')
 
     markings = struct_frozenset_proxy('markings')
     sinnoh_ribbons = struct_frozenset_proxy('sinnoh_ribbons')
@@ -800,8 +861,6 @@ class SaveFilePokemon(object):
 
     @cached_property
     def blob(self):
-        """Update the blob and checksum with modified structure
-        """
         blob = self.pokemon_struct.build(self.structure)
         self.structure = self.pokemon_struct.parse(blob)
         checksum = sum(struct.unpack('H' * 0x40, blob[8:0x88])) & 0xffff
@@ -867,12 +926,11 @@ class SaveFilePokemonGen5(SaveFilePokemon):
 
     def update(self, dct, **kwargs):
         dct.update(kwargs)
+        super(SaveFilePokemonGen5, self).update(dct)
         if 'nature' in dct:
             self.structure.nature_id = dct['nature']['id']
-            del self.nature
-        super(SaveFilePokemonGen5, self).update(dct)
-
-    # XXX: Ability setter must set hidden ability flag
+        if 'has hidden ability' not in dct:
+            self.hidden_ability = (self.pokemon.dream_ability == self.ability)
 
     @cached_property
     def nature(self):
@@ -886,6 +944,8 @@ class SaveFilePokemonGen5(SaveFilePokemon):
     @nature.setter
     def nature(self, new_nature):
         self.structure.nature_id = int(new_nature.game_index)
+
+    hidden_ability = struct_proxy('hidden_ability')
 
 
 save_file_pokemon_classes = {

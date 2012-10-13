@@ -574,7 +574,7 @@ def LittleEndianBitStruct(*args):
     )
 
 
-class _String(unicode):
+class StringWithOriginal(unicode):
     pass
 
 
@@ -601,19 +601,23 @@ class PokemonStringAdapter(Adapter):
         if u'\uffff' in decoded_text:
             decoded_text = decoded_text[0:decoded_text.index(u'\uffff')]
 
-        result = _String(decoded_text.translate(self.character_table))
+        result = StringWithOriginal(
+            decoded_text.translate(self.character_table))
         result.original = obj  # save original with "trash bytes"
         return result
 
     def _encode(self, obj, context):
         try:
-            return obj.original
+            original = obj.original
         except AttributeError:
-            pass
-        length = self.length
-        padded_text = (obj + u'\uffff' + '\x00' * length)
-        decoded_text = padded_text.translate(self.inverse_character_table)
-        return decoded_text.encode('utf16')[:length]
+            length = self.length
+            padded_text = (obj + u'\uffff' + '\x00' * length)
+            decoded_text = padded_text.translate(self.inverse_character_table)
+            return decoded_text.encode('utf-16LE')[:length]
+        else:
+            if self._decode(original, context) != obj:
+                raise ValueError("String and original don't match")
+            return original
 
 
 def make_pokemon_string_adapter(table, generation):
@@ -657,10 +661,10 @@ class LeakyEnum(Adapter):
         assert len(values) == len(self.inverted_values)
 
     def _encode(self, obj, context):
-        return self.inverted_values.get(obj, obj)
+        return self.values.get(obj, obj)
 
     def _decode(self, obj, context):
-        return self.values.get(obj, obj)
+        return self.inverted_values.get(obj, obj)
 
 
 # Docs: http://projectpokemon.org/wiki/Pokemon_NDS_Structure
