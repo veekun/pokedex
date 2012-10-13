@@ -31,11 +31,16 @@ def pokemon_prng(seed):
 
 
 def struct_proxy(name, dependent=[]):
+    """Proxies to self.structure.<name>
+
+    "blob" is autometically reset by the setter.
+    The setter deletes all attributes named in ``dependent``.
+    """
     def getter(self):
-        return getattr(self.structure, name)
+        return self.structure[name]
 
     def setter(self, value):
-        setattr(self.structure, name, value)
+        self.structure[name] = value
         for dep in dependent:
             delattr(self, dep)
         del self.blob
@@ -44,15 +49,19 @@ def struct_proxy(name, dependent=[]):
 
 
 def struct_frozenset_proxy(name):
+    """Proxy for sets like ribbons or markings
+
+    "blob" is autometically reset by the setter.
+    """
     def getter(self):
-        bitstruct = getattr(self.structure, name)
+        bitstruct = self.structure[name]
         return frozenset(k for k, v in bitstruct.items() if v)
 
     def setter(self, new_set):
         new_set = set(new_set)
-        struct = getattr(self.structure, name)
+        struct = self.structure[name]
         for key in struct:
-            setattr(struct, key, key in new_set)
+            struct[key] = (key in new_set)
             new_set.discard(key)
         if new_set:
             raise ValueError('Unknown values: {0}'.format(', '.join(ribbons)))
@@ -62,6 +71,7 @@ def struct_frozenset_proxy(name):
 
 
 class cached_property(object):
+    """Caching property. Use del to remove the cache."""
     def __init__(self, getter, setter=None):
         self._getter = getter
         self._setter = setter
@@ -69,14 +79,15 @@ class cached_property(object):
 
     def setter(self, func):
         """With this setter, the value being set is automatically cached
+
+        "blob" is autometically reset by the setter.
         """
         self._setter = func
         self.cache_setter_value = True
         return self
 
     def complete_setter(self, func):
-        """Setter without automatic caching of the set value
-        """
+        """Setter without automatic caching of the set value"""
         self._setter = func
         self.cache_setter_value = False
         return self
@@ -112,34 +123,6 @@ class cached_property(object):
             del instance._cached_properties[self]
         except (AttributeError, KeyError):
             pass
-
-
-class InstrumentedList(object):
-    def __init__(self, callback, initial=()):
-        self.list = list(initial)
-        self.callback = callback
-
-    def __getitem__(self, index):
-        return self.list[index]
-
-    def __setitem__(self, index, value):
-        self.list[index] = value
-        self.callback()
-
-    def __delitem__(self, index, value):
-        self.list[index] = value
-        self.callback()
-
-    def append(self, item):
-        self.list.append(item)
-        self.callback()
-
-    def extend(self, extralist):
-        self.list.extend(extralist)
-        self.callback()
-
-    def __iter__(self):
-        return iter(self.list)
 
 
 class SaveFilePokemon(object):
@@ -183,7 +166,6 @@ class SaveFilePokemon(object):
             else:
                 # Already decrypted
                 self.blob = blob
-
         else:
             self.blob = '\0' * (32 * 4 + 8)
 
@@ -276,9 +258,14 @@ class SaveFilePokemon(object):
 
         save(result, 'exp')
         save(result, 'happiness')
-        save(result, 'markings', transform=sorted)
         save(result, 'original country')
         save(result, 'original version')
+        save(result, 'met at level')
+        save(result, 'is egg')
+        save(result, 'fateful encounter')
+        save(result, 'personality')
+
+        save(result, 'markings', transform=sorted)
         save(result, 'encounter type', condition=lambda et:
                 (et and et != 'special'))
         save_string(result, 'nickname', 'nickname trash', self.nickname)
@@ -287,11 +274,7 @@ class SaveFilePokemon(object):
         save(result, 'date met',
             transform=lambda x: x.isoformat())
         save(result, 'pokerus data', self.pokerus)
-        save(result, 'met at level')
         save(result, 'nicknamed', self.is_nicknamed)
-        save(result, 'is egg')
-        save(result, 'fateful encounter')
-        save(result, 'personality')
         save(result, 'gender', condition=lambda g: g != 'genderless')
         save(result, 'has hidden ability', self.hidden_ability)
         save(result, 'ribbons',
@@ -328,9 +311,11 @@ class SaveFilePokemon(object):
             effort[dct_stat_identifier] = st['effort_' + st_stat_identifier]
         for contest_stat in 'cool', 'beauty', 'cute', 'smart', 'tough', 'sheen':
             contest_stats[contest_stat] = st['contest_' + contest_stat]
-        save(result, 'effort', effort, condition=any)
-        save(result, 'genes', genes, condition=any)
-        save(result, 'contest stats', contest_stats, condition=any)
+        def any_values(d):
+            return any(d.values())
+        save(result, 'effort', effort, condition=any_values)
+        save(result, 'genes', genes, condition=any_values)
+        save(result, 'contest stats', contest_stats, condition=any_values)
 
         return result
 
@@ -378,7 +363,7 @@ class SaveFilePokemon(object):
         if 'pokeball' in dct:
             self.pokeball = self._get_pokeball(dct['pokeball']['id'])
             del self.pokeball
-        def _load_values(source, **values):
+        def load_values(source, **values):
             for attrname, key in values.iteritems():
                 try:
                     value = source[key]
@@ -396,14 +381,14 @@ class SaveFilePokemon(object):
                     setattr(self, attr_name, unicode(dct[string_key]))
         if 'oiginal trainer' in dct:
             trainer = dct['oiginal trainer']
-            _load_values(trainer,
+            load_values(trainer,
                     original_trainer_id='id',
                     original_trainer_secret_id='secret',
                     original_trainer_gender='gender',
                 )
             load_name('original_trainer_name', trainer, 'name', 'name trash')
         was_nicknamed = self.is_nicknamed
-        _load_values(dct,
+        load_values(dct,
                 exp='exp',
                 happiness='happiness',
                 markings='markings',
@@ -420,9 +405,7 @@ class SaveFilePokemon(object):
             )
         load_name('nickname', dct, 'nickname', 'nickname trash')
         self.is_nicknamed = was_nicknamed
-        _load_values(dct,
-                is_nicknamed='nicknamed',
-            )
+        load_values(dct, is_nicknamed='nicknamed')
         for loc_type in 'egg', 'met':
             loc_dict = dct.get('{0} location'.format(loc_type))
             if loc_dict:
@@ -465,6 +448,8 @@ class SaveFilePokemon(object):
                 ('contest stats', 'contest')):
             for name, value in dct.get(key, {}).items():
                 st['{}_{}'.format(prefix, name.replace(' ', '_'))] = value
+        del self.stats
+        del self.blob
         return self
 
     ### Delicious data
@@ -539,6 +524,7 @@ class SaveFilePokemon(object):
         else:
             st.alternate_form_id = 0
         del self.form
+        del self.blob
 
     @property
     def species(self):
@@ -711,27 +697,20 @@ class SaveFilePokemon(object):
             .filter(tables.Move.id.in_(move_ids)))
         moves_dict = dict((move.id, move) for move in move_rows)
 
-        def callback():
-            def get(index):
-                try:
-                    return result[x].id
-                except AttributeError:
-                    return 0
-            self.structure.move1_id = get(0)
-            self.structure.move2_id = get(1)
-            self.structure.move3_id = get(2)
-            self.structure.move4_id = get(3)
-            self._reset()
-
-        result = InstrumentedList(
-            callback,
+        result = tuple(
             [moves_dict.get(move_id, None) for move_id in move_ids])
 
         return result
 
     @moves.complete_setter
     def moves(self, new_moves):
-        self.moves[:] = new_moves
+        for i in range(4):
+            try:
+                id = new_moves[x].id
+            except AttributeError:
+                return 0
+            self.structure['move{0}_id'.format(i)] = id
+        del self.moves
 
     @cached_property
     def move_pp(self):
@@ -789,6 +768,7 @@ class SaveFilePokemon(object):
                 ribbons.discard(ribbon_name)
         if ribbons:
             raise ValueError('Unknown ribbons: {0}'.format(', '.join(ribbons)))
+        del self.blob
 
     @property
     def nickname(self):
@@ -948,6 +928,7 @@ class SaveFilePokemonGen5(SaveFilePokemon):
     @nature.setter
     def nature(self, new_nature):
         self.structure.nature_id = int(new_nature.game_index)
+        del self.blob
 
     hidden_ability = struct_proxy('hidden_ability')
 
