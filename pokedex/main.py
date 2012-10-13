@@ -307,6 +307,18 @@ def command_pkm(*args):
     if options.yaml:
         import yaml
 
+        # Override the default string handling function
+        # to always return unicode objects.
+        # Inspired by http://stackoverflow.com/questions/2890146
+        # This prevents str/unicode SQLAlchemy warnings.
+        def construct_yaml_str(self, node):
+            return self.construct_scalar(node)
+        class UnicodeLoader(yaml.SafeLoader):
+            pass
+        UnicodeLoader.add_constructor(u'tag:yaml.org,2002:str',
+            construct_yaml_str)
+
+
     if not files:
         # Use sys.stdin in place of name, handle specially later
         files = [sys.stdin]
@@ -319,7 +331,7 @@ def command_pkm(*args):
                 content = f.read()
         if mode == 'encode':
             if options.yaml:
-                dict_ = yaml.load(content)
+                dict_ = yaml.load(content, Loader=UnicodeLoader)
             else:
                 dict_ = json.loads(content)
             struct = cls(session=session, dict_=dict_)
