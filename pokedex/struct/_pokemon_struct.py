@@ -19,7 +19,7 @@ from construct import *
 
 pokemon_forms = {
     # Unown
-    201: 'abcdefghijklmnopqrstuvwxyz!?',
+    201: list('abcdefghijklmnopqrstuvwxyz') + ['exclamation', 'question'],
 
     # Deoxys
     386: ['normal', 'attack', 'defense', 'speed'],
@@ -33,7 +33,7 @@ pokemon_forms = {
     423: ['west', 'east'],
 
     # Rotom
-    479: ['normal', 'heat', 'wash', 'frost', 'fan', 'cut'],
+    479: ['normal', 'heat', 'wash', 'frost', 'fan', 'mow'],
 
     # Giratina
     487: ['altered', 'origin'],
@@ -45,7 +45,7 @@ pokemon_forms = {
     493: [
         'normal', 'fighting', 'flying', 'poison', 'ground', 'rock',
         'bug', 'ghost', 'steel', 'fire', 'water', 'grass',
-        'thunder', 'psychic', 'ice', 'dragon', 'dark', '???',
+        'thunder', 'psychic', 'ice', 'dragon', 'dark', 'unknown',
     ],
 }
 

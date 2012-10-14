@@ -242,7 +242,8 @@ class SaveFilePokemon(object):
             species=dict(id=self.species.id, name=self.species.name),
         )
         if self.form != self.species.default_form:
-            result['form'] = dict(id=st.form_id, name=self.form.form_name)
+            result['form'] = dict(
+                id=st.alternate_form_id, name=self.form.form_name)
 
         save_object(result, 'ability', id=st.ability_id)
         save_object(result, 'held item', id=st.held_item_id)
@@ -345,7 +346,7 @@ class SaveFilePokemon(object):
             del self.ability
         reset_form = False
         if 'form' in dct:
-            st.alternate_form = dct['form']
+            st.alternate_form_id = dct['form']['id']
             reset_form = True
         if 'species' in dct:
             st.national_id = dct['species']['id']
@@ -434,7 +435,8 @@ class SaveFilePokemon(object):
         if 'moves' in dct:
             pp_reset_indices = []
             for i, movedict in enumerate(dct['moves']):
-                st['move{0}_id'.format(i + 1)] = movedict['id']
+                if 'id' in movedict:
+                    st['move{0}_id'.format(i + 1)] = movedict['id']
                 if 'pp' in movedict:
                     st['move{0}_pp'.format(i + 1)] = movedict['pp']
                 else:
@@ -914,6 +916,7 @@ class SaveFilePokemonGen5(SaveFilePokemon):
         if self.nature:
             result['nature'] = dict(
                 id=self.structure.nature_id, name=self.nature.name)
+        result['has hidden ability'] = self.hidden_ability
         return result
 
     def update(self, dct, **kwargs):
