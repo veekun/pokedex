@@ -284,7 +284,6 @@ def command_pkm(*args):
 
             Options:
                 --gen=NUM, -g  Generation to use (4 or 5)
-                --crypt, -c    Use encrypted binary format.
                 --format=FORMAT, -f FORMAT
                                Select the human-readable format to use.
                                FORMAT can be:
@@ -292,9 +291,11 @@ def command_pkm(*args):
                                yaml: use YAML. Needs the PyYAML library
                                    installed.
                                python: use Python literal syntax
+                --crypt, -c    Use encrypted binary format.
                 --base64, -b   Use Base64 encoding for the binary format.
-                               By default, on for 'encode' but off for 'decode'
-                --binary, -B   Output raw binary data, do not use Base64
+                --binary, -B   Output raw binary data. This is the default,
+                               but you need to specify -B explicitly if you're
+                               dumping binary data to a terminal.
 
             If no files are given, reads from standard input.
             """).encode(sys.getdefaultencoding(), 'replace')
@@ -303,8 +304,7 @@ def command_pkm(*args):
     parser.add_option('-g', '--gen', default=5, type=int)
     parser.add_option('-c', '--crypt', action='store_true')
     parser.add_option('-f', '--format', default='json')
-    parser.add_option('-b', '--base64', action='store_true',
-        default=(mode == 'encode'))
+    parser.add_option('-b', '--base64', action='store_true', default=None)
     parser.add_option('-B', '--no-base64', action='store_false', dest='base64')
     options, files = parser.parse_args(list(args[1:]))
 
@@ -324,6 +324,18 @@ def command_pkm(*args):
         UnicodeLoader.add_constructor(u'tag:yaml.org,2002:str',
             construct_yaml_str)
 
+    if options.format not in ('yaml', 'json', 'python'):
+        raise parser.error('Bad "format"')
+
+    if mode == 'encode' and options.base64 is None:
+        try:
+            isatty = sys.stdout.isatty
+        except AttributeError:
+            pass
+        else:
+            if isatty():
+                parser.error('Refusing to dump binary data to terminal. '
+                    'Please use -B to override, or -b for base64.')
 
     if not files:
         # Use sys.stdin in place of name, handle specially later
@@ -342,8 +354,6 @@ def command_pkm(*args):
                 dict_ = json.loads(content)
             elif options.format == 'python':
                 dict_ = ast.literal_eval(content)
-            else:
-                raise parser.error('Bad "format"')
             struct = cls(session=session, dict_=dict_)
             if options.crypt:
                 data = struct.as_encrypted
@@ -365,8 +375,6 @@ def command_pkm(*args):
                 print json.dumps(dict_),
             elif options.format == 'python':
                 pprint.pprint(dict_)
-            else:
-                raise parser.error('Bad "format"')
 
 
 def command_help():
