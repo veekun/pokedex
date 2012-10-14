@@ -36,6 +36,7 @@ def voltorb_and_dict():
     expected = {
             'gender': 'male',
             'species': dict(id=100, name=u'Voltorb'),
+            'level': 1,
             'nickname': u'\0' * 11,
             'nicknamed': False,
             'nickname trash': 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==',
@@ -132,25 +133,48 @@ def test_nickname(use_update):
 @positional_params([True], [False])
 def test_experience(use_update):
     pkmn, expected = voltorb_and_dict()
-    exp = 2340
+    for exp in 2197, 2200:
+        if use_update:
+            pkmn.update(exp=exp)
+        else:
+            pkmn.exp = exp
+        assert pkmn.exp == exp
+        assert pkmn.experience_rung.experience <= pkmn.exp
+        assert pkmn.next_experience_rung.experience > pkmn.exp
+        assert pkmn.experience_rung.level + 1 == pkmn.next_experience_rung.level
+        assert (pkmn.experience_rung.growth_rate ==
+            pkmn.next_experience_rung.growth_rate ==
+            pkmn.species.growth_rate)
+        assert pkmn.level == pkmn.experience_rung.level
+        assert pkmn.exp_to_next == pkmn.next_experience_rung.experience - pkmn.exp
+        rung_difference = (pkmn.next_experience_rung.experience -
+            pkmn.experience_rung.experience)
+        assert pkmn.progress_to_next == (
+            pkmn.exp - pkmn.experience_rung.experience) / float(rung_difference)
+        if exp == 2197:
+            expected['level'] = 13
+        else:
+            expected['exp'] = exp
+            expected['level'] = 13
+        check_with_roundtrip(5, pkmn, expected)
+
+def test_update_inconsistent_exp_level():
+    pkmn, expected = voltorb_and_dict()
+    with pytest.raises(ValueError):
+        pkmn.update(exp=0, level=100)
+
+@positional_params([True], [False])
+def test_level(use_update):
+    pkmn, expected = voltorb_and_dict()
+    level = 10
     if use_update:
-        pkmn.update(exp=exp)
+        pkmn.update(level=level)
     else:
-        pkmn.exp = exp
-    assert pkmn.exp == exp
-    assert pkmn.experience_rung.experience < pkmn.exp
-    assert pkmn.next_experience_rung.experience > pkmn.exp
-    assert pkmn.experience_rung.level + 1 == pkmn.next_experience_rung.level
-    assert (pkmn.experience_rung.growth_rate ==
-        pkmn.next_experience_rung.growth_rate ==
-        pkmn.species.growth_rate)
-    assert pkmn.level == pkmn.experience_rung.level
-    assert pkmn.exp_to_next == pkmn.next_experience_rung.experience - pkmn.exp
-    rung_difference = (pkmn.next_experience_rung.experience -
-        pkmn.experience_rung.experience)
-    assert pkmn.progress_to_next == (
-        pkmn.exp - pkmn.experience_rung.experience) / float(rung_difference)
-    expected['exp'] = exp
+        pkmn.level = level
+    assert pkmn.level == level
+    assert pkmn.experience_rung.level == level
+    assert pkmn.experience_rung.experience == pkmn.exp
+    expected['level'] = level
     check_with_roundtrip(5, pkmn, expected)
 
 @positional_params([True], [False])
@@ -170,7 +194,6 @@ def test_squirtle_blob():
     expected = {
         'ability': {'id': 44, 'name': u'Rain Dish'},
         'date met': '2010-10-14',
-        'exp': 560,
         'gender': 'male',
         'genes': {u'attack': 31,
                 u'defense': 27,
@@ -179,6 +202,7 @@ def test_squirtle_blob():
                 u'special defense': 3,
                 u'speed': 7},
         'happiness': 70,
+        'level': 10,
         'met at level': 10,
         'met location': {'id_dp': 75, 'name': u'Spring Path'},
         'moves': [{'id': 33, 'name': u'Tackle', 'pp': 35},

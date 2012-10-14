@@ -265,7 +265,6 @@ class SaveFilePokemon(object):
                 trainer['name'].strip('\0') or trainer['gender'] != 'male'):
             result['oiginal trainer'] = trainer
 
-        save(result, 'exp')
         save(result, 'happiness')
         save(result, 'original country')
         save(result, 'original version')
@@ -273,6 +272,10 @@ class SaveFilePokemon(object):
         save(result, 'is egg')
         save(result, 'fateful encounter')
         save(result, 'personality')
+
+        save(result, 'level')
+        if self.exp != self.experience_rung.experience:
+            save(result, 'exp')
 
         save(result, 'markings', transform=sorted)
         save(result, 'encounter type', condition=lambda et:
@@ -420,6 +423,12 @@ class SaveFilePokemon(object):
                 gender='gender',
                 personality='personality',
             )
+        if 'level' in dct:
+            if 'exp' in dct:
+                if self.level != dct['level']:
+                    raise ValueError('level and exp not compatible')
+            else:
+                self.level = dct['level']
         load_name('nickname', dct, 'nickname', 'nickname trash')
         if 'nicknamed' in dct:
             self.is_nicknamed = dct['nicknamed']
@@ -655,6 +664,14 @@ class SaveFilePokemon(object):
     @property
     def level(self):
         return self.experience_rung.level
+
+    @level.setter
+    def level(self, level):
+        growth_rate = self.species.growth_rate
+        self.exp = (self.session.query(tables.Experience)
+            .filter(tables.Experience.growth_rate == growth_rate)
+            .filter(tables.Experience.level == level)
+            .one().experience)
 
     @cached_property
     def experience_rung(self):
