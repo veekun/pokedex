@@ -235,6 +235,9 @@ class SaveFilePokemon(object):
             save(target_dict, key, value=value, transform=lambda value:
                 dict(name=value.name, **extra))
 
+        def any_values(d):
+            return any(d.values())
+
         result = dict(
             species=dict(id=self.species.id, name=self.species.name),
         )
@@ -243,7 +246,12 @@ class SaveFilePokemon(object):
 
         save_object(result, 'ability', id=st.ability_id)
         save_object(result, 'held item', id=st.held_item_id)
-        save_object(result, 'pokeball', id=st.dppt_pokeball or st.hgss_pokeball)
+
+        ball_dict = {}
+        save(ball_dict, 'id_dppt', st.dppt_pokeball)
+        save(ball_dict, 'id_hgss', st.hgss_pokeball)
+        save_object(ball_dict, 'name', self.pokeball)
+        save(result, 'pokeball', ball_dict, condition=any_values)
 
         trainer = dict(
                 id=self.original_trainer_id,
@@ -276,7 +284,6 @@ class SaveFilePokemon(object):
         save(result, 'pokerus data', self.pokerus)
         save(result, 'nicknamed', self.is_nicknamed)
         save(result, 'gender', condition=lambda g: g != 'genderless')
-        save(result, 'has hidden ability', self.hidden_ability)
         save(result, 'ribbons',
             sorted(r.replace('_', ' ') for r in self.ribbons))
 
@@ -311,8 +318,6 @@ class SaveFilePokemon(object):
             effort[dct_stat_identifier] = st['effort_' + st_stat_identifier]
         for contest_stat in 'cool', 'beauty', 'cute', 'smart', 'tough', 'sheen':
             contest_stats[contest_stat] = st['contest_' + contest_stat]
-        def any_values(d):
-            return any(d.values())
         save(result, 'effort', effort, condition=any_values)
         save(result, 'genes', genes, condition=any_values)
         save(result, 'contest stats', contest_stats, condition=any_values)
@@ -361,7 +366,10 @@ class SaveFilePokemon(object):
             st.held_item_id = dct['held item']['id']
             del self.held_item
         if 'pokeball' in dct:
-            self.pokeball = self._get_pokeball(dct['pokeball']['id'])
+            if 'id_dppt' in dct['pokeball']:
+                st.dppt_pokeball = dct['pokeball']['id_dppt']
+            if 'id_hgss' in dct['pokeball']:
+                st.hgss_pokeball = dct['pokeball']['id_hgss']
             del self.pokeball
         def load_values(source, **values):
             for attrname, key in values.iteritems():
@@ -401,7 +409,6 @@ class SaveFilePokemon(object):
                 fateful_encounter='fateful encounter',
                 gender='gender',
                 personality='personality',
-                hidden_ability='has hidden ability',
             )
         load_name('nickname', dct, 'nickname', 'nickname trash')
         self.is_nicknamed = was_nicknamed
@@ -595,9 +602,11 @@ class SaveFilePokemon(object):
             pokeball_id = pokeball.id
             boundary = 492 - 17
             if pokeball_id >= boundary:
+                st.dppt_pokeball = 0
                 st.hgss_pokeball = pokeball_id - boundary
             else:
                 st.dppt_pokeball = pokeball_id
+                st.hgss_pokeball = 0
 
     @cached_property
     def egg_location(self):
@@ -861,7 +870,7 @@ class SaveFilePokemonGen4(SaveFilePokemon):
     pokemon_struct = make_pokemon_struct(generation=generation_id)
 
     def export_dict(self):
-        result = super(SaveFilePokemonGen5, self).export_dict()
+        result = super(SaveFilePokemonGen4, self).export_dict()
         if any(self.shiny_leaves):
             result['shiny leaves'] = self.shiny_leaves
         return result
@@ -912,7 +921,9 @@ class SaveFilePokemonGen5(SaveFilePokemon):
         super(SaveFilePokemonGen5, self).update(dct)
         if 'nature' in dct:
             self.structure.nature_id = dct['nature']['id']
-        if 'has hidden ability' not in dct:
+        if 'has hidden ability' in dct:
+            self.hidden_ability = dct['has hidden ability']
+        else:
             self.hidden_ability = (self.ability == self.pokemon.dream_ability
                 and self.ability not in self.pokemon.abilities)
 
