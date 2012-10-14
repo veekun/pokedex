@@ -285,8 +285,9 @@ class SaveFilePokemon(object):
         save(result, 'pokerus data', self.pokerus)
         save(result, 'nicknamed', self.is_nicknamed)
         save(result, 'gender', condition=lambda g: g != 'genderless')
-        save(result, 'ribbons',
-            sorted(r.replace('_', ' ') for r in self.ribbons))
+        for name in 'sinnoh ribbons', 'sinnoh contest ribbons', 'hoenn ribbons':
+            save(result, name, transform=lambda ribbons:
+                sorted(r.replace('_', ' ') for r in ribbons))
 
         for loc_type in 'egg', 'met':
             loc_dict = dict()
@@ -430,8 +431,10 @@ class SaveFilePokemon(object):
         if 'egg received' in dct:
             self.date_egg_received = datetime.datetime.strptime(
                 dct['egg received'], '%Y-%m-%d').date()
-        if 'ribbons' in dct:
-            self.ribbons = (r.replace(' ', '_') for r in dct['ribbons'])
+        for name in 'sinnoh ribbons', 'sinnoh contest ribbons', 'hoenn ribbons':
+            if name in dct:
+                setattr(self, name.replace(' ', '_'),
+                    (r.replace(' ', '_') for r in dct[name]))
         if 'moves' in dct:
             pp_reset_indices = []
             for i, movedict in enumerate(dct['moves']):
@@ -760,26 +763,6 @@ class SaveFilePokemon(object):
     sinnoh_ribbons = struct_frozenset_proxy('sinnoh_ribbons')
     hoenn_ribbons = struct_frozenset_proxy('hoenn_ribbons')
     sinnoh_contest_ribbons = struct_frozenset_proxy('sinnoh_contest_ribbons')
-
-    @property
-    def ribbons(self):
-        return frozenset(
-            self.sinnoh_ribbons |
-            self.hoenn_ribbons |
-            self.sinnoh_contest_ribbons)
-
-    @ribbons.setter
-    def ribbons(self, ribbons):
-        ribbons = set(ribbons)
-        for ribbonset_name in (
-                'sinnoh_ribbons', 'hoenn_ribbons', 'sinnoh_contest_ribbons'):
-            ribbonset = self.structure[ribbonset_name]
-            for ribbon_name in ribbonset:
-                ribbonset[ribbon_name] = (ribbon_name in ribbons)
-                ribbons.discard(ribbon_name)
-        if ribbons:
-            raise ValueError('Unknown ribbons: {0}'.format(', '.join(ribbons)))
-        del self.blob
 
     @property
     def nickname(self):
