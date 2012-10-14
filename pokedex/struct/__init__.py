@@ -251,7 +251,7 @@ class SaveFilePokemon(object):
         ball_dict = {}
         save(ball_dict, 'id_dppt', st.dppt_pokeball)
         save(ball_dict, 'id_hgss', st.hgss_pokeball)
-        save_object(ball_dict, 'name', self.pokeball)
+        save(ball_dict, 'name', self.pokeball, transform=attrgetter('name'))
         save(result, 'pokeball', ball_dict, condition=any_values)
 
         trainer = dict(
@@ -445,6 +445,7 @@ class SaveFilePokemon(object):
                     (r.replace(' ', '_') for r in dct[name]))
         if 'moves' in dct:
             pp_reset_indices = []
+            i = -1
             for i, movedict in enumerate(dct['moves']):
                 if 'id' in movedict:
                     st['move{0}_id'.format(i + 1)] = movedict['id']
@@ -591,9 +592,6 @@ class SaveFilePokemon(object):
     def form(self, form):
         self.structure.national_id = form.species.id
         self.structure.alternate_form = form.form_identifier
-        del self.species
-        del self.pokemon
-        self._reset()
 
     @cached_property
     def pokeball(self):
@@ -659,7 +657,7 @@ class SaveFilePokemon(object):
     @cached_property
     def experience_rung(self):
         growth_rate = self.species.growth_rate
-        return (session.query(tables.Experience)
+        return (self.session.query(tables.Experience)
             .filter(tables.Experience.growth_rate == growth_rate)
             .filter(tables.Experience.experience <= self.exp)
             .order_by(tables.Experience.level.desc())
@@ -668,8 +666,9 @@ class SaveFilePokemon(object):
     @cached_property
     def next_experience_rung(self):
         level = self.level
+        growth_rate = self.species.growth_rate
         if level < 100:
-            return (session.query(tables.Experience)
+            return (self.session.query(tables.Experience)
                 .filter(tables.Experience.growth_rate == growth_rate)
                 .filter(tables.Experience.level == level + 1)
                 .one())
@@ -723,18 +722,18 @@ class SaveFilePokemon(object):
         moves_dict = dict((move.id, move) for move in move_rows)
 
         result = tuple(
-            [moves_dict.get(move_id, None) for move_id in move_ids])
+            [moves_dict.get(move_id, None) for move_id in move_ids if move_id])
 
         return result
 
     @moves.complete_setter
     def moves(self, new_moves):
-        for i in range(4):
-            try:
-                id = new_moves[x].id
-            except AttributeError:
-                return 0
-            self.structure['move{0}_id'.format(i)] = id
+        (
+            self.structure.move1_id,
+            self.structure.move2_id,
+            self.structure.move3_id,
+            self.structure.move4_id,
+        ) = ([m.id for m in new_moves] + [0, 0, 0, 0])[:4]
         del self.moves
 
     @cached_property
@@ -748,7 +747,13 @@ class SaveFilePokemon(object):
 
     @move_pp.complete_setter
     def move_pp(self, new_pps):
-        self.move_pp[:] = new_pps
+        (
+            self.structure.move1_pp,
+            self.structure.move2_pp,
+            self.structure.move3_pp,
+            self.structure.move4_pp,
+        ) = (list(new_pps) + [0, 0, 0, 0])[:4]
+        del self.move_pp
 
     original_trainer_id = struct_proxy('original_trainer_id')
     original_trainer_secret_id = struct_proxy('original_trainer_secret_id')
@@ -910,7 +915,10 @@ class SaveFilePokemonGen5(SaveFilePokemon):
         if self.nature:
             result['nature'] = dict(
                 id=self.structure.nature_id, name=self.nature.name)
-        result['has hidden ability'] = self.hidden_ability
+        ability_is_hidden = (self.ability == self.pokemon.dream_ability)
+        if (ability_is_hidden != bool(self.hidden_ability) or
+                self.pokemon.dream_ability in self.pokemon.abilities):
+            result['has hidden ability'] = self.hidden_ability
         return result
 
     def update(self, dct, **kwargs):
@@ -918,11 +926,14 @@ class SaveFilePokemonGen5(SaveFilePokemon):
         super(SaveFilePokemonGen5, self).update(dct)
         if 'nature' in dct:
             self.structure.nature_id = dct['nature']['id']
-        if 'has hidden ability' in dct:
-            self.hidden_ability = dct['has hidden ability']
-        else:
-            self.hidden_ability = (self.ability == self.pokemon.dream_ability
-                and self.ability not in self.pokemon.abilities)
+        if any(x in dct for x in
+                ('has hidden ability', 'species', 'form', 'ability')):
+            if 'has hidden ability' in dct:
+                self.hidden_ability = dct['has hidden ability']
+            else:
+                self.hidden_ability = (
+                    self.ability == self.pokemon.dream_ability and
+                    self.ability not in self.pokemon.abilities)
 
     @cached_property
     def nature(self):
