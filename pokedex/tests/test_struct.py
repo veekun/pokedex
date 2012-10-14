@@ -7,6 +7,8 @@ import pytest
 from pokedex import struct
 from pokedex.db import connect, tables, util
 
+from pokedex.tests import positional_params
+
 session = connect()
 
 def check_with_roundtrip(gen, pkmn, expected):
@@ -35,6 +37,7 @@ def voltorb_and_dict():
             'gender': 'male',
             'species': dict(id=100, name=u'Voltorb'),
             'nickname': u'\0' * 11,
+            'nicknamed': False,
             'nickname trash': 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==',
             'moves': [],
         }
@@ -48,57 +51,92 @@ def test_species():
     assert pkmn.form == voltorb_species.default_form
     assert pkmn.export_dict() == expected
 
-
-def test_nickname():
-    pkmn, expected = voltorb_and_dict()
-    pkmn.nickname = pkmn.nickname
-    expected['nicknamed'] = True
-    check_with_roundtrip(5, pkmn, expected)
-
-    pkmn.is_nicknamed = False
-    del expected['nicknamed']
-    check_with_roundtrip(5, pkmn, expected)
-
-def test_moves():
+@positional_params([True], [False])
+def test_moves(use_update):
     pkmn, expected = voltorb_and_dict()
     new_moves = (util.get(session, tables.Move, 'sonicboom'), )
     expected['moves'] = [dict(id=49, name=u'SonicBoom', pp=0)]
-    pkmn.moves = new_moves
+    if use_update:
+        pkmn.update(moves=expected['moves'])
+    else:
+        pkmn.moves = new_moves
     assert pkmn.moves == new_moves
     check_with_roundtrip(5, pkmn, expected)
 
     new_moves += (util.get(session, tables.Move, 'explosion'),)
     expected['moves'].append(dict(id=153, name=u'Explosion', pp=0))
-    pkmn.moves = new_moves
+    if use_update:
+        pkmn.update(moves=expected['moves'])
+    else:
+        pkmn.moves = new_moves
     assert pkmn.moves == new_moves
     check_with_roundtrip(5, pkmn, expected)
 
     new_pp = (20,)
     expected['moves'][0]['pp'] = 20
-    pkmn.move_pp = new_pp
+    if use_update:
+        pkmn.update(moves=expected['moves'])
+    else:
+        pkmn.move_pp = new_pp
     assert pkmn.move_pp == (20, 0, 0, 0)
     check_with_roundtrip(5, pkmn, expected)
 
-def test_personality():
+@positional_params([True], [False])
+def test_personality(use_update):
     pkmn, expected = voltorb_and_dict()
     assert pkmn.is_shiny == True
-    pkmn.personality = 12345
+    if use_update:
+        pkmn.update(personality=12345)
+    else:
+        pkmn.personality = 12345
     assert pkmn.is_shiny == False
     expected['personality'] = 12345
     check_with_roundtrip(5, pkmn, expected)
 
-def test_pokeball():
+@positional_params([True], [False])
+def test_pokeball(use_update):
     pkmn, expected = voltorb_and_dict()
     masterball = util.get(session, tables.Item, 'master-ball')
-    pkmn.pokeball = masterball
-    assert pkmn.pokeball == masterball
     expected['pokeball'] = dict(id_dppt=1, name='Master Ball')
+    if use_update:
+        pkmn.update(pokeball=expected['pokeball'])
+    else:
+        pkmn.pokeball = masterball
+    assert pkmn.pokeball == masterball
     check_with_roundtrip(5, pkmn, expected)
 
-def test_experience():
+@positional_params([True], [False])
+def test_nickname(use_update):
+    pkmn, expected = voltorb_and_dict()
+    if use_update:
+        pkmn.update(nickname=unicode(pkmn.nickname))
+    else:
+        pkmn.nickname = pkmn.nickname
+    expected['nicknamed'] = True
+    check_with_roundtrip(5, pkmn, expected)
+
+    if use_update:
+        pkmn.update(nicknamed=False)
+    else:
+        pkmn.is_nicknamed = False
+    expected['nicknamed'] = False
+    check_with_roundtrip(5, pkmn, expected)
+
+    if use_update:
+        pkmn.update(nicknamed=True)
+    else:
+        pkmn.is_nicknamed = True
+    expected['nicknamed'] = True
+    check_with_roundtrip(5, pkmn, expected)
+
+@positional_params([True], [False])
+def test_experience(use_update):
     pkmn, expected = voltorb_and_dict()
     exp = 2340
-    pkmn.exp = exp
+    if use_update:
+        pkmn.update(exp=exp)
+    else:
+        pkmn.exp = exp
     assert pkmn.exp == exp
     assert pkmn.experience_rung.experience < pkmn.exp
     assert pkmn.next_experience_rung.experience > pkmn.exp
@@ -115,7 +153,8 @@ def test_experience():
     expected['exp'] = exp
     check_with_roundtrip(5, pkmn, expected)
 
-def test_ability():
+@positional_params([True], [False])
+def test_ability(use_update):
     pkmn, expected = voltorb_and_dict()
     ability = util.get(session, tables.Ability, 'drizzle')
     pkmn.ability = ability
@@ -123,9 +162,8 @@ def test_ability():
     expected['ability'] = dict(id=2, name='Drizzle')
     check_with_roundtrip(5, pkmn, expected)
 
-def test_squitle_blob():
-    # Japanese Dream World Squirtle, coutresy of
-    # http://projectpokemon.org/events/
+def test_squirtle_blob():
+    # Japanese Dream World Squirtle from http://projectpokemon.org/events
     blob = base64.b64decode('J2ZqBgAAICQHAAAAkOaKyTACAABGLAABAAAAAAAAAAAAAAAAA'
         'AAAACEAJwCRAG4AIx4eKAAAAAD171MHAAAAAAAAAQAAAAAAvDDLMKww4TD//wAAAAAAAA'
         'AAAAD//wAVAAAAAAAAAAAw/zD/T/9S/0f///8AAAAAAAAACgoOAABLAAAZCgAAAA==')
@@ -149,6 +187,7 @@ def test_squitle_blob():
                 {'id': 110, 'name': u'Withdraw', 'pp': 40}],
         'nickname': u'ゼニガメ',
         'nickname trash': 'vDDLMKww4TD//wAAAAAAAAAAAAD//w==',
+        'nicknamed': False,
         'oiginal trainer': {'gender': 'male',
                             'id': 59024,
                             'name': u'ＰＰｏｒｇ',

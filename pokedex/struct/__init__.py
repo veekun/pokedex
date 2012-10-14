@@ -283,7 +283,7 @@ class SaveFilePokemon(object):
         save(result, 'date met',
             transform=lambda x: x.isoformat())
         save(result, 'pokerus data', self.pokerus)
-        save(result, 'nicknamed', self.is_nicknamed)
+        result['nicknamed'] = self.is_nicknamed
         save(result, 'gender', condition=lambda g: g != 'genderless')
         for name in 'sinnoh ribbons', 'sinnoh contest ribbons', 'hoenn ribbons':
             save(result, name, transform=lambda ribbons:
@@ -334,7 +334,7 @@ class SaveFilePokemon(object):
 
         return result
 
-    def update(self, dct, **kwargs):
+    def update(self, dct=None, **kwargs):
         """Updates the pokemon from a YAML/JSON-compatible dict
 
         Dicts that don't specify all the data are allowed. They update the
@@ -349,6 +349,8 @@ class SaveFilePokemon(object):
         """
         st = self.structure
         session = self.session
+        if dct is None:
+            dct = {}
         dct.update(kwargs)
         if 'ability' in dct:
             st.ability_id = dct['ability']['id']
@@ -365,8 +367,7 @@ class SaveFilePokemon(object):
         if reset_form:
             del self.form
             if not self.is_nicknamed:
-                self.nickname = self.species.name
-                self.is_nicknamed = False
+                del self.nickname
             if self.species.gender_rate == -1:
                 self.gender = 'genderless'
             elif self.gender == 'genderless':
@@ -405,7 +406,6 @@ class SaveFilePokemon(object):
                     original_trainer_gender='gender',
                 )
             load_name('original_trainer_name', trainer, 'name', 'name trash')
-        was_nicknamed = self.is_nicknamed
         load_values(dct,
                 exp='exp',
                 happiness='happiness',
@@ -421,8 +421,10 @@ class SaveFilePokemon(object):
                 personality='personality',
             )
         load_name('nickname', dct, 'nickname', 'nickname trash')
-        self.is_nicknamed = was_nicknamed
-        load_values(dct, is_nicknamed='nicknamed')
+        if 'nicknamed' in dct:
+            self.is_nicknamed = dct['nicknamed']
+        elif 'nickname' in dct:
+            self.is_nicknamed = self.nickname != self.species.name
         for loc_type in 'egg', 'met':
             loc_dict = dct.get('{0} location'.format(loc_type))
             if loc_dict:
@@ -791,7 +793,7 @@ class SaveFilePokemon(object):
         del self.blob
 
     @nickname.deleter
-    def nickname(self, value):
+    def nickname(self):
         self.structure.nickname = ''
         self.is_nicknamed = False
         del self.blob
@@ -876,7 +878,9 @@ class SaveFilePokemonGen4(SaveFilePokemon):
             result['shiny leaves'] = self.shiny_leaves
         return result
 
-    def update(self, dct, **kwargs):
+    def update(self, dct=None, **kwargs):
+        if dct is None:
+            dct = {}
         dct.update(kwargs)
         if 'shiny leaves' in dct:
             self.shiny_leaves = dct['shiny leaves']
@@ -921,7 +925,9 @@ class SaveFilePokemonGen5(SaveFilePokemon):
             result['has hidden ability'] = self.hidden_ability
         return result
 
-    def update(self, dct, **kwargs):
+    def update(self, dct=None, **kwargs):
+        if dct is None:
+            dct = {}
         dct.update(kwargs)
         super(SaveFilePokemonGen5, self).update(dct)
         if 'nature' in dct:
