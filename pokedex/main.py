@@ -5,6 +5,8 @@ import sys
 import textwrap
 import json
 import base64
+import ast
+import pprint
 
 import pokedex.db
 import pokedex.db.load
@@ -283,9 +285,13 @@ def command_pkm(*args):
             Options:
                 --gen=NUM, -g  Generation to use (4 or 5)
                 --crypt, -c    Use encrypted binary format.
-                --yaml, -y     Use YAML as the human-readable format.
-                               Requires the PyYAML library to be installed.
-                               Default is to use JSON.
+                --format=FORMAT, -f FORMAT
+                               Select the human-readable format to use.
+                               FORMAT can be:
+                               json (default): use JSON.
+                               yaml: use YAML. Needs the PyYAML library
+                                   installed.
+                               python: use Python literal syntax
                 --base64, -b   Use Base64 encoding for the binary format.
                                By default, on for 'encode' but off for 'decode'
                 --binary, -B   Output raw binary data, do not use Base64
@@ -296,7 +302,7 @@ def command_pkm(*args):
     parser = get_parser(verbose=False)
     parser.add_option('-g', '--gen', default=5, type=int)
     parser.add_option('-c', '--crypt', action='store_true')
-    parser.add_option('-y', '--yaml', action='store_true')
+    parser.add_option('-f', '--format', default='json')
     parser.add_option('-b', '--base64', action='store_true',
         default=(mode == 'encode'))
     parser.add_option('-B', '--no-base64', action='store_false', dest='base64')
@@ -304,7 +310,7 @@ def command_pkm(*args):
 
     session = get_session(options)
     cls = pokedex.struct.save_file_pokemon_classes[options.gen]
-    if options.yaml:
+    if options.format == 'yaml':
         import yaml
 
         # Override the default string handling function
@@ -330,10 +336,14 @@ def command_pkm(*args):
             with open(filename) as f:
                 content = f.read()
         if mode == 'encode':
-            if options.yaml:
+            if options.format == 'yaml':
                 dict_ = yaml.load(content, Loader=UnicodeLoader)
-            else:
+            elif options.format == 'json':
                 dict_ = json.loads(content)
+            elif options.format == 'python':
+                dict_ = ast.literal_eval(content)
+            else:
+                raise parser.error('Bad "format"')
             struct = cls(session=session, dict_=dict_)
             if options.crypt:
                 data = struct.as_encrypted
@@ -349,10 +359,14 @@ def command_pkm(*args):
             struct = cls(
                 blob=content, encrypted=options.crypt, session=session)
             dict_ = struct.export_dict()
-            if options.yaml:
+            if options.format == 'yaml':
                 print yaml.safe_dump(dict_, explicit_start=True),
-            else:
+            elif options.format == 'json':
                 print json.dumps(dict_),
+            elif options.format == 'python':
+                pprint.pprint(dict_)
+            else:
+                raise parser.error('Bad "format"')
 
 
 def command_help():
