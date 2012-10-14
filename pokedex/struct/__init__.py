@@ -324,6 +324,14 @@ class SaveFilePokemon(object):
         save(result, 'genes', genes, condition=any_values)
         save(result, 'contest stats', contest_stats, condition=any_values)
 
+        trash = []
+        while True:
+            try:
+                trash.append(st['trash_{0}'.format(len(trash))])
+            except KeyError:
+                break
+        save(result, 'trash values', trash, condition=any)
+
         return result
 
     def update(self, dct, **kwargs):
@@ -460,6 +468,9 @@ class SaveFilePokemon(object):
                 ('contest stats', 'contest')):
             for name, value in dct.get(key, {}).items():
                 st['{}_{}'.format(prefix, name.replace(' ', '_'))] = value
+        if 'trash values' in dct:
+            for i, data in enumerate(dct['trash values']):
+                st['trash_{0}'.format(i)] = data
         del self.stats
         del self.blob
         return self

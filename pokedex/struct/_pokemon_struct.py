@@ -687,9 +687,9 @@ def make_pokemon_struct(generation):
         5: ULInt8('nature_id'),
     }[generation]
 
-    padding_or_hidden_ability = {
-        4: Padding(1),
-        5: Flag('hidden_ability'),
+    hidden_ability_with_padding = {
+        4: ULInt16('trash_1'),
+        5: Embed(Struct('', Flag('hidden_ability'), ULInt8('trash_1'))),
     }[generation]
 
     PokemonStringAdapter = {
@@ -700,7 +700,7 @@ def make_pokemon_struct(generation):
     return Struct('pokemon_struct',
         # Header
         ULInt32('personality'),  # XXX aughgh http://bulbapedia.bulbagarden.net/wiki/Personality
-        Padding(2),
+        ULInt16('trash_0'),
         ULInt16('checksum'),  # XXX should be checked or calculated
 
         # Block A
@@ -845,14 +845,13 @@ def make_pokemon_struct(generation):
             Flag('fateful_encounter'),
         )),
         leaves_or_nature,
-        padding_or_hidden_ability,
-        Padding(1),
+        hidden_ability_with_padding,
         ULInt16('pt_egg_location_id'),
         ULInt16('pt_met_location_id'),
 
         # Block C
         PokemonStringAdapter(String('nickname', 22), 22),
-        Padding(1),
+        ULInt8('trash_2'),
         LeakyEnum(ULInt8('original_version'),
             sapphire = 1,
             ruby = 2,
@@ -889,7 +888,7 @@ def make_pokemon_struct(generation):
             Flag('cool_ribbon_great'),
             Flag('cool_ribbon'),
         ),
-        Padding(4),
+        ULInt32('trash_3'),
 
         # Block D
         PokemonStringAdapter(String('original_trainer_name', 16), 16),
@@ -919,5 +918,5 @@ def make_pokemon_struct(generation):
             hgss_gift = 24,     # starter; fossil; bebe's eevee  (pt only??)
         ),
         ULInt8('hgss_pokeball'),
-        Padding(1),
+        ULInt8('trash_4'),
     )
