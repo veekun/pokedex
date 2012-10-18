@@ -2076,6 +2076,8 @@ class VersionGroup(TableBase):
     __tablename__ = 'version_groups'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u"This version group's unique ID."))
+    identifier = Column(Unicode(20), nullable=False, unique=True,
+        info=dict(description=u"This version group's unique textual identifier."))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description=u"The ID of the generation the games in this group belong to."))
     pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), nullable=True,
