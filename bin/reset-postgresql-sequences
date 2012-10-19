@@ -33,8 +33,9 @@ for table in sorted(mapped_classes):
     for c in sequence_columns(table):
         max_value, = session.query(func.max(c)).one()
         if options.verbose:
-            print "%s.%s <- %s" % (table_name, c.name, max_value)
+            print "%s.%s <- %s" % (table_name, c.name, max_value or 0)
         session.execute(func.setval(
             func.pg_get_serial_sequence(table_name, c.name),
-            max_value,
+            max_value or 1,
+            max_value is not None,
         ))
