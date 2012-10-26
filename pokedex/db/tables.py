@@ -1466,6 +1466,45 @@ create_translation_table('pal_park_area_names', PalParkArea, 'names',
         info=dict(description="The name", format='plaintext', official=False)),
 )
 
+class PickupItem(TableBase):
+    u"""Items which can be found with the Pickup ability.
+
+    Level ranges are assumed not to overlap, and max_level is assumed to be
+    constant with respect to min_level.
+    """
+
+    __tablename__ = 'pickup_items'
+    __singlename__ = 'pickup_item'
+
+    slot_id = Column(Integer, ForeignKey('pickup_slots.id'), primary_key=True,
+        info=dict(description="The slot"))
+    min_level = Column(Integer, nullable=False, primary_key=True,
+        info=dict(description="Minimum level at which this slot applies"))
+    max_level = Column(Integer, nullable=False,
+        info=dict(description="Maximum level at which this slot applies"))
+    item_id = Column(Integer, ForeignKey('items.id'),
+        info=dict(description="The item"))
+
+class PickupSlot(TableBase):
+    u"""The chance of finding a particular item with Pickup."""
+
+    __tablename__ = 'pickup_slots'
+    __singlename__ = 'pickup_slot'
+
+    id = Column(Integer, primary_key=True,
+        info=dict(description=""))
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'),
+        info=dict(description="The version group"))
+    slot = Column(Integer, nullable=False,
+        info=dict(description="Index of the slot + 1"))
+    rarity = Column(Integer, nullable=False,
+        info=dict(description="Percent chance of this slot being chosen"))
+
+    __table_args__ = (
+        UniqueConstraint(version_group_id, slot),
+        {},
+    )
+
 class PokeathlonStat(TableBase):
     u"""A Pokéathlon stat, such as "Stamina" or "Jump".
     """
@@ -2469,6 +2508,12 @@ NaturePokeathlonStat.pokeathlon_stat = relationship(PokeathlonStat,
 
 PalPark.area = relationship(PalParkArea,
     innerjoin=True, lazy='joined')
+
+
+PickupItem.slot = relationship(PickupSlot)
+PickupItem.item = relationship(Item)
+
+PickupSlot.version_group = relationship(VersionGroup)
 
 
 Pokedex.region = relationship(Region,
