@@ -1731,10 +1731,10 @@ class PokemonGameIndex(TableBase):
     __tablename__ = 'pokemon_game_indices'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description=u"Database ID of the Pokémon"))
-    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False,
-        info=dict(description=u"Database ID of the generation"))
+    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, autoincrement=False, nullable=False,
+        info=dict(description=u"Database ID of the version"))
     game_index = Column(Integer, nullable=False,
-        info=dict(description=u"Internal ID the generation's games use for the Pokémon"))
+        info=dict(description=u"Internal ID the version's games use for the Pokémon"))
 
 class PokemonHabitat(TableBase):
     u"""The habitat of a Pokémon, as given in the FireRed/LeafGreen version Pokédex
