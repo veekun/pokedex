@@ -1583,8 +1583,8 @@ class PokemonAbility(TableBase):
     # XXX having both a method and a slot is kind of gross.  "slot" is a
     # misnomer, anyway: duplicate abilities don't appear in slot 2.
     # Probably should replace that with "order".
-    is_dream = Column(Boolean, nullable=False, index=True,
-        info=dict(description=u"Whether this is a Dream World ability"))
+    is_hidden = Column(Boolean, nullable=False, index=True,
+        info=dict(description=u"Whether this is a hidden ability"))
     slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"The ability slot, i.e. 1 or 2 for gen. IV"))
 
@@ -2487,20 +2487,20 @@ Pokemon.abilities = relationship(Ability,
     secondary=PokemonAbility.__table__,
     primaryjoin=and_(
         Pokemon.id == PokemonAbility.pokemon_id,
-        PokemonAbility.is_dream == False,
+        PokemonAbility.is_hidden == False,
     ),
     innerjoin=True,
     order_by=PokemonAbility.slot.asc(),
     backref=backref('pokemon', order_by=Pokemon.order.asc()),
     doc=u"Abilities the Pokémon can have in the wild")
-Pokemon.dream_ability = relationship(Ability,
+Pokemon.hidden_ability = relationship(Ability,
     secondary=PokemonAbility.__table__,
     primaryjoin=and_(
         Pokemon.id == PokemonAbility.pokemon_id,
-        PokemonAbility.is_dream == True,
+        PokemonAbility.is_hidden == True,
     ),
     uselist=False,
-    backref=backref('dream_pokemon', order_by=Pokemon.order),
+    backref=backref('hidden_pokemon', order_by=Pokemon.order),
     doc=u"The Pokémon's Hidden Ability")
 Pokemon.forms = relationship(PokemonForm,
     primaryjoin=Pokemon.id==PokemonForm.pokemon_id,
