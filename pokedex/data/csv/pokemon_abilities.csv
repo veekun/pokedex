@@ -1,4 +1,4 @@
-pokemon_id,ability_id,is_dream,slot
+pokemon_id,ability_id,is_hidden,slot
 1,65,0,1
 1,34,1,3
 2,65,0,1
