@@ -399,8 +399,8 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 199,9,,
 200,5,,
 200,9,,
-201,5,Lettre A,Zarbi A
-201,9,Letter A,Unown A
+201,5,A,Zarbi A
+201,9,A,Unown A
 202,5,,
 202,9,,
 203,5,,
@@ -983,7 +983,7 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 491,9,,
 492,5,Forme Terrestre,Shaymin Terrestre
 492,9,Land Forme,Land Shaymin
-493,5,Type Normal,Arceus Normal
+493,5,Normal,Arceus Normal
 493,9,Normal Type,Normal Arceus
 494,5,,
 494,9,,
@@ -1279,78 +1279,78 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 639,9,,
 640,5,,
 640,9,,
-641,5,,
+641,5,Forme Avatar,Boréas Avatar
 641,9,Incarnate Forme,Incarnate Tornadus
-642,5,,
+642,5,Forme Avatar,Fulguris Avatar
 642,9,Incarnate Forme,Incarnate Thundurus
 643,5,,
 643,9,,
 644,5,,
 644,9,,
-645,5,,
+645,5,Forme Avatar,Démétéros Avatar
 645,9,Incarnate Forme,Incarnate Landorus
 646,5,,
 646,9,,
-647,5,,
+647,5,Aspect Normal,Keldeo Normal
 647,9,Ordinary Form,Ordinary Keldeo
 648,5,Forme Chant,Meloetta Chant
 648,9,Aria Forme,Aria Meloetta
 649,5,,
 649,9,,
-650,5,Lettre B,Zarbi B
-650,9,Letter B,Unown B
-651,5,Lettre C,Zarbi C
-651,9,Letter C,Unown C
-652,5,Lettre D,Zarbi D
-652,9,Letter D,Unown D
-653,5,Lettre E,Zarbi E
-653,9,Letter E,Unown E
-654,5,Lettre F,Zarbi F
-654,9,Letter F,Unown F
-655,5,Lettre G,Zarbi G
-655,9,Letter G,Unown G
-656,5,Lettre H,Zarbi H
-656,9,Letter H,Unown H
-657,5,Lettre I,Zarbi I
-657,9,Letter I,Unown I
-658,5,Lettre J,Zarbi J
-658,9,Letter J,Unown J
-659,5,Lettre K,Zarbi K
-659,9,Letter K,Unown K
-660,5,Lettre L,Zarbi L
-660,9,Letter L,Unown L
-661,5,Lettre M,Zarbi M
-661,9,Letter M,Unown M
-662,5,Lettre N,Zarbi N
-662,9,Letter N,Unown N
-663,5,Lettre O,Zarbi O
-663,9,Letter O,Unown O
-664,5,Lettre P,Zarbi P
-664,9,Letter P,Unown P
-665,5,Lettre Q,Zarbi Q
-665,9,Letter Q,Unown Q
-666,5,Lettre R,Zarbi R
-666,9,Letter R,Unown R
-667,5,Lettre S,Zarbi S
-667,9,Letter S,Unown S
-668,5,Lettre T,Zarbi T
-668,9,Letter T,Unown T
-669,5,Lettre U,Zarbi U
-669,9,Letter U,Unown U
-670,5,Lettre V,Zarbi V
-670,9,Letter V,Unown V
-671,5,Lettre W,Zarbi W
-671,9,Letter W,Unown W
-672,5,Lettre X,Zarbi X
-672,9,Letter X,Unown X
-673,5,Lettre Y,Zarbi Y
-673,9,Letter Y,Unown Y
-674,5,Lettre Z,Zarbi Z
-674,9,Letter Z,Unown Z
-675,5,Point d'Exclamation,Zarbi !
-675,9,Exclamation Mark,Unown !
-676,5,Point d'Interrogation,Zarbi ?
-676,9,Question Mark,Unown ?
+650,5,B,Zarbi B
+650,9,B,Unown B
+651,5,C,Zarbi C
+651,9,C,Unown C
+652,5,D,Zarbi D
+652,9,D,Unown D
+653,5,E,Zarbi E
+653,9,E,Unown E
+654,5,F,Zarbi F
+654,9,F,Unown F
+655,5,G,Zarbi G
+655,9,G,Unown G
+656,5,H,Zarbi H
+656,9,H,Unown H
+657,5,I,Zarbi I
+657,9,I,Unown I
+658,5,J,Zarbi J
+658,9,J,Unown J
+659,5,K,Zarbi K
+659,9,K,Unown K
+660,5,L,Zarbi L
+660,9,L,Unown L
+661,5,M,Zarbi M
+661,9,M,Unown M
+662,5,N,Zarbi N
+662,9,N,Unown N
+663,5,O,Zarbi O
+663,9,O,Unown O
+664,5,P,Zarbi P
+664,9,P,Unown P
+665,5,Q,Zarbi Q
+665,9,Q,Unown Q
+666,5,R,Zarbi R
+666,9,R,Unown R
+667,5,S,Zarbi S
+667,9,S,Unown S
+668,5,T,Zarbi T
+668,9,T,Unown T
+669,5,U,Zarbi U
+669,9,U,Unown U
+670,5,V,Zarbi V
+670,9,V,Unown V
+671,5,W,Zarbi W
+671,9,W,Unown W
+672,5,X,Zarbi X
+672,9,X,Unown X
+673,5,Y,Zarbi Y
+673,9,Y,Unown Y
+674,5,Z,Zarbi Z
+674,9,Z,Unown Z
+675,5,!,Zarbi !
+675,9,!,Unown !
+676,5,?,Zarbi ?
+676,9,?,Unown ?
 677,5,Forme Solaire,Morphéo Solaire
 677,9,Sunny Form,Sunny Castform
 678,5,Forme Eau de Pluie,Morphéo Eau de Pluie
@@ -1377,50 +1377,50 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 688,9,East Sea,East Shellos
 689,5,Mer Orient,Tritosor Orient
 689,9,East Sea,East Gastrodon
-690,5,Type Insecte,Arceus Insecte
+690,5,Insecte,Arceus Insecte
 690,9,Bug Type,Bug Arceus
-691,5,Type Ténèbres,Arceus Ténèbres
+691,5,Ténèbres,Arceus Ténèbres
 691,9,Dark Type,Dark Arceus
-692,5,Type Dragon,Arceus Dragon
+692,5,Dragon,Arceus Dragon
 692,9,Dragon Type,Dragon Arceus
-693,5,Type Électrik,Arceus Électrik
+693,5,Électrik,Arceus Électrik
 693,9,Electric Type,Electric Arceus
-694,5,Type Combat,Arceus Combat
+694,5,Combat,Arceus Combat
 694,9,Fighting Type,Fighting Arceus
-695,5,Type Feu,Arceus Feu
+695,5,Feu,Arceus Feu
 695,9,Fire Type,Fire Arceus
-696,5,Type Vol,Arceus Vol
+696,5,Vol,Arceus Vol
 696,9,Flying Type,Flying Arceus
-697,5,Type Spectre,Arceus Spectre
+697,5,Spectre,Arceus Spectre
 697,9,Ghost Type,Ghost Arceus
-698,5,Type Plante,Arceus Plante
+698,5,Plante,Arceus Plante
 698,9,Grass Type,Grass Arceus
-699,5,Type Sol,Arceus Sol
+699,5,Sol,Arceus Sol
 699,9,Ground Type,Ground Arceus
-700,5,Type Glace,Arceus Glace
+700,5,Glace,Arceus Glace
 700,9,Ice Type,Ice Arceus
-701,5,Type Poison,Arceus Poison
+701,5,Poison,Arceus Poison
 701,9,Poison Type,Poison Arceus
-702,5,Type Psy,Arceus Psy
+702,5,Psy,Arceus Psy
 702,9,Psychic Type,Psychic Arceus
-703,5,Type Roche,Arceus Roche
+703,5,Roche,Arceus Roche
 703,9,Rock Type,Rock Arceus
-704,5,Type Acier,Arceus Acier
+704,5,Acier,Arceus Acier
 704,9,Steel Type,Steel Arceus
-705,5,Type Eau,Arceus Eau
+705,5,Eau,Arceus Eau
 705,9,Water Type,Water Arceus
-706,5,Type ???,Arceus ???
+706,5,???,Arceus ???
 706,9,??? Type,??? Arceus
-707,5,Forme Chaleur,Motisma Chaleur
-707,9,Heat Form,Heat Rotom
-708,5,Forme Lavage,Motisma Lavage
-708,9,Wash Form,Wash Rotom
-709,5,Forme Froid,Motisma Froid
-709,9,Frost Form,Frost Rotom
-710,5,Forme Hélice,Motisma Hélice
-710,9,Fan Form,Fan Rotom
-711,5,Forme Tonte,Motisma Tonte
-711,9,Mow Form,Mow Rotom
+707,5,Motisma Chaleur,Motisma Chaleur
+707,9,Heat Rotom,Heat Rotom
+708,5,Motisma Lavage,Motisma Lavage
+708,9,Wash Rotom,Wash Rotom
+709,5,Motisma Froid,Motisma Froid
+709,9,Frost Rotom,Frost Rotom
+710,5,Motisma Hélice,Motisma Hélice
+710,9,Fan Rotom,Fan Rotom
+711,5,Motisma Tonte,Motisma Tonte
+711,9,Mow Rotom,Mow Rotom
 712,5,Forme Originelle,Giratina Originel
 712,9,Origin Forme,Origin Giratina
 713,5,Forme Céleste,Shaymin Céleste
@@ -1453,9 +1453,15 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 726,9,Burn Drive,Burn Genesect
 727,5,Module Cryo,Genesect Cryo
 727,9,Chill Drive,Chill Genesect
+728,5,Forme Totémique,Boréas Totémique
 728,9,Therian Forme,Therian Tornadus
+729,5,Forme Totémique,Fulguris Totémique
 729,9,Therian Forme,Therian Thundurus
+730,5,Forme Totémique,Démétéros Totémique
 730,9,Therian Forme,Therian Landorus
-731,9,Black Form,Black Kyurem
-732,9,White Form,White Kyurem
+731,5,Kyurem Noir,Kyurem Noir
+731,9,Black Kyurem,Black Kyurem
+732,5,Kyurem Blanc,Kyurem Blanc
+732,9,White Kyurem,White Kyurem
+733,5,Aspect Décidé,Keldeo Décidé
 733,9,Resolute Form,Resolute Keldeo
