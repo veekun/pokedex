@@ -7,3 +7,11 @@ stat_id,local_language_id,name
 6,9,Speed
 7,9,accuracy
 8,9,evasion
+1,1,HP
+2,1,こうげき
+3,1,ぼうぎょ
+4,1,とくこう
+5,1,とくぼう
+6,1,すばやさ
+7,1,めいちゅう
+8,1,かいひ
