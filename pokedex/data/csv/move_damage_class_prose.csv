@@ -1,4 +1,7 @@
 move_damage_class_id,local_language_id,name,description
-1,9,non-damaging,No damage
+1,1,へんか,ダメージない
+1,9,status,No damage
+2,1,ぶつり,ぶつりのダメージ。こうげきとぼうぎょを行使する
 2,9,physical,"Physical damage, controlled by Attack and Defense"
+3,1,とくしゅ,とくしゅのダメージ。とくこうととくぼうを行使する
 3,9,special,"Special damage, controlled by Special Attack and Special Defense"
