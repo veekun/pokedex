@@ -1,17 +1,17 @@
 stat_id,local_language_id,name
-1,9,HP
-2,9,Attack
-3,9,Defense
-4,9,Special Attack
-5,9,Special Defense
-6,9,Speed
-7,9,accuracy
-8,9,evasion
 1,1,HP
+1,9,HP
 2,1,こうげき
+2,9,Attack
 3,1,ぼうぎょ
+3,9,Defense
 4,1,とくこう
+4,9,Special Attack
 5,1,とくぼう
+5,9,Special Defense
 6,1,すばやさ
+6,9,Speed
 7,1,めいちゅう
+7,9,accuracy
 8,1,かいひ
+8,9,evasion
