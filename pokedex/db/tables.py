@@ -2366,6 +2366,7 @@ Move.flavor_text = relationship(MoveFlavorText,
 Move.generation = relationship(Generation,
     innerjoin=True,
     backref='moves')
+# XXX should this be a dict mapping version group to number?
 Move.machines = relationship(Machine,
     backref='move')
 Move.meta = relationship(MoveMeta,
@@ -2502,6 +2503,11 @@ Pokemon.hidden_ability = relationship(Ability,
     uselist=False,
     backref=backref('hidden_pokemon', order_by=Pokemon.order),
     doc=u"The Pokémon's Hidden Ability")
+Pokemon.pokemon_abilities = relationship(PokemonAbility,
+    order_by=PokemonAbility.slot.asc(),
+    innerjoin=True,
+    backref=backref('pokemon', order_by=Pokemon.order.asc()),
+    doc=u"All abilities the Pokémon can have, as bridge rows")
 Pokemon.forms = relationship(PokemonForm,
     primaryjoin=Pokemon.id==PokemonForm.pokemon_id,
     order_by=(PokemonForm.order.asc(), PokemonForm.form_identifier.asc()),
@@ -2528,6 +2534,9 @@ Pokemon.types = relationship(Type,
     innerjoin=True, lazy='joined',
     order_by=PokemonType.slot.asc(),
     backref=backref('pokemon', order_by=Pokemon.order))
+
+PokemonAbility.ability = relationship(Ability,
+    innerjoin=True)
 
 PokemonDexNumber.pokedex = relationship(Pokedex,
     innerjoin=True, lazy='joined')
