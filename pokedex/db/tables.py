@@ -2592,7 +2592,8 @@ PokemonMove.pokemon = relationship(Pokemon,
     innerjoin=True, lazy='joined',
     backref='pokemon_moves')
 PokemonMove.version_group = relationship(VersionGroup,
-    innerjoin=True, lazy='joined')
+    innerjoin=True, lazy='joined',
+    backref='pokemon_moves')
 PokemonMove.machine = relationship(Machine,
     primaryjoin=and_(
         Machine.version_group_id==PokemonMove.version_group_id,
