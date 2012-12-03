@@ -264,7 +264,7 @@ def command_help():
     print u"""pokedex -- a command-line Pokédex interface
 usage: pokedex {command} [options...]
 Run `pokedex setup` first, or nothing will work!
-See http://bugs.veekun.com/projects/pokedex/wiki/CLI for more documentation.
+See https://github.com/veekun/pokedex/wiki/CLI for more documentation.
 
 Commands:
     help                Displays this message.
