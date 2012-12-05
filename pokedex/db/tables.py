@@ -1467,43 +1467,30 @@ create_translation_table('pal_park_area_names', PalParkArea, 'names',
 )
 
 class PickupItem(TableBase):
-    u"""Items which can be found with the Pickup ability.
+    u"""An item which can be found with the Pickup ability.
 
-    Level ranges are assumed not to overlap, and max_level is assumed to be
-    constant with respect to min_level.
+    Level ranges form tiers. Ranges should not overlap and max_level should be
+    constant with respect to min_level and the version group.
+
+    Rarity shall be constant with respect to slot and version_group, and
+    the rarities for a given version group and level tier shall sum to 100.
     """
 
     __tablename__ = 'pickup_items'
     __singlename__ = 'pickup_item'
 
-    slot_id = Column(Integer, ForeignKey('pickup_slots.id'), primary_key=True,
-        info=dict(description="The slot"))
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True,
+        info=dict(description="The version group"))
     min_level = Column(Integer, nullable=False, primary_key=True,
         info=dict(description="Minimum level at which this slot applies"))
     max_level = Column(Integer, nullable=False,
         info=dict(description="Maximum level at which this slot applies"))
+    slot = Column(Integer, nullable=False, primary_key=True,
+        info=dict(description="Index of the slot"))
     item_id = Column(Integer, ForeignKey('items.id'),
         info=dict(description="The item"))
-
-class PickupSlot(TableBase):
-    u"""The chance of finding a particular item with Pickup."""
-
-    __tablename__ = 'pickup_slots'
-    __singlename__ = 'pickup_slot'
-
-    id = Column(Integer, primary_key=True,
-        info=dict(description=""))
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'),
-        info=dict(description="The version group"))
-    slot = Column(Integer, nullable=False,
-        info=dict(description="Index of the slot + 1"))
     rarity = Column(Integer, nullable=False,
-        info=dict(description="Percent chance of this slot being chosen"))
-
-    __table_args__ = (
-        UniqueConstraint(version_group_id, slot),
-        {},
-    )
+        info=dict(description="Percent chance of this item being found"))
 
 class PokeathlonStat(TableBase):
     u"""A Pokéathlon stat, such as "Stamina" or "Jump".
@@ -2510,10 +2497,8 @@ PalPark.area = relationship(PalParkArea,
     innerjoin=True, lazy='joined')
 
 
-PickupItem.slot = relationship(PickupSlot)
 PickupItem.item = relationship(Item)
-
-PickupSlot.version_group = relationship(VersionGroup)
+PickupItem.version_group = relationship(VersionGroup)
 
 
 Pokedex.region = relationship(Region,

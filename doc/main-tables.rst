@@ -177,7 +177,6 @@ Mics tables
 .. dex-table:: Experience
 .. dex-table:: PalPark
 .. dex-table:: PickupItem
-.. dex-table:: PickupSlot
 .. dex-table:: StatHint
 
 Conquest tables

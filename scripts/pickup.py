@@ -131,21 +131,8 @@ def get_item(generation_id, item_index):
         .one())
     return item
 
-def add_slot(version_group, index, rarity):
-    ps = t.PickupSlot()
-    ps.version_group = version_group
-    ps.slot = index
-    ps.rarity = rarity
-
-    sess.add(ps)
-    return ps
-
 for pickup in pickups:
     version_group = version_groups[pickup.version_group]
-    slots = []
-    for i, rarity in enumerate(pickup.rates + [1, 1]):
-        slot = add_slot(version_group, i, rarity)
-        slots.append(slot)
 
     def get_items(items):
         return [get_item(version_group.generation_id, item_index)
@@ -153,6 +140,7 @@ for pickup in pickups:
 
     common_items = get_items(pickup.common_items)
     rare_items = get_items(pickup.rare_items)
+    rates = pickup.rates + [1, 1]
 
     for tier in range(10):
         min_level = 1 + tier * 10
@@ -161,12 +149,14 @@ for pickup in pickups:
         items = common_items[tier:tier+len(pickup.rates)]
         items += reversed(rare_items[tier:tier+2])
 
-        for slot, item in zip(slots, items):
+        for rarity, slot, item in zip(rates, range(len(rates)), items):
             pi = t.PickupItem()
+            pi.version_group = version_group
             pi.min_level = min_level
             pi.max_level = max_level
             pi.slot = slot
             pi.item = item
+            pi.rarity = rarity
             sess.add(pi)
 
 sess.commit()
