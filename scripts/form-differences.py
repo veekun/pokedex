@@ -2,7 +2,7 @@
 
 """List the ways that pokemon forms differ from one another.
 
-This is not a one-shot script! It is probably unmaintained though.
+This is not a one-shot script--it is probably unmaintained though!
 """
 
 import itertools
@@ -39,18 +39,30 @@ def getform(form):
         'height': form.pokemon.height,
     }
 
-def groupdict(it, key):
-    """Group an iterable by a key and return a dict."""
-
-    return dict((group_key, list(group)) for group_key, group in itertools.groupby(it, key))
-
 def getmoves(form):
-    all_moves = sorted((move.method.identifier, move.version_group_id, move.move_id, move.level, move.order) for move in form.pokemon.pokemon_moves)
+    moves = sorted((move.version_group_id, move.method.identifier, move.move_id, move.level, move.order) for move in form.pokemon.pokemon_moves)
 
-    return groupdict(all_moves, lambda x: x[0])
+    # {version: {method: moves}}
+    version_method_moves = {}
+    for version, group in itertools.groupby(moves, lambda x: x[0]):
+        version_method_moves[version] = method_moves = {}
+        for method, group in itertools.groupby(group, lambda x: x[1]):
+            method_moves[method] = list(group)
 
+    return version_method_moves
+
+def dictacc(a, b):
+    for k in b:
+        if k not in a:
+            a[k] = []
+        a[k] += [b[k]]
+    return a
+
+def union(sets):
+    return reduce(set.union, sets, set())
 
 def gcd(a, b):
+    """Return a new dict containing only items which have the same value in both a and b."""
     keys = set(a.keys()) & set(b.keys())
     result = {}
     for k in keys:
@@ -59,7 +71,7 @@ def gcd(a, b):
     return result
 
 def find_uncommon_keys(dicts):
-    keys = set(dicts[0])
+    keys = union(d.keys() for d in dicts)
 
     common_keys = set(reduce(gcd, dicts).keys())
     unique_keys = keys - common_keys
@@ -91,6 +103,7 @@ for species in q.all():
             joinedload('pokemon.items'),
             joinedload('pokemon.types'),
             joinedload('pokemon.pokemon_moves.method'),
+            #joinedload('pokemon.pokemon_moves.version_group'),
             subqueryload('pokemon.stats'),
             subqueryload('pokemon.pokemon_moves'),
 
@@ -104,10 +117,24 @@ for species in q.all():
         .all()
     )
 
+    ### Okay, grab some info for each form and and find the differences
     uncommon = sorted(find_uncommon_keys(map(getform, forms)))
-    uncommon_moves = sorted(find_uncommon_keys(map(getmoves, forms)))
 
-    if uncommon_moves:
-        uncommon.append("moves ({})".format(", ".join(sorted(uncommon_moves))))
+    ### Moves are a bit different.
+    ### First off, we want to split them up by method so we can narrow down the
+    ### difference a little; this works the same as above. Second, if a form
+    ### has no moves at all in some version group (because it didn't exist yet)
+    ### then we don't want to count that as a difference.
+
+    # Start off by grabbing the movepool for each form
+    # This gives us pools = [{version: {method: moves}}]
+    pools = [getmoves(form) for form in forms]
+    # Next we combine the pools to get {version: [{method: moves}]}
+    version_pools = reduce(dictacc, pools, {})
+    # Now we can calculate the uncommon methods in each version.
+    uncommon_move_methods = union(map(find_uncommon_keys, version_pools.values()))
+
+    if uncommon_move_methods:
+        uncommon.append("moves ({})".format(", ".join(sorted(uncommon_move_methods))))
 
     print "{}: {}".format(species.name, ", ".join(uncommon))
