@@ -1521,6 +1521,8 @@ class Pokemon(TableBase):
         info=dict(description=u"The height of the Pokémon, in decimeters (tenths of a meter)"))
     weight = Column(Integer, nullable=False,
         info=dict(description=u"The weight of the Pokémon, in tenths of a kilogram (decigrams)"))
+    is_asymmetric = Column(Boolean, nullable=False,
+        info=dict(description=u"True iff this pokemon exhibits bilateral asymmetry and should not have its sprites flipped"))
     base_experience = Column(Integer, nullable=False,
         info=dict(description=u"The base EXP gained when defeating this Pokémon"))  # XXX: Is this correct?
     order = Column(Integer, nullable=False, index=True,
