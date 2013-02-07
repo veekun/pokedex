@@ -1595,12 +1595,12 @@ class PokemonColor(TableBase):
     __singlename__ = 'pokemon_color'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"ID of the Pokémon"))
-    identifier = Column(Unicode(6), nullable=False,
+    identifier = Column(Unicode, nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('pokemon_color_names', PokemonColor, 'names',
     relation_lazy='joined',
-    name = Column(Unicode(6), nullable=False, index=True,
+    name = Column(Unicode, nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
 
