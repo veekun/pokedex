@@ -410,11 +410,11 @@ Used on a party Pokémon
 :   When the holder would take [super-effective]{mechanic:super-effective} []{type:electric}-type damage, it consumes this item to halve the amount of damage taken."
 164,9,Held: Consumed when struck by a super-effective Grass-type attack to halve the damage.,"Held in battle
 :   When the holder would take [super-effective]{mechanic:super-effective} []{type:grass}-type damage, it consumes this item to halve the amount of damage taken."
-165,9,Held: Consumed when struck by a super-effective Yache-type attack to halve the damage.,"Held in battle
+165,9,Held: Consumed when struck by a super-effective Ice-type attack to halve the damage.,"Held in battle
 :   When the holder would take [super-effective]{mechanic:super-effective} []{type:ice}-type damage, it consumes this item to halve the amount of damage taken."
 166,9,Held: Consumed when struck by a super-effective Fighting-type attack to halve the damage.,"Held in battle
 :   When the holder would take [super-effective]{mechanic:super-effective} []{type:fighting}-type damage, it consumes this item to halve the amount of damage taken."
-167,9,Held: Consumed when struck by a super-effective Posion-type attack to halve the damage.,"Held in battle
+167,9,Held: Consumed when struck by a super-effective Poison-type attack to halve the damage.,"Held in battle
 :   When the holder would take [super-effective]{mechanic:super-effective} []{type:poison}-type damage, it consumes this item to halve the amount of damage taken."
 168,9,Held: Consumed when struck by a super-effective Ground-type attack to halve the damage.,"Held in battle
 :   When the holder would take [super-effective]{mechanic:super-effective} []{type:ground}-type damage, it consumes this item to halve the amount of damage taken."
