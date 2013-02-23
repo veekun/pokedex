@@ -5,6 +5,7 @@ pokemon_species_id,local_language_id,name,genus
 1,4,妙蛙種子,
 1,5,Bulbizarre,
 1,6,Bisasam,
+1,8,Bulbasaur
 1,9,Bulbasaur,Seed
 2,1,フシギソウ,
 2,2,Fushigisou,
@@ -12,6 +13,7 @@ pokemon_species_id,local_language_id,name,genus
 2,4,妙蛙草,
 2,5,Herbizarre,
 2,6,Bisaknosp,
+2,8,Ivysaur
 2,9,Ivysaur,Seed
 3,1,フシギバナ,
 3,2,Fushigibana,
@@ -19,6 +21,7 @@ pokemon_species_id,local_language_id,name,genus
 3,4,妙蛙花,
 3,5,Florizarre,
 3,6,Bisaflor,
+3,8,Venusaur
 3,9,Venusaur,Seed
 4,1,ヒトカゲ,
 4,2,Hitokage,
@@ -26,6 +29,7 @@ pokemon_species_id,local_language_id,name,genus
 4,4,小火龍,
 4,5,Salamèche,
 4,6,Glumanda,
+4,8,Charmander
 4,9,Charmander,Lizard
 5,1,リザード,
 5,2,Lizardo,
@@ -33,6 +37,7 @@ pokemon_species_id,local_language_id,name,genus
 5,4,火恐龍,
 5,5,Reptincel,
 5,6,Glutexo,
+5,8,Charmeleon
 5,9,Charmeleon,Flame
 6,1,リザードン,
 6,2,Lizardon,
@@ -40,6 +45,7 @@ pokemon_species_id,local_language_id,name,genus
 6,4,噴火龍,
 6,5,Dracaufeu,
 6,6,Glurak,
+6,8,Charizard
 6,9,Charizard,Flame
 7,1,ゼニガメ,
 7,2,Zenigame,
@@ -47,6 +53,7 @@ pokemon_species_id,local_language_id,name,genus
 7,4,傑尼龜,
 7,5,Carapuce,
 7,6,Schiggy,
+7,8,Squirtle
 7,9,Squirtle,Tiny Turtle
 8,1,カメール,
 8,2,Kameil,
@@ -54,6 +61,7 @@ pokemon_species_id,local_language_id,name,genus
 8,4,卡咪龜,
 8,5,Carabaffe,
 8,6,Schillok,
+8,8,Wartortle
 8,9,Wartortle,Turtle
 9,1,カメックス,
 9,2,Kamex,
@@ -61,6 +69,7 @@ pokemon_species_id,local_language_id,name,genus
 9,4,水箭龜,
 9,5,Tortank,
 9,6,Turtok,
+9,8,Blastoise
 9,9,Blastoise,Shellfish
 10,1,キャタピー,
 10,2,Caterpie,
@@ -68,6 +77,7 @@ pokemon_species_id,local_language_id,name,genus
 10,4,綠毛蟲,
 10,5,Chenipan,
 10,6,Raupy,
+10,8,Caterpie
 10,9,Caterpie,Worm
 11,1,トランセル,
 11,2,Trancell,
@@ -75,6 +85,7 @@ pokemon_species_id,local_language_id,name,genus
 11,4,鐵甲蛹,
 11,5,Chrysacier,
 11,6,Safcon,
+11,8,Metapod
 11,9,Metapod,Cocoon
 12,1,バタフリー,
 12,2,Butterfree,
@@ -82,6 +93,7 @@ pokemon_species_id,local_language_id,name,genus
 12,4,巴大蝴,
 12,5,Papilusion,
 12,6,Smettbo,
+12,8,Butterfree
 12,9,Butterfree,Butterfly
 13,1,ビードル,
 13,2,Beedle,
@@ -89,6 +101,7 @@ pokemon_species_id,local_language_id,name,genus
 13,4,獨角蟲,
 13,5,Aspicot,
 13,6,Hornliu,
+13,8,Weedle
 13,9,Weedle,Hairy Bug
 14,1,コクーン,
 14,2,Cocoon,
@@ -96,6 +109,7 @@ pokemon_species_id,local_language_id,name,genus
 14,4,鐵殼昆,
 14,5,Coconfort,
 14,6,Kokuna,
+14,8,Kakuna
 14,9,Kakuna,Cocoon
 15,1,スピアー,
 15,2,Spear,
@@ -103,6 +117,7 @@ pokemon_species_id,local_language_id,name,genus
 15,4,大針蜂,
 15,5,Dardargnan,
 15,6,Bibor,
+15,8,Beedrill
 15,9,Beedrill,Poison Bee
 16,1,ポッポ,
 16,2,Poppo,
@@ -110,6 +125,7 @@ pokemon_species_id,local_language_id,name,genus
 16,4,波波,
 16,5,Roucool,
 16,6,Taubsi,
+16,8,Pidgey
 16,9,Pidgey,Tiny Bird
 17,1,ピジョン,
 17,2,Pigeon,
@@ -117,6 +133,7 @@ pokemon_species_id,local_language_id,name,genus
 17,4,比比鳥,
 17,5,Roucoups,
 17,6,Tauboga,
+17,8,Pidgeotto
 17,9,Pidgeotto,Bird
 18,1,ピジョット,
 18,2,Pigeot,
@@ -124,6 +141,7 @@ pokemon_species_id,local_language_id,name,genus
 18,4,比鵰,
 18,5,Roucarnage,
 18,6,Tauboss,
+18,8,Pidgeot
 18,9,Pidgeot,Bird
 19,1,コラッタ,
 19,2,Koratta,
@@ -131,6 +149,7 @@ pokemon_species_id,local_language_id,name,genus
 19,4,小拉達,
 19,5,Rattata,
 19,6,Rattfratz,
+19,8,Rattata
 19,9,Rattata,Mouse
 20,1,ラッタ,
 20,2,Ratta,
@@ -138,6 +157,7 @@ pokemon_species_id,local_language_id,name,genus
 20,4,拉達,
 20,5,Rattatac,
 20,6,Rattikarl,
+20,8,Raticate
 20,9,Raticate,Mouse
 21,1,オニスズメ,
 21,2,Onisuzume,
@@ -145,6 +165,7 @@ pokemon_species_id,local_language_id,name,genus
 21,4,烈雀,
 21,5,Piafabec,
 21,6,Habitak,
+21,8,Spearow
 21,9,Spearow,Tiny Bird
 22,1,オニドリル,
 22,2,Onidrill,
@@ -152,6 +173,7 @@ pokemon_species_id,local_language_id,name,genus
 22,4,大嘴雀,
 22,5,Rapasdepic,
 22,6,Ibitak,
+22,8,Fearow
 22,9,Fearow,Beak
 23,1,アーボ,
 23,2,Arbo,
@@ -159,6 +181,7 @@ pokemon_species_id,local_language_id,name,genus
 23,4,阿柏蛇,
 23,5,Abo,
 23,6,Rettan,
+23,8,Ekans
 23,9,Ekans,Snake
 24,1,アーボック,
 24,2,Arbok,
@@ -166,6 +189,7 @@ pokemon_species_id,local_language_id,name,genus
 24,4,阿柏怪,
 24,5,Arbok,
 24,6,Arbok,
+24,8,Arbok
 24,9,Arbok,Cobra
 25,1,ピカチュウ,
 25,2,Pikachu,
@@ -173,6 +197,7 @@ pokemon_species_id,local_language_id,name,genus
 25,4,皮卡丘,
 25,5,Pikachu,
 25,6,Pikachu,
+25,8,Pikachu
 25,9,Pikachu,Mouse
 26,1,ライチュウ,
 26,2,Raichu,
@@ -180,6 +205,7 @@ pokemon_species_id,local_language_id,name,genus
 26,4,雷丘,
 26,5,Raichu,
 26,6,Raichu,
+26,8,Raichu
 26,9,Raichu,Mouse
 27,1,サンド,
 27,2,Sand,
@@ -187,6 +213,7 @@ pokemon_species_id,local_language_id,name,genus
 27,4,穿山鼠,
 27,5,Sabelette,
 27,6,Sandan,
+27,8,Sandshrew
 27,9,Sandshrew,Mouse
 28,1,サンドパン,
 28,2,Sandpan,
@@ -194,6 +221,7 @@ pokemon_species_id,local_language_id,name,genus
 28,4,穿山王,
 28,5,Sablaireau,
 28,6,Sandamer,
+28,8,Sandslash
 28,9,Sandslash,Mouse
 29,1,ニドラン♀,
 29,2,Nidoran♀,
@@ -201,6 +229,7 @@ pokemon_species_id,local_language_id,name,genus
 29,4,尼多蘭,
 29,5,Nidoran♀,
 29,6,Nidoran♀,
+29,8,Nidoran
 29,9,Nidoran♀,Poison Pin
 30,1,ニドリーナ,
 30,2,Nidorina,
@@ -208,6 +237,7 @@ pokemon_species_id,local_language_id,name,genus
 30,4,尼多娜,
 30,5,Nidorina,
 30,6,Nidorina,
+30,8,Nidorina
 30,9,Nidorina,Poison Pin
 31,1,ニドクイン,
 31,2,Nidoqueen,
@@ -215,6 +245,7 @@ pokemon_species_id,local_language_id,name,genus
 31,4,尼多后,
 31,5,Nidoqueen,
 31,6,Nidoqueen,
+31,8,Nidoqueen
 31,9,Nidoqueen,Drill
 32,1,ニドラン♂,
 32,2,Nidoran♂,
@@ -222,6 +253,7 @@ pokemon_species_id,local_language_id,name,genus
 32,4,尼多朗,
 32,5,Nidoran♂,
 32,6,Nidoran♂,
+32,8,Nidoran
 32,9,Nidoran♂,Poison Pin
 33,1,ニドリーノ,
 33,2,Nidorino,
@@ -229,6 +261,7 @@ pokemon_species_id,local_language_id,name,genus
 33,4,尼多力諾,
 33,5,Nidorino,
 33,6,Nidorino,
+33,8,Nidorino
 33,9,Nidorino,Poison Pin
 34,1,ニドキング,
 34,2,Nidoking,
@@ -236,6 +269,7 @@ pokemon_species_id,local_language_id,name,genus
 34,4,尼多王,
 34,5,Nidoking,
 34,6,Nidoking,
+34,8,Nidoking
 34,9,Nidoking,Drill
 35,1,ピッピ,
 35,2,Pippi,
@@ -243,6 +277,7 @@ pokemon_species_id,local_language_id,name,genus
 35,4,皮皮,
 35,5,Mélofée,
 35,6,Piepi,
+35,8,Clefairy
 35,9,Clefairy,Fairy
 36,1,ピクシー,
 36,2,Pixy,
@@ -250,6 +285,7 @@ pokemon_species_id,local_language_id,name,genus
 36,4,皮可西,
 36,5,Mélodelfe,
 36,6,Pixi,
+36,8,Clefable
 36,9,Clefable,Fairy
 37,1,ロコン,
 37,2,Rokon,
@@ -257,6 +293,7 @@ pokemon_species_id,local_language_id,name,genus
 37,4,六尾,
 37,5,Goupix,
 37,6,Vulpix,
+37,8,Vulpix
 37,9,Vulpix,Fox
 38,1,キュウコン,
 38,2,Kyukon,
@@ -264,6 +301,7 @@ pokemon_species_id,local_language_id,name,genus
 38,4,九尾,
 38,5,Feunard,
 38,6,Vulnona,
+38,8,Ninetales
 38,9,Ninetales,Fox
 39,1,プリン,
 39,2,Purin,
@@ -271,6 +309,7 @@ pokemon_species_id,local_language_id,name,genus
 39,4,胖丁,
 39,5,Rondoudou,
 39,6,Pummeluff,
+39,8,Jigglypuff
 39,9,Jigglypuff,Balloon
 40,1,プクリン,
 40,2,Pukurin,
@@ -278,6 +317,7 @@ pokemon_species_id,local_language_id,name,genus
 40,4,胖可丁,
 40,5,Grodoudou,
 40,6,Knuddeluff,
+40,8,Wigglytuff
 40,9,Wigglytuff,Balloon
 41,1,ズバット,
 41,2,Zubat,
@@ -285,6 +325,7 @@ pokemon_species_id,local_language_id,name,genus
 41,4,超音蝠,
 41,5,Nosferapti,
 41,6,Zubat,
+41,8,Zubat
 41,9,Zubat,Bat
 42,1,ゴルバット,
 42,2,Golbat,
@@ -292,6 +333,7 @@ pokemon_species_id,local_language_id,name,genus
 42,4,大嘴蝠,
 42,5,Nosferalto,
 42,6,Golbat,
+42,8,Golbat
 42,9,Golbat,Bat
 43,1,ナゾノクサ,
 43,2,Nazonokusa,
@@ -299,6 +341,7 @@ pokemon_species_id,local_language_id,name,genus
 43,4,走路草,
 43,5,Mystherbe,
 43,6,Myrapla,
+43,8,Oddish
 43,9,Oddish,Weed
 44,1,クサイハナ,
 44,2,Kusaihana,
@@ -306,6 +349,7 @@ pokemon_species_id,local_language_id,name,genus
 44,4,臭臭花,
 44,5,Ortide,
 44,6,Duflor,
+44,8,Gloom
 44,9,Gloom,Weed
 45,1,ラフレシア,
 45,2,Ruffresia,
@@ -313,6 +357,7 @@ pokemon_species_id,local_language_id,name,genus
 45,4,霸王花,
 45,5,Rafflesia,
 45,6,Giflor,
+45,8,Vileplume
 45,9,Vileplume,Flower
 46,1,パラス,
 46,2,Paras,
@@ -320,6 +365,7 @@ pokemon_species_id,local_language_id,name,genus
 46,4,派拉斯,
 46,5,Paras,
 46,6,Paras,
+46,8,Paras
 46,9,Paras,Mushroom
 47,1,パラセクト,
 47,2,Parasect,
@@ -327,6 +373,7 @@ pokemon_species_id,local_language_id,name,genus
 47,4,派拉斯特,
 47,5,Parasect,
 47,6,Parasek,
+47,8,Parasect
 47,9,Parasect,Mushroom
 48,1,コンパン,
 48,2,Kongpang,
@@ -334,6 +381,7 @@ pokemon_species_id,local_language_id,name,genus
 48,4,毛球,
 48,5,Mimitoss,
 48,6,Bluzuk,
+48,8,Venonat
 48,9,Venonat,Insect
 49,1,モルフォン,
 49,2,Morphon,
@@ -341,6 +389,7 @@ pokemon_species_id,local_language_id,name,genus
 49,4,末入蛾,
 49,5,Aéromite,
 49,6,Omot,
+49,8,Venomoth
 49,9,Venomoth,Poison Moth
 50,1,ディグダ,
 50,2,Digda,
@@ -348,6 +397,7 @@ pokemon_species_id,local_language_id,name,genus
 50,4,地鼠,
 50,5,Taupiqueur,
 50,6,Digda,
+50,8,Diglett
 50,9,Diglett,Mole
 51,1,ダグトリオ,
 51,2,Dugtrio,
@@ -355,6 +405,7 @@ pokemon_species_id,local_language_id,name,genus
 51,4,三地鼠,
 51,5,Triopikeur,
 51,6,Digdri,
+51,8,Dugtrio
 51,9,Dugtrio,Mole
 52,1,ニャース,
 52,2,Nyarth,
@@ -362,6 +413,7 @@ pokemon_species_id,local_language_id,name,genus
 52,4,喵喵,
 52,5,Miaouss,
 52,6,Mauzi,
+52,8,Meowth
 52,9,Meowth,Scratch Cat
 53,1,ペルシアン,
 53,2,Persian,
@@ -369,6 +421,7 @@ pokemon_species_id,local_language_id,name,genus
 53,4,貓老大,
 53,5,Persian,
 53,6,Snobilikat,
+53,8,Persian
 53,9,Persian,Classy Cat
 54,1,コダック,
 54,2,Koduck,
@@ -376,6 +429,7 @@ pokemon_species_id,local_language_id,name,genus
 54,4,可達鴨,
 54,5,Psykokwak,
 54,6,Enton,
+54,8,Psyduck
 54,9,Psyduck,Duck
 55,1,ゴルダック,
 55,2,Golduck,
@@ -383,6 +437,7 @@ pokemon_species_id,local_language_id,name,genus
 55,4,哥達鴨,
 55,5,Akwakwak,
 55,6,Entoron,
+55,8,Golduck
 55,9,Golduck,Duck
 56,1,マンキー,
 56,2,Mankey,
@@ -390,6 +445,7 @@ pokemon_species_id,local_language_id,name,genus
 56,4,猴怪,
 56,5,Férosinge,
 56,6,Menki,
+56,8,Mankey
 56,9,Mankey,Pig Monkey
 57,1,オコリザル,
 57,2,Okorizaru,
@@ -397,6 +453,7 @@ pokemon_species_id,local_language_id,name,genus
 57,4,火爆猴,
 57,5,Colossinge,
 57,6,Rasaff,
+57,8,Primeape
 57,9,Primeape,Pig Monkey
 58,1,ガーディ,
 58,2,Gardie,
@@ -404,6 +461,7 @@ pokemon_species_id,local_language_id,name,genus
 58,4,卡蒂狗,
 58,5,Caninos,
 58,6,Fukano,
+58,8,Growlithe
 58,9,Growlithe,Puppy
 59,1,ウインディ,
 59,2,Windie,
@@ -411,6 +469,7 @@ pokemon_species_id,local_language_id,name,genus
 59,4,風速狗,
 59,5,Arcanin,
 59,6,Arkani,
+59,8,Arcanine
 59,9,Arcanine,Legendary
 60,1,ニョロモ,
 60,2,Nyoromo,
@@ -418,6 +477,7 @@ pokemon_species_id,local_language_id,name,genus
 60,4,蚊香蝌蚪,
 60,5,Ptitard,
 60,6,Quapsel,
+60,8,Poliwag
 60,9,Poliwag,Tadpole
 61,1,ニョロゾ,
 61,2,Nyorozo,
@@ -425,6 +485,7 @@ pokemon_species_id,local_language_id,name,genus
 61,4,蚊香蛙,
 61,5,Têtarte,
 61,6,Quaputzi,
+61,8,Poliwhirl
 61,9,Poliwhirl,Tadpole
 62,1,ニョロボン,
 62,2,Nyorobon,
@@ -432,6 +493,7 @@ pokemon_species_id,local_language_id,name,genus
 62,4,快泳蛙,
 62,5,Tartard,
 62,6,Quappo,
+62,8,Poliwrath
 62,9,Poliwrath,Tadpole
 63,1,ケーシィ,
 63,2,Casey,
@@ -439,6 +501,7 @@ pokemon_species_id,local_language_id,name,genus
 63,4,凱西,
 63,5,Abra,
 63,6,Abra,
+63,8,Abra
 63,9,Abra,Psi
 64,1,ユンゲラー,
 64,2,Yungerer,
@@ -446,6 +509,7 @@ pokemon_species_id,local_language_id,name,genus
 64,4,勇吉拉,
 64,5,Kadabra,
 64,6,Kadabra,
+64,8,Kadabra
 64,9,Kadabra,Psi
 65,1,フーディン,
 65,2,Foodin,
@@ -453,6 +517,7 @@ pokemon_species_id,local_language_id,name,genus
 65,4,胡地,
 65,5,Alakazam,
 65,6,Simsala,
+65,8,Alakazam
 65,9,Alakazam,Psi
 66,1,ワンリキー,
 66,2,Wanriky,
@@ -460,6 +525,7 @@ pokemon_species_id,local_language_id,name,genus
 66,4,腕力,
 66,5,Machoc,
 66,6,Machollo,
+66,8,Machop
 66,9,Machop,Superpower
 67,1,ゴーリキー,
 67,2,Goriky,
@@ -467,6 +533,7 @@ pokemon_species_id,local_language_id,name,genus
 67,4,豪力,
 67,5,Machopeur,
 67,6,Maschock,
+67,8,Machoke
 67,9,Machoke,Superpower
 68,1,カイリキー,
 68,2,Kairiky,
@@ -474,6 +541,7 @@ pokemon_species_id,local_language_id,name,genus
 68,4,怪力,
 68,5,Mackogneur,
 68,6,Machomei,
+68,8,Machamp
 68,9,Machamp,Superpower
 69,1,マダツボミ,
 69,2,Madatsubomi,
@@ -481,6 +549,7 @@ pokemon_species_id,local_language_id,name,genus
 69,4,喇叭芽,
 69,5,Chétiflor,
 69,6,Knofensa,
+69,8,Bellsprout
 69,9,Bellsprout,Flower
 70,1,ウツドン,
 70,2,Utsudon,
@@ -488,6 +557,7 @@ pokemon_species_id,local_language_id,name,genus
 70,4,口呆花,
 70,5,Boustiflor,
 70,6,Ultrigaria,
+70,8,Weepinbell
 70,9,Weepinbell,Flycatcher
 71,1,ウツボット,
 71,2,Utsubot,
@@ -495,6 +565,7 @@ pokemon_species_id,local_language_id,name,genus
 71,4,大食花,
 71,5,Empiflor,
 71,6,Sarzenia,
+71,8,Victreebel
 71,9,Victreebel,Flycatcher
 72,1,メノクラゲ,
 72,2,Menokurage,
@@ -502,6 +573,7 @@ pokemon_species_id,local_language_id,name,genus
 72,4,瑪瑙水母,
 72,5,Tentacool,
 72,6,Tentacha,
+72,8,Tentacool
 72,9,Tentacool,Jellyfish
 73,1,ドククラゲ,
 73,2,Dokukurage,
@@ -509,6 +581,7 @@ pokemon_species_id,local_language_id,name,genus
 73,4,毒刺水母,
 73,5,Tentacruel,
 73,6,Tentoxa,
+73,8,Tentacruel
 73,9,Tentacruel,Jellyfish
 74,1,イシツブテ,
 74,2,Isitsubute,
@@ -516,6 +589,7 @@ pokemon_species_id,local_language_id,name,genus
 74,4,小拳石,
 74,5,Racaillou,
 74,6,Kleinstein,
+74,8,Geodude
 74,9,Geodude,Rock
 75,1,ゴローン,
 75,2,Golone,
@@ -523,6 +597,7 @@ pokemon_species_id,local_language_id,name,genus
 75,4,隆隆石,
 75,5,Gravalanch,
 75,6,Georok,
+75,8,Graveler
 75,9,Graveler,Rock
 76,1,ゴローニャ,
 76,2,Golonya,
@@ -530,6 +605,7 @@ pokemon_species_id,local_language_id,name,genus
 76,4,隆隆岩,
 76,5,Grolem,
 76,6,Geowaz,
+76,8,Golem
 76,9,Golem,Megaton
 77,1,ポニータ,
 77,2,Ponyta,
@@ -537,6 +613,7 @@ pokemon_species_id,local_language_id,name,genus
 77,4,小火馬,
 77,5,Ponyta,
 77,6,Ponita,
+77,8,Ponyta
 77,9,Ponyta,Fire Horse
 78,1,ギャロップ,
 78,2,Gallop,
@@ -544,6 +621,7 @@ pokemon_species_id,local_language_id,name,genus
 78,4,烈焰馬,
 78,5,Galopa,
 78,6,Gallopa,
+78,8,Rapidash
 78,9,Rapidash,Fire Horse
 79,1,ヤドン,
 79,2,Yadon,
@@ -551,6 +629,7 @@ pokemon_species_id,local_language_id,name,genus
 79,4,呆呆獸,
 79,5,Ramoloss,
 79,6,Flegmon,
+79,8,Slowpoke
 79,9,Slowpoke,Dopey
 80,1,ヤドラン,
 80,2,Yadoran,
@@ -558,6 +637,7 @@ pokemon_species_id,local_language_id,name,genus
 80,4,呆河馬,
 80,5,Flagadoss,
 80,6,Lahmus,
+80,8,Slowbro
 80,9,Slowbro,Hermit Crab
 81,1,コイル,
 81,2,Coil,
@@ -565,6 +645,7 @@ pokemon_species_id,local_language_id,name,genus
 81,4,小磁怪,
 81,5,Magnéti,
 81,6,Magnetilo,
+81,8,Magnemite
 81,9,Magnemite,Magnet
 82,1,レアコイル,
 82,2,Rarecoil,
@@ -572,6 +653,7 @@ pokemon_species_id,local_language_id,name,genus
 82,4,三合一磁怪,
 82,5,Magnéton,
 82,6,Magneton,
+82,8,Magneton
 82,9,Magneton,Magnet
 83,1,カモネギ,
 83,2,Kamonegi,
@@ -579,6 +661,7 @@ pokemon_species_id,local_language_id,name,genus
 83,4,大蔥鴨,
 83,5,Canarticho,
 83,6,Porenta,
+83,8,Farfetch
 83,9,Farfetch'd,Wild Duck
 84,1,ドードー,
 84,2,Dodo,
@@ -586,6 +669,7 @@ pokemon_species_id,local_language_id,name,genus
 84,4,嘟嘟,
 84,5,Doduo,
 84,6,Dodu,
+84,8,Doduo
 84,9,Doduo,Twin Bird
 85,1,ドードリオ,
 85,2,Dodorio,
@@ -593,6 +677,7 @@ pokemon_species_id,local_language_id,name,genus
 85,4,嘟嘟利,
 85,5,Dodrio,
 85,6,Dodri,
+85,8,Dodrio
 85,9,Dodrio,Triple Bird
 86,1,パウワウ,
 86,2,Pawou,
@@ -600,6 +685,7 @@ pokemon_species_id,local_language_id,name,genus
 86,4,小海獅,
 86,5,Otaria,
 86,6,Jurob,
+86,8,Seel
 86,9,Seel,Sea Lion
 87,1,ジュゴン,
 87,2,Jugon,
@@ -607,6 +693,7 @@ pokemon_species_id,local_language_id,name,genus
 87,4,白海獅,
 87,5,Lamantine,
 87,6,Jugong,
+87,8,Dewgong
 87,9,Dewgong,Sea Lion
 88,1,ベトベター,
 88,2,Betbeter,
@@ -614,6 +701,7 @@ pokemon_species_id,local_language_id,name,genus
 88,4,臭泥,
 88,5,Tadmorv,
 88,6,Sleima,
+88,8,Grimer
 88,9,Grimer,Sludge
 89,1,ベトベトン,
 89,2,Betbeton,
@@ -621,6 +709,7 @@ pokemon_species_id,local_language_id,name,genus
 89,4,臭臭泥,
 89,5,Grotadmorv,
 89,6,Sleimok,
+89,8,Muk
 89,9,Muk,Sludge
 90,1,シェルダー,
 90,2,Shellder,
@@ -628,6 +717,7 @@ pokemon_species_id,local_language_id,name,genus
 90,4,大舌貝,
 90,5,Kokiyas,
 90,6,Muschas,
+90,8,Shellder
 90,9,Shellder,Bivalve
 91,1,パルシェン,
 91,2,Parshen,
@@ -635,6 +725,7 @@ pokemon_species_id,local_language_id,name,genus
 91,4,鐵甲貝,
 91,5,Crustabri,
 91,6,Austos,
+91,8,Cloyster
 91,9,Cloyster,Bivalve
 92,1,ゴース,
 92,2,Ghos,
@@ -642,6 +733,7 @@ pokemon_species_id,local_language_id,name,genus
 92,4,鬼斯,
 92,5,Fantominus,
 92,6,Nebulak,
+92,8,Gastly
 92,9,Gastly,Gas
 93,1,ゴースト,
 93,2,Ghost,
@@ -649,6 +741,7 @@ pokemon_species_id,local_language_id,name,genus
 93,4,鬼斯通,
 93,5,Spectrum,
 93,6,Alpollo,
+93,8,Haunter
 93,9,Haunter,Gas
 94,1,ゲンガー,
 94,2,Gangar,
@@ -656,6 +749,7 @@ pokemon_species_id,local_language_id,name,genus
 94,4,耿鬼,
 94,5,Ectoplasma,
 94,6,Gengar,
+94,8,Gengar
 94,9,Gengar,Shadow
 95,1,イワーク,
 95,2,Iwark,
@@ -663,6 +757,7 @@ pokemon_species_id,local_language_id,name,genus
 95,4,大岩蛇,
 95,5,Onix,
 95,6,Onix,
+95,8,Onix
 95,9,Onix,Rock Snake
 96,1,スリープ,
 96,2,Sleep,
@@ -670,6 +765,7 @@ pokemon_species_id,local_language_id,name,genus
 96,4,素利普,
 96,5,Soporifik,
 96,6,Traumato,
+96,8,Drowzee
 96,9,Drowzee,Hypnosis
 97,1,スリーパー,
 97,2,Sleeper,
@@ -677,6 +773,7 @@ pokemon_species_id,local_language_id,name,genus
 97,4,素利拍,
 97,5,Hypnomade,
 97,6,Hypno,
+97,8,Hypno
 97,9,Hypno,Hypnosis
 98,1,クラブ,
 98,2,Crab,
@@ -684,6 +781,7 @@ pokemon_species_id,local_language_id,name,genus
 98,4,大鉗蟹,
 98,5,Krabby,
 98,6,Krabby,
+98,8,Krabby
 98,9,Krabby,River Crab
 99,1,キングラー,
 99,2,Kingler,
@@ -691,6 +789,7 @@ pokemon_species_id,local_language_id,name,genus
 99,4,巨鉗蟹,
 99,5,Krabboss,
 99,6,Kingler,
+99,8,Kingler
 99,9,Kingler,Pincer
 100,1,ビリリダマ,
 100,2,Biriridama,
@@ -698,6 +797,7 @@ pokemon_species_id,local_language_id,name,genus
 100,4,雷電球,
 100,5,Voltorbe,
 100,6,Voltobal,
+100,8,Voltorb
 100,9,Voltorb,Ball
 101,1,マルマイン,
 101,2,Marumine,
@@ -705,6 +805,7 @@ pokemon_species_id,local_language_id,name,genus
 101,4,頑皮彈,
 101,5,Électrode,
 101,6,Lektrobal,
+101,8,Electrode
 101,9,Electrode,Ball
 102,1,タマタマ,
 102,2,Tamatama,
@@ -712,6 +813,7 @@ pokemon_species_id,local_language_id,name,genus
 102,4,蛋蛋,
 102,5,Noeunoeuf,
 102,6,Owei,
+102,8,Exeggcute
 102,9,Exeggcute,Egg
 103,1,ナッシー,
 103,2,Nassy,
@@ -719,6 +821,7 @@ pokemon_species_id,local_language_id,name,genus
 103,4,椰蛋樹,
 103,5,Noadkoko,
 103,6,Kokowei,
+103,8,Exeggutor
 103,9,Exeggutor,Coconut
 104,1,カラカラ,
 104,2,Karakara,
@@ -726,6 +829,7 @@ pokemon_species_id,local_language_id,name,genus
 104,4,可拉可拉,
 104,5,Osselait,
 104,6,Tragosso,
+104,8,Cubone
 104,9,Cubone,Lonely
 105,1,ガラガラ,
 105,2,Garagara,
@@ -733,6 +837,7 @@ pokemon_species_id,local_language_id,name,genus
 105,4,嘎啦嘎啦,
 105,5,Ossatueur,
 105,6,Knogga,
+105,8,Marowak
 105,9,Marowak,Bone Keeper
 106,1,サワムラー,
 106,2,Sawamular,
@@ -740,6 +845,7 @@ pokemon_species_id,local_language_id,name,genus
 106,4,沙瓦郎,
 106,5,Kicklee,
 106,6,Kicklee,
+106,8,Hitmonlee
 106,9,Hitmonlee,Kicking
 107,1,エビワラー,
 107,2,Ebiwalar,
@@ -747,6 +853,7 @@ pokemon_species_id,local_language_id,name,genus
 107,4,艾比郎,
 107,5,Tygnon,
 107,6,Nockchan,
+107,8,Hitmonchan
 107,9,Hitmonchan,Punching
 108,1,ベロリンガ,
 108,2,Beroringa,
@@ -754,6 +861,7 @@ pokemon_species_id,local_language_id,name,genus
 108,4,大舌頭,
 108,5,Excelangue,
 108,6,Schlurp,
+108,8,Lickitung
 108,9,Lickitung,Licking
 109,1,ドガース,
 109,2,Dogars,
@@ -761,6 +869,7 @@ pokemon_species_id,local_language_id,name,genus
 109,4,瓦斯彈,
 109,5,Smogo,
 109,6,Smogon,
+109,8,Koffing
 109,9,Koffing,Poison Gas
 110,1,マタドガス,
 110,2,Matadogas,
@@ -768,6 +877,7 @@ pokemon_species_id,local_language_id,name,genus
 110,4,雙彈瓦斯,
 110,5,Smogogo,
 110,6,Smogmog,
+110,8,Weezing
 110,9,Weezing,Poison Gas
 111,1,サイホーン,
 111,2,Sihorn,
@@ -775,6 +885,7 @@ pokemon_species_id,local_language_id,name,genus
 111,4,鐵甲犀牛,
 111,5,Rhinocorne,
 111,6,Rihorn,
+111,8,Rhyhorn
 111,9,Rhyhorn,Spikes
 112,1,サイドン,
 112,2,Sidon,
@@ -782,6 +893,7 @@ pokemon_species_id,local_language_id,name,genus
 112,4,鐵甲暴龍,
 112,5,Rhinoféros,
 112,6,Rizeros,
+112,8,Rhydon
 112,9,Rhydon,Drill
 113,1,ラッキー,
 113,2,Lucky,
@@ -789,6 +901,7 @@ pokemon_species_id,local_language_id,name,genus
 113,4,吉利蛋,
 113,5,Leveinard,
 113,6,Chaneira,
+113,8,Chansey
 113,9,Chansey,Egg
 114,1,モンジャラ,
 114,2,Monjara,
@@ -796,6 +909,7 @@ pokemon_species_id,local_language_id,name,genus
 114,4,蔓藤怪,
 114,5,Saquedeneu,
 114,6,Tangela,
+114,8,Tangela
 114,9,Tangela,Vine
 115,1,ガルーラ,
 115,2,Garura,
@@ -803,6 +917,7 @@ pokemon_species_id,local_language_id,name,genus
 115,4,袋龍,
 115,5,Kangourex,
 115,6,Kangama,
+115,8,Kangaskhan
 115,9,Kangaskhan,Parent
 116,1,タッツー,
 116,2,Tattu,
@@ -810,6 +925,7 @@ pokemon_species_id,local_language_id,name,genus
 116,4,墨海馬,
 116,5,Hypotrempe,
 116,6,Seeper,
+116,8,Horsea
 116,9,Horsea,Dragon
 117,1,シードラ,
 117,2,Seadra,
@@ -817,6 +933,7 @@ pokemon_species_id,local_language_id,name,genus
 117,4,海刺龍,
 117,5,Hypocéan,
 117,6,Seemon,
+117,8,Seadra
 117,9,Seadra,Dragon
 118,1,トサキント,
 118,2,Tosakinto,
@@ -824,6 +941,7 @@ pokemon_species_id,local_language_id,name,genus
 118,4,角金魚,
 118,5,Poissirène,
 118,6,Goldini,
+118,8,Goldeen
 118,9,Goldeen,Goldfish
 119,1,アズマオウ,
 119,2,Azumao,
@@ -831,6 +949,7 @@ pokemon_species_id,local_language_id,name,genus
 119,4,金魚王,
 119,5,Poissoroy,
 119,6,Golking,
+119,8,Seaking
 119,9,Seaking,Goldfish
 120,1,ヒトデマン,
 120,2,Hitodeman,
@@ -838,6 +957,7 @@ pokemon_species_id,local_language_id,name,genus
 120,4,海星星,
 120,5,Stari,
 120,6,Sterndu,
+120,8,Staryu
 120,9,Staryu,Star Shape
 121,1,スターミー,
 121,2,Starmie,
@@ -845,6 +965,7 @@ pokemon_species_id,local_language_id,name,genus
 121,4,寶石海星,
 121,5,Staross,
 121,6,Starmie,
+121,8,Starmie
 121,9,Starmie,Mysterious
 122,1,バリヤード,
 122,2,Barrierd,
@@ -852,6 +973,7 @@ pokemon_species_id,local_language_id,name,genus
 122,4,吸盤魔偶,
 122,5,M. Mime,
 122,6,Pantimos,
+122,8,Mr
 122,9,Mr. Mime,Barrier
 123,1,ストライク,
 123,2,Strike,
@@ -859,6 +981,7 @@ pokemon_species_id,local_language_id,name,genus
 123,4,飛天螳螂,
 123,5,Insécateur,
 123,6,Sichlor,
+123,8,Scyther
 123,9,Scyther,Mantis
 124,1,ルージュラ,
 124,2,Rougela,
@@ -866,6 +989,7 @@ pokemon_species_id,local_language_id,name,genus
 124,4,迷唇姐,
 124,5,Lippoutou,
 124,6,Rossana,
+124,8,Jynx
 124,9,Jynx,Human Shape
 125,1,エレブー,
 125,2,Eleboo,
@@ -873,6 +997,7 @@ pokemon_species_id,local_language_id,name,genus
 125,4,電擊獸,
 125,5,Élektek,
 125,6,Elektek,
+125,8,Electabuzz
 125,9,Electabuzz,Electric
 126,1,ブーバー,
 126,2,Boober,
@@ -880,6 +1005,7 @@ pokemon_species_id,local_language_id,name,genus
 126,4,鴨嘴火龍,
 126,5,Magmar,
 126,6,Magmar,
+126,8,Magmar
 126,9,Magmar,Spitfire
 127,1,カイロス,
 127,2,Kailios,
@@ -887,6 +1013,7 @@ pokemon_species_id,local_language_id,name,genus
 127,4,大甲,
 127,5,Scarabrute,
 127,6,Pinsir,
+127,8,Pinsir
 127,9,Pinsir,Stag Beetle
 128,1,ケンタロス,
 128,2,Kentauros,
@@ -894,6 +1021,7 @@ pokemon_species_id,local_language_id,name,genus
 128,4,肯泰羅,
 128,5,Tauros,
 128,6,Tauros,
+128,8,Tauros
 128,9,Tauros,Wild Bull
 129,1,コイキング,
 129,2,Koiking,
@@ -901,6 +1029,7 @@ pokemon_species_id,local_language_id,name,genus
 129,4,鯉魚王,
 129,5,Magicarpe,
 129,6,Karpador,
+129,8,Magikarp
 129,9,Magikarp,Fish
 130,1,ギャラドス,
 130,2,Gyarados,
@@ -908,6 +1037,7 @@ pokemon_species_id,local_language_id,name,genus
 130,4,暴鯉龍,
 130,5,Léviator,
 130,6,Garados,
+130,8,Gyarados
 130,9,Gyarados,Atrocious
 131,1,ラプラス,
 131,2,Laplace,
@@ -915,6 +1045,7 @@ pokemon_species_id,local_language_id,name,genus
 131,4,乘龍,
 131,5,Lokhlass,
 131,6,Lapras,
+131,8,Lapras
 131,9,Lapras,Transport
 132,1,メタモン,
 132,2,Metamon,
@@ -922,6 +1053,7 @@ pokemon_species_id,local_language_id,name,genus
 132,4,百變怪,
 132,5,Métamorph,
 132,6,Ditto,
+132,8,Ditto
 132,9,Ditto,Transform
 133,1,イーブイ,
 133,2,Eievui,
@@ -929,6 +1061,7 @@ pokemon_species_id,local_language_id,name,genus
 133,4,伊布,
 133,5,Évoli,
 133,6,Evoli,
+133,8,Eevee
 133,9,Eevee,Evolution
 134,1,シャワーズ,
 134,2,Showers,
@@ -936,6 +1069,7 @@ pokemon_species_id,local_language_id,name,genus
 134,4,水精靈,
 134,5,Aquali,
 134,6,Aquana,
+134,8,Vaporeon
 134,9,Vaporeon,Bubble Jet
 135,1,サンダース,
 135,2,Thunders,
@@ -943,6 +1077,7 @@ pokemon_species_id,local_language_id,name,genus
 135,4,雷精靈,
 135,5,Voltali,
 135,6,Blitza,
+135,8,Jolteon
 135,9,Jolteon,Lightning
 136,1,ブースター,
 136,2,Booster,
@@ -950,6 +1085,7 @@ pokemon_species_id,local_language_id,name,genus
 136,4,火精靈,
 136,5,Pyroli,
 136,6,Flamara,
+136,8,Flareon
 136,9,Flareon,Flame
 137,1,ポリゴン,
 137,2,Porygon,
@@ -957,6 +1093,7 @@ pokemon_species_id,local_language_id,name,genus
 137,4,3D龍,
 137,5,Porygon,
 137,6,Porygon,
+137,8,Porygon
 137,9,Porygon,Virtual
 138,1,オムナイト,
 138,2,Omnite,
@@ -964,6 +1101,7 @@ pokemon_species_id,local_language_id,name,genus
 138,4,菊石獸,
 138,5,Amonita,
 138,6,Amonitas,
+138,8,Omanyte
 138,9,Omanyte,Spiral
 139,1,オムスター,
 139,2,Omstar,
@@ -971,6 +1109,7 @@ pokemon_species_id,local_language_id,name,genus
 139,4,多刺菊石獸,
 139,5,Amonistar,
 139,6,Amoroso,
+139,8,Omastar
 139,9,Omastar,Spiral
 140,1,カブト,
 140,2,Kabuto,
@@ -978,6 +1117,7 @@ pokemon_species_id,local_language_id,name,genus
 140,4,化石盔,
 140,5,Kabuto,
 140,6,Kabuto,
+140,8,Kabuto
 140,9,Kabuto,Shellfish
 141,1,カブトプス,
 141,2,Kabutops,
@@ -985,6 +1125,7 @@ pokemon_species_id,local_language_id,name,genus
 141,4,鐮刀盔,
 141,5,Kabutops,
 141,6,Kabutops,
+141,8,Kabutops
 141,9,Kabutops,Shellfish
 142,1,プテラ,
 142,2,Ptera,
@@ -992,6 +1133,7 @@ pokemon_species_id,local_language_id,name,genus
 142,4,化石翼龍,
 142,5,Ptéra,
 142,6,Aerodactyl,
+142,8,Aerodactyl
 142,9,Aerodactyl,Fossil
 143,1,カビゴン,
 143,2,Kabigon,
@@ -999,6 +1141,7 @@ pokemon_species_id,local_language_id,name,genus
 143,4,卡比獸,
 143,5,Ronflex,
 143,6,Relaxo,
+143,8,Snorlax
 143,9,Snorlax,Sleeping
 144,1,フリーザー,
 144,2,Freezer,
@@ -1006,6 +1149,7 @@ pokemon_species_id,local_language_id,name,genus
 144,4,急凍鳥,
 144,5,Artikodin,
 144,6,Arktos,
+144,8,Articuno
 144,9,Articuno,Freeze
 145,1,サンダー,
 145,2,Thunder,
@@ -1013,6 +1157,7 @@ pokemon_species_id,local_language_id,name,genus
 145,4,閃電鳥,
 145,5,Électhor,
 145,6,Zapdos,
+145,8,Zapdos
 145,9,Zapdos,Electric
 146,1,ファイヤー,
 146,2,Fire,
@@ -1020,6 +1165,7 @@ pokemon_species_id,local_language_id,name,genus
 146,4,火焰鳥,
 146,5,Sulfura,
 146,6,Lavados,
+146,8,Moltres
 146,9,Moltres,Flame
 147,1,ミニリュウ,
 147,2,Miniryu,
@@ -1027,6 +1173,7 @@ pokemon_species_id,local_language_id,name,genus
 147,4,迷你龍,
 147,5,Minidraco,
 147,6,Dratini,
+147,8,Dratini
 147,9,Dratini,Dragon
 148,1,ハクリュー,
 148,2,Hakuryu,
@@ -1034,6 +1181,7 @@ pokemon_species_id,local_language_id,name,genus
 148,4,哈克龍,
 148,5,Draco,
 148,6,Dragonir,
+148,8,Dragonair
 148,9,Dragonair,Dragon
 149,1,カイリュー,
 149,2,Kairyu,
@@ -1041,6 +1189,7 @@ pokemon_species_id,local_language_id,name,genus
 149,4,快龍,
 149,5,Dracolosse,
 149,6,Dragoran,
+149,8,Dragonite
 149,9,Dragonite,Dragon
 150,1,ミュウツー,
 150,2,Mewtwo,
@@ -1048,6 +1197,7 @@ pokemon_species_id,local_language_id,name,genus
 150,4,超夢,
 150,5,Mewtwo,
 150,6,Mewtu,
+150,8,Mewtwo
 150,9,Mewtwo,Genetic
 151,1,ミュウ,
 151,2,Mew,
@@ -1055,6 +1205,7 @@ pokemon_species_id,local_language_id,name,genus
 151,4,夢幻,
 151,5,Mew,
 151,6,Mew,
+151,8,Mew
 151,9,Mew,New Species
 152,1,チコリータ,
 152,2,Chicorita,
@@ -1062,6 +1213,7 @@ pokemon_species_id,local_language_id,name,genus
 152,4,菊草葉,
 152,5,Germignon,
 152,6,Endivie,
+152,8,Chikorita
 152,9,Chikorita,Leaf
 153,1,ベイリーフ,
 153,2,Bayleaf,
@@ -1069,6 +1221,7 @@ pokemon_species_id,local_language_id,name,genus
 153,4,月桂葉,
 153,5,Macronium,
 153,6,Lorblatt,
+153,8,Bayleef
 153,9,Bayleef,Leaf
 154,1,メガニウム,
 154,2,Meganium,
@@ -1076,6 +1229,7 @@ pokemon_species_id,local_language_id,name,genus
 154,4,大菊花,
 154,5,Méganium,
 154,6,Meganie,
+154,8,Meganium
 154,9,Meganium,Herb
 155,1,ヒノアラシ,
 155,2,Hinoarashi,
@@ -1083,6 +1237,7 @@ pokemon_species_id,local_language_id,name,genus
 155,4,火球鼠,
 155,5,Héricendre,
 155,6,Feurigel,
+155,8,Cyndaquil
 155,9,Cyndaquil,Fire Mouse
 156,1,マグマラシ,
 156,2,Magmarashi,
@@ -1090,6 +1245,7 @@ pokemon_species_id,local_language_id,name,genus
 156,4,火岩鼠,
 156,5,Feurisson,
 156,6,Igelavar,
+156,8,Quilava
 156,9,Quilava,Volcano
 157,1,バクフーン,
 157,2,Bakphoon,
@@ -1097,6 +1253,7 @@ pokemon_species_id,local_language_id,name,genus
 157,4,火暴獸,
 157,5,Typhlosion,
 157,6,Tornupto,
+157,8,Typhlosion
 157,9,Typhlosion,Volcano
 158,1,ワニノコ,
 158,2,Waninoko,
@@ -1104,6 +1261,7 @@ pokemon_species_id,local_language_id,name,genus
 158,4,小鋸鱷,
 158,5,Kaiminus,
 158,6,Karnimani,
+158,8,Totodile
 158,9,Totodile,Big Jaw
 159,1,アリゲイツ,
 159,2,Alligates,
@@ -1111,6 +1269,7 @@ pokemon_species_id,local_language_id,name,genus
 159,4,藍鱷,
 159,5,Crocrodil,
 159,6,Tyracroc,
+159,8,Croconaw
 159,9,Croconaw,Big Jaw
 160,1,オーダイル,
 160,2,Ordile,
@@ -1118,6 +1277,7 @@ pokemon_species_id,local_language_id,name,genus
 160,4,大力鱷,
 160,5,Aligatueur,
 160,6,Impergator,
+160,8,Feraligatr
 160,9,Feraligatr,Big Jaw
 161,1,オタチ,
 161,2,Otachi,
@@ -1125,6 +1285,7 @@ pokemon_species_id,local_language_id,name,genus
 161,4,尾立,
 161,5,Fouinette,
 161,6,Wiesor,
+161,8,Sentret
 161,9,Sentret,Scout
 162,1,オオタチ,
 162,2,Ootachi,
@@ -1132,6 +1293,7 @@ pokemon_species_id,local_language_id,name,genus
 162,4,大尾立,
 162,5,Fouinar,
 162,6,Wiesenior,
+162,8,Furret
 162,9,Furret,Long Body
 163,1,ホーホー,
 163,2,Hoho,
@@ -1139,6 +1301,7 @@ pokemon_species_id,local_language_id,name,genus
 163,4,咕咕,
 163,5,Hoothoot,
 163,6,Hoothoot,
+163,8,Hoothoot
 163,9,Hoothoot,Owl
 164,1,ヨルノズク,
 164,2,Yorunozuku,
@@ -1146,6 +1309,7 @@ pokemon_species_id,local_language_id,name,genus
 164,4,貓頭夜鷹,
 164,5,Noarfang,
 164,6,Noctuh,
+164,8,Noctowl
 164,9,Noctowl,Owl
 165,1,レディバ,
 165,2,Rediba,
@@ -1153,6 +1317,7 @@ pokemon_species_id,local_language_id,name,genus
 165,4,芭瓢蟲,
 165,5,Coxy,
 165,6,Ledyba,
+165,8,Ledyba
 165,9,Ledyba,Five Star
 166,1,レディアン,
 166,2,Redian,
@@ -1160,6 +1325,7 @@ pokemon_species_id,local_language_id,name,genus
 166,4,安瓢蟲,
 166,5,Coxyclaque,
 166,6,Ledian,
+166,8,Ledian
 166,9,Ledian,Five Star
 167,1,イトマル,
 167,2,Itomaru,
@@ -1167,6 +1333,7 @@ pokemon_species_id,local_language_id,name,genus
 167,4,線球,
 167,5,Mimigal,
 167,6,Webarak,
+167,8,Spinarak
 167,9,Spinarak,String Spit
 168,1,アリアドス,
 168,2,Ariados,
@@ -1174,6 +1341,7 @@ pokemon_species_id,local_language_id,name,genus
 168,4,阿利多斯,
 168,5,Migalos,
 168,6,Ariados,
+168,8,Ariados
 168,9,Ariados,Long Leg
 169,1,クロバット,
 169,2,Crobat,
@@ -1181,6 +1349,7 @@ pokemon_species_id,local_language_id,name,genus
 169,4,叉字蝠,
 169,5,Nostenfer,
 169,6,Iksbat,
+169,8,Crobat
 169,9,Crobat,Bat
 170,1,チョンチー,
 170,2,Chonchie,
@@ -1188,6 +1357,7 @@ pokemon_species_id,local_language_id,name,genus
 170,4,燈籠魚,
 170,5,Loupio,
 170,6,Lampi,
+170,8,Chinchou
 170,9,Chinchou,Angler
 171,1,ランターン,
 171,2,Lantern,
@@ -1195,6 +1365,7 @@ pokemon_species_id,local_language_id,name,genus
 171,4,電燈怪,
 171,5,Lanturn,
 171,6,Lanturn,
+171,8,Lanturn
 171,9,Lanturn,Light
 172,1,ピチュー,
 172,2,Pichu,
@@ -1202,6 +1373,7 @@ pokemon_species_id,local_language_id,name,genus
 172,4,皮丘,
 172,5,Pichu,
 172,6,Pichu,
+172,8,Pichu
 172,9,Pichu,Tiny Mouse
 173,1,ピィ,
 173,2,Py,
@@ -1209,6 +1381,7 @@ pokemon_species_id,local_language_id,name,genus
 173,4,皮寶寶,
 173,5,Mélo,
 173,6,Pii,
+173,8,Cleffa
 173,9,Cleffa,Star Shape
 174,1,ププリン,
 174,2,Pupurin,
@@ -1216,6 +1389,7 @@ pokemon_species_id,local_language_id,name,genus
 174,4,寶寶丁,
 174,5,Toudoudou,
 174,6,Fluffeluff,
+174,8,Igglybuff
 174,9,Igglybuff,Balloon
 175,1,トゲピー,
 175,2,Togepy,
@@ -1223,6 +1397,7 @@ pokemon_species_id,local_language_id,name,genus
 175,4,波克比,
 175,5,Togepi,
 175,6,Togepi,
+175,8,Togepi
 175,9,Togepi,Spike Ball
 176,1,トゲチック,
 176,2,Togechick,
@@ -1230,6 +1405,7 @@ pokemon_species_id,local_language_id,name,genus
 176,4,波克基古,
 176,5,Togetic,
 176,6,Togetic,
+176,8,Togetic
 176,9,Togetic,Happiness
 177,1,ネイティ,
 177,2,Naty,
@@ -1237,6 +1413,7 @@ pokemon_species_id,local_language_id,name,genus
 177,4,天然雀,
 177,5,Natu,
 177,6,Natu,
+177,8,Natu
 177,9,Natu,Tiny Bird
 178,1,ネイティオ,
 178,2,Natio,
@@ -1244,6 +1421,7 @@ pokemon_species_id,local_language_id,name,genus
 178,4,天然鳥,
 178,5,Xatu,
 178,6,Xatu,
+178,8,Xatu
 178,9,Xatu,Mystic
 179,1,メリープ,
 179,2,Merriep,
@@ -1251,6 +1429,7 @@ pokemon_species_id,local_language_id,name,genus
 179,4,咩利羊,
 179,5,Wattouat,
 179,6,Voltilamm,
+179,8,Mareep
 179,9,Mareep,Wool
 180,1,モココ,
 180,2,Mokoko,
@@ -1258,6 +1437,7 @@ pokemon_species_id,local_language_id,name,genus
 180,4,綿綿,
 180,5,Lainergie,
 180,6,Waaty,
+180,8,Flaaffy
 180,9,Flaaffy,Wool
 181,1,デンリュウ,
 181,2,Denryu,
@@ -1265,6 +1445,7 @@ pokemon_species_id,local_language_id,name,genus
 181,4,電龍,
 181,5,Pharamp,
 181,6,Ampharos,
+181,8,Ampharos
 181,9,Ampharos,Light
 182,1,キレイハナ,
 182,2,Kireihana,
@@ -1272,6 +1453,7 @@ pokemon_species_id,local_language_id,name,genus
 182,4,美麗花,
 182,5,Joliflor,
 182,6,Blubella,
+182,8,Bellossom
 182,9,Bellossom,Flower
 183,1,マリル,
 183,2,Maril,
@@ -1279,6 +1461,7 @@ pokemon_species_id,local_language_id,name,genus
 183,4,瑪力露,
 183,5,Marill,
 183,6,Marill,
+183,8,Marill
 183,9,Marill,Aqua Mouse
 184,1,マリルリ,
 184,2,Marilli,
@@ -1286,6 +1469,7 @@ pokemon_species_id,local_language_id,name,genus
 184,4,瑪力露麗,
 184,5,Azumarill,
 184,6,Azumarill,
+184,8,Azumarill
 184,9,Azumarill,Aqua Rabbit
 185,1,ウソッキー,
 185,2,Usokkie,
@@ -1293,6 +1477,7 @@ pokemon_species_id,local_language_id,name,genus
 185,4,胡說樹,
 185,5,Simularbre,
 185,6,Mogelbaum,
+185,8,Sudowoodo
 185,9,Sudowoodo,Imitation
 186,1,ニョロトノ,
 186,2,Nyorotono,
@@ -1300,6 +1485,7 @@ pokemon_species_id,local_language_id,name,genus
 186,4,牛蛙君,
 186,5,Tarpaud,
 186,6,Quaxo,
+186,8,Politoed
 186,9,Politoed,Frog
 187,1,ハネッコ,
 187,2,Hanecco,
@@ -1307,6 +1493,7 @@ pokemon_species_id,local_language_id,name,genus
 187,4,毽子草,
 187,5,Granivol,
 187,6,Hoppspross,
+187,8,Hoppip
 187,9,Hoppip,Cottonweed
 188,1,ポポッコ,
 188,2,Popocco,
@@ -1314,6 +1501,7 @@ pokemon_species_id,local_language_id,name,genus
 188,4,毽子花,
 188,5,Floravol,
 188,6,Hubelupf,
+188,8,Skiploom
 188,9,Skiploom,Cottonweed
 189,1,ワタッコ,
 189,2,Watacco,
@@ -1321,6 +1509,7 @@ pokemon_species_id,local_language_id,name,genus
 189,4,毽子綿,
 189,5,Cotovol,
 189,6,Papungha,
+189,8,Jumpluff
 189,9,Jumpluff,Cottonweed
 190,1,エイパム,
 190,2,Eipam,
@@ -1328,6 +1517,7 @@ pokemon_species_id,local_language_id,name,genus
 190,4,長尾怪手,
 190,5,Capumain,
 190,6,Griffel,
+190,8,Aipom
 190,9,Aipom,Long Tail
 191,1,ヒマナッツ,
 191,2,Himanuts,
@@ -1335,6 +1525,7 @@ pokemon_species_id,local_language_id,name,genus
 191,4,向日種子,
 191,5,Tournegrin,
 191,6,Sonnkern,
+191,8,Sunkern
 191,9,Sunkern,Seed
 192,1,キマワリ,
 192,2,Kimawari,
@@ -1342,6 +1533,7 @@ pokemon_species_id,local_language_id,name,genus
 192,4,向日花怪,
 192,5,Héliatronc,
 192,6,Sonnflora,
+192,8,Sunflora
 192,9,Sunflora,Sun
 193,1,ヤンヤンマ,
 193,2,Yanyanma,
@@ -1349,6 +1541,7 @@ pokemon_species_id,local_language_id,name,genus
 193,4,陽陽瑪,
 193,5,Yanma,
 193,6,Yanma,
+193,8,Yanma
 193,9,Yanma,Clear Wing
 194,1,ウパー,
 194,2,Upah,
@@ -1356,6 +1549,7 @@ pokemon_species_id,local_language_id,name,genus
 194,4,烏波,
 194,5,Axoloto,
 194,6,Felino,
+194,8,Wooper
 194,9,Wooper,Water Fish
 195,1,ヌオー,
 195,2,Nuoh,
@@ -1363,6 +1557,7 @@ pokemon_species_id,local_language_id,name,genus
 195,4,沼王,
 195,5,Maraiste,
 195,6,Morlord,
+195,8,Quagsire
 195,9,Quagsire,Water Fish
 196,1,エーフィ,
 196,2,Eifie,
@@ -1370,6 +1565,7 @@ pokemon_species_id,local_language_id,name,genus
 196,4,太陽精靈,
 196,5,Mentali,
 196,6,Psiana,
+196,8,Espeon
 196,9,Espeon,Sun
 197,1,ブラッキー,
 197,2,Blacky,
@@ -1377,6 +1573,7 @@ pokemon_species_id,local_language_id,name,genus
 197,4,月精靈,
 197,5,Noctali,
 197,6,Nachtara,
+197,8,Umbreon
 197,9,Umbreon,Moonlight
 198,1,ヤミカラス,
 198,2,Yamikarasu,
@@ -1384,6 +1581,7 @@ pokemon_species_id,local_language_id,name,genus
 198,4,黑暗鴉,
 198,5,Cornèbre,
 198,6,Kramurx,
+198,8,Murkrow
 198,9,Murkrow,Darkness
 199,1,ヤドキング,
 199,2,Yadoking,
@@ -1391,6 +1589,7 @@ pokemon_species_id,local_language_id,name,genus
 199,4,河馬王,
 199,5,Roigada,
 199,6,Laschoking,
+199,8,Slowking
 199,9,Slowking,Royal
 200,1,ムウマ,
 200,2,Muma,
@@ -1398,6 +1597,7 @@ pokemon_species_id,local_language_id,name,genus
 200,4,夢妖,
 200,5,Feuforêve,
 200,6,Traunfugil,
+200,8,Misdreavus
 200,9,Misdreavus,Screech
 201,1,アンノーン,
 201,2,Unknown,
@@ -1405,6 +1605,7 @@ pokemon_species_id,local_language_id,name,genus
 201,4,未知圖騰,
 201,5,Zarbi,
 201,6,Icognito,
+201,8,Unown
 201,9,Unown,Symbol
 202,1,ソーナンス,
 202,2,Sonans,
@@ -1412,6 +1613,7 @@ pokemon_species_id,local_language_id,name,genus
 202,4,果然翁,
 202,5,Qulbutoké,
 202,6,Woingenau,
+202,8,Wobbuffet
 202,9,Wobbuffet,Patient
 203,1,キリンリキ,
 203,2,Kirinriki,
@@ -1419,6 +1621,7 @@ pokemon_species_id,local_language_id,name,genus
 203,4,麒麟奇,
 203,5,Girafarig,
 203,6,Girafarig,
+203,8,Girafarig
 203,9,Girafarig,Long Neck
 204,1,クヌギダマ,
 204,2,Kunugidama,
@@ -1426,6 +1629,7 @@ pokemon_species_id,local_language_id,name,genus
 204,4,榛果球,
 204,5,Pomdepik,
 204,6,Tannza,
+204,8,Pineco
 204,9,Pineco,Bagworm
 205,1,フォレトス,
 205,2,Foretos,
@@ -1433,6 +1637,7 @@ pokemon_species_id,local_language_id,name,genus
 205,4,佛烈托斯,
 205,5,Foretress,
 205,6,Forstellka,
+205,8,Forretress
 205,9,Forretress,Bagworm
 206,1,ノコッチ,
 206,2,Nokocchi,
@@ -1440,6 +1645,7 @@ pokemon_species_id,local_language_id,name,genus
 206,4,土龍弟弟,
 206,5,Insolourdo,
 206,6,Dummisel,
+206,8,Dunsparce
 206,9,Dunsparce,Land Snake
 207,1,グライガー,
 207,2,Gliger,
@@ -1447,6 +1653,7 @@ pokemon_species_id,local_language_id,name,genus
 207,4,天蠍,
 207,5,Scorplane,
 207,6,Skorgla,
+207,8,Gligar
 207,9,Gligar,FlyScorpion
 208,1,ハガネール,
 208,2,Haganeil,
@@ -1454,6 +1661,7 @@ pokemon_species_id,local_language_id,name,genus
 208,4,大鋼蛇,
 208,5,Steelix,
 208,6,Stahlos,
+208,8,Steelix
 208,9,Steelix,Iron Snake
 209,1,ブルー,
 209,2,Bulu,
@@ -1461,6 +1669,7 @@ pokemon_species_id,local_language_id,name,genus
 209,4,布盧,
 209,5,Snubbull,
 209,6,Snubbull,
+209,8,Snubbull
 209,9,Snubbull,Fairy
 210,1,グランブル,
 210,2,Granbulu,
@@ -1468,6 +1677,7 @@ pokemon_species_id,local_language_id,name,genus
 210,4,布盧皇,
 210,5,Granbull,
 210,6,Granbull,
+210,8,Granbull
 210,9,Granbull,Fairy
 211,1,ハリーセン,
 211,2,Harysen,
@@ -1475,6 +1685,7 @@ pokemon_species_id,local_language_id,name,genus
 211,4,千針魚,
 211,5,Qwilfish,
 211,6,Baldorfish,
+211,8,Qwilfish
 211,9,Qwilfish,Balloon
 212,1,ハッサム,
 212,2,Hassam,
@@ -1482,6 +1693,7 @@ pokemon_species_id,local_language_id,name,genus
 212,4,巨鉗螳螂,
 212,5,Cizayox,
 212,6,Scherox,
+212,8,Scizor
 212,9,Scizor,Pincer
 213,1,ツボツボ,
 213,2,Tsubotsubo,
@@ -1489,6 +1701,7 @@ pokemon_species_id,local_language_id,name,genus
 213,4,壺壺,
 213,5,Caratroc,
 213,6,Pottrott,
+213,8,Shuckle
 213,9,Shuckle,Mold
 214,1,ヘラクロス,
 214,2,Heracros,
@@ -1496,6 +1709,7 @@ pokemon_species_id,local_language_id,name,genus
 214,4,赫拉剋羅斯,
 214,5,Scarhino,
 214,6,Skaraborn,
+214,8,Heracross
 214,9,Heracross,Single Horn
 215,1,ニューラ,
 215,2,Nyula,
@@ -1503,6 +1717,7 @@ pokemon_species_id,local_language_id,name,genus
 215,4,狃拉,
 215,5,Farfuret,
 215,6,Sniebel,
+215,8,Sneasel
 215,9,Sneasel,Sharp Claw
 216,1,ヒメグマ,
 216,2,Himeguma,
@@ -1510,6 +1725,7 @@ pokemon_species_id,local_language_id,name,genus
 216,4,熊寶寶,
 216,5,Teddiursa,
 216,6,Teddiursa,
+216,8,Teddiursa
 216,9,Teddiursa,Little Bear
 217,1,リングマ,
 217,2,Ringuma,
@@ -1517,6 +1733,7 @@ pokemon_species_id,local_language_id,name,genus
 217,4,圈圈熊,
 217,5,Ursaring,
 217,6,Ursaring,
+217,8,Ursaring
 217,9,Ursaring,Hibernator
 218,1,マグマッグ,
 218,2,Magmag,
@@ -1524,6 +1741,7 @@ pokemon_species_id,local_language_id,name,genus
 218,4,熔岩蟲,
 218,5,Limagma,
 218,6,Schneckmag,
+218,8,Slugma
 218,9,Slugma,Lava
 219,1,マグカルゴ,
 219,2,Magcargot,
@@ -1531,6 +1749,7 @@ pokemon_species_id,local_language_id,name,genus
 219,4,熔岩蝸牛,
 219,5,Volcaropod,
 219,6,Magcargo,
+219,8,Magcargo
 219,9,Magcargo,Lava
 220,1,ウリムー,
 220,2,Urimoo,
@@ -1538,6 +1757,7 @@ pokemon_species_id,local_language_id,name,genus
 220,4,小山豬,
 220,5,Marcacrin,
 220,6,Quiekel,
+220,8,Swinub
 220,9,Swinub,Pig
 221,1,イノムー,
 221,2,Inomoo,
@@ -1545,6 +1765,7 @@ pokemon_species_id,local_language_id,name,genus
 221,4,長毛豬,
 221,5,Cochignon,
 221,6,Keifel,
+221,8,Piloswine
 221,9,Piloswine,Swine
 222,1,サニーゴ,
 222,2,Sunnygo,
@@ -1552,6 +1773,7 @@ pokemon_species_id,local_language_id,name,genus
 222,4,太陽珊瑚,
 222,5,Corayon,
 222,6,Corasonn,
+222,8,Corsola
 222,9,Corsola,Coral
 223,1,テッポウオ,
 223,2,Teppouo,
@@ -1559,6 +1781,7 @@ pokemon_species_id,local_language_id,name,genus
 223,4,鐵砲魚,
 223,5,Rémoraid,
 223,6,Remoraid,
+223,8,Remoraid
 223,9,Remoraid,Jet
 224,1,オクタン,
 224,2,Okutank,
@@ -1566,6 +1789,7 @@ pokemon_species_id,local_language_id,name,genus
 224,4,章魚桶,
 224,5,Octillery,
 224,6,Octillery,
+224,8,Octillery
 224,9,Octillery,Jet
 225,1,デリバード,
 225,2,Delibird,
@@ -1573,6 +1797,7 @@ pokemon_species_id,local_language_id,name,genus
 225,4,信使鳥,
 225,5,Cadoizo,
 225,6,Botogel,
+225,8,Delibird
 225,9,Delibird,Delivery
 226,1,マンタイン,
 226,2,Mantain,
@@ -1580,6 +1805,7 @@ pokemon_species_id,local_language_id,name,genus
 226,4,巨翅飛魚,
 226,5,Démanta,
 226,6,Mantax,
+226,8,Mantine
 226,9,Mantine,Kite
 227,1,エアームド,
 227,2,Airmd,
@@ -1587,6 +1813,7 @@ pokemon_species_id,local_language_id,name,genus
 227,4,盔甲鳥,
 227,5,Airmure,
 227,6,Panzaeron,
+227,8,Skarmory
 227,9,Skarmory,Armor Bird
 228,1,デルビル,
 228,2,Delvil,
@@ -1594,6 +1821,7 @@ pokemon_species_id,local_language_id,name,genus
 228,4,戴魯比,
 228,5,Malosse,
 228,6,Hunduster,
+228,8,Houndour
 228,9,Houndour,Dark
 229,1,ヘルガー,
 229,2,Hellgar,
@@ -1601,6 +1829,7 @@ pokemon_species_id,local_language_id,name,genus
 229,4,黑魯加,
 229,5,Démolosse,
 229,6,Hundemon,
+229,8,Houndoom
 229,9,Houndoom,Dark
 230,1,キングドラ,
 230,2,Kingdra,
@@ -1608,6 +1837,7 @@ pokemon_species_id,local_language_id,name,genus
 230,4,刺龍王,
 230,5,Hyporoi,
 230,6,Seedraking,
+230,8,Kingdra
 230,9,Kingdra,Dragon
 231,1,ゴマゾウ,
 231,2,Gomazou,
@@ -1615,6 +1845,7 @@ pokemon_species_id,local_language_id,name,genus
 231,4,小小象,
 231,5,Phanpy,
 231,6,Phanpy,
+231,8,Phanpy
 231,9,Phanpy,Long Nose
 232,1,ドンファン,
 232,2,Donfan,
@@ -1622,6 +1853,7 @@ pokemon_species_id,local_language_id,name,genus
 232,4,頓甲,
 232,5,Donphan,
 232,6,Donphan,
+232,8,Donphan
 232,9,Donphan,Armor
 233,1,ポリゴン２,
 233,2,Porygon2,
@@ -1629,6 +1861,7 @@ pokemon_species_id,local_language_id,name,genus
 233,4,3D龍2,
 233,5,Porygon2,
 233,6,Porygon2,
+233,8,Porygon2
 233,9,Porygon2,Virtual
 234,1,オドシシ,
 234,2,Odoshishi,
@@ -1636,6 +1869,7 @@ pokemon_species_id,local_language_id,name,genus
 234,4,驚角鹿,
 234,5,Cerfrousse,
 234,6,Damhirplex,
+234,8,Stantler
 234,9,Stantler,Big Horn
 235,1,ドーブル,
 235,2,Doble,
@@ -1643,6 +1877,7 @@ pokemon_species_id,local_language_id,name,genus
 235,4,圖圖犬,
 235,5,Queulorior,
 235,6,Farbeagle,
+235,8,Smeargle
 235,9,Smeargle,Painter
 236,1,バルキー,
 236,2,Balkie,
@@ -1650,6 +1885,7 @@ pokemon_species_id,local_language_id,name,genus
 236,4,巴爾郎,
 236,5,Debugant,
 236,6,Rabauz,
+236,8,Tyrogue
 236,9,Tyrogue,Scuffle
 237,1,カポエラー,
 237,2,Kapoerer,
@@ -1657,6 +1893,7 @@ pokemon_species_id,local_language_id,name,genus
 237,4,柯波朗,
 237,5,Kapoera,
 237,6,Kapoera,
+237,8,Hitmontop
 237,9,Hitmontop,Handstand
 238,1,ムチュール,
 238,2,Muchul,
@@ -1664,6 +1901,7 @@ pokemon_species_id,local_language_id,name,genus
 238,4,迷唇娃,
 238,5,Lippouti,
 238,6,Kussilla,
+238,8,Smoochum
 238,9,Smoochum,Kiss
 239,1,エレキッド,
 239,2,Elekid,
@@ -1671,6 +1909,7 @@ pokemon_species_id,local_language_id,name,genus
 239,4,電擊怪,
 239,5,Élekid,
 239,6,Elekid,
+239,8,Elekid
 239,9,Elekid,Electric
 240,1,ブビィ,
 240,2,Buby,
@@ -1678,6 +1917,7 @@ pokemon_species_id,local_language_id,name,genus
 240,4,小鴨嘴龍,
 240,5,Magby,
 240,6,Magby,
+240,8,Magby
 240,9,Magby,Live Coal
 241,1,ミルタンク,
 241,2,Miltank,
@@ -1685,6 +1925,7 @@ pokemon_species_id,local_language_id,name,genus
 241,4,大奶罐,
 241,5,Écrémeuh,
 241,6,Miltank,
+241,8,Miltank
 241,9,Miltank,Milk Cow
 242,1,ハピナス,
 242,2,Happinas,
@@ -1692,6 +1933,7 @@ pokemon_species_id,local_language_id,name,genus
 242,4,幸福蛋,
 242,5,Leuphorie,
 242,6,Heiteira,
+242,8,Blissey
 242,9,Blissey,Happiness
 243,1,ライコウ,
 243,2,Raikou,
@@ -1699,6 +1941,7 @@ pokemon_species_id,local_language_id,name,genus
 243,4,雷公,
 243,5,Raikou,
 243,6,Raikou,
+243,8,Raikou
 243,9,Raikou,Thunder
 244,1,エンテイ,
 244,2,Entei,
@@ -1706,6 +1949,7 @@ pokemon_species_id,local_language_id,name,genus
 244,4,炎帝,
 244,5,Entei,
 244,6,Entei,
+244,8,Entei
 244,9,Entei,Volcano
 245,1,スイクン,
 245,2,Suikun,
@@ -1713,6 +1957,7 @@ pokemon_species_id,local_language_id,name,genus
 245,4,水君,
 245,5,Suicune,
 245,6,Suicune,
+245,8,Suicune
 245,9,Suicune,Aurora
 246,1,ヨーギラス,
 246,2,Yogiras,
@@ -1720,6 +1965,7 @@ pokemon_species_id,local_language_id,name,genus
 246,4,由基拉,
 246,5,Embrylex,
 246,6,Larvitar,
+246,8,Larvitar
 246,9,Larvitar,Rock Skin
 247,1,サナギラス,
 247,2,Sanagiras,
@@ -1727,6 +1973,7 @@ pokemon_species_id,local_language_id,name,genus
 247,4,沙基拉,
 247,5,Ymphect,
 247,6,Pupitar,
+247,8,Pupitar
 247,9,Pupitar,Hard Shell
 248,1,バンギラス,
 248,2,Bangiras,
@@ -1734,6 +1981,7 @@ pokemon_species_id,local_language_id,name,genus
 248,4,班吉拉,
 248,5,Tyranocif,
 248,6,Despotar,
+248,8,Tyranitar
 248,9,Tyranitar,Armor
 249,1,ルギア,
 249,2,Lugia,
@@ -1741,6 +1989,7 @@ pokemon_species_id,local_language_id,name,genus
 249,4,洛奇亞,
 249,5,Lugia,
 249,6,Lugia,
+249,8,Lugia
 249,9,Lugia,Diving
 250,1,ホウオウ,
 250,2,Houou,
@@ -1748,6 +1997,7 @@ pokemon_species_id,local_language_id,name,genus
 250,4,鳳王,
 250,5,Ho-Oh,
 250,6,Ho-Oh,
+250,8,Ho
 250,9,Ho-Oh,Rainbow
 251,1,セレビィ,
 251,2,Celebi,
@@ -1755,6 +2005,7 @@ pokemon_species_id,local_language_id,name,genus
 251,4,雪拉比,
 251,5,Celebi,
 251,6,Celebi,
+251,8,Celebi
 251,9,Celebi,Time Travel
 252,1,キモリ,
 252,2,Kimori,
@@ -1762,6 +2013,7 @@ pokemon_species_id,local_language_id,name,genus
 252,4,木守宮,
 252,5,Arcko,
 252,6,Geckarbor,
+252,8,Treecko
 252,9,Treecko,Wood Gecko
 253,1,ジュプトル,
 253,2,Juptile,
@@ -1769,6 +2021,7 @@ pokemon_species_id,local_language_id,name,genus
 253,4,森林蜥蜴,
 253,5,Massko,
 253,6,Reptain,
+253,8,Grovyle
 253,9,Grovyle,Wood Gecko
 254,1,ジュカイン,
 254,2,Jukain,
@@ -1776,6 +2029,7 @@ pokemon_species_id,local_language_id,name,genus
 254,4,蜥蜴王,
 254,5,Jungko,
 254,6,Gewaldro,
+254,8,Sceptile
 254,9,Sceptile,Forest
 255,1,アチャモ,
 255,2,Achamo,
@@ -1783,6 +2037,7 @@ pokemon_species_id,local_language_id,name,genus
 255,4,火稚雞,
 255,5,Poussifeu,
 255,6,Flemmli,
+255,8,Torchic
 255,9,Torchic,Chick
 256,1,ワカシャモ,
 256,2,Wakasyamo,
@@ -1790,6 +2045,7 @@ pokemon_species_id,local_language_id,name,genus
 256,4,力壯雞,
 256,5,Galifeu,
 256,6,Jungglut,
+256,8,Combusken
 256,9,Combusken,Young Fowl
 257,1,バシャーモ,
 257,2,Bursyamo,
@@ -1797,6 +2053,7 @@ pokemon_species_id,local_language_id,name,genus
 257,4,火焰雞,
 257,5,Braségali,
 257,6,Lohgock,
+257,8,Blaziken
 257,9,Blaziken,Blaze
 258,1,ミズゴロウ,
 258,2,Mizugorou,
@@ -1804,6 +2061,7 @@ pokemon_species_id,local_language_id,name,genus
 258,4,水躍魚,
 258,5,Gobou,
 258,6,Hydropi,
+258,8,Mudkip
 258,9,Mudkip,Mud Fish
 259,1,ヌマクロー,
 259,2,Numacraw,
@@ -1811,6 +2069,7 @@ pokemon_species_id,local_language_id,name,genus
 259,4,沼躍魚,
 259,5,Flobio,
 259,6,Moorabbel,
+259,8,Marshtomp
 259,9,Marshtomp,Mud Fish
 260,1,ラグラージ,
 260,2,Laglarge,
@@ -1818,6 +2077,7 @@ pokemon_species_id,local_language_id,name,genus
 260,4,巨沼怪,
 260,5,Laggron,
 260,6,Sumpex,
+260,8,Swampert
 260,9,Swampert,Mud Fish
 261,1,ポチエナ,
 261,2,Pochiena,
@@ -1825,6 +2085,7 @@ pokemon_species_id,local_language_id,name,genus
 261,4,土狼犬,
 261,5,Medhyèna,
 261,6,Fiffyen,
+261,8,Poochyena
 261,9,Poochyena,Bite
 262,1,グラエナ,
 262,2,Guraena,
@@ -1832,6 +2093,7 @@ pokemon_species_id,local_language_id,name,genus
 262,4,大狼犬,
 262,5,Grahyèna,
 262,6,Magnayen,
+262,8,Mightyena
 262,9,Mightyena,Bite
 263,1,ジグザグマ,
 263,2,Ziguzaguma,
@@ -1839,6 +2101,7 @@ pokemon_species_id,local_language_id,name,genus
 263,4,蛇紋熊,
 263,5,Zigzaton,
 263,6,Zigzachs,
+263,8,Zigzagoon
 263,9,Zigzagoon,TinyRaccoon
 264,1,マッスグマ,
 264,2,Massuguma,
@@ -1846,6 +2109,7 @@ pokemon_species_id,local_language_id,name,genus
 264,4,直衝熊,
 264,5,Linéon,
 264,6,Geradaks,
+264,8,Linoone
 264,9,Linoone,Rushing
 265,1,ケムッソ,
 265,2,Kemusso,
@@ -1853,6 +2117,7 @@ pokemon_species_id,local_language_id,name,genus
 265,4,刺尾蟲,
 265,5,Chenipotte,
 265,6,Waumpel,
+265,8,Wurmple
 265,9,Wurmple,Worm
 266,1,カラサリス,
 266,2,Karasalis,
@@ -1860,6 +2125,7 @@ pokemon_species_id,local_language_id,name,genus
 266,4,甲殼蛹,
 266,5,Armulys,
 266,6,Schaloko,
+266,8,Silcoon
 266,9,Silcoon,Cocoon
 267,1,アゲハント,
 267,2,Agehunt,
@@ -1867,6 +2133,7 @@ pokemon_species_id,local_language_id,name,genus
 267,4,狩獵鳳蝶,
 267,5,Charmillon,
 267,6,Papinella,
+267,8,Beautifly
 267,9,Beautifly,Butterfly
 268,1,マユルド,
 268,2,Mayuld,
@@ -1874,6 +2141,7 @@ pokemon_species_id,local_language_id,name,genus
 268,4,盾甲繭,
 268,5,Blindalys,
 268,6,Panekon,
+268,8,Cascoon
 268,9,Cascoon,Cocoon
 269,1,ドクケイル,
 269,2,Dokucale,
@@ -1881,6 +2149,7 @@ pokemon_species_id,local_language_id,name,genus
 269,4,毒粉蝶,
 269,5,Papinox,
 269,6,Pudox,
+269,8,Dustox
 269,9,Dustox,Poison Moth
 270,1,ハスボー,
 270,2,Hassboh,
@@ -1888,6 +2157,7 @@ pokemon_species_id,local_language_id,name,genus
 270,4,蓮葉童子,
 270,5,Nénupiot,
 270,6,Loturzel,
+270,8,Lotad
 270,9,Lotad,Water Weed
 271,1,ハスブレロ,
 271,2,Hasubrero,
@@ -1895,6 +2165,7 @@ pokemon_species_id,local_language_id,name,genus
 271,4,蓮帽小童,
 271,5,Lombre,
 271,6,Lombrero,
+271,8,Lombre
 271,9,Lombre,Jolly
 272,1,ルンパッパ,
 272,2,Runpappa,
@@ -1902,6 +2173,7 @@ pokemon_species_id,local_language_id,name,genus
 272,4,樂天河童,
 272,5,Ludicolo,
 272,6,Kappalores,
+272,8,Ludicolo
 272,9,Ludicolo,Carefree
 273,1,タネボー,
 273,2,Taneboh,
@@ -1909,6 +2181,7 @@ pokemon_species_id,local_language_id,name,genus
 273,4,橡實果,
 273,5,Grainipiot,
 273,6,Samurzel,
+273,8,Seedot
 273,9,Seedot,Acorn
 274,1,コノハナ,
 274,2,Konohana,
@@ -1916,6 +2189,7 @@ pokemon_species_id,local_language_id,name,genus
 274,4,長鼻葉,
 274,5,Pifeuil,
 274,6,Blanas,
+274,8,Nuzleaf
 274,9,Nuzleaf,Wily
 275,1,ダーテング,
 275,2,Dirteng,
@@ -1923,6 +2197,7 @@ pokemon_species_id,local_language_id,name,genus
 275,4,狡猾天狗,
 275,5,Tengalice,
 275,6,Tengulist,
+275,8,Shiftry
 275,9,Shiftry,Wicked
 276,1,スバメ,
 276,2,Subame,
@@ -1930,6 +2205,7 @@ pokemon_species_id,local_language_id,name,genus
 276,4,傲骨燕,
 276,5,Nirondelle,
 276,6,Schwalbini,
+276,8,Taillow
 276,9,Taillow,TinySwallow
 277,1,オオスバメ,
 277,2,Ohsubame,
@@ -1937,6 +2213,7 @@ pokemon_species_id,local_language_id,name,genus
 277,4,大王燕,
 277,5,Hélédelle,
 277,6,Schwalboss,
+277,8,Swellow
 277,9,Swellow,Swallow
 278,1,キャモメ,
 278,2,Camome,
@@ -1944,6 +2221,7 @@ pokemon_species_id,local_language_id,name,genus
 278,4,長翅鷗,
 278,5,Goélise,
 278,6,Wingull,
+278,8,Wingull
 278,9,Wingull,Seagull
 279,1,ペリッパー,
 279,2,Pelipper,
@@ -1951,6 +2229,7 @@ pokemon_species_id,local_language_id,name,genus
 279,4,大嘴鷗,
 279,5,Bekipan,
 279,6,Pelipper,
+279,8,Pelipper
 279,9,Pelipper,Water Bird
 280,1,ラルトス,
 280,2,Ralts,
@@ -1958,6 +2237,7 @@ pokemon_species_id,local_language_id,name,genus
 280,4,拉魯拉絲,
 280,5,Tarsal,
 280,6,Trasla,
+280,8,Ralts
 280,9,Ralts,Feeling
 281,1,キルリア,
 281,2,Kirlia,
@@ -1965,6 +2245,7 @@ pokemon_species_id,local_language_id,name,genus
 281,4,奇魯莉安,
 281,5,Kirlia,
 281,6,Kirlia,
+281,8,Kirlia
 281,9,Kirlia,Emotion
 282,1,サーナイト,
 282,2,Sirnight,
@@ -1972,6 +2253,7 @@ pokemon_species_id,local_language_id,name,genus
 282,4,沙奈朵,
 282,5,Gardevoir,
 282,6,Guardevoir,
+282,8,Gardevoir
 282,9,Gardevoir,Embrace
 283,1,アメタマ,
 283,2,Ametama,
@@ -1979,6 +2261,7 @@ pokemon_species_id,local_language_id,name,genus
 283,4,溜溜糖球,
 283,5,Arakdo,
 283,6,Gehweiher,
+283,8,Surskit
 283,9,Surskit,Pond Skater
 284,1,アメモース,
 284,2,Amemoth,
@@ -1986,6 +2269,7 @@ pokemon_species_id,local_language_id,name,genus
 284,4,雨翅蛾,
 284,5,Maskadra,
 284,6,Maskeregen,
+284,8,Masquerain
 284,9,Masquerain,Eyeball
 285,1,キノココ,
 285,2,Kinococo,
@@ -1993,6 +2277,7 @@ pokemon_species_id,local_language_id,name,genus
 285,4,蘑蘑菇,
 285,5,Balignon,
 285,6,Knilz,
+285,8,Shroomish
 285,9,Shroomish,Mushroom
 286,1,キノガッサ,
 286,2,Kinogassa,
@@ -2000,6 +2285,7 @@ pokemon_species_id,local_language_id,name,genus
 286,4,斗笠菇,
 286,5,Chapignon,
 286,6,Kapilz,
+286,8,Breloom
 286,9,Breloom,Mushroom
 287,1,ナマケロ,
 287,2,Namakero,
@@ -2007,6 +2293,7 @@ pokemon_species_id,local_language_id,name,genus
 287,4,懶人翁,
 287,5,Parecool,
 287,6,Bummelz,
+287,8,Slakoth
 287,9,Slakoth,Slacker
 288,1,ヤルキモノ,
 288,2,Yarukimono,
@@ -2014,6 +2301,7 @@ pokemon_species_id,local_language_id,name,genus
 288,4,過動猿,
 288,5,Vigoroth,
 288,6,Muntier,
+288,8,Vigoroth
 288,9,Vigoroth,Wild Monkey
 289,1,ケッキング,
 289,2,Kekking,
@@ -2021,6 +2309,7 @@ pokemon_species_id,local_language_id,name,genus
 289,4,請假王,
 289,5,Monaflèmit,
 289,6,Letarking,
+289,8,Slaking
 289,9,Slaking,Lazy
 290,1,ツチニン,
 290,2,Tutinin,
@@ -2028,6 +2317,7 @@ pokemon_species_id,local_language_id,name,genus
 290,4,土居忍士,
 290,5,Ningale,
 290,6,Nincada,
+290,8,Nincada
 290,9,Nincada,Trainee
 291,1,テッカニン,
 291,2,Tekkanin,
@@ -2035,6 +2325,7 @@ pokemon_species_id,local_language_id,name,genus
 291,4,鐵面忍者,
 291,5,Ninjask,
 291,6,Ninjask,
+291,8,Ninjask
 291,9,Ninjask,Ninja
 292,1,ヌケニン,
 292,2,Nukenin,
@@ -2042,6 +2333,7 @@ pokemon_species_id,local_language_id,name,genus
 292,4,脫殼忍者,
 292,5,Munja,
 292,6,Ninjatom,
+292,8,Shedinja
 292,9,Shedinja,Shed
 293,1,ゴニョニョ,
 293,2,Gonyonyo,
@@ -2049,6 +2341,7 @@ pokemon_species_id,local_language_id,name,genus
 293,4,咕妞妞,
 293,5,Chuchmur,
 293,6,Flurmel,
+293,8,Whismur
 293,9,Whismur,Whisper
 294,1,ドゴーム,
 294,2,Dogohmb,
@@ -2056,6 +2349,7 @@ pokemon_species_id,local_language_id,name,genus
 294,4,吼爆彈,
 294,5,Ramboum,
 294,6,Krakeelo,
+294,8,Loudred
 294,9,Loudred,Big Voice
 295,1,バクオング,
 295,2,Bakuong,
@@ -2063,6 +2357,7 @@ pokemon_species_id,local_language_id,name,genus
 295,4,爆音怪,
 295,5,Brouhabam,
 295,6,Krawumms,
+295,8,Exploud
 295,9,Exploud,Loud Noise
 296,1,マクノシタ,
 296,2,Makunoshita,
@@ -2070,6 +2365,7 @@ pokemon_species_id,local_language_id,name,genus
 296,4,幕下力士,
 296,5,Makuhita,
 296,6,Makuhita,
+296,8,Makuhita
 296,9,Makuhita,Guts
 297,1,ハリテヤマ,
 297,2,Hariteyama,
@@ -2077,6 +2373,7 @@ pokemon_species_id,local_language_id,name,genus
 297,4,超力王,
 297,5,Hariyama,
 297,6,Hariyama,
+297,8,Hariyama
 297,9,Hariyama,Arm Thrust
 298,1,ルリリ,
 298,2,Ruriri,
@@ -2084,6 +2381,7 @@ pokemon_species_id,local_language_id,name,genus
 298,4,露力麗,
 298,5,Azurill,
 298,6,Azurill,
+298,8,Azurill
 298,9,Azurill,Polka Dot
 299,1,ノズパス,
 299,2,Nosepass,
@@ -2091,6 +2389,7 @@ pokemon_species_id,local_language_id,name,genus
 299,4,朝北鼻,
 299,5,Tarinor,
 299,6,Nasgnet,
+299,8,Nosepass
 299,9,Nosepass,Compass
 300,1,エネコ,
 300,2,Eneco,
@@ -2098,6 +2397,7 @@ pokemon_species_id,local_language_id,name,genus
 300,4,向尾喵,
 300,5,Skitty,
 300,6,Eneco,
+300,8,Skitty
 300,9,Skitty,Kitten
 301,1,エネコロロ,
 301,2,Enekororo,
@@ -2105,6 +2405,7 @@ pokemon_species_id,local_language_id,name,genus
 301,4,優雅貓,
 301,5,Delcatty,
 301,6,Enekoro,
+301,8,Delcatty
 301,9,Delcatty,Prim
 302,1,ヤミラミ,
 302,2,Yamirami,
@@ -2112,6 +2413,7 @@ pokemon_species_id,local_language_id,name,genus
 302,4,勾魂眼,
 302,5,Ténéfix,
 302,6,Zobiris,
+302,8,Sableye
 302,9,Sableye,Darkness
 303,1,クチート,
 303,2,Kucheat,
@@ -2119,6 +2421,7 @@ pokemon_species_id,local_language_id,name,genus
 303,4,大嘴娃,
 303,5,Mysdibule,
 303,6,Flunkifer,
+303,8,Mawile
 303,9,Mawile,Deceiver
 304,1,ココドラ,
 304,2,Cokodora,
@@ -2126,6 +2429,7 @@ pokemon_species_id,local_language_id,name,genus
 304,4,可可多拉,
 304,5,Galekid,
 304,6,Stollunior,
+304,8,Aron
 304,9,Aron,Iron Armor
 305,1,コドラ,
 305,2,Kodora,
@@ -2133,6 +2437,7 @@ pokemon_species_id,local_language_id,name,genus
 305,4,可多拉,
 305,5,Galegon,
 305,6,Stollrak,
+305,8,Lairon
 305,9,Lairon,Iron Armor
 306,1,ボスゴドラ,
 306,2,Bossgodora,
@@ -2140,6 +2445,7 @@ pokemon_species_id,local_language_id,name,genus
 306,4,波士可多拉,
 306,5,Galeking,
 306,6,Stolloss,
+306,8,Aggron
 306,9,Aggron,Iron Armor
 307,1,アサナン,
 307,2,Asanan,
@@ -2147,6 +2453,7 @@ pokemon_species_id,local_language_id,name,genus
 307,4,瑪沙那,
 307,5,Méditikka,
 307,6,Meditie,
+307,8,Meditite
 307,9,Meditite,Meditate
 308,1,チャーレム,
 308,2,Charem,
@@ -2154,6 +2461,7 @@ pokemon_species_id,local_language_id,name,genus
 308,4,恰雷姆,
 308,5,Charmina,
 308,6,Meditalis,
+308,8,Medicham
 308,9,Medicham,Meditate
 309,1,ラクライ,
 309,2,Rakurai,
@@ -2161,6 +2469,7 @@ pokemon_species_id,local_language_id,name,genus
 309,4,落雷獸,
 309,5,Dynavolt,
 309,6,Frizelbliz,
+309,8,Electrike
 309,9,Electrike,Lightning
 310,1,ライボルト,
 310,2,Livolt,
@@ -2168,6 +2477,7 @@ pokemon_species_id,local_language_id,name,genus
 310,4,雷電獸,
 310,5,Élecsprint,
 310,6,Voltenso,
+310,8,Manectric
 310,9,Manectric,Discharge
 311,1,プラスル,
 311,2,Prasle,
@@ -2175,6 +2485,7 @@ pokemon_species_id,local_language_id,name,genus
 311,4,正電拍拍,
 311,5,Posipi,
 311,6,Plusle,
+311,8,Plusle
 311,9,Plusle,Cheering
 312,1,マイナン,
 312,2,Minun,
@@ -2182,6 +2493,7 @@ pokemon_species_id,local_language_id,name,genus
 312,4,負電拍拍,
 312,5,Négapi,
 312,6,Minun,
+312,8,Minun
 312,9,Minun,Cheering
 313,1,バルビート,
 313,2,Barubeat,
@@ -2189,6 +2501,7 @@ pokemon_species_id,local_language_id,name,genus
 313,4,電螢蟲,
 313,5,Muciole,
 313,6,Volbeat,
+313,8,Volbeat
 313,9,Volbeat,Firefly
 314,1,イルミーゼ,
 314,2,Illumise,
@@ -2196,6 +2509,7 @@ pokemon_species_id,local_language_id,name,genus
 314,4,甜甜螢,
 314,5,Lumivole,
 314,6,Illumise,
+314,8,Illumise
 314,9,Illumise,Firefly
 315,1,ロゼリア,
 315,2,Roselia,
@@ -2203,6 +2517,7 @@ pokemon_species_id,local_language_id,name,genus
 315,4,毒薔薇,
 315,5,Rosélia,
 315,6,Roselia,
+315,8,Roselia
 315,9,Roselia,Thorn
 316,1,ゴクリン,
 316,2,Gokulin,
@@ -2210,6 +2525,7 @@ pokemon_species_id,local_language_id,name,genus
 316,4,溶食獸,
 316,5,Gloupti,
 316,6,Schluppuck,
+316,8,Gulpin
 316,9,Gulpin,Stomach
 317,1,マルノーム,
 317,2,Marunoom,
@@ -2217,6 +2533,7 @@ pokemon_species_id,local_language_id,name,genus
 317,4,吞食獸,
 317,5,Avaltout,
 317,6,Schlukwech,
+317,8,Swalot
 317,9,Swalot,Poison Bag
 318,1,キバニア,
 318,2,Kibanha,
@@ -2224,6 +2541,7 @@ pokemon_species_id,local_language_id,name,genus
 318,4,利牙魚,
 318,5,Carvanha,
 318,6,Kanivanha,
+318,8,Carvanha
 318,9,Carvanha,Savage
 319,1,サメハダー,
 319,2,Samehader,
@@ -2231,6 +2549,7 @@ pokemon_species_id,local_language_id,name,genus
 319,4,巨牙鯊,
 319,5,Sharpedo,
 319,6,Tohaido,
+319,8,Sharpedo
 319,9,Sharpedo,Brutal
 320,1,ホエルコ,
 320,2,Whalko,
@@ -2238,6 +2557,7 @@ pokemon_species_id,local_language_id,name,genus
 320,4,吼吼鯨,
 320,5,Wailmer,
 320,6,Wailmer,
+320,8,Wailmer
 320,9,Wailmer,Ball Whale
 321,1,ホエルオー,
 321,2,Whaloh,
@@ -2245,6 +2565,7 @@ pokemon_species_id,local_language_id,name,genus
 321,4,吼鯨王,
 321,5,Wailord,
 321,6,Wailord,
+321,8,Wailord
 321,9,Wailord,Float Whale
 322,1,ドンメル,
 322,2,Donmel,
@@ -2252,6 +2573,7 @@ pokemon_species_id,local_language_id,name,genus
 322,4,呆火駝,
 322,5,Chamallot,
 322,6,Camaub,
+322,8,Numel
 322,9,Numel,Numb
 323,1,バクーダ,
 323,2,Bakuuda,
@@ -2259,6 +2581,7 @@ pokemon_species_id,local_language_id,name,genus
 323,4,噴火駝,
 323,5,Camérupt,
 323,6,Camerupt,
+323,8,Camerupt
 323,9,Camerupt,Eruption
 324,1,コータス,
 324,2,Cotoise,
@@ -2266,6 +2589,7 @@ pokemon_species_id,local_language_id,name,genus
 324,4,煤炭龜,
 324,5,Chartor,
 324,6,Qurtel,
+324,8,Torkoal
 324,9,Torkoal,Coal
 325,1,バネブー,
 325,2,Baneboo,
@@ -2273,6 +2597,7 @@ pokemon_species_id,local_language_id,name,genus
 325,4,跳跳豬,
 325,5,Spoink,
 325,6,Spoink,
+325,8,Spoink
 325,9,Spoink,Bounce
 326,1,ブーピッグ,
 326,2,Boopig,
@@ -2280,6 +2605,7 @@ pokemon_species_id,local_language_id,name,genus
 326,4,噗噗豬,
 326,5,Groret,
 326,6,Groink,
+326,8,Grumpig
 326,9,Grumpig,Manipulate
 327,1,パッチール,
 327,2,Patcheel,
@@ -2287,6 +2613,7 @@ pokemon_species_id,local_language_id,name,genus
 327,4,晃晃斑,
 327,5,Spinda,
 327,6,Pandir,
+327,8,Spinda
 327,9,Spinda,Spot Panda
 328,1,ナックラー,
 328,2,Nuckrar,
@@ -2294,6 +2621,7 @@ pokemon_species_id,local_language_id,name,genus
 328,4,大顎蟻,
 328,5,Kraknoix,
 328,6,Knacklion,
+328,8,Trapinch
 328,9,Trapinch,Ant Pit
 329,1,ビブラーバ,
 329,2,Vibrava,
@@ -2301,6 +2629,7 @@ pokemon_species_id,local_language_id,name,genus
 329,4,超音波幼蟲,
 329,5,Vibraninf,
 329,6,Vibrava,
+329,8,Vibrava
 329,9,Vibrava,Vibration
 330,1,フライゴン,
 330,2,Frygon,
@@ -2308,6 +2637,7 @@ pokemon_species_id,local_language_id,name,genus
 330,4,沙漠蜻蜓,
 330,5,Libégon,
 330,6,Libelldra,
+330,8,Flygon
 330,9,Flygon,Mystic
 331,1,サボネア,
 331,2,Sabonea,
@@ -2315,6 +2645,7 @@ pokemon_species_id,local_language_id,name,genus
 331,4,沙漠奈亞,
 331,5,Cacnea,
 331,6,Tuska,
+331,8,Cacnea
 331,9,Cacnea,Cactus
 332,1,ノクタス,
 332,2,Noctus,
@@ -2322,6 +2653,7 @@ pokemon_species_id,local_language_id,name,genus
 332,4,夢歌奈亞,
 332,5,Cacturne,
 332,6,Noktuska,
+332,8,Cacturne
 332,9,Cacturne,Scarecrow
 333,1,チルット,
 333,2,Tyltto,
@@ -2329,6 +2661,7 @@ pokemon_species_id,local_language_id,name,genus
 333,4,青綿鳥,
 333,5,Tylton,
 333,6,Wablu,
+333,8,Swablu
 333,9,Swablu,Cotton Bird
 334,1,チルタリス,
 334,2,Tyltalis,
@@ -2336,6 +2669,7 @@ pokemon_species_id,local_language_id,name,genus
 334,4,七夕青鳥,
 334,5,Altaria,
 334,6,Altaria,
+334,8,Altaria
 334,9,Altaria,Humming
 335,1,ザングース,
 335,2,Zangoose,
@@ -2343,6 +2677,7 @@ pokemon_species_id,local_language_id,name,genus
 335,4,貓鼬斬,
 335,5,Mangriff,
 335,6,Sengo,
+335,8,Zangoose
 335,9,Zangoose,Cat Ferret
 336,1,ハブネーク,
 336,2,Habunake,
@@ -2350,6 +2685,7 @@ pokemon_species_id,local_language_id,name,genus
 336,4,飯匙蛇,
 336,5,Séviper,
 336,6,Vipitis,
+336,8,Seviper
 336,9,Seviper,Fang Snake
 337,1,ルナトーン,
 337,2,Lunatone,
@@ -2357,6 +2693,7 @@ pokemon_species_id,local_language_id,name,genus
 337,4,月石,
 337,5,Séléroc,
 337,6,Lunastein,
+337,8,Lunatone
 337,9,Lunatone,Meteorite
 338,1,ソルロック,
 338,2,Solrock,
@@ -2364,6 +2701,7 @@ pokemon_species_id,local_language_id,name,genus
 338,4,太陽岩,
 338,5,Solaroc,
 338,6,Sonnfel,
+338,8,Solrock
 338,9,Solrock,Meteorite
 339,1,ドジョッチ,
 339,2,Dojoach,
@@ -2371,6 +2709,7 @@ pokemon_species_id,local_language_id,name,genus
 339,4,泥泥鰍,
 339,5,Barloche,
 339,6,Schmerbe,
+339,8,Barboach
 339,9,Barboach,Whiskers
 340,1,ナマズン,
 340,2,Namazun,
@@ -2378,6 +2717,7 @@ pokemon_species_id,local_language_id,name,genus
 340,4,鯰魚王,
 340,5,Barbicha,
 340,6,Welsar,
+340,8,Whiscash
 340,9,Whiscash,Whiskers
 341,1,ヘイガニ,
 341,2,Heigani,
@@ -2385,6 +2725,7 @@ pokemon_species_id,local_language_id,name,genus
 341,4,龍蝦小兵,
 341,5,Écrapince,
 341,6,Krebscorps,
+341,8,Corphish
 341,9,Corphish,Ruffian
 342,1,シザリガー,
 342,2,Shizariger,
@@ -2392,6 +2733,7 @@ pokemon_species_id,local_language_id,name,genus
 342,4,鐵螯龍蝦,
 342,5,Colhomard,
 342,6,Krebutack,
+342,8,Crawdaunt
 342,9,Crawdaunt,Rogue
 343,1,ヤジロン,
 343,2,Yajilon,
@@ -2399,6 +2741,7 @@ pokemon_species_id,local_language_id,name,genus
 343,4,天秤偶,
 343,5,Balbuto,
 343,6,Puppance,
+343,8,Baltoy
 343,9,Baltoy,Clay Doll
 344,1,ネンドール,
 344,2,Nendoll,
@@ -2406,6 +2749,7 @@ pokemon_species_id,local_language_id,name,genus
 344,4,念力土偶,
 344,5,Kaorine,
 344,6,Lepumentas,
+344,8,Claydol
 344,9,Claydol,Clay Doll
 345,1,リリーラ,
 345,2,Lilyla,
@@ -2413,6 +2757,7 @@ pokemon_species_id,local_language_id,name,genus
 345,4,觸手百合,
 345,5,Lilia,
 345,6,Liliep,
+345,8,Lileep
 345,9,Lileep,Sea Lily
 346,1,ユレイドル,
 346,2,Yuradle,
@@ -2420,6 +2765,7 @@ pokemon_species_id,local_language_id,name,genus
 346,4,搖籃百合,
 346,5,Vacilys,
 346,6,Wielie,
+346,8,Cradily
 346,9,Cradily,Barnacle
 347,1,アノプス,
 347,2,Anopth,
@@ -2427,6 +2773,7 @@ pokemon_species_id,local_language_id,name,genus
 347,4,太古羽蟲,
 347,5,Anorith,
 347,6,Anorith,
+347,8,Anorith
 347,9,Anorith,Old Shrimp
 348,1,アーマルド,
 348,2,Armaldo,
@@ -2434,6 +2781,7 @@ pokemon_species_id,local_language_id,name,genus
 348,4,太古盔甲,
 348,5,Armaldo,
 348,6,Armaldo,
+348,8,Armaldo
 348,9,Armaldo,Plate
 349,1,ヒンバス,
 349,2,Hinbass,
@@ -2441,6 +2789,7 @@ pokemon_species_id,local_language_id,name,genus
 349,4,笨笨魚,
 349,5,Barpau,
 349,6,Barschwa,
+349,8,Feebas
 349,9,Feebas,Fish
 350,1,ミロカロス,
 350,2,Milokaross,
@@ -2448,6 +2797,7 @@ pokemon_species_id,local_language_id,name,genus
 350,4,美納斯,
 350,5,Milobellus,
 350,6,Milotic,
+350,8,Milotic
 350,9,Milotic,Tender
 351,1,ポワルン,
 351,2,Powalen,
@@ -2455,6 +2805,7 @@ pokemon_species_id,local_language_id,name,genus
 351,4,漂浮泡泡,
 351,5,Morphéo,
 351,6,Formeo,
+351,8,Castform
 351,9,Castform,Weather
 352,1,カクレオン,
 352,2,Kakureon,
@@ -2462,6 +2813,7 @@ pokemon_species_id,local_language_id,name,genus
 352,4,變隱龍,
 352,5,Kecleon,
 352,6,Kecleon,
+352,8,Kecleon
 352,9,Kecleon,Color Swap
 353,1,カゲボウズ,
 353,2,Kagebouzu,
@@ -2469,6 +2821,7 @@ pokemon_species_id,local_language_id,name,genus
 353,4,怨影娃娃,
 353,5,Polichombr,
 353,6,Shuppet,
+353,8,Shuppet
 353,9,Shuppet,Puppet
 354,1,ジュペッタ,
 354,2,Juppeta,
@@ -2476,6 +2829,7 @@ pokemon_species_id,local_language_id,name,genus
 354,4,詛咒娃娃,
 354,5,Branette,
 354,6,Banette,
+354,8,Banette
 354,9,Banette,Marionette
 355,1,ヨマワル,
 355,2,Yomawaru,
@@ -2483,6 +2837,7 @@ pokemon_species_id,local_language_id,name,genus
 355,4,夜骷髏,
 355,5,Skelénox,
 355,6,Zwirrlicht,
+355,8,Duskull
 355,9,Duskull,Requiem
 356,1,サマヨール,
 356,2,Samayouru,
@@ -2490,6 +2845,7 @@ pokemon_species_id,local_language_id,name,genus
 356,4,夜巨人,
 356,5,Téraclope,
 356,6,Zwirrklop,
+356,8,Dusclops
 356,9,Dusclops,Beckon
 357,1,トロピウス,
 357,2,Tropius,
@@ -2497,6 +2853,7 @@ pokemon_species_id,local_language_id,name,genus
 357,4,熱帶龍,
 357,5,Tropius,
 357,6,Tropius,
+357,8,Tropius
 357,9,Tropius,Fruit
 358,1,チリーン,
 358,2,Chirean,
@@ -2504,6 +2861,7 @@ pokemon_species_id,local_language_id,name,genus
 358,4,風鈴鈴,
 358,5,Éoko,
 358,6,Palimpalim,
+358,8,Chimecho
 358,9,Chimecho,Wind Chime
 359,1,アブソル,
 359,2,Absol,
@@ -2511,6 +2869,7 @@ pokemon_species_id,local_language_id,name,genus
 359,4,阿勃梭魯,
 359,5,Absol,
 359,6,Absol,
+359,8,Absol
 359,9,Absol,Disaster
 360,1,ソーナノ,
 360,2,Sohnano,
@@ -2518,6 +2877,7 @@ pokemon_species_id,local_language_id,name,genus
 360,4,小果然,
 360,5,Okéoké,
 360,6,Isso,
+360,8,Wynaut
 360,9,Wynaut,Bright
 361,1,ユキワラシ,
 361,2,Yukiwarashi,
@@ -2525,6 +2885,7 @@ pokemon_species_id,local_language_id,name,genus
 361,4,雪童子,
 361,5,Stalgamin,
 361,6,Schneppke,
+361,8,Snorunt
 361,9,Snorunt,Snow Hat
 362,1,オニゴーリ,
 362,2,Onigohri,
@@ -2532,6 +2893,7 @@ pokemon_species_id,local_language_id,name,genus
 362,4,冰鬼護,
 362,5,Oniglali,
 362,6,Firnontor,
+362,8,Glalie
 362,9,Glalie,Face
 363,1,タマザラシ,
 363,2,Tamazarashi,
@@ -2539,6 +2901,7 @@ pokemon_species_id,local_language_id,name,genus
 363,4,海豹球,
 363,5,Obalie,
 363,6,Seemops,
+363,8,Spheal
 363,9,Spheal,Clap
 364,1,トドグラー,
 364,2,Todoggler,
@@ -2546,6 +2909,7 @@ pokemon_species_id,local_language_id,name,genus
 364,4,海魔獅,
 364,5,Phogleur,
 364,6,Seejong,
+364,8,Sealeo
 364,9,Sealeo,Ball Roll
 365,1,トドゼルガ,
 365,2,Todoseruga,
@@ -2553,6 +2917,7 @@ pokemon_species_id,local_language_id,name,genus
 365,4,帝牙海獅,
 365,5,Kaimorse,
 365,6,Walraisa,
+365,8,Walrein
 365,9,Walrein,Ice Break
 366,1,パールル,
 366,2,Pearlulu,
@@ -2560,6 +2925,7 @@ pokemon_species_id,local_language_id,name,genus
 366,4,珍珠貝,
 366,5,Coquiperl,
 366,6,Perlu,
+366,8,Clamperl
 366,9,Clamperl,Bivalve
 367,1,ハンテール,
 367,2,Huntail,
@@ -2567,6 +2933,7 @@ pokemon_species_id,local_language_id,name,genus
 367,4,獵斑魚,
 367,5,Serpang,
 367,6,Aalabyss,
+367,8,Huntail
 367,9,Huntail,Deep Sea
 368,1,サクラビス,
 368,2,Sakurabyss,
@@ -2574,6 +2941,7 @@ pokemon_species_id,local_language_id,name,genus
 368,4,櫻花魚,
 368,5,Rosabyss,
 368,6,Saganabyss,
+368,8,Gorebyss
 368,9,Gorebyss,South Sea
 369,1,ジーランス,
 369,2,Glanth,
@@ -2581,6 +2949,7 @@ pokemon_species_id,local_language_id,name,genus
 369,4,古空棘魚,
 369,5,Relicanth,
 369,6,Relicanth,
+369,8,Relicanth
 369,9,Relicanth,Longevity
 370,1,ラブカス,
 370,2,Lovecus,
@@ -2588,6 +2957,7 @@ pokemon_species_id,local_language_id,name,genus
 370,4,愛心魚,
 370,5,Lovdisc,
 370,6,Liebiskus,
+370,8,Luvdisc
 370,9,Luvdisc,Rendezvous
 371,1,タツベイ,
 371,2,Tatsubay,
@@ -2595,6 +2965,7 @@ pokemon_species_id,local_language_id,name,genus
 371,4,寶貝龍,
 371,5,Draby,
 371,6,Kindwurm,
+371,8,Bagon
 371,9,Bagon,Rock Head
 372,1,コモルー,
 372,2,Komoruu,
@@ -2602,6 +2973,7 @@ pokemon_species_id,local_language_id,name,genus
 372,4,甲殼龍,
 372,5,Drackhaus,
 372,6,Draschel,
+372,8,Shelgon
 372,9,Shelgon,Endurance
 373,1,ボーマンダ,
 373,2,Bohmander,
@@ -2609,6 +2981,7 @@ pokemon_species_id,local_language_id,name,genus
 373,4,暴蠑螈,
 373,5,Drattak,
 373,6,Brutalanda,
+373,8,Salamence
 373,9,Salamence,Dragon
 374,1,ダンバル,
 374,2,Dumbber,
@@ -2616,6 +2989,7 @@ pokemon_species_id,local_language_id,name,genus
 374,4,鐵啞鈴,
 374,5,Terhal,
 374,6,Tanhel,
+374,8,Beldum
 374,9,Beldum,Iron Ball
 375,1,メタング,
 375,2,Metang,
@@ -2623,6 +2997,7 @@ pokemon_species_id,local_language_id,name,genus
 375,4,金屬怪,
 375,5,Métang,
 375,6,Metang,
+375,8,Metang
 375,9,Metang,Iron Claw
 376,1,メタグロス,
 376,2,Metagross,
@@ -2630,6 +3005,7 @@ pokemon_species_id,local_language_id,name,genus
 376,4,巨金怪,
 376,5,Métalosse,
 376,6,Metagross,
+376,8,Metagross
 376,9,Metagross,Iron Leg
 377,1,レジロック,
 377,2,Regirock,
@@ -2637,6 +3013,7 @@ pokemon_species_id,local_language_id,name,genus
 377,4,雷吉洛克,
 377,5,Regirock,
 377,6,Regirock,
+377,8,Regirock
 377,9,Regirock,Rock Peak
 378,1,レジアイス,
 378,2,Regice,
@@ -2644,6 +3021,7 @@ pokemon_species_id,local_language_id,name,genus
 378,4,雷吉艾斯,
 378,5,Regice,
 378,6,Regice,
+378,8,Regice
 378,9,Regice,Iceberg
 379,1,レジスチル,
 379,2,Registeel,
@@ -2651,6 +3029,7 @@ pokemon_species_id,local_language_id,name,genus
 379,4,雷吉斯奇魯,
 379,5,Registeel,
 379,6,Registeel,
+379,8,Registeel
 379,9,Registeel,Iron
 380,1,ラティアス,
 380,2,Latias,
@@ -2658,6 +3037,7 @@ pokemon_species_id,local_language_id,name,genus
 380,4,拉帝亞斯,
 380,5,Latias,
 380,6,Latias,
+380,8,Latias
 380,9,Latias,Eon
 381,1,ラティオス,
 381,2,Latios,
@@ -2665,6 +3045,7 @@ pokemon_species_id,local_language_id,name,genus
 381,4,拉帝歐斯,
 381,5,Latios,
 381,6,Latios,
+381,8,Latios
 381,9,Latios,Eon
 382,1,カイオーガ,
 382,2,Kyogre,
@@ -2672,6 +3053,7 @@ pokemon_species_id,local_language_id,name,genus
 382,4,蓋歐卡,
 382,5,Kyogre,
 382,6,Kyogre,
+382,8,Kyogre
 382,9,Kyogre,Sea Basin
 383,1,グラードン,
 383,2,Groudon,
@@ -2679,6 +3061,7 @@ pokemon_species_id,local_language_id,name,genus
 383,4,固拉多,
 383,5,Groudon,
 383,6,Groudon,
+383,8,Groudon
 383,9,Groudon,Continent
 384,1,レックウザ,
 384,2,Rayquaza,
@@ -2686,6 +3069,7 @@ pokemon_species_id,local_language_id,name,genus
 384,4,烈空坐,
 384,5,Rayquaza,
 384,6,Rayquaza,
+384,8,Rayquaza
 384,9,Rayquaza,Sky High
 385,1,ジラーチ,
 385,2,Jirachi,
@@ -2693,6 +3077,7 @@ pokemon_species_id,local_language_id,name,genus
 385,4,基拉祈,
 385,5,Jirachi,
 385,6,Jirachi,
+385,8,Jirachi
 385,9,Jirachi,Wish
 386,1,デオキシス,
 386,2,Deoxys,
@@ -2700,6 +3085,7 @@ pokemon_species_id,local_language_id,name,genus
 386,4,代歐奇希斯,
 386,5,Deoxys,
 386,6,Deoxys,
+386,8,Deoxys
 386,9,Deoxys,DNA
 387,1,ナエトル,
 387,2,Naetle,
@@ -2707,6 +3093,7 @@ pokemon_species_id,local_language_id,name,genus
 387,4,草苗龜,
 387,5,Tortipouss,
 387,6,Chelast,
+387,8,Turtwig
 387,9,Turtwig,Tiny Leaf
 388,1,ハヤシガメ,
 388,2,Hayashigame,
@@ -2714,6 +3101,7 @@ pokemon_species_id,local_language_id,name,genus
 388,4,樹林龜,
 388,5,Boskara,
 388,6,Chelcarain,
+388,8,Grotle
 388,9,Grotle,Grove
 389,1,ドダイトス,
 389,2,Dodaitose,
@@ -2721,6 +3109,7 @@ pokemon_species_id,local_language_id,name,genus
 389,4,土台龜,
 389,5,Torterra,
 389,6,Chelterrar,
+389,8,Torterra
 389,9,Torterra,Continent
 390,1,ヒコザル,
 390,2,Hikozaru,
@@ -2728,6 +3117,7 @@ pokemon_species_id,local_language_id,name,genus
 390,4,小火焰猴,
 390,5,Ouisticram,
 390,6,Panflam,
+390,8,Chimchar
 390,9,Chimchar,Chimp
 391,1,モウカザル,
 391,2,Mōkazaru,
@@ -2735,6 +3125,7 @@ pokemon_species_id,local_language_id,name,genus
 391,4,猛火猴,
 391,5,Chimpenfeu,
 391,6,Panpyro,
+391,8,Monferno
 391,9,Monferno,Playful
 392,1,ゴウカザル,
 392,2,Gōkazaru,
@@ -2742,6 +3133,7 @@ pokemon_species_id,local_language_id,name,genus
 392,4,烈焰猴,
 392,5,Simiabraz,
 392,6,Panferno,
+392,8,Infernape
 392,9,Infernape,Flame
 393,1,ポッチャマ,
 393,2,Pochama,
@@ -2749,6 +3141,7 @@ pokemon_species_id,local_language_id,name,genus
 393,4,波加曼,
 393,5,Tiplouf,
 393,6,Plinfa,
+393,8,Piplup
 393,9,Piplup,Penguin
 394,1,ポッタイシ,
 394,2,Pottaishi,
@@ -2756,6 +3149,7 @@ pokemon_species_id,local_language_id,name,genus
 394,4,波皇子,
 394,5,Prinplouf,
 394,6,Pliprin,
+394,8,Prinplup
 394,9,Prinplup,Penguin
 395,1,エンペルト,
 395,2,Emperte,
@@ -2763,6 +3157,7 @@ pokemon_species_id,local_language_id,name,genus
 395,4,帝王拿波,
 395,5,Pingoléon,
 395,6,Impoleon,
+395,8,Empoleon
 395,9,Empoleon,Emperor
 396,1,ムックル,
 396,2,Mukkuru,
@@ -2770,6 +3165,7 @@ pokemon_species_id,local_language_id,name,genus
 396,4,姆克兒,
 396,5,Étourmi,
 396,6,Staralili,
+396,8,Starly
 396,9,Starly,Starling
 397,1,ムクバード,
 397,2,Mukubird,
@@ -2777,6 +3173,7 @@ pokemon_species_id,local_language_id,name,genus
 397,4,姆克鳥,
 397,5,Étourvol,
 397,6,Staravia,
+397,8,Staravia
 397,9,Staravia,Starling
 398,1,ムクホーク,
 398,2,Mukuhawk,
@@ -2784,6 +3181,7 @@ pokemon_species_id,local_language_id,name,genus
 398,4,姆克鷹,
 398,5,Étouraptor,
 398,6,Staraptor,
+398,8,Staraptor
 398,9,Staraptor,Predator
 399,1,ビッパ,
 399,2,Bipper,
@@ -2791,6 +3189,7 @@ pokemon_species_id,local_language_id,name,genus
 399,4,大牙狸,
 399,5,Keunotor,
 399,6,Bidiza,
+399,8,Bidoof
 399,9,Bidoof,Plump Mouse
 400,1,ビーダル,
 400,2,Beadull,
@@ -2798,6 +3197,7 @@ pokemon_species_id,local_language_id,name,genus
 400,4,大尾狸,
 400,5,Castorno,
 400,6,Bidifas,
+400,8,Bibarel
 400,9,Bibarel,Beaver
 401,1,コロボーシ,
 401,2,Korobohshi,
@@ -2805,6 +3205,7 @@ pokemon_species_id,local_language_id,name,genus
 401,4,圓法師,
 401,5,Crikzik,
 401,6,Zirpurze,
+401,8,Kricketot
 401,9,Kricketot,Cricket
 402,1,コロトック,
 402,2,Korotok,
@@ -2812,6 +3213,7 @@ pokemon_species_id,local_language_id,name,genus
 402,4,音箱蟀,
 402,5,Mélokrik,
 402,6,Zirpeise,
+402,8,Kricketune
 402,9,Kricketune,Cricket
 403,1,コリンク,
 403,2,Kolink,
@@ -2819,6 +3221,7 @@ pokemon_species_id,local_language_id,name,genus
 403,4,小貓怪,
 403,5,Lixy,
 403,6,Sheinux,
+403,8,Shinx
 403,9,Shinx,Flash
 404,1,ルクシオ,
 404,2,Luxio,
@@ -2826,6 +3229,7 @@ pokemon_species_id,local_language_id,name,genus
 404,4,勒克貓,
 404,5,Luxio,
 404,6,Luxio,
+404,8,Luxio
 404,9,Luxio,Spark
 405,1,レントラー,
 405,2,Rentorar,
@@ -2833,6 +3237,7 @@ pokemon_species_id,local_language_id,name,genus
 405,4,倫琴貓,
 405,5,Luxray,
 405,6,Luxtra,
+405,8,Luxray
 405,9,Luxray,Gleam Eyes
 406,1,スボミー,
 406,2,Subomie,
@@ -2840,6 +3245,7 @@ pokemon_species_id,local_language_id,name,genus
 406,4,含羞苞,
 406,5,Rozbouton,
 406,6,Knospi,
+406,8,Budew
 406,9,Budew,Bud
 407,1,ロズレイド,
 407,2,Roserade,
@@ -2847,6 +3253,7 @@ pokemon_species_id,local_language_id,name,genus
 407,4,羅絲雷朵,
 407,5,Roserade,
 407,6,Roserade,
+407,8,Roserade
 407,9,Roserade,Bouquet
 408,1,ズガイドス,
 408,2,Zugaidos,
@@ -2854,6 +3261,7 @@ pokemon_species_id,local_language_id,name,genus
 408,4,頭蓋龍,
 408,5,Kranidos,
 408,6,Koknodon,
+408,8,Cranidos
 408,9,Cranidos,Head Butt
 409,1,ラムパルド,
 409,2,Rampard,
@@ -2861,6 +3269,7 @@ pokemon_species_id,local_language_id,name,genus
 409,4,戰槌龍,
 409,5,Charkos,
 409,6,Rameidon,
+409,8,Rampardos
 409,9,Rampardos,Head Butt
 410,1,タテトプス,
 410,2,Tatetops,
@@ -2868,6 +3277,7 @@ pokemon_species_id,local_language_id,name,genus
 410,4,盾甲龍,
 410,5,Dinoclier,
 410,6,Schilterus,
+410,8,Shieldon
 410,9,Shieldon,Shield
 411,1,トリデプス,
 411,2,Trideps,
@@ -2875,6 +3285,7 @@ pokemon_species_id,local_language_id,name,genus
 411,4,護城龍,
 411,5,Bastiodon,
 411,6,Bollterus,
+411,8,Bastiodon
 411,9,Bastiodon,Shield
 412,1,ミノムッチ,
 412,2,Minomucchi,
@@ -2882,6 +3293,7 @@ pokemon_species_id,local_language_id,name,genus
 412,4,結草兒,
 412,5,Cheniti,
 412,6,Burmy,
+412,8,Burmy
 412,9,Burmy,Bagworm
 413,1,ミノマダム,
 413,2,Minomadam,
@@ -2889,6 +3301,7 @@ pokemon_species_id,local_language_id,name,genus
 413,4,結草貴婦,
 413,5,Cheniselle,
 413,6,Burmadame,
+413,8,Wormadam
 413,9,Wormadam,Bagworm
 414,1,ガーメイル,
 414,2,Garmeil,
@@ -2896,6 +3309,7 @@ pokemon_species_id,local_language_id,name,genus
 414,4,紳士蛾,
 414,5,Papilord,
 414,6,Moterpel,
+414,8,Mothim
 414,9,Mothim,Moth
 415,1,ミツハニー,
 415,2,Mitsuhoney,
@@ -2903,6 +3317,7 @@ pokemon_species_id,local_language_id,name,genus
 415,4,三蜜蜂,
 415,5,Apitrini,
 415,6,Wadribie,
+415,8,Combee
 415,9,Combee,Tiny Bee
 416,1,ビークイン,
 416,2,Beequeen,
@@ -2910,6 +3325,7 @@ pokemon_species_id,local_language_id,name,genus
 416,4,蜂后,
 416,5,Apireine,
 416,6,Honweisel,
+416,8,Vespiquen
 416,9,Vespiquen,Beehive
 417,1,パチリス,
 417,2,Pachirisu,
@@ -2917,6 +3333,7 @@ pokemon_species_id,local_language_id,name,genus
 417,4,帕奇利茲,
 417,5,Pachirisu,
 417,6,Pachirisu,
+417,8,Pachirisu
 417,9,Pachirisu,EleSquirrel
 418,1,ブイゼル,
 418,2,Buoysel,
@@ -2924,6 +3341,7 @@ pokemon_species_id,local_language_id,name,genus
 418,4,泳氣鼬,
 418,5,Mustébouée,
 418,6,Bamelin,
+418,8,Buizel
 418,9,Buizel,Sea Weasel
 419,1,フローゼル,
 419,2,Flowsel,
@@ -2931,6 +3349,7 @@ pokemon_species_id,local_language_id,name,genus
 419,4,浮潛鼬,
 419,5,Mustéflott,
 419,6,Bojelin,
+419,8,Floatzel
 419,9,Floatzel,Sea Weasel
 420,1,チェリンボ,
 420,2,Cherinbo,
@@ -2938,6 +3357,7 @@ pokemon_species_id,local_language_id,name,genus
 420,4,櫻花寶,
 420,5,Ceribou,
 420,6,Kikugi,
+420,8,Cherubi
 420,9,Cherubi,Cherry
 421,1,チェリム,
 421,2,Cherrim,
@@ -2945,6 +3365,7 @@ pokemon_species_id,local_language_id,name,genus
 421,4,櫻花兒,
 421,5,Ceriflor,
 421,6,Kinoso,
+421,8,Cherrim
 421,9,Cherrim,Blossom
 422,1,カラナクシ,
 422,2,Karanakushi,
@@ -2952,6 +3373,7 @@ pokemon_species_id,local_language_id,name,genus
 422,4,無殼海牛,
 422,5,Sancoki,
 422,6,Schalellos,
+422,8,Shellos
 422,9,Shellos,Sea Slug
 423,1,トリトドン,
 423,2,Toritodon,
@@ -2959,6 +3381,7 @@ pokemon_species_id,local_language_id,name,genus
 423,4,海牛獸,
 423,5,Tritosor,
 423,6,Gastrodon,
+423,8,Gastrodon
 423,9,Gastrodon,Sea Slug
 424,1,エテボース,
 424,2,Eteboth,
@@ -2966,6 +3389,7 @@ pokemon_species_id,local_language_id,name,genus
 424,4,雙尾怪手,
 424,5,Capidextre,
 424,6,Ambidiffel,
+424,8,Ambipom
 424,9,Ambipom,Long Tail
 425,1,フワンテ,
 425,2,Fuwante,
@@ -2973,6 +3397,7 @@ pokemon_species_id,local_language_id,name,genus
 425,4,飄飄球,
 425,5,Baudrive,
 425,6,Driftlon,
+425,8,Drifloon
 425,9,Drifloon,Balloon
 426,1,フワライド,
 426,2,Fuwaride,
@@ -2980,6 +3405,7 @@ pokemon_species_id,local_language_id,name,genus
 426,4,附和氣球,
 426,5,Grodrive,
 426,6,Drifzepeli,
+426,8,Drifblim
 426,9,Drifblim,Blimp
 427,1,ミミロル,
 427,2,Mimirol,
@@ -2987,6 +3413,7 @@ pokemon_species_id,local_language_id,name,genus
 427,4,捲捲耳,
 427,5,Laporeille,
 427,6,Haspiror,
+427,8,Buneary
 427,9,Buneary,Rabbit
 428,1,ミミロップ,
 428,2,Mimilop,
@@ -2994,6 +3421,7 @@ pokemon_species_id,local_language_id,name,genus
 428,4,長耳兔,
 428,5,Lockpin,
 428,6,Schlapor,
+428,8,Lopunny
 428,9,Lopunny,Rabbit
 429,1,ムウマージ,
 429,2,Mumage,
@@ -3001,6 +3429,7 @@ pokemon_species_id,local_language_id,name,genus
 429,4,夢妖魔,
 429,5,Magirêve,
 429,6,Traunmagil,
+429,8,Mismagius
 429,9,Mismagius,Magical
 430,1,ドンカラス,
 430,2,Donkarasu,
@@ -3008,6 +3437,7 @@ pokemon_species_id,local_language_id,name,genus
 430,4,烏鴉頭頭,
 430,5,Corboss,
 430,6,Kramshef,
+430,8,Honchkrow
 430,9,Honchkrow,Big Boss
 431,1,ニャルマー,
 431,2,Nyarmar,
@@ -3015,6 +3445,7 @@ pokemon_species_id,local_language_id,name,genus
 431,4,魅力喵,
 431,5,Chaglam,
 431,6,Charmian,
+431,8,Glameow
 431,9,Glameow,Catty
 432,1,ブニャット,
 432,2,Bunyat,
@@ -3022,6 +3453,7 @@ pokemon_species_id,local_language_id,name,genus
 432,4,東施喵,
 432,5,Chaffreux,
 432,6,Shnurgarst,
+432,8,Purugly
 432,9,Purugly,Tiger Cat
 433,1,リーシャン,
 433,2,Lisyan,
@@ -3029,6 +3461,7 @@ pokemon_species_id,local_language_id,name,genus
 433,4,鈴鐺響,
 433,5,Korillon,
 433,6,Klingplim,
+433,8,Chingling
 433,9,Chingling,Bell
 434,1,スカンプー,
 434,2,Skunpoo,
@@ -3036,6 +3469,7 @@ pokemon_species_id,local_language_id,name,genus
 434,4,臭鼬噗,
 434,5,Moufouette,
 434,6,Skunkapuh,
+434,8,Stunky
 434,9,Stunky,Skunk
 435,1,スカタンク,
 435,2,Skutank,
@@ -3043,6 +3477,7 @@ pokemon_species_id,local_language_id,name,genus
 435,4,坦克臭鼬,
 435,5,Moufflair,
 435,6,Skuntank,
+435,8,Skuntank
 435,9,Skuntank,Skunk
 436,1,ドーミラー,
 436,2,Domirror,
@@ -3050,6 +3485,7 @@ pokemon_species_id,local_language_id,name,genus
 436,4,銅鏡怪,
 436,5,Archéomire,
 436,6,Bronzel,
+436,8,Bronzor
 436,9,Bronzor,Bronze
 437,1,ドータクン,
 437,2,Dotakun,
@@ -3057,6 +3493,7 @@ pokemon_species_id,local_language_id,name,genus
 437,4,青銅鐘,
 437,5,Archéodong,
 437,6,Bronzong,
+437,8,Bronzong
 437,9,Bronzong,Bronze Bell
 438,1,ウソハチ,
 438,2,Usohachi,
@@ -3064,6 +3501,7 @@ pokemon_species_id,local_language_id,name,genus
 438,4,愛哭樹,
 438,5,Manzaï,
 438,6,Mobai,
+438,8,Bonsly
 438,9,Bonsly,Bonsai
 439,1,マネネ,
 439,2,Manene,
@@ -3071,6 +3509,7 @@ pokemon_species_id,local_language_id,name,genus
 439,4,魔尼尼,
 439,5,Mime Jr.,
 439,6,Pantimimi,
+439,8,Mime
 439,9,Mime Jr.,Mime
 440,1,ピンプク,
 440,2,Pinpuku,
@@ -3078,6 +3517,7 @@ pokemon_species_id,local_language_id,name,genus
 440,4,好運蛋,
 440,5,Ptiravi,
 440,6,Wonneira,
+440,8,Happiny
 440,9,Happiny,Playhouse
 441,1,ペラップ,
 441,2,Perap,
@@ -3085,6 +3525,7 @@ pokemon_species_id,local_language_id,name,genus
 441,4,聒噪鳥,
 441,5,Pijako,
 441,6,Plaudagei,
+441,8,Chatot
 441,9,Chatot,Music Note
 442,1,ミカルゲ,
 442,2,Mikaruge,
@@ -3092,6 +3533,7 @@ pokemon_species_id,local_language_id,name,genus
 442,4,花岩怪,
 442,5,Spiritomb,
 442,6,Kryppuk,
+442,8,Spiritomb
 442,9,Spiritomb,Forbidden
 443,1,フカマル,
 443,2,Fukamaru,
@@ -3099,6 +3541,7 @@ pokemon_species_id,local_language_id,name,genus
 443,4,圓陸鲨,
 443,5,Griknot,
 443,6,Kaumalat,
+443,8,Gible
 443,9,Gible,Land Shark
 444,1,ガバイト,
 444,2,Gabite,
@@ -3106,6 +3549,7 @@ pokemon_species_id,local_language_id,name,genus
 444,4,尖牙陸鲨,
 444,5,Carmache,
 444,6,Knarksel,
+444,8,Gabite
 444,9,Gabite,Cave
 445,1,ガブリアス,
 445,2,Gablias,
@@ -3113,6 +3557,7 @@ pokemon_species_id,local_language_id,name,genus
 445,4,烈咬陸鲨,
 445,5,Carchacrok,
 445,6,Knakrack,
+445,8,Garchomp
 445,9,Garchomp,Mach
 446,1,ゴンベ,
 446,2,Gonbe,
@@ -3120,6 +3565,7 @@ pokemon_species_id,local_language_id,name,genus
 446,4,小卡比獸,
 446,5,Goinfrex,
 446,6,Mampfaxo,
+446,8,Munchlax
 446,9,Munchlax,Big Eater
 447,1,リオル,
 447,2,Riolu,
@@ -3127,6 +3573,7 @@ pokemon_species_id,local_language_id,name,genus
 447,4,利歐路,
 447,5,Riolu,
 447,6,Riolu,
+447,8,Riolu
 447,9,Riolu,Emanation
 448,1,ルカリオ,
 448,2,Lucario,
@@ -3134,6 +3581,7 @@ pokemon_species_id,local_language_id,name,genus
 448,4,路卡利歐,
 448,5,Lucario,
 448,6,Lucario,
+448,8,Lucario
 448,9,Lucario,Aura
 449,1,ヒポポタス,
 449,2,Hipopotas,
@@ -3141,6 +3589,7 @@ pokemon_species_id,local_language_id,name,genus
 449,4,怪河馬,
 449,5,Hippopotas,
 449,6,Hippopotas,
+449,8,Hippopotas
 449,9,Hippopotas,Hippo
 450,1,カバルドン,
 450,2,Kabarudon,
@@ -3148,6 +3597,7 @@ pokemon_species_id,local_language_id,name,genus
 450,4,河馬獸,
 450,5,Hippodocus,
 450,6,Hippoterus,
+450,8,Hippowdon
 450,9,Hippowdon,Heavyweight
 451,1,スコルピ,
 451,2,Scorpi,
@@ -3155,6 +3605,7 @@ pokemon_species_id,local_language_id,name,genus
 451,4,紫天蠍,
 451,5,Rapion,
 451,6,Pionskora,
+451,8,Skorupi
 451,9,Skorupi,Scorpion
 452,1,ドラピオン,
 452,2,Dorapion,
@@ -3162,6 +3613,7 @@ pokemon_species_id,local_language_id,name,genus
 452,4,龍王蠍,
 452,5,Drascore,
 452,6,Piondragi,
+452,8,Drapion
 452,9,Drapion,Ogre Scorp
 453,1,グレッグル,
 453,2,Gureggru,
@@ -3169,6 +3621,7 @@ pokemon_species_id,local_language_id,name,genus
 453,4,不良蛙,
 453,5,Cradopaud,
 453,6,Glibunkel,
+453,8,Croagunk
 453,9,Croagunk,Toxic Mouth
 454,1,ドクロッグ,
 454,2,Dokurog,
@@ -3176,6 +3629,7 @@ pokemon_species_id,local_language_id,name,genus
 454,4,毒骷蛙,
 454,5,Coatox,
 454,6,Toxiquak,
+454,8,Toxicroak
 454,9,Toxicroak,Toxic Mouth
 455,1,マスキッパ,
 455,2,Muskippa,
@@ -3183,6 +3637,7 @@ pokemon_species_id,local_language_id,name,genus
 455,4,尖牙籠,
 455,5,Vortente,
 455,6,Venuflibis,
+455,8,Carnivine
 455,9,Carnivine,Bug Catcher
 456,1,ケイコウオ,
 456,2,Keikouo,
@@ -3190,6 +3645,7 @@ pokemon_species_id,local_language_id,name,genus
 456,4,螢光魚,
 456,5,Écayon,
 456,6,Finneon,
+456,8,Finneon
 456,9,Finneon,Wing Fish
 457,1,ネオラント,
 457,2,Neolant,
@@ -3197,6 +3653,7 @@ pokemon_species_id,local_language_id,name,genus
 457,4,霓虹魚,
 457,5,Luminéon,
 457,6,Lumineon,
+457,8,Lumineon
 457,9,Lumineon,Neon
 458,1,タマンタ,
 458,2,Tamanta,
@@ -3204,6 +3661,7 @@ pokemon_species_id,local_language_id,name,genus
 458,4,小球飛魚,
 458,5,Babimanta,
 458,6,Mantirps,
+458,8,Mantyke
 458,9,Mantyke,Kite
 459,1,ユキカブリ,
 459,2,Yukikaburi,
@@ -3211,6 +3669,7 @@ pokemon_species_id,local_language_id,name,genus
 459,4,雪笠怪,
 459,5,Blizzi,
 459,6,Shnebedeck,
+459,8,Snover
 459,9,Snover,Frost Tree
 460,1,ユキノオー,
 460,2,Yukinooh,
@@ -3218,6 +3677,7 @@ pokemon_species_id,local_language_id,name,genus
 460,4,暴雪王,
 460,5,Blizzaroi,
 460,6,Rexblisar,
+460,8,Abomasnow
 460,9,Abomasnow,Frost Tree
 461,1,マニューラ,
 461,2,Manyula,
@@ -3225,6 +3685,7 @@ pokemon_species_id,local_language_id,name,genus
 461,4,瑪狃拉,
 461,5,Dimoret,
 461,6,Snibunna,
+461,8,Weavile
 461,9,Weavile,Sharp Claw
 462,1,ジバコイル,
 462,2,Jibacoil,
@@ -3232,6 +3693,7 @@ pokemon_species_id,local_language_id,name,genus
 462,4,自爆磁怪,
 462,5,Magnézone,
 462,6,Magnezone,
+462,8,Magnezone
 462,9,Magnezone,Magnet Area
 463,1,ベロベルト,
 463,2,Beroberto,
@@ -3239,6 +3701,7 @@ pokemon_species_id,local_language_id,name,genus
 463,4,大舌舔,
 463,5,Coudlangue,
 463,6,Schlurplek,
+463,8,Lickilicky
 463,9,Lickilicky,Licking
 464,1,ドサイドン,
 464,2,Dosydon,
@@ -3246,6 +3709,7 @@ pokemon_species_id,local_language_id,name,genus
 464,4,超鐵暴龍,
 464,5,Rhinastoc,
 464,6,Rihornior,
+464,8,Rhyperior
 464,9,Rhyperior,Drill
 465,1,モジャンボ,
 465,2,Mojumbo,
@@ -3253,6 +3717,7 @@ pokemon_species_id,local_language_id,name,genus
 465,4,巨蔓藤,
 465,5,Bouldeneu,
 465,6,Tangoloss,
+465,8,Tangrowth
 465,9,Tangrowth,Vine
 466,1,エレキブル,
 466,2,Elekible,
@@ -3260,6 +3725,7 @@ pokemon_species_id,local_language_id,name,genus
 466,4,電擊魔獸,
 466,5,Élekable,
 466,6,Elevoltek,
+466,8,Electivire
 466,9,Electivire,Thunderbolt
 467,1,ブーバーン,
 467,2,Booburn,
@@ -3267,6 +3733,7 @@ pokemon_species_id,local_language_id,name,genus
 467,4,鴨嘴焰龍,
 467,5,Maganon,
 467,6,Magbrant,
+467,8,Magmortar
 467,9,Magmortar,Blast
 468,1,トゲキッス,
 468,2,Togekiss,
@@ -3274,6 +3741,7 @@ pokemon_species_id,local_language_id,name,genus
 468,4,波克基斯,
 468,5,Togekiss,
 468,6,Togekiss,
+468,8,Togekiss
 468,9,Togekiss,Jubilee
 469,1,メガヤンマ,
 469,2,Megayanma,
@@ -3281,6 +3749,7 @@ pokemon_species_id,local_language_id,name,genus
 469,4,梅卡陽瑪,
 469,5,Yanmega,
 469,6,Yanmega,
+469,8,Yanmega
 469,9,Yanmega,Ogre Darner
 470,1,リーフィア,
 470,2,Leafia,
@@ -3288,6 +3757,7 @@ pokemon_species_id,local_language_id,name,genus
 470,4,葉精靈,
 470,5,Phyllali,
 470,6,Folipurba,
+470,8,Leafeon
 470,9,Leafeon,Verdant
 471,1,グレイシア,
 471,2,Glacia,
@@ -3295,6 +3765,7 @@ pokemon_species_id,local_language_id,name,genus
 471,4,冰精靈,
 471,5,Givrali,
 471,6,Glaziola,
+471,8,Glaceon
 471,9,Glaceon,Fresh Snow
 472,1,グライオン,
 472,2,Glion,
@@ -3302,6 +3773,7 @@ pokemon_species_id,local_language_id,name,genus
 472,4,天蠍王,
 472,5,Scorvol,
 472,6,Skorgro,
+472,8,Gliscor
 472,9,Gliscor,Fang Scorp
 473,1,マンムー,
 473,2,Mammoo,
@@ -3309,6 +3781,7 @@ pokemon_species_id,local_language_id,name,genus
 473,4,象牙豬,
 473,5,Mammochon,
 473,6,Mamutel,
+473,8,Mamoswine
 473,9,Mamoswine,Twin Tusk
 474,1,ポリゴンＺ,
 474,2,PorygonZ,
@@ -3316,6 +3789,7 @@ pokemon_species_id,local_language_id,name,genus
 474,4,3D龍Z,
 474,5,Porygon-Z,
 474,6,Porygon-Z,
+474,8,Porygon
 474,9,Porygon-Z,Virtual
 475,1,エルレイド,
 475,2,Erlade,
@@ -3323,6 +3797,7 @@ pokemon_species_id,local_language_id,name,genus
 475,4,艾路雷朵,
 475,5,Gallame,
 475,6,Galagladi,
+475,8,Gallade
 475,9,Gallade,Blade
 476,1,ダイノーズ,
 476,2,Dainose,
@@ -3330,6 +3805,7 @@ pokemon_species_id,local_language_id,name,genus
 476,4,大朝北鼻,
 476,5,Tarinorme,
 476,6,Voluminas,
+476,8,Probopass
 476,9,Probopass,Compass
 477,1,ヨノワール,
 477,2,Yonoir,
@@ -3337,6 +3813,7 @@ pokemon_species_id,local_language_id,name,genus
 477,4,夜黑魔人,
 477,5,Noctunoir,
 477,6,Zwirrfinst,
+477,8,Dusknoir
 477,9,Dusknoir,Gripper
 478,1,ユキメノコ,
 478,2,Yukimenoko,
@@ -3344,6 +3821,7 @@ pokemon_species_id,local_language_id,name,genus
 478,4,雪妖女,
 478,5,Momartik,
 478,6,Frosdedje,
+478,8,Froslass
 478,9,Froslass,Snow Land
 479,1,ロトム,
 479,2,Rotom,
@@ -3351,6 +3829,7 @@ pokemon_species_id,local_language_id,name,genus
 479,4,洛托姆,
 479,5,Motisma,
 479,6,Rotom,
+479,8,Rotom
 479,9,Rotom,Plasma
 480,1,ユクシー,
 480,2,Yuxie,
@@ -3358,6 +3837,7 @@ pokemon_species_id,local_language_id,name,genus
 480,4,由克希,
 480,5,Créhelf,
 480,6,Selfe,
+480,8,Uxie
 480,9,Uxie,Knowledge
 481,1,エムリット,
 481,2,Emrit,
@@ -3365,6 +3845,7 @@ pokemon_species_id,local_language_id,name,genus
 481,4,艾姆利多,
 481,5,Créfollet,
 481,6,Vesprit,
+481,8,Mesprit
 481,9,Mesprit,Emotion
 482,1,アグノム,
 482,2,Agnome,
@@ -3372,6 +3853,7 @@ pokemon_species_id,local_language_id,name,genus
 482,4,亞克諾姆,
 482,5,Créfadet,
 482,6,Tobutz,
+482,8,Azelf
 482,9,Azelf,Willpower
 483,1,ディアルガ,
 483,2,Dialga,
@@ -3379,6 +3861,7 @@ pokemon_species_id,local_language_id,name,genus
 483,4,帝牙盧卡,
 483,5,Dialga,
 483,6,Dialga,
+483,8,Dialga
 483,9,Dialga,Temporal
 484,1,パルキア,
 484,2,Palkia,
@@ -3386,6 +3869,7 @@ pokemon_species_id,local_language_id,name,genus
 484,4,帕路奇犽,
 484,5,Palkia,
 484,6,Palkia,
+484,8,Palkia
 484,9,Palkia,Spatial
 485,1,ヒードラン,
 485,2,Heatran,
@@ -3393,6 +3877,7 @@ pokemon_species_id,local_language_id,name,genus
 485,4,席多藍恩,
 485,5,Heatran,
 485,6,Heatran,
+485,8,Heatran
 485,9,Heatran,Lava Dome
 486,1,レジギガス,
 486,2,Regigigas,
@@ -3400,6 +3885,7 @@ pokemon_species_id,local_language_id,name,genus
 486,4,雷吉奇卡斯,
 486,5,Regigigas,
 486,6,Regigigas,
+486,8,Regigigas
 486,9,Regigigas,Colossal
 487,1,ギラティナ,
 487,2,Giratina,
@@ -3407,6 +3893,7 @@ pokemon_species_id,local_language_id,name,genus
 487,4,騎拉帝納,
 487,5,Giratina,
 487,6,Giratina,
+487,8,Giratina
 487,9,Giratina,Renegade
 488,1,クレセリア,
 488,2,Crecelia,
@@ -3414,6 +3901,7 @@ pokemon_species_id,local_language_id,name,genus
 488,4,克雷色利亞,
 488,5,Cresselia,
 488,6,Cresselia,
+488,8,Cresselia
 488,9,Cresselia,Lunar
 489,1,フィオネ,
 489,2,Phione,
@@ -3421,6 +3909,7 @@ pokemon_species_id,local_language_id,name,genus
 489,4,霏歐納,
 489,5,Phione,
 489,6,Phione,
+489,8,Phione
 489,9,Phione,Sea Drifter
 490,1,マナフィ,
 490,2,Manaphy,
@@ -3428,6 +3917,7 @@ pokemon_species_id,local_language_id,name,genus
 490,4,瑪納霏,
 490,5,Manaphy,
 490,6,Manaphy,
+490,8,Manaphy
 490,9,Manaphy,Seafaring
 491,1,ダークライ,
 491,2,Darkrai,
@@ -3435,6 +3925,7 @@ pokemon_species_id,local_language_id,name,genus
 491,4,達克萊伊,
 491,5,Darkrai,
 491,6,Darkrai,
+491,8,Darkrai
 491,9,Darkrai,Pitch-Black
 492,1,シェイミ,
 492,2,Shaymin,
@@ -3442,6 +3933,7 @@ pokemon_species_id,local_language_id,name,genus
 492,4,潔咪,
 492,5,Shaymin,
 492,6,Shaymin,
+492,8,Shaymin
 492,9,Shaymin,Gratitude
 493,1,アルセウス,
 493,2,Arceus,
@@ -3449,635 +3941,792 @@ pokemon_species_id,local_language_id,name,genus
 493,4,雅魯塞宇斯,
 493,5,Arceus,
 493,6,Arceus,
+493,8,Arceus
 493,9,Arceus,Alpha
 494,1,ビクティニ,
 494,5,Victini,
 494,6,Victini,
+494,8,Victini
 494,9,Victini,Victory
 495,1,ツタージャ,
 495,4,藤藤蛇,
 495,5,Vipélierre,
 495,6,Serpifeu,
+495,8,Snivy
 495,9,Snivy,Grass Snake
 496,1,ジャノビー,
 496,5,Lianaja,
 496,6,Efoserp,
+496,8,Servine
 496,9,Servine,Grass Snake
 497,1,ジャローダ,
 497,5,Majaspic,
 497,6,Serpiroyal,
+497,8,Serperior
 497,9,Serperior,Regal
 498,1,ポカブ,
 498,4,暖暖豬,
 498,5,Gruikui,
 498,6,Floink,
+498,8,Tepig
 498,9,Tepig,Fire Pig
 499,1,チャオブー,
 499,5,Grotichon,
 499,6,Ferkokel,
+499,8,Pignite
 499,9,Pignite,Fire Pig
 500,1,エンブオー,
 500,5,Roitiflam,
 500,6,Flambirex,
+500,8,Emboar
 500,9,Emboar,Mega Fire Pig
 501,1,ミジュマル,
 501,4,水水獺,
 501,5,Moustillon,
 501,6,Ottaro,
+501,8,Oshawott
 501,9,Oshawott,Sea Otter
 502,1,フタチマル,
 502,5,Mateloutre,
 502,6,Zwottronin,
+502,8,Dewott
 502,9,Dewott,Discipline
 503,1,ダイケンキ,
 503,5,Clamiral,
 503,6,Admurai,
+503,8,Samurott
 503,9,Samurott,Formidable
 504,1,ミネズミ,
 504,5,Ratentif,
 504,6,Nagelotz,
+504,8,Patrat
 504,9,Patrat,Scout
 505,1,ミルホッグ,
 505,5,Miradar,
 505,6,Kukmarda,
+505,8,Watchog
 505,9,Watchog,Lookout
 506,1,ヨーテリー,
 506,5,Ponchiot,
 506,6,Yorkleff,
+506,8,Lillipup
 506,9,Lillipup,Puppy
 507,1,ハーデリア,
 507,5,Ponchien,
 507,6,Terribark,
+507,8,Herdier
 507,9,Herdier,Loyal Dog
 508,1,ムーランド,
 508,5,Mastouffe,
 508,6,Bissbark,
+508,8,Stoutland
 508,9,Stoutland,Big-Hearted
 509,1,チョロネコ,
 509,5,Chacripan,
 509,6,Felilou,
+509,8,Purrloin
 509,9,Purrloin,Devious
 510,1,レパルダス,
 510,5,Léopardus,
 510,6,Kleoparda,
+510,8,Liepard
 510,9,Liepard,Cruel
 511,1,ヤナップ,
 511,4,花椰猴,
 511,5,Feuillajou,
 511,6,Vegimak,
+511,8,Pansage
 511,9,Pansage,Grass Monkey
 512,1,ヤナッキー,
 512,5,Feuiloutan,
 512,6,Vegichita,
+512,8,Simisage
 512,9,Simisage,Thorn Monkey
 513,1,バオップ,
 513,5,Flamajou,
 513,6,Grillmak,
+513,8,Pansear
 513,9,Pansear,High Temp
 514,1,バオッキー,
 514,5,Flamoutan,
 514,6,Grillchita,
+514,8,Simisear
 514,9,Simisear,Ember
 515,1,ヒヤップ,
 515,5,Flotajou,
 515,6,Sodamak,
+515,8,Panpour
 515,9,Panpour,Spray
 516,1,ヒヤッキー,
 516,5,Flotoutan,
 516,6,Sodachita,
+516,8,Simipour
 516,9,Simipour,Geyser
 517,1,ムンナ,
 517,5,Munna,
 517,6,Somniam,
+517,8,Munna
 517,9,Munna,Dream Eater
 518,1,ムシャーナ,
 518,5,Mushana,
 518,6,Somnivora,
+518,8,Musharna
 518,9,Musharna,Drowsing
 519,1,マメパト,
 519,5,Poichigeon,
 519,6,Dusselgurr,
+519,8,Pidove
 519,9,Pidove,Tiny Pigeon
 520,1,ハトーボー,
 520,5,Colombeau,
 520,6,Navitaub,
+520,8,Tranquill
 520,9,Tranquill,Wild Pigeon
 521,1,ケンホロウ,
 521,5,Déflaisan,
 521,6,Fasasnob,
+521,8,Unfezant
 521,9,Unfezant,Proud
 522,1,シママ,
 522,5,Zébibron,
 522,6,Elezeba,
+522,8,Blitzle
 522,9,Blitzle,Electrified
 523,1,ゼブライカ,
 523,5,Zéblitz,
 523,6,Zebritz,
+523,8,Zebstrika
 523,9,Zebstrika,Thunderbolt
 524,1,ダンゴロ,
 524,5,Nodulithe,
 524,6,Kiesling,
+524,8,Roggenrola
 524,9,Roggenrola,Mantle
 525,1,ガントル,
 525,5,Géolithe,
 525,6,Sedimantur,
+525,8,Boldore
 525,9,Boldore,Ore
 526,1,ギガイアス,
 526,5,Gigalithe,
 526,6,Brockoloss,
+526,8,Gigalith
 526,9,Gigalith,Compressed
 527,1,コロモリ,
 527,5,Chovsourir,
 527,6,Fleknoil,
+527,8,Woobat
 527,9,Woobat,Bat
 528,1,ココロモリ,
 528,5,Rhinolove,
 528,6,Fletiamo,
+528,8,Swoobat
 528,9,Swoobat,Courting
 529,1,モグリュー,
 529,5,Rototaupe,
 529,6,Rotomurf,
+529,8,Drilbur
 529,9,Drilbur,Mole
 530,1,ドリュウズ,
 530,5,Minotaupe,
 530,6,Stalobor,
+530,8,Excadrill
 530,9,Excadrill,Subterrene
 531,1,タブンネ,
 531,5,Nanméouïe,
 531,6,Ohrdoch,
+531,8,Audino
 531,9,Audino,Hearing
 532,1,ドッコラー,
 532,5,Charpenti,
 532,6,Praktibalk,
+532,8,Timburr
 532,9,Timburr,Muscular
 533,1,ドテッコツ,
 533,5,Ouvrifier,
 533,6,Strepoli,
+533,8,Gurdurr
 533,9,Gurdurr,Muscular
 534,1,ローブシン,
 534,5,Bétochef,
 534,6,Meistagrif,
+534,8,Conkeldurr
 534,9,Conkeldurr,Muscular
 535,1,オタマロ,
 535,5,Tritonde,
 535,6,Schallquap,
+535,8,Tympole
 535,9,Tympole,Tadpole
 536,1,ガマガル,
 536,5,Batracné,
 536,6,Mebrana,
+536,8,Palpitoad
 536,9,Palpitoad,Vibration
 537,1,ガマゲロゲ,
 537,5,Crapustule,
 537,6,Branawarz,
+537,8,Seismitoad
 537,9,Seismitoad,Vibration
 538,1,ナゲキ,
 538,5,Judokrak,
 538,6,Jiutesto,
+538,8,Throh
 538,9,Throh,Judo
 539,1,ダゲキ,
 539,5,Karaclée,
 539,6,Karadonis,
+539,8,Sawk
 539,9,Sawk,Karate
 540,1,クルミル,
 540,5,Larveyette,
 540,6,Strawickl,
+540,8,Sewaddle
 540,9,Sewaddle,Sewing
 541,1,クルマユ,
 541,5,Couverdure,
 541,6,Folikon,
+541,8,Swadloon
 541,9,Swadloon,Leaf-Wrapped
 542,1,ハハコモリ,
 542,5,Manternel,
 542,6,Matrifol,
+542,8,Leavanny
 542,9,Leavanny,Nurturing
 543,1,フシデ,
 543,5,Venipatte,
 543,6,Toxiped,
+543,8,Venipede
 543,9,Venipede,Centipede
 544,1,ホイーガ,
 544,5,Scobolide,
 544,6,Rollum,
+544,8,Whirlipede
 544,9,Whirlipede,Curlipede
 545,1,ペンドラー,
 545,5,Brutapode,
 545,6,Cerapendra,
+545,8,Scolipede
 545,9,Scolipede,Megapede
 546,1,モンメン,
 546,5,Doudouvet,
 546,6,Waumboll,
+546,8,Cottonee
 546,9,Cottonee,Cotton Puff
 547,1,エルフーン,
 547,5,Farfaduvet,
 547,6,Elfun,
+547,8,Whimsicott
 547,9,Whimsicott,Windveiled
 548,1,チュリネ,
 548,5,Chlorobule,
 548,6,Lilminip,
+548,8,Petilil
 548,9,Petilil,Bulb
 549,1,ドレディア,
 549,5,Fragilady,
 549,6,Dressella,
+549,8,Lilligant
 549,9,Lilligant,Flowering
 550,1,バスラオ,
 550,5,Bargantua,
 550,6,Barschuft,
+550,8,Basculin
 550,9,Basculin,Hostile
 551,1,メグロコ,
 551,5,Mascaïman,
 551,6,Ganovil,
+551,8,Sandile
 551,9,Sandile,Desert Croc
 552,1,ワルビル,
 552,5,Escroco,
 552,6,Rokkaiman,
+552,8,Krokorok
 552,9,Krokorok,Desert Croc
 553,1,ワルビアル,
 553,5,Crocorible,
 553,6,Rabigator,
+553,8,Krookodile
 553,9,Krookodile,Intimidation
 554,1,ダルマッカ,
 554,5,Darumarond,
 554,6,Flampion,
+554,8,Darumaka
 554,9,Darumaka,Zen Charm
 555,1,ヒヒダルマ,
 555,5,Darumacho,
 555,6,Flampivian,
+555,8,Darmanitan
 555,9,Darmanitan,Blazing
 556,1,マラカッチ,
 556,5,Maracachi,
 556,6,Maracamba,
+556,8,Maractus
 556,9,Maractus,Cactus
 557,1,イシズマイ,
 557,5,Crabicoque,
 557,6,Lithomith,
+557,8,Dwebble
 557,9,Dwebble,Rock Inn
 558,1,イワパレス,
 558,5,Crabaraque,
 558,6,Castellith,
+558,8,Crustle
 558,9,Crustle,Stone Home
 559,1,ズルッグ,
 559,5,Baggiguane,
 559,6,Zurrokex,
+559,8,Scraggy
 559,9,Scraggy,Shedding
 560,1,ズルズキン,
 560,5,Baggaïd,
 560,6,Irokex,
+560,8,Scrafty
 560,9,Scrafty,Hoodlum
 561,1,シンボラー,
 561,5,Cryptéro,
 561,6,Symvolara,
+561,8,Sigilyph
 561,9,Sigilyph,Avianoid
 562,1,デスマス,
 562,5,Tutafeh,
 562,6,Makabaja,
+562,8,Yamask
 562,9,Yamask,Spirit
 563,1,デスカーン,
 563,5,Tutankafer,
 563,6,Echnatoll,
+563,8,Cofagrigus
 563,9,Cofagrigus,Coffin
 564,1,プロトーガ,
 564,5,Carapagos,
 564,6,Galapaflos,
+564,8,Tirtouga
 564,9,Tirtouga,Prototurtle
 565,1,アバゴーラ,
 565,5,Mégapagos,
 565,6,Karippas,
+565,8,Carracosta
 565,9,Carracosta,Prototurtle
 566,1,アーケン,
 566,5,Arkéapti,
 566,6,Flapteryx,
+566,8,Archen
 566,9,Archen,First Bird
 567,1,アーケオス,
 567,5,Aéroptéryx,
 567,6,Aeropteryx,
+567,8,Archeops
 567,9,Archeops,First Bird
 568,1,ヤブクロン,
 568,5,Miamiasme,
 568,6,Unratütox,
+568,8,Trubbish
 568,9,Trubbish,Trash Bag
 569,1,ダストダス,
 569,5,Miasmax,
 569,6,Deponitox,
+569,8,Garbodor
 569,9,Garbodor,Trash Heap
 570,1,ゾロア,
 570,5,Zorua,
 570,6,Zorua,
+570,8,Zorua
 570,9,Zorua,Tricky Fox
 571,1,ゾロアーク,
 571,5,Zoroark,
 571,6,Zoroark,
+571,8,Zoroark
 571,9,Zoroark,Illusion Fox
 572,1,チラーミィ,
 572,5,Chinchidou,
 572,6,Picochilla,
+572,8,Minccino
 572,9,Minccino,Chinchilla
 573,1,チラチーノ,
 573,5,Pashmilla,
 573,6,Chillabell,
+573,8,Cinccino
 573,9,Cinccino,Scarf
 574,1,ゴチム,
 574,5,Scrutella,
 574,6,Mollimorba,
+574,8,Gothita
 574,9,Gothita,Fixation
 575,1,ゴチミル,
 575,5,Mesmérella,
 575,6,Hypnomorba,
+575,8,Gothorita
 575,9,Gothorita,Manipulate
 576,1,ゴチルゼル,
 576,5,Sidérella,
 576,6,Morbitesse,
+576,8,Gothitelle
 576,9,Gothitelle,Astral Body
 577,1,ユニラン,
 577,5,Nucléos,
 577,6,Monozyto,
+577,8,Solosis
 577,9,Solosis,Cell
 578,1,ダブラン,
 578,5,Méios,
 578,6,Mitodos,
+578,8,Duosion
 578,9,Duosion,Mitosis
 579,1,ランクルス,
 579,5,Symbios,
 579,6,Zytomega,
+579,8,Reuniclus
 579,9,Reuniclus,Multiplying
 580,1,コアルヒー,
 580,5,Couaneton,
 580,6,Piccolente,
+580,8,Ducklett
 580,9,Ducklett,Water Bird
 581,1,スワンナ,
 581,5,Lakmécygne,
 581,6,Swaroness,
+581,8,Swanna
 581,9,Swanna,White Bird
 582,1,バニプッチ,
 582,5,Sorbébé,
 582,6,Gelatini,
+582,8,Vanillite
 582,9,Vanillite,Fresh Snow
 583,1,バニリッチ,
 583,5,Sorboul,
 583,6,Gelatroppo,
+583,8,Vanillish
 583,9,Vanillish,Icy Snow
 584,1,バイバニラ,
 584,5,Sorbouboul,
 584,6,Gelatwino,
+584,8,Vanilluxe
 584,9,Vanilluxe,Snowstorm
 585,1,シキジカ,
 585,5,Vivaldaim,
 585,6,Sesokitz,
+585,8,Deerling
 585,9,Deerling,Season
 586,1,メブキジカ,
 586,5,Haydaim,
 586,6,Kronjuwild,
+586,8,Sawsbuck
 586,9,Sawsbuck,Season
 587,1,エモンガ,
 587,5,Emolga,
 587,6,Emolga,
+587,8,Emolga
 587,9,Emolga,Sky Squirrel
 588,1,カブルモ,
 588,5,Carabing,
 588,6,Laukaps,
+588,8,Karrablast
 588,9,Karrablast,Clamping
 589,1,シュバルゴ,
 589,5,Lançargot,
 589,6,Cavalanzas,
+589,8,Escavalier
 589,9,Escavalier,Cavalry
 590,1,タマゲタケ,
 590,5,Trompignon,
 590,6,Tarnpignon,
+590,8,Foongus
 590,9,Foongus,Mushroom
 591,1,モロバレル,
 591,5,Gaulet,
 591,6,Hutsassa,
+591,8,Amoonguss
 591,9,Amoonguss,Mushroom
 592,1,プルリル,
 592,5,Viskuse,
 592,6,Quabbel,
+592,8,Frillish
 592,9,Frillish,Floating
 593,1,ブルンゲル,
 593,5,Moyade,
 593,6,Apoquallyp,
+593,8,Jellicent
 593,9,Jellicent,Floating
 594,1,ママンボウ,
 594,5,Mamanbo,
 594,6,Mamolida,
+594,8,Alomomola
 594,9,Alomomola,Caring
 595,1,バチュル,
 595,5,Statitik,
 595,6,Wattzapf,
+595,8,Joltik
 595,9,Joltik,Attaching
 596,1,デンチュラ,
 596,5,Mygavolt,
 596,6,Voltula,
+596,8,Galvantula
 596,9,Galvantula,EleSpider
 597,1,テッシード,
 597,5,Grindur,
 597,6,Kastadur,
+597,8,Ferroseed
 597,9,Ferroseed,Thorn Seed
 598,1,ナットレイ,
 598,5,Noacier,
 598,6,Tentantel,
+598,8,Ferrothorn
 598,9,Ferrothorn,Thorn Pod
 599,1,ギアル,
 599,5,Tic,
 599,6,Klikk,
+599,8,Klink
 599,9,Klink,Gear
 600,1,ギギアル,
 600,5,Clic,
 600,6,Kliklak,
+600,8,Klang
 600,9,Klang,Gear
 601,1,ギギギアル,
 601,5,Cliticlic,
 601,6,Klikdiklak,
+601,8,Klinklang
 601,9,Klinklang,Gear
 602,1,シビシラス,
 602,5,Anchwatt,
 602,6,Zapplardin,
+602,8,Tynamo
 602,9,Tynamo,EleFish
 603,1,シビビール,
 603,5,Lampéroie,
 603,6,Zapplalek,
+603,8,Eelektrik
 603,9,Eelektrik,EleFish
 604,1,シビルドン,
 604,5,Ohmassacre,
 604,6,Zapplarang,
+604,8,Eelektross
 604,9,Eelektross,EleFish
 605,1,リグレー,
 605,5,Lewsor,
 605,6,Pygraulon,
+605,8,Elgyem
 605,9,Elgyem,Cerebral
 606,1,オーベム,
 606,5,Neitram,
 606,6,Megalon,
+606,8,Beheeyem
 606,9,Beheeyem,Cerebral
 607,1,ヒトモシ,
 607,5,Funécire,
 607,6,Lichtel,
+607,8,Litwick
 607,9,Litwick,Candle
 608,1,ランプラー,
 608,5,Mélancolux,
 608,6,Laternecto,
+608,8,Lampent
 608,9,Lampent,Lamp
 609,1,シャンデラ,
 609,5,Lugulabre,
 609,6,Skelabra,
+609,8,Chandelure
 609,9,Chandelure,Luring
 610,1,キバゴ,
 610,4,牙牙,
 610,5,Coupenotte,
 610,6,Milza,
+610,8,Axew
 610,9,Axew,Tusk
 611,1,オノンド,
 611,5,Incisache,
 611,6,Sharfax,
+611,8,Fraxure
 611,9,Fraxure,Axe Jaw
 612,1,オノノクス,
 612,5,Tranchodon,
 612,6,Maxax,
+612,8,Haxorus
 612,9,Haxorus,Axe Jaw
 613,1,クマシュン,
 613,5,Polarhume,
 613,6,Petznief,
+613,8,Cubchoo
 613,9,Cubchoo,Chill
 614,1,ツンベアー,
 614,5,Polagriffe,
 614,6,Siberio,
+614,8,Beartic
 614,9,Beartic,Freezing
 615,1,フリージオ,
 615,5,Hexagel,
 615,6,Frigometri,
+615,8,Cryogonal
 615,9,Cryogonal,Crystallizing
 616,1,チョボマキ,
 616,5,Escargaume,
 616,6,Schnuthelm,
+616,8,Shelmet
 616,9,Shelmet,Snail
 617,1,アギルダー,
 617,5,Limaspeed,
 617,6,Hydragil,
+617,8,Accelgor
 617,9,Accelgor,Shell Out
 618,1,マッギョ,
 618,5,Limonde,
 618,6,Flunschlik,
+618,8,Stunfisk
 618,9,Stunfisk,Trap
 619,1,コジョフー,
 619,5,Kungfouine,
 619,6,Lin-Fu,
+619,8,Mienfoo
 619,9,Mienfoo,Martial Arts
 620,1,コジョンド,
 620,5,Shaofouine,
 620,6,Wie-Shu,
+620,8,Mienshao
 620,9,Mienshao,Martial Arts
 621,1,クリムガン,
 621,5,Drakkarmin,
 621,6,Shardrago,
+621,8,Druddigon
 621,9,Druddigon,Cave
 622,1,ゴビット,
 622,5,Gringolem,
 622,6,Golbit,
+622,8,Golett
 622,9,Golett,Automaton
 623,1,ゴルーグ,
 623,5,Golemastoc,
 623,6,Golgantes,
+623,8,Golurk
 623,9,Golurk,Automaton
 624,1,コマタナ,
 624,5,Scalpion,
 624,6,Gladiantri,
+624,8,Pawniard
 624,9,Pawniard,Sharp Blade
 625,1,キリキザン,
 625,5,Scalproie,
 625,6,Caesurio,
+625,8,Bisharp
 625,9,Bisharp,Sword Blade
 626,1,バッフロン,
 626,5,Frison,
 626,6,Bisofank,
+626,8,Bouffalant
 626,9,Bouffalant,Bash Buffalo
 627,1,ワシボン,
 627,5,Furaiglon,
 627,6,Geronimatz,
+627,8,Rufflet
 627,9,Rufflet,Eaglet
 628,1,ウォーグル,
 628,5,Gueriaigle,
 628,6,Washakwil,
+628,8,Braviary
 628,9,Braviary,Valiant
 629,1,バルチャイ,
 629,5,Vostourno,
 629,6,Skallyk,
+629,8,Vullaby
 629,9,Vullaby,Diapered
 630,1,バルジーナ,
 630,5,Vaututrice,
 630,6,Grypheldis,
+630,8,Mandibuzz
 630,9,Mandibuzz,Bone Vulture
 631,1,クイタラン,
 631,5,Aflamanoir,
 631,6,Furnifraß,
+631,8,Heatmor
 631,9,Heatmor,Anteater
 632,1,アイアント,
 632,5,Fermite,
 632,6,Fermicula,
+632,8,Durant
 632,9,Durant,Iron Ant
 633,1,モノズ,
 633,5,Solochi,
 633,6,Kapuno,
+633,8,Deino
 633,9,Deino,Irate
 634,1,ジヘッド,
 634,5,Diamat,
 634,6,Duodino,
+634,8,Zweilous
 634,9,Zweilous,Hostile
 635,1,サザンドラ,
 635,5,Trioxhydre,
 635,6,Trikephalo,
+635,8,Hydreigon
 635,9,Hydreigon,Brutal
 636,1,メラルバ,
 636,5,Pyronille,
 636,6,Ignivor,
+636,8,Larvesta
 636,9,Larvesta,Torch
 637,1,ウルガモス,
 637,5,Pyrax,
 637,6,Ramoth,
+637,8,Volcarona
 637,9,Volcarona,Sun
 638,1,コバルオン,
 638,5,Cobaltium,
 638,6,Kobalium,
+638,8,Cobalion
 638,9,Cobalion,Iron Will
 639,1,テラキオン,
 639,5,Terrakium,
 639,6,Terrakium,
+639,8,Terrakion
 639,9,Terrakion,Cavern
 640,1,ビリジオン,
 640,5,Viridium,
 640,6,Viridium,
+640,8,Virizion
 640,9,Virizion,Grassland
 641,1,トルネロス,
 641,5,Boréas,
 641,6,Boreos,
+641,8,Tornadus
 641,9,Tornadus,Cyclone
 642,1,ボルトロス,
 642,5,Fulguris,
 642,6,Voltolos,
+642,8,Thundurus
 642,9,Thundurus,Bolt Strike
 643,1,レシラム,
 643,4,雷希拉姆,
 643,5,Reshiram,
 643,6,Reshiram,
+643,8,Reshiram
 643,9,Reshiram,Vast White
 644,1,ゼクロム,
 644,4,捷克羅姆,
 644,5,Zekrom,
 644,6,Zekrom,
+644,8,Zekrom
 644,9,Zekrom,Deep Black
 645,1,ランドロス,
 645,5,Démétéros,
 645,6,Demeteros,
+645,8,Landorus
 645,9,Landorus,Abundance
 646,1,キュレム,
 646,5,Kyurem,
 646,6,Kyurem,
+646,8,Kyurem
 646,9,Kyurem,Boundary
 647,1,ケルディオ,
 647,5,Keldeo,
 647,6,Keldeo,
+647,8,Keldeo
 647,9,Keldeo,Colt
 648,1,メロエッタ,
 648,5,Meloetta,
 648,6,Meloetta,
+648,8,Meloetta
 648,9,Meloetta,Melody
 649,1,ゲノセクト,
 649,5,Genesect,
 649,6,Genesect,
+649,8,Genesect
 649,9,Genesect,Paleozoic
