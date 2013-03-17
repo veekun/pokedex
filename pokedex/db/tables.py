@@ -399,7 +399,7 @@ class ConquestPokemonEvolution(TableBase):
         info=dict(description=u"The ID of the gender the Pokémon's warrior must be."))
     item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
         info=dict(description=u"The ID of the item the Pokémon's warrior must have equipped."))
-    recruiting_ko_required = Column(Boolean, nullable=False, server_default='False',
+    recruiting_ko_required = Column(Boolean, nullable=False,
         info=dict(description=u"If true, the Pokémon must KO a Pokémon under the right conditions to recruit that Pokémon's warrior."))
 
 class ConquestPokemonMove(TableBase):
