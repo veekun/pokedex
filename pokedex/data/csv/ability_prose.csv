@@ -161,7 +161,7 @@ Overworld: If the lead Pokémon has this ability, Steel-type Pokémon have a hig
 
 []{move:heal-bell} is unaffected.  []{move:uproar} still prevents this Pokémon from [sleeping]{mechanic:sleep}.  This Pokémon can still receive a Perish Song counter through []{move:baton-pass}, and will retain a Perish Song counter if it acquires this ability after Perish Song is used.
 
-[]{move:howl}, []{move:roar-of-time}, and []{move:sonicboom} are not flagged as sound-based.",Protects against sound-based moves.
+[]{move:howl}, []{move:roar-of-time}, []{move:sonicboom}, and []{move:yawn} are not flagged as sound-based.",Protects against sound-based moves.
 44,9,This Pokémon heals for 1/16 of its maximum [HP]{mechanic:hp} after each turn during [rain]{mechanic:rain}.,Heals for 1/16 max [HP]{mechanic:hp} after each turn during [rain]{mechanic:rain}.
 45,9,"The [weather]{mechanic:weather} changes to a [sandstorm]{mechanic:sandstorm} when this Pokémon enters battle and does not end unless cancelled by another weather condition.
 
