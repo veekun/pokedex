@@ -12,16 +12,13 @@ import textwrap
 
 from docutils import nodes
 from docutils.statemachine import ViewList
-from sphinx.util.compat import Directive, make_admonition
-from sphinx.locale import _
 from sphinx.domains.python import PyClasslike
-from sphinx.util.docfields import Field, GroupedField, TypedField
-from sphinx.ext.autodoc import ClassLevelDocumenter
+from sphinx.util.docfields import TypedField
 
 from sqlalchemy import types
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 from sqlalchemy.orm.properties import RelationshipProperty
-from sqlalchemy.orm import Mapper, configure_mappers
+from sqlalchemy.orm import configure_mappers
 from sqlalchemy.ext.associationproxy import AssociationProxy
 from pokedex.db.markdown import MoveEffectPropertyMap, MoveEffectProperty
 
@@ -36,14 +33,7 @@ for cls in tables.mapped_classes:
     for column in cls.__table__.c:
         column_to_cls[column] = cls
 
-class dextabledoc(nodes.Admonition, nodes.Element):
-    pass
 
-def visit_todo_node(self, node):
-    self.visit_admonition(node)
-
-def depart_todo_node(self, node):
-    self.depart_admonition(node)
 
 def column_type_str(column):
     """Extract the type name from a SQLA column
@@ -241,9 +231,6 @@ def generate_associationproxies(cls, remaining_attrs):
             yield u'%s.\ **%s**:' % (cls.__name__, attr_name)
             yield '``{prop.remote_attr.key}`` of ``self.{prop.local_attr.key}``'.format(
                     prop=prop)
-            '''if 'description' in info:
-                yield u''
-                yield u'  ' + unicode(info['description'])'''
             yield u''
             remaining_attrs.remove(attr_name)
 
