@@ -27,13 +27,21 @@ from pokedex.db import tables, markdown
 # Make sure all the backrefs are in place
 configure_mappers()
 
-
 column_to_cls = {}
 for cls in tables.mapped_classes:
     for column in cls.__table__.c:
         column_to_cls[column] = cls
 
+def isrelationship(prop):
+    return isinstance(prop, InstrumentedAttribute) and isinstance(prop.property, RelationshipProperty)
 
+def human_join(seq):
+    if len(seq) == 0:
+        return u'none'
+    elif len(seq) <= 2:
+        return u' and '.join(seq)
+    else:
+        return u', '.join(seq[:-1]) + u', and ' + seq[-1]
 
 def column_type_str(column):
     """Extract the type name from a SQLA column
@@ -147,14 +155,21 @@ def generate_common(cls, remaining_attrs):
                 remaining_attrs.remove(c.name)
 
     if common_col_headers:
-        if len(common_col_headers) > 1:
-            common_col_headers[-1] = 'and ' + common_col_headers[-1]
-        if len(common_col_headers) > 2:
-            separator = u', '
-        else:
-            separator = u' '
         yield u'Has'
-        yield separator.join(common_col_headers) + '.'
+        yield human_join(common_col_headers) + '.'
+        yield u''
+
+def generate_eagerloads(cls, remaining_attrs):
+    eagerloads = []
+    for attr_name in remaining_attrs:
+        prop = getattr(cls, attr_name)
+        if isrelationship(prop) and prop.property.lazy == 'joined':
+            eagerloads.append('**' + attr_name + '**')
+
+    if eagerloads:
+        eagerloads.sort()
+        yield u'Eagerloads:'
+        yield human_join(eagerloads) + '.'
         yield u''
 
 @with_header(u'Columns')
@@ -191,9 +206,6 @@ def generate_strings(cls, remaining_attrs):
 
 @with_header(u'Relationships')
 def generate_relationships(cls, remaining_attrs):
-    def isrelationship(prop):
-        return isinstance(prop, InstrumentedAttribute) and isinstance(prop.property, RelationshipProperty)
-
     for attr_name in sorted(remaining_attrs):
         prop = getattr(cls, attr_name)
         if not isrelationship(prop):
@@ -301,6 +313,7 @@ class DexTable(PyClasslike):
 
         generated_content.extend(generate_table_header(cls, remaining_attrs))
         generated_content.extend(generate_common(cls, remaining_attrs))
+        generated_content.extend(generate_eagerloads(cls, remaining_attrs))
         generated_content.extend(generate_columns(cls, remaining_attrs))
         generated_content.extend(generate_strings(cls, remaining_attrs))
         generated_content.extend(generate_relationships(cls, remaining_attrs))
