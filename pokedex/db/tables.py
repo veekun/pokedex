@@ -121,6 +121,8 @@ class Ability(TableBase):
         info=dict(description="An identifier", format='identifier'))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description="The ID of the generation this ability was introduced in", detail=True))
+    is_main_series = Column(Boolean, nullable=False, index=True,
+        info=dict(description="True iff the ability exists in the main series."))
 
 create_translation_table('ability_names', Ability, 'names',
     relation_lazy='joined',
