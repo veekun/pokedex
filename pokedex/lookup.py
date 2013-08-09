@@ -2,18 +2,12 @@
 import os, os.path
 import random
 import re
-import shutil
 import unicodedata
 
-from sqlalchemy.sql import func
 import whoosh
-import whoosh.filedb.filestore
-import whoosh.filedb.fileindex
 import whoosh.index
-from whoosh.qparser import QueryParser
-import whoosh.scoring
+import whoosh.query
 import whoosh.sorting
-import whoosh.spelling
 from whoosh.support import levenshtein
 
 from pokedex.compatibility import namedtuple
