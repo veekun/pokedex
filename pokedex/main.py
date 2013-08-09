@@ -9,12 +9,12 @@ import pokedex.db.tables
 import pokedex.lookup
 from pokedex import defaults
 
-def main():
-    if len(sys.argv) <= 1:
+def main(*argv):
+    if len(argv) <= 1:
         command_help()
 
-    command = sys.argv[1]
-    args = sys.argv[2:]
+    command = argv[1]
+    args = argv[2:]
 
     # XXX there must be a better way to get Unicode argv
     # XXX this doesn't work on Windows durp
@@ -316,3 +316,7 @@ Dump options:
 """.encode(sys.getdefaultencoding(), 'replace')
 
     sys.exit(0)
+
+
+if __name__ == '__main__':
+    main(*sys.argv)
