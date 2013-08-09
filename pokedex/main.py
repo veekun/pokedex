@@ -28,6 +28,9 @@ def main(*argv):
     else:
         command_help()
 
+def setuptools_entry():
+    main(*sys.argv)
+
 
 def get_parser(verbose=True):
     """Returns an OptionParser prepopulated with the global options.
