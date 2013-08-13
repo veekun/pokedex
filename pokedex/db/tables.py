@@ -1779,7 +1779,7 @@ class PokemonMove(TableBase):
         info=dict(description=u"ID of the move"))
     pokemon_move_method_id = Column(Integer, ForeignKey('pokemon_move_methods.id'), nullable=False, index=True,
         info=dict(description=u"ID of the method this move is learned by"))
-    level = Column(Integer, nullable=True, index=True,
+    level = Column(Integer, nullable=True, index=True, autoincrement=False,
         info=dict(description=u"Level the move is learned at, if applicable"))
     order = Column(Integer, nullable=True,
         info=dict(description=u"A sort key to produce the correct ordering when all else is equal"))  # XXX: This needs a better description
