@@ -2479,7 +2479,6 @@ Pokedex.version_groups = relationship(VersionGroup,
 Pokemon.all_abilities = relationship(Ability,
     secondary=PokemonAbility.__table__,
     order_by=PokemonAbility.slot.asc(),
-    innerjoin=True,
     backref=backref('all_pokemon', order_by=Pokemon.order.asc()),
     doc=u"All abilities the Pokémon can have, including the Hidden Ability")
 Pokemon.abilities = relationship(Ability,
@@ -2488,7 +2487,6 @@ Pokemon.abilities = relationship(Ability,
         Pokemon.id == PokemonAbility.pokemon_id,
         PokemonAbility.is_hidden == False,
     ),
-    innerjoin=True,
     order_by=PokemonAbility.slot.asc(),
     backref=backref('pokemon', order_by=Pokemon.order.asc()),
     doc=u"Abilities the Pokémon can have in the wild")
@@ -2503,7 +2501,6 @@ Pokemon.hidden_ability = relationship(Ability,
     doc=u"The Pokémon's Hidden Ability")
 Pokemon.pokemon_abilities = relationship(PokemonAbility,
     order_by=PokemonAbility.slot.asc(),
-    innerjoin=True,
     backref=backref('pokemon', order_by=Pokemon.order.asc()),
     doc=u"All abilities the Pokémon can have, as bridge rows")
 Pokemon.forms = relationship(PokemonForm,
@@ -2521,7 +2518,6 @@ Pokemon.items = relationship(PokemonItem,
     order_by=PokemonItem.rarity.desc(),
     doc=u"Info about items this pokémon holds in the wild")
 Pokemon.stats = relationship(PokemonStat,
-    innerjoin=True,
     order_by=PokemonStat.stat_id.asc(),
     backref='pokemon')
 Pokemon.species = relationship(PokemonSpecies,
@@ -2630,7 +2626,6 @@ PokemonSpecies.color = relationship(PokemonColor,
     backref='species')
 PokemonSpecies.egg_groups = relationship(EggGroup,
     secondary=PokemonEggGroup.__table__,
-    innerjoin=True,
     order_by=PokemonEggGroup.egg_group_id.asc(),
     backref=backref('species', order_by=PokemonSpecies.order.asc()))
 PokemonSpecies.forms = relationship(PokemonForm,
@@ -2652,7 +2647,6 @@ PokemonSpecies.default_pokemon = relationship(Pokemon,
         Pokemon.is_default==True),
     uselist=False, lazy='joined')
 PokemonSpecies.evolution_chain = relationship(EvolutionChain,
-    innerjoin=True,
     backref=backref('species', order_by=PokemonSpecies.id.asc()))
 PokemonSpecies.dex_numbers = relationship(PokemonDexNumber,
     innerjoin=True,
