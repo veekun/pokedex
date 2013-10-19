@@ -862,8 +862,6 @@ class Generation(TableBase):
         info=dict(description="A numeric ID"))
     main_region_id = Column(Integer, ForeignKey('regions.id'), nullable=False,
         info=dict(description="ID of the region this generation's main games take place in"))
-    canonical_pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), nullable=False,
-        info=dict(description=u"ID of the Pokédex this generation's main games use by default"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u'An identifier', format='identifier'))
 
@@ -2273,8 +2271,6 @@ Experience.growth_rate = relationship(GrowthRate,
     backref='experience_table')
 
 
-Generation.canonical_pokedex = relationship(Pokedex,
-    backref='canonical_for_generation')
 Generation.versions = relationship(Version,
     secondary=VersionGroup.__table__,
     innerjoin=True)
