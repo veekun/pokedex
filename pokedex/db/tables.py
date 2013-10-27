@@ -2368,7 +2368,7 @@ Move.generation = relationship(Generation,
 Move.machines = relationship(Machine,
     backref='move')
 Move.meta = relationship(MoveMeta,
-    uselist=False, innerjoin=True,
+    uselist=False,
     backref='move')
 Move.meta_stat_changes = relationship(MoveMetaStatChange)
 Move.move_effect = relationship(MoveEffect,
