@@ -1686,6 +1686,8 @@ class PokemonForm(TableBase):
         info=dict(description=u'Set for exactly one form used as the default for each pokemon (not necessarily species).'))
     is_battle_only = Column(Boolean, nullable=False,
         info=dict(description=u'Set iff the form can only appear in battle.'))
+    is_mega = Column(Boolean, nullable=False,
+        info=dict(description=u'Records whether this form is a Mega Evolution.'))
     form_order = Column(Integer, nullable=False, autoincrement=False,
         info=dict(description=u"The order in which forms should be sorted within a species' forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.  "
                               u"Used in generating `pokemon_forms.order` and `pokemon.order`."))
