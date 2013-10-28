@@ -1313,22 +1313,22 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 663,9,,
 664,9,,
 665,9,,
-666,9,,
+666,9,Meadow Pattern,Meadow Vivillon
 667,9,,
 668,9,,
-669,9,,
-670,9,,
-671,9,,
+669,9,Red Flower,Red Flabébé
+670,9,Red Flower,Red Floette
+671,9,Red Flower,Red Florges
 672,9,,
 673,9,,
 674,9,,
 675,9,,
 676,9,,
 677,9,,
-678,9,,
+678,9,Male,Male Meowstic
 679,9,,
 680,9,,
-681,9,,
+681,9,Shield Forme,Shield Aegislash
 682,9,,
 683,9,,
 684,9,,
@@ -1357,13 +1357,13 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 707,9,,
 708,9,,
 709,9,,
-710,9,,
-711,9,,
+710,9,Average Size,Average Pumpkaboo
+711,9,Average Size,Average Gourgeist
 712,9,,
 713,9,,
 714,9,,
 715,9,,
-716,9,,
+716,9,Active Mode,Active Xerneas
 717,9,,
 718,9,,
 10001,5,B,Zarbi B
@@ -1534,3 +1534,79 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 10083,9,White Kyurem,White Kyurem
 10084,5,Aspect Décidé,Keldeo Décidé
 10084,9,Resolute Form,Resolute Keldeo
+10085,9,Fairy Type,Fairy Arceus
+10086,9,Icy Snow Pattern,Icy Snow Vivillon
+10087,9,Polar Pattern,Polar Vivillon
+10088,9,Tundra Pattern,Tundra Vivillon
+10089,9,Continental Pattern,Continental Vivillon
+10090,9,Garden Pattern,Garden Vivillon
+10091,9,Elegant Pattern,Elegant Vivillon
+10092,9,Modern Pattern,Modern Vivillon
+10093,9,Marine Pattern,Marine Vivillon
+10094,9,Archipelago Pattern,Archipelago Vivillon
+10095,9,High Plains Pattern,High Plains Vivillon
+10096,9,Sandstorm Pattern,Sandstorm Vivillon
+10097,9,River Pattern,River Vivillon
+10098,9,Monsoon Pattern,Monsoon Vivillon
+10099,9,Savanna Pattern,Savanna Vivillon
+10100,9,Sun Pattern,Sun Vivillon
+10101,9,Ocean Pattern,Ocean Vivillon
+10102,9,Jungle Pattern,Jungle Vivillon
+10103,9,Yellow Flower,Yellow Flabébé
+10104,9,Orange Flower,Orange Flabébé
+10105,9,Blue Flower,Blue Flabébé
+10106,9,White Flower,White Flabébé
+10107,9,Yellow Flower,Yellow Floette
+10108,9,Orange Flower,Orange Floette
+10109,9,Blue Flower,Blue Floette
+10110,9,White Flower,White Floette
+10111,9,Yellow Flower,Yellow Florges
+10112,9,Orange Flower,Orange Florges
+10113,9,Blue Flower,Blue Florges
+10114,9,White Flower,White Florges
+10115,9,Heart Trim,Heart Furfrou
+10116,9,Star Trim,Star Furfrou
+10117,9,Diamond Trim,Diamond Furfrou
+10118,9,Debutante Trim,Debutante Furfrou
+10119,9,Matron Trim,Matron Furfrou
+10120,9,Dandy Trim,Dandy Furfrou
+10121,9,La Reine Trim,La Reine Furfrou
+10122,9,Kabuki Trim,Kabuki Furfrou
+10123,9,Pharaoh Trim,Pharaoh Furfrou
+10124,9,Female,Female Meowstic
+10125,9,Blade Forme,Blade Aegislash
+10126,9,Small Size,Small Pumpkaboo
+10127,9,Large Size,Large Pumpkaboo
+10128,9,Super Size,Super Pumpkaboo
+10129,9,Small Size,Small Gourgeist
+10130,9,Large Size,Large Gourgeist
+10131,9,Super Size,Super Gourgeist
+10132,9,Neutral Mode,Neutral Xerneas
+10133,9,Mega Evolution,Mega Venusaur
+10134,9,Mega Evolution X,Mega Charizard X
+10135,9,Mega Evolution Y,Mega Charizard Y
+10136,9,Mega Evolution,Mega Blastoise
+10137,9,Mega Evolution,Mega Alakazam
+10138,9,Mega Evolution,Mega Gengar
+10139,9,Mega Evolution,Mega Kangaskhan
+10140,9,Mega Evolution,Mega Pinsir
+10141,9,Mega Evolution,Mega Gyarados
+10142,9,Mega Evolution,Mega Aerodactyl
+10143,9,Mega Evolution X,Mega Mewtwo X
+10144,9,Mega Evolution Y,Mega Mewtwo Y
+10145,9,Mega Evolution,Mega Ampharos
+10146,9,Mega Evolution,Mega Scizor
+10147,9,Mega Evolution,Mega Heracross
+10148,9,Mega Evolution,Mega Houndoom
+10149,9,Mega Evolution,Mega Tyranitar
+10150,9,Mega Evolution,Mega Blaziken
+10151,9,Mega Evolution,Mega Gardevoir
+10152,9,Mega Evolution,Mega Mawile
+10153,9,Mega Evolution,Mega Aggron
+10154,9,Mega Evolution,Mega Medicham
+10155,9,Mega Evolution,Mega Manectric
+10156,9,Mega Evolution,Mega Banette
+10157,9,Mega Evolution,Mega Absol
+10158,9,Mega Evolution,Mega Garchomp
+10159,9,Mega Evolution,Mega Lucario
+10160,9,Mega Evolution,Mega Abomasnow
