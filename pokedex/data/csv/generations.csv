@@ -1,6 +1,7 @@
-id,main_region_id,canonical_pokedex_id,identifier
-1,1,2,generation-i
-2,2,7,generation-ii
-3,3,4,generation-iii
-4,4,6,generation-iv
-5,5,8,generation-v
+id,main_region_id,identifier
+1,1,generation-i
+2,2,generation-ii
+3,3,generation-iii
+4,4,generation-iv
+5,5,generation-v
+6,6,generation-vi

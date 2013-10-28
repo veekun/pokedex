@@ -862,8 +862,6 @@ class Generation(TableBase):
         info=dict(description="A numeric ID"))
     main_region_id = Column(Integer, ForeignKey('regions.id'), nullable=False,
         info=dict(description="ID of the region this generation's main games take place in"))
-    canonical_pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), nullable=False,
-        info=dict(description=u"ID of the Pokédex this generation's main games use by default"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u'An identifier', format='identifier'))
 
@@ -1517,6 +1515,8 @@ class Pokemon(TableBase):
     __singlename__ = 'pokemon'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u"A numeric ID"))
+    identifier = Column(Unicode(30), nullable=False,
+        info=dict(description=u'An identifier, including form iff this row corresponds to a single, named form', format='identifier'))
     species_id = Column(Integer, ForeignKey('pokemon_species.id'),
         info=dict(description=u"ID of the species this Pokémon belongs to"))
     height = Column(Integer, nullable=False,
@@ -1674,6 +1674,8 @@ class PokemonForm(TableBase):
     __singlename__ = 'pokemon_form'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u'A unique ID for this form.'))
+    identifier = Column(Unicode(30), nullable=False,
+        info=dict(description=u"A unique identifier for this form among all forms of all Pokémon", format='identifier'))
     form_identifier = Column(Unicode(16), nullable=True,
         info=dict(description=u"An identifier of the form, uniue among a species. May be None for the default form of the species.", format='identifier'))
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, autoincrement=False,
@@ -2273,8 +2275,6 @@ Experience.growth_rate = relationship(GrowthRate,
     backref='experience_table')
 
 
-Generation.canonical_pokedex = relationship(Pokedex,
-    backref='canonical_for_generation')
 Generation.versions = relationship(Version,
     secondary=VersionGroup.__table__,
     innerjoin=True)
@@ -2372,7 +2372,7 @@ Move.generation = relationship(Generation,
 Move.machines = relationship(Machine,
     backref='move')
 Move.meta = relationship(MoveMeta,
-    uselist=False, innerjoin=True,
+    uselist=False,
     backref='move')
 Move.meta_stat_changes = relationship(MoveMetaStatChange)
 Move.move_effect = relationship(MoveEffect,
@@ -2483,7 +2483,6 @@ Pokedex.version_groups = relationship(VersionGroup,
 Pokemon.all_abilities = relationship(Ability,
     secondary=PokemonAbility.__table__,
     order_by=PokemonAbility.slot.asc(),
-    innerjoin=True,
     backref=backref('all_pokemon', order_by=Pokemon.order.asc()),
     doc=u"All abilities the Pokémon can have, including the Hidden Ability")
 Pokemon.abilities = relationship(Ability,
@@ -2492,7 +2491,6 @@ Pokemon.abilities = relationship(Ability,
         Pokemon.id == PokemonAbility.pokemon_id,
         PokemonAbility.is_hidden == False,
     ),
-    innerjoin=True,
     order_by=PokemonAbility.slot.asc(),
     backref=backref('pokemon', order_by=Pokemon.order.asc()),
     doc=u"Abilities the Pokémon can have in the wild")
@@ -2507,7 +2505,6 @@ Pokemon.hidden_ability = relationship(Ability,
     doc=u"The Pokémon's Hidden Ability")
 Pokemon.pokemon_abilities = relationship(PokemonAbility,
     order_by=PokemonAbility.slot.asc(),
-    innerjoin=True,
     backref=backref('pokemon', order_by=Pokemon.order.asc()),
     doc=u"All abilities the Pokémon can have, as bridge rows")
 Pokemon.forms = relationship(PokemonForm,
@@ -2525,7 +2522,6 @@ Pokemon.items = relationship(PokemonItem,
     order_by=PokemonItem.rarity.desc(),
     doc=u"Info about items this pokémon holds in the wild")
 Pokemon.stats = relationship(PokemonStat,
-    innerjoin=True,
     order_by=PokemonStat.stat_id.asc(),
     backref='pokemon')
 Pokemon.species = relationship(PokemonSpecies,
@@ -2634,7 +2630,6 @@ PokemonSpecies.color = relationship(PokemonColor,
     backref='species')
 PokemonSpecies.egg_groups = relationship(EggGroup,
     secondary=PokemonEggGroup.__table__,
-    innerjoin=True,
     order_by=PokemonEggGroup.egg_group_id.asc(),
     backref=backref('species', order_by=PokemonSpecies.order.asc()))
 PokemonSpecies.forms = relationship(PokemonForm,
@@ -2656,7 +2651,6 @@ PokemonSpecies.default_pokemon = relationship(Pokemon,
         Pokemon.is_default==True),
     uselist=False, lazy='joined')
 PokemonSpecies.evolution_chain = relationship(EvolutionChain,
-    innerjoin=True,
     backref=backref('species', order_by=PokemonSpecies.id.asc()))
 PokemonSpecies.dex_numbers = relationship(PokemonDexNumber,
     innerjoin=True,

@@ -9,3 +9,6 @@ id,region_id,identifier,is_main_series
 8,5,original-unova,1
 9,5,updated-unova,1
 11,,conquest-gallery,0
+12,6,kalos-central,1
+13,6,kalos-coastal,1
+14,6,kalos-mountain,1
