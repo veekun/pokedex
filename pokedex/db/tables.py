@@ -1515,6 +1515,8 @@ class Pokemon(TableBase):
     __singlename__ = 'pokemon'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u"A numeric ID"))
+    identifier = Column(Unicode(30), nullable=False,
+        info=dict(description=u'An identifier, including form iff this row corresponds to a single, named form', format='identifier'))
     species_id = Column(Integer, ForeignKey('pokemon_species.id'),
         info=dict(description=u"ID of the species this Pokémon belongs to"))
     height = Column(Integer, nullable=False,
@@ -1672,6 +1674,8 @@ class PokemonForm(TableBase):
     __singlename__ = 'pokemon_form'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u'A unique ID for this form.'))
+    identifier = Column(Unicode(30), nullable=False,
+        info=dict(description=u"A unique identifier for this form among all forms of all Pokémon", format='identifier'))
     form_identifier = Column(Unicode(16), nullable=True,
         info=dict(description=u"An identifier of the form, uniue among a species. May be None for the default form of the species.", format='identifier'))
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, autoincrement=False,
