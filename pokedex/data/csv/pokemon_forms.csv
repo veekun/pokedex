@@ -801,7 +801,7 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10082,kyurem-black,black,10022,14,1,0,0,2,736
 10083,kyurem-white,white,10023,14,1,0,0,3,737
 10084,keldeo-resolute,resolute,10024,14,1,0,0,2,739
-10085,arceus-fairy,fairy,493,15,1,0,0,2,570
+10085,arceus-fairy,fairy,493,15,0,0,0,2,570
 10086,vivillon-icy-snow,icy-snow,666,15,0,0,0,1,760
 10087,vivillon-polar,polar,666,15,0,0,0,2,761
 10088,vivillon-tundra,tundra,666,15,0,0,0,3,762
