@@ -541,3 +541,27 @@ An ability ignored by this ability is only nullified while the move is being use
 When this Pokémon enters battle, all participating trainers are notified that it has this ability.
 
 This ability functions identically to []{ability:mold-breaker} and []{ability:turboblaze}.",Bypasses targets' abilities if they could hinder or prevent moves.
+165,9,,Turns the bearer's []{type:normal} moves into []{type:flying} moves.
+166,9,,Protects allies against moves that affect their mental state.
+167,9,,Reverses the effects of []{ability:dark-aura} and []{ability:fairy-aura}.
+168,9,,"Protects against bullet, ball, and bomb-based moves."
+169,9,,"Restores HP upon eating a Berry, in addition to the Berry's effect."
+170,9,,Raises Special Attack by two stages upon having any stat lowered.
+171,9,,Strengthens []{type:dark} moves for all friendly and opposing Pokémon.
+172,9,,Strengthens []{type:fairy} moves for all friendly and opposing Pokémon.
+173,9,,Protects []{type:grass}-type allies from having their stats lowered by other Pokémon.
+174,9,,Halves damage from physical attacks.
+175,9,,Raises []{type:flying} moves' priority by one stage.
+176,9,,Lowers attacking Pokémon's Speed by one stage on contact.
+177,9,,Boosts Defense while []{move:grassy-terrain} is in effect.
+178,9,,Steals the target's held item when the bearer uses a contact move.
+179,9,,Strengthens aura and pulse moves.
+180,9,,Lets the bearer hit twice with damaging moves.  The second hit has half power.
+181,9,,Turns the bearer's []{type:normal} moves into []{type:fairy} moves.
+182,9,,Changes the bearer's type to match each move it uses.
+183,9,,Turns the bearer's []{type:normal} moves into []{type:ice} moves.
+184,9,,"Changes []{pokemon:aegislash} to Blade Forme before using a damaging move, or Shield Forme before using a status move."
+185,9,,Strengthens biting moves.
+186,9,,Prevents allies from sleeping.
+187,9,,Passes the bearer's held item to an ally when the ally uses up its item.
+188,9,,Strengthens claw-based moves.
