@@ -1008,3 +1008,4 @@ During []{move:rain-dance}, this move has 100% accuracy.  During []{move:sunny-d
 10004,9,Lowers the target's evasion by two stages.,Lowers the target's [evasion]{mechanic:evasion} by two [stages]{mechanic:stage}.
 10005,9,"Removes [Light Screen]{move:light-screen}, [Reflect]{move:reflect}, and [Safeguard]{move:safeguard}.","Removes the effects of []{move:light-screen}, []{move:reflect}, and []{move:safeguard}."
 10006,9,Changes the weather to Shadow Sky for five turns.,Changes the weather to Shadow Sky for five turns.  Pokémon other than []{type:shadow} Pokémon take 1/16 their max [HP]{mechanic:hp} at the end of every turn.  This move is typeless for the purposes of []{move:weather-ball}.
+10007,9,[Gen VI placeholder],[Gen VI placeholder]
