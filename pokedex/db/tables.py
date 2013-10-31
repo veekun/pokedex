@@ -1554,6 +1554,19 @@ class Pokemon(TableBase):
 
         raise KeyError(u'No stat named %s' % stat_identifier)
 
+    def base_stat(self, stat_identifier, default=0):
+        u"""Return this Pokemon's base stat value for the given stat identifier,
+        or default if missing."""
+
+        if isinstance(stat_identifier, Stat):
+            stat_identifier = stat_identifier.identifier
+
+        for pokemon_stat in self.stats:
+            if pokemon_stat.stat.identifier == stat_identifier:
+                return pokemon_stat.base_stat
+
+        return default
+
     @property
     def better_damage_class(self):
         u"""Returns the MoveDamageClass that this Pokémon is best suited for,
