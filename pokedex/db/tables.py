@@ -1575,8 +1575,12 @@ class Pokemon(TableBase):
         If the attack stats are about equal (within 5), returns None.  The
         value None, not the damage class called 'None'.
         """
-        phys = self.stat(u'attack')
-        spec = self.stat(u'special-attack')
+
+        try:
+            phys = self.stat(u'attack')
+            spec = self.stat(u'special-attack')
+        except KeyError:
+            return None
 
         diff = phys.base_stat - spec.base_stat
 

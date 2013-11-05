@@ -551,8 +551,8 @@ This ability functions identically to []{ability:mold-breaker} and []{ability:tu
 172,9,,Raises Special Attack by two stages upon having any stat lowered.
 173,9,,Strengthens biting moves.
 174,9,,Turns the bearer's []{type:normal} moves into []{type:ice} moves.
-175,9,,Prevents allies from sleeping.
-176,9,,"Changes []{pokemon:aegislash} to Blade Forme before using a damaging move, or Shield Forme before using a status move."
+175,9,,Prevents friendly Pokémon from sleeping.
+176,9,,"Changes []{pokemon:aegislash} to Blade Forme before using a damaging move, or Shield Forme before using []{move:kings-shield}."
 177,9,,Raises []{type:flying} moves' priority by one stage.
 178,9,,Strengthens aura and pulse moves.
 179,9,,Boosts Defense while []{move:grassy-terrain} is in effect.
