@@ -1503,6 +1503,17 @@ create_translation_table('pokedex_prose', Pokedex, 'prose',
         info=dict(description=u"A longer description of the Pokédex", format='plaintext')),
 )
 
+class PokedexVersionGroup(TableBase):
+    u"""A mapping from Pokédexes to version groups in which they appear as the
+    regional dex.
+    """
+    __tablename__ = 'pokedex_version_groups'
+    __singlename__ = 'pokedex_version_group'
+    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True,
+        info=dict(description=u'The ID of the Pokédex.'))
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True,
+        info=dict(descruption=u'The ID of the version group.'))
+
 class Pokemon(TableBase):
     u"""A Pokémon.  The core to this whole mess.
 
@@ -2084,8 +2095,6 @@ class VersionGroup(TableBase):
         info=dict(description=u"This version group's unique textual identifier."))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description=u"The ID of the generation the games in this group belong to."))
-    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), nullable=True,
-        info=dict(description=u"The ID of the regional Pokédex used in this version group.  Null if not applicable."))
     order = Column(Integer, nullable=True,
         info=dict(description=u"Order for sorting. Almost by date of release, except similar versions are grouped together."))
 
@@ -2496,9 +2505,10 @@ Pokedex.region = relationship(Region,
     innerjoin=True,
     backref='pokedexes')
 Pokedex.version_groups = relationship(VersionGroup,
+    secondary=PokedexVersionGroup.__table__,
     innerjoin=True,
     order_by=VersionGroup.order.asc(),
-    backref='pokedex')
+    backref='pokedexes')
 
 
 Pokemon.all_abilities = relationship(Ability,
