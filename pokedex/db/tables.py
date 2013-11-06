@@ -1681,16 +1681,26 @@ class PokemonEvolution(TableBase):
         info=dict(description=u"The required time of day."))
     known_move_id = Column(Integer, ForeignKey('moves.id'), nullable=True,
         info=dict(description=u"The ID of the move the Pokémon must know."))
+    known_move_type_id = Column(Integer, ForeignKey('types.id'), nullable=True,
+        info=dict(description=u'The ID of the type the Pokémon must know a move of.'))
     minimum_happiness = Column(Integer, nullable=True,
         info=dict(description=u"The minimum happiness value the Pokémon must have."))
     minimum_beauty = Column(Integer, nullable=True,
         info=dict(description=u"The minimum Beauty value the Pokémon must have."))
+    minimum_affection = Column(Integer, nullable=True,
+        info=dict(description=u'The minimum number of "affection" hearts the Pokémon must have in Pokémon-Amie.'))
     relative_physical_stats = Column(Integer, nullable=True,
         info=dict(description=u"The required relation between the Pokémon's Attack and Defense stats, as sgn(atk-def)."))
     party_species_id = Column(Integer, ForeignKey('pokemon_species.id'), nullable=True,
         info=dict(description=u"The ID of the species that must be present in the party."))
+    party_type_id = Column(Integer, ForeignKey('types.id'), nullable=True,
+        info=dict(description=u'The ID of a type that at least one party member must have.'))
     trade_species_id = Column(Integer, ForeignKey('pokemon_species.id'), nullable=True,
         info=dict(description=u"The ID of the species for which this one must be traded."))
+    needs_overworld_rain = Column(Boolean, nullable=False,
+        info=dict(description=u'True iff it needs to be raining outside of battle.'))
+    turn_upside_down = Column(Boolean, nullable=False,
+        info=dict(description=u'True iff the 3DS needs to be turned upside-down as this Pokémon levels up.'))
 
 class PokemonForm(TableBase):
     u"""An individual form of a Pokémon.  This includes *every* variant (except
@@ -2583,9 +2593,13 @@ PokemonEvolution.location = relationship(Location,
     backref='triggered_evolutions')
 PokemonEvolution.known_move = relationship(Move,
     backref='triggered_evolutions')
+PokemonEvolution.known_move_type = relationship(Type,
+    primaryjoin=PokemonEvolution.known_move_type_id==Type.id)
 PokemonEvolution.party_species = relationship(PokemonSpecies,
     primaryjoin=PokemonEvolution.party_species_id==PokemonSpecies.id,
     backref='triggered_evolutions')
+PokemonEvolution.party_type = relationship(Type,
+    primaryjoin=PokemonEvolution.party_type_id==Type.id)
 PokemonEvolution.trade_species = relationship(PokemonSpecies,
     primaryjoin=PokemonEvolution.trade_species_id==PokemonSpecies.id)
 PokemonEvolution.gender = relationship(Gender,
