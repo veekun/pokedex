@@ -708,8 +708,8 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 707,klefki,,707,15,1,0,0,1,840
 708,phantump,,708,15,1,0,0,1,841
 709,trevenant,,709,15,1,0,0,1,842
-710,pumpkaboo-average,average,710,15,1,0,0,1,843
-711,gourgeist-average,average,711,15,1,0,0,1,847
+710,pumpkaboo-average,average,710,15,1,0,0,2,844
+711,gourgeist-average,average,711,15,1,0,0,2,848
 712,bergmite,,712,15,1,0,0,1,851
 713,avalugg,,713,15,1,0,0,1,852
 714,noibat,,714,15,1,0,0,1,853
@@ -842,10 +842,10 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10123,furfrou-pharaoh,pharaoh,676,15,0,0,0,7,805
 10124,meowstic-female,female,10025,15,1,0,0,2,811
 10125,aegislash-blade,blade,10026,15,1,0,0,2,815
-10126,pumpkaboo-small,small,10027,15,1,0,0,2,844
+10126,pumpkaboo-small,small,10027,15,1,0,0,1,843
 10127,pumpkaboo-large,large,10028,15,1,0,0,3,845
 10128,pumpkaboo-super,super,10029,15,1,0,0,4,846
-10129,gourgeist-small,small,10030,15,1,0,0,2,848
+10129,gourgeist-small,small,10030,15,1,0,0,1,847
 10130,gourgeist-large,large,10031,15,1,0,0,3,849
 10131,gourgeist-super,super,10032,15,1,0,0,4,850
 10132,xerneas-neutral,neutral,716,15,0,0,0,1,855
