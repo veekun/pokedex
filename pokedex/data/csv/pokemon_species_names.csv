@@ -4081,72 +4081,72 @@ pokemon_species_id,local_language_id,name,genus
 649,5,Genesect,
 649,6,Genesect,
 649,9,Genesect,Paleozoic
-650,9,Chespin,
-651,9,Quilladin,
-652,9,Chesnaught,
-653,9,Fennekin,
-654,9,Braixen,
-655,9,Delphox,
-656,9,Froakie,
-657,9,Frogadier,
-658,9,Greninja,
-659,9,Bunnelby,
-660,9,Diggersby,
-661,9,Fletchling,
-662,9,Fletchinder,
-663,9,Talonflame,
-664,9,Scatterbug,
-665,9,Spewpa,
-666,9,Vivillon,
-667,9,Litleo,
-668,9,Pyroar,
-669,9,Flabébé,
-670,9,Floette,
-671,9,Florges,
-672,9,Skiddo,
-673,9,Gogoat,
-674,9,Pancham,
-675,9,Pangoro,
-676,9,Furfrou,
-677,9,Espurr,
-678,9,Meowstic,
-679,9,Honedge,
-680,9,Doublade,
-681,9,Aegislash,
-682,9,Spritzee,
-683,9,Aromatisse,
-684,9,Swirlix,
-685,9,Slurpuff,
-686,9,Inkay,
-687,9,Malamar,
-688,9,Binacle,
-689,9,Barbaracle,
-690,9,Skrelp,
-691,9,Dragalge,
-692,9,Clauncher,
-693,9,Clawitzer,
-694,9,Helioptile,
-695,9,Heliolisk,
-696,9,Tyrunt,
-697,9,Tyrantrum,
-698,9,Amaura,
-699,9,Aurorus,
-700,9,Sylveon,
-701,9,Hawlucha,
-702,9,Dedenne,
-703,9,Carbink,
-704,9,Goomy,
-705,9,Sliggoo,
-706,9,Goodra,
-707,9,Klefki,
-708,9,Phantump,
-709,9,Trevenant,
-710,9,Pumpkaboo,
-711,9,Gourgeist,
-712,9,Bergmite,
-713,9,Avalugg,
-714,9,Noibat,
-715,9,Noivern,
-716,9,Xerneas,
-717,9,Yveltal,
-718,9,Zygarde,
+650,9,Chespin,Spiny Nut
+651,9,Quilladin,Spiny Armor
+652,9,Chesnaught,Spiny Armor
+653,9,Fennekin,Fox
+654,9,Braixen,Fox
+655,9,Delphox,Fox
+656,9,Froakie,Bubble Frog
+657,9,Frogadier,Bubble Frog
+658,9,Greninja,Ninja
+659,9,Bunnelby,Digging
+660,9,Diggersby,Digging
+661,9,Fletchling,Tiny Robin
+662,9,Fletchinder,Ember
+663,9,Talonflame,Scorching
+664,9,Scatterbug,Scatterdust
+665,9,Spewpa,Scatterdust
+666,9,Vivillon,Scale
+667,9,Litleo,Lion Cub
+668,9,Pyroar,Royal
+669,9,Flabébé,Single Bloom
+670,9,Floette,Single Bloom
+671,9,Florges,Garden
+672,9,Skiddo,Mount
+673,9,Gogoat,Mount
+674,9,Pancham,Playful
+675,9,Pangoro,Daunting
+676,9,Furfrou,Poodle
+677,9,Espurr,Restraint
+678,9,Meowstic,Constraint
+679,9,Honedge,Sword
+680,9,Doublade,Sword
+681,9,Aegislash,Royal Sword
+682,9,Spritzee,Perfume
+683,9,Aromatisse,Fragrance
+684,9,Swirlix,Cotton Candy
+685,9,Slurpuff,Meringue
+686,9,Inkay,Revolving
+687,9,Malamar,Overturning
+688,9,Binacle,Two-Handed
+689,9,Barbaracle,Collective
+690,9,Skrelp,Mock Kelp
+691,9,Dragalge,Mock Kelp
+692,9,Clauncher,Water Gun
+693,9,Clawitzer,Howitzer
+694,9,Helioptile,Generator
+695,9,Heliolisk,Generator
+696,9,Tyrunt,Royal Heir
+697,9,Tyrantrum,Despot
+698,9,Amaura,Tundra
+699,9,Aurorus,Tundra
+700,9,Sylveon,Intertwining
+701,9,Hawlucha,Wrestling
+702,9,Dedenne,Antenna
+703,9,Carbink,Jewel
+704,9,Goomy,Soft Tissue
+705,9,Sliggoo,Soft Tissue
+706,9,Goodra,Dragon
+707,9,Klefki,Key Ring
+708,9,Phantump,Stump
+709,9,Trevenant,Elder Tree
+710,9,Pumpkaboo,Pumpkin
+711,9,Gourgeist,Pumpkin
+712,9,Bergmite,Ice Chunk
+713,9,Avalugg,Iceberg
+714,9,Noibat,Sound Wave
+715,9,Noivern,Sound Wave
+716,9,Xerneas,Life
+717,9,Yveltal,Destruction
+718,9,Zygarde,Order
