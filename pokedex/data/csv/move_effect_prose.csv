@@ -1002,10 +1002,39 @@ If the user is a []{pokemon:meloetta}, it will toggle between Aria and Pirouette
 This move can hit Pokémon under the effect of []{move:bounce}, []{move:fly}, or []{move:sky-drop}.
 
 During []{move:rain-dance}, this move has 100% accuracy.  During []{move:sunny-day}, this move has 50% accuracy."
+339,9,Deals both []{type:fighting} and []{type:flying}-type damage.,Deals both []{type:fighting} and []{type:flying}-type damage.
+340,9,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.
+341,9,Uses up the user's berry.  Fails if it is not holding one.,Uses up the user's berry.  Fails if it is not holding one.
+342,9,Raises friendly []{type:grass} Pokémon's Attack and Special Attack.,Raises friendly []{type:grass} Pokémon's Attack and Special Attack.
+343,9,Lowers opponents' Speed by one stage when they enter battle.,Lowers opponents' Speed by one stage when they enter battle.
+344,9,Raises the user's Attack by two stages if it KOs the target.,Raises the user's Attack by two stages if it KOs the target.
+345,9,Adds []{type:ghost} to the target's types.,Adds []{type:ghost} to the target's types.
+346,9,Lower's the target's Attack and Special Attack by one stage.,Lower's the target's Attack and Special Attack by one stage.
+347,9,Changes []{type:normal} moves to []{type:electric} moves.,Changes []{type:normal} moves to []{type:electric} moves.
+348,9,Heals the user for half the total damage dealt to all targets.,Heals the user for half the total damage dealt to all targets.
+349,9,Adds []{type:grass} to the target's types.,Adds []{type:grass} to the target's types.
+350,9,Super-effective against []{type:water}-types.,Super-effective against []{type:water}-types.
+351,9,Lowers all targets' Attack and Special Attack by one stage.  Makes the user switch out.,Lowers all targets' Attack and Special Attack by one stage.  Makes the user switch out.
+352,9,Inverts the target's stat modifiers.,Inverts the target's stat modifiers.
+353,9,Drains 75% of the damage inflicted to heal the user.,Drains 75% of the damage inflicted to heal the user.
+354,9,Protects all friendly Pokémon from non-damaging moves.,Protects all friendly Pokémon from non-damaging moves.
+355,9,Raises friendly []{type:grass} Pokémon's Defense.,Raises friendly []{type:grass} Pokémon's Defense.
+356,9,"For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.","For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power."
+357,9,"For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power.","For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power."
+358,9,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.
+359,9,Prevents all Pokémon from fleeing or switching out during the next turn.,Prevents all Pokémon from fleeing or switching out during the next turn.
+360,9,Blocks damaging attacks and lowers attacking Pokémon's Attack by two stages on contact.  Switches Aegislash to Shield Forme.,Blocks damaging attacks and lowers attacking Pokémon's Attack by two stages on contact.  Switches Aegislash to Shield Forme.
+361,9,Lowers the target's Special Attack by one stage.,Lowers the target's Special Attack by one stage.
+362,9,Blocks damaging attacks and damages attacking Pokémon for 1/8 their max HP.,Blocks damaging attacks and damages attacking Pokémon for 1/8 their max HP.
+363,9,Raises all friendly Pokémon's Special Defense by one stage.,Raises all friendly Pokémon's Special Defense by one stage.
+364,9,"Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned.","Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned."
+365,9,Damages the target if it uses a []{type:fire} move.,Damages the target if it uses a []{type:fire} move.
+366,9,"Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by one stage.","Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by one stage."
+367,9,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.
+368,9,"For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.","For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power."
 10001,9,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move while in [hyper mode]{mechanic:hyper-mode}.
 10002,9,User receives 1/2 its HP in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 of its current [HP]{mechanic:hp} in recoil.
 10003,9,Halves HP of all Pokémon on the field.  Must recharge,"Halves [HP]{mechanic:hp} of all Pokémon on the field.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic:switch} out during that turn."
 10004,9,Lowers the target's evasion by two stages.,Lowers the target's [evasion]{mechanic:evasion} by two [stages]{mechanic:stage}.
 10005,9,"Removes [Light Screen]{move:light-screen}, [Reflect]{move:reflect}, and [Safeguard]{move:safeguard}.","Removes the effects of []{move:light-screen}, []{move:reflect}, and []{move:safeguard}."
 10006,9,Changes the weather to Shadow Sky for five turns.,Changes the weather to Shadow Sky for five turns.  Pokémon other than []{type:shadow} Pokémon take 1/16 their max [HP]{mechanic:hp} at the end of every turn.  This move is typeless for the purposes of []{move:weather-ball}.
-10007,9,[Gen VI placeholder],[Gen VI placeholder]
