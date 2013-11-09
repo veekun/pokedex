@@ -130,7 +130,7 @@ item_id,local_language_id,name
 22,6,Para-Heiler
 22,7,Antiparaliz
 22,8,Antiparalisi
-22,9,Parlyz Heal
+22,9,Paralyze Heal
 23,1,かいふくのくすり
 23,5,Guérison
 23,6,Top-Genesung
@@ -346,7 +346,7 @@ item_id,local_language_id,name
 58,6,X-Abwehr
 58,7,Defensa X
 58,8,Difesa X
-58,9,X Defend
+58,9,X Defense
 59,1,スピーダー
 59,5,Vitesse +
 59,6,X-Tempo
@@ -1336,7 +1336,7 @@ item_id,local_language_id,name
 223,6,Ewiges Eis
 223,7,Antiderretir
 223,8,Gelomai
-223,9,NeverMeltIce
+223,9,Never-Melt Ice
 224,1,のろいのおふだ
 224,5,Rune Sort
 224,6,Bannsticker
@@ -2788,7 +2788,7 @@ item_id,local_language_id,name
 465,6,Itemradar
 465,7,Zahorí
 465,8,Ricerca Str.
-465,9,Dowsing MCHN
+465,9,Dowsing Machine
 466,1,いかりまんじゅう
 466,5,Bonbon Rage
 466,6,Wutkeks
