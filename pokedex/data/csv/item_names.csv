@@ -4013,71 +4013,209 @@ item_id,local_language_id,name
 678,9,Colress MCHN
 679,9,Dropped Item
 681,9,Reveal Glass
+682,1,じゃくてんほけん
+682,5,Vulné-Assurance
 682,9,Weakness Policy
+683,1,とつげきチョッキ
+683,5,Veste de Combat
 683,9,Assault Vest
+684,1,せいれいプレート
+684,5,Plaque Pixie
+684,8,Lastraspiritello
 684,9,Pixie Plate
+685,1,とくせいカプセル
+685,5,Pilule Talent
 685,9,Ability Capsule
+686,1,ホイップポップ
+686,5,Chantibonbon
+686,8,Dolcespuma
 686,9,Whipped Dream
+687,1,においぶくろ
+687,5,Sachet Senteur
+687,8,Bustina aromi
 687,9,Sachet
 688,9,Luminous Moss
 689,9,Snowball
+690,1,ぼうじんゴーグル
+690,5,Lunettes Filtre
 690,9,Safety Goggles
+691,5,Fertibondance
 691,9,Rich Mulch
+692,5,Fertistantané
 692,9,Surprise Mulch
+693,5,Fertibérance
 693,9,Boost Mulch
 694,9,Amaze Mulch
+695,1,ゲンガナイト
+695,5,Ectoplasmite
+695,8,Gengarite
 695,9,Gengarite
+696,5,Gardevoirite
+696,8,Gardevoirite
 696,9,Gardevoirite
+697,1,デンリュウナイト
+697,5,Pharampite
+697,8,Ampharosite
 697,9,Ampharosite
+698,5,Florizarrite
+698,8,Venusaurite
 698,9,Venusaurite
+699,5,Dracaufite X
+699,8,Charizardite X
 699,9,Charizardite X
+700,5,Tortankite
+700,8,Blastoisite
 700,9,Blastoisinite
+701,5,Mewtwoïte X
 701,9,Mewtwonite X
+702,1,ミュウツナイトＹ
+702,5,Mewtwoïte Y
 702,9,Mewtwonite Y
+703,5,Braségalite
+703,8,Blazikenite
 703,9,Blazikenite
+704,1,チャーレムナイト
+704,5,Charminite
+704,8,Medichamite
 704,9,Medichamite
+705,1,ヘルガナイト
+705,5,Démolossite
 705,9,Houndoominite
+706,1,ボスゴドラナイト
+706,5,Galekingite
 706,9,Aggronite
+707,1,ジュペッタナイト
+707,5,Branettite
 707,9,Banettite
+708,5,Tyranocivite
 708,9,Tyranitarite
+709,1,ハッサムナイト
+709,5,Cizayoxite
 709,9,Scizorite
+710,5,Scarabruite
+710,8,Pinsirite
 710,9,Pinsirite
+711,1,プテラナイト
+711,5,Ptéraïte
+711,8,Aerodactylite
 711,9,Aerodactylite
+712,5,Lucarite
+712,8,Lucarite
 712,9,Lucarionite
+713,1,ユキノオナイト
+713,5,Blizzarite
+713,8,Abomasnowite
 713,9,Abomasite
+714,1,ガルーラナイト
+714,5,Kangourexite
+714,8,Kangaskhanite
 714,9,Kangaskhanite
+715,1,ギャラドスナイト
+715,5,Léviatorite
+715,8,Gyaradosite
 715,9,Gyaradosite
+716,1,アブソルナイト
+716,5,Absolite
+716,8,Absolite
 716,9,Absolite
+717,1,リザードナイトＹ
+717,5,Dracaufite Y
+717,8,Charizardite Y
 717,9,Charizardite Y
+718,1,フーディナイト
+718,5,Alakazamite
 718,9,Alakazite
+719,1,ヘラクロスナイト
+719,5,Scarhinoïte
 719,9,Heracronite
+720,1,クチートナイト
+720,5,Mysdibulite
+720,8,Mawilite
 720,9,Mawilite
+721,5,Élecsprintite
 721,9,Manectite
+722,1,ガブリアスナイト
+722,5,Carchacrokite
 722,9,Garchompite
+723,1,ロゼルのみ
+723,5,Baie Selro
 723,9,Roseli Berry
 724,9,Kee Berry
 725,9,Maranga Berry
 726,9,Bargain Ticket
+727,1,ふしぎなおきもの
+727,8,Strano ninnolo
 727,9,Strange Souvenir
+728,1,ミアレガレット
+728,5,Galette Illumis
+728,8,Pan di Lumi
 728,9,Lumiose Galette
+729,5,Fossile Mâchoire
+729,8,Fossilmascella
 729,9,Jaw Fossil
+730,5,Fossile Nageoire
+730,8,Fossilpinna
 730,9,Sail Fossil
 731,9,Fairy Gem
+732,1,たんけんこころえ
+732,5,ABC Aventure
+732,8,Guida Avventura
 732,9,Adventure Rules
+733,1,エレベータのキー
+733,5,Clé Ascenseur
+733,8,Chiave ascensore
 733,9,Elevator Key
+734,1,ホロキャスター
+734,5,Holokit
+734,8,Holovox
 734,9,Holo Caster
+735,1,カロスエンブレム
+735,5,Insigne de Kalos
+735,8,Emblema di Kalos
 735,9,Honor of Kalos
+736,5,Pierre Insolite
+736,8,Sasso suggestivo
 736,9,Intriguing Stone
+737,1,レンズケース
+737,5,Boîte Lentilles
+737,8,Portalenti
 737,9,Lens Case
+738,1,ハンサムチケット
+738,5,Ticket Beladonis
 738,9,Looker Ticket
+739,1,メガリング
+739,5,Méga-Anneau
+739,8,Megacerchio
 739,9,Mega Ring
+740,1,はつでんしょパス
+740,5,Passe Centrale
+740,8,Pass Centrale
 740,9,Power Plant Pass
 741,9,Prof's Letter
+742,1,ローラースケート
+742,5,Rollers
+742,8,Pattini
 742,9,Roller Skates
+743,1,ハスボーじょうろ
+743,5,Nénurrosoir
+743,8,Irrigalotad
 743,9,Sprinklotad
+744,1,ＴＭＶパス
+744,5,Passe TMV
+744,8,Pass TMV
 744,9,TMV Pass
+745,5,CT96
+745,8,MT96
 745,9,TM96
+746,5,CT97
+746,8,MT97
 746,9,TM97
+747,5,CT98
+747,8,MT98
 747,9,TM98
+748,5,CT99
+748,8,MT99
 748,9,TM99
+749,5,CT100
+749,8,MT100
 749,9,TM100
