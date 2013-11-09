@@ -1512,7 +1512,7 @@ class PokedexVersionGroup(TableBase):
     pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True,
         info=dict(description=u'The ID of the Pokédex.'))
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True,
-        info=dict(descruption=u'The ID of the version group.'))
+        info=dict(description=u'The ID of the version group.'))
 
 class Pokemon(TableBase):
     u"""A Pokémon.  The core to this whole mess.
@@ -2102,7 +2102,7 @@ class VersionGroup(TableBase):
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u"This version group's unique ID."))
     identifier = Column(Unicode(20), nullable=False, unique=True,
-        info=dict(description=u"This version group's unique textual identifier."))
+        info=dict(description=u"This version group's unique textual identifier.", format='identifier'))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description=u"The ID of the generation the games in this group belong to."))
     order = Column(Integer, nullable=True,
