@@ -468,7 +468,7 @@ This move cannot be used while []{move:gravity} is in effect.
 This move cannot be selected by []{move:sleep-talk}."
 157,9,Raises user's Defense by one stage.,"Raises user's [Defense]{mechanic:defense} by one [stage]{mechanic:stage}.
 
-After this move is used, the power of []{move:ice-ball} and []{move:roll-out} are doubled until the user leaves the [field]{mechanic:field}."
+After this move is used, the power of []{move:ice-ball} and []{move:rollout} are doubled until the user leaves the [field]{mechanic:field}."
 159,9,Can only be used as the first move after the user enters battle.  Causes the target to flinch.,Inflicts [regular damage]{mechanic:regular-damage}.  Causes the target to []{mechanic:flinch}.  Can only be used on the user's first turn after entering the [field]{mechanic:field}.
 160,9,Forced to use this move for several turns.  Pokémon cannot fall asleep in that time.,"Inflicts [regular damage]{mechanic:regular-damage}.  User is forced to use this move for 2–5 turns, selected at random.  All Pokémon on the [field]{mechanic:field} wake up, and none can fall to [sleep]{mechanic:sleep} until the lock-in ends.
 
