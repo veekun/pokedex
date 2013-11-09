@@ -16,7 +16,7 @@ In Generation III, Deoxys's form depends on the game: Normal Forme in Ruby and S
 423,9,Forms only affect appearance.  A form is determined before a wild encounter based on whether the battle is in western or eastern Sinnoh and cannot be changed.
 479,9,"Forms have different signature moves and types, and the appliance forms' stats are different from the normal form's.  In Generation IV, all forms are Electric/Ghost type.
 
-When switching forms, the old signature move (if any) is removed and the new one must be learned, overwriting another move if need be, or the switch will be cancelled; however, it can be forgotten while in the new form.  If Rotom only knows its signature move upon reverting to its default form, it learns []{move:thundershock} to avoid having no moves.
+When switching forms, the old signature move (if any) is removed and the new one must be learned, overwriting another move if need be, or the switch will be cancelled; however, it can be forgotten while in the new form.  If Rotom only knows its signature move upon reverting to its default form, it learns []{move:thunder-shock} to avoid having no moves.
 
 Appliances for switching Rotom's form can be found in the following locations, depending on the game:
 
