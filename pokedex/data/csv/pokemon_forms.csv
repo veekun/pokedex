@@ -841,7 +841,7 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10122,furfrou-kabuki,kabuki,676,15,0,0,0,6,804
 10123,furfrou-pharaoh,pharaoh,676,15,0,0,0,7,805
 10124,meowstic-female,female,10025,15,1,0,0,2,811
-10125,aegislash-blade,blade,10026,15,1,0,0,2,815
+10125,aegislash-blade,blade,10026,15,1,1,0,2,815
 10126,pumpkaboo-small,small,10027,15,1,0,0,1,843
 10127,pumpkaboo-large,large,10028,15,1,0,0,3,845
 10128,pumpkaboo-super,super,10029,15,1,0,0,4,846
