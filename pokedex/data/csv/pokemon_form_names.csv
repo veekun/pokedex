@@ -1297,74 +1297,143 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 648,9,Aria Forme,Aria Meloetta
 649,5,,
 649,9,,
+650,5,,
 650,9,,
+651,5,,
 651,9,,
+652,5,,
 652,9,,
+653,5,,
 653,9,,
+654,5,,
 654,9,,
+655,5,,
 655,9,,
+656,5,,
 656,9,,
+657,5,,
 657,9,,
+658,5,,
 658,9,,
+659,5,,
 659,9,,
+660,5,,
 660,9,,
+661,5,,
 661,9,,
+662,5,,
 662,9,,
+663,5,,
 663,9,,
+664,5,,
 664,9,,
+665,5,,
 665,9,,
+666,5,Motif Floraison,Prismillon Floraison
 666,9,Meadow Pattern,Meadow Vivillon
+667,5,,
 667,9,,
+668,5,,
 668,9,,
+669,5,Fleur Rouge,Flabébé Rouge
 669,9,Red Flower,Red Flabébé
+670,5,Fleur Rouge,Floette Rouge
 670,9,Red Flower,Red Floette
+671,5,Fleur Rouge,Florges Rouge
 671,9,Red Flower,Red Florges
+672,5,,
 672,9,,
+673,5,,
 673,9,,
+674,5,,
 674,9,,
+675,5,,
 675,9,,
+676,5,,
 676,9,,
+677,5,,
 677,9,,
+678,5,Mâle,Mistigrix Mâle
 678,9,Male,Male Meowstic
+679,5,,
 679,9,,
+680,5,,
 680,9,,
+681,5,Forme Parade,Exagide Parade
 681,9,Shield Forme,Shield Aegislash
+682,5,,
 682,9,,
+683,5,,
 683,9,,
+684,5,,
 684,9,,
+685,5,,
 685,9,,
+686,5,,
 686,9,,
+687,5,,
 687,9,,
+688,5,,
 688,9,,
+689,5,,
 689,9,,
+690,5,,
 690,9,,
+691,5,,
 691,9,,
+692,5,,
 692,9,,
+693,5,,
 693,9,,
+694,5,,
 694,9,,
+695,5,,
 695,9,,
+696,5,,
 696,9,,
+697,5,,
 697,9,,
+698,5,,
 698,9,,
+699,5,,
 699,9,,
+700,5,,
 700,9,,
+701,5,,
 701,9,,
+702,5,,
 702,9,,
+703,5,,
 703,9,,
+704,5,,
 704,9,,
+705,5,,
 705,9,,
+706,5,,
 706,9,,
+707,5,,
 707,9,,
+708,5,,
 708,9,,
+709,5,,
 709,9,,
+710,5,Taille Normale,Pitrouille Normal
 710,9,Average Size,Average Pumpkaboo
+711,5,Taille Normale,Banshitrouye Normal
 711,9,Average Size,Average Gourgeist
+712,5,,
 712,9,,
+713,5,,
 713,9,,
+714,5,,
 714,9,,
+715,5,,
 715,9,,
+716,5,Mode Déchaîné,Xerneas Déchaîné
 716,9,Active Mode,Active Xerneas
+717,5,,
 717,9,,
+718,5,,
 718,9,,
 10001,5,B,Zarbi B
 10001,9,B,Unown B
@@ -1534,79 +1603,155 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 10083,9,White Kyurem,White Kyurem
 10084,5,Aspect Décidé,Keldeo Décidé
 10084,9,Resolute Form,Resolute Keldeo
+10085,5,Fée,Arceus Fée
 10085,9,Fairy Type,Fairy Arceus
+10086,5,Motif Blizzard,Prismillon Blizzard
 10086,9,Icy Snow Pattern,Icy Snow Vivillon
+10087,5,Motif Banquise,Prismillon Banquise
 10087,9,Polar Pattern,Polar Vivillon
+10088,5,Motif Glace,Prismillon Glace
 10088,9,Tundra Pattern,Tundra Vivillon
+10089,5,Motif Continent,Prismillon Continent
 10089,9,Continental Pattern,Continental Vivillon
+10090,5,Motif Verdure,Prismillon Verdure
 10090,9,Garden Pattern,Garden Vivillon
+10091,5,Motif Monarchie,Prismillon Monarchie
 10091,9,Elegant Pattern,Elegant Vivillon
+10092,5,Motif Métropole,Prismillon Métropole
 10092,9,Modern Pattern,Modern Vivillon
+10093,5,Motif Rivage,Prismillon Rivage
 10093,9,Marine Pattern,Marine Vivillon
+10094,5,Motif Archipel,Prismillon Archipel
 10094,9,Archipelago Pattern,Archipelago Vivillon
+10095,5,Motif Sécheresse,Prismillon Sécheresse
 10095,9,High Plains Pattern,High Plains Vivillon
+10096,5,Motif Sable,Prismillon Sable
 10096,9,Sandstorm Pattern,Sandstorm Vivillon
+10097,5,Motif Delta,Prismillon Delta
 10097,9,River Pattern,River Vivillon
+10098,5,Motif Cyclone,Prismillon Cyclone
 10098,9,Monsoon Pattern,Monsoon Vivillon
+10099,5,Motif Mangrove,Prismillon Mangrove
 10099,9,Savanna Pattern,Savanna Vivillon
+10100,5,Motif Zénith,Prismillon Zénith
 10100,9,Sun Pattern,Sun Vivillon
+10101,5,Motif Soleil Levant,Prismillon Soleil Levant
 10101,9,Ocean Pattern,Ocean Vivillon
+10102,5,Motif Jungle,Prismillon Jungle
 10102,9,Jungle Pattern,Jungle Vivillon
+10103,5,Fleur Jaune,Flabébé Jaune
 10103,9,Yellow Flower,Yellow Flabébé
+10104,5,Fleur Orange,Flabébé Orange
 10104,9,Orange Flower,Orange Flabébé
+10105,5,Fleur Bleue,Flabébé Bleu
 10105,9,Blue Flower,Blue Flabébé
+10106,5,Fleur Blanche,Flabébé Blanc
 10106,9,White Flower,White Flabébé
+10107,5,Fleur Jaune,Floette Jaune
 10107,9,Yellow Flower,Yellow Floette
+10108,5,Fleur Orange,Floette Orange
 10108,9,Orange Flower,Orange Floette
+10109,5,Fleur Bleue,Floette Bleu
 10109,9,Blue Flower,Blue Floette
+10110,5,Fleur Blanche,Floette Blanc
 10110,9,White Flower,White Floette
+10111,5,Fleur Jaune,Florges Jaune
 10111,9,Yellow Flower,Yellow Florges
+10112,5,Fleur Orange,Florges Orange
 10112,9,Orange Flower,Orange Florges
+10113,5,Fleur Bleue,Florges Bleu
 10113,9,Blue Flower,Blue Florges
+10114,5,Fleur Blanche,Florges Blanc
 10114,9,White Flower,White Florges
+10115,5,Coupe Cœur,Couafarel Cœur
 10115,9,Heart Trim,Heart Furfrou
+10116,5,Coupe Étoile,Couafarel Étoile
 10116,9,Star Trim,Star Furfrou
+10117,5,Couple Diamant,Couafarel Diamant
 10117,9,Diamond Trim,Diamond Furfrou
+10118,5,Coupe Demoiselle,Couafarel Demoiselle
 10118,9,Debutante Trim,Debutante Furfrou
+10119,5,Coupe Madame,Couafarel Madame
 10119,9,Matron Trim,Matron Furfrou
+10120,5,Couple Monsieur,Couafarel Monsieur
 10120,9,Dandy Trim,Dandy Furfrou
+10121,5,Coupe Reine,Couafarel Reine
 10121,9,La Reine Trim,La Reine Furfrou
+10122,5,Coupe Kabuki,Couafarel Kabuki
 10122,9,Kabuki Trim,Kabuki Furfrou
+10123,5,Coupe Pharaon,Couafarel Pharaon
 10123,9,Pharaoh Trim,Pharaoh Furfrou
+10124,5,Femelle,Mistigrix Femelle
 10124,9,Female,Female Meowstic
+10125,5,Forme Assaut,Exagide Assaut
 10125,9,Blade Forme,Blade Aegislash
+10126,5,Taille Mini,Pitrouille Mini
 10126,9,Small Size,Small Pumpkaboo
+10127,5,Taille Maxi,Pitrouille Maxi
 10127,9,Large Size,Large Pumpkaboo
+10128,5,Taille Ultra,Pitrouille Ultra
 10128,9,Super Size,Super Pumpkaboo
+10129,5,Taille Mini,Banshitrouye Mini
 10129,9,Small Size,Small Gourgeist
+10130,5,Taille Maxi,Banshitrouye Maxi
 10130,9,Large Size,Large Gourgeist
+10131,5,Taille Ultra,Banshitrouye Ultra
 10131,9,Super Size,Super Gourgeist
+10132,5,Mode Paisible,Xerneas Paisible
 10132,9,Neutral Mode,Neutral Xerneas
+10133,5,Méga-Évolution,Méga-Florizarre
 10133,9,Mega Evolution,Mega Venusaur
+10134,5,Méga-Évolution X,Méga-Dracaufeu X
 10134,9,Mega Evolution X,Mega Charizard X
+10135,5,Méga-Évolution Y,Méga-Dracaufeu Y
 10135,9,Mega Evolution Y,Mega Charizard Y
+10136,5,Méga-Évolution,Méga-Tortank
 10136,9,Mega Evolution,Mega Blastoise
+10137,5,Méga-Évolution,Méga-Alakazam
 10137,9,Mega Evolution,Mega Alakazam
+10138,5,Méga-Évolution,Méga-Ectoplasma
 10138,9,Mega Evolution,Mega Gengar
+10139,5,Méga-Évolution,Méga-Kangourex
 10139,9,Mega Evolution,Mega Kangaskhan
+10140,5,Méga-Évolution,Méga-Scarabrute
 10140,9,Mega Evolution,Mega Pinsir
+10141,5,Méga-Évolution,Méga-Léviator
 10141,9,Mega Evolution,Mega Gyarados
+10142,5,Méga-Évolution,Méga-Ptéra
 10142,9,Mega Evolution,Mega Aerodactyl
+10143,5,Méga-Évolution X,Méga-Mewtwo X
 10143,9,Mega Evolution X,Mega Mewtwo X
+10144,5,Méga-Évolution Y,Méga-Mewtwo Y
 10144,9,Mega Evolution Y,Mega Mewtwo Y
+10145,5,Méga-Évolution,Méga-Pharamp
 10145,9,Mega Evolution,Mega Ampharos
+10146,5,Méga-Évolution,Méga-Cizayox
 10146,9,Mega Evolution,Mega Scizor
+10147,5,Méga-Évolution,Méga-Scarhino
 10147,9,Mega Evolution,Mega Heracross
+10148,5,Méga-Évolution,Méga-Démolosse
 10148,9,Mega Evolution,Mega Houndoom
+10149,5,Méga-Évolution,Méga-Tyranocif
 10149,9,Mega Evolution,Mega Tyranitar
+10150,5,Méga-Évolution,Méga-Braségali
 10150,9,Mega Evolution,Mega Blaziken
+10151,5,Méga-Évolution,Méga-Gardevoir
 10151,9,Mega Evolution,Mega Gardevoir
+10152,5,Méga-Évolution,Méga-Mysdibule
 10152,9,Mega Evolution,Mega Mawile
+10153,5,Méga-Évolution,Méga-Galeking
 10153,9,Mega Evolution,Mega Aggron
+10154,5,Méga-Évolution,Méga-Charmina
 10154,9,Mega Evolution,Mega Medicham
+10155,5,Méga-Évolution,Méga-Élecsprint
 10155,9,Mega Evolution,Mega Manectric
+10156,5,Méga-Évolution,Méga-Branette
 10156,9,Mega Evolution,Mega Banette
+10157,5,Méga-Évolution,Méga-Absol
 10157,9,Mega Evolution,Mega Absol
+10158,5,Méga-Évolution,Méga-Carchacrok
 10158,9,Mega Evolution,Mega Garchomp
+10159,5,Méga-Évolution,Méga-Lucario
 10159,9,Mega Evolution,Mega Lucario
+10160,5,Méga-Évolution,Méga-Blizzaroi
 10160,9,Mega Evolution,Mega Abomasnow

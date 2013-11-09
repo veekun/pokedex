@@ -3353,53 +3353,206 @@ move_id,local_language_id,name
 559,7,Rayo Fusión
 559,8,Incrotuono
 559,9,Fusion Bolt
+560,1,フライングプレス
+560,5,Flying Press
+560,8,Schiacciatuffo
 560,9,Flying Press
+561,1,たたみがえし
+561,5,Tatamigaeshi
+561,8,Ribaltappeto
 561,9,Mat Block
+562,1,ゲップ
+562,5,Éructation
 562,9,Belch
+563,1,たがやす
+563,5,Fertilisation
+563,8,Aracampo
 563,9,Rototiller
+564,1,ねばねばネット
+564,5,Toile Gluante
+564,8,Rete Vischiosa
 564,9,Sticky Web
+565,1,とどめばり
+565,5,Dard Mortel
+565,8,Pungiglione
 565,9,Fell Stinger
+566,1,ゴーストダイブ
+566,5,Hantise
+566,8,Spettrotuffo
 566,9,Phantom Force
+567,1,ハロウィン
+567,5,Halloween
+567,8,Halloween
 567,9,Trick-or-Treat
+568,1,おたけび
+568,5,Râle Mâle
+568,8,Urlo
 568,9,Noble Roar
+569,1,プラズマシャワー
+569,5,DélugePlasmique
 569,9,Ion Deluge
+570,1,パラボラチャージ
+570,5,Parabocharge
+570,8,Caricaparabola
 570,9,Parabolic Charge
+571,1,もりののろい
+571,5,Maléfice Sylvain
+571,8,Boscomalocchio
 571,9,Forest's Curse
+572,1,はなふぶき
+572,5,Tempête Florale
+572,6,Blühenwirbel
+572,8,Fiortempesta
 572,9,Petal Blizzard
+573,1,フリーズドライ
+573,5,Lyophilisation
+573,8,Liofilizzazione
 573,9,Freeze-Dry
+574,1,チャームボイス
+574,5,Voix Enjôleuse
+574,8,Incantavoce
 574,9,Disarming Voice
+575,1,すてゼリフ
+575,5,Dernier Mot
+575,8,Monito
 575,9,Parting Shot
+576,1,ひっくりかえす
+576,5,Renversement
+576,6,Invertigo
+576,8,Sottosopra
 576,9,Topsy-Turvy
+577,1,ドレインキッス
+577,5,Vampibaiser
+577,8,Assorbibacio
 577,9,Draining Kiss
+578,1,トリックガード
+578,5,Vigilance
+578,8,Truccodifesa
 578,9,Crafty Shield
+579,1,フラワーガード
+579,5,Garde Florale
+579,8,Fiordifesa
 579,9,Flower Shield
+580,1,グラスフィールド
+580,5,Champ Herbu
+580,8,Campo Erboso
 580,9,Grassy Terrain
+581,1,ミストフィールド
+581,5,Champ Brumeux
+581,8,Campo Nebbioso
 581,9,Misty Terrain
+582,1,そうでん
+582,5,Électrisation
+582,8,Elettrocontagio
 582,9,Electrify
+583,1,じゃれつく
+583,5,Câlinerie
+583,6,Knuddler
+583,8,Carineria
 583,9,Play Rough
+584,1,ようせいのかぜ
+584,5,Vent Féérique
+584,6,Feenbrise
+584,8,Vento di Fata
 584,9,Fairy Wind
+585,1,ムーンフォース
+585,5,Pouvoir Lunaire
+585,8,Forza Lunare
 585,9,Moonblast
+586,1,ばくおんぱ
+586,5,Bang Sonique
+586,8,Ondaboato
 586,9,Boomburst
+587,1,フェアリーロック
+587,5,Verrou Enchanté
+587,8,Blocco Fatato
 587,9,Fairy Lock
+588,1,キングシールド
+588,5,Bouclier Royal
+588,8,Scudo Reale
 588,9,King's Shield
+589,1,なかよくする
+589,5,Camaraderie
+589,6,Kameradschaft
+589,8,Simpatia
 589,9,Play Nice
+590,1,ないしょばなし
+590,5,Confidence
+590,8,Confidenza
 590,9,Confide
+594,1,みずしゅりけん
+594,5,Sheauriken
+594,6,Wasser Shuriken
+594,7,Shuriken de Agua
+594,8,Acqualame
 594,9,Water Shuriken
+595,1,マジカルフレイム
+595,5,Feu Ensorcelé
+595,8,Magifiamma
 595,9,Mystical Fire
+596,1,ニードルガード
+596,5,Pico-Défense
+596,6,Scutzstacheln
+596,8,Agodifesa
 596,9,Spiky Shield
+597,1,アロマミスト
+597,5,Brume Capiteuse
+597,8,Nebularoma
 597,9,Aromatic Mist
+598,1,かいでんぱ
+598,5,Ondes Étranges
+598,8,Elettromistero
 598,9,Eerie Impulse
+599,1,ベノムトラップ
+599,5,Piège Venin
+599,8,Velenotrappola
 599,9,Venom Drench
+600,1,ふんじん
+600,5,Nuée de Poudre
 600,9,Powder
+601,1,ジオコントロール
+601,5,Géo-Contrôle
+601,8,Geocontrollo
 601,9,Geomancy
+602,1,じばそうさ
+602,5,Magné-Contrôle
 602,9,Magnetic Flux
+604,1,エレキフィールド
+604,5,Champ Électrifié
+604,8,Campo Elettrico
 604,9,Electric Terrain
+605,1,マジカルシャイン
+605,5,Éclat Magique
+605,6,Zauberschein
+605,8,Magibrillio
 605,9,Dazzling Gleam
+608,1,つぶらなひとみ
+608,5,Regard Touchant
+608,6,Kulleraugen
+608,8,Occhioni Teneri
 608,9,Baby-Doll Eyes
+609,1,ほっぺすりすり
+609,5,Frotte-Frimousse
+609,6,Wangenrubbler
+609,8,Elettrococcola
 609,9,Nuzzle
+611,1,まとわりつく
+611,5,Harcèlement
+611,6,Plage
+611,8,Assillo
 611,9,Infestation
+612,1,グロウパンチ
+612,5,Poing Boost
+612,6,Stiegerungshieb
+612,8,Crescipugno
 612,9,Power-Up Punch
+613,1,デスウイング
+613,5,Mort-Ailes
+613,8,Ali del Fato
 613,9,Oblivion Wing
+616,1,グランドフォース
+616,5,Force Chtonienne
+616,8,Forza Tellurica
 616,9,Land's Wrath
 10001,1,ダークラッシュ
 10001,5,Charge Noire
