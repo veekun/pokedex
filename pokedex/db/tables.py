@@ -130,7 +130,7 @@ create_translation_table('ability_names', Ability, 'names',
         info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 create_translation_table('ability_prose', Ability, 'prose',
-    effect = Column(Unicode(5120), nullable=True,
+    effect = Column(Unicode(4000), nullable=True,
         info=dict(description="A detailed description of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
     short_effect = Column(Unicode(512), nullable=True,
         info=dict(description="A short summary of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
@@ -347,7 +347,7 @@ class ConquestMoveEffect(TableBase):
 create_translation_table('conquest_move_effect_prose', ConquestMoveEffect, 'prose',
     short_effect = Column(Unicode(256), nullable=True,
         info=dict(description="A short summary of the effect", format='markdown')),
-    effect = Column(Unicode(5120), nullable=True,
+    effect = Column(Unicode(1024), nullable=True,
         info=dict(description="A detailed description of the effect", format='markdown')),
 )
 
@@ -920,7 +920,7 @@ create_translation_table('item_names', Item, 'names',
 create_translation_table('item_prose', Item, 'prose',
     short_effect = Column(Unicode(256), nullable=True,
         info=dict(description="A short summary of the effect", format='markdown', string_getter=markdown.MarkdownString)),
-    effect = Column(Unicode(5120), nullable=True,
+    effect = Column(Unicode(4000), nullable=True,
         info=dict(description=u"Detailed description of the item's effect.", format='markdown', string_getter=markdown.MarkdownString)),
 )
 create_translation_table('item_flavor_summaries', Item, 'flavor_summaries',
@@ -1219,7 +1219,7 @@ class MoveEffect(TableBase):
 create_translation_table('move_effect_prose', MoveEffect, 'prose',
     short_effect = Column(Unicode(256), nullable=True,
         info=dict(description="A short summary of the effect", format='markdown')),
-    effect = Column(Unicode(5120), nullable=True,
+    effect = Column(Unicode(4000), nullable=True,
         info=dict(description="A detailed description of the effect", format='markdown')),
 )
 
