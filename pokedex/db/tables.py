@@ -38,7 +38,7 @@ from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.interfaces import AttributeExtension
 from sqlalchemy.sql import and_, or_
 from sqlalchemy.schema import ColumnDefault
-from sqlalchemy.types import *
+from sqlalchemy.types import Boolean, Enum, Integer, SmallInteger, Unicode
 
 from pokedex.db import markdown, multilang
 
