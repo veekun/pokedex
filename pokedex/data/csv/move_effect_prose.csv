@@ -1005,11 +1005,11 @@ During []{move:rain-dance}, this move has 100% accuracy.  During []{move:sunny-d
 339,9,Deals both []{type:fighting} and []{type:flying}-type damage.,Deals both []{type:fighting} and []{type:flying}-type damage.
 340,9,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.
 341,9,Uses up the user's berry.  Fails if it is not holding one.,Uses up the user's berry.  Fails if it is not holding one.
-342,9,Raises friendly []{type:grass} Pokémon's Attack and Special Attack.,Raises friendly []{type:grass} Pokémon's Attack and Special Attack.
+342,9,Raises the Attack and Special Attack of all []{type:grass} Pokémon in battle.,Raises the Attack and Special Attack of all []{type:grass} Pokémon in battle
 343,9,Lowers opponents' Speed by one stage when they enter battle.,Lowers opponents' Speed by one stage when they enter battle.
 344,9,Raises the user's Attack by two stages if it KOs the target.,Raises the user's Attack by two stages if it KOs the target.
 345,9,Adds []{type:ghost} to the target's types.,Adds []{type:ghost} to the target's types.
-346,9,Lower's the target's Attack and Special Attack by one stage.,Lower's the target's Attack and Special Attack by one stage.
+346,9,Lowers the target's Attack and Special Attack by one stage.,Lowers the target's Attack and Special Attack by one stage.
 347,9,Changes []{type:normal} moves to []{type:electric} moves.,Changes []{type:normal} moves to []{type:electric} moves.
 348,9,Heals the user for half the total damage dealt to all targets.,Heals the user for half the total damage dealt to all targets.
 349,9,Adds []{type:grass} to the target's types.,Adds []{type:grass} to the target's types.
@@ -1018,7 +1018,7 @@ During []{move:rain-dance}, this move has 100% accuracy.  During []{move:sunny-d
 352,9,Inverts the target's stat modifiers.,Inverts the target's stat modifiers.
 353,9,Drains 75% of the damage inflicted to heal the user.,Drains 75% of the damage inflicted to heal the user.
 354,9,Protects all friendly Pokémon from non-damaging moves.,Protects all friendly Pokémon from non-damaging moves.
-355,9,Raises friendly []{type:grass} Pokémon's Defense.,Raises friendly []{type:grass} Pokémon's Defense.
+355,9,Raises the Defense of all []{type:grass} Pokémon in battle,Raises the Defense of all []{type:grass} Pokémon in battle..
 356,9,"For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.","For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power."
 357,9,"For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power.","For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power."
 358,9,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.
@@ -1026,10 +1026,10 @@ During []{move:rain-dance}, this move has 100% accuracy.  During []{move:sunny-d
 360,9,Blocks damaging attacks and lowers attacking Pokémon's Attack by two stages on contact.  Switches Aegislash to Shield Forme.,Blocks damaging attacks and lowers attacking Pokémon's Attack by two stages on contact.  Switches Aegislash to Shield Forme.
 361,9,Lowers the target's Special Attack by one stage.,Lowers the target's Special Attack by one stage.
 362,9,Blocks damaging attacks and damages attacking Pokémon for 1/8 their max HP.,Blocks damaging attacks and damages attacking Pokémon for 1/8 their max HP.
-363,9,Raises all friendly Pokémon's Special Defense by one stage.,Raises all friendly Pokémon's Special Defense by one stage.
+363,9,Raises a selected ally's Special Defense by one stage.,Raises a selected ally's Special Defense by one stage.
 364,9,"Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned.","Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned."
 365,9,Damages the target if it uses a []{type:fire} move.,Damages the target if it uses a []{type:fire} move.
-366,9,"Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by one stage.","Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by one stage."
+366,9,"Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by two stages.","Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by two stages."
 367,9,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.
 368,9,"For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.","For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power."
 10001,9,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move while in [hyper mode]{mechanic:hyper-mode}.
