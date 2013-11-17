@@ -479,7 +479,7 @@ This counts as an extra effect for the purposes of []{ability:shield-dust}.  Thi
 This ability does not take effect when a battle ends.",Heals for 1/3 max [HP]{mechanic:hp} upon switching out.
 145,9,"This Pokémon's [Defense]{mechanic:defense} cannot be [lowered]{mechanic:stat-modifiers} by other Pokémon.
 
-This Pokémon can still be passed negative Attack modifiers through []{move:heart-swap} or []{move:guard-swap}.",Protects against [Defense]{mechanic:defense} drops.
+This Pokémon can still be passed negative Defense modifiers through []{move:heart-swap} or []{move:guard-swap}.",Protects against [Defense]{mechanic:defense} drops.
 146,9,"This Pokémon's [Speed]{mechanic:speed} is doubled during a [sandstorm]{mechanic:sandstorm}, and it does not take sandstorm damage, regardless of type.",Doubles [Speed]{mechanic:speed} during a [sandstorm]{mechanic:sandstorm}.  Protects against sandstorm damage.
 147,9,Non-damaging moves have exactly 50% base [accuracy]{mechanic:accuracy} against this Pokémon.,Lowers incoming non-damaging moves' base [accuracy]{mechanic:accuracy} to exactly 50%.
 148,9,"This Pokémon's moves have 1.3× their power when it moves last in a turn.
