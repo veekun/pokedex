@@ -546,7 +546,7 @@ This ability functions identically to []{ability:mold-breaker} and []{ability:tu
 167,9,"Restores HP upon eating a Berry, in addition to the Berry's effect.","Restores HP upon eating a Berry, in addition to the Berry's effect."
 168,9,Changes the bearer's type to match each move it uses.,Changes the bearer's type to match each move it uses.
 169,9,Halves damage from physical attacks.,Halves damage from physical attacks.
-170,9,Steals the target's held item when the bearer uses a contact move.,Steals the target's held item when the bearer uses a contact move.
+170,9,Steals the target's held item when the bearer uses a damaging move.,Steals the target's held item when the bearer uses a damaging move.
 171,9,"Protects against bullet, ball, and bomb-based moves.","Protects against bullet, ball, and bomb-based moves."
 172,9,Raises Special Attack by two stages upon having any stat lowered.,Raises Special Attack by two stages upon having any stat lowered.
 173,9,Strengthens biting moves to 1.5× their power.,Strengthens biting moves to 1.5× their power.
