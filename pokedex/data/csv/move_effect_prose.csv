@@ -563,7 +563,7 @@ Neither the user nor the target can recover its item with []{move:recycle}.
 This move cannot be selected by []{move:assist} or []{move:metronome}."
 179,9,Copies the target's ability.,"User's ability is replaced with the target's until the user leaves the [field]{mechanic:field}.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
 
-If the target has []{ability:wonder-guard}, this move will [fail]{mechanic:fail}.
+If the target has []{ability:wonder-guard}, []{ability:multitype}, or []{ability:stance-change}, this move will [fail]{mechanic:fail}.
 
 This move cannot be copied by []{move:mirror-move}."
 180,9,User will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will be healed for half its max [HP]{mechanic:hp}.  If the user is [switched out]{mechanic:switched-out}, its replacement will be healed instead for half of the user's max HP.  If the user [faint]{mechanic:faint}s or is forcefully switched by []{move:roar} or []{move:whirlwind}, this effect will not activate."
