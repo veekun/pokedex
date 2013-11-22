@@ -43,7 +43,7 @@ Has a 3/8 chance each to hit 2 or 3 times, and a 1/8 chance each to hit 4 or 5 t
 31,9,User's type changes to the type of one of its moves at random.,"User's [type]{mechanic:type} changes to the [type]{mechanic:type} of one of its moves, selected at random.  []{move:hidden-power} and []{move:weather-ball} are treated as []{type:normal}.  Only moves with a different [type]{mechanic:type} are eligible, and []{move:curse} is never eligible.  If the user has no suitable moves, this move will [fail]{mechanic:fail}."
 32,9,Has a $effect_chance% chance to make the target flinch.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to make the target []{mechanic:flinch}.
 33,9,Heals the user by half its max HP.,Heals the user for half its max [HP]{mechanic:hp}.
-34,9,"Badly poisons the target, inflicting more damage every turn.",[Badly poisons]{mechanic:badly-poisons} the target.
+34,9,"Badly poisons the target, inflicting more damage every turn.",[Badly poisons]{mechanic:badly-poisons} the target.  Never misses when used by a []{type:poison}-type Pokémon.
 35,9,Scatters money on the ground worth five times the user's level.,"Inflicts [regular damage]{mechanic:regular-damage}.  After the battle ends, the winner receives five times the user's level in extra money for each time this move was used."
 36,9,Reduces damage from special attacks by 50% for five turns.,"Erects a barrier around the user's side of the field that reduces damage from [special]{mechanic:special} attacks by half for five turns.  In double battles, the reduction is 1/3.  [Critical hit]{mechanic:critical-hit}s are not affected by the barrier.
 
@@ -511,18 +511,21 @@ If the user's ally [switches out]{mechanic:switches-out}, opposing Pokémon may 
 This move cannot be selected by []{move:assist} or []{move:metronome}."
 174,9,Uses a move which depends upon the terrain.,"Uses another move chosen according to the terrain.
 
-Terrain        | Selected move
--------------- | ------------------
-Building       | []{move:tri-attack}
-Cave           | []{move:rock-slide}
-Deep water     | []{move:hydro-pump}
-Desert         | []{move:earthquake}
-Grass          | []{move:seed-bomb}
-Mountain       | []{move:rock-slide}
-Road           | []{move:earthquake}
-Shallow water  | []{move:hydro-pump}
-Snow           | []{move:blizzard}
-Tall grass     | []{move:seed-bomb}
+Terrain                   | Selected move
+------------------------- | ------------------
+Building                  | []{move:tri-attack}
+Cave                      | []{move:rock-slide}
+Deep water                | []{move:hydro-pump}
+Desert                    | []{move:earthquake}
+Grass                     | []{move:seed-bomb}
+Mountain                  | []{move:rock-slide}
+Road                      | []{move:earthquake}
+Shallow water             | []{move:hydro-pump}
+Snow                      | []{move:blizzard}
+Tall grass                | []{move:seed-bomb}
+[]{move:electric-terrain} | []{move:thunderbolt}
+[]{move:grassy-terrain}   | []{move:energy-ball}
+[]{move:misty-terrain}    | []{move:moonblast}
 
 In Pokémon Battle Revolution:
 
@@ -566,7 +569,7 @@ This move cannot be copied by []{move:mirror-move}."
 180,9,User will recover half its max HP at the end of the next turn.,"At the end of the next turn, user will be healed for half its max [HP]{mechanic:hp}.  If the user is [switched out]{mechanic:switched-out}, its replacement will be healed instead for half of the user's max HP.  If the user [faint]{mechanic:faint}s or is forcefully switched by []{move:roar} or []{move:whirlwind}, this effect will not activate."
 181,9,Randomly selects and uses one of the trainer's other Pokémon's moves.,"Uses a move from another Pokémon in the user's party, both selected at random.  Moves from fainted Pokémon can be used.  If there are no eligible Pokémon or moves, this move will [fail]{mechanic:fail}.
 
-This move will not select []{move:assist}, []{move:chatter}, []{move:circle-throw}, []{move:copycat}, []{move:counter}, []{move:covet}, []{move:destiny-bond}, []{move:detect}, []{move:dragon-tail}, []{move:endure}, []{move:feint}, []{move:focus-punch}, []{move:follow-me}, []{move:helping-hand}, []{move:me-first}, []{move:metronome}, []{move:mimic}, []{move:mirror-coat}, []{move:mirror-move}, []{move:protect}, []{move:quick-guard}, []{move:sketch}, []{move:sleep-talk}, []{move:snatch}, []{move:struggle}, []{move:switcheroo}, []{move:thief}, []{move:trick}, or []{move:wide-guard}.
+This move will not select []{move:assist}, []{move:chatter}, []{move:circle-throw}, []{move:copycat}, []{move:counter}, []{move:covet}, []{move:destiny-bond}, []{move:detect}, []{move:dig}, []{move:dive}, []{move:dragon-tail}, []{move:endure}, []{move:feint}, []{move:fly} []{move:focus-punch}, []{move:follow-me}, []{move:helping-hand}, []{move:me-first}, []{move:metronome}, []{move:mimic}, []{move:mirror-coat}, []{move:mirror-move}, []{move:phantom-force} []{move:protect}, []{move:quick-guard}, []{move:roar} []{move:shadow-force}, []{move:sketch}, []{move:sleep-talk}, []{move:snatch}, []{move:struggle}, []{move:switcheroo}, []{move:thief}, []{move:trick}, []{move:whirlwind}, or []{move:wide-guard}.
 
 This move cannot be copied by []{move:mirror-move}, nor selected by []{move:metronome} or []{move:sleep-talk}."
 182,9,Prevents the user from leaving battle.  User regains 1/16 of its max HP every turn.,"Prevents the user from [switching out]{mechanic:switching-out}.  User regains 1/16 of its max [HP]{mechanic:hp} at the end of every turn.  If the user was immune to []{type:ground} attacks, it will now take normal damage from them.
@@ -780,7 +783,7 @@ If the target moves before the user, this move will [fail]{mechanic:fail}.
 This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assist}, []{move:metronome}, or []{move:sleep-talk}."
 243,9,Uses the target's last used move.,"Uses the last move that was used successfully by any Pokémon, including the user.
 
-This move cannot copy itself.
+This move cannot copy itself, nor []{move:roar} nor []{move:whirlwind}.
 
 This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assist}, []{move:metronome}, or []{move:sleep-talk}."
 244,9,User swaps Attack and Special Attack changes with the target.,User swaps its [Attack]{mechanic:attack} and [Special Attack]{mechanic:special-attack} [stat modifiers]{mechanic:stat-modifiers} modifiers with the target.
@@ -889,8 +892,6 @@ This move cannot be selected by []{move:sleep-talk}."
 278,9,Raises the user's Attack and accuracy by one stage.,Raises the user's [Attack]{mechanic:attack} and [accuracy]{mechanic:accuracy} by one [stage]{mechanic:stage}.
 279,9,Prevents any multi-target moves from hitting friendly Pokémon this turn.,"Moves with multiple targets will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will [fail]{mechanic:fail}.
 
-If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to [fail]{mechanic:fail}.
-
 This move cannot be selected by []{move:assist} or []{move:metronome}."
 280,9,Averages Defense and Special Defense with the target.,Averages the user's unmodified [Defense]{mechanic:defense} with the target's unmodified Defense; the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic:special-defense} is averaged the same way.
 281,9,Averages Attack and Special Attack with the target.,"Averages the user's unmodified [Attack]{mechanic:attack} with the target's unmodified Attack; the value becomes the unmodified Attack for both Pokémon. Unmodified [Special Attack]{mechanic:special-attack} is averaged the same way.
@@ -947,10 +948,7 @@ If the target has already acted this turn, this move will [fail]{mechanic:fail}.
 306,9,"Power is higher the more the user's stats have been raised, to a maximum of 31×.","Inflicts [regular damage]{mechanic:regular-damage}.  Power is increased by 100% its original value for every [stage]{mechanic:stage} any of the user's stats have been raised.  [Accuracy]{mechanic:accuracy}, [evasion]{mechanic:evasion}, and lowered stats do not affect this move's power.  For a Pokémon with all five stats modified to +6, this move's power is 31×."
 307,9,Prevents any priority moves from hitting friendly Pokémon this turn.,"Moves with priority greater than 0 will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will [fail]{mechanic:fail}.
 
-If the user successfully used []{move:detect}, []{move:endure}, []{move:protect}, []{move:quick-guard}, or []{move:wide-guard} on the last turn, this move has a 50% chance to [fail]{mechanic:fail}.
-
-This move cannot be selected by []{move:assist} or []{move:metronome}.
-"
+This move cannot be selected by []{move:assist} or []{move:metronome}."
 308,9,User switches places with the friendly Pokémon opposite it.,"User switches position on the field with the friendly Pokémon opposite it.  If the user is in the middle position in a triple battle, or there are no other friendly Pokémon, this move will [fail]{mechanic:fail}."
 309,9,"Raises user's Attack, Special Attack, and Speed by two stages.  Lower user's Defense and Special Defense by one stage.","Raises the user's [Attack]{mechanic:attack}, [Special Attack]{mechanic:special-attack}, and [Speed]{mechanic:speed} by two [stages]{mechanic:stage} each.  Lowers the user's [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} by one []{mechanic:stage} each."
 310,9,Heals the target for half its max HP.,Heals the target for half its max [HP]{mechanic:hp}.
@@ -1018,9 +1016,13 @@ During []{move:rain-dance}, this move has 100% accuracy.  During []{move:sunny-d
 352,9,Inverts the target's stat modifiers.,Inverts the target's stat modifiers.
 353,9,Drains 75% of the damage inflicted to heal the user.,Drains 75% of the damage inflicted to heal the user.
 354,9,Protects all friendly Pokémon from non-damaging moves.,Protects all friendly Pokémon from non-damaging moves.
-355,9,Raises the Defense of all []{type:grass} Pokémon in battle,Raises the Defense of all []{type:grass} Pokémon in battle..
-356,9,"For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.","For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power."
-357,9,"For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power.","For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power."
+355,9,Raises the Defense of all []{type:grass} Pokémon in battle,Raises the Defense of all []{type:grass} Pokémon in battle.
+356,9,"For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.","For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.
+
+Changes []{move:nature-power} to []{move:energy-ball}."
+357,9,"For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power.","For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power.
+
+Changes []{move:nature-power} to []{move:moonblast}."
 358,9,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.
 359,9,Prevents all Pokémon from fleeing or switching out during the next turn.,Prevents all Pokémon from fleeing or switching out during the next turn.
 360,9,Blocks damaging attacks and lowers attacking Pokémon's Attack by two stages on contact.  Switches Aegislash to Shield Forme.,Blocks damaging attacks and lowers attacking Pokémon's Attack by two stages on contact.  Switches Aegislash to Shield Forme.
@@ -1031,7 +1033,9 @@ During []{move:rain-dance}, this move has 100% accuracy.  During []{move:sunny-d
 365,9,Damages the target if it uses a []{type:fire} move.,Damages the target if it uses a []{type:fire} move.
 366,9,"Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by two stages.","Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by two stages."
 367,9,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.
-368,9,"For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.","For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power."
+368,9,"For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.","For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.
+
+Changes []{move:nature-power} to []{move:thunderbolt}."
 10001,9,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move while in [hyper mode]{mechanic:hyper-mode}.
 10002,9,User receives 1/2 its HP in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 of its current [HP]{mechanic:hp} in recoil.
 10003,9,Halves HP of all Pokémon on the field.  Must recharge,"Halves [HP]{mechanic:hp} of all Pokémon on the field.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic:switch} out during that turn."
