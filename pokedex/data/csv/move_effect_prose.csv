@@ -1036,6 +1036,7 @@ Changes []{move:nature-power} to []{move:moonblast}."
 368,9,"For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.","For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.
 
 Changes []{move:nature-power} to []{move:thunderbolt}."
+369,9,Lowers the target's Special Attack by two stages.,Lowers the target's Special Attack by two stages.
 10001,9,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move while in [hyper mode]{mechanic:hyper-mode}.
 10002,9,User receives 1/2 its HP in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 of its current [HP]{mechanic:hp} in recoil.
 10003,9,Halves HP of all Pokémon on the field.  Must recharge,"Halves [HP]{mechanic:hp} of all Pokémon on the field.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic:switch} out during that turn."

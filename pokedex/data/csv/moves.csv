@@ -593,7 +593,7 @@ id,identifier,generation_id,type_id,power,pp,accuracy,priority,target_id,damage_
 595,mystical-fire,6,10,65,10,100,0,10,3,72,100,,,
 596,spiky-shield,6,12,0,20,,4,7,1,362,,,,
 597,aromatic-mist,6,18,0,20,100,0,4,1,363,,,,
-598,eerie-impulse,6,13,0,15,100,0,10,1,59,,,,
+598,eerie-impulse,6,13,0,15,100,0,10,1,369,,,,
 599,venom-drench,6,4,0,20,100,0,10,1,364,,,,
 600,powder,6,7,0,20,100,1,10,1,365,,,,
 601,geomancy,6,18,0,10,,0,7,1,366,,,,
