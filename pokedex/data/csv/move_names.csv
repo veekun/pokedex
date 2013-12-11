@@ -3517,6 +3517,7 @@ move_id,local_language_id,name
 602,1,じばそうさ
 602,5,Magné-Contrôle
 602,9,Magnetic Flux
+603,9,Happy Hour
 604,1,エレキフィールド
 604,5,Champ Électrifié
 604,8,Campo Elettrico
@@ -3526,6 +3527,7 @@ move_id,local_language_id,name
 605,6,Zauberschein
 605,8,Magibrillio
 605,9,Dazzling Gleam
+606,9,Celebrate
 608,1,つぶらなひとみ
 608,5,Regard Touchant
 608,6,Kulleraugen
