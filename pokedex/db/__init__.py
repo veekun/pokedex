@@ -3,6 +3,8 @@ import re
 
 from sqlalchemy import engine_from_config, orm
 
+from hashlib import md5
+
 from ..defaults import get_default_db_uri
 from .tables import Language, metadata
 from .multilang import MultilangSession, MultilangScopedSession
@@ -53,6 +55,13 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
             if len(table.name) > 30:
                 for letter in ['a', 'e', 'i', 'o', 'u', 'y']:
                     table.name=table.name.replace(letter,'')
+            # Aggressive renaming if the length is still too long:
+            # Take the initials of the table, add a hash to make a new name
+            if len(table.name) > 30:
+                hashedname = md5(table._orginal_name).hexdigest()
+                shortname = ''.join(word[:1] for word in table.name.split('_'))
+                shortname = ''.join([shortname, hashedname])
+                table.name = shortname[:30]
 
     ### Connect
     engine_args[engine_prefix + 'url'] = uri
