@@ -147,12 +147,12 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
         # Shorten table names, Oracle limits table and column names to 30 chars
         for table in table_objs:
-            tname = table.name[:]
-            oradict[tname]=table.description
-            if len(tname) > 30:
+            table._orginal_name = table.name[:]
+            oradict[table.name]=table._orginal_name
+            if len(table._orginal_name) > 30:
                 for letter in ['a', 'e', 'i', 'o', 'u', 'y']:
                     table.name=table.name.replace(letter,'')
-                oradict[tname]=table.description
+                oradict[table.name]=table._orginal_name
                 
     if recursive:
         table_objs.extend(find_dependent_tables(table_objs))

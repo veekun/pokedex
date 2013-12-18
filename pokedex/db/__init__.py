@@ -49,7 +49,7 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
         # Easy solution : drop the vowels, differents words are unlikely to
         # end up the same after the vowels are gone
         for table in metadata.tables.values():
-            table.description = table.name[:]
+            table._orginal_name = table.name[:]
             if len(table.name) > 30:
                 for letter in ['a', 'e', 'i', 'o', 'u', 'y']:
                     table.name=table.name.replace(letter,'')
