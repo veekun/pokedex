@@ -138,6 +138,22 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
     table_names = _get_table_names(metadata, tables)
     table_objs = [metadata.tables[name] for name in table_names]
 
+    # Oracle fixery again, load doesn't know we modified the schema
+    # flag for oracle stuff
+    oranames = (session.connection().dialect.name == 'oracle')
+    if oranames:
+        # Prepare a dictionary to match old<->new names
+        oradict = {}
+
+        # Shorten table names, Oracle limits table and column names to 30 chars
+        for table in table_objs:
+            tname = table.name[:]
+            oradict[tname]=table.description
+            if len(tname) > 30:
+                for letter in ['a', 'e', 'i', 'o', 'u', 'y']:
+                    table.name=table.name.replace(letter,'')
+                oradict[tname]=table.description
+                
     if recursive:
         table_objs.extend(find_dependent_tables(table_objs))
 
@@ -181,9 +197,11 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
         insert_stmt = table_obj.insert()
 
         print_start(table_name)
-
         try:
             csvpath = "%s/%s.csv" % (directory, table_name)
+            # In oracle mode, use the original names instead of current
+            if oranames:
+                csvpath = "%s/%s.csv" % (directory, oradict[table_name])    
             csvfile = open(csvpath, 'rb')
         except IOError:
             # File doesn't exist; don't load anything!
@@ -250,6 +268,8 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
             for column_name, value in zip(column_names, csvs):
                 column = table_obj.c[column_name]
+                if not column.nullable and value == '':
+                    value = ' '
                 if column.nullable and value == '':
                     # Empty string in a nullable column really means NULL
                     value = None

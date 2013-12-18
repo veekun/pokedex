@@ -38,6 +38,22 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
             table.kwargs['mysql_engine'] = 'InnoDB'
             table.kwargs['mysql_charset'] = 'utf8'
 
+    ### Do some fixery for Oracle
+    if uri.startswith('oracle:') or uri.startswith('oracle+cx_oracle:'):
+        # Oracle requires auto_setinputsizes=False (or at least a special
+        # set of exclusions from it, which I don't know)
+        if 'auto_setinputsizes' not in uri:
+            uri += '?auto_setinputsizes=FALSE'
+
+        # Shorten table names, Oracle limits table and column names to 30 chars
+        # Easy solution : drop the vowels, differents words are unlikely to
+        # end up the same after the vowels are gone
+        for table in metadata.tables.values():
+            table.description = table.name[:]
+            if len(table.name) > 30:
+                for letter in ['a', 'e', 'i', 'o', 'u', 'y']:
+                    table.name=table.name.replace(letter,'')
+
     ### Connect
     engine_args[engine_prefix + 'url'] = uri
     engine = engine_from_config(engine_args, prefix=engine_prefix)
