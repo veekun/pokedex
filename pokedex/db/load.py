@@ -268,7 +268,8 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
             for column_name, value in zip(column_names, csvs):
                 column = table_obj.c[column_name]
-                if not column.nullable and value == '':
+                # Oracle treats empty strings as NULL
+                if not column.nullable and value == '' and oranames:
                     value = ' '
                 if column.nullable and value == '':
                     # Empty string in a nullable column really means NULL
