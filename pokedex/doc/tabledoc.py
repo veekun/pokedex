@@ -56,6 +56,8 @@ def column_type_str(column):
         return 'bool'
     if type(type_) == types.Unicode:
         return u'unicode – %s' % column.info['format']
+    if type(type_) == types.UnicodeText:
+        return u'unicode – %s' % column.info['format']
     if type(type_) == types.Enum:
         return 'enum: [%s]' % ', '.join(type_.enums)
     if type(type_) == markdown.MarkdownColumn:

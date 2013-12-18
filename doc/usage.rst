@@ -108,9 +108,9 @@ For example, you can get a list of all pokémon species, sorted by their
     Charmander
     Charmeleon
     ...
-    Keldeo
-    Meloetta
-    Genesect
+    Xerneas
+    Yveltal
+    Zygarde
 
 Or to order by :attr:`~pokedex.db.tables.PokemonSpecies.name`:
 
@@ -123,7 +123,7 @@ Or to order by :attr:`~pokedex.db.tables.PokemonSpecies.name`:
 
         Abomasnow
         ...
-        Zweilous
+        Zygarde
 
 
 Filtering
@@ -169,9 +169,9 @@ example:
     Petal Dance (120)
     Power Whip (120)
     Seed Flare (120)
-    SolarBeam (120)
+    Solar Beam (120)
     Wood Hammer (120)
-    Leaf Storm (140)
+    Leaf Storm (130)
     Frenzy Plant (150)
 
 That concludes our brief tutorial.
