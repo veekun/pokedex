@@ -138,7 +138,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
     table_names = _get_table_names(metadata, tables)
     table_objs = [metadata.tables[name] for name in table_names]
 
-    # Oracle fixery again, load doesn't know we modified the schema
+    # Oracle fixery, load needs short names
     # flag for oracle stuff
     oranames = (session.connection().dialect.name == 'oracle')
     if oranames:

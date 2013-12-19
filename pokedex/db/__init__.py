@@ -6,7 +6,6 @@ from sqlalchemy import engine_from_config, orm
 from ..defaults import get_default_db_uri
 from .tables import Language, metadata
 from .multilang import MultilangSession, MultilangScopedSession
-from .oracle import rewrite_long_table_names, restore_long_table_names
 
 ENGLISH_ID = 9
 
@@ -45,15 +44,6 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
         # set of exclusions from it, which I don't know)
         if 'auto_setinputsizes' not in uri:
             uri += '?auto_setinputsizes=FALSE'
-
-        # Shorten table names, Oracle limits table and column names to 30 chars
-        # Easy solution : drop the vowels, differents words are unlikely to
-        # end up the same after the vowels are gone
-        rewrite_long_table_names(metadata.tables)
-    else:
-        restore_long_table_names(metadata.tables)
-            
-
 
     ### Connect
     engine_args[engine_prefix + 'url'] = uri
