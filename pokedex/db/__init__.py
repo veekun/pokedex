@@ -3,8 +3,6 @@ import re
 
 from sqlalchemy import engine_from_config, orm
 
-from hashlib import md5
-
 from ..defaults import get_default_db_uri
 from .tables import Language, metadata
 from .multilang import MultilangSession, MultilangScopedSession

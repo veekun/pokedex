@@ -7,8 +7,6 @@ import sys
 import sqlalchemy.sql.util
 import sqlalchemy.types
 
-from hashlib import md5
-
 import pokedex
 from pokedex.db import metadata, tables, translations
 from pokedex.defaults import get_default_csv_dir
