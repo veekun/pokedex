@@ -11,6 +11,7 @@ import pokedex
 from pokedex.db import metadata, tables, translations
 from pokedex.defaults import get_default_csv_dir
 from pokedex.db.dependencies import find_dependent_tables
+from pokedex.db.oracle import rewrite_long_table_names
 
 
 def _get_table_names(metadata, patterns):
@@ -142,17 +143,9 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
     # flag for oracle stuff
     oranames = (session.connection().dialect.name == 'oracle')
     if oranames:
-        # Prepare a dictionary to match old<->new names
-        oradict = {}
-
         # Shorten table names, Oracle limits table and column names to 30 chars
-        for table in table_objs:
-            table._orginal_name = table.name[:]
-            oradict[table.name]=table._orginal_name
-            if len(table._orginal_name) > 30:
-                for letter in ['a', 'e', 'i', 'o', 'u', 'y']:
-                    table.name=table.name.replace(letter,'')
-                oradict[table.name]=table._orginal_name
+        # Make a dictionary to match old<->new names
+        oradict = rewrite_long_table_names()
                 
     if recursive:
         table_objs.extend(find_dependent_tables(table_objs))
@@ -390,12 +383,21 @@ def dump(session, tables=[], directory=None, verbose=False, langs=['en']):
     table_names = _get_table_names(metadata, tables)
     table_names.sort()
 
+    # Handle Oracle
+    oranames = (session.connection().dialect.name == 'oracle')
+    if oranames:
+        # Make a dictionary to match old<->new names
+        oradict = rewrite_long_table_names()
 
     for table_name in table_names:
         print_start(table_name)
         table = metadata.tables[table_name]
 
         writer = csv.writer(open("%s/%s.csv" % (directory, table_name), 'wb'),
+                            lineterminator='\n')
+        # In oracle mode, use the original names instead of current
+        if oranames:
+            writer = csv.writer(open("%s/%s.csv" % (directory, oradict[table_name]), 'wb'),
                             lineterminator='\n')
         columns = [col.name for col in table.columns]
 
