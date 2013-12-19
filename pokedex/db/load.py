@@ -155,15 +155,6 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
                 for letter in ['a', 'e', 'i', 'o', 'u', 'y']:
                     table.name=table.name.replace(letter,'')
                 oradict[table.name]=table._orginal_name
-            # Aggressive renaming if the length is still too long:
-            # Take the initials of the table, add a hash to make a new name
-            if len(table.name) > 30:
-                hashedname = md5(table._orginal_name).hexdigest()
-                shortname = ''.join(word[:1] for word in table.name.split('_'))
-                shortname = ''.join([shortname, hashedname])
-                table.name = shortname[:30]
-                oradict[table.name]=table._orginal_name
-            
                 
     if recursive:
         table_objs.extend(find_dependent_tables(table_objs))

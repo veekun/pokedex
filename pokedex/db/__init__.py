@@ -50,18 +50,16 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
         # Shorten table names, Oracle limits table and column names to 30 chars
         # Easy solution : drop the vowels, differents words are unlikely to
         # end up the same after the vowels are gone
-        for table in metadata.tables.values():
-            table._orginal_name = table.name[:]
-            if len(table.name) > 30:
-                for letter in ['a', 'e', 'i', 'o', 'u', 'y']:
-                    table.name=table.name.replace(letter,'')
-            # Aggressive renaming if the length is still too long:
-            # Take the initials of the table, add a hash to make a new name
-            if len(table.name) > 30:
-                hashedname = md5(table._orginal_name).hexdigest()
-                shortname = ''.join(word[:1] for word in table.name.split('_'))
-                shortname = ''.join([shortname, hashedname])
-                table.name = shortname[:30]
+        try:
+            # Check we haven't already shortened the names
+            metadata.tables.values()[1]._original_name
+        except NameError:
+            for table in metadata.tables.values():
+                table._orginal_name = table.name[:]
+                if len(table.name) > 30:
+                    for letter in ['a', 'e', 'i', 'o', 'u', 'y']:
+                        table.name=table.name.replace(letter,'')
+
 
     ### Connect
     engine_args[engine_prefix + 'url'] = uri
