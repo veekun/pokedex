@@ -4086,7 +4086,7 @@ pokemon_species_id,local_language_id,name,genus
 650,5,Marisson,
 650,6,Igamaro,
 650,9,Chespin,Spiny Nut
-651,1,バリボーグ,
+651,1,ハリボーグ,
 651,3,도치보구,
 651,5,Boguérisse,
 651,6,Igastarnish,
@@ -4176,7 +4176,7 @@ pokemon_species_id,local_language_id,name,genus
 668,5,Némélios,
 668,6,Pyroleo,
 668,9,Pyroar,Royal
-669,1,フラべべ,
+669,1,フラベベ,
 669,3,플라베베,
 669,5,Flabébé,
 669,6,Flabébé,
@@ -4346,7 +4346,7 @@ pokemon_species_id,local_language_id,name,genus
 702,5,Dedenne,
 702,6,Dedenne,
 702,9,Dedenne,Antenna
-703,1,メルシー,
+703,1,メレシー,
 703,3,멜리시,
 703,5,Strassie,
 703,6,Rocara,
