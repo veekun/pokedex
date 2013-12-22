@@ -383,7 +383,7 @@ def dump(session, tables=[], directory=None, verbose=False, langs=['en']):
     table_names = _get_table_names(metadata, tables)
     table_names.sort()
 
-    # Handle Oracle
+    # Oracle fixery : read from short table names, dump long names
     oranames = (session.connection().dialect.name == 'oracle')
     if oranames:
         # Make a dictionary to match old<->new names
