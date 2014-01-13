@@ -782,7 +782,7 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10063,giratina-origin,origin,10007,9,1,0,0,2,562
 10064,shaymin-sky,sky,10006,9,1,0,0,2,568
 10065,pichu-spiky-eared,spiky-eared,172,10,0,0,0,2,30
-10066,basculin-blue-striped,blue-striped,10016,11,1,0,0,2,629
+10066,basculin-blue-striped,blue-striped,550,11,1,0,0,2,629
 10067,darmanitan-zen,zen,10017,11,1,1,0,2,635
 10068,deerling-summer,summer,585,11,0,0,0,2,666
 10069,deerling-autumn,autumn,585,11,0,0,0,3,667
