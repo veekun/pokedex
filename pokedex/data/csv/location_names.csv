@@ -512,7 +512,7 @@ location_id,local_language_id,name
 437,9,Granite Cave
 438,9,Petalburg Woods
 439,9,Jagged Pass
-440,9,Fiery Pass
+440,9,Fiery Path
 441,9,Mt. Pyre
 442,9,Seafloor Cavern
 443,9,Cave of Origin
@@ -575,7 +575,7 @@ location_id,local_language_id,name
 500,9,Mt. Ember
 501,9,Berry Forest
 502,9,Icefall Cave
-503,9,Patern Bush
+503,9,Pattern Bush
 504,9,Lost Cave
 505,9,Kindle Road
 506,9,Treasure Beach
@@ -675,3 +675,80 @@ location_id,local_language_id,name
 565,9,Iron Room
 566,1,誓いの林
 566,9,Pledge Grove
+567,9,Littleroot Town
+568,9,Oldale Town
+569,9,Lavaridge Town
+570,9,Fallarbor Town
+571,9,Verdanturf Town
+572,9,Mauville City
+573,9,Rustboro City
+574,9,Fortree City
+575,9,Underwater
+576,9,Mt. Chimney
+577,9,Mirage Island
+578,9,Southern Island
+579,9,Sealed Chamber
+580,9,Scorched Slab
+581,9,Island Cave
+582,9,Desert Ruins
+583,9,Ancient Tomb
+584,9,Inside of truck
+585,9,Secret Base
+586,9,Battle Tower
+587,9,Vaniville Town
+588,9,Aquacorde Town
+589,9,Santalune Forest
+590,9,Santalune City
+591,9,Lumiose City
+592,9,Camphrier Town
+593,9,Parfum Palace
+594,9,Connecting Cave
+595,9,Cyllage City
+596,9,Ambrette Town
+597,9,Glittering Cave
+598,9,Geosenge Town
+599,9,Reflection Cave
+600,9,Shalour City
+601,9,Coumarine City
+602,9,Sea Spirit's Den
+603,9,Kalos Power Plant
+604,9,Laverre City
+605,9,Poke Ball Factory
+606,9,Lost Hotel
+607,9,Dendemille Town
+608,9,Frost Cavern
+609,9,Anistar City
+610,9,Couriway Town
+611,9,Terminus Cave
+612,9,Snowbelle City
+613,9,Pokemon Village
+614,9,Victory Road
+615,9,Chamber of Emptiness
+616,9,Pokemon League
+617,9,Kiloude City
+618,9,Azure Bay
+619,9,Battle Chateau
+620,9,Battle Maison
+621,9,Tower of Mastery
+622,9,Route 1
+623,9,Route 2
+624,9,Route 3
+625,9,Route 4
+626,9,Route 5
+627,9,Route 6
+628,9,Route 7
+629,9,Route 8
+630,9,Route 9
+631,9,Route 10
+632,9,Route 11
+633,9,Route 12
+634,9,Route 13
+635,9,Route 14
+636,9,Route 15
+637,9,Route 16
+638,9,Route 17
+639,9,Route 18
+640,9,Route 19
+641,9,Route 20
+642,9,Route 21
+643,9,Route 22

@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 # Encoding: UTF-8
 
 u"""Creation and loading of GNU Gettext language files.

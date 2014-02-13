@@ -21,8 +21,8 @@ lookup = PokedexLookup()
 
         # Forms
         (u'Rotom',          'pokemon_species', 479),
-        (u'Wash Rotom',     'pokemon_forms',   708),
-        (u'East Shellos',   'pokemon_forms',   688),
+        (u'Wash Rotom',     'pokemon_forms',   10059),
+        (u'East Shellos',   'pokemon_forms',   10039),
 
         # Other languages
         (u'イーブイ',       'pokemon_species', 133),

@@ -983,6 +983,78 @@ ability_id,local_language_id,name
 164,7,Terravoltaje
 164,8,Teravolt
 164,9,Teravolt
+165,5,Aroma-Voile
+165,8,Aromavelo
+165,9,Aroma Veil
+166,5,Flora-Voile
+166,8,Fiorvelo
+166,9,Flower Veil
+167,5,Bajoues
+167,8,Guancegonfie
+167,9,Cheek Pouch
+168,5,Protéen
+168,8,Mutatipo
+168,9,Protean
+169,5,Toison Épaisse
+169,8,Foltopelo
+169,9,Fur Coat
+170,5,Magicien
+170,8,Prestigiatore
+170,9,Magician
+171,5,Pare-Balles
+171,8,Antiproiettile
+171,9,Bulletproof
+172,5,Battant
+172,8,Tenacia
+172,9,Competitive
+173,5,Prognathe
+173,8,Ferromascella
+173,9,Strong Jaw
+174,5,Peau Gelée
+174,8,Pellegelo
+174,9,Refrigerate
+175,5,Gluco-Voile
+175,8,Dolcevelo
+175,9,Sweet Veil
+176,5,Déclic Tactique
+176,8,Accendilotta
+176,9,Stance Change
+177,5,Ailes Bourrasque
+177,8,Aliraffica
+177,9,Gale Wings
+178,5,Méga Blaster
+178,8,Megalancio
+178,9,Mega Launcher
+179,5,Toison Herbue
+179,8,Peloderba
+179,9,Grass Pelt
+180,5,Symbiose
+180,8,Simbiosi
+180,9,Symbiosis
+181,5,Griffe Dure
+181,8,Unghiedure
+181,9,Tough Claws
+182,5,Peau Féérique
+182,8,Pellefolletto
+182,9,Pixilate
+183,5,Poisseux
+183,8,Viscosità
+183,9,Gooey
+184,5,Amour Filial
+184,8,Amorefiliale
+184,9,Parental Bond
+185,5,Peau Céleste
+185,8,Pellecielo
+185,9,Aerilate
+186,5,Aura Ténébreuse
+186,8,Auratetra
+186,9,Dark Aura
+187,5,Aura Féérique
+187,8,Aurafolletto
+187,9,Fairy Aura
+188,5,Aura Inversée
+188,8,Fragiaura
+188,9,Aura Break
 10001,9,Mountaineer
 10002,9,Wave Rider
 10003,9,Skater

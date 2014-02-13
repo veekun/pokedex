@@ -13,3 +13,8 @@ move_flag_id,local_language_id,name,description
 12,9,Targets opposite side in triples,"In triple battles, this move can be used on either side to target the farthest away opposing Pokémon."
 13,9,Heals,This move is blocked by []{move:heal-block}.
 14,9,Ignores Substitute,This move ignores the target's []{move:substitute}.
+15,9,Powder-based,Pokémon with []{ability:overcoat} and []{type:grass}-type Pokémon are immune to this move.
+16,9,Jaw-based,This move has 1.5× its usual power when used by a Pokémon with []{ability:strong-jaw}.
+17,9,Pulse-based,This move has 1.5× its usual power when used by a Pokémon with []{ability:mega-launcher}.
+18,9,Ballistics-based,This move is blocked by []{ability:bulletpoof}.
+19,9,Mental effects,This move is blocked by []{ability:aroma-veil} and cured by []{item:mental-herb}.

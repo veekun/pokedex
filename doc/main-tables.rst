@@ -150,6 +150,7 @@ Association tables
 .. dex-table:: NatureBattleStylePreference
 .. dex-table:: NaturePokeathlonStat
 .. dex-table:: PokeathlonStat
+.. dex-table:: PokedexVersionGroup
 .. dex-table:: PokemonAbility
 .. dex-table:: PokemonEggGroup
 .. dex-table:: PokemonFormPokeathlonStat

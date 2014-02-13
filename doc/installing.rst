@@ -65,7 +65,7 @@ Getting and installing pokedex
 
 Run the following from an empty directory::
 
-    $ git clone git://git.veekun.com/pokedex.git
+    $ git clone git://github.com/veekun/pokedex.git
     $ pip install -E env -e pokedex
 
 This will give you two directories: pokedex (containing the source code and

@@ -399,8 +399,8 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 199,9,,
 200,5,,
 200,9,,
-201,5,Lettre A,Zarbi A
-201,9,Letter A,Unown A
+201,5,A,Zarbi A
+201,9,A,Unown A
 202,5,,
 202,9,,
 203,5,,
@@ -983,7 +983,7 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 491,9,,
 492,5,Forme Terrestre,Shaymin Terrestre
 492,9,Land Forme,Land Shaymin
-493,5,Type Normal,Arceus Normal
+493,5,Normal,Arceus Normal
 493,9,Normal Type,Normal Arceus
 494,5,,
 494,9,,
@@ -1279,183 +1279,479 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 639,9,,
 640,5,,
 640,9,,
-641,5,,
+641,5,Forme Avatar,Boréas Avatar
 641,9,Incarnate Forme,Incarnate Tornadus
-642,5,,
+642,5,Forme Avatar,Fulguris Avatar
 642,9,Incarnate Forme,Incarnate Thundurus
 643,5,,
 643,9,,
 644,5,,
 644,9,,
-645,5,,
+645,5,Forme Avatar,Démétéros Avatar
 645,9,Incarnate Forme,Incarnate Landorus
 646,5,,
 646,9,,
-647,5,,
+647,5,Aspect Normal,Keldeo Normal
 647,9,Ordinary Form,Ordinary Keldeo
 648,5,Forme Chant,Meloetta Chant
 648,9,Aria Forme,Aria Meloetta
 649,5,,
 649,9,,
-650,5,Lettre B,Zarbi B
-650,9,Letter B,Unown B
-651,5,Lettre C,Zarbi C
-651,9,Letter C,Unown C
-652,5,Lettre D,Zarbi D
-652,9,Letter D,Unown D
-653,5,Lettre E,Zarbi E
-653,9,Letter E,Unown E
-654,5,Lettre F,Zarbi F
-654,9,Letter F,Unown F
-655,5,Lettre G,Zarbi G
-655,9,Letter G,Unown G
-656,5,Lettre H,Zarbi H
-656,9,Letter H,Unown H
-657,5,Lettre I,Zarbi I
-657,9,Letter I,Unown I
-658,5,Lettre J,Zarbi J
-658,9,Letter J,Unown J
-659,5,Lettre K,Zarbi K
-659,9,Letter K,Unown K
-660,5,Lettre L,Zarbi L
-660,9,Letter L,Unown L
-661,5,Lettre M,Zarbi M
-661,9,Letter M,Unown M
-662,5,Lettre N,Zarbi N
-662,9,Letter N,Unown N
-663,5,Lettre O,Zarbi O
-663,9,Letter O,Unown O
-664,5,Lettre P,Zarbi P
-664,9,Letter P,Unown P
-665,5,Lettre Q,Zarbi Q
-665,9,Letter Q,Unown Q
-666,5,Lettre R,Zarbi R
-666,9,Letter R,Unown R
-667,5,Lettre S,Zarbi S
-667,9,Letter S,Unown S
-668,5,Lettre T,Zarbi T
-668,9,Letter T,Unown T
-669,5,Lettre U,Zarbi U
-669,9,Letter U,Unown U
-670,5,Lettre V,Zarbi V
-670,9,Letter V,Unown V
-671,5,Lettre W,Zarbi W
-671,9,Letter W,Unown W
-672,5,Lettre X,Zarbi X
-672,9,Letter X,Unown X
-673,5,Lettre Y,Zarbi Y
-673,9,Letter Y,Unown Y
-674,5,Lettre Z,Zarbi Z
-674,9,Letter Z,Unown Z
-675,5,Point d'Exclamation,Zarbi !
-675,9,Exclamation Mark,Unown !
-676,5,Point d'Interrogation,Zarbi ?
-676,9,Question Mark,Unown ?
-677,5,Forme Solaire,Morphéo Solaire
-677,9,Sunny Form,Sunny Castform
-678,5,Forme Eau de Pluie,Morphéo Eau de Pluie
-678,9,Rainy Form,Rainy Castform
-679,5,Forme Blizzard,Morphéo Blizzard
-679,9,Snowy Form,Snowy Castform
-680,5,Forme Attaque,Deoxys Attaque
-680,9,Attack Form,Attack Deoxys
-681,5,Forme Défense,Deoxys Défense
-681,9,Defense Form,Defense Deoxys
-682,5,Forme Vitesse,Deoxys Vitesse
-682,9,Speed Form,Speed Deoxys
-683,5,Cape Sable,Cheniti Sable
-683,9,Sandy Cloak,Sandy Burmy
-684,5,Cape Déchet,Cheniti Déchet
-684,9,Trash Cloak,Trash Burmy
-685,5,Cape Sable,Chenselle Sable
-685,9,Sandy Cloak,Sandy Wormadam
-686,5,Cape Déchet,Cheniselle Déchet
-686,9,Trash Cloak,Trash Wormadam
-687,5,Temps Ensoleillé,Ceriflor Ensoleillé
-687,9,Sunshine Form,Sunshine Cherrim
-688,5,Mer Orient,Sancoki Orient
-688,9,East Sea,East Shellos
-689,5,Mer Orient,Tritosor Orient
-689,9,East Sea,East Gastrodon
-690,5,Type Insecte,Arceus Insecte
-690,9,Bug Type,Bug Arceus
-691,5,Type Ténèbres,Arceus Ténèbres
-691,9,Dark Type,Dark Arceus
-692,5,Type Dragon,Arceus Dragon
-692,9,Dragon Type,Dragon Arceus
-693,5,Type Électrik,Arceus Électrik
-693,9,Electric Type,Electric Arceus
-694,5,Type Combat,Arceus Combat
-694,9,Fighting Type,Fighting Arceus
-695,5,Type Feu,Arceus Feu
-695,9,Fire Type,Fire Arceus
-696,5,Type Vol,Arceus Vol
-696,9,Flying Type,Flying Arceus
-697,5,Type Spectre,Arceus Spectre
-697,9,Ghost Type,Ghost Arceus
-698,5,Type Plante,Arceus Plante
-698,9,Grass Type,Grass Arceus
-699,5,Type Sol,Arceus Sol
-699,9,Ground Type,Ground Arceus
-700,5,Type Glace,Arceus Glace
-700,9,Ice Type,Ice Arceus
-701,5,Type Poison,Arceus Poison
-701,9,Poison Type,Poison Arceus
-702,5,Type Psy,Arceus Psy
-702,9,Psychic Type,Psychic Arceus
-703,5,Type Roche,Arceus Roche
-703,9,Rock Type,Rock Arceus
-704,5,Type Acier,Arceus Acier
-704,9,Steel Type,Steel Arceus
-705,5,Type Eau,Arceus Eau
-705,9,Water Type,Water Arceus
-706,5,Type ???,Arceus ???
-706,9,??? Type,??? Arceus
-707,5,Forme Chaleur,Motisma Chaleur
-707,9,Heat Form,Heat Rotom
-708,5,Forme Lavage,Motisma Lavage
-708,9,Wash Form,Wash Rotom
-709,5,Forme Froid,Motisma Froid
-709,9,Frost Form,Frost Rotom
-710,5,Forme Hélice,Motisma Hélice
-710,9,Fan Form,Fan Rotom
-711,5,Forme Tonte,Motisma Tonte
-711,9,Mow Form,Mow Rotom
-712,5,Forme Originelle,Giratina Originel
-712,9,Origin Forme,Origin Giratina
-713,5,Forme Céleste,Shaymin Céleste
-713,9,Sky Forme,Sky Shaymin
-714,5,Troizépi,Pichu Troizépi
-714,9,Spiky-eared,Spiky-eared Pichu
-715,5,Motif Bleu,Bargantua Bleu
-715,9,Blue-Striped Form,Blue-Striped Basculin
-716,5,Mode Transe,Darumacho Transe
-716,9,Zen Mode,Zen Darmanitan
-717,5,Forme Été,Vivaldaim Été
-717,9,Summer Form,Summer Deerling
-718,5,Forme Automne,Vivaldaim Automne
-718,9,Autumn Form,Autumn Deerling
-719,5,Forme Hiver,Vivaldaim Hiver
-719,9,Winter Form,Winter Deerling
-720,5,Forme Été,Haydaim Été
-720,9,Summer Form,Summer Sawsbuck
-721,5,Forme Automne,Haydaim Automne
-721,9,Autumn Form,Autumn Sawsbuck
-722,5,Forme Hiver,Haydaim Hiver
-722,9,Winter Form,Winter Sawsbuck
-723,5,Forme Danse,Meloetta Danse
-723,9,Pirouette Forme,Pirouette Meloetta
-724,5,Module Aqua,Genesect Aqua
-724,9,Douse Drive,Douse Genesect
-725,5,Module Choc,Genesect Choc
-725,9,Shock Drive,Shock Genesect
-726,5,Module Pyro,Genesect Pyro
-726,9,Burn Drive,Burn Genesect
-727,5,Module Cryo,Genesect Cryo
-727,9,Chill Drive,Chill Genesect
-728,9,Therian Forme,Therian Tornadus
-729,9,Therian Forme,Therian Thundurus
-730,9,Therian Forme,Therian Landorus
-731,9,Black Form,Black Kyurem
-732,9,White Form,White Kyurem
-733,9,Resolute Form,Resolute Keldeo
+650,5,,
+650,9,,
+651,5,,
+651,9,,
+652,5,,
+652,9,,
+653,5,,
+653,9,,
+654,5,,
+654,9,,
+655,5,,
+655,9,,
+656,5,,
+656,9,,
+657,5,,
+657,9,,
+658,5,,
+658,9,,
+659,5,,
+659,9,,
+660,5,,
+660,9,,
+661,5,,
+661,9,,
+662,5,,
+662,9,,
+663,5,,
+663,9,,
+664,5,,
+664,9,,
+665,5,,
+665,9,,
+666,5,Motif Floraison,Prismillon Floraison
+666,9,Meadow Pattern,Meadow Vivillon
+667,5,,
+667,9,,
+668,5,,
+668,9,,
+669,5,Fleur Rouge,Flabébé Rouge
+669,9,Red Flower,Red Flabébé
+670,5,Fleur Rouge,Floette Rouge
+670,9,Red Flower,Red Floette
+671,5,Fleur Rouge,Florges Rouge
+671,9,Red Flower,Red Florges
+672,5,,
+672,9,,
+673,5,,
+673,9,,
+674,5,,
+674,9,,
+675,5,,
+675,9,,
+676,5,,
+676,9,,
+677,5,,
+677,9,,
+678,5,Mâle,Mistigrix Mâle
+678,9,Male,Male Meowstic
+679,5,,
+679,9,,
+680,5,,
+680,9,,
+681,5,Forme Parade,Exagide Parade
+681,9,Shield Forme,Shield Aegislash
+682,5,,
+682,9,,
+683,5,,
+683,9,,
+684,5,,
+684,9,,
+685,5,,
+685,9,,
+686,5,,
+686,9,,
+687,5,,
+687,9,,
+688,5,,
+688,9,,
+689,5,,
+689,9,,
+690,5,,
+690,9,,
+691,5,,
+691,9,,
+692,5,,
+692,9,,
+693,5,,
+693,9,,
+694,5,,
+694,9,,
+695,5,,
+695,9,,
+696,5,,
+696,9,,
+697,5,,
+697,9,,
+698,5,,
+698,9,,
+699,5,,
+699,9,,
+700,5,,
+700,9,,
+701,5,,
+701,9,,
+702,5,,
+702,9,,
+703,5,,
+703,9,,
+704,5,,
+704,9,,
+705,5,,
+705,9,,
+706,5,,
+706,9,,
+707,5,,
+707,9,,
+708,5,,
+708,9,,
+709,5,,
+709,9,,
+710,5,Taille Normale,Pitrouille Normal
+710,9,Average Size,Average Pumpkaboo
+711,5,Taille Normale,Banshitrouye Normal
+711,9,Average Size,Average Gourgeist
+712,5,,
+712,9,,
+713,5,,
+713,9,,
+714,5,,
+714,9,,
+715,5,,
+715,9,,
+716,5,Mode Déchaîné,Xerneas Déchaîné
+716,9,Active Mode,Active Xerneas
+717,5,,
+717,9,,
+718,5,,
+718,9,,
+10001,5,B,Zarbi B
+10001,9,B,Unown B
+10002,5,C,Zarbi C
+10002,9,C,Unown C
+10003,5,D,Zarbi D
+10003,9,D,Unown D
+10004,5,E,Zarbi E
+10004,9,E,Unown E
+10005,5,F,Zarbi F
+10005,9,F,Unown F
+10006,5,G,Zarbi G
+10006,9,G,Unown G
+10007,5,H,Zarbi H
+10007,9,H,Unown H
+10008,5,I,Zarbi I
+10008,9,I,Unown I
+10009,5,J,Zarbi J
+10009,9,J,Unown J
+10010,5,K,Zarbi K
+10010,9,K,Unown K
+10011,5,L,Zarbi L
+10011,9,L,Unown L
+10012,5,M,Zarbi M
+10012,9,M,Unown M
+10013,5,N,Zarbi N
+10013,9,N,Unown N
+10014,5,O,Zarbi O
+10014,9,O,Unown O
+10015,5,P,Zarbi P
+10015,9,P,Unown P
+10016,5,Q,Zarbi Q
+10016,9,Q,Unown Q
+10017,5,R,Zarbi R
+10017,9,R,Unown R
+10018,5,S,Zarbi S
+10018,9,S,Unown S
+10019,5,T,Zarbi T
+10019,9,T,Unown T
+10020,5,U,Zarbi U
+10020,9,U,Unown U
+10021,5,V,Zarbi V
+10021,9,V,Unown V
+10022,5,W,Zarbi W
+10022,9,W,Unown W
+10023,5,X,Zarbi X
+10023,9,X,Unown X
+10024,5,Y,Zarbi Y
+10024,9,Y,Unown Y
+10025,5,Z,Zarbi Z
+10025,9,Z,Unown Z
+10026,5,!,Zarbi !
+10026,9,!,Unown !
+10027,5,?,Zarbi ?
+10027,9,?,Unown ?
+10028,5,Forme Solaire,Morphéo Solaire
+10028,9,Sunny Form,Sunny Castform
+10029,5,Forme Eau de Pluie,Morphéo Eau de Pluie
+10029,9,Rainy Form,Rainy Castform
+10030,5,Forme Blizzard,Morphéo Blizzard
+10030,9,Snowy Form,Snowy Castform
+10031,5,Forme Attaque,Deoxys Attaque
+10031,9,Attack Forme,Attack Deoxys
+10032,5,Forme Défense,Deoxys Défense
+10032,9,Defense Forme,Defense Deoxys
+10033,5,Forme Vitesse,Deoxys Vitesse
+10033,9,Speed Forme,Speed Deoxys
+10034,5,Cape Sable,Cheniti Sable
+10034,9,Sandy Cloak,Sandy Burmy
+10035,5,Cape Déchet,Cheniti Déchet
+10035,9,Trash Cloak,Trash Burmy
+10036,5,Cape Sable,Chenselle Sable
+10036,9,Sandy Cloak,Sandy Wormadam
+10037,5,Cape Déchet,Cheniselle Déchet
+10037,9,Trash Cloak,Trash Wormadam
+10038,5,Temps Ensoleillé,Ceriflor Ensoleillé
+10038,9,Sunshine Form,Sunshine Cherrim
+10039,5,Mer Orient,Sancoki Orient
+10039,9,East Sea,East Shellos
+10040,5,Mer Orient,Tritosor Orient
+10040,9,East Sea,East Gastrodon
+10041,5,Insecte,Arceus Insecte
+10041,9,Bug Type,Bug Arceus
+10042,5,Ténèbres,Arceus Ténèbres
+10042,9,Dark Type,Dark Arceus
+10043,5,Dragon,Arceus Dragon
+10043,9,Dragon Type,Dragon Arceus
+10044,5,Électrik,Arceus Électrik
+10044,9,Electric Type,Electric Arceus
+10045,5,Combat,Arceus Combat
+10045,9,Fighting Type,Fighting Arceus
+10046,5,Feu,Arceus Feu
+10046,9,Fire Type,Fire Arceus
+10047,5,Vol,Arceus Vol
+10047,9,Flying Type,Flying Arceus
+10048,5,Spectre,Arceus Spectre
+10048,9,Ghost Type,Ghost Arceus
+10049,5,Plante,Arceus Plante
+10049,9,Grass Type,Grass Arceus
+10050,5,Sol,Arceus Sol
+10050,9,Ground Type,Ground Arceus
+10051,5,Glace,Arceus Glace
+10051,9,Ice Type,Ice Arceus
+10052,5,Poison,Arceus Poison
+10052,9,Poison Type,Poison Arceus
+10053,5,Psy,Arceus Psy
+10053,9,Psychic Type,Psychic Arceus
+10054,5,Roche,Arceus Roche
+10054,9,Rock Type,Rock Arceus
+10055,5,Acier,Arceus Acier
+10055,9,Steel Type,Steel Arceus
+10056,5,Eau,Arceus Eau
+10056,9,Water Type,Water Arceus
+10057,5,???,Arceus ???
+10057,9,??? Type,??? Arceus
+10058,5,Motisma Chaleur,Motisma Chaleur
+10058,9,Heat Rotom,Heat Rotom
+10059,5,Motisma Lavage,Motisma Lavage
+10059,9,Wash Rotom,Wash Rotom
+10060,5,Motisma Froid,Motisma Froid
+10060,9,Frost Rotom,Frost Rotom
+10061,5,Motisma Hélice,Motisma Hélice
+10061,9,Fan Rotom,Fan Rotom
+10062,5,Motisma Tonte,Motisma Tonte
+10062,9,Mow Rotom,Mow Rotom
+10063,5,Forme Originelle,Giratina Originel
+10063,9,Origin Forme,Origin Giratina
+10064,5,Forme Céleste,Shaymin Céleste
+10064,9,Sky Forme,Sky Shaymin
+10065,5,Troizépi,Pichu Troizépi
+10065,9,Spiky-eared,Spiky-eared Pichu
+10066,5,Motif Bleu,Bargantua Bleu
+10066,9,Blue-Striped Form,Blue-Striped Basculin
+10067,5,Mode Transe,Darumacho Transe
+10067,9,Zen Mode,Zen Darmanitan
+10068,5,Forme Été,Vivaldaim Été
+10068,9,Summer Form,Summer Deerling
+10069,5,Forme Automne,Vivaldaim Automne
+10069,9,Autumn Form,Autumn Deerling
+10070,5,Forme Hiver,Vivaldaim Hiver
+10070,9,Winter Form,Winter Deerling
+10071,5,Forme Été,Haydaim Été
+10071,9,Summer Form,Summer Sawsbuck
+10072,5,Forme Automne,Haydaim Automne
+10072,9,Autumn Form,Autumn Sawsbuck
+10073,5,Forme Hiver,Haydaim Hiver
+10073,9,Winter Form,Winter Sawsbuck
+10074,5,Forme Danse,Meloetta Danse
+10074,9,Pirouette Forme,Pirouette Meloetta
+10075,5,Module Aqua,Genesect Aqua
+10075,9,Douse Drive,Douse Genesect
+10076,5,Module Choc,Genesect Choc
+10076,9,Shock Drive,Shock Genesect
+10077,5,Module Pyro,Genesect Pyro
+10077,9,Burn Drive,Burn Genesect
+10078,5,Module Cryo,Genesect Cryo
+10078,9,Chill Drive,Chill Genesect
+10079,5,Forme Totémique,Boréas Totémique
+10079,9,Therian Forme,Therian Tornadus
+10080,5,Forme Totémique,Fulguris Totémique
+10080,9,Therian Forme,Therian Thundurus
+10081,5,Forme Totémique,Démétéros Totémique
+10081,9,Therian Forme,Therian Landorus
+10082,5,Kyurem Noir,Kyurem Noir
+10082,9,Black Kyurem,Black Kyurem
+10083,5,Kyurem Blanc,Kyurem Blanc
+10083,9,White Kyurem,White Kyurem
+10084,5,Aspect Décidé,Keldeo Décidé
+10084,9,Resolute Form,Resolute Keldeo
+10085,5,Fée,Arceus Fée
+10085,9,Fairy Type,Fairy Arceus
+10086,5,Motif Blizzard,Prismillon Blizzard
+10086,9,Icy Snow Pattern,Icy Snow Vivillon
+10087,5,Motif Banquise,Prismillon Banquise
+10087,9,Polar Pattern,Polar Vivillon
+10088,5,Motif Glace,Prismillon Glace
+10088,9,Tundra Pattern,Tundra Vivillon
+10089,5,Motif Continent,Prismillon Continent
+10089,9,Continental Pattern,Continental Vivillon
+10090,5,Motif Verdure,Prismillon Verdure
+10090,9,Garden Pattern,Garden Vivillon
+10091,5,Motif Monarchie,Prismillon Monarchie
+10091,9,Elegant Pattern,Elegant Vivillon
+10092,5,Motif Métropole,Prismillon Métropole
+10092,9,Modern Pattern,Modern Vivillon
+10093,5,Motif Rivage,Prismillon Rivage
+10093,9,Marine Pattern,Marine Vivillon
+10094,5,Motif Archipel,Prismillon Archipel
+10094,9,Archipelago Pattern,Archipelago Vivillon
+10095,5,Motif Sécheresse,Prismillon Sécheresse
+10095,9,High Plains Pattern,High Plains Vivillon
+10096,5,Motif Sable,Prismillon Sable
+10096,9,Sandstorm Pattern,Sandstorm Vivillon
+10097,5,Motif Delta,Prismillon Delta
+10097,9,River Pattern,River Vivillon
+10098,5,Motif Cyclone,Prismillon Cyclone
+10098,9,Monsoon Pattern,Monsoon Vivillon
+10099,5,Motif Mangrove,Prismillon Mangrove
+10099,9,Savanna Pattern,Savanna Vivillon
+10100,5,Motif Zénith,Prismillon Zénith
+10100,9,Sun Pattern,Sun Vivillon
+10101,5,Motif Soleil Levant,Prismillon Soleil Levant
+10101,9,Ocean Pattern,Ocean Vivillon
+10102,5,Motif Jungle,Prismillon Jungle
+10102,9,Jungle Pattern,Jungle Vivillon
+10103,5,Fleur Jaune,Flabébé Jaune
+10103,9,Yellow Flower,Yellow Flabébé
+10104,5,Fleur Orange,Flabébé Orange
+10104,9,Orange Flower,Orange Flabébé
+10105,5,Fleur Bleue,Flabébé Bleu
+10105,9,Blue Flower,Blue Flabébé
+10106,5,Fleur Blanche,Flabébé Blanc
+10106,9,White Flower,White Flabébé
+10107,5,Fleur Jaune,Floette Jaune
+10107,9,Yellow Flower,Yellow Floette
+10108,5,Fleur Orange,Floette Orange
+10108,9,Orange Flower,Orange Floette
+10109,5,Fleur Bleue,Floette Bleu
+10109,9,Blue Flower,Blue Floette
+10110,5,Fleur Blanche,Floette Blanc
+10110,9,White Flower,White Floette
+10111,5,Fleur Jaune,Florges Jaune
+10111,9,Yellow Flower,Yellow Florges
+10112,5,Fleur Orange,Florges Orange
+10112,9,Orange Flower,Orange Florges
+10113,5,Fleur Bleue,Florges Bleu
+10113,9,Blue Flower,Blue Florges
+10114,5,Fleur Blanche,Florges Blanc
+10114,9,White Flower,White Florges
+10115,5,Coupe Cœur,Couafarel Cœur
+10115,9,Heart Trim,Heart Furfrou
+10116,5,Coupe Étoile,Couafarel Étoile
+10116,9,Star Trim,Star Furfrou
+10117,5,Couple Diamant,Couafarel Diamant
+10117,9,Diamond Trim,Diamond Furfrou
+10118,5,Coupe Demoiselle,Couafarel Demoiselle
+10118,9,Debutante Trim,Debutante Furfrou
+10119,5,Coupe Madame,Couafarel Madame
+10119,9,Matron Trim,Matron Furfrou
+10120,5,Couple Monsieur,Couafarel Monsieur
+10120,9,Dandy Trim,Dandy Furfrou
+10121,5,Coupe Reine,Couafarel Reine
+10121,9,La Reine Trim,La Reine Furfrou
+10122,5,Coupe Kabuki,Couafarel Kabuki
+10122,9,Kabuki Trim,Kabuki Furfrou
+10123,5,Coupe Pharaon,Couafarel Pharaon
+10123,9,Pharaoh Trim,Pharaoh Furfrou
+10124,5,Femelle,Mistigrix Femelle
+10124,9,Female,Female Meowstic
+10125,5,Forme Assaut,Exagide Assaut
+10125,9,Blade Forme,Blade Aegislash
+10126,5,Taille Mini,Pitrouille Mini
+10126,9,Small Size,Small Pumpkaboo
+10127,5,Taille Maxi,Pitrouille Maxi
+10127,9,Large Size,Large Pumpkaboo
+10128,5,Taille Ultra,Pitrouille Ultra
+10128,9,Super Size,Super Pumpkaboo
+10129,5,Taille Mini,Banshitrouye Mini
+10129,9,Small Size,Small Gourgeist
+10130,5,Taille Maxi,Banshitrouye Maxi
+10130,9,Large Size,Large Gourgeist
+10131,5,Taille Ultra,Banshitrouye Ultra
+10131,9,Super Size,Super Gourgeist
+10132,5,Mode Paisible,Xerneas Paisible
+10132,9,Neutral Mode,Neutral Xerneas
+10133,5,Méga-Évolution,Méga-Florizarre
+10133,9,Mega Evolution,Mega Venusaur
+10134,5,Méga-Évolution X,Méga-Dracaufeu X
+10134,9,Mega Evolution X,Mega Charizard X
+10135,5,Méga-Évolution Y,Méga-Dracaufeu Y
+10135,9,Mega Evolution Y,Mega Charizard Y
+10136,5,Méga-Évolution,Méga-Tortank
+10136,9,Mega Evolution,Mega Blastoise
+10137,5,Méga-Évolution,Méga-Alakazam
+10137,9,Mega Evolution,Mega Alakazam
+10138,5,Méga-Évolution,Méga-Ectoplasma
+10138,9,Mega Evolution,Mega Gengar
+10139,5,Méga-Évolution,Méga-Kangourex
+10139,9,Mega Evolution,Mega Kangaskhan
+10140,5,Méga-Évolution,Méga-Scarabrute
+10140,9,Mega Evolution,Mega Pinsir
+10141,5,Méga-Évolution,Méga-Léviator
+10141,9,Mega Evolution,Mega Gyarados
+10142,5,Méga-Évolution,Méga-Ptéra
+10142,9,Mega Evolution,Mega Aerodactyl
+10143,5,Méga-Évolution X,Méga-Mewtwo X
+10143,9,Mega Evolution X,Mega Mewtwo X
+10144,5,Méga-Évolution Y,Méga-Mewtwo Y
+10144,9,Mega Evolution Y,Mega Mewtwo Y
+10145,5,Méga-Évolution,Méga-Pharamp
+10145,9,Mega Evolution,Mega Ampharos
+10146,5,Méga-Évolution,Méga-Cizayox
+10146,9,Mega Evolution,Mega Scizor
+10147,5,Méga-Évolution,Méga-Scarhino
+10147,9,Mega Evolution,Mega Heracross
+10148,5,Méga-Évolution,Méga-Démolosse
+10148,9,Mega Evolution,Mega Houndoom
+10149,5,Méga-Évolution,Méga-Tyranocif
+10149,9,Mega Evolution,Mega Tyranitar
+10150,5,Méga-Évolution,Méga-Braségali
+10150,9,Mega Evolution,Mega Blaziken
+10151,5,Méga-Évolution,Méga-Gardevoir
+10151,9,Mega Evolution,Mega Gardevoir
+10152,5,Méga-Évolution,Méga-Mysdibule
+10152,9,Mega Evolution,Mega Mawile
+10153,5,Méga-Évolution,Méga-Galeking
+10153,9,Mega Evolution,Mega Aggron
+10154,5,Méga-Évolution,Méga-Charmina
+10154,9,Mega Evolution,Mega Medicham
+10155,5,Méga-Évolution,Méga-Élecsprint
+10155,9,Mega Evolution,Mega Manectric
+10156,5,Méga-Évolution,Méga-Branette
+10156,9,Mega Evolution,Mega Banette
+10157,5,Méga-Évolution,Méga-Absol
+10157,9,Mega Evolution,Mega Absol
+10158,5,Méga-Évolution,Méga-Carchacrok
+10158,9,Mega Evolution,Mega Garchomp
+10159,5,Méga-Évolution,Méga-Lucario
+10159,9,Mega Evolution,Mega Lucario
+10160,5,Méga-Évolution,Méga-Blizzaroi
+10160,9,Mega Evolution,Mega Abomasnow

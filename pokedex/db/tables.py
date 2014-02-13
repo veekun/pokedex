@@ -38,7 +38,7 @@ from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.interfaces import AttributeExtension
 from sqlalchemy.sql import and_, or_
 from sqlalchemy.schema import ColumnDefault
-from sqlalchemy.types import *
+from sqlalchemy.types import Boolean, Enum, Integer, SmallInteger, Unicode
 
 from pokedex.db import markdown, multilang
 
@@ -121,6 +121,8 @@ class Ability(TableBase):
         info=dict(description="An identifier", format='identifier'))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description="The ID of the generation this ability was introduced in", detail=True))
+    is_main_series = Column(Boolean, nullable=False, index=True,
+        info=dict(description="True iff the ability exists in the main series."))
 
 create_translation_table('ability_names', Ability, 'names',
     relation_lazy='joined',
@@ -128,7 +130,7 @@ create_translation_table('ability_names', Ability, 'names',
         info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 create_translation_table('ability_prose', Ability, 'prose',
-    effect = Column(Unicode(5120), nullable=True,
+    effect = Column(Unicode(4000), nullable=True,
         info=dict(description="A detailed description of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
     short_effect = Column(Unicode(512), nullable=True,
         info=dict(description="A short summary of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
@@ -345,7 +347,7 @@ class ConquestMoveEffect(TableBase):
 create_translation_table('conquest_move_effect_prose', ConquestMoveEffect, 'prose',
     short_effect = Column(Unicode(256), nullable=True,
         info=dict(description="A short summary of the effect", format='markdown')),
-    effect = Column(Unicode(5120), nullable=True,
+    effect = Column(Unicode(1024), nullable=True,
         info=dict(description="A detailed description of the effect", format='markdown')),
 )
 
@@ -399,7 +401,7 @@ class ConquestPokemonEvolution(TableBase):
         info=dict(description=u"The ID of the gender the Pokémon's warrior must be."))
     item_id = Column(Integer, ForeignKey('items.id'), nullable=True,
         info=dict(description=u"The ID of the item the Pokémon's warrior must have equipped."))
-    recruiting_ko_required = Column(Boolean, nullable=False, server_default='False',
+    recruiting_ko_required = Column(Boolean, nullable=False,
         info=dict(description=u"If true, the Pokémon must KO a Pokémon under the right conditions to recruit that Pokémon's warrior."))
 
 class ConquestPokemonMove(TableBase):
@@ -860,8 +862,6 @@ class Generation(TableBase):
         info=dict(description="A numeric ID"))
     main_region_id = Column(Integer, ForeignKey('regions.id'), nullable=False,
         info=dict(description="ID of the region this generation's main games take place in"))
-    canonical_pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), nullable=False,
-        info=dict(description=u"ID of the Pokédex this generation's main games use by default"))
     identifier = Column(Unicode(16), nullable=False,
         info=dict(description=u'An identifier', format='identifier'))
 
@@ -920,7 +920,7 @@ create_translation_table('item_names', Item, 'names',
 create_translation_table('item_prose', Item, 'prose',
     short_effect = Column(Unicode(256), nullable=True,
         info=dict(description="A short summary of the effect", format='markdown', string_getter=markdown.MarkdownString)),
-    effect = Column(Unicode(5120), nullable=True,
+    effect = Column(Unicode(4000), nullable=True,
         info=dict(description=u"Detailed description of the item's effect.", format='markdown', string_getter=markdown.MarkdownString)),
 )
 create_translation_table('item_flavor_summaries', Item, 'flavor_summaries',
@@ -1219,7 +1219,7 @@ class MoveEffect(TableBase):
 create_translation_table('move_effect_prose', MoveEffect, 'prose',
     short_effect = Column(Unicode(256), nullable=True,
         info=dict(description="A short summary of the effect", format='markdown')),
-    effect = Column(Unicode(5120), nullable=True,
+    effect = Column(Unicode(4000), nullable=True,
         info=dict(description="A detailed description of the effect", format='markdown')),
 )
 
@@ -1503,6 +1503,17 @@ create_translation_table('pokedex_prose', Pokedex, 'prose',
         info=dict(description=u"A longer description of the Pokédex", format='plaintext')),
 )
 
+class PokedexVersionGroup(TableBase):
+    u"""A mapping from Pokédexes to version groups in which they appear as the
+    regional dex.
+    """
+    __tablename__ = 'pokedex_version_groups'
+    __singlename__ = 'pokedex_version_group'
+    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True,
+        info=dict(description=u'The ID of the Pokédex.'))
+    version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True,
+        info=dict(description=u'The ID of the version group.'))
+
 class Pokemon(TableBase):
     u"""A Pokémon.  The core to this whole mess.
 
@@ -1515,6 +1526,8 @@ class Pokemon(TableBase):
     __singlename__ = 'pokemon'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u"A numeric ID"))
+    identifier = Column(Unicode(30), nullable=False,
+        info=dict(description=u'An identifier, including form iff this row corresponds to a single, named form', format='identifier'))
     species_id = Column(Integer, ForeignKey('pokemon_species.id'),
         info=dict(description=u"ID of the species this Pokémon belongs to"))
     height = Column(Integer, nullable=False,
@@ -1552,6 +1565,19 @@ class Pokemon(TableBase):
 
         raise KeyError(u'No stat named %s' % stat_identifier)
 
+    def base_stat(self, stat_identifier, default=0):
+        u"""Return this Pokemon's base stat value for the given stat identifier,
+        or default if missing."""
+
+        if isinstance(stat_identifier, Stat):
+            stat_identifier = stat_identifier.identifier
+
+        for pokemon_stat in self.stats:
+            if pokemon_stat.stat.identifier == stat_identifier:
+                return pokemon_stat.base_stat
+
+        return default
+
     @property
     def better_damage_class(self):
         u"""Returns the MoveDamageClass that this Pokémon is best suited for,
@@ -1560,8 +1586,12 @@ class Pokemon(TableBase):
         If the attack stats are about equal (within 5), returns None.  The
         value None, not the damage class called 'None'.
         """
-        phys = self.stat(u'attack')
-        spec = self.stat(u'special-attack')
+
+        try:
+            phys = self.stat(u'attack')
+            spec = self.stat(u'special-attack')
+        except KeyError:
+            return None
 
         diff = phys.base_stat - spec.base_stat
 
@@ -1583,8 +1613,8 @@ class PokemonAbility(TableBase):
     # XXX having both a method and a slot is kind of gross.  "slot" is a
     # misnomer, anyway: duplicate abilities don't appear in slot 2.
     # Probably should replace that with "order".
-    is_dream = Column(Boolean, nullable=False, index=True,
-        info=dict(description=u"Whether this is a Dream World ability"))
+    is_hidden = Column(Boolean, nullable=False, index=True,
+        info=dict(description=u"Whether this is a hidden ability"))
     slot = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"The ability slot, i.e. 1 or 2 for gen. IV"))
 
@@ -1595,12 +1625,12 @@ class PokemonColor(TableBase):
     __singlename__ = 'pokemon_color'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         info=dict(description=u"ID of the Pokémon"))
-    identifier = Column(Unicode(6), nullable=False,
+    identifier = Column(Unicode(100), nullable=False,
         info=dict(description=u"An identifier", format='identifier'))
 
 create_translation_table('pokemon_color_names', PokemonColor, 'names',
     relation_lazy='joined',
-    name = Column(Unicode(6), nullable=False, index=True,
+    name = Column(Unicode(100), nullable=False, index=True,
         info=dict(description="The name", format='plaintext', official=True)),
 )
 
@@ -1651,16 +1681,26 @@ class PokemonEvolution(TableBase):
         info=dict(description=u"The required time of day."))
     known_move_id = Column(Integer, ForeignKey('moves.id'), nullable=True,
         info=dict(description=u"The ID of the move the Pokémon must know."))
+    known_move_type_id = Column(Integer, ForeignKey('types.id'), nullable=True,
+        info=dict(description=u'The ID of the type the Pokémon must know a move of.'))
     minimum_happiness = Column(Integer, nullable=True,
         info=dict(description=u"The minimum happiness value the Pokémon must have."))
     minimum_beauty = Column(Integer, nullable=True,
         info=dict(description=u"The minimum Beauty value the Pokémon must have."))
+    minimum_affection = Column(Integer, nullable=True,
+        info=dict(description=u'The minimum number of "affection" hearts the Pokémon must have in Pokémon-Amie.'))
     relative_physical_stats = Column(Integer, nullable=True,
         info=dict(description=u"The required relation between the Pokémon's Attack and Defense stats, as sgn(atk-def)."))
     party_species_id = Column(Integer, ForeignKey('pokemon_species.id'), nullable=True,
         info=dict(description=u"The ID of the species that must be present in the party."))
+    party_type_id = Column(Integer, ForeignKey('types.id'), nullable=True,
+        info=dict(description=u'The ID of a type that at least one party member must have.'))
     trade_species_id = Column(Integer, ForeignKey('pokemon_species.id'), nullable=True,
         info=dict(description=u"The ID of the species for which this one must be traded."))
+    needs_overworld_rain = Column(Boolean, nullable=False,
+        info=dict(description=u'True iff it needs to be raining outside of battle.'))
+    turn_upside_down = Column(Boolean, nullable=False,
+        info=dict(description=u'True iff the 3DS needs to be turned upside-down as this Pokémon levels up.'))
 
 class PokemonForm(TableBase):
     u"""An individual form of a Pokémon.  This includes *every* variant (except
@@ -1672,6 +1712,8 @@ class PokemonForm(TableBase):
     __singlename__ = 'pokemon_form'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u'A unique ID for this form.'))
+    identifier = Column(Unicode(30), nullable=False,
+        info=dict(description=u"A unique identifier for this form among all forms of all Pokémon", format='identifier'))
     form_identifier = Column(Unicode(16), nullable=True,
         info=dict(description=u"An identifier of the form, uniue among a species. May be None for the default form of the species.", format='identifier'))
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, autoincrement=False,
@@ -1682,6 +1724,8 @@ class PokemonForm(TableBase):
         info=dict(description=u'Set for exactly one form used as the default for each pokemon (not necessarily species).'))
     is_battle_only = Column(Boolean, nullable=False,
         info=dict(description=u'Set iff the form can only appear in battle.'))
+    is_mega = Column(Boolean, nullable=False,
+        info=dict(description=u'Records whether this form is a Mega Evolution.'))
     form_order = Column(Integer, nullable=False, autoincrement=False,
         info=dict(description=u"The order in which forms should be sorted within a species' forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.  "
                               u"Used in generating `pokemon_forms.order` and `pokemon.order`."))
@@ -1731,10 +1775,10 @@ class PokemonGameIndex(TableBase):
     __tablename__ = 'pokemon_game_indices'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, autoincrement=False, nullable=False,
         info=dict(description=u"Database ID of the Pokémon"))
-    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False,
-        info=dict(description=u"Database ID of the generation"))
+    version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, autoincrement=False, nullable=False,
+        info=dict(description=u"Database ID of the version"))
     game_index = Column(Integer, nullable=False,
-        info=dict(description=u"Internal ID the generation's games use for the Pokémon"))
+        info=dict(description=u"Internal ID the version's games use for the Pokémon"))
 
 class PokemonHabitat(TableBase):
     u"""The habitat of a Pokémon, as given in the FireRed/LeafGreen version Pokédex
@@ -1777,7 +1821,7 @@ class PokemonMove(TableBase):
         info=dict(description=u"ID of the move"))
     pokemon_move_method_id = Column(Integer, ForeignKey('pokemon_move_methods.id'), nullable=False, index=True,
         info=dict(description=u"ID of the method this move is learned by"))
-    level = Column(Integer, nullable=True, index=True,
+    level = Column(Integer, nullable=True, index=True, autoincrement=False,
         info=dict(description=u"Level the move is learned at, if applicable"))
     order = Column(Integer, nullable=True,
         info=dict(description=u"A sort key to produce the correct ordering when all else is equal"))  # XXX: This needs a better description
@@ -2057,10 +2101,10 @@ class VersionGroup(TableBase):
     __tablename__ = 'version_groups'
     id = Column(Integer, primary_key=True, nullable=False,
         info=dict(description=u"This version group's unique ID."))
+    identifier = Column(Unicode(20), nullable=False, unique=True,
+        info=dict(description=u"This version group's unique textual identifier.", format='identifier'))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
         info=dict(description=u"The ID of the generation the games in this group belong to."))
-    pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), nullable=True,
-        info=dict(description=u"The ID of the regional Pokédex used in this version group.  Null if not applicable."))
     order = Column(Integer, nullable=True,
         info=dict(description=u"Order for sorting. Almost by date of release, except similar versions are grouped together."))
 
@@ -2271,8 +2315,6 @@ Experience.growth_rate = relationship(GrowthRate,
     backref='experience_table')
 
 
-Generation.canonical_pokedex = relationship(Pokedex,
-    backref='canonical_for_generation')
 Generation.versions = relationship(Version,
     secondary=VersionGroup.__table__,
     innerjoin=True)
@@ -2366,10 +2408,11 @@ Move.flavor_text = relationship(MoveFlavorText,
 Move.generation = relationship(Generation,
     innerjoin=True,
     backref='moves')
+# XXX should this be a dict mapping version group to number?
 Move.machines = relationship(Machine,
     backref='move')
 Move.meta = relationship(MoveMeta,
-    uselist=False, innerjoin=True,
+    uselist=False,
     backref='move')
 Move.meta_stat_changes = relationship(MoveMetaStatChange)
 Move.move_effect = relationship(MoveEffect,
@@ -2472,36 +2515,39 @@ Pokedex.region = relationship(Region,
     innerjoin=True,
     backref='pokedexes')
 Pokedex.version_groups = relationship(VersionGroup,
+    secondary=PokedexVersionGroup.__table__,
     innerjoin=True,
     order_by=VersionGroup.order.asc(),
-    backref='pokedex')
+    backref='pokedexes')
 
 
 Pokemon.all_abilities = relationship(Ability,
     secondary=PokemonAbility.__table__,
     order_by=PokemonAbility.slot.asc(),
-    innerjoin=True,
     backref=backref('all_pokemon', order_by=Pokemon.order.asc()),
     doc=u"All abilities the Pokémon can have, including the Hidden Ability")
 Pokemon.abilities = relationship(Ability,
     secondary=PokemonAbility.__table__,
     primaryjoin=and_(
         Pokemon.id == PokemonAbility.pokemon_id,
-        PokemonAbility.is_dream == False,
+        PokemonAbility.is_hidden == False,
     ),
-    innerjoin=True,
     order_by=PokemonAbility.slot.asc(),
     backref=backref('pokemon', order_by=Pokemon.order.asc()),
     doc=u"Abilities the Pokémon can have in the wild")
-Pokemon.dream_ability = relationship(Ability,
+Pokemon.hidden_ability = relationship(Ability,
     secondary=PokemonAbility.__table__,
     primaryjoin=and_(
         Pokemon.id == PokemonAbility.pokemon_id,
-        PokemonAbility.is_dream == True,
+        PokemonAbility.is_hidden == True,
     ),
     uselist=False,
-    backref=backref('dream_pokemon', order_by=Pokemon.order),
+    backref=backref('hidden_pokemon', order_by=Pokemon.order),
     doc=u"The Pokémon's Hidden Ability")
+Pokemon.pokemon_abilities = relationship(PokemonAbility,
+    order_by=PokemonAbility.slot.asc(),
+    backref=backref('pokemon', order_by=Pokemon.order.asc()),
+    doc=u"All abilities the Pokémon can have, as bridge rows")
 Pokemon.forms = relationship(PokemonForm,
     primaryjoin=Pokemon.id==PokemonForm.pokemon_id,
     order_by=(PokemonForm.order.asc(), PokemonForm.form_identifier.asc()),
@@ -2517,7 +2563,6 @@ Pokemon.items = relationship(PokemonItem,
     order_by=PokemonItem.rarity.desc(),
     doc=u"Info about items this pokémon holds in the wild")
 Pokemon.stats = relationship(PokemonStat,
-    innerjoin=True,
     order_by=PokemonStat.stat_id.asc(),
     backref='pokemon')
 Pokemon.species = relationship(PokemonSpecies,
@@ -2528,6 +2573,9 @@ Pokemon.types = relationship(Type,
     innerjoin=True, lazy='joined',
     order_by=PokemonType.slot.asc(),
     backref=backref('pokemon', order_by=Pokemon.order))
+
+PokemonAbility.ability = relationship(Ability,
+    innerjoin=True)
 
 PokemonDexNumber.pokedex = relationship(Pokedex,
     innerjoin=True, lazy='joined')
@@ -2545,9 +2593,13 @@ PokemonEvolution.location = relationship(Location,
     backref='triggered_evolutions')
 PokemonEvolution.known_move = relationship(Move,
     backref='triggered_evolutions')
+PokemonEvolution.known_move_type = relationship(Type,
+    primaryjoin=PokemonEvolution.known_move_type_id==Type.id)
 PokemonEvolution.party_species = relationship(PokemonSpecies,
     primaryjoin=PokemonEvolution.party_species_id==PokemonSpecies.id,
     backref='triggered_evolutions')
+PokemonEvolution.party_type = relationship(Type,
+    primaryjoin=PokemonEvolution.party_type_id==Type.id)
 PokemonEvolution.trade_species = relationship(PokemonSpecies,
     primaryjoin=PokemonEvolution.trade_species_id==PokemonSpecies.id)
 PokemonEvolution.gender = relationship(Gender,
@@ -2583,7 +2635,8 @@ PokemonMove.pokemon = relationship(Pokemon,
     innerjoin=True, lazy='joined',
     backref='pokemon_moves')
 PokemonMove.version_group = relationship(VersionGroup,
-    innerjoin=True, lazy='joined')
+    innerjoin=True, lazy='joined',
+    backref='pokemon_moves')
 PokemonMove.machine = relationship(Machine,
     primaryjoin=and_(
         Machine.version_group_id==PokemonMove.version_group_id,
@@ -2622,7 +2675,6 @@ PokemonSpecies.color = relationship(PokemonColor,
     backref='species')
 PokemonSpecies.egg_groups = relationship(EggGroup,
     secondary=PokemonEggGroup.__table__,
-    innerjoin=True,
     order_by=PokemonEggGroup.egg_group_id.asc(),
     backref=backref('species', order_by=PokemonSpecies.order.asc()))
 PokemonSpecies.forms = relationship(PokemonForm,
@@ -2644,7 +2696,6 @@ PokemonSpecies.default_pokemon = relationship(Pokemon,
         Pokemon.is_default==True),
     uselist=False, lazy='joined')
 PokemonSpecies.evolution_chain = relationship(EvolutionChain,
-    innerjoin=True,
     backref=backref('species', order_by=PokemonSpecies.id.asc()))
 PokemonSpecies.dex_numbers = relationship(PokemonDexNumber,
     innerjoin=True,
