@@ -1444,7 +1444,7 @@ def main(argv, session=None):
         help='Level of the pokemon')
 
     parser.add_argument('-v', '--version', metavar='VER', type=unicode,
-        default='black',
+        default='x',
         help='Version to search in.')
 
     parser.add_argument('-q', '--quiet', action='store_true', default=False,
