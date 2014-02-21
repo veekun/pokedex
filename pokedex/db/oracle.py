@@ -2,12 +2,7 @@ from pokedex.db import metadata
 
 ### Helper functions for oracle
 def rewrite_long_table_names():
-    """Modifies the table names to disenvowel long table names.
-    Takes the metadata from memory or uses the imported one.
-
-    Returns a dictionary matching short names -> long names.
-    """
-
+    """Disemvowels all table names over thirty characters."""
     # Load tables from metadata
     table_objs = metadata.tables.values()
 
