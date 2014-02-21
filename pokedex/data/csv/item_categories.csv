@@ -23,7 +23,7 @@ id,pocket_id,identifier
 22,8,plot-advancement
 23,8,unused
 24,1,loot
-25,6,
+25,6,all-mail
 26,2,vitamins
 27,2,healing
 28,2,pp-recovery
@@ -34,7 +34,7 @@ id,pocket_id,identifier
 34,3,standard-balls
 35,1,dex-completion
 36,1,scarves
-37,4,
+37,4,all-machines
 38,7,flutes
 39,3,apricorn-balls
 40,8,apricorn-box

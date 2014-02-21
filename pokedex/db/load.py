@@ -11,6 +11,7 @@ import pokedex
 from pokedex.db import metadata, tables, translations
 from pokedex.defaults import get_default_csv_dir
 from pokedex.db.dependencies import find_dependent_tables
+from pokedex.db.oracle import rewrite_long_table_names
 
 
 def _get_table_names(metadata, patterns):
@@ -143,6 +144,11 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     table_objs = sqlalchemy.sql.util.sort_tables(table_objs)
 
+    # Limit table names to 30 characters for Oracle
+    oracle = (session.connection().dialect.name == 'oracle')
+    if oracle:
+        rewrite_long_table_names()
+
     # SQLite speed tweaks
     if not safe and session.connection().dialect.name == 'sqlite':
         session.connection().execute("PRAGMA synchronous=OFF")
@@ -177,7 +183,11 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     # Okay, run through the tables and actually load the data now
     for table_obj in table_objs:
-        table_name = table_obj.name
+        if oracle:
+            table_name = table_obj._original_name
+        else:
+            table_name = table_obj.name
+
         insert_stmt = table_obj.insert()
 
         print_start(table_name)
@@ -369,13 +379,23 @@ def dump(session, tables=[], directory=None, verbose=False, langs=['en']):
     table_names = _get_table_names(metadata, tables)
     table_names.sort()
 
+    # Oracle needs to dump from tables with shortened names to csvs with the
+    # usual names
+    oracle = (session.connection().dialect.name == 'oracle')
+    if oracle:
+        rewrite_long_table_names()
 
     for table_name in table_names:
         print_start(table_name)
         table = metadata.tables[table_name]
 
-        writer = csv.writer(open("%s/%s.csv" % (directory, table_name), 'wb'),
-                            lineterminator='\n')
+        if oracle:
+            filename = '%s/%s.csv' % (directory, table._original_name)
+        else:
+            filename = '%s/%s.csv' % (directory, table_name)
+
+        writer = csv.writer(open(filename, 'wb'), lineterminator='\n')
+
         columns = [col.name for col in table.columns]
 
         # For name tables, dump rows for official languages, as well as
