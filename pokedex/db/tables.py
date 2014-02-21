@@ -1062,7 +1062,7 @@ class LocationArea(TableBase):
 
 create_translation_table('location_area_prose', LocationArea, 'prose',
     relation_lazy='joined',
-    name = Column(Unicode(64), nullable=False, index=True,
+    name = Column(Unicode(64), nullable=True, index=True,
         info=dict(description="The name", format='plaintext', official=False)),
 )
 
