@@ -139,18 +139,15 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
     table_names = _get_table_names(metadata, tables)
     table_objs = [metadata.tables[name] for name in table_names]
 
-    # Oracle fixery, load needs short names
-    # flag for oracle stuff
-    oranames = (session.connection().dialect.name == 'oracle')
-    if oranames:
-        # Shorten table names, Oracle limits table and column names to 30 chars
-        # Make a dictionary to match old<->new names
-        oradict = rewrite_long_table_names()
-                
     if recursive:
         table_objs.extend(find_dependent_tables(table_objs))
 
     table_objs = sqlalchemy.sql.util.sort_tables(table_objs)
+
+    # Limit table names to 30 characters for Oracle
+    oracle = (session.connection().dialect.name == 'oracle')
+    if oracle:
+        rewrite_long_table_names()
 
     # SQLite speed tweaks
     if not safe and session.connection().dialect.name == 'sqlite':
@@ -186,15 +183,17 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     # Okay, run through the tables and actually load the data now
     for table_obj in table_objs:
-        table_name = table_obj.name
+        if oracle:
+            table_name = table_obj._original_name
+        else:
+            table_name = table_obj.name
+
         insert_stmt = table_obj.insert()
 
         print_start(table_name)
+
         try:
             csvpath = "%s/%s.csv" % (directory, table_name)
-            # In oracle mode, use the original names instead of current
-            if oranames:
-                csvpath = "%s/%s.csv" % (directory, oradict[table_name])    
             csvfile = open(csvpath, 'rb')
         except IOError:
             # File doesn't exist; don't load anything!
@@ -380,22 +379,23 @@ def dump(session, tables=[], directory=None, verbose=False, langs=['en']):
     table_names = _get_table_names(metadata, tables)
     table_names.sort()
 
-    # Oracle fixery : read from short table names, dump long names
-    oranames = (session.connection().dialect.name == 'oracle')
-    if oranames:
-        # Make a dictionary to match old<->new names
-        oradict = rewrite_long_table_names()
+    # Oracle needs to dump from tables with shortened names to csvs with the
+    # usual names
+    oracle = (session.connection().dialect.name == 'oracle')
+    if oracle:
+        rewrite_long_table_names()
 
     for table_name in table_names:
         print_start(table_name)
         table = metadata.tables[table_name]
 
-        writer = csv.writer(open("%s/%s.csv" % (directory, table_name), 'wb'),
-                            lineterminator='\n')
-        # In oracle mode, use the original names instead of current
-        if oranames:
-            writer = csv.writer(open("%s/%s.csv" % (directory, oradict[table_name]), 'wb'),
-                            lineterminator='\n')
+        if oracle:
+            filename = '%s/%s.csv' % (directory, table._original_name)
+        else:
+            filename = '%s/%s.csv' % (directory, table_name)
+
+        writer = csv.writer(open(filename, 'wb'), lineterminator='\n')
+
         columns = [col.name for col in table.columns]
 
         # For name tables, dump rows for official languages, as well as

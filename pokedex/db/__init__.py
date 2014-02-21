@@ -25,7 +25,7 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
     if uri is None:
         uri = get_default_db_uri()
 
-    ### Do some fixery for MySQL
+    ### Do some fixery for specific RDBMSes
     if uri.startswith('mysql:'):
         # MySQL uses latin1 for connections by default even if the server is
         # otherwise oozing with utf8; charset fixes this
@@ -37,9 +37,7 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
         for table in metadata.tables.values():
             table.kwargs['mysql_engine'] = 'InnoDB'
             table.kwargs['mysql_charset'] = 'utf8'
-
-    ### Do some fixery for Oracle
-    if uri.startswith('oracle:') or uri.startswith('oracle+cx_oracle:'):
+    elif uri.startswith(('oracle:', 'oracle+cx_oracle:')):
         # Oracle requires auto_setinputsizes=False (or at least a special
         # set of exclusions from it, which I don't know)
         if 'auto_setinputsizes' not in uri:
