@@ -38,6 +38,13 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
             table.kwargs['mysql_engine'] = 'InnoDB'
             table.kwargs['mysql_charset'] = 'utf8'
 
+    ### Do some fixery for Oracle
+    if uri.startswith('oracle:') or uri.startswith('oracle+cx_oracle:'):
+        # Oracle requires auto_setinputsizes=False (or at least a special
+        # set of exclusions from it, which I don't know)
+        if 'auto_setinputsizes' not in uri:
+            uri += '?auto_setinputsizes=FALSE'
+
     ### Connect
     engine_args[engine_prefix + 'url'] = uri
     engine = engine_from_config(engine_args, prefix=engine_prefix)
