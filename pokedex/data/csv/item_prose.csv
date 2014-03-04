@@ -622,10 +622,10 @@ Held by a Multitype Pokémon: Holder's type becomes Steel."
 300,9,Traded on a Magmar: Holder evolves into Magmortar.,Held by Magmar: Evolves the holder into Magmortar when traded.
 301,9,Traded on a Porygon2: Holder evolves into Porygon-Z.,Held by Porygon2: Evolves the holder into Porygon-Z when traded.
 302,9,Traded on a Dusclops: Holder evolves into Dusknoir.,Held by Dusclops: Evolves the holder into Dusknoir when traded.
-303,9,Held: Raises the holder's critical hit ratio by one stage. Traded on a Sneasel at night: Holder evolves into Weavile.,"Held: Raises the holder's critical hit counter by 1.
+303,9,Held: Raises the holder's critical hit ratio by one stage. Held by a Sneasel while levelling up at night: Holder evolves into Weavile.,"Held: Raises the holder's critical hit counter by 1.
 Held by Sneasel: Evolves the holder into Weavile when it levels up during the night."
-304,9,Held: Damaging moves gain a 10% chance to make their target flinch. Traded on a Gligar: Holder evolves into Gliscor.,"Held: When the holder attacks with most damaging moves, provides an extra 11.7% (30/256) chance for the target to flinch.
-Held by Gligar: Evolves the holder into Gliscor when traded."
+304,9,Held: Damaging moves gain a 10% chance to make their target flinch. Held by a Gligar while levelling up: Holder evolves into Gliscor.,"Held: When the holder attacks with most damaging moves, provides an extra 11.7% (30/256) chance for the target to flinch.
+Held by Gligar: Evolves the holder into Gliscor when it levels up."
 305,9,Teaches Hone Claws to a compatible Pokémon. (Gen IV & III: Focus Punch Gen II: DynamicPunch Gen I: Mega Punch),Teaches Focus Punch to a compatible Pokémon.
 306,9,Teaches Dragon Claw to a compatible Pokémon. (Gen II: Headbutt Gen I: Razor Wind),Teaches Dragon Claw to a compatible Pokémon.
 307,9,Teaches Psyshock to a compatible Pokémon. (Gen IV & III: Water Pulse Gen II: Curse Gen I: Swords Dance),Teaches Water Pulse to a compatible Pokémon.
