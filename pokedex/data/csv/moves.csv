@@ -589,7 +589,7 @@ id,identifier,generation_id,type_id,power,pp,accuracy,priority,target_id,damage_
 588,kings-shield,6,9,0,10,,4,7,1,360,,,,
 589,play-nice,6,1,0,20,,0,10,1,19,,,,
 590,confide,6,1,0,20,,0,10,1,361,,,,
-591,diamond-storm,6,18,100,5,95,0,10,2,139,50,,,
+591,diamond-storm,6,6,100,5,95,0,10,2,139,50,,,
 594,water-shuriken,6,11,15,20,100,1,10,2,30,100,,,
 595,mystical-fire,6,10,65,10,100,0,10,3,72,100,,,
 596,spiky-shield,6,12,0,10,,4,7,1,362,,,,
