@@ -3480,6 +3480,7 @@ move_id,local_language_id,name
 590,5,Confidence
 590,8,Confidenza
 590,9,Confide
+591,9,Diamond Storm
 594,1,みずしゅりけん
 594,5,Sheauriken
 594,6,Wasser Shuriken
@@ -3538,6 +3539,7 @@ move_id,local_language_id,name
 609,6,Wangenrubbler
 609,8,Elettrococcola
 609,9,Nuzzle
+610,9,Hold Back
 611,1,まとわりつく
 611,5,Harcèlement
 611,6,Plage
