@@ -717,6 +717,7 @@ id,identifier,species_id,height,weight,base_experience,order,is_default
 716,xerneas,716,30,2150,0,776,1
 717,yveltal,717,58,2030,0,777,1
 718,zygarde,718,50,3050,0,778,1
+719,diancie,719,7,88,0,779,1
 10001,deoxys-attack,386,17,608,270,445,0
 10002,deoxys-defense,386,17,608,270,446,0
 10003,deoxys-speed,386,17,608,270,447,0

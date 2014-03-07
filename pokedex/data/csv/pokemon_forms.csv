@@ -717,6 +717,7 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 716,xerneas-active,active,716,15,1,1,0,2,856
 717,yveltal,,717,15,1,0,0,1,857
 718,zygarde,,718,15,1,0,0,1,858
+719,diancie,,719,15,1,0,0,1,859
 10001,unown-b,b,201,3,0,0,0,2,247
 10002,unown-c,c,201,3,0,0,0,3,248
 10003,unown-d,d,201,3,0,0,0,4,249
