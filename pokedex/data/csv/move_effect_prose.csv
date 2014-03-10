@@ -1000,27 +1000,41 @@ If the user is a []{pokemon:meloetta}, it will toggle between Aria and Pirouette
 This move can hit Pokémon under the effect of []{move:bounce}, []{move:fly}, or []{move:sky-drop}.
 
 During []{move:rain-dance}, this move has 100% accuracy.  During []{move:sunny-day}, this move has 50% accuracy."
-339,9,Deals both []{type:fighting} and []{type:flying}-type damage.,Deals both []{type:fighting} and []{type:flying}-type damage.
+339,9,Deals both []{type:fighting} and []{type:flying}-type damage.,"Inflicts regular damage.  For the purposes of type effectiveness, this move is both []{type:fighting}- and []{type:flying}-type: its final effectiveness is determined by multiplying the effectiveness of each type against each of the target's types.
+
+For all other purposes, this move is pure Fighting-type.  If this move's type is changed, its Fighting typing is overwritten, and its secondary type remains Flying.
+
+If the target has used []{move:minimize} since entering battle, this move has double power and will never miss."
 340,9,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.
-341,9,Uses up the user's berry.  Fails if it is not holding one.,Uses up the user's berry.  Fails if it is not holding one.
-342,9,Raises the Attack and Special Attack of all []{type:grass} Pokémon in battle.,Raises the Attack and Special Attack of all []{type:grass} Pokémon in battle
-343,9,Lowers opponents' Speed by one stage when they enter battle.,Lowers opponents' Speed by one stage when they enter battle.
-344,9,Raises the user's Attack by two stages if it KOs the target.,Raises the user's Attack by two stages if it KOs the target.
+341,9,Can only be used after the user has eaten a berry.,"Inflicts regular damage.  Can only be used if the user has eaten a berry since the beginning of the battle.
+
+After the user eats a berry, it may use this move any number of times until the end of the battle, even if it switches out.  Eating a held berry, eating a berry via []{move:bug-bite} or []{move:pluck}, or being the target of a [Flung]{move:fling} berry will enable this move.  Feeding a Pokémon a berry from the bag or using []{move:natural-gift} will not.
+
+If the trainer chooses this move when it cannot be used, the choice is rejected outright and the trainer must choose another move."
+342,9,Raises the Attack and Special Attack of all []{type:grass} Pokémon in battle.,Raises the Attack and Special Attack of all []{type:grass} Pokémon in battle.
+343,9,"Covers the opposing field, lowering opponents' Speed by one stage upon switching in.","Shoots a web over the opponents' side of the field, which lowers the Speed of any opposing Pokémon that enters the field by one stage.
+
+Pokémon in the air, such as []{type:flying}-types and those with []{ability:levitate}, are unaffected.  []{move:rapid-spin} removes Sticky Web from the user's side of the field; []{move:defog} removes it from both sides."
+344,9,Raises the user's Attack by two stages if it KOs the target.,Inflicts regular damage.  Raises the user's Attack by two stages if it KOs the target.
 345,9,Adds []{type:ghost} to the target's types.,Adds []{type:ghost} to the target's types.
 346,9,Lowers the target's Attack and Special Attack by one stage.,Lowers the target's Attack and Special Attack by one stage.
-347,9,Changes []{type:normal} moves to []{type:electric} moves.,Changes []{type:normal} moves to []{type:electric} moves.
+347,9,Changes all []{type:normal} moves to []{type:electric} moves for the rest of the turn.,Changes all Pokémon's []{type:normal} moves to []{type:electric} moves for the rest of the turn.
 348,9,Heals the user for half the total damage dealt to all targets.,Heals the user for half the total damage dealt to all targets.
 349,9,Adds []{type:grass} to the target's types.,Adds []{type:grass} to the target's types.
-350,9,Super-effective against []{type:water}-types.,Super-effective against []{type:water}-types.
+350,9,Super-effective against []{type:water}.,"Deals regular damage.  This move is super-effective against the []{type:water} type.
+
+The target's other type will affect damage as usual.  If this move's type is changed, it remains super-effective against Water regardless of its type."
 351,9,Lowers all targets' Attack and Special Attack by one stage.  Makes the user switch out.,Lowers all targets' Attack and Special Attack by one stage.  Makes the user switch out.
 352,9,Inverts the target's stat modifiers.,Inverts the target's stat modifiers.
-353,9,Drains 75% of the damage inflicted to heal the user.,Drains 75% of the damage inflicted to heal the user.
-354,9,Protects all friendly Pokémon from non-damaging moves.,Protects all friendly Pokémon from non-damaging moves.
+353,9,Drains 75% of the damage inflicted to heal the user.,Deals regular damage.  Drains 75% of the damage inflicted to heal the user.
+354,9,Protects all friendly Pokémon from non-damaging moves.,"Protects all friendly Pokémon from non-damaging moves for the rest of the turn.
+
+Unlike other blocking moves, this move may be used consecutively without its chance of success falling."
 355,9,Raises the Defense of all []{type:grass} Pokémon in battle,Raises the Defense of all []{type:grass} Pokémon in battle.
-356,9,"For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.","For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.
+356,9,"For five turns, heals all Pokémon on the ground for 1/16 max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.","For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.
 
 Changes []{move:nature-power} to []{move:energy-ball}."
-357,9,"For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power.","For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power.
+357,9,"For five turns, protects all Pokémon on the ground from major status ailments and confusion, and halves the power of incoming []{type:dragon} moves.","For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens []{type:dragon} moves used against them to 0.5× their power.
 
 Changes []{move:nature-power} to []{move:moonblast}."
 358,9,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.
@@ -1030,14 +1044,16 @@ Changes []{move:nature-power} to []{move:moonblast}."
 362,9,Blocks damaging attacks and damages attacking Pokémon for 1/8 their max HP.,Blocks damaging attacks and damages attacking Pokémon for 1/8 their max HP.
 363,9,Raises a selected ally's Special Defense by one stage.,Raises a selected ally's Special Defense by one stage.
 364,9,"Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned.","Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned."
-365,9,Damages the target if it uses a []{type:fire} move.,Damages the target if it uses a []{type:fire} move.
+365,9,"Explodes if the target uses a []{type:fire} move this turn, damaging it for 1/4 its max HP and preventing the move.","Explodes if the target uses a []{type:fire} move this turn, damaging it for 1/4 its max HP and preventing the move."
 366,9,"Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by two stages.","Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by two stages."
-367,9,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.
-368,9,"For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.","For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.
+367,9,Raises the Defense and Special Defense of all friendly Pokémon with []{ability:plus} or []{ability:minus} by one stage.,Raises the Defense and Special Defense of all friendly Pokémon with []{ability:plus} or []{ability:minus} by one stage.
+368,9,"For five turns, prevents all Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.","For five turns, prevents all Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.
 
 Changes []{move:nature-power} to []{move:thunderbolt}."
 369,9,Lowers the target's Special Attack by two stages.,Lowers the target's Special Attack by two stages.
-370,9,Doubles prize money.,Doubles prize money.  Stacks with a held item.  Only works once per battle..
+370,9,Doubles prize money.,"Doubles prize money.
+
+Stacks with a held item.  Only works once per battle."
 10001,9,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move while in [hyper mode]{mechanic:hyper-mode}.
 10002,9,User receives 1/2 its HP in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 of its current [HP]{mechanic:hp} in recoil.
 10003,9,Halves HP of all Pokémon on the field.  Must recharge,"Halves [HP]{mechanic:hp} of all Pokémon on the field.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic:switch} out during that turn."

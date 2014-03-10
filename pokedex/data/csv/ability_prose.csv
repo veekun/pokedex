@@ -544,13 +544,15 @@ This ability functions identically to []{ability:mold-breaker} and []{ability:tu
 165,9,Protects allies against moves that affect their mental state.,Protects allies against moves that affect their mental state.
 166,9,Protects friendly []{type:grass} Pokémon from having their stats lowered by other Pokémon.,Protects friendly []{type:grass} Pokémon from having their stats lowered by other Pokémon.
 167,9,"Restores HP upon eating a Berry, in addition to the Berry's effect.","Restores HP upon eating a Berry, in addition to the Berry's effect."
-168,9,Changes the bearer's type to match each move it uses.,Changes the bearer's type to match each move it uses.
+168,9,Changes the bearer's type to match each move it uses.,"Changes the bearer's type to match each move it uses.
+
+The type change takes place just before the move is used."
 169,9,Halves damage from physical attacks.,Halves damage from physical attacks.
 170,9,Steals the target's held item when the bearer uses a damaging move.,Steals the target's held item when the bearer uses a damaging move.
 171,9,"Protects against bullet, ball, and bomb-based moves.","Protects against bullet, ball, and bomb-based moves."
 172,9,Raises Special Attack by two stages upon having any stat lowered.,Raises Special Attack by two stages upon having any stat lowered.
 173,9,Strengthens biting moves to 1.5× their power.,Strengthens biting moves to 1.5× their power.
-174,9,Turns the bearer's []{type:normal} moves into []{type:ice} moves.,Turns the bearer's []{type:normal} moves into []{type:ice} moves.
+174,9,Turns the bearer's []{type:normal} moves into []{type:ice} moves and strengthens them to 1.3× their power.,Turns the bearer's []{type:normal}-type moves into []{type:ice}-type moves.  Moves changed by this ability have 1.3× their power.
 175,9,Prevents friendly Pokémon from sleeping.,Prevents friendly Pokémon from sleeping.
 176,9,"Changes []{pokemon:aegislash} to Blade Forme before using a damaging move, or Shield Forme before using []{move:kings-shield}.","Changes []{pokemon:aegislash} to Blade Forme before using a damaging move, or Shield Forme before using []{move:kings-shield}."
 177,9,Raises []{type:flying} moves' priority by one stage.,Raises []{type:flying} moves' priority by one stage.
@@ -558,10 +560,10 @@ This ability functions identically to []{ability:mold-breaker} and []{ability:tu
 179,9,Boosts Defense while []{move:grassy-terrain} is in effect.,Boosts Defense while []{move:grassy-terrain} is in effect.
 180,9,Passes the bearer's held item to an ally when the ally uses up its item.,Passes the bearer's held item to an ally when the ally uses up its item.
 181,9,Strengthens moves that make contact to 1.33× their power.,Strengthens moves that make contact to 1.33× their power.
-182,9,Turns the bearer's []{type:normal} moves into []{type:fairy} moves.,Turns the bearer's []{type:normal} moves into []{type:fairy} moves.
+182,9,Turns the bearer's []{type:normal} moves into []{type:fairy} moves and strengthens them to 1.3× their power.,Turns the bearer's []{type:normal}-type moves into []{type:fairy} moves.  Moves changed by this ability have 1.3× their power.
 183,9,Lowers attacking Pokémon's Speed by one stage on contact.,Lowers attacking Pokémon's Speed by one stage on contact.
 184,9,Lets the bearer hit twice with damaging moves.  The second hit has half power.,Lets the bearer hit twice with damaging moves.  The second hit has half power.
-185,9,Turns the bearer's []{type:normal} moves into []{type:flying} moves.,Turns the bearer's []{type:normal} moves into []{type:flying} moves.
+185,9,Turns the bearer's []{type:normal} moves into []{type:flying} moves and strengthens them to 1.3× their power.,Turns the bearer's []{type:normal}-type moves into []{type:flying}-type moves.  Moves changed by this ability have 1.3× their power.
 186,9,Strengthens []{type:dark} moves to 1.33× their power for all friendly and opposing Pokémon.,Strengthens []{type:dark} moves for all friendly and opposing Pokémon.
 187,9,Strengthens []{type:fairy} moves to 1.33× their power for all friendly and opposing Pokémon.,Strengthens []{type:fairy} moves for all friendly and opposing Pokémon.
-188,9,Reverses the effects of []{ability:dark-aura} and []{ability:fairy-aura}.,Reverses the effects of []{ability:dark-aura} and []{ability:fairy-aura}.
+188,9,Makes []{ability:dark-aura} and []{ability:fairy-aura} weaken moves of their respective types.,"While this Pokémon is on the field, []{ability:dark-aura} and []{ability:fairy-aura} weaken moves of their respective types to 2/3 their power, rather than strengthening them."
