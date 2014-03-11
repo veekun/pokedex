@@ -570,7 +570,7 @@ clutches of sleep."
 It awakens a Pokémon from the
 clutches of sleep."
 21,15,9,"A spray-type medicine used against
-sleep. It can be used once to rouse a 
+sleep. It can be used once to rouse a
 Pokémon from the clutches of sleep."
 22,5,9,"Heals a paralyzed
 POKéMON."
@@ -800,7 +800,7 @@ Pokémon’s HP."
 Pokémon. It fully restores the
 Pokémon’s HP."
 29,15,9,"A medicine that can revive fainted
-Pokémon. It also fully restores a 
+Pokémon. It also fully restores a
 fainted Pokémon’s maximum HP."
 30,5,9,"A mineral water
 that restores HP
@@ -2922,7 +2922,7 @@ species of Pokémon evolve.
 It sparkles like eyes."
 109,15,8,"Pietra particolare che fa evolvere determinate
 specie di Pokémon. È luccicante come gli occhi."
-109,15,9,"A peculiar stone that can make 
+109,15,9,"A peculiar stone that can make
 certain species of Pokémon evolve.
 It sparkles like a glittering eye."
 110,8,9,"A peculiar stone that makes certain
@@ -3153,7 +3153,7 @@ it recovers from sleep."
 127,14,9,"If held by a Pokémon,
 it recovers from sleep."
 127,15,9,"A Berry to be consumed by Pokémon.
-If a Pokémon holds one, it can recover 
+If a Pokémon holds one, it can recover
 from sleep on its own in battle."
 128,5,9,"A hold item that
 heals poisoning
@@ -3203,7 +3203,7 @@ it recovers from a burn."
 129,14,9,"If held by a Pokémon,
 it recovers from a burn."
 129,15,9,"A Berry to be consumed by Pokémon.
-If a Pokémon holds one, it can recover 
+If a Pokémon holds one, it can recover
 from a burn on its own in battle."
 130,5,9,"A hold item that
 defrosts POKéMON
@@ -3330,7 +3330,7 @@ it recovers from any status problem."
 134,14,9,"If held by a Pokémon,
 it recovers from any status problem."
 134,15,9,"A Berry to be consumed by Pokémon.
-If a Pokémon holds one, it can recover 
+If a Pokémon holds one, it can recover
 from any status condition during battle."
 135,5,9,"A hold item that
 restores 30 HP in
@@ -3354,7 +3354,7 @@ lorsqu’elle est tenue par un Pokémon."
 it heals the user’s HP a little."
 135,14,9,"If held by a Pokémon,
 it heals the user’s HP a little."
-135,15,9,"A Berry to be consumed by Pokémon. 
+135,15,9,"A Berry to be consumed by Pokémon.
 If a Pokémon holds one, it can restore
 its own HP by a small amount during battle."
 136,5,9,"A hold item that
@@ -4298,8 +4298,8 @@ ennemie de type Normal."
 the Pokémon holding this berry."
 177,14,9,"Weakens a Normal-type attack against
 the Pokémon holding this berry."
-177,15,9,"If held by a Pokémon, this Berry 
-will lessen the damage taken 
+177,15,9,"If held by a Pokémon, this Berry
+will lessen the damage taken
 from one Normal-type attack."
 178,5,9,"A hold item that
 raises ATTACK in
@@ -4323,7 +4323,7 @@ en cas de besoin."
 Attack stat in a pinch."
 178,14,9,"If held by a Pokémon, it raises its
 Attack stat in a pinch."
-178,15,9,"A Berry to be consumed by Pokémon. 
+178,15,9,"A Berry to be consumed by Pokémon.
 If a Pokémon holds one, its Attack
 stat will increase when it’s in a pinch."
 179,5,9,"A hold item that
@@ -4348,7 +4348,7 @@ en cas de besoin."
 Defense stat in a pinch."
 179,14,9,"If held by a Pokémon, it raises its
 Defense stat in a pinch."
-179,15,9,"A Berry to be consumed by Pokémon. 
+179,15,9,"A Berry to be consumed by Pokémon.
 If a Pokémon holds one, its Defense
 stat will increase when it’s in a pinch."
 180,5,9,"A hold item that
@@ -4373,7 +4373,7 @@ en cas de besoin."
 Speed stat in a pinch."
 180,14,9,"If held by a Pokémon, it raises its
 Speed stat in a pinch."
-180,15,9,"A Berry to be consumed by Pokémon. 
+180,15,9,"A Berry to be consumed by Pokémon.
 If a Pokémon holds one, its Speed
 stat will increase when it’s in a pinch."
 181,5,9,"A hold item that
@@ -4398,7 +4398,7 @@ en cas de besoin."
 Sp. Atk stat in a pinch."
 181,14,9,"If held by a Pokémon, it raises its
 Sp. Atk stat in a pinch."
-181,15,9,"A Berry to be consumed by Pokémon. 
+181,15,9,"A Berry to be consumed by Pokémon.
 If a Pokémon holds one, its Sp. Atk
 stat will increase when it’s in a pinch."
 182,5,9,"A hold item that
@@ -4423,7 +4423,7 @@ en cas de besoin."
 Sp. Def stat in a pinch."
 182,14,9,"If held by a Pokémon, it raises its
 Sp. Def stat in a pinch."
-182,15,9,"A Berry to be consumed by Pokémon. 
+182,15,9,"A Berry to be consumed by Pokémon.
 If a Pokémon holds one, its Sp. Def
 stat will increase when it’s in a pinch."
 183,5,9,"A hold item that
@@ -6202,7 +6202,7 @@ a move that charges on the first turn."
 Pokémon. It allows the immediate use of
 a move that charges on the first turn."
 248,15,9,"A single-use item to be held by a Pokémon.
-It allows the holder to immediately use a 
+It allows the holder to immediately use a
 move that normally requires a turn to charge."
 249,8,9,"An item to be held by a Pokémon.
 It is a bizarre orb that badly poisons
@@ -7121,7 +7121,7 @@ the holder bloated and slow moving."
 293,14,9,"An item to be held by a Pokémon. It is
 an exotic-smelling incense that makes
 the holder bloated and slow moving."
-293,15,9,"An item to be held by a Pokémon. 
+293,15,9,"An item to be held by a Pokémon.
 This exotic-smelling incense makes
 the holder bloated and slow moving."
 294,8,9,"An item to be held by a Pokémon. It is
@@ -8965,7 +8965,7 @@ electricity to raise its Sp. Atk stat."
 361,14,9,"The user attacks with an electric
 charge. The user may use any remaining
 electricity to raise its Sp. Atk stat."
-361,15,9,"The user attacks with an electric 
+361,15,9,"The user attacks with an electric
 charge. The user may use any remaining
 electricity to raise its Sp. Atk stat."
 362,8,9,"The user endures any attack, leaving
@@ -9288,7 +9288,7 @@ user, the greater the damage."
 high-speed spin. The slower the
 user, the greater the damage."
 378,15,9,"The user tackles the target with a high-speed
-spin. The slower the user compared to the 
+spin. The slower the user compared to the
 target, the greater the move’s power."
 379,8,9,"A frenetic dance to uplift the fighting
 spirit. It sharply raises the user’s
@@ -9308,7 +9308,7 @@ Attack stat."
 379,14,9,"A frenetic dance to uplift the fighting
 spirit. It sharply raises the user’s
 Attack stat."
-379,15,9,"A frenetic dance to uplift the fighting 
+379,15,9,"A frenetic dance to uplift the fighting
 spirit. This sharply raises the user’s
 Attack stat."
 380,8,9,"The user lays a trap of levitating
@@ -9654,7 +9654,7 @@ first for five turns."
 which slower Pokémon get to move
 first for five turns."
 396,15,9,"The user creates a bizarre area in
-which slower Pokémon get to move 
+which slower Pokémon get to move
 first for five turns."
 397,5,9,"Attacks the foe
 with sharp blades
@@ -12043,7 +12043,7 @@ binding moves when held."
 587,14,9,"A band that increases the power of
 binding moves when held."
 587,15,9,"An item to be held by a Pokémon.
-A band that increases the power of 
+A band that increases the power of
 binding moves used by the holder."
 588,11,5,"Bulbe jetable. Tenu, il augmente la
 Défense Spéciale lorsque le Pokémon
@@ -12956,7 +12956,7 @@ enable it to Mega Evolve during battle."
 たたかいのとき　メガシンカが　できる
 ふしぎな　メガストーンの　いっしゅ。"
 711,15,9,"One variety of the mysterious Mega Stones.
-Have Aerodactyl hold it, and this stone will 
+Have Aerodactyl hold it, and this stone will
 enable it to Mega Evolve during battle."
 711,15,11,"プテラに　持たせておくと
 戦いのとき　メガシンカが　できる
