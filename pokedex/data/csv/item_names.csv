@@ -1192,7 +1192,7 @@ item_id,local_language_id,name
 199,6,Silberstaub
 199,7,Polvo Plata
 199,8,Argenpolvere
-199,9,SilverPowder
+199,9,Silver Powder
 200,1,おまもりこばん
 200,5,Pièce Rune
 200,6,Münzamulett
@@ -1216,13 +1216,13 @@ item_id,local_language_id,name
 203,6,Abysszahn
 203,7,Diente Mar.
 203,8,Dente Abissi
-203,9,DeepSeaTooth
+203,9,Deep Sea Tooth
 204,1,しんかいのウロコ
 204,5,Écailleocéan
 204,6,Abyssplatte
 204,7,Escama Mar.
 204,8,Squamabissi
-204,9,DeepSeaScale
+204,9,Deep Sea Scale
 205,1,けむりだま
 205,5,Boule Fumée
 205,6,Rauchball
@@ -1300,7 +1300,7 @@ item_id,local_language_id,name
 217,6,Schattenglas
 217,7,Gafas de Sol
 217,8,Occhialineri
-217,9,BlackGlasses
+217,9,Black Glasses
 218,1,くろおび
 218,5,Ceint.Noire
 218,6,Schwarzgurt
@@ -1348,7 +1348,7 @@ item_id,local_language_id,name
 225,6,Krummlöffel
 225,7,Cuchara Tor
 225,8,Cucch. Torto
-225,9,TwistedSpoon
+225,9,Twisted Spoon
 226,1,もくたん
 226,5,Charbon
 226,6,Holzkohle
@@ -4060,6 +4060,7 @@ item_id,local_language_id,name
 695,5,Ectoplasmite
 695,8,Gengarite
 695,9,Gengarite
+696,1,サーナイトナイト
 696,5,Gardevoirite
 696,8,Gardevoirite
 696,9,Gardevoirite
@@ -4067,6 +4068,7 @@ item_id,local_language_id,name
 697,5,Pharampite
 697,8,Ampharosite
 697,9,Ampharosite
+698,1,フシギバナイト
 698,5,Florizarrite
 698,8,Venusaurite
 698,9,Venusaurite
@@ -4081,6 +4083,7 @@ item_id,local_language_id,name
 702,1,ミュウツナイトＹ
 702,5,Mewtwoïte Y
 702,9,Mewtwonite Y
+703,1,バシャーモナイト
 703,5,Braségalite
 703,8,Blazikenite
 703,9,Blazikenite
@@ -4154,6 +4157,7 @@ item_id,local_language_id,name
 725,9,Maranga Berry
 726,9,Bargain Ticket
 727,1,ふしぎなおきもの
+727,5,Bibelot Bizarre
 727,8,Strano ninnolo
 727,9,Strange Souvenir
 728,1,ミアレガレット
@@ -4166,6 +4170,7 @@ item_id,local_language_id,name
 730,5,Fossile Nageoire
 730,8,Fossilpinna
 730,9,Sail Fossil
+731,5,Joyau Fée
 731,9,Fairy Gem
 732,1,たんけんこころえ
 732,5,ABC Aventure

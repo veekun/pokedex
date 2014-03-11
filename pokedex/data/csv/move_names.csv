@@ -42,7 +42,7 @@ move_id,local_language_id,name
 7,8,Fuocopugno
 7,9,Fire Punch
 8,1,れいとうパンチ
-8,5,Poinglace
+8,5,Poing-Glace
 8,6,Eishieb
 8,7,Puño Hielo
 8,8,Gelopugno
@@ -99,7 +99,7 @@ move_id,local_language_id,name
 17,5,Cru-Aile
 17,6,Flügelschlag
 17,7,Ataque Ala
-17,8,Att. d'Ala
+17,8,Attacco d'Ala
 17,9,Wing Attack
 18,1,ふきとばし
 18,5,Cyclone
@@ -126,6 +126,7 @@ move_id,local_language_id,name
 21,8,Schianto
 21,9,Slam
 22,1,つるのムチ
+22,3,덩굴채찍
 22,5,Fouet Lianes
 22,6,Rankenhieb
 22,7,Látigo Cepa
@@ -192,6 +193,7 @@ move_id,local_language_id,name
 32,8,Perforcorno
 32,9,Horn Drill
 33,1,たいあたり
+33,3,옴통박치기
 33,5,Charge
 33,6,Tackle
 33,7,Placaje
@@ -264,6 +266,7 @@ move_id,local_language_id,name
 44,8,Morso
 44,9,Bite
 45,1,なきごえ
+45,3,울음소리
 45,5,Rugissement
 45,6,Heuler
 45,7,Gruñido
@@ -393,7 +396,7 @@ move_id,local_language_id,name
 66,5,Sacrifice
 66,6,Überroller
 66,7,Sumisión
-66,8,Sottomiss.
+66,8,Sottomissione
 66,9,Submission
 67,1,けたぐり
 67,5,Balayage
@@ -411,7 +414,7 @@ move_id,local_language_id,name
 69,5,Frappe Atlas
 69,6,Geowurf
 69,7,Mov. Sísmico
-69,8,Mov. Sismico
+69,8,Movim. Sismico
 69,9,Seismic Toss
 70,1,かいりき
 70,5,Force
@@ -585,7 +588,7 @@ move_id,local_language_id,name
 98,5,Vive-Attaque
 98,6,Ruckzuckhieb
 98,7,At. Rápido
-98,8,Att. Rapido
+98,8,Attacco Rapido
 98,9,Quick Attack
 99,1,いかり
 99,5,Frénésie
@@ -597,13 +600,13 @@ move_id,local_language_id,name
 100,5,Téléport
 100,6,Teleport
 100,7,Teletransp
-100,8,Teletraspor.
+100,8,Teletrasporto
 100,9,Teleport
 101,1,ナイトヘッド
-101,5,Ténèbres
+101,5,Ombre Nocturne
 101,6,Nachtnebel
 101,7,Tinieblas
-101,8,Ombra Nott.
+101,8,Ombra Notturna
 101,9,Night Shade
 102,1,ものまね
 102,5,Copie
@@ -717,7 +720,7 @@ move_id,local_language_id,name
 120,5,Destruction
 120,6,Finale
 120,7,Autodestruc
-120,8,Autodistruz.
+120,8,Autodistruzione
 120,9,Self-Destruct
 121,1,タマゴばくだん
 121,5,Bomb'Œuf
@@ -816,7 +819,7 @@ move_id,local_language_id,name
 136,8,Calcinvolo
 136,9,High Jump Kick
 137,1,へびにらみ
-137,5,Intimidation
+137,5,Regard Médusant
 137,6,Giftblick
 137,7,Deslumbrar
 137,8,Bagliore
@@ -852,7 +855,7 @@ move_id,local_language_id,name
 142,8,Demonbacio
 142,9,Lovely Kiss
 143,1,ゴッドバード
-143,5,Pique
+143,5,Piqué
 143,6,Himmelsfeger
 143,7,Ataque Aéreo
 143,8,Aeroattacco
@@ -861,7 +864,7 @@ move_id,local_language_id,name
 144,5,Morphing
 144,6,Wandler
 144,7,Transform
-144,8,Trasformaz.
+144,8,Trasformazione
 144,9,Transform
 145,1,あわ
 145,5,Écume
@@ -954,7 +957,7 @@ move_id,local_language_id,name
 159,8,Affilatore
 159,9,Sharpen
 160,1,テクスチャー
-160,5,Adaptation
+160,5,Conversion
 160,6,Umwandlung
 160,7,Conversión
 160,8,Conversione
@@ -1158,10 +1161,10 @@ move_id,local_language_id,name
 193,8,Preveggenza
 193,9,Foresight
 194,1,みちづれ
-194,5,Prlvt Destin
+194,5,Prélèvem. Destin
 194,6,Abgangsbund
 194,7,Mismodestino
-194,8,Destinobbl.
+194,8,Destinobbligato
 194,9,Destiny Bond
 195,1,ほろびのうた
 195,5,Requiem
@@ -1200,7 +1203,7 @@ move_id,local_language_id,name
 200,8,Oltraggio
 200,9,Outrage
 201,1,すなあらし
-201,5,Tempêtesable
+201,5,Tempête de Sable
 201,6,Sandsturm
 201,7,Torm. Arena
 201,8,Terrempesta
@@ -1209,7 +1212,7 @@ move_id,local_language_id,name
 202,5,Giga-Sangsue
 202,6,Gigasauger
 202,7,Gigadrenado
-202,8,Gigassorbim.
+202,8,Gigassorbimento
 202,9,Giga Drain
 203,1,こらえる
 203,5,Ténacité
@@ -1416,7 +1419,7 @@ move_id,local_language_id,name
 236,8,Lucelunare
 236,9,Moonlight
 237,1,めざめるパワー
-237,5,Puis. Cachée
+237,5,Puissance Cachée
 237,6,Kraftreserve
 237,7,Poder Oculto
 237,8,Introforza
@@ -1464,13 +1467,13 @@ move_id,local_language_id,name
 244,8,Psicamisù
 244,9,Psych Up
 245,1,しんそく
-245,5,Vit.Extrême
+245,5,Vitesse Extrême
 245,6,Turbotempo
 245,7,Vel. Extrema
 245,8,Extrarapido
 245,9,Extreme Speed
 246,1,げんしのちから
-246,5,Pouv.Antique
+246,5,Pouvoir Antique
 246,6,Antik-Kraft
 246,7,Poder Pasado
 246,8,Forzantica
@@ -1824,13 +1827,13 @@ move_id,local_language_id,name
 304,8,Granvoce
 304,9,Hyper Voice
 305,1,どくどくのキバ
-305,5,Crochetvenin
+305,5,Crochet Venin
 305,6,Giftzahn
 305,7,Colmillo Ven
 305,8,Velenodenti
 305,9,Poison Fang
 306,1,ブレイククロー
-306,5,Éclategriffe
+306,5,Éclate Griffe
 306,6,Zermalmklaue
 306,7,Garra Brutal
 306,8,Tritartigli
@@ -1866,7 +1869,7 @@ move_id,local_language_id,name
 311,8,Palla Clima
 311,9,Weather Ball
 312,1,アロマセラピー
-312,5,Aromathérapi
+312,5,Aromathérapie
 312,6,Aromakur
 312,7,Aromaterapia
 312,8,Aromaterapia
@@ -2064,7 +2067,7 @@ move_id,local_language_id,name
 344,8,Locomovolt
 344,9,Volt Tackle
 345,1,マジカルリーフ
-345,5,Feuillemagik
+345,5,Feuille Magik
 345,6,Zauberblatt
 345,7,Hoja Mágica
 345,8,Fogliamagica
@@ -2316,7 +2319,7 @@ move_id,local_language_id,name
 386,8,Punizione
 386,9,Punishment
 387,1,とっておき
-387,5,Dernierecour
+387,5,Dernier Recours
 387,6,Zuflucht
 387,7,Última Baza
 387,8,Ultimascelta
@@ -2616,7 +2619,7 @@ move_id,local_language_id,name
 436,8,Lavasbuffo
 436,9,Lava Plume
 437,1,リーフストーム
-437,5,Tempêteverte
+437,5,Tempête Verte
 437,6,Blättersturm
 437,7,Lluevehojas
 437,8,Verdebufera
@@ -2814,13 +2817,13 @@ move_id,local_language_id,name
 469,8,Bodyguard
 469,9,Wide Guard
 470,1,ガードシェア
-470,5,PartageGarde
+470,5,Partage Garde
 470,6,Schutzteiler
 470,7,Isoguardia
 470,8,Paridifesa
 470,9,Guard Split
 471,1,パワーシェア
-471,5,PartageForce
+471,5,Partage Force
 471,6,Kraftteiler
 471,7,Isofuerza
 471,8,Pariattacco
@@ -2850,7 +2853,7 @@ move_id,local_language_id,name
 475,8,Sganciapesi
 475,9,Autotomize
 476,1,いかりのこな
-476,5,PoudreFureur
+476,5,Poudre Fureur
 476,6,Wutpulver
 476,7,Polvo Ira
 476,8,Polverabbia
@@ -2994,7 +2997,7 @@ move_id,local_language_id,name
 499,8,Pulifumo
 499,9,Clear Smog
 500,1,アシストパワー
-500,5,ForceAjoutée
+500,5,Force Ajoutée
 500,6,Kraftvorrat
 500,7,Poderreserva
 500,8,Veicolaforza
@@ -3120,7 +3123,7 @@ move_id,local_language_id,name
 520,8,Erbapatto
 520,9,Grass Pledge
 521,1,ボルトチェンジ
-521,5,ChangeÉclair
+521,5,Change Éclair
 521,6,Voltwechsel
 521,7,Voltiocambio
 521,8,Invertivolt
@@ -3138,7 +3141,7 @@ move_id,local_language_id,name
 523,8,Battiterra
 523,9,Bulldoze
 524,1,こおりのいぶき
-524,5,SouffleGlacé
+524,5,Souffle Glacé
 524,6,Eisesodem
 524,7,Vaho Gélido
 524,8,Alitogelido
@@ -3180,7 +3183,7 @@ move_id,local_language_id,name
 530,8,Doppiocolpo
 530,9,Dual Chop
 531,1,ハートスタンプ
-531,5,Crèvecœur
+531,5,Crève-Cœur
 531,6,Herzstempel
 531,7,Arrumaco
 531,8,Cuorestampo
@@ -3276,7 +3279,7 @@ move_id,local_language_id,name
 546,8,Tecnobotto
 546,9,Techno Blast
 547,1,いにしえのうた
-547,5,ChantAntique
+547,5,Chant Antique
 547,6,Urgesang
 547,7,Cantoarcaico
 547,8,Cantoantico
@@ -3288,13 +3291,13 @@ move_id,local_language_id,name
 548,8,Spadamistica
 548,9,Secret Sword
 549,1,こごえるせかい
-549,5,ÈreGlaciaire
+549,5,Ère Glaciaire
 549,6,Eiszeit
 549,7,Mundo Gélido
 549,8,Gelamondo
 549,9,Glaciate
 550,1,らいげき
-550,5,ChargeFoudre
+550,5,Charge Foudre
 550,6,Blitzschlag
 550,7,At. Fulgor
 550,8,Lucesiluro
@@ -3336,7 +3339,7 @@ move_id,local_language_id,name
 556,8,Scagliagelo
 556,9,Icicle Crash
 557,1,Ｖジェネレート
-557,5,CoupVictoire
+557,5,Coup Victoire
 557,6,V-Generator
 557,7,V de Fuego
 557,8,Generatore V
@@ -3355,6 +3358,7 @@ move_id,local_language_id,name
 559,9,Fusion Bolt
 560,1,フライングプレス
 560,5,Flying Press
+560,6,Flying Press
 560,8,Schiacciatuffo
 560,9,Flying Press
 561,1,たたみがえし
@@ -3378,10 +3382,12 @@ move_id,local_language_id,name
 565,9,Fell Stinger
 566,1,ゴーストダイブ
 566,5,Hantise
+566,6,Phantomkraft
 566,8,Spettrotuffo
 566,9,Phantom Force
 567,1,ハロウィン
 567,5,Halloween
+567,6,Halloween
 567,8,Halloween
 567,9,Trick-or-Treat
 568,1,おたけび
@@ -3410,6 +3416,7 @@ move_id,local_language_id,name
 573,9,Freeze-Dry
 574,1,チャームボイス
 574,5,Voix Enjôleuse
+574,6,Säuselstimme
 574,8,Incantavoce
 574,9,Disarming Voice
 575,1,すてゼリフ
@@ -3435,10 +3442,12 @@ move_id,local_language_id,name
 579,9,Flower Shield
 580,1,グラスフィールド
 580,5,Champ Herbu
+580,6,Grasfeld
 580,8,Campo Erboso
 580,9,Grassy Terrain
 581,1,ミストフィールド
 581,5,Champ Brumeux
+581,6,Nebelfeld
 581,8,Campo Nebbioso
 581,9,Misty Terrain
 582,1,そうでん
@@ -3469,6 +3478,7 @@ move_id,local_language_id,name
 587,9,Fairy Lock
 588,1,キングシールド
 588,5,Bouclier Royal
+588,6,Königsschild
 588,8,Scudo Reale
 588,9,King's Shield
 589,1,なかよくする
@@ -3478,6 +3488,7 @@ move_id,local_language_id,name
 589,9,Play Nice
 590,1,ないしょばなし
 590,5,Confidence
+590,6,Vertrauenssache
 590,8,Confidenza
 590,9,Confide
 591,9,Diamond Storm
@@ -3493,7 +3504,7 @@ move_id,local_language_id,name
 595,9,Mystical Fire
 596,1,ニードルガード
 596,5,Pico-Défense
-596,6,Scutzstacheln
+596,6,Schutzstacheln
 596,8,Agodifesa
 596,9,Spiky Shield
 597,1,アロマミスト
@@ -3513,14 +3524,19 @@ move_id,local_language_id,name
 600,9,Powder
 601,1,ジオコントロール
 601,5,Géo-Contrôle
+601,6,Geokontrolle
 601,8,Geocontrollo
 601,9,Geomancy
 602,1,じばそうさ
 602,5,Magné-Contrôle
 602,9,Magnetic Flux
+603,1,ハッピータイム
+603,5,Étrennes
+603,8,Cuccagna
 603,9,Happy Hour
 604,1,エレキフィールド
 604,5,Champ Électrifié
+604,6,Elektrofeld
 604,8,Campo Elettrico
 604,9,Electric Terrain
 605,1,マジカルシャイン
@@ -3528,6 +3544,8 @@ move_id,local_language_id,name
 605,6,Zauberschein
 605,8,Magibrillio
 605,9,Dazzling Gleam
+606,1,おいわい
+606,5,Célébration
 606,9,Celebrate
 608,1,つぶらなひとみ
 608,5,Regard Touchant
@@ -3552,6 +3570,7 @@ move_id,local_language_id,name
 612,9,Power-Up Punch
 613,1,デスウイング
 613,5,Mort-Ailes
+613,6,Unheilsschwingen
 613,8,Ali del Fato
 613,9,Oblivion Wing
 616,1,グランドフォース

@@ -32,8 +32,7 @@ avant, la queue, etc."
 a long tail or a foreleg, etc."
 1,14,9,"The target is physically pounded with
 a long tail or a foreleg, etc."
-1,15,6,"Ein Hieb mt demn Vorderbeinen oder dem Schweif.
-"
+1,15,6,Ein Hieb mt demn Vorderbeinen oder dem Schweif.
 1,15,9,"The target is physically pounded with
 a long tail, a foreleg, or the like."
 2,3,9,"Has a high criti­
@@ -141,6 +140,8 @@ qui frappe de 2 à 5 fois d’affilée."
 that strike two to five times in a row."
 4,14,9,"The target is hit with a flurry of punches
 that strike two to five times in a row."
+4,15,9,"The target is hit with a flurry of punches
+that strike two to five times in a row."
 5,3,9,"A powerful punch
 thrown very hard."
 5,4,9,"A powerful punch
@@ -245,6 +246,8 @@ frapper l’ennemi. Peut le brûler."
 It may also leave the target with a burn."
 7,14,9,"The target is punched with a fiery fist.
 It may also leave the target with a burn."
+7,15,9,"The target is punched with a fiery fist.
+This may also leave the target with a burn."
 8,3,9,"An icy punch. May
 cause freezing."
 8,4,9,"An icy punch. May
@@ -313,6 +316,9 @@ with paralysis."
 9,14,9,"The target is punched with an electrified
 fist. It may also leave the target
 with paralysis."
+9,15,9,"The target is punched with an electrified
+fist. This may also leave the target
+with paralysis."
 10,3,9,"Scratches with
 sharp claws."
 10,4,9,"Scratches with
@@ -380,6 +386,8 @@ par les côtés."
 both sides to inflict damage."
 11,14,9,"The target is gripped and squeezed from
 both sides to inflict damage."
+11,15,9,"The target is gripped and squeezed from
+both sides to inflicts damage."
 12,3,9,"A one-hit KO,
 pincer attack."
 12,4,9,"A one-hit KO,
@@ -416,6 +424,8 @@ if this attack hits."
 12,14,9,"A vicious, tearing attack with big pincers.
 The target will faint instantly
 if this attack hits."
+12,15,9,"A vicious, tearing attack with big pincers.
+The target faints instantly if this attack hits."
 13,3,9,"1st turn: Prepare
 2nd turn: Attack"
 13,4,9,"1st turn: Prepare
@@ -492,7 +502,7 @@ Attack stat."
 spirit. It sharply raises the user’s
 Attack stat."
 14,15,9,"A frenetic dance to uplift the fighting
-spirit. This sharply raises the user's
+spirit. This sharply raises the user’s
 Attack stat."
 15,3,9,"Cuts using claws,
 scythes, etc."
@@ -569,8 +579,7 @@ launched at the target to inflict damage."
 16,15,6,"Trifft das Ziel mit einem Windstoß
 durch einen Flügelschlag."
 16,15,9,"A gust of wind is whipped up by wings and
-launched at the target to inflict damage.
-"
+launched at the target to inflict damage."
 17,3,9,"Strikes the target
 with wings."
 17,4,9,"Strikes the target
@@ -680,6 +689,8 @@ used for flying to any familiar town."
 19,14,9,"The user soars, then strikes its target
 on the second turn. It can also be
 used for flying to any familiar town."
+19,15,6,"Steigt in Runde 1 empor und trifft das Ziel in
+Runde 2. Ermöglicht Flug in jede bekannte Stadt."
 19,15,9,"The user soars and then strikes
 its target on the next turn. This can
 also be used to fly to any familiar town."
@@ -719,6 +730,9 @@ the target for four to five turns."
 20,14,9,"Things such as long bodies or tentacles
 are used to bind and squeeze
 the target for four to five turns."
+20,15,9,"Things such as long bodies or tentacles
+are used to bind and squeeze
+the target for four to five turns."
 21,3,9,"Slams the foe with
 a tail, vine, etc."
 21,4,9,"Slams the foe with
@@ -754,8 +768,7 @@ vines, etc., to inflict damage."
 21,15,6,"Schlag mit einem langen Schweif, eine Ranke
 oder Ähnlichem."
 21,15,9,"The target is slammed with a long tail,
-vines, or the like to inflict damage.
-"
+vines, or the like to inflict damage."
 22,3,9,"Whips the foe with
 slender vines."
 22,4,9,"Whips the foe with
@@ -788,6 +801,8 @@ pour infliger des dégâts."
 whiplike vines to inflict damage."
 22,14,9,"The target is struck with slender,
 whiplike vines to inflict damage."
+22,15,3,"채찍처럼 후어지는 가늘고 긴 덩굴로
+상대를 힘껏 쳐서 공격한다."
 22,15,6,Peitschenähnlicher Schlag mit Ranken.
 22,15,9,"The target is struck with slender,
 whiplike vines to inflict damage."
@@ -930,6 +945,9 @@ user hurts itself."
 26,14,9,"The user jumps up high, then strikes
 with a kick. If the kick misses, the
 user hurts itself."
+26,15,9,"The user jumps up high, then strikes
+with a kick. If the kick misses, the
+user hurts itself."
 27,3,9,"A fast, spinning
 kick."
 27,4,9,"A fast, spinning
@@ -997,8 +1015,8 @@ pour baisser sa Précision."
 reducing its accuracy."
 28,14,9,"Sand is hurled in the target’s face,
 reducing its accuracy."
-28,15,9,"Sand is hurled in the target's face,
-reducing the target's accuracy."
+28,15,9,"Sand is hurled in the target’s face,
+reducing the target’s accuracy."
 29,3,9,"An attack that may
 make foe flinch."
 29,4,9,"An attack that may
@@ -1180,6 +1198,8 @@ with its whole body."
 33,14,9,"A physical attack in which the user
 charges and slams into the target
 with its whole body."
+33,15,3,"상대를 향해서 믐 전체를
+부딪쳐가며 공격한다."
 33,15,6,Trifft das Ziel mit vollem Körpereinsatz.
 33,15,9,"A physical attack in which the user
 charges and slams into the target
@@ -1259,8 +1279,7 @@ squeeze the target for four to five turns."
 35,14,9,"A long body or vines are used to wrap and
 squeeze the target for four to five turns."
 35,15,9,"A long body or vines are used to wrap and
-squeeze the target for four to five turns.
-"
+squeeze the target for four to five turns."
 36,3,9,"A tackle that also
 hurts the user."
 36,4,9,"A tackle that also
@@ -1334,6 +1353,9 @@ confused, however."
 37,14,9,"The user rampages and attacks for two
 to three turns. It then becomes
 confused, however."
+37,15,9,"The user rampages and attacks
+for two to three turns.
+The user becomes confused."
 38,3,9,"A tackle that also
 hurts the user."
 38,4,9,"A tackle that also
@@ -1371,6 +1393,9 @@ It also damages the user by a fairly large
 amount, however."
 38,15,6,"Lebensgefährlicher Angriff, bei dem
 sich der Angreifer selbst verletzt."
+38,15,9,"A reckless, life-risking tackle.
+This also damages the user
+quite a lot."
 39,3,9,"Lowers the foe's
 DEFENSE."
 39,4,9,"Lowers the foe's
@@ -1488,6 +1513,9 @@ It may also poison the target."
 41,14,9,"The user damages the target twice in
 succession by jabbing it with two spikes.
 It may also poison the target."
+41,15,9,"The user damages the target twice in
+succession by jabbing it with two spikes.
+This may also poison the target."
 42,3,9,"Fires pins that
 strike 2-5 times."
 42,4,9,"Fires pins that
@@ -1525,6 +1553,9 @@ in rapid succession.
 They hit two to five times in a row."
 42,15,6,"Spitze Nadeln treffen das Ziel zwei- bis fünfmal
 hintereinander."
+42,15,9,"Sharp spikes are shot at the target
+in rapid succession.
+They hit two to five times in a row."
 43,3,9,"Reduces the foe's
 DEFENSE."
 43,4,9,"Reduces the foe's
@@ -1638,6 +1669,9 @@ The foes’ Attack stats are lowered."
 45,14,9,"The user growls in an endearing way,
 making the opposing team less wary.
 The foes’ Attack stats are lowered."
+45,15,3,"귀여운 울음소리를 들려주고
+관심을 끌어 방심한 사이에
+상대의 공격을 떨어뜨린다."
 45,15,6,"Der Anwender nimmt das Ziel für sich ein
 und senkt dessen Angriffs-Wert."
 45,15,9,"The user growls in an endearing way,
@@ -1717,6 +1751,9 @@ slumber."
 47,14,9,"A soothing lullaby is sung in a calming
 voice that puts the target into a deep
 slumber."
+47,15,9,"A soothing lullaby is sung in a calming
+voice that puts the target into a
+deep slumber."
 48,3,9,"Sound waves that
 cause confusion."
 48,4,9,"Sound waves that
@@ -1785,6 +1822,8 @@ inflige toujours 20 PV de dégâts."
 wave that always inflicts 20 HP damage."
 49,14,9,"The target is hit with a destructive shock
 wave that always inflicts 20 HP damage."
+49,15,9,"The target is hit with a destructive shock
+wave that always inflicts 20 HP damage."
 50,3,9,"Disables the foe's
 most recent move."
 50,4,9,"Disables the foe's
@@ -1817,6 +1856,8 @@ sa dernière attaque. Dure quatre tours."
 50,11,9,"For four turns, this move prevents the
 target from using the move it last used."
 50,14,9,"For four turns, this move prevents the
+target from using the move it last used."
+50,15,9,"For four turns, this move prevents the
 target from using the move it last used."
 51,3,9,"An attack that may
 lower DEFENSE."
@@ -1929,6 +1970,7 @@ with a burn."
 53,14,9,"The target is scorched with an intense
 blast of fire. It may also leave the target
 with a burn."
+53,15,8,Il bersaglio viene colpito da intense fiammate che possono anche scottarlo.
 53,15,9,"The target is scorched with an intense
 blast of fire. This may also leave the target
 with a burn."
@@ -1968,6 +2010,9 @@ cut for five turns."
 54,14,9,"The user cloaks its body with a white mist
 that prevents any of its stats from being
 cut for five turns."
+54,15,9,"The user cloaks itself and its allies in a
+white mist that prevents any of their stats
+from being lowered for five turns."
 55,3,9,"Squirts water to
 attack."
 55,4,9,"Squirts water to
@@ -2035,6 +2080,8 @@ dirigé sur l’ennemi."
 56,11,9,"The target is blasted by a huge volume
 of water launched under great pressure."
 56,14,9,"The target is blasted by a huge volume
+of water launched under great pressure."
+56,15,9,"The target is blasted by a huge volume
 of water launched under great pressure."
 57,3,9,"A strong water-
 type attack."
@@ -2265,7 +2312,7 @@ Attack stat."
 beam. This may also lower the target’s
 Attack stat."
 62,15,9,"The target is hit with a rainbow-colored
-beam. This may also lower the target's
+beam. This may also lower the target’s
 Attack stat."
 63,3,9,"1st turn: Attack
 2nd turn: Rest"
@@ -2304,7 +2351,7 @@ turn to regain its energy."
 beam. The user must rest on the next
 turn to regain its energy."
 63,15,9,"The target is attacked with a powerful
-beam. The user can't move on the next turn."
+beam. The user can’t move on the next turn."
 64,3,9,"Jabs the foe with
 a beak, etc."
 64,4,9,"Jabs the foe with
@@ -2373,6 +2420,8 @@ comme une perceuse."
 65,11,9,"A corkscrewing attack with the
 sharp beak acting as a drill."
 65,14,9,"A corkscrewing attack with the
+sharp beak acting as a drill."
+65,15,9,"A corkscrewing attack with a
 sharp beak acting as a drill."
 66,3,9,"An attack that al­
 so hurts the user."
@@ -2446,6 +2495,9 @@ heavier targets."
 67,14,9,"A powerful low kick that makes the target
 fall over. It inflicts greater damage on
 heavier targets."
+67,15,9,"A powerfull low kick that makes the target
+fall over. The heavier the target,
+the greater the move’s power."
 68,3,9,"Returns a physical
 blow double."
 68,4,9,"Returns a physical
@@ -2519,6 +2571,9 @@ au niveau du lanceur."
 gravity. It inflicts damage equal to
 the user’s level."
 69,14,9,"The target is thrown using the power of
+gravity. It inflicts damage equal to
+the user’s level."
+69,15,9,"The target is thrown using the power of
 gravity. It inflicts damage equal to
 the user’s level."
 70,3,9,"A powerful physi­
@@ -2633,6 +2688,9 @@ by the target."
 72,14,9,"A nutrient-draining attack. The user’s
 HP is restored by half the damage taken
 by the target."
+72,15,9,"A nutrient-draining attack. The user’s
+HP is restored by half the damage taken
+by the target."
 73,3,9,"Steals HP from the
 foe on every turn."
 73,4,9,"Steals HP from the
@@ -2706,7 +2764,7 @@ raising the Attack and Sp. Atk stats."
 raising the Attack and Sp. Atk stats."
 74,15,6,"Der Körper wächst. Dadurch steigen Angriff
 und Spezial-Angriff."
-74,15,9,"The user's body grows all at once,
+74,15,9,"The user’s body grows all at once,
 raising the Attack and Sp. Atk stats."
 75,3,9,"Has a high criti­
 cal hit ratio."
@@ -2786,6 +2844,9 @@ light, then blasts a bundled beam on the
 second turn."
 76,15,6,"Absorbiert Licht in Runde 1.
 In Runde 2 erfolgt der Angriff."
+76,15,9,"A two-turn attack. The user gathers
+light, then blasts a bundled beam on the
+next turn."
 77,3,9,"A move that may
 poison the foe."
 77,4,9,"A move that may
@@ -2819,6 +2880,9 @@ dust on the target. It may poison
 the target."
 77,14,9,"The user scatters a cloud of poisonous
 dust on the target. It may poison
+the target."
+77,15,9,"The user scatters a cloud of poisonous
+dust on the target. This may also poison
 the target."
 78,3,9,"A move that may
 paralyze the foe."
@@ -2974,9 +3038,8 @@ the targets’ Speed stat."
 81,15,6,"Umwickelt Ziele in der Nähe mit Fäden aus
 dem Mund und senkt den Initiativ-Wert."
 81,15,9,"The opposing Pokémon are bound
-with silk blown from the user's mouth
-that harshly lowers the Speed stat.
-"
+with silk blown from the user’s mouth
+that harshly lowers the Speed stat."
 82,3,9,"Always inflicts
 40HP damage."
 82,4,9,"Always inflicts
@@ -3049,6 +3112,9 @@ l’ennemi pendant 4 à 5 tours."
 fierce vortex of fire that rages for four
 to five turns."
 83,14,9,"The target becomes trapped within a
+fierce vortex of fire that rages for four
+to five turns."
+83,15,9,"The target becomes trapped within a
 fierce vortex of fire that rages for four
 to five turns."
 84,3,9,"An attack that may
@@ -3124,6 +3190,9 @@ with paralysis."
 85,14,9,"A strong electric blast is loosed at the
 target. It may also leave the target
 with paralysis."
+85,15,9,"A strong electric blast crashes down on
+the target. This may also leave the target
+with paralysis."
 86,3,9,"A move that may
 cause paralysis."
 86,4,9,"A move that may
@@ -3195,6 +3264,9 @@ on the target to inflict damage. It may
 also leave the target with paralysis."
 87,14,9,"A wicked thunderbolt is dropped
 on the target to inflict damage. It may
+also leave the target with paralysis."
+87,15,9,"A wicked thunderbolt is dropped on
+the target to inflict damage. This may
 also leave the target with paralysis."
 88,3,9,"Drops rocks on the
 enemy."
@@ -3268,6 +3340,8 @@ strikes those around it."
 strikes those around it."
 89,15,6,"Ein mächtiges Beben, das die anderen Pokémon
 in der Nähe des Anwenders trifft."
+89,15,9,"The user sets off an earthquake that
+strikes every Pokémon around it."
 90,3,9,"A ground-type,
 one-hit KO attack."
 90,4,9,"A ground-type,
@@ -3304,6 +3378,9 @@ The target instantly faints if it hits."
 90,14,9,"The user opens up a fissure in the ground
 and drops the target in.
 The target instantly faints if it hits."
+90,15,9,"The user opens up a fissure in the ground
+and drops the target in.
+The target faints instantly if this attack hits."
 91,3,9,"1st turn: Burrow
 2nd turn: Attack"
 91,4,9,"1st turn: Burrow
@@ -3341,8 +3418,8 @@ It can also be used to exit dungeons."
 on the second turn.
 It can also be used to exit dungeons."
 91,15,9,"The user burrows, then attacks
-on the next turn. It can also
-be used to exit dungeons."
+on the next turn.
+It can also be used to exit dungeons."
 92,3,9,"A poison move with
 increasing damage."
 92,4,9,"A poison move with
@@ -3461,8 +3538,9 @@ force. It may also reduce the target’s
 Sp. Def stat."
 94,15,6,"Starke Psycho-Attacke, die eventuell die
 Spezial-Verteidigung des Zieles senkt."
+94,15,8,Il bersaglio viene colpito da una potente forza telecinetica che può anche ridurne la Difesa Speciale.
 94,15,9,"The target is hit by a strong telekinetic 
-force. This may also lower the target's 
+force. This may also lower the target’s 
 Sp. Def stat."
 95,3,9,"May put the foe to
 sleep."
@@ -3735,6 +3813,9 @@ matching the user’s level."
 101,14,9,"The user makes the target see a
 frightening mirage. It inflicts damage
 matching the user’s level."
+101,15,9,"The user makes the target see a
+frightening mirage. It inflicts damage
+equal to the user’s level."
 102,3,9,"Copies a move used
 by the foe."
 102,4,9,"Copies a move used
@@ -3771,6 +3852,9 @@ until the Pokémon is switched out."
 102,14,9,"The user copies the target’s last move.
 The move can be used during battle
 until the Pokémon is switched out."
+102,15,9,"The user copies the target’s last move.
+The move can be used during battle
+until the Pokémon is switched out."
 103,3,9,"Sharply reduces
 the foe's DEFENSE."
 103,4,9,"Sharply reduces
@@ -3805,7 +3889,7 @@ the target’s Defense stat."
 103,14,9,"An earsplitting screech harshly reduces
 the target’s Defense stat."
 103,15,9,"An earsplitting screen harshly lowers
-the target's Defense stat."
+the target’s Defense stat."
 104,3,9,"Heightens evasive­
 ness."
 104,4,9,"Heightens evasive­
@@ -3879,6 +3963,9 @@ restores its own HP by half of
 its max HP."
 105,15,6,"Eine Selbstheilung. KP des Anwenders werden
 um 50% des maximalen Wertes aufgefüllt."
+105,15,9,"Restoring its own cells, the user
+restores its own HP by half of
+its max HP."
 106,3,9,"Raises the user's
 DEFENSE."
 106,4,9,"Raises the user's
@@ -3990,6 +4077,9 @@ of smoke or ink. It reduces the
 target’s accuracy."
 108,15,6,"Senkt Genauigkeit des Zieles mit Rauch,
 Tinte oder Ähnlichem."
+108,15,9,"The user releases an obscuring cloud
+of smoke or ink. This lowers the
+target’s accuracy."
 109,3,9,"A move that causes
 confusion."
 109,4,9,"A move that causes
@@ -4128,6 +4218,8 @@ augmente fortement sa Défense."
 sharply raises its Defense stat."
 112,14,9,"The user throws up a sturdy wall that
 sharply raises its Defense stat."
+112,15,9,"The user throws up a sturdy wall that
+sharply raises its Defense stat."
 113,3,9,"Ups SPCL.DEF with
 a wall of light."
 113,4,9,"Ups SPCL.DEF with
@@ -4166,7 +4258,7 @@ suppress damage from special attacks
 for five turns."
 113,15,6,"Erzeugt eine Lichtwand und senkt den Schaden
 durch SpezialßAngriffe für fünf Runden."
-113,15,9,"A wonderous wall of light is put up to
+113,15,9,"A wondrous wall of light is put up to
 reduce damage from special attacks 
 for five turns."
 114,3,9,"Eliminates all
@@ -4203,6 +4295,9 @@ les Pokémon au combat."
 every stat change among all the Pokémon
 engaged in battle."
 114,14,9,"The user creates a haze that eliminates
+every stat change among all the Pokémon
+engaged in battle."
+114,15,9,"The user creates a haze that eliminates
 every stat change among all the Pokémon
 engaged in battle."
 115,3,9,"Raises DEFENSE
@@ -4244,7 +4339,7 @@ for five turns."
 115,15,6,"Eine mysteriöse Wand, die fünf Runden
 den Schaden von physischen gegnerischen
 Treffern reduziert."
-115,15,9,"A wonderous wall of light is put up to 
+115,15,9,"A wondrous wall of light is put up to 
 reduce damage from physical attacks
 for five turns."
 116,3,9,"Raises the criti­
@@ -4361,6 +4456,9 @@ any move."
 118,14,9,"The user waggles a finger and stimulates
 its brain into randomly using nearly
 any move."
+118,15,9,"The user waggles a finger and stimulates
+its brain into randomly using nearly
+any move."
 119,3,9,"Counters with the
 same move."
 119,4,9,"Counters with the
@@ -4390,6 +4488,8 @@ avec la même attaque."
 119,11,9,"The user counters the target by mimicking
 the target’s last move."
 119,14,9,"The user counters the target by mimicking
+the target’s last move."
+119,15,9,"The user counters the target by mimicking
 the target’s last move."
 120,3,9,"Powerful but makes
 the user faint."
@@ -4429,6 +4529,9 @@ by causing an explosion.
 The user faints upon using this move."
 120,15,6,"Anwender sprengt sich, richtet rundum
 Riesenschaden an und wird dabei besiegt."
+120,15,9,"The user attacks everything around it
+by causing an explosion.
+The user faints upon using this move."
 121,3,9,"Eggs are hurled at
 the foe."
 121,4,9,"Eggs are hurled at
@@ -4575,6 +4678,8 @@ l’ennemi. Peut aussi l’empoisonner."
 It may also poison the target."
 124,14,9,"Unsanitary sludge is hurled at the target.
 It may also poison the target."
+124,15,9,"Unsanitary sludge is hurled at the target.
+This may also poison the target."
 125,3,9,"An attack that may
 cause flinching."
 125,4,9,"An attack that may
@@ -4724,6 +4829,9 @@ four to five turns."
 128,14,9,"The target is clamped and squeezed by
 the user’s very thick and sturdy shell for
 four to five turns."
+128,15,9,"The target is clamped and squeezed by
+the user’s very thick and sturdy shell for
+four to five turns."
 129,3,9,"An attack that
 never misses."
 129,4,9,"An attack that
@@ -4797,6 +4905,9 @@ rams the target on the next turn."
 130,14,9,"The user tucks in its head to raise its
 Defense in the first turn, then
 rams the target on the next turn."
+130,15,9,"The user tucks in its head to raise its
+Defense in the first turn, then
+rams the target on the next turn."
 131,3,9,"Fires spikes to
 hit 2-5 times."
 131,4,9,"Fires spikes to
@@ -4830,6 +4941,9 @@ Peut toucher de 2 à 5 fois."
 in rapid succession.
 They hit two to five times in a row."
 131,14,9,"Sharp spikes are shot at the target
+in rapid succession.
+They hit two to five times in a row."
+131,15,9,"Sharp spikes are shot at the target
 in rapid succession.
 They hit two to five times in a row."
 132,3,9,"An attack that may
@@ -4867,6 +4981,9 @@ It may also lower the target’s Speed stat."
 132,14,9,"The target is attacked with long, creeping
 tentacles or vines.
 It may also lower the target’s Speed stat."
+132,15,9,"The target is attacked with long, creeping
+tentacles or vines.
+This may also lower the target’s Speed stat."
 133,3,9,"Sharply raises the
 user's SPCL.DEF."
 133,4,9,"Sharply raises the
@@ -4907,7 +5024,7 @@ It sharply raises the user’s Sp. Def stat."
 stark erhöht."
 133,15,9,"The user temporarily empties its mind to
 forget its concerns.
-This sharply raises the user's Sp. Def stat."
+This sharply raises the user’s Sp. Def stat."
 134,3,9,"Reduces the foe's
 accuracy."
 134,4,9,"Reduces the foe's
@@ -5021,6 +5138,9 @@ from a jump. If it misses, the user is hurt
 instead."
 136,15,6,"Sprungtritt mit Knie. Bei Misserfolg verletzt sich
 der Anwender selbst."
+136,15,9,"The target is attacked with a knee kick
+from a jump. If it misses, the user is
+hurt instead."
 137,3,9,"A move that may
 cause paralysis."
 137,4,9,"A move that may
@@ -5053,6 +5173,8 @@ regard terrifiant pour le paralyser."
 137,11,9,"The user intimidates the target with the
 pattern on its belly to cause paralysis."
 137,14,9,"The user intimidates the target with the
+pattern on its belly to cause paralysis."
+137,15,9,"The user intimidates the target with the
 pattern on its belly to cause paralysis."
 138,3,9,"Steals HP from a
 sleeping victim."
@@ -5090,6 +5212,9 @@ caused to heal the user’s HP."
 138,14,9,"The user eats the dreams of a sleeping
 target. It absorbs half the damage
 caused to heal the user’s HP."
+138,15,9,"The user eats the dreams of a sleeping
+target. It absorbs half the damage
+caused to heal its own HP."
 139,3,9,"A move that may
 poison the foe."
 139,4,9,"A move that may
@@ -5125,6 +5250,9 @@ It may poison those hit."
 139,14,9,"A cloud of poison gas is sprayed
 in the face of opposing Pokémon.
 It may poison those hit."
+139,15,9,"A cloud of poison gas is sprayed
+in the face of opposing Pokémon.
+This may also poison those hit."
 140,3,9,"Throws orbs to hit
 2-5 times."
 140,4,9,"Throws orbs to hit
@@ -5194,8 +5322,8 @@ damage taken by the target."
 141,14,9,"The user drains the target’s blood.
 The user’s HP is restored by half the
 damage taken by the target."
-141,15,9,"The user drains the target's blood.
-The user's HP is restored by half the
+141,15,9,"The user drains the target’s blood.
+The user’s HP is restored by half the
 damage taken by the target."
 142,3,9,"May cause the foe
 to fall asleep."
@@ -5304,6 +5432,9 @@ the same move set."
 144,14,9,"The user transforms into a copy of the
 target right down to having
 the same move set."
+144,15,9,"The user transforms into a copy of the
+target right down to having
+the same move set."
 145,3,9,"An attack that may
 reduce SPEED."
 145,4,9,"An attack that may
@@ -5379,6 +5510,9 @@ leave it confused."
 146,14,9,"The target is hit with rhythmically
 launched punches that may also
 leave it confused."
+146,15,9,"The target is hit with rhythmically
+launched punches. This may also
+leave the target confused."
 147,3,9,"A move that
 induces sleep."
 147,4,9,"A move that
@@ -5411,6 +5545,8 @@ spores qui endort."
 147,11,9,"The user scatters bursts of spores
 that induce sleep."
 147,14,9,"The user scatters bursts of spores
+that induce sleep."
+147,15,9,"The user scatters bursts of spores
 that induce sleep."
 148,3,9,"Blinds the foe to
 reduce accuracy."
@@ -5449,7 +5585,7 @@ It can also be used to illuminate caves."
 the target’s accuracy.
 It can also be used to illuminate caves."
 148,15,9,"The user flashes a bright light that cuts
-the target's accuracy."
+the target’s accuracy."
 149,3,9,"An attack with
 variable power."
 149,4,9,"An attack with
@@ -5562,6 +5698,9 @@ Defense stat."
 151,14,9,"The user alters its cellular structure to
 liquefy itself, sharply raising its
 Defense stat."
+151,15,9,"The user alters its cellular structure to
+liquefy itself, sharply raising its
+Defense stat."
 152,3,9,"Has a high criti­
 cal hit ratio."
 152,4,9,"Has a high criti­
@@ -5594,6 +5733,8 @@ Taux de critiques élevé."
 152,11,9,"The target is hammered with a large pincer.
 Critical hits land more easily."
 152,14,9,"The target is hammered with a large pincer.
+Critical hits land more easily."
+152,15,9,"The target is hammered with a large pincer.
 Critical hits land more easily."
 153,3,9,"Very powerful but
 makes user faint."
@@ -5633,8 +5774,7 @@ those around it.
 The user faints upon using this move."
 153,15,9,"The user attacks everything around it
 by causing a tremendous explosion.
-The user faints upon using the move.
-"
+The user faints upon using the move."
 154,3,9,"Quickly scratches
 2-5 times."
 154,4,9,"Quickly scratches
@@ -5708,6 +5848,9 @@ coming and going."
 155,14,9,"The user throws the bone it holds. The
 bone loops to hit the target twice,
 coming and going."
+155,15,9,"The user throws the bone it holds. The
+bone loops to hit the target twice,
+coming and going."
 156,3,9,"Sleep for 2 turns
 to fully recover."
 156,4,9,"Sleep for 2 turns
@@ -5745,7 +5888,7 @@ any status problem."
 It fully restores the user’s HP and heals
 any status problem."
 156,15,9,"The user goes to sleep for two turns.
-This fully restores the user's HP and
+This fully restores the user’s HP and
 heals any status conditions."
 157,3,9,"An attack that may
 cause flinching."
@@ -5783,6 +5926,9 @@ the targets flinch."
 157,14,9,"Large boulders are hurled at the opposing
 team to inflict damage. It may also make
 the targets flinch."
+157,15,9,"Large boulders are hurled at the opposing
+Pokémon to inflict damage.This may also make
+the opposing Pokémon flinch."
 158,3,9,"An attack that may
 cause flinching."
 158,4,9,"An attack that may
@@ -5819,6 +5965,9 @@ It may also make the target flinch."
 158,14,9,"The user bites hard on the target
 with its sharp front fangs.
 It may also make the target flinch."
+158,15,9,"The user bites hard on the target
+with its sharp front fangs.
+This may also make the target flinch."
 159,3,9,"A move that raises
 the user's ATTACK."
 159,4,9,"A move that raises
@@ -5929,6 +6078,9 @@ or leave the target with paralysis."
 161,14,9,"The user strikes with a simultaneous
 three-beam attack. May also burn, freeze,
 or leave the target with paralysis."
+161,15,9,"The user strikes with a simultaneous
+three-beam attack. May also burn, freeze,
+or leave the target with paralysis."
 162,3,9,"Cuts the foe's HP
 by 1/2."
 162,4,9,"Cuts the foe's HP
@@ -5964,6 +6116,9 @@ It cuts the target’s HP to half."
 162,14,9,"The user chomps hard on the
 target with its sharp front fangs.
 It cuts the target’s HP to half."
+162,15,9,"The user chomps hard on the
+target with its sharp front fangs.
+This cuts the target’s HP in half."
 163,3,9,"Has a high criti­
 cal hit ratio."
 163,4,9,"Has a high criti­
@@ -6040,6 +6195,9 @@ The copy serves as the user’s decoy."
 164,14,9,"The user makes a copy of itself using
 some of its HP.
 The copy serves as the user’s decoy."
+164,15,9,"The user makes a copy of itself using
+some of its HP.
+The copy serves as the user’s decoy."
 165,3,9,"Used only if all
 PP are exhausted."
 165,4,9,"Used only if all
@@ -6110,6 +6268,9 @@ après utilisation."
 the move last used by the target.
 Once used, Sketch disappears."
 166,14,9,"It enables the user to permanently learn
+the move last used by the target.
+Once used, Sketch disappears."
+166,15,9,"It enables the user to permanently learn
 the move last used by the target.
 Once used, Sketch disappears."
 167,3,9,"Hits three times
@@ -6183,8 +6344,8 @@ It can’t steal if the user holds an item."
 168,14,9,"The user attacks and steals the target’s
 held item simultaneously.
 It can’t steal if the user holds an item."
-168,15,9,"The user attacks and steals the target's
-held item simultaneously. The user can't
+168,15,9,"The user attacks and steals the target’s
+held item simultaneously. The user can’t
 steal anything if it already holds an item."
 169,3,9,"Prevents fleeing
 or switching."
@@ -6219,6 +6380,8 @@ le combat."
 169,11,9,"The user ensnares the target with thin,
 gooey silk so it can’t flee from battle."
 169,14,9,"The user ensnares the target with thin,
+gooey silk so it can’t flee from battle."
+169,15,9,"The user ensnares the target with thin,
 gooey silk so it can’t flee from battle."
 170,3,9,"Ensures the next
 attack will hit."
@@ -6256,6 +6419,9 @@ attack does not miss the target."
 170,14,9,"The user senses the target’s movements
 with its mind to ensure its next
 attack does not miss the target."
+170,15,9,"The user senses the target’s movements
+with its mind to ensure its next
+attack does not miss the target."
 171,3,9,"A sleeper loses
 1/4 HP every turn."
 171,4,9,"A sleeper loses
@@ -6288,6 +6454,8 @@ chaque tour à un ennemi endormi."
 171,11,9,"A sleeping target sees a nightmare
 that inflicts some damage every turn."
 171,14,9,"A sleeping target sees a nightmare
+that inflicts some damage every turn."
+171,15,9,"A sleeping target sees a nightmare
 that inflicts some damage every turn."
 172,3,9,"An attack that may
 cause a burn."
@@ -6324,6 +6492,9 @@ It may also leave the target with a burn."
 172,14,9,"The user cloaks itself in fire and
 charges at the target.
 It may also leave the target with a burn."
+172,15,9,"The user cloaks itself in fire and
+charges at the target.
+This may also leave the target with a burn."
 173,3,9,"An attack useable
 only while asleep."
 173,4,9,"An attack useable
@@ -6358,6 +6529,9 @@ apeurer l’ennemi."
 user is asleep. The harsh noise may also
 make the target flinch."
 173,14,9,"An attack that can be used only if the
+user is asleep. The harsh noise may also
+make the target flinch."
+173,15,9,"An attack that can be used only if the
 user is asleep. The harsh noise may also
 make the target flinch."
 174,3,9,"Works differently
@@ -6396,8 +6570,7 @@ Ghost type than for all other types."
 174,15,6,"Attacke, deren Wirkung davon abhängt,
 ob der Anwender ein Geist-Pokémon ist."
 174,15,9,"A move that works differently for the
-Ghost type than for all other types.
-"
+Ghost type than for all other types."
 175,3,9,"Stronger if the
 user's HP is low."
 175,4,9,"Stronger if the
@@ -6436,7 +6609,7 @@ It becomes more powerful the less HP
 the user has."
 175,15,9,"The user flails aimlessly to attack.
 The less HP the user has, 
-the greater the move's power."
+the greater the move’s power."
 176,3,9,"The user's type is
 made resistant."
 176,4,9,"The user's type is
@@ -6545,6 +6718,12 @@ harshly reducing its Speed stat."
 178,14,9,"The user releases cotton-like spores
 that cling to the target,
 harshly reducing its Speed stat."
+178,15,5,"The user releases cotton-like spores
+that cling to the opposing Pokémon,
+which harshly lowers their Speed stats."
+178,15,9,"The user releases cotton-like spores
+that cling to the opposing Pokémon,
+which harshly lowers their Speed stats."
 179,3,9,"Stronger if the
 user's HP is low."
 179,4,9,"Stronger if the
@@ -6732,6 +6911,8 @@ Frappe en premier."
 speed. It is certain to strike first."
 183,14,9,"The user throws a punch at blinding
 speed. It is certain to strike first."
+183,15,9,"The user throws a punch at blinding
+speed. This move always goes first."
 184,3,9,"Sharply reduces
 the foe's SPEED."
 184,4,9,"Sharply reduces
@@ -6839,6 +7020,8 @@ la confusion."
 angelic cuteness that causes confusion."
 186,14,9,"The user kisses the target with a sweet,
 angelic cuteness that causes confusion."
+186,15,9,"The user kisses the target with a sweet,
+angelic cuteness that causes confusion."
 187,3,9,"Reduces own HP to
 maximize ATTACK."
 187,4,9,"Reduces own HP to
@@ -6905,6 +7088,8 @@ l’ennemi. Peut aussi l’empoisonner."
 It may also poison the target."
 188,14,9,"Unsanitary sludge is hurled at the target.
 It may also poison the target."
+188,15,9,"Unsanitary sludge is hurled at the target.
+This may also poison the target."
 189,3,9,"Reduces the foe's
 accuracy."
 189,4,9,"Reduces the foe's
@@ -6939,7 +7124,7 @@ et baisser sa Précision."
 inflict damage and lower its accuracy."
 189,14,9,"The user hurls mud in the target’s face to
 inflict damage and lower its accuracy."
-189,15,9,"The user hurls mud in the target's face to
+189,15,9,"The user hurls mud in the target’s face to
 inflict damage and lower its accuracy."
 190,3,9,"An attack that may
 reduce accuracy."
@@ -6978,8 +7163,8 @@ It may also lower the target’s accuracy."
 target’s face or eyes.
 It may also lower the target’s accuracy."
 190,15,9,"The user attacks by spraying ink in the
-target's face or eyes.
-This may also lower the target's accuracy."
+target’s face or eyes.
+This may also lower the target’s accuracy."
 191,3,9,"Hurts foes when
 they switch out."
 191,4,9,"Hurts foes when
@@ -7014,6 +7199,9 @@ au combat."
 opposing team’s feet. The trap hurts
 Pokémon that switch into battle."
 191,14,9,"The user lays a trap of spikes at the
+opposing team’s feet. The trap hurts
+Pokémon that switch into battle."
+191,15,9,"The user lays a trap of spikes at the
 opposing team’s feet. The trap hurts
 Pokémon that switch into battle."
 192,3,9,"An attack that
@@ -7128,8 +7316,7 @@ the Pokémon that landed the knockout
 hit also faints."
 194,15,9,"When this move is used, if the user faints,
 the Pokémon that landed the knockout
-hit also faints.
-"
+hit also faints."
 195,3,9,"Both user and foe
 faint in 3 turns."
 195,4,9,"Both user and foe
@@ -7205,7 +7392,7 @@ Speed stat."
 chilled air. It also reduces the targets’
 Speed stat."
 196,15,9,"The user attacks with a gust of chilled air.
-This also lowers the opposing Pokémon's
+This also lowers the opposing Pokémon’s
 Speed stats."
 197,3,9,"Evades attack that
 turn. It may fail."
@@ -7428,7 +7615,7 @@ taken by the target."
 202,14,9,"A nutrient-draining attack. The user’s
 HP is restored by half the damage
 taken by the target."
-202,15,9,"A nutrient-draining attack. The user's
+202,15,9,"A nutrient-draining attack. The user’s
 HP is restored by half the damage
 taken by the target."
 203,3,9,"Always leaves at
@@ -7629,6 +7816,9 @@ However, it also sharply raises the
 target’s Attack stat."
 207,15,6,"Verwirrt das Ziel und erhöht dessen
 Angriffs-Wert stark."
+207,15,9,"The user enrages and confuses the target.
+However, this also sharply raises the
+target’s Attack stat."
 208,3,9,"Restores HP by 1/2
 the max HP."
 208,4,9,"Restores HP by 1/2
@@ -7779,6 +7969,11 @@ la Défense du lanceur."
 It may also raise the user’s Defense stat."
 211,14,9,"The target is hit with wings of steel.
 It may also raise the user’s Defense stat."
+211,15,6,"Trifft das Ziel mit Stahlflügeln.
+Verteidigungs-Wert des Anwenders
+steigt eventuell."
+211,15,9,"The target is hit with wings of steel.
+This may also raise the user’s Defense stat."
 212,3,9,"Prevents fleeing
 or switching."
 212,4,9,"Prevents fleeing
@@ -7814,6 +8009,9 @@ arresting look.
 The target becomes unable to flee."
 212,14,9,"The user pins the target with a dark,
 arresting look.
+The target becomes unable to flee."
+212,15,9,"The user pins the target with a dark,
+arresting look.  
 The target becomes unable to flee."
 213,3,9,"Makes the opposite
 gender infatuated."
@@ -7998,6 +8196,9 @@ HP sometimes, however."
 217,14,9,"The user attacks by giving the target a
 gift with a hidden trap. It restores
 HP sometimes, however."
+217,15,9,"The user attacks by giving the target a
+gift with a hidden trap. It restores
+HP sometimes, however."
 218,3,9,"An attack based on
 lack of loyalty."
 218,4,9,"An attack based on
@@ -8031,6 +8232,9 @@ cette attaque est puissante."
 powerful the less the user likes
 its Trainer."
 218,14,9,"A full-power attack that grows more
+powerful the less the user likes
+its Trainer."
+218,15,9,"A full-power attack that grows more
 powerful the less the user likes
 its Trainer."
 219,3,9,"Prevents all
@@ -8106,6 +8310,9 @@ then equally shares the combined HP
 with the target."
 220,15,6,"Addiert KP von Anwender und Ziel.
 Teilt sie gerecht auf."
+220,15,9,"The user adds its HP to the target’s HP,
+then equally shares the combined HP
+with the target."
 221,3,9,"An attack that may
 inflict a burn."
 221,4,9,"An attack that may
@@ -8180,6 +8387,9 @@ affecting everyone around the user.
 Its power varies."
 222,15,6,"Erdbebenartiger Angriff von zufälliger Stärke gegen
 andere Pokémon in der Umgebung des Anwenders."
+222,15,9,"The user attacks everything around it
+with a ground-shaking quake.
+Its power varies."
 223,3,9,"An attack that
 always confuses."
 223,4,9,"An attack that
@@ -8216,6 +8426,9 @@ It confuses the target if it hits."
 223,14,9,"The user punches the target with full,
 concentrated power.
 It confuses the target if it hits."
+223,15,9,"The user punches the target with full,
+concentrated power.
+This confuses the target if it hits."
 224,3,9,"A powerful charge
 attack."
 224,4,9,"A powerful charge
@@ -8254,6 +8467,9 @@ with no letup."
 224,14,9,"Using its tough and impressive horn,
 the user rams into the target
 with no letup."
+224,15,9,"“Using its tough and impressive horn,
+the user rams into the target
+with no letup.”"
 225,3,9,"A strong breath
 attack."
 225,4,9,"A strong breath
@@ -8289,6 +8505,9 @@ inflicts damage. It may also leave the
 target with paralysis."
 225,14,9,"The user exhales a mighty gust that
 inflicts damage. It may also leave the
+target with paralysis."
+225,15,9,"The user exhales a mighty gust that
+inflicts damage. This may also leave the
 target with paralysis."
 226,3,9,"Switches while
 keeping effects."
@@ -8326,6 +8545,9 @@ stat changes."
 226,14,9,"The user switches places with a party
 Pokémon in waiting, passing along any
 stat changes."
+226,15,9,"The user switches places with a party
+Pokémon in waiting and passes along
+any stat changes."
 227,3,9,"Makes the foe re­
 peat 2-6 times."
 227,4,9,"Makes the foe re­
@@ -8441,6 +8663,9 @@ and Spikes."
 229,15,6,"Trifft das Ziel mit einer Dreh-Attacke.
 Befreit sich unter anderem von Wickel,
 Klammergriff, Egelsamen, und Stachler."
+229,15,9,"A spin attack that can also eliminate
+such moves as Bind, Wrap, Leech Seed,
+and Spikes."
 230,3,9,"Reduces the foe's
 evasiveness."
 230,4,9,"Reduces the foe's
@@ -8480,7 +8705,7 @@ Pokémon if used in grass, etc."
 230,15,6,"Lockt Ziele an und senkt deren Fluchtwert.
 Lockt im Gras auch wilde Pokémon an."
 230,15,9,"A sweet scent that harshly lowers opposing
-Pokémon's evasiveness. This also lures wild
+Pokémon’s evasiveness. This also lures wild
 Pokémon if used in places such as tall grass."
 231,3,9,"An attack that may
 reduce DEFENSE."
@@ -8517,6 +8742,9 @@ Defense stat."
 231,14,9,"The target is slammed with a steel-hard
 tail. It may also lower the target’s
 Defense stat."
+231,15,9,"The target is slammed with a steel-hard
+tail. This may also lower the target’s
+Defense stat."
 232,3,9,"An attack that may
 up user's ATTACK."
 232,4,9,"An attack that may
@@ -8550,6 +8778,8 @@ aussi augmenter l’Attaque du lanceur."
 It may also raise the user’s Attack stat."
 232,14,9,"The target is raked with steel claws.
 It may also raise the user’s Attack stat."
+232,15,9,"The target is raked with steel claws.
+This may also raise the user’s Attack stat."
 233,3,9,"A 2nd-strike move
 that never misses."
 233,4,9,"A 2nd-strike move
@@ -8586,6 +8816,8 @@ guaranteed not to miss."
 233,14,9,"The user attacks last.
 In return, this throw move is
 guaranteed not to miss."
+233,15,9,"The user attacks last. In return, this throw
+move never misses."
 234,3,9,"Restores HP
 (varies by time)."
 234,4,9,"Restores HP
@@ -8660,6 +8892,9 @@ The amount of HP regained varies
 with the weather."
 235,15,6,"Füllt KP des Anwnders auf.
 Die Menge hängt vom Wetter ab."
+235,15,9,"The user restores its own HP.
+The amount of HP regained varies
+with the weather."
 236,3,9,"Restores HP
 (varies by time)."
 236,4,9,"Restores HP
@@ -8736,6 +8971,8 @@ intensity depending on the Pokémon
 using it."
 237,15,6,"Wirkung un Typ der Attacke hängen
 vom Anwender ab."
+237,15,9,"A unique attack that varies in type
+depending on the Pokémon using it."
 238,3,9,"Has a high criti­
 cal hit ratio."
 238,4,9,"Has a high criti­
@@ -8807,6 +9044,9 @@ It may also make targets flinch."
 239,14,9,"The user whips up a vicious tornado
 to tear at the opposing team.
 It may also make targets flinch."
+239,15,9,"The user whips up a vicious tornado
+to tear at the opposing Pokémon.
+This may also make them flinch."
 240,3,9,"Boosts water-type
 moves for 5 turns."
 240,4,9,"Boosts water-type
@@ -8881,6 +9121,9 @@ Fire-type moves."
 241,14,9,"The user intensifies the sun for
 five turns, powering up
 Fire-type moves."
+241,15,9,"The user intensifies the sun
+for five turns, powering up
+Fire-type moves."
 242,3,9,"An attack that may
 lower SPCL.DEF."
 242,4,9,"An attack that may
@@ -8917,9 +9160,11 @@ the target’s Defense stat."
 242,14,9,"The user crunches up the target
 with sharp fangs. It may also lower
 the target’s Defense stat."
+242,15,6,"Beißt mit scharfen Reißzähnen zu und
+senkt eventuell die Verteidigung."
 242,15,9,"The user crunches up the target
 with sharp fangs. This may also lower
-the target's Defense stat."
+the target’s Defense stat."
 243,3,9,"Counters a SPCL.
 ATK. move double."
 243,4,9,"Counters a SPCL.
@@ -8956,7 +9201,7 @@ damage taken."
 243,14,9,"A retaliation move that counters any
 special attack, inflicting double the
 damage taken."
-243,15,9,"A relitation move that counters any
+243,15,9,"A retaliation move that counters any
 special attack, inflicting double the
 damage taken."
 244,3,9,"Copies the foe's
@@ -8995,6 +9240,9 @@ by the target."
 244,14,9,"The user hypnotizes itself into
 copying any stat change made
 by the target."
+244,15,9,"The user hypnotizes itself into
+copying any stat change made
+by the target."
 245,3,9,"A powerful first-
 strike move."
 245,4,9,"A powerful first-
@@ -9031,6 +9279,8 @@ before any other move."
 245,14,9,"The user charges the target at blinding
 speed. This attack always goes
 before any other move."
+245,15,9,"The user charges the target at blinding
+speed. This move always goes first."
 246,3,9,"An attack that may
 raise all stats."
 246,4,9,"An attack that may
@@ -9070,7 +9320,7 @@ at once."
 246,15,6,"Angriff mit antiker Kraft, der alle Statuswerte
 erhöhen kann."
 246,15,9,"The user attacks with a prehistoric power.
-This may also raise all the user's stats
+This may also raise all the user’s stats
 at once."
 247,3,9,"An attack that may
 lower SPCL.DEF."
@@ -9111,7 +9361,7 @@ Sp. Def stat."
 247,15,6,"Bewirft das Ziel mit gruseligem Ball und
 senkt eventuell die Spezial-Verteidigung."
 247,15,9,"The user hurls a shadowy blob at the
-target. This may also lower the target's
+target. This may also lower the target’s
 Sp. Def stat."
 248,3,9,"An attack that
 hits on 3rd turn."
@@ -9147,6 +9397,9 @@ de cette capacité."
 a hunk of psychic energy
 attacks the target."
 248,14,9,"Two turns after this move is used,
+a hunk of psychic energy
+attacks the target."
+248,15,9,"Two turns after this move is used,
 a hunk of psychic energy
 attacks the target."
 249,3,9,"An attack that may
@@ -9188,9 +9441,9 @@ target’s Defense stat."
 249,15,6,"Diese steinbrechende Attacke kann den
 Verteidigungs-Wert des Zieles senken und
 außerhalb von Kämpfen rissige Felsen zertrümmern."
-249,15,9,"The user attacks with a punch. This may
-also lower the target's Defense stat. This
-move can also shatter rocks in the field."
+249,15,9,"The user attacks with a punch.
+This may also lower the target’s Defense stat.
+This move can also shatter rocks in the field."
 250,3,9,"Traps the foe for
 2-5 turns."
 250,4,9,"Traps the foe for
@@ -9223,6 +9476,8 @@ d’eau pendant 4 à 5 tours."
 250,11,9,"Traps foes in a violent swirling
 whirlpool for four to five turns."
 250,14,9,"Traps foes in a violent swirling
+whirlpool for four to five turns."
+250,15,9,"The user traps the target in a violent swirling
 whirlpool for four to five turns."
 251,3,9,"Party POKéMON join
 in the attack.
@@ -9260,6 +9515,9 @@ nombreux, plus il y a d’attaques."
 the target. The more party Pokémon,
 the greater the number of attacks."
 251,14,9,"The user gets all party Pokémon to attack
+the target. The more party Pokémon,
+the greater the number of attacks."
+251,15,9,"The user gets all party Pokémon to attack
 the target. The more party Pokémon,
 the greater the number of attacks."
 252,5,9,"A 1st-turn, 1st-strike move
@@ -9367,6 +9625,9 @@ can be used three times."
 254,14,9,"The user charges up power and raises
 both its Defense and Sp. Def. The move
 can be used three times."
+254,15,9,"The user charges up power and raises
+both its Defense and Sp. Def stats.
+The move can be used three times."
 255,5,9,"Releases stockpiled power
 (the more the better)."
 255,6,9,"Releases stockpiled power
@@ -9398,6 +9659,9 @@ power is stored, the greater the damage."
 255,14,9,"The power stored using the move Stockpile
 is released at once in an attack. The more
 power is stored, the greater the damage."
+255,15,9,"The power stored using the move Stockpile
+is released at once in an attack. The more
+power is stored, the greater the move’s power."
 256,5,9,"Absorbs stockpiled power
 and restores HP."
 256,6,9,"Absorbs stockpiled power
@@ -9427,6 +9691,9 @@ avec Stockage pour restaurer ses PV."
 is absorbed by the user to heal its HP.
 Storing more power heals more HP."
 256,14,9,"The power stored using the move Stockpile
+is absorbed by the user to heal its HP.
+Storing more power heals more HP."
+256,15,9,"The power stored using the move Stockpile
 is absorbed by the user to heal its HP.
 Storing more power heals more HP."
 257,5,9,"Exhales a hot breath on the
@@ -9561,6 +9828,9 @@ Sp. Atk stat."
 260,14,9,"Flattery is used to confuse the target.
 However, it also raises the target’s
 Sp. Atk stat."
+260,15,9,"Flattery is used to confuse the target.
+However, this also raises the target’s
+Sp. Atk stat."
 261,5,9,"Inflicts a burn on the foe
 with intense fire."
 261,6,9,"Inflicts a burn on the foe
@@ -9590,9 +9860,10 @@ l’ennemi pour lui infliger une brûlure."
 flame at the target to inflict a burn."
 261,14,9,"The user shoots a sinister, bluish-white
 flame at the target to inflict a burn."
+261,15,6,"Angriff mit unheimlicher Flamme,
+die das Ziel verbrennt."
 261,15,9,"The user shoots a sinister, bluish-white
-flame at the target to inflict a burn.
-"
+flame at the target to inflict a burn."
 262,5,9,"The user faints and lowers
 the foe’s abilities."
 262,6,9,"The user faints and lowers
@@ -9625,6 +9896,9 @@ Attack and Sp. Atk."
 262,14,9,"The user faints when using this move.
 In return, it harshly lowers the target’s
 Attack and Sp. Atk."
+262,15,9,"The user faints when using this move.
+In return, this harshly lowers the target’s
+Attack and Sp. Atk stats."
 263,5,9,"Boosts ATTACK when burned,
 paralyzed, or poisoned."
 263,6,9,"Boosts ATTACK when burned,
@@ -9655,6 +9929,9 @@ paralysé ou brûlé."
 the user is poisoned, burned, or
 has paralysis."
 263,14,9,"An attack move that doubles its power if
+the user is poisoned, burned, or
+has paralysis."
+263,15,9,"An attack move that doubles its power if
 the user is poisoned, burned, or
 has paralysis."
 264,5,9,"A powerful loyalty attack.
@@ -9783,9 +10060,9 @@ user’s environment."
 267,14,9,"An attack that makes use of nature’s
 power. Its effects vary depending on the
 user’s environment."
-267,15,9,"An attack that makes use of nature's
+267,15,9,"An attack that makes use of nature’s
 power. Its effects vary depending on
-the user's environment."
+the user’s environment."
 268,5,9,"Charges power to boost the
 electric move used next."
 268,6,9,"Charges power to boost the
@@ -9820,7 +10097,7 @@ move it uses on the next turn. It also
 raises the user’s Sp. Def stat."
 268,15,9,"The user boosts the power of the Electric
 move it uses on the next turn. This also
-raises the user's Sp. Def stat."
+raises the user’s Sp. Def stat."
 269,5,9,"Taunts the foe into only
 using attack moves."
 269,6,9,"Taunts the foe into only
@@ -9884,6 +10161,8 @@ d’attaque de l’allié pendant un tour."
 the power of its attack."
 270,14,9,"The user assists an ally by boosting
 the power of its attack."
+270,15,9,"The user assists an ally by boosting
+the power of that ally’s attack."
 271,5,9,"Tricks the foe into trading
 held items."
 271,6,9,"Tricks the foe into trading
@@ -9913,6 +10192,8 @@ le sien."
 271,11,9,"The user catches the target off guard
 and swaps its held item with its own."
 271,14,9,"The user catches the target off guard
+and swaps its held item with its own."
+271,15,9,"The user catches the target off guard
 and swaps its held item with its own."
 272,5,9,"Mimics the target and
 copies its special ability."
@@ -9974,6 +10255,9 @@ half the user’s maximum HP."
 273,14,9,"One turn after this move is used,
 the target’s HP is restored by
 half the user’s maximum HP."
+273,15,9,"One turn after this move is used,
+the target’s HP is restored by
+half the user’s max HP."
 274,5,9,"Attacks randomly with one
 of the partner’s moves."
 274,6,9,"Attacks randomly with one
@@ -10038,6 +10322,9 @@ rooted, it can’t switch out."
 275,14,9,"The user lays roots that restore
 its HP on every turn. Because it is
 rooted, it can’t switch out."
+275,15,9,"The user lays roots that restore
+its HP on every turn. Because it is
+rooted, it can’t switch out."
 276,5,9,"Boosts strength sharply,
 but lowers abilities."
 276,6,9,"Boosts strength sharply,
@@ -10069,6 +10356,11 @@ user’s Attack and Defense."
 276,14,9,"The user attacks the target with great
 power. However, it also lowers the
 user’s Attack and Defense."
+276,15,6,"Starke Attacke, die jedoch auch den Angriff
+und die Verteidigung des Anwenders senkt."
+276,15,9,"The user attacks the target with great
+power. However, this also lowers the
+user’s Attack and Defense stats."
 277,5,9,"Reflects special effects
 back to the attacker."
 277,6,9,"Reflects special effects
@@ -10133,6 +10425,9 @@ used again."
 278,14,9,"The user recycles a held item that
 has been used in battle so it can be
 used again."
+278,15,9,"The user recycles a held item that
+has been used in battle so it can be
+used again."
 279,5,9,"An attack that gains power
 if injured by the foe."
 279,6,9,"An attack that gains power
@@ -10163,6 +10458,9 @@ durant ce tour."
 damage if the user has been hurt by the
 opponent in the same turn."
 279,14,9,"An attack move that inflicts double the
+damage if the user has been hurt by the
+opponent in the same turn."
+279,15,9,"An attack move that inflicts double the
 damage if the user has been hurt by the
 opponent in the same turn."
 280,5,9,"Destroys barriers such as
@@ -10197,6 +10495,9 @@ Screen and Reflect."
 280,14,9,"The user attacks with a swift chop. It
 can also break any barrier such as Light
 Screen and Reflect."
+280,15,9,"The user attacks with a swift chop.
+It can also break barriers, such as
+Light Screen and Reflect."
 281,5,9,"Lulls the foe into yawning,
 then sleeping next turn."
 281,6,9,"Lulls the foe into yawning,
@@ -10265,8 +10566,8 @@ from being used in the battle."
 282,14,9,"The user slaps down the target’s
 held item, preventing that item
 from being used in the battle."
-282,15,9,"The user slaps down the target's held item, and
-that item can't be used in that battle. The move
+282,15,9,"The user slaps down the target’s held item, and
+that item can’t be used in that battle. The move
 does more damage if the target has a held item."
 283,5,9,"Gains power if the user’s HP
 is lower than the foe’s HP."
@@ -10298,7 +10599,7 @@ target’s HP to equal the user’s HP."
 283,14,9,"An attack move that cuts down the
 target’s HP to equal the user’s HP."
 283,15,9,"An attack move that cuts down the
-target's HP to equal the user's HP."
+target’s HP to equal the user’s HP."
 284,5,9,"The higher the user’s HP,
 the more damage caused."
 284,6,9,"The higher the user’s HP,
@@ -10362,6 +10663,8 @@ exchange Abilities with the target."
 285,14,9,"The user employs its psychic power to
 exchange Abilities with the target."
 285,15,6,Anwender tauscht Fähigkeit mit dem Ziel.
+285,15,9,"The user employs its psychic power to
+exchange Abilities with the target."
 286,5,9,"Prevents foes from using
 moves known by the user."
 286,6,9,"Prevents foes from using
@@ -10427,6 +10730,8 @@ ou d’une paralysie."
 poisoning, burn, or paralysis."
 287,14,9,"The user rests to cure itself of a
 poisoning, burn, or paralysis."
+287,15,9,"The user rests to cure itself of a
+poisoning, burn, or paralysis."
 288,5,9,"If the user faints, deletes
 the PP of the final move."
 288,6,9,"If the user faints, deletes
@@ -10491,6 +10796,8 @@ opponent attempts to use."
 289,14,9,"The user steals the effects of any
 healing or stat-changing move the
 opponent attempts to use."
+289,15,9,"The user steals the effects of any attempts
+to use a healing or stat-changing move."
 290,5,9,"An attack with effects
 that vary by location."
 290,6,9,"An attack with effects
@@ -10622,6 +10929,9 @@ its environment, such as at water’s edge,
 in grass, or in a cave."
 293,15,6,"Der Typ des Anwenders passt such der Umgebung
 an, sei es im Wasser, im Gras ider in einer Höhle."
+293,15,9,"The user’s type is changed depending on
+its environment, such as at water’s edge,
+in grass, or in a cave."
 294,5,9,"Flashes a light that sharply
 raises SP. ATK."
 294,6,9,"Flashes a light that sharply
@@ -10750,6 +11060,9 @@ Attack stat."
 297,14,9,"The user covers the target’s body with a
 mass of down that harshly lowers its
 Attack stat."
+297,15,9,"The user covers the target’s body with a
+mass of down that harshly lowers its
+Attack stat."
 298,5,9,"Confuses all POKéMON on
 the scene."
 298,6,9,"Confuses all POKéMON on
@@ -10846,6 +11159,9 @@ user is in the battle."
 300,14,9,"The user covers itself with mud. It
 weakens Electric-type moves while the
 user is in the battle."
+300,15,9,"The user covers itself with mud.
+This weakens Electric-type moves
+for five turns."
 301,5,9,"A 5-turn attack that gains
 power on successive hits."
 301,6,9,"A 5-turn attack that gains
@@ -10880,6 +11196,9 @@ over five turns. It becomes stronger
 each time it hits."
 301,15,6,"Attacke, die fünf Runden dauert.
 Die Härte nimmt von Mal zu Mal zu."
+301,15,9,"The user continually rolls into the target
+over five turn. It becomes stronger
+each time it hits."
 302,5,9,"Attacks with thorny arms.
 May cause flinching."
 302,6,9,"Attacks with thorny arms.
@@ -10910,6 +11229,9 @@ thorny arms. It may also make the
 target flinch."
 302,14,9,"The user attacks by wildly swinging its
 thorny arms. It may also make the
+target flinch."
+302,15,9,"The user attacks by wildly swinging its
+thorny arms. This may also make the
 target flinch."
 303,5,9,"Slacks off and restores
 half the maximum HP."
@@ -10970,6 +11292,8 @@ des dégâts."
 shout with the power to inflict damage."
 304,14,9,"The user lets loose a horribly echoing
 shout with the power to inflict damage."
+304,15,9,"The user lets loose a horribly echoing
+shout with the power to inflict damage."
 305,5,9,"A sharp-fanged attack.
 May badly poison the foe."
 305,6,9,"A sharp-fanged attack.
@@ -11001,6 +11325,9 @@ fangs. It may also leave the target
 badly poisoned."
 305,14,9,"The user bites the target with toxic
 fangs. It may also leave the target
+badly poisoned."
+305,15,9,"The user bites the target with toxic
+fangs. This may also leave the target
 badly poisoned."
 306,5,9,"Tears at the foe with sharp
 claws. May lower DEFENSE."
@@ -11066,6 +11393,8 @@ next turn, however."
 307,14,9,"The target is razed by a fiery explosion.
 The user must rest on the
 next turn, however."
+307,15,9,"The target is razed by a fiery explosion.
+The user can’t move on the next turn."
 308,5,9,"Powerful, but leaves the
 user immobile the next turn."
 308,6,9,"Powerful, but leaves the
@@ -11098,6 +11427,8 @@ next turn, however."
 308,14,9,"The target is hit with a watery blast.
 The user must rest on the
 next turn, however."
+308,15,9,"The target is hit with a watery blast.
+The user can’t move on the next turn."
 309,5,9,"Fires a meteor-like punch.
 May raise ATTACK."
 309,6,9,"Fires a meteor-like punch.
@@ -11225,6 +11556,9 @@ the user’s party."
 312,14,9,"The user releases a soothing scent that
 heals all status problems affecting
 the user’s party."
+312,15,9,"The user releases a soothing scent that
+heals all status conditions affecting
+the user’s party."
 313,5,9,"Feigns crying to sharply
 lower the foe’s SP. DEF."
 313,6,9,"Feigns crying to sharply
@@ -11328,8 +11662,8 @@ user’s Sp. Atk stat."
 The attack’s recoil harshly reduces the
 user’s Sp. Atk stat."
 315,15,9,"The user attacks the target at full power.
-The attack's recoil harshly lowers the
-user's Sp. Atk stat."
+The attack’s recoil harshly lowers the
+user’s Sp. Atk stat."
 316,5,9,"Negates the foe’s efforts
 to heighten evasiveness."
 316,6,9,"Negates the foe’s efforts
@@ -11400,7 +11734,7 @@ its movement."
 317,15,6,"Angriff mit Felsen. Bei Erfolg wird der Initiative-Wert
 des Zieles gesenkt."
 317,15,9,"Boulders are hurled at the target.
-This also lowers the target's Speed
+This also lowers the target’s Speed
 stat by preventing its movement."
 318,5,9,"A powdery attack that may
 raise abilities."
@@ -11438,7 +11772,7 @@ It may also raise all the user’s stats."
 alle Statuswerte des Anwenders erhöht."
 318,15,9,"The target is attacked with powdery
 scales blown by wind.
-This may also raise all the user's stats."
+This may also raise all the user’s stats."
 319,5,9,"Emits a horrible screech
 that sharply lowers SP. DEF."
 319,6,9,"Emits a horrible screech
@@ -11472,7 +11806,7 @@ Sp. Def stat."
 harshly reduces the target’s
 Sp. Def stat."
 319,15,9,"A horrible sound like scraping metal
-harshly lowers the target's
+harshly lowers the target’s
 Sp. Def stat."
 320,5,9,"Lulls the foe into sleep
 with a pleasant melody."
@@ -11503,6 +11837,8 @@ plonge l’ennemi dans un profond sommeil."
 lulls the target into a deep sleep."
 320,14,9,"The user plays a pleasant melody that
 lulls the target into a deep sleep."
+320,15,9,"The user plays a pleasant melody that
+lulls the target into a deep sleep."
 321,5,9,"Makes the foe laugh to
 lower ATTACK and DEFENSE."
 321,6,9,"Makes the foe laugh to
@@ -11531,6 +11867,8 @@ baisse son Attaque et sa Défense."
 321,11,9,"The user tickles the target into laughing,
 reducing its Attack and Defense stats."
 321,14,9,"The user tickles the target into laughing,
+reducing its Attack and Defense stats."
+321,15,9,"The user tickles the target into laughing,
 reducing its Attack and Defense stats."
 322,5,9,"Raises DEFENSE and SP. DEF
 with a mystic power."
@@ -11562,6 +11900,9 @@ et sa Défense Spéciale."
 space to raise its Defense and
 Sp. Def stats."
 322,14,9,"The user absorbs a mystical power from
+space to raise its Defense and
+Sp. Def stats."
+322,15,9,"The user absorbs a mystical power from
 space to raise its Defense and
 Sp. Def stats."
 323,5,9,"Inflicts more damage if the
@@ -11626,6 +11967,8 @@ rendre l’ennemi confus."
 light. It may also confuse the target."
 324,14,9,"The user attacks with a sinister beam of
 light. It may also confuse the target."
+324,15,9,"The user attacks with a sinister beam of
+light. This may also confuse the target."
 325,5,9,"An unavoidable punch that
 is thrown from shadows."
 325,6,9,"An unavoidable punch that
@@ -11722,6 +12065,8 @@ toutes ses forces."
 uppercut thrown skyward with force."
 327,14,9,"The user attacks the target with an
 uppercut thrown skyward with force."
+327,15,9,"The user attacks the target with an
+uppercut thrown skyward with force."
 328,5,9,"Traps and hurts the foe in
 quicksand for 2 to 5 turns."
 328,6,9,"Traps and hurts the foe in
@@ -11786,6 +12131,9 @@ The target instantly faints if it hits."
 329,14,9,"The target is attacked with a blast of
 absolute-zero cold.
 The target instantly faints if it hits."
+329,15,9,"The target is attacked with a blast of
+absolute-zero cold. The target faints
+instantly if this attack hits."
 330,5,9,"Attacks with muddy water.
 May lower accuracy."
 330,6,9,"Attacks with muddy water.
@@ -11820,6 +12168,9 @@ at the opposing team.
 It may also lower the targets’ accuracy."
 330,15,6,"Greift mit Matsch an und senkt eventuell
 die Genauigkeit des Zieles."
+330,15,9,"The user attacks by shooting muddy water
+at the opposing Pokémon.
+This may also lower their accuracy."
 331,5,9,"Shoots 2 to 5 seeds in a row
 to strike the foe."
 331,6,9,"Shoots 2 to 5 seeds in a row
@@ -11854,6 +12205,8 @@ target. Two to five seeds are shot in
 rapid succession."
 331,15,6,"Der Anwender wirft zwei- bis fünfmal
 in rascher Folge Samen auf das Ziel."
+331,15,9,"The user forcefully shoots seeds at the
+target two to five times in a row."
 332,5,9,"An extremely speedy and
 unavoidable attack."
 332,6,9,"An extremely speedy and
@@ -11919,6 +12272,8 @@ a row."
 333,14,9,"The user launches sharp icicles at the
 target. It strikes two to five times in
 a row."
+333,15,9,"The user launches sharp icicles at the
+target two to five times in a row."
 334,5,9,"Hardens the body’s surface
 to sharply raise DEFENSE."
 334,6,9,"Hardens the body’s surface
@@ -11951,7 +12306,7 @@ Defense stat."
 334,14,9,"The user hardens its body’s surface
 like iron, sharply raising its
 Defense stat."
-334,15,9,"The user hardens its body's surface
+334,15,9,"The user hardens its body’s surface
 like iron, sharply raising its
 Defense stat."
 335,5,9,"Blocks the foe’s way to
@@ -12044,8 +12399,7 @@ sharp claws."
 337,14,9,"The user slashes the target with huge,
 sharp claws."
 337,15,9,"The user slashes the target with huge,
-sharp claws.
-"
+sharp claws."
 338,5,9,"Powerful, but leaves the
 user immobile the next turn."
 338,6,9,"Powerful, but leaves the
@@ -12076,6 +12430,9 @@ suivant."
 an enormous tree.
 The user can’t move on the next turn."
 338,14,9,"The user slams the target with
+an enormous tree.
+The user can’t move on the next turn."
+338,15,9,"The user slams the target with
 an enormous tree.
 The user can’t move on the next turn."
 339,5,9,"Bulks up the body to boost
@@ -12149,6 +12506,9 @@ the target on the second turn. It may
 also leave the target with paralysis."
 340,15,6,"Angreifer springt und landet in der nächsten Runde
 auf dem Ziel. Das Ziel wird eventuell paralysiert."
+340,15,9,"The user bounces up high, then drops on
+the target on the second turn. This may
+also leave the target with paralysis."
 341,5,9,"Hurls mud at the foe and
 reduces SPEED."
 341,6,9,"Hurls mud at the foe and
@@ -12185,7 +12545,7 @@ It also reduces the target’s Speed."
 des Zieles senkt."
 341,15,9,"The user attacks by hurling a blob of mud
 at the target.
-This may also lowers the target's Speed stat."
+This may also lowers the target’s Speed stat."
 342,5,9,"Has a high critical-hit
 ratio. May also poison."
 342,6,9,"Has a high critical-hit
@@ -12217,6 +12577,9 @@ Critical hits land more easily."
 342,14,9,"The user hits the target with its tail.
 It may also poison the target.
 Critical hits land more easily."
+342,15,9,"The user hits the target with its tail.
+This may also poison the target.
+Critical hits lan more easily."
 343,5,9,"Cutely begs to obtain an
 item held by the foe."
 343,6,9,"Cutely begs to obtain an
@@ -12250,7 +12613,7 @@ held item."
 the target, then steals the target’s
 held item."
 343,15,9,"The user endearingly approaches
-the target, then steals the target's
+the target, then steals the target’s
 held item."
 344,5,9,"A life-risking tackle that
 slightly hurts the user."
@@ -12284,6 +12647,9 @@ and may leave the target with paralysis."
 344,14,9,"The user electrifies itself, then charges.
 It causes considerable damage to the user
 and may leave the target with paralysis."
+344,15,9,"The user electrifies itself, then charges.
+This also damages the user quite a lot.
+This may leave the target with paralysis."
 345,5,9,"Attacks with a strange leaf
 that cannot be evaded."
 345,6,9,"Attacks with a strange leaf
@@ -12520,6 +12886,9 @@ This attack cannot be evaded."
 351,14,9,"The user strikes the target with a quick
 jolt of electricity.
 This attack cannot be evaded."
+351,15,9,"The user strikes the target with a quick
+jolt of electricity.
+This attack never misses."
 352,5,9,"Attacks with ultrasonic
 waves. May confuse the foe"
 352,6,9,"Attacks with ultrasonic
@@ -12648,7 +13017,7 @@ half of its max HP."
 KP des Anwenders werden um 50 %
 der maximalen KP aufgefüllt."
 355,15,9,"The user lands and rests its body.
-It restores the user's HP by up to
+It restores the user’s HP by up to
 half of its max HP."
 356,8,9,"Gravity is intensified
 for five turns, making
@@ -12672,6 +13041,9 @@ et annule Lévitation."
 making moves involving flying unusable
 and negating Levitate."
 356,14,9,"Gravity is intensified for five turns,
+making moves involving flying unusable
+and negating Levitate."
+356,15,9,"Gravity is intensified for five turns,
 making moves involving flying unusable
 and negating Levitate."
 357,8,9,"Enables the user to
@@ -12698,6 +13070,9 @@ an evasive target to be hit."
 357,14,9,"Enables a Dark-type target to be hit by
 Psychic-type attacks. It also enables
 an evasive target to be hit."
+357,15,9,"Enables a Dark-type target to be hit by
+Psychic-type attacks. This also enables
+an evasive target to be hit."
 358,8,9,"This attack inflicts
 high damage on a
 sleeping foe. It
@@ -12722,6 +13097,9 @@ up, however."
 358,14,9,"This attack inflicts big damage on a
 sleeping target. It also wakes the target
 up, however."
+358,15,9,"This attack inflicts big damage on a
+sleeping target. This also wakes the target
+up, however."
 359,8,9,"The user swings and
 hits with its strong
 and heavy fist.
@@ -12744,6 +13122,11 @@ du lanceur."
 and heavy fist.
 It lowers the user’s Speed, however."
 359,14,9,"The user swings and hits with its strong
+and heavy fist.
+It lowers the user’s Speed, however."
+359,15,6,"Anwender trifft mit einem starken Hieb.
+Senkt Initiative des Anwenders."
+359,15,9,"The user swings and hits with its strong
 and heavy fist.
 It lowers the user’s Speed, however."
 360,8,9,"The user tackles the
@@ -12772,7 +13155,7 @@ high-speed spin. The slower the
 user, the greater the damage."
 360,15,9,"The user tackles the target with a high-speed
 spin. The slower the user compared to the
-target, the greater the move's power."
+target, the greater the move’s power."
 361,8,9,"The user faints. In
 return, the Pokémon
 taking its place will
@@ -12845,6 +13228,9 @@ The Berry determines its type and power."
 363,14,9,"The user draws power to attack by using
 its held Berry.
 The Berry determines its type and power."
+363,15,9,"The user draws power to attack by using
+its held Berry.
+The Berry determines the move’s type and power."
 364,8,9,"An attack that hits a
 foe using Protect or
 Detect. It also lifts
@@ -12898,6 +13284,9 @@ is holding a Berry, the user eats it and
 gains its effect."
 365,15,6,"Anwender pickt das Ziel, nimmt die Beere,
 falls das Ziel eine trägt, und erhält ihren Effekt."
+365,15,9,"The user pecks the target. If the target
+is holding a Berry, the user eats it and
+gains its effect."
 366,8,9,"The user whips up a
 turbulent whirlwind
 that ups the Speed
@@ -12952,6 +13341,9 @@ its stats."
 367,14,9,"The user applies pressure to stress
 points, sharply boosting one of
 its stats."
+367,15,9,"The user applies pressure to stress
+points, sharply boosting one of its or
+its allies’ stats."
 368,8,9,"The user retaliates
 against the foe that
 last inflicted damage
@@ -13002,6 +13394,9 @@ rushes back to switch places with
 a party Pokémon in waiting."
 369,15,6,"Nach der Attacke eilt der Anwender zurück und
 tauscht sen Platz mit einem anderen Pokémon."
+369,15,9,"After making its attack, the user
+rushes back to switch places with
+a party Pokémon in waiting."
 370,8,9,"The user fights the
 foe in close without
 guarding itself. It
@@ -13026,6 +13421,9 @@ the user’s Defense and Sp. Def."
 370,14,9,"The user fights the target up close
 without guarding itself. It also cuts
 the user’s Defense and Sp. Def."
+370,15,9,"The user fights the target up close
+without guarding itself. This also lowers
+the user’s Defense and Sp. Def stats."
 371,8,9,"If the user can use
 this attack after the
 foe attacks, its
@@ -13050,7 +13448,7 @@ this attack’s power will be doubled."
 this attack’s power will be doubled."
 371,15,9,"The user stores power, then attacks.
 If the user moves after the target,
-this attack's power will be doubled."
+this attack’s power will be doubled."
 372,8,9,"If the foe has
 already taken some
 damage in the same
@@ -13076,7 +13474,7 @@ power is doubled."
 damage in the same turn, this attack’s
 power is doubled."
 372,15,9,"If the target has already taken some
-damage in the same turn, this attack's
+damage in the same turn, this attack’s
 power is doubled."
 373,8,9,"It prevents the foe
 from using its held
@@ -13129,6 +13527,9 @@ on the item."
 374,14,9,"The user flings its held item at the target
 to attack. Its power and effects depend
 on the item."
+374,15,9,"The user flings its held item at the target
+to attack. This move’s power and effects
+depend on the item."
 375,8,9,"Using its psychic
 power of suggestion,
 the user transfers
@@ -13198,6 +13599,9 @@ Abilities, or held items that recover HP."
 377,14,9,"For five turns, the user prevents the
 opposing team from using any moves,
 Abilities, or held items that recover HP."
+377,15,9,"For five turns, the user prevents the
+opposing team from using any moves,
+Abilities, or held items that recover HP."
 378,8,9,"The user powerfully
 wrings the foe.
 The more HP the foe
@@ -13224,7 +13628,7 @@ The more HP the target has, the greater
 this attack’s power."
 378,15,9,"The user powerfully wrings the target.
 The more HP the target has, the greater
-the move's power."
+the move’s power."
 379,8,9,"The user employs its
 psychic power to
 switch its Attack
@@ -13297,8 +13701,7 @@ the sky, preventing opposing Pokémon
 from landing critical hits."
 381,15,9,"The user chants an incantation toward
 the sky, preventing opposing Pokémon
-from landing critical hits.
-"
+from landing critical hits."
 382,8,9,"The user tries to cut
 ahead of the foe to
 steal and use the
@@ -13323,9 +13726,12 @@ move with greater power."
 382,14,9,"The user tries to cut ahead of the target
 to steal and use the target’s intended
 move with greater power."
-382,15,9,"Anwender stiehlt und führt die Attacke eines
+382,15,6,"Anwender stiehlt und führt die Attacke eines
 langsameren Zieles zuerst und mit größerer
 Kraft aus."
+382,15,9,"The user cuts ahead of the target to steal and
+use the target’s intended move with greater power.
+This move fails if it isn’t used first."
 383,8,9,"The user mimics the
 move used immediately
 before it. The move
@@ -13377,6 +13783,9 @@ Sp. Atk with the target."
 384,14,9,"The user employs its psychic power to
 switch changes to its Attack and
 Sp. Atk with the target."
+384,15,9,"The user employs its psychic power to
+switch changes to its Attack and
+Sp. Atk stats with the target."
 385,8,9,"The user employs its
 psychic power to
 switch changes to
@@ -13401,6 +13810,9 @@ Sp. Def with the target."
 385,14,9,"The user employs its psychic power to
 switch changes to its Defense and
 Sp. Def with the target."
+385,15,9,"The user employs its psychic power to
+switch changes to its Defense and
+Sp. Def stats with the target."
 386,8,9,"This attack’s power
 increases the more
 the foe has powered
@@ -13427,7 +13839,7 @@ the more the target has powered
 up with stat changes."
 386,15,9,"The more the target has powered
 up with stat changes, the greater
-the move's power."
+the move’s power."
 387,8,9,"This move can be used
 only after the user
 has used all the
@@ -13481,6 +13893,9 @@ the target. It prevents sleep by making
 its Ability Insomnia."
 388,15,6,"Ziel wird bepflanzt. Wandelt Fähigkeit
 in Insomnia um. Verhindert so Schlaf."
+388,15,9,"A seed that causes worry is planted on
+the target. It prevents sleep by making
+the target’s Ability Insomnia."
 389,8,9,"This move enables the
 user to attack first.
 It fails if the foe is
@@ -13505,6 +13920,9 @@ readying an attack, however."
 389,14,9,"This move enables the user to attack
 first. It fails if the target is not
 readying an attack, however."
+389,15,9,"This move enables the user to attack
+first. This move fails if the target is not
+readying an attack."
 390,8,9,"The user lays a trap
 of poison spikes at
 the foe’s feet. They
@@ -13529,6 +13947,9 @@ opponents that switch into battle."
 390,14,9,"The user lays a trap of poison spikes at
 the opponent’s feet. They poison
 opponents that switch into battle."
+390,15,9,"The user lays a trap of poison spikes at the
+opposing team’s feet. They poison
+opposing Pokémon that switch into battle."
 391,8,9,"The user employs its
 psychic power to
 switch stat changes
@@ -13574,6 +13995,8 @@ every turn."
 392,14,9,"The user envelops itself in a veil made
 of water. It regains some HP on
 every turn."
+392,15,9,"The user envelops itself in a veil made
+of water. It regains some HP every turn."
 393,8,9,"The user levitates
 using electrically
 generated magnetism
@@ -13620,6 +14043,9 @@ damage and may leave the target burned."
 394,14,9,"The user cloaks itself in fire and charges
 at the target. The user sustains serious
 damage and may leave the target burned."
+394,15,9,"The user cloaks itself in fire and charges the target.
+This also damages the user quite a lot.
+This may leave the target with a burn."
 395,8,9,"The foe is attacked
 with a shock wave.
 It may also leave the
@@ -13668,6 +14094,9 @@ This move is certain to hit."
 396,14,9,"The user looses a blast of aura power
 from deep within its body at the target.
 This move is certain to hit."
+396,15,9,"The user lets loose a blast of aura power
+from deep within its body at the target.
+This attack never misses."
 397,8,9,"The user polishes its
 body to reduce drag.
 It can sharply raise
@@ -13716,8 +14145,8 @@ poison the target."
 398,14,9,"The target is stabbed with a tentacle or
 arm steeped in poison. It may also
 poison the target."
-398,15,9,"The target is stabbed with a tentacle
-or arm steeped in poison. This may also
+398,15,9,"The target is stabbed with a tentacle or
+arm steeped in poison. This may also
 poison the target."
 399,8,9,"The user releases a
 horrible aura imbued
@@ -13770,7 +14199,7 @@ Critical hits land more easily."
 400,14,9,"The user slashes the target
 the instant an opportunity arises.
 Critical hits land more easily."
-400,15,6,"Anwender greift bei der ersten Gelgenheit mit
+400,15,6,"Anwender greift bei der ersten Gelegenheit mit
 scharfen Klauen an. Hohe Volltrefferquote."
 400,15,9,"The user slashes the target
 the instant an opportunity arises.
@@ -13798,8 +14227,7 @@ it were a vicious wave in a raging storm."
 401,14,9,"The user attacks by swinging its tail as if
 it were a vicious wave in a raging storm."
 401,15,9,"The user attacks by swinging its tail as if
-it were a vicious wave in a raging storm.
-"
+it were a vicious wave in a raging storm."
 402,8,9,"The user slams a
 barrage of hard-
 shelled seeds
@@ -13850,6 +14278,9 @@ slices even the sky. It may also make the
 target flinch."
 403,15,6,"Das Ziel wird mit einer Luftklinge angegriffen,
 Ziel schreckt eventuell zurück."
+403,15,9,"The user attacks with a blade of air that
+slices even the sky. This may also make the
+target flinch."
 404,8,9,"The user slashes at
 the foe by crossing
 its scythes or claws
@@ -13872,6 +14303,9 @@ comme une paire de ciseaux."
 crossing its scythes or claws as if
 they were a pair of scissors."
 404,14,9,"The user slashes at the target by
+crossing its scythes or claws as if
+they were a pair of scissors."
+404,15,9,"The user slashes at the target by
 crossing its scythes or claws as if
 they were a pair of scissors."
 405,8,9,"The user vibrates its
@@ -13900,7 +14334,7 @@ damaging sound wave. It may also lower
 the target’s Sp. Def stat."
 405,15,9,"The user vibrates its wings to generate a
 damaging sound wave. This may also lower
-the target's Sp. Def stat."
+the target’s Sp. Def stat."
 406,8,9,"The foe is attacked
 with a shock wave
 generated by the
@@ -13921,6 +14355,8 @@ une onde de choc qui frappe l’ennemi."
 406,11,9,"The target is attacked with a shock wave
 generated by the user’s gaping mouth."
 406,14,9,"The target is attacked with a shock wave
+generated by the user’s gaping mouth."
+406,15,9,"The target is attacked with a shock wave
 generated by the user’s gaping mouth."
 407,8,9,"The user tackles the
 foe while exhibiting
@@ -13945,6 +14381,9 @@ It may also make the target flinch."
 407,14,9,"The user tackles the target while
 exhibiting overwhelming menace.
 It may also make the target flinch."
+407,15,9,"The user tackles the target while
+exhibiting overwhelming menace.
+This may also make the target flinch."
 408,8,9,"The user attacks with
 a ray of light that
 sparkles as if it were
@@ -13969,6 +14408,8 @@ sparkles as if it were made of gemstones."
 sparkles as if it were made of gemstones."
 408,15,6,"Anwender attackiert mit einem Lichtstrahl,
 der funkelt, als sei er aus Juwelen."
+408,15,9,"The user attacks with a ray of light that
+sparkles as if it were made of gemstones."
 409,8,9,"An energy-draining
 punch. The user’s
 HP is restored by
@@ -14044,6 +14485,9 @@ It may also lower the target’s Sp. Def."
 411,14,9,"The user heightens its mental focus and
 unleashes its power.
 It may also lower the target’s Sp. Def."
+411,15,9,"The user heightens its mental focus and
+unleashes its power.
+This may also lower the target’s Sp. Def."
 412,8,9,"The user draws power
 from nature and
 fires it at the foe.
@@ -14068,6 +14512,9 @@ It may also lower the target’s Sp. Def."
 412,14,9,"The user draws power from nature and
 fires it at the target.
 It may also lower the target’s Sp. Def."
+412,15,9,"The user draws power from nature and
+fires it at the target. This may also
+lower the target’s Sp. Def."
 413,8,9,"The user tucks in
 its wings and charges
 from a low altitude.
@@ -14142,6 +14589,8 @@ faster than the eye can follow."
 415,14,9,"The user trades held items with the target
 faster than the eye can follow."
 415,15,6,Item wird in Windseile mit dem Ziel getauscht.
+415,15,9,"The user trades held items with the target
+faster than the eye can follow."
 416,8,9,"The user charges at
 the foe using every
 bit of its power.
@@ -14166,6 +14615,11 @@ The user must rest on the next turn."
 416,14,9,"The user charges at the target using
 every bit of its power.
 The user must rest on the next turn."
+416,15,6,"Anwender rennt mit seiner ganzen Kraft gegen
+das Ziel an und muss dann eine Runde ruhen."
+416,15,9,"The user charges at the target using
+every bit of its power.
+The user can’t move on the next turn."
 417,8,9,"The user stimulates
 its brain by thinking
 bad thoughts.
@@ -14190,6 +14644,9 @@ It sharply raises the user’s Sp. Atk."
 417,14,9,"The user stimulates its brain by thinking
 bad thoughts.
 It sharply raises the user’s Sp. Atk."
+417,15,9,"The user stimulates its brain by thinking
+bad thoughts.
+This sharply raises the user’s Sp. Atk."
 418,8,9,"The user strikes
 with a tough punch as
 fast as a bullet.
@@ -14241,6 +14698,9 @@ target in the same turn."
 419,15,6,"Wurde der Anwender in dieser Runde vom Ziel
 getroffen, macht diese Attacke doppelten
 Schaden."
+419,15,9,"An attack move that inflicts double the
+damage if the user has been hurt by the
+target in the same turn."
 420,8,9,"The user flash
 freezes chunks of
 ice and hurls them.
@@ -14263,6 +14723,9 @@ premier."
 ice and hurls them at the target.
 This move always goes first."
 420,14,9,"The user flash freezes chunks of
+ice and hurls them at the target.
+This move always goes first."
+420,15,9,"The user flash-freezes chunks of
 ice and hurls them at the target.
 This move always goes first."
 421,8,9,"The user slashes with
@@ -14314,6 +14777,9 @@ leave it with paralysis."
 422,14,9,"The user bites with electrified fangs.
 It may also make the target flinch or
 leave it with paralysis."
+422,15,9,"The user bites with electrified fangs.
+This may also make the target flinch or
+leave it with paralysis."
 423,8,9,"The user bites with
 cold-infused fangs.
 It may also make the
@@ -14339,6 +14805,9 @@ It may also make the target flinch or
 leave it frozen."
 423,15,6,"Anwender beißt mit eiskalten Reißzähnen zu.
 Ziel schreckt eventuell zurück oder friert ein."
+423,15,9,"The user bites with cold-infused fangs.
+This may also make the target flinch or
+leave it frozen."
 424,8,9,"The user bites with
 flame-cloaked fangs.
 It may also make the
@@ -14421,7 +14890,7 @@ It may also lower the target’s accuracy."
 an. Senkt eventuell Genauigkeit des Zieles."
 426,15,9,"The user launches a hard-packed
 mud ball to attack.
-This may also lower the target's accuracy."
+This may also lower the target’s accuracy."
 427,8,9,"The user tears at
 the foe with blades
 formed by psychic
@@ -14444,6 +14913,11 @@ Taux de critiques élevé."
 formed by psychic power.
 Critical hits land more easily."
 427,14,9,"The user tears at the target with blades
+formed by psychic power.
+Critical hits land more easily."
+427,15,6,"Das Ziel wird mit Klingen attackiert, die aus
+Psycho-Energie bestehen. Hohe Volltrefferquote."
+427,15,9,"The user tears at the target with blades
 formed by psychic power.
 Critical hits land more easily."
 428,8,9,"The user focuses its
@@ -14470,6 +14944,9 @@ It may also make the target flinch."
 428,14,9,"The user focuses its willpower to its head
 and attacks the target.
 It may also make the target flinch."
+428,15,9,"The user focuses its willpower to its head
+and attacks the target.
+This may also make the target flinch."
 429,8,9,"The user looses a
 flash of energy from
 its polished body.
@@ -14494,6 +14971,9 @@ It may also lower the target’s accuracy."
 429,14,9,"The user looses a flash of energy at
 the target from its polished body.
 It may also lower the target’s accuracy."
+429,15,9,"The user lets loose a flash of energy at
+the target from its polished body.
+This may also lower the target’s accuracy."
 430,8,9,"The user gathers all
 its light energy and
 releases it at once.
@@ -14518,6 +14998,9 @@ target’s Sp. Def stat."
 430,14,9,"The user gathers all its light energy and
 releases it at once. It may also lower the
 target’s Sp. Def stat."
+430,15,9,"The user gathers all its light energy
+and releases it at once. This may also
+lower the target’s Sp. Def stat."
 431,8,9,"A charging attack
 that may also leave
 the foe confused.
@@ -14541,6 +15024,9 @@ It may also confuse the target."
 431,14,9,"The user attacks the target by smashing
 into it with incredible force.
 It may also confuse the target."
+431,15,9,"The user attacks the target by smashing
+into it with incredible force.
+This may also confuse the target."
 432,8,9,"Obstacles are moved,
 reducing the foe’s
 evasion stat. It can
@@ -14564,9 +15050,9 @@ It also lowers the target’s evasiveness."
 432,14,9,"A strong wind blows away the target’s
 obstacles such as Reflect or Light Screen.
 It also lowers the target’s evasiveness."
-432,15,9,"A strong wind blows away the target's
+432,15,9,"A strong wind blows away the target’s
 barriers such as Reflect or Light Screen.
-This also lowers the targe's evasiveness."
+This also lowers the targe’s evasiveness."
 433,8,9,"The user creates a
 bizarre area in which
 slower Pokémon get
@@ -14591,6 +15077,9 @@ five turns."
 433,14,9,"The user creates a bizarre area in which
 slower Pokémon get to move first for
 five turns."
+433,15,9,"The user creates a bizarre area in
+which slower Pokémon get to move
+first for five turns."
 434,8,9,"Comets are summoned
 down from the sky.
 The attack’s recoil
@@ -14615,6 +15104,9 @@ harshly reduces the user’s Sp. Atk stat."
 434,14,9,"Comets are summoned down from the sky
 onto the target. The attack’s recoil
 harshly reduces the user’s Sp. Atk stat."
+434,15,9,"Comets are summoned down from the sky
+onto the target. The attack’s recoil
+harshly lowers the user’s Sp. Atk stat."
 435,8,9,"A flare of electricity
 is loosed to strike
 all Pokémon in battle.
@@ -14712,6 +15204,8 @@ fouetter l’ennemi."
 tentacles to harshly lash the target."
 438,14,9,"The user violently whirls its vines or
 tentacles to harshly lash the target."
+438,15,9,"The user violently whirls its vines or
+tentacles to harshly lash the target."
 439,8,9,"The user launches a
 huge boulder at the
 foe to attack.
@@ -14758,6 +15252,9 @@ that may also leave the target poisoned.
 Critical hits land more easily."
 440,14,9,"A slashing attack with a poisonous blade
 that may also leave the target poisoned.
+Critical hits land more easily."
+440,15,9,"A slashing attack with a poisonous blade
+that may also poison the target.
 Critical hits land more easily."
 441,8,9,"The user shoots
 filthy garbage at the
@@ -14806,6 +15303,9 @@ It may also make the target flinch."
 442,14,9,"The user slams the target
 with its steel-hard head.
 It may also make the target flinch."
+442,15,9,"The user slams the target
+with its steel-hard head.
+This may also make the target flinch."
 443,8,9,"The user launches a
 steel bomb that
 sticks to the target.
@@ -14852,6 +15352,9 @@ It has a high critical-hit ratio."
 444,14,9,"The user stabs the foe with
 sharpened stones from below.
 It has a high critical-hit ratio."
+444,15,9,"The user stabs the target with
+sharpened stones from below.
+Critical hits land more easily."
 445,8,9,"If it is the opposite
 gender of the user,
 the foe is charmed
@@ -14876,6 +15379,9 @@ lowering its Sp. Atk stat."
 445,14,9,"If it is the opposite gender of the user,
 the target is charmed into harshly
 lowering its Sp. Atk stat."
+445,15,9,"If any opposing Pokémon is the opposite
+gender of the user, it is charmed, which
+harshly lowers its Sp. Atk stat."
 446,8,9,"The user lays a trap
 of levitating stones
 around the foe. The
@@ -14904,7 +15410,7 @@ hurts opponents that switch into battle."
 eingewechste Ziele nehmen Schaden."
 446,15,9,"The user lays a trap of levitating stones
 around the opposing team. The trap hurts
-opposing Pokémon that swith into battle."
+opposing Pokémon that switch into battle."
 447,8,9,"The user snares the
 foe with grass and
 trips it. The heavier
@@ -14929,6 +15435,9 @@ the greater the damage."
 447,14,9,"The user snares the target with grass and
 trips it. The heavier the target,
 the greater the damage."
+447,15,9,"The user snares the target with grass and
+trips it. The heavier the target, the greater
+the move’s power."
 448,8,9,"The user attacks
 using a sound wave
 based on words it has
@@ -14953,6 +15462,9 @@ It may also confuse the target."
 448,14,9,"The user attacks using a sound wave
 based on words it has learned.
 It may also confuse the target."
+448,15,9,"The user attacks using a sound wave
+based on words it has learned.
+This confuses the target."
 449,8,9,"The user releases
 countless shots of
 light. Its type varies
@@ -15003,6 +15515,9 @@ is holding a Berry, the user eats it and
 gains its effect."
 450,15,6,"Anwender beißt das Ziel. Trägt dieses eine Beere,
 isst der Anwender sie und erhält ihren Effekt."
+450,15,9,"The user bites the target. If the target
+is holding a Berry, the user eats it and
+gains its effect."
 451,8,9,"The user fires a
 concentrated bundle
 of electricity. It may
@@ -15025,6 +15540,9 @@ son Attaque Spéciale."
 charge. The user may use any remaining
 electricity to raise its Sp. Atk stat."
 451,14,9,"The user attacks with an electric
+charge. The user may use any remaining
+electricity to raise its Sp. Atk stat."
+451,15,9,"The user attacks with an electric
 charge. The user may use any remaining
 electricity to raise its Sp. Atk stat."
 452,8,9,"The user slams its
@@ -15080,6 +15598,9 @@ to strike first."
 453,14,9,"The user lunges at the target at a speed
 that makes it almost invisible. It is sure
 to strike first."
+453,15,9,"The user lunges at the target at a speed
+that makes it almost invisible.
+This move always goes first."
 454,8,9,"The user calls out
 its underlings to
 pummel the foe.
@@ -15152,6 +15673,9 @@ max HP."
 456,14,9,"The user calls out its underlings to
 heal it. The user regains up to half of its
 max HP."
+456,15,9,"The user calls out its underlings to
+heal it. The user regains up to half of its
+max HP."
 457,8,9,"The user delivers a
 life-endangering head
 butt at full power.
@@ -15198,6 +15722,9 @@ vines, or tentacle.
 The target is hit twice in a row."
 458,14,9,"The user slams the target with a long tail,
 vines, or tentacle.
+The target is hit twice in a row."
+458,15,9,"The user slams the target with a long tail,
+vines, or a tentacle.
 The target is hit twice in a row."
 459,8,9,"The user blasts the
 foe with power that
@@ -15387,6 +15914,9 @@ user’s stats at once."
 466,14,9,"The user blasts the target with a gust of
 repulsive wind. It may also raise all the
 user’s stats at once."
+466,15,9,"The user blasts the target with a gust of
+repulsive wind. This may also raise all the
+user’s stats at once."
 467,8,9,"The user disappears,
 then strikes the foe
 on the second turn.
@@ -15467,6 +15997,10 @@ This attack does physical damage."
 473,14,9,"The user materializes an odd
 psychic wave to attack the target.
 This attack does physical damage."
+473,15,8,Chi la usa attacca il bersaglio facendo materializzare un misterioso raggio psichico che provoca danni fisici.
+473,15,9,"The user materializes an odd
+psychic wave to attack the target.
+This attacks does physical damage."
 474,11,5,"Le lanceur inocule un poison spécial
 à l’ennemi. L’effet est doublé si
 l’ennemi est déjà empoisonné."
@@ -15479,8 +16013,8 @@ if the target is poisoned."
 474,15,6,"Überschüttet das Ziel mit einer speziellen
 toxischen Flüssigkeit. Doppelt so stark gegen
 vergiftete Ziele."
-474,15,9,"THe user drenches the target in a special
-poisonous liquid. This move's power is
+474,15,9,"The user drenches the target in a special
+poisonous liquid. This move’s power is
 doubled if the target is poisoned."
 475,11,5,"Le lanceur se débarrasse des parties
 inutiles de son corps. Son poids diminue
@@ -15501,6 +16035,9 @@ attire toutes les attaques ennemies."
 powder to draw attention to itself.
 Opponents aim only at the user."
 476,14,9,"The user scatters a cloud of irritating
+powder to draw attention to itself.
+Opponents aim only at the user."
+476,15,9,"The user scatters a cloud of irritating
 powder to draw attention to itself.
 Opponents aim only at the user."
 477,11,5,"Un pouvoir qui fait flotter l’ennemi dans
@@ -15535,7 +16072,7 @@ Fliegende Ziele fällen dabei vom Himmel und
 landen auf dem Boden."
 479,15,9,"The user throws a stone or similar projectile
 to attack an opponent. A flying Pokémon
-will fall to the ground when it's hit."
+will fall to the ground when it’s hit."
 480,11,5,"Un coup très puissant dont l’effet
 est toujours critique."
 480,11,9,"The user strikes the target with a fierce
@@ -15577,6 +16114,9 @@ Sp. Atk, Sp. Def, and Speed stats."
 483,15,6,"Anwender legt behände einen mystischen,
 formvollendeten Tanz aufs Parkett. Spezial-Angriff,
 Spezial-Verteidigung und Initiative steigen."
+483,15,9,"The user lightly performs a beautiful.
+mystic dance. This boosts the user’s
+Sp. Atk, Sp. Def, and Speed stats."
 484,11,5,"Le lanceur se jette sur l’ennemi de tout
 son poids. S’il est plus lourd que l’ennemi,
 l’effet augmente en conséquence."
@@ -15606,7 +16146,7 @@ at the target. The faster the user is
 than the target, the greater the damage."
 486,15,9,"The user hurls an electric orb
 at the target. The faster the user is
-than the target, the greater the move's power."
+than the target, the greater the move’s power."
 487,11,5,"Le lanceur projette beaucoup d’eau sur
 sa cible, qui devient de type Eau."
 487,11,9,"The user shoots a torrent of water
@@ -15617,7 +16157,7 @@ at the target and changes
 the target’s type to Water."
 487,15,9,"The user shoots a torrent of water
 at the target and changes
-the target's type to Water."
+the target’s type to Water."
 488,11,5,"Le lanceur s’entoure de flammes pour
 attaquer l’ennemi. Il se concentre
 et sa Vitesse augmente."
@@ -15627,6 +16167,9 @@ it raises the user’s Speed stat."
 488,14,9,"The user cloaks itself with flame and
 attacks. Building up more power,
 it raises the user’s Speed stat."
+488,15,6,"Anwender hüllt sich in Flammen und
+greift das Ziel an. Sammelt seine Energie
+und erhöht dadurch die eigene Initiative."
 488,15,9,"Cloaking itself in flame, the user attacks.
 Then, building up more power,
 the user raises its Speed stat."
@@ -15648,8 +16191,8 @@ Speed stat."
 swiftly, reducing the target’s
 Speed stat."
 490,15,9,"The user makes a swift attack on
-the target's legs, which lowers the
-target's Speed stat."
+the target’s legs, which lowers the
+target’s Speed stat."
 491,11,5,"Un liquide acide qui fait fondre l’ennemi.
 Sa Défense Spéciale diminue beaucoup."
 491,11,9,"The user spits fluid that works to melt
@@ -15657,6 +16200,9 @@ the target. This harshly reduces
 the target’s Sp. Def stat."
 491,14,9,"The user spits fluid that works to melt
 the target. This harshly reduces
+the target’s Sp. Def stat."
+491,15,9,"The user spits fluid that works to melt
+the target. This harshly lowers
 the target’s Sp. Def stat."
 492,11,5,"Le lanceur utilise la force de l’ennemi.
 Plus l’Attaque de l’ennemi est élevée,
@@ -15670,6 +16216,9 @@ Attack stat, the greater the damage."
 492,15,6,"Anwender macht sicht die Kraft des Zieles zunutze.
 Je höher dessen Angriff, desto mehr Schaden
 richtet die Attack an."
+492,15,9,"The user turns the target’s power
+against it. The higher the target’s Attack stat,
+the greater the move’s power."
 493,11,5,"Le lanceur envoie des ondes
 mystérieuses à l’ennemi. Sa
 capacité spéciale devient Simple."
@@ -15684,6 +16233,9 @@ adopter sa capacité spéciale."
 compels the target to mimic it, making the
 target’s Ability the same as the user’s."
 494,14,9,"The user dances with an odd rhythm that
+compels the target to mimic it, making the
+target’s Ability the same as the user’s."
+494,15,9,"The user dances with an odd rhythm that
 compels the target to mimic it, making the
 target’s Ability the same as the user’s."
 495,11,5,"S’il est le premier à agir, le lanceur
@@ -15714,6 +16266,9 @@ every turn, it does greater damage."
 497,14,9,"The user attacks the target with an
 echoing voice. If this move is used
 every turn, it does greater damage."
+497,15,9,"The user attacks the target with an
+echoing voice. If this move is used
+every turn, it does greater damage."
 498,11,5,"Une attaque puissante quand l’ennemi
 baisse sa garde. Inflige des dégâts sans
 tenir compte des changements de stats."
@@ -15731,6 +16286,9 @@ special mud. All status changes are
 returned to normal."
 499,14,9,"The user attacks by throwing a clump of
 special mud. All status changes are
+returned to normal."
+499,15,9,"The user attacks by throwing a clump of
+special mud. All stat changes are
 returned to normal."
 500,11,5,"Le lanceur attaque l’ennemi avec une force
 accumulée. Plus les stats du lanceur sont
@@ -15769,6 +16327,9 @@ with a burn."
 503,14,9,"The user shoots boiling hot water at
 its target. It may also leave the target
 with a burn."
+503,15,9,"The user shoots boiling hot water at
+its target. This may also leave the
+target with a burn."
 504,11,5,"Le lanceur brise sa coquille. Il baisse sa
 Défense et Déf. Spé., mais augmente forte-
 ment son Attaque, Atq. Spé. et Vitesse."
@@ -15787,7 +16348,7 @@ half of its max HP."
 restores the target’s HP by up to
 half of its max HP."
 505,15,9,"The user emits a healing pulse which
-restores the target's HP by up to
+restores the target’s HP by up to
 half of its max HP."
 506,11,5,"Attaque acharnée qui cause
 davantage de dégâts à l’ennemi
@@ -15805,6 +16366,9 @@ au 1er tour et le lâche dans le vide au
 then drops it during the next turn.
 The target cannot attack while in the sky."
 507,14,9,"The user takes the target into the sky,
+then drops it during the next turn.
+The target cannot attack while in the sky."
+507,15,9,"The user takes the target into the sky,
 then drops it during the next turn.
 The target cannot attack while in the sky."
 508,11,5,"Le lanceur fait tourner ses engrenages.
@@ -15850,6 +16414,9 @@ this attack inflicts massive damage."
 512,14,9,"The user nimbly strikes the target.
 If the user is not holding an item,
 this attack inflicts massive damage."
+512,15,6,"Ein graziler Angriff auf das Ziel.
+Trägt der Anwender kein Item bei sich,
+richtet die Attacke großen Schaden an."
 512,15,9,"The user nimbly strikes the target.
 If the user is not holding an item,
 this attack inflicts massive damage."
@@ -15886,7 +16453,7 @@ an item."
 target when the target isn’t holding
 an item."
 516,15,9,"The user passes its held item to the
-target when the target isn't holding
+target when the target isn’t holding
 an item."
 517,11,5,"L’ennemi est entouré d’un torrent de
 flammes ardentes qui le brûlent."
@@ -15895,6 +16462,9 @@ in an intense fire. It leaves the target
 with a burn."
 517,14,9,"The user attacks by engulfing the target
 in an intense fire. It leaves the target
+with a burn."
+517,15,9,"The user attacks by engulfing the target
+in an intense fire. This leaves the target
 with a burn."
 518,11,5,"Une masse d’eau s’abat sur l’ennemi.
 En l’utilisant avec Aire de Feu, l’effet
@@ -15942,6 +16512,9 @@ opposing Pokémon. The targets’
 Sp. Atk stat is reduced."
 522,15,6,"Anwender leistet Widerstand und greift an.
 Der Spezial-Angriff der Ziele sinkt."
+522,15,9,"While resisting, the user attacks the
+opposing Pokémon. This lowers the
+Sp. Atk stat of those hit."
 523,11,5,"Le lanceur piétine le sol et inflige des
 dégâts à tous les Pokémon autour
 de lui. Baisse aussi la Vitesse."
@@ -15954,12 +16527,18 @@ Pokémon’s Speed stat is reduced."
 523,15,6,"Anwender greift an, indem er den Boden
 um sich herum plattwalzt. Die Initiative aller
 betroffenen Pokémon sinkt."
+523,15,9,"The user strikes everything around it
+by stomping down on the ground.
+This lowers the Speed stat of those hit."
 524,11,5,"Un souffle froid blesse l’ennemi.
 L’effet est toujours critique."
 524,11,9,"The user blows a cold breath on the
 target. This attack always results in
 a critical hit."
 524,14,9,"The user blows a cold breath on the
+target. This attack always results in
+a critical hit."
+524,15,9,"The user blows its cold breath on the
 target. This attack always results in
 a critical hit."
 525,11,5,"Un coup puissant qui blesse la cible
@@ -15971,6 +16550,9 @@ In the wild, the battle ends."
 525,14,9,"The target is knocked away and switched.
 In the wild, a battle against a single
 Pokémon ends."
+525,15,9,"The target is knocked away, and a different
+Pokémon is dragged out. In the wild, this
+ends a battle against a single Pokémon."
 526,11,5,"Le lanceur se rengorge.
 Augmente l’Attaque et l’Attaque Spéciale."
 526,11,9,"The user is roused, and its Attack
@@ -15995,6 +16577,9 @@ It also damages the user a little."
 528,14,9,"The user shrouds itself in electricity
 and smashes into its target.
 It also damages the user a little."
+528,15,9,"The user shrouds itself in electricity
+and smashes into its target.
+This also damages the user a little."
 529,11,5,"Le lanceur tourne sur lui-même comme
 une perceuse et se jette sur l’ennemi.
 Taux de critiques élevé."
@@ -16037,10 +16622,9 @@ by half the damage taken by the target."
 532,14,9,"The user drains the target’s energy with
 its horns. The user’s HP is restored
 by half the damage taken by the target."
-532,15,9,"The user drains the target's energy with
-its horns. The user's HP is restored
-by half the damage taken by the target.
-"
+532,15,9,"The user drains the target’s energy with
+its horns. The user’s HP is restored
+by half the damage taken by the target."
 533,11,5,"Un coup de lame violent qui lacère
 l’ennemi et lui inflige des dégâts quels
 que soient ses changements de stats."
@@ -16094,6 +16678,9 @@ raising the user’s Defense stat."
 538,14,9,"The user protects itself by wrapping
 its body in soft cotton, drastically
 raising the user’s Defense stat."
+538,15,9,"The user protects itself by wrapping
+its body in soft cotton, which drastically
+raises the user’s Defense stat."
 539,11,5,"Le lanceur attaque l’ennemi avec une onde
 de choc ténébreuse. Peut aussi baisser la
 Précision de l’ennemi."
@@ -16129,6 +16716,9 @@ It may also confuse the target."
 542,14,9,"The user attacks by wrapping its opponent
 in a fierce wind that flies up into the sky.
 It may also confuse the target."
+542,15,9,"The user attacks by wrapping its opponent
+in a fierce wind that flies up into the sky.
+This may also confuse the target."
 543,11,5,"Le lanceur donne un coup avec sa tête
 couronnée d’une fière crinière.
 Blesse aussi légèrement le lanceur."
@@ -16242,6 +16832,9 @@ stat decrease."
 555,14,9,"The user yells as if it is ranting about
 something, making the targets’ Sp. Atk
 stat decrease."
+555,15,9,"The user yells as if it’s raining about
+something, which lowers the Sp. Atk stat
+of opposing Pokémon."
 556,11,5,"Envoie de gros blocs de glace sur
 l’ennemi pour lui infliger des dégâts.
 Peut aussi l’apeurer."
@@ -16281,40 +16874,91 @@ when influenced by an enormous flame."
 560,15,9,"The user dives down onto the target
 from the sky. This move is Fighting
 and Flying type simultaneously."
+561,15,9,"Using a pulled-up mat as a shield, the user
+protects itself and its allies from damaging moves.
+This does not stop status moves."
+563,15,9,"Tilling the soil, the user makes it easier
+for plants to grow. This raises the Attack
+and Sp. Atk stats of Grass-type Pokémon."
+564,15,9,"The user weaves a sticky net around
+the opposing team, which lowers their
+Speed stat upon switching into battle."
+566,15,6,"Der Anwender verschwindet, um eine Runde lang
+seine Kraft zu sammeln und in der nächsten Runde
+anzugreifen. Durchbricht die Defensive des Zieles."
+566,15,9,"The user vanishes somewhere, then strikes
+the target on the next turn.
+This move hits even if the target protects itself."
+568,15,9,"Letting out a noble roar, the user
+intimidates the target and lowers
+its Attack and Sp. Atk stats."
+570,15,9,"The user attacks everything around it.
+The user’s HP is restored by half
+the damage taken by those hit."
 571,15,9,"The user puts a forest curse on the target.
-Afflicted targets are now Grass type as well.
-"
+Afflicted targets are now Grass type as well."
 572,15,6,"Der Anwender erzeugt einen turbulenten
 Blütenwirbel, der alle Pokémon in der Nähe
 erfasst und ihnen Schaden zufügt."
 572,15,9,"The user stirs up a violent petal blizzard
 and attacks everything around it."
+574,15,9,"Letting out a charming cry, the user does
+emotional damage to opposing Pokémon.
+This attack never misses."
 576,15,6,Invertiert alle Statusveränderungen des Zieles.
 576,15,9,"All stat changes affecting the target
 turn topsy-turvy and become the
 opposite of what they were."
+577,15,9,"The user steals the target’s energy with a kiss.
+The user’s HP is restored by over half
+of the damage taken by the target."
+578,15,9,"The user protects itself and its allies from
+status moves with a mysterious power.
+This does not stop moves that do damage."
+581,15,9,"The user covers the ground under everyone’s feet
+with mist for five turns. This protects Pokémon
+on the ground from status conditions."
 583,15,6,"Der Anwender knuddelt das Ziel und greift es an.
-Gelegentlich sinkt dabei dessen Angriffs-Wert."
+Gelegentlich sinkt dabei auch dessen
+Angriffs-Wert."
 583,15,9,"The user plays rough with the target
 and attacks it. This may also lower
-the target's Attack stat."
+the target’s Attack stat."
 584,15,9,"The user stirs up a fairy wind
 and strikes the target with it."
 585,15,6,"Der Anwender macht sich die Kraft des Mondes
 zunutze, um anzugreifen. Gelegentlich wird dabei
 der Spezial-Angriff des Zieles gesenkt."
+586,15,9,"The user attacks everything around it
+with the destructive power of a terrible,
+explosive sound."
+587,15,9,"By locking down the battlefield,
+the user keeps all Pokémon from
+fleeing until the next turn."
 589,15,9,"The user and the target become friends,
 and the target loses its will to fight.
-This lowers the target's Attack stat."
+This lowers the target’s Attack stat."
+590,15,9,"The user tells the target a secret, and
+the target loses its ability to concentrate.
+This lowers the target’s Sp. Atk stat."
 594,15,9,"The user hits the target with throwing
 stars two to five times in a row.
 This move always goes first."
+595,15,8,"Colpisce il bersaglio soffiandogli contro delle fiammate incredibilmente roventi, riducendone l’Attacco Speciale."
+595,15,9,"The user attacks by breathing
+a special, hot fire. This also
+lowers the target’s Sp. Atk stat."
 596,15,6,"Der Anwender weicht gegnerischen Angriffen aus.
 Gleichzeitig nehmen alle Pokémon, die mit ihm in
 Berührung kommen, Schaden."
 596,15,9,"In addition to protecting the user from attacks,
 this move also damages any attacker who
 makes direct contact."
+600,15,9,"The user covers the target in a powder
+that explodes and damages the target
+if it uses a Fire-type move."
+605,15,9,"The user damages opposing Pokémon
+by emitting a powerful flash."
 608,15,9,"The user stares at the target with its baby-doll
 eyes, which lowers its Attack stat. This move
 always goes first."
@@ -16323,13 +16967,13 @@ cheeks against the target. This also leaves
 the target with paralysis."
 611,15,9,"The target is infested and attacked
 for four to five turns.
-The target can't flee during this time."
+The target can’t flee during this time."
 612,15,6,"Die Fäuste des Anwenders härten durch
 wiederholtes Zuschlagen ab. Mit jedem
 Treffer steigt sein Angriffs-Wert."
 612,15,9,"Striking oppontents over and over
-makes the user's fists harder.
+makes the user’s fists harder.
 Hitting a target raises the Attack stat."
-613,15,9,"The user absorbs its target's HP. 
-The user's HP is restored by over half 
+613,15,9,"The user absorbs its target’s HP. 
+The user’s HP is restored by over half 
 of the damage taken by the target."

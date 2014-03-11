@@ -120,7 +120,7 @@ It is designed as a capsule system."
 It is thrown like a ball at the target.
 It is designed as a capsule system."
 4,15,9,"A device for catching wild Pokémon.
-It's thrown like a ball at a Pokémon,
+It’s thrown like a ball at a Pokémon,
 comfortably encapsulating its target."
 5,5,9,"A special BALL that
 is used only in the
@@ -773,7 +773,7 @@ Pokémon. It restores half the
 Pokémon’s maximum HP."
 28,15,9,"A medicine that can revive fainted
 Pokémon. It also restores half of
-a fainted Pokémon's maximum HP."
+a fainted Pokémon’s maximum HP."
 29,5,9,"Revives a fainted
 POKéMON with all
 its HP."
@@ -801,7 +801,7 @@ Pokémon. It fully restores the
 Pokémon’s HP."
 29,15,9,"A medicine that can revive fainted
 Pokémon. It also fully restores a 
-fainted Pokémon's maximum HP."
+fainted Pokémon’s maximum HP."
 30,5,9,"A mineral water
 that restores HP
 by 50 points."
@@ -828,6 +828,9 @@ It restores the HP of one Pokémon by
 30,14,9,"Water with a high mineral content.
 It restores the HP of one Pokémon by
 50 points."
+30,15,9,"Water with high mineral content.
+When consumed, it restores
+50 HP to an injured Pokémon."
 31,5,9,"A fizzy soda drink
 that restores HP
 by 60 points."
@@ -1125,6 +1128,9 @@ Pokémon."
 41,14,9,"It fully restores the PP of all the
 moves learned by the targeted
 Pokémon."
+41,15,9,"This medicine can fully restore the
+PP of all of the moves that have
+been learned by a Pokémon."
 42,5,9,"A local specialty
 that heals all
 status problems."
@@ -1259,6 +1265,9 @@ single Pokémon."
 46,14,9,"A nutritious drink for Pokémon.
 It raises the base Attack stat of a
 single Pokémon."
+46,15,9,"A nutritious drink for Pokémon.
+When consumed, it raises the base
+Attack stat of a single Pokémon."
 47,5,9,"Raises the stat
 DEFENSE of one
 POKéMON."
@@ -1314,6 +1323,9 @@ single Pokémon."
 48,14,9,"A nutritious drink for Pokémon.
 It raises the base Speed stat of a
 single Pokémon."
+48,15,9,"A nutritious drink for Pokémon.
+When consumed, it raises the base
+Speed stat of a single Pokémon."
 49,5,9,"Raises the stat
 SP. ATK of one
 POKéMON."
@@ -1341,6 +1353,9 @@ Attack) stat of a single Pokémon."
 49,14,9,"A nutritious drink for Pokémon.
 It raises the base Sp. Atk (Special
 Attack) stat of a single Pokémon."
+49,15,9,"A nutritious drink for Pokémon.
+When consumed, it raises the base
+Sp. Atk stat of a single Pokémon."
 50,5,9,"Raises the level
 of a POKéMON by
 one."
@@ -1425,6 +1440,9 @@ Defense) stat of a single Pokémon."
 52,14,9,"A nutritious drink for Pokémon.
 It raises the base Sp. Def (Special
 Defense) stat of a single Pokémon."
+52,15,9,"A nutritious drink for Pokémon.
+When consumed, it raises the base
+Sp. Def stat of a single Pokémon."
 53,5,9,"Raises the PP of a
 move to its maximum
 points."
@@ -1451,6 +1469,9 @@ by the target Pokémon."
 53,14,9,"It maximally raises the top PP of a
 selected move that has been learned
 by the target Pokémon."
+53,15,9,"A medicine that can optimally raise the
+maximum PP of a single move that has
+bean learned by the target Pokémon."
 54,8,9,"Old Chateau’s hidden specialty.
 It heals all the status problems of a
 single Pokémon."
@@ -1497,7 +1518,7 @@ for five turns after use."
 among the Trainer’s party Pokémon
 for five turns after use."
 55,15,9,"An item that prevents stat reduction
-among the Trainer's party Pokémon
+among the Trainer’s party Pokémon
 for five turns after it is used in battle."
 56,5,9,"Raises the
 critical-hit ratio
@@ -1616,6 +1637,9 @@ the Pokémon is withdrawn."
 59,14,9,"An item that raises the Speed stat
 of a Pokémon in battle. It wears off if
 the Pokémon is withdrawn."
+59,15,9,"An item that boosts the Speed stat
+of a Pokémon during a battle. It wears
+off once the Pokémon is withdrawn."
 60,5,9,"Raises accuracy
 of attack moves
 during one battle."
@@ -1726,6 +1750,9 @@ Use it to flee from any battle with a
 wild Pokémon."
 63,15,8,"Bambola che attrae i Pokémon. È utile per fuggire
 dalla lotta con Pokémon selvatici."
+63,15,9,"A doll that attracts the attention of a
+Pokémon. It guarantees escape from
+any battle with wild Pokémon"
 64,5,9,"Use to flee from
 any battle with
 a wild POKéMON."
@@ -2331,7 +2358,7 @@ It has a leaf pattern."
 species of Pokémon evolve.
 It has a leaf pattern."
 85,15,8,"Pietra particolare che fa evolvere determinate
-specie di Pokémon. Riporta l'immagine
+specie di Pokémon. Riporta l’immagine
 di una foglia."
 85,15,9,"A peculiar stone that can make
 certain species of Pokémon evolve.
@@ -2362,7 +2389,7 @@ It is sought after by collectors."
 86,14,9,"A small and rare mushroom.
 It is sought after by collectors."
 86,15,9,"A very small and rare mushroom.
-It's popular with a certain class of
+It’s popular with a certain class of
 collectors and sought out by them."
 87,5,9,"A rare mushroom
 that would sell at a
@@ -2872,6 +2899,9 @@ It is as dark as dark can be."
 108,14,9,"A peculiar stone that makes certain
 species of Pokémon evolve.
 It is as dark as dark can be."
+108,15,9,"A peculiar stone that can make
+certain species of Pokémon evolve.
+It holds shadows as dark as can be."
 109,8,9,"A peculiar stone that makes certain
 species of Pokémon evolve.
 It sparkles like eyes."
@@ -3325,8 +3355,8 @@ it heals the user’s HP a little."
 135,14,9,"If held by a Pokémon,
 it heals the user’s HP a little."
 135,15,9,"A Berry to be consumed by Pokémon. 
-If a Pokémon holds ones, it can restore its
-own HP by a small amount during battle."
+If a Pokémon holds one, it can restore
+its own HP by a small amount during battle."
 136,5,9,"A hold item that
 restores HP but
 may confuse."
@@ -3354,7 +3384,7 @@ confusion if it hates the taste."
 user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 136,15,9,"If held by a Pokémon, it restores the
-user's HP in a pinch, but it will cause
+user’s HP in a pinch, but it will cause
 confusion if the user hates the taste."
 137,5,9,"A hold item that
 restores HP but
@@ -3383,7 +3413,7 @@ confusion if it hates the taste."
 user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 137,15,9,"If held by a Pokémon, it restores the
-user's HP in a pinch, but it will cause
+user’s HP in a pinch, but it will cause
 confusion if the user hates the taste."
 138,5,9,"A hold item that
 restores HP but
@@ -3412,7 +3442,7 @@ confusion if it hates the taste."
 user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 138,15,9,"If held by a Pokémon, it restores the
-user's HP in a pinch, but it will cause
+user’s HP in a pinch, but it will cause
 confusion if the user hates the taste."
 139,5,9,"A hold item that
 restores HP but
@@ -3441,7 +3471,7 @@ confusion if it hates the taste."
 user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 139,15,9,"If held by a Pokémon, it restores the
-user's HP in a pinch, but it will cause
+user’s HP in a pinch, but it will cause
 confusion if the user hates the taste."
 140,5,9,"A hold item that
 restores HP but
@@ -3470,7 +3500,7 @@ confusion if it hates the taste."
 user’s HP in a pinch, but will cause
 confusion if it hates the taste."
 140,15,9,"If held by a Pokémon, it restores the
-user's HP in a pinch, but it will cause
+user’s HP in a pinch, but it will cause
 confusion if the user hates the taste."
 141,5,9,"POKéBLOCK ingredient.
 Plant in loamy soil
@@ -3619,6 +3649,9 @@ baisse leurs PV de base."
 friendly, but it also lowers its base HP."
 146,14,9,"Using it on a Pokémon makes it more
 friendly, but it also lowers its base HP."
+146,15,9,"A Berry to be consumed by Pokémon.
+Using it on a Pokémon makes it more
+friendly but lowers its base HP."
 147,5,9,"POKéBLOCK ingredient.
 Plant in loamy soil
 to grow KELPSY."
@@ -3644,6 +3677,9 @@ Attack stat."
 147,14,9,"Using it on a Pokémon makes it more
 friendly, but it also lowers its base
 Attack stat."
+147,15,9,"A Berry to be consumed by Pokémon.
+Using it on a Pokémon makes it more
+friendly but lowers its base Attack."
 148,5,9,"POKéBLOCK ingredient.
 Plant in loamy soil
 to grow QUALOT."
@@ -3669,6 +3705,9 @@ Defense stat."
 148,14,9,"Using it on a Pokémon makes it more
 friendly, but it also lowers its base
 Defense stat."
+148,15,9,"A Berry to be consumed by Pokémon.
+Using it on a Pokémon makes it more
+friendly but lowers its base Defense."
 149,5,9,"POKéBLOCK ingredient.
 Plant in loamy soil
 to grow HONDEW."
@@ -3695,6 +3734,9 @@ Sp. Atk stat."
 149,14,9,"Using it on a Pokémon makes it more
 friendly, but it also lowers its base
 Sp. Atk stat."
+149,15,9,"A Berry to be consumed by Pokémon.
+Using it on a Pokémon makes it more
+friendly but lowers its base Sp. Atk."
 150,5,9,"POKéBLOCK ingredient.
 Plant in loamy soil
 to grow GREPA."
@@ -3721,6 +3763,9 @@ Sp. Def stat."
 150,14,9,"Using it on a Pokémon makes it more
 friendly, but it also lowers its base
 Sp. Def stat."
+150,15,9,"A Berry to be consumed by Pokémon.
+Using it on a Pokémon makes it more
+friendly but lowers its base Sp. Def."
 151,5,9,"POKéBLOCK ingredient.
 Plant in loamy soil
 to grow TAMATO."
@@ -3746,6 +3791,9 @@ Speed stat."
 151,14,9,"Using it on a Pokémon makes it more
 friendly, but it also lowers its base
 Speed stat."
+151,15,9,"A Berry to be consumed by Pokémon.
+Using it on a Pokémon makes it more
+friendly but lowers its base Speed."
 152,5,9,"POKéBLOCK ingredient.
 Plant in loamy soil
 to grow CORNN."
@@ -4051,6 +4099,9 @@ ennemie super efficace de type Glace."
 attack against the holding Pokémon."
 165,14,9,"Weakens a supereffective Ice-type
 attack against the holding Pokémon."
+165,15,9,"If held by a Pokémon, this Berry will
+lessen the damage taken from one
+supereffective Ice-type attack."
 166,8,9,"A Poffin ingredient. If held by a
 Pokémon, it weakens a foe’s
 supereffective Fighting-type attack."
@@ -4067,8 +4118,7 @@ attack against the holding Pokémon."
 attack against the holding Pokémon."
 166,15,9,"If held by a Pokémon, this Berry will
 lessen the damage taken from one
-supereffective Fighting-type attack.
-"
+supereffective Fighting-type attack."
 167,8,9,"A Poffin ingredient. If held by a
 Pokémon, it weakens a foe’s
 supereffective Poison-type attack."
@@ -4148,6 +4198,9 @@ ennemie super efficace de type Insecte."
 attack against the holding Pokémon."
 171,14,9,"Weakens a supereffective Bug-type
 attack against the holding Pokémon."
+171,15,9,"If held by a Pokémon, this Berry will
+lessen the damage taken from one
+supereffective Bug-type attack."
 172,8,9,"A Poffin ingredient. If held by a
 Pokémon, it weakens a foe’s
 supereffective Rock-type attack."
@@ -4270,6 +4323,9 @@ en cas de besoin."
 Attack stat in a pinch."
 178,14,9,"If held by a Pokémon, it raises its
 Attack stat in a pinch."
+178,15,9,"A Berry to be consumed by Pokémon. 
+If a Pokémon holds one, its Attack
+stat will increase when it’s in a pinch."
 179,5,9,"A hold item that
 raises DEFENSE in
 a pinch."
@@ -4292,6 +4348,9 @@ en cas de besoin."
 Defense stat in a pinch."
 179,14,9,"If held by a Pokémon, it raises its
 Defense stat in a pinch."
+179,15,9,"A Berry to be consumed by Pokémon. 
+If a Pokémon holds one, its Defense
+stat will increase when it’s in a pinch."
 180,5,9,"A hold item that
 raises SPEED in
 a pinch."
@@ -4314,6 +4373,9 @@ en cas de besoin."
 Speed stat in a pinch."
 180,14,9,"If held by a Pokémon, it raises its
 Speed stat in a pinch."
+180,15,9,"A Berry to be consumed by Pokémon. 
+If a Pokémon holds one, its Speed
+stat will increase when it’s in a pinch."
 181,5,9,"A hold item that
 raises SP. ATK in
 a pinch."
@@ -4336,6 +4398,9 @@ en cas de besoin."
 Sp. Atk stat in a pinch."
 181,14,9,"If held by a Pokémon, it raises its
 Sp. Atk stat in a pinch."
+181,15,9,"A Berry to be consumed by Pokémon. 
+If a Pokémon holds one, its Sp. Atk
+stat will increase when it’s in a pinch."
 182,5,9,"A hold item that
 raises SP. DEF in
 a pinch."
@@ -4358,6 +4423,9 @@ en cas de besoin."
 Sp. Def stat in a pinch."
 182,14,9,"If held by a Pokémon, it raises its
 Sp. Def stat in a pinch."
+182,15,9,"A Berry to be consumed by Pokémon. 
+If a Pokémon holds one, its Sp. Def
+stat will increase when it’s in a pinch."
 183,5,9,"A hold item that
 ups the critical-
 hit rate in a pinch."
@@ -4519,6 +4587,9 @@ the opponent’s accuracy."
 190,14,9,"An item to be held by a Pokémon.
 It casts a tricky glare that lowers
 the opponent’s accuracy."
+190,15,9,"An item to be held by a Pokémon.
+It casts a tricky glare that lowers
+the opposing Pokémon’s accuracy."
 191,5,9,"A hold item that
 restores any
 lowered stat."
@@ -4548,8 +4619,7 @@ It restores any lowered stat in
 battle. It can be used only once."
 191,15,9,"An item to be held by a Pokémon.
 It will restore any lowered stat in
-battle. It can be used only once.
-"
+battle. It can be used only once."
 192,5,9,"A hold item that
 promotes growth,
 but reduces SPEED."
@@ -4577,6 +4647,9 @@ strong growth but lowers Speed."
 192,14,9,"An item to be held by a Pokémon. It is
 a stiff and heavy brace that promotes
 strong growth but lowers Speed."
+192,15,9,"An item to be held by a Pokémon.
+This stiff, heavy brace helps Pokémon
+grow strong but cuts Speed in battle."
 193,5,9,"A hold item that
 gets EXP. points
 from battles."
@@ -4723,6 +4796,9 @@ the use of only one of its moves."
 197,14,9,"An item to be held by a Pokémon.
 This headband ups Attack, but allows
 the use of only one of its moves."
+197,15,9,"An item to be held by a Pokémon.
+This curious headband boosts Attack
+but only allows the use of one move."
 198,5,9,"A hold item that
 may cause flinching
 when the foe is hit."
@@ -4898,7 +4974,7 @@ A fang that gleams a sharp silver, it
 raises the Sp. Atk stat."
 203,15,9,"An item to be held by Clamperl.
 This fang gleams a sharp silver and
-raises the holder's Sp. Atk stat."
+raises the holder’s Sp. Atk stat."
 204,5,9,"A hold item that
 raises the SP. DEF
 of CLAMPERL."
@@ -4928,7 +5004,7 @@ A scale that shines a faint pink, it
 raises the Sp. Def stat."
 204,15,9,"An item to be held by Clamperl.
 This scale shines with a faint pink and
-raises the holder's Sp. Def stat."
+raises the holder’s Sp. Def stat."
 205,5,9,"A hold item that
 can be used to flee
 from a wild POKéMON."
@@ -4956,6 +5032,9 @@ wild Pokémon without fail."
 205,14,9,"An item to be held by a Pokémon.
 It enables the holder to flee from any
 wild Pokémon without fail."
+205,15,9,"An item to be held by a Pokémon.
+It enables the holder to flee from any
+wild Pokémon encounter without fail."
 206,5,9,"A wondrous stone
 & a hold item that
 prevents evolution."
@@ -5011,6 +5090,9 @@ attack, leaving it with just 1 HP."
 207,14,9,"An item to be held by a Pokémon.
 The holder may endure a potential KO
 attack, leaving it with just 1 HP."
+207,15,9,"An item to be held by a Pokémon.
+The holder may endure a potential
+KO attack, leaving it with just 1 HP."
 208,5,9,"A hold item that
 boosts EXP. points
 earned in battle."
@@ -5039,7 +5121,7 @@ earns extra Exp. Points in battle."
 It is an egg filled with happiness that
 earns extra Exp. Points in battle."
 208,15,9,"An item to be held by a Pokémon.
-It's an egg filled with happiness that
+It’s an egg filled with happiness that
 earns extra Exp. Points in battle."
 209,5,9,"A hold item that
 raises the critical-
@@ -5067,6 +5149,9 @@ critical-hit ratio."
 209,14,9,"An item to be held by a Pokémon.
 It is a lens that boosts the holder’s
 critical-hit ratio."
+209,15,9,"An item to be held by a Pokémon.
+It’s a lens for scoping out weak points.
+It boosts the holder’s critical-hit ratio."
 210,5,9,"A hold item that
 raises the power of
 STEEL-type moves."
@@ -5094,6 +5179,9 @@ the power of Steel-type moves."
 210,14,9,"An item to be held by a Pokémon.
 It is a special metallic film that ups
 the power of Steel-type moves."
+210,15,9,"An item to be held by a Pokémon.
+It is a special metallic film that can
+boost the power of Steel-type moves."
 211,5,9,"A hold item that
 gradually restores
 HP in battle."
@@ -5122,7 +5210,7 @@ during battle."
 The holder’s HP is gradually restored
 during battle."
 211,15,9,"An item to be held by a Pokémon.
-The holder's HP is slowly but steadily
+The holder’s HP is slowly but steadily
 restored throughout every battle."
 212,5,9,"A strange scale
 held by DRAGON-
@@ -5298,6 +5386,9 @@ that boosts Dark-type moves."
 217,14,9,"An item to be held by a Pokémon.
 It is a shady-looking pair of glasses
 that boosts Dark-type moves."
+217,15,9,"An item to be held by a Pokémon.
+A pair of shady-looking glasses that
+boost the power of Dark-type moves."
 218,5,9,"A hold item that
 boosts FIGHTING-
 type moves."
@@ -5413,7 +5504,7 @@ the power of Flying-type moves."
 It is a long, sharp beak that boosts
 the power of Flying-type moves."
 221,15,9,"An item to be held by a Pokémon.
-It's a long, sharp beak that boosts
+It’s a long, sharp beak that boosts
 the power of Flying-type moves."
 222,5,9,"A hold item that
 raises the power of
@@ -5499,6 +5590,9 @@ the power of Ghost-type moves."
 224,14,9,"An item to be held by a Pokémon.
 It is a sinister, eerie tag that boosts
 the power of Ghost-type moves."
+224,15,9,"An item to be held by a Pokémon.
+It’s a sinister, eerie tag that boosts
+the power of Ghost-type moves."
 225,5,9,"A hold item that
 boosts PSYCHIC-
 type moves."
@@ -5526,6 +5620,9 @@ that boosts Psychic-type moves."
 225,14,9,"An item to be held by a Pokémon. It is
 a spoon imbued with telekinetic power
 that boosts Psychic-type moves."
+225,15,9,"An item to be held by a Pokémon.
+This spoon is imbued with telekinetic
+power which boosts Psychic-type moves."
 226,5,9,"A hold item that
 raises the power of
 FIRE-type moves."
@@ -5579,6 +5676,9 @@ the power of Dragon-type moves."
 227,14,9,"An item to be held by a Pokémon.
 It is a hard and sharp fang that ups
 the power of Dragon-type moves."
+227,15,9,"An item to be held by a Pokémon.
+This hard and sharp fang boosts
+the power of Dragon-type moves."
 228,5,9,"A hold item that
 raises the power of
 NORMAL-type moves."
@@ -5607,7 +5707,7 @@ the power of Normal-type moves."
 It is a sumptuous scarf that boosts
 the power of Normal-type moves."
 228,15,9,"An item to be held by a Pokémon.
-It's a sumptuous scarf that boosts
+It’s a sumptuous scarf that boosts
 the power of Normal-type moves."
 229,5,9,"A peculiar box made
 by SILPH CO."
@@ -5633,6 +5733,9 @@ sorts of data.
 It was produced by Silph Co."
 229,14,9,"A transparent device filled with all
 sorts of data.
+It was produced by Silph Co."
+229,15,9,"A transparent device somehow
+filled with all sorts of data.
 It was produced by Silph Co."
 230,5,9,"A hold item that
 restores HP upon
@@ -5975,6 +6078,9 @@ boosts the accuracy of moves."
 242,14,9,"An item to be held by a Pokémon.
 It is a magnifying lens that slightly
 boosts the accuracy of moves."
+242,15,9,"An item to be held by a Pokémon.
+It’s a magnifying lens that slightly
+boosts the accuracy of moves."
 243,8,9,"An item to be held by a Pokémon.
 It is a headband that slightly boosts
 the power of physical moves."
@@ -5993,6 +6099,9 @@ the power of physical moves."
 243,14,9,"An item to be held by a Pokémon.
 It is a headband that slightly boosts
 the power of physical moves."
+243,15,9,"An item to be held by a Pokémon.
+This headband exudes strength, slightly
+boosting the power of physical moves."
 244,8,9,"An item to be held by a Pokémon. It is
 a thick pair of glasses that slightly
 boosts the power of special moves."
@@ -6011,6 +6120,9 @@ boosts the power of special moves."
 244,14,9,"An item to be held by a Pokémon. It is
 a thick pair of glasses that slightly
 boosts the power of special moves."
+244,15,9,"An item to be held by a Pokémon.
+This thick pair of glasses slightly
+boosts the power of special moves."
 245,8,9,"An item to be held by a Pokémon. It is
 a well-worn belt that slightly boosts
 the power of supereffective moves."
@@ -6028,6 +6140,9 @@ a well-worn belt that slightly boosts
 the power of supereffective moves."
 245,14,9,"An item to be held by a Pokémon. It is
 a well-worn belt that slightly boosts
+the power of supereffective moves."
+245,15,9,"An item to be held by a Pokémon.
+It’s a well-worn belt that slightly boosts
 the power of supereffective moves."
 246,8,9,"A Pokémon hold item that extends the
 duration of barrier moves like Light
@@ -6065,6 +6180,9 @@ the cost of some HP on each hit."
 247,14,9,"An item to be held by a Pokémon.
 It boosts the power of moves, but at
 the cost of some HP on each hit."
+247,15,9,"An item to be held by a Pokémon.
+It boosts the power of moves, but
+at the cost of some HP on each hit."
 248,8,9,"A single-use item to be held by a
 Pokémon. It allows the immediate use of
 a move that charges on the first turn."
@@ -6104,6 +6222,9 @@ the holder in battle."
 249,14,9,"An item to be held by a Pokémon.
 It is a bizarre orb that badly poisons
 the holder in battle."
+249,15,9,"An item to be held by a Pokémon.
+It is a bizarre orb that will badly
+poison the holder during battle."
 250,8,9,"An item to be held by a Pokémon.
 It is a bizarre orb that inflicts a
 burn on the holder in battle."
@@ -6121,6 +6242,9 @@ burn on the holder in battle."
 250,14,9,"An item to be held by a Pokémon.
 It is a bizarre orb that inflicts a
 burn on the holder in battle."
+250,15,9,"An item to be held by a Pokémon.
+It is a bizarre orb that will afflict the
+holder with a burn during battle."
 251,8,9,"An item to be held by DITTO.
 Extremely fine yet hard, this odd
 powder boosts the Speed stat."
@@ -6160,6 +6284,9 @@ potential KO attack, leaving 1 HP."
 252,14,9,"An item to be held by a Pokémon. If it
 has full HP, the holder will endure one
 potential KO attack, leaving 1 HP."
+252,15,9,"An item to be held by a Pokémon. If the holder
+has full HP, it will endure a potential KO
+attack with 1 HP. The item then disappears."
 253,8,9,"An item to be held by a Pokémon.
 If the holder moves after the foe, its
 critical-hit ratio will be boosted."
@@ -6177,6 +6304,9 @@ target, its accuracy will be boosted."
 253,14,9,"An item to be held by a Pokémon.
 If the holder moves after its
 target, its accuracy will be boosted."
+253,15,9,"An item to be held by a Pokémon.
+If the holder moves after its target
+moves, its accuracy will be boosted."
 254,8,9,"A Pokémon hold item that boosts a move
 used consecutively. Its effect is
 reset if another move is used."
@@ -6216,6 +6346,9 @@ holders susceptible to Ground moves."
 255,14,9,"A Pokémon held item that cuts Speed.
 It makes Flying-type and levitating
 holders susceptible to Ground moves."
+255,15,9,"An item to be held by a Pokémon.
+It lowers Speed and allows Ground-type
+moves to hit Flying-type and levitating holders."
 256,8,9,"An item to be held by a Pokémon.
 It is tremendously heavy and makes
 the holder move slower than usual."
@@ -6254,6 +6387,9 @@ becomes infatuated, the foe does too."
 257,14,9,"A long, thin, bright-red string to
 be held by a Pokémon. If the holder
 becomes infatuated, the foe does too."
+257,15,6,"An item to be held by a Pokémon.
+If the holder becomes infatuated,
+the opposing Pokémon will be, too."
 257,15,9,"An item to be held by a Pokémon.
 If the holder becomes infatuated,
 the opposing Pokémon will be, too."
@@ -6316,8 +6452,7 @@ duration of the move Sandstorm used
 by the holder."
 260,15,9,"An item to be held by a Pokémon.
 It extends the duration of the move
-Sandstorm when used by the holder.
-"
+Sandstorm when used by the holder."
 261,8,9,"A Pokémon hold item that extends the
 duration of the move Sunny Day used
 by the holder."
@@ -6336,6 +6471,9 @@ by the holder."
 261,14,9,"A Pokémon held item that extends the
 duration of the move Sunny Day used
 by the holder."
+261,15,9,"An item to be held by a Pokémon.
+It extends the duration of the move
+Sunny Day when used by the holder."
 262,8,9,"A Pokémon hold item that extends the
 duration of the move Rain Dance used
 by the holder."
@@ -6354,6 +6492,9 @@ by the holder."
 262,14,9,"A Pokémon held item that extends the
 duration of the move Rain Dance used
 by the holder."
+262,15,9,"An item to be held by a Pokémon.
+It extends the duration of the move
+Rain Dance when used by the holder."
 263,8,9,"A Pokémon hold item that extends the
 duration of multiturn attacks like
 Bind and Wrap."
@@ -6372,6 +6513,9 @@ Bind and Wrap."
 263,14,9,"A Pokémon held item that extends the
 duration of multiturn attacks like
 Bind and Wrap."
+263,15,9,"An item to be held by a Pokémon.
+It extends the duration of multi-turn
+attacks like Bind and Wrap."
 264,8,9,"An item to be held by a Pokémon.
 This scarf boosts Speed, but allows
 the use of only one kind of move."
@@ -6390,6 +6534,9 @@ the use of only one of its moves."
 264,14,9,"An item to be held by a Pokémon.
 This scarf boosts Speed, but allows
 the use of only one of its moves."
+264,15,9,"An item to be held by a Pokémon.
+This curious scarf boosts Speed
+but only allows the use of one move."
 265,8,9,"A hold item that damages the holder on
 every turn. It may latch on to foes
 that touch the holder."
@@ -6426,6 +6573,9 @@ the Speed stat."
 266,14,9,"A Pokémon held item that promotes
 Attack gain on leveling, but reduces
 the Speed stat."
+266,15,9,"An item to be held by a Pokémon.
+It reduces Speed but allows the holder’s
+Attack stat to grow move after battling."
 267,8,9,"A Pokémon hold item that promotes
 Defense gain on leveling, but reduces
 the Speed stat."
@@ -6444,6 +6594,9 @@ the Speed stat."
 267,14,9,"A Pokémon held item that promotes
 Defense gain on leveling, but reduces
 the Speed stat."
+267,15,9,"An item to be held by a Pokémon.
+It reduces Speed but allows the holder’s
+Defense stat to grow move after battling."
 268,8,9,"A Pokémon hold item that promotes
 Sp. Atk gain on leveling, but reduces
 the Speed stat."
@@ -6462,6 +6615,9 @@ the Speed stat."
 268,14,9,"A Pokémon held item that promotes
 Sp. Atk gain on leveling, but reduces
 the Speed stat."
+268,15,9,"An item to be held by a Pokémon.
+It reduces Speed but allows the holder’s
+Sp. Atk stat to grow move after battling."
 269,8,9,"A Pokémon hold item that promotes
 Sp. Def gain on leveling, but reduces
 the Speed stat."
@@ -6480,6 +6636,9 @@ the Speed stat."
 269,14,9,"A Pokémon held item that promotes
 Sp. Def gain on leveling, but reduces
 the Speed stat."
+269,15,9,"An item to be held by a Pokémon.
+It reduces Speed but allows the holder’s
+Sp. Def stat to grow move after battling."
 270,8,9,"A Pokémon hold item that promotes
 Speed gain on leveling, but reduces
 the Speed stat."
@@ -6498,6 +6657,9 @@ the Speed stat."
 270,14,9,"A Pokémon held item that promotes
 Speed gain on leveling, but reduces
 the Speed stat."
+270,15,9,"An item to be held by a Pokémon.
+It reduces Speed but allows the holder’s
+Speed stat to grow move after battling."
 271,8,9,"A Pokémon hold item that promotes
 HP gain on leveling, but reduces the
 Speed stat."
@@ -6516,6 +6678,9 @@ Speed stat."
 271,14,9,"A Pokémon held item that promotes
 HP gain on leveling, but reduces the
 Speed stat."
+271,15,9,"An item to be held by a Pokémon.
+It reduces Speed but allows the holder’s
+maximum HP to grow move after battling."
 272,8,9,"A tough, discarded carapace to be held
 by a Pokémon. It enables the holder to
 switch with a waiting Pokémon in battle."
@@ -6572,6 +6737,9 @@ allow the use of only one of its moves."
 274,14,9,"An item to be held by a Pokémon. These
 distinctive glasses boost Sp. Atk but
 allow the use of only one of its moves."
+274,15,9,"An item to be held by a Pokémon.
+These curious glasses boost Sp. Atk
+but only allow the use of one move."
 275,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
 power of Fire-type moves."
@@ -6591,7 +6759,7 @@ power of Fire-type moves."
 It is a stone tablet that boosts the
 power of Fire-type moves."
 275,15,9,"An item to be held by a Pokémon.
-It's a stone tablet that boosts the
+It’s a stone tablet that boosts the
 power of Fire-type moves."
 276,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
@@ -6612,7 +6780,7 @@ power of Water-type moves."
 It is a stone tablet that boosts the
 power of Water-type moves."
 276,15,9,"An item to be held by a Pokémon.
-It's a stone tablet that boosts the
+It’s a stone tablet that boosts the
 power of Water-type moves."
 277,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
@@ -6633,7 +6801,7 @@ power of Electric-type moves."
 It is a stone tablet that boosts the
 power of Electric-type moves."
 277,15,9,"An item to be held by a Pokémon.
-It's a stone tablet that boosts the
+It’s a stone tablet that boosts the
 power of Electric-type moves."
 278,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
@@ -6654,7 +6822,7 @@ power of Grass-type moves."
 It is a stone tablet that boosts the
 power of Grass-type moves."
 278,15,9,"An item to be held by a Pokémon.
-It's a stone tablet that boost the
+It’s a stone tablet that boost the
 power of Grass-type moves."
 279,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
@@ -6673,6 +6841,9 @@ It is a stone tablet that boosts the
 power of Ice-type moves."
 279,14,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
+power of Ice-type moves."
+279,15,9,"An item to be held by a Pokémon.
+It’s a stone tablet that boosts the
 power of Ice-type moves."
 280,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
@@ -6729,7 +6900,7 @@ power of Ground-type moves."
 It is a stone tablet that boosts the
 power of Ground-type moves."
 282,15,9,"An item to be held by a Pokémon.
-It's a stone tablet that boosts the
+It’s a stone tablet that boosts the
 power of Ground-type moves."
 283,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
@@ -6750,7 +6921,7 @@ power of Flying-type moves."
 It is a stone tablet that boosts the
 power of Flying-type moves."
 283,15,9,"An item to be held by a Pokémon.
-It's a stone tablet that boosts the
+It’s a stone tablet that boosts the
 power of Flying-type moves."
 284,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
@@ -6771,7 +6942,7 @@ power of Psychic-type moves."
 It is a stone tablet that boosts the
 power of Psychic-type moves."
 284,15,9,"An item to be held by a Pokémon.
-It's a stone tablet that boosts the
+It’s a stone tablet that boosts the
 power of Psychic-type moves."
 285,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
@@ -6827,6 +6998,9 @@ power of Ghost-type moves."
 287,14,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
 power of Ghost-type moves."
+287,15,9,"An item to be held by a Pokémon.
+It’s a stone tablet that boosts the
+power of Ghost-type moves."
 288,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
 power of Dragon-type moves."
@@ -6844,6 +7018,9 @@ It is a stone tablet that boosts the
 power of Dragon-type moves."
 288,14,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
+power of Dragon-type moves."
+288,15,9,"An item to be held by a Pokémon.
+It’s a stone tablet that boosts the
 power of Dragon-type moves."
 289,8,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
@@ -6880,6 +7057,9 @@ It is a stone tablet that boosts the
 power of Steel-type moves."
 290,14,9,"An item to be held by a Pokémon.
 It is a stone tablet that boosts the
+power of Steel-type moves."
+290,15,9,"An item to be held by a Pokémon.
+It’s a stone tablet that boosts the
 power of Steel-type moves."
 291,8,9,"An item to be held by a Pokémon. It is
 an exotic-smelling incense that boosts
@@ -7044,6 +7224,9 @@ It is loved by a certain Pokémon."
 298,14,9,"A protective item of some sort.
 It is extremely stiff and heavy.
 It is loved by a certain Pokémon."
+298,15,9,"A protective item of some sort.
+It it extremely stiff and heavy.
+It’s loved by a certain Pokémon."
 299,8,9,"A box packed with a tremendous
 amount of electric energy.
 It is loved by a certain Pokémon."
@@ -7062,6 +7245,9 @@ It is loved by a certain Pokémon."
 299,14,9,"A box packed with a tremendous
 amount of electric energy.
 It is loved by a certain Pokémon."
+299,15,9,"A box packed with a tremendous
+amount of electric energy.
+It’s loved by a certain Pokémon."
 300,8,9,"A box packed with a tremendous
 amount of magma energy.
 It is loved by a certain Pokémon."
@@ -7080,6 +7266,9 @@ It is loved by a certain Pokémon."
 300,14,9,"A box packed with a tremendous
 amount of magma energy.
 It is loved by a certain Pokémon."
+300,15,9,"A box packed with a tremendous
+amount of magma energy.
+It’s loved by a certain Pokémon."
 301,8,9,"A transparent device overflowing with
 dubious data.
 Its producer is unknown."
@@ -7098,6 +7287,9 @@ Its producer is unknown."
 301,14,9,"A transparent device overflowing with
 dubious data.
 Its producer is unknown."
+301,15,9,"A transparent device
+overflowing with dubious data.
+Its producer in unknown."
 302,8,9,"A cloth imbued with horrifyingly strong
 spiritual energy.
 It is loved by a certain Pokémon."
@@ -7116,6 +7308,9 @@ It is loved by a certain Pokémon."
 302,14,9,"A cloth imbued with horrifyingly strong
 spiritual energy.
 It is loved by a certain Pokémon."
+302,15,9,"A cloth imbued with horrifyingly
+strong spiritual energy.
+It’s loved by a certain Pokémon."
 303,8,9,"An item to be held by a Pokémon.
 It is a sharply hooked claw that ups
 the holder’s critical-hit ratio."
@@ -7134,6 +7329,9 @@ the holder’s critical-hit ratio."
 303,14,9,"An item to be held by a Pokémon.
 It is a sharply hooked claw that ups
 the holder’s critical-hit ratio."
+303,15,9,"An item to be held by a Pokémon.
+This sharply hooked claw increases
+the holder’s critical-hit ratio."
 304,8,9,"An item to be held by a Pokémon.
 It may cause the foe to flinch when
 the holder inflicts damage."
@@ -7151,6 +7349,9 @@ when the holder inflicts damage."
 304,14,9,"An item to be held by a Pokémon.
 It may make foes and allies flinch
 when the holder inflicts damage."
+304,15,9,"An item to be held by a Pokémon.
+When the holder successfully inflicts
+damage, the target may also flinch."
 305,5,9,"Powerful, but makes
 the user flinch if
 hit by the foe."
@@ -7202,6 +7403,8 @@ grandes griffes aiguisées."
 306,11,9,"The user slashes the target with huge,
 sharp claws."
 306,14,9,"The user slashes the target with huge,
+sharp claws."
+306,15,9,"The user slashes the target with huge,
 sharp claws."
 307,5,9,"Generates an
 ultrasonic wave
@@ -7261,8 +7464,7 @@ calms its spirit to raise its Sp. Atk
 and Sp. Def stats."
 308,15,9,"The user quietly focuses its mind and
 calms its spirit to raise its Sp. Atk and
-Sp. Def stats.
-"
+Sp. Def stats."
 309,5,9,"A savage roar that
 makes the foe flee 
 to end the battle."
@@ -7319,6 +7521,9 @@ worsens every turn."
 310,14,9,"A move that leaves the target badly
 poisoned. Its poison damage
 worsens every turn."
+310,15,9,"A move that leaves the target
+badly poisoned. Its poison
+damage worsens every turn."
 311,5,9,"Summons a hailstorm
 that hurts all
 types except ICE."
@@ -7375,6 +7580,9 @@ Defense stats."
 312,14,9,"The user tenses its muscles to bulk up
 its body, boosting both its Attack and
 Defense stats."
+312,15,9,"The user tenses its muscles to bulk up
+its body, raising both its Attack and
+Defense stats."
 313,5,9,"Shoots 2 to 5 seeds
 in a row to strike
 the foe."
@@ -7404,7 +7612,7 @@ is doubled if the target is poisoned."
 special poisonous liquid. Its power
 is doubled if the target is poisoned."
 313,15,9,"The user drenches the target in a special
-poisonous liquid. This move's power is
+poisonous liquid. This move’s power is
 doubled if the target is poisoned."
 314,5,9,"The attack power
 varies among
@@ -7520,6 +7728,9 @@ It may also freeze the target solid."
 317,14,9,"The target is struck with an icy-cold
 beam of energy.
 It may also freeze the target solid."
+317,15,9,"The target is struck with an icy-
+cold beam of energy. This may
+also leave the target frozen."
 318,5,9,"A vicious snow-and-
 wind attack that
 may freeze the foe."
@@ -7603,6 +7814,9 @@ suppress damage from special attacks
 for five turns."
 320,14,9,"A wondrous wall of light is put up to
 suppress damage from special attacks
+for five turns."
+320,15,9,"A wondrous wall of light is put up to
+reduce damage from special attacks
 for five turns."
 321,5,9,"Negates all damage,
 but may fail if used
@@ -7691,6 +7905,9 @@ to hit for three turns."
 323,14,9,"The user makes the target float with
 its psychic power. The target is easier
 to hit for three turns."
+323,15,9,"The user lands and rests its body.
+It restores the user’s HP by up to
+half of its max HP."
 324,5,9,"Prevents status
 abnormality with a
 mystical power."
@@ -7836,8 +8053,7 @@ target. It may also leave the target
 with paralysis."
 328,15,9,"A strong electric blasts crashes down on
 the target. This may also leave the target
-with paralysis.
-"
+with paralysis."
 329,5,9,"Strikes the foe
 with a thunderbolt.
 It may paralyze."
@@ -7891,6 +8107,8 @@ autour de lui."
 330,11,9,"The user sets off an earthquake that
 strikes every Pokémon around it."
 330,14,9,"The user sets off an earthquake that
+strikes every Pokémon around it."
+330,15,9,"The user sets off an earthquake that
 strikes every Pokémon around it."
 331,5,9,"The more the user
 likes you, the more
@@ -7982,6 +8200,9 @@ the target’s Sp. Def stat."
 333,14,9,"The target is hit by a strong
 telekinetic force. It may also reduce
 the target’s Sp. Def stat."
+333,15,9,"The target is hit by a strong telekinetic
+force. This may also lower the target’s
+Sp. Def stat."
 334,5,9,"Hurls a dark lump
 at the foe. It may
 lower SP. DEF."
@@ -8009,6 +8230,9 @@ target. It may also lower the target’s
 Sp. Def stat."
 334,14,9,"The user hurls a shadowy blob at the
 target. It may also lower the target’s
+Sp. Def stat."
+334,15,9,"The user hurls a shadowy blob at the
+target. This may also lower the target’s
 Sp. Def stat."
 335,5,9,"Destroys barriers
 like LIGHT SCREEN
@@ -8038,6 +8262,9 @@ such as Light Screen and Reflect."
 335,14,9,"The user attacks with tough fists,
 etc. It can also break any barrier
 such as Light Screen and Reflect."
+335,15,9,"The user attacks with a swift chop.
+It can also break barriers, such as
+Light Screen and Reflect."
 336,5,9,"Creates illusory
 copies to enhance
 elusiveness."
@@ -8095,6 +8322,9 @@ suppress damage from physical attacks
 for five turns."
 337,14,9,"A wondrous wall of light is put up to
 suppress damage from physical attacks
+for five turns."
+337,15,9,"A wondrous wall of light is put up to
+reduce damage from physical attacks
 for five turns."
 338,5,9,"Zaps the foe with a
 jolt of electricity
@@ -8176,6 +8406,8 @@ aussi l’empoisonner."
 target. It may also poison the target."
 340,14,9,"Unsanitary sludge is hurled at the
 target. It may also poison the target."
+340,15,9,"Unsanitary sludge is hurled at the target.
+This may also poison the target."
 341,5,9,"Causes a sandstorm
 that hits the foe
 over several turns."
@@ -8263,7 +8495,7 @@ preventing its movement."
 also lowers the target’s Speed by
 preventing its movement."
 343,15,9,"Boulders are hurled at the target.
-This also lowers the target's Speed
+This also lowers the target’s Speed
 stat by preventing its movement."
 344,5,9,"An extremely fast
 attack that can’t
@@ -8323,6 +8555,9 @@ same move twice in a row."
 345,14,9,"The user torments and enrages the
 target, making it incapable of using the
 same move twice in a row."
+345,15,9,"The user torments and enrages the
+target, making it incapable of using
+the same move twice in a row."
 346,5,9,"Raises ATTACK when
 poisoned, burned,
 or paralyzed."
@@ -8414,7 +8649,7 @@ and heals any status problem."
 turns. It fully restores the user’s HP
 and heals any status problem."
 348,15,9,"The user goes to sleep for two turns.
-This fully restores the user's HP and
+This fully restores the user’s HP and
 heals any status conditions."
 349,5,9,"Makes it tough to
 attack a foe of the
@@ -8475,8 +8710,8 @@ can’t steal if the user holds an item."
 350,14,9,"The user attacks and steals the
 target’s held item simultaneously. It
 can’t steal if the user holds an item."
-350,15,9,"The user attacks and steals the target's
-held item simultaneously. The user can't
+350,15,9,"The user attacks and steals the target’s
+held item simultaneously. The user can’t
 steal anything if it already holds an item."
 351,5,9,"Spreads hard-edged
 wings and slams
@@ -8506,8 +8741,8 @@ Speed stat."
 swiftly, reducing the target’s
 Speed stat."
 351,15,9,"The user makes a swift attack on
-the target's legs, which lowers the
-target's Speed stat."
+the target’s legs, which lowers the
+target’s Speed stat."
 352,5,9,"Switches abilities
 with the foe on the
 turn this is used."
@@ -8564,6 +8799,9 @@ every turn, it does greater damage."
 353,14,9,"The user attacks the target with an
 echoing voice. If this move is used
 every turn, it does greater damage."
+353,15,9,"The user attacks the target with an
+echoing voice. If this movs is used
+every turn, it does greater damage."
 354,5,9,"Enables full-power
 attack, but sharply
 lowers SP. ATK."
@@ -8592,6 +8830,9 @@ reduces the user’s Sp. Atk stat."
 354,14,9,"The user attacks the target at full
 power. The attack’s recoil harshly
 reduces the user’s Sp. Atk stat."
+354,15,9,"The user attacks the target at full power.
+The attack’s recoil harshly lowers the
+user’s Sp. Atk stat."
 355,8,9,"The user lands and rests its body.
 It restores the user’s HP by up to
 half of its top HP."
@@ -8685,6 +8926,9 @@ target with a burn."
 359,14,9,"The user shoots boiling hot water at
 its target. It may also leave the
 target with a burn."
+359,15,9,"The user shoots boiling hot water at
+its target. This may also leave the
+target with a burn."
 360,8,9,"The user flings its held item at the
 foe to attack. Its power and effects
 depend on the item."
@@ -8742,6 +8986,9 @@ target cannot attack while in the air."
 362,14,9,"The user hurls the target into the air,
 then drops it on the second turn. The
 target cannot attack while in the air."
+362,15,9,"The user takes the target into the sky,
+then drops it during the next turn.
+The target cannot attack while in the sky."
 363,8,9,"The foe is attacked with a shock
 wave generated by the user’s gaping
 mouth."
@@ -8826,6 +9073,9 @@ from using items on it."
 367,14,9,"It prevents the target from using its
 held item. Its Trainer is also prevented
 from using items on it."
+367,15,9,"This move prevents the target from
+using its held item. Its Trainer is
+also prevented from using items on it."
 368,8,9,"The user explodes to inflict damage on
 all Pokémon in battle. The user faints
 upon using this move."
@@ -8884,7 +9134,7 @@ If the user can use this attack after
 the target, its power is doubled."
 370,15,9,"The user stores power, the attacks.
 If the user moves after the target,
-this attack's power will be doubled."
+this attack’s power will be doubled."
 371,8,9,"The user recycles a single-use item
 that has been used in battle so it can
 be used again."
@@ -8921,6 +9171,9 @@ The user must rest on the next turn."
 372,14,9,"The user charges at the target using
 every bit of its power.
 The user must rest on the next turn."
+372,15,9,"The user charges at the target using
+every bit of its power.
+The user can’t move on the next turn."
 373,8,9,"The user polishes its body to reduce
 drag. It sharply raises the Speed
 stat."
@@ -8960,7 +9213,7 @@ It can also be used to illuminate caves."
 cuts the target’s accuracy.
 It can also be used to illuminate caves."
 374,15,9,"The user flashes a bright light that cuts
-the target's accuracy."
+the target’s accuracy."
 375,8,9,"The user stabs the foe with a
 sharpened stone from below. It has
 a high critical-hit ratio."
@@ -9036,7 +9289,7 @@ high-speed spin. The slower the
 user, the greater the damage."
 378,15,9,"The user tackles the target with a high-speed
 spin. The slower the user compared to the 
-target, the greater the move's power."
+target, the greater the move’s power."
 379,8,9,"A frenetic dance to uplift the fighting
 spirit. It sharply raises the user’s
 Attack stat."
@@ -9056,7 +9309,7 @@ Attack stat."
 spirit. It sharply raises the user’s
 Attack stat."
 379,15,9,"A frenetic dance to uplift the fighting 
-spirit. This sharply raises the user's
+spirit. This sharply raises the user’s
 Attack stat."
 380,8,9,"The user lays a trap of levitating
 stones around the foe. The trap hurts
@@ -9094,6 +9347,9 @@ la cible."
 copying any stat change made
 by the target."
 381,14,9,"The user hypnotizes itself into
+copying any stat change made
+by the target."
+381,15,9,"The user hypnotizes itself into
 copying any stat change made
 by the target."
 382,8,9,"If it is the opposite gender of the
@@ -9134,6 +9390,9 @@ a critical hit."
 383,14,9,"The user blows a cold breath on the
 target. This attack always results in
 a critical hit."
+383,15,9,"The user blows its cold breath on the
+target. This attack always results in
+a critical hit."
 384,8,9,"Large boulders are hurled at the foe
 to inflict damage. It may also make the
 target flinch."
@@ -9152,6 +9411,9 @@ may also make the targets flinch."
 384,14,9,"Large boulders are hurled at the
 opposing team to inflict damage. They
 may also make the targets flinch."
+384,15,9,"Large boulders are hurled at the opposing
+Pokémon to inflict damage. This may also
+make the opposing Pokémon flinch."
 385,8,9,"The user slashes at the foe by
 crossing its scythes or claws as if
 they were a pair of scissors."
@@ -9211,7 +9473,7 @@ and Sp. Atk stats increase."
 and Sp. Atk stats increase."
 387,15,9,"The target is infested and attacked
 for four to five turns.
-The target can't flee during this time."
+The target can’t flee during this time."
 388,8,9,"The foe is stabbed with a tentacle or
 arm seeped with poison. It may also
 poison the foe."
@@ -9271,7 +9533,7 @@ and trips it. The heavier the target,
 the greater the damage."
 390,15,9,"The user snares the target with grass and
 trips it. The heavier the target, the greater
-the move's power."
+the move’s power."
 391,8,9,"The user enrages the foe into
 confusion. However, it also sharply
 raises the foe’s Attack stat."
@@ -9349,6 +9611,9 @@ the user’s decoy."
 394,14,9,"The user makes a copy of itself using
 some of its HP. The copy serves as
 the user’s decoy."
+394,15,9,"The user makes a copy of itself using
+some of its HP. The copy serves as
+the user’s decoy."
 395,8,9,"The user gathers all its light energy
 and releases it in one shot. It may
 also lower the foe’s Sp. Def stat."
@@ -9366,6 +9631,9 @@ and releases it at once. It may also
 lower the target’s Sp. Def stat."
 395,14,9,"The user gathers all its light energy
 and releases it at once. It may also
+lower the target’s Sp. Def stat."
+395,15,9,"The user gathers all its light energy
+and releases it at once. This may also
 lower the target’s Sp. Def stat."
 396,8,9,"The user creates a bizarre space in
 which slower Pokémon get to move
@@ -9482,9 +9750,9 @@ It can also be used for crossing water."
 399,14,9,"It swamps the area around the user
 with a giant wave.
 It can also be used for crossing water."
-399,15,8,"Un'onda enorme sommerge il campo di lotta,
+399,15,8,"Un’onda enorme sommerge il campo di lotta,
 colpendo tutti i Pokémon intorno a chi la scatena.
-Fuori dalla lotta si usa per spostarsi sull'acqua."
+Fuori dalla lotta si usa per spostarsi sull’acqua."
 399,15,9,"The user attacks everything around it by
 swamping its surroundings with a giant wave.
 This can also be used for crossing water."
@@ -9516,7 +9784,7 @@ also be used to move boulders."
 400,14,9,"The target is slugged with a punch
 thrown at maximum power. This move can
 also be used to move boulders."
-400,15,8,"Colpisce il nemico con un'enorme energia.
+400,15,8,"Colpisce il nemico con un’enorme energia.
 Fuori dalla lotta si usa per spostare i massi."
 400,15,9,"The target is slugged with a punch thrown
 at maximum power. This can also be used
@@ -10022,6 +10290,9 @@ wild aquatic Pokémon."
 424,14,9,"An awesome, high-tech fishing rod.
 Use it by any body of water to fish for
 wild aquatic Pokémon."
+424,15,9,"An awesome, high-tech fishing rod.
+Use it at any body of water to
+fish for wild aquatic Pokémon."
 425,8,9,"A watering can shaped like a PSYDUCK.
 It helps promote healthy growth of
 Berries planted in soft soil."
@@ -10388,6 +10659,9 @@ special battle facility."
 443,14,9,"An amazing device that can record a
 battle either between friends or at a
 special battle facility."
+443,15,9,"An amazing device that can record a
+battle between friends or the battles
+at certain special battle facilities."
 444,9,9,"A flower sometimes bundled in bouquets
 to convey gratitude on special
 occasions like birthdays."
@@ -11691,6 +11965,9 @@ It shines in rainbow colors."
 580,14,9,"A mysterious scale that evolves
 certain Pokémon.
 It shines in rainbow colors."
+580,15,9,"A mysterious scale that causes
+a certain Pokémon to evolve.
+It shines in rainbow colors."
 581,11,5,"Un étrange concentré d’évolution qui
 augmente la Défense et la Déf. Spé.
 d’un Pokémon pouvant évoluer."
@@ -11731,6 +12008,9 @@ is attacked, this item will burst."
 584,14,9,"When held by a Pokémon, the Pokémon
 will float into the air. When the holder
 is attacked, this item will burst."
+584,15,9,"An item to be held by a Pokémon.
+The holder will float in the air until hit.
+Once hit, this item will burst"
 585,11,5,"Carte au pouvoir mystérieux.
 Tenue, elle force un Pokémon touchant
 le porteur à se retirer du combat."
@@ -11740,6 +12020,9 @@ attacker is removed from battle."
 585,14,9,"A card with a mysterious power. When
 the holder is struck by a foe, the
 attacker is removed from battle."
+585,15,9,"An item to be held by a Pokémon.
+When the holder is hit by an attack,
+the attacker is removed from battle."
 586,11,5,"Un Pokémon tenant cet objet devient
 sensible aux capacités autrement
 inefficaces en raison de son type."
@@ -11749,6 +12032,9 @@ holds it."
 586,14,9,"Moves that would otherwise have no
 effect will land on the Pokémon that
 holds it."
+586,15,9,"An item to be held by a Pokémon.
+Moves that normally have no effect
+will land on a Pokémon holding it."
 587,11,5,"Objet à tenir augmentant la puissance
 des attaques immobilisantes telles
 que Ligotage ou Étreinte."
@@ -11756,6 +12042,9 @@ que Ligotage ou Étreinte."
 binding moves when held."
 587,14,9,"A band that increases the power of
 binding moves when held."
+587,15,9,"An item to be held by a Pokémon.
+A band that increases the power of 
+binding moves used by the holder."
 588,11,5,"Bulbe jetable. Tenu, il augmente la
 Défense Spéciale lorsque le Pokémon
 subit une attaque de type Eau."
@@ -11765,6 +12054,9 @@ will rise."
 588,14,9,"A consumable bulb. If the holder is hit
 by a Water-type move, its Sp. Atk
 will rise."
+588,15,9,"An item to be held by a Pokémon.
+It boosts Sp. Atk if hit with a Water-
+type attack. It can only be used once."
 589,11,5,"Pile jetable. Tenue, elle augmente
 l’Attaque lorsque le Pokémon subit
 une attaque de type Électrik."
@@ -11774,6 +12066,9 @@ move, its Attack will rise."
 589,14,9,"A consumable battery. If the
 holder is hit by an Electric-type
 move, its Attack will rise."
+589,15,9,"An item to be held by a Pokémon.
+It boosts Attack if hit with an Electric-
+type attack. It can only be used once."
 590,11,5,"Si le Pokémon qui le tient subit une
 attaque, il s’enfuit pour être remplacé
 par un autre membre de l’équipe."
@@ -11783,6 +12078,9 @@ your party."
 590,14,9,"If the holder is hit by an attack, it will
 switch with another Pokémon in
 your party."
+590,15,9,"An item to be held by a Pokémon.
+If the holder is hit by an attack, it
+will be switched out of battle."
 591,11,5,"Objet à tenir. Joyau augmentant
 une fois la puissance des capacités
 de type Feu."
@@ -11927,6 +12225,9 @@ single Pokémon."
 606,14,9,"An item for use on a Pokémon. It
 slightly increases the base HP of a
 single Pokémon."
+606,15,9,"An item for use on a Pokémon.
+It slightly increases the base
+HP of a single Pokémon."
 607,11,5,"Objet à utiliser sur un Pokémon.
 Il augmente un peu son Attaque
 lors d’une montée de niveau."
@@ -11944,6 +12245,9 @@ slightly increases the base Defense
 stat of a single Pokémon."
 608,14,9,"An item for use on a Pokémon. It
 slightly increases the base Defense
+stat of a single Pokémon."
+608,15,9,"An item for use on a Pokémon.
+It slightly increases the base Defense
 stat of a single Pokémon."
 609,11,5,"Objet à utiliser sur un Pokémon.
 Il augmente un peu son Atq. Spé.
@@ -11963,6 +12267,9 @@ stat of a single Pokémon."
 610,14,9,"An item for use on a Pokémon. It
 slightly increases the base Sp. Def
 stat of a single Pokémon."
+610,15,9,"An item for use on a Pokémon.
+It slightly increases the base Sp. Def
+stat of a single Pokémon."
 611,11,5,"Objet à utiliser sur un Pokémon.
 Il augmente un peu sa Vitesse
 lors d’une montée de niveau."
@@ -11981,7 +12288,7 @@ effect on Pokémon."
 just a regular feather and has no
 effect on Pokémon."
 612,15,9,"Though this feather is beautiful,
-it's just a regular feather and
+it’s just a regular feather and
 has no effect on Pokémon."
 613,11,5,"Fossile d’un ancien Pokémon
 aquatique. Il semble que ce
@@ -12086,6 +12393,9 @@ A maniac will buy them for a high price."
 623,14,9,"Very large pearls that sparkle in a
 pretty silver color.
 A maniac will buy them for a high price."
+623,15,9,"Very large pearls that sparkle in
+a pretty silver color. They can be
+sold at a high price to shops."
 624,11,5,"Un fragment de comète, tombé au sol
 quand elle traversait l’atmosphère.
 Les amateurs en donnent un bon prix."
@@ -12398,6 +12708,9 @@ It also damages the user a little."
 659,14,9,"The user shrouds itself in electricity
 and smashes into its target.
 It also damages the user a little."
+659,15,9,"The user shrouds itself in electricity
+and smashes into its target.
+This also damages the user a little."
 660,11,5,"Porte un coup dévastateur à l’ennemi.
 Peut briser des rochers fissurés.
 Peut baisser la Défense."
@@ -12408,7 +12721,7 @@ target’s Defense stat."
 shatter a rock. It may also lower the
 target’s Defense stat."
 660,15,9,"The user attacks with a punch. This may
-also lower the target's Defense stat. This
+also lower the target’s Defense stat. This
 move can also shatter rocks in the field."
 661,11,5,"Le lanceur hurle sur l’ennemi.
 Baisse l’Atq. Spé. de l’ennemi."
@@ -12418,6 +12731,9 @@ stat decrease."
 661,14,9,"The user yells as if it is ranting about
 something, making the target’s Sp. Atk
 stat decrease."
+661,15,9,"The user yells as if it’s ranting about
+something, which lowers the Sp. Atk stat
+of opposing Pokémon."
 662,11,5,"Transmetteur high-tech permettant
 à 4 personnes de communiquer par
 le son et l’image."
@@ -12496,26 +12812,75 @@ It seems it belongs to a boy."
 681,14,9,"A glass that reveals the truth.
 It is a mysterious glass that returns
 a Pokémon back to its original shape."
+683,15,9,"An item to be held by a Pokémon.
+This offensive vest raises Sp. Def
+but prevents the use of status moves."
+684,15,1,"フェアリーの　タイプの　せきばん。
+もたせると　フェアリータイプの
+わざの　いりょくが　つよまる。"
+684,15,9,"An item to be held by a Pokémon.
+It is a stone tablet that boosts the
+power of Fairy-type moves."
+684,15,11,"フェアリーの　タイプの　石盤。
+持たせると　フェアリータイプの
+技の　威力が　強まる。"
+685,15,9,"A capsule that allows a Pokémon with
+two abilities to switch between these
+Abilities when it is used."
+686,15,1,"ふんわり　ふわふわに　あわだてた
+ほんのり　あまい　クリーム。
+ある　ポケモンが　このんでいる。"
 686,15,8,"Una spuma soffice, delicata e leggermente dolce. Piace a un Pokémon in particolare."
 686,15,9,"A soft and sweet treat made of fluffy,
 puffy, whipped and whirled cream.
-It's loved by a certain Pokémon."
+It’s loved by a certain Pokémon."
+686,15,11,"ふんわり　ふわふわに　泡立てた
+ほんのり　甘い　クリーム。
+ある　ポケモンが　好んでいる。"
+687,15,1,"ちょっと　きつめの　かおりをだす
+こうりょうを　つめた　ふくろ。
+ある　ポケモンが　このんでいる。"
 687,15,8,Una bustina che contiene aromi dal profumo piuttosto intenso. Piace a un Pokémon in particolare.
 687,15,9,"A sachet filled with fragrant perfumes
 that are just slightly too overwhelming.
-Yet it's loved by a certain Pokémon."
+Yet it’s loved by a certain Pokémon."
+687,15,11,"ちょっと　きつめの　香りをだす
+香料を　詰めた　袋。
+ある　ポケモンが　好んでいる。
+"
+690,15,9,"An item to be held by a Pokémon.
+These goggles protect the holder from
+both weather-related damage and powder."
+692,15,9,"Mulch to be used in a Berry field.
+It causes strange, sudden mutations
+based on the combination of Berries."
+695,15,1,"ゲンガーに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
 695,15,8,"Un esemplare delle misteriose Megapietre.
 Data a Gengar, gli permette di megaevolversi
 durante la lotta."
 695,15,9,"One variety of the mysterious Mega Stones.
 Have Gengar hold it, and this stone will
 enable it to Mega Evolve during battle."
+695,15,11,"ゲンガーに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+696,15,9,"One variety of the mysterious Mega Stones.
+Have Gardevoir hold it, and this stone will
+enable it to Mega Evolve during battle."
+697,15,1,"デンリュウに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
 697,15,8,"Un esemplare delle misteriose Megapietre.
 Data ad Ampharos, gli permette di megaevolversi
 durante la lotta."
 697,15,9,"One variety of the mysterious Mega Stones.
 Have Ampharos hold it, and this stone will
 enable it to Mega Evolve during battle."
+697,15,11,"デンリュウに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
 698,15,8,"Un esemplare delle misteriose Megapietre. Data a Venusaur, gli permette di megaevolversi durante la lotta."
 698,15,9,"One variety of the mysterious Mega Stones.
 Have Venusaur hold it, and this stone will
@@ -12524,88 +12889,358 @@ enable it to Mega Evolve during battle."
 699,15,9,"One variety of the mysterious Mega Stones.
 Have Charizard hold it, and this stone will
 enable it to Mega Evolve during battle."
+700,15,9,"One variety of the mysterious Mega Stones.
+Have Blastoise hold it, and this stone will
+enable it to Mega Evolve during battle."
+702,15,1,"ミュウツーに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+702,15,9,"One variety of the mysterious Mega Stones.
+Have Mewtwo hold it, and this stone will
+enable it to Mega Evolve during battle."
+702,15,11,"ミュウツーに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+703,15,9,"One variety of the mysterious Mega Stones.
+Have Blaziken hold it, and this stone will
+enable it to Mega Evolve during battle."
+704,15,1,"チャーレムに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+704,15,9,"One variety of the mysterious Mega Stones.
+Have Medicham hold it, and this stone will
+enable it to Mega Evolve during battle."
+704,15,11,"チャーレムに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+705,15,1,"ヘルガーに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+705,15,9,"One variety of the mysterious Mega Stones.
+Have Houndoom hold it, and this stone will
+enable it to Mega Evolve during battle."
+705,15,11,"ヘルガーに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+706,15,1,"ボスゴドラに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+706,15,9,"One variety of the mysterious Mega Stones.
+Have Aggron hold it, and this stone will
+enable it to Mega Evolve during battle."
+706,15,11,"ボスゴドラに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+707,15,1,"ジュペッタに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+707,15,9,"One variety of the mysterious Mega Stones.
+Have Banette hold it, and this stone will
+enable it to Mega Evolve during battle."
+707,15,11,"ジュペッタに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+708,15,9,"One variety of the mysterious Mega Stones.
+Have Tyranitar hold it, and this stone will
+enable it to Mega Evolve during battle."
+709,15,1,"ハッサムに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+709,15,11,"ハッサムに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+710,15,9,"One variety of the mysterious Mega Stones.
+Have Pinsir hold it, and this stone will
+enable it to Mega Evolve during battle."
+711,15,1,"プテラに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
 711,15,9,"One variety of the mysterious Mega Stones.
 Have Aerodactyl hold it, and this stone will 
 enable it to Mega Evolve during battle."
+711,15,11,"プテラに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+712,15,9,"One variety of the mysterious Mega Stones.
+Have Lucario hold it, and this stone will
+enable it to Mega Evolve during battle."
+713,15,1,"ユキノオーに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
 713,15,8,"Un esemplare delle misteriose Megapietre.
 Data ad Abomasnow, gli permette
 di megaevolversi durante la lotta."
 713,15,9,"One variety of the mysterious Mega Stones.
 Have Abomasnow hold it, and this stone will
 enable it to Mega Evolve during battle."
+713,15,11,"ユキノオーに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。
+"
+714,15,1,"ガルーラに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+714,15,9,"One variety of the mysterious Mega Stones.
+Have Kangaskhan hold it, and this stone will
+enable it to Mega Evolve during battle."
+714,15,11,"ガルーラに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+715,15,1,"ギャラドスに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+715,15,9,"One variety of the mysterious Mega Stones.
+Have Gyarados hold it, and this stone will
+enable it to Mega Evolve during battle."
+715,15,11,"ギャラドスに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+716,15,1,"アブソルに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+716,15,9,"One variety of the mysterious Mega Stones.
+Have Absol hold it, and this stone will
+enable it to Mega Evolve during battle."
+716,15,11,"アブソルに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+717,15,1,"リザードンに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+717,15,11,"リザードンに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+718,15,1,"フーディンに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+718,15,11,"フーディンに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+719,15,1,"ヘラクロスに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+719,15,9,"One variety of the mysterious Mega Stones.
+Have Heracross hold it, and this stone will
+enable it to Mega Evolve during battle."
+719,15,11,"ヘラクロスに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。
+"
+720,15,1,"クチートに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+720,15,9,"One variety of the mysterious Mega Stones.
+Have Mawile hold it, and this stone will
+enable it to Mega Evolve during battle."
+720,15,11,"クチートに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+721,15,9,"One variety of the mysterious Mega Stones.
+Have Manectric hold it, and this stone will
+enable it to Mega Evolve during battle."
+722,15,1,"ガブリアスに　もたせておくと
+たたかいのとき　メガシンカが　できる
+ふしぎな　メガストーンの　いっしゅ。"
+722,15,11,"ガブリアスに　持たせておくと
+戦いのとき　メガシンカが　できる
+不思議な　メガストーンの　一種。"
+723,15,1,"ポケモンに　もたせると
+こうかばつぐんの　フェアリー　わざを
+うけたとき　いりょくが　よわまる。"
 723,15,9,"If held by a Pokémon, this Berry will
 lessen the damage taken from one
 supereffective Fairy-type attack."
+723,15,11,"ポケモンに　持たせると
+効果バツグンの　フェアリー技を
+受けたとき　威力が　弱まる。
+"
+724,15,9,"If held by a Pokémon, this Berry
+will increase the holder’s Defense
+if it’s hit with a physical move."
+727,15,1,"カロスちほうから　とおく　はなれた
+ばしょで　まもりがみ　とされる
+ポケモンを　かたどった　おきもの。"
 727,15,8,"Statuetta raffigurante un Pokémon che viene
 considerato una divinità protettrice in alcuni
 luoghi molto lontani di Kalos."
+727,15,11,"カロス地方から　遠く　離れた
+場所で　守り神　とされる
+ポケモンを　かたどった　置物。"
+728,15,1,"ミアレシティで　にんきの　おかし。
+ポケモン　１ひきの　じょうたいの
+いじょうを　すべて　かいふくする。"
 728,15,8,Un famoso dolce di Luminopoli. Può guarire un Pokémon da tutti i problemi di stato.
 728,15,9,"A popular treat in Lumiose City.
 It can be used once to heal all the
 status conditions of a Pokémon."
+728,15,11,"ミアレシティで　人気の　お菓子。
+ポケモン　１匹の　状態の
+異常を　すべて　回復する。
+"
+732,15,1,"トレーナーが　たびを　するときの
+ポイントが　まとめられている
+ともだち　てづくりの　ガイドブック。"
 732,15,8,"Guida che contiene consigli utili per
 gli Allenatori in viaggio.
 È stata scritta da qualcuno di tua conoscenza."
 732,15,9,"This book contains all the points a new
 Trainer needs to know on a journey.
 It was handmade by a kind friend."
+732,15,11,"トレーナーが　旅を　するときの
+ポイントが　まとめられている
+友達　手作りの　ガイドブック。
+"
+733,15,1,"フラダリラボに　ある
+エレベータを　うごかす　カードキー。
+フレアだんの　マークいり。"
 733,15,8,"Tessera magnetica con il simbolo del Team Flare
-che attiva l'ascensore dei Laboratori Elisio."
+che attiva l’ascensore dei Laboratori Elisio."
 733,15,9,"A card key that activates the elevator
 in Lysandre Labs.
-It is emblazoned with Team Flare's logo."
+It is emblazoned with Team Flare’s logo."
+733,15,11,"フラダリラボに　ある
+エレベータを　動かす　カードキー。
+フレア団の　マークいり。
+"
+734,15,1,"じゅしんした　ホログラムの
+えいぞうデータを　いつでも
+みることが　できる　そうち。"
 734,15,8,Dispositivo in grado di ricevere e riprodurre in qualsiasi momento comunicazioni olografiche.
 734,15,9,"A device that allows users to receive
 and view hologram clips at any time.
 It is also used to chat with others."
+734,15,11,"受信した　ホログラムの
+映像データを　いつでも
+観ることが　できる　装置。"
+735,15,1,"カロスちほうで　すばらしい
+かつやくを　した　じんぶつに
+おくられる　きちょうな　シンボル。"
+735,15,9,"A precious symbol that is awarded
+only to an individual who has done
+great things for the Kalos region."
+735,15,11,"カロス地方で　すばらしい
+活躍を　した　人物に
+贈られる　貴重な　シンボル。"
 736,15,8,"Un sasso piuttosto singolare che qualcuno
 potrebbe ritenere di valore."
 736,15,9,"A rather curious stone that might
 appear to be valuable to some.
-It's all in the eye of the beholder."
-737,15,8,Un'elegante custodia per lenti a contatto.
+It’s all in the eye of the beholder."
+737,15,1,"コンタクトレンズを　しまっておける
+ちょっと　おしゃれな　ケース。"
+737,15,8,Un’elegante custodia per lenti a contatto.
 737,15,9,"A rather chic-looking case
 for carrying contact lenses."
+737,15,11,"コンタクトレンズを　しまっておける
+ちょっと　おしゃれな　ケース。"
+738,15,1,"きらきら　かがやく
+とりょうが　ふきつけられた
+ハンサム　てづくりの　チケット。"
+738,15,9,"A ticket that was handmade by
+Looker. It’s decorated with a
+liberal amount of glittery paint."
+738,15,11,"きらきら　かがやく
+塗料が　吹きつけられた
+ハンサム　てづくりの　チケット。"
+739,15,1,"メガストーンを　もったまま　たたかう
+ポケモンを　メガシンカさせる
+みちのパワーを　ひめた　リング。"
 739,15,8,"Cerchio che nasconde un misterioso potere.
 Consente a un Pokémon che ha una
 Megapietra di megaevolversi durante la lotta."
 739,15,9,"This ring contains an untold power that
 somehow enables Pokémon carrying
 Mega Stones to Mega Evolve in battle."
+739,15,11,"メガストーンを　持ったまま　戦う
+ポケモンを　メガシンカさせる
+未知のパワーを　秘めた　リング。"
+740,15,1,"１３ばんどうろに　ある
+はつでんしょに　はいるための
+みぶんしょうとなる　パス。"
 740,15,8,"Tesserino di riconoscimento che consente
-l'accesso alla Centrale di Kalos che si trova
+l’accesso alla Centrale di Kalos che si trova
 nel Percorso 13."
 740,15,9,"This pass serves as an ID card
 for gaining access to the power
 plant that lies along route 13."
+740,15,11,"１３番道路に　ある
+発電所に　入るための
+身分証となる　パス。
+"
+742,15,1,"クツぞこに　ローラーが　ついている。
+じめんを　かっそう　したり
+トリックプレイを　きめたりできる。"
 742,15,8,"Pattini applicati alla suola delle scarpe.
 Permettono di pattinare e di eseguire figure."
 742,15,9,"Attaches roller skates to the bottom
 of your shoes allowing you to glide
 quickly around and perform tricks."
+742,15,11,"クツ底に　ローラーが　ついている。
+地面を　滑走　したり
+トリックプレイを　決めたりできる。"
+743,15,1,"みずを　かける　どうぐ。
+ふかふかのつちに　うめた
+きのみを　すくすく　そだてる。"
 743,15,8,"Strumento per annaffiare a forma di Lotad.
 Favorisce la crescita delle bacche piantate
 nel terreno soffice."
 743,15,9,"A watering can shaped like a Lotad.
 It helps promote the healthy growth of
 any Berries planted in good, soft soil."
+743,15,11,"水を　かける　道具。
+ふかふかのつちに　埋めた
+きのみを　すくすく　育てる。"
+744,15,1,"ミアレシティと　キナンシティを
+むすぶ　ちょうこうそくてつどうに
+いつでも　のれる　チケット。"
+744,15,9,"A commuter pass that allows the
+holder to ride the TMV between Lumiose
+City and Kiloude City at any time."
+744,15,11,"ミアレシティと　キナンシティを
+結ぶ　超高速鉄道に
+いつでも　乗れる　チケット。
+"
+745,15,1,"しぜんの　ちからで　こうげきする。
+つかう　ばしょで
+でてくる　わざが　へんかする。"
 745,15,8,"Mossa che fa uso della forza della natura.
-Il suo effetto varia in base all'ambiente."
-745,15,9,"An attack that makes use of nature's
+Il suo effetto varia in base all’ambiente."
+745,15,9,"An attack that makes use of nature’s
 power. Its effects vary depending on
-the user's environment."
-746,15,8,Chi la usa emana un'aura impregnata di oscuri pensieri. Può anche far tentennare il Pokémon colpito.
+the user’s environment."
+745,15,11,"自然の　力で　攻撃する。
+使う　場所で
+でてくる　技が　変化する。
+"
+746,15,8,Chi la usa emana un’aura impregnata di oscuri pensieri. Può anche far tentennare il Pokémon colpito.
+747,15,1,"くりかえし　うつことで
+だんだん　こぶしが　かたくなる。
+あいてに　あてると　こうげきが　あがる。"
 747,15,8,"Rende i pugni più duri a ogni colpo inferto.
-Se i pugni vanno a segno, aumenta l'Attacco."
+Se i pugni vanno a segno, aumenta l’Attacco."
 747,15,9,"Striking opponents over and over
-makes the user's fists harder.
+makes the user’s fists harder.
 Hitting a target raises the Attack stat."
+747,15,11,"くり返し　打つことで
+だんだん　こぶしが　固くなる。
+相手に　あてると　攻撃が　あがる。
+"
+748,15,1,"きょうりょくな　ひかりを　はなち
+あいてに　ダメージを　あたえる。"
 748,15,8,"Emette una luce potentissima che infligge danni
 al bersaglio."
 748,15,9,"The user damages opposing Pokémon
 by emitting a powerful flash."
+748,15,11,"強力な　光を　放ち
+相手に　ダメージを　与える。"
+749,15,1,"ないしょばなしを　することで　あいての
+しゅうちゅうりょくを　うしなわせ
+あいての　とくこうを　さげる。"
 749,15,8,"Chi la usa svela dei segreti al bersaglio,
-distraendolo e riducendone l'Attacco Speciale."
+distraendolo e riducendone l’Attacco Speciale."
 749,15,9,"The user tells the target a secret, and
 the target loses its ability to concentrate.
-This lowers the target's Sp. Atk stat."
+This lowers the target’s Sp. Atk stat."
+749,15,11,"ないしょばなしを　することで　相手の
+集中力を　失わせ
+相手の　特攻を　さげる。"
