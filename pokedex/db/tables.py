@@ -130,10 +130,10 @@ create_translation_table('ability_names', Ability, 'names',
         info=dict(description="The name", format='plaintext', official=True, ripped=True)),
 )
 create_translation_table('ability_prose', Ability, 'prose',
-    effect = Column(UnicodeText, nullable=True,
-        info=dict(description="A detailed description of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
     short_effect = Column(UnicodeText, nullable=True,
         info=dict(description="A short summary of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
+    effect = Column(UnicodeText, nullable=True,
+        info=dict(description="A detailed description of this ability's effect", format='markdown', string_getter=markdown.MarkdownString)),
 )
 
 class AbilityChangelog(TableBase):
