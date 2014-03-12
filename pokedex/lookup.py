@@ -171,12 +171,12 @@ class PokedexLookup(object):
         """Creates the index from scratch."""
 
         schema = whoosh.fields.Schema(
-            name=whoosh.fields.ID(stored=True, spelling=True),
-            table=whoosh.fields.ID(stored=True),
-            row_id=whoosh.fields.ID(stored=True),
+            name=whoosh.fields.ID(sortable=True, stored=True, spelling=True),
+            table=whoosh.fields.ID(sortable=True, stored=True),
+            row_id=whoosh.fields.ID(sortable=True, stored=True),
             language=whoosh.fields.STORED,
-            iso639=whoosh.fields.ID(stored=True),
-            iso3166=whoosh.fields.ID(stored=True),
+            iso639=whoosh.fields.ID(sortable=True, stored=True),
+            iso3166=whoosh.fields.ID(sortable=True, stored=True),
             display_name=whoosh.fields.STORED,  # non-lowercased name
         )
 
