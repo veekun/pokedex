@@ -1700,59 +1700,59 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 10131,9,Super Size,Super Gourgeist
 10132,5,Mode Paisible,Xerneas Paisible
 10132,9,Neutral Mode,Neutral Xerneas
-10133,5,Méga-Évolution,Méga-Florizarre
-10133,9,Mega Evolution,Mega Venusaur
-10134,5,Méga-Évolution X,Méga-Dracaufeu X
-10134,9,Mega Evolution X,Mega Charizard X
-10135,5,Méga-Évolution Y,Méga-Dracaufeu Y
-10135,9,Mega Evolution Y,Mega Charizard Y
-10136,5,Méga-Évolution,Méga-Tortank
-10136,9,Mega Evolution,Mega Blastoise
-10137,5,Méga-Évolution,Méga-Alakazam
-10137,9,Mega Evolution,Mega Alakazam
-10138,5,Méga-Évolution,Méga-Ectoplasma
-10138,9,Mega Evolution,Mega Gengar
-10139,5,Méga-Évolution,Méga-Kangourex
-10139,9,Mega Evolution,Mega Kangaskhan
-10140,5,Méga-Évolution,Méga-Scarabrute
-10140,9,Mega Evolution,Mega Pinsir
-10141,5,Méga-Évolution,Méga-Léviator
-10141,9,Mega Evolution,Mega Gyarados
-10142,5,Méga-Évolution,Méga-Ptéra
-10142,9,Mega Evolution,Mega Aerodactyl
-10143,5,Méga-Évolution X,Méga-Mewtwo X
-10143,9,Mega Evolution X,Mega Mewtwo X
-10144,5,Méga-Évolution Y,Méga-Mewtwo Y
-10144,9,Mega Evolution Y,Mega Mewtwo Y
-10145,5,Méga-Évolution,Méga-Pharamp
-10145,9,Mega Evolution,Mega Ampharos
-10146,5,Méga-Évolution,Méga-Cizayox
-10146,9,Mega Evolution,Mega Scizor
-10147,5,Méga-Évolution,Méga-Scarhino
-10147,9,Mega Evolution,Mega Heracross
-10148,5,Méga-Évolution,Méga-Démolosse
-10148,9,Mega Evolution,Mega Houndoom
-10149,5,Méga-Évolution,Méga-Tyranocif
-10149,9,Mega Evolution,Mega Tyranitar
-10150,5,Méga-Évolution,Méga-Braségali
-10150,9,Mega Evolution,Mega Blaziken
-10151,5,Méga-Évolution,Méga-Gardevoir
-10151,9,Mega Evolution,Mega Gardevoir
-10152,5,Méga-Évolution,Méga-Mysdibule
-10152,9,Mega Evolution,Mega Mawile
-10153,5,Méga-Évolution,Méga-Galeking
-10153,9,Mega Evolution,Mega Aggron
-10154,5,Méga-Évolution,Méga-Charmina
-10154,9,Mega Evolution,Mega Medicham
-10155,5,Méga-Évolution,Méga-Élecsprint
-10155,9,Mega Evolution,Mega Manectric
-10156,5,Méga-Évolution,Méga-Branette
-10156,9,Mega Evolution,Mega Banette
-10157,5,Méga-Évolution,Méga-Absol
-10157,9,Mega Evolution,Mega Absol
-10158,5,Méga-Évolution,Méga-Carchacrok
-10158,9,Mega Evolution,Mega Garchomp
-10159,5,Méga-Évolution,Méga-Lucario
-10159,9,Mega Evolution,Mega Lucario
-10160,5,Méga-Évolution,Méga-Blizzaroi
-10160,9,Mega Evolution,Mega Abomasnow
+10133,5,Méga-Florizarre,Méga-Florizarre
+10133,9,Mega Venusaur,Mega Venusaur
+10134,5,Méga-Dracaufeu X,Méga-Dracaufeu X
+10134,9,Mega Charizard X,Mega Charizard X
+10135,5,Méga-Dracaufeu Y,Méga-Dracaufeu Y
+10135,9,Mega Charizard Y,Mega Charizard Y
+10136,5,Méga-Tortank,Méga-Tortank
+10136,9,Mega Blastoise,Mega Blastoise
+10137,5,Méga-Alakazam,Méga-Alakazam
+10137,9,Mega Alakazam,Mega Alakazam
+10138,5,Méga-Ectoplasma,Méga-Ectoplasma
+10138,9,Mega Gengar,Mega Gengar
+10139,5,Méga-Kangourex,Méga-Kangourex
+10139,9,Mega Kangaskhan,Mega Kangaskhan
+10140,5,Méga-Scarabrute,Méga-Scarabrute
+10140,9,Mega Pinsir,Mega Pinsir
+10141,5,Méga-Léviator,Méga-Léviator
+10141,9,Mega Gyarados,Mega Gyarados
+10142,5,Méga-Ptéra,Méga-Ptéra
+10142,9,Mega Aerodactyl,Mega Aerodactyl
+10143,5,Méga-Mewtwo X,Méga-Mewtwo X
+10143,9,Mega Mewtwo X,Mega Mewtwo X
+10144,5,Méga-Mewtwo Y,Méga-Mewtwo Y
+10144,9,Mega Mewtwo Y,Mega Mewtwo Y
+10145,5,Méga-Pharamp,Méga-Pharamp
+10145,9,Mega Ampharos,Mega Ampharos
+10146,5,Méga-Cizayox,Méga-Cizayox
+10146,9,Mega Scizor,Mega Scizor
+10147,5,Méga-Scarhino,Méga-Scarhino
+10147,9,Mega Heracross,Mega Heracross
+10148,5,Méga-Démolosse,Méga-Démolosse
+10148,9,Mega Houndoom,Mega Houndoom
+10149,5,Méga-Tyranocif,Méga-Tyranocif
+10149,9,Mega Tyranitar,Mega Tyranitar
+10150,5,Méga-Braségali,Méga-Braségali
+10150,9,Mega Blaziken,Mega Blaziken
+10151,5,Méga-Gardevoir,Méga-Gardevoir
+10151,9,Mega Gardevoir,Mega Gardevoir
+10152,5,Méga-Mysdibule,Méga-Mysdibule
+10152,9,Mega Mawile,Mega Mawile
+10153,5,Méga-Galeking,Méga-Galeking
+10153,9,Mega Aggron,Mega Aggron
+10154,5,Méga-Charmina,Méga-Charmina
+10154,9,Mega Medicham,Mega Medicham
+10155,5,Méga-Élecsprint,Méga-Élecsprint
+10155,9,Mega Manectric,Mega Manectric
+10156,5,Méga-Branette,Méga-Branette
+10156,9,Mega Banette,Mega Banette
+10157,5,Méga-Absol,Méga-Absol
+10157,9,Mega Absol,Mega Absol
+10158,5,Méga-Carchacrok,Méga-Carchacrok
+10158,9,Mega Garchomp,Mega Garchomp
+10159,5,Méga-Lucario,Méga-Lucario
+10159,9,Mega Lucario,Mega Lucario
+10160,5,Méga-Blizzaroi,Méga-Blizzaroi
+10160,9,Mega Abomasnow,Mega Abomasnow
