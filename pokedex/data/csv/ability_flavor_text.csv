@@ -1310,6 +1310,8 @@ climat."
 weather."
 76,14,9,"Eliminates the effects of
 weather."
+76,15,9,"Eliminates the effects of
+weather."
 77,8,9,"Raises evasion if the
 Pokémon is confused."
 77,9,9,"Raises evasion if the
@@ -2298,6 +2300,8 @@ regardless of Abilities."
 regardless of Abilities."
 164,15,9,"Moves can be used on the target
 regardless of its Abilities."
+165,15,9,"Protects allies from attacks that
+limit their move choices."
 166,15,9,"Prevents lowering of ally
 Grass-type Pokémon’s stats."
 167,15,9,"Restores HP as well when
@@ -2308,6 +2312,8 @@ the type of the move it’s using."
 physical moves."
 170,15,9,"The Pokémon steals a held item
 of a Pokémon it hits with a move."
+171,15,9,"Protects the Pokémon from
+some ball and bomb moves."
 172,15,9,"Boosts the Sp. Atk stat when
 a stat is lowered."
 173,15,9,"The Pokémon’s strong jaw gives
@@ -2333,6 +2339,8 @@ Fairy-type moves."
 lowers the attacker’s Speed stat."
 184,15,9,"Parent and child
 attack together."
+185,15,9,"Normal-type moves become
+Flying-type moves."
 186,15,9,"Powers up each Pokémon’s
 Dark-type moves."
 187,15,9,"Powers up each Pokémon’s
