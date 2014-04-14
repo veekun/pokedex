@@ -1053,13 +1053,13 @@ ability_id,local_language_id,name
 183,5,Poisseux
 183,8,Viscosità
 183,9,Gooey
-184,1,おやこあい
-184,5,Amour Filial
-184,8,Amorefiliale
-184,9,Parental Bond
-185,5,Peau Céleste
-185,8,Pellecielo
-185,9,Aerilate
+184,5,Peau Céleste
+184,8,Pellecielo
+184,9,Aerilate
+185,1,おやこあい
+185,5,Amour Filial
+185,8,Amorefiliale
+185,9,Parental Bond
 186,1,ダークオーラ
 186,5,Aura Ténébreuse
 186,8,Auratetra

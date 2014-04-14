@@ -562,8 +562,8 @@ The type change takes place just before the move is used."
 181,9,Strengthens moves that make contact to 1.33× their power.,Strengthens moves that make contact to 1.33× their power.
 182,9,Turns the bearer's []{type:normal} moves into []{type:fairy} moves and strengthens them to 1.3× their power.,Turns the bearer's []{type:normal}-type moves into []{type:fairy} moves.  Moves changed by this ability have 1.3× their power.
 183,9,Lowers attacking Pokémon's Speed by one stage on contact.,Lowers attacking Pokémon's Speed by one stage on contact.
-184,9,Lets the bearer hit twice with damaging moves.  The second hit has half power.,Lets the bearer hit twice with damaging moves.  The second hit has half power.
-185,9,Turns the bearer's []{type:normal} moves into []{type:flying} moves and strengthens them to 1.3× their power.,Turns the bearer's []{type:normal}-type moves into []{type:flying}-type moves.  Moves changed by this ability have 1.3× their power.
+184,9,Turns the bearer's []{type:normal} moves into []{type:flying} moves and strengthens them to 1.3× their power.,Turns the bearer's []{type:normal}-type moves into []{type:flying}-type moves.  Moves changed by this ability have 1.3× their power.
+185,9,Lets the bearer hit twice with damaging moves.  The second hit has half power.,Lets the bearer hit twice with damaging moves.  The second hit has half power.
 186,9,Strengthens []{type:dark} moves to 1.33× their power for all friendly and opposing Pokémon.,Strengthens []{type:dark} moves for all friendly and opposing Pokémon.
 187,9,Strengthens []{type:fairy} moves to 1.33× their power for all friendly and opposing Pokémon.,Strengthens []{type:fairy} moves for all friendly and opposing Pokémon.
 188,9,Makes []{ability:dark-aura} and []{ability:fairy-aura} weaken moves of their respective types.,"While this Pokémon is on the field, []{ability:dark-aura} and []{ability:fairy-aura} weaken moves of their respective types to 2/3 their power, rather than strengthening them."
