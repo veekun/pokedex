@@ -84,7 +84,7 @@ the seed on its back."
 ふしぎな　タネが　うえてあって
 からだと　ともに　そだつという。"
 1,23,5,"Il a une étrange graine plantée sur son dos.
-Elle grandit avec lui depius sa naissance."
+Elle grandit avec lui depuis sa naissance."
 1,23,8,"Alla nascita gli è stato piantato sulla schiena un seme
 raro. La pianta sboccia e cresce con lui."
 1,23,9,"A strange seed was planted on its back at birth.
@@ -278,7 +278,7 @@ scent attracts other Pokémon."
 3,23,1,"おおきな　はなびらを　ひろげ
 たいようの　ひかりを　あびていると
 からだに　げんきが　みなぎっていく。"
-3,23,5,"Ses petals lui servent à capter la lumière du soleil.
+3,23,5,"Ses pétales lui servent à capter la lumière du soleil.
 Il peut ainsi en canaliser l’énergie."
 3,23,8,"Si riempie di energia grazie ai grandi petali del fiore,
 che spalanca catturando i raggi solari."
@@ -381,7 +381,7 @@ Charmander. Será brillante si está sano."
 4,23,8,"La fiamma che Charmander ha sulla coda indica la
 sua forza vitale. Se è in forma, la fiamma è vivace."
 4,23,9,"The flame on its tail indicates Charmander’s life
-force. If it’s healthy, the flame burns brightly."
+force. If it is healthy, the flame burns brightly."
 4,24,1,"うまれたときから　しっぽに　ほのおが
 ともっている。ほのおが　きえたとき
 その　いのちは　おわって　しまう。"
@@ -1044,7 +1044,7 @@ tender body. It quietly endures
 hardships while awaiting evolution."
 11,23,1,"こうてつのように　かたい　カラで
 やわらかい　なかみを　まもっている。
-しんかするまで　じっと　かえている。"
+しんかするまで　じっと　たえている。"
 11,23,8,"Ha una corazza dura come l’acciaio che protegge
 il suo fragile corpo. Attende immobile di evolversi."
 11,23,9,"A steel-hard shell protects its tender body.
@@ -1144,8 +1144,8 @@ have even tiny amounts of pollen."
 12,23,8,"Adora il nettare dei fiori e riesce a localizzare i campi
 in cui si trova anche una minima quantità di polline."
 12,23,9,"It loves the honey of flowers and can locate
-flower patches that have even tiny amounts of
-pollen."
+flower patches that have even tiny amounts
+of pollen."
 12,24,1,"ハネは　みずを　はじく　りんぷんに
 まもられている。あめの　ひでも
 そらを　とぶことが　できる。"
@@ -1239,7 +1239,7 @@ the needle on its head."
 あたまの　さきに　５センチぐらいの
 ちいさく　するどい　どくばりをもつ。"
 13,23,6,"Es lebt bevorzugt in Wäldern und in hohem Gras.
-Auf dem Kopf träget es einen circa 5 cm langen,
+Auf dem Kopf trägt es einen circa 5 cm langen,
 spitzen, giftigen Stachel."
 13,23,8,"Vive soprattutto nei boschi e nei prati. Sul capo ha
 un affilato e velenoso pungiglione lungo 5 cm."
@@ -1430,7 +1430,7 @@ poison needles, then flying off."
 15,23,1,"りょうてと　おしりにある　３ぼんの
 どくばりで　あいてを　さして　さして
 さしまくって　こうげきする。"
-15,23,8,"Possiede tre aculei velenosi sulle zampre anteriori e
+15,23,8,"Possiede tre aculei velenosi sulle zampe anteriori e
 sull’addome con cui punge i nemici ripetutamente."
 15,23,9,"It has three poisonous stingers on its forelegs and
 its tail. They are used to jab its enemy repeatedly."
@@ -2144,7 +2144,7 @@ unsuspecting prey from behind."
 23,22,9,"It sneaks through grass without
 making a sound and strikes
 unsuspecting prey from behind."
-23,23,5,"Plus il est âgé, pus son corps est long. Il se love
+23,23,5,"Plus il est âgé, plus son corps est long. Il se love
 autour des arbres pour se reposer."
 23,23,8,"Con il tempo si fa sempre più lungo. La notte avvolge
 il suo corpo attorno a qualche ramo per dormire."
@@ -2237,7 +2237,7 @@ while they are frozen in fear."
 intimidation. It constricts foes
 while they are frozen in fear."
 24,23,5,"Les motifs sur son corps ressemblent à un visage
-menaçant. Les adversaires le plus craintifs fuient à la
+menaçant. Les adversaires les plus craintifs fuient à la
 seule vue de ce Pokémon."
 24,23,8,"Il disegno sulla pancia rappresenta una faccia
 spaventosa, capace di far fuggire i nemici più pavidi."
@@ -2958,7 +2958,7 @@ Its toxic horn is for protection."
 32,22,9,"It scans its surroundings by
 raising its ears out of the grass.
 Its toxic horn is for protection."
-32,23,8,"Esamina l’ambiente circostante tenendo le orecchie
+32,23,8,"Esamina l’ambiente circostante tendendo le orecchie
 fuori dall’erba. Si protegge con il corno velenoso."
 32,23,9,"It scans its surroundings by raising its ears out of
 the grass. Its toxic horn is for protection."
@@ -3227,7 +3227,7 @@ Bathing in moonlight makes them float."
 35,23,8,"Si dice che vedere un gruppo di Clefairy ballare
 con la luna piena sia di ottimo auspicio."
 35,23,9,"It is said that happiness will come to those who see
-a gathering of Clefairy under a full moon."
+a gathering of Clefairy dancing under a full moon."
 35,24,9,"The moonlight that it stores in the wings on its back
 apparently gives it the ability to float in midair."
 36,1,9,"A timid fairy
@@ -3489,7 +3489,7 @@ with supernatural power, and it
 can live for a thousand years."
 38,23,8,"Dotato di nove code e di una pelliccia dorata,
 si dice che viva 1000 anni."
-38,23,9,"It has nine long tales and fur that gleams gold.
+38,23,9,"It has nine long tails and fur that gleams gold.
 It is said to live for 1,000 years."
 38,24,9,"Very smart and very vengeful. Grabbing one of its
 many tails could result in a 1,000-year curse."
@@ -4033,7 +4033,7 @@ noses more than a mile away."
 １０００にんに　ひとりぐらい
 これを　このんで　かぐひとがいる。"
 44,23,8,"Puzza da levare il fiato! Tuttavia circa una persona
-su mille adora annusarne il fetido olezzo."
+su mille adora annusarne il fetido lezzo."
 44,23,9,"Smells incredibly foul! However, around one out
 of a thousand people enjoy sniffing its
 nose-bending stink."
@@ -5638,7 +5638,7 @@ Ocean without resting."
 およぎつづけることが　できるのだ。"
 62,23,8,"Ha dei muscoli tanto sviluppati da riuscire ad
 attraversare a nuoto interi oceani senza fermarsi."
-62,23,9,"With extremely tough muscles, it can keep
+62,23,9,"With its extremely tough muscles, it can keep
 swimming in the Pacific Ocean without resting."
 62,24,9,"A swimmer adept at both the front crawl and
 breaststroke. Easily overtakes the best
@@ -6272,7 +6272,7 @@ capturing prey with its vines."
 69,23,1,"ひょろっとした　からだつき　だが
 えものを　とらえるときの　うごきは
 めにも　とまらないほど　すばやい。"
-69,23,8,"Sebbene abbia un corpo magrissimo, se essere
+69,23,8,"Sebbene abbia un corpo magrissimo, sa essere
 molto rapido quando si scaglia sulla preda."
 69,23,9,"Even though its body is extremely skinny, it is
 blindingly fast when catching its prey."
@@ -6361,7 +6361,7 @@ dousing them with a toxic powder."
 plant. It captures unwary prey by
 dousing them with a toxic powder."
 70,23,1,"はっぱの　ぶぶんは　カッターになって
-あいてを　かりさく。くちからは
+あいてを　きりさく。くちからは
 なんでも　とかす　えきたいを　はく。"
 70,23,8,"Si serve delle foglie laterali come lame contro i
 nemici. Il fluido che secerne dalla bocca scioglie
@@ -6723,7 +6723,7 @@ it swing its fists angrily."
 74,22,9,"At rest, it looks just like a rock.
 Carelessly stepping on it will make
 it swing its fists angrily."
-74,23,1,"こうげんや　やまに　せいそくする。
+74,23,1,"そうげんや　やまに　せいそくする。
 いしころに　にていて　きがつかずに
 ふんだり　つまずいたり　してしまう。"
 74,23,8,"Si trova nei campi e in montagna. Se confuso con
@@ -6817,7 +6817,7 @@ can stop it without difficulty."
 75,23,1,"やまから　ころがり　おちるとき
 からだの　あちこちが　とれても
 きにしない　ごうかいな　せいかく。"
-75,23,6,"Es ist imh völlig gleichgültig, wenn Stücke aus ihm
+75,23,6,"Es ist ihm völlig gleichgültig, wenn Stücke aus ihm
 herausbrechen, während es Berge hinabrollt."
 75,23,8,"Di natura libera e incurante, non si preoccupa se
 perde dei pezzi mentre si rotola giù dai monti."
@@ -6914,7 +6914,7 @@ just once a year."
 76,23,1,"さんちょうから　ふもとまで　つづく
 みぞは　ゴローニャが　ころがりおちる
 とおりみちなので　ようちゅうい。"
-76,23,6,"Sie rollen Berge herunter und hinterlassen
+76,23,6,"Sie rollen Berge hinunter und hinterlassen
 Spurrillen. Halte dich von diesen Rillen fern."
 76,23,8,"A furia di rotolare giù dalla cima dei monti, ha
 formato dei solchi. Meglio evitarli."
@@ -7185,7 +7185,7 @@ feel pain if its tail is bitten."
 79,23,1,"いつも　ボーッとしていて　なにを
 かんがえているか　わからない。
 しっぽで　エサを　つるのが　とくい。"
-79,23,8,"È sempre assorto, ma nessun sa a cosa stia
+79,23,8,"È sempre assorto, ma nessuno sa a cosa stia
 pensando. Si serve della coda per pescare."
 79,23,9,"It is always vacantly lost in thought, but no one
 knows what it is thinking about. It is good at fishing
@@ -7990,7 +7990,7 @@ the bacteria in their bodies."
 gather in polluted places and increase
 the bacteria in their bodies."
 88,23,8,"Grimer è nato da fango esposto ai raggi X provenienti
-dalla luna. Ama nutrirsi di sostanza sudicie."
+dalla luna. Ama nutrirsi di sostanze sudicie."
 88,24,9,"Appears in flithy areas. It thrives by sucking up
 polluted sludge that is pumped out of factories."
 89,1,9,"Thickly covered
@@ -8256,7 +8256,7 @@ tightly shut for protection and
 by shooting spikes to repel foes."
 91,23,8,"Ai Cloyster che vivono in mari con forti maree
 crescono grandi aculei affilati sui gusci."
-91,23,9,"Cloyster that live in the seas with harsh tidal currents
+91,23,9,"Cloyster that live in seas with harsh tidal currents
 grow large, sharp spikes on their shells."
 91,24,9,"Its shell is extremely hard. It cannot be shattered,
 even with a bomb. The shell opens only when it
@@ -8612,7 +8612,7 @@ long tunnels."
 massive amounts of soil and creates
 long tunnels."
 95,23,8,"Scava veloce nel terreno in cerca di cibo lasciando
-lunghi cunicoli usati poi come casa dei Diglett."
+lunghi cunicoli usati poi come casa dai Diglett."
 95,23,9,"Burrows at high speed in search of food.
 The tunnels it leaves are used as homes
 by Diglett."
@@ -8973,7 +8973,7 @@ is so heavy, it is difficult to aim."
 10.000 CV. Le dimensioni gli rendono difficili
 gli spostamenti."
 99,23,9,"Its large and hard pincer has 10,000-horsepower
-strength. However, being so big, it is unwileldy
+strength. However, being so big, it is unwieldy
 to move."
 99,24,9,"Its pincers grow peculiarly large. If it lifts the
 pincers too fast, it loses its balance and staggers."
@@ -9245,7 +9245,7 @@ if they become separated."
 102,23,8,"Queste sei uova comunicano per telepatia.
 Si riuniscono subito anche se vengono divise."
 102,23,9,"Its six eggs converse using telepathy. They can
-quickly gather if they become sparated."
+quickly gather if they become separated."
 102,24,9,"Even though it appears to be eggs of some sort,
 it was discovered to be a life-form more like
 plant seeds."
@@ -11376,7 +11376,7 @@ it hard to see the Pokémon clearly."
 La sua temperatura corporea si aggira sui 1200 °C."
 126,23,9,"Found near the mouth of a volcano.
 This fire-breather’s body temperature is
-nearly 2,200 degree Fahrenheit."
+nearly 2,200 degrees Fahrenheit."
 126,24,9,"Born in the spout of a volcano, its body is covered
 by flames that shimmer like the sun."
 127,1,9,"If it fails to
@@ -12462,7 +12462,8 @@ from a fossil using modern science.
 It swam in ancient seas."
 138,23,8,"Pokémon preistorico, che viveva nel mare primordiale.
 Nuota facendo oscillare i suoi dieci tentacoli."
-138,23,9,"A prehistoric Pokémon that lived in the primordial sea, it swims by twisting its 10 tentacles about."
+138,23,9,"A prehistoric Pokémon that lived in the primordial
+sea, it swims by twisting its 10 tentacles about."
 138,24,9,"Revived from an ancient fossil, this Pokémon uses
 air stored in its shell to sink and rise in water."
 139,1,9,"A prehistoric
@@ -12548,7 +12549,9 @@ became extinct because its spiral
 shell grew too large."
 139,23,8,"Ha tentacoli molto sviluppati, paragonabili ad arti
 umani. Appena irretisce la preda, la morde."
-139,23,9,"Its tentacles are highly developed as if they are hands and feet.  As soon as it ensnares prey, it bites."
+139,23,9,"Its tentacles are highly developed as if they are
+hands and feet. As soon as it ensnares prey,
+it bites."
 139,24,9,"Once wrapped around its prey, it never lets go.
 It eats the prey by tearing at it with sharp fangs."
 140,1,9,"A POKéMON that
@@ -12636,7 +12639,8 @@ beaches 300 million years ago.
 It is protected by a stiff shell."
 140,23,8,"Si ritiene che vivesse sulle spiagge 300 milioni di
 anni fa. È protetto da una conchiglia robusta."
-140,23,9,It is thought to have inhabited beaches 300 million years ago. It is protected by a stiff shell.
+140,23,9,"It is thought to have inhabited beaches 300 million
+years ago. It is protected by a stiff shell."
 140,24,9,"This Pokémon was regenerated from the fossil of an
 ancient creature. It protects itself with a hard shell."
 141,1,9,"Its sleek shape is
@@ -12724,7 +12728,8 @@ came onto land because its
 prey adapted to life on land."
 141,23,8,"In acqua raccoglie gli arti per diventare più compatto,
 agitando il guscio per nuotare veloce."
-141,23,9,"In the water, it tucks in its limbs to become more compact, then it wiggles its shell to swim fast."
+141,23,9,"In the water, it tucks in its limbs to become more
+compact, then it wiggles its shell to swim fast."
 141,24,9,"A slim and fast swimmer. It slices its prey with its
 sharp sickles and drinks the body fluids."
 142,1,9,"A ferocious, pre­
@@ -17301,7 +17306,8 @@ proof the tail hides a secret."
 202,22,9,"It desperately tries to keep its
 black tail hidden. It is said to be
 proof the tail hides a secret."
-202,23,5,"Il déteste la lumière et les chocs. S’il est attaqué, il se gonflera pour riposter violemment."
+202,23,5,"Il déteste la lumière et les chocs. S’il est attaqué,
+il se gonflera pour riposter violemment."
 202,23,9,"It hates light and shock. If attacked, it inflates its
 body to build up its counterstrike."
 202,24,9,"To keep its pitch-black tail hidden, it lives quietly in
@@ -17373,7 +17379,7 @@ fight even while facing backward."
 203,22,9,"The head on its tail contains a
 small brain. It can instinctively
 fight even while facing backward."
-203,23,9,"While it sleeps, the head on is tail keeps watch.
+203,23,9,"While it sleeps, the head on its tail keeps watch.
 The tail doesn’t need to sleep."
 203,24,9,"Its tail has a small brain of its own. Beware! If you
 get close, it may react to your scent by biting."
@@ -19185,7 +19191,7 @@ packs. It uses a variety of cries
 for communicating with others."
 228,23,1,"よあけごろ　あたりいったいに
 ひびきわたる　ぶきみな　とおぼえで
-じぶんたちの　かわばりを　アピール。"
+じぶんたちの　なわばりを　アピール。"
 228,23,6,"Im Morgengrauen schallt sein ominöses Geheule
 über das Gebiet, das es für sich beansprucht."
 228,23,9,"Around dawn, its ominous howl echoes through
@@ -19469,7 +19475,8 @@ apart a house in one hit."
 232,22,9,"It attacks by curling up then
 rolling into its foe. It can blow
 apart a house in one hit."
-232,23,9,"It has sharp, hard tusks and a rugged hide. Its Tackle is strong enough to knock down a house."
+232,23,9,"It has sharp, hard tusks and a rugged hide.
+Its Tackle is strong enough to knock down a house."
 232,24,9,"The longer and bigger its tusks, the higher its rank
 in its herd. The tusks take long to grow,"
 233,4,9,"This upgraded
@@ -20098,7 +20105,7 @@ hearty, healthy adults."
 241,22,9,"It is said that kids who drink
 Miltank’s milk grow up to become
 hearty, healthy adults."
-241,23,1,"こどもが　うまれらときに
+241,23,1,"こどもが　うまれたときに
 しぼられた　ミルクには　いつもより
 えいようが　たっぷり　つまっている。"
 241,23,9,"If it is around babies, the milk it produces contains
@@ -21002,7 +21009,7 @@ fireballs of 1,800 degrees F."
 だきしめると　ぽかぽか　あたたかい。
 いのち　ある　かぎり　もえつづける。"
 255,23,9,"It has a flame sac inside its belly that perpetually
-burns. It feels warm if hugged."
+burns. It feels warm if it is hugged."
 255,24,9,"A fire burns inside, so it feels very warm to hug.
 It launches fireballs of 1,800 degrees Fahrenheit."
 256,7,9,"COMBUSKEN toughens up its legs and
@@ -21280,7 +21287,7 @@ swing of its thick arms."
 ship. It bashes down foes with a
 swing of its thick arms."
 260,23,9,"Its arms are hard as rock. With one swing, it can
-break a boulder to pieces."
+break a boulder into pieces."
 261,7,9,"At first sight, POOCHYENA takes a bite
 at anything that moves.
 This POKéMON chases after prey untilthe victim becomes exhausted.
@@ -22423,7 +22430,7 @@ its body warms up slightly."
 あたたかな　きもちを　キャッチすると
 ぜんしんが　ほのかに　あつくなる。"
 280,23,7,"Si sus cuernos perciben emociones positivas de
-personas o Pokémon, su cuerpu se calienta un poco."
+personas o Pokémon, su cuerpo se calienta un poco."
 280,23,9,"If its horns capture the warm feelings of people or
 Pokémon, its body warms up slightly."
 280,24,5,"Il est très sensible aux émotions des gens et
@@ -22666,7 +22673,7 @@ to hover and fly in any direction."
 284,23,1,"めだまもようの　しょっかくを　もつ。
 ４まいの　はねで　うかびあがり
 ぜんごさゆうに　うごくことができる。"
-284,23,9,"Its antennae have eye pattterns on them. Its four
+284,23,9,"Its antennae have eye patterns on them. Its four
 wings enable it to hover and fly in any direction."
 284,24,9,"It flaps its four wings to hover and fly freely in any
 direction--to and fro and sideways."
@@ -23293,7 +23300,7 @@ noises from the ports on its body."
 295,23,1,"バクオングの　とおぼえは　１０キロ
 さきまで　とどく。からだじゅうの
 あなから　さまざまな　おとを　だす。"
-295,23,9,"It howls can be heard over six miles away. It emits
+295,23,9,"Its howls can be heard over six miles away. It emits
 all sorts of noises from the ports on its body."
 295,24,9,"Its roar in battle shakes the ground like a
 tremor--or like an earthquake has struck."
@@ -24110,7 +24117,7 @@ heighten its reaction speed."
 309,22,9,"Using electricity stored in its fur,
 it stimulates its muscles to
 heighten its reaction speed."
-309,23,1,"たいもうに　ためた　てんきを　つかい
+309,23,1,"たいもうに　ためた　でんきを　つかい
 きんにくを　しげきすることで
 しゅんぱつりょくを　たかめる。"
 309,23,9,"Using electricity stored in its fur, it stimulates its
@@ -24403,7 +24410,7 @@ Volbeat to draw signs with light in
 the night sky."
 314,23,1,"あまい　かおりで　バルビートを
 ゆうどうして　２００　いじょうの
-もようを　よざらに　えがく。"
+もようを　よぞらに　えがく。"
 314,23,5,"Il utilise son doux parfum pour aider Muciole à décrire
 plus de 200 arabesques dans le ciel nocturne."
 314,23,9,"Its fragrance attracts a swarm of Volbeat, so they
@@ -24523,7 +24530,7 @@ dissolve anything it swallows."
 316,23,1,"しんぞうや　のうみそは　ちいさく
 からだの　だいぶぶんが　いぶくろ。
 なんでも　とかす　いえきを　だす。"
-316,23,5,"Son corps est principalemet constitué d’un estomac
+316,23,5,"Son corps est principalement constitué d’un estomac
 dont les sucs digestifs dissolvent tout."
 316,23,9,"It has a small heart and brain. Its stomach
 comprises most of its body, with enzymes to
@@ -24643,7 +24650,7 @@ can tear out boat hulls."
 318,23,1,"しゅうだんで　ふねに　おそいかかり
 ふなぞこを　くいちぎり　しずめる。
 ジャングルの　かわに　せいそくする。"
-318,23,9,"They form packs to attck boats and rip out their
+318,23,9,"They form packs to attack boats and rip out their
 hulls to sink them. They live in rivers in the jungle."
 318,24,9,"It lives in massive rivers that course through
 jungles. It swarms prey that enter its territory."
@@ -26232,7 +26239,8 @@ digs up prey from beaches."
 346,22,9,"It lives in the shallows of warm
 seas. When the tide goes out, it
 digs up prey from beaches."
-346,23,9,"It lives in the shallows of warm seas. When the tide goes out, it digs up prey from beaches."
+346,23,9,"It lives in the shallows of warm seas. When the tide
+goes out, it digs up prey from beaches."
 346,24,9,"It ensnares prey with its eight tentacles. It then
 melts the prey with a strong acid before feeding."
 347,7,9,"ANORITH was regenerated from a
@@ -26342,7 +26350,9 @@ armor."
 348,22,9,"It went ashore after evolving.
 Its entire body is clad in a sturdy
 armor."
-348,23,9,"Its enormous, retractable claws can cut through most anything. Its entire body is clad in sturdy plates."
+348,23,9,"Its enormous, retractable claws can cut through
+most anything. Its entire body is clad in
+sturdy plates."
 348,24,9,"Protected by a hard shell, its body is very sturdy.
 It skewers prey with its claws to feed."
 349,7,9,"FEEBAS’s fins are ragged and
@@ -29543,9 +29553,9 @@ make those grubs do its bidding."
 416,23,1,"どうたいは　こどもたちの　すあな。
 いろんな　フェロモンを　だして
 こどもたちを　じゆうに　あやつる。"
-416,23,9,"It houses its colony in cels in its body and releases
-various pheromones to make those grubs do its
-bidding"
+416,23,9,"It houses its colony in cells in its body and releases
+various pheromones to make those grubs do
+its bidding."
 416,24,9,"Its abdomen is a honeycomb for grubs. It raises its
 grubs on honey collected by Combee."
 417,12,9,"It makes fur balls that crackle
@@ -30190,9 +30200,9 @@ mile radius, driving Pokémon away."
 434,22,9,"It sprays a foul fluid from its
 rear. Its stench spreads over a
 mile radius, driving Pokémon away."
-434,23,1,"あいての　うごきを　そっくりに
-まねを　して　とまどわせている
-あいだに　さっさと　にげるのだ。"
+434,23,1,"おしりからとばす　くさい　しるの
+においは　はんけい２キロに　ひろがり
+まわりの　ポケモンは　いなくなる。"
 434,23,9,"It sprays a foul fluid from its rear. Its stench
 spreads over a mile radius, driving Pokémon away."
 434,24,9,"It protects itself by spraying a noxious fluid from its
@@ -30450,9 +30460,9 @@ human speech."
 441,23,1,"あいてと　おなじ　なきごえを　だす
 ことで　なかまと　おもいこませて
 おそわれない　ように　しているのだ。"
-441,23,9,"It mimics the cries of other Pokémon to trick them into
-thinking it’s one of them. This way they won’t attack
-it."
+441,23,9,"It mimics the cries of other Pokémon to trick them
+into thinking it’s one of them. This way they won’t
+attack it."
 441,24,9,"It can learn and speak human words. If they gather,
 they all learn the same saying."
 442,12,9,"A Pokémon that was formed by 108
@@ -30567,7 +30577,7 @@ loot in its nest."
 444,23,1,"ひかりかがやく　ものが　だいすきで
 どうくつの　なかで　みつけた
 たからを　じぶんのすに　ためこむ。"
-444,23,9,"It love sparkly things. It seeks treasures in caves
+444,23,9,"It loves sparkly things. It seeks treasures in caves
 and hoards the loot in its nest."
 444,24,9,"As it digs to expand its nest, it habitually digs up
 gems that it then hoards in its nest."
@@ -30690,7 +30700,7 @@ to communicate with others."
 447,23,1,"かんじょうで　かたちが　かわる
 はどうを　だしあって　なかまどうし
 コミュニケーションを　とっている。"
-447,23,9,"It uses the shape of auras, which change
+447,23,9,"It uses the shapes of auras, which change
 according to emotion, to communicate with others."
 447,24,9,"The aura that emanates from its body intensifies to
 alert others if it is afraid or sad."
@@ -31090,7 +31100,7 @@ competes for food with Lanturn."
 457,22,9,"It crawls along the seafloor using
 its long front fins like legs. It
 competes for food with Lanturn."
-457,23,9,"It lives on the deap-sea floor. It attracts prey by
+457,23,9,"It lives on the deep-sea floor. It attracts prey by
 flashing the patterns on its four tail fins."
 458,12,9,"A friendly Pokémon that captures
 the subtle flows of seawater using
@@ -31167,7 +31177,7 @@ find on snowy mountains."
 they gather around footsteps they
 find on snowy mountains."
 459,23,1,"さむい　きせつは　やまの　ふもとまで
-おりたくるが　はるに　なると　ゆきが
+おりてくるが　はるに　なると　ゆきが
 のこる　さんちょうに　もどっていく。"
 459,23,5,"Il s’aventure jusqu’au pied des montagnes en hiver,
 mais se réfugie sur les pics neigeux au printemps."
@@ -31542,7 +31552,7 @@ while flying by at high speed."
 apart foes’ heads instantly
 while flying by at high speed."
 469,23,9,"It prefers to battle by biting apart foes’ heads
-instantly while flying at high speed."
+instantly while flying by at high speed."
 469,24,9,"This six-legged Pokémon is easily capable of
 transporting an adult in flight. The wings on its tail
 help it stay balanced."
@@ -31768,7 +31778,7 @@ were swords and fights savagely."
 it extends its elbows as if they
 were swords and fights savagely."
 475,23,1,"あいての　かんがえを　びんかんに
-チャッチする　のうりょくを　もつため
+キャッチする　のうりょくを　もつため
 さきに　こうげきが　できるのだ。"
 475,23,9,"Because it can sense what its foe is thinking,
 its attacks burst out first, fast, and fierce."
@@ -31808,7 +31818,7 @@ magnetic force."
 called Mini-Noses using
 magnetic force."
 476,23,9,"It exudes strong magnetism from all over.
-It controls three small units called Mini-Noses"
+It controls three small units called Mini-Noses."
 476,24,9,"It freely controls three small units called Mini-Noses
 using magnetic force."
 477,12,9,"The antenna on its head captures
@@ -32616,7 +32626,7 @@ makes its eyes and body glow
 and stuns attacking opponents."
 505,23,1,"たいないの　はっこうぶっしつで
 めだまや　からだを　ひからせ
-おそってきた　ていを　ひるませる。"
+おそってきた　てきを　ひるませる。"
 505,23,9,"Using luminescent matter, it makes its eyes and
 body glow and stuns attacking opponents."
 505,24,9,"When they see an enemy, their tails stand high,
@@ -32705,7 +32715,7 @@ just to see the looks on their faces."
 people and steal their valuables
 just to see the looks on their faces."
 509,23,9,"Its cute act is a ruse. When victims let down their
-guard, they find their items taken, It attacks with
+guard, they find their items taken. It attacks with
 sharp claws."
 509,24,9,"They steal from people for fun, but their victims
 can’t help but forgive them. Their deceptively cute
@@ -32857,9 +32867,9 @@ It waters plants with it using its tail."
 515,23,1,"あたまのふさに　ためこんだ　みずは
 えいよう　たっぷり。しっぽをつかって
 その　みずを　くさきに　かけている。"
-515,23,3,"지능이 높고 나무열매는
-구운 뒤 먹는 습성이 있다.
-사람 도와주기를 좋아한다."
+515,23,3,"머리 송아리에 모은 물은
+영양 듬뿍. 꼬리를 사용해서
+그 물을 초목에 뿌린다."
 515,23,9,"The water stored inside the tuft on its head is full
 of nutrients. It waters plants with it using its tail."
 515,24,9,"The water stored inside the tuft on its head is full of
@@ -33266,7 +33276,7 @@ to take down buildings."
 they skillfully wield steel beams
 to take down buildings."
 533,23,1,"きたえあげた　きんにくの　もちぬし。
-てっこうを　たくみに　あやつって
+てっこつを　たくみに　あやつって
 いっけんやを　かいたい　してくれる。"
 533,23,9,"With strengthened bodies, they skillfully wield steel
 beams to take down buildings."
@@ -34131,7 +34141,7 @@ in an illusion and punished."
 571,23,1,"いっぺんに　おおぜいの　ひとを
 ばかす　ちからを　もつ。まぼろしの
 けしきを　みせて　すみかを　まもる。"
-571,23,9,"Each has the ability to fool a large gropu of people
+571,23,9,"Each has the ability to fool a large group of people
 simultaneously. They protect their lair with
 illusory scenery."
 571,24,9,"Bonds between these Pokémon are very strong.
@@ -34362,7 +34372,7 @@ they can flap their wings strongly
 and fly for thousands of miles."
 581,23,1,"ゆうがな　みかけに　よらず
 つばさで　ちからづよく　はばたき
-ゆうせんキロ　とびつづけられる。"
+すうせんキロ　とびつづけられる。"
 581,23,9,"Despite their elegant appearance, they can flap
 their wings strongly and fly for thousands of miles."
 581,24,9,"Swanna start to dance at dusk. The one dancing in
@@ -34390,7 +34400,7 @@ sun. Their breath is -58° F."
 あたりに　ゆきを　ふらせる。"
 582,23,9,"The temperature of their breath is -58 degrees
 Fahrenheit. They create snow crystals and make
-snow fall in the ares around them."
+snow fall in the areas around them."
 582,24,9,"This Pokémon formed from icicles bathed in energy
 from the morning sun. It sleeps buried in snow."
 583,17,5,"Un Pokémon qui vit dans les montagnes
@@ -34532,7 +34542,8 @@ they are attacking Shelmet."
 588,23,1,"チョボマキと　いっしょに　いるときに
 でんきてきな　しげきを　うけると
 しんかする　ふしぎな　ポケモンだ。"
-588,23,5,Un Pokémon mystérieux qui évolue quand il reçoit un stimulus électrique un étnt proche d’un Escargaume.
+588,23,5,"Un Pokémon mystérieux qui évolue quand il reçoit un
+stimulus électrique en étant proche d’un Escargaume."
 588,23,9,"These mysterious Pokémon evolve when they
 receive electrical stimulation while they are in the
 same place as Shelmet."
@@ -34804,7 +34815,7 @@ a foe doesn’t return, it will die."
 body. If the minigear it launches at
 a foe doesn’t return, it will die."
 600,23,9,"By changing the direction in which it rotates,
-it communicates its feeling to others. When angry,
+it communicates its feelings to others. When angry,
 it rotates faster."
 600,24,9,"A minigear and big gear comprise its body. If the
 minigear it launches at a foe doesn’t return, it
@@ -34889,7 +34900,8 @@ the prey with powerful electricity."
 mouth, sinking in its fangs and shocking
 the prey with powerful electricity."
 604,23,9,"With their sucker mouths, they suck in prey.
-Then they use their fangs to shock the prey with electricity."
+Then they use their fangs to shock the prey
+with electricity."
 605,17,5,"Avec son puissant pouvoir psychique,
 il peut compresser le cerveau de ses
 ennemis et déclencher des migraines."
@@ -34907,7 +34919,7 @@ crash site in the desert 50 years ago."
 605,22,9,"Rumors of its origin are linked to a UFO
 crash site in the desert 50 years ago."
 605,23,9,"It uses its strong psychic power to squeeze its
-opponent’s brain. causing unendurable headaches."
+opponent’s brain, causing unendurable headaches."
 606,17,5,"Il peut manipuler les souvenirs de
 ses ennemis et fait clignoter ses doigts
 tricolores pour discuter avec ses amis."
@@ -35018,7 +35030,7 @@ they grow in harder and sturdier."
 つよく　するどい　キバに　なる。"
 610,23,5,"Il broie les Baies à grands coups de crocs.
 Ceux-ci repoussent plusieurs fois, toujours plus forts
-et aigusés."
+et aiguisés."
 610,23,9,"They use their tusks to crush the berries they eat.
 Repeated regrowth makes their tusks strong
 and sharp."
@@ -35274,7 +35286,7 @@ it launches into combo attacks that,
 once started, no one can stop."
 620,23,9,"It wields the fur on its arms like a whip. Its arm
 attacks come with such rapidity that they cannot
-ever be seen."
+even be seen."
 620,24,6,"Niemand kann es aufhalten, wenn es eine Angriffsserie
 mit seinem peitschenartigen Armen startet."
 620,24,9,"Using the long fur on its arms like whips, it
@@ -35300,8 +35312,8 @@ formed by Excadrill and Onix.
 It uses its sharp claws to catch prey."
 621,23,1,"せまい　ほらあなを　はしりまわり
 えものを　するどい　ツメで　ほかく。
-かおの　ひふは　いわより　ｋたい。"
-621,23,5,"Il sillonne les grottes étroites, capturant ses proues
+かおの　ひふは　いわより　かたい。"
+621,23,5,"Il sillonne les grottes étroites, capturant ses proies
 avec ses griffes acérées. Sa face est dure comme
 le roc."
 621,23,9,"It races through narrow caves, using its sharp claws
@@ -35379,8 +35391,8 @@ bodies into their prey."
 by sinking the blades that cover their
 bodies into their prey."
 624,23,1,"ぜんしんが　はものの　ポケモン。
-たたかいで　はこばれすると　かわらの
-でごろな　いしで　はを　とぐ。"
+たたかいで　はこぼれすると　かわらの
+てごろな　いしで　はを　とぐ。"
 624,23,9,"Blades comprise this Pokémon’s entire body.
 If battling dulls the blades, it sharpens them on
 stones by the river."
@@ -35542,7 +35554,7 @@ a tongue. It melts Durant and eats them."
 transforms it into fire, and uses it like
 a tongue. It melts Durant and eats them."
 631,23,1,"こうおんで　もえる　ほのおの　したで
-アイアンとの　はがねの　からだを
+アイアントの　はがねの　からだを
 とかして　なかみを　いただくのだ。"
 631,23,9,"Using their very hot, flame-covered tongues,
 they burn through Durant’s steel bodies and
@@ -35930,7 +35942,7 @@ that even a direct hit from a truck wouldn’t faze it."
 651,23,1,"からだを　おおう　がんじょうな　カラが
 てきの　こうげきを　はじきかえし
 するどい　トゲで　はんげきする。"
-651,23,5,"La carapace qui recouvre son coprs le protège
+651,23,5,"La carapace qui recouvre son corps le protège
 des attaques adverses, et ses piquants lui permettent
 de contre-attaquer."
 651,23,6,"Der Panzer, der seinen Körper umgibt, bietet ihm
@@ -36071,8 +36083,8 @@ strengthens its ears so much that they
 can sever thick roots effortlessly."
 660,23,1,"おおきな　みみは　１トンを　こえる
 いわを　らくに　もちあげる　パワー。
-こうじげんばで　だいかつよくする。"
-660,23,8,"Con le sue grandi orecche può sollevare facilmente
+こうじげんばで　だいかつやくする。"
+660,23,8,"Con le sue grandi orecchie può sollevare facilmente
 massi da più di una tonnellata. Può essere di grande
 aiuto nei cantieri edili."
 660,23,9,"With their powerful ears, they can heft
@@ -36136,7 +36148,7 @@ volo sprizzando scintille dalle fessure che ha tra
 le piume."
 663,23,9,"In the fever of an exciting battle, it
 showers embers from the gaps between
- its feathers and takes to the air."
+its feathers and takes to the air."
 663,24,8,"Piomba sulle prede a 500 km/h e le attacca con
 artigli potentissimi."
 663,24,9,"When attacking prey, it can reach speeds
@@ -36214,11 +36226,11 @@ and live by themselves to become stronger.
 These hot-blooded Pokémon are quick to fight."
 668,23,1,"むれの　なかで　いちばん　おおきな
 ほのおの　たてがみを　もつ　オスが
-リーダーとして　なかまを　ひかいる。"
+リーダーとして　なかまを　ひきいる。"
 668,23,8,"Di solito, il maschio con la criniera fiammeggiante
 più ampia guida i compagni del gruppo."
 668,23,9,"The male with the largest mane of fire
- is the leader of the pride."
+is the leader of the pride."
 668,24,9,"With fiery breath of more than 10,000 degrees
 Fahrenheit, they viciously threaten any challenger.
 The females protect the pride’s cubs."
@@ -36308,9 +36320,9 @@ la testa, diventa un tenerone."
 よわいものいじめは　ゆるさない。
 はっぱで　てきの　うごきを　よむ。"
 675,23,8,"Ha un carattere focoso e attaccabrighe, ma non
-sopporta chi maltratta i più deboli. Usa una foglia che
+sopporta chi maltratta i più deboli. Usa la foglia che
 tiene in bocca per prevedere i movimenti dei nemici."
-675,23,9,"Although it posses a violent temperament,
+675,23,9,"Although it possesses a violent temperament,
 it won’t put up with bullying. It uses the leaf in
 its mouth to sense the movements of its enemies."
 675,24,8,"Quando lotta, avanza impetuosamente senza curarsi
@@ -36412,7 +36424,7 @@ recognizes is destined to become king."
 かおりを　からだから　ただよわせる。
 たべた　もので　かおりが　かわる。"
 682,23,9,"It emits a scent that enraptures those
-who smell it. This fragance changes
+who smell it. This fragrance changes
 depending on what it has eaten."
 682,24,8,"Si dice che nell’antichità, al posto del profumo,
 le nobildonne portassero sempre con loro questo
@@ -36451,7 +36463,7 @@ everything in the area. It’s like it can see with its nose!"
 686,23,1,"はっこうたいの　てんめつを　みつめた
 あいては　めが　くらみ　たたかう
 きもちが　なくなってしまうのだ。"
-686,23,6,"Gegner, die auf die blinkendedn Punkte an seinem
+686,23,6,"Gegner, die auf die blinkenden Punkte an seinem
 Körper blicken, werden geblendet und verlieren den
 Willen zu kämpfen."
 686,23,9,"Opponents who stare at the flashing of the
@@ -36520,7 +36532,7 @@ in grado di convertire la luce solare in energia elettrica."
 694,24,9,"The frills on either side of its head have cells
 that generate electricity when exposed to sunlight."
 695,23,9,"They flare their frills and generate energy.
- A single Heliolisk can generate sufficient
+A single Heliolisk can generate sufficient
 electricity to power a skyscraper."
 695,24,9,"It stimulates its muscles with electricity,
 boosting the strength in its legs and enabling
@@ -36618,7 +36630,7 @@ during the excavation of caves."
 ジメジメした　ひかげで　くらす。"
 704,23,8,"È il Pokémon Drago più debole di tutti. Vive in ambienti
 umidi e in ombra per evitare che il suo corpo si secchi."
-704,23,9,"The weakest Dragon-Type Pokémon,
+704,23,9,"The weakest Dragon-type Pokémon,
 it lives in damp, shady places, so its
 body doesn’t dry out."
 704,24,8,"Il suo corpo è coperto da una membrana viscida
@@ -36654,7 +36666,8 @@ of the force of a hundred pro boxers."
 707,23,1,"カギを　あつめる　しゅうせい。
 てきに　おそわれると　ジャラジャラと
 カギを　うちならして　いかくする。"
-707,23,5,Ce Pokémon collectionne les clés qu’il agite devant ses ennemis pour les intimider
+707,23,5,"Ce Pokémon collectionne les clés qu’il agite devant
+ses ennemis pour les intimider."
 707,23,8,"Ha l’abitudine di raccogliere chiavi. Quando viene
 attaccato, minaccia il nemico agitandole e facendo
 un gran chiasso."
@@ -36705,7 +36718,7 @@ so they can move on."
 その　うたを　きくと　のろわれる。"
 711,23,6,"Unter unheimlichen Gesängen durchstreift es in
 Neumondnächten Städte und Dörfer. Wer dem
-unheilvollen Gesang laushct, wird verflucht."
+unheilvollen Gesang lauscht, wird verflucht."
 711,23,8,"Vaga per le città nelle notti di luna nuova intonando
 una melodia sinistra. Chi la ascolta, viene colpito da
 una maledizione."
@@ -36722,7 +36735,7 @@ suffering of its prey."
 che ricopre il suo corpo. Se viene danneggiato,
 rigenera lo strato protettivo, riparandolo."
 712,23,9,"It blocks opponents’ attacks with the
-ice that shields its body. it uses cold air
+ice that shields its body. It uses cold air
 to repair any cracks with new ice."
 712,24,6,"Es friert seine Gegner mittels eines -100 °C kalten
 Luftstromes ein. Mit seinen Artgenossen lebt es
