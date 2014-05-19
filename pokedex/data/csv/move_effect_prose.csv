@@ -504,7 +504,7 @@ This move cannot be copied by []{move:mirror-move}, nor selected by []{move:assi
 172,9,"If the target is paralyzed, inflicts double damage and cures the paralysis.","Inflicts [regular damage]{mechanic:regular-damage}.  If the target is [paralyzed]{mechanic:paralyzed}, this move has double power, and the target is cured of its [paralysis]{mechanic:paralysis}."
 173,9,Redirects the target's single-target effects to the user for this turn.,"Until the end of this turn, any moves that opposing Pokémon target solely at the user's ally will instead target the user.  If both Pokémon on the same side of the [field]{mechanic:field} use this move on the same turn, the Pokémon that uses it last will become the target.
 
-This effect takes priority over []{ability:lightningrod} and []{ability:storm-drain}.
+This effect takes priority over []{ability:lightning-rod} and []{ability:storm-drain}.
 
 If the user's ally [switches out]{mechanic:switches-out}, opposing Pokémon may still hit it with []{move:pursuit}.
 
