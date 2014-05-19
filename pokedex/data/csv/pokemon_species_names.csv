@@ -1812,7 +1812,7 @@ pokemon_species_id,local_language_id,name,genus
 202,2,Sonans,
 202,3,마자용,
 202,4,果然翁,
-202,5,Qulbutoké,Pokemon Patient
+202,5,Qulbutoké,Patient
 202,6,Woingenau,
 202,7,Wobbuffet,
 202,8,Wobbuffet,Pazienza
@@ -2085,7 +2085,7 @@ pokemon_species_id,local_language_id,name,genus
 232,5,Donphan,
 232,6,Donphan,
 232,7,Donphan,
-232,8,Donphan,Nasone
+232,8,Donphan,Armatura
 232,9,Donphan,Armor
 233,1,ポリゴン２,
 233,2,Porygon2,
@@ -3068,7 +3068,7 @@ pokemon_species_id,local_language_id,name,genus
 341,7,Corphish,
 341,8,Corphish,Birbone
 341,9,Corphish,Ruffian
-342,1,シザリガー,はらずもの
+342,1,シザリガー,ならずもの
 342,2,Shizariger,
 342,3,가재장군,
 342,4,鐵螯龍蝦,
@@ -3896,7 +3896,7 @@ pokemon_species_id,local_language_id,name,genus
 433,7,Chingling,
 433,8,Chingling,
 433,9,Chingling,Bell
-434,1,スカンプー,マイム
+434,1,スカンプー,スカンク
 434,2,Skunpoo,
 434,3,스컹뿡,
 434,4,臭鼬噗,
@@ -5407,7 +5407,7 @@ pokemon_species_id,local_language_id,name,genus
 631,7,Heatmor,
 631,8,Heatmor,
 631,9,Heatmor,Anteater
-632,1,アイアント,アイアント
+632,1,アイアント,てつアリ
 632,3,아이앤트,
 632,5,Fermite,
 632,6,Fermicula,

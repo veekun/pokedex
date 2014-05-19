@@ -20,7 +20,7 @@ ability_id,local_language_id,name
 4,1,カブトアーマー
 4,5,Armurbaston
 4,6,Kampfpanzer
-4,7,Armad. Bat.
+4,7,Armadura Batalla
 4,8,Lottascudo
 4,9,Battle Armor
 5,1,がんじょう
@@ -50,19 +50,19 @@ ability_id,local_language_id,name
 9,1,せいでんき
 9,5,Statik
 9,6,Statik
-9,7,Elec. Estát.
+9,7,Elec. Estática
 9,8,Statico
 9,9,Static
 10,1,ちくでん
 10,5,Absorb Volt
 10,6,Voltabsorber
-10,7,Absor. Elec.
+10,7,Absorbe Elec
 10,8,Assorbivolt
 10,9,Volt Absorb
 11,1,ちょすい
 11,5,Absorb Eau
 11,6,H2O-Absorber
-11,7,Absor. Agua
+11,7,Absorbe Agua
 11,8,Assorbacqua
 11,9,Water Absorb
 12,1,どんかん
@@ -80,7 +80,7 @@ ability_id,local_language_id,name
 14,1,ふくがん
 14,5,Œil Composé
 14,6,Facettenauge
-14,7,Ojocompuesto
+14,7,Ojo Compuesto
 14,8,Insettocchi
 14,9,Compound Eyes
 15,1,ふみん
@@ -104,7 +104,7 @@ ability_id,local_language_id,name
 18,1,もらいび
 18,5,Torche
 18,6,Feuerfänger
-18,7,Absor. Fuego
+18,7,Absorbe Fuego
 18,8,Fuocardore
 18,9,Flash Fire
 19,1,りんぷん
@@ -134,7 +134,7 @@ ability_id,local_language_id,name
 23,1,かげふみ
 23,5,Marque Ombre
 23,6,Wegsperre
-23,7,Sombratrampa
+23,7,Sombra Trampa
 23,8,Pedinombra
 23,9,Shadow Tag
 24,1,さめはだ
@@ -158,7 +158,7 @@ ability_id,local_language_id,name
 27,1,ほうし
 27,5,Pose Spore
 27,6,Sporenwirt
-27,7,Efec. Espora
+27,7,Efecto Espora
 27,8,Spargispora
 27,9,Effect Spore
 28,1,シンクロ
@@ -198,13 +198,13 @@ ability_id,local_language_id,name
 33,8,Nuotovelox
 33,9,Swift Swim
 34,1,ようりょくそ
-34,5,Chlorophyle
+34,5,Chlorophylle
 34,6,Chlorophyll
 34,7,Clorofila
 34,8,Clorofilla
 34,9,Chlorophyll
 35,1,はっこう
-35,5,Lumiatirance
+35,5,Lumiattirance
 35,6,Erleuchtung
 35,7,Iluminación
 35,8,Risplendi
@@ -374,7 +374,7 @@ ability_id,local_language_id,name
 63,1,ふしぎなうろこ
 63,5,Écaille Spéciale
 63,6,Notschutz
-63,7,Escama Esp.
+63,7,Escama Especial
 63,8,Pelledura
 63,9,Marvel Scale
 64,1,ヘドロえき
@@ -428,7 +428,7 @@ ability_id,local_language_id,name
 72,1,やるき
 72,5,Esprit Vital
 72,6,Munterkeit
-72,7,Espír. Vital
+72,7,Espíritu Vital
 72,8,Spiritovivo
 72,9,Vital Spirit
 73,1,しろいけむり
@@ -578,7 +578,7 @@ ability_id,local_language_id,name
 97,1,スナイパー
 97,5,Sniper
 97,6,Superschütze
-97,7,Francotirad.
+97,7,Francotirador
 97,8,Cecchino
 97,9,Sniper
 98,1,マジックガード
@@ -746,7 +746,7 @@ ability_id,local_language_id,name
 125,1,ちからずく
 125,5,Sans Limite
 125,6,Rohe Gewalt
-125,7,Pot. Bruta
+125,7,Potencia Bruta
 125,8,Forzabruta
 125,9,Sheer Force
 126,1,あまのじゃく
@@ -776,7 +776,7 @@ ability_id,local_language_id,name
 130,1,のろわれボディ
 130,5,Corps Maudit
 130,6,Tastfluch
-130,7,Cue. Maldito
+130,7,Cuerpo Maldito
 130,8,Corpofunesto
 130,9,Cursed Body
 131,1,いやしのこころ
@@ -794,19 +794,19 @@ ability_id,local_language_id,name
 133,1,くだけるよろい
 133,5,Armurouillée
 133,6,Bruchrüstung
-133,7,Arm. Frágil
+133,7,Armadura Frágil
 133,8,Sottilguscio
 133,9,Weak Armor
 134,1,ヘヴィメタル
 134,5,Heavy Metal
 134,6,Schwermetall
-134,7,Met. Pesado
+134,7,Metal Pesado
 134,8,Metalpesante
 134,9,Heavy Metal
 135,1,ライトメタル
 135,5,Light Metal
 135,6,Leichtmetall
-135,7,Met. Liviano
+135,7,Metal Liviano
 135,8,Metalleggero
 135,9,Light Metal
 136,1,マルチスケイル
@@ -818,13 +818,13 @@ ability_id,local_language_id,name
 137,1,どくぼうそう
 137,5,Rage Poison
 137,6,Giftwahn
-137,7,Ím. Tóxico
+137,7,Ímpetu Tóxico
 137,8,Velenimpeto
 137,9,Toxic Boost
 138,1,ねつぼうそう
 138,5,Rage Brûlure
 138,6,Hitzewahn
-138,7,Ím. Ardiente
+138,7,Ímpetu Ardiente
 138,8,Bruciaimpeto
 138,9,Flare Boost
 139,1,しゅうかく
@@ -884,7 +884,7 @@ ability_id,local_language_id,name
 148,1,アナライズ
 148,5,Analyste
 148,6,Analyse
-148,7,Cálc. Final
+148,7,Cálculo Final
 148,8,Ponderazione
 148,9,Analytic
 149,1,イリュージョン
@@ -932,7 +932,7 @@ ability_id,local_language_id,name
 156,1,マジックミラー
 156,5,Miroir Magik
 156,6,Magiespiegel
-156,7,Espejomágico
+156,7,Espejo Mágico
 156,8,Magispecchio
 156,9,Magic Bounce
 157,1,そうしょく
@@ -1068,7 +1068,7 @@ ability_id,local_language_id,name
 187,8,Aurafolletto
 187,9,Fairy Aura
 188,5,Aura Inversée
-188,8,Fragiaura
+188,8,Frangiaura
 188,9,Aura Break
 10001,9,Mountaineer
 10002,9,Wave Rider
