@@ -734,8 +734,8 @@ moves will hit."
 あたらない。"
 25,15,3,"효과가 굉장한 기술밖에
 맞지 않는다."
-25,15,5,"Seules les capacités «\ue07fsuper
-efficaces\ue07f» l’atteignent."
+25,15,5,"Seules les capacités « super
+efficaces » l’atteignent."
 25,15,6,"Nur sehr effektive Treffer
 richten Schaden an."
 25,15,7,"Solo le hacen daño los
@@ -3226,8 +3226,8 @@ effective” moves."
 わざを　つよめる。"
 110,15,3,"효과가 별로인 기술이
 강해진다."
-110,15,5,"Améliore les capacités «\ue07fpas très
-efficaces\ue07f»."
+110,15,5,"Améliore les capacités « pas très
+efficaces »."
 110,15,6,"Verstärkt nicht sehr effektive
 Attacken."
 110,15,7,"Potencia los movimientos que no
@@ -3255,7 +3255,7 @@ supereffective attacks."
 111,15,3,"효과가 굉장한 기술의
 위력을 약하게 한다."
 111,15,5,"Réduit les dégâts des capacités
-«\ue07fsuper efficaces\ue07f» subies."
+« super efficaces » subies."
 111,15,6,"Senkt die Stärke sehr effektiver
 Attacken."
 111,15,7,"Mitiga los movimientos
@@ -3395,7 +3395,7 @@ supereffective attacks."
 116,15,3,"효과가 굉장한 기술의
 위력을 약하게 한다."
 116,15,5,"Réduit les dégâts des capacités
-«\ue07fsuper efficaces\ue07f» subies."
+« super efficaces » subies."
 116,15,6,"Senkt die Stärke sehr effektiver
 Attacken."
 116,15,7,"Mitiga los movimientos
@@ -4588,7 +4588,7 @@ of a Pokémon it hits with a move."
 171,15,3,"구슬이나 폭탄에
 맞지 않는다."
 171,15,5,"Protège de certaines capacités
-projetant des bombes, balles\ue08d"
+projetant des bombes, balles…"
 171,15,6,"Schützt das Pokémon vor
 geworfenen Bomben und Kugeln."
 171,15,7,"No le afectan las bombas ni
