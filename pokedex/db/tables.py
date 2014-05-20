@@ -1121,8 +1121,8 @@ class Move(TableBase):
         info=dict(description="ID of the generation this move first appeared in"))
     type_id = Column(Integer, ForeignKey('types.id'), nullable=False,
         info=dict(description="ID of the move's elemental type"))
-    power = Column(SmallInteger, nullable=False,
-        info=dict(description="Base power of the move"))
+    power = Column(SmallInteger, nullable=True,
+        info=dict(description="Base power of the move, null if it does not have a set base power."))
     pp = Column(SmallInteger, nullable=True,
         info=dict(description="Base PP (Power Points) of the move, nullable if not applicable (e.g. Struggle and Shadow moves)."))
     accuracy = Column(SmallInteger, nullable=True,
