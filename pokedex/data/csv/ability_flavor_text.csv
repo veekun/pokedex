@@ -322,7 +322,7 @@ of attacks taken."
 19,14,9,"Blocks the added effects
 of attacks taken."
 19,15,6,"Blockiert Zusatz-Effekte
-gegnerische Angriffe."
+gegnerischer Angriffe."
 19,15,9,"Blocks the additional effects
 of attacks taken."
 20,5,9,Prevents confusion.
@@ -341,7 +341,7 @@ from becoming confused."
 from becoming confused."
 20,15,6,Verhindert Verwirrung.
 20,15,9,"Prevents the Pokémon
-from being confused."
+from becoming confused."
 21,5,9,Firmly anchors the body.
 21,6,9,Firmly anchors the body.
 21,7,9,Firmly anchors the body.
@@ -733,7 +733,7 @@ sound-based moves."
 43,14,9,"Gives full immunity to all
 sound-based moves."
 43,15,9,"Gives full immunity to all
-sound-bases moves."
+sound-based moves."
 44,5,9,Slight HP recovery in rain.
 44,6,9,Slight HP recovery in rain.
 44,7,9,Slight HP recovery in rain.
@@ -767,7 +767,7 @@ sandstorm in battle."
 45,14,9,"The Pokémon summons a
 sandstorm in battle."
 45,15,9,"The Pokémon summons a
-sandstorm into battle."
+sandstorm in battle."
 46,5,9,Raises foe’s PP usage.
 46,6,9,Raises foe’s PP usage.
 46,7,9,Raises foe’s PP usage.
@@ -837,7 +837,7 @@ may burn the attacker."
 49,14,9,"Contact with the Pokémon
 may burn the attacker."
 49,15,6,"Fügt dem Angreifer bei Berührung
-eventuell Verbrennung zu."
+eventuell Verbrennungen zu."
 49,15,9,"Contact with the Pokémon
 may burn the attacker."
 50,5,9,Makes escaping easier.
@@ -927,7 +927,7 @@ on consecutive turns."
 54,14,9,"Pokémon can’t attack
 on consecutive turns."
 54,15,9,"The Pokémon can’t attack
-on consectutive turns."
+on consecutive turns."
 55,5,9,Trades accuracy for power.
 55,6,9,Trades accuracy for power.
 55,7,9,Trades accuracy for power.
@@ -1844,7 +1844,7 @@ moves to up Sp. Attack."
 114,14,9,"Draws in all Water-type
 moves to up Sp. Attack."
 114,15,9,"Draws in all Water-type moves
-to boosts its Sp. Atk stat."
+to boost its Sp. Atk stat."
 115,8,9,"The Pokémon regains HP in
 a hailstorm."
 115,9,9,"The Pokémon regains HP in
@@ -2310,7 +2310,7 @@ the Pokémon eats a Berry."
 the type of the move it’s using."
 169,15,9,"Halves damage from
 physical moves."
-170,15,9,"The Pokémon steals a held item
+170,15,9,"The Pokémon steals the held item
 of a Pokémon it hits with a move."
 171,15,9,"Protects the Pokémon from
 some ball and bomb moves."
@@ -2328,7 +2328,7 @@ depending on how it battles."
 moves."
 178,15,9,Powers up aura and pulse moves.
 179,15,9,"Boosts the Defense stat
-in Grassy Terrain"
+in Grassy Terrain."
 180,15,9,"The Pokémon can pass
 an item to an ally."
 181,15,9,"Powers up moves that
