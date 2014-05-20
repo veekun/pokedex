@@ -1094,7 +1094,7 @@ class Machine(TableBase):
     """
     __tablename__ = 'machines'
     machine_number = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
-        info=dict(description="Number of the machine for TMs, or 100 + the munber for HMs"))
+        info=dict(description="Number of the machine for TMs, or 100 + the number for HMs"))
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False, autoincrement=False,
         info=dict(description="Versions this entry applies to"))
     item_id = Column(Integer, ForeignKey('items.id'), nullable=False,
