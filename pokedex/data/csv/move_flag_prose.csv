@@ -18,3 +18,4 @@ move_flag_id,local_language_id,name,description
 17,9,Pulse-based,This move has 1.5× its usual power when used by a Pokémon with []{ability:mega-launcher}.
 18,9,Ballistics-based,This move is blocked by []{ability:bulletproof}.
 19,9,Mental effects,This move is blocked by []{ability:aroma-veil} and cured by []{item:mental-herb}.
+20,9,Unusable during Sky Battles,This move is unusable during Sky Battles.
