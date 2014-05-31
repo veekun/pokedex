@@ -136,7 +136,7 @@ def create_translation_table(_table_name, foreign_class, relation_name,
     # Add ye columns
     # Column objects have a _creation_order attribute in ascending order; use
     # this to get the (unordered) kwargs sorted correctly
-    kwitems = kwargs.items()
+    kwitems = list(kwargs.items())
     kwitems.sort(key=lambda kv: kv[1]._creation_order)
     for name, column in kwitems:
         column.name = name

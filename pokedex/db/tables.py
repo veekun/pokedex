@@ -56,7 +56,7 @@ class TableSuperclass(object):
         if not pk_constraint:
             return u"<%s object at %x>" % (typename, id(self))
 
-        pk = u', '.join(unicode(getattr(self, column.name))
+        pk = u', '.join(u'{0}'.format(getattr(self, column.name))
             for column in pk_constraint.columns)
         try:
             return u"<%s object (%s): %s>" % (typename, pk, self.identifier)
@@ -64,10 +64,12 @@ class TableSuperclass(object):
             return u"<%s object (%s)>" % (typename, pk)
 
     def __str__(self):
-        return unicode(self).encode('utf8')
+       return str(self.__unicode__().encode('ASCII', 'replace')
+           .decode('ASCII'))
 
     def __repr__(self):
-        return unicode(self).encode('utf8')
+       return str(self.__unicode__().encode('ASCII', 'replace')
+           .decode('ASCII'))
 
 mapped_classes = []
 class TableMetaclass(DeclarativeMeta):

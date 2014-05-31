@@ -165,7 +165,7 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
 
     Handles matches using factory
     """
-    regex = ur'(?x) \[ ([^]]*) \] \{ ([-a-z0-9]+) : ([-a-z0-9 ]+) \}'
+    regex = u'(?x) \\[ ([^]]*) \\] \\{ ([-a-z0-9]+) : ([-a-z0-9 ]+) \\}'
 
     def __init__(self, factory, session, string_language=None, game_language=None):
         markdown.inlinepatterns.Pattern.__init__(self, self.regex)
