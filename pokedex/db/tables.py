@@ -64,12 +64,12 @@ class TableSuperclass(object):
             return u"<%s object (%s)>" % (typename, pk)
 
     def __str__(self):
-       return str(self.__unicode__().encode('ASCII', 'replace')
-           .decode('ASCII'))
+        return str(self.__unicode__().encode('ASCII', 'replace')
+            .decode('ASCII'))
 
     def __repr__(self):
-       return str(self.__unicode__().encode('ASCII', 'replace')
-           .decode('ASCII'))
+        return str(self.__unicode__().encode('ASCII', 'replace')
+            .decode('ASCII'))
 
 mapped_classes = []
 class TableMetaclass(DeclarativeMeta):
