@@ -5,5 +5,9 @@
 
 *.egg-info
 
+android_metadata.csv
+type_colors.csv
+version_colors.csv
+
 pokedex.sqlite
 whoosh-index
