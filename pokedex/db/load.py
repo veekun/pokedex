@@ -347,7 +347,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
 
 
-def dump(session, tables=[], directory=None, verbose=False, langs=['en']):
+def dump(session, tables=[], directory=None, verbose=False, langs=None):
     """Dumps the contents of a database to a set of CSV files.  Probably not
     useful to anyone besides a developer.
 
@@ -398,12 +398,16 @@ def dump(session, tables=[], directory=None, verbose=False, langs=['en']):
 
         columns = [col.name for col in table.columns]
 
-        # For name tables, dump rows for official languages, as well as
-        # for those in `langs`.
+        # For name tables, always dump rows for official languages, as well as
+        # for those in `langs` if specified.
         # For other translation tables, only dump rows for languages in `langs`
+        # if specified, or for official languages by default.
         # For non-translation tables, dump all rows.
         if 'local_language_id' in columns:
-            if any(col.info.get('official') for col in table.columns):
+            if langs is None:
+                def include_row(row):
+                    return languages[row.local_language_id].official
+            elif any(col.info.get('official') for col in table.columns):
                 def include_row(row):
                     return (languages[row.local_language_id].official or
                             languages[row.local_language_id].identifier in langs)
