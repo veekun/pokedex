@@ -1,11 +1,11 @@
 move_flag_id,local_language_id,name,description
 1,6,Kontakt,"Der Anwender berührt das Ziel.  Dies löst mahcne Fähigkeiten aus (z.B. []{ability:static}) und Gegenstände (z.B. []{item:sticky-barb})."
 1,9,Makes contact,"User touches the target.  This triggers some abilities (e.g., []{ability:static}) and items (e.g., []{item:sticky-barb})."
-2,6,Hat eine Aufladerunde,Diese Fähigkeit hat eine Aufladerunde, welche mit einer []{item:power-herb} übersprungen werden kann.
+2,6,Hat eine Aufladerunde,"Diese Fähigkeit hat eine Aufladerunde, welche mit einer []{item:power-herb} übersprungen werden kann."
 2,9,Has a charging turn,This move has a charging turn that can be skipped with a []{item:power-herb}.
 3,6,Muss aufladen,"Die Runde nach dieser Fähigkeit wird benötigt, damit das Pokémon sich aufladen kann."
 3,9,Must recharge,"The turn after this move is used, the Pokémon's action is skipped so it can recharge."
-4,6,Blockiert von Scanner and Schutzschild,Diese Fähigkeit funktioniert nicht, wenn das Ziel []{move:detect} oder []{move:protect} diese Runde genutzt hat.
+4,6,Blockiert von Scanner and Schutzschild,"Diese Fähigkeit funktioniert nicht, wenn das Ziel []{move:detect} oder []{move:protect} diese Runde genutzt hat."
 4,9,Blocked by Detect and Protect,This move will not work if the target has used []{move:detect} or []{move:protect} this turn.
 5,6,Reflektierbar,Diese Fähigkeit könnte reflektiert mit []{move:magic-coat} oder []{ability:magic-bounce} reflektiert werden.
 5,9,Reflectable,This move may be reflected back at the user with []{move:magic-coat} or []{ability:magic-bounce}.
