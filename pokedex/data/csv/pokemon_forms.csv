@@ -674,7 +674,7 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 673,gogoat,,673,15,1,0,0,1,796
 674,pancham,,674,15,1,0,0,1,797
 675,pangoro,,675,15,1,0,0,1,798
-676,furfrou,,676,15,1,0,0,1,799
+676,furfrou-natural,natural,676,15,1,0,0,1,799
 677,espurr,,677,15,1,0,0,1,809
 678,meowstic-male,male,678,15,1,0,0,1,810
 679,honedge,,679,15,1,0,0,1,812
