@@ -174,7 +174,6 @@ def create_translation_table(_table_name, foreign_class, relation_name,
         ),
         foreign_keys=[Translations.foreign_id, Translations.local_language_id],
         uselist=False,
-        #innerjoin=True,
         lazy=relation_lazy,
     ))
 
