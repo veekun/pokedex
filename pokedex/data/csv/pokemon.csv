@@ -718,6 +718,8 @@ id,identifier,species_id,height,weight,base_experience,order,is_default
 717,yveltal,717,58,2030,306,777,1
 718,zygarde,718,50,3050,270,778,1
 719,diancie,719,7,88,270,779,1
+720,hoopa,720,5,90,270,1,1
+721,volcanion,721,17,1950,270,1,1
 10001,deoxys-attack,386,17,608,270,445,0
 10002,deoxys-defense,386,17,608,270,446,0
 10003,deoxys-speed,386,17,608,270,447,0
@@ -778,3 +780,6 @@ id,identifier,species_id,height,weight,base_experience,order,is_default
 10058,garchomp-mega,445,19,950,315,500,0
 10059,lucario-mega,448,13,575,219,503,0
 10060,abomasnow-mega,460,27,1850,208,515,0
+10061,floette-eternal,670,2,9,243,1,0
+10062,latias-mega,380,18,520,315,1,0
+10063,latios-mega,381,23,700,315,1,0

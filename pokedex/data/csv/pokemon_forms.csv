@@ -718,6 +718,8 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 717,yveltal,,717,15,1,0,0,1,857
 718,zygarde,,718,15,1,0,0,1,858
 719,diancie,,719,15,1,0,0,1,859
+720,hoopa,,720,15,1,0,0,1,1
+721,volcanion,,721,15,1,0,0,1,1
 10001,unown-b,b,201,3,0,0,0,2,247
 10002,unown-c,c,201,3,0,0,0,3,248
 10003,unown-d,d,201,3,0,0,0,4,249
@@ -878,3 +880,8 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10158,garchomp-mega,mega,10058,15,1,1,1,2,532
 10159,lucario-mega,mega,10059,15,1,1,1,2,535
 10160,abomasnow-mega,mega,10060,15,1,1,1,2,547
+10161,vivillon-fancy,fancy,666,15,0,0,0,19,1
+10162,vivillon-poke-ball,poke-ball,666,15,0,0,0,20,1
+10163,floette-eternal,eternal,10061,15,1,0,0,6,1
+10164,latias-mega,mega,10062,15,1,1,1,2,1
+10165,latios-mega,mega,10063,15,1,1,1,2,1
