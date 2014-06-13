@@ -27541,6 +27541,51 @@ also raise the user’s Defense stat."
 591,15,11,"ダイヤの　嵐を　巻き起こし
 ダメージを　与える。　自分の
 防御を　あげることが　ある。"
+592,15,1,"ものすごく　あつい　じょうきを
+あいてに　あびせる。
+あいては　やけどする　ことがある。"
+592,15,3,"상대에게 굉장히 뜨거운
+증기를 뿜는다.
+상대는 화상을 입기도 한다."
+592,15,5,"Plonge l’ennemi dans une chaleur étouffante.
+Peut le brûler."
+592,15,6,"Der Anwender feuert einen siedend heißen
+Dampfschwall auf das Ziel ab. Dieses kann
+dabei Verbrennungen erleiden."
+592,15,7,"Envuelve al Pokémon oponente con vapor
+extremadamente caliente que puede llegar a
+quemarlo."
+592,15,8,"Travolge il bersaglio con un’ondata di vapore
+rovente che può anche scottarlo."
+592,15,9,"The user immerses the target in superheated steam.
+This may also leave the target with a burn."
+592,15,11,"ものすごく　熱い　蒸気を
+相手に　浴びせる。
+相手は　やけどする　ことがある。"
+593,15,1,"いじげんホールで　とつぜん　あいての
+まよこに　あらわれ　こうげきする。
+まもるや　みきりも　むし　できる。"
+593,15,3,"다른차원홀로 갑자기 상대
+바로 옆에 나타나 공격한다.
+방어나 판별도 무시할 수 있다."
+593,15,5,"Crée une faille dimensionnelle pour attaquer
+soudainement l’ennemi de côté. Ignore même
+Abri ou Détection."
+593,15,6,"Der Anwender positioniert sich mithilfe eines
+Dimensionslochs direkt neben dem Ziel und
+durchbricht selbst Schutzschild und Scanner."
+593,15,7,"El usuario aparece junto a su objetivo usando un
+agujero interdimensional y le asesta un golpe que
+no puede esquivarse con Protección ni Detección."
+593,15,8,"Chi la usa, sfrutta un passaggio interdimensionale
+per comparire a fianco del bersaglio e colpirlo,
+eludendo mosse come Protezione e Individua."
+593,15,9,"Using a hyperspace hole, the user appears
+right next to the target and strikes. This
+also hits a target using Protect or Detect."
+593,15,11,"異次元ホールで　突然　相手の
+真横に　現れ　攻撃する。
+まもるや　みきりも　無視　できる。"
 594,15,1,"ねんえきで　できた　しゅりけんを
 ２ー５かいの　あいだ　れんぞくで　だす。
 かならず　せんせい　こうげき　できる。"
@@ -27831,6 +27876,26 @@ you on your special day!"
 606,15,11,"ポケモンが　とっても
 ハッピーな　あなたのことを
 お祝い　してくれる。"
+607,15,1,"みかたの　ポケモン　どうしが
+てをつなぐ。　とっても　しあわせな
+きもちに　なれる。"
+607,15,3,"같은 편 포켓몬끼리
+손에 손을 잡는다. 굉장히
+행복한 기분이 들게 된다."
+607,15,5,"Le lanceur et un allié se prennent la main,
+ce qui les rend heureux."
+607,15,6,"Der Anwender und ein Mitstreiter reichen
+einander die Hände und verfallen in einen
+Zustand tiefster Zufriedenheit."
+607,15,7,"El Pokémon le da la mano a un aliado y ambos se
+sienten muy felices."
+607,15,8,"Il Pokémon che la usa e un alleato si prendono
+per mano e fanno salti di gioia."
+607,15,9,"The user and an ally hold hands.
+This makes them very happy."
+607,15,11,"味方の　ポケモン　同士が
+手をつなぐ。　とっても　幸せな
+気持ちに　なれる。"
 608,15,1,"つぶらなひとみで　あいてを　みつめて
 こうげきを　さげる。
 かならず　せんせい　こうげき　できる。"
@@ -27968,6 +28033,49 @@ of the damage taken by the target."
 613,15,11,"ねらいを　定めた　相手から　ＨＰを
 吸い取る。与えた　ダメージの
 半分以上　ＨＰを　回復する。"
+614,15,1,"ういている　ポケモンにも　あたる。
+ういていた　あいては
+うちおとされて　じめんに　おちる。"
+614,15,3,"떠 있는 포켓몬도 맞힐 수 있다.
+떠 있던 상대는
+맞아서 땅에 떨어진다."
+614,15,5,"Touche même les Pokémon dans les airs.
+Dans ce cas, la cible retombe au sol."
+614,15,6,"Die Attacke erfasst auch schwebende Pokémon.
+Erfasst sie ein Pokémon im Schwebe-Zustand,
+fällt es zu Boden."
+614,15,7,"Acierta incluso a Pokémon que estén en el aire
+y los hace caer al suelo."
+614,15,8,"Colpisce anche i Pokémon che fluttuano in aria.
+I nemici nei paraggi vengono scaraventati a terra."
+614,15,9,"This move also hits opposing Pokémon
+that are in the air. Those Pokémon are
+knocked down to the ground."
+614,15,11,"浮いている　ポケモンにも　当たる。
+浮いていた　相手は
+撃ち落とされて　地面に　落ちる。"
+615,15,1,"ちをはう　なみによって　こうげき。
+なみに　まきこまれた　あいては
+せんとうから　にげられなくなる。"
+615,15,3,"땅 위를 뻗어 나가는 파도로 공격한다.
+파도에 휩쓸린 상대는
+전투에서 도망칠 수 없게 된다."
+615,15,5,"Attaque avec des vagues glissant au sol.
+L’ennemi pris dedans ne peut pas s’échapper."
+615,15,6,"Der Anwender greift mit einer Welle an, die dicht
+über dem Boden verläuft und alle Pokémon,
+die sie erfasst, an der Flucht hindert."
+615,15,7,"El usuario genera ondas sísmicas que se propagan
+por el suelo y sacuden a los oponentes. Los
+Pokémon alcanzados no podrán huir del combate."
+615,15,8,"Un’onda strisciante investe i nemici intorno
+impedendo loro di fuggire."
+615,15,9,"The user attacks with a wave
+that crawls along the ground.
+Those hit can’t flee from battle."
+615,15,11,"地をはう　波によって　攻撃。
+波に　巻き込まれた　相手は
+戦闘から　逃げられなくなる。"
 616,15,1,"だいちの　パワーを　あつめ
 ちからを　あいてに　しゅうちゅう
 させて　ダメージを　あたえる。"
@@ -27990,3 +28098,27 @@ Pokémon to damage them."
 616,15,11,"大地の　パワーを　集め
 力を　相手に　集中させて
 ダメージを　与える。"
+617,15,1,"えいえんのはな　の　パワーを　かりて
+きょうりょくな　こうせんを　うちだす。
+じぶんも　かなりの　ダメージを　うける。"
+617,15,3,"영원의 꽃의 파워를 빌려서
+강력한 광선을 쏜다.
+자신도 상당한 데미지를 입는다."
+617,15,5,"Utilise la puissance de la Fleur Éternelle pour
+lancer un formidable rayon d’énergie.
+Blesse aussi gravement le lanceur."
+617,15,6,"Die Attacke basiert auf der Kraft des Ewigblütlers,
+die als mächtiger Lichtstrahl abgefeuert wird.
+Der Anwender nimmt dabei selbst großen Schaden."
+617,15,7,"El usuario emplea el poder de la Flor Eterna para
+lanzar un potente rayo de luz, pero sufre bastante
+daño al hacerlo."
+617,15,8,"Concentra il potere del Fiore Eterno in un raggio
+di luce potentissimo con cui attacca il bersaglio.
+Causa danni ingenti anche a chi la usa."
+617,15,9,"Drawing power from the Eternal Flower,
+the user fires a powerful beam of light.
+This also damages the user quite a lot."
+617,15,11,"永遠の花　の　パワーを　かりて
+強力な　光線を　撃ちだす。
+自分も　かなりの　ダメージを　受ける。"

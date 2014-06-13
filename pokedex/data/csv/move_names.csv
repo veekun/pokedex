@@ -4136,6 +4136,20 @@ move_id,local_language_id,name
 591,7,Torm. Diamantes
 591,8,Diamantempesta
 591,9,Diamond Storm
+592,1,スチームバースト
+592,3,스팀버스트
+592,5,Jet de Vapeur
+592,6,Dampfschwall
+592,7,Chorro de Vapor
+592,8,Vaporscoppio
+592,9,Steam Eruption
+593,1,いじげんホール
+593,3,다른차원홀
+593,5,TrouDimensionnel
+593,6,Dimensionsloch
+593,7,Paso Dimensional
+593,8,Forodimensionale
+593,9,Hyperspace Hole
 594,1,みずしゅりけん
 594,3,물수리검
 594,5,Sheauriken
@@ -4227,6 +4241,13 @@ move_id,local_language_id,name
 606,7,Celebración
 606,8,Auguri
 606,9,Celebrate
+607,1,てをつなぐ
+607,3,손에손잡기
+607,5,Mains Jointes
+607,6,Händchenhalten
+607,7,Manos Juntas
+607,8,Mano nella Mano
+607,9,Hold Hands
 608,1,つぶらなひとみ
 608,3,초롱초롱눈동자
 608,5,Regard Touchant
@@ -4269,6 +4290,20 @@ move_id,local_language_id,name
 613,7,Ala Mortífera
 613,8,Ali del Fato
 613,9,Oblivion Wing
+614,1,サウザンアロー
+614,3,사우전드애로
+614,5,Myria-Flèches
+614,6,Tausend Pfeile
+614,7,Mil Flechas
+614,8,Mille Frecce
+614,9,Thousand Arrows
+615,1,サウザンウェーブ
+615,3,사우전드웨이브
+615,5,Myria-Vagues
+615,6,Tausend Wellen
+615,7,Mil Temblores
+615,8,Mille Onde
+615,9,Thousand Waves
 616,1,グランドフォース
 616,3,그라운드포스
 616,5,Force Chtonienne
@@ -4276,6 +4311,13 @@ move_id,local_language_id,name
 616,7,Fuerza Telúrica
 616,8,Forza Tellurica
 616,9,Land's Wrath
+617,1,はめつのひかり
+617,3,파멸의빛
+617,5,Lumière du Néant
+617,6,Lux Calamitatis
+617,7,Luz Aniquiladora
+617,8,Luce Nefasta
+617,9,Light of Ruin
 10001,1,ダークラッシュ
 10001,5,Charge Noire
 10001,6,Cryptoschlag
