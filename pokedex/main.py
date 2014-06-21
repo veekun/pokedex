@@ -2,11 +2,17 @@
 from optparse import OptionParser
 import os
 import sys
+import textwrap
+import json
+import base64
+import ast
+import pprint
 
 import pokedex.db
 import pokedex.db.load
 import pokedex.db.tables
 import pokedex.lookup
+import pokedex.struct
 from pokedex import defaults
 
 def main(*argv):
@@ -266,6 +272,117 @@ def command_lookup(*args):
             print
 
 
+def command_pkm(*args):
+    if args and args[0] == 'encode':
+        mode = 'encode'
+    elif args and args[0] == 'decode':
+        mode = 'decode'
+    else:
+        print textwrap.dedent(u"""
+            Convert binary Pokémon data (aka PKM files) to/from JSON/YAML.
+            usage: pokedex pkm (encode|decode) [options] <file> ...
+
+            Commands:
+                encode         Convert a JSON or YAML representation of a
+                               Pokémon to the binary format.
+                decode         Convert the binary format to a JSON/YAML
+                               representation.
+
+            Options:
+                --gen=NUM, -g  Generation to use (4 or 5)
+                --format=FORMAT, -f FORMAT
+                               Select the human-readable format to use.
+                               FORMAT can be:
+                               json (default): use JSON.
+                               yaml: use YAML. Needs the PyYAML library
+                                   installed.
+                               python: use Python literal syntax
+                --crypt, -c    Use encrypted binary format.
+                --base64, -b   Use Base64 encoding for the binary format.
+                --binary, -B   Output raw binary data. This is the default,
+                               but you need to specify -B explicitly if you're
+                               dumping binary data to a terminal.
+
+            If no files are given, reads from standard input.
+            """).encode(sys.getdefaultencoding(), 'replace')
+        return
+    parser = get_parser(verbose=False)
+    parser.add_option('-g', '--gen', default=5, type=int)
+    parser.add_option('-c', '--crypt', action='store_true')
+    parser.add_option('-f', '--format', default='json')
+    parser.add_option('-b', '--base64', action='store_true', default=None)
+    parser.add_option('-B', '--no-base64', action='store_false', dest='base64')
+    options, files = parser.parse_args(list(args[1:]))
+
+    session = get_session(options)
+    cls = pokedex.struct.save_file_pokemon_classes[options.gen]
+    if options.format == 'yaml':
+        import yaml
+
+        # Override the default string handling function
+        # to always return unicode objects.
+        # Inspired by http://stackoverflow.com/questions/2890146
+        # This prevents str/unicode SQLAlchemy warnings.
+        def construct_yaml_str(self, node):
+            return self.construct_scalar(node)
+        class UnicodeLoader(yaml.SafeLoader):
+            pass
+        UnicodeLoader.add_constructor(u'tag:yaml.org,2002:str',
+            construct_yaml_str)
+
+    if options.format not in ('yaml', 'json', 'python'):
+        raise parser.error('Bad "format"')
+
+    if mode == 'encode' and options.base64 is None:
+        try:
+            isatty = sys.stdout.isatty
+        except AttributeError:
+            pass
+        else:
+            if isatty():
+                parser.error('Refusing to dump binary data to terminal. '
+                    'Please use -B to override, or -b for base64.')
+
+    if not files:
+        # Use sys.stdin in place of name, handle specially later
+        files = [sys.stdin]
+
+    for filename in files:
+        if filename is sys.stdin:
+            content = sys.stdin.read()
+        else:
+            with open(filename) as f:
+                content = f.read()
+        if mode == 'encode':
+            if options.format == 'yaml':
+                dict_ = yaml.load(content, Loader=UnicodeLoader)
+            elif options.format == 'json':
+                dict_ = json.loads(content)
+            elif options.format == 'python':
+                dict_ = ast.literal_eval(content)
+            struct = cls(session=session, dict_=dict_)
+            if options.crypt:
+                data = struct.as_encrypted
+            else:
+                data = struct.as_struct
+            if options.base64:
+                print base64.b64encode(data)
+            else:
+                sys.stdout.write(data)
+        else:
+            if options.base64:
+                content = base64.b64decode(content)
+            struct = cls(
+                blob=content, encrypted=options.crypt, session=session)
+            dict_ = struct.export_dict()
+            if options.format == 'yaml':
+                print yaml.safe_dump(dict_, explicit_start=True),
+            elif options.format == 'json':
+                print json.dumps(dict_),
+            elif options.format == 'python':
+                pprint.pprint(dict_)
+
+
 def command_help():
     print u"""pokedex -- a command-line Pokédex interface
 usage: pokedex {command} [options...]
@@ -275,6 +392,7 @@ See https://github.com/veekun/pokedex/wiki/CLI for more documentation.
 Commands:
     help                Displays this message.
     lookup [thing]      Look up something in the Pokédex.
+    pkm                 Binary Pokémon format encoding/decoding. (experimental)
 
 System commands:
     load                Load Pokédex data into a database from CSV files.

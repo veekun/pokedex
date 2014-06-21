@@ -17,8 +17,40 @@ from construct import *
 # - higher-level validation; see XXXes below
 # - personality indirectly influences IVs due to PRNG use
 
+pokemon_forms = {
+    # Unown
+    201: list('abcdefghijklmnopqrstuvwxyz') + ['exclamation', 'question'],
+
+    # Deoxys
+    386: ['normal', 'attack', 'defense', 'speed'],
+
+    # Burmy and Wormadam
+    412: ['plant', 'sandy', 'trash'],
+    413: ['plant', 'sandy', 'trash'],
+
+    # Shellos and Gastrodon
+    422: ['west', 'east'],
+    423: ['west', 'east'],
+
+    # Rotom
+    479: ['normal', 'heat', 'wash', 'frost', 'fan', 'mow'],
+
+    # Giratina
+    487: ['altered', 'origin'],
+
+    # Shaymin
+    492: ['land', 'sky'],
+
+    # Arceus
+    493: [
+        'normal', 'fighting', 'flying', 'poison', 'ground', 'rock',
+        'bug', 'ghost', 'steel', 'fire', 'water', 'grass',
+        'thunder', 'psychic', 'ice', 'dragon', 'dark', 'unknown',
+    ],
+}
+
 # The entire gen 4 character table:
-character_table = {
+character_table_gen4 = {
     0x0002: u'ぁ',
     0x0003: u'あ',
     0x0004: u'ぃ',
@@ -465,10 +497,64 @@ character_table = {
     0x25bd: u'\r',
 }
 
-# And the reverse dict, used with str.translate()
-inverse_character_table = dict()
-for in_, out in character_table.iteritems():
-    inverse_character_table[ord(out)] = in_
+# Generation 5 uses UCS-16, with a few exceptions
+character_table_gen5 = {
+    # Here nintendo just didn't do their homework:
+    0x247d: u'☂',
+    0x247b: u'☁',
+    0x247a: u'☀',
+    0x2479: u'♪',
+    0x2478: u'◇',
+    0x2477: u'△',
+    0x2476: u'□',
+    0x2475: u'○',
+    0x2474: u'◎',
+    0x2473: u'★',
+    0x2472: u'♦',
+    0x2471: u'♥',
+    0x2470: u'♣',
+    0x246f: u'♠',
+    0x246e: u'♀',
+    0x246d: u'♂',
+    0x246c: u'…',
+    0x2468: u'÷',
+    0x2467: u'×',
+    0x21d4: u'⤴',
+    0x2200: u'⤵',
+
+    # These aren't direct equivalents, but better than nothing:
+    0x0024: u'$',  # pokémoney sign
+    0x21d2: u'☹',  # frowny face
+    0x2203: u'ℤ',  # ZZ ligature
+    0x2227: u'☺',  # smiling face
+    0x2228: u'😁',  # grinning face
+    0xffe2: u'😭',  # hurt face
+
+    # The following duplicates & weird characters get to keep their positions
+    # ①..⑦
+    # 0x2460: halfwidth smiling face
+    # 0x2461: grinning face
+    # 0x2462: hurt face
+    # 0x2463: frowny face
+    # 0x2464: ⤴
+    # 0x2465: ⤵
+    # 0x2466: ZZ ligature
+    # ⑩..⑫
+    # 0x2469: superscript er
+    # 0x246a: superscript re
+    # 0x246b: superscript r
+    # ⑾..⒇
+    # 0x247e: halfwidth smiling face
+    # 0x247f: halfwidth grinning face
+    # 0x2480: halfwidth hurt face
+    # 0x2481: halfwidth frowny face
+    # 0x2482: halfwidth ⤴
+    # 0x2483: halfwidth ⤵
+    # 0x2484: halfwidth ZZ ligature
+    # 0x2485: superscript e
+    # 0x2486: PK ligature
+    # 0x2487: MN ligature
+}
 
 
 def LittleEndianBitStruct(*args):
@@ -487,25 +573,64 @@ def LittleEndianBitStruct(*args):
         resizer=lambda _: _,
     )
 
+
+class StringWithOriginal(unicode):
+    pass
+
+
 class PokemonStringAdapter(Adapter):
-    u"""Adapter that encodes/decodes Pokémon-formatted text stored in a regular
-    String struct.
+    u"""Base adapter for names
+
+    Encodes/decodes Pokémon-formatted text stored in a regular String struct.
+
+    Returns an unicode subclass that has an ``original`` attribute with the
+    original unencoded value, complete with trash bytes.
+    On write, if the ``original`` is found, it is written with no regard to the
+    string value.
+    This ensures the trash bytes get written back untouched if the string is
+    unchanged.
     """
+    def __init__(self, field, length):
+        super(PokemonStringAdapter, self).__init__(field)
+        self.length = length
+
     def _decode(self, obj, context):
         decoded_text = obj.decode('utf16')
 
         # Real string ends at the \uffff character
         if u'\uffff' in decoded_text:
             decoded_text = decoded_text[0:decoded_text.index(u'\uffff')]
-            # XXX save "trash bytes" somewhere..?
 
-        return decoded_text.translate(character_table)
+        result = StringWithOriginal(
+            decoded_text.translate(self.character_table))
+        result.original = obj  # save original with "trash bytes"
+        return result
 
     def _encode(self, obj, context):
-        #padded_text = (obj + u'\xffff' + '\x00' * 12)
-        padded_text = obj
-        decoded_text = padded_text.translate(inverse_character_table)
-        return decoded_text.encode('utf16')
+        try:
+            original = obj.original
+        except AttributeError:
+            length = self.length
+            padded_text = (obj + u'\uffff' + '\x00' * length)
+            decoded_text = padded_text.translate(self.inverse_character_table)
+            return decoded_text.encode('utf-16LE')[:length]
+        else:
+            if self._decode(original, context) != obj:
+                raise ValueError("String and original don't match")
+            return original
+
+
+def make_pokemon_string_adapter(table, generation):
+    class _SpecificAdapter(PokemonStringAdapter):
+        character_table = table
+        inverse_character_table = dict((ord(v), k) for k, v in
+            table.iteritems())
+    _SpecificAdapter.__name__ = 'PokemonStringAdapterGen%s' % generation
+    return _SpecificAdapter
+
+PokemonStringAdapterGen4 = make_pokemon_string_adapter(character_table_gen4, 4)
+PokemonStringAdapterGen5 = make_pokemon_string_adapter(character_table_gen5, 5)
+
 
 class DateAdapter(Adapter):
     """Converts between a three-byte string and a Python date.
@@ -527,289 +652,271 @@ class DateAdapter(Adapter):
         y, m, d = obj.year - 2000, obj.month, obj.day
         return ''.join(chr(n) for n in (y, m, d))
 
-class PokemonFormAdapter(Adapter):
-    """Converts form ids to form names, and vice versa."""
-    pokemon_forms = {
-        # Unown
-        201: 'abcdefghijklmnopqrstuvwxyz!?',
-
-        # Deoxys
-        386: ['normal', 'attack', 'defense', 'speed'],
-
-        # Burmy and Wormadam
-        412: ['plant', 'sandy', 'trash'],
-        413: ['plant', 'sandy', 'trash'],
-
-        # Shellos and Gastrodon
-        422: ['west', 'east'],
-        423: ['west', 'east'],
-
-        # Rotom
-        479: ['normal', 'heat', 'wash', 'frost', 'fan', 'cut'],
-
-        # Giratina
-        487: ['altered', 'origin'],
-
-        # Shaymin
-        492: ['land', 'sky'],
-
-        # Arceus
-        493: [
-            'normal', 'fighting', 'flying', 'poison', 'ground', 'rock',
-            'bug', 'ghost', 'steel', 'fire', 'water', 'grass',
-            'thunder', 'psychic', 'ice', 'dragon', 'dark', '???',
-        ],
-    }
-
-    def _decode(self, obj, context):
-        try:
-            forms = self.pokemon_forms[ context['national_id'] ]
-        except KeyError:
-            return None
-
-        return forms[obj >> 3]
+class LeakyEnum(Adapter):
+    """An Enum that allows unknown values"""
+    def __init__(self, sub, **values):
+        super(LeakyEnum, self).__init__(sub)
+        self.values = values
+        self.inverted_values = dict((v, k) for k, v in values.items())
+        assert len(values) == len(self.inverted_values)
 
     def _encode(self, obj, context):
-        try:
-            forms = self.pokemon_forms[ context['national_id'] ]
-        except KeyError:
-            return None
+        return self.values.get(obj, obj)
 
-        return forms.index(obj) << 3
+    def _decode(self, obj, context):
+        return self.inverted_values.get(obj, obj)
 
 
-
-# And here we go.
 # Docs: http://projectpokemon.org/wiki/Pokemon_NDS_Structure
-pokemon_struct = Struct('pokemon_struct',
-    # Header
-    ULInt32('personality'),  # XXX aughgh http://bulbapedia.bulbagarden.net/wiki/Personality
-    Padding(2),
-    ULInt16('checksum'),  # XXX should be checked or calculated
+# http://projectpokemon.org/wiki/Pokemon_Black/White_NDS_Structure
+# http://projectpokemon.org/forums/showthread.php?11474-Hex-Values-and-Trashbytes-in-B-W#post93598
 
-    # Block A
-    ULInt16('national_id'),
-    ULInt16('held_item_id'),
-    ULInt16('original_trainer_id'),
-    ULInt16('original_trainer_secret_id'),
-    ULInt32('exp'),
-    ULInt8('happiness'),
-    ULInt8('ability_id'),  # XXX needs to match personality + species
-    BitStruct('markings',
-        Padding(2),
-        Flag('diamond'),
-        Flag('star'),
-        Flag('heart'),
-        Flag('square'),
-        Flag('triangle'),
-        Flag('circle'),
-    ),
-    Enum(
-        ULInt8('original_country'),
-        jp=1,
-        us=2,
-        fr=3,
-        it=4,
-        de=5,
-        es=7,
-        kr=8,
-    ),
+def make_pokemon_struct(generation):
+    """Make a pokemon struct class for the given generation
+    """
+    leaves_or_nature = {
+        4: BitStruct('shining_leaves',
+                Padding(2),
+                Flag('crown'),
+                Flag('leaf5'),
+                Flag('leaf4'),
+                Flag('leaf3'),
+                Flag('leaf2'),
+                Flag('leaf1'),
+            ),
+        5: ULInt8('nature_id'),
+    }[generation]
 
-    # XXX sum cannot surpass 510
-    ULInt8('effort_hp'),
-    ULInt8('effort_attack'),
-    ULInt8('effort_defense'),
-    ULInt8('effort_speed'),
-    ULInt8('effort_special_attack'),
-    ULInt8('effort_special_defense'),
+    hidden_ability_with_padding = {
+        4: ULInt16('trash_1'),
+        5: Embed(Struct('', Flag('hidden_ability'), ULInt8('trash_1'))),
+    }[generation]
 
-    ULInt8('contest_cool'),
-    ULInt8('contest_beauty'),
-    ULInt8('contest_cute'),
-    ULInt8('contest_smart'),
-    ULInt8('contest_tough'),
-    ULInt8('contest_sheen'),
+    PokemonStringAdapter = {
+        4: PokemonStringAdapterGen4,
+        5: PokemonStringAdapterGen5,
+    }[generation]
 
-    LittleEndianBitStruct('sinnoh_ribbons',
-        Padding(4),
-        Flag('premier_ribbon'),
-        Flag('classic_ribbon'),
-        Flag('carnival_ribbon'),
-        Flag('festival_ribbon'),
-        Flag('blue_ribbon'),
-        Flag('green_ribbon'),
-        Flag('red_ribbon'),
-        Flag('legend_ribbon'),
-        Flag('history_ribbon'),
-        Flag('record_ribbon'),
-        Flag('footprint_ribbon'),
-        Flag('gorgeous_royal_ribbon'),
-        Flag('royal_ribbon'),
-        Flag('gorgeous_ribbon'),
-        Flag('smile_ribbon'),
-        Flag('snooze_ribbon'),
-        Flag('relax_ribbon'),
-        Flag('careless_ribbon'),
-        Flag('downcast_ribbon'),
-        Flag('shock_ribbon'),
-        Flag('alert_ribbon'),
-        Flag('world_ability_ribbon'),
-        Flag('pair_ability_ribbon'),
-        Flag('multi_ability_ribbon'),
-        Flag('double_ability_ribbon'),
-        Flag('great_ability_ribbon'),
-        Flag('ability_ribbon'),
-        Flag('sinnoh_champ_ribbon'),
-    ),
+    return Struct('pokemon_struct',
+        # Header
+        ULInt32('personality'),  # XXX aughgh http://bulbapedia.bulbagarden.net/wiki/Personality
+        ULInt16('trash_0'),
+        ULInt16('checksum'),  # XXX should be checked or calculated
 
-    # Block B
-    ULInt16('move1_id'),
-    ULInt16('move2_id'),
-    ULInt16('move3_id'),
-    ULInt16('move4_id'),
-    ULInt8('move1_pp'),
-    ULInt8('move2_pp'),
-    ULInt8('move3_pp'),
-    ULInt8('move4_pp'),
-    ULInt8('move1_pp_ups'),
-    ULInt8('move2_pp_ups'),
-    ULInt8('move3_pp_ups'),
-    ULInt8('move4_pp_ups'),
-
-    LittleEndianBitStruct('ivs',
-        Flag('is_nicknamed'),
-        Flag('is_egg'),
-        BitField('iv_special_defense', 5),
-        BitField('iv_special_attack', 5),
-        BitField('iv_speed', 5),
-        BitField('iv_defense', 5),
-        BitField('iv_attack', 5),
-        BitField('iv_hp', 5),
-    ),
-    LittleEndianBitStruct('hoenn_ribbons',
-        Flag('world_ribbon'),
-        Flag('earth_ribbon'),
-        Flag('national_ribbon'),
-        Flag('country_ribbon'),
-        Flag('sky_ribbon'),
-        Flag('land_ribbon'),
-        Flag('marine_ribbon'),
-        Flag('effort_ribbon'),
-        Flag('artist_ribbon'),
-        Flag('victory_ribbon'),
-        Flag('winning_ribbon'),
-        Flag('champion_ribbon'),
-        Flag('tough_ribbon_master'),
-        Flag('tough_ribbon_hyper'),
-        Flag('tough_ribbon_super'),
-        Flag('tough_ribbon'),
-        Flag('smart_ribbon_master'),
-        Flag('smart_ribbon_hyper'),
-        Flag('smart_ribbon_super'),
-        Flag('smart_ribbon'),
-        Flag('cute_ribbon_master'),
-        Flag('cute_ribbon_hyper'),
-        Flag('cute_ribbon_super'),
-        Flag('cute_ribbon'),
-        Flag('beauty_ribbon_master'),
-        Flag('beauty_ribbon_hyper'),
-        Flag('beauty_ribbon_super'),
-        Flag('beauty_ribbon'),
-        Flag('cool_ribbon_master'),
-        Flag('cool_ribbon_hyper'),
-        Flag('cool_ribbon_super'),
-        Flag('cool_ribbon'),
-    ),
-    EmbeddedBitStruct(
-        PokemonFormAdapter(BitField('alternate_form', 5)),
-        Enum(BitField('gender', 2),
-            genderless = 2,
-            male = 0,
-            female = 1,
+        # Block A
+        ULInt16('national_id'),
+        ULInt16('held_item_id'),
+        ULInt16('original_trainer_id'),
+        ULInt16('original_trainer_secret_id'),
+        ULInt32('exp'),
+        ULInt8('happiness'),
+        ULInt8('ability_id'),  # XXX needs to match personality + species
+        BitStruct('markings',
+            Padding(2),
+            Flag('diamond'),
+            Flag('star'),
+            Flag('heart'),
+            Flag('square'),
+            Flag('triangle'),
+            Flag('circle'),
         ),
-        Flag('fateful_encounter'),
-    ),
-    BitStruct('shining_leaves',
-        Padding(2),
-        Flag('crown'),
-        Flag('leaf5'),
-        Flag('leaf4'),
-        Flag('leaf3'),
-        Flag('leaf2'),
-        Flag('leaf1'),
-    ),
-    Padding(2),
-    ULInt16('pt_egg_location_id'),
-    ULInt16('pt_met_location_id'),
-
-    # Block C
-    PokemonStringAdapter(String('nickname', 22)),
-    Padding(1),
-    Enum(ULInt8('original_version'),
-        sapphire = 1,
-        ruby = 2,
-        emerald = 3,
-        firered = 4,
-        leafgreen = 5,
-        heartgold = 7,
-        soulsilver = 8,
-        diamond = 10,
-        pearl = 11,
-        platinum = 12,
-        orre = 15,
-    ),
-    LittleEndianBitStruct('sinnoh_contest_ribbons',
-        Padding(12),
-        Flag('tough_ribbon_master'),
-        Flag('tough_ribbon_ultra'),
-        Flag('tough_ribbon_great'),
-        Flag('tough_ribbon'),
-        Flag('smart_ribbon_master'),
-        Flag('smart_ribbon_ultra'),
-        Flag('smart_ribbon_great'),
-        Flag('smart_ribbon'),
-        Flag('cute_ribbon_master'),
-        Flag('cute_ribbon_ultra'),
-        Flag('cute_ribbon_great'),
-        Flag('cute_ribbon'),
-        Flag('beauty_ribbon_master'),
-        Flag('beauty_ribbon_ultra'),
-        Flag('beauty_ribbon_great'),
-        Flag('beauty_ribbon'),
-        Flag('cool_ribbon_master'),
-        Flag('cool_ribbon_ultra'),
-        Flag('cool_ribbon_great'),
-        Flag('cool_ribbon'),
-    ),
-    Padding(4),
-
-    # Block D
-    PokemonStringAdapter(String('original_trainer_name', 16)),
-    DateAdapter(String('date_egg_received', 3)),
-    DateAdapter(String('date_met', 3)),
-    ULInt16('dp_egg_location_id'),
-    ULInt16('dp_met_location_id'),
-    ULInt8('pokerus'),
-    ULInt8('dppt_pokeball'),
-    EmbeddedBitStruct(
-        Enum(Flag('original_trainer_gender'),
-            male = False,
-            female = True,
+        LeakyEnum(ULInt8('original_country'),
+            jp=1,
+            us=2,
+            fr=3,
+            it=4,
+            de=5,
+            es=7,
+            kr=8,
         ),
-        BitField('met_at_level', 7),
-    ),
-    Enum(ULInt8('encounter_type'),
-        special = 0,        # egg; pal park; event; honey tree; shaymin
-        grass = 2,          # or darkrai
-        dialga_palkia = 4,
-        cave = 5,           # or giratina or hall of origin
-        water = 7,
-        building = 9,
-        safari_zone = 10,   # includes great marsh
-        gift = 12,          # starter; fossil; ingame trade?
-        # distortion_world = ???,
-        hgss_gift = 24,     # starter; fossil; bebe's eevee  (pt only??)
-    ),
-    ULInt8('hgss_pokeball'),
-    Padding(1),
-)
+
+        # XXX sum cannot surpass 510
+        ULInt8('effort_hp'),
+        ULInt8('effort_attack'),
+        ULInt8('effort_defense'),
+        ULInt8('effort_speed'),
+        ULInt8('effort_special_attack'),
+        ULInt8('effort_special_defense'),
+
+        ULInt8('contest_cool'),
+        ULInt8('contest_beauty'),
+        ULInt8('contest_cute'),
+        ULInt8('contest_smart'),
+        ULInt8('contest_tough'),
+        ULInt8('contest_sheen'),
+
+        LittleEndianBitStruct('sinnoh_ribbons',
+            Padding(4),
+            Flag('premier_ribbon'),
+            Flag('classic_ribbon'),
+            Flag('carnival_ribbon'),
+            Flag('festival_ribbon'),
+            Flag('blue_ribbon'),
+            Flag('green_ribbon'),
+            Flag('red_ribbon'),
+            Flag('legend_ribbon'),
+            Flag('history_ribbon'),
+            Flag('record_ribbon'),
+            Flag('footprint_ribbon'),
+            Flag('gorgeous_royal_ribbon'),
+            Flag('royal_ribbon'),
+            Flag('gorgeous_ribbon'),
+            Flag('smile_ribbon'),
+            Flag('snooze_ribbon'),
+            Flag('relax_ribbon'),
+            Flag('careless_ribbon'),
+            Flag('downcast_ribbon'),
+            Flag('shock_ribbon'),
+            Flag('alert_ribbon'),
+            Flag('world_ability_ribbon'),
+            Flag('pair_ability_ribbon'),
+            Flag('multi_ability_ribbon'),
+            Flag('double_ability_ribbon'),
+            Flag('great_ability_ribbon'),
+            Flag('ability_ribbon'),
+            Flag('sinnoh_champ_ribbon'),
+        ),
+
+        # Block B
+        ULInt16('move1_id'),
+        ULInt16('move2_id'),
+        ULInt16('move3_id'),
+        ULInt16('move4_id'),
+        ULInt8('move1_pp'),
+        ULInt8('move2_pp'),
+        ULInt8('move3_pp'),
+        ULInt8('move4_pp'),
+        ULInt8('move1_pp_ups'),
+        ULInt8('move2_pp_ups'),
+        ULInt8('move3_pp_ups'),
+        ULInt8('move4_pp_ups'),
+
+        Embed(LittleEndianBitStruct('ivs',
+            Flag('is_nicknamed'),
+            Flag('is_egg'),
+            BitField('iv_special_defense', 5),
+            BitField('iv_special_attack', 5),
+            BitField('iv_speed', 5),
+            BitField('iv_defense', 5),
+            BitField('iv_attack', 5),
+            BitField('iv_hp', 5),
+        )),
+        LittleEndianBitStruct('hoenn_ribbons',
+            Flag('world_ribbon'),
+            Flag('earth_ribbon'),
+            Flag('national_ribbon'),
+            Flag('country_ribbon'),
+            Flag('sky_ribbon'),
+            Flag('land_ribbon'),
+            Flag('marine_ribbon'),
+            Flag('effort_ribbon'),
+            Flag('artist_ribbon'),
+            Flag('victory_ribbon'),
+            Flag('winning_ribbon'),
+            Flag('champion_ribbon'),
+            Flag('tough_ribbon_master'),
+            Flag('tough_ribbon_hyper'),
+            Flag('tough_ribbon_super'),
+            Flag('tough_ribbon'),
+            Flag('smart_ribbon_master'),
+            Flag('smart_ribbon_hyper'),
+            Flag('smart_ribbon_super'),
+            Flag('smart_ribbon'),
+            Flag('cute_ribbon_master'),
+            Flag('cute_ribbon_hyper'),
+            Flag('cute_ribbon_super'),
+            Flag('cute_ribbon'),
+            Flag('beauty_ribbon_master'),
+            Flag('beauty_ribbon_hyper'),
+            Flag('beauty_ribbon_super'),
+            Flag('beauty_ribbon'),
+            Flag('cool_ribbon_master'),
+            Flag('cool_ribbon_hyper'),
+            Flag('cool_ribbon_super'),
+            Flag('cool_ribbon'),
+        ),
+        Embed(EmbeddedBitStruct(
+            BitField('alternate_form_id', 5),
+            Enum(BitField('gender', 2),
+                genderless = 2,
+                male = 0,
+                female = 1,
+            ),
+            Flag('fateful_encounter'),
+        )),
+        leaves_or_nature,
+        hidden_ability_with_padding,
+        ULInt16('pt_egg_location_id'),
+        ULInt16('pt_met_location_id'),
+
+        # Block C
+        PokemonStringAdapter(String('nickname', 22), 22),
+        ULInt8('trash_2'),
+        LeakyEnum(ULInt8('original_version'),
+            sapphire = 1,
+            ruby = 2,
+            emerald = 3,
+            firered = 4,
+            leafgreen = 5,
+            heartgold = 7,
+            soulsilver = 8,
+            diamond = 10,
+            pearl = 11,
+            platinum = 12,
+            orre = 15,
+        ),
+        LittleEndianBitStruct('sinnoh_contest_ribbons',
+            Padding(12),
+            Flag('tough_ribbon_master'),
+            Flag('tough_ribbon_ultra'),
+            Flag('tough_ribbon_great'),
+            Flag('tough_ribbon'),
+            Flag('smart_ribbon_master'),
+            Flag('smart_ribbon_ultra'),
+            Flag('smart_ribbon_great'),
+            Flag('smart_ribbon'),
+            Flag('cute_ribbon_master'),
+            Flag('cute_ribbon_ultra'),
+            Flag('cute_ribbon_great'),
+            Flag('cute_ribbon'),
+            Flag('beauty_ribbon_master'),
+            Flag('beauty_ribbon_ultra'),
+            Flag('beauty_ribbon_great'),
+            Flag('beauty_ribbon'),
+            Flag('cool_ribbon_master'),
+            Flag('cool_ribbon_ultra'),
+            Flag('cool_ribbon_great'),
+            Flag('cool_ribbon'),
+        ),
+        ULInt32('trash_3'),
+
+        # Block D
+        PokemonStringAdapter(String('original_trainer_name', 16), 16),
+        DateAdapter(String('date_egg_received', 3)),
+        DateAdapter(String('date_met', 3)),
+        ULInt16('dp_egg_location_id'),
+        ULInt16('dp_met_location_id'),
+        ULInt8('pokerus'),  # Warning : Values changed in gen 5
+        ULInt8('dppt_pokeball'),
+        EmbeddedBitStruct(
+            Enum(Flag('original_trainer_gender'),
+                male = False,
+                female = True,
+            ),
+            BitField('met_at_level', 7),
+        ),
+        LeakyEnum(ULInt8('encounter_type'),
+            special = 0,        # egg; pal park; event; honey tree; shaymin
+            grass = 2,          # or darkrai
+            dialga_palkia = 4,
+            cave = 5,           # or giratina or hall of origin
+            water = 7,
+            building = 9,
+            safari_zone = 10,   # includes great marsh
+            gift = 12,          # starter; fossil; ingame trade?
+            # distortion_world = ???,
+            hgss_gift = 24,     # starter; fossil; bebe's eevee  (pt only??)
+        ),
+        ULInt8('hgss_pokeball'),
+        ULInt8('trash_4'),
+    )
