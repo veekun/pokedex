@@ -2079,6 +2079,17 @@ class TypeEfficacy(TableBase):
     damage_factor = Column(Integer, nullable=False,
         info=dict(description=u"The multiplier, as a percentage of damage inflicted."))
 
+class TypeGameIndex(TableBase):
+    u"""The internal ID number a game uses for a type
+    """
+    __tablename__ = 'type_game_indices'
+    type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, autoincrement=False, nullable=False,
+        info=dict(description=u"The type"))
+    generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, autoincrement=False, nullable=False,
+        info=dict(description=u"The generation"))
+    game_index = Column(Integer, nullable=False,
+        info=dict(description=u"Internal ID of the type in this generation"))
+
 class Version(TableBase):
     u"""An individual main-series Pokémon game."""
     __tablename__ = 'versions'
@@ -2768,6 +2779,12 @@ Type.generation = relationship(Generation,
     backref='types')
 Type.damage_class = relationship(MoveDamageClass,
     backref='types')
+
+TypeGameIndex.type = relationship(Type,
+    innerjoin=True, lazy='joined',
+    backref='game_indices')
+TypeGameIndex.generation = relationship(Generation,
+    innerjoin=True, lazy='joined')
 
 
 Version.generation = association_proxy('version_group', 'generation')
