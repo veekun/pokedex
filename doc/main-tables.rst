@@ -171,6 +171,7 @@ Index maps
 .. dex-table:: PokemonDexNumber
 .. dex-table:: PokemonFormGeneration
 .. dex-table:: PokemonGameIndex
+.. dex-table:: TypeGameIndex
 
 Mics tables
 -----------
