@@ -1393,7 +1393,7 @@ class Nature(TableBase):
     likes_flavor_id = Column(Integer, ForeignKey('contest_types.id'), nullable=False,
         info=dict(description=u"ID of the Berry flavor the Pokémon likes (if hates_flavor_id is the same, the effects cancel out)"))
     game_index = Column(Integer, unique=True, nullable=False,
-        info=dict(description=u"This nature's internal order in the games (starting from 1, not 0)."))
+        info=dict(description=u"This nature's internal ID in the games"))
 
     @property
     def is_neutral(self):
