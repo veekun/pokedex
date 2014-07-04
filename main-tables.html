@@ -56,7 +56,7 @@
 <span id="the-pokedex-tables"></span><h1>The pokédex tables<a class="headerlink" href="#module-pokedex.db.tables" title="Permalink to this headline">¶</a></h1>
 <p>The <a class="reference internal" href="#module-pokedex.db.tables" title="pokedex.db.tables"><tt class="xref py py-mod docutils literal"><span class="pre">pokedex.db.tables</span></tt></a> module defines all of the tables in the Pokédex.
 They are all defined with SQLAlchemy&#8217;s
-<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/extensions/declarative.html#sqlalchemy.ext.declarative" title="(in SQLAlchemy v0.7)"><tt class="xref py py-mod docutils literal"><span class="pre">declarative</span></tt></a> extension.</p>
+<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/extensions/declarative.html#module-sqlalchemy.ext.declarative" title="(in SQLAlchemy v0.9)"><tt class="xref py py-mod docutils literal"><span class="pre">declarative</span></tt></a> extension.</p>
 <p>To introspect the tables programmatically, you can use the following:</p>
 <dl class="data">
 <dt id="pokedex.db.tables.mapped_classes">
@@ -67,7 +67,7 @@ They are all defined with SQLAlchemy&#8217;s
 <dl class="data">
 <dt id="pokedex.db.tables.metadata">
 <tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">metadata</tt><a class="headerlink" href="#pokedex.db.tables.metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>The SQLAlchemy <a class="reference external" href="http://www.sqlalchemy.org/docs/core/schema.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v0.7)"><tt class="xref py py-class docutils literal"><span class="pre">MetaData</span></tt></a> containing all the
+<dd><p>The SQLAlchemy <a class="reference external" href="http://www.sqlalchemy.org/docs/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v0.9)"><tt class="xref py py-class docutils literal"><span class="pre">MetaData</span></tt></a> containing all the
 tables.</p>
 </dd></dl>
 
@@ -234,7 +234,7 @@ but only one for Unown.</p>
 (single: <em>pokemon</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
 <p>Has
-<strong>id</strong>.</p>
+<strong>id</strong> and <strong>identifier</strong>.</p>
 <hr><p>Columns:</p>
 <p>Pokemon.<strong>species</strong> (species_id → <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id)</p>
 <blockquote>
@@ -273,23 +273,29 @@ but only one for Unown.</p>
 (→ <a class="reference internal" href="#pokedex.db.tables.PokemonForm" title="pokedex.db.tables.PokemonForm"><tt class="xref py py-class docutils literal"><span class="pre">PokemonForm</span></tt></a>)</p>
 <blockquote>
 <div>A representative form of this pokémon</div></blockquote>
-<p>Pokemon.<strong>dream_ability</strong>
-(→ <a class="reference internal" href="#pokedex.db.tables.Ability" title="pokedex.db.tables.Ability"><tt class="xref py py-class docutils literal"><span class="pre">Ability</span></tt></a>)</p>
-<blockquote>
-<div><p>The Pokémon&#8217;s Hidden Ability</p>
-<p>Association table: <tt class="docutils literal"><span class="pre">pokemon_abilities</span></tt></p>
-</div></blockquote>
 <p>Pokemon.<strong>encounters</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.Encounter" title="pokedex.db.tables.Encounter"><tt class="xref py py-class docutils literal"><span class="pre">Encounter</span></tt></a>])</p>
 <p>Pokemon.<strong>forms</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.PokemonForm" title="pokedex.db.tables.PokemonForm"><tt class="xref py py-class docutils literal"><span class="pre">PokemonForm</span></tt></a>])</p>
 <blockquote>
 <div>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_forms.&quot;order&quot;</span> <span class="pre">ASC</span></tt>, <tt class="docutils literal"><span class="pre">pokemon_forms.form_identifier</span> <span class="pre">ASC</span></tt></div></blockquote>
+<p>Pokemon.<strong>hidden_ability</strong>
+(→ <a class="reference internal" href="#pokedex.db.tables.Ability" title="pokedex.db.tables.Ability"><tt class="xref py py-class docutils literal"><span class="pre">Ability</span></tt></a>)</p>
+<blockquote>
+<div><p>The Pokémon&#8217;s Hidden Ability</p>
+<p>Association table: <tt class="docutils literal"><span class="pre">pokemon_abilities</span></tt></p>
+</div></blockquote>
 <p>Pokemon.<strong>items</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.PokemonItem" title="pokedex.db.tables.PokemonItem"><tt class="xref py py-class docutils literal"><span class="pre">PokemonItem</span></tt></a>])</p>
 <blockquote>
 <div><p>Info about items this pokémon holds in the wild</p>
 <p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_items.rarity</span> <span class="pre">DESC</span></tt></p>
+</div></blockquote>
+<p>Pokemon.<strong>pokemon_abilities</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.PokemonAbility" title="pokedex.db.tables.PokemonAbility"><tt class="xref py py-class docutils literal"><span class="pre">PokemonAbility</span></tt></a>])</p>
+<blockquote>
+<div><p>All abilities the Pokémon can have, as bridge rows</p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_abilities.slot</span> <span class="pre">ASC</span></tt></p>
 </div></blockquote>
 <p>Pokemon.<strong>pokemon_moves</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.PokemonMove" title="pokedex.db.tables.PokemonMove"><tt class="xref py py-class docutils literal"><span class="pre">PokemonMove</span></tt></a>])</p>
@@ -303,7 +309,14 @@ but only one for Unown.</p>
 <div><p>Association table: <tt class="docutils literal"><span class="pre">pokemon_types</span></tt></p>
 <p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_types.slot</span> <span class="pre">ASC</span></tt></p>
 </div></blockquote>
-<hr><dl class="attribute">
+<hr><dl class="method">
+<dt id="pokedex.db.tables.Pokemon.base_stat">
+<tt class="descname">base_stat</tt><big>(</big><em>stat_identifier</em>, <em>default=0</em><big>)</big><a class="headerlink" href="#pokedex.db.tables.Pokemon.base_stat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return this Pokemon&#8217;s base stat value for the given stat identifier,
+or default if missing.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="pokedex.db.tables.Pokemon.better_damage_class">
 <tt class="descname">better_damage_class</tt><a class="headerlink" href="#pokedex.db.tables.Pokemon.better_damage_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the MoveDamageClass that this Pokémon is best suited for,
@@ -343,7 +356,7 @@ represent their lone &#8220;normal&#8221; form.</p>
 (single: <em>pokemon_form</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
 <p>Has
-<strong>id</strong>.</p>
+<strong>id</strong> and <strong>identifier</strong>.</p>
 <hr><p>Columns:</p>
 <p>PokemonForm.<strong>form_identifier</strong> (<em>unicode – identifier</em>):</p>
 <blockquote>
@@ -360,6 +373,9 @@ represent their lone &#8220;normal&#8221; form.</p>
 <p>PokemonForm.<strong>is_battle_only</strong> (<em>bool</em>):</p>
 <blockquote>
 <div>Set iff the form can only appear in battle.</div></blockquote>
+<p>PokemonForm.<strong>is_mega</strong> (<em>bool</em>):</p>
+<blockquote>
+<div>Records whether this form is a Mega Evolution.</div></blockquote>
 <p>PokemonForm.<strong>form_order</strong> (<em>int</em>):</p>
 <blockquote>
 <div>The order in which forms should be sorted within a species&#8217; forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.  Used in generating <cite>pokemon_forms.order</cite> and <cite>pokemon.order</cite>.</div></blockquote>
@@ -458,21 +474,36 @@ must occur to cause a Pokémon to evolve.</p>
 <p>PokemonEvolution.<strong>known_move</strong> (known_move_id → <a class="reference internal" href="#pokedex.db.tables.Move" title="pokedex.db.tables.Move"><tt class="xref py py-class docutils literal"><span class="pre">Move</span></tt></a>.id)</p>
 <blockquote>
 <div>The ID of the move the Pokémon must know.</div></blockquote>
+<p>PokemonEvolution.<strong>known_move_type</strong> (known_move_type_id → <a class="reference internal" href="#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><tt class="xref py py-class docutils literal"><span class="pre">Type</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of the type the Pokémon must know a move of.</div></blockquote>
 <p>PokemonEvolution.<strong>minimum_happiness</strong> (<em>int</em>):</p>
 <blockquote>
 <div>The minimum happiness value the Pokémon must have.</div></blockquote>
 <p>PokemonEvolution.<strong>minimum_beauty</strong> (<em>int</em>):</p>
 <blockquote>
 <div>The minimum Beauty value the Pokémon must have.</div></blockquote>
+<p>PokemonEvolution.<strong>minimum_affection</strong> (<em>int</em>):</p>
+<blockquote>
+<div>The minimum number of &#8220;affection&#8221; hearts the Pokémon must have in Pokémon-Amie.</div></blockquote>
 <p>PokemonEvolution.<strong>relative_physical_stats</strong> (<em>int</em>):</p>
 <blockquote>
 <div>The required relation between the Pokémon&#8217;s Attack and Defense stats, as sgn(atk-def).</div></blockquote>
 <p>PokemonEvolution.<strong>party_species</strong> (party_species_id → <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id)</p>
 <blockquote>
 <div>The ID of the species that must be present in the party.</div></blockquote>
+<p>PokemonEvolution.<strong>party_type</strong> (party_type_id → <a class="reference internal" href="#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><tt class="xref py py-class docutils literal"><span class="pre">Type</span></tt></a>.id)</p>
+<blockquote>
+<div>The ID of a type that at least one party member must have.</div></blockquote>
 <p>PokemonEvolution.<strong>trade_species</strong> (trade_species_id → <a class="reference internal" href="#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a>.id)</p>
 <blockquote>
 <div>The ID of the species for which this one must be traded.</div></blockquote>
+<p>PokemonEvolution.<strong>needs_overworld_rain</strong> (<em>bool</em>):</p>
+<blockquote>
+<div>True iff it needs to be raining outside of battle.</div></blockquote>
+<p>PokemonEvolution.<strong>turn_upside_down</strong> (<em>bool</em>):</p>
+<blockquote>
+<div>True iff the 3DS needs to be turned upside-down as this Pokémon levels up.</div></blockquote>
 <hr><p>Relationships:</p>
 <p>PokemonEvolution.<strong>trigger</strong>
 (→ <a class="reference internal" href="#pokedex.db.tables.EvolutionTrigger" title="pokedex.db.tables.EvolutionTrigger"><tt class="xref py py-class docutils literal"><span class="pre">EvolutionTrigger</span></tt></a>)</p>
@@ -502,7 +533,7 @@ must occur to cause a Pokémon to evolve.</p>
 <div>ID of the move&#8217;s elemental type</div></blockquote>
 <p>Move.<strong>power</strong> (<em>int</em>):</p>
 <blockquote>
-<div>Base power of the move</div></blockquote>
+<div>Base power of the move, null if it does not have a set base power.</div></blockquote>
 <p>Move.<strong>pp</strong> (<em>int</em>):</p>
 <blockquote>
 <div>Base PP (Power Points) of the move, nullable if not applicable (e.g. Struggle and Shadow moves).</div></blockquote>
@@ -835,6 +866,8 @@ must occur to cause a Pokémon to evolve.</p>
 <div>Association table: <tt class="docutils literal"><span class="pre">conquest_warrior_specialties</span></tt></div></blockquote>
 <p>Type.<strong>damage_efficacies</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.TypeEfficacy" title="pokedex.db.tables.TypeEfficacy"><tt class="xref py py-class docutils literal"><span class="pre">TypeEfficacy</span></tt></a>])</p>
+<p>Type.<strong>game_indices</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.TypeGameIndex" title="pokedex.db.tables.TypeGameIndex"><tt class="xref py py-class docutils literal"><span class="pre">TypeGameIndex</span></tt></a>])</p>
 <p>Type.<strong>move_changelog</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.MoveChangelog" title="pokedex.db.tables.MoveChangelog"><tt class="xref py py-class docutils literal"><span class="pre">MoveChangelog</span></tt></a>])</p>
 <p>Type.<strong>moves</strong>
@@ -868,13 +901,16 @@ must occur to cause a Pokémon to evolve.</p>
 <p>Ability.<strong>generation</strong> (generation_id → <a class="reference internal" href="#pokedex.db.tables.Generation" title="pokedex.db.tables.Generation"><tt class="xref py py-class docutils literal"><span class="pre">Generation</span></tt></a>.id)</p>
 <blockquote>
 <div>The ID of the generation this ability was introduced in</div></blockquote>
-<hr><p>Internationalized strings:</p>
-<p>Ability.<strong>effect</strong> (<em>unicode – markdown</em>) via <em>ability_prose</em></p>
+<p>Ability.<strong>is_main_series</strong> (<em>bool</em>):</p>
 <blockquote>
-<div>A detailed description of this ability&#8217;s effect</div></blockquote>
+<div>True iff the ability exists in the main series.</div></blockquote>
+<hr><p>Internationalized strings:</p>
 <p>Ability.<strong>short_effect</strong> (<em>unicode – markdown</em>) via <em>ability_prose</em></p>
 <blockquote>
 <div>A short summary of this ability&#8217;s effect</div></blockquote>
+<p>Ability.<strong>effect</strong> (<em>unicode – markdown</em>) via <em>ability_prose</em></p>
+<blockquote>
+<div>A detailed description of this ability&#8217;s effect</div></blockquote>
 <hr><p>Relationships:</p>
 <p>Ability.<strong>all_pokemon</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.Pokemon" title="pokedex.db.tables.Pokemon"><tt class="xref py py-class docutils literal"><span class="pre">Pokemon</span></tt></a>])</p>
@@ -892,16 +928,16 @@ must occur to cause a Pokémon to evolve.</p>
 <div><p>Association table: <tt class="docutils literal"><span class="pre">conquest_pokemon_abilities</span></tt></p>
 <p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon_species.conquest_order</span></tt></p>
 </div></blockquote>
-<p>Ability.<strong>dream_pokemon</strong>
+<p>Ability.<strong>flavor_text</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.AbilityFlavorText" title="pokedex.db.tables.AbilityFlavorText"><tt class="xref py py-class docutils literal"><span class="pre">AbilityFlavorText</span></tt></a>])</p>
+<blockquote>
+<div>Ordered by: <tt class="docutils literal"><span class="pre">ability_flavor_text.version_group_id</span></tt></div></blockquote>
+<p>Ability.<strong>hidden_pokemon</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.Pokemon" title="pokedex.db.tables.Pokemon"><tt class="xref py py-class docutils literal"><span class="pre">Pokemon</span></tt></a>])</p>
 <blockquote>
 <div><p>Association table: <tt class="docutils literal"><span class="pre">pokemon_abilities</span></tt></p>
 <p>Ordered by: <tt class="docutils literal"><span class="pre">pokemon.order</span></tt></p>
 </div></blockquote>
-<p>Ability.<strong>flavor_text</strong>
-(→ [<a class="reference internal" href="#pokedex.db.tables.AbilityFlavorText" title="pokedex.db.tables.AbilityFlavorText"><tt class="xref py py-class docutils literal"><span class="pre">AbilityFlavorText</span></tt></a>])</p>
-<blockquote>
-<div>Ordered by: <tt class="docutils literal"><span class="pre">ability_flavor_text.version_group_id</span></tt></div></blockquote>
 <p>Ability.<strong>pokemon</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.Pokemon" title="pokedex.db.tables.Pokemon"><tt class="xref py py-class docutils literal"><span class="pre">Pokemon</span></tt></a>])</p>
 <blockquote>
@@ -959,9 +995,6 @@ must occur to cause a Pokémon to evolve.</p>
 <p>Generation.<strong>main_region</strong> (main_region_id → <a class="reference internal" href="#pokedex.db.tables.Region" title="pokedex.db.tables.Region"><tt class="xref py py-class docutils literal"><span class="pre">Region</span></tt></a>.id)</p>
 <blockquote>
 <div>ID of the region this generation&#8217;s main games take place in</div></blockquote>
-<p>Generation.<strong>canonical_pokedex</strong> (canonical_pokedex_id → <a class="reference internal" href="#pokedex.db.tables.Pokedex" title="pokedex.db.tables.Pokedex"><tt class="xref py py-class docutils literal"><span class="pre">Pokedex</span></tt></a>.id)</p>
-<blockquote>
-<div>ID of the Pokédex this generation&#8217;s main games use by default</div></blockquote>
 <hr><p>Relationships:</p>
 <p>Generation.<strong>abilities</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.Ability" title="pokedex.db.tables.Ability"><tt class="xref py py-class docutils literal"><span class="pre">Ability</span></tt></a>])</p>
@@ -996,14 +1029,11 @@ and Blue) or a single game (such as Yellow.)</p>
 <p>Table name: <em>version_groups</em></p>
 <p>Primary key: <strong>id</strong>.</p>
 <p>Has
-<strong>id</strong>.</p>
+<strong>id</strong> and <strong>identifier</strong>.</p>
 <hr><p>Columns:</p>
 <p>VersionGroup.<strong>generation</strong> (generation_id → <a class="reference internal" href="#pokedex.db.tables.Generation" title="pokedex.db.tables.Generation"><tt class="xref py py-class docutils literal"><span class="pre">Generation</span></tt></a>.id)</p>
 <blockquote>
 <div>The ID of the generation the games in this group belong to.</div></blockquote>
-<p>VersionGroup.<strong>pokedex</strong> (pokedex_id → <a class="reference internal" href="#pokedex.db.tables.Pokedex" title="pokedex.db.tables.Pokedex"><tt class="xref py py-class docutils literal"><span class="pre">Pokedex</span></tt></a>.id)</p>
-<blockquote>
-<div>The ID of the regional Pokédex used in this version group.  Null if not applicable.</div></blockquote>
 <p>VersionGroup.<strong>order</strong> (<em>int</em>):</p>
 <blockquote>
 <div>Order for sorting. Almost by date of release, except similar versions are grouped together.</div></blockquote>
@@ -1018,10 +1048,16 @@ and Blue) or a single game (such as Yellow.)</p>
 (→ [<a class="reference internal" href="#pokedex.db.tables.MoveChangelog" title="pokedex.db.tables.MoveChangelog"><tt class="xref py py-class docutils literal"><span class="pre">MoveChangelog</span></tt></a>])</p>
 <p>VersionGroup.<strong>move_effect_changelog</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.MoveEffectChangelog" title="pokedex.db.tables.MoveEffectChangelog"><tt class="xref py py-class docutils literal"><span class="pre">MoveEffectChangelog</span></tt></a>])</p>
+<p>VersionGroup.<strong>pokedexes</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.Pokedex" title="pokedex.db.tables.Pokedex"><tt class="xref py py-class docutils literal"><span class="pre">Pokedex</span></tt></a>])</p>
+<blockquote>
+<div>Association table: <tt class="docutils literal"><span class="pre">pokedex_version_groups</span></tt></div></blockquote>
 <p>VersionGroup.<strong>pokemon_move_methods</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.PokemonMoveMethod" title="pokedex.db.tables.PokemonMoveMethod"><tt class="xref py py-class docutils literal"><span class="pre">PokemonMoveMethod</span></tt></a>])</p>
 <blockquote>
 <div>Association table: <tt class="docutils literal"><span class="pre">version_group_pokemon_move_methods</span></tt></div></blockquote>
+<p>VersionGroup.<strong>pokemon_moves</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.PokemonMove" title="pokedex.db.tables.PokemonMove"><tt class="xref py py-class docutils literal"><span class="pre">PokemonMove</span></tt></a>])</p>
 <p>VersionGroup.<strong>version_group_move_methods</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.VersionGroupPokemonMoveMethod" title="pokedex.db.tables.VersionGroupPokemonMoveMethod"><tt class="xref py py-class docutils literal"><span class="pre">VersionGroupPokemonMoveMethod</span></tt></a>])</p>
 <p>VersionGroup.<strong>version_group_regions</strong>
@@ -1083,12 +1119,12 @@ and Blue) or a single game (such as Yellow.)</p>
 <blockquote>
 <div>A longer description of the Pokédex</div></blockquote>
 <hr><p>Relationships:</p>
-<p>Pokedex.<strong>canonical_for_generation</strong>
-(→ [<a class="reference internal" href="#pokedex.db.tables.Generation" title="pokedex.db.tables.Generation"><tt class="xref py py-class docutils literal"><span class="pre">Generation</span></tt></a>])</p>
 <p>Pokedex.<strong>version_groups</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.VersionGroup" title="pokedex.db.tables.VersionGroup"><tt class="xref py py-class docutils literal"><span class="pre">VersionGroup</span></tt></a>])</p>
 <blockquote>
-<div>Ordered by: <tt class="docutils literal"><span class="pre">version_groups.&quot;order&quot;</span> <span class="pre">ASC</span></tt></div></blockquote>
+<div><p>Association table: <tt class="docutils literal"><span class="pre">pokedex_version_groups</span></tt></p>
+<p>Ordered by: <tt class="docutils literal"><span class="pre">version_groups.&quot;order&quot;</span> <span class="pre">ASC</span></tt></p>
+</div></blockquote>
 </dd></dl>
 
 </div>
@@ -1248,13 +1284,12 @@ swarm) are thus enough to define a specific encounter.</p>
 <blockquote>
 <div>The maxmum level of the encountered Pokémon</div></blockquote>
 <hr><p>Relationships:</p>
-<p>Encounter.<strong>condition_value_map</strong>
-(→ [<a class="reference internal" href="#pokedex.db.tables.EncounterConditionValueMap" title="pokedex.db.tables.EncounterConditionValueMap"><tt class="xref py py-class docutils literal"><span class="pre">EncounterConditionValueMap</span></tt></a>])</p>
+<p>Encounter.<strong>condition_values</strong>
+(→ [<a class="reference internal" href="#pokedex.db.tables.EncounterConditionValue" title="pokedex.db.tables.EncounterConditionValue"><tt class="xref py py-class docutils literal"><span class="pre">EncounterConditionValue</span></tt></a>])</p>
+<blockquote>
+<div>Association table: <tt class="docutils literal"><span class="pre">encounter_condition_value_map</span></tt></div></blockquote>
 <p>Encounter.<strong>slot</strong>
 (→ <a class="reference internal" href="#pokedex.db.tables.EncounterSlot" title="pokedex.db.tables.EncounterSlot"><tt class="xref py py-class docutils literal"><span class="pre">EncounterSlot</span></tt></a>)</p>
-<hr><p>Association Proxies:</p>
-<p>Encounter.<strong>condition_values</strong>:
-<tt class="docutils literal"><span class="pre">condition_value</span></tt> of <tt class="docutils literal"><span class="pre">self.condition_value_map</span></tt></p>
 </dd></dl>
 
 </div>
@@ -1296,8 +1331,6 @@ swarm) are thus enough to define a specific encounter.</p>
 <hr><p>Relationships:</p>
 <p>EncounterConditionValue.<strong>condition</strong>
 (→ <a class="reference internal" href="#pokedex.db.tables.EncounterCondition" title="pokedex.db.tables.EncounterCondition"><tt class="xref py py-class docutils literal"><span class="pre">EncounterCondition</span></tt></a>)</p>
-<p>EncounterConditionValue.<strong>encounter_map</strong>
-(→ [<a class="reference internal" href="#pokedex.db.tables.EncounterConditionValueMap" title="pokedex.db.tables.EncounterConditionValueMap"><tt class="xref py py-class docutils literal"><span class="pre">EncounterConditionValueMap</span></tt></a>])</p>
 </dd></dl>
 
 </div>
@@ -1312,6 +1345,10 @@ swarm) are thus enough to define a specific encounter.</p>
 <p>Primary key: <strong>id</strong>.</p>
 <p>Has
 <strong>id</strong>, <strong>identifier</strong>, and <strong>name</strong> via <em>encounter_method_prose</em>.</p>
+<hr><p>Columns:</p>
+<p>EncounterMethod.<strong>order</strong> (<em>int</em>):</p>
+<blockquote>
+<div>A good column for sorting on</div></blockquote>
 <hr><p>Relationships:</p>
 <p>EncounterMethod.<strong>slots</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.EncounterSlot" title="pokedex.db.tables.EncounterSlot"><tt class="xref py py-class docutils literal"><span class="pre">EncounterSlot</span></tt></a>])</p>
@@ -1779,6 +1816,9 @@ major ailments like paralysis and minor ailments like trapping.</p>
 <p>Nature.<strong>likes_flavor</strong> (likes_flavor_id → <a class="reference internal" href="#pokedex.db.tables.ContestType" title="pokedex.db.tables.ContestType"><tt class="xref py py-class docutils literal"><span class="pre">ContestType</span></tt></a>.id)</p>
 <blockquote>
 <div>ID of the Berry flavor the Pokémon likes (if hates_flavor_id is the same, the effects cancel out)</div></blockquote>
+<p>Nature.<strong>game_index</strong> (<em>int</em>):</p>
+<blockquote>
+<div>This nature&#8217;s internal ID in the games</div></blockquote>
 <hr><p>Relationships:</p>
 <p>Nature.<strong>battle_style_preferences</strong>
 (→ [<a class="reference internal" href="#pokedex.db.tables.NatureBattleStylePreference" title="pokedex.db.tables.NatureBattleStylePreference"><tt class="xref py py-class docutils literal"><span class="pre">NatureBattleStylePreference</span></tt></a>])</p>
@@ -2149,15 +2189,12 @@ Pokédexes.</p>
 <p>Table name: <em>encounter_condition_value_map</em></p>
 <p>Primary key: <strong>encounter_id</strong>, <strong>encounter_condition_value_id</strong>.</p>
 <hr><p>Columns:</p>
-<p>EncounterConditionValueMap.<strong>encounter</strong> (encounter_id → <a class="reference internal" href="#pokedex.db.tables.Encounter" title="pokedex.db.tables.Encounter"><tt class="xref py py-class docutils literal"><span class="pre">Encounter</span></tt></a>.id)</p>
+<p>EncounterConditionValueMap.<strong>encounter_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Encounter" title="pokedex.db.tables.Encounter"><tt class="xref py py-class docutils literal"><span class="pre">Encounter</span></tt></a>.id):</p>
 <blockquote>
 <div>The ID of the encounter</div></blockquote>
 <p>EncounterConditionValueMap.<strong>encounter_condition_value_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.EncounterConditionValue" title="pokedex.db.tables.EncounterConditionValue"><tt class="xref py py-class docutils literal"><span class="pre">EncounterConditionValue</span></tt></a>.id):</p>
 <blockquote>
 <div>The ID of the encounter condition value</div></blockquote>
-<hr><p>Relationships:</p>
-<p>EncounterConditionValueMap.<strong>condition_value</strong>
-(→ <a class="reference internal" href="#pokedex.db.tables.EncounterConditionValue" title="pokedex.db.tables.EncounterConditionValue"><tt class="xref py py-class docutils literal"><span class="pre">EncounterConditionValue</span></tt></a>)</p>
 </dd></dl>
 
 </div>
@@ -2208,7 +2245,7 @@ Pokédexes.</p>
 <hr><p>Columns:</p>
 <p>Machine.<strong>machine_number</strong> (<em>int</em>):</p>
 <blockquote>
-<div>Number of the machine for TMs, or 100 + the munber for HMs</div></blockquote>
+<div>Number of the machine for TMs, or 100 + the number for HMs</div></blockquote>
 <p>Machine.<strong>version_group</strong> (version_group_id → <a class="reference internal" href="#pokedex.db.tables.VersionGroup" title="pokedex.db.tables.VersionGroup"><tt class="xref py py-class docutils literal"><span class="pre">VersionGroup</span></tt></a>.id)</p>
 <blockquote>
 <div>Versions this entry applies to</div></blockquote>
@@ -2357,6 +2394,26 @@ a particular battl style in Battle Palace or Battle Tent</p>
 </dd></dl>
 
 </div>
+<div class="section" id="dex-table-pokedexversiongroup">
+<h3>PokedexVersionGroup<a class="headerlink" href="#dex-table-pokedexversiongroup" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.PokedexVersionGroup">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">PokedexVersionGroup</tt><a class="headerlink" href="#pokedex.db.tables.PokedexVersionGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A mapping from Pokédexes to version groups in which they appear as the
+regional dex.</p>
+<p>Table name: <em>pokedex_version_groups</em>
+(single: <em>pokedex_version_group</em>)</p>
+<p>Primary key: <strong>pokedex_id</strong>, <strong>version_group_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>PokedexVersionGroup.<strong>pokedex_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Pokedex" title="pokedex.db.tables.Pokedex"><tt class="xref py py-class docutils literal"><span class="pre">Pokedex</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the Pokédex.</div></blockquote>
+<p>PokedexVersionGroup.<strong>version_group_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.VersionGroup" title="pokedex.db.tables.VersionGroup"><tt class="xref py py-class docutils literal"><span class="pre">VersionGroup</span></tt></a>.id):</p>
+<blockquote>
+<div>The ID of the version group.</div></blockquote>
+</dd></dl>
+
+</div>
 <div class="section" id="dex-table-pokemonability">
 <h3>PokemonAbility<a class="headerlink" href="#dex-table-pokemonability" title="Permalink to this headline">¶</a></h3>
 <dl class="dex-table">
@@ -2366,15 +2423,15 @@ a particular battl style in Battle Palace or Battle Tent</p>
 <p>Table name: <em>pokemon_abilities</em></p>
 <p>Primary key: <strong>pokemon_id</strong>, <strong>slot</strong>.</p>
 <hr><p>Columns:</p>
-<p>PokemonAbility.<strong>pokemon_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Pokemon" title="pokedex.db.tables.Pokemon"><tt class="xref py py-class docutils literal"><span class="pre">Pokemon</span></tt></a>.id):</p>
+<p>PokemonAbility.<strong>pokemon</strong> (pokemon_id → <a class="reference internal" href="#pokedex.db.tables.Pokemon" title="pokedex.db.tables.Pokemon"><tt class="xref py py-class docutils literal"><span class="pre">Pokemon</span></tt></a>.id)</p>
 <blockquote>
 <div>ID of the Pokémon</div></blockquote>
-<p>PokemonAbility.<strong>ability_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Ability" title="pokedex.db.tables.Ability"><tt class="xref py py-class docutils literal"><span class="pre">Ability</span></tt></a>.id):</p>
+<p>PokemonAbility.<strong>ability</strong> (ability_id → <a class="reference internal" href="#pokedex.db.tables.Ability" title="pokedex.db.tables.Ability"><tt class="xref py py-class docutils literal"><span class="pre">Ability</span></tt></a>.id)</p>
 <blockquote>
 <div>ID of the ability</div></blockquote>
-<p>PokemonAbility.<strong>is_dream</strong> (<em>bool</em>):</p>
+<p>PokemonAbility.<strong>is_hidden</strong> (<em>bool</em>):</p>
 <blockquote>
-<div>Whether this is a Dream World ability</div></blockquote>
+<div>Whether this is a hidden ability</div></blockquote>
 <p>PokemonAbility.<strong>slot</strong> (<em>int</em>):</p>
 <blockquote>
 <div>The ability slot, i.e. 1 or 2 for gen. IV</div></blockquote>
@@ -2704,17 +2761,38 @@ For example, Breeding didn&#8217;t exist in Gen.I, so it&#8217;s not in this tab
 <tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">PokemonGameIndex</tt><a class="headerlink" href="#pokedex.db.tables.PokemonGameIndex" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of a Pokémon a game uses internally</p>
 <p>Table name: <em>pokemon_game_indices</em></p>
-<p>Primary key: <strong>pokemon_id</strong>, <strong>generation_id</strong>.</p>
+<p>Primary key: <strong>pokemon_id</strong>, <strong>version_id</strong>.</p>
 <hr><p>Columns:</p>
 <p>PokemonGameIndex.<strong>pokemon_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Pokemon" title="pokedex.db.tables.Pokemon"><tt class="xref py py-class docutils literal"><span class="pre">Pokemon</span></tt></a>.id):</p>
 <blockquote>
 <div>Database ID of the Pokémon</div></blockquote>
-<p>PokemonGameIndex.<strong>generation_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Generation" title="pokedex.db.tables.Generation"><tt class="xref py py-class docutils literal"><span class="pre">Generation</span></tt></a>.id):</p>
+<p>PokemonGameIndex.<strong>version_id</strong> (→ <a class="reference internal" href="#pokedex.db.tables.Version" title="pokedex.db.tables.Version"><tt class="xref py py-class docutils literal"><span class="pre">Version</span></tt></a>.id):</p>
 <blockquote>
-<div>Database ID of the generation</div></blockquote>
+<div>Database ID of the version</div></blockquote>
 <p>PokemonGameIndex.<strong>game_index</strong> (<em>int</em>):</p>
 <blockquote>
-<div>Internal ID the generation&#8217;s games use for the Pokémon</div></blockquote>
+<div>Internal ID the version&#8217;s games use for the Pokémon</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dex-table-typegameindex">
+<h3>TypeGameIndex<a class="headerlink" href="#dex-table-typegameindex" title="Permalink to this headline">¶</a></h3>
+<dl class="dex-table">
+<dt id="pokedex.db.tables.TypeGameIndex">
+<tt class="descclassname">pokedex.db.tables.</tt><tt class="descname">TypeGameIndex</tt><a class="headerlink" href="#pokedex.db.tables.TypeGameIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>The internal ID number a game uses for a type</p>
+<p>Table name: <em>type_game_indices</em></p>
+<p>Primary key: <strong>type_id</strong>, <strong>generation_id</strong>.</p>
+<hr><p>Columns:</p>
+<p>TypeGameIndex.<strong>type</strong> (type_id → <a class="reference internal" href="#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><tt class="xref py py-class docutils literal"><span class="pre">Type</span></tt></a>.id)</p>
+<blockquote>
+<div>The type</div></blockquote>
+<p>TypeGameIndex.<strong>generation</strong> (generation_id → <a class="reference internal" href="#pokedex.db.tables.Generation" title="pokedex.db.tables.Generation"><tt class="xref py py-class docutils literal"><span class="pre">Generation</span></tt></a>.id)</p>
+<blockquote>
+<div>The generation</div></blockquote>
+<p>TypeGameIndex.<strong>game_index</strong> (<em>int</em>):</p>
+<blockquote>
+<div>Internal ID of the type in this generation</div></blockquote>
 </dd></dl>
 
 </div>
@@ -3550,6 +3628,7 @@ ConquestTransformationWarrior.</p>
 <li><a class="reference internal" href="#dex-table-naturebattlestylepreference">NatureBattleStylePreference</a></li>
 <li><a class="reference internal" href="#dex-table-naturepokeathlonstat">NaturePokeathlonStat</a></li>
 <li><a class="reference internal" href="#dex-table-pokeathlonstat">PokeathlonStat</a></li>
+<li><a class="reference internal" href="#dex-table-pokedexversiongroup">PokedexVersionGroup</a></li>
 <li><a class="reference internal" href="#dex-table-pokemonability">PokemonAbility</a></li>
 <li><a class="reference internal" href="#dex-table-pokemonegggroup">PokemonEggGroup</a></li>
 <li><a class="reference internal" href="#dex-table-pokemonformpokeathlonstat">PokemonFormPokeathlonStat</a></li>
@@ -3569,6 +3648,7 @@ ConquestTransformationWarrior.</p>
 <li><a class="reference internal" href="#dex-table-pokemondexnumber">PokemonDexNumber</a></li>
 <li><a class="reference internal" href="#dex-table-pokemonformgeneration">PokemonFormGeneration</a></li>
 <li><a class="reference internal" href="#dex-table-pokemongameindex">PokemonGameIndex</a></li>
+<li><a class="reference internal" href="#dex-table-typegameindex">TypeGameIndex</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#mics-tables">Mics tables</a><ul>

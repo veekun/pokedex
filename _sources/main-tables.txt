@@ -150,6 +150,7 @@ Association tables
 .. dex-table:: NatureBattleStylePreference
 .. dex-table:: NaturePokeathlonStat
 .. dex-table:: PokeathlonStat
+.. dex-table:: PokedexVersionGroup
 .. dex-table:: PokemonAbility
 .. dex-table:: PokemonEggGroup
 .. dex-table:: PokemonFormPokeathlonStat
@@ -170,6 +171,7 @@ Index maps
 .. dex-table:: PokemonDexNumber
 .. dex-table:: PokemonFormGeneration
 .. dex-table:: PokemonGameIndex
+.. dex-table:: TypeGameIndex
 
 Mics tables
 -----------

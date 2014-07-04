@@ -77,7 +77,7 @@ you&#8217;ll need to learn <a class="reference external" href="http://www.python
 arguments: it uses the database that <tt class="docutils literal"><span class="pre">pokedex</span> <span class="pre">load</span></tt> fills up by default. If
 you need to select another database, give its URI as the first argument.</p>
 <p>The object <a class="reference internal" href="#pokedex.db.connect" title="pokedex.db.connect"><tt class="xref py py-func docutils literal"><span class="pre">connect()</span></tt></a> gives you is actually a
-<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session.html#sqlalchemy.orm.session.Session" title="(in SQLAlchemy v0.7)"><tt class="xref py py-class docutils literal"><span class="pre">SQLAlchemy</span> <span class="pre">session</span></tt></a>, giving you the
+<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session.html#sqlalchemy.orm.session.Session" title="(in SQLAlchemy v0.9)"><tt class="xref py py-class docutils literal"><span class="pre">SQLAlchemy</span> <span class="pre">session</span></tt></a>, giving you the
 full power of SQLAlchemy for working with the data. We&#8217;ll cover some basics
 here, but if you intend to do some serious work, do read SQLAlchemy&#8217;s docs.</p>
 </div>
@@ -125,8 +125,8 @@ Fresh Water: $200
 <div class="section" id="querying">
 <h2>Querying<a class="headerlink" href="#querying" title="Permalink to this headline">¶</a></h2>
 <p>So, how do you get data from the session? You use the session&#8217;s
-<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session.html#sqlalchemy.orm.session.Session.query" title="(in SQLAlchemy v0.7)"><tt class="xref py py-meth docutils literal"><span class="pre">query()</span></tt></a> method, and give it a pokédex
-Table as an argument. This will give you a <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query" title="(in SQLAlchemy v0.7)"><tt class="xref py py-class docutils literal"><span class="pre">SQLAlchemy</span> <span class="pre">query</span></tt></a>.</p>
+<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session.html#sqlalchemy.orm.session.Session.query" title="(in SQLAlchemy v0.9)"><tt class="xref py py-meth docutils literal"><span class="pre">query()</span></tt></a> method, and give it a pokédex
+Table as an argument. This will give you a <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query" title="(in SQLAlchemy v0.9)"><tt class="xref py py-class docutils literal"><span class="pre">SQLAlchemy</span> <span class="pre">query</span></tt></a>.</p>
 <div class="section" id="ordering">
 <h3>Ordering<a class="headerlink" href="#ordering" title="Permalink to this headline">¶</a></h3>
 <p>As always with SQL, you should not rely on query results being in some
@@ -144,9 +144,9 @@ Venusaur
 Charmander
 Charmeleon
 ...
-Keldeo
-Meloetta
-Genesect
+Xerneas
+Yveltal
+Zygarde
 </pre></div>
 </div>
 <p>Or to order by <tt class="xref py py-attr docutils literal"><span class="pre">name</span></tt>:</p>
@@ -156,15 +156,15 @@ Genesect
 </div>
 <div class="highlight-none"><div class="highlight"><pre>Abomasnow
 ...
-Zweilous
+Zygarde
 </pre></div>
 </div>
 </div>
 <div class="section" id="filtering">
 <h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h3>
 <p>Another major operation on queries is filtering, using the query&#8217;s
-<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.filter" title="(in SQLAlchemy v0.7)"><tt class="xref py py-meth docutils literal"><span class="pre">filter()</span></tt></a> or
-<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.filter_by" title="(in SQLAlchemy v0.7)"><tt class="xref py py-meth docutils literal"><span class="pre">filter_by()</span></tt></a> methods:</p>
+<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.filter" title="(in SQLAlchemy v0.9)"><tt class="xref py py-meth docutils literal"><span class="pre">filter()</span></tt></a> or
+<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.filter_by" title="(in SQLAlchemy v0.9)"><tt class="xref py py-meth docutils literal"><span class="pre">filter_by()</span></tt></a> methods:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Move</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Move</span><span class="o">.</span><span class="n">power</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">move</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
@@ -176,7 +176,7 @@ Zweilous
 <div class="section" id="joining">
 <h3>Joining<a class="headerlink" href="#joining" title="Permalink to this headline">¶</a></h3>
 <p>The final operation we&#8217;ll cover here is joining other tables to the query,
-using the query&#8217;s <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.join" title="(in SQLAlchemy v0.7)"><tt class="xref py py-meth docutils literal"><span class="pre">join()</span></tt></a>.
+using the query&#8217;s <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.join" title="(in SQLAlchemy v0.9)"><tt class="xref py py-meth docutils literal"><span class="pre">join()</span></tt></a>.
 You will usually want to join on a relationship, such as in the following
 example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Move</span><span class="p">)</span>
@@ -195,9 +195,9 @@ example:</p>
 Petal Dance (120)
 Power Whip (120)
 Seed Flare (120)
-SolarBeam (120)
+Solar Beam (120)
 Wood Hammer (120)
-Leaf Storm (140)
+Leaf Storm (130)
 Frenzy Plant (150)
 </pre></div>
 </div>
@@ -214,7 +214,7 @@ If you need to do more, consult the <a class="reference external" href="http://w
 <p>With the URI omitted, attempts to connect to a default SQLite database
 contained within the package directory.</p>
 <p>Calling this function also binds the metadata object to the created engine.</p>
-<p>See <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session.html#sqlalchemy.orm.session.Session" title="(in SQLAlchemy v0.7)"><tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.orm.session.Session</span></tt></a> for more documentation on the
+<p>See <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session.html#sqlalchemy.orm.session.Session" title="(in SQLAlchemy v0.9)"><tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.orm.session.Session</span></tt></a> for more documentation on the
 returned object.</p>
 </dd></dl>
 
