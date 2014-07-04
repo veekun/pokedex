@@ -1,6 +1,6 @@
 # encoding: utf8
 
-u"""The Pokédex schema
+u"""The Pokédex schema.
 
 Columns have a info dictionary with these keys:
 - official: True if the values appear in games or official material; False if
@@ -83,8 +83,7 @@ TableBase = declarative_base(metadata=metadata, cls=TableSuperclass, metaclass=T
 ### Need Language first, to create the partial() below
 
 class Language(TableBase):
-    u"""A language the Pokémon games have been translated into
-    """
+    u"""A language the Pokémon games have been translated into."""
     __tablename__ = 'languages'
     __singlename__ = 'language'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -114,8 +113,7 @@ create_translation_table('language_names', Language, 'names',
 ### The actual tables
 
 class Ability(TableBase):
-    u"""An ability a Pokémon can have, such as Static or Pressure.
-    """
+    u"""An ability a Pokémon can have, such as Static or Pressure."""
     __tablename__ = 'abilities'
     __singlename__ = 'ability'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -161,8 +159,7 @@ create_translation_table('ability_changelog_prose', AbilityChangelog, 'prose',
 )
 
 class AbilityFlavorText(TableBase):
-    u"""In-game flavor text of an ability
-    """
+    u"""In-game flavor text of an ability."""
     __tablename__ = 'ability_flavor_text'
     ability_id = Column(Integer, ForeignKey('abilities.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"The ID of the ability")
@@ -175,7 +172,7 @@ class AbilityFlavorText(TableBase):
         info=dict(official=True, format='gametext'))
 
 class Berry(TableBase):
-    u"""A Berry, consumable item that grows on trees
+    u"""A Berry, consumable item that grows on trees.
 
     For data common to all items, such as the name, see the corresponding item entry.
     """
@@ -202,8 +199,7 @@ class Berry(TableBase):
         doc=u"The smoothness of this Berry, used in making Pokéblocks or Poffins")
 
 class BerryFirmness(TableBase):
-    u"""A Berry firmness, such as "hard" or "very soft".
-    """
+    u"""A Berry firmness, such as "hard" or "very soft". """
     __tablename__ = 'berry_firmness'
     __singlename__ = 'berry_firmness'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -220,8 +216,7 @@ create_translation_table('berry_firmness_names', BerryFirmness, 'names',
 )
 
 class BerryFlavor(TableBase):
-    u"""A Berry flavor level.
-    """
+    u"""A Berry flavor level."""
     __tablename__ = 'berry_flavors'
     berry_id = Column(Integer, ForeignKey('berries.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"The ID of the berry")
@@ -265,8 +260,7 @@ class ConquestEpisodeWarrior(TableBase):
         doc=u'The ID of the warrior.')
 
 class ConquestKingdom(TableBase):
-    u"""A kingdom in Pokémon Conquest.
-    """
+    u"""A kingdom in Pokémon Conquest."""
     __tablename__ = 'conquest_kingdoms'
     __singlename__ = 'kingdom'
     id = Column(Integer, primary_key=True, autoincrement=True,
@@ -285,9 +279,7 @@ create_translation_table('conquest_kingdom_names', ConquestKingdom, 'names',
 )
 
 class ConquestMaxLink(TableBase):
-    u"""The maximum link a warrior rank can reach with a Pokémon in Pokémon
-    Conquest.
-    """
+    u"""The maximum link a warrior rank can reach with a Pokémon in Pokémon Conquest."""
     __tablename__ = 'conquest_max_links'
     warrior_rank_id = Column(Integer, ForeignKey('conquest_warrior_ranks.id'), primary_key=True,
         doc=u"The ID of the warrior rank.")
@@ -297,8 +289,7 @@ class ConquestMaxLink(TableBase):
         doc=u'The maximum link percentage this warrior rank and Pokémon can reach.')
 
 class ConquestMoveData(TableBase):
-    u"""Data about a move in Pokémon Conquest.
-    """
+    u"""Data about a move in Pokémon Conquest."""
     __tablename__ = 'conquest_move_data'
     move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, autoincrement=False,
         doc=u'The ID of the move.')
@@ -356,8 +347,7 @@ create_translation_table('conquest_move_displacement_prose', ConquestMoveDisplac
 )
 
 class ConquestMoveEffect(TableBase):
-    u"""An effect moves can have in Pokémon Conquest.
-    """
+    u"""An effect moves can have in Pokémon Conquest."""
     __tablename__ = 'conquest_move_effects'
     __singlename__ = 'conquest_move_effect'
     id = Column(Integer, primary_key=True, autoincrement=True,
@@ -394,8 +384,7 @@ create_translation_table('conquest_move_range_prose', ConquestMoveRange, 'prose'
 )
 
 class ConquestPokemonAbility(TableBase):
-    u"""An ability a Pokémon species has in Pokémon Conquest.
-    """
+    u"""An ability a Pokémon species has in Pokémon Conquest."""
     __tablename__ = 'conquest_pokemon_abilities'
     pokemon_species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u'The ID of the Pokémon species with this ability.')
@@ -456,8 +445,7 @@ class ConquestPokemonStat(TableBase):
         doc=u'The base stat.')
 
 class ConquestStat(TableBase):
-    u"""A stat Pokémon have in Pokémon Conquest.
-    """
+    u"""A stat Pokémon have in Pokémon Conquest."""
     __tablename__ = 'conquest_stats'
     __singlename__ = 'conquest_stat'  # To be safe
     id = Column(Integer, primary_key=True, autoincrement=True,
@@ -501,8 +489,7 @@ class ConquestTransformationWarrior(TableBase):
         doc=u'The ID of the other warrior who must be present.')
 
 class ConquestWarrior(TableBase):
-    u"""A warrior in Pokémon Conquest.
-    """
+    u"""A warrior in Pokémon Conquest."""
     __tablename__ = 'conquest_warriors'
     __singlename__ = 'warrior'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True,
@@ -576,8 +563,7 @@ class ConquestWarriorRankStatMap(TableBase):
         doc=u'The stat.')
 
 class ConquestWarriorSkill(TableBase):
-    u"""A warrior skill in Pokémon Conquest.
-    """
+    u"""A warrior skill in Pokémon Conquest."""
     __tablename__ = 'conquest_warrior_skills'
     __singlename__ = 'skill'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True,
@@ -654,8 +640,7 @@ class ConquestWarriorTransformation(TableBase):
         doc=u'The number of warriors that must be registered in the gallery.')
 
 class ContestCombo(TableBase):
-    u"""Combo of two moves in a Contest.
-    """
+    u"""Combo of two moves in a Contest."""
     __tablename__ = 'contest_combos'
     first_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"The ID of the first move in the combo")
@@ -663,8 +648,7 @@ class ContestCombo(TableBase):
         doc=u"The ID of the second and final move in the combo")
 
 class ContestEffect(TableBase):
-    u"""Effect of a move when used in a Contest.
-    """
+    u"""Effect of a move when used in a Contest."""
     __tablename__ = 'contest_effects'
     __singlename__ = 'contest_effect'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -768,8 +752,7 @@ class Encounter(TableBase):
         doc=u"The maximum level of the encountered Pokémon")
 
 class EncounterCondition(TableBase):
-    u"""A conditions in the game world that affects Pokémon encounters, such as time of day.
-    """
+    u"""A condition in the game world that affects Pokémon encounters, such as time of day."""
 
     __tablename__ = 'encounter_conditions'
     __singlename__ = 'encounter_condition'
@@ -786,7 +769,9 @@ create_translation_table('encounter_condition_prose', EncounterCondition, 'prose
 )
 
 class EncounterConditionValue(TableBase):
-    u"""A possible state for a condition; for example, the state of 'swarm' could be 'swarm' or 'no swarm'.
+    u"""A possible state for a condition.
+
+    For example, the state of 'swarm' could be 'swarm' or 'no swarm'.
     """
 
     __tablename__ = 'encounter_condition_values'
@@ -808,8 +793,7 @@ create_translation_table('encounter_condition_value_prose', EncounterConditionVa
 )
 
 class EncounterConditionValueMap(TableBase):
-    u"""Maps encounters to the specific conditions under which they occur.
-    """
+    u"""Maps encounters to the specific conditions under which they occur."""
     __tablename__ = 'encounter_condition_value_map'
     encounter_id = Column(Integer, ForeignKey('encounters.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"The ID of the encounter")
@@ -817,7 +801,9 @@ class EncounterConditionValueMap(TableBase):
         doc=u"The ID of the encounter condition value")
 
 class EncounterMethod(TableBase):
-    u"""A way the player can enter a wild encounter, e.g., surfing, fishing, or walking through tall grass.
+    u"""A way the player can enter a wild encounter.
+
+    For example, surfing, fishing, or walking through tall grass.
     """
 
     __tablename__ = 'encounter_methods'
@@ -856,8 +842,7 @@ class EncounterSlot(TableBase):
         doc=u"The chance of the encounter as a percentage")
 
 class EvolutionChain(TableBase):
-    u"""A family of Pokémon that are linked by evolution
-    """
+    u"""A family of Pokémon that are linked by evolution."""
     __tablename__ = 'evolution_chains'
     id = Column(Integer, primary_key=True, nullable=False,
         doc=u"A numeric ID")
@@ -865,8 +850,7 @@ class EvolutionChain(TableBase):
         doc=u"Item that a parent must hold while breeding to produce a baby")
 
 class EvolutionTrigger(TableBase):
-    u"""An evolution type, such as "level" or "trade".
-    """
+    u"""An evolution type, such as "level" or "trade". """
     __tablename__ = 'evolution_triggers'
     __singlename__ = 'evolution_trigger'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -882,8 +866,7 @@ create_translation_table('evolution_trigger_prose', EvolutionTrigger, 'prose',
 )
 
 class Experience(TableBase):
-    u"""EXP needed for a certain level with a certain growth rate
-    """
+    u"""EXP needed for a certain level with a certain growth rate."""
     __tablename__ = 'experience'
     growth_rate_id = Column(Integer, ForeignKey('growth_rates.id'), primary_key=True, nullable=False,
         doc=u"ID of the growth rate")
@@ -893,8 +876,7 @@ class Experience(TableBase):
         doc=u"The number of EXP points needed to get to that level")
 
 class Gender(TableBase):
-    u"""A gender.
-    """
+    u"""A gender."""
     __tablename__ = 'genders'
     __singlename__ = 'gender'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True,
@@ -904,8 +886,7 @@ class Gender(TableBase):
         info=dict(format='identifier'))
 
 class Generation(TableBase):
-    u"""A Generation of the Pokémon franchise
-    """
+    u"""A Generation of the Pokémon franchise."""
     __tablename__ = 'generations'
     __singlename__ = 'generation'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -924,8 +905,7 @@ create_translation_table('generation_names', Generation, 'names',
 )
 
 class GrowthRate(TableBase):
-    u"""Growth rate of a Pokémon, i.e. the EXP → level function.
-    """
+    u"""Growth rate of a Pokémon, i.e. the EXP → level function. """
     __tablename__ = 'growth_rates'
     __singlename__ = 'growth_rate'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -944,8 +924,7 @@ create_translation_table('growth_rate_prose', GrowthRate, 'prose',
 )
 
 class Item(TableBase):
-    u"""An Item from the games, like "Poké Ball" or "Bicycle".
-    """
+    u"""An Item from the games, like "Poké Ball" or "Bicycle". """
     __tablename__ = 'items'
     __singlename__ = 'item'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -964,8 +943,7 @@ class Item(TableBase):
 
     @property
     def appears_underground(self):
-        u"""True if the item appears underground, as specified by the appropriate flag
-        """
+        u"""True if the item appears underground, as specified by the appropriate flag."""
         return any(flag.identifier == u'underground' for flag in self.flags)
 
 create_translation_table('item_names', Item, 'names',
@@ -989,8 +967,7 @@ create_translation_table('item_flavor_summaries', Item, 'flavor_summaries',
 )
 
 class ItemCategory(TableBase):
-    u"""An item category
-    """
+    u"""An item category."""
     # XXX: This is fanon, right?
     __tablename__ = 'item_categories'
     __singlename__ = 'item_category'
@@ -1010,8 +987,7 @@ create_translation_table('item_category_prose', ItemCategory, 'prose',
 )
 
 class ItemFlag(TableBase):
-    u"""An item attribute such as "consumable" or "holdable".
-    """
+    u"""An item attribute such as "consumable" or "holdable". """
     __tablename__ = 'item_flags'
     __singlename__ = 'item_flag'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1030,8 +1006,7 @@ create_translation_table('item_flag_prose', ItemFlag, 'prose',
 )
 
 class ItemFlagMap(TableBase):
-    u"""Maps an item flag to its item.
-    """
+    u"""Maps an item flag to its item."""
     __tablename__ = 'item_flag_map'
     item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False,
         doc=u"The ID of the item")
@@ -1039,8 +1014,7 @@ class ItemFlagMap(TableBase):
         doc=u"The ID of the item flag")
 
 class ItemFlavorText(TableBase):
-    u"""An in-game description of an item
-    """
+    u"""An in-game description of an item."""
     __tablename__ = 'item_flavor_text'
     __singlename__ = 'item_flavor_text'
     summary_column = Item.flavor_summaries_table, 'flavor_summary'
@@ -1055,8 +1029,7 @@ class ItemFlavorText(TableBase):
         info=dict(official=True, format='gametext'))
 
 class ItemFlingEffect(TableBase):
-    u"""An effect of the move Fling when used with a specific item
-    """
+    u"""An effect of the move Fling when used with a specific item."""
     __tablename__ = 'item_fling_effects'
     __singlename__ = 'item_fling_effect'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1069,8 +1042,7 @@ create_translation_table('item_fling_effect_prose', ItemFlingEffect, 'prose',
 )
 
 class ItemGameIndex(TableBase):
-    u"""The internal ID number a game uses for an item
-    """
+    u"""The internal ID number a game uses for an item."""
     __tablename__ = 'item_game_indices'
     item_id = Column(Integer, ForeignKey('items.id'), primary_key=True, autoincrement=False, nullable=False,
         doc=u"The database ID of the item")
@@ -1080,8 +1052,7 @@ class ItemGameIndex(TableBase):
         doc=u"Internal ID of the item in the generation")
 
 class ItemPocket(TableBase):
-    u"""A pocket that categorizes items
-    """
+    u"""A pocket that categorizes items."""
     __tablename__ = 'item_pockets'
     __singlename__ = 'item_pocket'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1098,8 +1069,7 @@ create_translation_table('item_pocket_names', ItemPocket, 'names',
 )
 
 class Location(TableBase):
-    u"""A place in the Pokémon world
-    """
+    u"""A place in the Pokémon world."""
     __tablename__ = 'locations'
     __singlename__ = 'location'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1118,8 +1088,7 @@ create_translation_table('location_names', Location, 'names',
 )
 
 class LocationArea(TableBase):
-    u"""A sub-area of a location
-    """
+    u"""A sub-area of a location."""
     __tablename__ = 'location_areas'
     __singlename__ = 'location_area'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1152,8 +1121,7 @@ class LocationAreaEncounterRate(TableBase):
         doc=u"The encounter rate")  # units?
 
 class LocationGameIndex(TableBase):
-    u"""IDs the games use internally for locations
-    """
+    u"""IDs the games use internally for locations."""
     __tablename__ = 'location_game_indices'
     location_id = Column(Integer, ForeignKey('locations.id'), nullable=False, primary_key=True,
         doc=u"Database ID of the location")
@@ -1163,8 +1131,7 @@ class LocationGameIndex(TableBase):
         doc=u"Internal game ID of the location")
 
 class Machine(TableBase):
-    u"""A TM or HM; numbered item that can teach a move to a Pokémon
-    """
+    u"""A TM or HM; numbered item that can teach a move to a Pokémon."""
     __tablename__ = 'machines'
     machine_number = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
         doc=u"Number of the machine for TMs, or 100 + the number for HMs")
@@ -1177,13 +1144,11 @@ class Machine(TableBase):
 
     @property
     def is_hm(self):
-        u"""True if this machine is a HM, False if it's a TM
-        """
+        u"""True if this machine is a HM, False if it's a TM."""
         return self.machine_number >= 100
 
 class Move(TableBase):
-    u"""A Move: technique or attack a Pokémon can learn to use
-    """
+    u"""A Move: technique or attack a Pokémon can learn to use."""
     __tablename__ = 'moves'
     __singlename__ = 'move'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1231,7 +1196,7 @@ create_translation_table('move_flavor_summaries', Move, 'flavor_summaries',
 )
 
 class MoveBattleStyle(TableBase):
-    u"""A battle style of a move"""  # XXX: Explain better
+    u"""A battle style of a move."""  # XXX: Explain better
     __tablename__ = 'move_battle_styles'
     __singlename__ = 'move_battle_style'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1269,8 +1234,7 @@ class MoveChangelog(TableBase):
         doc=u"Prior effect chance, or NULL if unchanged")
 
 class MoveDamageClass(TableBase):
-    u"""Any of the damage classes moves can have, i.e. physical, special, or non-damaging.
-    """
+    u"""Any of the damage classes moves can have, i.e. physical, special, or non-damaging."""
     __tablename__ = 'move_damage_classes'
     __singlename__ = 'move_damage_class'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1290,8 +1254,7 @@ create_translation_table('move_damage_class_prose', MoveDamageClass, 'prose',
 )
 
 class MoveEffect(TableBase):
-    u"""An effect of a move
-    """
+    u"""An effect of a move."""
     __tablename__ = 'move_effects'
     __singlename__ = 'move_effect'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1329,8 +1292,7 @@ create_translation_table('move_effect_changelog_prose', MoveEffectChangelog, 'pr
 )
 
 class MoveFlag(TableBase):
-    u"""A Move attribute such as "snatchable" or "contact".
-    """
+    u"""A Move attribute such as "snatchable" or "contact". """
     __tablename__ = 'move_flags'
     __singlename__ = 'move_flag'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1340,8 +1302,7 @@ class MoveFlag(TableBase):
         info=dict(format='identifier'))
 
 class MoveFlagMap(TableBase):
-    u"""Maps a move flag to a move
-    """
+    u"""Maps a move flag to a move."""
     __tablename__ = 'move_flag_map'
     move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"ID of the move")
@@ -1359,8 +1320,7 @@ create_translation_table('move_flag_prose', MoveFlag, 'prose',
 )
 
 class MoveFlavorText(TableBase):
-    u"""In-game description of a move
-    """
+    u"""In-game description of a move."""
     __tablename__ = 'move_flavor_text'
     summary_column = Move.flavor_summaries_table, 'flavor_summary'
     move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
@@ -1374,7 +1334,7 @@ class MoveFlavorText(TableBase):
         info=dict(official=True, format='gametext'))
 
 class MoveMeta(TableBase):
-    u"""Metadata for move effects, sorta-kinda ripped straight from the game"""
+    u"""Metadata for move effects, sorta-kinda ripped straight from the game."""
     __tablename__ = 'move_meta'
     move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"A numeric ID")
@@ -1450,8 +1410,7 @@ class MoveMetaStatChange(TableBase):
         doc=u"Amount of increase/decrease, in stages")
 
 class MoveTarget(TableBase):
-    u"""Targeting or "range" of a move, e.g. "Affects all opponents" or "Affects user".
-    """
+    u"""Targeting or "range" of a move, e.g. "Affects all opponents" or "Affects user". """
     __tablename__ = 'move_targets'
     __singlename__ = 'move_target'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1471,8 +1430,7 @@ create_translation_table('move_target_prose', MoveTarget, 'prose',
 )
 
 class Nature(TableBase):
-    u"""A nature a Pokémon can have, such as Calm or Brave
-    """
+    u"""A nature a Pokémon can have, such as Calm or Brave."""
     __tablename__ = 'natures'
     __singlename__ = 'nature'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1506,10 +1464,10 @@ create_translation_table('nature_names', Nature, 'names',
 )
 
 class NatureBattleStylePreference(TableBase):
-    u"""Battle Palace move preference
+    u"""Battle Palace move preference.
 
     Specifies how likely a Pokémon with a specific Nature is to use a move of
-    a particular battle style in Battle Palace or Battle Tent
+    a particular battle style in Battle Palace or Battle Tent.
     """
     __tablename__ = 'nature_battle_style_preferences'
     nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False,
@@ -1522,8 +1480,7 @@ class NatureBattleStylePreference(TableBase):
         doc=u"Chance of using the move, in percent, if HP is over ½")
 
 class NaturePokeathlonStat(TableBase):
-    u"""Specifies how a Nature affects a Pokéathlon stat
-    """
+    u"""Specifies how a Nature affects a Pokéathlon stat."""
     __tablename__ = 'nature_pokeathlon_stats'
     nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False,
         doc=u"ID of the nature")
@@ -1533,8 +1490,7 @@ class NaturePokeathlonStat(TableBase):
         doc=u"Maximum change")
 
 class PalPark(TableBase):
-    u"""Data for the Pal Park mini-game in Generation IV
-    """
+    u"""Data for the Pal Park mini-game in Generation IV."""
 
     __tablename__ = 'pal_park'
     __singlename__ = 'pal_park'
@@ -1550,8 +1506,7 @@ class PalPark(TableBase):
         doc=u"Base rate for encountering this Pokémon")
 
 class PalParkArea(TableBase):
-    u"""A distinct area of Pal Park in which Pokémon appear.
-    """
+    u"""A distinct area of Pal Park in which Pokémon appear."""
     __tablename__ = 'pal_park_areas'
     __singlename__ = 'pal_park_area'
 
@@ -1568,8 +1523,7 @@ create_translation_table('pal_park_area_names', PalParkArea, 'names',
 )
 
 class PokeathlonStat(TableBase):
-    u"""A Pokéathlon stat, such as "Stamina" or "Jump".
-    """
+    u"""A Pokéathlon stat, such as "Stamina" or "Jump". """
     __tablename__ = 'pokeathlon_stats'
     __singlename__ = 'pokeathlon_stat'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1585,8 +1539,7 @@ create_translation_table('pokeathlon_stat_names', PokeathlonStat, 'names',
 )
 
 class Pokedex(TableBase):
-    u"""A collection of Pokémon species ordered in a particular way
-    """
+    u"""A collection of Pokémon species ordered in a particular way."""
     __tablename__ = 'pokedexes'
     __singlename__ = 'pokedex'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1610,9 +1563,7 @@ create_translation_table('pokedex_prose', Pokedex, 'prose',
 )
 
 class PokedexVersionGroup(TableBase):
-    u"""A mapping from Pokédexes to version groups in which they appear as the
-    regional dex.
-    """
+    u"""A mapping from Pokédexes to version groups in which they appear as the regional dex."""
     __tablename__ = 'pokedex_version_groups'
     __singlename__ = 'pokedex_version_group'
     pokedex_id = Column(Integer, ForeignKey('pokedexes.id'), primary_key=True,
@@ -1674,7 +1625,8 @@ class Pokemon(TableBase):
 
     def base_stat(self, stat_identifier, default=0):
         u"""Return this Pokemon's base stat value for the given stat identifier,
-        or default if missing."""
+        or default if missing.
+        """
 
         if isinstance(stat_identifier, Stat):
             stat_identifier = stat_identifier.identifier
@@ -1710,8 +1662,7 @@ class Pokemon(TableBase):
             return None
 
 class PokemonAbility(TableBase):
-    u"""Maps an ability to a Pokémon that can have it
-    """
+    u"""Maps an ability to a Pokémon that can have it."""
     __tablename__ = 'pokemon_abilities'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"ID of the Pokémon")
@@ -1726,8 +1677,7 @@ class PokemonAbility(TableBase):
         doc=u"The ability slot, i.e. 1 or 2 for gen. IV")
 
 class PokemonColor(TableBase):
-    u"""The "Pokédex color" of a Pokémon species. Usually based on the Pokémon's color.
-    """
+    u"""The "Pokédex color" of a Pokémon species. Usually based on the Pokémon's color. """
     __tablename__ = 'pokemon_colors'
     __singlename__ = 'pokemon_color'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
@@ -1744,8 +1694,7 @@ create_translation_table('pokemon_color_names', PokemonColor, 'names',
 )
 
 class PokemonDexNumber(TableBase):
-    u"""The number of a species in a particular Pokédex (e.g. Jigglypuff is #138 in Hoenn's 'dex)
-    """
+    u"""The number of a species in a particular Pokédex (e.g. Jigglypuff is #138 in Hoenn's 'dex)."""
     __tablename__ = 'pokemon_dex_numbers'
     species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"ID of the species")
@@ -1755,8 +1704,7 @@ class PokemonDexNumber(TableBase):
         doc=u"Number of the Pokémon in that the Pokédex")
 
 class PokemonEggGroup(TableBase):
-    u"""Maps an Egg group to a species; each species belongs to one or two egg groups
-    """
+    u"""Maps an Egg group to a species; each species belongs to one or two egg groups."""
     __tablename__ = 'pokemon_egg_groups'
     species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"ID of the species")
@@ -1845,7 +1793,7 @@ class PokemonForm(TableBase):
 
     @property
     def name(self):
-        """Name of this form: the form_name, if set; otherwise the species name"""
+        """Name of this form: the form_name, if set; otherwise the species name."""
         return self.pokemon_name or self.species.name
 
 create_translation_table('pokemon_form_names', PokemonForm, 'names',
@@ -1859,7 +1807,7 @@ create_translation_table('pokemon_form_names', PokemonForm, 'names',
 )
 
 class PokemonFormGeneration(TableBase):
-    u"""Links Pokémon forms to the generations they exist in"""
+    u"""Links Pokémon forms to the generations they exist in."""
     __tablename__ = 'pokemon_form_generations'
     pokemon_form_id = Column(Integer, ForeignKey('pokemon_forms.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u'The ID of the Pokémon form.')
@@ -1883,8 +1831,7 @@ class PokemonFormPokeathlonStat(TableBase):
         doc=u'The maximum value for this stat for this Pokémon form.')
 
 class PokemonGameIndex(TableBase):
-    u"""The number of a Pokémon a game uses internally
-    """
+    u"""The number of a Pokémon a game uses internally."""
     __tablename__ = 'pokemon_game_indices'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, autoincrement=False, nullable=False,
         doc=u"Database ID of the Pokémon")
@@ -1894,8 +1841,7 @@ class PokemonGameIndex(TableBase):
         doc=u"Internal ID the version's games use for the Pokémon")
 
 class PokemonHabitat(TableBase):
-    u"""The habitat of a Pokémon, as given in the FireRed/LeafGreen version Pokédex
-    """
+    u"""The habitat of a Pokémon, as given in the FireRed/LeafGreen version Pokédex."""
     __tablename__ = 'pokemon_habitats'
     __singlename__ = 'pokemon_habitat'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
@@ -1912,8 +1858,7 @@ create_translation_table('pokemon_habitat_names', PokemonHabitat, 'names',
 )
 
 class PokemonItem(TableBase):
-    u"""Record of an item a Pokémon can hold in the wild
-    """
+    u"""Record of an item a Pokémon can hold in the wild."""
     __tablename__ = 'pokemon_items'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"ID of the Pokémon")
@@ -1925,8 +1870,7 @@ class PokemonItem(TableBase):
         doc=u"Chance of the Pokémon holding the item, in percent")
 
 class PokemonMove(TableBase):
-    u"""Record of a move a Pokémon can learn
-    """
+    u"""Record of a move a Pokémon can learn."""
     __tablename__ = 'pokemon_moves'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, index=True,
         doc=u"ID of the Pokémon")
@@ -1947,8 +1891,7 @@ class PokemonMove(TableBase):
     )
 
 class PokemonMoveMethod(TableBase):
-    u"""A method a move can be learned by, such as "Level up" or "Tutor".
-    """
+    u"""A method a move can be learned by, such as "Level up" or "Tutor". """
     __tablename__ = 'pokemon_move_methods'
     __singlename__ = 'pokemon_move_method'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=False,
@@ -1968,9 +1911,7 @@ create_translation_table('pokemon_move_method_prose', PokemonMoveMethod, 'prose'
 )
 
 class PokemonShape(TableBase):
-    u"""The shape of a Pokémon's body.  Used for flavor in generation IV and V
-    Pokédexes.
-    """
+    u"""The shape of a Pokémon's body.  Used for flavor in generation IV and V Pokédexes. """
     __tablename__ = 'pokemon_shapes'
     __singlename__ = 'pokemon_shape'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1990,8 +1931,7 @@ create_translation_table('pokemon_shape_prose', PokemonShape, 'prose',
 )
 
 class PokemonSpecies(TableBase):
-    u"""A Pokémon species: the standard 1–151.  Or 649.  Whatever.
-    """
+    u"""A Pokémon species: the standard 1–151.  Or 649.  Whatever. """
     __tablename__ = 'pokemon_species'
     __singlename__ = 'pokemon_species'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -2053,8 +1993,7 @@ create_translation_table('pokemon_species_prose', PokemonSpecies, 'prose',
 )
 
 class PokemonSpeciesFlavorText(TableBase):
-    u"""In-game Pokédex description of a Pokémon.
-    """
+    u"""In-game Pokédex description of a Pokémon."""
     __tablename__ = 'pokemon_species_flavor_text'
     summary_column = PokemonSpecies.flavor_summaries_table, 'flavor_summary'
     species_id = Column(Integer, ForeignKey('pokemon_species.id'), primary_key=True, nullable=False, autoincrement=False,
@@ -2068,8 +2007,7 @@ class PokemonSpeciesFlavorText(TableBase):
         info=dict(official=True, format='gametext'))
 
 class PokemonStat(TableBase):
-    u"""A stat value of a Pokémon
-    """
+    u"""A stat value of a Pokémon."""
     __tablename__ = 'pokemon_stats'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"ID of the Pokémon")
@@ -2081,8 +2019,7 @@ class PokemonStat(TableBase):
         doc=u"The effort increase in this stat gained when this Pokémon is defeated")
 
 class PokemonType(TableBase):
-    u"""Maps a type to a Pokémon. Each Pokémon has 1 or 2 types.
-    """
+    u"""Maps a type to a Pokémon. Each Pokémon has 1 or 2 types."""
     __tablename__ = 'pokemon_types'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"ID of the Pokémon")
@@ -2092,8 +2029,7 @@ class PokemonType(TableBase):
         doc=u"The type's slot, 1 or 2, used to sort types if there are two of them")
 
 class Region(TableBase):
-    u"""Major areas of the world: Kanto, Johto, etc.
-    """
+    u"""Major areas of the world: Kanto, Johto, etc."""
     __tablename__ = 'regions'
     __singlename__ = 'region'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -2110,8 +2046,7 @@ create_translation_table('region_names', Region, 'names',
 )
 
 class Stat(TableBase):
-    u"""A Stat, such as Attack or Speed
-    """
+    u"""A Stat, such as Attack or Speed."""
     __tablename__ = 'stats'
     __singlename__ = 'stat'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -2154,8 +2089,7 @@ create_translation_table('stat_hint_names', StatHint, 'names',
 )
 
 class SuperContestCombo(TableBase):
-    u"""Combo of two moves in a Super Contest.
-    """
+    u"""Combo of two moves in a Super Contest."""
     __tablename__ = 'super_contest_combos'
     first_move_id = Column(Integer, ForeignKey('moves.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"The ID of the first move in the combo.")
@@ -2163,8 +2097,7 @@ class SuperContestCombo(TableBase):
         doc=u"The ID of the second and last move.")
 
 class SuperContestEffect(TableBase):
-    u"""An effect a move can have when used in the Super Contest
-    """
+    u"""An effect a move can have when used in the Super Contest."""
     __tablename__ = 'super_contest_effects'
     __singlename__ = 'super_contest_effect'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -2212,8 +2145,7 @@ class TypeEfficacy(TableBase):
         doc=u"The multiplier, as a percentage of damage inflicted.")
 
 class TypeGameIndex(TableBase):
-    u"""The internal ID number a game uses for a type
-    """
+    u"""The internal ID number a game uses for a type."""
     __tablename__ = 'type_game_indices'
     type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, autoincrement=False, nullable=False,
         doc=u"The type")
@@ -2243,7 +2175,7 @@ create_translation_table('version_names', Version, 'names',
 
 class VersionGroup(TableBase):
     u"""A group of versions, containing either two paired versions (such as Red
-    and Blue) or a single game (such as Yellow.)
+    and Blue) or a single game (such as Yellow).
     """
     __tablename__ = 'version_groups'
     id = Column(Integer, primary_key=True, nullable=False,
