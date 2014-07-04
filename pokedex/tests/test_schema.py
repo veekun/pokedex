@@ -193,7 +193,7 @@ def test_texts(cls):
         if column.name == 'name' and format != 'plaintext':
             raise AssertionError('%s: non-plaintext name' % column)
         # No mention of English in the description
-        assert 'English' not in column.info['description'], column
+        assert u'English' not in column.__doc__, column
     # If there's more than one text column in a translation table,
     # they have to be nullable, to support missing translations
     if hasattr(cls, 'local_language') and len(text_columns) > 1:

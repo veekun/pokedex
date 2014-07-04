@@ -183,7 +183,7 @@ def generate_columns(cls, remaining_attrs):
         else:
             yield column_header(c, name) + ':'
         yield u''
-        yield u'  ' + unicode(c.info['description'])
+        yield u'  ' + unicode(c.__doc__)
         yield u''
 
 @with_header(u'Internationalized strings')
@@ -198,7 +198,7 @@ def generate_strings(cls, remaining_attrs):
                 yield column_header(c, cls.__name__,
                         translation_class.__table__.name)
                 yield u''
-                yield u'  ' + unicode(c.info['description'])
+                yield u'  ' + unicode(c.__doc__)
                 yield u''
 
 @with_header(u'Relationships')
@@ -243,9 +243,6 @@ def generate_associationproxies(cls, remaining_attrs):
             yield u'%s.\ **%s**:' % (cls.__name__, attr_name)
             yield '``{prop.remote_attr.key}`` of ``self.{prop.local_attr.key}``'.format(
                     prop=prop)
-            '''if 'description' in info:
-                yield u''
-                yield u'  ' + unicode(info['description'])'''
             yield u''
             remaining_attrs.remove(attr_name)
 
