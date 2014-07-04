@@ -20,8 +20,6 @@ from pokedex.defaults import get_default_index_dir
 __all__ = ['PokedexLookup']
 
 
-rx_is_number = re.compile('^\d+$')
-
 LookupResult = namedtuple('LookupResult', [
     'object', 'indexed_name', 'name', 'language', 'iso639', 'iso3166', 'exact',
 ])
