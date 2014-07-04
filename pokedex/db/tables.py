@@ -7,7 +7,7 @@ Columns have a info dictionary with these keys:
 - official: True if the values appear in games or official material; False if
   they are fan-created or fan-written. This flag is currently only set for
   official text columns.
-- markup: The format of a text column. Can be one of:
+- format: The format of a text column. Can be one of:
   - plaintext: Normal Unicode text (widely used in names)
   - markdown: Veekun's Markdown flavor (generally used in effect descriptions)
   - gametext: Transcription of in-game text that strives to be both
@@ -18,9 +18,9 @@ Columns have a info dictionary with these keys:
 - ripped: True for text that has been ripped from the games, and can be ripped
   again for new versions or languages
 
- - string_getter: for translation columns, a function taking (text, session,
-    language) that is used for properties on the main table. Used for Markdown
-    text.
+- string_getter: for translation columns, a function taking (text, session,
+  language) that is used for properties on the main table. Used for Markdown
+  text.
 
 See `pokedex.db.multilang` for how localizable text columns work.  The session
 classes in that module can be used to change the default language.
@@ -120,7 +120,7 @@ class Ability(TableBase):
     identifier = Column(Unicode(79), nullable=False,
         info=dict(description="An identifier", format='identifier'))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
-        info=dict(description="The ID of the generation this ability was introduced in", detail=True))
+        info=dict(description="The ID of the generation this ability was introduced in"))
     is_main_series = Column(Boolean, nullable=False, index=True,
         info=dict(description="True iff the ability exists in the main series."))
 
@@ -290,7 +290,7 @@ class ConquestMoveData(TableBase):
     power = Column(Integer, nullable=True,
         info=dict(description=u"The move's power, null if it does no damage."))
     accuracy = Column(Integer, nullable=True,
-        info=dict(description=u"The move's base accuracy, null if it is self-targetted or never misses."))
+        info=dict(description=u"The move's base accuracy, null if it is self-targeted or never misses."))
     effect_chance = Column(Integer, nullable=True,
         info=dict(description=u"The chance as a percentage that the move's secondary effect will trigger."))
     effect_id = Column(Integer, ForeignKey('conquest_move_effects.id'), nullable=False,
@@ -724,7 +724,7 @@ class Encounter(TableBase):
     min_level = Column(Integer, nullable=False, autoincrement=False,
         info=dict(description=u"The minimum level of the encountered Pokémon"))
     max_level = Column(Integer, nullable=False, autoincrement=False,
-        info=dict(description=u"The maxmum level of the encountered Pokémon"))
+        info=dict(description=u"The maximum level of the encountered Pokémon"))
 
 class EncounterCondition(TableBase):
     u"""A conditions in the game world that affects Pokémon encounters, such as time of day.
@@ -1083,7 +1083,7 @@ class LocationGameIndex(TableBase):
     """
     __tablename__ = 'location_game_indices'
     location_id = Column(Integer, ForeignKey('locations.id'), nullable=False, primary_key=True,
-        info=dict(description="Database ID of the locaion"))
+        info=dict(description="Database ID of the location"))
     generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False, primary_key=True,
         info=dict(description="ID of the generation this entry to"))
     game_index = Column(Integer, nullable=False, primary_key=True, autoincrement=False,
@@ -1124,7 +1124,7 @@ class Move(TableBase):
     power = Column(SmallInteger, nullable=True,
         info=dict(description="Base power of the move, null if it does not have a set base power."))
     pp = Column(SmallInteger, nullable=True,
-        info=dict(description="Base PP (Power Points) of the move, nullable if not applicable (e.g. Struggle and Shadow moves)."))
+        info=dict(description="Base PP (Power Points) of the move, null if not applicable (e.g. Struggle and Shadow moves)."))
     accuracy = Column(SmallInteger, nullable=True,
         info=dict(description="Accuracy of the move; NULL means it never misses"))
     priority = Column(SmallInteger, nullable=False,
@@ -1358,7 +1358,7 @@ class MoveMetaStatChange(TableBase):
         info=dict(description="Amount of increase/decrease, in stages"))
 
 class MoveTarget(TableBase):
-    u"""Targetting or "range" of a move, e.g. "Affects all opponents" or "Affects user".
+    u"""Targeting or "range" of a move, e.g. "Affects all opponents" or "Affects user".
     """
     __tablename__ = 'move_targets'
     __singlename__ = 'move_target'
@@ -1412,7 +1412,7 @@ class NatureBattleStylePreference(TableBase):
     u"""Battle Palace move preference
 
     Specifies how likely a Pokémon with a specific Nature is to use a move of
-    a particular battl style in Battle Palace or Battle Tent
+    a particular battle style in Battle Palace or Battle Tent
     """
     __tablename__ = 'nature_battle_style_preferences'
     nature_id = Column(Integer, ForeignKey('natures.id'), primary_key=True, nullable=False,
@@ -1545,7 +1545,7 @@ class Pokemon(TableBase):
 
     @property
     def name(self):
-        u"""Returns a name for this Pokémon, specifiying the form iff it
+        u"""Returns a name for this Pokémon, specifying the form iff it
         represents a specific PokemonForm.
         """
         if any(not form.is_default for form in self.forms):
@@ -1717,7 +1717,7 @@ class PokemonForm(TableBase):
     identifier = Column(Unicode(79), nullable=False,
         info=dict(description=u"A unique identifier for this form among all forms of all Pokémon", format='identifier'))
     form_identifier = Column(Unicode(79), nullable=True,
-        info=dict(description=u"An identifier of the form, uniue among a species. May be None for the default form of the species.", format='identifier'))
+        info=dict(description=u"An identifier of the form, unique among a species. May be None for the default form of the species.", format='identifier'))
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, autoincrement=False,
         info=dict(description=u'The ID of the base Pokémon for this form.'))
     introduced_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), autoincrement=False,
@@ -1906,7 +1906,7 @@ class PokemonSpecies(TableBase):
     growth_rate_id = Column(Integer, ForeignKey('growth_rates.id'), nullable=False,
         info=dict(description="ID of the growth rate for this family"))
     forms_switchable = Column(Boolean, nullable=False,
-        info=dict(description=u"True iff a particular individual of this species can switch beween its different forms."))
+        info=dict(description=u"True iff a particular individual of this species can switch between its different forms."))
     order = Column(Integer, nullable=False, index=True,
         info=dict(description=u'The order in which species should be sorted.  Based on National Dex order, except families are grouped together and sorted by stage.'))
     conquest_order = Column(Integer, nullable=True, index=True,
@@ -1930,7 +1930,7 @@ create_translation_table('pokemon_species_prose', PokemonSpecies, 'prose',
 )
 
 class PokemonSpeciesFlavorText(TableBase):
-    u"""In-game Pokédex descrption of a Pokémon.
+    u"""In-game Pokédex description of a Pokémon.
     """
     __tablename__ = 'pokemon_species_flavor_text'
     summary_column = PokemonSpecies.flavor_summaries_table, 'flavor_summary'
@@ -2099,7 +2099,7 @@ class Version(TableBase):
     version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False,
         info=dict(description=u"The ID of the version group this game belongs to."))
     identifier = Column(Unicode(79), nullable=False,
-        info=dict(description=u'And identifier', format='identifier'))
+        info=dict(description=u'An identifier', format='identifier'))
 
 create_translation_table('version_names', Version, 'names',
     relation_lazy='joined',
