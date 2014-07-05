@@ -967,8 +967,7 @@ create_translation_table('item_flavor_summaries', Item, 'flavor_summaries',
 )
 
 class ItemCategory(TableBase):
-    u"""An item category."""
-    # XXX: This is fanon, right?
+    u"""An item category. Not official."""
     __tablename__ = 'item_categories'
     __singlename__ = 'item_category'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1109,7 +1108,12 @@ create_translation_table('location_area_prose', LocationArea, 'prose',
 )
 
 class LocationAreaEncounterRate(TableBase):
-    # XXX: What's this exactly? Someone add the docstring & revise the descriptions
+    """The chance of encountering a wild Pokémon in an area.
+
+    In other words, how likely a step in tall grass is to trigger a wild battle.
+    The exact meaning of the rate varies across versions but generally higher is
+    more likely.
+    """
     __tablename__ = 'location_area_encounter_rates'
     location_area_id = Column(Integer, ForeignKey('location_areas.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"ID of the area")
@@ -1118,7 +1122,7 @@ class LocationAreaEncounterRate(TableBase):
     version_id = Column(Integer, ForeignKey('versions.id'), primary_key=True, autoincrement=False,
         doc=u"ID of the version")
     rate = Column(Integer, nullable=True,
-        doc=u"The encounter rate")  # units?
+        doc=u"The base encounter rate")
 
 class LocationGameIndex(TableBase):
     u"""IDs the games use internally for locations."""
@@ -1196,7 +1200,10 @@ create_translation_table('move_flavor_summaries', Move, 'flavor_summaries',
 )
 
 class MoveBattleStyle(TableBase):
-    u"""A battle style of a move."""  # XXX: Explain better
+    u"""Battle Palace style.
+
+    See NatureBattleStylePreference.
+    """
     __tablename__ = 'move_battle_styles'
     __singlename__ = 'move_battle_style'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1593,7 +1600,7 @@ class Pokemon(TableBase):
     weight = Column(Integer, nullable=False,
         doc=u"The weight of the Pokémon, in tenths of a kilogram (decigrams)")
     base_experience = Column(Integer, nullable=False,
-        doc=u"The base EXP gained when defeating this Pokémon")  # XXX: Is this correct?
+        doc=u"The base EXP gained when defeating this Pokémon")
     order = Column(Integer, nullable=False, index=True,
         doc=u"Order for sorting. Almost national order, except families are grouped together.")
     is_default = Column(Boolean, nullable=False, index=True,
@@ -1883,7 +1890,7 @@ class PokemonMove(TableBase):
     level = Column(Integer, nullable=True, index=True, autoincrement=False,
         doc=u"Level the move is learned at, if applicable")
     order = Column(Integer, nullable=True,
-        doc=u"A sort key to produce the correct ordering when all else is equal")  # XXX: This needs a better description
+        doc=u"The order which moves learned at the same level are learned in")
 
     __table_args__ = (
         PrimaryKeyConstraint('pokemon_id', 'version_group_id', 'move_id', 'pokemon_move_method_id', 'level'),
