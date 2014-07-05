@@ -731,8 +731,6 @@ class Encounter(TableBase):
 
     A slot (20% walking in grass) and any appropriate world conditions (no
     swarm) are thus enough to define a specific encounter.
-
-    Well, okay, almost: each slot actually appears twice.
     """
 
     __tablename__ = 'encounters'
@@ -823,11 +821,7 @@ create_translation_table('encounter_method_prose', EncounterMethod, 'prose',
 )
 
 class EncounterSlot(TableBase):
-    u"""An abstract "slot" within a method, associated with both some set of conditions and a rarity.
-
-    Note that there are two encounters per slot, so the rarities will only add
-    up to 50.
-    """
+    u"""An abstract "slot" within a method, associated with both some set of conditions and a rarity."""
 
     __tablename__ = 'encounter_slots'
     id = Column(Integer, primary_key=True, nullable=False,
