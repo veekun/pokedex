@@ -183,8 +183,9 @@ def generate_columns(cls, remaining_attrs):
         else:
             yield column_header(c, name) + ':'
         yield u''
-        yield u'  ' + unicode(c.__doc__)
-        yield u''
+        if c.doc:
+            yield u'  ' + unicode(c.doc)
+            yield u''
 
 @with_header(u'Internationalized strings')
 def generate_strings(cls, remaining_attrs):
@@ -198,8 +199,9 @@ def generate_strings(cls, remaining_attrs):
                 yield column_header(c, cls.__name__,
                         translation_class.__table__.name)
                 yield u''
-                yield u'  ' + unicode(c.__doc__)
-                yield u''
+                if c.doc:
+                    yield u'  ' + unicode(c.doc)
+                    yield u''
 
 @with_header(u'Relationships')
 def generate_relationships(cls, remaining_attrs):
