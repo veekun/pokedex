@@ -1787,8 +1787,12 @@ class PokemonForm(TableBase):
     is_mega = Column(Boolean, nullable=False,
         doc=u'Records whether this form is a Mega Evolution.')
     form_order = Column(Integer, nullable=False, autoincrement=False,
-        info=dict(description=u"The order in which forms should be sorted within a species' forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.  "
-                              u"Used in generating `pokemon_forms.order` and `pokemon.order`."))
+        doc=u"""The order in which forms should be sorted within a species' forms.
+
+            Multiple forms may have equal order, in which case they should fall
+            back on sorting by name.  Used in generating `pokemon_forms.order`
+            and `pokemon.order`.
+            """)
     order = Column(Integer, nullable=False, autoincrement=False,
         doc=u'The order in which forms should be sorted within all forms.  Multiple forms may have equal order, in which case they should fall back on sorting by name.')
 
