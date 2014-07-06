@@ -1590,9 +1590,9 @@ class Pokemon(TableBase):
     species_id = Column(Integer, ForeignKey('pokemon_species.id'),
         doc=u"ID of the species this Pokémon belongs to")
     height = Column(Integer, nullable=False,
-        doc=u"The height of the Pokémon, in decimeters (tenths of a meter)")
+        doc=u"The height of the Pokémon, in tenths of a meter (decimeters)")
     weight = Column(Integer, nullable=False,
-        doc=u"The weight of the Pokémon, in tenths of a kilogram (decigrams)")
+        doc=u"The weight of the Pokémon, in tenths of a kilogram (hectograms)")
     base_experience = Column(Integer, nullable=False,
         doc=u"The base EXP gained when defeating this Pokémon")
     order = Column(Integer, nullable=False, index=True,
