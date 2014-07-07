@@ -1,6 +1,6 @@
 # encoding: utf8
 
-from pokedex.tests import single_params
+import pytest
 
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.orm import class_mapper, joinedload, sessionmaker
@@ -11,7 +11,9 @@ from pokedex.db import tables, markdown
 from pokedex.db.multilang import MultilangScopedSession, MultilangSession, \
     create_translation_table
 
-@single_params(*dir(tables))
+parametrize = pytest.mark.parametrize
+
+@parametrize('varname', [attr for attr in dir(tables) if not attr.startswith('_')])
 def test_variable_names(varname):
     """We want pokedex.db.tables to export tables using the class name"""
     table = getattr(tables, varname)
@@ -24,7 +26,7 @@ def test_variable_names(varname):
     if classname and varname[0].isupper():
         assert varname == classname, '%s refers to %s' % (varname, classname)
 
-@single_params(*tables.mapped_classes)
+@parametrize('table', tables.mapped_classes)
 def test_variable_names_2(table):
     """We also want all of the tables exported"""
     assert getattr(tables, table.__name__) is table
@@ -162,7 +164,7 @@ classes = []
 for cls in tables.mapped_classes:
     classes.append(cls)
     classes += cls.translation_classes
-@single_params(*classes)
+@parametrize('cls', classes)
 def test_texts(cls):
     """Check DB schema for integrity of text columns & translations.
 
@@ -181,26 +183,27 @@ def test_texts(cls):
         format = column.info.get('format', None)
         if format is not None:
             if format not in good_formats:
-                raise AssertionError(assert_text % column)
+                pytest.fail(assert_text % column)
             if (format != 'identifier') and (column.name == 'identifier'):
-                raise AssertionError('%s: identifier column name/type mismatch' % column)
+                pytest.fail('%s: identifier column name/type mismatch' % column)
             if column.info.get('official', None) and format not in 'gametext plaintext':
-                raise AssertionError('%s: official text with bad format' % column)
+                pytest.fail('%s: official text with bad format' % column)
             text_columns.append(column)
         else:
             if isinstance(column.type, tables.Unicode):
-                raise AssertionError('%s: text column without format' % column)
+                pytest.fail('%s: text column without format' % column)
         if column.name == 'name' and format != 'plaintext':
-            raise AssertionError('%s: non-plaintext name' % column)
+            pytest.fail('%s: non-plaintext name' % column)
         # No mention of English in the description
-        assert u'English' not in column.__doc__, column
+        if column.doc and u'English' in column.doc:
+            pytest.fail("%s: description mentions English" % column)
     # If there's more than one text column in a translation table,
     # they have to be nullable, to support missing translations
     if hasattr(cls, 'local_language') and len(text_columns) > 1:
         for column in text_columns:
             assert column.nullable
 
-@single_params(*tables.mapped_classes)
+@parametrize('table', tables.mapped_classes)
 def test_identifiers_with_names(table):
     """Test that named tables have identifiers
     """

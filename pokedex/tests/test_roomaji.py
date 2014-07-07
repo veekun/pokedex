@@ -1,9 +1,13 @@
 # encoding: utf8
 
-import pokedex.roomaji
-from pokedex.tests import positional_params
+import pytest
+parametrize = pytest.mark.parametrize
 
-@positional_params(
+import pokedex.roomaji
+
+@parametrize(
+    ('kana', 'roomaji'),
+    [
         (u'ヤミカラス',         'yamikarasu'),
 
         # Elongated vowel
@@ -21,13 +25,16 @@ from pokedex.tests import positional_params
         (u'ラティアス',         'ratiasu'),
         (u'ウィー',             'wii'),
         (u'セレビィ',           'sereby'),
-    )
+    ]
+)
 def test_roomaji(kana, roomaji):
     result = pokedex.roomaji.romanize(kana)
     assert result == roomaji
 
 
-@positional_params(
+@parametrize(
+    ('kana', 'roomaji'),
+    [
         (u'ヤミカラス',         u'jamikarasu'),
 
         # Elongated vowel
@@ -45,7 +52,8 @@ def test_roomaji(kana, roomaji):
         (u'ラティアス',         u'ratiasu'),
         (u'ウィー',             u'wí'),
         (u'セレビィ',           u'serebí'),
-    )
+    ]
+)
 def test_roomaji_cs(kana, roomaji):
     result = pokedex.roomaji.romanize(kana, 'cs')
     assert result == roomaji

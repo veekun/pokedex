@@ -2,39 +2,40 @@
 
 import csv
 
-import pytest
-
 from pokedex.db import translations, tables
 
 fake_version_names = (
-        'version_id,local_language_id,name',
-        '1,0,name1', '2,0,name2', '3,0,name3', '3,1,othername3',
-    )
+    'version_id,local_language_id,name',
+    '1,0,name1',
+    '2,0,name2',
+    '3,0,name3',
+    '3,1,othername3',
+)
 
 fake_translation_csv = (
-        'language_id,table,id,column,source_crc,string',
-        '0,Version,1,name,,name1',
-        '0,Version,2,name,,name2',
-        '0,Version,3,name,,name3',
-        '1,Version,3,name,,othername3',
-    )
+    'language_id,table,id,column,source_crc,string',
+    '0,Version,1,name,,name1',
+    '0,Version,2,name,,name2',
+    '0,Version,3,name,,name3',
+    '1,Version,3,name,,othername3',
+)
 
 def test_yield_source_csv_messages():
     check_version_message_stream(translations.yield_source_csv_messages(
-            tables.Version.names_table,
-            tables.Version,
-            csv.reader(iter(fake_version_names)),
-        ))
+        tables.Version.names_table,
+        tables.Version,
+        csv.reader(iter(fake_version_names)),
+    ))
 
 def test_yield_guessed_csv_messages():
     check_version_message_stream(translations.yield_guessed_csv_messages(
-            iter(fake_translation_csv),
-        ))
+        iter(fake_translation_csv),
+    ))
 
 def test_yield_translation_csv_messages():
     check_version_message_stream(translations.yield_translation_csv_messages(
-            iter(fake_translation_csv),
-        ))
+        iter(fake_translation_csv),
+    ))
 
 def check_version_message_stream(messages):
     messages = list(messages)
@@ -53,59 +54,59 @@ def get_messages(*rows):
 
 def test_merge_translations():
     source = get_messages(
-            '0,Table,1,col,,none',
-            '0,Table,2,col,,new',
-            '0,Table,3,col,,existing',
-            '0,Table,4,col,,both',
-            '0,Table,5,col,,(gap)',
-            '0,Table,6,col,,new-bad',
-            '0,Table,7,col,,existing-bad',
-            '0,Table,8,col,,both-bad',
-            '0,Table,9,col,,new-bad-ex-good',
-            '0,Table,10,col,,new-good-ex-bad',
-            '0,Table,11,col,,(gap)',
-            '0,Table,12,col,,"Numbers: 1, 2, and 003"',
-            '0,Table,13,col,,"Numbers: 3, 2, and 001"',
-        )
+        '0,Table,1,col,,none',
+        '0,Table,2,col,,new',
+        '0,Table,3,col,,existing',
+        '0,Table,4,col,,both',
+        '0,Table,5,col,,(gap)',
+        '0,Table,6,col,,new-bad',
+        '0,Table,7,col,,existing-bad',
+        '0,Table,8,col,,both-bad',
+        '0,Table,9,col,,new-bad-ex-good',
+        '0,Table,10,col,,new-good-ex-bad',
+        '0,Table,11,col,,(gap)',
+        '0,Table,12,col,,"Numbers: 1, 2, and 003"',
+        '0,Table,13,col,,"Numbers: 3, 2, and 001"',
+    )
     new = get_messages(
-            '0,Table,2,col,%s,new' % translations.crc('new'),
-            '0,Table,4,col,%s,new' % translations.crc('both'),
-            '0,Table,6,col,%s,new' % translations.crc('----'),
-            '0,Table,8,col,%s,new' % translations.crc('----'),
-            '0,Table,9,col,%s,new' % translations.crc('----'),
-            '0,Table,10,col,%s,new' % translations.crc('new-good-ex-bad'),
-            '0,Table,12,col,%s,{num} {num} {num}' % translations.crc('Numbers: {num}, {num}, and {num}'),
-            '0,Table,13,col,%s,{num} {num} {num}' % translations.crc('----'),
-            '0,Table,100,col,%s,unused' % translations.crc('----'),
-        )
+        '0,Table,2,col,%s,new' % translations.crc('new'),
+        '0,Table,4,col,%s,new' % translations.crc('both'),
+        '0,Table,6,col,%s,new' % translations.crc('----'),
+        '0,Table,8,col,%s,new' % translations.crc('----'),
+        '0,Table,9,col,%s,new' % translations.crc('----'),
+        '0,Table,10,col,%s,new' % translations.crc('new-good-ex-bad'),
+        '0,Table,12,col,%s,{num} {num} {num}' % translations.crc('Numbers: {num}, {num}, and {num}'),
+        '0,Table,13,col,%s,{num} {num} {num}' % translations.crc('----'),
+        '0,Table,100,col,%s,unused' % translations.crc('----'),
+    )
     new[-3].number_replacement = True
     new[-3].source = 'Numbers: 1, 2, and 003'
     new[-2].number_replacement = True
     new[-2].source = '----'
     existing = get_messages(
-            '0,Table,3,col,%s,existing' % translations.crc('existing'),
-            '0,Table,4,col,%s,existing' % translations.crc('both'),
-            '0,Table,7,col,%s,existing' % translations.crc('----'),
-            '0,Table,8,col,%s,existing' % translations.crc('----'),
-            '0,Table,9,col,%s,existing' % translations.crc('new-bad-ex-good'),
-            '0,Table,10,col,%s,existing' % translations.crc('----'),
-            '0,Table,100,col,%s,unused' % translations.crc('----'),
-        )
+        '0,Table,3,col,%s,existing' % translations.crc('existing'),
+        '0,Table,4,col,%s,existing' % translations.crc('both'),
+        '0,Table,7,col,%s,existing' % translations.crc('----'),
+        '0,Table,8,col,%s,existing' % translations.crc('----'),
+        '0,Table,9,col,%s,existing' % translations.crc('new-bad-ex-good'),
+        '0,Table,10,col,%s,existing' % translations.crc('----'),
+        '0,Table,100,col,%s,unused' % translations.crc('----'),
+    )
     expected_list = (
-            ('none', None, None),
-            ('new', True, 'new'),
-            ('existing', True, 'existing'),
-            ('both', True, 'new'),
-            ('(gap)', None, None),
-            ('new-bad', False, 'new'),
-            ('existing-bad', False, 'existing'),
-            ('both-bad', False, 'new'),
-            ('new-bad-ex-good', True, 'existing'),
-            ('new-good-ex-bad', True, 'new'),
-            ('(gap)', None, None),
-            ('Numbers: 1, 2, and 003', True, '1 2 003'),
-            ('Numbers: 3, 2, and 001', False, '3 2 001'),
-        )
+        ('none', None, None),
+        ('new', True, 'new'),
+        ('existing', True, 'existing'),
+        ('both', True, 'new'),
+        ('(gap)', None, None),
+        ('new-bad', False, 'new'),
+        ('existing-bad', False, 'existing'),
+        ('both-bad', False, 'new'),
+        ('new-bad-ex-good', True, 'existing'),
+        ('new-good-ex-bad', True, 'new'),
+        ('(gap)', None, None),
+        ('Numbers: 1, 2, and 003', True, '1 2 003'),
+        ('Numbers: 3, 2, and 001', False, '3 2 001'),
+    )
     unused = []
     result_stream = list(translations.merge_translations(source, new, [], existing, unused=unused.append))
     for result, expected in zip(result_stream, expected_list):

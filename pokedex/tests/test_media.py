@@ -10,76 +10,62 @@ import pytest
 import os
 import re
 
-from pokedex.db import tables, connect
+from pokedex.db import tables
 from pokedex.util import media
-
-def pytest_addoption(parser):
-    group = parser.getgroup("pokedex")
-    group.addoption("--media-root", dest="media_root", action="store", default=None,
-        help="path to pokedex-media")
-
-def pytest_funcarg__root(request):
-    root = request.config.option.media_root
-    if not root:
-        root = os.path.join(os.path.dirname(__file__), *'../data/media'.split('/'))
-        if not media.BaseMedia(root).available:
-            raise pytest.skip("Media unavailable")
-    return root
-
-session = connect()
 
 path_re = re.compile('^[-a-z0-9./]*$')
 
-def test_totodile(root):
+def test_totodile(session, media_root):
     """Totodile's female sprite -- same as male"""
     totodile = session.query(tables.PokemonSpecies).filter_by(identifier=u'totodile').one()
-    accessor = media.PokemonSpeciesMedia(root, totodile)
+    accessor = media.PokemonSpeciesMedia(media_root, totodile)
     assert accessor.sprite() == accessor.sprite(female=True)
 
-def test_chimecho(root):
+def test_chimecho(session, media_root):
     """Chimecho's Platinum female backsprite -- diffeent from male"""
     chimecho = session.query(tables.PokemonSpecies).filter_by(identifier=u'chimecho').one()
-    accessor = media.PokemonSpeciesMedia(root, chimecho)
+    accessor = media.PokemonSpeciesMedia(media_root, chimecho)
     male = accessor.sprite('platinum', back=True, frame=2)
     female = accessor.sprite('platinum', back=True, female=True, frame=2)
     assert male != female
 
-def test_venonat(root):
+def test_venonat(session, media_root):
     """Venonat's shiny Yellow sprite -- same as non-shiny"""
     venonat = session.query(tables.PokemonSpecies).filter_by(identifier=u'venonat').one()
-    accessor = media.PokemonSpeciesMedia(root, venonat)
+    accessor = media.PokemonSpeciesMedia(media_root, venonat)
     assert accessor.sprite('yellow') == accessor.sprite('yellow', shiny=True)
 
-def test_arceus_icon(root):
-    """Arceus fire-form icon -- same as base icon"""
+@pytest.mark.xfail
+def test_arceus_icon(session, media_root):
+    """Arceus normal-form icon -- same as base icon"""
     arceus = session.query(tables.PokemonSpecies).filter_by(identifier=u'arceus').one()
-    accessor = media.PokemonSpeciesMedia(root, arceus)
-    fire_arceus = [f for f in arceus.forms if f.form_identifier == 'fire'][0]
-    fire_accessor = media.PokemonFormMedia(root, fire_arceus)
-    assert accessor.icon() == fire_accessor.icon()
+    accessor = media.PokemonSpeciesMedia(media_root, arceus)
+    normal_arceus = [f for f in arceus.forms if f.form_identifier == 'normal'][0]
+    normal_accessor = media.PokemonFormMedia(media_root, normal_arceus)
+    assert accessor.icon() == normal_accessor.icon()
 
-def test_strict_castform(root):
+def test_strict_castform(session, media_root):
     """Castform rainy form overworld with strict -- unavailable"""
     with pytest.raises(ValueError):
         castform = session.query(tables.PokemonSpecies).filter_by(identifier=u'castform').first()
         rainy_castform = [f for f in castform.forms if f.form_identifier == 'rainy'][0]
         print rainy_castform
-        rainy_castform = media.PokemonFormMedia(root, rainy_castform)
+        rainy_castform = media.PokemonFormMedia(media_root, rainy_castform)
         rainy_castform.overworld('up', strict=True)
 
-def test_strict_exeggcute(root):
+def test_strict_exeggcute(session, media_root):
     """Exeggcutes's female backsprite, with strict -- unavailable"""
     with pytest.raises(ValueError):
         exeggcute = session.query(tables.PokemonSpecies).filter_by(identifier=u'exeggcute').one()
-        accessor = media.PokemonSpeciesMedia(root, exeggcute)
+        accessor = media.PokemonSpeciesMedia(media_root, exeggcute)
         accessor.sprite(female=True, strict=True)
 
 
 
-def get_all_filenames(root):
+def get_all_filenames(media_root):
     all_filenames = set()
 
-    for dirpath, dirnames, filenames in os.walk(root):
+    for dirpath, dirnames, filenames in os.walk(media_root):
         dirnames[:] = [dirname for dirname in dirnames if dirname != '.git']
         for filename in filenames:
             path = os.path.join(dirpath, filename)
@@ -109,8 +95,9 @@ def hit(filenames, method, *args, **kwargs):
         pass
     return True
 
-@pytest.mark.skipif("not config.getvalue('all')", reason='`--all` not specified')
-def test_get_everything(root, pytestconfig):
+@pytest.mark.slow
+@pytest.mark.xfail
+def test_get_everything(session, media_root):
     """
     For every the accessor method, loop over the Cartesian products of all
     possible values for its arguments.
@@ -119,7 +106,6 @@ def test_get_everything(root, pytestconfig):
 
     Well, there are exceptions of course.
     """
-    assert pytestconfig.getvalue('all')
 
     versions = list(session.query(tables.Version).all())
     versions.append('red-green')
@@ -130,37 +116,37 @@ def test_get_everything(root, pytestconfig):
 
     black = session.query(tables.Version).filter_by(identifier=u'black').one()
 
-    filenames = get_all_filenames(root)
+    filenames = get_all_filenames(media_root)
 
     # Some small stuff first
 
     for damage_class in session.query(tables.MoveDamageClass).all():
-        assert hit(filenames, media.DamageClassMedia(root, damage_class).icon)
+        assert hit(filenames, media.DamageClassMedia(media_root, damage_class).icon)
 
     for habitat in session.query(tables.PokemonHabitat).all():
-        assert hit(filenames, media.HabitatMedia(root, habitat).icon)
+        assert hit(filenames, media.HabitatMedia(media_root, habitat).icon)
 
     for shape in session.query(tables.PokemonShape).all():
-        assert hit(filenames, media.ShapeMedia(root, shape).icon)
+        assert hit(filenames, media.ShapeMedia(media_root, shape).icon)
 
     for item_pocket in session.query(tables.ItemPocket).all():
-        assert hit(filenames, media.ItemPocketMedia(root, item_pocket).icon)
-        assert hit(filenames, media.ItemPocketMedia(root, item_pocket).icon, selected=True)
+        assert hit(filenames, media.ItemPocketMedia(media_root, item_pocket).icon)
+        assert hit(filenames, media.ItemPocketMedia(media_root, item_pocket).icon, selected=True)
 
     for contest_type in session.query(tables.ContestType).all():
-        assert hit(filenames, media.ContestTypeMedia(root, contest_type).icon)
+        assert hit(filenames, media.ContestTypeMedia(media_root, contest_type).icon)
 
     for elemental_type in session.query(tables.Type).all():
-        assert hit(filenames, media.TypeMedia(root, elemental_type).icon)
+        assert hit(filenames, media.TypeMedia(media_root, elemental_type).icon)
 
     # Items
     versions_for_items = [
-            None,
-            session.query(tables.Version).filter_by(identifier='emerald').one(),
-        ]
+        None,
+        session.query(tables.Version).filter_by(identifier='emerald').one(),
+    ]
 
     for item in session.query(tables.Item).all():
-        accessor = media.ItemMedia(root, item)
+        accessor = media.ItemMedia(media_root, item)
         assert hit(filenames, accessor.berry_image) or not item.berry
         for rotation in (0, 90, 180, 270):
             assert hit(filenames, accessor.underground, rotation=rotation) or (
@@ -172,11 +158,11 @@ def test_get_everything(root, pytestconfig):
 
     for color in 'red green blue pale prism'.split():
         for big in (True, False):
-            accessor = media.UndergroundSphereMedia(root, color=color, big=big)
+            accessor = media.UndergroundSphereMedia(media_root, color=color, big=big)
             assert hit(filenames, accessor.underground)
 
     for rock_type in 'i ii o o-big s t z'.split():
-        accessor = media.UndergroundRockMedia(root, rock_type)
+        accessor = media.UndergroundRockMedia(media_root, rock_type)
         for rotation in (0, 90, 180, 270):
             success = hit(filenames, accessor.underground, rotation=rotation)
             assert success or rotation
@@ -184,17 +170,17 @@ def test_get_everything(root, pytestconfig):
     # Pokemon!
     accessors = []
 
-    accessors.append(media.UnknownPokemonMedia(root))
-    accessors.append(media.EggMedia(root))
+    accessors.append(media.UnknownPokemonMedia(media_root))
+    accessors.append(media.EggMedia(media_root))
     manaphy = session.query(tables.PokemonSpecies).filter_by(identifier=u'manaphy').one()
-    accessors.append(media.EggMedia(root, manaphy))
-    accessors.append(media.SubstituteMedia(root))
+    accessors.append(media.EggMedia(media_root, manaphy))
+    accessors.append(media.SubstituteMedia(media_root))
 
     for form in session.query(tables.PokemonForm).all():
-        accessors.append(media.PokemonFormMedia(root, form))
+        accessors.append(media.PokemonFormMedia(media_root, form))
 
     for pokemon in session.query(tables.PokemonSpecies).all():
-        accessors.append(media.PokemonSpeciesMedia(root, pokemon))
+        accessors.append(media.PokemonSpeciesMedia(media_root, pokemon))
 
     for accessor in accessors:
         assert hit(filenames, accessor.footprint) or not accessor.is_proper
@@ -243,9 +229,9 @@ def test_get_everything(root, pytestconfig):
                                         assert success
 
     # Remove exceptions
-    exceptions = [os.path.join(root, dirname) for dirname in
+    exceptions = [os.path.join(media_root, dirname) for dirname in
             'chrome fonts ribbons'.split()]
-    exceptions.append(os.path.join(root, 'items', 'hm-'))
+    exceptions.append(os.path.join(media_root, 'items', 'hm-'))
     exceptions = tuple(exceptions)
 
     unaccessed_filenames = set(filenames)
