@@ -226,6 +226,24 @@ class BerryFlavor(TableBase):
     flavor = Column(Integer, nullable=False,
         doc=u"The level of the flavor in the berry")
 
+class Characteristic(TableBase):
+    u"""Flavor text hinting at genes that appears in a Pokémon's summary."""
+    __tablename__ = 'characteristics'
+    __singlename__ = 'characteristic'
+    id = Column(Integer, primary_key=True, nullable=False,
+        doc=u"A numeric ID")
+    stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False,
+        doc=u"ID of the stat with the highest gene")
+    gene_mod_5 = Column(Integer, nullable=False, index=True,
+        doc=u"Value of the highest gene modulo 5")
+
+create_translation_table('characteristic_text', Characteristic, 'text',
+    relation_lazy='joined',
+    message = Column(Unicode(79), nullable=False, index=True,
+        doc=u"The text displayed",
+        info=dict(official=True, format='plaintext')),
+)
+
 class ConquestEpisode(TableBase):
     u"""An episode from Pokémon Conquest: one of a bunch of mini-stories
     featuring a particular warrior.
@@ -2079,26 +2097,6 @@ create_translation_table('stat_names', Stat, 'names',
         info=dict(format='plaintext', official=True)),
 )
 
-class StatHint(TableBase):
-    u"""Flavor text for genes that appears in a Pokémon's summary.  Sometimes
-    called "characteristics".
-    """
-    __tablename__ = 'stat_hints'
-    __singlename__ = 'stat_hint'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u"A numeric ID")
-    stat_id = Column(Integer, ForeignKey('stats.id'), nullable=False,
-        doc=u"ID of the highest stat")
-    gene_mod_5 = Column(Integer, nullable=False, index=True,
-        doc=u"Value of the highest stat modulo 5")
-
-create_translation_table('stat_hint_names', StatHint, 'names',
-    relation_lazy='joined',
-    message = Column(Unicode(79), nullable=False, index=True,
-        doc=u"The text displayed",
-        info=dict(official=True, format='plaintext')),
-)
-
 class SuperContestCombo(TableBase):
     u"""Combo of two moves in a Super Contest."""
     __tablename__ = 'super_contest_combos'
@@ -2252,6 +2250,11 @@ Berry.flavors = relationship(BerryFlavor,
 Berry.natural_gift_type = relationship(Type, innerjoin=True)
 
 BerryFlavor.contest_type = relationship(ContestType, innerjoin=True)
+
+
+Characteristic.stat = relationship(Stat,
+    innerjoin=True,
+    backref='characteristics')
 
 
 ConquestEpisode.warriors = relationship(ConquestWarrior,
@@ -2829,10 +2832,6 @@ Region.version_groups = relationship(VersionGroup,
 
 Stat.damage_class = relationship(MoveDamageClass,
     backref='stats')
-
-StatHint.stat = relationship(Stat,
-    innerjoin=True,
-    backref='hints')
 
 
 SuperContestCombo.first = relationship(Move,
