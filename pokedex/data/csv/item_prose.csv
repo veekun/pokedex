@@ -767,8 +767,8 @@ Unused prior to Black and White 2."
 439,9,The last of three tickets used to obtain a Pokétch.,One of three coupons needed to receive a Pokétch.
 440,9,Grants access to the Team Galactic warehouse in Veilstone City.,Grants access to the Team Galactic warehouse in Veilstone City.
 441,9,Used to heal the Ampharos at the top of Olivine Lighthouse.,Required to cure the Psyducks blocking Route 210 of their chronic headaches.
-442,9,"Boosts the damage from Giratina's Dragon-type and Ghost-type moves by 20%, and transforms it into Origin Forme.","Held by :pokemon:`Giratina`
-    Holder's :type:`dragon` and :type:`ghost` moves have 1.2× their base power.
+442,9,"Boosts the damage from Giratina's Dragon-type and Ghost-type moves by 20%, and transforms it into Origin Forme.","Held by []{pokemon:giratina}
+:   Holder's []{type:dragon} and []{type:ghost} moves have 1.2× their base power.
 
     Holder is in Origin Forme.
 
@@ -776,96 +776,98 @@ This item cannot be held by any Pokémon but Giratina.  When you enter the Union
 443,9,"Records wireless, Wi-Fi, or Battle Frontier battles, and stores points.","Optionally records wireless, Wi-Fi, and Battle Frontier battles.
 
 Tracks Battle Points earned in the Battle Frontier, and stores commemorative prints."
-444,9,Changes an unfrozen Shaymin to Sky Forme in the day.,"Used by trainer on a :pokemon:`Shaymin`
-    Changes the target Shaymin from Land Forme to Sky Forme.
+444,9,Changes an unfrozen Shaymin to Sky Forme in the day.,"Used by trainer on a []{pokemon:shaymin}
+:   Changes the target Shaymin from Land Forme to Sky Forme.
 
-    This item cannot be used on a :mechanic:`frozen` Shaymin or at night.  Sky Forme Shaymin will revert to Land Forme overnight, when frozen, and upon entering a link battle.  This item must be used again to change it back."
+    This item cannot be used on a [frozen]{mechanic:freezing} Shaymin or at night.  Sky Forme Shaymin will revert to Land Forme overnight, when frozen, and upon entering a link battle.  This item must be used again to change it back."
 445,9,Gen IV: The key to Rotom's appliance room. Gen III: The key to Cinnabar Gym.,"Used by trainer in the Galactic Eterna Building, on the ground floor, to the left of the TV
-    Unlocks the secret :pokemon:`Rotom` room, in which there are five appliances which can change Rotom's form."
+:   Unlocks the secret []{pokemon:rotom} room, in which there are five appliances which can change Rotom's form."
 446,9,Holds Apricorns.,Stores Apricorns.
 447,9,Allows portable berry growing.,Contains four portable pots of soil suitable for growing berries.
-448,9,Use on Sudowoodo blocking the path on Route 36. Also waters berries.,"Required to water berries within the :item:`Berry Pots`.
+448,9,Use on Sudowoodo blocking the path on Route 36. Also waters berries.,"Required to water berries within the []{item:berry-pots}.
 
-Required to battle the :pokemon:`Sudowoodo` on :location:`Route 36`.
+Required to battle the []{pokemon:sudowoodo} on []{location:johto-route-36}.
 
 This item cannot be directly used from the bag."
 449,9,3× effectiveness while fishing. Made from Blu Apricorn.,"Used by trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
     If the wild Pokémon was encountered by fishing, the wild Pokémon's catch rate is 3× normal."
 450,9,Success rate based off of fraction target Pokémon is of user's Pokémon. Made from Red Apricorn.,"Used by trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
     If the trainer's Pokémon's level is higher than:
+
     * four times the wild Pokémon's, the wild Pokémon's catch rate is 8× normal.
     * than twice the wild Pokémon's, the wild Pokémon's catch rate is 4× normal.
     * the wild Pokémon's, the wild Pokémon's catch rate is 2× normal."
 451,9,4× effectiveness on familes of Pokémon with a Moon Stone evolution. Made from Ylw Apricorn.,"Used by trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
-    If the wild Pokémon is a :pokemon:`Clefairy`, :pokemon:`Nidoran♂`, :pokemon:`Nidoran♀`, :pokemon:`Jigglypuff`, :pokemon:`Skitty`, or any evolution thereof, the wild Pokémon has 4× its catch rate."
+    If the wild Pokémon is a []{pokemon:clefairy}, []{pokemon:nidoran-m}, []{pokemon:nidoran-f}, []{pokemon:jigglypuff}, []{pokemon:skitty}, or any evolution thereof, the wild Pokémon has 4× its catch rate."
 452,9,Has flat bonus or penalty to catch rate depending on weight class of target. Made from Blk Apricorn.,"Used by a trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
     If the wild Pokémon weighs:
+
     * 409.6 kg (903.0 lb) or more, its catch rate is 40 more than normal.
     * 307.2 kg (677.3 lb) or more, its catch rate is 30 more than normal.
     * 204.8 kg (451.5 lb) or more, its catch rate is 20 more than normal.
     * less than 204.8 kg (451.5 lb), its catch rate is 20 less than normal."
 453,9,4× effectiveness on Pokémon with 100 or greater base speed. (Gen II: Roaming or Fleeing Pokémon). Made from Wht Apricorn.,"Used by a trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
-    If the wild Pokémon's base :mechanic:`Speed` is 100 or more, its catch rate is 4× normal."
+:   If the wild Pokémon's base [speed]{mechanic:speed} is 100 or more, its catch rate is 4× normal."
 454,9,Caught Pokémon start with 200 happiness. Made from Grn Apricorn.,"Used by a trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
-    If caught, the wild Pokémon's :mechanic:`happiness` starts at 200."
+    If caught, the wild Pokémon's [happiness]{mechanic:happiness} starts at 200."
 455,9,"8× effectiveness on opposite sex, same species targets of the Active Pokémon. Made from Pnk Apricorn.","Used by a trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon.  If used in a trainer battle, nothing happens and the ball is lost.
 
     If the trainer's Pokémon and wild Pokémon are of the same species but opposite genders, the wild Pokémon's catch rate is 8× normal."
 456,9,Catches Pokémon in the Pal Park every time.,"Used by a trainer in battle
-    :mechanic:`Catch`\ es a wild Pokémon.
+:   [Catches]{mechanic:catch} a wild Pokémon.
 
-This item can only be used in :location:`Pal Park`."
+This item can only be used in []{location:pal-park}."
 457,9,Tries to catch a Pokémon in the Bug-Catching contest in National Park. (Gen II: Park Ball),"Used by a trainer in battle
-    Attempts to :mechanic:`catch` a wild Pokémon.
+:   Attempts to [catch]{mechanic:catch} a wild Pokémon.
 
     The wild Pokémon's catch rate is 1.5× normal."
-458,9,Used to make a Level Ball.,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Level Ball`.
-459,9,Used to make a Lure Ball.,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Lure Ball`.
-460,9,Used to make a Moon Ball.,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Moon Ball`.
-461,9,Used to make a Friend Ball.,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Friend Ball`.
-462,9,Used to make a Love Ball.,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Love Ball`.
-463,9,Used to make a Fast Ball.,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Fast Ball`.
-464,9,Used to make a Heavy Ball.,May be given to Kurt in :location:`Azalea Town` to produce a :item:`Heavy Ball`.
+458,9,Used to make a Level Ball.,May be given to Kurt in []{location:azalea-town} to produce a []{item:level-ball}.
+459,9,Used to make a Lure Ball.,May be given to Kurt in []{location:azalea-town} to produce a []{item:lure-ball}.
+460,9,Used to make a Moon Ball.,May be given to Kurt in []{location:azalea-town} to produce a []{item:moon-ball}.
+461,9,Used to make a Friend Ball.,May be given to Kurt in []{location:azalea-town} to produce a []{item:friend-ball}.
+462,9,Used to make a Love Ball.,May be given to Kurt in []{location:azalea-town} to produce a []{item:love-ball}.
+463,9,Used to make a Fast Ball.,May be given to Kurt in []{location:azalea-town} to produce a []{item:fast-ball}.
+464,9,Used to make a Heavy Ball.,May be given to Kurt in []{location:azalea-town} to produce a []{item:heavy-ball}.
 465,9,Use to find hidden items on the field. AKA Itemfinder.,"Used by trainer outside of battle
-    Searches for hidden items."
-466,9,HS: Traded for TM64. Gen II & Gen V: Acts as a Potion.,May be traded for a :item:`TM64` in the vertical Underground Path.
-467,9,Summons Groudon to the Embedded Tower.,Causes :pokemon:`Groudon` to appear in the :location:`Embedded Tower`.
-468,9,Summons Kyogre to the Embedded Tower.,Causes :pokemon:`Kyogre` to appear in the :location:`Embedded Tower`.
-469,9,Summons Rayquaza to the Embedded Tower.,Causes :pokemon:`Rayquaza` to appear in the :location:`Embedded Tower`.
-470,9,S: Summons Latias H: Summons Latios.,"When taken to the :location:`Pewter City` museum, causes :pokemon:`Latias` or :pokemon:`Latios` to attack the trainer.
+:   Searches for hidden items."
+466,9,HS: Traded for TM64. Gen II & Gen V: Acts as a Potion.,May be traded for a []{item:tm64} in the vertical Underground Path.
+467,9,Summons Groudon to the Embedded Tower.,Causes []{pokemon:groudon} to appear in the []{location:embedded-tower}.
+468,9,Summons Kyogre to the Embedded Tower.,Causes []{pokemon:kyogre} to appear in the []{location:embedded-tower}.
+469,9,Summons Rayquaza to the Embedded Tower.,Causes []{pokemon:rayquaza} to appear in the []{location:embedded-tower}.
+470,9,S: Summons Latias H: Summons Latios.,"When taken to the []{location:pewter-city} museum, causes []{pokemon:latias} or []{pokemon:latios} to attack the trainer.
 
 The Pokémon to appear will be whicher can't be encountered roaming in the wild."
-471,9,Keeps track of Unown types caught.,Lists which :pokemon:`Unown` forms the trainer has caught.
+471,9,Keeps track of Unown types caught.,Lists which []{pokemon:unown} forms the trainer has caught.
 472,9,Keeps track of points from Buena's show.,Allows the trainer to answer the daily question on Buena's radio show.  Records the points earned for correct answers.
 473,9,A tasty tail that sells for a high price.,Does nothing.
-474,9,HS: Allows Kimono-girls to summon Ho-oh. C: Summons Suicune to the Tin Tower.,May be given to the Kimono Girls to summon :pokemon:`Ho-Oh` to the top of the :location:`Bell Tower`.
+474,9,HS: Allows Kimono-girls to summon Ho-oh. C: Summons Suicune to the Tin Tower.,May be given to the Kimono Girls to summon []{pokemon:ho-oh} to the top of the []{location:bell-tower}.
 475,9,HS: Opens doors in the Radio Tower. Gen III: Unlocks Silph Co Doors.,"Used by trainer outside of battle
-    Opens doors in the :location:`Goldenrod City` Radio Tower."
+:   Opens doors in the []{location:goldenrod-city} Radio Tower."
 476,9,HS: Key to the tunnel under Goldenrod City. Gen III: Key to New Mauville.,"Used by trainer outside of battle
-    Opens the door to the basement tunnel under :location:`Goldenrod City`."
-477,9,Trade to Mr. Pokémon for an Exp. Share.,May be traded to Mr. Pokémon for an :item:`Exp. Share`.
-478,9,A Poké Doll lost by the Copycat who lives in Saffron City. Trade for a Pass.,May be traded to the Copycat for a :item:`Pass`.
-479,9,Grants access to ride the Magnet Train between Goldenrod City and Saffron City.,Allows the trainer to ride the Magnet Train between :location:`Goldenrod City` and :location:`Saffron City`.
-480,9,Must be replaced in the Power Plant to power the Magnet Train.,Must be replaced in the :location:`Power Plant` to power the Magnet Train.
-481,9,Summons Lugia to the Whirl Islands.,Causes :pokemon:`Lugia` to appear in the :location:`Whirl Islands`.
-482,9,Summons Ho-Oh at the top of the Bell Tower.,Causes :pokemon:`Ho-Oh` to appear at the top of :location:`Bell Tower`.
-483,9,Deliver to Professor Elm.,"Must be obtained to trigger the break-in at Professor Elm's lab, the first rival battle, and access to :location:`Route 31`."
+:   Opens the door to the basement tunnel under []{location:goldenrod-city}."
+477,9,Trade to Mr. Pokémon for an Exp. Share.,May be traded to Mr. Pokémon for an []{item:exp-share}.
+478,9,A Poké Doll lost by the Copycat who lives in Saffron City. Trade for a Pass.,May be traded to the Copycat for a []{item:pass}.
+479,9,Grants access to ride the Magnet Train between Goldenrod City and Saffron City.,Allows the trainer to ride the Magnet Train between []{location:goldenrod-city} and []{location:saffron-city}.
+480,9,Must be replaced in the Power Plant to power the Magnet Train.,Must be replaced in the []{location:power-plant} to power the Magnet Train.
+481,9,Summons Lugia to the Whirl Islands.,Causes []{pokemon:lugia} to appear in the []{location:whirl-islands}.
+482,9,Summons Ho-Oh at the top of the Bell Tower.,Causes []{pokemon:ho-oh} to appear at the top of []{location:bell-tower}.
+483,9,Deliver to Professor Elm.,"Must be obtained to trigger the break-in at Professor Elm's lab, the first rival battle, and access to []{location:johto-route-31}."
 484,9,Use to listen to GameBoy era audio.,"Used by trainer outside of battle
-    Changes the background music to the equivalent 8-bit music."
-485,9,Allows Kimono-girls to summon Lugia.,May be given to the Kimono Girls to summon :pokemon:`Lugia` to the top of the :location:`Bell Tower`.
+:   Changes the background music to the equivalent 8-bit music."
+485,9,Allows Kimono-girls to summon Lugia.,May be given to the Kimono Girls to summon []{pokemon:lugia} to the top of the []{location:bell-tower}.
 486,9,Records the number of times the trainer has come in first place overall in the Pokéathlon.,Records the number of times the trainer has come in first place overall in the Pokéathlon.
 487,9,Records the number of times the trainer has come in last place overall in the Pokéathlon.,Records the number of times the trainer has come in last place overall in the Pokéathlon.
 488,9,Records the number of times the trainer's Pokémon have dashed in the Pokéathlon.,Records the number of times the trainer's Pokémon have dashed in the Pokéathlon.
@@ -943,44 +945,44 @@ Held
 
 Held
 :   Holder cannot be placed in the PC.  Any move attempting to remove this item from the holder will fail."
-527,9,"Faster than the Acro Bike, and can ride up sandy slopes and across cracked floors.",Increases movement speed outside or in caves.  Faster than the :item:`Acro Bike`.  Allows the trainer to ascend muddy slopes.
-528,9,"More maneuverable than the Mach Bike, and allows hopping along rails.","Increases movement speed outside or in caves.  Slower than the :item:`Mach Bike`.  Can perform various tricks, allowing the trainer to reach certain special areas."
+527,9,"Faster than the Acro Bike, and can ride up sandy slopes and across cracked floors.",Increases movement speed outside or in caves.  Faster than the []{item:acro-bike}.  Allows the trainer to ascend muddy slopes.
+528,9,"More maneuverable than the Mach Bike, and allows hopping along rails.","Increases movement speed outside or in caves.  Slower than the []{item:mach-bike}.  Can perform various tricks, allowing the trainer to reach certain special areas."
 529,9,Used to water berries.,Waters Berry plants.
 530,9,Contains mechanical parts to be delivered to Captain Stern.,Contains a machine part to be delivered to Captain Stern.
-531,9,Stores volcanic ash from Route 113.,Collects soot when walking through tall grass on :location:`Route 113`.
+531,9,Stores volcanic ash from Route 113.,Collects soot when walking through tall grass on []{location:hoenn-route-113}.
 532,9,Holds Pokéblocks.,Stores Pokéblocks.
 533,9,A letter to Steven from the Devon Corp president.,Contains a letter to be delivered to Steven.
-534,9,Provides access to Southern Island and Latias or Latios.,"Provides access to :location:`Southern Island` and either :pokemon:`Latias` or :pokemon:`Latios`, whichever is not available roaming around Hoenn."
-535,9,Trade to Captain Stern for a DeepSeaTooth or DeepSeaScale.,May be traded to Captain Stern for a :item:`DeepSeaTooth` or a :item:`DeepSeaScale`.
-536,9,Allows passage through windy deserts.,Allows the trainer to enter the desert on :location:`Route 111`.
-537,9,FL: Deliver to Lostelle's father. RSE: Trade to Professor Cozmo for TM27 (Return).,"RSE: May be traded to Professor Cozmo for :item:`TM27`.
+534,9,Provides access to Southern Island and Latias or Latios.,"Provides access to []{location:southern-island} and either []{pokemon:latias} or []{pokemon:latios}, whichever is not available roaming around Hoenn."
+535,9,Trade to Captain Stern for a DeepSeaTooth or DeepSeaScale.,May be traded to Captain Stern for a []{item:deep-sea-tooth} or a []{item:deep-sea-scale}.
+536,9,Allows passage through windy deserts.,Allows the trainer to enter the desert on []{location:hoenn-route-111}.
+537,9,FL: Deliver to Lostelle's father. RSE: Trade to Professor Cozmo for TM27 (Return).,"RSE: May be traded to Professor Cozmo for []{item:tm27}.
 
 FRLG: A meteorite to be delivered to Lostelle's father."
-538,9,Unlocks room 1 on the Abandoned Ship.,Unlocks room 1 on the :location:`Abandoned Ship`.
-539,9,Unlocks room 2 on the Abandoned Ship.,Unlocks room 2 on the :location:`Abandoned Ship`.
-540,9,Unlocks room 4 on the Abandoned Ship.,Unlocks room 4 on the :location:`Abandoned Ship`.
-541,9,Unlocks room 6 on the Abandoned Ship.,Unlocks room 6 on the :location:`Abandoned Ship`.
-542,9,Allows spotting of invisible Kecleon.,Reveals invisble :pokemon:`Kecleon` on the overworld.
+538,9,Unlocks room 1 on the Abandoned Ship.,Unlocks room 1 on the []{location:abandoned-ship}.
+539,9,Unlocks room 2 on the Abandoned Ship.,Unlocks room 2 on the []{location:abandoned-ship}.
+540,9,Unlocks room 4 on the Abandoned Ship.,Unlocks room 4 on the []{location:abandoned-ship}.
+541,9,Unlocks room 6 on the Abandoned Ship.,Unlocks room 6 on the []{location:abandoned-ship}.
+542,9,Allows spotting of invisible Kecleon.,Reveals invisble []{pokemon:kecleon} on the overworld.
 543,9,Trade to Prof. Oak for a Pokédex.,A parcel to be delivered to Professor Oak for a Pokédex.
-544,9,"Use to awaken sleeping Pokémon, including Snorlax on roads.",Wakes up :mechanic:`sleeping` Pokémon.  Required to wake up sleeping :pokemon:`Snorlax` on the overworld.
-545,9,Trade in Cerulean bike shop for a Bicycle.,May be traded for a :item:`Bicycle`.
-546,9,The Safari Zone Warden's dentures. Trade for HM04 (Strength).,"The Safari Zone warden's teeth, to be returned to him for :item:`HM04`."
+544,9,"Use to awaken sleeping Pokémon, including Snorlax on roads.",Wakes up [sleeping]{mechanic:sleep} Pokémon.  Required to wake up sleeping []{pokemon:snorlax} on the overworld.
+545,9,Trade in Cerulean bike shop for a Bicycle.,May be traded for a []{item:bicycle}.
+546,9,The Safari Zone Warden's dentures. Trade for HM04 (Strength).,"The Safari Zone warden's teeth, to be returned to him for []{item:hm04}."
 547,9,Operates the elevator in Team Rocket's Celadon Hideout.,Operates the elevator in the Celadon Rocket Hideout.
-548,9,Used to identify the true forms of ghosts in Pokémon Tower.,Identifies ghosts in :location:`Pokémon Tower`.
+548,9,Used to identify the true forms of ghosts in Pokémon Tower.,Identifies ghosts in []{location:pokemon-tower}.
 549,9,Records information about NPCs.,Records information on various famous people.
 550,9,Holds TMs.,Stores TMs and HMs.
 551,9,Holds berries.,Stores Berries.
 552,9,Teachers basic trainer advice.,Teaches beginning trainers basic information.
 553,9,Grants access to the first three Sevii Islands.,Provides access to the first three Sevii Islands.
 554,9,Grants access to all of the Sevii Islands.,Provides access to the Sevii Islands.
-555,9,Grants access to Saffron City.,Used to bribe the :location:`Saffron City` guards for entry to the city.
-556,9,Allows access to Navel Rock and Lugia or Ho-oh.,"Provides access to :location:`Navel Rock`, :pokemon:`Ho-Oh`, and :pokemon:`Lugia`."
-557,9,Allows access to Birth Island and Deoxys.,Provides access to :location:`Birth Island` and :pokemon:`Deoxys`.
+555,9,Grants access to Saffron City.,Used to bribe the []{location:saffron-city} guards for entry to the city.
+556,9,Allows access to Navel Rock and Lugia or Ho-oh.,"Provides access to Navel Rock, []{pokemon:ho-oh}, and []{pokemon:lugia}."
+557,9,Allows access to Birth Island and Deoxys.,Provides access to Birth Island and []{pokemon:deoxys}.
 558,9,Stores Berry Powder made using a Berry Crusher.,Holds Berry Powder from Berry Crushing.
 559,9,Give to Celio with Sapphire to activate Network Machine and get Rainbow Pass.,Deliver to Celio for use in the Network Machine.
 560,9,Give to Celio with Ruby to activate Network Machine and get Rainbow Pass.,Deliver to Celio for use in the Network Machine.
-561,9,Provides access to the Team Magma Hideout in the Jagged Pass.,Provides access to the :location:`Team Magma Hideout` in the :location:`Jagged Pass`.
-562,9,Allows access to Faraway Island and Mew. Unreleased outside of Japan.,Provides access to :location:`Faraway Island` and :pokemon:`Mew`.
+561,9,Provides access to the Team Magma Hideout in the Jagged Pass.,Provides access to the []{location:magma-hideout} in the []{location:jagged-pass}.
+562,9,Allows access to Faraway Island and Mew. Unreleased outside of Japan.,Provides access to Faraway Island and []{pokemon:mew}.
 563,9,"Grants Genesect a blue, Water-type Techno Blast.","Held by []{pokemon:genesect}
 :   Holder's buster is blue, and its []{move:techno-blast} is []{type:water}-type."
 564,9,"Grants Genesect a yellow, Electric-type Techno Blast.","Held by []{pokemon:genesect}
