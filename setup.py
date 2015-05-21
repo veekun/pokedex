@@ -9,7 +9,7 @@ setup(
     },
     install_requires=[
         'SQLAlchemy>=0.9.7',
-        'whoosh>=2.5',
+        'whoosh>=2.5,<2.7',
         'markdown',
         'construct',
     ],
