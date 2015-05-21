@@ -38,7 +38,7 @@ def test_types_french_order(session):
     types = session.query(tables.Type).filter(tables.Type.id < 10000)
     types = list(util.order_by_name(types, tables.Type, language=french))
     assert types[0].name_map[french] == 'Acier', types[0].name_map[french]
-    assert types[-1].name_map[french] == 'Vol', types[-1].name_map[french]
+    assert types[-1].name_map[french] == u'Électrik', types[-1].name_map[french]
 
 @parametrize('id', range(1, 10))
 def test_get_pokemon_id(session, id):
