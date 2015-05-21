@@ -1,0 +1,11 @@
+language: python
+python:
+    - "2.7"
+    - "pypy"
+
+    # Someday...
+    #- "3.4"
+
+install: pip install -e .
+before_script: pokedex setup -v
+script: py.test
