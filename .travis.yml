@@ -1,0 +1,8 @@
+python:
+    - "2.7"
+    - "3.4"
+    - "pypy"
+
+install: pip install .
+before_script: pokedex setup -v
+script: py.test
