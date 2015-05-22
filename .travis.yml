@@ -4,6 +4,6 @@ python:
     - "3.4"
     - "pypy"
 
-install: pip install .
+install: pip install -e .
 before_script: pokedex setup -v
 script: py.test
