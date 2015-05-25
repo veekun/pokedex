@@ -2147,7 +2147,7 @@ class TypeEfficacy(TableBase):
     """
     __tablename__ = 'type_efficacy'
     damage_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False,
-        doc=u"The ID of the damaging type.")
+        doc=u"The ID of the damaging move's type.")
     target_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"The ID of the defending Pokémon's type.")
     damage_factor = Column(Integer, nullable=False,
@@ -2846,10 +2846,12 @@ SuperContestCombo.second = relationship(Move,
 
 Type.damage_efficacies = relationship(TypeEfficacy,
     primaryjoin=Type.id==TypeEfficacy.damage_type_id,
-    backref=backref('damage_type', innerjoin=True, lazy='joined'))
+    backref=backref('damage_type', innerjoin=True, lazy='joined'),
+    doc=u"Efficacies with this type as the attacking type.")
 Type.target_efficacies = relationship(TypeEfficacy,
     primaryjoin=Type.id==TypeEfficacy.target_type_id,
-    backref=backref('target_type', innerjoin=True, lazy='joined'))
+    backref=backref('target_type', innerjoin=True, lazy='joined'),
+    doc=u"Efficacies with this type as the defending type.")
 
 Type.generation = relationship(Generation,
     innerjoin=True,
