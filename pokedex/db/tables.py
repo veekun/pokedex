@@ -1898,45 +1898,30 @@ class PokemonItem(TableBase):
     rarity = Column(Integer, nullable=False,
         doc=u"Chance of the Pokémon holding the item, in percent")
 
-class OldPokemonMove(TableBase):
-    u"""Record of a move a Pokémon can learn."""
-    __tablename__ = 'pokemon_moves'
-    pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, index=True,
-        doc=u"ID of the Pokémon")
-    version_group_id = Column(Integer, ForeignKey('version_groups.id'), nullable=False, index=True,
-        doc=u"ID of the version group this applies to")
-    move_id = Column(Integer, ForeignKey('moves.id'), nullable=False, index=True,
-        doc=u"ID of the move")
-    pokemon_move_method_id = Column(Integer, ForeignKey('pokemon_move_methods.id'), nullable=False, index=True,
-        doc=u"ID of the method this move is learned by")
-    level = Column(Integer, nullable=True, index=True, autoincrement=False,
-        doc=u"Level the move is learned at, if applicable")
-    order = Column(Integer, nullable=True,
-        doc=u"The order which moves learned at the same level are learned in")
-
-    __table_args__ = (
-        PrimaryKeyConstraint('pokemon_id', 'version_group_id', 'move_id', 'pokemon_move_method_id', 'level'),
-        {},
-    )
-
 pokemon_moveset_table = Table('pokemon_movesets', TableBase.metadata,
     Column('id', Integer, primary_key=True, autoincrement=True),
     #Column('hint', Unicode(79), unique=True, index=True),
-    Column('pokemon_id', Integer, ForeignKey('pokemon.id'), nullable=False),
-    Column('method_id', Integer, ForeignKey('pokemon_move_methods.id'), nullable=False, index=True),
+    Column('pokemon_id', Integer, ForeignKey('pokemon.id'), nullable=False, index=True,
+        doc=u"ID of the Pokémon"),
+    Column('method_id', Integer, ForeignKey('pokemon_move_methods.id'), nullable=False, index=True,
+        doc=u"ID of the method this move is learned by"),
 )
 
 pokemon_moveset_moves_table = Table('pokemon_moveset_moves', TableBase.metadata,
     Column('moveset_id', Integer, ForeignKey('pokemon_movesets.id'), nullable=False),
-    Column('move_id', Integer, ForeignKey('moves.id'), nullable=False),
-    Column('level', Integer, nullable=True, autoincrement=False),
-    Column('order', Integer, nullable=True),
+    Column('move_id', Integer, ForeignKey('moves.id'), nullable=False,
+        doc=u"ID of the move"),
+    Column('level', Integer, nullable=True, autoincrement=False,
+        doc=u"Level the move is learned at, if applicable"),
+    Column('order', Integer, nullable=True,
+        doc=u"The order which moves learned at the same level are learned in"),
     PrimaryKeyConstraint('moveset_id', 'move_id', 'level'),
 )
 
 pokemon_moveset_version_groups_table = Table('pokemon_moveset_version_groups', TableBase.metadata,
     Column('moveset_id', Integer, ForeignKey('pokemon_movesets.id'), nullable=False),
-    Column('version_group_id', Integer, ForeignKey('version_groups.id'), nullable=False),
+    Column('version_group_id', Integer, ForeignKey('version_groups.id'), nullable=False,
+        doc=u"ID of the version group this applies to"),
     PrimaryKeyConstraint('moveset_id', 'version_group_id'),
 )
 
@@ -2239,6 +2224,7 @@ class VersionGroupRegion(TableBase):
         doc=u"The ID of the region.")
 
 class PokemonMove(TableBase):
+    u"""Record of a move a Pokémon can learn."""
     __table__ = pokemon_moveset_table.join(pokemon_moveset_moves_table).join(pokemon_moveset_version_groups_table)
     moveset_id = column_property(pokemon_moveset_table.c.id, pokemon_moveset_moves_table.c.moveset_id, pokemon_moveset_version_groups_table.c.moveset_id)
     pokemon_move_method_id = column_property(pokemon_moveset_table.c.method_id)
