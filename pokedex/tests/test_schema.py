@@ -33,12 +33,12 @@ def test_variable_names_2(table):
 
 def test_class_order():
     """The declarative classes should be defined in alphabetical order.
-    Except for Language which should be first.
+    Except for Language and VersionGroup which should be first.
     """
     class_names = [table.__name__ for table in tables.mapped_classes]
     def key(name):
-        return name != 'Language', name
-    print [(a,b) for (a,b) in zip(class_names, sorted(class_names, key=key)) if a!=b]
+        return name not in ('Language', 'VersionGroup'), name
+    print "Unordered pairs:", [(a,b) for (a,b) in zip(class_names, class_names[1:]) if key(a)>key(b)]
     assert class_names == sorted(class_names, key=key)
 
 def test_i18n_table_creation():

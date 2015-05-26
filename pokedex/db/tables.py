@@ -73,7 +73,7 @@ mapped_classes = []
 class TableMetaclass(DeclarativeMeta):
     def __init__(cls, name, bases, attrs):
         super(TableMetaclass, cls).__init__(name, bases, attrs)
-        if hasattr(cls, '__tablename__'):
+        if hasattr(cls, '__tablename__') or hasattr(cls, '__table__'):
             mapped_classes.append(cls)
             cls.translation_classes = []
 
