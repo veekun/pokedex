@@ -111,6 +111,23 @@ create_translation_table('language_names', Language, 'names',
         info=dict(format='plaintext', official=True)),
 )
 
+### VersionGroup. Need for PokemonMove
+
+class VersionGroup(TableBase):
+    u"""A group of versions, containing either two paired versions (such as Red
+    and Blue) or a single game (such as Yellow).
+    """
+    __tablename__ = 'version_groups'
+    id = Column(Integer, primary_key=True, nullable=False,
+        doc=u"This version group's unique ID.")
+    identifier = Column(Unicode(79), nullable=False, unique=True,
+        doc=u"This version group's unique textual identifier.",
+        info=dict(format='identifier'))
+    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
+        doc=u"The ID of the generation the games in this group belong to.")
+    order = Column(Integer, nullable=True,
+        doc=u"Order for sorting. Almost by date of release, except similar versions are grouped together.")
+
 ### The actual tables
 
 class Ability(TableBase):
@@ -1925,6 +1942,12 @@ pokemon_moveset_version_groups_table = Table('pokemon_moveset_version_groups', T
     PrimaryKeyConstraint('moveset_id', 'version_group_id'),
 )
 
+class PokemonMove(TableBase):
+    u"""Record of a move a Pokémon can learn."""
+    __table__ = pokemon_moveset_table.join(pokemon_moveset_moves_table).join(pokemon_moveset_version_groups_table)
+    moveset_id = column_property(pokemon_moveset_table.c.id, pokemon_moveset_moves_table.c.moveset_id, pokemon_moveset_version_groups_table.c.moveset_id)
+    pokemon_move_method_id = column_property(pokemon_moveset_table.c.method_id)
+
 class PokemonMoveMethod(TableBase):
     u"""A method a move can be learned by, such as "Level up" or "Tutor". """
     __tablename__ = 'pokemon_move_methods'
@@ -2188,21 +2211,6 @@ create_translation_table('version_names', Version, 'names',
         info=dict(format='plaintext', official=True)),
 )
 
-class VersionGroup(TableBase):
-    u"""A group of versions, containing either two paired versions (such as Red
-    and Blue) or a single game (such as Yellow).
-    """
-    __tablename__ = 'version_groups'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u"This version group's unique ID.")
-    identifier = Column(Unicode(79), nullable=False, unique=True,
-        doc=u"This version group's unique textual identifier.",
-        info=dict(format='identifier'))
-    generation_id = Column(Integer, ForeignKey('generations.id'), nullable=False,
-        doc=u"The ID of the generation the games in this group belong to.")
-    order = Column(Integer, nullable=True,
-        doc=u"Order for sorting. Almost by date of release, except similar versions are grouped together.")
-
 class VersionGroupPokemonMoveMethod(TableBase):
     u"""Maps a version group to a move learn methods it supports.
 
@@ -2222,12 +2230,6 @@ class VersionGroupRegion(TableBase):
         doc=u"The ID of the version group.")
     region_id = Column(Integer, ForeignKey('regions.id'), primary_key=True, nullable=False,
         doc=u"The ID of the region.")
-
-class PokemonMove(TableBase):
-    u"""Record of a move a Pokémon can learn."""
-    __table__ = pokemon_moveset_table.join(pokemon_moveset_moves_table).join(pokemon_moveset_version_groups_table)
-    moveset_id = column_property(pokemon_moveset_table.c.id, pokemon_moveset_moves_table.c.moveset_id, pokemon_moveset_version_groups_table.c.moveset_id)
-    pokemon_move_method_id = column_property(pokemon_moveset_table.c.method_id)
 
 
 
