@@ -33,7 +33,7 @@ from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
-from sqlalchemy.orm import backref, relationship
+from sqlalchemy.orm import backref, relationship, column_property
 from sqlalchemy.orm.session import Session
 from sqlalchemy.orm.interfaces import AttributeExtension
 from sqlalchemy.sql import and_, or_
@@ -1898,7 +1898,7 @@ class PokemonItem(TableBase):
     rarity = Column(Integer, nullable=False,
         doc=u"Chance of the Pokémon holding the item, in percent")
 
-class PokemonMove(TableBase):
+class OldPokemonMove(TableBase):
     u"""Record of a move a Pokémon can learn."""
     __tablename__ = 'pokemon_moves'
     pokemon_id = Column(Integer, ForeignKey('pokemon.id'), nullable=False, index=True,
@@ -1918,6 +1918,27 @@ class PokemonMove(TableBase):
         PrimaryKeyConstraint('pokemon_id', 'version_group_id', 'move_id', 'pokemon_move_method_id', 'level'),
         {},
     )
+
+pokemon_moveset_table = Table('pokemon_movesets', TableBase.metadata,
+    Column('id', Integer, primary_key=True, autoincrement=True),
+    #Column('hint', Unicode(79), unique=True, index=True),
+    Column('pokemon_id', Integer, ForeignKey('pokemon.id'), nullable=False),
+    Column('method_id', Integer, ForeignKey('pokemon_move_methods.id'), nullable=False, index=True),
+)
+
+pokemon_moveset_moves_table = Table('pokemon_moveset_moves', TableBase.metadata,
+    Column('moveset_id', Integer, ForeignKey('pokemon_movesets.id'), nullable=False),
+    Column('move_id', Integer, ForeignKey('moves.id'), nullable=False),
+    Column('level', Integer, nullable=True, autoincrement=False),
+    Column('order', Integer, nullable=True),
+    PrimaryKeyConstraint('moveset_id', 'move_id', 'level'),
+)
+
+pokemon_moveset_version_groups_table = Table('pokemon_moveset_version_groups', TableBase.metadata,
+    Column('moveset_id', Integer, ForeignKey('pokemon_movesets.id'), nullable=False),
+    Column('version_group_id', Integer, ForeignKey('version_groups.id'), nullable=False),
+    PrimaryKeyConstraint('moveset_id', 'version_group_id'),
+)
 
 class PokemonMoveMethod(TableBase):
     u"""A method a move can be learned by, such as "Level up" or "Tutor". """
@@ -2216,6 +2237,12 @@ class VersionGroupRegion(TableBase):
         doc=u"The ID of the version group.")
     region_id = Column(Integer, ForeignKey('regions.id'), primary_key=True, nullable=False,
         doc=u"The ID of the region.")
+
+class PokemonMove(TableBase):
+    __table__ = pokemon_moveset_table.join(pokemon_moveset_moves_table).join(pokemon_moveset_version_groups_table)
+    moveset_id = column_property(pokemon_moveset_table.c.id, pokemon_moveset_moves_table.c.moveset_id, pokemon_moveset_version_groups_table.c.moveset_id)
+    pokemon_move_method_id = column_property(pokemon_moveset_table.c.method_id)
+
 
 
 ### Relationships down here, to avoid dependency ordering problems
