@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,12 +8,12 @@
     
     <title>Installing the pokedex library &mdash; pokedex 0.1 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -29,8 +27,8 @@
     <link rel="next" title="Using pokedex" href="usage.html" />
     <link rel="prev" title="The pokedex documentation" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,29 +43,30 @@
         <li class="right" >
           <a href="index.html" title="The pokedex documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="installing-the-pokedex-library">
 <h1>Installing the pokedex library<a class="headerlink" href="#installing-the-pokedex-library" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="quick-startup-with-ubuntu-debian-like-systems">
 <h2>Quick startup with Ubuntu/Debian-like systems<a class="headerlink" href="#quick-startup-with-ubuntu-debian-like-systems" title="Permalink to this headline">¶</a></h2>
 <p>Run the following from an empty directory:</p>
-<div class="highlight-python"><pre>$ sudo apt-get install git python python-pip python-sqlalchemy
+<div class="highlight-python"><div class="highlight"><pre>$ sudo apt-get install git python python-pip python-sqlalchemy
 $ git clone git://github.com/veekun/pokedex.git
 $ pip install -E env -e pokedex
 $ source env/bin/activate
 (env)$ pokedex setup -v
-(env)$ pokedex lookup eevee</pre>
+(env)$ pokedex lookup eevee
+</pre></div>
 </div>
-<p>If it all goes smoothly, you can now use <tt class="docutils literal"><span class="pre">env/bin/pokedex</span></tt>, the command-line
-tool, and <tt class="docutils literal"><span class="pre">env/bin/python</span></tt>, a Python interpreter configured to use the
+<p>If it all goes smoothly, you can now use <code class="docutils literal"><span class="pre">env/bin/pokedex</span></code>, the command-line
+tool, and <code class="docutils literal"><span class="pre">env/bin/python</span></code>, a Python interpreter configured to use the
 pokedex library.</p>
 <p>That is all you need. Feel free to skip the rest of this chapter if you&#8217;re not
 interested in the details.</p>
@@ -77,7 +76,8 @@ interested in the details.</p>
 <div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
 <p>Ubuntu/Debian users should run the following:</p>
-<div class="highlight-python"><pre>$ sudo apt-get install git python python-pip</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ sudo apt-get install git python python-pip
+</pre></div>
 </div>
 <p>With other Linuxes, install the packages for git, python (2.6 or 2.7,
 <em>not</em> 3.x), and python-pip.</p>
@@ -106,8 +106,9 @@ will install pokedex&#8217;s own copy anyway.)</p>
 <div class="section" id="getting-and-installing-pokedex">
 <h2>Getting and installing pokedex<a class="headerlink" href="#getting-and-installing-pokedex" title="Permalink to this headline">¶</a></h2>
 <p>Run the following from an empty directory:</p>
-<div class="highlight-python"><pre>$ git clone git://github.com/veekun/pokedex.git
-$ pip install -E env -e pokedex</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone git://github.com/veekun/pokedex.git
+$ pip install -E env -e pokedex
+</pre></div>
 </div>
 <p>This will give you two directories: pokedex (containing the source code and
 data), and env (a <a class="reference external" href="http://www.virtualenv.org/en/latest/">virtualenv</a>).</p>
@@ -115,51 +116,54 @@ data), and env (a <a class="reference external" href="http://www.virtualenv.org/
 <ul class="simple">
 <li>pokedex: The pokedex program</li>
 <li>python: A copy of Python that knows about pokedex and its prerequisites.</li>
-<li>activate: Typing <tt class="docutils literal"><span class="pre">source</span> <span class="pre">env/bin/activate</span></tt> in a shell will put
+<li>activate: Typing <code class="docutils literal"><span class="pre">source</span> <span class="pre">env/bin/activate</span></code> in a shell will put
 pokedex and our bin/python on the $PATH, and generally set things up to work
 with them. Your prompt will change to let you know of this. You can end such
-a session by typing <tt class="docutils literal"><span class="pre">deactivate</span></tt>.</li>
+a session by typing <code class="docutils literal"><span class="pre">deactivate</span></code>.</li>
 </ul>
 <p>This documentation will assume that you&#8217;ve activated the virtualenv, so
-<tt class="docutils literal"><span class="pre">pokedex</span></tt> means <tt class="docutils literal"><span class="pre">env/bin/pokedex</span></tt>.</p>
+<code class="docutils literal"><span class="pre">pokedex</span></code> means <code class="docutils literal"><span class="pre">env/bin/pokedex</span></code>.</p>
 <div class="section" id="advanced">
 <h3>Advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h3>
 <p>You can of course install into an existing virtualenv, by either using its pip
-and leaving out the <tt class="docutils literal"><span class="pre">-E</span> <span class="pre">env</span></tt>, or running the setup script directly:</p>
-<div class="highlight-python"><pre>(anotherenv)$ cd pokedex
-(anotherenv)pokedex$ python setup.py develop</pre>
+and leaving out the <code class="docutils literal"><span class="pre">-E</span> <span class="pre">env</span></code>, or running the setup script directly:</p>
+<div class="highlight-python"><div class="highlight"><pre>(anotherenv)$ cd pokedex
+(anotherenv)pokedex$ python setup.py develop
+</pre></div>
 </div>
 <p>It is also possible to install pokedex system-wide. There are problems with
-that. Don&#8217;t do it. The only time you need <tt class="docutils literal"><span class="pre">sudo</span></tt> is for getting the
+that. Don&#8217;t do it. The only time you need <code class="docutils literal"><span class="pre">sudo</span></code> is for getting the
 prerequisites.</p>
 </div>
 </div>
 <div class="section" id="loading-the-database">
 <h2>Loading the database<a class="headerlink" href="#loading-the-database" title="Permalink to this headline">¶</a></h2>
 <p>Before you can do anything useful with pokedex, you need to load the database:</p>
-<div class="highlight-python"><pre>$ pokedex setup -v</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pokedex setup -v
+</pre></div>
 </div>
 <p>This will load the data into a default SQLite database and create a default
 Whoosh index.</p>
 <div class="section" id="id2">
 <h3>Advanced<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>If you want to use another database, make sure you have the corresponding
-<a class="reference external" href="http://www.sqlalchemy.org/docs/core/engines.html">SQLAlchemy engine</a> for it and either use the <tt class="docutils literal"><span class="pre">-e</span></tt> switch, (e.g.
-<tt class="docutils literal"><span class="pre">-e</span> <span class="pre">postgresql://&#64;/pokedex</span></tt>), or set the <tt class="docutils literal"><span class="pre">POKEDEX_DB_ENGINE</span></tt> environment
+<a class="reference external" href="http://www.sqlalchemy.org/docs/core/engines.html">SQLAlchemy engine</a> for it and either use the <code class="docutils literal"><span class="pre">-e</span></code> switch, (e.g.
+<code class="docutils literal"><span class="pre">-e</span> <span class="pre">postgresql://&#64;/pokedex</span></code>), or set the <code class="docutils literal"><span class="pre">POKEDEX_DB_ENGINE</span></code> environment
 variable.</p>
-<p>To use another lookup index directory, specify it with <tt class="docutils literal"><span class="pre">-i</span></tt> or the
-<tt class="docutils literal"><span class="pre">POKEDEX_INDEX_DIR</span></tt> variable.</p>
+<p>To use another lookup index directory, specify it with <code class="docutils literal"><span class="pre">-i</span></code> or the
+<code class="docutils literal"><span class="pre">POKEDEX_INDEX_DIR</span></code> variable.</p>
 <p>Make sure you always use the same options whenever you use pokedex.</p>
 <p>If you&#8217;re confused about what pokedex thinks its settings are, check
-<tt class="docutils literal"><span class="pre">pokedex</span> <span class="pre">status</span></tt>.</p>
-<p>See <tt class="docutils literal"><span class="pre">pokedex</span> <span class="pre">help</span></tt> for even more options.</p>
+<code class="docutils literal"><span class="pre">pokedex</span> <span class="pre">status</span></code>.</p>
+<p>See <code class="docutils literal"><span class="pre">pokedex</span> <span class="pre">help</span></code> for even more options.</p>
 </div>
 </div>
 <div class="section" id="all-done">
 <h2>All done<a class="headerlink" href="#all-done" title="Permalink to this headline">¶</a></h2>
 <p>To verify that all went smoothly, check that the pokedex tool finds your
 favorite pokémon:</p>
-<div class="highlight-python"><pre>$ pokedex lookup eevee</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pokedex lookup eevee
+</pre></div>
 </div>
 <p>Yes, that was a bit anti-climatic. The command-line tool doesn&#8217;t do much,
 currently.</p>
@@ -179,7 +183,7 @@ use it, so naturally he can&#8217;t write instructions for it.</td></tr>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -209,12 +213,14 @@ use it, so naturally he can&#8217;t write instructions for it.</td></tr>
   <h4>Next topic</h4>
   <p class="topless"><a href="usage.html"
                         title="next chapter">Using pokedex</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/installing.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installing.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -231,7 +237,7 @@ use it, so naturally he can&#8217;t write instructions for it.</td></tr>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -246,11 +252,11 @@ use it, so naturally he can&#8217;t write instructions for it.</td></tr>
         <li class="right" >
           <a href="index.html" title="The pokedex documentation"
              >previous</a> |</li>
-        <li><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

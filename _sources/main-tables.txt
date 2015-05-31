@@ -178,7 +178,7 @@ Mics tables
 
 .. dex-table:: Experience
 .. dex-table:: PalPark
-.. dex-table:: StatHint
+.. dex-table:: Characteristic
 
 Conquest tables
 ---------------

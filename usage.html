@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,12 +8,12 @@
     
     <title>Using pokedex &mdash; pokedex 0.1 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -29,8 +27,8 @@
     <link rel="next" title="The database schema" href="schema.html" />
     <link rel="prev" title="Installing the pokedex library" href="installing.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -45,14 +43,14 @@
         <li class="right" >
           <a href="installing.html" title="Installing the pokedex library"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="using-pokedex">
 <h1>Using pokedex<a class="headerlink" href="#using-pokedex" title="Permalink to this headline">¶</a></h1>
@@ -72,31 +70,31 @@ you&#8217;ll need to learn <a class="reference external" href="http://www.python
 <div class="section" id="connecting">
 <h2>Connecting<a class="headerlink" href="#connecting" title="Permalink to this headline">¶</a></h2>
 <p>To get information out of the Pokédex, you will need to create a
-<tt class="xref py py-class docutils literal"><span class="pre">Session</span></tt>. To do that, use
-<a class="reference internal" href="#pokedex.db.connect" title="pokedex.db.connect"><tt class="xref py py-func docutils literal"><span class="pre">pokedex.db.connect()</span></tt></a>. For simple uses, you don&#8217;t need to give it any
-arguments: it uses the database that <tt class="docutils literal"><span class="pre">pokedex</span> <span class="pre">load</span></tt> fills up by default. If
+<code class="xref py py-class docutils literal"><span class="pre">Session</span></code>. To do that, use
+<a class="reference internal" href="#pokedex.db.connect" title="pokedex.db.connect"><code class="xref py py-func docutils literal"><span class="pre">pokedex.db.connect()</span></code></a>. For simple uses, you don&#8217;t need to give it any
+arguments: it uses the database that <code class="docutils literal"><span class="pre">pokedex</span> <span class="pre">load</span></code> fills up by default. If
 you need to select another database, give its URI as the first argument.</p>
-<p>The object <a class="reference internal" href="#pokedex.db.connect" title="pokedex.db.connect"><tt class="xref py py-func docutils literal"><span class="pre">connect()</span></tt></a> gives you is actually a
-<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session.html#sqlalchemy.orm.session.Session" title="(in SQLAlchemy v0.9)"><tt class="xref py py-class docutils literal"><span class="pre">SQLAlchemy</span> <span class="pre">session</span></tt></a>, giving you the
+<p>The object <a class="reference internal" href="#pokedex.db.connect" title="pokedex.db.connect"><code class="xref py py-func docutils literal"><span class="pre">connect()</span></code></a> gives you is actually a
+<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session_api.html#sqlalchemy.orm.session.Session" title="(in SQLAlchemy v1.0)"><code class="xref py py-class docutils literal"><span class="pre">SQLAlchemy</span> <span class="pre">session</span></code></a>, giving you the
 full power of SQLAlchemy for working with the data. We&#8217;ll cover some basics
 here, but if you intend to do some serious work, do read SQLAlchemy&#8217;s docs.</p>
 </div>
 <div class="section" id="pokedex-tables">
 <h2>Pokédex tables<a class="headerlink" href="#pokedex-tables" title="Permalink to this headline">¶</a></h2>
 <p>Data in the pokédex is organized in tables, defined in
-<a class="reference internal" href="main-tables.html#module-pokedex.db.tables" title="pokedex.db.tables"><tt class="xref py py-mod docutils literal"><span class="pre">pokedex.db.tables</span></tt></a>.
+<a class="reference internal" href="main-tables.html#module-pokedex.db.tables" title="pokedex.db.tables"><code class="xref py py-mod docutils literal"><span class="pre">pokedex.db.tables</span></code></a>.
 There is quite a few or them. To get you started, here are a few common ones:</p>
 <ul class="simple">
-<li><a class="reference internal" href="main-tables.html#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><tt class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></tt></a></li>
-<li><a class="reference internal" href="main-tables.html#pokedex.db.tables.Move" title="pokedex.db.tables.Move"><tt class="xref py py-class docutils literal"><span class="pre">Move</span></tt></a></li>
-<li><a class="reference internal" href="main-tables.html#pokedex.db.tables.Item" title="pokedex.db.tables.Item"><tt class="xref py py-class docutils literal"><span class="pre">Item</span></tt></a></li>
-<li><a class="reference internal" href="main-tables.html#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><tt class="xref py py-class docutils literal"><span class="pre">Type</span></tt></a></li>
+<li><a class="reference internal" href="main-tables.html#pokedex.db.tables.PokemonSpecies" title="pokedex.db.tables.PokemonSpecies"><code class="xref py py-class docutils literal"><span class="pre">PokemonSpecies</span></code></a></li>
+<li><a class="reference internal" href="main-tables.html#pokedex.db.tables.Move" title="pokedex.db.tables.Move"><code class="xref py py-class docutils literal"><span class="pre">Move</span></code></a></li>
+<li><a class="reference internal" href="main-tables.html#pokedex.db.tables.Item" title="pokedex.db.tables.Item"><code class="xref py py-class docutils literal"><span class="pre">Item</span></code></a></li>
+<li><a class="reference internal" href="main-tables.html#pokedex.db.tables.Type" title="pokedex.db.tables.Type"><code class="xref py py-class docutils literal"><span class="pre">Type</span></code></a></li>
 </ul>
 </div>
 <div class="section" id="getting-things">
 <h2>Getting things<a class="headerlink" href="#getting-things" title="Permalink to this headline">¶</a></h2>
 <p>If you know what you want from the pokédex, you can use the
-<a class="reference internal" href="#pokedex.db.util.get" title="pokedex.db.util.get"><tt class="xref py py-func docutils literal"><span class="pre">pokedex.db.util.get()</span></tt></a> function. It looks up a thing in a table, based on
+<a class="reference internal" href="#pokedex.db.util.get" title="pokedex.db.util.get"><code class="xref py py-func docutils literal"><span class="pre">pokedex.db.util.get()</span></code></a> function. It looks up a thing in a table, based on
 its identifier, name, or ID, and returns it.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">print_pokemon</span><span class="p">(</span><span class="n">pokemon</span><span class="p">):</span>
     <span class="k">print</span> <span class="s">u&#39;{0.name}, the {0.genus} Pokemon&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pokemon</span><span class="p">)</span>
@@ -125,15 +123,15 @@ Fresh Water: $200
 <div class="section" id="querying">
 <h2>Querying<a class="headerlink" href="#querying" title="Permalink to this headline">¶</a></h2>
 <p>So, how do you get data from the session? You use the session&#8217;s
-<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session.html#sqlalchemy.orm.session.Session.query" title="(in SQLAlchemy v0.9)"><tt class="xref py py-meth docutils literal"><span class="pre">query()</span></tt></a> method, and give it a pokédex
-Table as an argument. This will give you a <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query" title="(in SQLAlchemy v0.9)"><tt class="xref py py-class docutils literal"><span class="pre">SQLAlchemy</span> <span class="pre">query</span></tt></a>.</p>
+<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session_api.html#sqlalchemy.orm.session.Session.query" title="(in SQLAlchemy v1.0)"><code class="xref py py-meth docutils literal"><span class="pre">query()</span></code></a> method, and give it a pokédex
+Table as an argument. This will give you a <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query" title="(in SQLAlchemy v1.0)"><code class="xref py py-class docutils literal"><span class="pre">SQLAlchemy</span> <span class="pre">query</span></code></a>.</p>
 <div class="section" id="ordering">
 <h3>Ordering<a class="headerlink" href="#ordering" title="Permalink to this headline">¶</a></h3>
 <p>As always with SQL, you should not rely on query results being in some
 particular order – unless you have ordered the query first. This means that
 you&#8217;ll want to sort just about every query you will make.</p>
 <p>For example, you can get a list of all pokémon species, sorted by their
-<tt class="xref py py-attr docutils literal"><span class="pre">id</span></tt>, like so:</p>
+<code class="xref py py-attr docutils literal"><span class="pre">id</span></code>, like so:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">pokemon</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">PokemonSpecies</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">PokemonSpecies</span><span class="o">.</span><span class="n">id</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">pokemon</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
@@ -149,7 +147,7 @@ Yveltal
 Zygarde
 </pre></div>
 </div>
-<p>Or to order by <tt class="xref py py-attr docutils literal"><span class="pre">name</span></tt>:</p>
+<p>Or to order by <code class="xref py py-attr docutils literal"><span class="pre">name</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">pokemon</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">PokemonSpecies</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">PokemonSpecies</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">pokemon</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
@@ -163,8 +161,8 @@ Zygarde
 <div class="section" id="filtering">
 <h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h3>
 <p>Another major operation on queries is filtering, using the query&#8217;s
-<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.filter" title="(in SQLAlchemy v0.9)"><tt class="xref py py-meth docutils literal"><span class="pre">filter()</span></tt></a> or
-<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.filter_by" title="(in SQLAlchemy v0.9)"><tt class="xref py py-meth docutils literal"><span class="pre">filter_by()</span></tt></a> methods:</p>
+<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.filter" title="(in SQLAlchemy v1.0)"><code class="xref py py-meth docutils literal"><span class="pre">filter()</span></code></a> or
+<a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.filter_by" title="(in SQLAlchemy v1.0)"><code class="xref py py-meth docutils literal"><span class="pre">filter_by()</span></code></a> methods:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Move</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Move</span><span class="o">.</span><span class="n">power</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">move</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
@@ -176,7 +174,7 @@ Zygarde
 <div class="section" id="joining">
 <h3>Joining<a class="headerlink" href="#joining" title="Permalink to this headline">¶</a></h3>
 <p>The final operation we&#8217;ll cover here is joining other tables to the query,
-using the query&#8217;s <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.join" title="(in SQLAlchemy v0.9)"><tt class="xref py py-meth docutils literal"><span class="pre">join()</span></tt></a>.
+using the query&#8217;s <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/query.html#sqlalchemy.orm.query.Query.join" title="(in SQLAlchemy v1.0)"><code class="xref py py-meth docutils literal"><span class="pre">join()</span></code></a>.
 You will usually want to join on a relationship, such as in the following
 example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">tables</span><span class="o">.</span><span class="n">Move</span><span class="p">)</span>
@@ -209,18 +207,18 @@ If you need to do more, consult the <a class="reference external" href="http://w
 <h2>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="pokedex.db.connect">
-<tt class="descclassname">pokedex.db.</tt><tt class="descname">connect</tt><big>(</big><em>uri=None</em>, <em>session_args={}</em>, <em>engine_args={}</em>, <em>engine_prefix=''</em><big>)</big><a class="headerlink" href="#pokedex.db.connect" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pokedex.db.</code><code class="descname">connect</code><span class="sig-paren">(</span><em>uri=None</em>, <em>session_args={}</em>, <em>engine_args={}</em>, <em>engine_prefix=''</em><span class="sig-paren">)</span><a class="headerlink" href="#pokedex.db.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connects to the requested URI.  Returns a session object.</p>
 <p>With the URI omitted, attempts to connect to a default SQLite database
 contained within the package directory.</p>
 <p>Calling this function also binds the metadata object to the created engine.</p>
-<p>See <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session.html#sqlalchemy.orm.session.Session" title="(in SQLAlchemy v0.9)"><tt class="xref py py-class docutils literal"><span class="pre">sqlalchemy.orm.session.Session</span></tt></a> for more documentation on the
+<p>See <a class="reference external" href="http://www.sqlalchemy.org/docs/orm/session_api.html#sqlalchemy.orm.session.Session" title="(in SQLAlchemy v1.0)"><code class="xref py py-class docutils literal"><span class="pre">sqlalchemy.orm.session.Session</span></code></a> for more documentation on the
 returned object.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pokedex.db.util.get">
-<tt class="descclassname">pokedex.db.util.</tt><tt class="descname">get</tt><big>(</big><em>session</em>, <em>table</em>, <em>identifier=None</em>, <em>name=None</em>, <em>id=None</em>, <em>language=None</em><big>)</big><a class="headerlink" href="#pokedex.db.util.get" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pokedex.db.util.</code><code class="descname">get</code><span class="sig-paren">(</span><em>session</em>, <em>table</em>, <em>identifier=None</em>, <em>name=None</em>, <em>id=None</em>, <em>language=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pokedex.db.util.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one object from the database.</p>
 <p>session: The session to use (from pokedex.db.connect())
 table: The table to select from (such as pokedex.db.tables.Move)</p>
@@ -241,7 +239,7 @@ appropriate SQLAlchemy exception is raised.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -266,12 +264,14 @@ appropriate SQLAlchemy exception is raised.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="schema.html"
                         title="next chapter">The database schema</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/usage.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/usage.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -288,7 +288,7 @@ appropriate SQLAlchemy exception is raised.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -303,11 +303,11 @@ appropriate SQLAlchemy exception is raised.</p>
         <li class="right" >
           <a href="installing.html" title="Installing the pokedex library"
              >previous</a> |</li>
-        <li><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pokedex 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    <div class="footer" role="contentinfo">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>
