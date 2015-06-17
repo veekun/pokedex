@@ -1,19 +1,19 @@
-characteristic_id,local_language_id,message
+ï»¿characteristic_id,local_language_id,message
 1,5,Adore manger
 1,9,Loves to eat
 2,5,Est fier de sa puissance
 2,9,Proud of its power
 3,5,Corps robuste
 3,9,Sturdy body
-4,5,Extrêmement curieux
+4,5,ExtrÃªmement curieux
 4,9,Highly curious
-5,5,Très volontaire
+5,5,TrÃ¨s volontaire
 5,9,Strong willed
 6,5,Aime courir
 6,9,Likes to run
 7,5,S'assoupit souvent
 7,9,Takes plenty of siestas
-8,5,Aime se démener
+8,5,Aime se dÃ©mener
 8,9,Likes to thrash about
 9,5,Sait encaisser les coups
 9,9,Capable of taking hits
@@ -25,17 +25,17 @@ characteristic_id,local_language_id,message
 12,9,Alert to sounds
 13,5,Dort beaucoup
 13,9,Nods off a lot
-14,5,Un peu coléreux
+14,5,Un peu colÃ©reux
 14,9,A little quick tempered
-15,5,Très obstiné
+15,5,TrÃ¨s obstinÃ©
 15,9,Highly persistent
-16,5,Très astucieux
+16,5,TrÃ¨s astucieux
 16,9,Thoroughly cunning
 17,5,Esprit rebelle
 17,9,Strongly defiant
-18,5,Bête et impulsif
+18,5,BÃªte et impulsif
 18,9,Impetuous and silly
-19,5,Éparpille des choses
+19,5,Ã‰parpille des choses
 19,9,Scatters things often
 20,5,Aime combattre
 20,9,Likes to fight
@@ -47,15 +47,15 @@ characteristic_id,local_language_id,message
 23,9,Hates to lose
 24,5,Aime faire le pitre
 24,9,Somewhat of a clown
-25,5,Aime se détendre
+25,5,Aime se dÃ©tendre
 25,9,Likes to relax
 26,5,S'emporte facilement
 26,9,Quick tempered
-27,5,Persévérant
+27,5,PersÃ©vÃ©rant
 27,9,Good perseverance
-28,5,Très particulier
+28,5,TrÃ¨s particulier
 28,9,Very finicky
-29,5,Assez entêté
+29,5,Assez entÃªtÃ©
 29,9,Somewhat stubborn
 30,5,Fuit rapidement
 30,9,Quick to flee

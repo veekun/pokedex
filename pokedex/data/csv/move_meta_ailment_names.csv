@@ -1,4 +1,4 @@
-move_meta_ailment_id,local_language_id,name
+ï»¿move_meta_ailment_id,local_language_id,name
 -1,5,????
 -1,9,????
 0,5,Aucun
@@ -9,7 +9,7 @@ move_meta_ailment_id,local_language_id,name
 2,9,Sleep
 3,5,Gel
 3,9,Freeze
-4,5,Brûlure
+4,5,BrÃ»lure
 4,9,Burn
 5,5,Empoisonnement
 5,9,Poison
@@ -17,7 +17,7 @@ move_meta_ailment_id,local_language_id,name
 6,9,Confusion
 7,5,Attraction
 7,9,Infatuation
-8,5,Piège
+8,5,PiÃ¨ge
 8,9,Trap
 9,5,Cauchemar
 9,9,Nightmare
@@ -25,7 +25,7 @@ move_meta_ailment_id,local_language_id,name
 12,9,Torment
 13,5,Entrave
 13,9,Disable
-14,5,Bâillement
+14,5,BÃ¢illement
 14,9,Yawn
 15,5,Anti-Soin
 15,9,Heal Block
