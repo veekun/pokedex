@@ -88,6 +88,7 @@ access individual items.</li>
 <dt id="pokedex.db.tables.PokemonSpecies">
 <code class="descclassname">pokedex.db.tables.</code><code class="descname">PokemonSpecies</code><a class="headerlink" href="#pokedex.db.tables.PokemonSpecies" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Pokémon species: the standard 1–151.  Or 649.  Whatever.</p>
+<p>ID matches the National Pokédex number of the species.</p>
 <p>Table name: <em>pokemon_species</em>
 (single: <em>pokemon_species</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -228,6 +229,8 @@ access individual items.</li>
 different types, moves, or other game-changing properties counts as a
 different Pokémon.  For example, this table contains four rows for Deoxys,
 but only one for Unown.</p>
+<p>Non-default forms have IDs above 10000.
+IDs below 10000 match the species_id column, for convenience.</p>
 <p>Table name: <em>pokemon</em>
 (single: <em>pokemon</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -350,6 +353,10 @@ effectively cached.</p>
 color differences) of every Pokémon, regardless of how the games treat
 them.  Even Pokémon with no alternate forms have one row in this table, to
 represent their lone &#8220;normal&#8221; form.</p>
+<p>Forms which are not the default for their species have IDs above 10000.
+IDs below 10000 correspond to ID of the species for convenience,
+but this should not be relied upon.
+To get the species ID of a form, join with the pokemon table.</p>
 <p>Table name: <em>pokemon_forms</em>
 (single: <em>pokemon_form</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -521,6 +528,8 @@ must occur to cause a Pokémon to evolve.</p>
 <dt id="pokedex.db.tables.Move">
 <code class="descclassname">pokedex.db.tables.</code><code class="descname">Move</code><a class="headerlink" href="#pokedex.db.tables.Move" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Move: technique or attack a Pokémon can learn to use.</p>
+<p>IDs below 10000 match the internal IDs used in the games.
+IDs above 10000 are reserved for Shadow moves from Colosseum and XD.</p>
 <p>Table name: <em>moves</em>
 (single: <em>move</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -712,7 +721,7 @@ must occur to cause a Pokémon to evolve.</p>
 (→ <a class="reference internal" href="#pokedex.db.tables.MoveMetaCategory" title="pokedex.db.tables.MoveMetaCategory"><code class="xref py py-class docutils literal"><span class="pre">MoveMetaCategory</span></code></a>)</p>
 <hr><dl class="attribute">
 <dt id="pokedex.db.tables.MoveMeta.recoil">
-<code class="descname">recoil</code><em class="property"> = &lt;sqlalchemy.sql.elements.UnaryExpression object at 0x9385410&gt;</em><a class="headerlink" href="#pokedex.db.tables.MoveMeta.recoil" title="Permalink to this definition">¶</a></dt>
+<code class="descname">recoil</code><em class="property"> = &lt;sqlalchemy.sql.elements.UnaryExpression object at 0x8e55250&gt;</em><a class="headerlink" href="#pokedex.db.tables.MoveMeta.recoil" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -727,6 +736,7 @@ must occur to cause a Pokémon to evolve.</p>
 <dt id="pokedex.db.tables.Item">
 <code class="descclassname">pokedex.db.tables.</code><code class="descname">Item</code><a class="headerlink" href="#pokedex.db.tables.Item" title="Permalink to this definition">¶</a></dt>
 <dd><p>An Item from the games, like &#8220;Poké Ball&#8221; or &#8220;Bicycle&#8221;.</p>
+<p>IDs do not mean anything; see ItemGameIndex for the IDs used in the games.</p>
 <p>Table name: <em>items</em>
 (single: <em>item</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -801,6 +811,7 @@ must occur to cause a Pokémon to evolve.</p>
 <code class="descclassname">pokedex.db.tables.</code><code class="descname">Berry</code><a class="headerlink" href="#pokedex.db.tables.Berry" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Berry, consumable item that grows on trees.</p>
 <p>For data common to all items, such as the name, see the corresponding item entry.</p>
+<p>ID matches the in-game berry number.</p>
 <p>Table name: <em>berries</em></p>
 <p>Primary key: <strong>id</strong>.</p>
 <p>Has
@@ -903,6 +914,8 @@ must occur to cause a Pokémon to evolve.</p>
 <dt id="pokedex.db.tables.Ability">
 <code class="descclassname">pokedex.db.tables.</code><code class="descname">Ability</code><a class="headerlink" href="#pokedex.db.tables.Ability" title="Permalink to this definition">¶</a></dt>
 <dd><p>An ability a Pokémon can have, such as Static or Pressure.</p>
+<p>IDs below 10000 match the internal ID in the games.
+IDs above 10000 are reserved for Conquest-only abilities.</p>
 <p>Table name: <em>abilities</em>
 (single: <em>ability</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -1560,7 +1573,11 @@ swarm) are thus enough to define a specific encounter.</p>
 <dt id="pokedex.db.tables.EggGroup">
 <code class="descclassname">pokedex.db.tables.</code><code class="descname">EggGroup</code><a class="headerlink" href="#pokedex.db.tables.EggGroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>An Egg group. Usually, two Pokémon can breed if they share an Egg Group.</p>
-<p>(exceptions are the Ditto and No Eggs groups)</p>
+<p>Exceptions:</p>
+<p>Pokémon in the No Eggs group cannot breed.</p>
+<p>Pokemon in the Ditto group can breed with any pokemon
+except those in the Ditto or No Eggs groups.</p>
+<p>ID matches to the internal ID used in the games.</p>
 <p>Table name: <em>egg_groups</em>
 (single: <em>egg_group</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -1645,7 +1662,7 @@ swarm) are thus enough to define a specific encounter.</p>
 <dl class="dex-table">
 <dt id="pokedex.db.tables.ItemCategory">
 <code class="descclassname">pokedex.db.tables.</code><code class="descname">ItemCategory</code><a class="headerlink" href="#pokedex.db.tables.ItemCategory" title="Permalink to this definition">¶</a></dt>
-<dd><p>An item category. Not official.</p>
+<dd><p>An item category.  Not official.</p>
 <p>Table name: <em>item_categories</em>
 (single: <em>item_category</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -1689,7 +1706,7 @@ swarm) are thus enough to define a specific encounter.</p>
 <dl class="dex-table">
 <dt id="pokedex.db.tables.ItemPocket">
 <code class="descclassname">pokedex.db.tables.</code><code class="descname">ItemPocket</code><a class="headerlink" href="#pokedex.db.tables.ItemPocket" title="Permalink to this definition">¶</a></dt>
-<dd><p>A pocket that categorizes items.</p>
+<dd><p>A pocket that categorizes items.  Semi-offical.</p>
 <p>Table name: <em>item_pockets</em>
 (single: <em>item_pocket</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
@@ -2216,7 +2233,7 @@ bestow taste preferences, etc.</p>
 <dl class="dex-table">
 <dt id="pokedex.db.tables.ItemFlag">
 <code class="descclassname">pokedex.db.tables.</code><code class="descname">ItemFlag</code><a class="headerlink" href="#pokedex.db.tables.ItemFlag" title="Permalink to this definition">¶</a></dt>
-<dd><p>An item attribute such as &#8220;consumable&#8221; or &#8220;holdable&#8221;.</p>
+<dd><p>An item attribute such as &#8220;consumable&#8221; or &#8220;holdable&#8221;.  Not official.</p>
 <p>Table name: <em>item_flags</em>
 (single: <em>item_flag</em>)</p>
 <p>Primary key: <strong>id</strong>.</p>
