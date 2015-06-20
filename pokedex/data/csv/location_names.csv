@@ -1,335 +1,667 @@
 location_id,local_language_id,name
+1,5,Joliberges
 1,9,Canalave City
+2,5,Vestigion
 2,9,Eterna City
+3,5,Verchamps
 3,9,Pastoria City
+4,5,Rivamar
 4,9,Sunyshore City
+5,5,Ligue Pokémon
 5,9,Pokémon League
+6,5,Mine Charbourg
 6,9,Oreburgh Mine
+7,5,Les Eoliennes
 7,9,Valley Windworks
+8,5,Forêt Vestigion
 8,9,Eterna Forest
+9,5,Forge Fuego
 9,9,Fuego Ironworks
+10,5,Mont Couronné
 10,9,Mt. Coronet
+11,5,Grand Marais
 11,9,Great Marsh
+12,5,Ruines Bonville
 12,9,Solaceon Ruins
+13,5,Route Victoire
 13,9,Victory Road
+14,5,Chemin Rocheux
 14,9,Ravaged Path
+15,5,Entrée Charbourg
 15,9,Oreburgh Gate
+16,5,Mont Abrupt
 16,9,Stark Mountain
+17,5,Chemin Source
 17,9,Spring Path
+18,5,Grotte Retour
 18,9,Turnback Cave
+19,5,Temple Frimapic
 19,9,Snowpoint Temple
+20,5,Grotte Revèche
 20,9,Wayward Cave
+22,5,Grotte Ruinem.
 22,9,Ruin Maniac Cave
+23,5,Jardin Trophée
 23,9,Trophy Garden
+24,5,Ile de Fer
 24,9,Iron Island
+25,5,Vieux Château
 25,9,Old Chateau
+26,5,Lac Vérité
 26,9,Lake Verity
+27,5,Lac Courage
 27,9,Lake Valor
+28,5,Lac Savoir
 28,9,Lake Acuity
+29,5,Rive Lac Courage
 29,9,Valor Lakefront
+30,5,Rive Lac Savoir
 30,9,Acuity Lakefront
+31,5,Route 201
 31,9,Route 201
+32,5,Route 202
 32,9,Route 202
+33,5,Route 203
 33,9,Route 203
+34,5,Route 204
 34,9,Route 204
+35,5,Route 205
 35,9,Route 205
+36,5,Route 206
 36,9,Route 206
+36,5,Route 207
 37,9,Route 207
+38,5,Route 208
 38,9,Route 208
+39,5,Route 209
 39,9,Route 209
+40,5,Tour Perdue
 40,9,Lost Tower
+41,5,Route 210
 41,9,Route 210
+42,5,Route 211
 42,9,Route 211
+43,5,Route 212
 43,9,Route 212
+44,5,Route 213
 44,9,Route 213
+45,5,Route 214
 45,9,Route 214
+46,5,Route 215
 46,9,Route 215
+47,5,Route 216
 47,9,Route 216
+48,5,Route 217
 48,9,Route 217
+49,5,Route 218
 49,9,Route 218
+50,5,Route 219
 50,9,Route 219
+51,5,Route 221
 51,9,Route 221
+52,5,Route 222
 52,9,Route 222
+53,5,Route 224
 53,9,Route 224
+54,5,Route 225
 54,9,Route 225
+55,5,Route 227
 55,9,Route 227
+56,5,Route 228
 56,9,Route 228
+57,5,Route 229
 57,9,Route 229
+58,5,Bonaugure
 58,9,Twinleaf Town
+59,5,Célestia
 59,9,Celestic Town
+60,5,Aire de Détente
 60,9,Resort Area
+61,5,Chenal 220
 61,9,Sea Route 220
+62,5,Chenal 223
 62,9,Sea Route 223
+63,5,Chenal 226
 63,9,Sea Route 226
+64,5,Chenal 230
 64,9,Sea Route 230
+65,5,Ebènelle
 65,9,Blackthorn City
+66,5,Tour Cendrée
 66,9,Burned Tower
+67,5,Céladopole
 67,9,Celadon City
+68,5,Azuria
 68,9,Cerulean City
+69,5,Ville Griotte
 69,9,Cherrygrove City
+70,5,Irisia
 70,9,Cianwood City
+71,5,Cramois'Ile
 71,9,Cinnabar Island
+72,5,Antre Noir
 72,9,Dark Cave
+73,5,Cave TAUPIQUEUR
 73,9,Diglett's Cave
+74,5,Antre du Dragon
 74,9,Dragon's Den
+75,5,Rosalia
 75,9,Ecruteak City
+76,5,Parmanie
 76,9,Fuchsia City
+77,5,Route de Glace
 77,9,Ice Path
+78,5,Bois aux Chênes
 78,9,Ilex Forest
+79,5,Lac Colère
 79,9,Lake of Rage
+80,5,Mont Sélénite
 80,9,Mt. Moon
+81,5,Mont Creuset
 81,9,Mt. Mortar
+82,5,Mont Argenté
 82,9,Mt. Silver
+83,5,Parc Naturel
 83,9,National Park
+84,5,Bourg Geon
 84,9,New Bark Town
+85,5,Oliville
 85,9,Olivine City
+86,5,Bourg Palette
 86,9,Pallet Town
+87,5,Grotte
 87,9,Rock Tunnel
+88,5,Route 1
 88,9,Route 1
+89,5,Route 10
 89,9,Route 10
+90,5,Route 11
 90,9,Route 11
+91,5,Route 12
 91,9,Route 12
+92,5,Route 13
 92,9,Route 13
+93,5,Route 14
 93,9,Route 14
+94,5,Route 15
 94,9,Route 15
+95,5,Route 16
 95,9,Route 16
+96,5,Route 17
 96,9,Route 17
+97,5,Route 18
 97,9,Route 18
+98,5,Chenal 19
 98,9,Sea Route 19
+99,5,Route 2
 99,9,Route 2
+100,5,Chenal 20
 100,9,Sea Route 20
+101,5,Chenal 21
 101,9,Sea Route 21
+102,5,Route 22
 102,9,Route 22
+103,5,Route 24
 103,9,Route 24
+104,5,Rotue 25
 104,9,Route 25
+105,5,Route 26
 105,9,Route 26
+106,5,Route 27
 106,9,Route 27
+107,5,Route 28
 107,9,Route 28
+108,5,Route 29
 108,9,Route 29
+109,5,Route 3
 109,9,Route 3
+110,5,Route 30
 110,9,Route 30
+111,5,Route 31
 111,9,Route 31
+112,5,Route 32
 112,9,Route 32
+113,5,Route 33
 113,9,Route 33
+114,5,Route 34
 114,9,Route 34
+115,5,Route 35
 115,9,Route 35
+116,5,Route 36
 116,9,Route 36
+117,5,Route 37
 117,9,Route 37
+118,5,Route 38
 118,9,Route 38
+119,5,Route 39
 119,9,Route 39
+120,5,Route 4
 120,9,Route 4
+121,5,Chenal 40
 121,9,Sea Route 40
+122,5,Chenal 41
 122,9,Sea Route 41
+123,5,Route 42
 123,9,Route 42
+124,5,Route 43
 124,9,Route 43
+125,5,Route 44
 125,9,Route 44
+126,5,Route 45
 126,9,Route 45
+127,5,Route 46
 127,9,Route 46
+128,5,Route 47
 128,9,Route 47
+129,5,Route 48
 129,9,Route 48
+130,5,Route 5
 130,9,Route 5
+131,5,Route 6
 131,9,Route 6
+132,5,Route 7
 132,9,Route 7
+133,5,Route 8
 133,9,Route 8
+134,5,Route 9
 134,9,Route 9
+135,5,Ruines d'Alpha
 135,9,Ruins of Alph
+136,5,Iles Ecume
 136,9,Seafoam Islands
+137,5,Puits RAMOLOSS
 137,9,Slowpoke Well
+138,5,Tour CHETIFLOR
 138,9,Sprout Tower
+139,5,Tour Carillon
 139,9,Bell Tower
+140,5,Chutes Tohjo
 140,9,Tohjo Falls
+141,5,Caves Jumelles
 141,9,Union Cave
+147,5,Caverne Azurée
 147,9,Cerulean Cave
+148,5,Inconnu; que des Ptitard
 148,9,Unknown; all Poliwag
+149,5,Inconnu; que des Rattata
 149,9,Unknown; all Rattata
+150,5,Inconnu; que des insectes
 150,9,Unknown; all bugs
+151,5,Carmin sur Mer
 151,9,Vermilion City
+152,5,Route Victoire
 152,9,Victory Road
+153,5,Mauville
 153,9,Violet City
+154,5,Jadielle
 154,9,Viridian City
+155,5,Forêt de Jade
 155,9,Viridian Forest
+156,5,Tourb'Iles
 156,9,Whirl Islands
+157,5,Route 23
 157,9,Route 23
+158,5,Centrale
 158,9,Power Plant
+159,5,Route Victoire
 159,9,Victory Road
+160,5,Tour Pokémon
 160,9,Pokémon Tower
+161,5,Manoir Pokémon
 161,9,Pokémon Mansion
+162,5,Parc Safari
 162,9,Safari Zone
+163,5,Littorella
 163,9,Sandgem Town
+164,5,Floraville
 164,9,Floaroma Town
+165,5,Bonville
 165,9,Solaceon Town
+167,5,Féli-Cité
 167,9,Jubilife City
+168,5,Charbourg
 168,9,Oreburgh City
+169,5,Unionpolis
 169,9,Hearthome City
+170,5,Voilaroc
 170,9,Veilstone City
+171,5,Frimapic
 171,9,Snowpoint City
+172,5,Colonnes Lances
 172,9,Spear Pillar
+173,5,Parc des Amis
 173,9,Pal Park
+174,5,Square Paisible
 174,9,Amity Square
+175,5,Pré Floraville
 175,9,Floaroma Meadow
+177,5,Ile Pleine Lune
 177,9,Fullmoon Island
+178,5,Source Adieu
 178,9,Sendoff Spring
+179,5,Paradis Fleuri
 179,9,Flower Paradise
+180,5,Tunnel Runiem.
 180,9,Maniac Tunnel
+181,5,QG Galaxie
 181,9,Galactic HQ
+182,5,Rive Lac Vérité
 182,9,Verity Lakefront
+183,5,Ile Nouvellelune
 183,9,Newmoon Island
+184,5,Tour de Combat
 184,9,Battle Tower
+185,5,Aire de Combat
 185,9,Fight Area
+186,5,Aire de Survie
 186,9,Survival Area
+187,5,Passage Marin
 187,9,Seabreak Path
+188,5,Salle Originelle
 188,9,Hall of Origin
+189,5,Salle Originelle
 189,9,Hall of Origin
+190,5,Caverne Vérité
 190,9,Verity Cavern
+191,5,Caverne Courage
 191,9,Valor Cavern
+192,5,Caverne Savoir
 192,9,Acuity Cavern
+193,5,Féli-Télé
 193,9,Jubilife TV
+194,5,Pokémontre S.A.
 194,9,Pokétch Co.
+195,5,GTS
 195,9,GTS
+196,5,Ecole Dresseurs
 196,9,Trainers’ School
+197,5,Musée Minier
 197,9,Mining Museum
+198,5,Fleuriste
 198,9,Flower Shop
+199,5,Boutique de Vélo
 199,9,Cycle Shop
+200,5,Salle Concours
 200,9,Contest Hall
+201,5,Poffinerie
 201,9,Poffin House
+202,5,Bâtiment Etrange
 202,9,Foreign Building
+203,5,Pension Pokémon
 203,9,Pokémon Day Care
+204,5,C. Com. Voilaroc
 204,9,Veilstone Store
+205,5,Casino
 205,9,Game Corner
+206,5,Bibl. Joliberges
 206,9,Canalave Library
+207,5,Phare Panorama
 207,9,Vista Lighthouse
+208,5,Marché Rivamar
 208,9,Sunyshore Market
+209,5,Abri Petitpas
 209,9,Footstep House
+210,5,Café
 210,9,Café
+211,5,Grand Lac
 211,9,Grand Lake
+212,5,Restaurant
 212,9,Restaurant
+213,5,Parc des Combats
 213,9,Battle Park
+214,5,Zone de Combat
 214,9,Battle Frontier
+215,5,Usine de Combat
 215,9,Battle Factory
+216,5,Castel de Combat
 216,9,Battle Castle
+217,5,Arcade de Combat
 217,9,Battle Arcade
+218,5,Scène de Combat
 218,9,Battle Hall
+219,5,Monde Distorsion
 219,9,Distortion World
+220,5,Terminal Mondial
 220,9,Global Terminal
+221,5,Villa
 221,9,Villa
+222,5,Café Combats
 222,9,Battleground
+223,5,Salle MOTISMA
 223,9,ROTOM's Room
+224,5,Team G Vestigion
 224,9,T.G. Eterna Bldg
+225,5,Ruines de Fer
 225,9,Iron Ruins
+226,5,Ruines Iceberg
 226,9,Iceberg Ruins
+227,5,Ruines Pic Roche
 227,9,Rock Peak Ruins
+228,5,Ecorcia
 228,9,Azalea Town
+229,5,Doublonville
 229,9,Goldenrod City
+230,5,Acajou
 230,9,Mahogany Town
+231,5,Argenta
 231,9,Pewter City
+232,5,Lavandia
 232,9,Lavender Town
+233,5,Plateau Indigo
 233,9,Indigo Plateau
+234,5,Safrania
 234,9,Saffron City
+236,5,Phare
 236,9,Lighthouse
+237,5,Repaire Rocket d'Acajou
 237,9,Team Rocket HQ
+238,5,Doublon-Tunnel
 238,9,Goldenrod Tunnel
+239,5,Grotte Argentée
 239,9,Mt. Silver Cave
+241,5,Dôme Pokéathlon
 241,9,Pokéathlon Dome
+242,5,Aquaria
 242,9,S.S. Aqua
+243,5,Portail Safari
 243,9,Safari Zone Gate
+244,5,Grotte Falaise
 244,9,Cliff Cave
+245,5,Atrium Combat
 245,9,Frontier Access
+246,5,Sentier Carillon
 246,9,Bellchime Trail
+247,5,Ruines Sinjoh
 247,9,Sinjoh Ruins
+248,5,Tour Enfouie
 248,9,Embedded Tower
+249,5,Pokéwalker
 249,9,Pokéwalker
+250,5,Portail Falaise
 250,9,Cliff Edge Gate
+252,5,Tour Radio
 252,9,Radio Tower
+253,5,Couple Pension
 253,9,Day-Care Couple
+254,5,Echange Link
 254,9,Link trade (arrive)
+255,5,Echange Link
 255,9,Link trade (met)
+256,5,Kanto
 256,9,Kanto
+257,5,Johto
 257,9,Johto
+258,5,Hoenn
 258,9,Hoenn
+259,5,Sinnoh
 259,9,Sinnoh
+360,5,Pays lointain
 260,9,Distant land
+261,5,un voyageur
 261,9,Traveling Man
+262,5,Armand
 262,9,Riley
+263,5,Cynthia
 263,9,Cynthia
+264,5,Endroit mystér.
 264,9,Mystery Zone
+265,5,Endroit superbe
 265,9,Lovely place
+266,5,Pokémon Ranger
 266,9,Pokémon Ranger
+267,5,Endroit lointain
 267,9,Faraway place
+268,5,Film Pokémon
 268,9,Pokémon Movie
+269,5,Film Pokémon 06
 269,9,Pokémon Movie 06
+270,5,Film Pokémon 07
 270,9,Pokémon Movie 07
+271,5,Film Pokémon 08
 271,9,Pokémon Movie 08
+272,5,Film Pokémon 09
 272,9,Pokémon Movie 09
+273,5,Film Pokémon 10
 273,9,Pokémon Movie 10
+274,5,Film Pokémon 11
 274,9,Pokémon Movie 11
+275,5,Film Pokémon 12
 275,9,Pokémon Movie 12
+276,5,Film Pokémon 13
 276,9,Pokémon Movie 13
+277,5,Film Pokémon 14
 277,9,Pokémon Movie 14
+278,5,Film Pokémon 15
 278,9,Pokémon Movie 15
+279,5,Film Pokémon 16
 279,9,Pokémon Movie 16
+280,5,Dessin ani. PKMN
 280,9,Pokémon Cartoon
+281,5,Space World
 281,9,Space World
+282,5,Space World 06
 282,9,Space World 06
+283,5,Space World 07
 283,9,Space World 07
+284,5,Space World 08
 284,9,Space World 08
+285,5,Space World 09
 285,9,Space World 09
+286,5,Space World 10
 286,9,Space World 10
+287,5,Space World 11
 287,9,Space World 11
+288,5,Space World 12
 288,9,Space World 12
+289,5,Space World 13
 289,9,Space World 13
+290,5,Space World 14
 290,9,Space World 14
+291,5,Space World 15
 291,9,Space World 15
+292,5,Space World 16
 292,9,Space World 16
+293,5,Pokémon Festa
 293,9,Pokémon Festa
+294,5,Pokémon Festa 06
 294,9,Pokémon Festa 06
+295,5,Pokémon Festa 07
 295,9,Pokémon Festa 07
+296,5,Pokémon Festa 08
 296,9,Pokémon Festa 08
+297,5,Pokémon Festa 09
 297,9,Pokémon Festa 09
+298,5,Pokémon Festa 10
 298,9,Pokémon Festa 10
+299,5,Pokémon Festa 11
 299,9,Pokémon Festa 11
+300,5,Pokémon Festa 12
 300,9,Pokémon Festa 12
+301,5,Pokémon Festa 13
 301,9,Pokémon Festa 13
+302,5,Pokémon Festa 14
 302,9,Pokémon Festa 14
+303,5,Pokémon Festa 15
 303,9,Pokémon Festa 15
+304,5,Pokémon Festa 16
 304,9,Pokémon Festa 16
+305,5,POKéPARK
 305,9,POKéPARK
+306,5,POKéPARK 06
 306,9,POKéPARK 06
+307,5,POKéPARK 07
 307,9,POKéPARK 07
+308,5,POKéPARK 08
 308,9,POKéPARK 08
+309,5,POKéPARK 09
 309,9,POKéPARK 09
+310,5,POKéPARK 10
 310,9,POKéPARK 10
+311,5,POKéPARK 11
 311,9,POKéPARK 11
+312,5,POKéPARK 12
 312,9,POKéPARK 12
+313,5,POKéPARK 13
 313,9,POKéPARK 13
+314,5,POKéPARK 14
 314,9,POKéPARK 14
+315,5,POKéPARK 15
 315,9,POKéPARK 15
+316,5,POKéPARK 16
 316,9,POKéPARK 16
+317,5,Centre Pokémon
 317,9,Pokémon Center
+318,5,CP Tokyo
 318,9,PC Tokyo
+319,5,CP Osaka
 319,9,PC Osaka
+320,5,CP Fukuoka
 320,9,PC Fukuoka
+321,5,CP Nagoya
 321,9,PC Nagoya
+322,5,CP Sapporo
 322,9,PC Sapporo
+323,5,CP Yokohama
 323,9,PC Yokohama
+324,5,Nintendo World
 324,9,Nintendo World
+325,5,Evénem. Pokémon
 325,9,Pokémon Event
+326,5,Evén. Pokémon 06
 326,9,Pokémon Event 06
+327,5,Evén. Pokémon 07
 327,9,Pokémon Event 07
+328,5,Evén. Pokémon 08
 328,9,Pokémon Event 08
+329,5,Evén. Pokémon 09
 329,9,Pokémon Event 09
+330,5,Evén. Pokémon 10
 330,9,Pokémon Event 10
+331,5,Evén. Pokémon 11
 331,9,Pokémon Event 11
+332,5,Evén. Pokémon 12
 332,9,Pokémon Event 12
+333,5,Evén. Pokémon 13
 333,9,Pokémon Event 13
+334,5,Evén. Pokémon 14
 334,9,Pokémon Event 14
+335,5,Evén. Pokémon 15
 335,9,Pokémon Event 15
+336,5,Evén. Pokémon 16
 336,9,Pokémon Event 16
+337,5,Evénement Wi-Fi
 337,9,Wi-Fi Event
+338,5,Cadeau Wi-Fi
 338,9,Wi-Fi Gift
+339,5,Fan Club Pokémon
 339,9,Pokémon Fan Club
+340,5,Lieu d'Evénement
 340,9,Event Site
+341,5,Evénem. Concert
 341,9,Concert Event
+342,5,M. Pokémon
 342,9,Mr. Pokémon
+343,5,Castor
 343,9,Primo
 344,1,なぞの場所
 344,9,Mystery Zone
