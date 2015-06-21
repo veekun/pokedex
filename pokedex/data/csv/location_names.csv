@@ -445,7 +445,7 @@ location_id,local_language_id,name
 230,9,Mahogany Town
 231,5,Argenta
 231,9,Pewter City
-232,5,Lavandia
+232,5,Lavanville
 232,9,Lavender Town
 233,5,Plateau Indigo
 233,9,Indigo Plateau
@@ -664,367 +664,609 @@ location_id,local_language_id,name
 343,5,Castor
 343,9,Primo
 344,1,なぞの場所
+344,5,Endroit Mystérieux
 344,9,Mystery Zone
 345,1,遠い場所
+345,5,Endroit Lointain
 345,9,Faraway place
 346,1,カノコタウン
+346,5,Renouet
 346,9,Nuvema Town
 347,1,カラクサタウン
+347,5,Arabelle
 347,9,Accumula Town
 348,1,サンヨウシティ
+348,5,Ogoesse
 348,9,Striaton City
 349,1,シッポウシティ
+349,5,Maillard
 349,9,Nacrene City
 350,1,ヒウンシティ
+350,5,Volucité
 350,9,Castelia City
 351,1,ライモンシティ
+351,5,Méanville
 351,9,Nimbasa City
 352,1,ホドモエシティ
+352,5,Port Yoneuve
 352,9,Driftveil City
 353,1,フキヨセシティ
+353,5,Parsemille
 353,9,Mistralton City
 354,1,セッカシティ
+354,5,Flocombe
 354,9,Icirrus City
 355,1,ソウリュウシティ
+355,5,Janusia
 355,9,Opelucid City
 356,1,１番道路
+356,5,Route 1
 356,9,Route 1
 357,1,２番道路
+357,5,Route 2
 357,9,Route 2
 358,1,３番道路
+358,5,Route 3
 358,9,Route 3
 359,1,４番道路
+359,5,Route 4
 359,9,Route 4
 360,1,５番道路
+360,5,Route 5
 360,9,Route 5
 361,1,６番道路
+361,5,Route 6
 361,9,Route 6
 362,1,７番道路
+362,5,Route 7
 362,9,Route 7
 363,1,８番道路
+363,5,Route 8
 363,9,Route 8
 364,1,９番道路
+364,5,Route 9
 364,9,Route 9
 365,1,１０番道路
+365,5,Route 10
 365,9,Route 10
 366,1,１１番道路
+366,5,Route 11
 366,9,Route 11
 367,1,１２番道路
+367,5,Route 12
 367,9,Route 12
 368,1,１３番道路
+368,5,Route 13
 368,9,Route 13
 369,1,１４番道路
+369,5,Route 14
 369,9,Route 14
 370,1,１５番道路
+370,5,Route 15
 370,9,Route 15
 371,1,１６番道路
+371,5,Route 16
 371,9,Route 16
 372,1,１７番水道
+372,5,Chenal 17
 372,9,Route 17
 373,1,１８番道路
+373,5,Route 18
 373,9,Route 18
 374,1,夢の跡地
+374,5,Vestiges du Rêve
 374,9,Dreamyard
 375,1,ヤグルマの森
+375,5,Forêt d'Empoigne
 375,9,Pinwheel Forest
 376,1,リゾートデザート
+376,5,Désert Délassant
 376,9,Desert Resort
 377,1,古代の城
+377,5,Château Enfoui
 377,9,Relic Castle
 378,1,冷凍コンテナ
+378,5,Hangar Frigorifique
 378,9,Cold Storage
 379,1,電気石の洞穴
+379,5,Grotte Électrolithe
 379,9,Chargestone Cave
 380,1,ネジ山
+380,5,Mont Foré
 380,9,Twist Mountain
 381,1,リュウラセンの塔
+381,5,Tour Dragospire
 381,9,Dragonspiral Tower
 382,1,チャンピオンロード
+382,5,Route Victoire
 382,9,Victory Road
 383,1,カゴメタウン
+383,5,Entrelasque
 383,9,Lacunosa Town
 384,1,サザナミタウン
+384,5,Vaguelone
 384,9,Undella Town
 385,1,カナワタウン
+385,5,Rotombourg
 385,9,Anville Town
 386,1,ポケモンリーグ
+386,5,Ligue Pokémon
 386,9,Pokémon League
 387,1,Ｎの城
+387,5,Palais de N
 387,9,N's Castle
 388,1,ロイヤルイッシュ号
+388,5,L'Étoile d'Unys
 388,9,Royal Unova
 389,1,ギアステーション
+389,5,Engrenage du Métro
 389,9,Gear Station
 390,1,バトルサブウェイ
+390,5,Métro de Combat
 390,9,Battle Subway
 391,1,ミュージカルホール
+391,5,Music-Hall
 391,9,Musical Theater
 392,1,ブラックシティ
+392,5,Ville Noire
 392,9,Black City
 393,1,ホワイトフォレスト
+393,5,Forêt Blanche
 393,9,White Forest
 394,1,ユナイテッドタワー
+394,5,Tour Union
 394,9,Unity Tower
 395,1,地下水脈の穴
+395,5,Veine Souterraine
 395,9,Wellspring Cave
 396,1,フキヨセの洞穴
+396,5,Grotte Parsemille
 396,9,Mistralton Cave
 397,1,思索の原
+397,5,Clairière Réflexion
 397,9,Rumination Field
 398,1,タワーオブヘブン
+398,5,Tour des Cieux
 398,9,Celestial Tower
 399,1,セッカの湿原
+399,5,Tourbière Flocombe
 399,9,Moor of Icirrus
 400,1,ショッピングモール
+400,5,Centre Commercial
 400,9,Shopping Mall
 401,1,修行の岩屋
+401,5,Antre d'Entraînement
 401,9,Challenger's Cave
 402,1,シフトファクトリー
+402,5,Laboratoire Fret
 402,9,Poké Transfer Lab
 403,1,ジャイアントホール
+403,5,Grotte Cyclopéenne
 403,9,Giant Chasm
 404,1,リバティガーデン島
+404,5,Île Liberté
 404,9,Liberty Garden
 405,1,Ｐ２ラボ
+405,5,Labo P2
 405,9,P2 Laboratory
 406,1,スカイアローブリッジ
+406,5,Pont Sagiciel
 406,9,Skyarrow Bridge
 407,1,ホドモエの跳ね橋
+407,5,Pont Yoneuve
 407,9,Driftveil Drawbridge
 408,1,シリンダーブリッジ
+408,5,Pont Ferroviaire
 408,9,Tubeline Bridge
 409,1,ビレッジブリッジ
+409,5,Pont du Hameau
 409,9,Village Bridge
 410,1,ワンダーブリッジ
+410,5,Pont de l'Inconnu
 410,9,Marvelous Bridge
 411,1,ハイリンク
+411,5,Heylink
 411,9,Entralink
 412,1,ほうじょうの社
+412,5,Autel Abondance
 412,9,Abundant Shrine
 413,1,サザナミ湾
+413,5,Baie Vaguelone
 413,9,Undella Bay
 414,1,迷いの森
+414,5,Bois des Illusions
 414,9,Lostlorn Forest
 415,1,試練の室
+415,5,Salle Épreuve
 415,9,Trial Chamber
 416,1,導の間
+416,5,Espace Guide
 416,9,Guidance Chamber
 417,1,ハイリンクの森
+417,5,Forêt du Heylink
 417,9,Entree Forest
 418,1,カラクサゲート
+418,5,Porte Arabelle
 418,9,Accumula Gate
 419,1,サザナミゲート
+419,5,Porte Vaguelone
 419,9,Undella Gate
 420,1,シッポウゲート
+420,5,Porte Maillard
 420,9,Nacrene Gate
 421,1,ヒウンゲート
+421,5,Porte Volucité
 421,9,Castelia Gate
 422,1,ライモンゲート
+422,5,Porte Méanville
 422,9,Nimbasa Gate
 423,1,ソウリュウゲート
+423,5,Porte Janusia
 423,9,Opelucid Gate
 424,1,ブラックゲート
+424,5,Porte Noire
 424,9,Black Gate
 425,1,ホワイトゲート
+425,5,Porte Blanche
 425,9,White Gate
 426,1,ブリッジゲート
+426,5,Porte de Pont
 426,9,Bridge Gate
 427,1,ロードゲート
+427,5,Porte de Route
 427,9,Route Gate
 428,1,海底遺跡
+428,5,Ruines des Abysses
 428,9,Abyssal Ruins
+429,5,Clémenti-Ville
 429,9,Petalburg City
+430,5,Poivressel
 430,9,Slateport City
+431,5,Nénucrique
 431,9,Lilycove City
+432,5,Algatia
 432,9,Mossdeep City
+433,5,Atalanopolis
 433,9,Sootopolis City
+434,5,Eternara
 434,9,Ever Grande City
+435,5,Site Météore
 435,9,Meteor Falls
+436,5,Tunnel Mérazon
 436,9,Rusturf Tunnel
+437,5,Grotte Granite
 437,9,Granite Cave
+438,5,Bois Clémenti
 438,9,Petalburg Woods
+439,5,Sentier Sinuroc
 439,9,Jagged Pass
+440,5,Chemin Ardent
 440,9,Fiery Path
+441,5,Mont Mémoria
 441,9,Mt. Pyre
+442,5,Caverne Fondmer
 442,9,Seafloor Cavern
+443,5,Grotte Origine
 443,9,Cave of Origin
+444,5,Route Victoire
 444,9,Victory Road
+445,5,Grotte Tréfonds
 445,9,Shoal Cave
+446,5,New Lavandia
 446,9,New Mauville
+447,5,Épave
 447,9,Abandoned Ship
+448,5,Tour Céleste
 448,9,Sky Pillar
+449,5,Route 101
 449,9,Route 101
+450,5,Route 102
 450,9,Route 102
+451,5,Route 103
 451,9,Route 103
+452,5,Route 104
 452,9,Route 104
+453,5,Route 105
 453,9,Route 105
+454,5,Route 106
 454,9,Route 106
+455,5,Route 107
 455,9,Route 107
+456,5,Route 108
 456,9,Route 108
+457,5,Route 109
 457,9,Route 109
+458,5,Route 110
 458,9,Route 110
+459,5,Route 111
 459,9,Route 111
+460,5,Route 112
 460,9,Route 112
+461,5,Route 113
 461,9,Route 113
+462,5,Route 114
 462,9,Route 114
+463,5,Route 115
 463,9,Route 115
+464,5,Route 116
 464,9,Route 116
+465,5,Route 117
 465,9,Route 117
+466,5,Route 118
 466,9,Route 118
+467,5,Route 119
 467,9,Route 119
+468,5,Route 120
 468,9,Route 120
+469,5,Route 121
 469,9,Route 121
+470,5,Route 122
 470,9,Route 122
+471,5,Route 123
 471,9,Route 123
+472,5,Route 124
 472,9,Route 124
+473,5,Route 125
 473,9,Route 125
+474,5,Route 126
 474,9,Route 126
+475,5,Route 127
 475,9,Route 127
+476,5,Route 128
 476,9,Route 128
+477,5,Route 129
 477,9,Route 129
+478,5,Route 130
 478,9,Route 130
+479,5,Route 131
 479,9,Route 131
+480,5,Route 132
 480,9,Route 132
+481,5,Route 133
 481,9,Route 133
+482,5,Route 134
 482,9,Route 134
+483,5,Parc Safari
 483,9,Safari Zone
+484,5,Village Myokara
 484,9,Dewford Town
+485,5,Pacifiville
 485,9,Pacifidlog Town
+486,5,Planque Magma
 486,9,Magma Hideout
+487,5,Tour Mirage
 487,9,Mirage Tower
+488,5,Voie du Désert
 488,9,Desert Underpass
+489,5,Grotte Atelier
 489,9,Artisan Cave
+490,5,Grotte Métamo
 490,9,Altering Cave
+491,5,Chambre Anemune
 491,9,Monean Chamber
+492,5,Chambre Deulipe
 492,9,Liptoo Chamber
+493,5,Chambre Prois
 493,9,Weepth Chamber
+494,5,Chambre Jonquatre
 494,9,Dilford Chamber
+495,5,Chambre Hibicinq
 495,9,Scufib Chamber
+496,5,Chambre Irix
 496,9,Rixy Chamber
+497,5,Chambre Poinsept
 497,9,Viapos Chamber
+498,5,L'Océane
 498,9,S.S. Anne
+499,5,Route Victoire
 499,9,Victory Road
+500,5,Mont Braise
 500,9,Mt. Ember
+501,5,Bois Baies
 501,9,Berry Forest
+502,5,Grotte de Glace
 502,9,Icefall Cave
+503,5,Forbuissons
 503,9,Pattern Bush
+504,5,Grotte Perdue
 504,9,Lost Cave
+505,5,Route Tison
 505,9,Kindle Road
+506,5,Plage Trésor
 506,9,Treasure Beach
+507,5,Cap Falaise
 507,9,Cape Brink
+508,5,Pont du Lien
 508,9,Bond Bridge
+509,5,Port Ile 3
 509,9,Three Isle Port
+510,5,Camp de Vacances
 510,9,Resort Gorgeous
+511,5,Labyrinthe d'O
 511,9,Water Labyrinth
+512,5,Pré Ile 5
 512,9,Five Isle Meadow
+513,5,Mémorial
 513,9,Memorial Pillar
+514,5,Ile du Lointain
 514,9,Outcast Island
+515,5,Chemin Vert
 515,9,Green Path
+516,5,Agualcanal
 516,9,Water Path
+517,5,Vallée Ruine
 517,9,Ruin Valley
+518,5,Tour Dresseurs
 518,9,Trainer Tower
+519,5,Entrée du Canyon
 519,9,Canyon Entrance
+520,5,Canyon Sesor
 520,9,Sevault Canyon
+521,5,Ruines Tanoby
 521,9,Tanoby Ruins
+522,5,Route 19
 522,9,Route 19
+523,5,Route 20
 523,9,Route 20
+524,5,Route 21
 524,9,Route 21
+526,5,Ile 1
 526,9,One Island
+527,5,Ile 4
 527,9,Four Island
+528,5,Ile 5
 528,9,Five Island
+529,5,Grotte Métamo
 529,9,Altering Cave
+530,5,Route Victoire
 530,9,Victory Road
 531,1,ヒオウギシティ
+531,5,Pavonnay
 531,9,Aspertia City
 532,1,タチワキシティ
+532,5,Ondes-sur-Mer
 532,9,Virbank City
 533,1,セイガイハシティ
+533,5,Papeloa
 533,9,Humilau City
 534,1,ポケウッド
+534,5,Pokéwood
 534,9,PokéStar Studios
 535,1,ジョインアベニュー
+535,5,Galerie Concorde
 535,9,Join Avenue
 536,1,サンギタウン
+536,5,Amaillide
 536,9,Floccesy Town
 537,1,ヤマジタウン
+537,5,Arpentières
 537,9,Lentimas Town
 538,1,１９番道路
+538,5,Route 19
 538,9,Route 19
 539,1,２０番道路
+539,5,Route 20
 539,9,Route 20
 540,1,２１番水道
+540,5,Chenal 21
 540,9,Route 21
 541,1,２２番道路
+541,5,Route 22
 541,9,Route 22
 542,1,２３番道路
+542,5,Route 23
 542,9,Route 23
 543,1,ヒウン下水道
+543,5,Égouts de Volucité
 543,9,Castelia Sewers
 544,1,サンギ牧場
+544,5,Ranch d'Amaillide
 544,9,Floccesy Ranch
 545,1,タチワキコンビナート
+545,5,Z.I. d'Ondes-sur-Mer
 545,9,Virbank Complex
 546,1,リバースマウンテン
+546,5,Mont Renenvers
 546,9,Reversal Mountain
 547,1,ストレンジャーハウス
+547,5,Manoir de l'Étrange
 547,9,Strange House
 548,1,チャンピオンロード
+548,5,Route Victoire
 548,9,Victory Road
 549,1,プラズマフリゲート
+549,5,Frégate Plasma
 549,9,Plasma Frigate
 550,1,古代の抜け道
+550,5,Chemin Enfoui
 550,9,Relic Passage
 551,1,ヤーコンロード
+551,5,Route Bardane
 551,9,Clay Tunnel
 552,1,白の樹洞
+552,5,Arbre Creux Blanc
 552,9,White Treehollow
 553,1,黒の摩天楼
+553,5,Gratte-Ciel Noir
 553,9,Black Tower
 554,1,海辺の洞穴
+554,5,Grotte Littorale
 554,9,Seaside Cave
 555,1,心の空洞
+555,5,Caverne des Esprits
 555,9,Cave of Being
 556,1,隠し穴
+556,5,Trouée Cachée
 556,9,Hidden Grotto
 557,1,マリンチューブ
+557,5,Aquatube
 557,9,Marine Tube
 558,1,タチワキゲート
+558,5,Porte Ondes-sur-Mer
 558,9,Virbank Gate
 559,1,ヒオウギゲート
+559,5,Porte Pavonnay
 559,9,Aspertia Gate
 560,1,自然保護区
+560,5,Réserve Naturelle
 560,9,Nature Sanctuary
 561,1,メダル事務局
+561,5,Bureau des Médailles
 561,9,Medal Secretariat
 562,1,地底遺跡
+562,5,Ruines Enfouies
 562,9,Underground Ruins
 563,1,岩山の間
+563,5,Salle Pic Rocheux
 563,9,Rocky Mountain Room
 564,1,氷山の間
+564,5,Salle Iceberg
 564,9,Glacier Room
 565,1,鉄の間
+565,5,Salle Fer
 565,9,Iron Room
 566,1,誓いの林
+566,5,Bois du Serment
 566,9,Pledge Grove
+567,5,Bourg-en-Vol
 567,9,Littleroot Town
+568,5,Rosyères
 568,9,Oldale Town
+569,5,Vermilava
 569,9,Lavaridge Town
+570,5,Autéquia
 570,9,Fallarbor Town
+571,5,Vergazon
 571,9,Verdanturf Town
+572,5,Lavandia
 572,9,Mauville City
+573,5,Mérouville
 573,9,Rustboro City
+574,5,Cimetronelle
 574,9,Fortree City
+575,5,Fond marin
 575,9,Underwater
+576,5,Mont Chimnée
 576,9,Mt. Chimney
+577,5,Ile Mirage
 577,9,Mirage Island
+578,5,Ile du Sud
 578,9,Southern Island
+579,5,Sanctuaire
 579,9,Sealed Chamber
+580,5,Grotte Zénith
 580,9,Scorched Slab
+581,5,Grotte Island
 581,9,Island Cave
+582,5,Ruines Désert
 582,9,Desert Ruins
+583,5,Tombeau Antique
 583,9,Ancient Tomb
+584,5,Dans le camion
 584,9,Inside of truck
+585,5,Base Secrète
 585,9,Secret Base
+586,5,Tour de Combat
 586,9,Battle Tower
 587,1,アサメタウン
 587,3,조아마을
