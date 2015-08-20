@@ -8,8 +8,8 @@ pokedex_id,local_language_id,name,description
 3,5,Johto initial,"Pokédex régional de Johto dans Or/Argent/Cristal, appellé ""Nouveau"" Pokédex dans le jeu"
 3,6,Original Johto,"Gold/Silber/Kristall Johto Dex — Auch der ""Neue"" Pokédex im Spiel genannt"
 3,9,Original Johto,"Gold/Silver/Crystal Johto dex—called the ""New"" Pokédex in-game"
-4,6,Hoenn,Rubin/Saphir/Smaragd Hoenn Dex
-4,9,Hoenn,Ruby/Sapphire/Emerald Hoenn dex
+4,6,Original Hoenn,Rubin/Saphir/Smaragd Hoenn Dex
+4,9,Original Hoenn,Ruby/Sapphire/Emerald Hoenn dex
 5,5,Sinnoh initial,Pokédex régional de Sinnoh dans Diamant/Perle
 5,6,Original Sinnoh,Diamant/Perl Sinnoh Dex
 5,9,Original Sinnoh,Diamond/Pearl Sinnoh dex
@@ -37,3 +37,5 @@ pokedex_id,local_language_id,name,description
 14,5,Kalos : Monts,
 14,6,Kalos-Gebirge,
 14,9,Mountain Kalos,
+15,6,Neue Hoenn,Omega Rubin/Alpha Saphir Hoenn Dex — Dex aus Rubin/Saphir/Smaragd um Neue Entwicklungen erweitert
+15,9,New Hoenn,"Omega Ruby/Alpha Sapphire Hoenn Dex—Ruby/Sapphire/Emerald's, updated to add new evolutions"
