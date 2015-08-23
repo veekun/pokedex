@@ -593,7 +593,7 @@ Items taken or given away by []{move:covet}, []{move:knock-off}, []{move:switche
 186,9,Inflicts double damage if the user takes damage before attacking this turn.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target damaged the user this turn and was the last to do so, this move has double power.
 
 []{move:pain-split} does not count as damaging the user."
-187,9,Destroys Reflect and Light Screen.,"Destroys any []{move:light-screen} or []{move:reflect} on the target's side of the [field]{mechanic:field}, then inflicts [regular damage]{mechanic:regular-damage}.  The barriers are destroyed even if this move has [no effect]{mechanic:no-effect}."
+187,9,Destroys Reflect and Light Screen.,"Destroys any []{move:light-screen} or []{move:reflect} on the target's side of the [field]{mechanic:field}, then inflicts [regular damage]{mechanic:regular-damage}."
 188,9,Target sleeps at the end of the next turn.,"Puts the target to [sleep]{mechanic:sleep} at the end of the next turn.  Ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.  If the target leaves the [field]{mechanic:field}, this effect is canceled.  If the target has a status effect when this move is used, this move will [fail]{mechanic:fail}.
 
 If the target is protected by []{move:safeguard} when this move is used, this move will [fail]{mechanic:fail}.
