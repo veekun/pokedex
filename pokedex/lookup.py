@@ -195,7 +195,7 @@ class PokedexLookup(object):
         for cls in self.indexed_tables.values():
             q = self.session.query(cls).order_by(cls.id)
 
-            for row in q.yield_per(5):
+            for row in q:
                 row_key = dict(table=unicode(cls.__tablename__),
                                row_id=unicode(row.id))
 

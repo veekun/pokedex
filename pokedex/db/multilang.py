@@ -210,7 +210,7 @@ def create_translation_table(_table_name, foreign_class, relation_name,
 
 class MultilangQuery(Query):
     def __iter__(self):
-        if '_default_language_id' not in self._params:
+        if '_default_language_id' not in self._params or self._params['_default_language_id'] == 'dummy':
             self._params = self._params.copy()
             self._params['_default_language_id'] = self.session.default_language_id
         return super(MultilangQuery, self).__iter__()

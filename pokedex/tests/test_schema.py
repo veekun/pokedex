@@ -108,7 +108,7 @@ def test_i18n_table_creation():
     sess.commit()
 
     ### Test 1: re-fetch foo and check its attributes
-    foo = sess.query(Foo).params(_default_language='en').one()
+    foo = sess.query(Foo).params(_default_language_id=lang_en.id).one()
 
     # Dictionary of language identifiers => names
     assert foo.name_map[lang_en] == 'english'
