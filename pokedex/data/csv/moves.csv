@@ -621,7 +621,7 @@ id,identifier,generation_id,type_id,power,pp,accuracy,priority,target_id,damage_
 620,dragon-ascent,6,3,120,5,100,0,10,2,230,,,,
 621,hyperspace-fury,6,17,100,5,,0,10,2,360,,,,
 10001,shadow-rush,3,10002,55,,100,0,10,2,10001,,,,
-10002,shadow-blast,3,10002,80,,100,0,10,3,44,,,,
+10002,shadow-blast,3,10002,80,,100,0,10,2,44,,,,
 10003,shadow-blitz,3,10002,40,,100,0,10,2,1,,,,
 10004,shadow-bolt,3,10002,75,,100,0,10,3,7,10,,,
 10005,shadow-break,3,10002,75,,100,0,10,2,1,,,,
