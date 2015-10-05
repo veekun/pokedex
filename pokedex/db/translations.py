@@ -25,6 +25,7 @@ from __future__ import print_function
 
 import binascii
 import csv
+import io
 import os
 import re
 from collections import defaultdict
@@ -257,11 +258,11 @@ class Translations(object):
     def reader_for_class(self, cls, reader_class=csv.reader):
         tablename = cls.__table__.name
         csvpath = os.path.join(self.csv_directory, tablename + '.csv')
-        return reader_class(open(csvpath, 'rb'), lineterminator='\n')
+        return reader_class(open(csvpath, 'r'), lineterminator='\n')
 
     def writer_for_lang(self, lang):
         csvpath = os.path.join(self.translation_directory, '%s.csv' % lang)
-        return csv.writer(open(csvpath, 'wb'), lineterminator='\n')
+        return csv.writer(io.open(csvpath, 'w', newline=''), lineterminator='\n')
 
     def yield_source_messages(self, language_id=None):
         """Yield all messages from source CSV files
@@ -302,7 +303,7 @@ class Translations(object):
         """
         path = os.path.join(self.csv_directory, 'translations', '%s.csv' % lang)
         try:
-            file = open(path, 'rb')
+            file = open(path, 'r')
         except IOError:
             return ()
         return yield_translation_csv_messages(file)
@@ -353,11 +354,11 @@ class Translations(object):
                 count += 1
             if count > 1000:
                 for translation_class, key_data in everything.items():
-                    yield translation_class, key_data.values()
+                    yield translation_class, list(key_data.values())
                 count = 0
                 everything.clear()
         for translation_class, data_dict in everything.items():
-            yield translation_class, data_dict.values()
+            yield translation_class, list(data_dict.values())
 
 def group_by_object(stream):
     """Group stream by object

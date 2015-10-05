@@ -21,7 +21,7 @@ def main(*argv):
     # XXX there must be a better way to get Unicode argv
     # XXX this doesn't work on Windows durp
     enc = sys.stdin.encoding or 'utf8'
-    args = [_.decode(enc) for _ in args]
+    args = [_.decode(enc) if isinstance(_, bytes) else _ for _ in args]
 
     # Find the command as a function in this file
     func = globals().get("command_%s" % command, None)
