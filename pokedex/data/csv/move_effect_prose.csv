@@ -1030,7 +1030,7 @@ The target's other type will affect damage as usual.  If this move's type is cha
 354,9,Protects all friendly Pokémon from non-damaging moves.,"Protects all friendly Pokémon from non-damaging moves for the rest of the turn.
 
 Unlike other blocking moves, this move may be used consecutively without its chance of success falling."
-355,9,Raises the Defense of all []{type:grass} Pokémon in battle,Raises the Defense of all []{type:grass} Pokémon in battle.
+355,9,Raises the Defense of all []{type:grass} Pokémon in battle.,Raises the Defense of all []{type:grass} Pokémon in battle.
 356,9,"For five turns, heals all Pokémon on the ground for 1/16 max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.","For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.
 
 Changes []{move:nature-power} to []{move:energy-ball}."
