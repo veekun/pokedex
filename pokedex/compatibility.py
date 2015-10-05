@@ -2,6 +2,7 @@
 
 Currently these are functions missing from Python 2.5.
 """
+from __future__ import print_function
 
 try:
     from itertools import permutations
@@ -127,14 +128,15 @@ except ImportError:
         for i, name in enumerate(field_names):
             template += '            %s = _property(_itemgetter(%d))\n' % (name, i)
         if verbose:
-            print template
+            print(template)
 
         # Execute the template string in a temporary namespace
         namespace = dict(_itemgetter=_itemgetter, __name__='namedtuple_%s' % typename,
                          _property=property, _tuple=tuple)
         try:
-            exec template in namespace
-        except SyntaxError, e:
+            exec ("exec template in namespace")
+        except SyntaxError:
+            e = _sys.exc_info()[1]
             raise SyntaxError(e.message + ':\n' + template)
         result = namespace[typename]
 

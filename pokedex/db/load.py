@@ -1,4 +1,6 @@
 """CSV to database or vice versa."""
+from __future__ import print_function
+
 import csv
 import fnmatch
 import os.path
@@ -58,7 +60,7 @@ def _get_verbose_prints(verbose):
         # Also, space-pad to keep the cursor in a known column
         num_spaces = 66 - len(truncated_thing)
 
-        print "%s...%s" % (truncated_thing, ' ' * num_spaces),
+        print("%s...%s" % (truncated_thing, ' ' * num_spaces), end='')
         sys.stdout.flush()
 
     if sys.stdout.isatty():
@@ -91,7 +93,7 @@ def _get_verbose_prints(verbose):
             pass
 
         def print_done(msg='ok'):
-            print msg
+            print(msg)
 
     return print_start, print_status, print_done
 

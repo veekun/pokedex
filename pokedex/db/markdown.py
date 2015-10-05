@@ -14,6 +14,7 @@ from __future__ import absolute_import
 import re
 
 import markdown
+import six
 from sqlalchemy.orm.session import object_session
 try:
     # Markdown 2.1+
@@ -22,6 +23,7 @@ except ImportError:
     # Old Markdown
     from markdown import etree, AtomicString
 
+@six.python_2_unicode_compatible
 class MarkdownString(object):
     """Wraps a Markdown string.
 
@@ -44,11 +46,8 @@ class MarkdownString(object):
         self.session = session
         self.language = language
 
-    def __unicode__(self):
-        return self.as_text()
-
     def __str__(self):
-        return self.as_text().encode()
+        return self.as_text()
 
     def __html__(self):
         return self.as_html()
@@ -98,7 +97,7 @@ def _markdownify_effect_text(move, effect_text, language=None):
         return effect_text
     effect_text = effect_text.replace(
         u'$effect_chance',
-        unicode(move.effect_chance),
+        str(move.effect_chance),
     )
 
     # "The target" vs "each target"; for Conquest, but hopefully main series
@@ -165,7 +164,7 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
 
     Handles matches using factory
     """
-    regex = ur'(?x) \[ ([^]]*) \] \{ ([-a-z0-9]+) : ([-a-z0-9 ]+) \}'
+    regex = u'(?x) \\[ ([^]]*) \\] \\{ ([-a-z0-9]+) : ([-a-z0-9 ]+) \\}'
 
     def __init__(self, factory, session, string_language=None, game_language=None):
         markdown.inlinepatterns.Pattern.__init__(self, self.regex)

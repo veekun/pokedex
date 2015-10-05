@@ -112,7 +112,6 @@ def test_merge_translations():
     for result, expected in zip(result_stream, expected_list):
         res_src, res_crc, res_str, res_match = result
         exp_src, exp_match, exp_str = expected
-        print result, expected
         assert res_src.string == exp_src
         assert res_str == exp_str, (res_str, exp_str)
         if exp_match is None:
@@ -122,7 +121,6 @@ def test_merge_translations():
         elif exp_match is False:
             assert res_crc == translations.crc('----')
         assert res_match == exp_match
-    print 'unused:', unused
     for message in unused:
         assert message.string == 'unused'
         assert message.id == 100

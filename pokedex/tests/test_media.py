@@ -4,6 +4,7 @@ If run directly from the command line, also tests the accessors and the names
 of all the media by getting just about everything in a naive brute-force way.
 This, of course, takes a lot of time to run.
 """
+from __future__ import print_function
 
 import pytest
 
@@ -49,7 +50,6 @@ def test_strict_castform(session, media_root):
     with pytest.raises(ValueError):
         castform = session.query(tables.PokemonSpecies).filter_by(identifier=u'castform').first()
         rainy_castform = [f for f in castform.forms if f.form_identifier == 'rainy'][0]
-        print rainy_castform
         rainy_castform = media.PokemonFormMedia(media_root, rainy_castform)
         rainy_castform.overworld('up', strict=True)
 
@@ -81,13 +81,11 @@ def hit(filenames, method, *args, **kwargs):
     """
     try:
         medium = method(*args, **kwargs)
-        #print 'Hit', medium.relative_path
         assert medium.exists
-    except ValueError, e:
-        #print 'DNF', e
+    except ValueError:
         return False
     except:
-        print 'Error while processing', method, args, kwargs
+        print('Error while processing', method, args, kwargs)
         raise
     try:
         filenames.remove(medium.path)
@@ -242,9 +240,9 @@ def test_get_everything(session, media_root):
             unaccessed_filenames.remove(filename)
 
     if unaccessed_filenames:
-        print 'Unaccessed files:'
+        print('Unaccessed files:')
         for filename in unaccessed_filenames:
-            print filename
+            print(filename)
 
     assert unaccessed_filenames == set()
 

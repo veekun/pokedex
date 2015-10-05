@@ -467,7 +467,7 @@ character_table = {
 
 # And the reverse dict, used with str.translate()
 inverse_character_table = dict()
-for in_, out in character_table.iteritems():
+for in_, out in character_table.items():
     inverse_character_table[ord(out)] = in_
 
 

@@ -20,17 +20,16 @@ put it in flavor_summary tables.
 
 Routes names and other repetitive numeric things are replaced by e.g.
 "Route {num}" so translators only have to work on each set once.
-
 """
+from __future__ import print_function
 
 import binascii
 import csv
-import heapq
-import itertools
 import os
 import re
-import sys
 from collections import defaultdict
+
+from six.moves import zip
 
 from pokedex.db import tables
 from pokedex.defaults import get_default_csv_dir
@@ -253,7 +252,7 @@ class Translations(object):
                 )
             if len(warning) > 79:
                 warning = warning[:76] + u'...'
-            print warning.encode('utf-8')
+            print(warning)
 
     def reader_for_class(self, cls, reader_class=csv.reader):
         tablename = cls.__table__.name
@@ -366,7 +365,7 @@ def group_by_object(stream):
     Yields ((class name, object ID), (list of messages)) pairs.
     """
     stream = iter(stream)
-    current = stream.next()
+    current = next(stream)
     current_key = current.cls, current.id
     group = [current]
     for message in stream:
@@ -395,27 +394,37 @@ class Merge(object):
     def add_iterator(self, iterator):
         iterator = iter(iterator)
         try:
-            value = iterator.next()
+            value = next(iterator)
         except StopIteration:
             return
-        else:
-            heapq.heappush(self.next_values, (value, iterator))
+
+        self.next_values.append((value, iterator))
 
     def __iter__(self):
         return self
 
-    def next(self):
-        if self.next_values:
-            value, iterator = heapq.heappop(self.next_values)
-            self.add_iterator(iterator)
-            return value
-        else:
+    def __next__(self):
+        if not self.next_values:
             raise StopIteration
+
+        min_idx = min(range(len(self.next_values)), key=lambda i: self.next_values[i][0])
+        value, iterator = self.next_values[min_idx]
+
+        try:
+            next_value = next(iterator)
+        except StopIteration:
+            del self.next_values[min_idx]
+        else:
+            self.next_values[min_idx] = next_value, iterator
+
+        return value
+
+    next = __next__
 
 def merge_adjacent(gen):
     """Merge adjacent messages that compare equal"""
     gen = iter(gen)
-    last = gen.next()
+    last = next(gen)
     for this in gen:
         if this.merge_key == last.merge_key:
             last.merge(this)
@@ -441,16 +450,16 @@ def leftjoin(left_stream, right_stream, key=lambda x: x, unused=None):
     left_stream = iter(left_stream)
     right_stream = iter(right_stream)
     try:
-        right = right_stream.next()
+        right = next(right_stream)
         for left in left_stream:
             while right and key(left) > key(right):
                 if unused is not None:
                     unused(right)
-                right = right_stream.next()
+                right = next(right_stream)
             if key(left) == key(right):
                 yield left, right
                 del left
-                right = right_stream.next()
+                right = next(right_stream)
             else:
                 yield left, None
     except StopIteration:
@@ -478,7 +487,7 @@ def yield_source_csv_messages(cls, foreign_cls, csvreader, force_column=None):
     """Yield all messages from one source CSV file.
     """
     columns = list(cls.__table__.c)
-    column_names = csvreader.next()
+    column_names = next(csvreader)
     # Assumptions: rows are in lexicographic order
     #  (taking numeric values as numbers of course)
     # Assumptions about the order of columns:
@@ -503,11 +512,13 @@ def _yield_csv_messages(foreign_cls, columns, first_string_index, csvreader, ori
         id = int(values[0])
         messages = []
         for string, column in zip(values[first_string_index:], string_columns):
+            if isinstance(string, bytes):
+                string = string.decode('utf-8')
             message = Message(
                     foreign_cls.__name__,
                     id,
                     column.name,
-                    string.decode('utf-8'),
+                    string,
                     column.type.length,
                     pot=pot_for_column(cls, column, force_column is not None),
                     origin=origin,
@@ -524,7 +535,7 @@ def yield_guessed_csv_messages(file):
     """Yield messages from a CSV file, using the header to figure out what the data means.
     """
     csvreader = csv.reader(file, lineterminator='\n')
-    column_names = csvreader.next()
+    column_names = next(csvreader)
     if column_names == 'language_id,table,id,column,source_crc,string'.split(','):
         # A translation CSV
         return yield_translation_csv_messages(file, True)
@@ -553,14 +564,16 @@ def yield_translation_csv_messages(file, no_header=False):
     """
     csvreader = csv.reader(file, lineterminator='\n')
     if not no_header:
-        columns = csvreader.next()
+        columns = next(csvreader)
         assert columns == 'language_id,table,id,column,source_crc,string'.split(',')
     for language_id, table, id, column, source_crc, string in csvreader:
+        if isinstance(string, bytes):
+            string = string.decode('utf-8')
         yield Message(
                 table,
                 int(id),
                 column,
-                string.decode('utf-8'),
+                string,
                 origin='target CSV',
                 source_crc=source_crc,
                 language_id=int(language_id),
@@ -591,7 +604,7 @@ def pot_for_column(cls, column, summary=False):
 
 def number_replace(source, string):
     numbers_iter = iter(number_re.findall(source))
-    next_number = lambda match: numbers_iter.next()
+    next_number = lambda match: next(numbers_iter)
     return re.sub(r'\{num\}', next_number, string)
 
 def match_to_source(source, *translations):
@@ -617,7 +630,7 @@ def match_to_source(source, *translations):
             current_source = number_replace(source.string, translation.source)
             current_crc = crc(current_source)
         elif '{num}' in translation.string:
-            print (u'Warning: {num} appears in %s, but not marked for number replacement. Discarding!' % translation).encode('utf-8')
+            print(u'Warning: {num} appears in %s, but not marked for number replacement. Discarding!' % translation)
             continue
         else:
             current_string = translation.string
@@ -655,5 +668,5 @@ def merge_translations(source_stream, *translation_streams, **kwargs):
             synchronize(source, t, key=lambda m: m.merge_key, unused=kwargs.get('unused'))
             for t in translation_streams
         ]
-    for messages in itertools.izip(source, *streams):
+    for messages in zip(source, *streams):
         yield match_to_source(*messages)

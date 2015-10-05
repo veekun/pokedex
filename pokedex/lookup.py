@@ -4,6 +4,7 @@ import random
 import re
 import unicodedata
 
+from six import text_type
 import whoosh
 import whoosh.index
 import whoosh.query
@@ -196,8 +197,8 @@ class PokedexLookup(object):
             q = self.session.query(cls).order_by(cls.id)
 
             for row in q:
-                row_key = dict(table=unicode(cls.__tablename__),
-                               row_id=unicode(row.id))
+                row_key = dict(table=text_type(cls.__tablename__),
+                               row_id=text_type(row.id))
 
                 def add(name, language, iso639, iso3166):
                     normalized_name = self.normalize_name(name)
@@ -242,7 +243,7 @@ class PokedexLookup(object):
         # decompose!  But the results are considered letters, not combining
         # characters, so testing for Mn works well, and combining them again
         # makes them look right.
-        nkfd_form = unicodedata.normalize('NFKD', unicode(name))
+        nkfd_form = unicodedata.normalize('NFKD', text_type(name))
         name = u"".join(c for c in nkfd_form
                         if unicodedata.category(c) != 'Mn')
         name = unicodedata.normalize('NFC', name)
@@ -292,8 +293,8 @@ class PokedexLookup(object):
         # And, just to complicate matters: "type" and language need to be
         # considered separately.
         def merge_requirements(func):
-            user = filter(func, user_valid_types)
-            system = filter(func, valid_types)
+            user = list(filter(func, user_valid_types))
+            system = list(filter(func, valid_types))
 
             if user and system:
                 merged = list(set(user) & set(system))
@@ -463,7 +464,7 @@ class PokedexLookup(object):
         elif name_as_number is not None:
             # Don't spell-check numbers!
             exact_only = True
-            query = whoosh.query.Term(u'row_id', unicode(name_as_number))
+            query = whoosh.query.Term(u'row_id', text_type(name_as_number))
         else:
             # Not an integer
             query = whoosh.query.Term(u'name', name)
@@ -547,7 +548,7 @@ class PokedexLookup(object):
             # n.b.: It's possible we got a list of valid_types and none of them
             # were valid, but this function is guaranteed to return
             # *something*, so it politely selects from the entire index instead
-            table_names = self.indexed_tables.keys()
+            table_names = list(self.indexed_tables)
             table_names.remove('pokemon_forms')
 
         # Pick a random table, then pick a random item from it.  Small tables
@@ -561,7 +562,7 @@ class PokedexLookup(object):
             .offset(random.randint(0, count - 1)) \
             .first()
 
-        return self.lookup(unicode(id), valid_types=[table_name])
+        return self.lookup(text_type(id), valid_types=[table_name])
 
     def prefix_lookup(self, prefix, valid_types=[]):
         """Returns terms starting with the given exact prefix.

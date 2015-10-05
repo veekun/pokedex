@@ -88,15 +88,15 @@ def test_markdown(session):
     assert '10%' in move.effect_map[language].as_text()
     assert '10%' in move.effect.as_html()
     assert '10%' in move.effect_map[language].as_html()
-    assert '10%' in unicode(move.effect)
-    assert '10%' in unicode(move.effect_map[language])
+    assert '10%' in str(move.effect)
+    assert '10%' in str(move.effect_map[language])
     assert '10%' in move.effect.__html__()
     assert '10%' in move.effect_map[language].__html__()
 
 def test_markdown_string(session):
     en = util.get(session, tables.Language, 'en')
     md = markdown.MarkdownString('[]{move:thunderbolt} [paralyzes]{mechanic:paralysis} []{form:sky shaymin}. []{pokemon:mewthree} does not exist.', session, en)
-    assert unicode(md) == 'Thunderbolt paralyzes Sky Shaymin. mewthree does not exist.'
+    assert str(md) == 'Thunderbolt paralyzes Sky Shaymin. mewthree does not exist.'
     assert md.as_html() == '<p><span>Thunderbolt</span> <span>paralyzes</span> <span>Sky Shaymin</span>. <span>mewthree</span> does not exist.</p>'
 
     class ObjectTestExtension(markdown.PokedexLinkExtension):

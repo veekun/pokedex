@@ -38,7 +38,6 @@ def test_class_order():
     class_names = [table.__name__ for table in tables.mapped_classes]
     def key(name):
         return name != 'Language', name
-    print [(a,b) for (a,b) in zip(class_names, sorted(class_names, key=key)) if a!=b]
     assert class_names == sorted(class_names, key=key)
 
 def test_i18n_table_creation():

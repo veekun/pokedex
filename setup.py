@@ -12,6 +12,7 @@ setup(
         'whoosh>=2.5,<2.7',
         'markdown',
         'construct',
+        'six>=1.9.0',
     ],
 
     entry_points = {

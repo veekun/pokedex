@@ -53,7 +53,6 @@ def test_unique_form_order(session):
     query = query.options(joinedload('pokemon.species'))
 
     for form in query:
-        print form.name
         try:
             previous_species = species_by_form_order[form.order]
         except KeyError:
