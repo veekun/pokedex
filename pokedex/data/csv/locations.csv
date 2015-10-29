@@ -221,10 +221,10 @@ id,region_id,identifier
 228,2,azalea-town
 229,2,goldenrod-city
 230,2,mahogany-town
-231,2,pewter-city
-232,2,lavender-town
-233,2,indigo-plateau
-234,2,saffron-city
+231,1,pewter-city
+232,1,lavender-town
+233,1,indigo-plateau
+234,1,saffron-city
 236,2,johto-lighthouse
 237,2,team-rocket-hq
 238,2,goldenrod-tunnel
