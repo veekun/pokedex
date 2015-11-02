@@ -2069,6 +2069,18 @@ class PokemonStat(TableBase):
     effort = Column(Integer, nullable=False,
         doc=u"The effort increase in this stat gained when this Pokémon is defeated")
 
+class PokemonStatChangelog(TableBase):
+    u"""Changes of Pokémon stat values in generations."""
+    __tablename__ = 'pokemon_stats_changelog'
+    changed_in_generation_id = Column(Integer, ForeignKey('generations.id'), primary_key=True, nullable=False, autoincrement=False,
+        doc=u"ID of the generation in which the stat changed")
+    pokemon_id = Column(Integer, ForeignKey('pokemon.id'),primary_key=True, nullable=False, autoincrement=False,
+        doc=u"The ID of the Pokémon whose stat changed")
+    stat_id = Column(Integer, ForeignKey('stats.id'),primary_key=True, nullable=False, autoincrement=False,
+        doc=u"The ID of the Stat which changed")
+    base_stat = Column(Integer, nullable=False,
+        doc=u"The changed stat")
+
 class PokemonType(TableBase):
     u"""Maps a type to a Pokémon. Each Pokémon has 1 or 2 types."""
     __tablename__ = 'pokemon_types'
@@ -2173,6 +2185,19 @@ class TypeEfficacy(TableBase):
     target_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False, autoincrement=False,
         doc=u"The ID of the defending Pokémon's type.")
     damage_factor = Column(Integer, nullable=False,
+        doc=u"The multiplier, as a percentage of damage inflicted.")
+
+class TypeEfficacyChangelog(TableBase):
+    """History of changes to type advantages across main game versions."""
+    __tablename__ = 'type_efficacy_changelog'
+    __singlename__ = 'type_efficacy_changelog'
+    changed_in_version_group_id = Column(Integer, ForeignKey('version_groups.id'), primary_key=True, nullable=False,
+        doc=u"ID of the version group in which the type advantage changed")
+    damage_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False,
+        doc=u"ID of the damaging move's type")
+    target_type_id = Column(Integer, ForeignKey('types.id'), primary_key=True, nullable=False,
+        doc=u"ID of the defending Pokémon's type")
+    damage_factor = Column(SmallInteger, nullable=False,
         doc=u"The multiplier, as a percentage of damage inflicted.")
 
 class TypeGameIndex(TableBase):
@@ -2874,6 +2899,10 @@ Type.target_efficacies = relationship(TypeEfficacy,
     primaryjoin=Type.id==TypeEfficacy.target_type_id,
     backref=backref('target_type', innerjoin=True, lazy='joined'),
     doc=u"Efficacies with this type as the defending type.")
+
+TypeEfficacyChangelog.changed_in = relationship(VersionGroup,
+    innerjoin=True, lazy='joined',
+    backref='type_efficacy_changelog')
 
 Type.generation = relationship(Generation,
     innerjoin=True,

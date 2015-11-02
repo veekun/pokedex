@@ -1,0 +1,7 @@
+changed_in_version_group_id,damage_type_id,target_type_id,damage_factor
+3,4,7,200
+3,8,14,0
+3,15,10,100
+3,7,4,200
+15,8,9,50
+15,17,9,50
