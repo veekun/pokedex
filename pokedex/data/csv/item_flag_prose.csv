@@ -7,3 +7,11 @@ item_flag_id,local_language_id,name,description
 6,9,Holdable_passive,Works passively when held
 7,9,Holdable_active,Usable by a Pokémon when held
 8,9,Underground,Appears in Sinnoh Underground
+1,6,Zählbar,Anzahl wird im Beutel angezeigt
+2,6,Verbrauchsgegenstand,Wird bei Benutzung verbraucht
+3,6,Benutzbar_Spielwelt,Benutzbar außerhalb von Kämpfen
+4,6,Benutzbar_im_Kampf,Benutzerbar in Kämpfen
+5,6,Tragbar,Kann von einem Pokémon getragen werden
+6,6,Tragbar_passiv,Passive Wirkung wenn getragen
+7,6,Tragbar_activ,Benutzbar wenn getragen
+8,6,Untergrund,Taucht im Sinnoh Untergrund auf

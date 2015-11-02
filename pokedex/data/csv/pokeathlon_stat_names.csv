@@ -9,3 +9,8 @@ pokeathlon_stat_id,local_language_id,name
 4,9,Stamina
 5,5,Saut
 5,9,Jump
+1,6,Tempo
+2,6,Kraft
+3,6,Technik
+4,6,Ausdauer
+5,6,Sprung
