@@ -127,6 +127,8 @@ Changelogs
 .. dex-table:: AbilityChangelog
 .. dex-table:: MoveEffectChangelog
 .. dex-table:: MoveChangelog
+.. dex-table:: PokemonStatChangelog
+.. dex-table:: TypeEfficacyChangelog
 
 Flavor text
 -----------
