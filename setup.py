@@ -22,4 +22,9 @@ setup(
             'pokedex = pokedex.main:setuptools_entry',
         ],
     },
+    classifiers = [
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+    ],
 )
