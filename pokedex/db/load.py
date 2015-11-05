@@ -402,9 +402,13 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
         else:
             filename = '%s/%s.csv' % (directory, table_name)
 
-        writer = csv.writer(io.open(filename, 'wb'), lineterminator='\n')
-
-        columns = [col.name.encode('utf8') for col in table.columns]
+        # CSV module only works with bytes on 2 and only works with text on 3!
+        if six.PY3:
+            writer = csv.writer(open(filename, 'w', newline=''), lineterminator='\n')
+            columns = [col.name for col in table.columns]
+        else:
+            writer = csv.writer(open(filename, 'wb'), lineterminator='\n')
+            columns = [col.name.encode('utf8') for col in table.columns]
 
         # For name tables, always dump rows for official languages, as well as
         # for those in `langs` if specified.
@@ -442,7 +446,9 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
                     elif val == False:
                         val = '0'
                     else:
-                        val = six.text_type(val).encode('utf-8')
+                        val = six.text_type(val)
+                        if not six.PY3:
+                            val = val.encode('utf8')
 
                     csvs.append(val)
 
