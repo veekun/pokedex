@@ -402,9 +402,9 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
         else:
             filename = '%s/%s.csv' % (directory, table_name)
 
-        writer = csv.writer(io.open(filename, 'w', newline=''), lineterminator='\n')
+        writer = csv.writer(io.open(filename, 'wb'), lineterminator='\n')
 
-        columns = [col.name for col in table.columns]
+        columns = [col.name.encode('utf8') for col in table.columns]
 
         # For name tables, always dump rows for official languages, as well as
         # for those in `langs` if specified.
