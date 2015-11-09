@@ -52,20 +52,20 @@ ability_changelog_id,local_language_id,effect
 51,9,Has no overworld effect.
 52,9,Chance of taking effect is 33%.
 1,6,Kein Effekt im Kampf.
-2,6,Verhindert keine K.O.Treffer von normalen Attacken bei vollen [HP]{mechanic:hp}.
+2,6,Verhindert keine K.O.Treffer von normalen Attacken bei vollen []{mechanic:hp}.
 3,6,Hat außerhalb von Kämpfen keinen Effekt.
 4,6,Absorbiert keine []{type:electric} Attacken die keinen Schaden verursachen, wie z.B. []{move:thunder-wave}.
 5,6,Wird bei jedem Schlag von Attacken die mehrmals treffen ausgelöst.
-6,6,[]{move:will-o-wisp} löst diese Fähigkeit nicht aus bei Pokémon die immun gegen [burns]{mechanic:burn} sind.
+6,6,[]{move:will-o-wisp} löst diese Fähigkeit nicht aus bei Pokémon die immun gegen []{mechanic:burn} sind.
 7,6,Hat außerhalb von Kämpfen keinen Effekt.
 8,6,Hat außerhalb von Kämpfen keinen Effekt.
 9,6,Löst nicht aus, wenn diese Fähigkeit im Kampf übernommen wurde.
 10,6,Beeinflusst andere Pokémon mit dieser Fähigkeit.
-11,6,Verursacht nur 1/16 der maximalen [HP]{mechanic:hp} des Angreifers als Schaden.
-12,6,[]{move:fire-fang} und Attacken die [typeless damage]{mechanic:typeless-damage} Schaden verursachen ignorieren diese Fähigkeit.
+11,6,Verursacht nur 1/16 der maximalen []{mechanic:hp} des Angreifers als Schaden.
+12,6,[]{move:fire-fang} und Attacken die [typenlosen Schaden]{mechanic:typeless-damage} verursachen ignorieren diese Fähigkeit.
 13,6,Hat außerhalb von Kämpfen keinen Effekt.
 14,6,Hat keinen Einfluss auf das Wesen von Pokémon.
-15,6,Gibt schwere [poison]{mechanic:poison} als normale [poison]{mechanic:poison} zurück.
+15,6,Gibt schwere []{mechanic:poison} als normale []{mechanic:poison} zurück.
 16,6,Hat außerhalb von Kämpfen keinen Effekt.
 17,6,Hat keinen Effekt auf []{type:electric} Attacken die keinen Schaden verursachen, wie z.B. []{move:thunder-wave}.  Trainer rufen öfter an, wenn ein Pokémon mit dieser Fähigkeit an der Spitze im Team steht.
 18,6,Leitet []{type:electric} Attacken um ohne den [Special Attack]{mechanic:special-attack} zu erhöhen.  []{move:hidden-power} wird nicht umgeleitet.
@@ -82,18 +82,18 @@ ability_changelog_id,local_language_id,effect
 29,6,Hat außerhalb von Kämpfen keinen Effekt.
 30,6,Hat außerhalb von Kämpfen keinen Effekt.
 31,6,Hat außerhalb von Kämpfen keinen Effekt.
-32,6,Hat keinen Effekt während das Pokémon [sleep]{mechanic:sleep}.
+32,6,Hat keinen Effekt während das Pokémon [schläft]{mechanic:sleep}.
 33,6,Hat außerhalb von Kämpfen keinen Effekt.
 34,6,Erhöht die Anzahl der Pokémon die man außerhalb von Kämpfen hören kann, wenn sich ein Pokémon mit dieser Fähigkeit im Team befindet.
 35,6,Hat außerhalb von Kämpfen keinen Effekt.
 36,6,Hat außerhalb von Kämpfen keinen Effekt.
 37,6,Hat außerhalb von Kämpfen keinen Effekt.
-38,6,[Poison]{mechanic:poison} schadet dem Pokémon auch außerhalb von Kämpfen.
-39,6,"[Paralysis]{mechanic:paralysis} hindert das Pokémon nicht daran sich zu bewegen, die [Speed]{mechanic:speed} wird trotzdem gesenkt.  [Poison]{mechanic:poison} schadet dem Pokémon auch außerhalb von Kämpfen."
+38,6,[]{mechanic:poison} schadet dem Pokémon auch außerhalb von Kämpfen.
+39,6,"[]{mechanic:paralysis} hindert das Pokémon nicht daran sich zu bewegen, die []{mechanic:speed} wird trotzdem gesenkt.  []{mechanic:poison} schadet dem Pokémon auch außerhalb von Kämpfen."
 40,6,Wegen eines Glitches haben Attacken eine (100 - Genauigkeit)% Chance, []{move:detect} oder []{move:protect} zu durchbrechen."
-41,6,[]{move:rest} funktioniert wie gehabt während [strong sunlight]{mechanic:strong-sunlight}.
+41,6,[]{move:rest} funktioniert wie gehabt während [starkem Sonnenschein]{mechanic:strong-sunlight}.
 42,6,[]{move:fling} kann normal benutzt werden.
-43,6,Leitet []{type:water} Attacken um ohne den [Special Attack]{mechanic:special-attack} zu erhöhen.  []{move:hidden-power} wird nicht umgeleitet.
+43,6,Leitet []{type:water} Attacken um ohne den []{mechanic:special-attack} zu erhöhen.  []{move:hidden-power} wird nicht umgeleitet.
 44,6,Kann []{ability:flower-gift} und []{ability:wonder-guard} kopieren.
 45,6,Kann []{ability:forecast} und []{ability:trace} kopieren.
 46,6,Boost erfolgt nur, wenn es mit []{ability:minus} kombiniert wird.
