@@ -6,3 +6,10 @@ item_fling_effect_id,local_language_id,effect
 5,9,Paralyzes the target.
 6,9,Poisons the target.
 7,9,Target will flinch if it has not yet gone this turn.
+1,6,Ziel wird schwer Vergiftet
+2,6,Verbrennt das Ziel
+3,6,Nutzt den Effekt der Beere die das Ziel trägt
+4,6,Nutzt den Effekt der Kräuter die das Ziel trägt
+5,6,Paralysiert das Ziel
+6,6,Vergiftet das Ziel
+7,6,Lässt das Ziel zurückschrecken

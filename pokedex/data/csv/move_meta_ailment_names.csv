@@ -39,3 +39,23 @@ move_meta_ailment_id,local_language_id,name
 20,9,Perish Song
 21,5,Racines
 21,9,Ingrain
+-1,6,????
+0,6,Nichts
+1,6,Paralyse
+2,6,Schlaf
+3,6,Eingefroren
+4,6,Verbrennung
+5,6,Vergiftung
+6,6,Verwirrung
+7,6,Anziehung
+8,6,Gefangen
+9,6,Albtraum
+12,6,Folter
+13,6,Blockiert
+14,6,Gähner
+15,6,Heilblockade
+17,6,Keine Typ Immunität
+18,6,Bepflanzt
+19,6,Itemsperre
+20,6,Abgangsbund
+21,6,Verwurzelt

@@ -9,3 +9,8 @@ berry_firmness_id,local_language_id,name
 4,9,Very Hard
 5,5,Super ferme
 5,9,Super Hard
+1,6,Sehr Weich
+2,6,Weich
+3,6,Hart
+4,6,Sehr Hart
+5,6,Steinhart

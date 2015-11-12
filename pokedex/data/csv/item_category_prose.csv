@@ -43,3 +43,47 @@ item_category_id,local_language_id,name
 43,9,Miracle Shooter
 44,9,Mega Stones
 10001,9,X/Y unknown
+1,6,Statuswert Boost
+2,6,senkt EV
+3,6,Medizin
+4,6,Sonstige
+5,6,Im Notfall
+6,6,Heilung
+7,6,Typ Schwächung
+8,6,Backzutaten
+9,6,Sammelbares
+10,6,Entwicklung
+11,6,Höhlensuche
+12,6,Getragene Items
+13,6,Wahl
+14,6,EV Training
+15,6,Negative getragene Items
+16,6,Training
+17,6,Tafeln
+18,6,Pokémon-Spezies spezifisch
+19,6,Typ Vorteil
+20,6,Event Items
+21,6,Spiel
+22,6,Story Item
+23,6,Unbenutzt
+24,6,Sammelbares
+25,6,Briefe
+26,6,Vitamine
+27,6,Heilung
+28,6,AP Heilung
+29,6,Wiederbelebung
+30,6,Statusheilung
+32,6,Mulch
+33,6,Spezialbälle
+34,6,Standard Bälle
+35,6,Pokedex-Komplettierung
+36,7,Schal
+37,6,Maschinen
+38,6,Flöten
+39,6,Aprikoko Bälle
+40,6,Aprikoko Box
+41,6,Datenkarten
+42,6,Juwelen
+43,6,Wunderwerfer
+44,6,Mega Steine
+10001,6,X/Y unbekannt

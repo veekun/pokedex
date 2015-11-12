@@ -51,3 +51,55 @@ ability_changelog_id,local_language_id,effect
 50,9,[]{move:struggle} is unaffected.  []{move:helping-hand} and []{move:defense-curl} are not taken into account.
 51,9,Has no overworld effect.
 52,9,Chance of taking effect is 33%.
+1,6,Kein Effekt im Kampf.
+2,6,Verhindert keine K.O.Treffer von normalen Attacken bei vollen []{mechanic:hp}.
+3,6,Hat außerhalb von Kämpfen keinen Effekt.
+4,6,Absorbiert keine []{type:electric} Attacken die keinen Schaden verursachen, wie z.B. []{move:thunder-wave}.
+5,6,Wird bei jedem Schlag von Attacken die mehrmals treffen ausgelöst.
+6,6,[]{move:will-o-wisp} löst diese Fähigkeit nicht aus bei Pokémon die immun gegen []{mechanic:burn} sind.
+7,6,Hat außerhalb von Kämpfen keinen Effekt.
+8,6,Hat außerhalb von Kämpfen keinen Effekt.
+9,6,Löst nicht aus, wenn diese Fähigkeit im Kampf übernommen wurde.
+10,6,Beeinflusst andere Pokémon mit dieser Fähigkeit.
+11,6,Verursacht nur 1/16 der maximalen []{mechanic:hp} des Angreifers als Schaden.
+12,6,[]{move:fire-fang} und Attacken die [typenlosen Schaden]{mechanic:typeless-damage} verursachen ignorieren diese Fähigkeit.
+13,6,Hat außerhalb von Kämpfen keinen Effekt.
+14,6,Hat keinen Einfluss auf das Wesen von Pokémon.
+15,6,Gibt schwere []{mechanic:poison} als normale []{mechanic:poison} zurück.
+16,6,Hat außerhalb von Kämpfen keinen Effekt.
+17,6,Hat keinen Effekt auf []{type:electric} Attacken die keinen Schaden verursachen, wie z.B. []{move:thunder-wave}.  Trainer rufen öfter an, wenn ein Pokémon mit dieser Fähigkeit an der Spitze im Team steht.
+18,6,Leitet []{type:electric} Attacken um ohne den [Special Attack]{mechanic:special-attack} zu erhöhen.  []{move:hidden-power} wird nicht umgeleitet.
+19,6,Hat außerhalb von Kämpfen keinen Effekt.
+20,6,Hat außerhalb von Kämpfen keinen Effekt.
+21,6,Verhindert das []{move:heal-bell} das Pokémon heilt, auch außerhalb von Kämpfen."
+22,6,Hat außerhalb von Kämpfen keinen Effekt.
+23,6,Hat keinen Effekt auf Attacken von Teammitgliedern die alle anderen Pokémon zum Ziel haben.  Das Vorhandensein dieser Fähigkeit wird im Kampf nicht angezeigt.
+24,6,Hat außerhalb von Kämpfen keinen Effekt.
+25,6,Hat außerhalb von Kämpfen keinen Effekt.
+26,6,Hat außerhalb von Kämpfen keinen Effekt.
+27,6,Verdoppelt den Radius in dem []{move:cut} das Gras in der Spielwelt entfernt, wenn sich ein Pokémon mit dieser Fähigkeit im Team befindet.
+28,6,Hat in Kämpfen keinen Effekt.
+29,6,Hat außerhalb von Kämpfen keinen Effekt.
+30,6,Hat außerhalb von Kämpfen keinen Effekt.
+31,6,Hat außerhalb von Kämpfen keinen Effekt.
+32,6,Hat keinen Effekt während das Pokémon [schläft]{mechanic:sleep}.
+33,6,Hat außerhalb von Kämpfen keinen Effekt.
+34,6,Erhöht die Anzahl der Pokémon die man außerhalb von Kämpfen hören kann, wenn sich ein Pokémon mit dieser Fähigkeit im Team befindet.
+35,6,Hat außerhalb von Kämpfen keinen Effekt.
+36,6,Hat außerhalb von Kämpfen keinen Effekt.
+37,6,Hat außerhalb von Kämpfen keinen Effekt.
+38,6,[]{mechanic:poison} schadet dem Pokémon auch außerhalb von Kämpfen.
+39,6,"[]{mechanic:paralysis} hindert das Pokémon nicht daran sich zu bewegen, die []{mechanic:speed} wird trotzdem gesenkt.  []{mechanic:poison} schadet dem Pokémon auch außerhalb von Kämpfen."
+40,6,Wegen eines Glitches haben Attacken eine (100 - Genauigkeit)% Chance, []{move:detect} oder []{move:protect} zu durchbrechen."
+41,6,[]{move:rest} funktioniert wie gehabt während [starkem Sonnenschein]{mechanic:strong-sunlight}.
+42,6,[]{move:fling} kann normal benutzt werden.
+43,6,Leitet []{type:water} Attacken um ohne den []{mechanic:special-attack} zu erhöhen.  []{move:hidden-power} wird nicht umgeleitet.
+44,6,Kann []{ability:flower-gift} und []{ability:wonder-guard} kopieren.
+45,6,Kann []{ability:forecast} und []{ability:trace} kopieren.
+46,6,Boost erfolgt nur, wenn es mit []{ability:minus} kombiniert wird.
+47,6,Boost erfolgt nur, wenn es mit []{ability:plus} kombiniert wird.
+48,6,Die Chance, dass der Effekt eintritt, beträgt 30%.
+49,6,[]{move:triple-kick} wird nicht beeinflusst.
+50,6,[]{move:struggle} wird nicht beeinflusst.  []{move:helping-hand} und []{move:defense-curl} werden nicht beachtet.
+51,6,Hat außerhalb von Kämpfen keinen Effekt.
+52,6,Die Chance, dass der Effekt eintritt, beträgt 33%.

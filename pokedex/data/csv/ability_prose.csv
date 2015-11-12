@@ -99,7 +99,7 @@ If this Pokémon has a []{move:substitute}, this ability will block moves as usu
 26,9,Evades []{type:ground} moves.,"This Pokémon is immune to []{type:ground}-type moves, []{move:spikes}, []{move:toxic-spikes}, and []{ability:arena-trap}.
 
 This ability is disabled during []{move:gravity} or []{move:ingrain}, or while holding an []{item:iron-ball}.  This ability is not disabled during []{move:roost}."
-27,9,"Has a 30% chance of inflcting either [paralysis]{mechanic:paralysis}, [poison]{mechanic:poison}, or [sleep]{mechanic:sleep} on attacking Pokémon on contact.","Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being [paralyzed]{mechanic:paralysis}, [poisoned]{mechanic:poison}, or put to [sleep]{mechanic:sleep}, chosen at random.
+27,9,"Has a 30% chance of inflicting either [paralysis]{mechanic:paralysis}, [poison]{mechanic:poison}, or [sleep]{mechanic:sleep} on attacking Pokémon on contact.","Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being [paralyzed]{mechanic:paralysis}, [poisoned]{mechanic:poison}, or put to [sleep]{mechanic:sleep}, chosen at random.
 
 Nothing is done to compensate if the move's user is immune to one of these ailments; there is simply a lower chance that the move's user will be affected."
 28,9,"Copies [burns]{mechanic:burn}, [paralysis]{mechanic:paralysis}, and [poison]{mechanic:poison} received onto the Pokémon that inflicted them.","Whenever this Pokémon is [burned]{mechanic:burn}, [paralyzed]{mechanic:paralysis}, or [poisoned]{mechanic:poison}, the Pokémon who gave this Pokémon that ailment is also given the ailment.
@@ -570,3 +570,116 @@ The type change takes place just before the move is used."
 189,9,,
 190,9,,
 191,9,,
+1,6,"Mit jedem Treffer besteht eine 10% Chance das Ziel [zurückschrecken]{mechanic:flinch} zu lassen.","Attacken die Schaden verursachen haben mit jedem Treffer eine 10% Chance das Ziel [zurückschrecken]{mechanic:flinch} zu lassen, wenn die Attacke dies nicht bereits als Nebeneffekt hat.
+
+Der Effekt stapelt nicht mit dem von getragenen Items.
+
+Außerhalb vom Kampf: Wilde Pokémon tauchen nur halb so oft auf, wenn ein Pokémon mit dieser Fähigkeit an erster Stelle im Team stehen."
+2,6,"Ändert beim Betreten des Kampfes das Wetter in []{mechanic:rain}.","Das []{mechanic:weather} ändert sich zu []{mechanic:rain} wenn ein Pokémon mit dieser Fähigkeit den Kampf betritt. Dieser Effekt ist dauerhaft bis das []{mechanic:weather} geändert wird.
+
+Wenn mehrere Pokémon mit dieser Fähigkeit, []{ability:drought}, []{ability:sand-stream} oder []{ability:snow-warning} zur selben Zeit den Kampf betreten, werden die Fähigkeiten nach Reihenfolge der []{mechanic:speed} der Pokémon ausgelöst, unter Berücksichtigung von []{move:trick-room}."
+3,6,"Steigert die []{mechanic:speed} um 1 [Stufe]{mechanic:stat-modifier} nach jeder Runde.","Die []{mechanic:speed} des Pokémon erhöht sich jede Runde um 1 [Stufe]{mechanic:stat-modifier}."
+4,6,"Schützt vor [kritischen Treffern]{mechanic:critical-hit}.","Attacken können keinen [kritischen Treffer]{mechanic:critical-hit} landen.
+
+Die Fähigkeit ist identisch mit []{ability:shell-armor}."
+5,6,"Verhindert K.O.-Treffer bei vollen []{mechanic:hp}, das Pokémon behält 1 []{mechanic:hp}.  Schützt gegen K.O.-Attacken.","Wenn das Pokémon volle []{mechanic:hp} hat, lässt jeder Treffer der das Pokémon besiegt hätte ein []{mechanic:hp} übrig.  Das Pokémon ist immun gegen die K.O.-Atacken []{move:fissure}, []{move:guillotine}, []{move:horn-drill} und []{move:sheer-cold}.
+
+Hält das Pokémon ein []{item:focus-sash}, hat die Fähigkeit Vorrang und das Item wird nicht verbraucht."
+6,6,"Verhindert []{move:self-destruct}, []{move:explosion} und []{ability:aftermath}.","Wenn sich ein Pokémon mit dieser Fähigkeit im Kampf befindet, schlagen die Attacken []{move:self-destruct} und []{move:explosion} fehl und []{ability:aftermath} hat keinen Effekt."
+7,6,"Verhindert []{mechanic:paralysis}.","Ein Pokémon mit dieser Fähigkeit kann nicht [paralysiert]{mechanic:paralysis} werden.
+
+Wenn ein [paralysiertes]{mechanic:paralysis} Pokémon diese Fähigkeit erhält, wird es von der []{mechanic:paralysis} geheilt. Das bezieht das Wiedererlangen dieser Fähigkeit nach dem Kampf mit ein."
+8,6,"Erhöht den []{mechanic:evasion} um 25% während eines [Sandsturms]{mechanic:sandstorm}.  Kein Schaden durch [Sandstürme]{mechanic:sandstorm}.","Während eines [Sandsturms]{mechanic:sandstorm} hat ein Pokémon mit dieser Fähigkeit einen um 25% erhöhten []{mechanic:evasion} und es nimmt keinen Schaden durch [Sandstürme]{mechanic:sandstorm}.
+
+Der Bonus zählt nicht als [Statuswerte Änderung]{mechanic:stat-modifier}.
+
+Außerhalb vom Kampf: Wenn ein Pokémon mit dieser Fähigkeit an erster Stelle im Team steht, tauchen im Sandsturm nur halb so viele Pokémon auf."
+9,6,"30% Chance das angreifende Pokémon bei Kontakt zu [paralysieren]{mechanic:paralysis}.","Wenn ein Pokémon mit dieser Fähigkeit von einer Attacke mit Kontakt getroffen wird, besteht eine 30% Chance, dass der Angreifer [paralysiert]{mechanic:paralysis} wird.
+
+Pokémon die immun gegen []{type:electric} Attacken sind können trotzdem von dieser Fähigkeit [paralysiert]{mechanic:paralysis} werden.
+
+Außerhalb vom Kampf: Wenn ein Pokémon mit dieser Fähigkeit an erster Stelle im Team steht, besteht eine 50% Chance einem []{type:electric} Pokémon zu begegnen, falls es welche gibt."
+10,6,"Absorbiert []{type:electric} Attacken und heilt 1/4 der max []{mechanic:hp}.","Wenn ein Pokémon mit dieser Fähigkeit von einer []{type:electric} Attacke getroffen wird, wird es um 1/4 seiner maximalen []{mechanic:hp} geheilt. Jeder andere Effekt der Attacke wird ignoriert.
+
+Die Fähigkeit wirkt nicht, wenn das Pokémon vom Typ []{type:ground} ist.  []{type:electric} Attacken ignorieren den []{move:substitute} dieses Pokémons.
+
+Der Effekt gilt auch für Attacken die keinen Schaden verursachen, wie z.B. []{move:thunder-wave}."
+11,6,"Absorbiert []{type:water} Attacken und heilt 1/4 der maximalen []{mechanic:hp}.","Wenn ein Pokémon mit dieser Fähigkeit von einer []{type:water} Attacke getroffen wird, wird es um 1/4 seiner maximalen []{mechanic:hp} geheilt. Jeder andere Effekt der Attacke wird ignoriert.
+
+[]{type:water} Attacken ignorieren den []{move:substitute} dieses Pokémons."
+12,6,"Verhindert []{mechanic:infatuation} und schützt gegen []{move:captivate}.","Dieses Pokémon kann sich nicht [verlieben]{mechanic:infatuation} und ist immun gegen []{move:captivate}.
+
+Wenn ein Pokémon [verliebt]{mechanic:infatuation} ist und diese Fähigkeit erhält, wird es von der []{mechanic:infatuation} geheilt."
+13,6,"Verhindert alle [Wettereffekte]{mechanic:weather} aber ändert nicht das []{mechanic:weather} selbst.","Während ein Pokémon mit dieser Fähigkeit im Kampf ist, kann das []{mechanic:weather} zwar geändert werden, hat aber keinen Effekt.
+
+Diese Fähigkeit ist identisch mit []{ability:air-lock}."
+14,6,"Erhöht die []{mechanic:accuracy} von Attacken um 30%.","Die Attacken eines Pokémon mit dieser Fähigkeit haben eine um 30% erhöhte []{mechanic:accuracy}.
+
+Diese Fähigkeit hat keinen Einfluss auf K.O.-Attacken ([]{move:fissure}, []{move:guillotine}, []{move:horn-drill} und []{move:sheer-cold}).
+
+Außerhalb vom Kampf: Wenn ein Pokémon mit dieser Fähigkeit an erster Stelle im Team steht, erhöht sich die Chance, dass ein wildes Pokémon ein Item trägt von 50%, 5% oder 1% auf 60%, 20% oder 5%, respektive."
+15,6,"Verhindert []{mechanic:sleep}.","Ein Pokémon mit dieser Fähigkeit kann nicht [einschlafen]{mechanic:sleep}.
+
+[]{move:rest} schlägt fehl.  Wenn ein Pokémon [schläft]{mechanic:sleep} und diese Fähigkeit erhält, wacht es sofort auf. Das bezieht das Wiedererlangen dieser Fähigkeit nach dem Kampf mit ein.
+
+Die Fähigkeit ist identisch mit []{ability:vital-spirit}."
+16,6,"Ändert den Typ des Pokémons in den der Attacke von der es getroffen wird.","Wenn ein Pokémon mit dieser Fähigkeit von einer Attacke getroffen wird die Schaden verursacht, ändert sich der Typ des Pokémons in den der Attacke.
+
+Wenn das Pokémon 2 Typen hat, werden beide überschrieben.  Das Pokémon muss direkten Schaden erleiden, Attacken die vom []{move:substitute} geblockt werden, lösen den Effekt nicht aus, ebenso wie Attacken mit indirektem Schaden wie []{move:spikes}.
+
+Bei Attacken mit mehreren Treffern löst nur der Letzte den Effekt aus.
+
+Diese Fähigkeit hat keinen Einfluss auf []{type:shadow} Attacken in Pokémon Colosseum und XD: Der dunkle Sturm."
+17,6,"Verhindert []{mechanic:poison}.","Ein Pokémon mit dieser Fähigkeit kann nicht [vergiftet]{mechanic:poison} werden.  Das schließt schwere []{mechanic:poison} mit ein.
+
+Wenn ein [vergiftetes]{mechanic:poison} Pokémon diese Fähigkeit erhält, wird es von der []{mechanic:poison} geheilt. Das bezieht das Wiedererlangen dieser Fähigkeit nach dem Kampf mit ein."
+18,6,"Schützt vor []{type:fire} Attacken.  Sobald eine []{type:fire} Attacke blockiert wurde, erhöht sich der Schaden der eigenen []{type:fire} Attacken um 50%.","Ein Pokémon mit dieser Fähigkeit ist immun gegen []{type:fire} Attacken.  Sobald es von einer []{type:fire} Attacke getroffen wurde, erhöht sich der Schaden der eigenen []{type:fire} Attacken um 50% bis es den Kampf verlässt.
+
+Die Fähigkeit hat keinen Effekt, wenn das Pokémon [eingefroren]{mechanic:freezing} ist.  Der Bonus bleibt erhalten wenn das Pokémon [eingefroren]{mechanic:freezing} ist und wieder auftaut oder wenn es die Fähigkeit wechselt bzw. diese deaktiviert wird.  []{type:fire} Attacken ignorieren den []{move:substitute}.  Der Effekt wirkt auch bei []{type:fire} Attacken die keinen Schaden verursachen, wie z.B. []{move:will-o-wisp}."
+19,6,"Schützt vor Zusatzeffekten von Attacken.","Ein Pokémon mit dieser Fähigkeit ist immun gegen Zusatzeffekt von Attacken.
+
+Ein Zusatzeffekt ist die Chance einer Attacke, als ""Effectchance"" bezeichnet, eine []{mechanic:status-ailment} oder eine []{mechanic:stat-modifier} hervorzurufen oder das Ziel [zurückschrecken]{mechanic:flinching} zu lassen, zusätzlich zum Haupteffekt einer Attacke.  Zum Beispiel ist die []{mechanic:paralysis} die []{move:thunder-shock} verursachen kann ein Zusatzeffekt, im Gegensatz zu []{move:thunder-wave}, genauso wie das Entfernen des Items durch []{move:knock-off} und das Erhöhen der [kritischen Trefferchance]{mechanic:critial-hit} durch []{move:air-cutter}."
+20,6,"Verhindert []{mechanic:confusion}.","Ein Pokémon mit dieser Fähigkeit kann nicht [verwirrt]{mechanic:confusion} werden.
+
+Wenn ein Pokémon verwirrt ist und diese Fähigkeit erhält, wird es von der []{mechanic:confusion} geheilt."
+21,6,"Verhindert den Austausch von Pokémon durch Attacken.","Ein Pokémon mit dieser Fähigkeit kann nicht mit Attacken wie []{move:whirlwind} ausgetauscht werden.
+
+[]{move:dragon-tail} und []{move:circle-throw} verursachen trotzdem Schaden.
+
+Außerhalb vom Kampf: Wenn ein Pokémon mit dieser Fähigkeit an erster Stelle im Team steht, erhöht sich die Erfolgsrate beim Angeln."
+22,6,"Senkt den []{mechanic:attack} des Gegners um 1 [Stufe]{mechanic:stat-modifier} beim Betreten des Kampfes.","Wenn ein Pokémon mit dieser Fähigkeit den Kampf betritt, wird der []{mechanic:attack} des Gegners um 1 [Stufe]{mechanic:stat-modifier} gesenkt.  Im Mehrfachkämpfen werden alle Gegner beeinflusst.
+
+Diese Fähigkeit löst auch aus, wenn sie im Kampf erlangt wurde, aber nicht, wenn sie verloren und zurückerlangt wurde.
+
+Die Fähigkeit hat keinen Einfluss auf Gegner mit einem []{move:substitute}.
+
+Außerhalb vom Kampf: Wenn das erste Pokémon im Team diese Fähigkeit hat, dann hat jede Begegnung mit einem Pokémon das 5 oder mehr Level niedriger ist, eine Chance von 50% übersprungen zu werden."
+23,6,"Verhindert, dass der Gegner flieht oder ausgetauscht wird.","Während ein Pokémon mit dieser Fähigkeit im Kampf ist, kann der Gegner nicht fliehen oder ausgetauscht werden.
+
+Andere Pokémon mit derselben Fähigkeit sind nicht betroffen.  Pokémon mit []{ability:run-away} können trotzdem fliehen.  Pokémon können mit bestimmten Items oder Attacken ausgetauscht werden."
+24,6,"Angreifende Pokémon erhalten 1/8 ihrer maximalen []{mechanic:hp} Schaden bei Kontakt.","Wenn eine gegnerische Attacke Kontakt mit einem Pokémon mit dieser Fähigkeit hat, erleidet der Angreifer 1/8 seiner maximalen []{mechanic:hp} Schaden.
+
+Die Fähigkeit ist identisch mit []{ability:iron-barbs}."
+25,6,"Schützt gegen Schaden verursachende Attacken die nicht [sehr effektiv]{mechanic:super-effective} sind.","Ein Pokémon mit dieser Fähigkeit ist immun gegen alle Schaden verursachenden Attacken die nicht [sehr effektiv]{mechanic:super-effective} sind.
+
+Attacken die festen Schaden verursachen, wie []{move:night-shade} oder []{move:seismic-toss} werden mitgezählt.  Schaden der nicht direkt durch die Attacke verursacht wird, wie der vom []{mechanic:weather}, einer []{mechanic:status-ailment} oder []{move:spikes} wird nicht verhindert.
+
+Diese Fähigkeit kann nicht mit []{move:role-play} kopiert oder mit []{move:skill-swap} getauscht werden, kann aber mit []{ability:trace} kopiert, mit []{move:gastro-acid} deaktiviert oder mit []{move:worry-seed} geändert werden.  Das Pokémon kann seine Fähigkeit trotzdem mit []{move:role-play} selbst tauschen.
+
+Wenn das Pokémon einen []{move:substitute} hat, werden Attacken zuerst durch die Fähigkeit verhindert, erst Attacken die trotzdem treffen würden, würden durch den []{move:substitute} verhindert."
+26,6,"Verhindert []{type:ground} Attacken","Ein Pokémon mit dieser Fähigkeit ist immun gegen []{type:ground} Attacken, []{move:spikes}, []{move:toxic-spikes} und []{ability:arena-trap}.
+
+Diese Fähigkeit wird mit []{move:gravity} oder []{move:ingrain} deaktiviert, oder während eine []{item:iron-ball} getragen wird.  []{move:roost} deaktiviert diese Fähigkeit nicht."
+27,6,"Hat eine 30% Chance bei Kontakt entweder []{mechanic:paralysis}, []{mechanic:poison} oder []{mechanic:sleep} auszulösen.","Wenn ein Pokémon mit dieser Fähigkeit von einer Attacke getroffen wird, die Kontakt herstellt, besteht eine 30% Chance, dass der Angreifer [paralysiert]{mechanic:paralysis} oder [vergiftet]{mechanic:poison} wird oder [einschläft]{mechanic:sleep}.
+
+Dabei wird nicht berücksichtigt ob der Angreifer immun gegen eine der [Statusänderungen]{mechanic:status-ailment} ist, es besteht nur eine geringere Chance."
+28,6,"Kopiert []{mechanic:burn}, []{mechanic:paralysis} und []{mechanic:poison} auf den Verursacher.","Wenn ein Pokémon mit dieser Fähigkeit [verbrannt]{mechanic:burn}, [paralysiert]{mechanic:paralysis} oder [vergiftet]{mechanic:poison} wird, erhält das verantwortliche Pokémon die gleiche []{mechanic:status-ailment}.
+
+Diese Fähigkeit gibt schwere []{mechanic:poison} als schwere []{mechanic:poison} zurück.  Die Fähigkeit funktioniert nicht bei [Statusänderungen]{mechanic:status-ailment} die nicht direkt von einem anderen Pokémon erhalten wurden, so wie []{mechanic:poison} von []{move:toxic-spikes} oder die []{mechanic:burn} durch []{item:flame-orb}.
+
+Außerhalb vom Kampf: Wenn ein Pokémon mit dieser Fähigkeit an erster Stelle im Team steht, haben wilde Pokémon eine Chance von 50% dasselbe Wesen wie das des Pokémons zu haben.  Das gilt nicht für Pokémon die außerhalb von Kämpfen erhalten werden oder sich bewegende Legendäre Pokémon."
+29,6,"Verhindert negative []{mechanic:stat-modifier} von anderen Pokémon.","Einem Pokémon mit dieser Fähigkeit können keine negativen [Statuswerte Änderungen]{mechanic:stat-modifier} von anderen Pokémon zugefügt werden.
+
+Diese Fähigkeit verhindert keine []{mechanic:stat-modifiers} die nicht direkt verursacht wurden, wie die verminderte []{mechanic:speed} durch []{mechanic:paralysis}.  Dem Pokémon können trotzdem negative Statuswerte mit []{move:guard-swap}, []{move:heart-swap} oder []{move:power-swap} übertragen werden.
+
+Diese Fähigkeit ist identisch mit []{ability:white-smoke} im Kampf."

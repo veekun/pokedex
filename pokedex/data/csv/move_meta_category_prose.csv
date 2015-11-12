@@ -13,3 +13,17 @@ move_meta_category_id,local_language_id,description
 11,9,Effect on one side of the field
 12,9,Forces target to switch out
 13,9,Unique effect
+0,6,Verursacht Schaden
+1,6,Kein Schaden; Verursacht Statusänderungen
+2,6,Kein Schaden; Senkt Statuswerte des Ziels oder erhöt Statuswerte des Anwenders
+3,6,Kein Schaden; Heilt den Anwender
+4,6,Verursacht Schaden; Verursacht Statusänderungen
+5,6,Kein Schaden; Verursacht Statusänderungen; Erhöht die Statuswerte des Ziels
+6,6,Verursacht Schaden; Senkt die Statuswerte des Ziels
+7,6,Verursacht Schaden; Erhöht die Statuswerte des Anwenders
+8,6,Verursacht Schaden; Absorbiert verursachten Schaden um den Anwender zu heilen
+9,6,K.O.-Treffer
+10,6,Betrifft das ganze Spielfeld
+11,6,Betrifft eine Seite des Spielfelds
+12,6,Zwingt das Ziel zum Auswechseln
+13,6,Einzigartiger Effekt
