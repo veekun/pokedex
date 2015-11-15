@@ -52,7 +52,7 @@ ability_changelog_id,local_language_id,effect
 26,9,Has no overworld effect.
 26,6,"Hat außerhalb vom Kampf keinen Effekt."
 27,9,Doubles []{move:cut}'s grass-cutting radius on the overworld if any party Pokémon has this ability.
-27,6,"Verdoppelt den Radius in dem []{move:cut} Gras entfernt wenn ein Pokémon im Team diese Fähigkeit hat."
+27,6,"Verdoppelt den Radius in dem []{move:cut} Gras entfernt, wenn ein Pokémon im Team diese Fähigkeit hat."
 28,9,Has no effect in battle.
 28,6,"Hat im Kampf keinen Effekt."
 29,9,Has no overworld effect.
@@ -102,4 +102,4 @@ ability_changelog_id,local_language_id,effect
 51,9,Has no overworld effect.
 51,6,"Hat außerhalb vom Kampf keinen Effekt."
 52,9,Chance of taking effect is 33%.
-52,6,""Die Chance, dass der Effekt eintritt, beträgt 33%."
+52,6,"Die Chance, dass der Effekt eintritt, beträgt 33%."
