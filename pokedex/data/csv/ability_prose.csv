@@ -9,7 +9,7 @@ Overworld: The wild encounter rate is halved while this Pokémon is first in the
 Der Effekt stapelt nicht mit dem von getragenen Items.
 
 Außerhalb vom Kampf: Wenn ein Pokémon mit dieser Fähigkeit an erster Stelle im Team steht, tauchen wilde Pokémon nur halb so oft auf."
-2,9,Summons [rain]{mechanic:rain} that lasts indefinitely upon entering battle.,"The [weather]{mechanic:weather} changes to [rain]{mechanic:rain} when this Pokémon enters battle and does not end unless replaced by another weather condition.
+2,9,Summons [rain]{mechanic:rain} that lasts indefinitely upon entering battle.,"The [weather]{mechanic:weather} changes to [rain]{mechanic:rain}, when this Pokémon enters battle and does not end unless replaced by another weather condition.
 
 If multiple Pokémon with this ability, []{ability:drought}, []{ability:sand-stream}, or []{ability:snow-warning} are sent out at the same time, the abilities will activate in order of [Speed]{mechanic:speed}, respecting []{move:trick-room}.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay."
 2,6,"Ändert beim Betreten des Kampfes das Wetter in []{mechanic:rain}.","Das []{mechanic:weather} ändert sich zu []{mechanic:rain} wenn ein Pokémon mit dieser Fähigkeit den Kampf betritt. Dieser Effekt ist dauerhaft bis das []{mechanic:weather} geändert wird.
@@ -326,7 +326,7 @@ Außerhalb vom Kampf: Wenn ein Pokémon mit dieser Fähigkeit an erster Stelle i
 
 []{move:howl}, []{move:roar-of-time}, []{move:sonic-boom} und []{move:yawn} sind keine schallbasierten Attacken."
 44,9,Heals for 1/16 max [HP]{mechanic:hp} after each turn during [rain]{mechanic:rain}.,This Pokémon heals for 1/16 of its maximum [HP]{mechanic:hp} after each turn during [rain]{mechanic:rain}.
-44,6,"Heilt jede Runde 1/16 der maximalen []{mechanic:hp} wenn es [regnet]{mechanic:rain}.","Ein Pokémon mit dieser Fähigkeit heilt jede Runde 1/16 seiner maximalen []{mechanic:hp} wenn es [regnet]{mechanic:rain}."
+44,6,"Heilt jede Runde 1/16 der maximalen []{mechanic:hp} wenn es [regnet]{mechanic:rain}.","Pokémon mit dieser Fähigkeit heilen am Ende jeder Runde 1/16 ihrer maximalen []{mechanic:hp} wenn es [regnet]{mechanic:rain}."
 45,9,Summons a [sandstorm]{mechanic:sandstorm} that lasts indefinitely upon entering battle.,"The [weather]{mechanic:weather} changes to a [sandstorm]{mechanic:sandstorm} when this Pokémon enters battle and does not end unless cancelled by another weather condition.
 
 If multiple Pokémon with this ability, []{ability:drizzle}, []{ability:drought}, or []{ability:snow-warning} are sent out at the same time, the abilities will activate in order of [Speed]{mechanic:speed}, respecting []{move:trick-room}.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay.
@@ -692,7 +692,7 @@ Multiple Pokémon with this ability move in order of [Speed]{mechanic:speed} amo
 The []{item:full-incense} and []{item:lagging-tail} take precedence over this ability; that is, Pokémon with these items move after Pokémon with this ability.  Pokémon with both this ability and one of these items are delayed as much as if they had only the item.
 
 This ability works as usual during []{move:trick-room}: Pokémon with this ability will move in reverse order of Speed after Pokémon without it."
-100,6,"Lässt das Pokémon als letztes angreifen innerhalb des Prioritätsspielraums der Attacken", "Attacken dieses Pokémon kommen zu letzt ohne dabei die Prioritäten der Attacken zu umgehen.
+100,6,"Lässt das Pokémon als letztes angreifen innerhalb des Prioritätsspielraums der Attacken","Attacken dieses Pokémon kommen zu letzt ohne dabei die Prioritäten der Attacken zu umgehen.
 
 Mehrere Pokémon mit dieser Fähigkeit greifen in Reihenfolge ihrer []{mechanic:speed} an.
 
@@ -702,17 +702,25 @@ Diese Fähigkeit funktioniert normal während []{move:trick-room}, Pokémon mit 
 101,9,Strengthens moves of 60 base power or less to 1.5× their power.,"This Pokémon's moves have 1.5× their power if their base power is 60 or less.
 
 This includes moves of variable power, such as []{move:hidden-power} and []{move:magnitude}, when their power is 60 or less.  []{move:helping-hand}'s power boost is taken into account for any move, as is []{move:defense-curl}'s power boost for []{move:rollout}."
-101,6,"Versärkt Attacken mit einer Basisstärke von 60 oder weniger um 50%.", "Attacken von Pokémon mit dieser Fähigkeit die eine Stärke von 60 oder weniger haben werden um 50% verstärkt.
+101,6,"Versärkt Attacken mit einer Basisstärke von 60 oder weniger um 50%.","Attacken von Pokémon mit dieser Fähigkeit die eine Stärke von 60 oder weniger haben werden um 50% verstärkt.
 
 Das schließt Attacken mit variabler Stärke, wie []{move:hidden-power} oder []{move:magnitude}, mit ein, wenn ihre Stärke 60 oder weniger ist. Der Stärke Bonus von []{move:helping-hand} wird miteinberechnet, genauso wie der von []{move:defense-curl} für []{move:rollout}."
 102,9,Protects against [major status ailments]{mechanic:major-status-ailments} during [strong sunlight]{mechanic:strong-sunlight}.,"This Pokémon cannot be given a [major status ailment]{mechanic:major-status-ailment} during [strong sunlight]{mechanic:strong-sunlight}.
 
 This ability does not heal prior status ailments.  []{move:rest} will fail altogether with this ability in effect.  []{move:yawn} will immediately fail if used on this Pokémon during strong sunlight, and an already-used Yawn will fail if the weather turns to strong sunlight in the meantime."
+102,6,"Schützt vor []{mechanic:major-status-ailments} während [starkem Sonnenlicht]{mechanic:strong-sunlight}.","Pokémon mit dieser Fähigkeit können während [starkem Sonnenlicht]{mechanic:strong-sunlight} keine []{mechanic:major-status-ailments} erleiden.
+
+Die Fähigkeit heilt keine []{mechanic:major-status-ailments}. []{move:rest} schlägt fehl während die Fähigkeit aktiv ist. []{move:yawn} schlägt sofort fehl wenn es während [starkem Sonnenlicht]{mechanic:strong-sunlight} gegen ein Pokémon mit dieser Fähigkeit benutzt wird und ein bereits eingesetzter []{move:yawn} schlägt fehl, wenn sich das []{mechanic:weather} zu [starkem Sonnenlicht]{mechanic:strong-sunlight} ändert."
 103,9,Prevents the Pokémon from using its held item in battle.,"In battle, this Pokémon cannot use its held item, nor will the item have any passive effect on the battle, positive or negative.  This Pokémon also cannot use []{move:fling}.
 
 The [Speed]{mechanic:speed} cut from the []{item:iron-ball} and the effort items (the []{item:macho-brace}, []{item:power-weight}, []{item:power-bracer}, []{item:power-belt}, []{item:power-lens}, []{item:power-band}, and []{item:power-anklet}) is unaffected.  Items that do not directly affect the battle, such as the []{item:exp-share}, the []{item:amulet-coin}, or the []{item:soothe-bell}, work as usual.  All held items work as usual out of battle.
 
 Other moves that use the held item, such as []{move:natural-gift} and []{move:switcheroo}, work as usual."
+103,6,"Verhindert, dass das Pokémon ein getragenes Item im Kampf einsetzt.","Pokémon mit dieser Fähigkeit können im Kampf keine getragenen Items benutzen und diese haben auch keine passiven Effekte im Kampf, egal ob positiv oder negativ. Das Pokémon kann []{move:fling} nicht einsetzen.
+
+Der []{mechanic:speed} Malus einer []{item:iron-ball} und die EV Items ([]{item:macho-brace}, []{item:power-weight}, []{item:power-bracer}, []{item:power-belt}, []{item:power-lens}, []{item:power-band} und []{item:power-anklet}) sind nicht betroffen. Items die den Kampf nicht direkt beeinflussen, wie der []{item:exp-share}, das []{item:amulet-coin} oder die []{item:soothe-bell}, funktionieren normal. Alle getragenen Items funktionieren normal außerhalb von Kämpfen.
+
+Andere Attacken die getragene Items verwenden, wie z.B. []{move:natural-gift} und []{move:switcheroo}, funktionieren ebenfalls normal."
 104,9,Bypasses targets' abilities if they could hinder or prevent a move.,"This Pokémon's moves completely ignore abilities that could hinder or prevent their effect on the target.
 
 For example, this Pokémon's moves ignore abilities that would fully negate them, such as []{ability:water-absorb}; abilities that would prevent any of their effects, such as []{ability:clear-body}, []{ability:shell-armor}, or []{ability:sticky-hold}; and abilities that grant any general protective benefit, such as []{ability:simple}, []{ability:snow-cloak}, or []{ability:thick-fat}.  If an ability could either hinder or help this Pokémon's moves, e.g. []{ability:dry-skin} or []{ability:unaware}, the ability is ignored either way.
@@ -724,11 +732,27 @@ An ability ignored by this ability is only nullified while the move is being use
 When this Pokémon enters battle, all participating trainers are notified that it has this ability.
 
 This ability functions identically to []{ability:teravolt} and []{ability:turboblaze}."
+104,6,"Umgeht die gegnerische Fähigkeit, wenn sie eine Attacke verhindern kann.","Die Attacken von Pokémon mit dieser Fähigkeit ignorieren Fähigkeiten die die Attacke am Funktionieren hindern oder ihre Effekte beeinflussen.
+
+Beispiel: Die Attacken ignorieren Fähigkeiten die sie komplett verhindern, wie []{ability:water-absorb}, Fähigkeiten die einen der Effekte verhindern würden, wie z.B. []{ability:clear-body}, []{ability:shell-armor} oder []{ability:sticky-hold} und Fähigkeiten die einen generellen schützenden Vorteil brächten, wie []{ability:simple}, []{ability:snow-cloak} oder []{ability:thick-fat}. Wenn eine Fähigkeit die Attacke behindern oder ihr helfen würde, wie []{ability:dry-skin} oder []{ability:unaware}, wird sie ebenfalls ignoriert.
+
+Fähigkeiten die dieser Beschreibung nicht ensprechen, selbst wenn sie eine Attacke behindern könnten, werden nicht verhindert. Zum Beispiel beeinflusst []{ability:cursed-body} nur mögliche zukünftige Anwendungen der Attacke, während []{ability:liquid-ooze} und []{ability:shadow-tag} nur den Effekt der Attacke auf den Anwender verhindern. Die Attacke kann keine Typ- oder Form-Änderungen verhindern die durch Fähigkeiten ausgelöst werden, zum Beispiel []{ability:color-change} oder []{ability:forecast}, genauso wie Effekt die von Fähigkeiten verursacht wurden aber nicht mehr an die Fähigkeit gebunden sind, so wie der []{mechanic:rain}  von  []{ability:drizzle}. Die Fähigkeit kann []{ability:multitype} nicht verhindern.
+
+Eine Fähigkeit die von dieser Fähigkeit ignoriert wird, wird nur überbrückt, während die Attacke eingesetzt wird. Beispiel: Die Attacken von Pokémon mit dieser Fähigkeit können ein Pokémon mit []{ability:limber}  [paralysieren]{mechanic:paralysis} aber []{ability:limber} wird sich aktivieren und die Paralyse direkt danach heilen. Außerdem werden die []{move:spikes} dieses Pokémons nicht von dieser Fähigkeit beeinflusst, nachdem sie platziert wurden.
+
+Wenn ein Pokémon mit dieser Fähigkeit den Kampf betritt, werden alle Trainer über diese Fähigkeit benachrichtigt.
+
+Die Fähigkeit ist identisch mit []{ability:teravolt} und []{ability:turboblaze}."
 105,9,Raises moves' [critical hit]{mechanic:critical-hit} rates one stage.,This Pokémon's moves have [critical hit]{mechanic:critical-hit} rates one stage higher than normal.
+105,6,"Erhöht die [kritische Treffer]{mechanic:critical-hit}rate um 1 Stufe.","Die [kritische Treffer]{mechanic:critical-hit}rate von Attacken von Pokémon mit dieser Fähigkeit sind eine Stufe höher als normal."
 106,9,Damages the attacker for 1/4 its max [HP]{mechanic:hp} when knocked out by a contact move.,"When this Pokémon is knocked out by a move that makes contact, the move's user takes 1/4 its maximum [HP]{mechanic:hp} in damage."
+106,6,"Schadet dem Angreifer mit 1/4 seiner max []{mechanic:hp}, wenn das Pokémon von einer Attacke mit Kontakt besiegt wird.","Wenn ein Pokémon mit dieser Fähigkeit von einer Attacke mit Kontakt besiegt wird, erleidet der Anwender 1/4 seiner maximalen []{mechanic:hp} Schaden."
 107,9,"Notifies all trainers upon entering battle if an opponent has a [super-effective]{mechanic:super-effective} move, []{move:self-destruct}, []{move:explosion}, or a one-hit KO move.","When this Pokémon enters battle, if one of its opponents has a move that is [super effective]{mechanic:super-effective} against it, []{move:self-destruct}, []{move:explosion}, or a one-hit knockout move, all participating trainers are notified.
 
 The move itself is not revealed; only that there is such a move.  Moves that inflict [typeless damage]{mechanic:typeless-damage}, such as []{move:future-sight}, and moves of variable type, such as []{move:hidden-power}, count as their listed types.  []{move:counter}, []{move:metal-burst}, []{move:mirror-coat}, and one-hit KO moves to which this Pokémon is immune do not trigger this ability."
+107,6,"Benachrichtigt alle Trainer im Kampf, wenn ein Gegner eine [sehr effektive]{mechanic:super-effective} Attacke, []{move:self-destruct}, []{move:explosion} oder eine K.O.Attacke hat.","Wenn ein Pokémon mit dieser Fähigkeit den Kampf betritt und ein Gegner eine Attacke hat die []{mechanic:super-effective} gegen das Pokémon ist, []{move:self-destruct}, []{move:explosion} oder eine K.O.-Attacke hat, werden alle Trainer darüber benachrichtigt.
+
+Die Attacke selbst wird nicht angekündigt, nur ihre Anwesenheit. Attacken die [typenlosen Schaden]{mechanic:typeless-damage} verursachen, wie []{move:future-sight} und Attacken mit variablen Typ, wie []{move:hidden-power}, werden nach ihrem angezeigten Typ gezählt. []{move:counter}, []{move:metal-burst}, []{move:mirror-coat} und K.O.-Attacken gegen die das Pokémon immun ist werden nicht gezählt."
 108,9,Reveals the opponents' strongest move upon entering battle.,"When this Pokémon enters battle, it reveals the move with the highest base power known by any opposing Pokémon to all participating trainers.
 
 In the event of a tie, one is chosen at random.
@@ -742,42 +766,91 @@ Power | Moves
    80 | Variable power or set damage: []{move:crush-grip}, []{move:dragon-rage}, []{move:electro-ball}, []{move:endeavor}, []{move:final-gambit}, []{move:flail}, []{move:frustration}, []{move:grass-knot}, []{move:gyro-ball}, []{move:heat-crash}, []{move:heavy-slam}, []{move:hidden-power}, []{move:low-kick}, []{move:natural-gift}, []{move:night-shade}, []{move:psywave}, []{move:return}, []{move:reversal}, []{move:seismic-toss}, []{move:sonic-boom}, []{move:trump-card}, and []{move:wring-out}
     0 | Any such move not listed
 "
+108,6,"Enthüllt die Stärkste Attacke des Gegners beim Betreten des Kampfes.","Wenn ein Pokémon mit dieser Fähigkeit den Kampf betritt, wird die Attacke mit der höchsten Basisstärke eines der Gegner an alle Trainer angekündigt.
+
+Wenn es mehrere gleichstarke Attacken gibt, wird eine zufällige gewählt.
+
+Attacken ohne angezeigt Basisstärke werden wie folgt behandelt:
+
+Stärke | Attacken
+ ----: | -----
+   160 | K.O.-Attacken: []{move:fissure}, []{move:guillotine}, []{move:horn-drill} und []{move:sheer-cold}
+   120 | Konter-Attacken: []{move:counter}, []{move:metal-burst} und []{move:mirror-coat}
+    80 | Variable Stärke oder fester Schaden: []{move:crush-grip}, []{move:dragon-rage}, []{move:electro-ball}, []{move:endeavor}, []{move:final-gambit}, []{move:flail}, []{move:frustration}, []{move:grass-knot}, []{move:gyro-ball}, []{move:heat-crash}, []{move:heavy-slam}, []{move:hidden-power}, []{move:low-kick}, []{move:natural-gift}, []{move:night-shade}, []{move:psywave}, []{move:return}, []{move:reversal}, []{move:seismic-toss}, []{move:sonic-boom}, []{move:trump-card} und []{move:wring-out}
+     0 | Jede andere Attacke
+"
 109,9,Ignores other Pokémon's stat modifiers for damage and accuracy calculation.,"This Pokémon ignores other Pokémon's [stat modifiers]{mechanic:stat-modifiers} for the purposes of damage and accuracy calculation.
 
 Effectively, this affects modifiers of every stat except [Speed]{mechanic:speed}.
 
 The power of []{move:punishment} and []{move:stored-power} is calculated as usual.  When this Pokémon hurts itself in [confusion]{mechanic:confusion}, its stat modifiers affect damage as usual."
+109,6,"Ignoriert die []{mechanic:stat-modifiers} der Pokémon bei der Schadens- und [Genauigkeitsberechnung]{mechanic:accuracy}.","Pokémon mit dieser Fähigkeit ignorieren die []{mechanic:stat-modifiers} der Gegner bei der Berechnung des Schadens und der []{mechanic:accuracy}.
+
+Dies beeinflusst effektiv alle Änderungen der Statuswerte außer []{mechanic:speed}.
+
+Die Stärke von []{move:punishment} und []{move:stored-power} wird normal berechnet. Wenn sich das Pokémon wegen []{mechanic:confusion} selbst verletzt, beeinflussen die []{mechanic:stat-modifiers} den Schaden wie sonst auch."
 110,9,Doubles damage inflicted with [not-very-effective]{mechanic:not-very-effective} moves.,This Pokémon deals twice as much damage with moves that are [not very effective]{mechanic:not-very-effective} against the target.
+110,6,"Verdoppelt den durch [nicht sehr effektiven]{mechanic:not-very-effective} Attacken verursachten Schaden.","Pokémon mit dieser Fähigkeit verdoppeln den Schaden von Attacken die []{mechanic:not-very-effective} gegen das Ziel sind."
 111,9,Decreases damage taken from [super-effective]{mechanic:super-effective} moves by 1/4.,"This Pokémon takes 0.75× as much damage from moves that are [super effective]{mechanic:super-effective} against it.
 
 This ability functions identically to []{ability:solid-rock}."
+111,6,"Reduziert den durch [sehr effektive]{mechanic:super-effective} Attacken verursachten Schaden um 1/4.","Pokémon mit dieser Fähigkeit erleiden nur 75% des Schadens, der durch Attacken die []{mechanic:super-effective} sind verursacht wurde.
+
+Die Fähigkeit ist identisch mit []{ability:solid-rock}."
 112,9,Halves [Attack]{mechanic:attack} and [Speed]{mechanic:speed} for five turns upon entering battle.,"This Pokémon's [Attack]{mechanic:attack} and [Speed]{mechanic:speed} are halved for five turns upon entering battle.
 
 This ability also takes effect when acquired during battle.  If this Pokémon loses its ability before the five turns are up, its Attack and Speed return to normal; if it then regains this ability without leaving battle, its Attack and Speed are halved again, but the counter keeps counting from where it was."
+112,6,"Halbiert den []{mechanic:attack} und die []{mechanic:speed} 5 Runden lang nach Betreten des Kampfes.","Der []{mechanic:attack} und die []{mechanic:speed} von Pokémon mit dieser Fähigkeit werden 5 Runden nach Betreten des Kampfes halbiert.
+
+Die Fähigkeit wirkt auch, wenn sie während des Kampfes erlangt wird. Wenn das Pokémon die Fähigkeit nach Beginn des Kampfes verliert, werden sein []{mechanic:attack} und seine []{mechanic:speed} wieder normal, wenn es die Fähigkeit dann wieder erlangt, werden []{mechanic:attack} und []{mechanic:speed} wieder halbiert, aber der Zähler wird nicht zurückgesetzt."
 113,9,Lets the Pokémon's []{type:normal} and []{type:fighting} moves hit []{type:ghost} Pokémon.,"This Pokémon ignores []{type:ghost}-type Pokémon's immunity to []{type:normal}- and []{type:fighting}-type moves.
 
 Ghost Pokémon's other types affect damage as usual."
+113,6,"Lässt die []{type:normal} und []{type:fighting} Attacken des Pokémons []{type:ghost} Pokémon treffen.","Pokémon mit dieser Fähigkeit ignorieren die Immunität von []{type:ghost} Pokémon gegen []{type:normal} und []{type:fighting} Attacken.
+
+Der zweite Typ des []{type:ghost} Pokémons beeinflusst den Schaden wie sonst auch."
 114,9,"Redirects single-target []{type:water} moves to this Pokémon where possible.  Absorbs Water moves, raising [Special Attack]{mechanic:special-attack} one [stage]{mechanic:stat-modifier}.","All other Pokémon's single-target []{type:water}-type moves are redirected to this Pokémon, if it is an eligible target.  Other Pokémon's Water moves raise this Pokémon's [Special Attack]{mechanic:special-attack} one [stage]{mechanic:stat-modifier}, negating any other effect on it, and cannot miss it.
 
 If the move's intended target also has this ability, the move is not redirected.  When multiple Pokémon with this ability are possible targets for redirection, the move is redirected to the one with the highest [Speed]{mechanic:speed} stat, or, in the case of a tie, to a random tied Pokémon.  []{move:follow-me} takes precedence over this ability."
+114,6,"Leitet []{type:water} Attacken auf dieses Pokémon um. Absorbiert []{type:water} Attacken und erhöht den []{mechanic:special-attack} um 1 [Stufe]{mechanic:stat-modifier}.","Alle []{type:water} Attacken von anderen Pokémon mit nur einem Ziel werden auf das Pokémon mit dieser Fähigkeit umgeleitet, wenn es ein mögliches Ziel ist. []{type:water} die dieses Pokémon treffen erhöhen seinen []{mechanic:special-attack} um eine [Stufe]{mechanic:stat-modifier}, wobei jeder andere Effekt entfernt wird. Die Attacke kann außerdem nicht daneben gehen.
+
+Wenn das eigentliche Ziel der Attacke die Fähigkeit ebenfalls hat, wird die Attacke nicht umgeleitet. Wenn mehrere Pokémon mit dieser Fähigkeit mögliche Ziele sind, wird die Attacke zu dem mit der höchsten []{mechanic:speed}, oder, bei Gleichstand, zu einem zufälligen Pokémon umgeleitet. []{move:follow-me} erhält vor dieser Fähigkeit den Vorzug."
 115,9,Heals for 1/16 max [HP]{mechanic:hp} after each turn during hail.  Protects against hail damage.,"This Pokémon heals for 1/16 of its maximum [HP]{mechanic:hp} after each turn during [hail]{mechanic:hail}, and it does not take hail damage regardless of type."
+115,6,"Heilt jede Runde 1/16 der max []{mechanic:hp} wenn es [hagelt]{mechanic:hail}. Schützt vor Schäden durch []{mechanic:hail}.","Pokémon mit dieser Fähigkeit heilen am Ende jeder Runde 1/16 ihrer maximalen [HP]{mechanic:hp} wenn es [hagelt]{mechanic:hail} und sie nehmen durch []{mechanic:hail} keinen Schaden unabhängig von ihrem Typ."
 116,9,Decreases damage taken from [super-effective]{mechanic:super-effective} moves by 1/4.,"This Pokémon takes 0.75× as much damage from moves that are [super effective]{mechanic:super-effective} against it.
 
 This ability functions identically to []{ability:filter}."
+116,6,"Reduziert den durch [sehr effektive]{mechanic:super-effective} Attacken verursachten Schaden um 1/4.","Pokémon mit dieser Fähigkeit erleiden nur 75% des Schadens, der durch Attacken die []{mechanic:super-effective} sind verursacht wurde.
+
+Die Fähigkeit ist identisch mit []{ability:filter}."
 117,9,Summons [hail]{mechanic:hail} that lasts indefinitely upon entering battle.,"The [weather]{mechanic:weather} changes to [hail]{mechanic:hail} when this Pokémon enters battle and does not end unless cancelled by another weather condition.
 
 If multiple Pokémon with this ability, []{ability:drizzle}, []{ability:drought}, or []{ability:sand-stream} are sent out at the same time, the abilities will activate in order of [Speed]{mechanic:speed}, respecting []{move:trick-room}.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay."
+117,6,"Ändert beim Betreten des Kampfes das Wetter in []{mechanic:hail}.","Das []{mechanic:weather} ändert sich zu []{mechanic:hail}, wenn ein Pokémon mit dieser Fähigkeit den Kampf betritt. Dieser Effekt ist dauerhaft bis das []{mechanic:weather} geändert wird.
+
+Wenn mehrere Pokémon mit dieser Fähigkeit, []{ability:drizzle}, []{ability:drought} oder []{ability:sand-stream} zur selben Zeit den Kampf betreten, werden die Fähigkeiten nach Reihenfolge der []{mechanic:speed} der Pokémon ausgelöst, unter Berücksichtigung von []{move:trick-room}."
 118,9,The Pokémon may pick up []{item:honey} after battle.,"This Pokémon has a chance of picking up []{item:honey} after each battle.  This chance starts at 5% and rises another 5% after every tenth level: 5% from level 1–10, 10% from 11–20, and so on, up to 50% from 91–100.
 
 This ability is checked after the battle ends, at which point any temporary ability changes have worn off."
+118,6,"Das Pokémon hebt nach dem Kampf gelegentlich []{item:honey} auf.","Pokémon mit dieser Fähigkeit haben eine Chance nach dem Kampf []{item:honey} aufzuheben. Die Chance startet bei 5% und steigt um weitete 5% mit jedem 10. Level: 5% bei Level 1–10, 10% bei 11–20 und so weiter, bis zu 50% bei 91–100.
+
+Die Fähigkeit wird überprüft wenn der Kampf endet, wenn temporäre Fähigkeiten wieder weg sind."
 119,9,Reveals an opponent's held item upon entering battle.,"When this Pokémon enters battle, it reveals an opposing Pokémon's held item to all participating trainers.
 
 In a double battle, if one opponent has an item, this Pokémon will Frisk that Pokémon; if both have an item, it will Frisk one at random."
+119,6,"Enthüllt bei Kampfantritt das getragene Item des Gegners.","Wenn ein Pokémon mit dieser Fähigkeit den Kampf betritt, wird allen Trainern mitgeteilt, welches Item der Gegner hält.
+
+Wenn bei Mehrfachkämpfen ein Gegner ein Item hält, wird dieses angezeigt, wenn mehr ein Item halten wird ein zufälliges angekündigt."
 120,9,Strengthens recoil moves to 1.2× their power.,"This Pokémon's recoil moves and crash moves have 1.2× their base power.
 
 []{move:struggle} is unaffected.
 
 The ""crash moves"" are the moves that damage the user upon missing: []{move:jump-kick} and []{move:high-jump-kick}."
+120,6,"Verstärkt Rückstoßattacken um 20%.","Rückstoß- und Crashattacken von Pokémon mit dieser Fähigkeit haben 1.2× so viel Basisstärke wie sonst.
+
+[]{move:struggle} ist davon nicht betroffen.
+
+""Crashattacken"" sind solche, die dem Anwender schaden wenn sie fehlschlagen wie []{move:jump-kick} und []{move:high-jump-kick}."
 121,9,Changes []{pokemon:arceus}'s type and form to match its held Plate.,"If this Pokémon is holding an elemental Plate, its type and form change to match the Plate.
 
 This Pokémon's held item, whether or not it is a Plate, cannot be taken by []{move:covet} or []{move:thief}, nor removed by []{move:knock-off}, nor traded by []{move:switcheroo} or []{move:trick}.  Covet, Thief, and Knock Off still inflict damage against this Pokémon.  Unlike with []{ability:sticky-hold}, this Pokémon cannot use []{move:fling}, Switcheroo, or Trick to lose its item itself, nor gain an item through Switcheroo or Trick if it does not have one.
@@ -785,93 +858,187 @@ This Pokémon's held item, whether or not it is a Plate, cannot be taken by []{m
 This ability has no effect for any Pokémon other than []{pokemon:arceus}.  This ability cannot be traded with []{move:skill-swap}, nor copied with []{move:role-play} or []{ability:trace}, nor disabled with []{move:gastro-acid}, nor changed with []{move:worry-seed}.  This Pokémon cannot use Skill Swap or Role Play to lose its ability itself.  []{ability:mold-breaker} cannot ignore this ability.
 
 If a Pokémon [Transforms]{move:transform} into an Arceus with this ability, it will Transform into Arceus's default, []{type:normal}-type form.  If the Transforming Pokémon is holding a Plate, this ability will then activate and change the Pokémon into the corresponding form."
+121,6,"Ändert []{pokemon:arceus} Typ und Form entsprechend der Tafel die es hält.","Wenn []{pokemon:arceus} eine Tayp-Tafel hält, ändert sich sein Typ und seine Form entsprechend der Tafel.
+
+[]{pokemon:arceus} getragenes Item, egal ob es sich um eine Tafel handelt oder nicht, kann nicht durch []{move:covet} oder []{move:thief} gestohlen, oder mit []{move:knock-off} entfernt werden, noch kann es durch []{move:switcheroo} oder []{move:trick} getauscht werden. []{move:covet}, []{move:thief} and []{move:knock-off} richten trotzdem Schaden an. Anders als []{ability:sticky-hold} kann []{pokemon:arceus} []{move:fling}, []{move:switcheroo} und []{move:trick} nicht benutzen um das Item zu verlieren, noch eines durch []{move:switcheroo} oder []{move:trick} bekommen, wenn es keines trägt.
+
+Die Fähigkeit hat keinen Effekt für Pokémon außer []{pokemon:arceus}. Die Fähigkeit kann nicht durch []{move:skill-swap} getauscht, mit []{move:role-play} bzw. []{ability:trace} kopiert, mit []{move:gastro-acid} deaktiviert oder mit []{move:worry-seed} geändert werden. Das Pokémon kann []{move:skill-swap} oder []{move:role-play} einsetzen um die Fähigkeit zu verlieren. []{ability:mold-breaker} kann diese Fähigkeit nicht ignorieren.
+
+Wenn sich ein Pokémon in ein []{pokemon:arceus} mit dieser Fähigkeit [verwandelt]{move:transform}, wird es sich in []{pokemon:arceus} []{type:normal}form verwandeln. Wenn das sich verwandelnde Pokémon eine Tafel trägt, wird sich die Fähigkeit aktivieren und es in den entsprechenden Typ wandeln."
 122,9,Increases friendly Pokémon's [Attack]{mechanic:attack} and [Special Defense]{mechanic:special-defense} to 1.5× during [strong sunlight]{mechanic:strong-sunlight}.,"Friendly Pokémon have 1.5× their [Attack]{mechanic:attack} and [Special Defense]{mechanic:special-defense} during [strong sunlight]{mechanic:strong-sunlight} if any friendly Pokémon has this ability.
 
 Unlike []{ability:forecast}, []{ability:multitype}, and []{ability:zen-mode}, this ability is not tied to its Pokémon's form change; []{pokemon:cherrim} will switch between its forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim."
+122,6,"Erhöht []{mechanic:attack} und []{mechanic:special-defense} von Partnern um 50% während [starkem Sonnenlicht]{mechanic:strong-sunlight}.","[]{mechanic:attack} und []{mechanic:special-defense} von Teampartnern sind während [starkem Sonnenlicht]{mechanic:strong-sunlight} 1.5× so hoch wie normal, wenn sich ein Pokémon mit dieser Fähigkeit im Kampf befindet.
+
+Ansers als []{ability:forecast}, []{ability:multitype} und []{ability:zen-mode} ist die Form des Pokémon nicht an diese Fähigkeit gebunden. []{pokemon:cherrim} kann seine Formen wechseln auch wenn es die Fähigkeit veloren hat. Die Fähigkeit wirkt auch auf anderen Pokémon, wenn sie von diesen erlangt wurde."
 123,9,Damages [sleeping]{mechanic:sleep} opponents for 1/8 their max [HP]{mechanic:hp} after each turn.,Opposing Pokémon take 1/8 of their maximum [HP]{mechanic:hp} in damage after each turn while they are [asleep]{mechanic:asleep}.
+123,6,"Fügt [schlafenden]{mechanic:sleep} Gegnern jede Runde 1/8 ihrer max []{mechanic:hp} Schaden zu.","Gegner erleiden am Ende jeder Runde 1/8 ihrer maximalen []{mechanic:hp} Schaden, wenn sie [schlafen]{mechanic:asleep}."
 124,9,Steals attacking Pokémon's held items on contact.,"Whenever a move makes contact with this Pokémon, if it does not have a held item, it steals the attacker's held item.
 
 This Pokémon cannot steal upon being knocked out.  It can steal if the attacker has a []{move:substitute}, but cannot steal when its own Substitute is hit.  If a move hits multiple times, only the last hit triggers this ability.  If this Pokémon is wild, it cannot steal from a trained Pokémon."
+124,6,"Stiehlt angreifenden Pokémon bei Kontakt das Item.","Wenn ein Pokémon mit dieser Fähigkeit von einer Attacke getroffen wird die Kontakt herstellt, wird das vom Angreifer getragene Item auf das getroffene Pokémon übertragen, wenn dieses noch keins hält.
+
+Das Pokémon stiehlt nicht, wenn es besiegt wird. Es kann auch stehlen, wenn der Angreifer einen []{move:substitute} hat, aber nicht wenn der eigene getroffen wird. Wenn eine Attacke mehrmals trifft, löst nur der letzte Treffer die Fähigkeit aus. Wenn das Pokémon ein wildes ist, kann es kein Item stehlen."
 125,9,"Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects.","This Pokémon's moves with extra effects have 1.3× their power, but lose their extra effects.
 
 An effect chance is a move's chance to inflict a status ailment, cause a stat change, or make the target flinch in addition to the move's main effect. For example, []{move:thunder-shock}'s paralysis is an extra effect, but []{move:thunder-wave}'s is not, nor are []{move:knock-off}'s item removal and []{move:air-cutter}'s increased [critical hit]{mechanic:critical-hit} rate.
 
 Moves that lower the user's stats are unaffected."
+125,6,"Verstärkt Attacken mit Zusatzeffekt um 30%, verhindert aber den Zusatzeffekt.","Attacken von Pokémon mit dieser Fähigkeit die Zusatzeffekte haben, haben 1.3× so viel Basisstärke wie normal, dafür aber keinen Zusatzeffekt.
+
+Ein Zusatzeffekt ist die Chance einer Attacke, als ""Effektchance"" bezeichnet, eine []{mechanic:status-ailment} oder eine []{mechanic:stat-modifier} hervorzurufen oder das Ziel [zurückschrecken]{mechanic:flinching} zu lassen, zusätzlich zum Haupteffekt einer Attacke. Zum Beispiel ist die []{mechanic:paralysis} die []{move:thunder-shock} verursachen kann ein Zusatzeffekt, im Gegensatz zu []{move:thunder-wave}, genauso wie das Entfernen des Items durch []{move:knock-off} und die erhöhte [kritische Trefferchance]{mechanic:critial-hit} durch []{move:air-cutter}.
+
+Attacken die einen Statuswert des Anwenders senken sind nicht betroffen."
 126,9,Inverts [stat changes]{mechanic:stat-modifiers}.,"Whenever this Pokémon's stats would be [raised]{mechanic:stat-modifiers}, they are instead lowered by the same amount, and vice versa."
+126,6,"Invertiert [Statuswertänderungen]{mechanic:stat-modifiers}.","Wenn ein Statuswert eines Pokémons mit dieser Fähigkeit [erhöht]{mechanic:stat-modifiers} werden würde, wird er stattdessen um die selbe Anzahl Stufen [gesenkt]{mechanic:stat-modifiers}"
 127,9,Prevents opposing Pokémon from eating held Berries.,"Opposing Pokémon cannot eat held Berries while this Pokémon is in battle.
 
 Affected Pokémon can still use []{move:bug-bite} or []{move:pluck} to eat a target's Berry."
+127,6,"Hindert Gegner daran Beeren zu essen.","Wenn ein Pokémon mit dieser Fähigkeit im Kampf ist, können Gegner keine getragenen Beeren essen.
+
+Betroffene Pokémon können trotzdem []{move:bug-bite} bzw. []{move:pluck} einsetzen um die Beere des Ziels zu essen."
 128,9,Raises [Attack]{mechanic:attack} two [stages]{mechanic:stat-modifier} upon having any stat lowered.,"When any of this Pokémon's stats are [lowered]{mechanic:stat-modifier}, its [Attack]{mechanic:attack} rises by two stages.
 
 If multiple stats are lowered at once, this ability takes effect with each stat lowered."
+128,6,"Erhöht den []{mechanic:attack} um 2 [Stufen]{mechanic:stat-modifier} wenn ein Statuswert gesenkt wird.","Wenn ein Statuswert eines Pokémon mit dieser Fähigkeit [gesenkt]{mechanic:stat-modifier} wird, wird sein []{mechanic:attack} um 2 [Stufen]{mechanic:stat-modifier} erhöht.
+
+Wenn mehrere Statuswerte [gesenkt]{mechanic:stat-modifier} löst die Fähigkeit für jeden Statuswert aus."
 129,9,Halves [Attack]{mechanic:attack} and [Special Attack]{mechanic:special-attack} at 50% max [HP]{mechanic:hp} or less.,This Pokémon's [Attack]{mechanic:attack} and [Special Attack]{mechanic:special-attack} are halved when it has half its [HP]{mechanic:hp} or less.
+129,6,"Halbiert []{mechanic:attack} und []{mechanic:special-attack} wenn nur 50% oder weniger der max []{mechanic:hp} übrig sind.","Der []{mechanic:attack} und die []{mechanic:special-attack} eines Pokémon mit dieser Fähigkeit werden halbiert, wenn es nur noch 50% oder weniger seiner maximalen []{mechanic:hp} hat."
 130,9,Has a 30% chance of [Disabling]{move:disable} any move that hits the Pokémon.,Moves that hit this Pokémon have a 30% chance of being [Disabled]{move:disable} afterward.
+130,6,"30% Chance Attacken zu [blockieren]{move:disable} von denen das Pokémon getroffen wurde.","Attacken die ein Pokémon mit dieser Fähigkeit treffen, haben eine 30% Chance [blockiert]{move:disable} zu werden."
 131,9,Has a 30% chance of curing each adjacent ally of any [major status ailment]{mechanic:major-status-ailment} after each turn.,Friendly Pokémon next to this Pokémon in double and triple battles each have a 30% chance of being cured of any [major status ailment]{mechanic:major-status-ailment} after each turn.
+131,6,"30% Chance angrenzende Teampartner jede Runde von einer []{mechanic:major-status-ailment} zu heilen.","Benachbarte Teampartner von Pokémon mit dieser Fähigkeit, haben eine 30% Chance am Ende jeder Runde von einer []{mechanic:major-status-ailment} geheilt zu werden."
 132,9,Decreases all direct damage taken by friendly Pokémon to 0.75×.,"All friendly Pokémon take 0.75× as much direct damage from moves while this Pokémon is in battle.
 
 This effect stacks if multiple allied Pokémon have it."
+132,6,"Verringert allen von Teampartnern erlitten Schaden um 75%.","Alle Teampartner von Pokémon mit dieser Fähigkeit erhalten nur 0.75× so viel Schaden durch Attacken während das Pokémon im Kampf ist.
+
+Der Effekt stapelt, wenn mehrere Pokémon mit dieser Fähigkeit im Kampf sind."
 133,9,Raises [Speed]{mechanic:speed} and lowers [Defense]{mechanic:defense} by one stage each upon being hit by a physical move.,"Whenever a physical move hits this Pokémon, its [Speed]{mechanic:speed} rises one stage and its [Defense]{mechanic:defense} falls one stage.
 
 This ability triggers on every hit of a multiple-hit move."
+133,6,"Erhöht die []{mechanic:speed} und senkt die []{mechanic:defense} um eine Stufe, wenn es von einer physischen Attacke getroffen wird.","Wenn ein Pokémon mit dieser Fähigkeit von einer physischen Attacke getroffen wird, wird seine []{mechanic:speed} um eine Stufe erhöht und seine []{mechanic:defense} um 1 Stufe gesenkt.
+
+Attacken die mehrmals treffen lösen bei jedem Treffer diese Fähigkeit aus."
 134,9,Doubles the Pokémon's weight.,This Pokémon has double the usual weight for its species.
+134,6,"Verdoppelt das Gewicht des Pokémon.","Pokémon mit dieser Fähigkeit haben ein doppelt so hohes Gewicht, wie andere von der selben Spezies."
 135,9,Halves the Pokémon's weight.,This Pokémon has half the usual weight for its species.
+135,6,"Halbiert das Gewicht des Pokémon.","Pokémon mit dieser Fähigkeit haben ein halb so hohes Gewicht, wie andere von der selben Spezies."
 136,9,Halves damage taken from full [HP]{mechanic:hp}.,This Pokémon takes half as much damage when it is hit having full [HP]{mechanic:hp}.
+136,6,"Halbiert den erlittenen Schaden bei vollen []{mechanic:hp}.","Pokémon mit dieser Fähigkeit erleiden nur halben Schaden, wenn sie volle []{mechanic:hp} haben."
 137,9,Increases [Attack]{mechanic:attack} to 1.5× when [poisoned]{mechanic:poison}.,This Pokémon has 1.5× its [Attack]{mechanic:attack} when [poisoned]{mechanic:poison}.
+137,6,"Erhöht den []{mechanic:attack} um 50%, wenn das Pokémon [vergiftet]{mechanic:poison} ist.","Pokémon mit dieser Fähigkeit haben einen 1.5× so hohen []{mechanic:attack} wenn sie [vergiftet]{mechanic:poison} sind."
 138,9,Increases [Special Attack]{mechanic:special-attack} to 1.5× when [burned]{mechanic:burn}.,This Pokémon has 1.5× its [Special Attack]{mechanic:special-attack} when [burned]{mechanic:burn}.
+138,6,"Erhöht den []{mechanic:special-attack} um 50%, wenn das Pokémon [brennt]{mechanic:burn}.","Pokémon mit dieser Fähigkeit haben einen 1.5× so hohen []{mechanic:special-attack} wenn sie [brennen]{mechanic:burn}."
 139,9,Has a 50% chance of restoring a used Berry after each turn if the Pokémon has held no items in the meantime.,"After each turn, if the last item this Pokémon consumed was a Berry and it is not currently holding an item, it has a 50% chance of regaining that Berry, or a 100% chance during [strong sunlight]{mechanic:strong-sunlight}."
+139,6,"50% Chance nach jeder Runde eine verbrauchte Beere wiederherzustellen, wenn in der Zwischenzeit kein anderes Item erlangt wurde.","Pokémon mit dieser Fähigkeit haben nach jeder Runde eine Chance von 50% eine verbrauchte Beere wiederherzustellen, wenn das letzte verbrauchte Item eine Beere war und es gerade kein Item trägt. Bei [starkem Sonnenlicht]{mechanic:strong-sunlight} ist die Chance 100%."
 140,9,Protects against friendly Pokémon's damaging moves.,"This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it."
+140,6,"Schützt vor Attacken von Partner die Schaden anrichten.","Pokémon mit dieser Fähigkeit erleiden keinen Schaden von Attacken von Teampartnern, inklusive solchen Attacken die nur ein Ziel treffen und direkt auf das Pokémon gerichtet sind."
 141,9,Raises a random stat two [stages]{mechanic:stat-modifier} and lowers another one stage after each turn.,"After each turn, one of this Pokémon's stats at random rises two [stages]{mechanic:stat-modifier}, and another falls one stage.
 
 If a stat is already at 6 or -6 stages, it will not be chosen to be increased or decreased, respectively."
+141,6,"Erhöht einen zufälligen Statuswert um 2 [Stufen]{mechanic:stat-modifier} und senkt einen anderen um 1 [Stufe]{mechanic:stat-modifier} nach jeder Runde."," Nach jeder Runde erhöht sich ein zufälliger Statuswert von Pokémon mit dieser Fähigkeit um 2 [Stufen]{mechanic:stat-modifier} und ein anderer wird um 1 [Stufe]{mechanic:stat-modifier} gesenkt.
+
+Wenn ein Statuswert bereits -6 oder +6 Stufen erreicht hat, wird er nicht zufällig ausgewählt."
 142,9,Protects against damage from [weather]{mechanic:weather}.,This Pokémon does not take damage from [weather]{mechanic:weather}.
+142,6,"Schützt vor Schäden durch []{mechanic:weather}.","Pokémon mit dieser Fähigkeit erhalten keinen Schaden durch [Wettereffekte]{mechanic:weather}."
 143,9,Has a 30% chance of [poisoning]{mechanic:poison} target Pokémon upon contact.,"This Pokémon's contact moves have a 30% chance of [poisoning]{mechanic:poison} the target with each hit.
 
 This counts as an extra effect for the purposes of []{ability:shield-dust}.  This ability takes effect before []{ability:mummy}."
+143,6,"30% Chance, den Gegner bei Kontakt zu [vergiften]{mechanic:poison}.","Die Attacken mit Kontakt von Pokémon mit dieser Fähigkeit haben mit jedem Schlag eine 30% Chance das Ziel zu [vergiften]{mechanic:poison}.
+
+Das zählt als Zusatzeffekt im Sinne von []{ability:shield-dust}. Diese Fähigkeit löst vor []{ability:mummy} aus."
 144,9,Heals for 1/3 max [HP]{mechanic:hp} upon switching out.,"This Pokémon regains 1/3 of its maximum [HP]{mechanic:hp} when it is switched out for another Pokémon under any circumstances other than having fainted.
 
 This ability does not take effect when a battle ends."
+144,6,"Heilt beim Auswechseln 1/3 der max []{mechanic:hp}.","Pokémon mit dieser Fähigkit heilen 1/3 ihrer maximalen []{mechanic:hp}, wenn sie aus irgend einem anderen Grund als besiegt zu werden ausgewechselt werden.
+
+Die Fähigkeit löst nicht aus, wenn der Kampf endet."
 145,9,Protects against [Defense]{mechanic:defense} drops.,"This Pokémon's [Defense]{mechanic:defense} cannot be [lowered]{mechanic:stat-modifiers} by other Pokémon.
 
 This Pokémon can still be passed negative Defense modifiers through []{move:heart-swap} or []{move:guard-swap}."
+145,6,"Schützt vor dem [Absenken]{mechanic:stat-modifiers} der []{mechanic:defense}.","Die []{mechanic:defense} von Pokémon mit dieser Fähigkeit kann nicht von anderen Pokémon [gesenkt]{mechanic:stat-modifiers} werden.
+
+Das Pokémon kann nagative []{mechanic:defense} durch []{move:heart-swap} oder []{move:guard-swap} erhalten."
 146,9,Doubles [Speed]{mechanic:speed} during a [sandstorm]{mechanic:sandstorm}.  Protects against sandstorm damage.,"This Pokémon's [Speed]{mechanic:speed} is doubled during a [sandstorm]{mechanic:sandstorm}, and it does not take sandstorm damage, regardless of type."
+146,6,"Verdoppelt die []{mechanic:speed} während eines [Sandsturms]{mechanic:sandstorm}. Schützt vor Schäden durch [Sandstürme]{mechanic:sandstorm}.","Pokémon mit dieser Fähigkeit erleiden im []{mechanic:sandstorm} unabhängig von ihrem Typ keinen Schaden und ihre []{mechanic:speed} wird verdoppelt, solange der []{mechanic:sandstorm} anhält."
 147,9,Lowers incoming non-damaging moves' base [accuracy]{mechanic:accuracy} to exactly 50%.,Non-damaging moves have exactly 50% base [accuracy]{mechanic:accuracy} against this Pokémon.
+147,6,"Verringert die []{mechanic:accuracy} von ankommenden Attacken ohne Schaden auf 50%.","Attacken ohne Schaden die auf ein Pokémon mit dieser Fähigkeit zielen, haben eine [Basisgenauigkeit]{mechanic:accuracy} von 50%."
 148,9,Strengthens moves to 1.3× their power when moving last.,"This Pokémon's moves have 1.3× their power when it moves last in a turn.
 
 []{move:future-sight} and []{move:doom-desire} are unaffected."
+148,6,"Verstärkt Attacken um 30%, wenn das Pokémon als Letztes agiert.","Attacken von Pokémon mit dieser Fähigkeit, haben 1.3× so viel Stärke, wenn das Pokémon als Letztes angreift.
+
+[]{move:future-sight} und []{move:doom-desire} sind nicht betroffen."
 149,9,Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move.,"This Pokémon, upon being sent out, appears to have the species, nickname, and Poké Ball of the last Pokémon in the party that is able to battle.  This illusion breaks upon being hit by a damaging move.
 
 Other damage, e.g. from [weather]{mechanic:weather} or []{move:spikes}, does not break the illusion, nor does damage done to a []{move:substitute}.
 
 If the party order becomes temporarily shuffled around as Pokémon are switched out in battle, this ability chooses the last Pokémon according to that shuffled order."
+149,6,"Nimmt beim Betreten des Kampfes die Form des letzten Teampokémon das nicht besiegt ist an und behält diese bis es zum ersten Mal getroffen wird.","Pokémon mit dieser Fähigkeit betreten den Kampf in Form des letzten nicht besiegten Pokémon im Team. Dabei erscheint es als dieselbe Species und hat den selben Namen und Pokéball wie das letzte kampffähige Pokémon im Team. Die Illusion erlischt beim ersten Treffer von einer Attacke die Schaden verursacht.
+
+Anderer Schaden, wie der vom []{mechanic:weather} oder von []{move:spikes}, zerstört die Illusion nicht, genauso wie Schaden der vom []{move:substitute} abgefangen wird.
+
+Wenn die Teampokémon während des Kampfes durch Austausch verändert wurde, wird die geänderte Reihenfolge beim Annehmen der Form beachtet."
 150,9,[Transforms]{move:transform} upon entering battle.,This Pokémon transforms into a random opponent upon entering battle.  This effect is identical to the move []{move:transform}.
+150,6,"[Wandelt]{move:transform} beim Betreten des Kampfes die Form.","Pokémon mit dieser Fähigkeit kopieren einen zufälligen Gegner. Der Effekt ist identisch mit []{move:transform}."
 151,9,"Bypasses []{move:light-screen}, []{move:reflect}, and []{move:safeguard}.","This Pokémon's moves ignore []{move:light-screen}, []{move:reflect}, and []{move:safeguard}."
+151,6,"Umgeht []{move:light-screen}, []{move:reflect} und []{move:safeguard}.","Pokémon mit dieser Fähigkeit ignorieren []{move:light-screen}, []{move:reflect} und []{move:safeguard}."
 152,9,Changes attacking Pokémon's abilities to Mummy on contact.,"Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to Mummy.
 
 []{ability:multitype} is unaffected.  If a Pokémon with []{ability:moxie} knocks this Pokémon out, the former's ability will change without taking effect."
+152,6,"Ändert bei Kontakt die Fähigkeit von Angreifern in Mumie.","Wenn ein Pokémon mit dieser Fähigkeit von einer Attacke mit Kontakt getroffen wird, ändert sich die Fähigkeit des Gegners in Mumie.
+
+[]{ability:multitype} ist nicht betroffen. Wenn das Pokémon von einem mit der Fähigkeit []{ability:moxie} besiegt wird, ändert sich dessen Fähigkeit ohne ihren Effekt auszulösen."
 153,9,Raises [Attack]{mechanic:attack} one stage upon KOing a Pokémon.,"This Pokémon's [Attack]{mechanic:attack} rises one stage upon knocking out another Pokémon, even a friendly Pokémon.
 
 This ability does not take effect when the Pokémon indirectly causes another Pokémon to faint, e.g. through [poison]{mechanic:poison} or []{move:spikes}.
 
 If this Pokémon knocks out a Pokémon with []{ability:mummy}, the former's ability will change without taking effect."
+153,6,"Erhöht den []{mechanic:attack} um 1 [Stufe]{mechanic:stat-modifier}, wenn es einen Gegner besiegt.","Der []{mechanic:attack} von Pokémon mit dieser Fähigkeit erhöht sich um 1 [Stufe]{mechanic:stat-modifier}, wenn es einen Gegner oder einen Teampartner besiegt.
+
+Die Fähigkeit löst nicht aus, wenn der Gegner indirekt besiegt wird, z.B. durch []{mechanic:poison} oder []{move:spikes}.
+
+Wenn der besiegte Gegner die Fähigkeit []{ability:mummy} hat, ändert sich die Fähigkeit ohne den alten Effekt auszulösen."
 154,9,Raises [Attack]{mechanic:attack} one stage upon taking damage from a []{type:dark} move.,"Whenever a []{type:dark}-type move hits this Pokémon, its [Attack]{mechanic:attack} rises one [stage]{mechanic:stat-modifier}.
 
 The move is not negated in any way."
+154,6,"Erhöht den []{mechanic:attack} um 1 [Stufe]{mechanic:stat-modifier}, wenn es von []{type:dark} Attacken getroffen wird.","Wenn ein Pokémon mit dieser Fähigkeit von einer []{type:dark} Attacke getroffen wird, wird sein []{mechanic:attack} um 1 [Stufe]{mechanic:stat-modifier} erhöht.
+
+Die Attacke wird nicht beeinflusst."
 155,9,"Raises [Speed]{mechanic:speed} one [stage]{mechanic:stat-modifier} upon being hit by a []{type:dark}, []{type:ghost}, or []{type:bug} move.","This Pokémon's [Speed]{mechanic:speed} rises one stage with each hit from a damaging []{type:dark}-, []{type:ghost}-, or []{type:bug}-type move."
+155,6,"Erhöht die []{mechanic:speed} um 1 [Stufe]{mechanic:stat-modifier}, wenn es von []{type:dark}, []{type:ghost} oder []{type:bug} Attacken getroffen wird.","Die []{mechanic:speed} erhöht sich mit jedem Treffer einer []{type:dark}, []{type:ghost} oder []{type:bug} Attacke um 1 [Stufe]{mechanic:stat-modifier}."
 156,9,Reflects most non-damaging moves back at their user.,"When this Pokémon is targeted by a move flagged as being reflectable, the move is redirected to its user.
 
 All reflectable moves are non-damaging, and most non-damaging moves that target other Pokémon are reflectable.
 
 A move reflected by this ability or []{move:magic-coat} cannot be reflected back."
+156,6,"Reflektiert die meisten Attacken ohne Schaden zum Angreifer zurück.","Wenn ein Pokémon mit dieser Fähigkeit von einer Attacke getroffen wird die als Reflektierbar gekennzeichnet ist, wird die Attacke zum Angreifer zurückgeworfen.
+
+Alle reflektierbaren Attacken verursachen keinen Schaden und die meisten Attacken die keinen Schaden verursachen sind als reflektierbar gekennzeichnet.
+
+Eine Attacke die von dieser Fähigkeit oder von []{move:magic-coat} reflektiert wurde, kann nicht zurückreflektiert werden."
 157,9,"Absorbs []{type:grass} moves, raising [Attack]{mechanic:attack} one [stage]{mechanic:stat-modifier}.","Whenever a []{type:grass}-type move hits this Pokémon, its [Attack]{mechanic:attack} rises one [stage]{mechanic:stat-modifier}, negating any other effect on it."
+157,6,"Absorbiert []{type:grass} Attacken und erhöhrt dabei den []{mechanic:attack} um 1 [Stufe]{mechanic:stat-modifier}.","Wenn ein Pokémon mit dieser Fähigkeit von einer []{type:grass} Attacke getroffen wird, steigt sein []{mechanic:attack} um 1 [Stufe]{mechanic:stat-modifier}, wobei jeder andere Effekt entfernt wird."
 158,9,Raises non-damaging moves' priority by one stage.,This Pokémon's non-damaging moves have their priority increased by one stage.
+158,6,"Erhöht die []{mechanic:priority} von Attacken ohne Schaden um 1 Stufe.","Wenn ein Pokémon diese Fähigkeit hat, erhöht sich die []{mechanic:priority} seiner Attacken die keinen Schaden anrichten um 1 Stufe."
 159,9,"Strengthens []{type:rock}, []{type:ground}, and []{type:steel} moves to 1.3× their power during a [sandstorm]{mechanic:sandstorm}.  Protects against sandstorm damage.","During a [sandstorm]{mechanic:sandstorm}, this Pokémon's []{type:rock}-, []{type:ground}-, and []{type:steel}-type moves have 1.3× their base power.  This Pokémon does not take sandstorm damage, regardless of type."
+159,6,"Verstärkt []{type:rock}, []{type:ground} und []{type:steel} Attacken um 30% während eines [Sandsturms]{mechanic:sandstorm}. Schützt vor Schäden durch [Sandstürme]{mechanic:sandstorm}.","Die []{type:rock}, []{type:ground} und []{type:steel} Attacken von Pokémon mit dieser Fähigkeit haben während eines [Sandsturms]{mechanic:sandstorm} 1.3× so viel Basisstärke wie sonst. Das Pokémon erleidet keinen Schaden durch [Sandstürme]{mechanic:sandstorm}, unabhängig von seinem Typ."
 160,9,Damages attacking Pokémon for 1/8 their max [HP]{mechanic:hp} on contact.,"Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum [HP]{mechanic:hp} in damage.
 
 This ability functions identically to []{ability:rough-skin}."
+160,6,"Angreifer erleiden bei Kontakt 1/8 ihrer max []{mechanic:hp} Schaden.","Wenn ein Pokémon mit dieser Fähigkeit von einer Attacke mit Kontakt getroffen wird, erleidet der Angreifer 1/8 seiner maximalen []{mechanic:hp} Schaden.
+
+Diese Fähigkeit ist identisch mit []{ability:rough-skin}."
 161,9,"Changes []{pokemon:darmanitan}'s form after each turn depending on its [HP]{mechanic:hp}: Zen Mode below 50% max HP, and Standard Mode otherwise.","This Pokémon switches between Standard Mode and Zen Mode after each turn depending on its [HP]{mechanic:hp}.  Below 50% of its maximum HP, it switches to Zen Mode, and at 50% or above, it switches to Standard Mode.
 
 This Pokémon returns to Standard Mode upon leaving battle or losing this ability.  This ability has no effect if this Pokémon is not a []{pokemon:darmanitan}."
+161,6,"Ändert jede Runde die Form von []{pokemon:darmanitan} abhängig von seinen []{mechanic:hp}: Zen Modus bei weniger als 50% der max []{mechanic:hp}, ansonsten Standard Modus.","[]{pokemon:darmanitan} wechselt am Ende jeder Runde zwischen dem Standard Modus und dem Zen Modus, abhängig von seinen []{mechanic:hp}. Wenn es weniger als 50% seiner maximalen []{mechanic:hp} hat, wechselt es zum Zen Modus, bei 50% oder mehr zum Standard Modus.
+
+[]{pokemon:darmanitan} wechselt zum Standard Modus beim Beenden des Kampfes oder wenn es die Fähigkeit verliert. Die Fähigkeit hat keinen Effekt für Pokémon außer []{pokemon:darmanitan}."
 162,9,Increases moves' accuracy to 1.1× for friendly Pokémon.,"All friendly Pokémon's moves, including this Pokémon's own moves, have 1.1× their usual accuracy while this Pokémon is in battle."
+162,6,"Erhöht die []{mechanic:accuracy} von Partnern um 10%.","Die []{mechanic:accuracy} der Attacken von Pokémon ist 1.1× so hoch während sie ein Pokémon mit dieser Fähigkeit als Teampartner haben."
 163,9,Bypasses targets' abilities if they could hinder or prevent moves.,"This Pokémon's moves completely ignore abilities that could hinder or prevent their effect on the target.
 
 For example, this Pokémon's moves ignore abilities that would fully negate them, such as []{ability:water-absorb}; abilities that would prevent any of their effects, such as []{ability:clear-body}, []{ability:shell-armor}, or []{ability:sticky-hold}; and abilities that grant any general protective benefit, such as []{ability:simple}, []{ability:snow-cloak}, or []{ability:thick-fat}.  If an ability could either hinder or help this Pokémon's moves, e.g. []{ability:dry-skin} or []{ability:unaware}, the ability is ignored either way.

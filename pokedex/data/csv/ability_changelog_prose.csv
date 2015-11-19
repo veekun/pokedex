@@ -10,7 +10,7 @@ ability_changelog_id,local_language_id,effect
 5,9,Triggers on every hit of multiple-hit moves.
 5,6,"Löst bei jedem Treffer von Attacken die mehrmals treffen aus."
 6,9,[]{move:will-o-wisp} does not trigger this ability for Pokémon immune to [burns]{mechanic:burn}.
-6,9,"[]{move:will-o-wisp} triggert die Fähigkeit nicht bei Pokémon die immun gegen []{mechanic:burn} sind."
+6,6,"[]{move:will-o-wisp} triggert die Fähigkeit nicht bei Pokémon die immun gegen []{mechanic:burn} sind."
 7,9,Has no overworld effect.
 7,6,"Hat außerhalb vom Kampf keinen Effekt."
 8,9,Has no overworld effect.
@@ -18,11 +18,11 @@ ability_changelog_id,local_language_id,effect
 9,9,Does not take effect if acquired after entering battle.
 9,6,"Hat keinen Effekt wenn die Fähigkeit nach Kampfbeginn erlangt wurde."
 10,9,Affects other Pokémon with this ability.
-10,9,"Betrifft andere Pokémon mit dieser Fähigkeit."
+10,6,"Betrifft andere Pokémon mit dieser Fähigkeit."
 11,9,Inflicts only 1/16 of the attacker's maximum [HP]{mechanic:hp} in damage.
 11,6,"Verursacht nur 1/16 der maximalen []{mechanic:hp} des Angreifers Schaden."
 12,9,[]{move:fire-fang} and moves that inflict [typeless damage]{mechanic:typeless-damage} ignore this ability regardless of type.
-12,9,"[]{move:fire-fang} und Attacken die [typenlosen Schaden]{mechanic:typeless-damage} verursachen ignorieren diese Fähigkeit unabhängig von ihrem Typ."
+12,6,"[]{move:fire-fang} und Attacken die [typenlosen Schaden]{mechanic:typeless-damage} verursachen ignorieren diese Fähigkeit unabhängig von ihrem Typ."
 13,9,Has no overworld effect.
 13,6,"Hat außerhalb vom Kampf keinen Effekt."
 14,9,Cannot influence the natures of Pokémon encountered by interacting with them on the overworld.
