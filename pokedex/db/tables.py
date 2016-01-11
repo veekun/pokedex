@@ -102,8 +102,6 @@ class Language(TableBase):
         doc=u"True iff games are produced in the language.")
     order = Column(Integer, nullable=True,
         doc=u"Order for sorting in foreign name lists.")
-    game_id = Column(Integer, nullable=True,
-        doc=u"Numeric ID used in games.")
 
 create_translation_table = partial(multilang.create_translation_table, language_class=Language)
 
