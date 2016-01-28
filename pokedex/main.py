@@ -1,6 +1,7 @@
 # encoding: utf8
 from __future__ import print_function
 
+import locale
 from optparse import OptionParser
 import os
 import sys
@@ -321,7 +322,7 @@ Dump options:
 
     Additionally, load and dump accept a list of table names (possibly with
     wildcards) and/or csv fileames as an argument list.
-""".encode(sys.getdefaultencoding(), 'replace'))
+""".encode(locale.getdefaultlocale()[1], 'replace'))
 
     sys.exit(0)
 
