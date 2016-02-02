@@ -30,44 +30,58 @@ def setuptools_entry():
 def create_parser():
     """Build and return an ArgumentParser.
     """
-    parser = argparse.ArgumentParser(prog='pokedex', description=u'A command-line Pokédex interface')
-    parser.add_argument(
+    # Slightly clumsy workaround to make both `setup -v` and `-v setup` work
+    common_parser = argparse.ArgumentParser(add_help=False)
+    common_parser.add_argument(
         '-e', '--engine', dest='engine_uri', default=None,
         help=u'By default, all commands try to use a SQLite database '
             u'in the pokedex install directory.  Use this option (or '
             u'a POKEDEX_DB_ENGINE environment variable) to specify an '
             u'alternate database.',
         )
-    parser.add_argument(
+    common_parser.add_argument(
         '-i', '--index', dest='index_dir', default=None,
         help=u'By default, all commands try to put the lookup index in '
             u'the pokedex install directory.  Use this option (or a '
             u'POKEDEX_INDEX_DIR environment variable) to specify an '
             u'alternate loction.',
     )
-    parser.add_argument(
+    common_parser.add_argument(
         '-q', '--quiet', dest='verbose', action='store_false',
         help=u'Don\'t print system output.  This is the default for '
             'non-system commands and setup.',
     )
-    parser.add_argument(
+    common_parser.add_argument(
         '-v', '--verbose', dest='verbose', default=False, action='store_true',
         help=u'Print system output.  This is the default for system '
             u'commands, except setup.',
     )
 
+    parser = argparse.ArgumentParser(
+        prog='pokedex', description=u'A command-line Pokédex interface',
+        parents=[common_parser],
+    )
+
     cmds = parser.add_subparsers(title='Commands')
-    cmd_help = cmds.add_parser('help', help=u'Display this message')
+    cmd_help = cmds.add_parser(
+        'help', help=u'Display this message',
+        parents=[common_parser])
     cmd_help.set_defaults(func=command_help)
 
-    cmd_lookup = cmds.add_parser('lookup', help=u'Look up something in the Pokédex')
+    cmd_lookup = cmds.add_parser(
+        'lookup', help=u'Look up something in the Pokédex',
+        parents=[common_parser])
     cmd_lookup.set_defaults(func=command_lookup)
     cmd_lookup.add_argument('criteria', nargs='+')
 
-    cmd_search = cmds.add_parser('search', help=u'Find things by various criteria')
+    cmd_search = cmds.add_parser(
+        'search', help=u'Find things by various criteria',
+        parents=[common_parser])
     pokedex.cli.search.configure_parser(cmd_search)
 
-    cmd_load = cmds.add_parser('load', help=u'Load Pokédex data into a database from CSV files')
+    cmd_load = cmds.add_parser(
+        'load', help=u'Load Pokédex data into a database from CSV files',
+        parents=[common_parser])
     cmd_load.set_defaults(func=command_load, verbose=True)
     # TODO get the actual default here
     cmd_load.add_argument(
@@ -90,7 +104,9 @@ def create_parser():
         'tables', nargs='*',
         help="list of database tables to load (default: all)")
 
-    cmd_dump = cmds.add_parser('dump', help=u'Dump Pokédex data from a database into CSV files')
+    cmd_dump = cmds.add_parser(
+        'dump', help=u'Dump Pokédex data from a database into CSV files',
+        parents=[common_parser])
     cmd_dump.set_defaults(func=command_dump, verbose=True)
     cmd_dump.add_argument(
         '-d', '--directory', dest='directory', default=None,
@@ -102,13 +118,19 @@ def create_parser():
         'tables', nargs='*',
         help="list of database tables to load (default: all)")
 
-    cmd_reindex = cmds.add_parser('reindex', help=u'Rebuild the lookup index from the database')
+    cmd_reindex = cmds.add_parser(
+        'reindex', help=u'Rebuild the lookup index from the database',
+        parents=[common_parser])
     cmd_reindex.set_defaults(func=command_reindex, verbose=True)
 
-    cmd_setup = cmds.add_parser('setup', help=u'Combine load and reindex')
+    cmd_setup = cmds.add_parser(
+        'setup', help=u'Combine load and reindex',
+        parents=[common_parser])
     cmd_setup.set_defaults(func=command_setup, verbose=False)
 
-    cmd_status = cmds.add_parser('status', help=u'Print which engine, index, and csv directory would be used for other commands')
+    cmd_status = cmds.add_parser(
+        'status', help=u'Print which engine, index, and csv directory would be used for other commands',
+        parents=[common_parser])
     cmd_status.set_defaults(func=command_status, verbose=True)
 
     return parser
