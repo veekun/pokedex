@@ -5,6 +5,7 @@ import argparse
 import os
 import sys
 
+import pokedex.cli.search
 import pokedex.db
 import pokedex.db.load
 import pokedex.db.tables
@@ -62,6 +63,9 @@ def create_parser():
     cmd_lookup = cmds.add_parser('lookup', help=u'Look up something in the Pokédex')
     cmd_lookup.set_defaults(func=command_lookup)
     cmd_lookup.add_argument('criteria', nargs='+')
+
+    cmd_search = cmds.add_parser('search', help=u'Find things by various criteria')
+    pokedex.cli.search.configure_parser(cmd_search)
 
     cmd_load = cmds.add_parser('load', help=u'Load Pokédex data into a database from CSV files')
     cmd_load.set_defaults(func=command_load, verbose=True)
