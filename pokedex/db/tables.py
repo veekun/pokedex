@@ -114,11 +114,14 @@ create_translation_table('language_names', Language, 'names',
 ### The actual tables
 
 class Ability(TableBase):
-    u"""An ability a Pokémon can have, such as Static or Pressure."""
+    u"""An ability a Pokémon can have, such as Static or Pressure.
+
+    IDs below 10000 match the internal ID in the games.
+    IDs above 10000 are reserved for Conquest-only abilities.
+    """
     __tablename__ = 'abilities'
     __singlename__ = 'ability'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u"This ability's unique ID; matches the games' internal ID")
+    id = Column(Integer, primary_key=True, nullable=False)
     identifier = Column(Unicode(79), nullable=False,
         doc=u"An identifier",
         info=dict(format='identifier'))
@@ -176,10 +179,11 @@ class Berry(TableBase):
     u"""A Berry, consumable item that grows on trees.
 
     For data common to all items, such as the name, see the corresponding item entry.
+
+    ID matches the in-game berry number.
     """
     __tablename__ = 'berries'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u"This Berry's in-game number")
+    id = Column(Integer, primary_key=True, nullable=False)
     item_id = Column(Integer, ForeignKey('items.id'), nullable=False,
         doc=u"The ID of the item that represents this Berry")
     firmness_id = Column(Integer, ForeignKey('berry_firmness.id'), nullable=False,
@@ -713,12 +717,18 @@ create_translation_table('contest_type_names', ContestType, 'names',
 class EggGroup(TableBase):
     u"""An Egg group. Usually, two Pokémon can breed if they share an Egg Group.
 
-    (exceptions are the Ditto and No Eggs groups)
+    Exceptions:
+
+    Pokémon in the No Eggs group cannot breed.
+
+    Pokemon in the Ditto group can breed with any pokemon
+    except those in the Ditto or No Eggs groups.
+
+    ID matches to the internal ID used in the games.
     """
     __tablename__ = 'egg_groups'
     __singlename__ = 'egg_group'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u"A unique ID for this group")
+    id = Column(Integer, primary_key=True, nullable=False)
     identifier = Column(Unicode(79), nullable=False,
         doc=u"An identifier.",
         info=dict(format='identifier'))
@@ -937,11 +947,13 @@ create_translation_table('growth_rate_prose', GrowthRate, 'prose',
 )
 
 class Item(TableBase):
-    u"""An Item from the games, like "Poké Ball" or "Bicycle". """
+    u"""An Item from the games, like "Poké Ball" or "Bicycle".
+
+    IDs do not mean anything; see ItemGameIndex for the IDs used in the games.
+    """
     __tablename__ = 'items'
     __singlename__ = 'item'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u"A numeric ID")
+    id = Column(Integer, primary_key=True, nullable=False)
     identifier = Column(Unicode(79), nullable=False,
         doc=u"An identifier",
         info=dict(format='identifier'))
@@ -980,7 +992,7 @@ create_translation_table('item_flavor_summaries', Item, 'flavor_summaries',
 )
 
 class ItemCategory(TableBase):
-    u"""An item category. Not official."""
+    u"""An item category.  Not official."""
     __tablename__ = 'item_categories'
     __singlename__ = 'item_category'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -999,7 +1011,7 @@ create_translation_table('item_category_prose', ItemCategory, 'prose',
 )
 
 class ItemFlag(TableBase):
-    u"""An item attribute such as "consumable" or "holdable". """
+    u"""An item attribute such as "consumable" or "holdable".  Not official. """
     __tablename__ = 'item_flags'
     __singlename__ = 'item_flag'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1064,7 +1076,7 @@ class ItemGameIndex(TableBase):
         doc=u"Internal ID of the item in the generation")
 
 class ItemPocket(TableBase):
-    u"""A pocket that categorizes items."""
+    u"""A pocket that categorizes items.  Semi-offical."""
     __tablename__ = 'item_pockets'
     __singlename__ = 'item_pocket'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1165,11 +1177,13 @@ class Machine(TableBase):
         return self.machine_number >= 100
 
 class Move(TableBase):
-    u"""A Move: technique or attack a Pokémon can learn to use."""
+    u"""A Move: technique or attack a Pokémon can learn to use.
+
+    IDs below 10000 match the internal IDs used in the games.
+    IDs above 10000 are reserved for Shadow moves from Colosseum and XD."""
     __tablename__ = 'moves'
     __singlename__ = 'move'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u"A numeric ID")
+    id = Column(Integer, primary_key=True, nullable=False)
     identifier = Column(Unicode(79), nullable=False,
         doc=u"An identifier",
         info=dict(format='identifier'))
@@ -1603,11 +1617,13 @@ class Pokemon(TableBase):
     different types, moves, or other game-changing properties counts as a
     different Pokémon.  For example, this table contains four rows for Deoxys,
     but only one for Unown.
+
+    Non-default forms have IDs above 10000.
+    IDs below 10000 match the species_id column, for convenience.
     """
     __tablename__ = 'pokemon'
     __singlename__ = 'pokemon'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u"A numeric ID")
+    id = Column(Integer, primary_key=True, nullable=False)
     identifier = Column(Unicode(79), nullable=False,
         doc=u'An identifier, including form iff this row corresponds to a single, named form',
         info=dict(format='identifier'))
@@ -1789,11 +1805,15 @@ class PokemonForm(TableBase):
     color differences) of every Pokémon, regardless of how the games treat
     them.  Even Pokémon with no alternate forms have one row in this table, to
     represent their lone "normal" form.
+
+    Forms which are not the default for their species have IDs above 10000.
+    IDs below 10000 correspond to ID of the species for convenience,
+    but this should not be relied upon.
+    To get the species ID of a form, join with the pokemon table.
     """
     __tablename__ = 'pokemon_forms'
     __singlename__ = 'pokemon_form'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u'A unique ID for this form.')
+    id = Column(Integer, primary_key=True, nullable=False)
     identifier = Column(Unicode(79), nullable=False,
         doc=u"A unique identifier for this form among all forms of all Pokémon",
         info=dict(format='identifier'))
@@ -1960,11 +1980,13 @@ create_translation_table('pokemon_shape_prose', PokemonShape, 'prose',
 )
 
 class PokemonSpecies(TableBase):
-    u"""A Pokémon species: the standard 1–151.  Or 649.  Whatever. """
+    u"""A Pokémon species: the standard 1–151.  Or 649.  Whatever.
+
+    ID matches the National Pokédex number of the species.
+    """
     __tablename__ = 'pokemon_species'
     __singlename__ = 'pokemon_species'
-    id = Column(Integer, primary_key=True, nullable=False,
-        doc=u"A numeric ID")
+    id = Column(Integer, primary_key=True, nullable=False)
     identifier = Column(Unicode(79), nullable=False,
         doc=u"An identifier",
         info=dict(format='identifier'))
