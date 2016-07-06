@@ -898,8 +898,8 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10176,glalie-mega,mega,10074,16,1,1,1,2,464
 10177,diancie-mega,mega,10075,16,1,1,1,2,890
 10178,metagross-mega,mega,10076,16,1,1,1,2,481
-10179,kyogre-primal,primal,10077,16,1,0,0,2,490
-10180,groudon-primal,primal,10078,16,1,0,0,2,492
+10179,kyogre-primal,primal,10077,16,1,1,0,2,490
+10180,groudon-primal,primal,10078,16,1,1,0,2,492
 10181,rayquaza-mega,mega,10079,16,1,1,1,2,494
 10182,pikachu-rock-star,rock-star,10080,16,1,0,0,3,35
 10183,pikachu-belle,belle,10081,16,1,0,0,4,36
