@@ -422,10 +422,6 @@ id,location_id,game_index,identifier
 465,499,15,3f
 466,161,16,
 467,161,19,b1f
-468,162,20,center
-469,162,21,area-1-east
-470,162,22,area-2-north
-471,162,23,area-3-west
 472,147,24,1f
 473,147,25,2f
 474,147,26,b1f
