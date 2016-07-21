@@ -29,7 +29,7 @@ move_meta_ailment_id,local_language_id,name
 14,9,Yawn
 15,5,Anti-Soin
 15,9,Heal Block
-17,5,
+17,5,Aucune immunité aux types
 17,9,No type immunity
 18,5,Vampigraine
 18,9,Leech Seed
