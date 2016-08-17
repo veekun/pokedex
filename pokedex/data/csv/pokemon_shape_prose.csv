@@ -18,12 +18,12 @@ pokemon_shape_id,local_language_id,name,awesome_name,description
 3,9,Fish,Ichthyic,Pokémon with fins
 4,9,Arms,Brachial,Pokémon consisting of a head and arms
 5,9,Blob,Alvine,Pokémon consisting of a head and a base
-6,9,Upright,Sciurine,"Pokémon with a bipedal, tailed form"
+6,9,Upright,Sciurine,Pokémon with a bipedal, tailed form
 7,9,Legs,Crural,Pokémon consisting of a head and legs
 8,9,Quadruped,Mensal,Pokémon with a quadruped body
 9,9,Wings,Alar,Pokémon with a single pair of wings
 10,9,Tentacles,Cilial,Pokémon with tentacles or a multiped body
 11,9,Heads,Polycephalic,Pokémon consisting of multiple bodies
-12,9,Humanoid,Anthropomorphic,"Pokémon with a bipedal, tailless form"
+12,9,Humanoid,Anthropomorphic,Pokémon with a bipedal, tailless form
 13,9,Bug wings,Lepidopterous,Pokémon with two or more pairs of wings
 14,9,Armor,Chitinous,Pokémon with an insectoid body
