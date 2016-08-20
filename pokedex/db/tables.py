@@ -1977,6 +1977,9 @@ create_translation_table('pokemon_shape_prose', PokemonShape, 'prose',
     awesome_name = Column(Unicode(79), nullable=True,
         doc=u"A splendiferous name of the body shape",
         info=dict(format='plaintext')),
+    description = Column(UnicodeText, nullable=True,
+        doc=u"A detailed description of the body shape",
+        info=dict(format='plaintext')),
 )
 
 class PokemonSpecies(TableBase):
