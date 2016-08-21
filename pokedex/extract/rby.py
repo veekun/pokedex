@@ -14,13 +14,13 @@ import hashlib
 import io
 import logging
 from pathlib import Path
-import re
 import sys
 
 from camel import Camel
 from classtools import reify
 from construct import *
 
+from pokedex.extract.lib.gbz80 import find_code
 import pokedex.schema as schema
 
 # TODO set this up to colorcode and use {} formatting
@@ -1167,8 +1167,6 @@ pokemon_struct = Struct(
     Padding(1),
 )
 
-pokemon_name_struct = PokemonCString('pokemon_name', 10)
-
 
 evos_moves_struct = Struct(
     'evos_moves',
@@ -1281,28 +1279,17 @@ class RBYCart:
         Return a dict of raw file offsets.  The keys are the names used in the
         pokered project.
         """
-        # The base stats are always in the same place in RBY, and only slightly
-        # off in RG.  Not sure why!  But it hopefully means recompilation
-        # doesn't affect them.
-        addresses = {
-            # These ones have, thusfar, defied automatic detection, as they're
-            # just part of a big old block of data — so I can't just look for
-            # code nearby.
-            # TODO these are for rby; fix for rg, and maybe y?
-            'BaseStats': unbank('0E:43DE'),
-            'MewBaseStats': unbank('01:425B'),
-        }
-
-        # For everything else, the general approach is to find some assembly
-        # code that appears just before the data of interest.  It's pretty
-        # hacky, but since translators (and even modders) would have little
-        # reason to rearrange functions or inject new ones in these odd places,
-        # it ought to work well enough.  And it's better than ferreting out and
-        # hard-coding piles of addresses.
+        # The ideal approach is to find some assembly code that appears just
+        # before the data of interest.  It's pretty hacky, but since
+        # translators (and even modders) would have little reason to rearrange
+        # functions or inject new ones in these odd places, it ought to work
+        # well enough.  And it's better than ferreting out and hard-coding
+        # piles of addresses.
         # The only hard part is that assembly code that contains an address
         # won't work, since that address will also vary per game.
         # Each of the landmarks used here appears in every official cartridge
         # exactly once.
+        addresses = {}
 
         # This is an entire function used by the Pokédex and which immediately
         # precedes all the flavor text.
@@ -1322,6 +1309,72 @@ class RBYCart:
             raise CartDetectionError("Can't find evolution and moveset table")
         addresses['EvosMovesPointerTable'] = idx + len(asm_WriteMonMoves_ShiftMoveData) + 5
 
+        # Several lists of names are accessed by a single function, which looks
+        # through a list of pointers to find the right set of names to use.
+        # That's great news for me: I can just grab all of those delicious
+        # pointers at once.  Here's an excerpt from GetName.
+        match = find_code(self.data, '''
+            inc d
+            ;.skip
+            ld hl, #NamePointers
+            add hl,de
+            ld a,[hl+]
+            ldh [$96],a
+            ld a,[hl]
+            ldh [$95],a
+            ldh a,[$95]
+            ld h,a
+            ldh a,[$96]
+            ld l,a
+            ld a,[#wd0b5]
+            ld b,a
+            ld c,0
+            ;.nextName
+            ld d,h
+            ld e,l
+            ;.nextChar
+            ld a,[hl+]
+            cp $50  ; terminator @, encoded
+        ''')
+        if not match:
+            raise CartDetectionError("Can't find name array")
+        rem, inputs = match
+        start = inputs['NamePointers']
+        name_pointers = Array(7, ULInt16('dummy')).parse(
+            self.data[start:start + 14])
+        # One downside to the Game Boy memory structure is that banks are
+        # not stored anywhere near their corresponding addresses.  Most
+        # bank numbers are hardcoded here, but Pokémon names are in a different
+        # bank in Japanese games, so we've gotta scrape the bank too...
+        match = find_code(self.data, '''
+        ;GetMonName::
+            push hl
+            ldh a,[#H_LOADEDROMBANK]
+            push af
+            ld a,#BANK_MonsterNames
+            ldh [#H_LOADEDROMBANK],a
+            ld [#MBC1RomBank],a
+            ld a,[#wd11e]
+            dec a
+            ld hl,#MonsterNames
+        ''',
+            H_LOADEDROMBANK=0xB8,  # full address is $FFB8; ldh adds the $FF
+            MBC1RomBank=0x2000,
+            MonsterNames=name_pointers[0]
+        )
+        if not match:
+            raise CartDetectionError("Can't find Pokémon names")
+        rem, inputs = match
+
+        addresses['MonsterNames'] = unbank(
+            inputs['BANK_MonsterNames'], name_pointers[0])
+        addresses['MoveNames'] = unbank(0x2C, name_pointers[1])
+        # 2: UnusedNames  (unused, obviously)
+        addresses['ItemNames'] = unbank(0x01, name_pointers[3])
+        # 4: wPartyMonOT  (only useful while the game is running)
+        # 5: wEnemyMonOT  (only useful while the game is running)
+        addresses['TrainerNames'] = unbank(0x0E, name_pointers[6])
+
         # Finding TMs is a bit harder.  They come right after a function for
         # looking up a TM number, which is very short and very full of
         # addresses.  So here's a regex.
@@ -1330,26 +1383,29 @@ class RBYCart:
         # In English it is, unsurprisingly, 0xD11E.
         # `TechnicalMachines` is the address we're looking for, which should
         # immediately follow what this matches.
-        asm_TMToMove_rx = re.compile(rb'''
-            \xfa (..)   # ld a, [wd11e]
-            \x3d        # dec a
-            \x21 (..)   # ld hl, TechnicalMachines
-            \x06 \x00   # ld b, $0
-            \x4f        # ld c, a
-            \x09        # add hl, bc
-            \x7e        # ld a, [hl]
-            \xea \1     # ld [wd11e], a
-            \xc9        # ret
-        ''', flags=re.DOTALL | re.VERBOSE)
-        for match in asm_TMToMove_rx.finditer(self.data):
-            matched_addr = ULInt16('...').parse(match.group(2))
-            tentative_addr = match.end()
+        match = find_code(self.data, '''
+            ld a, [#wd11e]
+            dec a
+            ld hl, #TechnicalMachines
+            ld b, $0
+            ld c, a
+            add hl, bc
+            ld a, [hl]
+            ld [#wd11e], a
+            ret
+        ''')
+        if match:
+            rem, inputs = match
+            # TODO this should mayybe also check that the address immediately follows this code
+            matched_addr = inputs['TechnicalMachines']
+            tentative_addr = rem.end()
             # Remember, addresses don't include the bank!
             _, banked_addr = bank(tentative_addr)
             if matched_addr == banked_addr:
-                asm_wd11e_addr = match.group(1)
+                asm_wd11e_addr = inputs['wd11e']
                 addresses['TechnicalMachines'] = tentative_addr
-                break
+            else:
+                raise RuntimeError
             # TODO should there really be more than one match?
         else:
             raise CartDetectionError("Can't find technical machines list")
@@ -1359,61 +1415,107 @@ class RBYCart:
         # These are almost immediately after the Pokédex entries themselves,
         # but this actually seems easier than figuring out where a table of
         # pointers ends.
-        asm_IndexToPokedex_rx = re.compile(rb'''
-            \xc5        # push bc
-            \xe5        # push hl
-            \xfa (..)   # ld a,[wd11e]
-            \x3d        # dec a
-            \x21 (..)   # ld hl,PokedexOrder
-            \x06 \x00   # ld b,0
-            \x4f        # ld c,a
-            \x09        # add hl,bc
-            \x7e        # ld a,[hl]
-            \xea \1     # ld [wd11e],a
-            \xe1        # pop hl
-            \xc1        # pop bc
-            \xc9        # ret
-        ''', flags=re.DOTALL | re.VERBOSE)
-        for match in asm_IndexToPokedex_rx.finditer(self.data):
-            matched_addr = ULInt16('...').parse(match.group(2))
-            tentative_addr = match.end()
+        match = find_code(self.data, '''
+            push bc
+            push hl
+            ld a, [#wd11e]
+            dec a
+            ld hl, #PokedexOrder
+            ld b, 0
+            ld c, a
+            add hl, bc
+            ld a, [hl]
+            ld [#wd11e], a
+            pop hl
+            pop bc
+            ret
+        ''', wd11e=asm_wd11e_addr)
+        if match:
+            rem, inputs = match
+            matched_addr = inputs['PokedexOrder']
+            tentative_addr = rem.end()
             # Remember, addresses don't include the bank!
             _, banked_addr = bank(tentative_addr)
-            if matched_addr == banked_addr and asm_wd11e_addr == match.group(1):
+            if matched_addr == banked_addr:
                 addresses['PokedexOrder'] = tentative_addr
-                break
+            else:
+                raise RuntimeError
         else:
             raise CartDetectionError("Can't find Pokédex order")
 
-        # This is assembly code that appears near the end of a function called
-        # WaitForSoundToFinish.
-        end_of_WaitForSoundToFinish = bytes.fromhex('afb6 23b6 2323 b6')
-        try:
-            idx = self.data.index(end_of_WaitForSoundToFinish)
-        except ValueError:
-            raise CartDetectionError("Can't find name array")
-        # There are a couple more bytes in the function, but they involve an
-        # address so they can't be searched for.  Red/Green/Blue have four;
-        # Yellow has an extra 'and', which is annoying, but at least easy to
-        # handle.
-        start = idx + len(end_of_WaitForSoundToFinish)
-        if self.data[start] == 0xA7:
-            # Yellow; skip one more byte
-            start += 1
-        start += 4
-
-        name_pointers = Array(7, ULInt16('dummy')).parse(self.data[start:start + 14])
-        # One downside to the Game Boy memory structure is that banks are not
-        # stored anywhere near their corresponding addresses, so the bank
-        # numbers are hardcoded here.  They're fairly unlikely to change
-        # between games.  Right?  Probably?
-        addresses['MonsterNames'] = unbank(0x07, name_pointers[0])
-        addresses['MoveNames'] = unbank(0x2C, name_pointers[1])
-        # 2: UnusedNames  (unused, obviously)
-        addresses['ItemNames'] = unbank(0x01, name_pointers[3])
-        # 4: wPartyMonOT  (only useful while the game is running)
-        # 5: wEnemyMonOT  (only useful while the game is running)
-        addresses['TrainerNames'] = unbank(0x0E, name_pointers[6])
+        # Ah, but then, we have base stats.  These don't have code nearby;
+        # they're just stuck immediately after moves.  Except in R/G, where
+        # they appear /before/ moves!  And we don't know what version we're
+        # running yet, because the addresses detected in this method are used
+        # for language detection.  Hmm.
+        # Here's plan B: look for the function that /loads/ base stats, and
+        # scrape the address out of it.  This function is a bit hairy; I've had
+        # to expand some of pokered's macros and rewrite the jumps to something
+        # that the rudimentary code matcher can understand.
+        match = find_code(self.data, '''
+            ldh a, [#H_LOADEDROMBANK]
+            push af
+            ld a, #BANK_BaseStats
+            ldh [#H_LOADEDROMBANK], a
+            ld [#MBC1RomBank], a
+            push bc
+            push de
+            push hl
+            ld a, [#wd11e]
+            push af
+            ld a,[#wd0b5]
+            ld [#wd11e],a
+            ld de,#FossilKabutopsPic
+            ld b,$66 ; size of Kabutops fossil and Ghost sprites
+            cp #FOSSIL_KABUTOPS ; Kabutops fossil
+            jr z,#specialID1
+            ld de,#GhostPic
+            cp #MON_GHOST ; Ghost
+            jr z,#specialID2
+            ld de,#FossilAerodactylPic
+            ld b,$77 ; size of Aerodactyl fossil sprite
+            cp #FOSSIL_AERODACTYL ; Aerodactyl fossil
+            jr z,#specialID3
+            cp #MEW
+            jr z,#mew
+            ld a, #IndexToPokedexPredef
+            call #IndexToPokedex   ; convert pokemon ID in [wd11e] to pokedex number
+            ld a,[#wd11e]
+            dec a
+            ld bc, #MonBaseStatsLength
+            ld hl, #BaseStats
+            call #AddNTimes
+            ld de, #wMonHeader
+            ld bc, #MonBaseStatsLength
+            call #CopyData
+            jr #done1
+            ;.specialID
+            ld hl, #wMonHSpriteDim
+            ld [hl], b ; write sprite dimensions
+            inc hl
+            ld [hl], e ; write front sprite pointer
+            inc hl
+            ld [hl], d
+            jr #done2
+            ;.mew
+            ld hl, #MewBaseStats
+            ld de, #wMonHeader
+            ld bc, #MonBaseStatsLength
+            ld a, #BANK_MewBaseStats
+            call #FarCopyData
+        ''',
+            # These are constants; I left them in the above code for clarity
+            H_LOADEDROMBANK=0xB8,  # full address is $FFB8; ldh adds the $FF
+            MBC1RomBank=0x2000,
+            # This was scraped previously
+            wd11e=asm_wd11e_addr,
+        )
+        if match:
+            rem, inputs = match
+            addresses['BaseStats'] = unbank(inputs['BANK_BaseStats'], inputs['BaseStats'])
+            addresses['MewBaseStats'] = unbank(inputs['BANK_MewBaseStats'], inputs['MewBaseStats'])
+        else:
+            raise CartDetectionError("Can't find base stats")
 
         return addresses
 
@@ -1612,7 +1714,12 @@ class RBYCart:
         ret = [None] * self.NUM_POKEMON
 
         self.stream.seek(self.addrs['MonsterNames'])
-        for index, pokemon_name in enumerate(Array(self.max_pokemon_index, pokemon_name_struct).parse_stream(self.stream), start=1):
+        # TODO i don't like this, but they don't have explicit terminators...
+        if self.language == 'ja':
+            name_length = 5
+        else:
+            name_length = 10
+        for index, pokemon_name in enumerate(Array(self.max_pokemon_index, PokemonCString('...', name_length)).parse_stream(self.stream), start=1):
             try:
                 id = self.pokedex_order[index]
             except KeyError:
@@ -1631,7 +1738,6 @@ class RBYCart:
     def pokemon_records(self):
         """List of pokemon_structs."""
         self.stream.seek(self.addrs['BaseStats'])
-        print(self.stream.read(100).hex())
         records = Array(self.NUM_POKEMON - 1, pokemon_struct).parse_stream(self.stream)
         # Mew's data is, awkwardly, stored separately
         self.stream.seek(self.addrs['MewBaseStats'])
