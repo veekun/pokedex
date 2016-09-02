@@ -1276,6 +1276,8 @@ class MoveDamageClass(TableBase):
     identifier = Column(Unicode(79), nullable=False,
         doc=u"An identifier",
         info=dict(format='identifier'))
+    color_code = Column(Unicode(79), nullable=True,
+        doc=u"The ARGB color code of the DamageClass")
 
 create_translation_table('move_damage_class_prose', MoveDamageClass, 'prose',
     relation_lazy='joined',
@@ -2158,6 +2160,8 @@ class Type(TableBase):
         doc=u"The ID of the generation this type first appeared in.")
     damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=True,
         doc=u"The ID of the damage class this type's moves had before Generation IV, null if not applicable (e.g. ???).")
+    color_code = Column(Unicode(79), nullable=True,
+        doc=u"The ARGB color code of the type")
 
 create_translation_table('type_names', Type, 'names',
     relation_lazy='joined',

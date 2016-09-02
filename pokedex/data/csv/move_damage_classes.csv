@@ -1,4 +1,4 @@
-id,identifier
-1,status
-2,physical
-3,special
+id,identifier,color_code
+1,status,"#FF969296"
+2,physical,"#FFCE2918"
+3,special,"#FF5A637B"
