@@ -186,6 +186,7 @@ gbz80_instructions = {
     0x7e: 'ld a, [hl]',
     0x7f: 'ld a, a',
 
+    # TODO understand these as both "add a, b" and "add a"
     0x80: 'add a, b',
     0x81: 'add a, c',
     0x82: 'add a, d',
@@ -305,6 +306,7 @@ gbz80_instructions = {
     0xee: 'xor #d8',
     0xef: 'rst $28',
 
+    # TODO really want better support for this
     0xf0: 'ldh a, [#a8]',
     0xf1: 'pop af',
     0xf2: 'ld a, [$ff00+c]',  # XXX table says 1 but this looks like 1 to me
@@ -599,7 +601,9 @@ def find_code(haystack, needle, **kwargs):
             if inputs is not None:
                 break
         else:
-            raise SyntaxError
+            raise SyntaxError(
+                "Can't figure out what instruction corresponds to: "
+                + instruction)
 
         instr = candidate
         pattern_chunks.append(re.escape(instr.prefix))

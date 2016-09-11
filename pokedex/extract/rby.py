@@ -1300,14 +1300,70 @@ class RBYCart:
             raise CartDetectionError("Can't find flavor text pointers")
         addresses['PokedexEntryPointers'] = idx + len(asm_DrawTileLine)
 
-        # This is a helper function for figuring out moves, followed by another
-        # 5-byte function, then the table of evolutions and moves.
-        asm_WriteMonMoves_ShiftMoveData = bytes.fromhex('0e03 131a 220d 20fa c9')
-        try:
-            idx = self.data.index(asm_WriteMonMoves_ShiftMoveData)
-        except ValueError:
+
+        match = find_code(self.data, '''
+        ;EvolutionAfterBattle:
+            ldh a, [#hTilesetType]
+            push af
+            xor a
+            ld [#wEvolutionOccurred], a
+            dec a
+            ld [#wWhichPokemon], a
+            push hl
+            push bc
+            push de
+            ld hl, #wPartyCount
+            push hl
+
+        ;Evolution_PartyMonLoop: ; loop over party mons
+            ld hl, #wWhichPokemon
+            inc [hl]
+            pop hl
+            inc hl
+            ld a, [hl]
+            cp $ff ; have we reached the end of the party?
+            jp z, #_done
+            ld [#wEvoOldSpecies], a
+            push hl
+            ld a, [#wWhichPokemon]
+            ld c, a
+            ld hl, #wCanEvolveFlags
+            ld b, #FLAG_TEST
+            call #Evolution_FlagAction
+            ld a, c
+            and a ; is the mon's bit set?
+            jp z, #Evolution_PartyMonLoop ; if not, go to the next mon
+            ld a, [#wEvoOldSpecies]
+            dec a
+            ld b, 0
+            ld hl, #EvosMovesPointerTable
+            add a, a
+            rl b
+            ld c, a
+            add hl, bc
+            ld a, [hl+]
+            ld h, [hl]
+            ld l, a
+            push hl
+            ld a, [#wcf91]
+            push af
+            xor a ; PLAYER_PARTY_DATA
+            ld [#wMonDataLocation], a
+            call #LoadMonData
+            pop af
+            ld [#wcf91], a
+            pop hl
+        ''',
+            hTilesetType=0xD7,  # FFD7
+        )
+        if not match:
             raise CartDetectionError("Can't find evolution and moveset table")
-        addresses['EvosMovesPointerTable'] = idx + len(asm_WriteMonMoves_ShiftMoveData) + 5
+        rem, inputs = match
+        # As usual, there's no bank given...  but this code has to be in the
+        # same bank as the data it loads!
+        codebank, _ = bank(rem.start())
+        addresses['EvosMovesPointerTable'] = unbank(
+            codebank, inputs['EvosMovesPointerTable'])
 
         # Several lists of names are accessed by a single function, which looks
         # through a list of pointers to find the right set of names to use.
@@ -1352,11 +1408,6 @@ class RBYCart:
             ldh a,[#H_LOADEDROMBANK]
             push af
             ld a,#BANK_MonsterNames
-            ldh [#H_LOADEDROMBANK],a
-            ld [#MBC1RomBank],a
-            ld a,[#wd11e]
-            dec a
-            ld hl,#MonsterNames
         ''',
             H_LOADEDROMBANK=0xB8,  # full address is $FFB8; ldh adds the $FF
             MBC1RomBank=0x2000,
@@ -1451,69 +1502,103 @@ class RBYCart:
         # Here's plan B: look for the function that /loads/ base stats, and
         # scrape the address out of it.  This function is a bit hairy; I've had
         # to expand some of pokered's macros and rewrite the jumps to something
-        # that the rudimentary code matcher can understand.
-        match = find_code(self.data, '''
-            ldh a, [#H_LOADEDROMBANK]
-            push af
-            ld a, #BANK_BaseStats
-            ldh [#H_LOADEDROMBANK], a
-            ld [#MBC1RomBank], a
-            push bc
-            push de
-            push hl
-            ld a, [#wd11e]
-            push af
-            ld a,[#wd0b5]
-            ld [#wd11e],a
-            ld de,#FossilKabutopsPic
-            ld b,$66 ; size of Kabutops fossil and Ghost sprites
-            cp #FOSSIL_KABUTOPS ; Kabutops fossil
-            jr z,#specialID1
-            ld de,#GhostPic
-            cp #MON_GHOST ; Ghost
-            jr z,#specialID2
-            ld de,#FossilAerodactylPic
-            ld b,$77 ; size of Aerodactyl fossil sprite
-            cp #FOSSIL_AERODACTYL ; Aerodactyl fossil
-            jr z,#specialID3
-            cp #MEW
-            jr z,#mew
-            ld a, #IndexToPokedexPredef
-            call #IndexToPokedex   ; convert pokemon ID in [wd11e] to pokedex number
-            ld a,[#wd11e]
-            dec a
-            ld bc, #MonBaseStatsLength
-            ld hl, #BaseStats
-            call #AddNTimes
-            ld de, #wMonHeader
-            ld bc, #MonBaseStatsLength
-            call #CopyData
-            jr #done1
-            ;.specialID
-            ld hl, #wMonHSpriteDim
-            ld [hl], b ; write sprite dimensions
-            inc hl
-            ld [hl], e ; write front sprite pointer
-            inc hl
-            ld [hl], d
-            jr #done2
-            ;.mew
-            ld hl, #MewBaseStats
-            ld de, #wMonHeader
-            ld bc, #MonBaseStatsLength
-            ld a, #BANK_MewBaseStats
-            call #FarCopyData
-        ''',
-            # These are constants; I left them in the above code for clarity
-            H_LOADEDROMBANK=0xB8,  # full address is $FFB8; ldh adds the $FF
-            MBC1RomBank=0x2000,
-            # This was scraped previously
-            wd11e=asm_wd11e_addr,
+        # that the rudimentary code matcher can understand.  Also, there were
+        # two edits made in Yellow: bank switching is done with a function
+        # rather inlined, and Mew is no longer separate.
+        # TODO i guess it would be nice if find_code could deal with this,
+        # seeing as it IS just a regex, but i don't know how i'd cram the
+        # syntax in without a real parser™
+        rgb_bits = dict(
+            bankswitch="""
+                ldh [#H_LOADEDROMBANK], a
+                ld [#MBC1RomBank], a
+            """,
+            mewjump="""
+                cp #MEW
+                jr z,#mew
+            """,
+            mewblock="""
+                jr #done2
+                ;.mew
+                ld hl, #MewBaseStats
+                ld de, #wMonHeader
+                ld bc, #MonBaseStatsLength
+                ld a, #BANK_MewBaseStats
+                call #FarCopyData
+            """,
         )
-        if match:
-            rem, inputs = match
-            addresses['BaseStats'] = unbank(inputs['BANK_BaseStats'], inputs['BaseStats'])
-            addresses['MewBaseStats'] = unbank(inputs['BANK_MewBaseStats'], inputs['MewBaseStats'])
+        yellow_bits = dict(
+            bankswitch="""
+                call #BankswitchCommon
+            """,
+            mewjump="",
+            mewblock="",
+        )
+        for bits in (rgb_bits, yellow_bits):
+            code = '''
+                ldh a, [#H_LOADEDROMBANK]
+                push af
+                ld a, #BANK_BaseStats
+                {bankswitch}
+                push bc
+                push de
+                push hl
+                ld a, [#wd11e]
+                push af
+                ld a,[#wd0b5]
+                ld [#wd11e],a
+                ld de,#FossilKabutopsPic
+                ld b,$66 ; size of Kabutops fossil and Ghost sprites
+                cp #FOSSIL_KABUTOPS ; Kabutops fossil
+                jr z,#specialID1
+                ld de,#GhostPic
+                cp #MON_GHOST ; Ghost
+                jr z,#specialID2
+                ld de,#FossilAerodactylPic
+                ld b,$77 ; size of Aerodactyl fossil sprite
+                cp #FOSSIL_AERODACTYL ; Aerodactyl fossil
+                jr z,#specialID3
+                {mewjump}
+                ld a, #IndexToPokedexPredef
+                call #IndexToPokedex   ; convert pokemon ID in [wd11e] to pokedex number
+                ld a,[#wd11e]
+                dec a
+                ld bc, #MonBaseStatsLength
+                ld hl, #BaseStats
+                call #AddNTimes
+                ld de, #wMonHeader
+                ld bc, #MonBaseStatsLength
+                call #CopyData
+                jr #done1
+                ;.specialID
+                ld hl, #wMonHSpriteDim
+                ld [hl], b ; write sprite dimensions
+                inc hl
+                ld [hl], e ; write front sprite pointer
+                inc hl
+                ld [hl], d
+                {mewblock}
+            '''.format(**bits)
+
+            match = find_code(
+                self.data,
+                code,
+                # These are constants; I left them in the above code for clarity
+                H_LOADEDROMBANK=0xB8,  # full address is $FFB8; ldh adds the $FF
+                MBC1RomBank=0x2000,
+                # This was scraped previously
+                wd11e=asm_wd11e_addr,
+            )
+            if match:
+                rem, inputs = match
+                addresses['BaseStats'] = unbank(
+                    inputs['BANK_BaseStats'], inputs['BaseStats'])
+                if 'MewBaseStats' in inputs:
+                    addresses['MewBaseStats'] = unbank(
+                        inputs['BANK_MewBaseStats'], inputs['MewBaseStats'])
+                else:
+                    addresses['MewBaseStats'] = None
+                break
         else:
             raise CartDetectionError("Can't find base stats")
 
@@ -1738,10 +1823,13 @@ class RBYCart:
     def pokemon_records(self):
         """List of pokemon_structs."""
         self.stream.seek(self.addrs['BaseStats'])
-        records = Array(self.NUM_POKEMON - 1, pokemon_struct).parse_stream(self.stream)
-        # Mew's data is, awkwardly, stored separately
-        self.stream.seek(self.addrs['MewBaseStats'])
-        records.append(pokemon_struct.parse_stream(self.stream))
+        # Mew's data is, awkwardly, stored separately pre-Yellow
+        if self.addrs['MewBaseStats']:
+            records = Array(self.NUM_POKEMON - 1, pokemon_struct).parse_stream(self.stream)
+            self.stream.seek(self.addrs['MewBaseStats'])
+            records.append(pokemon_struct.parse_stream(self.stream))
+        else:
+            records = Array(self.NUM_POKEMON, pokemon_struct).parse_stream(self.stream)
 
         return records
 
