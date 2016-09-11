@@ -24,7 +24,7 @@ from construct import *
 from pokedex.extract.lib.gbz80 import find_code
 import pokedex.schema as schema
 
-# TODO set this up to colorcode and use {} formatting
+# TODO set this up to colorcode, probably put that...  elsewhere
 log = logging.getLogger(__name__)
 
 # Known official games, the languages they were released in, and hashes of
@@ -495,427 +495,74 @@ def bank(addr):
     return bank, addr
 
 
-EN_TEXT_MAP = {
-    # Sort of faux movement macros
-    0x00: "",   # "Start text"?
-    0x4E: "\n", # Move to next line
-    0x49: "\f", # Start a new Pokédex page
-    0x5F: ".",   # End of Pokédex entry, adds a period
+JA_CHARMAP = dict(enumerate([
+    # 0x
+    # 00 appears at the beginning of a lot of Pokédex entries?
+    "", "イ゛", "ヴ", "エ゛", "オ゛", "ガ", "ギ", "グ",
+    "ゲ", "ゴ", "ザ", "ジ", "ズ", "ゼ", "ゾ", "ダ",
+    # 1x
+    "ヂ", "ヅ", "デ", "ド", "ナ゛", "ニ゛", "ヌ゛", "ネ゛",
+    "ノ゛", "バ", "ビ", "ブ", "ボ", "マ゛", "ミ゛", "ム゛",
+    # 2x
+    "ィ゛", "あ゛", "い゛", "ゔ", "え゛", "お゛", "が", "ぎ",
+    "ぐ", "げ", "ご", "ざ", "じ", "ず", "ぜ", "ぞ",
+    # 3x
+    "だ", "ぢ", "づ", "で", "ど", "な゛", "に゛", "ぬ゛",
+    "ね゛", "の゛", "ば", "び", "ぶ", "べ", "ぼ", "ま゛",
+    # 4x
+    # 4F is the Pokédex newline
+    # 4E is the dialogue newline (puts the cursor on the bottom line)
+    "パ", "ピ", "プ", "ポ", "ぱ", "ぴ", "ぷ", "ぺ",
+    "ぽ", "\f", "が　", "も゜", "�", "�", "\n", "\n",
+    # 5x
+    # 50 is the string terminator, represented by @ in pokered
+    # 51 prompts for a button press, then clears the screen
+    # 52 is the player's name
+    # 53 is the rival's name
+    # 55 prompts for a button press, then scrolls up one line
+    # 57 ends dialogue, invisibly
+    # 58 ends dialogue, visibly
+    # 59 is the inactive Pokémon in battle
+    # 5A is the active Pokémon in battle
+    # 5F marks the end of a Pokédex entry, which automaticaly adds a period
+    "@", "�", "�", "�", "ポケモン", "�", "……", "�",
+    "�", "�", "�", "パソコン", "わざマシン", "トレーナー", "ロケットだん", "。",
+    # 6x
+    "A", "B", "C", "D", "E", "F", "G", "H",
+    "I", "V", "S", "L", "M", "：", "ぃ", "ぅ",
+    # 7x
+    # 79 - 7E are the TL, T/B, TR, L/R, BL, and BR of the text box
+    "「", "」", "『", "』", "・", "…", "ぁ", "ぇ",
+    "ぉ", "╔", "═", "╗", "║", "╚", "╝", "　",
+    # 8x
+    "ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク",
+    "ケ", "コ", "サ", "シ", "ス", "セ", "ソ", "タ",
+    # 9x
+    "チ", "ツ", "テ", "ト", "ナ", "ニ", "ヌ", "ネ",
+    "ノ", "ハ", "ヒ", "フ", "ホ", "マ", "ミ", "ム",
+    # Ax
+    "メ", "モ", "ヤ", "ユ", "ヨ", "ラ", "ル", "レ",
+    "ロ", "ワ", "ヲ", "ン", "ッ", "ャ", "ュ", "ョ",
+    # Bx
+    "ィ", "あ", "い", "う", "え", "お", "か", "き",
+    "く", "け", "こ", "さ", "し", "す", "せ", "そ",
+    # Cx
+    "た", "ち", "つ", "て", "と", "な", "に", "ぬ",
+    "ね", "の", "は", "ひ", "ふ", "へ", "ほ", "ま",
+    # Dx
+    "み", "む", "め", "も", "や", "ゆ", "よ", "ら",
+    "り", "る", "れ", "ろ", "わ", "を", "ん", "っ",
+    # Ex
+    "ゃ", "ゅ", "ょ", "ー", "゜", "゛", " ?", " !",
+    "。", "ァ", "ゥ", "ェ", "▷", "▶", "▼", "♂",
+    # Fx
+    "円", "×", ".", "/", "ォ", "♀", "0", "1",
+    "2", "3", "4", "5", "6", "7", "8", "9",
+]))
 
-    0x05: "ガ",
-    0x06: "ギ",
-    0x07: "グ",
-    0x08: "ゲ",
-    0x09: "ゴ",
-    0x0A: "ザ",
-    0x0B: "ジ",
-    0x0C: "ズ",
-    0x0D: "ゼ",
-    0x0E: "ゾ",
-    0x0F: "ダ",
-    0x10: "ヂ",
-    0x11: "ヅ",
-    0x12: "デ",
-    0x13: "ド",
-    0x19: "バ",
-    0x1A: "ビ",
-    0x1B: "ブ",
-    0x1C: "ボ",
-    0x26: "が",
-    0x27: "ぎ",
-    0x28: "ぐ",
-    0x29: "げ",
-    0x2A: "ご",
-    0x2B: "ざ",
-    0x2C: "じ",
-    0x2D: "ず",
-    0x2E: "ぜ",
-    0x2F: "ぞ",
-    0x30: "だ",
-    0x31: "ぢ",
-    0x32: "づ",
-    0x33: "で",
-    0x34: "ど",
-    0x3A: "ば",
-    0x3B: "び",
-    0x3C: "ぶ",
-    0x3D: "べ",
-    0x3E: "ぼ",
-    0x40: "パ",
-    0x41: "ピ",
-    0x42: "プ",
-    0x43: "ポ",
-    0x44: "ぱ",
-    0x45: "ぴ",
-    0x46: "ぷ",
-    0x47: "ぺ",
-    0x48: "ぽ",
-    0x80: "ア",
-    0x81: "イ",
-    0x82: "ウ",
-    0x83: "エ",
-    0x84: "ォ",
-    0x85: "カ",
-    0x86: "キ",
-    0x87: "ク",
-    0x88: "ケ",
-    0x89: "コ",
-    0x8A: "サ",
-    0x8B: "シ",
-    0x8C: "ス",
-    0x8D: "セ",
-    0x8E: "ソ",
-    0x8F: "タ",
-    0x90: "チ",
-    0x91: "ツ",
-    0x92: "テ",
-    0x93: "ト",
-    0x94: "ナ",
-    0x95: "ニ",
-    0x96: "ヌ",
-    0x97: "ネ",
-    0x98: "ノ",
-    0x99: "ハ",
-    0x9A: "ヒ",
-    0x9B: "フ",
-    0x9C: "ホ",
-    0x9D: "マ",
-    0x9E: "ミ",
-    0x9F: "ム",
-    0xA0: "メ",
-    0xA1: "モ",
-    0xA2: "ヤ",
-    0xA3: "ユ",
-    0xA4: "ヨ",
-    0xA5: "ラ",
-    0xA6: "ル",
-    0xA7: "レ",
-    0xA8: "ロ",
-    0xA9: "ワ",
-    0xAA: "ヲ",
-    0xAB: "ン",
-    0xAC: "ッ",
-    0xAD: "ャ",
-    0xAE: "ュ",
-    0xAF: "ョ",
-    0xB0: "ィ",
-    0xB1: "あ",
-    0xB2: "い",
-    0xB3: "う",
-    0xB4: "え",
-    0xB5: "お",
-    0xB6: "か",
-    0xB7: "き",
-    0xB8: "く",
-    0xB9: "け",
-    0xBA: "こ",
-    0xBB: "さ",
-    0xBC: "し",
-    0xBD: "す",
-    0xBE: "せ",
-    0xBF: "そ",
-    0xC0: "た",
-    0xC1: "ち",
-    0xC2: "つ",
-    0xC3: "て",
-    0xC4: "と",
-    0xC5: "な",
-    0xC6: "に",
-    0xC7: "ぬ",
-    0xC8: "ね",
-    0xC9: "の",
-    0xCA: "は",
-    0xCB: "ひ",
-    0xCC: "ふ",
-    0xCD: "へ",
-    0xCE: "ほ",
-    0xCF: "ま",
-    0xD0: "み",
-    0xD1: "む",
-    0xD2: "め",
-    0xD3: "も",
-    0xD4: "や",
-    0xD5: "ゆ",
-    0xD6: "よ",
-    0xD7: "ら",
-    0xD8: "り",
-    0xD9: "る",
-    0xDA: "れ",
-    0xDB: "ろ",
-    0xDC: "わ",
-    0xDD: "を",
-    0xDE: "ん",
-    0xDF: "っ",
-    0xE0: "ゃ",
-    0xE1: "ゅ",
-    0xE2: "ょ",
-    0xE3: "ー",
-
-    0x50: "@",
-    0x54: "#",
-    0x54: "POKé",
-    0x75: "…",
-
-    0x79: "┌",
-    0x7A: "─",
-    0x7B: "┐",
-    0x7C: "│",
-    0x7D: "└",
-    0x7E: "┘",
-
-    0x74: "№",
-
-    0x7F: " ",
-    0x80: "A",
-    0x81: "B",
-    0x82: "C",
-    0x83: "D",
-    0x84: "E",
-    0x85: "F",
-    0x86: "G",
-    0x87: "H",
-    0x88: "I",
-    0x89: "J",
-    0x8A: "K",
-    0x8B: "L",
-    0x8C: "M",
-    0x8D: "N",
-    0x8E: "O",
-    0x8F: "P",
-    0x90: "Q",
-    0x91: "R",
-    0x92: "S",
-    0x93: "T",
-    0x94: "U",
-    0x95: "V",
-    0x96: "W",
-    0x97: "X",
-    0x98: "Y",
-    0x99: "Z",
-    0x9A: "(",
-    0x9B: ")",
-    0x9C: ":",
-    0x9D: ";",
-    0x9E: "[",
-    0x9F: "]",
-    0xA0: "a",
-    0xA1: "b",
-    0xA2: "c",
-    0xA3: "d",
-    0xA4: "e",
-    0xA5: "f",
-    0xA6: "g",
-    0xA7: "h",
-    0xA8: "i",
-    0xA9: "j",
-    0xAA: "k",
-    0xAB: "l",
-    0xAC: "m",
-    0xAD: "n",
-    0xAE: "o",
-    0xAF: "p",
-    0xB0: "q",
-    0xB1: "r",
-    0xB2: "s",
-    0xB3: "t",
-    0xB4: "u",
-    0xB5: "v",
-    0xB6: "w",
-    0xB7: "x",
-    0xB8: "y",
-    0xB9: "z",
-    0xBA: "é",
-    0xBB: "'d",
-    0xBC: "'l",
-    0xBD: "'s",
-    0xBE: "'t",
-    0xBF: "'v",
-    0xE0: "'",
-    0xE3: "-",
-    0xE4: "'r",
-    0xE5: "'m",
-    0xE6: "?",
-    0xE7: "!",
-    0xE8: ".",
-    0xED: "▶",
-    0xEF: "♂",
-    0xF0: "¥",
-    0xF1: "×",
-    0xF3: "/",
-    0xF4: ",",
-    0xF5: "♀",
-    0xF6: "0",
-    0xF7: "1",
-    0xF8: "2",
-    0xF9: "3",
-    0xFA: "4",
-    0xFB: "5",
-    0xFC: "6",
-    0xFD: "7",
-    0xFE: "8",
-    0xFF: "9",
-}
-
-JA_CHARMAP = {
-    **EN_TEXT_MAP,
-    0x05: "ガ",
-    0x06: "ギ",
-    0x07: "グ",
-    0x08: "ゲ",
-    0x09: "ゴ",
-    0x0A: "ザ",
-    0x0B: "ジ",
-    0x0C: "ズ",
-    0x0D: "ゼ",
-    0x0E: "ゾ",
-    0x0F: "ダ",
-    0x10: "ヂ",
-    0x11: "ヅ",
-    0x12: "デ",
-    0x13: "ド",
-    0x19: "バ",
-    0x1A: "ビ",
-    0x1B: "ブ",
-    0x1C: "ボ",
-    0x26: "が",
-    0x27: "ぎ",
-    0x28: "ぐ",
-    0x29: "げ",
-    0x2A: "ご",
-    0x2B: "ざ",
-    0x2C: "じ",
-    0x2D: "ず",
-    0x2E: "ぜ",
-    0x2F: "ぞ",
-    0x30: "だ",
-    0x31: "ぢ",
-    0x32: "づ",
-    0x33: "で",
-    0x34: "ど",
-    0x3A: "ば",
-    0x3B: "び",
-    0x3C: "ぶ",
-    0x3D: "べ",
-    0x3E: "ぼ",
-    0x40: "パ",
-    0x41: "ピ",
-    0x42: "プ",
-    0x43: "ポ",
-    0x44: "ぱ",
-    0x45: "ぴ",
-    0x46: "ぷ",
-    0x47: "ぺ",
-    0x48: "ぽ",
-    0x80: "ア",
-    0x81: "イ",
-    0x82: "ウ",
-    0x83: "エ",
-    0x84: "ォ",
-    0x85: "カ",
-    0x86: "キ",
-    0x87: "ク",
-    0x88: "ケ",
-    0x89: "コ",
-    0x8A: "サ",
-    0x8B: "シ",
-    0x8C: "ス",
-    0x8D: "セ",
-    0x8E: "ソ",
-    0x8F: "タ",
-    0x90: "チ",
-    0x91: "ツ",
-    0x92: "テ",
-    0x93: "ト",
-    0x94: "ナ",
-    0x95: "ニ",
-    0x96: "ヌ",
-    0x97: "ネ",
-    0x98: "ノ",
-    0x99: "ハ",
-    0x9A: "ヒ",
-    0x9B: "フ",
-    0x9C: "ホ",
-    0x9D: "マ",
-    0x9E: "ミ",
-    0x9F: "ム",
-    0xA0: "メ",
-    0xA1: "モ",
-    0xA2: "ヤ",
-    0xA3: "ユ",
-    0xA4: "ヨ",
-    0xA5: "ラ",
-    0xA6: "ル",
-    0xA7: "レ",
-    0xA8: "ロ",
-    0xA9: "ワ",
-    0xAA: "ヲ",
-    0xAB: "ン",
-    0xAC: "ッ",
-    0xAD: "ャ",
-    0xAE: "ュ",
-    0xAF: "ョ",
-    0xB0: "ィ",
-    0xB1: "あ",
-    0xB2: "い",
-    0xB3: "う",
-    0xB4: "え",
-    0xB5: "お",
-    0xB6: "か",
-    0xB7: "き",
-    0xB8: "く",
-    0xB9: "け",
-    0xBA: "こ",
-    0xBB: "さ",
-    0xBC: "し",
-    0xBD: "す",
-    0xBE: "せ",
-    0xBF: "そ",
-    0xC0: "た",
-    0xC1: "ち",
-    0xC2: "つ",
-    0xC3: "て",
-    0xC4: "と",
-    0xC5: "な",
-    0xC6: "に",
-    0xC7: "ぬ",
-    0xC8: "ね",
-    0xC9: "の",
-    0xCA: "は",
-    0xCB: "ひ",
-    0xCC: "ふ",
-    0xCD: "へ",
-    0xCE: "ほ",
-    0xCF: "ま",
-    0xD0: "み",
-    0xD1: "む",
-    0xD2: "め",
-    0xD3: "も",
-    0xD4: "や",
-    0xD5: "ゆ",
-    0xD6: "よ",
-    0xD7: "ら",
-    0xD8: "り",
-    0xD9: "る",
-    0xDA: "れ",
-    0xDB: "ろ",
-    0xDC: "わ",
-    0xDD: "を",
-    0xDE: "ん",
-    0xDF: "っ",
-    0xE0: "ゃ",
-    0xE1: "ゅ",
-    0xE2: "ょ",
-    0xE3: "ー",
-    0xE9: "ァ",
-}
-for n in range(0x100):
-    if not n in JA_CHARMAP:
-        JA_CHARMAP[n] = '�'
-
-# ty, tachyon
-DE_FR_TEXT_MAP = dict(enumerate([
+EN_CHARMAP = dict(enumerate([
     # 0x0X
-    "�", "�", "�", "�", "�", "�", "�", "�",
+    "", "�", "�", "�", "�", "�", "�", "�",
     "�", "�", "�", "�", "�", "�", "�", "�",
     # 0x1X
     "�", "�", "�", "�", "�", "�", "�", "�",
@@ -926,11 +573,64 @@ DE_FR_TEXT_MAP = dict(enumerate([
     # 0x3X
     "�", "�", "�", "�", "�", "�", "�", "�",
     "�", "�", "�", "�", "�", "�", "�", "�",
-    # 0x4X
+    # 4x
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    "�", "\f", "�", "�", "�", "�", "\n", "\n",
+    # 5x
+    "@", "�", "�", "�", "POKé", "�", "……", "�",
+    "�", "�", "�", "PC", "TM", "TRAINER", "ROCKET", ".",
+    # 6x
+    "A", "B", "C", "D", "E", "F", "G", "H",
+    "I", "V", "S", "L", "M", ":", "ぃ", "ぅ",
+    # 7x
+    "‘", "’", "“", "”", "・", "…", "ぁ", "ぇ",
+    "ぉ", "╔", "═", "╗", "║", "╚", "╝", " ",
+    # 8x
+    "A", "B", "C", "D", "E", "F", "G", "H",
+    "I", "J", "K", "L", "M", "N", "O", "P",
+    # 9x
+    "Q", "R", "S", "T", "U", "V", "W", "X",
+    "Y", "Z", "(", ")", " :", " ;", "[", "]",
+    # Ax
+    "a", "b", "c", "d", "e", "f", "g", "h",
+    "i", "j", "k", "l", "m", "n", "o", "p",
+    # Bx
+    "q", "r", "s", "t", "u", "v", "w", "x",
+    "y", "z", "é", "ʼd", "ʼl", "ʼs", "ʼt", "ʼv",
+    # Cx
     "�", "�", "�", "�", "�", "�", "�", "�",
     "�", "�", "�", "�", "�", "�", "�", "�",
-    # 0x5X
+    # Dx
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    # Ex
+    "'", "ᴾₖ", "ᴹₙ", "-", "ʼr", "ʼm", " ?", " !",
+    ".", "ァ", "ゥ", "ェ", "▷", "▶", "▼", "♂",
+    # Fx
+    # F0 is the currency symbol; this is the ruble sign, close enough
+    "₽", "×", ".", "/", ",", "♀", "0", "1",
+    "2", "3", "4", "5", "6", "7", "8", "9",
+]))
+
+# ty, tachyon
+DE_FR_CHARMAP = dict(enumerate([
+    # 0x0X
     "", "�", "�", "�", "�", "�", "�", "�",
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    # 0x1X
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    # 0x2X
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    # 0x3X
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    # 4x
+    "�", "�", "�", "�", "�", "�", "�", "�",
+    "�", "\f", "�", "�", "�", "�", "\n", "\n",
+    # 5x
+    "@", "�", "�", "�", "POKé", "�", "……", "�",
     "�", "�", "�", "�", "�", "�", "�", "�",
     # 0x6X
     "�", "�", "�", "�", "�", "�", "�", "�",
@@ -957,23 +657,16 @@ DE_FR_TEXT_MAP = dict(enumerate([
     "�", "�", "�", "�", "cʼ", "dʼ", "jʼ", "lʼ",
     "mʼ", "nʼ", "pʼ", "sʼ", "ʼs", "tʼ", "uʼ", "yʼ",
     # 0xEX
-    "'", "P\u200dk", "M\u200dn", "-", "¿", "¡", "?", "!",
+    "'", "ᴾₖ", "ᴹₙ", "-", "¿", "¡", "?", "!",
     ".", "ァ", "ゥ", "ェ", "▹", "▸", "▾", "♂",
     # 0xFX
     "$", "×", ".", "/", ",", "♀", "0", "1",
     "2", "3", "4", "5", "6", "7", "8", "9",
 ]))
-DE_FR_TEXT_MAP.update({
-    0x00: "",   # "Start text"?
-    0x4E: "\n", # Move to next line
-    0x49: "\f", # Start a new Pokédex page
-    0x5F: ".",   # End of Pokédex entry, adds a period
-    0x54: "POKé",
-})
 
 ES_IT_CHARMAP = dict(enumerate([
     # 0x0X
-    "�", "�", "�", "�", "�", "�", "�", "�",
+    "", "�", "�", "�", "�", "�", "�", "�",
     "�", "�", "�", "�", "�", "�", "�", "�",
     # 0x1X
     "�", "�", "�", "�", "�", "�", "�", "�",
@@ -984,12 +677,12 @@ ES_IT_CHARMAP = dict(enumerate([
     # 0x3X
     "�", "�", "�", "�", "�", "�", "�", "�",
     "�", "�", "�", "�", "�", "�", "�", "�",
-    # 0x4X
+    # 4x
     "�", "�", "�", "�", "�", "�", "�", "�",
-    "�", "�", "�", "�", "�", "�", "�", "�",
-    # 0x5X
-    "@", "�", "�", "�", "�", "�", "�", "�",
-    "�", "�", "�", "�", "�", "�", "�", "�",
+    "�", "\f", "�", "�", "�", "�", "\n", "\n",
+    # 5x
+    "@", "�", "�", "�", "POKé", "�", "……", "�",
+    "�", "�", "�", "�", "�", "�", "�", ".",
     # 0x6X
     "�", "�", "�", "�", "�", "�", "�", "�",
     "�", "�", "�", "�", "�", "�", "�", "�",
@@ -1015,19 +708,21 @@ ES_IT_CHARMAP = dict(enumerate([
     "ì", "í", "ñ", "ò", "ó", "ú", "º", "&",
     "ʼd", "ʼl", "ʼm", "ʼr", "ʼs", "ʼt", "ʼv", " ",
     # 0xEX
-    "'", "P\u200dk", "M\u200dn", "-", "¿", "¡", "?", "!",
+    "'", "ᴾₖ", "ᴹₙ", "-", "¿", "¡", "?", "!",
     ".", "ァ", "ゥ", "ェ", "▹", "▸", "▾", "♂",
     # 0xFX
     "$", "×", ".", "/", ",", "♀", "0", "1",
-    "2", "3", "4", "5", "6", "7", "8", "9"
+    "2", "3", "4", "5", "6", "7", "8", "9",
 ]))
-ES_IT_CHARMAP.update({
-    0x00: "",   # "Start text"?
-    0x4E: "\n", # Move to next line
-    0x49: "\f", # Start a new Pokédex page
-    0x5F: ".",   # End of Pokédex entry, adds a period
-    0x54: "POKé",
-})
+
+CHARACTER_MAPS = dict(
+    ja=JA_CHARMAP,
+    en=EN_CHARMAP,
+    es=ES_IT_CHARMAP,
+    it=ES_IT_CHARMAP,
+    de=DE_FR_CHARMAP,
+    fr=DE_FR_CHARMAP,
+)
 
 
 class PokemonString:
@@ -1036,15 +731,9 @@ class PokemonString:
         self.raw = raw
 
     def decrypt(self, language):
-        if language == 'ja':
-            charmap = JA_CHARMAP
-        elif language == 'en':
-            charmap = EN_TEXT_MAP
-        elif language in ('es', 'it'):
-            charmap = ES_IT_CHARMAP
-        elif language in ('de', 'fr'):
-            charmap = DE_FR_TEXT_MAP
-        else:
+        try:
+            charmap = CHARACTER_MAPS[language]
+        except KeyError:
             raise ValueError("Not a known language: {!r}".format(language))
 
         return ''.join(
@@ -1067,6 +756,36 @@ class PokemonCString(Adapter):
 
     def _decode(self, obj, context):
         return PokemonString(obj)
+
+
+class MacroPokemonCString(Construct):
+    """Similar to the above, but for strings that may contain the 0x17 "far
+    load" macro, whose parameters may in turn contain the NUL byte 0x50 without
+    marking the end of the string.  Yikes."""
+    def _parse(self, stream, context):
+        buf = bytearray()
+        while True:
+            byte, = stream.read(1)
+            if byte == 0x17:
+                # "Far load"
+                addr_lo, addr_hi, bank = stream.read(3)
+                offset = unbank(bank, addr_lo + addr_hi * 256)
+                pos = stream.tell()
+                try:
+                    stream.seek(offset)
+                    buf.extend(self._parse(stream, context).raw)
+                finally:
+                    stream.seek(pos)
+            elif byte == 0x50:
+                break
+            elif byte == 0x5F:
+                # 5F ends a Pokédex entry
+                buf.append(byte)
+                break
+            else:
+                buf.append(byte)
+
+        return PokemonString(bytes(buf))
 
 
 class NullTerminatedArray(Subconstruct):
@@ -1217,34 +936,24 @@ evos_moves_pointer = Struct(
     Pointer(lambda ctx: ctx.offset + (0xE - 1) * 0x4000, evos_moves_struct),
 )
 
-pokedex_flavor_struct = Struct(
-    'pokedex_flavor',
-    PokemonCString('species'),
-    # TODO HA HA FUCK ME, SOME GAMES USE METRIC SOME (OK JUST THE US) USE IMPERIAL
-    #ULInt8('height_feet'),
-    #ULInt8('height_inches'),
-    #ULInt16('weight_pounds'),
+# There are actually two versions of this struct...  an imperial one, used by
+# the US, and a metric one, used by the ENTIRE REST OF THE WORLD.  The imperial
+# one has separate bytes for feet and inches, so it's a different size, making
+# it completely incompatible.
+pokedex_flavor_struct_metric = Struct(
+    'pokedex_flavor_metric',
+    PokemonCString('genus'),
     ULInt8('height_decimeters'),
     ULInt16('weight_hectograms'),
-    # This appears to technically be a string containing a single macro, for
-    # "load other string from this address", but it always takes this same form
-    # so there's no need to actually evaluate it.
-    Const(ULInt8('macro'), 0x17),  # 0x17 is the "far" macro
-    ULInt16('address'),
-    ULInt8('bank'),
-    Const(ULInt8('nul'), 0x50),  # faux nul marking the end of the string
-    Pointer(
-        lambda ctx: ctx.address + (ctx.bank - 1) * 0x4000,
-        PokemonCString('flavor_text'),
-    ),
+    MacroPokemonCString('flavor_text'),
 )
-# TODO this works very awkwardly as a struct
-pokedex_flavor_pointer = Struct(
-    'xxx',
-    ULInt16('offset'),
-    # TODO hardcoded 0x10, same bank
-    # TODO this has to be on-demand because missingno's struct is actually bogus!
-    OnDemandPointer(lambda ctx: ctx.offset + (0x10 - 1) * 0x4000, pokedex_flavor_struct),
+pokedex_flavor_struct_imperial = Struct(
+    'pokedex_flavor_imperial',
+    PokemonCString('genus'),
+    ULInt8('height_feet'),
+    ULInt8('height_inches'),
+    ULInt16('weight_pounds'),
+    MacroPokemonCString('flavor_text'),
 )
 
 
@@ -1267,6 +976,7 @@ class RBYCart:
         self.addrs = self.detect_addresses()
 
         self.game, self.language = self.detect_game()
+        self.uses_metric = not self.language == 'en'
 
         # And snag this before anything else happens; prevents some silly
         # problems where a reified property seeks, then tries to read this, and
@@ -1639,13 +1349,13 @@ class RBYCart:
         # Warn about a potentially bad checksum
         if not game_c or not language_c:
             log.warn(
-                "Hmm.  I don't recognize the checksum for {}, but I'll "
+                "Hmm.  I don't recognize the checksum for %s, but I'll "
                 "continue anyway.",
                 self.path.name)
         elif game_c != game_h or language_c != language_h:
             log.warn(
                 "This is very surprising.  The checksum indicates that this "
-                "game should be {}, {}, but I detected it as {}, {}.  Probably "
+                "game should be %s, %s, but I detected it as %s, %s.  Probably "
                 "my fault, not yours.  Continuing anyway.",
                 game_c, language_c, game_h, language_h)
 
@@ -1854,25 +1564,24 @@ class RBYCart:
     def pokedex_entries(self):
         """List of pokedex_flavor_structs."""
         ret = [None] * self.NUM_POKEMON
+        dex_bank, _ = bank(self.addrs['PokedexEntryPointers'])
+        if self.uses_metric:
+            pokedex_flavor_struct = pokedex_flavor_struct_metric
+        else:
+            pokedex_flavor_struct = pokedex_flavor_struct_imperial
+
         self.stream.seek(self.addrs['PokedexEntryPointers'])
-        for index, pointer in enumerate(Array(self.max_pokemon_index, pokedex_flavor_pointer).parse_stream(self.stream), start=1):
+        # This address is just an array of pointers
+        for index, address in enumerate(Array(self.max_pokemon_index, ULInt16('pointer')).parse_stream(self.stream), start=1):
             try:
                 id = self.pokedex_order[index]
             except KeyError:
                 continue
 
-            ret[id] = pointer.pokedex_flavor.value
+            self.stream.seek(unbank(dex_bank, address))
+            ret[id] = pokedex_flavor_struct.parse_stream(self.stream)
 
-            record = pokemon_records_by_internal[index]
-            pokedex_flavor = pointer.pokedex_flavor.value
-            # TODO FUCKKKK IMPERIALLLLL
-            #record.height = pokedex_flavor.height_feet * 12 + pokedex_flavor.height_inches
-            #record.weight = pokedex_flavor.weight_pounds
-            record.height = pokedex_flavor.height_decimeters
-            record.weight = pokedex_flavor.weight_hectograms
-
-            record.species = pokedex_flavor.species.decrypt(language)
-            record.flavor_text = pokedex_flavor.flavor_text.decrypt(language)
+        return ret
 
     @reify
     def move_names(self):
@@ -2012,6 +1721,24 @@ def main(base_root):
                     # TODO insert the item trigger!
                     evolutions.append(evo)
                 writer.evolutions = evolutions
+
+                # Pokédex flavor
+                flavor_struct = cart.pokedex_entries[id]
+                # TODO LOLLLL
+                if 'genus' not in writer.__dict__:
+                    writer.genus = {}
+                writer.genus[cart.language] = flavor_struct.genus.decrypt(language)
+                if 'flavor_text' not in writer.__dict__:
+                    writer.flavor_text = {}
+                writer.flavor_text[cart.language] = flavor_struct.flavor_text.decrypt(language)
+                if cart.uses_metric:
+                    writer.height = 1000 * flavor_struct.height_decimeters
+                    writer.weight = 100000000 * flavor_struct.weight_hectograms
+                else:
+                    writer.height = 254 * (
+                        12 * flavor_struct.height_feet
+                        + flavor_struct.height_inches)
+                    writer.weight = 453592370 * flavor_struct.weight_pounds
 
         fn = root / 'pokemon.yaml'
         print('Writing', fn)

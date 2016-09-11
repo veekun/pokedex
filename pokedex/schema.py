@@ -174,12 +174,18 @@ class Pokémon(VersionedLocus):
     # TODO family?
     evolutions = _List(Evolution)
 
-    species = _Value(str)
+    genus = _Value(str)
     flavor_text = _Value(str)
     # TODO maybe want little wrapper types that can display as either imperial
     # or metric
     # TODO maybe also dump as metric rather than plain numbers
+    # Inches and pounds are both defined as exact numbers of centimeters and
+    # kilograms respectively, so this uses the largest units that can represent
+    # both metric and imperial values as integers with no loss of precision:
+    # myriameters (tenths of a millimeter) and micrograms.
+    # Divide by 100 for centimeters, or by 254 for inches
     height = _Value(int)
+    # Divide by one billion for kilograms, or by 453592370 for pounds
     weight = _Value(int)
 
     # TODO this belongs to a place, not to a pokemon
