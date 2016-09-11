@@ -9,6 +9,7 @@ This was a pain in the ass!  Thank you SO MUCH to:
 """
 # TODO fix that docstring
 # TODO note terminology somewhere: id, index, identifier
+from collections import defaultdict
 from collections import OrderedDict
 import hashlib
 import io
@@ -1879,16 +1880,6 @@ class RBYCart:
         return Array(NUM_MOVES, PokemonCString('move_name')).parse_stream(self.stream)
 
 
-
-class RBYLoader:
-    def __init__(self, *carts):
-        self.carts = carts
-        # TODO require all the same game
-
-    def load(self):
-        pass
-
-
 # TODO would be slick to convert this to a construct...  construct
 def bitfield_to_machines(bits, machine_moves):
     machines = []
@@ -1915,86 +1906,117 @@ class WriterWrapper:
         return getattr(self.locus, key)
 
 
-def main(root):
+def main(base_root):
     # TODO does this need to take arguments?  or like, sprite mode i guess
-    carts = []
+    carts = defaultdict(dict)  # game => language => RBYCart
     for filename in sys.argv[1:]:
         cart = RBYCart(Path(filename))
-        carts.append(cart)
+        game_carts = carts[cart.game]
+        if cart.language in game_carts:
+            print(
+                "WARNING: ignoring {0.path} because it's the same game and "
+                "language ({0.game}, {0.language}) as {1.path}"
+                .format(cart, game_carts[cart.language]))
+            continue
+        game_carts[cart.language] = cart
 
-    root /= carts[0].game
-    root.mkdir(exist_ok=True)
+    for game, game_carts in sorted(carts.items()):
+        print()
+        print("Dumping", game)
+        if game in GAME_RELEASE_MD5SUMS:
+            got_languages = game_carts.keys()
+            expected_languages = GAME_RELEASE_MD5SUMS[game].keys()
+            extra_languages = got_languages - expected_languages
+            if extra_languages:
+                print(
+                    "WARNING: don't recognize languages {}"
+                    .format(', '.join(sorted(extra_languages))))
 
-    #loader = RBYLoader(*carts)
-    pokemons = OrderedDict([
-        (POKEMON_IDENTIFIERS[id + 1], schema.Pokemon())
-        for id in range(carts[0].NUM_POKEMON)
-    ])
-    for cart in carts:
-        for id in range(cart.NUM_POKEMON):
-            pokemon = pokemons[POKEMON_IDENTIFIERS[id + 1]]
-            #writer = WriterWrapper(pokemon)
-            writer = pokemon
+            missing_languages = expected_languages - got_languages
+            if missing_languages:
+                print(
+                    "WARNING: missing cartridges for {} — this dump will "
+                    "be incomplete!"
+                    .format(', '.join(sorted(missing_languages))))
 
-            # TODO LOLLLL
-            if 'name' not in writer.__dict__:
-                writer.name = {}
-            writer.name[cart.language] = cart.pokemon_names[id]
+        root = base_root / game
+        root.mkdir(exist_ok=True)
 
-            record = cart.pokemon_records[id]
+        pokemons = None
+        for language, cart in sorted(game_carts.items()):
+            if pokemons is None:
+                pokemons = OrderedDict([
+                    (POKEMON_IDENTIFIERS[id + 1], schema.Pokemon())
+                    for id in range(cart.NUM_POKEMON)
+                ])
 
-            # TODO put this in construct
-            types = [record.type1]
-            if record.type1 != record.type2:
-                types.append(record.type2)
+            for id in range(cart.NUM_POKEMON):
+                pokemon = pokemons[POKEMON_IDENTIFIERS[id + 1]]
+                #writer = WriterWrapper(pokemon)
+                writer = pokemon
 
-            writer.types = types
-            writer.base_stats = {
-                'hp': record.base_hp,
-                'attack': record.base_attack,
-                'defense': record.base_defense,
-                'speed': record.base_speed,
-                'special': record.base_special,
-            }
-            writer.growth_rate = record.growth_rate
-            writer.base_experience = record.base_experience
-            #writer.pokedex_numbers = dict(kanto=record.pokedex_number)
+                # TODO LOLLLL
+                if 'name' not in writer.__dict__:
+                    writer.name = {}
+                writer.name[cart.language] = cart.pokemon_names[id]
 
-            # Starting moves are stored with the Pokémon; other level-up moves are
-            # stored with evolutions
-            level_up_moves = [
-                {1: move}
-                for move in record.initial_moveset
-                # TODO UGH
-                if move != '--'
-            ]
-            for level_up_move in cart.pokemon_evos_and_moves[id].level_up_moves:
-                level_up_moves.append({
-                    level_up_move.level: level_up_move.move,
-                })
-            # TODO LOLLLL
-            if 'moves' not in writer.__dict__:
-                writer.moves = {}
-            writer.moves['level-up'] = level_up_moves
-            writer.moves['machines'] = bitfield_to_machines(
-                record.machines, cart.machine_moves)
+                record = cart.pokemon_records[id]
 
-            # Evolution
-            # TODO alas, the species here is a number, because it's an internal id
-            # and we switch those back using data from the game...
-            evolutions = []
-            for evo_datum in cart.pokemon_evos_and_moves[id].evolutions:
-                evo = {
-                    'into': POKEMON_IDENTIFIERS[cart.pokedex_order[evo_datum.evo_species] + 1],
-                    'trigger': evo_datum.evo_trigger,
-                    'minimum-level': evo_datum.evo_level,
+                # TODO put this in construct
+                types = [record.type1]
+                if record.type1 != record.type2:
+                    types.append(record.type2)
+
+                writer.types = types
+                writer.base_stats = {
+                    'hp': record.base_hp,
+                    'attack': record.base_attack,
+                    'defense': record.base_defense,
+                    'speed': record.base_speed,
+                    'special': record.base_special,
                 }
-                # TODO insert the item trigger!
-                evolutions.append(evo)
-            writer.evolutions = evolutions
+                writer.growth_rate = record.growth_rate
+                writer.base_experience = record.base_experience
+                #writer.pokedex_numbers = dict(kanto=record.pokedex_number)
 
-    with (root / 'pokemon.yaml').open('w') as f:
-        f.write(Camel([schema.POKEDEX_TYPES]).dump(pokemons))
+                # Starting moves are stored with the Pokémon; other level-up
+                # moves are stored with evolutions
+                level_up_moves = [
+                    {1: move}
+                    for move in record.initial_moveset
+                    # TODO UGH
+                    if move != '--'
+                ]
+                for level_up_move in cart.pokemon_evos_and_moves[id].level_up_moves:
+                    level_up_moves.append({
+                        level_up_move.level: level_up_move.move,
+                    })
+                # TODO LOLLLL
+                if 'moves' not in writer.__dict__:
+                    writer.moves = {}
+                writer.moves['level-up'] = level_up_moves
+                writer.moves['machines'] = bitfield_to_machines(
+                    record.machines, cart.machine_moves)
+
+                # Evolution
+                # TODO alas, the species here is a number, because it's an
+                # internal id and we switch those back using data from the
+                # game...
+                evolutions = []
+                for evo_datum in cart.pokemon_evos_and_moves[id].evolutions:
+                    evo = {
+                        'into': POKEMON_IDENTIFIERS[cart.pokedex_order[evo_datum.evo_species] + 1],
+                        'trigger': evo_datum.evo_trigger,
+                        'minimum-level': evo_datum.evo_level,
+                    }
+                    # TODO insert the item trigger!
+                    evolutions.append(evo)
+                writer.evolutions = evolutions
+
+        fn = root / 'pokemon.yaml'
+        print('Writing', fn)
+        with fn.open('w') as f:
+            f.write(Camel([schema.POKEDEX_TYPES]).dump(pokemons))
 
 
 if __name__ == '__main__':
