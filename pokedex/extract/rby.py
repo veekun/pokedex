@@ -952,7 +952,7 @@ pokedex_flavor_struct_imperial = Struct(
     PokemonCString('genus'),
     ULInt8('height_feet'),
     ULInt8('height_inches'),
-    ULInt16('weight_pounds'),
+    ULInt16('weight_decipounds'),
     MacroPokemonCString('flavor_text'),
 )
 
@@ -1738,7 +1738,7 @@ def main(base_root):
                     writer.height = 254 * (
                         12 * flavor_struct.height_feet
                         + flavor_struct.height_inches)
-                    writer.weight = 453592370 * flavor_struct.weight_pounds
+                    writer.weight = 45359237 * flavor_struct.weight_decipounds
 
         fn = root / 'pokemon.yaml'
         print('Writing', fn)
