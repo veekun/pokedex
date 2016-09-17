@@ -1601,18 +1601,35 @@ def bitfield_to_machines(bits, machine_moves):
     return machines
 
 
+# TODO this is not correctly using my half-baked "slice" idea
 class WriterWrapper:
     def __init__(self, locus, language):
-        self.locus = locus
-        self.language = language
+        self.__dict__.update(dict(
+            locus=locus,
+            language=language,
+        ))
 
     def __setattr__(self, key, value):
-        # TODO finish this...
-        # 1. disallow reassigning an existing attr with a value
-        setattr(self.locus, key, value)
+        # TODO yeah this is fucking ludicrous
+        attr = type(self.locus).__dict__[key]
+        # TODO i think my descriptor stuff needs some work here if i have to root around in __dict__
+        if isinstance(attr, schema._Localized):
+            if key not in self.locus.__dict__:
+                langdict = {}
+                setattr(self.locus, key, langdict)
+            else:
+                langdict = getattr(self.locus, key)
+            langdict[self.language] = value
+        else:
+            if key in self.locus.__dict__:
+                oldvalue = getattr(self.locus, key)
+                if value != oldvalue:
+                    raise ValueError(
+                        "Trying to set {!r}'s {} to {!r}, but it already "
+                        "has a different value: {!r}"
+                        .format(self.locus, key, value, oldvalue))
 
-    def __getattr__(self, key):
-        return getattr(self.locus, key)
+            setattr(self.locus, key, value)
 
 
 def main(base_root):
@@ -1661,16 +1678,11 @@ def main(base_root):
 
             for id in range(cart.NUM_POKEMON):
                 pokemon = pokemons[POKEMON_IDENTIFIERS[id + 1]]
-                #writer = WriterWrapper(pokemon)
-                writer = pokemon
+                writer = WriterWrapper(pokemon, language)
 
-                # TODO LOLLLL
-                if 'name' not in writer.__dict__:
-                    writer.name = {}
-                writer.name[cart.language] = cart.pokemon_names[id]
+                writer.name = cart.pokemon_names[id]
 
                 record = cart.pokemon_records[id]
-
                 # TODO put this in construct
                 types = [record.type1]
                 if record.type1 != record.type2:
@@ -1700,12 +1712,11 @@ def main(base_root):
                     level_up_moves.append({
                         level_up_move.level: level_up_move.move,
                     })
-                # TODO LOLLLL
-                if 'moves' not in writer.__dict__:
-                    writer.moves = {}
-                writer.moves['level-up'] = level_up_moves
-                writer.moves['machines'] = bitfield_to_machines(
-                    record.machines, cart.machine_moves)
+                writer.moves = {
+                    'level-up': level_up_moves,
+                    'machines': bitfield_to_machines(
+                        record.machines, cart.machine_moves),
+                }
 
                 # Evolution
                 # TODO alas, the species here is a number, because it's an
@@ -1724,13 +1735,8 @@ def main(base_root):
 
                 # Pokédex flavor
                 flavor_struct = cart.pokedex_entries[id]
-                # TODO LOLLLL
-                if 'genus' not in writer.__dict__:
-                    writer.genus = {}
-                writer.genus[cart.language] = flavor_struct.genus.decrypt(language)
-                if 'flavor_text' not in writer.__dict__:
-                    writer.flavor_text = {}
-                writer.flavor_text[cart.language] = flavor_struct.flavor_text.decrypt(language)
+                writer.genus = flavor_struct.genus.decrypt(language)
+                writer.flavor_text = flavor_struct.flavor_text.decrypt(language)
                 if cart.uses_metric:
                     writer.height = 1000 * flavor_struct.height_decimeters
                     writer.weight = 100000000 * flavor_struct.weight_hectograms

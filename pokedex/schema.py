@@ -128,7 +128,7 @@ class Locus(metaclass=LocusMeta):
     def __repr__(self):
         return "<{}: {}>".format(
             type(self).__qualname__,
-            self.identifier,
+            '???',  # TODO where is self.identifier assigned when writing?
         )
 
 
@@ -160,9 +160,8 @@ Pokedex = _ForwardDeclaration()
 class Pokémon(VersionedLocus):
     # TODO version, language.  but those are kind of meta-fields; do they need
     # treating specially?
-    # TODO in old games, names are unique per game; in later games, they differ
-    # per language.  what do i do about that?
-    name = _Value(str)
+
+    name = _Localized(str)
 
     types = _List(Type, min=1, max=2)
     base_stats = _Map(Stat, int)
@@ -174,8 +173,8 @@ class Pokémon(VersionedLocus):
     # TODO family?
     evolutions = _List(Evolution)
 
-    genus = _Value(str)
-    flavor_text = _Value(str)
+    genus = _Localized(str)
+    flavor_text = _Localized(str)
     # TODO maybe want little wrapper types that can display as either imperial
     # or metric
     # TODO maybe also dump as metric rather than plain numbers
@@ -184,13 +183,14 @@ class Pokémon(VersionedLocus):
     # both metric and imperial values as integers with no loss of precision:
     # myriameters (tenths of a millimeter) and micrograms.
     # Divide by 100 for centimeters, or by 254 for inches
-    height = _Value(int)
+    height = _Localized(int)
     # Divide by one billion for kilograms, or by 453592370 for pounds
-    weight = _Value(int)
+    weight = _Localized(int)
 
     # TODO this belongs to a place, not to a pokemon
     #encounters = _Value(EncounterMap)
 
+    # TODO having a custom type here is handy, but it's not a locus
     moves = _Value(MoveSet)
 
     # TODO should this be written in hex, maybe?
