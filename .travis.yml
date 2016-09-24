@@ -5,8 +5,14 @@ python:
     - "3.5"
     - "pypy"
     - "pypy3"
+services:
+    - postgresql
+env:
+    - POKEDEX_DB_ENGINE=postgresql:///pokedex
+sudo: false
 
 install: pip install -e .
-before_script: pokedex setup -v
+before_script:
+    - createdb -U postgres pokedex
+    - pokedex setup -v
 script: py.test
-sudo: false
