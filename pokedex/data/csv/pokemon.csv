@@ -785,7 +785,7 @@ id,identifier,species_id,height,weight,base_experience,order,is_default
 10063,latios-mega,381,23,700,315,461,0
 10064,swampert-mega,260,19,1020,286,315,0
 10065,sceptile-mega,254,19,552,284,307,0
-10066,sableye-mega,302,05,1610,168,361,0
+10066,sableye-mega,302,5,1610,168,361,0
 10067,altaria-mega,334,15,206,207,402,0
 10068,gallade-mega,475,16,564,278,340,0
 10069,audino-mega,531,15,320,425,602,0
