@@ -11,7 +11,9 @@ env:
     - POKEDEX_DB_ENGINE=postgresql:///pokedex
 sudo: false
 
-install: pip install -e .
+install:
+    - pip install -e .
+    - pip install psycopg2
 before_script:
     - createdb -U postgres pokedex
     - pokedex setup -v
