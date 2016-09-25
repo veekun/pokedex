@@ -1262,6 +1262,10 @@ class MoveChangelog(TableBase):
         doc=u"Prior base PP of the move, or NULL if unchanged")
     accuracy = Column(SmallInteger, nullable=True,
         doc=u"Prior accuracy of the move, or NULL if unchanged")
+    priority = Column(SmallInteger, nullable=True,
+        doc=u"Prior priority of the move, or NULL if unchanged")
+    target_id = Column(Integer, ForeignKey('move_targets.id'), nullable=True,
+        doc=u"Prior ID of the target, or NULL if unchanged")
     effect_id = Column(Integer, ForeignKey('move_effects.id'), nullable=True,
         doc=u"Prior ID of the effect, or NULL if unchanged")
     effect_chance = Column(Integer, nullable=True,
@@ -2559,6 +2563,8 @@ MoveChangelog.changed_in = relationship(VersionGroup,
     innerjoin=True, lazy='joined',
     backref='move_changelog')
 MoveChangelog.move_effect = relationship(MoveEffect,
+    backref='move_changelog')
+MoveChangelog.target = relationship(MoveTarget,
     backref='move_changelog')
 MoveChangelog.type = relationship(Type,
     backref='move_changelog')
