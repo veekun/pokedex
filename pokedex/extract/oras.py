@@ -3,15 +3,20 @@
 Filesystem reference: http://www.projectpokemon.org/wiki/ORAS_File_System
 """
 import argparse
+from collections import Counter
 from collections import OrderedDict
+from collections import defaultdict
 from contextlib import contextmanager
+import io
 import itertools
 import math
 from pathlib import Path
+import re
 import shutil
 import struct
 
 from construct import Array, BitField, Bitwise, Magic, OptionalGreedyRange, Padding, Pointer, Struct, SLInt8, SLInt16, ULInt8, ULInt16, ULInt32
+import png
 import yaml
 
 from .lib.garc import GARCFile, decrypt_xy_text
@@ -89,8 +94,8 @@ ORAS_EXTRA_SPRITE_NAMES = {
     # Darmanitan
     555: ('standard', 'zen',),
     # Deerling and Sawsbuck
-    585: ('sprint', 'summer', 'autumn', 'winter'),
-    586: ('sprint', 'summer', 'autumn', 'winter'),
+    585: ('spring', 'summer', 'autumn', 'winter'),
+    586: ('spring', 'summer', 'autumn', 'winter'),
     # Tornadus, Thundurus, and Landorus
     641: ('incarnate', 'therian'),
     642: ('incarnate', 'therian'),
@@ -120,7 +125,8 @@ ORAS_EXTRA_SPRITE_NAMES = {
         'la-reine', 'kabuki', 'pharaoh',
     ),
     # Meowstic
-    #678: [male, female]
+    # TODO uh oh, this is handled as forms in boxes but as gender in sprites, maybe?
+    678: ('male', 'female'),
     # Aegislash
     681: ('shield', 'blade'),
     # Pumpkaboo/Gourgeist
@@ -573,21 +579,149 @@ def extract_data(root, out):
         dump_to_yaml(movesets, f)
 
 
+def get_mega_counts(root):
+    """Return a dict mapping Pokémon ids to how many mega evolutions each one
+    has.
+    """
+    mega_counts = {}  # pokemonid => number of mega evos
+    with read_garc(root / 'rom/a/1/9/3') as garc:
+        for pokemonid, subfile in enumerate(garc):
+            mega_evos = pokemon_mega_evolutions_struct.parse_stream(subfile[0])
+            mega_counts[pokemonid] = max(
+                mega_evo.number for mega_evo in mega_evos)
+
+    return mega_counts
+
+
+class SpriteFileNamer:
+    """Do you have a big set of sprites, and a separate list of stuff
+    identifying them, as happens in XY and ORAS?  I will sort that all out for
+    you.
+    """
+    def __init__(self, out, mega_counts, form_names):
+        self.out = out
+        self.mega_counts = mega_counts
+        self.form_names = form_names
+
+        self.index_to_filenames = defaultdict(list)
+        self.seen = set()
+
+    def add(self, index, pokemonid, formid=0, right=False, back=False, shiny=False, female=False):
+        # Check that we don't try to do the same one twice
+        if index in self.index_to_filenames:
+            raise ValueError("Index {} is already {}".format(
+                index, self.index_to_filenames[index]))
+
+        key = (pokemonid, formid, right, back, shiny, female)
+        if key in self.seen:
+            raise ValueError("Duplicate sprite: {!r}".format(key))
+        self.seen.add(key)
+
+        # Figure out the form name
+        # TODO this assumes a Pokémon cannot have both forms and mega
+        # evolutions, which is true...  for now
+        if pokemonid in self.form_names:
+            form = self.form_names[pokemonid][formid]
+        elif formid == 0:
+            form = None
+        elif self.mega_counts[pokemonid]:
+            if self.mega_counts[pokemonid] == 1:
+                form = ['mega'][formid - 1]
+            elif self.mega_counts[pokemonid] == 2:
+                form = ['mega-x', 'mega-y'][formid - 1]
+            else:
+                raise ValueError(
+                    "Don't know how to name {} mega evolutions for Pokémon {}"
+                    .format(self.mega_counts[pokemonid], pokemonid))
+        else:
+            raise ValueError("Pokemon {} doesn't have forms".format(pokemonid))
+
+        # Construct the directory
+        parts = []
+        if right:
+            parts.append('right')
+        if back:
+            parts.append('back')
+        if shiny:
+            parts.append('shiny')
+        if female:
+            parts.append('female')
+
+        # Build the final filename
+        bare_filename = "{}.png".format(pokemonid)
+        if form:
+            parts.append("{}-{}.png".format(pokemonid, form))
+        else:
+            parts.append(bare_filename)
+        filename = '/'.join(parts)
+        self.index_to_filenames[index].append(filename)
+
+        # For named "default" forms, create two output files
+        if form and formid == 0:
+            parts[-1] = bare_filename
+            self.index_to_filenames[index].append('/'.join(parts))
+
+        # Special case for Meowstic: duplicate its female form as a formless
+        # female sprite
+        if form == 'female' and not female:
+            parts.insert(-1, 'female')
+            parts[-1] = bare_filename
+            self.index_to_filenames[index].append('/'.join(parts))
+
+    def inject(self, index, filename):
+        """Manually specify the filename for an index.  Helpful for edge cases
+        like egg sprites.
+        """
+        if index in self.index_to_filenames:
+            raise ValueError("Index {} is already {}".format(
+                index, self.index_to_filenames[index]))
+
+        self.index_to_filenames[index].append(filename)
+
+    # TODO we oughta create aliases for any that are missing?
+    # pumpkaboo/gourgeist and arceus don't have separate box icons, for
+    # example.
+    @contextmanager
+    def open(self, index, prefix=None):
+        out = self.out
+        if prefix:
+            out /= prefix
+
+        filenames = self.index_to_filenames[index]
+
+        if len(filenames) == 0:
+            raise RuntimeError("Don't have filenames for index {}".format(index))
+
+        fn = out / filenames[0]
+        if not fn.parent.exists():
+            fn.parent.mkdir(parents=True)
+        with fn.open('wb') as f:
+            yield f
+
+        for path in filenames[1:]:
+            fn2 = out / path
+            # TODO this duplication is annoying and we can probably do it in
+            # one fell swoop instead of constantly rechecking, maybe during the
+            # same timeframe that we fill in missing forms
+            if not fn2.parent.exists():
+                fn2.parent.mkdir(parents=True)
+            shutil.copyfile(str(fn), str(fn2))
+
+
 def extract_box_sprites(root, out):
-    filenames = {}
+    namer = SpriteFileNamer(
+        out, get_mega_counts(root), ORAS_EXTRA_SPRITE_NAMES)
+
     with (root / 'exe/code.bin').open('rb') as f:
         # Form configuration, used to put sprites in the right order
         # NOTE: in x/y the address is 0x0043ea98
         f.seek(0x0047d650)
-        # TODO need to do a different thing for main sprites
         # TODO magic number
         for n in range(722):
             sprite = pokemon_sprite_struct.parse_stream(f)
-            assert sprite.index not in filenames
-            filenames[sprite.index] = "{}".format(n)
+            namer.add(sprite.index, n)
             if sprite.female_index != sprite.index:
-                assert sprite.female_index not in filenames
-                filenames[sprite.female_index] = "{}-female".format(n)
+                namer.add(sprite.female_index, n, female=True)
             # Note that these addresses are relative to RAM, and the binary is
             # loaded into RAM starting at 0x100000, so we need to subtract that
             # to get a file position
@@ -608,8 +742,7 @@ def extract_box_sprites(root, out):
                         continue
                     if form_idx == sprite.index:
                         continue
-                    assert form_idx not in filenames
-                    filenames[form_idx] = "{}-form{}".format(n, form)
+                    namer.add(form_idx, n, form)
 
             if sprite.right_index_offset:
                 f.seek(sprite.right_index_offset - 0x100000)
@@ -622,18 +755,12 @@ def extract_box_sprites(root, out):
                     for form, (form_idx, right_idx) in enumerate(zip(form_indices, right_indices)):
                         if form_idx == right_idx:
                             continue
-                        if form != 0:
-                            suffix = "form{}-right".format(form)
-                        else:
-                            suffix = 'right'
-                        assert right_idx not in filenames
-                        filenames[right_idx] = "{}-{}".format(n, suffix)
+                        namer.add(right_idx, n, form, right=True)
                 else:
                     assert sprite.right_count == 2
                     assert right_indices[0] == right_indices[1]
                     if right_indices[0] != sprite.index:
-                        assert right_indices[0] not in filenames
-                        filenames[right_indices[0]] = "{}-right".format(n)
+                        namer.add(right_indices[0], n, right=True)
 
             f.seek(pos)
 
@@ -646,29 +773,42 @@ def extract_box_sprites(root, out):
             if i == 0:
                 # Dummy blank sprite, not interesting to us
                 continue
-            elif i in filenames:
-                filename = filenames[i] + '.png'
+            elif i == 333:
+                # Duplicate Entei sprite that's not used
+                continue
             elif i == len(garc) - 1:
                 # Very last one is egg
-                filename = 'egg.png'
-            else:
-                # This is a duplicate Entei sprite that's not used
-                assert i in (333,)
-                continue
+                namer.inject(i, 'egg.png')
 
             data = subfile[0].read()
-            width, height, color_depth, pixels = decode_clim(data)
+            width, height, color_depth, palette, pixels = decode_clim(data)
             png_writer = png.Writer(
                 width=width,
                 height=height,
-                alpha=True,
+                palette=palette,
             )
 
-            # this library is so fucking stupid
-            # TODO strictly speaking we could just write out a paletted PNG directly
-            # TODO add sBIT chunk indicating original bit depth
-            with (pokemon_sprites_dir / filename).open('wb') as f:
-                png_writer.write(f, (itertools.chain(*row) for row in pixels))
+            # TODO this is bad.
+            if 'right/' in namer.index_to_filenames[i][0]:
+                for row in pixels:
+                    row.reverse()
+
+            # I want to preserve Zhorken's good idea of indicating the original
+            # bit depth with an sBIT chunk, but PyPNG can't do that directly,
+            # so we need to do a bit of nonsense.
+            buf = io.BytesIO()
+            png_writer.write(buf, pixels)
+
+            # Read the PNG as chunks, and manually add an sBIT chunk
+            buf.seek(0)
+            png_reader = png.Reader(buf)
+            chunks = list(png_reader.chunks())
+            sbit = bytes([color_depth] * 3)
+            chunks.insert(1, ('sBIT', sbit))
+
+            # Write chunks to an actual file
+            with namer.open(i) as f:
+                png.write_chunks(f, chunks)
 
 
 def extract_dex_sprites(root, out):
@@ -680,18 +820,9 @@ def extract_dex_sprites(root, out):
     # are megas, and the rest are listed manually above as
     # ORAS_EXTRA_SPRITE_NAMES.
 
-    # Grab the list of megas first
-    num_megas = {}  # pokemonid => number of mega evos
-    with read_garc(root / 'rom/a/1/9/3') as garc:
-        for pokemonid, subfile in enumerate(garc):
-            mega_evos = pokemon_mega_evolutions_struct.parse_stream(subfile[0])
-            num_megas[pokemonid] = max(
-                mega_evo.number for mega_evo in mega_evos)
+    namer = SpriteFileNamer(
+        out, get_mega_counts(root), ORAS_EXTRA_SPRITE_NAMES)
 
-    # Then construct filenames, using num_megas plus information from the model
-    # index
-    filenames = {}  # model/sprite number => filename, sans extension
-    duplicate_filenames = []  # pairs of (copy from, copy to)
     with read_garc(root / 'rom/a/0/0/8') as garc:
         f = garc[0][0]
         # TODO magic number
@@ -710,19 +841,9 @@ def extract_dex_sprites(root, out):
             elif pokemonid >= 717:
                 model_num += 1
 
-            filenames[model_num] = str(pokemonid)
+            namer.add(model_num, pokemonid)
             form_count = count - 1  # discount "base" form
             total_model_count = model_num + count - 1
-
-            # Some "forms" have no real default, so we save the sprite both as
-            # nnn.png and nnn-form.png, to guarantee that nnn.png always exists
-            if pokemonid in ORAS_EXTRA_SPRITE_NAMES:
-                if ORAS_EXTRA_SPRITE_NAMES[pokemonid][0] is not None:
-                    duplicate_filenames.append((
-                        str(pokemonid),
-                        "{}-{}".format(
-                            pokemonid, ORAS_EXTRA_SPRITE_NAMES[pokemonid][0]),
-                    ))
 
             # Don't know what flag 1 is; everything has it.
             # Flag 2 means the first alternate form is a female variant.
@@ -730,41 +851,25 @@ def extract_dex_sprites(root, out):
                 assert form_count > 0
                 form_count -= 1
                 model_num += 1
-                filenames[model_num] = "female/{}".format(pokemonid)
+                namer.add(model_num, pokemonid, female=True)
             # Flag 4 just means there are more forms?
             if flags & 4:
                 assert form_count
 
-            assert 1 or 1 == sum((
-                form_count == 0,
-                num_megas[pokemonid] > 0,
-                pokemonid in ORAS_EXTRA_SPRITE_NAMES,
-            ))
-            if num_megas[pokemonid]:
-                assert form_count == num_megas[pokemonid]
-                assert pokemonid not in ORAS_EXTRA_SPRITE_NAMES
+            for formid in range(1, form_count + 1):
                 model_num += 1
-                if form_count == 1:
-                    filenames[model_num] = "{}-mega".format(pokemonid)
-                else:
-                    # Charizard and Mewtwo
-                    assert form_count == 2
-                    filenames[model_num] = "{}-mega-x".format(pokemonid)
-                    filenames[model_num + 1] = "{}-mega-y".format(pokemonid)
-            elif pokemonid in ORAS_EXTRA_SPRITE_NAMES:
-                for form_name in ORAS_EXTRA_SPRITE_NAMES[pokemonid][1:]:
-                    model_num += 1
-                    filenames[model_num] = "{}-{}".format(pokemonid, form_name)
+                namer.add(model_num, pokemonid, formid)
 
     # And now, do the ripping
-    # TODO This will save Unown A as 201.png, and not create a 201-a.png
     pokemon_sprites_dir = out
     with read_garc(root / 'rom/a/2/6/3') as garc:
         from .lib.clim import decode_clim
         for i, subfile in enumerate(garc):
-            shiny_prefix = ''
+            shiny_prefix = None
             if i > total_model_count:
                 i -= total_model_count
+                # TODO this should be a real feature, as should the 'right'
+                # hack in the other code
                 shiny_prefix = 'shiny/'
 
             if i == 0:
@@ -774,36 +879,18 @@ def extract_dex_sprites(root, out):
                 # Cosplay Pikachu's outfits -- the sprites are blank, so saving
                 # these is not particularly useful
                 continue
-            elif i in filenames:
-                filename = shiny_prefix + filenames[i] + '.png'
-            else:
-                raise ValueError(
-                    "Can't find a filename for sprite number {}".format(i))
 
             data = subfile[0].read()
-            width, height, color_depth, pixels = decode_clim(data)
+            width, height, color_depth, palette, pixels = decode_clim(data)
+            assert not palette
             png_writer = png.Writer(
                 width=width,
                 height=height,
                 alpha=True,
             )
 
-            # this library is so fucking stupid
-            # TODO strictly speaking we could just write out a paletted PNG directly
-            # TODO add sBIT chunk indicating original bit depth
-            path = pokemon_sprites_dir / filename
-            parent = path.parent
-            if not parent.exists():
-                parent.mkdir(parents=False)
-
-            with path.open('wb') as f:
+            with namer.open(i, prefix=shiny_prefix) as f:
                 png_writer.write(f, (itertools.chain(*row) for row in pixels))
-
-    for source, dest in duplicate_filenames:
-        shutil.copyfile(
-            str(pokemon_sprites_dir / source) + '.png',
-            str(pokemon_sprites_dir / dest) + '.png',
-        )
 
 
 def _munge_source_arg(strpath):

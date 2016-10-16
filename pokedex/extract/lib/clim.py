@@ -85,21 +85,16 @@ def decode_rgba5551(data, *, start=0, count=None):
 del _register_color_decoder
 
 
-def apply_palette(palette, data, *, start=0):
-    # TODO i am annoyed that this does a pointless copy, but i assume islice()
-    # has even more overhead...
-    if start != 0:
-        data = data[start:]
-
+def uncuddle_paletted_pixels(palette, data):
     if len(palette) <= 16:
         # Short palettes allow cramming two pixels into each byte
         return (
-            palette[idx]
+            idx
             for byte in data
             for idx in (byte >> 4, byte & 0x0f)
         )
     else:
-        return map(palette.__getitem__, data)
+        return data
 
 
 def untile_pixels(raw_pixels, width, height):
@@ -170,8 +165,9 @@ def decode_clim(data):
         palette_length, = struct.unpack_from('<H', data, 2)
         palette = list(color_decoder(data, start=4, count=palette_length))
         data_start = 4 + palette_length * color_bpp
-        scrambled_pixels = apply_palette(palette, data[data_start:])
+        scrambled_pixels = uncuddle_paletted_pixels(palette, data[data_start:])
     else:
+        palette = None
         scrambled_pixels = color_decoder(data)
 
     pixels = untile_pixels(
@@ -179,4 +175,4 @@ def decode_clim(data):
         imag_header.width,
         imag_header.height,
     )
-    return imag_header.width, imag_header.height, color_depth, pixels
+    return imag_header.width, imag_header.height, color_depth, palette, pixels
