@@ -1058,6 +1058,9 @@ class ItemFlingEffect(TableBase):
     __singlename__ = 'item_fling_effect'
     id = Column(Integer, primary_key=True, nullable=False,
         doc=u"A numeric ID")
+    identifier = Column(Unicode(79), nullable=False,
+        doc=u"An identifier of this fling effect",
+        info=dict(format='identifier'))
 
 create_translation_table('item_fling_effect_prose', ItemFlingEffect, 'prose',
     effect = Column(UnicodeText, nullable=False,
