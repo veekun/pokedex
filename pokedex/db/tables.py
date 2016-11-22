@@ -29,6 +29,7 @@ classes in that module can be used to change the default language.
 import collections
 from functools import partial
 
+import six
 from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.ext.associationproxy import association_proxy
@@ -42,11 +43,12 @@ from sqlalchemy.types import Boolean, Enum, Integer, SmallInteger, Unicode, Unic
 
 from pokedex.db import markdown, multilang
 
+@six.python_2_unicode_compatible
 class TableSuperclass(object):
     """Superclass for declarative tables, to give them some generic niceties
     like stringification.
     """
-    def __unicode__(self):
+    def __str__(self):
         """Be as useful as possible.  Show the primary key, and an identifier
         if we've got one.
         """
@@ -56,18 +58,15 @@ class TableSuperclass(object):
         if not pk_constraint:
             return u"<%s object at %x>" % (typename, id(self))
 
-        pk = u', '.join(unicode(getattr(self, column.name))
+        pk = u', '.join(six.text_type(getattr(self, column.name))
             for column in pk_constraint.columns)
         try:
             return u"<%s object (%s): %s>" % (typename, pk, self.identifier)
         except AttributeError:
             return u"<%s object (%s)>" % (typename, pk)
 
-    def __str__(self):
-        return unicode(self).encode('utf8')
-
     def __repr__(self):
-        return unicode(self).encode('utf8')
+        return str(self)
 
 mapped_classes = []
 class TableMetaclass(DeclarativeMeta):
