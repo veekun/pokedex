@@ -105,12 +105,17 @@ class LocusMeta(type):
                 sup.__init_subclass__(**kwargs)
             return self
 
+        def __init__(cls, *args, **kwargs):
+            super().__init__(*args)
+
 
 class Locus(metaclass=LocusMeta):
     _attributes = {}
 
-    def __init_subclass__(cls, **kwargs):
+    def __init_subclass__(cls, *, sliced_by=(), **kwargs):
         # super().__init_subclass__(**kwargs)
+        # TODO how...  do i...  make an attribute on the class that's not inherited by instances
+        cls.sliced_by = sliced_by
         cls._attributes = cls._attributes.copy()
         for key, value in cls.__dict__.items():
             if isinstance(value, _Attribute):
@@ -132,7 +137,7 @@ class Locus(metaclass=LocusMeta):
         )
 
 
-class VersionedLocus(Locus):
+class VersionedLocus(Locus, sliced_by=['game']):
     def __init_subclass__(cls, **kwargs):
         super(VersionedLocus, cls).__init_subclass__(**kwargs)
 
@@ -144,6 +149,10 @@ class VersionedLocus(Locus):
             cls.Sliced = Sliced
 
             cls._slices = {}
+
+
+# ------------------------------------------------------------------------------
+# Loci definitions
 
 # TODO seems to me that each of these, regardless of whether they have any
 # additional data attached or not, are restricted to a fixed extra-game-ular
@@ -158,9 +167,6 @@ Pokedex = _ForwardDeclaration()
 
 
 class Pokémon(VersionedLocus):
-    # TODO version, language.  but those are kind of meta-fields; do they need
-    # treating specially?
-
     name = _Localized(str)
 
     types = _List(Type, min=1, max=2)
@@ -199,6 +205,41 @@ class Pokémon(VersionedLocus):
 Pokemon = Pokémon
 
 
+# ------------------------------------------------------------------------------
+# The repository class, primary interface to the data
+
+class LocusReader:
+    def __init__(self, identifier, locus, **kwargs):
+        self.identifier = identifier
+        self.locus = locus
+        # TODO what is kwargs here?  in this case we really want a slice, right...?
+
+    def __getattr__(self):
+        pass
+
+    def __dir__(self):
+        pass
+
+class QuantumProperty:
+    def __init__(self, qlocus, attr):
+        self.qlocus = qlocus
+        self.attr = attr
+
+    def __repr__(self):
+        return repr({key: getattr(locus, self.attr) for (key, locus) in self.qlocus.locus_map.items()})
+
+class QuantumLocusReader:
+    def __init__(self, identifier, locus_cls, locus_map):
+        self.identifier = identifier
+        self.locus_cls = locus_cls
+        self.locus_map = locus_map
+
+    def __getattr__(self, attr):
+        return QuantumProperty(self, attr)
+
+    def __repr__(self):
+        return "<{}*: {}>".format(self.locus_cls.__name__, self.identifier)
+
 class Repository:
     def __init__(self):
         # type -> identifier -> object
@@ -206,28 +247,27 @@ class Repository:
         # type -> property -> value -> list of objects
         self.index = defaultdict(lambda: defaultdict(lambda: defaultdict(set)))
 
-    def add(self, obj):
+    def add(self, identifier, locus, **kwargs):
+        # TODO kwargs are used for slicing, e.g. a pokemon has a game, but this needs some rigid definition
         # TODO this should be declared by the type itself, obviously
-        cls = type(obj)
-        # TODO both branches here should check for duplicates
-        if isinstance(obj, Slice):
-            cls = cls.base_class
-            if obj.identifier not in self.objects[cls]:
-                glom = cls()
-                glom.identifier = obj.identifier
-                self.objects[cls][obj.identifier] = glom
-            else:
-                glom = self.objects[cls][obj.identifier]
-            # TODO this...  feels special-cased, but i guess, it is?
-            glom._slices[obj.game] = obj
-        else:
-            self.objects[cls][obj.identifier] = obj
+        cls = type(locus)
+        _basket = self.objects[cls].setdefault(identifier, {})
+        # TODO so in the case of slicing (which is most loci), we don't
+        # actually want to store a single object, but a sliced-up collection of
+        # them (indicated by kwargs).  but then it's kind of up in the air what
+        # we'll actually get /back/ when we go to fetch that object, and that
+        # is unsatisfying to me.  i could make this a list of "baskets", which
+        # may hold one object or a number of slices, but i'm not sure how i
+        # feel about that; might have to just see how other loci work out.
+        # TODO either way, this is very hardcoded and needs to not be
+        _basket[kwargs['game']] = locus
         # TODO this is more complex now that names are multi-language
-        #self.index[cls][cls.name][obj.name].add(obj)
+        #self.index[cls][cls.name][locus.name].add(locus)
 
     def fetch(self, cls, identifier):
         # TODO wrap in a...  multi-thing
-        return self.objects[cls][identifier]
+        #return self.objects[cls][identifier]
+        return QuantumLocusReader(identifier, cls, self.objects[cls][identifier])
 
 
 # TODO clean this garbage up -- better way of iterating the type, actually work for something other than pokemon...
@@ -247,7 +287,7 @@ def _dump_locus(locus):
 
 @POKEDEX_TYPES.loader('pokemon', version=None)
 def _load_locus(data, version):
-    cls = Pokemon.Sliced
+    cls = Pokémon
     # TODO wrap with a writer thing?
     obj = cls()
     for key, value in data.items():
@@ -258,33 +298,23 @@ def _load_locus(data, version):
     return obj
 
 
-def _temp_main():
+def load_repository():
     repository = Repository()
 
     # just testing for now
     cam = camel.Camel([POKEDEX_TYPES])
-    PATH = 'pokedex/data/ww-red/pokemon.yaml'
-    with open(PATH) as f:
-        all_pokemon = cam.load(f.read())
-        for identifier, pokemon in all_pokemon.items():
-            # TODO i don't reeeally like this, but configuring a camel to do it
-            # is a little unwieldy
-            pokemon.game = 'ww-red'
-            # TODO this in particular seems extremely clumsy, but identifiers ARE fundamentally keys...
-            pokemon.identifier = identifier
+    for game in ('jp-red', 'jp-green', 'jp-blue', 'ww-red', 'ww-blue', 'yellow'):
+        path = "pokedex/data/{}/pokemon.yaml".format(game)
+        with open(path) as f:
+            all_pokemon = cam.load(f.read())
+            for identifier, pokemon in all_pokemon.items():
+                repository.add(identifier, pokemon, game=game)
 
-            repository.add(pokemon)
-    PATH = 'pokedex/data/ww-blue/pokemon.yaml'
-    with open(PATH) as f:
-        all_pokemon = cam.load(f.read())
-        for identifier, pokemon in all_pokemon.items():
-            # TODO i don't reeeally like this, but configuring a camel to do it
-            # is a little unwieldy
-            pokemon.game = 'ww-blue'
-            # TODO this in particular seems extremely clumsy, but identifiers ARE fundamentally keys...
-            pokemon.identifier = identifier
+    return repository, all_pokemon
 
-            repository.add(pokemon)
+
+def _temp_main():
+    repository, all_pokemon = load_repository()
 
     # TODO NEXT TODO
     # - how does the composite object work, exactly?  eevee.name.single?  eevee.name.latest?  no, name needs a language...
