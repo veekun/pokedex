@@ -9,19 +9,17 @@ but documents Pokédex mapped classes.
 
 import functools
 import textwrap
+import six
 
 from docutils import nodes
 from docutils.statemachine import ViewList
-from sphinx.util.compat import Directive, make_admonition
-from sphinx.locale import _
 from sphinx.domains.python import PyClasslike
-from sphinx.util.docfields import Field, GroupedField, TypedField
-from sphinx.ext.autodoc import ClassLevelDocumenter
+from sphinx.util.docfields import TypedField
 
 from sqlalchemy import types
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 from sqlalchemy.orm.properties import RelationshipProperty
-from sqlalchemy.orm import Mapper, configure_mappers
+from sqlalchemy.orm import configure_mappers
 from sqlalchemy.ext.associationproxy import AssociationProxy
 from pokedex.db.markdown import MoveEffectPropertyMap, MoveEffectProperty
 
@@ -128,7 +126,7 @@ def with_header(header=None):
 ### Section generation functions
 
 def generate_table_header(cls, remaining_attrs):
-    first_line, sep, next_lines = unicode(cls.__doc__).partition(u'\n')
+    first_line, sep, next_lines = six.text_type(cls.__doc__).partition(u'\n')
     yield first_line
     for line in textwrap.dedent(next_lines).split('\n'):
         yield line
@@ -184,7 +182,7 @@ def generate_columns(cls, remaining_attrs):
             yield column_header(c, name) + ':'
         yield u''
         if c.doc:
-            yield u'  ' + unicode(c.doc)
+            yield u'  ' + six.text_type(c.doc)
             yield u''
 
 @with_header(u'Internationalized strings')
@@ -200,7 +198,7 @@ def generate_strings(cls, remaining_attrs):
                         translation_class.__table__.name)
                 yield u''
                 if c.doc:
-                    yield u'  ' + unicode(c.doc)
+                    yield u'  ' + six.text_type(c.doc)
                     yield u''
 
 @with_header(u'Relationships')
@@ -220,7 +218,7 @@ def generate_relationships(cls, remaining_attrs):
         yield u'(→ %s)' % class_name
         if rel.doc:
             yield u''
-            yield u'  ' + unicode(rel.doc)
+            yield u'  ' + six.text_type(rel.doc)
         if rel.secondary is not None:
             yield u''
             yield '  Association table: ``%s``' % rel.secondary
@@ -299,7 +297,6 @@ class DexTable(PyClasslike):
                 break
         else:
             raise ValueError('Table %s not found' % name)
-        table = cls.__table__
 
         remaining_attrs = set(x for x in dir(cls) if not x.startswith('_'))
         remaining_attrs.difference_update(['metadata', 'translation_classes',

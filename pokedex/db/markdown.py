@@ -174,7 +174,7 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
         self.game_language = game_language
 
     def handleMatch(self, m):
-        from pokedex.db import tables, util
+        from pokedex.db import tables
         start, label, category, target, end = m.groups()
         try:
             table = dict(

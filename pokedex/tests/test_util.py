@@ -3,7 +3,7 @@
 import pytest
 parametrize = pytest.mark.parametrize
 
-from pokedex.db import connect, tables, util
+from pokedex.db import tables, util
 
 def test_get_item_identifier(session):
     item = util.get(session, tables.Item, identifier='master-ball')

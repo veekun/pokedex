@@ -5,7 +5,7 @@ from sqlalchemy.orm import aliased, joinedload, lazyload
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.sql import func
 
-from pokedex.db import connect, tables, util
+from pokedex.db import tables, util
 
 def test_encounter_slots(session):
     """Encounters have a version, which has a version group; encounters also

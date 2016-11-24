@@ -6,7 +6,9 @@ format sent back and forth over the GTS.
 
 import datetime
 
-from construct import *
+from construct import (Adapter, BitField, BitStruct, Buffered,
+                       EmbeddedBitStruct, Enum, Flag, Padding, String, Struct,
+                       ULInt16, ULInt32, ULInt8)
 
 # TODO:
 # - strings should be validated, going both in and out

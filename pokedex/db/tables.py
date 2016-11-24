@@ -26,18 +26,15 @@ classes in that module can be used to change the default language.
 """
 # XXX: Check if "gametext" is set correctly everywhere
 
-import collections
 from functools import partial
+import six
 
-from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, Table, UniqueConstraint
+from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import backref, relationship
-from sqlalchemy.orm.session import Session
-from sqlalchemy.orm.interfaces import AttributeExtension
-from sqlalchemy.sql import and_, or_
-from sqlalchemy.schema import ColumnDefault
+from sqlalchemy.sql import and_
 from sqlalchemy.types import Boolean, Enum, Integer, SmallInteger, Unicode, UnicodeText
 
 from pokedex.db import markdown, multilang
@@ -56,7 +53,7 @@ class TableSuperclass(object):
         if not pk_constraint:
             return u"<%s object at %x>" % (typename, id(self))
 
-        pk = u', '.join(unicode(getattr(self, column.name))
+        pk = u', '.join(six.text_type(getattr(self, column.name))
             for column in pk_constraint.columns)
         try:
             return u"<%s object (%s): %s>" % (typename, pk, self.identifier)
@@ -64,10 +61,13 @@ class TableSuperclass(object):
             return u"<%s object (%s)>" % (typename, pk)
 
     def __str__(self):
-        return unicode(self).encode('utf8')
+        if six.PY2:
+            return six.text_type(self).encode('utf8')
+        else:
+            return type(self).__unicode__(self)
 
     def __repr__(self):
-        return unicode(self).encode('utf8')
+        return str(self)
 
 mapped_classes = []
 class TableMetaclass(DeclarativeMeta):

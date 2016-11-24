@@ -3,8 +3,6 @@
 import pytest
 parametrize = pytest.mark.parametrize
 
-from sqlalchemy.orm.exc import NoResultFound
-
 from pokedex.db import tables, connect, util, markdown
 
 @pytest.fixture(scope="module")
