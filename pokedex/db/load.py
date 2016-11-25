@@ -3,7 +3,6 @@ from __future__ import print_function
 
 import csv
 import fnmatch
-import io
 import os.path
 import sys
 
@@ -12,7 +11,7 @@ import sqlalchemy.sql.util
 import sqlalchemy.types
 
 import pokedex
-from pokedex.db import metadata, tables, translations
+from pokedex.db import metadata, translations
 from pokedex.defaults import get_default_csv_dir
 from pokedex.db.dependencies import find_dependent_tables
 from pokedex.db.oracle import rewrite_long_table_names
@@ -323,7 +322,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
                 # Could happen if row A refers to B which refers to C.
                 # This is ridiculous and doesn't happen in my data so far
                 raise ValueError("Too many levels of self-reference!  "
-                                 "Row was: " + str(row))
+                                 "Row was: " + str(row_data))
 
             session.execute(
                 insert_stmt.values(**row_data)

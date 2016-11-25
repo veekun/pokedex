@@ -32,6 +32,7 @@ All images are in the PNG format, except animations (GIF). All sounds are OGGs.
 
 import os
 from functools import partial
+import six
 
 class MediaFile(object):
     """Represents a file: picture, sound, etc.
@@ -83,7 +84,7 @@ class MediaFile(object):
 
 class BaseMedia(object):
     def __init__(self, root):
-        if isinstance(root, basestring):
+        if isinstance(root, six.string_types):
             self.file_class = partial(MediaFile, root)
         else:
             self.file_class = root
@@ -179,7 +180,7 @@ class _BasePokemonMedia(BaseMedia):
 
         If the sprite is not found, raise a ValueError.
         """
-        if isinstance(version, basestring):
+        if isinstance(version, six.string_types):
             version_dir = version
             try:
                 generation, info = self._pokemon_sprite_info[version_dir]

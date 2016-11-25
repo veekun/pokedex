@@ -30,6 +30,7 @@ import os
 import re
 from collections import defaultdict
 
+import six
 from six.moves import zip
 
 from pokedex.db import tables
@@ -155,10 +156,13 @@ class Message(object):
         return template.format(self=self, string=string)
 
     def __str__(self):
-        return unicode(self).encode('utf-8')
+        if six.PY2:
+            return six.text_type(self).encode('utf8')
+        else:
+            return type(self).__unicode__(self)
 
     def __repr__(self):
-        return unicode(self).encode('utf-8')
+        return str(self)
 
 class Translations(object):
     """Data and opertaions specific to a location on disk (and a source language)
@@ -648,7 +652,6 @@ def match_to_source(source, *translations):
         if first or match:
             best_string = current_string
             best_crc = current_crc
-            best_message = translation
         if match:
             break
         first = False

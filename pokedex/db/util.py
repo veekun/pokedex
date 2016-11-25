@@ -9,8 +9,6 @@ from sqlalchemy.sql.expression import func
 from sqlalchemy.sql.functions import coalesce
 from sqlalchemy.orm.exc import NoResultFound
 
-from pokedex.db import tables
-
 ### Getter
 
 def get(session, table, identifier=None, name=None, id=None, language=None):

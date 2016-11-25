@@ -1,7 +1,5 @@
-from functools import partial
-
 from sqlalchemy.ext.associationproxy import association_proxy, AssociationProxy
-from sqlalchemy.orm import Query, aliased, mapper, relationship, synonym
+from sqlalchemy.orm import Query, mapper, relationship, synonym
 from sqlalchemy.orm.collections import attribute_mapped_collection
 from sqlalchemy.orm.scoping import ScopedSession
 from sqlalchemy.orm.session import Session, object_session

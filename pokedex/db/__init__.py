@@ -4,7 +4,7 @@ import re
 from sqlalchemy import engine_from_config, orm
 
 from ..defaults import get_default_db_uri
-from .tables import Language, metadata
+from .tables import metadata
 from .multilang import MultilangSession, MultilangScopedSession
 
 ENGLISH_ID = 9
@@ -46,7 +46,7 @@ def connect(uri=None, session_args={}, engine_args={}, engine_prefix=''):
     ### Connect
     engine_args[engine_prefix + 'url'] = uri
     engine = engine_from_config(engine_args, prefix=engine_prefix)
-    conn = engine.connect()
+    engine.connect()
     metadata.bind = engine
 
     all_session_args = dict(autoflush=True, autocommit=False, bind=engine)
