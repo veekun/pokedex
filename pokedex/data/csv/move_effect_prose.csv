@@ -94,7 +94,7 @@ This effect is passed on by []{move:baton-pass}."
 []{item:choice-band}, []{item:choice-scarf}, and []{item:choice-specs} stay in effect, and the user must select a new move.
 
 This move cannot be copied by []{move:mirror-move}, nor forced by []{move:encore}."
-59,9,Lowers the target's Attack by two stages.,Lowers the target's [Attack]{mechanic:attack} by two [stages]{mechanic:stage}.
+59,9,Lowers the target's Special Attack by two stages.,Lowers the target's [Attack]{mechanic:attack} by two [stages]{mechanic:stage}.
 60,9,Lowers the target's Defense by two stages.,Lowers the target's [Defense]{mechanic:defense} by two [stages]{mechanic:stage}.
 61,9,Lowers the target's Speed by two stages.,Lowers the target's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.
 63,9,Lowers the target's Special Defense by two stages.,Lowers the target's [Special Defense]{mechanic:special-defense} by two [stages]{mechanic:stage}.
