@@ -2513,7 +2513,7 @@ LocationGameIndex.generation = relationship(Generation,
 
 Machine.item = relationship(Item)
 Machine.version_group = relationship(VersionGroup,
-    innerjoin=True, lazy='joined')
+    innerjoin=True, lazy='joined', backref='machines')
 
 
 Move.changelog = relationship(MoveChangelog,
@@ -2917,9 +2917,6 @@ VersionGroup.pokemon_move_methods = relationship(PokemonMoveMethod,
     primaryjoin=and_(VersionGroup.id == VersionGroupPokemonMoveMethod.version_group_id),
     secondaryjoin=and_(PokemonMoveMethod.id == VersionGroupPokemonMoveMethod.pokemon_move_method_id),
     backref="version_groups")
-VersionGroup.machines = relationship(Machine,
-    innerjoin=True,
-    order_by=Machine.machine_number)
 
 
 VersionGroupPokemonMoveMethod.version_group = relationship(VersionGroup,
