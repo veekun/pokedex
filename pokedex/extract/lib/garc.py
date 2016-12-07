@@ -4,6 +4,7 @@ filesystem.
 Based on code by Zhorken: https://github.com/Zhorken/pokemon-x-y-icons
 and Kaphotics: https://github.com/kwsch/GARCTool
 """
+from collections import Counter
 from io import BytesIO
 from pathlib import Path
 import struct
@@ -27,13 +28,15 @@ def count_bits(n):
 garc_header_struct = c.Struct(
     'garc_header',
     c.Magic(b'CRAG'),
-    c.Const(c.ULInt32('header_size'), 0x1c),
+    c.ULInt32('header_size'),  # 28 in XY, 36 in SUMO
     c.Const(c.ULInt16('byte_order'), 0xfeff),
-    c.Const(c.ULInt16('mystery1'), 0x0400),
-    c.Const(c.ULInt32('chunks_ct'), 4),
+    c.ULInt16('mystery1'),  # 0x0400 in XY, 0x0600 in SUMO
+    #c.Const(c.ULInt32('chunks_ct'), 4),
+    c.ULInt32('chunks_ct'),
     c.ULInt32('data_offset'),
     c.ULInt32('garc_length'),
     c.ULInt32('last_length'),
+    c.Field('unknown_sumo_stuff', lambda ctx: ctx.header_size - 28),
 )
 fato_header_struct = c.Struct(
     'fato_header',
@@ -76,8 +79,7 @@ class GARCFile(_ContainerFile):
             while bits:
                 if bits & 1:
                     start, end, length = struct.unpack('<3L', stream.read(12))
-                    assert end - 4 < start + length <= end
-                    slices.append((garc_header.data_offset + start, length))
+                    slices.append((garc_header.data_offset + start, end - start))
                 bits >>= 1
 
             self.slices.append(GARCEntry(stream, slices))
@@ -245,19 +247,95 @@ def main(args):
     args.cb(args)
 
 
+def detect_subfile_type(subfile):
+    header = subfile.peek(16)
+    magic = header[0:4]
+
+    # CLIM
+    if magic.isalnum():
+        return magic.decode('ascii')
+
+    # PC
+    if magic[:2].isalnum():
+        return magic[:2].decode('ascii')
+
+    # Encrypted X/Y text?
+    if len(header) >= 16:
+        text_length = int.from_bytes(header[4:8], 'little')
+        header_length = int.from_bytes(header[12:16], 'little')
+        if len(subfile) == text_length + header_length:
+            return 'gen 6 text'
+
+    return None
+
+
 def do_inspect(args):
+    root = Path(args.path)
+    if root.is_dir():
+        for path in sorted(root.glob('**/*')):
+            if path.is_dir():
+                continue
+
+            shortname = str(path.relative_to(root))
+            if len(shortname) > 12:
+                shortname = '...' + shortname[-9:]
+            stat = path.stat()
+            print("{:>12s}  {:>10d}  ".format(shortname, stat.st_size), end='')
+            if stat.st_size == 0:
+                print("empty file")
+                continue
+
+            with path.open('rb') as f:
+                try:
+                    garc = GARCFile(f)
+                except Exception as exc:
+                    print("{}: {}".format(type(exc).__name__, exc))
+                    continue
+
+                total_subfiles = 0
+                magic_ctr = Counter()
+                size_ctr = Counter()
+                for i, topfile in enumerate(garc):
+                    for j, subfile in enumerate(topfile):
+                        total_subfiles += 1
+                        size_ctr[len(subfile)] += 1
+                        magic_ctr[detect_subfile_type(subfile)] += 1
+
+                print("{} subfiles".format(total_subfiles), end='')
+                if total_subfiles > len(garc):
+                    print("  (some nested)")
+                else:
+                    print()
+
+                cutoff = max(total_subfiles // 10, 2)
+                for magic, ct in magic_ctr.most_common():
+                    if ct < cutoff:
+                        break
+                    print(" " * 24, "{:4d} x {:>9s}".format(ct, magic or 'unknown'))
+                for size, ct in size_ctr.most_common():
+                    if ct < cutoff:
+                        break
+                    print(" " * 24, "{:4d} x {:9d}".format(ct, size))
+
+
+        return
+
     with open(args.path, 'rb') as f:
         garc = GARCFile(f)
         for i, topfile in enumerate(garc):
-            print("File #{}, {} entr{}".format(
-                i, len(topfile), 'y' if len(topfile) == 1 else 'ies'))
             for j, subfile in enumerate(topfile):
-                print('   ', j, len(subfile), end='')
-                if subfile.peek(2) == b'PC':
+                print("{:4d}/{:<4d}  {:7d}B".format(i, j, len(subfile)), end='')
+                magic = detect_subfile_type(subfile)
+                if magic == 'PC':
                     print(" -- appears to be a PC file (generic container)")
                     pcfile = PokemonContainerFile(subfile)
                     for k, entry in enumerate(pcfile):
                         print('       ', repr(entry.read(50)))
+                elif magic == 'gen 6 text':
+                    # TODO turn this into a generator so it doesn't have to
+                    # parse the whole thing?  need length though
+                    texts = decrypt_xy_text(subfile.read())
+                    print(" -- X/Y text, {} entries: {!r}".format(len(texts), texts[:5]), texts[-5:])
                 else:
                     print('', repr(subfile.read(50)))
 

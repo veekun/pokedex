@@ -5,7 +5,7 @@ import construct as c
 
 clim_header_struct = c.Struct(
     'clim_header',
-    c.Magic(b'CLIM'),
+    c.Magic(b'FLIM'),  # TODO 'FLIM' in SUMO
     c.Const(c.ULInt16('endianness'), 0xfeff),
     c.Const(c.ULInt16('header_length'), 0x14),
     c.ULInt32('version'),
@@ -18,24 +18,26 @@ imag_header_struct = c.Struct(
     c.Const(c.ULInt32('section_length'), 0x10),
     c.ULInt16('width'),
     c.ULInt16('height'),
-    c.Enum(
         c.ULInt32('format'),
-        L8=0,
-        A8=1,
-        LA4=2,
-        LA8=3,
-        HILO8=4,
-        RGB565=5,
-        RGB8=6,
-        RGBA5551=7,
-        RGBA4=8,
-        RGBA8=9,
-        ETC1=10,
-        ETC1A4=11,
-        L4=12,
-        A4=13,
-        #ETC1=19,
-    )
+    # TODO this seems to have been expanded into several things in SUMO
+    #c.Enum(
+    #    c.ULInt32('format'),
+    #    L8=0,
+    #    A8=1,
+    #    LA4=2,
+    #    LA8=3,
+    #    HILO8=4,
+    #    RGB565=5,
+    #    RGB8=6,
+    #    RGBA5551=7,
+    #    RGBA4=8,
+    #    RGBA8=9,
+    #    ETC1=10,
+    #    ETC1A4=11,
+    #    L4=12,
+    #    A4=13,
+    #    #ETC1=19,
+    #)
 )
 
 
@@ -97,7 +99,7 @@ def uncuddle_paletted_pixels(palette, data):
         return data
 
 
-def untile_pixels(raw_pixels, width, height):
+def untile_pixels(raw_pixels, width, height, *, is_flim):
     """Unscramble pixels into plain old rows.
 
     The pixels are arranged in 8×8 tiles, and each tile is a third-
@@ -111,6 +113,7 @@ def untile_pixels(raw_pixels, width, height):
     stored_height = 2 ** math.ceil(math.log(height) / math.log(2))
     num_pixels = stored_width * stored_height
     tile_width = stored_width // 8
+    tile_height = stored_height // 8
 
     pixels = [
         [None for x in range(width)]
@@ -124,8 +127,15 @@ def untile_pixels(raw_pixels, width, height):
         # Find the coordinates of the top-left corner of the current tile.
         # n.b. The image is eight tiles wide, and each tile is 8×8 pixels.
         tile_num = n // 64
-        tile_y = tile_num // tile_width * 8
-        tile_x = tile_num % tile_width * 8
+        if is_flim:
+            # The FLIM format seems to pseudo-rotate the entire image to the
+            # right, so tiles start in the bottom left and go up
+            tile_y = (tile_height - 1 - (tile_num % tile_height)) * 8
+            tile_x = tile_num // tile_height * 8
+        else:
+            # CLIM has the more conventional right-then-down order
+            tile_y = tile_num // tile_width * 8
+            tile_x = tile_num % tile_width * 8
 
         # Determine the pixel's coordinates within the tile
         # http://en.wikipedia.org/wiki/Z-order_curve#Coordinate_values
@@ -142,6 +152,10 @@ def untile_pixels(raw_pixels, width, height):
             (within_tile & 0b100000) >> 3
         )
 
+        if is_flim:
+            # Individual tiles are also rotated.  Unrotate them
+            sub_x, sub_y = sub_y, 7 - sub_x
+
         # Add up the pixel's coordinates within the whole image
         x = tile_x + sub_x
         y = tile_y + sub_y
@@ -153,7 +167,19 @@ def untile_pixels(raw_pixels, width, height):
 
 
 def decode_clim(data):
+    file_format = data[-40:-36]
+    if file_format == b'CLIM':
+        is_flim = False
+    elif file_format == b'FLIM':
+        is_flim = True
+    else:
+        raise ValueError("Unknown image format {}".format(file_format))
+
     imag_header = imag_header_struct.parse(data[-20:])
+    if is_flim:
+        # TODO SUMO hack; not sure how to get format out of this header
+        imag_header.format = 'RGBA5551'
+
     if imag_header.format not in COLOR_DECODERS:
         raise ValueError(
             "don't know how to decode {} pixels".format(imag_header.format))
@@ -174,5 +200,6 @@ def decode_clim(data):
         scrambled_pixels,
         imag_header.width,
         imag_header.height,
+        is_flim=is_flim,
     )
     return imag_header.width, imag_header.height, color_depth, palette, pixels

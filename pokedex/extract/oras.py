@@ -22,10 +22,13 @@ import yaml
 from .lib.garc import GARCFile, decrypt_xy_text
 from .lib.text import merge_japanese_texts
 
+# TODO auto-detect rom vs romfs vs...  whatever
 
 # TODO fix some hardcoding in here
 # TODO finish converting garc parsing to use construct, if possible, i think (i would not miss substream)
 # way way more sprite work in here...
+
+# TODO would be nice to have meaningful names for the file structure instead of sprinkling hardcoded ones throughout
 
 
 CANON_LANGUAGES = ('ja', 'en', 'fr', 'it', 'de', 'es', 'ko')
@@ -38,6 +41,18 @@ ORAS_SCRIPT_FILES = {
     'de': 'rom/a/0/7/6',
     'es': 'rom/a/0/7/7',
     'ko': 'rom/a/0/7/8',
+}
+SUMO_SCRIPT_FILES = {
+    'ja-kana': 'rom/a/0/3/0',
+    'ja-kanji': 'rom/a/0/3/1',
+    'en': 'rom/a/0/3/2',
+    'fr': 'rom/a/0/3/3',
+    'it': 'rom/a/0/3/4',
+    'de': 'rom/a/0/3/5',
+    'es': 'rom/a/0/3/6',
+    'ko': 'rom/a/0/3/7',
+    'zh-simplified': 'rom/a/0/3/8',
+    'zh-traditional': 'rom/a/0/3/9',
 }
 ORAS_SCRIPT_ENTRIES = {
     'form-names': 5,
@@ -53,13 +68,61 @@ ORAS_SCRIPT_ENTRIES = {
     'ability-flavor': 36,
     'ability-names': 37,
     'nature-names': 51,
+    # Note that these place names come in pairs, in order to support X/Y's
+    # routes, which had both numbers and traditional street names
+    # TODO oughta rip those too!
+    'zone-names': 90,
     'species-names': 98,
+
+    # 113: item names, with macros to branch for pluralization
+    # 114: copy of item names, but with "PP" in latin in korean (?!)
+    # 115: item names in plural (maybe interesting?)
+    'item-names': 116,  # singular
+    'item-flavor': 117,
+}
+SUMO_SCRIPT_ENTRIES = {
+    # 2: bag pockets
+    # 81: ribbons
+
+    'form-names': 114,
+    # TODO a lot of these are missing
+    'species-flavor-sun': 119,
+    'species-flavor-moon': 120,
+    'move-contest-flavor': 109,
+    'move-names': 113,
+    # TODO 19 is z-move names
+    # Note: table 15 is also a list of move names, but with a few at the end
+    # missing?  XY leftovers?
+    'move-flavor': 112,
+    'type-names': 107,
+    'ability-flavor': 97,
+    'ability-names': 96,
+    'nature-names': 87,
+    # Note that these place names come in pairs, in order to support X/Y's
+    # routes, which had both numbers and traditional street names
+    # TODO oughta rip those too!
+    'zone-names': 67,
+    # NOTE: 67 through 70 could be zone names, but could also be "where caught"
+    # names for Pokémon
+    'species-names': 55,
+    'pokemon-height-flavor': 115,
+    'genus-names': 116,
+    'pokemon-weight-flavor': 117,
+    'trainer-class-names': 106,
+    'berry-names': 65,
+    # 49 might be pokédex colors?  or maybe clothing colors
+
+    # 38: item names, with macros to branch for pluralization
+    # 114: copy of item names, but with "PP" in latin in korean (?!)
+    # 37: item names in plural (maybe interesting?)
+    'item-names': 36,  # singular
+    'item-flavor': 35,
 }
 # The first element in each list is the name of the BASE form -- if it's not
 # None, the base form will be saved under two filenames
 ORAS_EXTRA_SPRITE_NAMES = {
     # Cosplay Pikachu
-    25: (None, 'rockstar', 'belle', 'popstar', 'phd', 'libre', 'cosplay'),
+    25: (None, 'rock-star', 'belle', 'pop-star', 'phd', 'libre', 'cosplay'),
     # Unown
     201: tuple('abcdefghijklmnopqrstuvwxyz') + ('exclamation', 'question'),
     # Castform
@@ -179,14 +242,16 @@ pokemon_struct = Struct(
     ULInt32('tutors'),
     ULInt16('mystery1'),
     ULInt16('mystery2'),
-    ULInt32('bp_tutors1'),
-    ULInt32('bp_tutors2'),
-    ULInt32('bp_tutors3'),
-    ULInt32('bp_tutors4'),
+    ULInt32('bp_tutors1'),  # unused in sumo
+    ULInt32('bp_tutors2'),  # unused in sumo
+    ULInt32('bp_tutors3'),  # unused in sumo
+    ULInt32('bp_tutors4'),  # sumo: big numbers for pikachu, eevee, snorlax, mew, starter evos, couple others??  maybe special z-move item?
+    # TODO sumo is four bytes longer, not sure why, find out if those bytes are anything and a better way to express them
+    OptionalGreedyRange(Magic(b'\x00')),
 )
 
 pokemon_mega_evolutions_struct = Array(
-    3,
+    2,  # NOTE: 3 for XY/ORAS, but i don't think the third is ever populated?
     Struct(
         'pokemon_mega_evolutions',
         ULInt16('number'),
@@ -198,6 +263,16 @@ pokemon_mega_evolutions_struct = Array(
 
 egg_moves_struct = Struct(
     'egg_moves',
+    ULInt16('count'),
+    Array(
+        lambda ctx: ctx.count,
+        ULInt16('moveids'),
+    ),
+)
+
+egg_moves_struct = Struct(
+    'egg_moves',
+    ULInt16('first_form_id'),  # TODO SUMO ONLY
     ULInt16('count'),
     Array(
         lambda ctx: ctx.count,
@@ -273,6 +348,236 @@ pokemon_sprite_struct = Struct(
     ULInt16('right_count'),
 )
 
+encounter_struct = Struct(
+    'encounter',
+    # TODO top 5 bits are form stuff
+    ULInt16('pokemon_id'),
+    ULInt8('min_level'),
+    ULInt8('max_level'),
+)
+
+encounter_table_struct = Struct(
+    'encounter_table',
+    ULInt8('walk_rate'),
+    ULInt8('long_grass_rate'),
+    ULInt8('hidden_rate'),
+    ULInt8('surf_rate'),
+    ULInt8('rock_smash_rate'),
+    ULInt8('old_rod_rate'),
+    ULInt8('good_rod_rate'),
+    ULInt8('super_rod_rate'),
+    ULInt8('horde_rate'),
+    Magic(b'\x00' * 5),
+    Array(61, encounter_struct),
+    Magic(b'\x00' * 2),
+)
+
+ORAS_ENCOUNTER_SLOTS = [
+    ('walk', (10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 4, 1)),
+    ('long-grass', (10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 4, 1)),
+    ('hidden', (60, 35, 5)),  # TODO guessing here!
+    ('surf', (50, 30, 15, 4, 1)),
+    ('rock-smash', (50, 30, 15, 4, 1)),
+    ('old-rod', (60, 35, 5)),
+    ('good-rod', (60, 35, 5)),
+    ('super-rod', (60, 35, 5)),
+    ('horde', ((60, 5), (35, 5), (5, 5))),
+]
+
+# The only thing really linking ORAS zones together is that they share the same
+# overall location/place name, so use the index of that name as a key to match
+# to an extant location
+ORAS_ZONE_NAME_INDEX_TO_VEEKUN_LOCATION = {
+    #170: Littleroot Town
+    #172: Oldale Town
+    174: 'dewford-town',
+    #176: Lavaridge Town
+    #178: Fallarbor Town
+    #180: Verdanturf Town
+    #182: Pacifidlog Town
+    184: 'petalburg-city',
+    186: 'slateport-city',
+    #188: Mauville City
+    #190: Rustboro City
+    #192: Fortree City
+    194: 'lilycove-city',
+    196: 'mossdeep-city',
+    198: 'sootopolis-city',
+    200: 'ever-grande-city',
+    #202: Pokémon League
+    204: 'hoenn-route-101',
+    206: 'hoenn-route-102',
+    208: 'hoenn-route-103',
+    210: 'hoenn-route-104',
+    212: 'hoenn-route-105',
+    214: 'hoenn-route-106',
+    216: 'hoenn-route-107',
+    218: 'hoenn-route-108',
+    220: 'hoenn-route-109',
+    222: 'hoenn-route-110',
+    224: 'hoenn-route-111',
+    226: 'hoenn-route-112',
+    228: 'hoenn-route-113',
+    230: 'hoenn-route-114',
+    232: 'hoenn-route-115',
+    234: 'hoenn-route-116',
+    236: 'hoenn-route-117',
+    238: 'hoenn-route-118',
+    240: 'hoenn-route-119',
+    242: 'hoenn-route-120',
+    244: 'hoenn-route-121',
+    246: 'hoenn-route-122',
+    248: 'hoenn-route-123',
+    250: 'hoenn-route-124',
+    252: 'hoenn-route-125',
+    254: 'hoenn-route-126',
+    256: 'hoenn-route-127',
+    258: 'hoenn-route-128',
+    260: 'hoenn-route-129',
+    262: 'hoenn-route-130',
+    264: 'hoenn-route-131',
+    266: 'hoenn-route-132',
+    268: 'hoenn-route-133',
+    270: 'hoenn-route-134',
+    272: 'meteor-falls',
+    274: 'rusturf-tunnel',
+    #276: ???
+    #278: Desert Ruins
+    280: 'granite-cave',
+    282: 'petalburg-woods',
+    #284: Mt. Chimney
+    286: 'jagged-pass',
+    288: 'fiery-path',
+    290: 'mt-pyre',
+    #292: Team Aqua Hideout
+    294: 'seafloor-cavern',
+    296: 'cave-of-origin',
+    298: 'hoenn-victory-road',
+    300: 'shoal-cave',
+    302: 'new-mauville',
+    #304: Sea Mauville
+    #306: Island Cave
+    #308: Ancient Tomb
+    #310: Sealed Chamber
+    #312: Scorched Slab
+    #314: Team Magma Hideout
+    316: 'sky-pillar',
+    #318: Battle Resort
+    #320: Southern Island
+    # TODO is this "abandoned-ship" from rse?
+    #322: S.S. Tidal
+    324: 'hoenn-safari-zone',
+    #326: Mirage Forest
+    #328: Mirage Cave
+    #330: Mirage Island
+    #332: Mirage Mountain
+    #334: Trackless Forest
+    #336: Pathless Plain
+    #338: Nameless Cavern
+    #340: Fabled Cave
+    #342: Gnarled Den
+    #344: Crescent Isle
+    #346: Secret Islet
+    #348: Soaring in the sky
+    #350: Secret Shore
+    #352: Secret Meadow
+    #354: Secret Base
+}
+# TODO wait, in the yaml thing, where do the fanon names for these go?
+ORAS_ZONE_INDEX_TO_VEEKUN_AREA = {
+    # TODO oops i should be actually mapping these to areas in rse.  many of
+    # them aren't split the same way, though.  uh oh.  if we make areas a more
+    # first-class thing, then...  how do we deal with this?  e.g. route 104 is
+    # two zones in oras but only one zone in rse.  it's easy enough to fudge
+    # that with encounters, but what do you do about events etc?
+    26: 'hoenn-route-104--north',
+    27: 'hoenn-route-104--south',
+    # TODO should i, maybe, indicate the type of terrain an area has...?
+    30: 'hoenn-route-107',
+    64: 'hoenn-route-107--underwater',
+
+    # NOTE: split from rse
+    38: 'hoenn-route-112--north',  # route 111 side
+    39: 'hoenn-route-112--south',  # lavaridge town side
+
+    35: 'hoenn-route-111',
+    # NOTE: split from rse
+    37: 'hoenn-route-111--desert',
+
+    48: 'hoenn-route-120',
+    # NOTE: new
+    49: 'hoenn-route-120--tomb-area',
+
+    53: 'hoenn-route-124',
+    65: 'hoenn-route-124--underwater',
+
+    55: 'hoenn-route-126',
+    66: 'hoenn-route-126--underwater',
+
+    57: 'hoenn-route-128',
+    # NOTE: new
+    68: 'hoenn-route-128--underwater',
+
+    58: 'hoenn-route-129',
+    # NOTE: new
+    69: 'hoenn-route-129--underwater',
+
+    59: 'hoenn-route-130',
+    # NOTE: new
+    70: 'hoenn-route-130--underwater',
+
+    71: 'meteor-falls',
+    74: 'meteor-falls--backsmall-room',  # TODO this name is dumb
+    # NOTE: indistinguishable
+    72: 'meteor-falls--back',
+    73: 'meteor-falls--b1f',
+
+    78: 'granite-cave--1f',
+    79: 'granite-cave--b1f',
+    80: 'granite-cave--b2f',
+
+    # NOTE: indistinguishable
+    86: 'mt-pyre--1f',
+    87: 'mt-pyre--2f',
+    88: 'mt-pyre--3f',
+    89: 'mt-pyre--4f',
+
+    90: 'mt-pyre--outside',
+
+    # NOTE: indistinguishable; split from rse
+    91: 'mt-pyre--summit-south',
+    533: 'mt-pyre--summit-north',
+
+    # NOTE: many sets of these are indistinguishable; ALL split from rse
+    99: 'seafloor-cavern--entrance',
+    100: 'seafloor-cavern--room-1',
+    101: 'seafloor-cavern--room-2',
+    102: 'seafloor-cavern--room-5',
+    103: 'seafloor-cavern--room-6',
+    104: 'seafloor-cavern--room-3',
+    105: 'seafloor-cavern--room-7',
+    106: 'seafloor-cavern--room-4',
+    107: 'seafloor-cavern--room-8',
+    108: 'seafloor-cavern--room-9',
+    109: 'seafloor-cavern--room-10',
+
+    # NOTE: indistinguishable
+    112: 'cave-of-origin--entrance',
+    113: 'cave-of-origin--1f',
+    114: 'cave-of-origin--b1f',
+    115: 'cave-of-origin--b2f',
+    116: 'cave-of-origin--b3f',
+    # NOTE: new?  rse had this room but had no encounters in it
+    452: 'cave-of-origin--b4f',
+
+    # NOTE: indistinguishable
+    123: 'hoenn-victory-road--entrance',  # NOTE: new
+    124: 'hoenn-victory-road--1f',
+    125: 'hoenn-victory-road--b1f',
+    # NOTE: new; rse had b2f instead
+    126: 'hoenn-victory-road--2f',
+}
+
 # There are 63 tutor move bits in use, but only 60 move tutors -- the moves
 # appear to be largely inherited from B2W2 but these are just not exposed in
 # ORAS
@@ -289,6 +594,11 @@ ORAS_NORMAL_MOVE_TUTORS = (
     'dragon-ascent',
 )
 
+
+# TODO ripe for being put in the pokedex codebase itself
+def make_identifier(english_name):
+    # TODO do nidoran too
+    return re.sub('[. ]+', '-', english_name.lower())
 
 @contextmanager
 def read_garc(path):
@@ -345,18 +655,22 @@ def extract_data(root, out):
 
     # -------------------------------------------------------------------------
     # Names and flavor text
+
     texts = {}
-    for lang, fn in ORAS_SCRIPT_FILES.items():
+    #for lang, fn in ORAS_SCRIPT_FILES.items():
+    for lang, fn in SUMO_SCRIPT_FILES.items():
         texts[lang] = {}
         with read_garc(root / fn) as garc:
-            for entryname, entryid in ORAS_SCRIPT_ENTRIES.items():
+            #for entryname, entryid in ORAS_SCRIPT_ENTRIES.items():
+            for entryname, entryid in SUMO_SCRIPT_ENTRIES.items():
                 entry = garc[entryid][0]
                 texts[lang][entryname] = decrypt_xy_text(entry.read())
 
     # Japanese text is special!  It's written in both kanji and kana, and we
     # want to combine them
     texts['ja'] = {}
-    for entryname in ORAS_SCRIPT_ENTRIES:
+    #for entryname in ORAS_SCRIPT_ENTRIES:
+    for entryname in SUMO_SCRIPT_ENTRIES:
         kanjis = texts['ja-kanji'][entryname]
         kanas = texts['ja-kana'][entryname]
         # But not if they're names of things.
@@ -364,11 +678,10 @@ def extract_data(root, out):
         # case, what do we do?  we want to ultimately put these in urls and
         # whatnot, right, but we don't want furigana there  :S  do we need a
         # separate "identifier" field /per language/?)
-        if entryname.endswith('names'):
-            assert kanjis == kanas
+        assert len(kanas) == len(kanjis)
+        if kanjis == kanas:
             texts['ja'][entryname] = kanjis
         else:
-            assert len(kanas) == len(kanjis)
             texts['ja'][entryname] = [
                 merge_japanese_texts(kanji, kana)
                 for (kanji, kana) in zip(kanjis, kanas)
@@ -377,21 +690,23 @@ def extract_data(root, out):
     del texts['ja-kana']
 
     identifiers = {}
-    identifiers['species'] = [
-        # TODO better identifier creation, to be determined later, but surely
-        # want to lose . and '
-        # TODO handling forms here is awkward since the form names are
-        # contained in the personal struct
-        ((species_name or '') + '-' + form_name).lower().replace(' ', '-')
-        for (species_name, form_name) in itertools.zip_longest(
+    identifiers['species'] = []
+    for i, (species_name, form_name) in enumerate(itertools.zip_longest(
             texts['en']['species-names'],
             texts['en']['form-names'],
-        )
-    ]
+            )):
+        if species_name:
+            ident = make_identifier(species_name)
+        else:
+            # TODO proooooobably fix this
+            ident = 'uhhhhh'
+            #print("??????", i, species_name, form_name)
+        if form_name:
+            ident = ident + '-' + make_identifier(form_name)
+        # TODO hold up, how are these /species/ identifiers?
+        identifiers['species'].append(ident)
     identifiers['move'] = [
-        # TODO better identifier creation, to be determined later, but surely
-        # want to lose . and '
-        name.lower().replace(' ', '-')
+        make_identifier(name)
         for name in texts['en']['move-names']
     ]
 
@@ -404,10 +719,164 @@ def extract_data(root, out):
             # TODO need to skip slot 0 which is junk
             dump_to_yaml(texts[lang], f)
 
+
+    """
+    # Encounters
+    # TODO move mee elsewheeere -- actually all of these should be in their own pieces
+    places = OrderedDict()
+    name_index_to_place = {}
+    name_index_counts = Counter()
+    zones = {}
+    zone_to_name_index = {}
+    with read_garc(root / 'rom/a/0/1/3') as garc:
+        # Fetch the pointer table from the encounter file first, mostly so we
+        # can figure out which zones have no encounters at all.  For whatever
+        # reason, a zone with no encounters still has data -- but it uses the
+        # same pointer as the following zone.  I don't know if the pointers
+        # were intended to be used as ranges or what, but it's a handy signal.
+        f = garc[-1][0]
+        # TODO SIGH, translate this to construct, i guess
+        magic = f.read(2)
+        assert magic == b'EN'
+        num_records = int.from_bytes(f.read(2), 'little')
+        encounter_pointers = []
+        for n in range(num_records):
+            encounter_pointers.append(int.from_bytes(f.read(4), 'little'))
+        empty_zones = set()
+        for n in range(num_records - 1):
+            if encounter_pointers[n] == encounter_pointers[n + 1]:
+                empty_zones.add(n)
+
+        # Every file in this GARC is ZO (zonedata) except the last one, which
+        # is a table of encounters for each zone.
+        num_zones = len(garc) - 1
+        for z in range(num_zones):
+            if z in empty_zones:
+                # TODO later we may want these, to hang events off of etc
+                continue
+
+            zone = OrderedDict()
+            zone['game-index'] = z
+            zones[z] = zone
+
+            # TODO probably worth trying to parse this stuff for real later
+            data = garc[z][0].read()
+            name_index = int.from_bytes(data[56:58], 'little')
+            name_bits = name_index >> 9
+            name_index &= 0x1ff
+
+            zone_to_name_index[z] = name_index
+            name_index_counts[name_index] += 1
+
+            # Create places as we go, but DO NOT assign zones to places yet,
+            # since the logic for figuring out zone identifiers is different
+            # for places with only one zone
+            if name_index not in name_index_to_place:
+                place = OrderedDict()
+                place['unknown--gen6-name-bits'] = name_bits
+                place['name'] = OrderedDict()
+                place['alternate-name'] = OrderedDict()
+                for language in CANON_LANGUAGES:
+                    name, altname = (
+                        texts[language]['zone-names'][name_index:name_index + 2])
+                    place['name'][language] = name
+                    if altname:
+                        place['alternate-name'][language] = altname
+                # Drop this dict entirely if there are no alt names
+                if not place['alternate-name']:
+                    del place['alternate-name']
+
+                name_index_to_place[name_index] = place
+
+                ident = ORAS_ZONE_NAME_INDEX_TO_VEEKUN_LOCATION.get(name_index)
+                if not ident:
+                    # Not in veekun yet...
+                    place['veekun--new'] = True
+                    ident = make_identifier(place['name']['en'])
+                places[ident] = place
+                # TODO ugh
+                place['_identifier'] = ident
+
+                place['zones'] = OrderedDict()
+
+        # Some encounters are used more than once
+        seen_encounters = {}
+        for z, ptr in enumerate(encounter_pointers):
+            if z in empty_zones:
+                continue
+
+            zone = zones[z]
+            name_index = zone_to_name_index[z]
+            place = name_index_to_place[name_index]
+
+            # Now we have all the zones, so we can figure out identifiers and
+            # assign the zone to its parent place
+            identifier = place['_identifier']
+            if name_index_counts[name_index] > 1:
+                # TODO are these names /sometimes/ official?  e.g. doesn't
+                # "B1F" appear sometimes?
+                subidentifier = ORAS_ZONE_INDEX_TO_VEEKUN_AREA.get(z)
+                if not subidentifier:
+                    subidentifier = "oras-unknown-{}".format(z)
+
+                identifier = "{}--{}".format(identifier, subidentifier)
+            place['zones'][identifier] = zone
+
+            # Snag the actual encounters, if any.
+            zone['encounters'] = OrderedDict()
+            # TODO dumb hack for soaring through the sky, which is...  nothing
+            if not f.read(1):
+                continue
+            f.seek(ptr)
+            encounter_table = encounter_table_struct.parse_stream(f)
+            n = 0
+            for method, chances in ORAS_ENCOUNTER_SLOTS:
+                rate_attr = method.replace('-', '_') + '_rate'
+                rate = getattr(encounter_table, rate_attr)
+                # TODO where does rate fit in here?
+                if rate == 0:
+                    # TODO wrong for hordes
+                    n += len(chances)
+                    continue
+                encounters = zone['encounters'][method] = []
+                for chance in chances:
+                    if isinstance(chance, tuple):
+                        chance, groupsize = chance
+                    else:
+                        groupsize = 1
+                    encounter = []
+                    for _ in range(groupsize):
+                        enc = encounter_table.encounter[n]
+                        # TODO assert always zero when rate is zero, never zero when rate isn't
+                        if enc.pokemon_id != 0:
+                            if enc.min_level == enc.max_level:
+                                levels = str(enc.min_level)
+                            else:
+                                levels = "{} - {}".format(enc.min_level, enc.max_level)
+                            pokemon_ident = identifiers['species'][enc.pokemon_id & 0x1ff]
+                            pokemon_form_bits = enc.pokemon_id >> 9
+                            # TODO maybe turn this into, i have no idea, a
+                            # custom type?  something forcibly short??
+                            # TODO what do i do with the form bits?
+                            encounter.append("{} {}".format(pokemon_ident, levels))
+                        n += 1
+
+                    if groupsize == 1:
+                        encounters.extend(encounter)
+                    else:
+                        encounters.append(encounter)
+
+    with (out / 'places.yaml').open('w') as f:
+        dump_to_yaml(places, f)
+    return
+    """
+
+
     # -------------------------------------------------------------------------
     # Scrape some useful bits from the binary
     with (root / 'exe/code.bin').open('rb') as f:
         # Tutored moves
+        # TODO i think these are oras only?  do they exist in sumo?  xy?
         tutor_moves = dict(tutors=ORAS_NORMAL_MOVE_TUTORS)
         f.seek(0x004960f8)
         for n in range(1, 5):
@@ -421,7 +890,8 @@ def extract_data(root, out):
 
         # TMs
         machines = []
-        f.seek(0x004a67ee)
+        #f.seek(0x004a67ee)  # ORAS
+        f.seek(0x0049795a)  # SUMO
         machineids = struct.unpack('<107H', f.read(2 * 107))
         # Order appears to be based on some gen 4 legacy: TMs 1 through 92, HMs
         # 1 through 6, then the other eight TMs and the last HM.  But the bits
@@ -439,15 +909,18 @@ def extract_data(root, out):
 
     # -------------------------------------------------------------------------
     # Pokémon structs
+    # TODO SUMO 0/1/8 seems to contain the index for the "base" species
     pokemon_data = []
-    with read_garc(root / 'rom/a/1/9/5') as garc:
+    with read_garc(root / 'rom/a/0/1/7') as garc:  # SUMO
+    #with read_garc(root / 'rom/a/1/9/5') as garc:  # ORAS
         personals = [subfile[0].read() for subfile in garc]
     _pokemon_forms = {}  # "real" species id => (base species id, form name id)
-    _next_name_form_id = 723
+    _next_name_form_id = 723  # TODO magic number
     for i, personal in enumerate(personals[:-1]):
         record = pokemon_struct.parse(personal)
         # TODO transform to an OD somehow probably
         pokemon_data.append(record)
+        print(i, hex(record.bp_tutors4))
         #print("{:3d} {:15s} {} {:5d} {:5d}".format(
         #    i,
         #    identifiers['species'][baseid],
@@ -483,7 +956,8 @@ def extract_data(root, out):
     # -------------------------------------------------------------------------
     # Move stats
     movesets = OrderedDict()
-    with read_garc(root / 'rom/a/1/8/9') as garc:
+    with read_garc(root / 'rom/a/0/1/1') as garc:  # SUMO
+    #with read_garc(root / 'rom/a/1/8/9') as garc:  # ORAS
         # Only one subfile
         data = garc[0][0].read()
         container = move_container_struct.parse(data)
@@ -497,7 +971,8 @@ def extract_data(root, out):
             #))
 
     # Egg moves
-    with read_garc(root / 'rom/a/1/9/0') as garc:
+    with read_garc(root / 'rom/a/0/1/2') as garc:  # SUMO
+    #with read_garc(root / 'rom/a/1/9/0') as garc:  # ORAS
         for i, subfile in enumerate(garc):
             ident = identifiers['species'][i]
             data = subfile[0].read()
@@ -510,7 +985,8 @@ def extract_data(root, out):
                 eggset.append(identifiers['move'][moveid])
 
     # Level-up moves
-    with read_garc(root / 'rom/a/1/9/1') as garc:
+    with read_garc(root / 'rom/a/0/1/3') as garc:  # SUMO
+    #with read_garc(root / 'rom/a/1/9/1') as garc:  # ORAS
         for i, subfile in enumerate(garc):
             ident = identifiers['species'][i]
             level_up_moves = subfile[0].read()
@@ -534,26 +1010,31 @@ def extract_data(root, out):
                     order = 1
 
     # Evolution
-    #with read_garc(root / 'rom/a/1/9/2') as garc:
+    #with read_garc(root / 'rom/a/1/9/2') as garc:  # ORAS
+    #with read_garc(root / 'rom/a/0/1/4') as garc:  # SUMO?
     #    for subfile in garc:
     #        evolution = subfile[0].read()
     #        print(repr(evolution))
     # Mega evolution
-    #with read_garc(root / 'rom/a/1/9/3') as garc:
+    #with read_garc(root / 'rom/a/1/9/3') as garc:  # ORAS
+    #with read_garc(root / 'rom/a/0/1/5') as garc:  # SUMO?
     #    for subfile in garc:
     #        evolution = subfile[0].read()
     #        print(repr(evolution))
-    # TODO what is a/1/9/4?  8 files of 404 bytes each
+    # TODO what is a/1/9/4 (ORAS) or a/0/1/6 (SUMO)?  8 files of 404 bytes each
     # Baby Pokémon
-    #with read_garc(root / 'rom/a/1/9/6') as garc:
+    #with read_garc(root / 'rom/a/1/9/6') as garc:  # ORAS
+    #with read_garc(root / 'rom/a/0/1/8') as garc:  # SUMO?
     #    for subfile in garc:
     #        baby_pokemon = subfile[0].read()
     #        print(repr(baby_pokemon))
+
     # Item stats
-    #with read_garc(root / 'rom/a/1/9/7') as garc:
-    #    for subfile in garc:
-    #        item_stats = subfile[0].read()
-    #        print(repr(item_stats))
+    # TODO
+    #with read_garc(root / 'rom/a/1/9/7') as garc:  # ORAS
+    with read_garc(root / 'rom/a/0/1/9') as garc:  # ORAS
+        for subfile in garc:
+            item_stats = subfile[0].read()
 
     # Tutor moves (from the personal structs)
     for i, datum in enumerate(pokemon_data):
@@ -584,7 +1065,8 @@ def get_mega_counts(root):
     has.
     """
     mega_counts = {}  # pokemonid => number of mega evos
-    with read_garc(root / 'rom/a/1/9/3') as garc:
+    #with read_garc(root / 'rom/a/1/9/3') as garc:  # oras
+    with read_garc(root / 'rom/a/0/1/5') as garc:  # SUMO
         for pokemonid, subfile in enumerate(garc):
             mega_evos = pokemon_mega_evolutions_struct.parse_stream(subfile[0])
             mega_counts[pokemonid] = max(
@@ -634,7 +1116,9 @@ class SpriteFileNamer:
                     "Don't know how to name {} mega evolutions for Pokémon {}"
                     .format(self.mega_counts[pokemonid], pokemonid))
         else:
-            raise ValueError("Pokemon {} doesn't have forms".format(pokemonid))
+            # TODO should use warnings for this so it works for new games
+            #raise ValueError("Pokemon {} doesn't have forms".format(pokemonid))
+            form = "form-{}".format(formid)
 
         # Construct the directory
         parts = []
@@ -708,6 +1192,38 @@ class SpriteFileNamer:
             shutil.copyfile(str(fn), str(fn2))
 
 
+def write_clim_to_png(f, width, height, color_depth, palette, pixels):
+    """Write the results of ``decode_clim`` to a file object."""
+    writer_kwargs = dict(width=width, height=height)
+    if palette:
+        writer_kwargs['palette'] = palette
+    else:
+        # TODO do i really only need alpha=True if there's no palette?
+        writer_kwargs['alpha'] = True
+    writer = png.Writer(**writer_kwargs)
+
+    # For a paletted image, I want to preserve Zhorken's good idea of
+    # indicating the original bit depth with an sBIT chunk.  But PyPNG can't do
+    # that directly, so instead I have to do some nonsense.
+    if palette:
+        buf = io.BytesIO()
+        writer.write(buf, pixels)
+
+        # Read the PNG as chunks, and manually add an sBIT chunk
+        buf.seek(0)
+        png_reader = png.Reader(buf)
+        chunks = list(png_reader.chunks())
+        sbit = bytes([color_depth] * 3)
+        chunks.insert(1, ('sBIT', sbit))
+
+        # Now write the chunks to the file
+        png.write_chunks(f, chunks)
+
+    else:
+        # Otherwise, it's...  almost straightforward.
+        writer.write(f, (itertools.chain(*row) for row in pixels))
+
+
 def extract_box_sprites(root, out):
     namer = SpriteFileNamer(
         out, get_mega_counts(root), ORAS_EXTRA_SPRITE_NAMES)
@@ -715,7 +1231,8 @@ def extract_box_sprites(root, out):
     with (root / 'exe/code.bin').open('rb') as f:
         # Form configuration, used to put sprites in the right order
         # NOTE: in x/y the address is 0x0043ea98
-        f.seek(0x0047d650)
+        #f.seek(0x0047d650)  # ORAS
+        f.seek(0x004999d0)  # SUMO
         # TODO magic number
         for n in range(722):
             sprite = pokemon_sprite_struct.parse_stream(f)
@@ -767,7 +1284,9 @@ def extract_box_sprites(root, out):
     pokemon_sprites_dir = out
     if not pokemon_sprites_dir.exists():
         pokemon_sprites_dir.mkdir()
-    with read_garc(root / 'rom/a/0/9/1') as garc:
+    # with read_garc(root / 'rom/a/0/9/1') as garc:  # ORAS
+    # TODO what's in 2/5/3?
+    with read_garc(root / 'rom/a/0/6/2') as garc:  # SUMO
         from .lib.clim import decode_clim
         for i, subfile in enumerate(garc):
             if i == 0:
@@ -782,33 +1301,14 @@ def extract_box_sprites(root, out):
 
             data = subfile[0].read()
             width, height, color_depth, palette, pixels = decode_clim(data)
-            png_writer = png.Writer(
-                width=width,
-                height=height,
-                palette=palette,
-            )
 
             # TODO this is bad.
             if 'right/' in namer.index_to_filenames[i][0]:
                 for row in pixels:
                     row.reverse()
 
-            # I want to preserve Zhorken's good idea of indicating the original
-            # bit depth with an sBIT chunk, but PyPNG can't do that directly,
-            # so we need to do a bit of nonsense.
-            buf = io.BytesIO()
-            png_writer.write(buf, pixels)
-
-            # Read the PNG as chunks, and manually add an sBIT chunk
-            buf.seek(0)
-            png_reader = png.Reader(buf)
-            chunks = list(png_reader.chunks())
-            sbit = bytes([color_depth] * 3)
-            chunks.insert(1, ('sBIT', sbit))
-
-            # Write chunks to an actual file
             with namer.open(i) as f:
-                png.write_chunks(f, chunks)
+                write_clim_to_png(f, width, height, color_depth, palette, pixels)
 
 
 def extract_dex_sprites(root, out):
@@ -823,7 +1323,10 @@ def extract_dex_sprites(root, out):
     namer = SpriteFileNamer(
         out, get_mega_counts(root), ORAS_EXTRA_SPRITE_NAMES)
 
-    with read_garc(root / 'rom/a/0/0/8') as garc:
+    # TODO Meowstic is counted as simply female in here, but should probably be
+    # saved with a form filename as well
+    #with read_garc(root / 'rom/a/0/0/8') as garc:  # ORAS
+    with read_garc(root / 'rom/a/0/9/4') as garc:  # SUMO
         f = garc[0][0]
         # TODO magic number
         for n in range(721):
@@ -861,9 +1364,10 @@ def extract_dex_sprites(root, out):
                 namer.add(model_num, pokemonid, formid)
 
     # And now, do the ripping
-    pokemon_sprites_dir = out
-    with read_garc(root / 'rom/a/2/6/3') as garc:
+    #with read_garc(root / 'rom/a/2/6/3') as garc:  # ORAS
+    with read_garc(root / 'rom/a/2/4/0') as garc:  # sun/moon demo
         from .lib.clim import decode_clim
+        from .lib.etc1 import decode_etc1
         for i, subfile in enumerate(garc):
             shiny_prefix = None
             if i > total_model_count:
@@ -881,16 +1385,9 @@ def extract_dex_sprites(root, out):
                 continue
 
             data = subfile[0].read()
-            width, height, color_depth, palette, pixels = decode_clim(data)
-            assert not palette
-            png_writer = png.Writer(
-                width=width,
-                height=height,
-                alpha=True,
-            )
-
             with namer.open(i, prefix=shiny_prefix) as f:
-                png_writer.write(f, (itertools.chain(*row) for row in pixels))
+                write_clim_to_png(f, *decode_etc1(data))
+                #write_clim_to_png(f, *decode_clim(data))
 
 
 def _munge_source_arg(strpath):
