@@ -19,7 +19,14 @@ import sys
 
 from camel import Camel
 from classtools import reify
-from construct import *
+from construct import (
+    # Simple fields
+    BitsInteger, Byte, Bytes, CString, Const, Int8ul, Int16ub, Int16ul,
+    Padding, String,
+    # Structures and meta stuff
+    Adapter, Array, Bitwise, Construct, Embedded, Enum, Peek, Pointer, Struct,
+    Subconstruct, Switch,
+)
 
 from pokedex.extract.lib.gbz80 import find_code
 import pokedex.schema as schema
@@ -742,13 +749,13 @@ class PokemonString:
 
 class PokemonCString(Adapter):
     """Construct thing for `PokemonString`."""
-    def __init__(self, name, length=None):
+    def __init__(self, length=None):
         # No matter which charmap, the "end of string" character is always
         # encoded as P
         if length is None:
-            subcon = CString(name, terminators=b'P')
+            subcon = CString(terminators=b'P')
         else:
-            subcon = String(name, length, padchar=b'P')
+            subcon = String(length, padchar=b'P')
         super().__init__(subcon)
 
     def _encode(self, obj, context):
@@ -762,7 +769,7 @@ class MacroPokemonCString(Construct):
     """Similar to the above, but for strings that may contain the 0x17 "far
     load" macro, whose parameters may in turn contain the NUL byte 0x50 without
     marking the end of the string.  Yikes."""
-    def _parse(self, stream, context):
+    def _parse(self, stream, context, path):
         buf = bytearray()
         while True:
             byte, = stream.read(1)
@@ -773,7 +780,7 @@ class MacroPokemonCString(Construct):
                 pos = stream.tell()
                 try:
                     stream.seek(offset)
-                    buf.extend(self._parse(stream, context).raw)
+                    buf.extend(self._parse(stream, context, path).raw)
                 finally:
                     stream.seek(pos)
             elif byte == 0x50:
@@ -789,28 +796,19 @@ class MacroPokemonCString(Construct):
 
 
 class NullTerminatedArray(Subconstruct):
-    _peeker = Peek(ULInt8('___'))
+    _peeker = Peek(Int8ul)
     __slots__ = ()
 
-    def __init__(self, subcon):
-        super().__init__(subcon)
-        self._clear_flag(self.FLAG_COPY_CONTEXT)
-        self._set_flag(self.FLAG_DYNAMIC)
-
-    def _parse(self, stream, context):
+    def _parse(self, stream, context, path):
         from construct.lib import ListContainer
         obj = ListContainer()
-        orig_context = context
         while True:
             nextbyte = self._peeker.parse_stream(stream)
             if nextbyte == 0:
                 break
 
-            if self.subcon.conflags & self.FLAG_COPY_CONTEXT:
-                context = orig_context.__copy__()
-
             # TODO what if we hit the end of the stream
-            obj.append(self.subcon._parse(stream, context))
+            obj.append(self.subcon._parse(stream, context, path))
 
         # Consume the trailing zero
         stream.read(1)
@@ -832,108 +830,95 @@ def IdentEnum(subcon, mapping):
 # http://gbdev.gg8.se/wiki/articles/The_Cartridge_Header
 # TODO hey!  i wish i had a little cli entry point that would spit this out for a game.  and do other stuff like scan for likely pokemon text or graphics.  that would be really cool in fact.  maybe put this in a gb module and make that exist sometime.
 game_boy_header_struct = Struct(
-    'game_boy_header',
     # Entry point for the game; generally contains a jump to 0x0150
-    String('entry_point', 4),
+    'entry_point' / String(4),
     # Nintendo logo; must be exactly this or booting will not continue
-    Const(
-        String('nintendo_logo', 48),
+    'nintendo_logo' / Const(
         bytes.fromhex("""
             CE ED 66 66 CC 0D 00 0B 03 73 00 83 00 0C 00 0D
             00 08 11 1F 88 89 00 0E DC CC 6E E6 DD DD D9 99
             BB BB 67 63 6E 0E EC CC DD DC 99 9F BB B9 33 3E
         """.replace('\n', '')),
     ),
-    String('title', 11, padchar=b'\x00'),
-    String('manufacturer_code', 4),
-    ULInt8('cgb_flag'),
-    String('new_licensee_code', 2),
-    ULInt8('sgb_flag'),  # 3 for super game boy support
-    ULInt8('cartridge_type'),
-    ULInt8('rom_size'),
-    ULInt8('ram_size'),
-    ULInt8('region_code'),  # 0 for japan, 1 for not japan
-    ULInt8('old_licensee_code'),  # 0x33 means to use licensee_code
-    ULInt8('game_version'),
-    ULInt8('header_checksum'),
-    UBInt16('cart_checksum'),
+    'title' / Bytes(11),
+    'manufacturer_code' / Bytes(4),
+    'cgb_flag' / Int8ul,
+    'new_licensee_code' / Bytes(2),
+    'sgb_flag' / Int8ul,  # 3 for super game boy support
+    'cartridge_type' / Int8ul,
+    'rom_size' / Int8ul,
+    'ram_size' / Int8ul,
+    'region_code' / Int8ul,  # 0 for japan, 1 for not japan
+    'old_licensee_code' / Int8ul,  # 0x33 means to use licensee_code
+    'game_version' / Int8ul,
+    'header_checksum' / Int8ul,
+    'cart_checksum' / Int16ub,
 )
 
 
 # The mother lode — Pokémon base stats
 pokemon_struct = Struct(
-    'pokemon',
-    ULInt8('pokedex_number'),
-    ULInt8('base_hp'),
-    ULInt8('base_attack'),
-    ULInt8('base_defense'),
-    ULInt8('base_speed'),
-    ULInt8('base_special'),
-    IdentEnum(ULInt8('type1'), TYPE_IDENTIFIERS),
-    IdentEnum(ULInt8('type2'), TYPE_IDENTIFIERS),
-    ULInt8('catch_rate'),
-    ULInt8('base_experience'),
+    'pokedex_number' / Byte,
+    'base_hp' / Byte,
+    'base_attack' / Byte,
+    'base_defense' / Byte,
+    'base_speed' / Byte,
+    'base_special' / Byte,
+    'type1' / IdentEnum(Byte, TYPE_IDENTIFIERS),
+    'type2' / IdentEnum(Byte, TYPE_IDENTIFIERS),
+    'catch_rate' / Byte,
+    'base_experience' / Byte,
     # TODO ????  "sprite dimensions"
-    ULInt8('_sprite_dimensions'),
-    ULInt16('front_sprite_pointer'),
-    ULInt16('back_sprite_pointer'),
+    '_sprite_dimensions' / Byte,
+    'front_sprite_pointer' / Int16ul,
+    'back_sprite_pointer' / Int16ul,
     # TODO somehow rig this to discard trailing zeroes; there's a paddedstring that does it
-    Array(4, IdentEnum(ULInt8('initial_moveset'), MOVE_IDENTIFIERS)),
-    IdentEnum(ULInt8('growth_rate'), GROWTH_RATES),
+    'initial_moveset' / Array(4, IdentEnum(Byte, MOVE_IDENTIFIERS)),
+    'growth_rate' / IdentEnum(Byte, GROWTH_RATES),
     # TODO argh, this is a single huge integer; i want an array, but then i lose the byteswapping!
-    Bitwise(
-        BitField('machines', 7 * 8, swapped=True),
-    ),
+    'machines' / Bitwise(BitsInteger(7 * 8, swapped=True)),
     Padding(1),
 )
 
 
 evos_moves_struct = Struct(
-    'evos_moves',
-    NullTerminatedArray(
+    'evolutions' / NullTerminatedArray(
         Struct(
-            'evolutions',
-            IdentEnum(ULInt8('evo_trigger'), EVOLUTION_TRIGGERS),
-            Embedded(Switch(
-                'evo_arguments',
+            'evo_trigger' / IdentEnum(Byte, EVOLUTION_TRIGGERS),
+            'evo_arguments' / Embedded(Switch(
                 lambda ctx: ctx.evo_trigger, {
                     'evolution-trigger.level-up': Struct(
-                        '---',
-                        ULInt8('evo_level'),
+                        'evo_level' / Byte,
                     ),
                     'evolution-trigger.use-item': Struct(
-                        '---',
                         # TODO item enum too wow!
-                        ULInt8('evo_item'),
+                        'evo_item' / Byte,
                         # TODO ??? always seems to be 1
-                        ULInt8('evo_level'),
+                        'evo_level' / Byte,
                     ),
                     # TODO ??? always seems to be 1 here too
                     'evolution-trigger.trade': Struct(
-                        '---',
-                        ULInt8('evo_level'),
+                        'evo_level' / Byte,
                     ),
                 },
             )),
             # TODO alas, the species here is a number, because it's an internal
             # id and we switch those back using data from the game...
-            ULInt8('evo_species'),
+            'evo_species' / Byte,
         ),
     ),
-    NullTerminatedArray(
+    'level_up_moves' / NullTerminatedArray(
         Struct(
-            'level_up_moves',
-            ULInt8('level'),
-            IdentEnum(ULInt8('move'), MOVE_IDENTIFIERS),
-            Peek(ULInt8('_end')),
+            'level' / Byte,
+            'move' / IdentEnum(Byte, MOVE_IDENTIFIERS),
+            '_end' / Peek(Byte),  # TODO what, what is this
         ),
     ),
 )
 evos_moves_pointer = Struct(
-    'xxx',
-    ULInt16('offset'),
+    'offset' / Int16ul,
     # TODO hardcoded as the same bank, ugh
-    Pointer(lambda ctx: ctx.offset + (0xE - 1) * 0x4000, evos_moves_struct),
+    'evos_moves' / Pointer(lambda ctx: ctx.offset + (0xE - 1) * 0x4000, evos_moves_struct),
 )
 
 # There are actually two versions of this struct...  an imperial one, used by
@@ -941,19 +926,17 @@ evos_moves_pointer = Struct(
 # one has separate bytes for feet and inches, so it's a different size, making
 # it completely incompatible.
 pokedex_flavor_struct_metric = Struct(
-    'pokedex_flavor_metric',
-    PokemonCString('genus'),
-    ULInt8('height_decimeters'),
-    ULInt16('weight_hectograms'),
-    MacroPokemonCString('flavor_text'),
+    'genus' / PokemonCString(),
+    'height_decimeters' / Int8ul,
+    'weight_hectograms' / Int16ul,
+    'flavor_text' / MacroPokemonCString(),
 )
 pokedex_flavor_struct_imperial = Struct(
-    'pokedex_flavor_imperial',
-    PokemonCString('genus'),
-    ULInt8('height_feet'),
-    ULInt8('height_inches'),
-    ULInt16('weight_decipounds'),
-    MacroPokemonCString('flavor_text'),
+    'genus' / PokemonCString(),
+    'height_feet' / Int8ul,
+    'height_inches' / Int8ul,
+    'weight_decipounds' / Int16ul,
+    'flavor_text' / MacroPokemonCString(),
 )
 
 
@@ -1107,7 +1090,7 @@ class RBYCart:
             raise CartDetectionError("Can't find name array")
         rem, inputs = match
         start = inputs['NamePointers']
-        name_pointers = Array(7, ULInt16('dummy')).parse(
+        name_pointers = Array(7, Int16ul).parse(
             self.data[start:start + 14])
         # One downside to the Game Boy memory structure is that banks are
         # not stored anywhere near their corresponding addresses.  Most
@@ -1437,7 +1420,7 @@ class RBYCart:
         self.stream.seek(self.addrs['ItemNames'])
         # Item 0 is MASTER BALL.  The first item with a different name in every
         # single language is item 4, TOWN MAP, so chew through five names.
-        single_string_struct = PokemonCString('dummy')
+        single_string_struct = PokemonCString()
         for _ in range(5):
             name = single_string_struct.parse_stream(self.stream)
 
@@ -1515,7 +1498,7 @@ class RBYCart:
             name_length = 5
         else:
             name_length = 10
-        for index, pokemon_name in enumerate(Array(self.max_pokemon_index, PokemonCString('...', name_length)).parse_stream(self.stream), start=1):
+        for index, pokemon_name in enumerate(Array(self.max_pokemon_index, PokemonCString(name_length)).parse_stream(self.stream), start=1):
             try:
                 id = self.pokedex_order[index]
             except KeyError:
@@ -1528,7 +1511,7 @@ class RBYCart:
     def machine_moves(self):
         """List of move identifiers corresponding to TMs/HMs."""
         self.stream.seek(self.addrs['TechnicalMachines'])
-        return Array(self.NUM_MACHINES, IdentEnum(ULInt8('move'), MOVE_IDENTIFIERS)).parse_stream(self.stream)
+        return Array(self.NUM_MACHINES, IdentEnum(Byte, MOVE_IDENTIFIERS)).parse_stream(self.stream)
 
     @reify
     def pokemon_records(self):
@@ -1572,7 +1555,7 @@ class RBYCart:
 
         self.stream.seek(self.addrs['PokedexEntryPointers'])
         # This address is just an array of pointers
-        for index, address in enumerate(Array(self.max_pokemon_index, ULInt16('pointer')).parse_stream(self.stream), start=1):
+        for index, address in enumerate(Array(self.max_pokemon_index, Int16ul).parse_stream(self.stream), start=1):
             try:
                 id = self.pokedex_order[index]
             except KeyError:
@@ -1586,7 +1569,7 @@ class RBYCart:
     @reify
     def move_names(self):
         self.stream.seek(self.addrs['MoveNames'])
-        return Array(NUM_MOVES, PokemonCString('move_name')).parse_stream(self.stream)
+        return Array(self.NUM_MOVES, PokemonCString()).parse_stream(self.stream)
 
 
 # TODO would be slick to convert this to a construct...  construct
