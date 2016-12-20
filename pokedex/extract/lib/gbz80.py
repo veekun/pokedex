@@ -625,8 +625,9 @@ def find_code(haystack, needle, **kwargs):
                     inner_pattern = b'.' * instr_input.length
 
                 group_name = pattern_atom.name.encode('ascii')
-                input_table[pattern_atom.name] = b'(?P=%b)' % (group_name,)
-                pattern_chunks.append(b'(?P<%b>%b)' % (group_name, inner_pattern))
+                input_table[pattern_atom.name] = b'(?P=' + group_name + b')'
+                pattern_chunks.append(
+                    b'(?P<' + group_name + b'>' + inner_pattern + b')')
         matched_instructions.append((instr, pattern_atoms))
 
     pattern = b''.join(pattern_chunks)
