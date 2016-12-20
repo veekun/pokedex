@@ -21,11 +21,11 @@ from camel import Camel
 from classtools import reify
 from construct import (
     # Simple fields
-    BitsInteger, Byte, Bytes, CString, Const, Int8ul, Int16ub, Int16ul,
+    BitsInteger, Byte, Bytes, CString, Const, Flag, Int8ul, Int16ub, Int16ul,
     Padding, String,
     # Structures and meta stuff
-    Adapter, Array, Bitwise, Construct, Embedded, Enum, Peek, Pointer, Struct,
-    Subconstruct, Switch,
+    Adapter, Array, Bitwise, BitsSwapped, Construct, Embedded, Enum, Peek,
+    Pointer, Struct, Subconstruct, Switch,
 )
 
 from pokedex.extract.lib.gbz80 import find_code
@@ -875,8 +875,7 @@ pokemon_struct = Struct(
     # TODO somehow rig this to discard trailing zeroes; there's a paddedstring that does it
     'initial_moveset' / Array(4, IdentEnum(Byte, MOVE_IDENTIFIERS)),
     'growth_rate' / IdentEnum(Byte, GROWTH_RATES),
-    # TODO argh, this is a single huge integer; i want an array, but then i lose the byteswapping!
-    'machines' / Bitwise(BitsInteger(7 * 8, swapped=True)),
+    'machines' / BitsSwapped(Bitwise(Array(7 * 8, Flag))),
     Padding(1),
 )
 
@@ -1572,18 +1571,6 @@ class RBYCart:
         return Array(self.NUM_MOVES, PokemonCString()).parse_stream(self.stream)
 
 
-# TODO would be slick to convert this to a construct...  construct
-def bitfield_to_machines(bits, machine_moves):
-    machines = []
-    for i, move in enumerate(machine_moves, start=1):
-        bit = bits & 0x1
-        bits >>= 1
-        if bit:
-            machines.append(move)
-
-    return machines
-
-
 # TODO this is not correctly using my half-baked "slice" idea
 class WriterWrapper:
     def __init__(self, locus, language):
@@ -1697,8 +1684,10 @@ def main(base_root):
                     })
                 writer.moves = {
                     'level-up': level_up_moves,
-                    'machines': bitfield_to_machines(
-                        record.machines, cart.machine_moves),
+                    'machines': [
+                        move for (has_machine, move) in zip(
+                            record.machines, cart.machine_moves)
+                        if has_machine],
                 }
 
                 # Evolution
