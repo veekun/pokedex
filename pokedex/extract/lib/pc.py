@@ -13,7 +13,10 @@ class PokemonContainerFile(_ContainerFile):
         magic, entry_ct = stream.unpack('<2sH')
         assert magic == b'PC'
 
+        # Offsets are "A B C ...", where entry 0 ranges from A to B, entry 1
+        # from B to C, etc.
+        offsets = stream.unpack('<{}L'.format(entry_ct + 1))
         self.slices = []
-        for _ in range(entry_ct):
-            start, end = stream.unpack('<LL')
+        for i in range(entry_ct):
+            start, end = offsets[i:i + 2]
             self.slices.append(self.stream.slice(start, end - start))
