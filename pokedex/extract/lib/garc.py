@@ -26,34 +26,28 @@ def count_bits(n):
 
 
 garc_header_struct = c.Struct(
-    'garc_header',
-    c.Magic(b'CRAG'),
-    c.ULInt32('header_size'),  # 28 in XY, 36 in SUMO
-    c.Const(c.ULInt16('byte_order'), 0xfeff),
-    c.ULInt16('mystery1'),  # 0x0400 in XY, 0x0600 in SUMO
+    c.Const(b'CRAG'),
+    'header_size' / c.Int32ul,  # 28 in XY, 36 in SUMO
+    'byte_order' / c.Const(c.Int16ul, 0xfeff),
+    'mystery1' / c.Int16ul,  # 0x0400 in XY, 0x0600 in SUMO
     #c.Const(c.ULInt32('chunks_ct'), 4),
-    c.ULInt32('chunks_ct'),
-    c.ULInt32('data_offset'),
-    c.ULInt32('garc_length'),
-    c.ULInt32('last_length'),
-    c.Field('unknown_sumo_stuff', lambda ctx: ctx.header_size - 28),
+    'chunks_ct' / c.Int32ul,
+    'data_offset' / c.Int32ul,
+    'garc_length' / c.Int32ul,
+    'last_length' / c.Int32ul,
+    'unknown_sumo_stuff' / c.Bytes(lambda ctx: ctx.header_size - 28),
 )
 fato_header_struct = c.Struct(
-    'fato_header',
-    c.Magic(b'OTAF'),
-    c.ULInt32('header_size'),
-    c.ULInt16('count'),
-    c.Const(c.ULInt16('padding'), 0xffff),
-    c.Array(
-        lambda ctx: ctx.count,
-        c.ULInt32('fatb_offsets'),
-    ),
+    c.Const(b'OTAF'),
+    'header_size' / c.Int32ul,
+    'count' / c.Int16ul,
+    c.Const(c.Int16ul, 0xffff),
+    'fatb_offsets' / c.Array(c.this.count, c.Int32ul),
 )
 fatb_header_struct = c.Struct(
-    'fatb_header',
-    c.Magic(b'BTAF'),
-    c.ULInt32('fatb_length'),
-    c.ULInt32('count'),
+    c.Const(b'BTAF'),
+    'fatb_length' / c.Int32ul,
+    'count' / c.Int32ul,
 )
 
 
