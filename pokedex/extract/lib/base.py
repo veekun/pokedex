@@ -29,15 +29,18 @@ class Substream:
 
     def read(self, n=-1):
         self.stream.seek(self.offset + self.pos)
-        if n < 0:
-            n = self.length
-        elif self.length >= 0 and n > self.length:
-            n = self.length
+        maxread = self.length - self.pos
+        if n < 0 or 0 <= maxread < n:
+            n = maxread
         data = self.stream.read(n)
         self.pos += len(data)
         return data
 
-    def seek(self, offset):
+    def seek(self, offset, whence=0):
+        if whence == 1:
+            offset += self.pos
+        elif whence == 2:
+            offset += self.length
         offset = max(offset, 0)
         if self.length >= 0:
             offset = min(offset, self.length)
@@ -60,7 +63,8 @@ class Substream:
     def peek(self, n):
         pos = self.stream.tell()
         self.stream.seek(self.offset + self.pos)
-        data = self.stream.read(n)
+        maxread = self.length - self.pos
+        data = self.stream.read(min(maxread, n))
         self.stream.seek(pos)
         return data
 
@@ -71,7 +75,7 @@ class Substream:
 
     def slice(self, offset, length=-1):
         # TODO limit or warn if length is too long for this slice?
-        return Substream(self, self.offset + offset, length)
+        return Substream(self, offset, length)
 
 
 class _ContainerFile:
