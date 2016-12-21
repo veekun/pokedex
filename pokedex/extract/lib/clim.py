@@ -1,24 +1,23 @@
 import math
 import struct
 
+import attr
 import construct as c
 
 clim_header_struct = c.Struct(
-    'clim_header',
-    c.Magic(b'FLIM'),  # TODO 'FLIM' in SUMO
-    c.Const(c.ULInt16('endianness'), 0xfeff),
-    c.Const(c.ULInt16('header_length'), 0x14),
-    c.ULInt32('version'),
-    c.ULInt32('file_size'),
-    c.ULInt32('blocks_ct'),
+    c.Const(b'FLIM'),  # TODO 'FLIM' in SUMO
+    'endianness' / c.Const(c.Int16ul, 0xfeff),
+    'header_length' / c.Const(c.Int16ul, 0x14),
+    'version' / c.Int32ul,
+    'file_size' / c.Int32ul,
+    'blocks_ct' / c.Int32ul,
 )
 imag_header_struct = c.Struct(
-    'imag_header',
-    c.Magic(b'imag'),
-    c.Const(c.ULInt32('section_length'), 0x10),
-    c.ULInt16('width'),
-    c.ULInt16('height'),
-        c.ULInt32('format'),
+    c.Const(b'imag'),
+    'section_length' / c.Const(c.Int32ul, 0x10),
+    'width' / c.Int16ul,
+    'height' / c.Int16ul,
+    'format' / c.Int32ul,
     # TODO this seems to have been expanded into several things in SUMO
     #c.Enum(
     #    c.ULInt32('format'),
@@ -41,17 +40,42 @@ imag_header_struct = c.Struct(
 )
 
 
+# TODO probably move these to their own module, since they aren't just for
+# CLIM.  pixel deshuffler, too.  (which should probably spit out pypng's native
+# format)
 COLOR_DECODERS = {}
 
 
-def _register_color_decoder(name, *, bpp, depth):
+@attr.s
+class ColorFormat:
+    name = attr.ib('name')
+    decoder = attr.ib('decoder')
+    bits_per_pixel = attr.ib('bits_per_pixel')
+    bit_depth = attr.ib('bit_depth')
+    alpha = attr.ib('alpha')
+
+    def __call__(self, data):
+        return self.decoder(data)
+
+    def __iter__(self):
+        # TODO back compat until i fix the below code
+        return iter((self.decoder, self.bits_per_pixel, self.bit_depth))
+
+
+def _register_color_decoder(name, *, bpp, depth, alpha):
     def register(f):
-        COLOR_DECODERS[name] = f, bpp, depth
+        COLOR_DECODERS[name] = ColorFormat(name, f, bpp, depth, alpha)
         return f
     return register
 
 
-@_register_color_decoder('RGBA4', bpp=2, depth=4)
+@_register_color_decoder('L8', bpp=1, depth=8, alpha=False)
+def decode_l8(data):
+    for l in data:
+        yield l, l, l
+
+
+@_register_color_decoder('RGBA4', bpp=2, depth=4, alpha=True)
 def decode_rgba4(data):
     # The idea is that every uint16 is a packed rrrrggggbbbbaaaa, but when
     # written out little-endian this becomes bbbbaaaarrrrgggg and there's just
@@ -66,7 +90,31 @@ def decode_rgba4(data):
         yield r, g, b, a
 
 
-@_register_color_decoder('RGBA5551', bpp=2, depth=5)
+@_register_color_decoder('RGB8', bpp=3, depth=8, alpha=False)
+def decode_rgb8(data):
+    for i in range(0, len(data), 3):
+        yield data[i:i + 3]
+
+
+@_register_color_decoder('RGBA8', bpp=4, depth=8, alpha=True)
+def decode_rgba8(data):
+    for i in range(0, len(data), 4):
+        yield data[i:i + 4]
+
+
+@_register_color_decoder('BGR8', bpp=3, depth=8, alpha=False)
+def decode_bgr8(data):
+    for i in range(0, len(data), 3):
+        yield data[i:i + 3][::-1]
+
+
+@_register_color_decoder('ABGR8', bpp=4, depth=8, alpha=True)
+def decode_abgr8(data):
+    for i in range(0, len(data), 4):
+        yield data[i:i + 4][::-1]
+
+
+@_register_color_decoder('RGBA5551', bpp=2, depth=5, alpha=True)
 def decode_rgba5551(data, *, start=0, count=None):
     # I am extremely irritated that construct cannot parse this mess for me
     # rrrrrgggggbbbbba
