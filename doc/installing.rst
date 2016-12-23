@@ -8,7 +8,7 @@ Run the following from an empty directory::
 
     $ sudo apt-get install git python python-pip python-sqlalchemy
     $ git clone git://github.com/veekun/pokedex.git
-    $ pip install -E env -e pokedex
+    $ pip install -e pokedex
     $ source env/bin/activate
     (env)$ pokedex setup -v
     (env)$ pokedex lookup eevee
@@ -66,7 +66,7 @@ Getting and installing pokedex
 Run the following from an empty directory::
 
     $ git clone git://github.com/veekun/pokedex.git
-    $ pip install -E env -e pokedex
+    $ pip install -e pokedex
 
 This will give you two directories: pokedex (containing the source code and
 data), and env (a virtualenv_).
