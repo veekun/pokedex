@@ -8,6 +8,7 @@ that decodes four 4x4 blocks one 8x8 block at a time, because of course it is.
 (I believe the 3DS operates with 8x8 tiles, so this does make some sense.)
 """
 import io
+import math
 
 # Easier than doing math
 THREE_BIT_TWOS_COMPLEMENT = [0, 1, 2, 3, -4, -3, -2, -1]
@@ -40,28 +41,34 @@ def clamp_to_byte(n):
     return max(0, min(255, n))
 
 
-def decode_etc1(data):
-    # TODO sizes are hardcoded here
-    width = 128
-    height = 128
-
+# FIXME sizes are hardcoded here
+def decode_etc1(data, width=128, height=128, use_alpha=True, is_flim=False):
     # TODO this seems a little redundant; could just ask for a stream
     f = io.BytesIO(data)
     # Skip header
     f.read(0x80)
 
-    outpixels = [[None] * width for _ in range(height)]
+    # Images are stored padded to powers of two
+    stored_width = 2 ** math.ceil(math.log(width) / math.log(2))
+    stored_height = 2 ** math.ceil(math.log(height) / math.log(2))
+
+    outpixels = [[None] * (width) for _ in range(height)]
     # ETC1 encodes as 4x4 blocks.  Normal ETC1 arranges them in English reading
     # order, right and down.  This Nintendo variant groups them as 8x8
     # superblocks, where the four blocks in each superblock are themselves
     # arranged right and down.  So we read block offsets 8 at a time, and 'z'
     # is our current position within a superblock.
     # TODO this may do the wrong thing if width/height is not divisible by 8
-    for blocky in range(0, height, 8):
-        for blockx in range(0, width, 8):
+    for blocky in range(0, stored_height, 8):
+        for blockx in range(0, stored_width, 8):
             for z in range(4):
-                row = f.read(16)
-                if not row:
+                if use_alpha:
+                    row = f.read(16)
+                else:
+                    # FIXME this could sure be incorporated better
+                    row = b'\xff' * 8 + f.read(8)
+                if len(row) < 16:
+                    print(row, blocky, blockx, z, f.tell() - 0x80, len(data) - 0x80)
                     raise EOFError
 
                 # Each block is encoded as 16 bytes.  The first 8 are a 4-bit
@@ -126,16 +133,28 @@ def decode_etc1(data):
                 base1 = red1, green1, blue1
                 base2 = red2, green2, blue2
 
+                # FLIM images do this truly bizarre thing where they write out the columns, as rows
+                if is_flim:
+                    block = (blocky // 8) * (stored_width // 8) + (blockx // 8)
+                    x0 = block // (stored_height // 8) * 8 + z // 2 * 4
+                    y0 = block % (stored_height // 8) * 8 + z % 2 * 4
+                else:
+                    x0 = blockx + z % 2 * 4
+                    y0 = blocky + z // 2 * 4
+
                 # Now deal with individual pixels
                 it = iter_alpha_nybbles(alpha)
                 for c in range(4):
                     for r in range(4):
-                        x = blockx + c
-                        y = blocky + r
-                        if z in (1, 3):
-                            x += 4
-                        if z in (2, 3):
-                            y += 4
+                        if is_flim:
+                            x = x0 + r
+                            y = y0 + c
+                        else:
+                            x = x0 + c
+                            y = y0 + r
+
+                        if not (x < width and y < height):
+                            continue
 
                         if (flipbit and r < 2) or (not flipbit and c < 2):
                             table = table1
@@ -149,8 +168,11 @@ def decode_etc1(data):
                         lobit = (lopixelbits >> pixelbit) & 0x1
                         mod = table[hibit * 2 + lobit]
                         color = tuple(clamp_to_byte(b + mod) for b in base)
-                        color += (next(it),)
+                        if use_alpha:
+                            color += (next(it),)
                         outpixels[y][x] = color
 
     # 4 is the bit depth; None is the palette
-    return width, height, 4, None, outpixels
+    from .clim import DecodedImageData, COLOR_FORMATS
+    # FIXME stupid import, wrong color format
+    return DecodedImageData(width, height, COLOR_FORMATS['ETC1A4'], None, outpixels)

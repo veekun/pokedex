@@ -3,24 +3,30 @@
 Filesystem reference: http://www.projectpokemon.org/wiki/ORAS_File_System
 """
 import argparse
-from collections import Counter
 from collections import OrderedDict
 from collections import defaultdict
 from contextlib import contextmanager
-import io
-import itertools
-import math
 from pathlib import Path
 import re
 import shutil
 import struct
+import warnings
 
-from construct import Array, BitField, Bitwise, Magic, OptionalGreedyRange, Padding, Pointer, Struct, SLInt8, SLInt16, ULInt8, ULInt16, ULInt32
-import png
+from construct import (
+    # Simple fields
+    Const, Flag, Int16sl, Int16ul, Int8sl, Int8ul, Int32ul, Padding,
+    # Structures and meta stuff
+    Array, BitsInteger, BitsSwapped, Bitwise, Enum, Filter, FocusedSeq,
+    GreedyRange, Pointer, PrefixedArray, Range, Struct, this,
+    # temp
+    Peek, Bytes,
+)
 import yaml
 
+from pokedex.schema import Pokémon
 from .lib.garc import GARCFile, decrypt_xy_text
-from .lib.text import merge_japanese_texts
+
+# TODO: ribbons!  080 in sumo
 
 # TODO auto-detect rom vs romfs vs...  whatever
 
@@ -30,11 +36,45 @@ from .lib.text import merge_japanese_texts
 
 # TODO would be nice to have meaningful names for the file structure instead of sprinkling hardcoded ones throughout
 
+# SUMO file list:
+# a/2/8/1   "photos" from the credits
 
-CANON_LANGUAGES = ('ja', 'en', 'fr', 'it', 'de', 'es', 'ko')
+GROWTH_RATES = {
+    0: 'gr.medium',
+    1: 'gr.slow-then-very-fast',
+    2: 'gr.fast-then-very-slow',
+    3: 'gr.medium-slow',
+    4: 'gr.fast',
+    5: 'gr.slow',
+}
+TYPES = {
+    0: 't.normal',
+    1: 't.fighting',
+    2: 't.flying',
+    3: 't.poison',
+    4: 't.ground',
+    5: 't.rock',
+    6: 't.bug',
+    7: 't.ghost',
+    8: 't.steel',
+    9: 't.fire',
+    10: 't.water',
+    11: 't.grass',
+    12: 't.electric',
+    13: 't.psychic',
+    14: 't.ice',
+    15: 't.dragon',
+    16: 't.dark',
+    17: 't.fairy',
+}
+
+# ja-Hrkt: hiragana/katakana
+# zh-Hans: simplified
+# zh-Hant: traditional
+CANON_LANGUAGES = ('ja-Hrkt', 'ja', 'en', 'fr', 'it', 'de', 'es', 'ko', 'zh-Hans', 'zh-Hant')
 ORAS_SCRIPT_FILES = {
-    'ja-kana': 'rom/a/0/7/1',
-    'ja-kanji': 'rom/a/0/7/2',
+    'ja-Hrkt': 'rom/a/0/7/1',
+    'ja': 'rom/a/0/7/2',
     'en': 'rom/a/0/7/3',
     'fr': 'rom/a/0/7/4',
     'it': 'rom/a/0/7/5',
@@ -43,16 +83,16 @@ ORAS_SCRIPT_FILES = {
     'ko': 'rom/a/0/7/8',
 }
 SUMO_SCRIPT_FILES = {
-    'ja-kana': 'rom/a/0/3/0',
-    'ja-kanji': 'rom/a/0/3/1',
+    'ja-Hrkt': 'rom/a/0/3/0',
+    'ja': 'rom/a/0/3/1',
     'en': 'rom/a/0/3/2',
     'fr': 'rom/a/0/3/3',
     'it': 'rom/a/0/3/4',
     'de': 'rom/a/0/3/5',
     'es': 'rom/a/0/3/6',
     'ko': 'rom/a/0/3/7',
-    'zh-simplified': 'rom/a/0/3/8',
-    'zh-traditional': 'rom/a/0/3/9',
+    'zh-Hans': 'rom/a/0/3/8',
+    'zh-Hant': 'rom/a/0/3/9',
 }
 ORAS_SCRIPT_ENTRIES = {
     'form-names': 5,
@@ -118,34 +158,69 @@ SUMO_SCRIPT_ENTRIES = {
     'item-names': 36,  # singular
     'item-flavor': 35,
 }
-# The first element in each list is the name of the BASE form -- if it's not
-# None, the base form will be saved under two filenames
-ORAS_EXTRA_SPRITE_NAMES = {
+# The first element in each list is the name of the BASE form.
+# If it's None, then the base form is a true default in some sense, and it'll
+# have the same name as the species.  Mega Evolutions are a good example.
+# Otherwise, there is no default; the form name will differ from the species
+# name, and the first sprite will be saved under both names, e.g., Shellos.
+# Note that this does NOT include megas -- those are pulled from game data.
+FORM_NAMES = {
+    # TODO alolan are of course new in SUMO
+    # Rattata and Raticate
+    19: (None, 'alola'),
+    20: (None, 'alola', 'totem-alola'),
     # Cosplay Pikachu
-    25: (None, 'rock-star', 'belle', 'pop-star', 'phd', 'libre', 'cosplay'),
+    # TODO not in SUMO
+    #25: (None, 'rock-star', 'belle', 'pop-star', 'phd', 'libre', 'cosplay'),
+    25: (None, 'original-cap', 'hoenn-cap', 'sinnoh-cap', 'unova-cap', 'kalos-cap', 'alola-cap'),
+    # Raichu
+    26: (None, 'alola'),
+    # Sandshrew and Sandslash
+    27: (None, 'alola'),
+    28: (None, 'alola'),
+    # Vulpix and Ninetales
+    37: (None, 'alola'),
+    38: (None, 'alola'),
+    # Diglett and Dugtrio
+    50: (None, 'alola'),
+    51: (None, 'alola'),
+    # Meowth and Persian
+    52: (None, 'alola'),
+    53: (None, 'alola'),
+    # Geodude, Graveler, and Golem
+    74: (None, 'alola'),
+    75: (None, 'alola'),
+    76: (None, 'alola'),
+    # Geodude, Graveler, and Golem
+    88: (None, 'alola'),
+    89: (None, 'alola'),
+    # Exeggutor
+    103: (None, 'alola'),
+    # Marowak
+    105: (None, 'alola'),
     # Unown
     201: tuple('abcdefghijklmnopqrstuvwxyz') + ('exclamation', 'question'),
     # Castform
     351: (None, 'sunny', 'rainy', 'snowy'),
     # Kyogre and Groudon
-    382: (None, 'primal',),
-    383: (None, 'primal',),
+    382: (None, 'primal'),
+    383: (None, 'primal'),
     # Deoxys
     386: ('normal', 'attack', 'defense', 'speed'),
     # Burmy and Wormadam
     412: ('plant', 'sandy', 'trash'),
     413: ('plant', 'sandy', 'trash'),
     # Cherrim
-    421: ('overcast', 'sunshine',),
+    421: ('overcast', 'sunshine'),
     # Shellos and Gastrodon
-    422: ('west', 'east',),
-    423: ('west', 'east',),
+    422: ('west', 'east'),
+    423: ('west', 'east'),
     # Rotom
     479: (None, 'heat', 'wash', 'frost', 'fan', 'mow'),
     # Giratina
-    487: ('altered', 'origin',),
+    487: ('altered', 'origin'),
     # Shaymin
-    492: ('land', 'sky',),
+    492: ('land', 'sky'),
     # Arceus
     493: (
         'normal', 'fighting', 'flying', 'poison', 'ground', 'rock', 'bug',
@@ -153,9 +228,9 @@ ORAS_EXTRA_SPRITE_NAMES = {
         'ice', 'dragon', 'dark', 'fairy',
     ),
     # Basculin
-    550: ('red-striped', 'blue-striped',),
+    550: ('red-striped', 'blue-striped'),
     # Darmanitan
-    555: ('standard', 'zen',),
+    555: ('standard', 'zen'),
     # Deerling and Sawsbuck
     585: ('spring', 'summer', 'autumn', 'winter'),
     586: ('spring', 'summer', 'autumn', 'winter'),
@@ -171,6 +246,10 @@ ORAS_EXTRA_SPRITE_NAMES = {
     648: ('aria', 'pirouette'),
     # Genesect
     649: (None, 'douse', 'shock', 'burn', 'chill'),
+    # Greninja
+    # TODO SUMO only
+    # FIXME why is the second one here at all?
+    658: (None, 'dupe', 'ash'),
     # Vivillon
     666: (
         'icy-snow', 'polar', 'tundra', 'continental', 'garden', 'elegant',
@@ -197,179 +276,188 @@ ORAS_EXTRA_SPRITE_NAMES = {
     711: ('average', 'small', 'large', 'super'),
     # Xerneas
     716: ('neutral', 'active'),
+    # Zygarde
+    # TODO SUMO only
+    # TODO why are 10 and 50 duplicated?
+    718: (None, '10', '10', '50', 'complete'),
     # Hoopa
     720: ('confined', 'unbound'),
+    # Gumshoos
+    735: (None, 'totem'),
+    # Vikavolt
+    738: (None, 'totem'),
+    # Oricorio
+    741: ('baile', 'pom-pom', 'pau', 'sensu'),
+    # Lycanroc
+    745: ('midday', 'midnight'),
+    # Wishiwashi
+    746: ('solo', 'school'),
+    # Lurantis
+    754: (None, 'totem'),
+    # Salazzle
+    758: (None, 'totem'),
+    # Silvally
+    773: (
+        'normal', 'fighting', 'flying', 'poison', 'ground', 'rock', 'bug',
+        'ghost', 'steel', 'fire', 'water', 'grass', 'electric', 'psychic',
+        'ice', 'dragon', 'dark', 'fairy',
+    ),
+    # Minior
+    774: (
+        'red-meteor', 'orange-meteor', 'yellow-meteor', 'green-meteor',
+        'blue-meteor', 'indigo-meteor', 'violet-meteor',
+        'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet',
+    ),
+    # Mimikyu
+    778: ('disguised', 'busted', 'totem-disguised', 'totem-busted'),
+    # Kommo-o
+    784: (None, 'totem'),
+    # Magearna
+    801: (None, 'original'),
 }
 
 
 pokemon_struct = Struct(
-    'pokemon',
-    ULInt8('stat_hp'),
-    ULInt8('stat_atk'),
-    ULInt8('stat_def'),
-    ULInt8('stat_speed'),
-    ULInt8('stat_spatk'),
-    ULInt8('stat_spdef'),
-    ULInt8('type1'),
-    ULInt8('type2'),
-    ULInt8('catch_rate'),
-    ULInt8('stage'),
-    ULInt16('effort'),
-    ULInt16('held_item1'),
-    ULInt16('held_item2'),
-    ULInt16('held_item3'),  # dark grass from bw, unused in oras?
-    ULInt8('gender_rate'),
-    ULInt8('steps_to_hatch'),
-    ULInt8('base_happiness'),
-    ULInt8('exp_curve'),
-    ULInt8('egg_group1'),
-    ULInt8('egg_group2'),
-    ULInt8('ability1'),
-    ULInt8('ability2'),
-    ULInt8('ability_dream'),
-    ULInt8('safari_escape'),
-    ULInt16('form_species_start'),
-    ULInt16('form_sprite_start'),
-    ULInt8('form_count'),
-    ULInt8('color'),
-    ULInt16('base_exp'),
-    ULInt16('height'),
-    ULInt16('weight'),
-    Bitwise(
-        BitField('machines', 14 * 8, swapped=True),
-    ),
+    'stat_hp' / Int8ul,
+    'stat_atk' / Int8ul,
+    'stat_def' / Int8ul,
+    'stat_speed' / Int8ul,
+    'stat_spatk' / Int8ul,
+    'stat_spdef' / Int8ul,
+    'type1' / Int8ul,
+    'type2' / Int8ul,
+    'capture_rate' / Int8ul,
+    'stage' / Int8ul,
+    'effort' / Int16ul,
+    'held_item1' / Int16ul,
+    'held_item2' / Int16ul,
+    'held_item3' / Int16ul,  # dark grass from bw, unused in oras?
+    'gender_rate' / Int8ul,
+    'steps_to_hatch' / Int8ul,
+    'base_happiness' / Int8ul,
+    'growth_rate' / Enum(Int8ul, **{v: k for (k, v) in GROWTH_RATES.items()}),
+    'egg_group1' / Int8ul,
+    'egg_group2' / Int8ul,
+    'ability1' / Int8ul,
+    'ability2' / Int8ul,
+    'ability_hidden' / Int8ul,
+    'safari_escape' / Int8ul,
+    'form_species_start' / Int16ul,
+    'form_sprite_start' / Int16ul,
+    'form_count' / Int8ul,
+    'color' / Int8ul,
+    'base_exp' / Int16ul,
+    'height' / Int16ul,
+    'weight' / Int16ul,
+    'machines' / BitsSwapped(Bitwise(Array(14 * 8, Flag))),
     Padding(2),
-    ULInt32('tutors'),
-    ULInt16('mystery1'),
-    ULInt16('mystery2'),
-    ULInt32('bp_tutors1'),  # unused in sumo
-    ULInt32('bp_tutors2'),  # unused in sumo
-    ULInt32('bp_tutors3'),  # unused in sumo
-    ULInt32('bp_tutors4'),  # sumo: big numbers for pikachu, eevee, snorlax, mew, starter evos, couple others??  maybe special z-move item?
+    'tutors' / Int32ul,
+    'mystery1' / Int16ul,
+    'mystery2' / Int16ul,
+    'bp_tutors1' / Int32ul,  # unused in sumo
+    'bp_tutors2' / Int32ul,  # unused in sumo
+    'bp_tutors3' / Int32ul,  # unused in sumo
+    'bp_tutors4' / Int32ul,  # sumo: big numbers for pikachu, eevee, snorlax, mew, starter evos, couple others??  maybe special z-move item?
     # TODO sumo is four bytes longer, not sure why, find out if those bytes are anything and a better way to express them
-    OptionalGreedyRange(Magic(b'\x00')),
+    GreedyRange(Const(b'\x00')),
 )
 
-pokemon_mega_evolutions_struct = Array(
-    2,  # NOTE: 3 for XY/ORAS, but i don't think the third is ever populated?
+pokemon_mega_evolutions_struct = Filter(this.number != 0, Range(
+    # XY and ORAS have 3 of these, but the third never seems to be populated.
+    # SUMO just has 2.
+    2, 3,
     Struct(
-        'pokemon_mega_evolutions',
-        ULInt16('number'),
-        ULInt16('mode'),
-        ULInt16('mega_stone_itemid'),
+        'number' / Int16ul,
+        'mode' / Int16ul,
+        'mega_stone_itemid' / Int16ul,
         Padding(2),
     )
+))
+
+egg_moves_struct = Struct(
+    'moveids' / PrefixedArray(Int16ul, Int16ul),
 )
 
 egg_moves_struct = Struct(
-    'egg_moves',
-    ULInt16('count'),
-    Array(
-        lambda ctx: ctx.count,
-        ULInt16('moveids'),
-    ),
+    'first_form_id' / Int16ul,  # TODO SUMO ONLY
+    'moveids' / PrefixedArray(Int16ul, Int16ul),
 )
 
-egg_moves_struct = Struct(
-    'egg_moves',
-    ULInt16('first_form_id'),  # TODO SUMO ONLY
-    ULInt16('count'),
-    Array(
-        lambda ctx: ctx.count,
-        ULInt16('moveids'),
-    ),
-)
-
-level_up_moves_struct = OptionalGreedyRange(
+level_up_moves_struct = GreedyRange(
     Struct(
-        'level_up_pair',
-        SLInt16('moveid'),
-        SLInt16('level'),
+        'moveid' / Int16sl,
+        'level' / Int16sl,
     ),
 )
 
 move_struct = Struct(
-    'move',
-    ULInt8('type'),
-    ULInt8('category'),
-    ULInt8('damage_class'),
-    ULInt8('power'),
-    ULInt8('accuracy'),
-    ULInt8('pp'),
-    SLInt8('priority'),
-    ULInt8('min_max_hits'),
-    SLInt16('caused_effect'),
-    ULInt8('effect_chance'),
-    ULInt8('status'),
-    ULInt8('min_turns'),
-    ULInt8('max_turns'),
-    ULInt8('crit_rate'),
-    ULInt8('flinch_chance'),
-    ULInt16('effect'),
-    SLInt8('recoil'),
-    ULInt8('healing'),
-    ULInt8('range'),            # ok
-    Bitwise(
-        BitField('stat_change', 24),
-    ),
-    Bitwise(
-        BitField('stat_amount', 24),
-    ),
-    Bitwise(
-        BitField('stat_chance', 24),
-    ),
-    ULInt8('padding0'),         # ok
-    ULInt8('padding1'),         # ok
-    ULInt16('flags'),
-    ULInt8('padding2'),         # ok
-    ULInt8('extra'),
+    'type' / Enum(Int8ul, **{v:k for (k, v) in TYPES.items()}),
+    'category' / Int8ul,
+    'damage_class' / Int8ul,
+    'power' / Int8ul,
+    'accuracy' / Int8ul,
+    'pp' / Int8ul,
+    'priority' / Int8sl,
+    'min_max_hits' / Int8ul,
+    'caused_effect' / Int16sl,
+    'effect_chance' / Int8ul,
+    'status' / Int8ul,
+    'min_turns' / Int8ul,
+    'max_turns' / Int8ul,
+    'crit_rate' / Int8ul,
+    'flinch_chance' / Int8ul,
+    'effect' / Int16ul,
+    'recoil' / Int8sl,
+    'healing' / Int8ul,
+    'range' / Int8ul,            # ok
+    'stat_change' / Bitwise(Array(6, BitsInteger(4))),
+    'stat_amount' / Bitwise(Array(6, BitsInteger(4))),
+    'stat_chance' / Bitwise(Array(6, BitsInteger(4))),
+    'padding0' / Int8ul,         # ok
+    'padding1' / Int8ul,         # ok
+    'flags' / Int16ul,
+    'padding2' / Int8ul,         # ok
+    'extra' / Int8ul,
+    # FIXME unsure whether this exists in ORAS; should use a length limiter in the parent
+    'extra2' / Int32ul,
 )
-move_container_struct = Struct(
-    'move_container',
-    Magic(b'WD'),  # waza...  descriptions?
-    ULInt16('record_ct'),
-    Array(
-        lambda ctx: ctx.record_ct,
-        Struct(
-            'records',
-            ULInt32('offset'),
-            Pointer(lambda ctx: ctx.offset, move_struct),
-        ),
-    ),
+move_container_struct = FocusedSeq('records',
+    Const(b'WD'),  # waza...  descriptions?
+    'records' / PrefixedArray(Int16ul, FocusedSeq('move',
+        'offset' / Int32ul,
+        'move' / Pointer(this.offset, move_struct),
+    )),
 )
 
 pokemon_sprite_struct = Struct(
-    'pokemon_sprite_config',
-    ULInt16('index'),
-    ULInt16('female_index'),
-    ULInt32('form_index_offset'),
-    ULInt32('right_index_offset'),
-    ULInt16('form_count'),
-    ULInt16('right_count'),
+    'index' / Int16ul,
+    'female_index' / Int16ul,
+    'form_index_offset' / Int32ul,
+    'right_index_offset' / Int32ul,
+    'form_count' / Int16ul,
+    'right_count' / Int16ul,
 )
 
 encounter_struct = Struct(
-    'encounter',
     # TODO top 5 bits are form stuff
-    ULInt16('pokemon_id'),
-    ULInt8('min_level'),
-    ULInt8('max_level'),
+    'pokemon_id' / Int16ul,
+    'min_level' / Int8ul,
+    'max_level' / Int8ul,
 )
 
 encounter_table_struct = Struct(
-    'encounter_table',
-    ULInt8('walk_rate'),
-    ULInt8('long_grass_rate'),
-    ULInt8('hidden_rate'),
-    ULInt8('surf_rate'),
-    ULInt8('rock_smash_rate'),
-    ULInt8('old_rod_rate'),
-    ULInt8('good_rod_rate'),
-    ULInt8('super_rod_rate'),
-    ULInt8('horde_rate'),
-    Magic(b'\x00' * 5),
+    'walk_rate' / Int8ul,
+    'long_grass_rate' / Int8ul,
+    'hidden_rate' / Int8ul,
+    'surf_rate' / Int8ul,
+    'rock_smash_rate' / Int8ul,
+    'old_rod_rate' / Int8ul,
+    'good_rod_rate' / Int8ul,
+    'super_rod_rate' / Int8ul,
+    'horde_rate' / Int8ul,
+    Const(b'\x00' * 5),
     Array(61, encounter_struct),
-    Magic(b'\x00' * 2),
+    Const(b'\x00' * 2),
 )
 
 ORAS_ENCOUNTER_SLOTS = [
@@ -666,49 +754,15 @@ def extract_data(root, out):
                 entry = garc[entryid][0]
                 texts[lang][entryname] = decrypt_xy_text(entry.read())
 
-    # Japanese text is special!  It's written in both kanji and kana, and we
-    # want to combine them
-    texts['ja'] = {}
-    #for entryname in ORAS_SCRIPT_ENTRIES:
-    for entryname in SUMO_SCRIPT_ENTRIES:
-        kanjis = texts['ja-kanji'][entryname]
-        kanas = texts['ja-kana'][entryname]
-        # But not if they're names of things.
-        # (TODO this might not be true in the case of, say, towns?  in which
-        # case, what do we do?  we want to ultimately put these in urls and
-        # whatnot, right, but we don't want furigana there  :S  do we need a
-        # separate "identifier" field /per language/?)
-        assert len(kanas) == len(kanjis)
-        if kanjis == kanas:
-            texts['ja'][entryname] = kanjis
-        else:
-            texts['ja'][entryname] = [
-                merge_japanese_texts(kanji, kana)
-                for (kanji, kana) in zip(kanjis, kanas)
-            ]
-    del texts['ja-kanji']
-    del texts['ja-kana']
-
     identifiers = {}
-    identifiers['species'] = []
-    for i, (species_name, form_name) in enumerate(itertools.zip_longest(
-            texts['en']['species-names'],
-            texts['en']['form-names'],
-            )):
-        if species_name:
-            ident = make_identifier(species_name)
-        else:
-            # TODO proooooobably fix this
-            ident = 'uhhhhh'
-            #print("??????", i, species_name, form_name)
-        if form_name:
-            ident = ident + '-' + make_identifier(form_name)
-        # TODO hold up, how are these /species/ identifiers?
-        identifiers['species'].append(ident)
-    identifiers['move'] = [
-        make_identifier(name)
-        for name in texts['en']['move-names']
-    ]
+    # FIXME should use a known list, mayyybe compare against this
+    identifiers['species'] = list(map(make_identifier, texts['en']['species-names']))
+    # This is totally wrong, but the Pokémon loop below fixes it as it goes
+    # FIXME okay that bit at the end is dumb
+    identifiers['pokémon'] = identifiers['species'][:] + [None] * 1000
+    identifiers['move'] = list(map(make_identifier, texts['en']['move-names']))
+    identifiers['item'] = list(map(make_identifier, texts['en']['item-names']))
+    identifiers['ability'] = list(map(make_identifier, texts['en']['ability-names']))
 
     textdir = out / 'script'
     if not textdir.exists():
@@ -722,6 +776,8 @@ def extract_data(root, out):
 
     """
     # Encounters
+    22:42 < magical> note to self: X/Y ambush encounters are found in DllField.cro, starting at 0xf40d0
+    23:02 < magical> friend safari pokemon at 0x13d34a
     # TODO move mee elsewheeere -- actually all of these should be in their own pieces
     places = OrderedDict()
     name_index_to_place = {}
@@ -853,7 +909,7 @@ def extract_data(root, out):
                                 levels = str(enc.min_level)
                             else:
                                 levels = "{} - {}".format(enc.min_level, enc.max_level)
-                            pokemon_ident = identifiers['species'][enc.pokemon_id & 0x1ff]
+                            pokemon_ident = identifiers['pokémon'][enc.pokemon_id & 0x1ff]
                             pokemon_form_bits = enc.pokemon_id >> 9
                             # TODO maybe turn this into, i have no idea, a
                             # custom type?  something forcibly short??
@@ -892,7 +948,9 @@ def extract_data(root, out):
         machines = []
         #f.seek(0x004a67ee)  # ORAS
         f.seek(0x0049795a)  # SUMO
+        # TODO magic number (107)
         machineids = struct.unpack('<107H', f.read(2 * 107))
+        # TODO dunno if this is still true
         # Order appears to be based on some gen 4 legacy: TMs 1 through 92, HMs
         # 1 through 6, then the other eight TMs and the last HM.  But the bits
         # in the Pokémon structs are in the expected order of 1 through 100, 1
@@ -909,43 +967,141 @@ def extract_data(root, out):
 
     # -------------------------------------------------------------------------
     # Pokémon structs
-    # TODO SUMO 0/1/8 seems to contain the index for the "base" species
+    mega_evolutions = get_mega_evolutions(root)
+    all_pokémon = OrderedDict()
     pokemon_data = []
     with read_garc(root / 'rom/a/0/1/7') as garc:  # SUMO
     #with read_garc(root / 'rom/a/1/9/5') as garc:  # ORAS
         personals = [subfile[0].read() for subfile in garc]
     _pokemon_forms = {}  # "real" species id => (base species id, form name id)
-    _next_name_form_id = 723  # TODO magic number
+    _next_name_form_id = 803#723  # TODO magic numbers
+    print("number of flavor texts", len(texts['en']['species-flavor-moon']))
     for i, personal in enumerate(personals[:-1]):
         record = pokemon_struct.parse(personal)
-        # TODO transform to an OD somehow probably
-        pokemon_data.append(record)
-        print(i, hex(record.bp_tutors4))
-        #print("{:3d} {:15s} {} {:5d} {:5d}".format(
-        #    i,
-        #    identifiers['species'][baseid],
-        #    ('0'*16 + bin(record.mystery1)[2:])[-16:],
-        #    record.mystery2,
-        #    record.stage,
-        #))
-        # TODO some pokemon have sprite starts but no species start, because their sprites vary obv
-        if record.form_count > 1:
-            # The form names appear to be all just jammed at the end in order,
-            # completely unrelated to either of the "start" offsets here
+
+        # FIRST THINGS FIRST: let's deal with forms.
+        # TODO some pokemon, like unown, /only/ have sprite variations, so they
+        # don't have a form_species_start here.  what do i do about them?
+        if (record.form_count > 1) != bool(record.form_species_start):
+            print("!!! sprite-only forms, argh")
+        # The > i check makes sure we don't run this bit a second time when we
+        # hit the forms themselves
+        if record.form_count > 1 and record.form_species_start > i:
+            megas = mega_evolutions[i]
+            if len(megas) == 1:
+                assert i not in FORM_NAMES
+                form_names = ['mega']
+            elif len(megas) == 2:
+                assert i not in FORM_NAMES
+                form_names = ['mega-x', 'mega-y']
+            else:
+                assert not megas
+                form_names = FORM_NAMES[i][1:]
+                # Fix our own name if necessary
+                if FORM_NAMES[i][0]:
+                    identifiers['pokémon'][i] += '-' + FORM_NAMES[i][0]
+
+            if record.form_count - 1 != len(form_names):
+                print("!!!!! MISMATCH", record.form_count - 1, len(form_names))
             for offset in range(record.form_count - 1):
+                # Form names appear to be all just jammed at the end in order,
+                # completely unrelated to either of the "start" offsets here
                 #form_name = texts['en']['form-names'][_next_name_form_id]
 
-                if record.form_species_start:
-                    # TODO still no idea how "intangible" forms are being
-                    # handled in the new schema
-                    _pokemon_forms[record.form_species_start + offset] = i, _next_name_form_id
-
+                # TODO still no idea how "intangible" forms are being
+                # handled in the new schema
+                _pokemon_forms[record.form_species_start + offset] = i, _next_name_form_id
                 _next_name_form_id += 1
 
-        if record.form_species_start:
-            for offset in range(record.form_count - 1):
-                # TODO grab the form names argh
-                identifiers['species'][record.form_species_start + offset] = identifiers['species'][i]
+                identifiers['pokémon'][record.form_species_start + offset] = identifiers['species'][i] + '-' + form_names[offset]
+
+        pokémon = Pokémon()
+        all_pokémon[identifiers['pokémon'][i]] = pokémon
+        pokémon.game_index = i
+
+        if i in _pokemon_forms:
+            base_species_id, form_name_id = _pokemon_forms[i]
+        else:
+            base_species_id = i
+            form_name_id = i
+        # TODO i observe this is explicitly a species name, the one thing that
+        # really is shared between forms
+        pokémon.name = OrderedDict(
+            (language, texts[language]['species-names'][base_species_id])
+            for language in CANON_LANGUAGES)
+        pokémon.genus = OrderedDict(
+            (language, texts[language]['genus-names'][base_species_id])
+            for language in CANON_LANGUAGES)
+        # FIXME ho ho, hang on a second, forms have their own flavor text too!!
+        pokémon.flavor_text = OrderedDict(
+            # TODO well this depends on which game you're dumping
+            (language, texts[language]['species-flavor-moon'][base_species_id])
+            for language in CANON_LANGUAGES)
+        # FIXME include form names?  only when they exist?  can that be
+        # inconsistent between languages?
+
+        pokémon.base_stats = {
+            'hp': record.stat_hp,
+            'attack': record.stat_atk,
+            'defense': record.stat_def,
+            'special-attack': record.stat_spatk,
+            'special-defense': record.stat_spdef,
+            'speed': record.stat_speed,
+        }
+        # FIXME pokémon.types = [record.type1]
+        pokémon.capture_rate = record.capture_rate
+        # TODO stage?
+        # FIXME effort
+        # Held items are a bit goofy; if the same item is in all three slots, it always appears!
+        pokémon.held_items = {}
+        if 0 != record.held_item1 == record.held_item2 == record.held_item3:
+            pokémon.held_items[identifiers['item'][record.held_item1]] = 100
+        else:
+            if record.held_item1:
+                pokémon.held_items[identifiers['item'][record.held_item1]] = 50
+            if record.held_item2:
+                pokémon.held_items[identifiers['item'][record.held_item2]] = 5
+            if record.held_item3:
+                pokémon.held_items[identifiers['item'][record.held_item3]] = 1
+
+        # TODO i think this needs some normalizing?  maybe renaming because
+        # this doesn't at all imply what it means
+        pokémon.gender_rate = record.gender_rate
+
+        pokémon.hatch_counter = record.steps_to_hatch
+        pokémon.base_happiness = record.base_happiness
+        pokémon.growth_rate = record.growth_rate
+        # FIXME egg groups
+        pokémon.abilities = [
+            identifiers['ability'][ability]
+            for ability in (record.ability1, record.ability2, record.ability_hidden)
+        ]
+        # FIXME safari escape??
+        # FIXME form stuff
+        # FIXME color
+        pokémon.base_experience = record.base_exp
+        # FIXME what units are these!
+        pokémon.height = record.height
+        pokémon.weight = record.weight
+
+        pokémon.moves = {}
+
+
+
+
+        # TODO transform to an OD somehow probably
+        pokemon_data.append(record)
+        print("{:4d} {:25s} {} {:5d} {:5d} {:20s} {:4d} {:4d} {:2d}".format(
+            i,
+            identifiers['pokémon'][i],
+            ('0'*16 + bin(record.mystery1)[2:])[-16:],
+            record.mystery2,
+            record.stage,
+            texts['en']['form-names'][i],
+            record.form_species_start,
+            record.form_sprite_start,
+            record.form_count,
+        ))
 
     #for i in range(723, 825 + 1):
     #    base_species_id, form_name_id = _pokemon_forms[i]
@@ -955,31 +1111,42 @@ def extract_data(root, out):
 
     # -------------------------------------------------------------------------
     # Move stats
-    movesets = OrderedDict()
-    with read_garc(root / 'rom/a/0/1/1') as garc:  # SUMO
     #with read_garc(root / 'rom/a/1/8/9') as garc:  # ORAS
+    with read_garc(root / 'rom/a/0/1/1') as garc:  # SUMO
         # Only one subfile
+        # TODO assert this wherever i do it
         data = garc[0][0].read()
-        container = move_container_struct.parse(data)
-        for n, record in enumerate(container.records):
-            m = record.move
+        print(Struct('magic' / Bytes(2), 'count' / Int16ul, 'pointers' / Array(16, Int32ul)).parse(data))
+        print(move_struct.sizeof())
+        records = move_container_struct.parse(data)
+        for i, record in enumerate(records):
+            #print(texts['en']['move-names'][i])
+            #print(record)
             # TODO with the release of oras all moves have contest types and effects again!  where are they??
-            #print("{:3d} {:20s} | {m.type:3d} {m.power:3d} {m.pp:2d} {m.accuracy:3d} / {m.priority:2d} {m.range:2d} {m.damage_class:1d} / {m.effect:3d} {m.caused_effect:3d} {m.effect_chance:3d}  --  {m.status:3d} {m.min_turns:3d} {m.max_turns:3d} {m.crit_rate:3d} {m.flinch_chance:3d} {m.recoil:4d} {m.healing:3d} / {m.stat_change:06x} {m.stat_amount:06x} {m.stat_chance:06x} / {m.padding0:3d} {m.padding1:3d} {m.flags:04x} {m.padding2:3d} {m.extra:3d}".format(
-            #    n,
-            #    identifiers['move'][n],
-            #    m=record.move,
-            #))
+            print("{:3d} {:30s} | {m.type:10s} {m.category:3d} / {m.power:3d} {m.pp:2d} {m.accuracy:3d} / {m.priority:2d} {m.range:2d} {m.damage_class:1d} / {m.effect:3d} {m.caused_effect:3d} {m.effect_chance:3d}  --  {m.status:3d} {m.min_turns:3d} {m.max_turns:3d} {m.crit_rate:3d} {m.flinch_chance:3d} {m.recoil:4d} {m.healing:3d} / {m.stat_change!r} {m.stat_amount!r} {m.stat_chance!r} ~ {m.padding0:3d} {m.padding1:3d} {m.flags:04x} {m.padding2:3d} {m.extra:3d} {m.extra2:10d}".format(
+                i,
+                texts['en']['move-names'][i],
+                m=record,
+            ))
+    return
 
     # Egg moves
     with read_garc(root / 'rom/a/0/1/2') as garc:  # SUMO
     #with read_garc(root / 'rom/a/1/9/0') as garc:  # ORAS
+        print("number of egg moves:", len(garc))
         for i, subfile in enumerate(garc):
-            ident = identifiers['species'][i]
+            ident = identifiers['pokémon'][i]
             data = subfile[0].read()
             if not data:
                 continue
             container = egg_moves_struct.parse(data)
-            moveset = movesets.setdefault(ident, OrderedDict())
+            print(i, ident, container.first_form_id, container.moveids)
+            # FIXME: 961 pokémon, 1063 named forms, but 1048 egg movesets.
+            # what?  they get completely out of order after 802 and i don't
+            # know how to fix this.  didn't magical write some code...?
+            if i > len(identifiers['species']):
+                continue
+            moveset = all_pokémon[ident].moves
             eggset = moveset['egg'] = []
             for moveid in container.moveids:
                 eggset.append(identifiers['move'][moveid])
@@ -987,10 +1154,11 @@ def extract_data(root, out):
     # Level-up moves
     with read_garc(root / 'rom/a/0/1/3') as garc:  # SUMO
     #with read_garc(root / 'rom/a/1/9/1') as garc:  # ORAS
+        print("number of level-up moves", len(garc))
         for i, subfile in enumerate(garc):
-            ident = identifiers['species'][i]
+            ident = identifiers['pokémon'][i]
             level_up_moves = subfile[0].read()
-            moveset = movesets.setdefault(ident, OrderedDict())
+            moveset = all_pokémon[ident].moves
             levelset = moveset['level'] = []
             lastlevel = None
             order = 1
@@ -998,10 +1166,11 @@ def extract_data(root, out):
                 # End is indicated with -1, -1
                 if pair.moveid <= 0:
                     break
-                levelset.append((
-                    pair.level,
-                    identifiers['move'][pair.moveid],
-                ))
+                # FIXME this is a goofy-looking structure, but it makes the
+                # yaml come out nicely?
+                levelset.append({
+                    pair.level: identifiers['move'][pair.moveid],
+                })
 
                 if pair.level == lastlevel:
                     order += 1
@@ -1038,8 +1207,8 @@ def extract_data(root, out):
 
     # Tutor moves (from the personal structs)
     for i, datum in enumerate(pokemon_data):
-        ident = identifiers['species'][i]
-        moveset = movesets.setdefault(ident, OrderedDict())
+        ident = identifiers['pokémon'][i]
+        moveset = all_pokémon[ident].moves
         tutorset = moveset['tutor'] = []
         for key, tutors in tutor_moves.items():
             for bit, moveident in enumerate(tutors):
@@ -1052,27 +1221,27 @@ def extract_data(root, out):
         # TMs
         machineset = moveset['machine'] = []
         for bit, moveident in enumerate(machines):
-            if not datum['machines'] & (1 << bit):
+            if not datum['machines'][bit]:
                 continue
             machineset.append(moveident)
 
-    with (out / 'movesets.yaml').open('w') as f:
-        dump_to_yaml(movesets, f)
+    with (out / 'pokemon.yaml').open('w') as f:
+        #dump_to_yaml(all_pokémon, f)
+        import pokedex.schema as schema
+        from camel import Camel
+        f.write(Camel([schema.POKEDEX_TYPES]).dump(all_pokémon))
 
 
-def get_mega_counts(root):
-    """Return a dict mapping Pokémon ids to how many mega evolutions each one
-    has.
+def get_mega_evolutions(root):
+    """Return a dict mapping Pokémon ids to a list of mega evolution records.
     """
-    mega_counts = {}  # pokemonid => number of mega evos
+    megas = {}
     #with read_garc(root / 'rom/a/1/9/3') as garc:  # oras
     with read_garc(root / 'rom/a/0/1/5') as garc:  # SUMO
         for pokemonid, subfile in enumerate(garc):
-            mega_evos = pokemon_mega_evolutions_struct.parse_stream(subfile[0])
-            mega_counts[pokemonid] = max(
-                mega_evo.number for mega_evo in mega_evos)
+            megas[pokemonid] = pokemon_mega_evolutions_struct.parse_stream(subfile[0])
 
-    return mega_counts
+    return megas
 
 
 class SpriteFileNamer:
@@ -1117,7 +1286,7 @@ class SpriteFileNamer:
                     .format(self.mega_counts[pokemonid], pokemonid))
         else:
             # TODO should use warnings for this so it works for new games
-            #raise ValueError("Pokemon {} doesn't have forms".format(pokemonid))
+            warnings.warn("Don't know any forms for Pokemon {}".format(pokemonid))
             form = "form-{}".format(formid)
 
         # Construct the directory
@@ -1192,50 +1361,30 @@ class SpriteFileNamer:
             shutil.copyfile(str(fn), str(fn2))
 
 
-def write_clim_to_png(f, width, height, color_depth, palette, pixels):
-    """Write the results of ``decode_clim`` to a file object."""
-    writer_kwargs = dict(width=width, height=height)
-    if palette:
-        writer_kwargs['palette'] = palette
-    else:
-        # TODO do i really only need alpha=True if there's no palette?
-        writer_kwargs['alpha'] = True
-    writer = png.Writer(**writer_kwargs)
-
-    # For a paletted image, I want to preserve Zhorken's good idea of
-    # indicating the original bit depth with an sBIT chunk.  But PyPNG can't do
-    # that directly, so instead I have to do some nonsense.
-    if palette:
-        buf = io.BytesIO()
-        writer.write(buf, pixels)
-
-        # Read the PNG as chunks, and manually add an sBIT chunk
-        buf.seek(0)
-        png_reader = png.Reader(buf)
-        chunks = list(png_reader.chunks())
-        sbit = bytes([color_depth] * 3)
-        chunks.insert(1, ('sBIT', sbit))
-
-        # Now write the chunks to the file
-        png.write_chunks(f, chunks)
-
-    else:
-        # Otherwise, it's...  almost straightforward.
-        writer.write(f, (itertools.chain(*row) for row in pixels))
-
-
 def extract_box_sprites(root, out):
-    namer = SpriteFileNamer(
-        out, get_mega_counts(root), ORAS_EXTRA_SPRITE_NAMES)
+    mega_counts = {
+        id: len(megas)
+        for (id, megas) in get_mega_evolutions(root).items()
+    }
+    namer = SpriteFileNamer(out, mega_counts, FORM_NAMES)
 
     with (root / 'exe/code.bin').open('rb') as f:
         # Form configuration, used to put sprites in the right order
         # NOTE: in x/y the address is 0x0043ea98
         #f.seek(0x0047d650)  # ORAS
         f.seek(0x004999d0)  # SUMO
-        # TODO magic number
-        for n in range(722):
+        # Discard dummy zero sprite
+        pokemon_sprite_struct.parse_stream(f)
+        n = 0
+        while True:
             sprite = pokemon_sprite_struct.parse_stream(f)
+            # This is not particularly reliable, but the data immediately
+            # following this list is some small 32-bit values, so the female
+            # index will be (illegally) zero
+            if not sprite.female_index:
+                break
+
+            n += 1
             namer.add(sprite.index, n)
             if sprite.female_index != sprite.index:
                 namer.add(sprite.female_index, n, female=True)
@@ -1289,26 +1438,28 @@ def extract_box_sprites(root, out):
     with read_garc(root / 'rom/a/0/6/2') as garc:  # SUMO
         from .lib.clim import decode_clim
         for i, subfile in enumerate(garc):
-            if i == 0:
-                # Dummy blank sprite, not interesting to us
-                continue
-            elif i == 333:
-                # Duplicate Entei sprite that's not used
-                continue
-            elif i == len(garc) - 1:
+            # TODO ORAS ONLY
+            #elif i == 333:
+            #    # Duplicate Entei sprite that's not used
+            #    continue
+            if i == len(garc) - 1:
                 # Very last one is egg
                 namer.inject(i, 'egg.png')
 
+            # TODO this is bad.
+            if not namer.index_to_filenames[i]:
+                # Unused sprite -- e.g. index 0, or one of the dummies in SUMO
+                continue
+
             data = subfile[0].read()
-            width, height, color_depth, palette, pixels = decode_clim(data)
+            image_data = decode_clim(data)
 
             # TODO this is bad.
             if 'right/' in namer.index_to_filenames[i][0]:
-                for row in pixels:
-                    row.reverse()
+                image_data.mirror()
 
             with namer.open(i) as f:
-                write_clim_to_png(f, width, height, color_depth, palette, pixels)
+                image_data.write_to_png(f)
 
 
 def extract_dex_sprites(root, out):
@@ -1317,58 +1468,103 @@ def extract_dex_sprites(root, out):
     # Luckily the dex sprites are in the same order as the models
     # (unsurprising, as they're just model renders), which also tells us what
     # Pokémon have female forms.  The mega evolution map tells us which forms
-    # are megas, and the rest are listed manually above as
-    # ORAS_EXTRA_SPRITE_NAMES.
+    # are megas, and the rest are listed manually above as FORM_NAMES.
 
-    namer = SpriteFileNamer(
-        out, get_mega_counts(root), ORAS_EXTRA_SPRITE_NAMES)
+    mega_counts = {
+        id: len(megas)
+        for (id, megas) in get_mega_evolutions(root).items()
+    }
+    namer = SpriteFileNamer(out, mega_counts, FORM_NAMES)
 
     # TODO Meowstic is counted as simply female in here, but should probably be
     # saved with a form filename as well
+    # TODO should skip the extra komala and the totem forms
     #with read_garc(root / 'rom/a/0/0/8') as garc:  # ORAS
     with read_garc(root / 'rom/a/0/9/4') as garc:  # SUMO
         f = garc[0][0]
-        # TODO magic number
-        for n in range(721):
-            # Unlike /virtually everywhere else/, Pokémon are zero-indexed here
-            pokemonid = n + 1
+        pokemonid = 0
+        while True:
+            pokemonid += 1
+            data = f.read(4)
+            # All zeroes means we're done.  Maybe.  More data follows after
+            # this, but it doesn't seem to be the same format, and I don't know
+            # what exactly it's for.
+            if data == b'\x00\x00\x00\x00':
+                break
+
             # Index of the first model (also zero-indexed), how many models the
             # Pokémon has, and some flags
-            start, count, flags = struct.unpack('<HBB', f.read(4))
-            model_num = start + 1
-            # For some asinine reason, Xerneas is counted as two separate
-            # Pokémon in the dex sprites but not the models, so we have to
-            # shift everything after it back by 1
+            start, count, flags = struct.unpack('<HBB', data)
+            # TODO this was CHANGED for SUMO -- for ORAS all the shiny sprites are a second block at the end!
+            #model_num = start + 1
+            model_num = start * 2 + 1
+            #print("pokemon {:3d} -- start {:4d} ({:4d}) -- count {:2d} -- flags {:08b}".format(pokemonid, start, model_num, count, flags))
+            # Fix a few odd disconnects between the model listing and the
+            # actual dex sprites.
+            # TODO there must be a dex sprite index somewhere, this is silly
+            # Xerneas has two models, but three dex sprites
             if pokemonid == 716:
                 count = 2
-            elif pokemonid >= 717:
-                model_num += 1
+            # Lurantis has two models, but one dex sprite
+            if pokemonid == 754:
+                count = 1
+                flags &= ~4
+            # Salazzle has two models, but one dex sprite
+            if pokemonid == 758:
+                count = 1
+                flags &= ~4
+            # Komala has one model, but two dex sprites
+            # FIXME probably skip extracting it at all
+            if pokemonid == 775:
+                count = 2
+            # The above all naturally throw later numbering off; compensate
+            if 716 < pokemonid <= 754:
+                model_num += 2
+            elif 758 < pokemonid <= 775:
+                model_num -= 2
 
             namer.add(model_num, pokemonid)
+            # TODO SUMO ONLY (should be += 1 for ORAS)
+            namer.add(model_num + 1, pokemonid, shiny=True)
+            model_num += 2
+
             form_count = count - 1  # discount "base" form
+            # TODO this is only used for ORAS, and should be done another way anyway
             total_model_count = model_num + count - 1
 
             # Don't know what flag 1 is; everything has it.
-            # Flag 2 means the first alternate form is a female variant.
+            # Flag 2 means the first alternate form is female.
             if flags & 2:
                 assert form_count > 0
                 form_count -= 1
-                model_num += 1
                 namer.add(model_num, pokemonid, female=True)
+                namer.add(model_num + 1, pokemonid, female=True, shiny=True)
+                model_num += 2
             # Flag 4 just means there are more forms?
             if flags & 4:
                 assert form_count
 
             for formid in range(1, form_count + 1):
-                model_num += 1
                 namer.add(model_num, pokemonid, formid)
+                namer.add(model_num + 1, pokemonid, formid, shiny=True)
+                model_num += 2
 
     # And now, do the ripping
     #with read_garc(root / 'rom/a/2/6/3') as garc:  # ORAS
-    with read_garc(root / 'rom/a/2/4/0') as garc:  # sun/moon demo
+    with read_garc(root / 'rom/a/2/4/0') as garc:  # SUMO
         from .lib.clim import decode_clim
         from .lib.etc1 import decode_etc1
         for i, subfile in enumerate(garc):
+            if i == 0:
+                # Dummy sprite, not interesting to us
+                continue
+
+            data = subfile[0].read()
+            """
+            with open("{}/{}.png".format(str(out), i), 'wb') as f:
+                write_clim_to_png(f, *decode_etc1(data))
+            continue
+            # TODO THIS IS ALL ORAS ONLY
             shiny_prefix = None
             if i > total_model_count:
                 i -= total_model_count
@@ -1376,18 +1572,18 @@ def extract_dex_sprites(root, out):
                 # hack in the other code
                 shiny_prefix = 'shiny/'
 
-            if i == 0:
-                # Dummy blank sprite, not interesting to us
-                continue
             elif 37 <= i <= 41:
                 # Cosplay Pikachu's outfits -- the sprites are blank, so saving
                 # these is not particularly useful
                 continue
+            """
 
             data = subfile[0].read()
-            with namer.open(i, prefix=shiny_prefix) as f:
-                write_clim_to_png(f, *decode_etc1(data))
-                #write_clim_to_png(f, *decode_clim(data))
+            with namer.open(i) as f:
+                decode_etc1(data).write_to_png(f)
+            # TODO ORAS
+            #with namer.open(i, prefix=shiny_prefix) as f:
+            #    decode_clim(data).write_to_png(f)
 
 
 def _munge_source_arg(strpath):

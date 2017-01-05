@@ -164,6 +164,8 @@ Evolution = _ForwardDeclaration()
 EncounterMap = _ForwardDeclaration()
 MoveSet = _ForwardDeclaration()
 Pokedex = _ForwardDeclaration()
+Item = _ForwardDeclaration()
+Ability = _ForwardDeclaration()
 
 
 class Pokémon(VersionedLocus):
@@ -173,6 +175,9 @@ class Pokémon(VersionedLocus):
     base_stats = _Map(Stat, int)
     growth_rate = _Value(GrowthRate)
     base_experience = _Value(int, min=0, max=255)
+    capture_rate = _Value(int, min=0, max=255)
+    held_items = _Map(Item, int)
+    gender_rate = _Value(int)
 
     pokedex_numbers = _Map(Pokedex, int)
 
@@ -202,7 +207,23 @@ class Pokémon(VersionedLocus):
     # TODO should this be written in hex, maybe?
     game_index = _Value(int)
 
+    # FIXME how do i distinguish hidden ability?
+    abilities = _List(Ability)
+
 Pokemon = Pokémon
+
+
+MoveEffect = _ForwardDeclaration()
+
+class Move(VersionedLocus):
+    name = _Localized(str)
+    type = _Value(Type)
+    power = _Value(int)
+    pp = _Value(int)
+    accuracy = _Value(int)
+    effect = _Value(MoveEffect)
+
+
 
 
 # ------------------------------------------------------------------------------

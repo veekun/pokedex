@@ -11,7 +11,7 @@ class PokemonContainerFile(_ContainerFile):
         self.stream = stream = Substream(stream)
 
         magic, entry_ct = stream.unpack('<2sH')
-        assert magic == b'PC'
+        assert magic in (b'PC', b'PS', b'BL')
 
         # Offsets are "A B C ...", where entry 0 ranges from A to B, entry 1
         # from B to C, etc.

@@ -94,13 +94,16 @@ class GARCEntry(object):
     def __getitem__(self, i):
         start, length = self.slices[i]
         ss = self.stream.slice(start, length)
-        if ss.peek(1) in [b'\x10', b'\x11']:
+        if ss.peek(1) in b'\x10\x11':
             # XXX this sucks but there's no real way to know for sure whether
             # data is compressed or not.  maybe just bake this into the caller
             # and let them deal with it, same way we do with text decoding?
             # TODO it would be nice if this could be done lazily for 'inspect'
             # purposes, since the first four bytes are enough to tell you the
             # size
+            # FIXME make this work even for red herrings, maybe by finishing it
+            # up and doing a trial decompression of the first x bytes
+            #return CompressedStream(ss)
             try:
                 data = lzss3.decompress_bytes(ss.read())
             except Exception:
@@ -111,6 +114,47 @@ class GARCEntry(object):
 
     def __len__(self):
         return len(self.slices)
+
+
+class CompressedStream:
+    def __init__(self, stream):
+        self.stream = stream
+        header = stream.read(4)
+        stream.seek(0)
+        assert header[0] in b'\x10\x11'
+        self.length, = struct.unpack('<L', header[1:] + b'\x00')
+        self.data = None
+
+    def __len__(self):
+        return self.length
+
+    def _decompress(self):
+        self.data = BytesIO(lzss3.decompress_bytes(self.stream.read()))
+
+    def read(self, *args):
+        if self.data is None:
+            self._decompress()
+        return self.data.read(*args)
+
+    def seek(self, *args):
+        if self.data is None:
+            self._decompress()
+        return self.data.seek(*args)
+
+    def tell(self, *args):
+        if self.data is None:
+            self._decompress()
+        return self.data.tell(*args)
+
+    def peek(self, n):
+        if self.data is None:
+            self._decompress()
+        here = self.data.tell()
+        ret = self.data.read(n)
+        self.data.seek(here)
+        return ret
+
+
 
 
 XY_CHAR_MAP = {
@@ -360,7 +404,7 @@ def do_inspect(args):
                 else:
                     print()
 
-                cutoff = max(total_subfiles // 10, 2)
+                cutoff = max(total_subfiles // 10, 1)
                 for magic, ct in magic_ctr.most_common():
                     if ct < cutoff:
                         break
