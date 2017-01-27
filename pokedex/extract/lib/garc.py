@@ -158,7 +158,7 @@ class CompressedStream:
 
 
 XY_CHAR_MAP = {
-    0x307f: 0x202f,  # nbsp
+    0xe07f: 0x202f,  # nbsp
     0xe08d: 0x2026,  # ellipsis
     0xe08e: 0x2642,  # female sign
     0xe08f: 0x2640,  # male sign
