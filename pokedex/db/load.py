@@ -135,7 +135,6 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
     # First take care of verbosity
     print_start, print_status, print_done = _get_verbose_prints(verbose)
 
-
     if directory is None:
         directory = get_default_csv_dir()
 
@@ -323,7 +322,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
                 # Could happen if row A refers to B which refers to C.
                 # This is ridiculous and doesn't happen in my data so far
                 raise ValueError("Too many levels of self-reference!  "
-                                 "Row was: " + str(row))
+                                 "Row was: " + str(row_data))
 
             session.execute(
                 insert_stmt.values(**row_data)
@@ -331,8 +330,8 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
             seen_ids.add(row_data['id'])
 
         session.commit()
-        print_done()
 
+        print_done()
 
     print_start('Translations')
     transl = translations.Translations(csv_directory=directory)
