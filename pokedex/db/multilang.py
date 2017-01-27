@@ -195,6 +195,8 @@ def create_translation_table(_table_name, foreign_class, relation_name,
         # these are passed as *args anyway
         def creator(language, value):
             row = Translations()
+            # TODO this has to be an object; we don't seem to have any way to
+            # handle receiving a string here
             row.local_language = language
             setattr(row, name, value)
             return row
