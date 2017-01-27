@@ -94,7 +94,17 @@ class GARCEntry(object):
     def __getitem__(self, i):
         start, length = self.slices[i]
         ss = self.stream.slice(start, length)
-        if ss.peek(1) in b'\x10\x11':
+        peek = ss.peek(1)
+        if peek == b'\x11':
+            from .compressed import DecompressionError, LZSS11CompressedStream
+            decompressor = LZSS11CompressedStream(ss)
+            try:
+                decompressor.peek(256)
+            except DecompressionError:
+                return ss
+            else:
+                return decompressor
+        elif ss.peek(1) in b'\x10\x11':
             # XXX this sucks but there's no real way to know for sure whether
             # data is compressed or not.  maybe just bake this into the caller
             # and let them deal with it, same way we do with text decoding?
@@ -114,45 +124,6 @@ class GARCEntry(object):
 
     def __len__(self):
         return len(self.slices)
-
-
-class CompressedStream:
-    def __init__(self, stream):
-        self.stream = stream
-        header = stream.read(4)
-        stream.seek(0)
-        assert header[0] in b'\x10\x11'
-        self.length, = struct.unpack('<L', header[1:] + b'\x00')
-        self.data = None
-
-    def __len__(self):
-        return self.length
-
-    def _decompress(self):
-        self.data = BytesIO(lzss3.decompress_bytes(self.stream.read()))
-
-    def read(self, *args):
-        if self.data is None:
-            self._decompress()
-        return self.data.read(*args)
-
-    def seek(self, *args):
-        if self.data is None:
-            self._decompress()
-        return self.data.seek(*args)
-
-    def tell(self, *args):
-        if self.data is None:
-            self._decompress()
-        return self.data.tell(*args)
-
-    def peek(self, n):
-        if self.data is None:
-            self._decompress()
-        here = self.data.tell()
-        ret = self.data.read(n)
-        self.data.seek(here)
-        return ret
 
 
 
