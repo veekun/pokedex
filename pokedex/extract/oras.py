@@ -12,6 +12,7 @@ import shutil
 import struct
 import warnings
 
+from camel import Camel
 from construct import (
     # Simple fields
     Const, Flag, Int16sl, Int16ul, Int8sl, Int8ul, Int32ul, Padding,
@@ -23,7 +24,7 @@ from construct import (
 )
 import yaml
 
-from pokedex.schema import Pokémon
+import pokedex.schema as schema
 from .lib.garc import GARCFile, decrypt_xy_text
 
 # TODO: ribbons!  080 in sumo
@@ -726,6 +727,12 @@ def dump_to_yaml(data, f):
     )
 
 
+def collect_text(texts, text_type, id):
+    return OrderedDict(
+        (language, texts[language][text_type][id])
+        for language in CANON_LANGUAGES)
+
+
 def extract_data(root, out):
     # TODO big conceptual question for the yaml thing: how do we decide how the
     # identifiers work in the per-version data?  the "global" identifiers are
@@ -964,6 +971,23 @@ def extract_data(root, out):
                 machineids[106:]
         ]
 
+    # -------------------------------------------------------------------------
+    # Abilities
+    all_abilities = OrderedDict()
+    for i, identifier in enumerate(identifiers['ability']):
+        if i == 0:
+            # Dummy non-ability
+            continue
+        ability = all_abilities[identifier] = schema.Ability()
+        ability.name = collect_text(texts, 'ability-names', i)
+        ability.flavor_text = collect_text(texts, 'ability-flavor', i)
+        print(repr(ability.flavor_text['en']))
+
+    with (out / 'abilities.yaml').open('w') as f:
+        f.write(Camel([schema.POKEDEX_TYPES]).dump(all_abilities))
+
+
+
 
     # -------------------------------------------------------------------------
     # Pokémon structs
@@ -1015,7 +1039,7 @@ def extract_data(root, out):
 
                 identifiers['pokémon'][record.form_species_start + offset] = identifiers['species'][i] + '-' + form_names[offset]
 
-        pokémon = Pokémon()
+        pokémon = schema.Pokémon()
         all_pokémon[identifiers['pokémon'][i]] = pokémon
         pokémon.game_index = i
 
@@ -1026,17 +1050,11 @@ def extract_data(root, out):
             form_name_id = i
         # TODO i observe this is explicitly a species name, the one thing that
         # really is shared between forms
-        pokémon.name = OrderedDict(
-            (language, texts[language]['species-names'][base_species_id])
-            for language in CANON_LANGUAGES)
-        pokémon.genus = OrderedDict(
-            (language, texts[language]['genus-names'][base_species_id])
-            for language in CANON_LANGUAGES)
+        pokémon.name = collect_text(texts, 'species-names', base_species_id)
+        pokémon.genus = collect_text(texts, 'genus-names', base_species_id)
         # FIXME ho ho, hang on a second, forms have their own flavor text too!!
-        pokémon.flavor_text = OrderedDict(
-            # TODO well this depends on which game you're dumping
-            (language, texts[language]['species-flavor-moon'][base_species_id])
-            for language in CANON_LANGUAGES)
+        # TODO well this depends on which game you're dumping
+        pokémon.flavor_text = collect_text(texts, 'species-flavor-moon', base_species_id)
         # FIXME include form names?  only when they exist?  can that be
         # inconsistent between languages?
 
@@ -1227,8 +1245,6 @@ def extract_data(root, out):
 
     with (out / 'pokemon.yaml').open('w') as f:
         #dump_to_yaml(all_pokémon, f)
-        import pokedex.schema as schema
-        from camel import Camel
         f.write(Camel([schema.POKEDEX_TYPES]).dump(all_pokémon))
 
 

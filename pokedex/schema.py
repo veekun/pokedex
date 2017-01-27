@@ -165,7 +165,11 @@ EncounterMap = _ForwardDeclaration()
 MoveSet = _ForwardDeclaration()
 Pokedex = _ForwardDeclaration()
 Item = _ForwardDeclaration()
-Ability = _ForwardDeclaration()
+
+
+class Ability(VersionedLocus):
+    name = _Localized(str)
+    flavor_text = _Localized(str)
 
 
 class Pokémon(VersionedLocus):
@@ -291,10 +295,13 @@ class Repository:
         return QuantumLocusReader(identifier, cls, self.objects[cls][identifier])
 
 
-# TODO clean this garbage up -- better way of iterating the type, actually work for something other than pokemon...
+# TODO clean this garbage up -- better way of iterating the type, actually work
+# for something other than pokemon...  the only part that varies in the dumper
+# is the tag, and the only part that varies in the loader is the class (which
+# is determined from the tag)
 POKEDEX_TYPES = camel.CamelRegistry(tag_prefix='tag:veekun.com,2005:pokedex/', tag_shorthand='!dex!')
 
-@POKEDEX_TYPES.dumper(Locus, 'pokemon', version=None, inherit=True)
+@POKEDEX_TYPES.dumper(Pokémon, 'pokemon', version=None, inherit=True)
 def _dump_locus(locus):
     data = OrderedDict()
     attrs = [(key, attr) for (key, attr) in type(locus).__dict__.items() if isinstance(attr, _Attribute)]
@@ -309,6 +316,22 @@ def _dump_locus(locus):
 @POKEDEX_TYPES.loader('pokemon', version=None)
 def _load_locus(data, version):
     cls = Pokémon
+    # TODO wrap with a writer thing?
+    obj = cls()
+    for key, value in data.items():
+        key = key.replace('-', '_')
+        assert hasattr(cls, key)
+        setattr(obj, key, value)
+
+    return obj
+
+
+POKEDEX_TYPES.dumper(Ability, 'ability', version=None, inherit=True)(_dump_locus)
+
+
+@POKEDEX_TYPES.loader('ability', version=None)
+def _load_locus(data, version):
+    cls = Ability
     # TODO wrap with a writer thing?
     obj = cls()
     for key, value in data.items():
