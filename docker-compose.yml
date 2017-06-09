@@ -1,0 +1,6 @@
+version: '3'
+services:
+  pokedex:
+    build: ./
+    volumes:
+      - ./:/project

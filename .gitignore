@@ -6,4 +6,14 @@
 *.egg-info
 
 pokedex.sqlite
+pokedex.sqlite-journal
 whoosh-index
+pip-selfcheck.json
+
+/bin
+!/bin/edit-csv-as-yaml
+!/bin/poupdate
+!/bin/reset-postgresql-sequences
+/local
+/lib
+/include
