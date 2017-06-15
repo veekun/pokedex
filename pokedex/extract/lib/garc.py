@@ -99,7 +99,8 @@ class GARCEntry(object):
             from .compressed import DecompressionError, LZSS11CompressedStream
             decompressor = LZSS11CompressedStream(ss)
             try:
-                decompressor.peek(256)
+                # TODO this sucks, remove it i guess
+                decompressor.peek(2088)
             except DecompressionError:
                 return ss
             else:

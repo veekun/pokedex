@@ -18,7 +18,7 @@ from construct import (
     Const, Flag, Int16sl, Int16ul, Int8sl, Int8ul, Int32ul, Padding,
     # Structures and meta stuff
     Array, BitsInteger, BitsSwapped, Bitwise, Enum, Filter, FocusedSeq,
-    GreedyRange, Pointer, PrefixedArray, Range, Struct, this,
+    GreedyRange, Pointer, PrefixedArray, Range, Struct, Terminated, this,
     # temp
     Peek, Bytes,
 )
@@ -430,6 +430,125 @@ move_container_struct = FocusedSeq('records',
     )),
 )
 
+item_struct = Struct(
+    'price' / Int16ul,
+    'held_effect' / Int8ul,
+    'held_param' / Int8ul,
+    'natural_gift_effect' / Int8ul,
+    'fling_effect' / Int8ul,
+    'fling_power' / Int8ul,
+    'natural_gift_power' / Int8ul,
+    'natural_gift_type' / Int8ul,  # actually only the low 5 bits are that; high bit is...  usable, maybe?  but, it's not on tms and IS on z-crystals
+    # 1 - TMs and berries
+    # 2 - key items and one set of z-crystals
+    # 3 - another set of z-crystals??
+    # 8 - pokeballs
+    # 16 - battle items
+    # 32 - healing items
+    # 64 - status items
+    # 33, 65, 96 - as you'd expect
+    'maybe_flags' / Int8ul,
+    # seems to be about interaction with pokémon?
+    # 24 - form changers?
+    # 26 - dna splicers??
+    # 18 - rods
+    # 10 - black/white flute (more/fewer wild encounters)
+    # 9 - eon flute
+    # 8 - some berries, zygarde cube, pokéblock kit, 
+    # 7 - mail
+    # 6 - stones
+    # 5 - repel and exp share??
+    # 4 - honey
+    # 3 - bike
+    # 2 - tms
+    # 1 - healing items and z-crystals
+    # possibly use effect??
+    'maybe_flags3' / Int8ul,
+    # maybe part of battle item ui?
+    # 1 - balls
+    # 2 - medicine (no berries)
+    # 3 - three escape items
+    'mystery0b' / Int8ul,
+    # 1 - fossils, shards, relics, heart scale, mulch, special battle items, medicine, stones, berries (holdable??)
+    # 2 - balls (but not in xy apparently?)
+    'mystery0c' / Int8ul,
+    # ALMOST pocket?
+    # 0 - medicine
+    # 1 - held items (including ites and z-crystals)
+    # 2 - apricorns, data cards, some reward items, fossils, nectar, relics, shards, vendor trash, mulch, stones
+    # 3 - battle items
+    # 4 - balls
+    # 5 - mail
+    # 6 - tms
+    # 7 - berries
+    # 8 - key items
+    'mystery0d' / Int8ul,
+    # 1 - can be used (+ consumed) by pokémon (maybe for recycle purposes)
+    # 16 - black/white/yellow/red/blue flutes??  (not in xy?)
+    'mystery0e' / Int8ul,
+    # note that 1 appears nine times (not counting dupe normalium z) but there aren't nine pockets
+    # here they are with the almost-pocket value, feel free to investigate
+    # 0: super potion
+    # 1: smoke ball / normalium z
+    # 2: super repel
+    # 3: x defense
+    # 4: great ball
+    # 5: -
+    # 6: tm02
+    # 7: chesto berry
+    # 8: exp share
+    # of course, 0 appears a bunch of times (28!!), since it includes a bunch of junk items
+    'pocket_order' / Int8ul,
+    # 1 - slp
+    # 2 - psn
+    # 4 - brn
+    # 8 - frz
+    # 16 - par
+    # 32 - confusion
+    # 64 - attraction
+    # 128 - guard spec
+    # NOTE: balls and z-crystals seem to use this as a regular number
+    'status_cured' / Int8ul,
+    # low nybble:
+    # 1 - revive
+    # 3 - revive all
+    # 5 - level up
+    # 8 - evo stone
+    # high nybble: attack increase
+    'base_stats1' / Int8sl,
+    # defense / special attack
+    'base_stats2' / Int8sl,
+    # special defense / speed
+    'base_stats3' / Int8sl,
+    # accuracy / critical hit / pp up / pp max
+    'base_stats4' / Int8sl,
+    # 1 - ether
+    # 2 - elixir
+    # 4 - heal
+    # 8 - hp up (i.e., effort)
+    # 16 - atk up
+    # 32 - def up
+    # 64 - spd up
+    # 128 - spatk up
+    # 1 - spdef up
+    # 2 - is a wing (combines with others)
+    # 4, 8, 16 - friendship up?  maybe for "can affect in range 1, 2, 3" -- only ones without 16 are the x's, which also have 0 for friendship3
+    'heal_slash_effort' / Bytes(2),
+    'effort_hp' / Int8sl,
+    'effort_attack' / Int8sl,
+    'effort_defense' / Int8sl,
+    'effort_speed' / Int8sl,
+    'effort_special_attack' / Int8sl,
+    'effort_special_defense' / Int8sl,
+    'hp_restore' / Int8sl,  # TODO negative means fraction of total
+    'pp_restore' / Int8sl,  # TODO negative means fraction of total
+    'friendship1' / Int8sl,
+    'friendship2' / Int8sl,
+    'friendship3' / Int8sl,
+    Padding(2, strict=True),
+    Terminated,
+)
+
 pokemon_sprite_struct = Struct(
     'index' / Int16ul,
     'female_index' / Int16ul,
@@ -771,6 +890,43 @@ def extract_data(root, out):
     identifiers['item'] = list(map(make_identifier, texts['en']['item-names']))
     identifiers['ability'] = list(map(make_identifier, texts['en']['ability-names']))
 
+    # De-duplicate some items with identical names
+    # TODO eventually these should be a separate manual list that these scripts
+    # can update when necessary for new games
+    # TODO or maybe we should name /both/ items in each pair...  but for old
+    # items that requires matching up with older versions in some sensible way,
+    # right?  maybe?
+    identifiers['item'][626] = 'xtranceiver-yellow'  # 621 is red
+    identifiers['item'][713] = 'bike-yellow'  # 450 is green
+    identifiers['item'][714] = 'holo-caster-red'  # 641 is green
+    identifiers['item'][740] = 'contest-costume-dress'  # 739 is pants+jacket, obviously boy/girl clothes
+    identifiers['item'][637] = 'dropped-item-yellow'  # 636 is red
+    # Storage Key is tricky!
+    # It was in gen 3, where it opened a storage hold, but then it was either
+    # co-opted or replaced (?) in gen 4 to open the team galactic warehouse,
+    # but then we got gen 3 remakes so now it's two items
+    identifiers['item'][463] = 'storage-key-galactic-warehouse'
+    identifiers['item'][734] = 'storage-key-sea-mauville'
+    # One DNA Splicers merges Kyurem, the other separates it, and either will
+    # transparently turn into the other when used.
+    # TODO i'm /guessing/ that the first one is the merge one, but i'm not sure
+    identifiers['item'][628] = 'dna-splicers-merge'
+    identifiers['item'][629] = 'dna-splicers-split'
+    # The meteorite in ORAS gradually changes over time; in gen 3 only the first one existed
+    identifiers['item'][729] = 'meteorite'
+    identifiers['item'][751] = 'meteorite-2'
+    identifiers['item'][771] = 'meteorite-3'
+    identifiers['item'][772] = 'meteorite-4'
+    # I have absolutely no idea when or why the S S Ticket was cloned, but I
+    # assume the new one is intended to be the same as the one in gen 3
+    identifiers['item'][456] = 's-s-ticket'
+    identifiers['item'][736] = 's-s-ticket-oras'
+    # Another key that was reused, then remade.  Curiously, it doesn't look
+    # like the New Mauville version of the key was ever actually used, though
+    # its sprite was resurrected
+    identifiers['item'][476] = 'basement-key-goldenrod'
+    identifiers['item'][723] = 'basement-key-new-mauville'
+
     textdir = out / 'script'
     if not textdir.exists():
         textdir.mkdir()
@@ -971,8 +1127,14 @@ def extract_data(root, out):
                 machineids[106:]
         ]
 
+        # TODO Pokémon box sprite map
+        #0x43EAA8 XY
+        # TODO Pickup
+        # 0x4455A8 XY
+
     # -------------------------------------------------------------------------
     # Abilities
+
     all_abilities = OrderedDict()
     for i, identifier in enumerate(identifiers['ability']):
         if i == 0:
@@ -981,13 +1143,69 @@ def extract_data(root, out):
         ability = all_abilities[identifier] = schema.Ability()
         ability.name = collect_text(texts, 'ability-names', i)
         ability.flavor_text = collect_text(texts, 'ability-flavor', i)
-        print(repr(ability.flavor_text['en']))
 
     with (out / 'abilities.yaml').open('w') as f:
         f.write(Camel([schema.POKEDEX_TYPES]).dump(all_abilities))
 
+    # -------------------------------------------------------------------------
+    # Items
 
+    all_items = OrderedDict()
+    # a/1/9/7 in ORAS
+    with read_garc(root / 'rom/a/0/1/9') as garc:  # SUMO
+        item_ct = len(garc)
+        for i, subfile in enumerate(garc):
+            identifier = identifiers['item'][i]
+            if identifier == '???':
+                # Junk non-item
+                continue
 
+            item = all_items[identifier] = schema.Item()
+            item.name = collect_text(texts, 'item-names', i)
+            item.flavor_text = collect_text(texts, 'item-flavor', i)
+
+            raw_item = item_struct.parse_stream(subfile[0])
+            item.price = raw_item.price
+            item.fling_power = raw_item.fling_power
+
+    with (out / 'items.yaml').open('w') as f:
+        f.write(Camel([schema.POKEDEX_TYPES]).dump(all_items))
+
+    # TODO shouldn't this be, um, not here
+
+    # Grab the item icons, but don't save them yet...
+    image_datae = []
+    # with read_garc(root / 'rom/a/0/9/2') as garc:  # ORAS
+    with read_garc(root / 'rom/a/0/6/1') as garc:  # SUMO
+        from .lib.clim import decode_clim
+        for i, subfile in enumerate(garc):
+            image_data = decode_clim(subfile[0].read())
+            image_datae.append(image_data)
+
+    # The item icons are /almost/ parallel with the items themselves, but not
+    # quite.  The binary has a simple array of the icon for each item
+    with (root / 'exe/code.bin').open('rb') as f:
+        #f.seek(0x0043db74)  # XY
+        f.seek(0x00498660)  # SUMO
+        item_icon_map = struct.unpack(
+            "<{}I".format(item_ct), f.read(item_ct * 4))
+
+    # And now write the icons out under the correct names
+    print(len(image_datae), max(item_icon_map))
+    unused_image_datae = set(range(len(image_datae)))
+    for i, identifier in enumerate(identifiers['item']):
+        # As per usual, there's an off-by-one problem here
+        if i == 0:
+            continue
+        item_icon_id = item_icon_map[i - 1]
+        if item_ident_counter[identifiers['item'][i]] > 1:
+            print(i, identifier, item_icon_id)
+        item_icon = image_datae[item_icon_id]
+        unused_image_datae.discard(item_icon_id)
+        with (out / "items/{}-{}.png".format(i, identifier)).open('wb') as f:
+            item_icon.write_to_png(f)
+
+    assert not unused_image_datae
 
     # -------------------------------------------------------------------------
     # Pokémon structs
@@ -1198,10 +1416,11 @@ def extract_data(root, out):
 
     # Evolution
     #with read_garc(root / 'rom/a/1/9/2') as garc:  # ORAS
-    #with read_garc(root / 'rom/a/0/1/4') as garc:  # SUMO?
-    #    for subfile in garc:
-    #        evolution = subfile[0].read()
-    #        print(repr(evolution))
+    with read_garc(root / 'rom/a/0/1/4') as garc:  # SUMO?
+        for subfile in garc:
+            evolution = subfile[0].read()
+            print(repr(evolution))
+
     # Mega evolution
     #with read_garc(root / 'rom/a/1/9/3') as garc:  # ORAS
     #with read_garc(root / 'rom/a/0/1/5') as garc:  # SUMO?

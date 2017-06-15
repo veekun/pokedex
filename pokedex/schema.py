@@ -164,12 +164,34 @@ Evolution = _ForwardDeclaration()
 EncounterMap = _ForwardDeclaration()
 MoveSet = _ForwardDeclaration()
 Pokedex = _ForwardDeclaration()
-Item = _ForwardDeclaration()
 
 
 class Ability(VersionedLocus):
     name = _Localized(str)
     flavor_text = _Localized(str)
+
+
+class Item(VersionedLocus):
+    name = _Localized(str)
+    flavor_text = _Localized(str)
+    price = _Value(int, min=0)
+    # fling effect
+    fling_power = _Value(int, min=0)
+    # for berries only, but berries are a subset of items...
+    # natural gift power
+    # natural gift effect
+    # natural gift type
+
+    # category (fan classification)
+
+    # short_effect
+    # effect
+
+    # TODO pocket?  they're different per game pair and i'm not sure where to find them
+
+    # TODO berries have a bunch of stuff that regular items don't
+
+    game_index = _Value(int)
 
 
 class Pokémon(VersionedLocus):
@@ -332,6 +354,22 @@ POKEDEX_TYPES.dumper(Ability, 'ability', version=None, inherit=True)(_dump_locus
 @POKEDEX_TYPES.loader('ability', version=None)
 def _load_locus(data, version):
     cls = Ability
+    # TODO wrap with a writer thing?
+    obj = cls()
+    for key, value in data.items():
+        key = key.replace('-', '_')
+        assert hasattr(cls, key)
+        setattr(obj, key, value)
+
+    return obj
+
+
+POKEDEX_TYPES.dumper(Item, 'item', version=None, inherit=True)(_dump_locus)
+
+
+@POKEDEX_TYPES.loader('item', version=None)
+def _load_locus(data, version):
+    cls = Item
     # TODO wrap with a writer thing?
     obj = cls()
     for key, value in data.items():
