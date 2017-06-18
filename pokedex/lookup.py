@@ -225,7 +225,7 @@ class PokedexLookup(object):
                     # Add generated Roomaji too
                     # XXX this should be a first-class concept, not
                     # piggybacking on Japanese
-                    if language.identifier == 'ja':
+                    if language.identifier == 'ja-Hrkt':
                         add(romanize(name), language.identifier, language.iso639, language.iso3166)
 
         writer.commit()

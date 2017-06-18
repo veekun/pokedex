@@ -21,7 +21,7 @@ def test_languages(session):
     pkmn = q.one()
     for lang, name in (
             ('en', u'Mightyena'),
-            ('ja', u'グラエナ'),
+            ('ja-Hrkt', u'グラエナ'),
             ('roomaji', u'Guraena'),
             ('fr', u'Grahyèna'),
         ):
