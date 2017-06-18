@@ -375,6 +375,15 @@ pokemon_mega_evolutions_struct = Filter(this.number != 0, Range(
     )
 ))
 
+# FIXME need a thing for "pad to 8 junk entries"?
+pokemon_evolutions_struct = Filter(this.method != 0, Array(8, Struct(
+    'method' / Int16ul,
+    'param' / Int16ul,
+    'into_species' / Int16ul,
+    'form' / Int8sl,
+    'level' / Int8sl,
+)))
+
 egg_moves_struct = Struct(
     'moveids' / PrefixedArray(Int16ul, Int16ul),
 )
@@ -1392,6 +1401,7 @@ def extract_data(root, out):
         pokémon.weight = record.weight
 
         pokémon.moves = {}
+        pokémon.evolutions = []
 
         # TODO transform to an OD somehow probably
         pokemon_data.append(record)
@@ -1432,7 +1442,6 @@ def extract_data(root, out):
                 texts['en']['move-names'][i],
                 m=record,
             ))
-    return
 
     # Egg moves
     with read_garc(root / 'rom/a/0/1/2') as garc:  # SUMO
@@ -1444,7 +1453,6 @@ def extract_data(root, out):
             if not data:
                 continue
             container = egg_moves_struct.parse(data)
-            print(i, ident, container.first_form_id, container.moveids)
             # FIXME: 961 pokémon, 1063 named forms, but 1048 egg movesets.
             # what?  they get completely out of order after 802 and i don't
             # know how to fix this.  didn't magical write some code...?
@@ -1485,16 +1493,181 @@ def extract_data(root, out):
     # Evolution
     #with read_garc(root / 'rom/a/1/9/2') as garc:  # ORAS
     with read_garc(root / 'rom/a/0/1/4') as garc:  # SUMO?
-        for subfile in garc:
-            evolution = subfile[0].read()
-            print(repr(evolution))
+        for i, subfile in enumerate(garc):
+            identifier = identifiers['pokémon'][i]
+            for raw_evo in pokemon_evolutions_struct.parse_stream(subfile[0]):
+                # FIXME how do i include form in here?  especially when it
+                # could be -1??  i guess that's a null or optional key or
+                # something...  do i even have separate identifiers for pokémon
+                # vs forms yet?  really gotta figure that junk out.  i don't
+                # even remember if all the unowns count as separate forms in
+                # sumo
+                # TODO should make this its own schema sub-node, probably, so
+                # its structure is actually documented
+                evo = OrderedDict()
+                evo['into'] = identifiers['pokémon'][raw_evo.into_species]
+
+                if raw_evo.method == 1:
+                    evo['trade'] = 'ev.level-up'
+                    evo['minimum-friendship'] = 220
+                elif raw_evo.method == 2:
+                    evo['trade'] = 'ev.level-up'
+                    # FIXME is this an enum?  also really it's morning OR day
+                    evo['time-of-day'] = 'day'
+                elif raw_evo.method == 3:
+                    evo['trade'] = 'ev.level-up'
+                    # FIXME is this an enum?
+                    evo['time-of-day'] = 'night'
+                elif raw_evo.method == 4:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                elif raw_evo.method == 5:
+                    evo['trigger'] = 'ev.trade'
+                elif raw_evo.method == 6:
+                    evo['trigger'] = 'ev.trade'
+                    evo['held-item'] = identifiers['item'][raw_evo.param]
+                elif raw_evo.method == 7:
+                    evo['trigger'] = 'ev.trade'
+                    evo['traded-with'] = identifiers['pokémon'][raw_evo.param]
+                elif raw_evo.method == 8:
+                    evo['trigger'] = 'ev.use-item'
+                    evo['trigger-item'] = identifiers['item'][raw_evo.param]
+                elif raw_evo.method == 9:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['higher-physical-stat'] = 'defense'
+                    evo['minimum-level'] = raw_evo.level
+                elif raw_evo.method == 10:
+                    evo['trigger'] = 'ev.level-up'
+                    # FIXME hm, attack and defense are both names of stats, but
+                    # this isn't?  i am bothered
+                    evo['higher-physical-stat'] = 'equal'
+                    evo['minimum-level'] = raw_evo.level
+                elif raw_evo.method == 11:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['higher-physical-stat'] = 'attack'
+                    evo['minimum-level'] = raw_evo.level
+                elif raw_evo.method == 12:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    # FIXME this is wurmple -> silcoon
+                elif raw_evo.method == 13:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    # FIXME this is wurmple -> cascoon
+                elif raw_evo.method == 14:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    # FIXME this is ninjask; where does shedinja come in?  i
+                    # think it used to be in the data but it doesn't seem to be
+                    # any more
+                elif raw_evo.method == 16:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-beauty'] = raw_evo.param
+                elif raw_evo.method == 17:
+                    evo['trigger'] = 'ev.use-item'
+                    evo['trigger-item'] = identifiers['item'][raw_evo.param]
+                    evo['gender'] = 'male'
+                elif raw_evo.method == 18:
+                    evo['trigger'] = 'ev.use-item'
+                    evo['trigger-item'] = identifiers['item'][raw_evo.param]
+                    evo['gender'] = 'female'
+                elif raw_evo.method == 19:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['time-of-day'] = 'day'
+                    evo['held-item'] = identifiers['item'][raw_evo.param]
+                elif raw_evo.method == 20:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['held-item'] = identifiers['item'][raw_evo.param]
+                elif raw_evo.method == 21:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['known-move'] = identifiers['move'][raw_evo.param]
+                elif raw_evo.method == 22:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['party-member'] = identifiers['pokémon'][raw_evo.param]
+                elif raw_evo.method == 23:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    evo['gender'] = 'male'
+                elif raw_evo.method == 24:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    evo['gender'] = 'female'
+                elif raw_evo.method == 25:
+                    evo['trigger'] = 'ev.level-up'
+                    # FIXME this is magnetic field, which means i need to know
+                    # the identifier of the appropriate place in this game!
+                    # (for sumo it's vast poni canyon; oras, new mauville)
+                    # OR...  is that a property of the places??
+                elif raw_evo.method == 26:
+                    evo['trigger'] = 'ev.level-up'
+                    # FIXME this is level up near mossy stone
+                elif raw_evo.method == 27:
+                    evo['trigger'] = 'ev.level-up'
+                    # FIXME this is level up near icy stone
+                elif raw_evo.method == 28:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    evo['upside-down'] = True
+                elif raw_evo.method == 29:
+                    evo['trigger'] = 'ev.level-up'
+                    # FIXME i would prefer if this used the actual value rather
+                    # than the number of hearts, but
+                    evo['minimum-affection'] = 2
+                    evo['known-move-type'] = TYPES[raw_evo.param]
+                elif raw_evo.method == 30:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    evo['party-member-type'] = TYPES[raw_evo.param]
+                elif raw_evo.method == 31:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    evo['overworld-weather'] = 'rain'
+                elif raw_evo.method == 32:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['time-of-day'] = 'day'
+                    evo['minimum-level'] = raw_evo.level
+                elif raw_evo.method == 33:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['time-of-day'] = 'night'
+                    evo['minimum-level'] = raw_evo.level
+                elif raw_evo.method == 34:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    # FIXME this is a little confusing.  it's espurr's second
+                    # evolution, but neither of them have either params or forms?
+                elif raw_evo.method == 36:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['minimum-level'] = raw_evo.level
+                    # FIXME should probably have a list somewhere of these; see
+                    # https://bulbapedia.bulbagarden.net/wiki/User:SnorlaxMonster/Game_of_origin
+                    # XXX should this actually be a field, or should we just
+                    # omit in all but the applicable game?
+                    evo['game'] = {30: 'sun', 31: 'moon'}[raw_evo.param]
+                    # FIXME this is cosmoem; again, 30 for sun, 31 for moon
+                elif raw_evo.method == 37:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['time-of-day'] = 'day'
+                    evo['minimum-level'] = raw_evo.level
+                    evo['game'] = {30: 'sun', 31: 'moon'}[raw_evo.param]
+                elif raw_evo.method == 38:
+                    evo['trigger'] = 'ev.level-up'
+                    evo['time-of-day'] = 'night'
+                    evo['minimum-level'] = raw_evo.level
+                    evo['game'] = {30: 'sun', 31: 'moon'}[raw_evo.param]
+                elif raw_evo.method == 39:
+                    evo['trigger'] = 'ev.level-up'
+                    # FIXME this is crabrawler, which only evolves when leveled
+                    # up at mount lanakila; need an identifier for that area
+                else:
+                    raise ValueError(f"Unrecognized evolution method: {raw_evo.method}")
+
+                all_pokémon[identifier].evolutions.append(evo)
 
     # Mega evolution
-    #with read_garc(root / 'rom/a/1/9/3') as garc:  # ORAS
-    #with read_garc(root / 'rom/a/0/1/5') as garc:  # SUMO?
-    #    for subfile in garc:
-    #        evolution = subfile[0].read()
-    #        print(repr(evolution))
+    # TODO
+    # already parsed a/0/1/5 as mega_evolutions...  but...  that only lists
+    # items?  what lists the actual megas?  OH is the number a form number??
+    # wow i really need a list of species -> forms eh
     # TODO what is a/1/9/4 (ORAS) or a/0/1/6 (SUMO)?  8 files of 404 bytes each
     # Baby Pokémon
     #with read_garc(root / 'rom/a/1/9/6') as garc:  # ORAS
@@ -1502,13 +1675,6 @@ def extract_data(root, out):
     #    for subfile in garc:
     #        baby_pokemon = subfile[0].read()
     #        print(repr(baby_pokemon))
-
-    # Item stats
-    # TODO
-    #with read_garc(root / 'rom/a/1/9/7') as garc:  # ORAS
-    with read_garc(root / 'rom/a/0/1/9') as garc:  # ORAS
-        for subfile in garc:
-            item_stats = subfile[0].read()
 
     # Tutor moves (from the personal structs)
     for i, datum in enumerate(pokemon_data):
