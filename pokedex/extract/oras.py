@@ -438,7 +438,12 @@ item_struct = Struct(
     'fling_effect' / Int8ul,
     'fling_power' / Int8ul,
     'natural_gift_power' / Int8ul,
-    'natural_gift_type' / Int8ul,  # actually only the low 5 bits are that; high bit is...  usable, maybe?  but, it's not on tms and IS on z-crystals
+    # actually only the low 5 bits are natural gift type, and i think 31 means none, or something
+    # high bit is...  usable on a pokémon, maybe?  but, it's not on tms and IS on z-crystals
+    # a lot of items are 63, including tons (all?) of key items and all tms
+    # also some items are 127??? exp share, vs recorder, mach bike, acro bike, pokeblock kit, eon flute, rods, dowsing machine
+    # so out of top three bits the only combinations i see are 000, 001, 011, 100
+    'natural_gift_type' / Int8ul,
     # 1 - TMs and berries
     # 2 - key items and one set of z-crystals
     # 3 - another set of z-crystals??
@@ -896,36 +901,103 @@ def extract_data(root, out):
     # TODO or maybe we should name /both/ items in each pair...  but for old
     # items that requires matching up with older versions in some sensible way,
     # right?  maybe?
-    identifiers['item'][626] = 'xtranceiver-yellow'  # 621 is red
-    identifiers['item'][713] = 'bike-yellow'  # 450 is green
-    identifiers['item'][714] = 'holo-caster-red'  # 641 is green
-    identifiers['item'][740] = 'contest-costume-dress'  # 739 is pants+jacket, obviously boy/girl clothes
-    identifiers['item'][637] = 'dropped-item-yellow'  # 636 is red
+    identifiers['item'][621] = 'xtranceiver--red'
+    identifiers['item'][626] = 'xtranceiver--yellow'
+    identifiers['item'][450] = 'bike--green'
+    identifiers['item'][713] = 'bike--yellow'
+    identifiers['item'][641] = 'holo-caster--green'
+    identifiers['item'][714] = 'holo-caster--red'
+    identifiers['item'][739] = 'contest-costume--jacket'
+    identifiers['item'][740] = 'contest-costume--dress'
+    identifiers['item'][636] = 'dropped-item--red'
+    identifiers['item'][637] = 'dropped-item--yellow'
     # Storage Key is tricky!
     # It was in gen 3, where it opened a storage hold, but then it was either
     # co-opted or replaced (?) in gen 4 to open the team galactic warehouse,
     # but then we got gen 3 remakes so now it's two items
-    identifiers['item'][463] = 'storage-key-galactic-warehouse'
-    identifiers['item'][734] = 'storage-key-sea-mauville'
+    identifiers['item'][463] = 'storage-key--galactic-warehouse'
+    identifiers['item'][734] = 'storage-key--sea-mauville'
     # One DNA Splicers merges Kyurem, the other separates it, and either will
     # transparently turn into the other when used.
     # TODO i'm /guessing/ that the first one is the merge one, but i'm not sure
-    identifiers['item'][628] = 'dna-splicers-merge'
-    identifiers['item'][629] = 'dna-splicers-split'
+    identifiers['item'][628] = 'dna-splicers--merge'
+    identifiers['item'][629] = 'dna-splicers--split'
     # The meteorite in ORAS gradually changes over time; in gen 3 only the first one existed
     identifiers['item'][729] = 'meteorite'
-    identifiers['item'][751] = 'meteorite-2'
-    identifiers['item'][771] = 'meteorite-3'
-    identifiers['item'][772] = 'meteorite-4'
+    identifiers['item'][751] = 'meteorite--2'
+    identifiers['item'][771] = 'meteorite--3'
+    identifiers['item'][772] = 'meteorite--4'
     # I have absolutely no idea when or why the S S Ticket was cloned, but I
     # assume the new one is intended to be the same as the one in gen 3
-    identifiers['item'][456] = 's-s-ticket'
-    identifiers['item'][736] = 's-s-ticket-oras'
+    identifiers['item'][456] = 'ss-ticket'
+    identifiers['item'][736] = 'ss-ticket--hoenn'
     # Another key that was reused, then remade.  Curiously, it doesn't look
     # like the New Mauville version of the key was ever actually used, though
     # its sprite was resurrected
-    identifiers['item'][476] = 'basement-key-goldenrod'
-    identifiers['item'][723] = 'basement-key-new-mauville'
+    identifiers['item'][476] = 'basement-key--goldenrod'
+    identifiers['item'][723] = 'basement-key--new-mauville'
+    # There are two of every Z crystal: one when it's in the bag, one when it's
+    # held by a Pokémon.  I don't know exactly how to distinguish them from the
+    # data, but they have different icons; bag versions are larger and show a
+    # symbol.
+    identifiers['item'][776] = 'normalium-z--held'
+    identifiers['item'][777] = 'firium-z--held'
+    identifiers['item'][778] = 'waterium-z--held'
+    identifiers['item'][779] = 'electrium-z--held'
+    identifiers['item'][780] = 'grassium-z--held'
+    identifiers['item'][781] = 'icium-z--held'
+    identifiers['item'][782] = 'fightinium-z--held'
+    identifiers['item'][783] = 'poisonium-z--held'
+    identifiers['item'][784] = 'groundium-z--held'
+    identifiers['item'][785] = 'flyinium-z--held'
+    identifiers['item'][786] = 'psychium-z--held'
+    identifiers['item'][787] = 'buginium-z--held'
+    identifiers['item'][788] = 'rockium-z--held'
+    identifiers['item'][789] = 'ghostium-z--held'
+    identifiers['item'][790] = 'dragonium-z--held'
+    identifiers['item'][791] = 'darkinium-z--held'
+    identifiers['item'][792] = 'steelium-z--held'
+    identifiers['item'][793] = 'fairium-z--held'
+    identifiers['item'][794] = 'pikanium-z--held'
+    identifiers['item'][798] = 'decidium-z--held'
+    identifiers['item'][799] = 'incinium-z--held'
+    identifiers['item'][800] = 'primarium-z--held'
+    identifiers['item'][801] = 'tapunium-z--held'
+    identifiers['item'][802] = 'marshadium-z--held'
+    identifiers['item'][803] = 'aloraichium-z--held'
+    identifiers['item'][804] = 'snorlium-z--held'
+    identifiers['item'][805] = 'eevium-z--held'
+    identifiers['item'][806] = 'mewnium-z--held'
+    identifiers['item'][807] = 'normalium-z--bag'
+    identifiers['item'][808] = 'firium-z--bag'
+    identifiers['item'][809] = 'waterium-z--bag'
+    identifiers['item'][810] = 'electrium-z--bag'
+    identifiers['item'][811] = 'grassium-z--bag'
+    identifiers['item'][812] = 'icium-z--bag'
+    identifiers['item'][813] = 'fightinium-z--bag'
+    identifiers['item'][814] = 'poisonium-z--bag'
+    identifiers['item'][815] = 'groundium-z--bag'
+    identifiers['item'][816] = 'flyinium-z--bag'
+    identifiers['item'][817] = 'psychium-z--bag'
+    identifiers['item'][818] = 'buginium-z--bag'
+    identifiers['item'][819] = 'rockium-z--bag'
+    identifiers['item'][820] = 'ghostium-z--bag'
+    identifiers['item'][821] = 'dragonium-z--bag'
+    identifiers['item'][822] = 'darkinium-z--bag'
+    identifiers['item'][823] = 'steelium-z--bag'
+    identifiers['item'][824] = 'fairium-z--bag'
+    identifiers['item'][825] = 'pikanium-z--bag'
+    identifiers['item'][826] = 'decidium-z--bag'
+    identifiers['item'][827] = 'incinium-z--bag'
+    identifiers['item'][828] = 'primarium-z--bag'
+    identifiers['item'][829] = 'tapunium-z--bag'
+    identifiers['item'][830] = 'marshadium-z--bag'
+    identifiers['item'][831] = 'aloraichium-z--bag'
+    identifiers['item'][832] = 'snorlium-z--bag'
+    identifiers['item'][833] = 'eevium-z--bag'
+    identifiers['item'][834] = 'mewnium-z--bag'
+    identifiers['item'][835] = 'pikashunium-z--bag'
+    identifiers['item'][836] = 'pikashunium-z--held'
 
     textdir = out / 'script'
     if not textdir.exists():
@@ -1158,6 +1230,7 @@ def extract_data(root, out):
             identifier = identifiers['item'][i]
             if identifier == '???':
                 # Junk non-item
+                # TODO striiictly speaking, maybe we should dump these anyway
                 continue
 
             item = all_items[identifier] = schema.Item()
@@ -1198,8 +1271,6 @@ def extract_data(root, out):
         if i == 0:
             continue
         item_icon_id = item_icon_map[i - 1]
-        if item_ident_counter[identifiers['item'][i]] > 1:
-            print(i, identifier, item_icon_id)
         item_icon = image_datae[item_icon_id]
         unused_image_datae.discard(item_icon_id)
         with (out / "items/{}-{}.png".format(i, identifier)).open('wb') as f:
@@ -1322,9 +1393,6 @@ def extract_data(root, out):
 
         pokémon.moves = {}
 
-
-
-
         # TODO transform to an OD somehow probably
         pokemon_data.append(record)
         print("{:4d} {:25s} {} {:5d} {:5d} {:20s} {:4d} {:4d} {:2d}".format(
@@ -1395,7 +1463,7 @@ def extract_data(root, out):
             ident = identifiers['pokémon'][i]
             level_up_moves = subfile[0].read()
             moveset = all_pokémon[ident].moves
-            levelset = moveset['level'] = []
+            levelset = moveset['level-up'] = []
             lastlevel = None
             order = 1
             for pair in level_up_moves_struct.parse(level_up_moves):
