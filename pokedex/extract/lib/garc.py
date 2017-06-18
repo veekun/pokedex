@@ -102,6 +102,7 @@ class GARCEntry(object):
                 # TODO this sucks, remove it i guess
                 decompressor.peek(2088)
             except DecompressionError:
+                ss.seek(0)
                 return ss
             else:
                 return decompressor
