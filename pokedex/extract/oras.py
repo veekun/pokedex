@@ -6,6 +6,7 @@ import argparse
 from collections import OrderedDict
 from collections import defaultdict
 from contextlib import contextmanager
+import itertools
 from pathlib import Path
 import re
 import shutil
@@ -1210,6 +1211,9 @@ def extract_data(root, out):
 
         # TODO Pokémon box sprite map
         #0x43EAA8 XY
+        #f.seek(0x0047d650)  # ORAS
+        #f.seek(0x004999d0)  # SUMO
+
         # TODO Pickup
         # 0x4455A8 XY
 
@@ -1289,63 +1293,101 @@ def extract_data(root, out):
 
     # -------------------------------------------------------------------------
     # Pokémon structs
+
+    # TODO document this properly sometime, somewhere, but the gist is:
+    # - a species may have multiple forms
+    # - forms may be "concrete" (e.g. deoxys) or flavor only (e.g. unown)
+    # - either all the forms are concrete, or all the forms are not (for now)
+    # - concrete forms get an entry in the personal file
+    # - flavor forms do not, but the count of them is still listed
+    # - the order of flavor forms is not explicitly given anywhere, but it
+    #   seems to be just all the forms for all the species in order
+    # - it's arbitrary whether a form is referred to by concrete order, flavor
+    #   order, or as a (species, form number) pair
+    # - the identifiers in identifiers['pokémon'] assume concrete order
+    # - so here are a few data structures for storing that info
+    # TODO i wonder how i'll reuse this code in the future, since it needs to
+    # go all the way back to gen 4 ha
+    # species id => {forms (identifiers), is_concrete, concrete_ids, flavor_ids}
+    species_forms = []
+    # id => (species id, form number); only dicts for ease of construction
+    flavor_form_order = {}
+    concrete_form_order = {}
+
     mega_evolutions = get_mega_evolutions(root)
+    # Note that despite being called "all", this is really just concrete forms
     all_pokémon = OrderedDict()
     pokemon_data = []
     with read_garc(root / 'rom/a/0/1/7') as garc:  # SUMO
     #with read_garc(root / 'rom/a/1/9/5') as garc:  # ORAS
         personals = [subfile[0].read() for subfile in garc]
-    _pokemon_forms = {}  # "real" species id => (base species id, form name id)
-    _next_name_form_id = 803#723  # TODO magic numbers
+    next_flavor_form_id = 804#723  # TODO magic numbers -- also skip one because of the alt egg, i guess??
     print("number of flavor texts", len(texts['en']['species-flavor-moon']))
+    print("number of form names", len(texts['en']['form-names']))
     for i, personal in enumerate(personals[:-1]):
         record = pokemon_struct.parse(personal)
 
-        # FIRST THINGS FIRST: let's deal with forms.
-        # TODO some pokemon, like unown, /only/ have sprite variations, so they
-        # don't have a form_species_start here.  what do i do about them?
-        if (record.form_count > 1) != bool(record.form_species_start):
-            print("!!! sprite-only forms, argh")
-        # The > i check makes sure we don't run this bit a second time when we
-        # hit the forms themselves
-        if record.form_count > 1 and record.form_species_start > i:
+        # FIRST THINGS FIRST: let's deal with forms, but only once per species
+        if i < 803:  # TODO magic number but i bet i can get rid of it
+            # TODO some pokemon, like unown, /only/ have sprite variations, so they
+            # don't have a form_species_start here.  what do i do about them?
+            if (record.form_count > 1) != bool(record.form_species_start):
+                print("!!! sprite-only forms, argh")
+
+            # Name megas automatically, or pull from our manual list of form
+            # identifiers
+            # TODO maybe this is silly and we should just manually list megas too
             megas = mega_evolutions[i]
             if len(megas) == 1:
                 assert i not in FORM_NAMES
-                form_names = ['mega']
+                form_names = [None, 'mega']
             elif len(megas) == 2:
                 assert i not in FORM_NAMES
-                form_names = ['mega-x', 'mega-y']
-            else:
+                form_names = [None, 'mega-x', 'mega-y']
+            elif record.form_count > 1:
                 assert not megas
-                form_names = FORM_NAMES[i][1:]
+                form_names = FORM_NAMES[i]
                 # Fix our own name if necessary
-                if FORM_NAMES[i][0]:
-                    identifiers['pokémon'][i] += '-' + FORM_NAMES[i][0]
+                if form_names[0]:
+                    identifiers['pokémon'][i] += '-' + form_names[0]
+            else:
+                form_names = [None]
 
-            if record.form_count - 1 != len(form_names):
-                print("!!!!! MISMATCH", record.form_count - 1, len(form_names))
+            if record.form_count != len(form_names):
+                print("!!!!! MISMATCH", record.form_count, len(form_names))
+
             for offset in range(record.form_count - 1):
-                # Form names appear to be all just jammed at the end in order,
-                # completely unrelated to either of the "start" offsets here
-                #form_name = texts['en']['form-names'][_next_name_form_id]
+                identifiers['pokémon'][record.form_species_start + offset] = identifiers['species'][i] + '-' + form_names[offset + 1]
 
-                # TODO still no idea how "intangible" forms are being
-                # handled in the new schema
-                _pokemon_forms[record.form_species_start + offset] = i, _next_name_form_id
-                _next_name_form_id += 1
+            form_data = dict(
+                forms=form_names,
+                is_concrete=record.form_species_start != 0,
+                concrete_ids=[i],
+                flavor_ids=[i],
+            )
+            species_forms.append(form_data)
+            # Concrete ids start at the given species start, if any.  Skip 0
+            # because that refers to the current record
+            concrete_form_order[i] = (i, 0)
+            if record.form_species_start:
+                for f in range(1, record.form_count):
+                    concrete_id = record.form_species_start + f - 1
+                    form_data['concrete_ids'].append(concrete_id)
+                    assert concrete_id not in concrete_form_order
+                    concrete_form_order[concrete_id] = (i, f)
+            # Flavor ids all just go in species order
+            flavor_form_order[i] = (i, 0)
+            for f in range(1, record.form_count):
+                form_data['flavor_ids'].append(next_flavor_form_id)
+                flavor_form_order[next_flavor_form_id] = (i, f)
+                next_flavor_form_id += 1
 
-                identifiers['pokémon'][record.form_species_start + offset] = identifiers['species'][i] + '-' + form_names[offset]
-
+        # OK, now let's scrape data for this concrete form
         pokémon = schema.Pokémon()
         all_pokémon[identifiers['pokémon'][i]] = pokémon
         pokémon.game_index = i
 
-        if i in _pokemon_forms:
-            base_species_id, form_name_id = _pokemon_forms[i]
-        else:
-            base_species_id = i
-            form_name_id = i
+        base_species_id, form_name_id = concrete_form_order[i]
         # TODO i observe this is explicitly a species name, the one thing that
         # really is shared between forms
         pokémon.name = collect_text(texts, 'species-names', base_species_id)
@@ -1416,12 +1458,6 @@ def extract_data(root, out):
             record.form_sprite_start,
             record.form_count,
         ))
-
-    #for i in range(723, 825 + 1):
-    #    base_species_id, form_name_id = _pokemon_forms[i]
-    #    species_name = texts['en']['species-names'][base_species_id]
-    #    form_name = texts['en']['form-names'][form_name_id]
-    #    print(i, species_name, '/', form_name)
 
     # -------------------------------------------------------------------------
     # Move stats
@@ -1677,6 +1713,7 @@ def extract_data(root, out):
     #        print(repr(baby_pokemon))
 
     # Tutor moves (from the personal structs)
+    # FIXME why is this down here and not just in the personal loop?
     for i, datum in enumerate(pokemon_data):
         ident = identifiers['pokémon'][i]
         moveset = all_pokémon[ident].moves
