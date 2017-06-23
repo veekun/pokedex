@@ -95,7 +95,7 @@ class GARCEntry(object):
         start, length = self.slices[i]
         ss = self.stream.slice(start, length)
         peek = ss.peek(1)
-        if peek == b'\x11':
+        if peek == b'\x11' and length >= 128:
             from .compressed import DecompressionError, LZSS11CompressedStream
             decompressor = LZSS11CompressedStream(ss)
             try:
@@ -106,7 +106,7 @@ class GARCEntry(object):
                 return ss
             else:
                 return decompressor
-        elif ss.peek(1) in b'\x10\x11':
+        elif ss.peek(1) in b'\x10\x11' and length >= 128:
             # XXX this sucks but there's no real way to know for sure whether
             # data is compressed or not.  maybe just bake this into the caller
             # and let them deal with it, same way we do with text decoding?
