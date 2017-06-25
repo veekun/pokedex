@@ -159,6 +159,7 @@ class VersionedLocus(Locus, sliced_by=['game']):
 # list of identifiers
 Type = _ForwardDeclaration()
 Stat = _ForwardDeclaration()
+EggGroup = _ForwardDeclaration()
 GrowthRate = _ForwardDeclaration()
 Evolution = _ForwardDeclaration()
 EncounterMap = _ForwardDeclaration()
@@ -208,9 +209,11 @@ class Pokémon(VersionedLocus):
     base_stats = _Map(Stat, int)
     growth_rate = _Value(GrowthRate)
     base_experience = _Value(int, min=0, max=255)
+    effort = _Map(Stat, int)
     capture_rate = _Value(int, min=0, max=255)
     held_items = _Map(Item, int)
     gender_rate = _Value(int)
+    egg_groups = _List(EggGroup, min=1, max=2)
 
     pokedex_numbers = _Map(Pokedex, int)
 
@@ -289,6 +292,7 @@ class Move(VersionedLocus):
     ailment_chance = _Value(int)
     flinch_chance = _Value(int)
 
+    flavor_text = _Localized(str)
 
 
 # ------------------------------------------------------------------------------

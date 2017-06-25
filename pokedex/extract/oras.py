@@ -18,8 +18,9 @@ from construct import (
     # Simple fields
     Const, Flag, Int16sl, Int16ul, Int8sl, Int8ul, Int32ul, Padding,
     # Structures and meta stuff
-    Array, BitsInteger, BitsSwapped, Bitwise, Enum, Filter, FocusedSeq,
-    GreedyRange, Pointer, PrefixedArray, Range, Struct, Terminated, this,
+    Array, BitsInteger, BitsSwapped, Bitwise, Embedded, Enum, Filter,
+    FocusedSeq, GreedyRange, Pointer, PrefixedArray, Range, Struct, Terminated,
+    this,
     # temp
     Peek, Bytes,
 )
@@ -68,6 +69,25 @@ TYPES = {
     15: 't.dragon',
     16: 't.dark',
     17: 't.fairy',
+}
+
+EGG_GROUPS = {
+    0: 'eg.egg',  # FIXME dummy value only egg has
+    1: 'eg.monster',
+    2: 'eg.water1',
+    3: 'eg.bug',
+    4: 'eg.flying',
+    5: 'eg.ground',
+    6: 'eg.fairy',
+    7: 'eg.plant',
+    8: 'eg.humanshape',
+    9: 'eg.water3',
+    10: 'eg.mineral',
+    11: 'eg.indeterminate',
+    12: 'eg.water2',
+    13: 'eg.ditto',
+    14: 'eg.dragon',
+    15: 'eg.no-eggs',
 }
 
 DAMAGE_CLASSES = {
@@ -353,11 +373,23 @@ pokemon_struct = Struct(
     'stat_speed' / Int8ul,
     'stat_spatk' / Int8ul,
     'stat_spdef' / Int8ul,
-    'type1' / Int8ul,
-    'type2' / Int8ul,
+    'type1' / VeekunEnum(Int8ul, TYPES),
+    'type2' / VeekunEnum(Int8ul, TYPES),
     'capture_rate' / Int8ul,
     'stage' / Int8ul,
-    'effort' / Int16ul,
+    'effort' / Peek(Int16ul),
+    Embedded(Bitwise(Struct(
+        # FIXME this is byte-swapped and i had to manually compensate for that,
+        # which i dislike
+        'effort_speed' / BitsInteger(2),
+        'effort_defense' / BitsInteger(2),
+        'effort_attack' / BitsInteger(2),
+        'effort_hp' / BitsInteger(2),
+
+        'effort_padding' / BitsInteger(4),
+        'effort_special_defense' / BitsInteger(2),
+        'effort_special_attack' / BitsInteger(2),
+    ))),
     'held_item1' / Int16ul,
     'held_item2' / Int16ul,
     'held_item3' / Int16ul,  # dark grass from bw, unused in oras?
@@ -365,8 +397,8 @@ pokemon_struct = Struct(
     'steps_to_hatch' / Int8ul,
     'base_happiness' / Int8ul,
     'growth_rate' / VeekunEnum(Int8ul, GROWTH_RATES),
-    'egg_group1' / Int8ul,
-    'egg_group2' / Int8ul,
+    'egg_group1' / VeekunEnum(Int8ul, EGG_GROUPS),
+    'egg_group2' / VeekunEnum(Int8ul, EGG_GROUPS),
     'ability1' / Int8ul,
     'ability2' / Int8ul,
     'ability_hidden' / Int8ul,
@@ -462,7 +494,7 @@ move_struct = Struct(
     # a single flag, 1 = dance move
     'extra4' / Int8ul,
     # all zeroes
-    Padding(1),
+    Padding(1, strict=True),
 )
 move_container_struct = FocusedSeq('records',
     Const(b'WD'),  # waza...  descriptions?
@@ -1446,10 +1478,20 @@ def extract_data(root, out):
             'special-defense': record.stat_spdef,
             'speed': record.stat_speed,
         }
-        # FIXME pokémon.types = [record.type1]
+        pokémon.effort = {
+            'hp': record.effort_hp,
+            'attack': record.effort_attack,
+            'defense': record.effort_defense,
+            'special-attack': record.effort_special_attack,
+            'special-defense': record.effort_special_defense,
+            'speed': record.effort_speed,
+        }
+        if record.type1 == record.type2:
+            pokémon.types = [record.type1]
+        else:
+            pokémon.types = [record.type1, record.type2]
         pokémon.capture_rate = record.capture_rate
         # TODO stage?
-        # FIXME effort
         # Held items are a bit goofy; if the same item is in all three slots, it always appears!
         pokémon.held_items = {}
         if 0 != record.held_item1 == record.held_item2 == record.held_item3:
@@ -1469,7 +1511,10 @@ def extract_data(root, out):
         pokémon.hatch_counter = record.steps_to_hatch
         pokémon.base_happiness = record.base_happiness
         pokémon.growth_rate = record.growth_rate
-        # FIXME egg groups
+        if record.egg_group1 == record.egg_group2:
+            pokémon.egg_groups = [record.egg_group1]
+        else:
+            pokémon.egg_groups = [record.egg_group1, record.egg_group2]
         pokémon.abilities = [
             identifiers['ability'][ability]
             for ability in (record.ability1, record.ability2, record.ability_hidden)
@@ -1487,7 +1532,7 @@ def extract_data(root, out):
 
         # TODO transform to an OD somehow probably
         pokemon_data.append(record)
-        print("{:4d} {:25s} {} {:5d} {:5d} {:20s} {:4d} {:4d} {:2d}".format(
+        print("{:4d} {:25s} {} {:5d} {:5d} {:20s} {:4d} {:4d} {:2d} | {} - {p.effort_padding:2d} - {p.effort:04x} {p.effort_hp:1d} {p.effort_attack:1d} {p.effort_defense:1d} {p.effort_speed:1d} {p.effort_special_attack:1d} {p.effort_special_defense:1d}".format(
             i,
             identifiers['pokémon'][i],
             ('0'*16 + bin(record.mystery1)[2:])[-16:],
@@ -1497,6 +1542,8 @@ def extract_data(root, out):
             record.form_species_start,
             record.form_sprite_start,
             record.form_count,
+            record.color,
+            p=record,
         ))
 
     # -------------------------------------------------------------------------
@@ -1517,6 +1564,7 @@ def extract_data(root, out):
             move.game_index = i
 
             move.name = collect_text(texts, 'move-names', i)
+            move.flavor_text = collect_text(texts, 'move-flavor', i)
             move.type = record.type
             # TODO does this need munging somehow?
             move.power = record.power
@@ -1577,8 +1625,6 @@ def extract_data(root, out):
 
     with (out / 'moves.yaml').open('w') as f:
         f.write(Camel([schema.POKEDEX_TYPES]).dump(all_moves))
-
-    return
 
     # Egg moves
     with read_garc(root / 'rom/a/0/1/2') as garc:  # SUMO
