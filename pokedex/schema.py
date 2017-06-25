@@ -249,13 +249,45 @@ Pokemon = Pokémon
 MoveEffect = _ForwardDeclaration()
 
 class Move(VersionedLocus):
+    game_index = _Value(int)
+
     name = _Localized(str)
     type = _Value(Type)
     power = _Value(int)
     pp = _Value(int)
     accuracy = _Value(int)
+    priority = _Value(int)
+
+    # FIXME should be enums
+    damage_class = _Value(str)
+    range = _Value(str)
+
+    # FIXME oh goodness this is a self-referential one
+    z_move = _Value(str)
+
+    # FIXME this should be an enum really too
     effect = _Value(MoveEffect)
 
+    effect_chance = _Value(int)
+
+    # NOTE: In the old schema, this stuff is in a separate table, since it's
+    # not quite 100% reliable; in particular the lack of a value doesn't mean
+    # that the effect cannot happen via code.  Also, consider Tri Attack, whose
+    # inflicted ailments aren't listed here at all.  :(
+    # TODO i wonder if these should be left out of the yaml if blank
+    max_hits = _Value(int)
+    # FIXME these should be enums
+    category = _Value(int)
+    ailment = _Value(int)
+    min_hits = _Value(int)
+    stat_chance = _Value(int)
+    min_turns = _Value(int)
+    max_turns = _Value(int)
+    drain = _Value(int)
+    healing = _Value(int)
+    crit_rate = _Value(int)
+    ailment_chance = _Value(int)
+    flinch_chance = _Value(int)
 
 
 
@@ -342,49 +374,28 @@ def _dump_locus(locus):
 
     return data
 
-@POKEDEX_TYPES.loader('pokemon', version=None)
-def _load_locus(data, version):
-    cls = Pokémon
-    # TODO wrap with a writer thing?
-    obj = cls()
-    for key, value in data.items():
-        key = key.replace('-', '_')
-        assert hasattr(cls, key)
-        setattr(obj, key, value)
+def _make_locus_loader(cls):
+    def load_locus(data, version):
+        # TODO wrap with a writer thing?
+        obj = cls()
+        for key, value in data.items():
+            key = key.replace('-', '_')
+            assert hasattr(cls, key)
+            setattr(obj, key, value)
 
-    return obj
+        return obj
+    return load_locus
 
+POKEDEX_TYPES.loader('pokemon', version=None)(_make_locus_loader(Pokémon))
+
+POKEDEX_TYPES.dumper(Move, 'move', version=None, inherit=True)(_dump_locus)
+POKEDEX_TYPES.loader('move', version=None)(_make_locus_loader(Move))
 
 POKEDEX_TYPES.dumper(Ability, 'ability', version=None, inherit=True)(_dump_locus)
-
-
-@POKEDEX_TYPES.loader('ability', version=None)
-def _load_locus(data, version):
-    cls = Ability
-    # TODO wrap with a writer thing?
-    obj = cls()
-    for key, value in data.items():
-        key = key.replace('-', '_')
-        assert hasattr(cls, key)
-        setattr(obj, key, value)
-
-    return obj
-
+POKEDEX_TYPES.loader('ability', version=None)(_make_locus_loader(Ability))
 
 POKEDEX_TYPES.dumper(Item, 'item', version=None, inherit=True)(_dump_locus)
-
-
-@POKEDEX_TYPES.loader('item', version=None)
-def _load_locus(data, version):
-    cls = Item
-    # TODO wrap with a writer thing?
-    obj = cls()
-    for key, value in data.items():
-        key = key.replace('-', '_')
-        assert hasattr(cls, key)
-        setattr(obj, key, value)
-
-    return obj
+POKEDEX_TYPES.loader('item', version=None)(_make_locus_loader(Item))
 
 
 def load_repository():

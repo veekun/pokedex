@@ -70,6 +70,30 @@ TYPES = {
     17: 't.fairy',
 }
 
+DAMAGE_CLASSES = {
+    0: 'dc.status',
+    1: 'dc.physical',
+    2: 'dc.special',
+}
+
+MOVE_RANGES = {
+    13: 'mr.specific-move',
+    3: 'mr.selected-pokemon-me-first',
+    2: 'mr.ally',
+    6: 'mr.users-field',
+    1: 'mr.user-or-ally',
+    11: 'mr.opponents-field',
+    7: 'mr.user',
+    9: 'mr.random-opponent',
+    4: 'mr.all-other-pokemon',
+    0: 'mr.selected-pokemon',
+    5: 'mr.all-opponents',
+    10: 'mr.entire-field',
+    12: 'mr.user-and-allies',
+    8: 'mr.all-pokemon',
+}
+
+
 # ja-Hrkt: hiragana/katakana
 # zh-Hans: simplified
 # zh-Hant: traditional
@@ -319,6 +343,9 @@ FORM_NAMES = {
 }
 
 
+def VeekunEnum(subcon, enumdict):
+    return Enum(subcon, **{v: k for (k, v) in enumdict.items()})
+
 pokemon_struct = Struct(
     'stat_hp' / Int8ul,
     'stat_atk' / Int8ul,
@@ -337,7 +364,7 @@ pokemon_struct = Struct(
     'gender_rate' / Int8ul,
     'steps_to_hatch' / Int8ul,
     'base_happiness' / Int8ul,
-    'growth_rate' / Enum(Int8ul, **{v: k for (k, v) in GROWTH_RATES.items()}),
+    'growth_rate' / VeekunEnum(Int8ul, GROWTH_RATES),
     'egg_group1' / Int8ul,
     'egg_group2' / Int8ul,
     'ability1' / Int8ul,
@@ -402,9 +429,9 @@ level_up_moves_struct = GreedyRange(
 )
 
 move_struct = Struct(
-    'type' / Enum(Int8ul, **{v:k for (k, v) in TYPES.items()}),
+    'type' / VeekunEnum(Int8ul, TYPES),
     'category' / Int8ul,
-    'damage_class' / Int8ul,
+    'damage_class' / VeekunEnum(Int8ul, DAMAGE_CLASSES),
     'power' / Int8ul,
     'accuracy' / Int8ul,
     'pp' / Int8ul,
@@ -420,17 +447,22 @@ move_struct = Struct(
     'effect' / Int16ul,
     'recoil' / Int8sl,
     'healing' / Int8ul,
-    'range' / Int8ul,            # ok
+    'range' / VeekunEnum(Int8ul, MOVE_RANGES),
     'stat_change' / Bitwise(Array(6, BitsInteger(4))),
     'stat_amount' / Bitwise(Array(6, BitsInteger(4))),
     'stat_chance' / Bitwise(Array(6, BitsInteger(4))),
-    'padding0' / Int8ul,         # ok
-    'padding1' / Int8ul,         # ok
+    # FIXME sumo only; padding in oras i think
+    'z_move_id' / Int16ul,         # ok
     'flags' / Int16ul,
     'padding2' / Int8ul,         # ok
     'extra' / Int8ul,
     # FIXME unsure whether this exists in ORAS; should use a length limiter in the parent
-    'extra2' / Int32ul,
+    'extra2' / Int8ul,
+    'extra3' / Int8ul,
+    # a single flag, 1 = dance move
+    'extra4' / Int8ul,
+    # all zeroes
+    Padding(1),
 )
 move_container_struct = FocusedSeq('records',
     Const(b'WD'),  # waza...  descriptions?
@@ -1469,23 +1501,84 @@ def extract_data(root, out):
 
     # -------------------------------------------------------------------------
     # Move stats
+
+    all_moves = OrderedDict()
     #with read_garc(root / 'rom/a/1/8/9') as garc:  # ORAS
     with read_garc(root / 'rom/a/0/1/1') as garc:  # SUMO
         # Only one subfile
-        # TODO assert this wherever i do it
-        data = garc[0][0].read()
-        print(Struct('magic' / Bytes(2), 'count' / Int16ul, 'pointers' / Array(16, Int32ul)).parse(data))
-        print(move_struct.sizeof())
-        records = move_container_struct.parse(data)
+        # TODO assert only one file wherever i do this
+        records = move_container_struct.parse_stream(garc[0][0])
         for i, record in enumerate(records):
-            #print(texts['en']['move-names'][i])
-            #print(record)
             # TODO with the release of oras all moves have contest types and effects again!  where are they??
-            print("{:3d} {:30s} | {m.type:10s} {m.category:3d} / {m.power:3d} {m.pp:2d} {m.accuracy:3d} / {m.priority:2d} {m.range:2d} {m.damage_class:1d} / {m.effect:3d} {m.caused_effect:3d} {m.effect_chance:3d}  --  {m.status:3d} {m.min_turns:3d} {m.max_turns:3d} {m.crit_rate:3d} {m.flinch_chance:3d} {m.recoil:4d} {m.healing:3d} / {m.stat_change!r} {m.stat_amount!r} {m.stat_chance!r} ~ {m.padding0:3d} {m.padding1:3d} {m.flags:04x} {m.padding2:3d} {m.extra:3d} {m.extra2:10d}".format(
-                i,
-                texts['en']['move-names'][i],
-                m=record,
-            ))
+            print(f"{i:3d} {texts['en']['move-names'][i]:30s} | {record.type:10s} {record.category:3d} / {record.priority:2d} {record.range:20s} {record.damage_class:12s} / {record.effect:3d} {record.caused_effect:3d} {record.effect_chance:3d}  --  {record.min_max_hits:3d}, {record.status:3d} {record.min_turns:3d} {record.max_turns:3d} {record.crit_rate:3d} {record.flinch_chance:3d} {record.recoil:4d} {record.healing:3d} ~ {identifiers['move'][record.z_move_id]:30s} {record.flags:04x} {record.padding2:3d} {record.extra:3d} {record.extra2:08b} {record.extra2 >> 3:3d}+{record.extra2 & 7:<3d} {record.extra3:3d} {record.extra4:3d}")
+
+            ident = identifiers['move'][i]
+            move = all_moves[ident] = schema.Move()
+            move.game_index = i
+
+            move.name = collect_text(texts, 'move-names', i)
+            move.type = record.type
+            # TODO does this need munging somehow?
+            move.power = record.power
+            move.pp = record.pp
+            # TODO does this need munging somehow?
+            move.accuracy = record.accuracy
+            move.priority = record.priority
+
+            move.damage_class = record.damage_class
+            move.range = record.range
+
+            move.effect = record.effect
+            move.effect_chance = record.effect_chance
+            # FIXME need to identify whether THIS move is a z-move?
+            if record.z_move_id:
+                move.z_move = identifiers['move'][record.z_move_id]
+            else:
+                # TODO what does it mean if the z-move is missing??  (how do z
+                # moves work for status moves anyway?)
+                pass
+
+            move.min_hits = record.min_max_hits & 0x0f
+            move.max_hits = record.min_max_hits >> 4
+            # -1: tri attack?  telekinesis, smack down, thousand arrows
+            # 1: paralysis
+            # 2: sleep
+            # 3: frozen
+            # 4: burn
+            # 5: poison
+            # 6: confusion
+            # 7: infatuation
+            # 8: trapped?  multi-turn move?
+            # 9: nightmare
+            # 12: tormented
+            # 13: disabled
+            # 14: drowsy (yawn)
+            # 15: heal blocked
+            # 17: foresight + odor sleuth + miracle eye (identified?)
+            # 18: seeded
+            # 19: embargoed
+            # 20: perish song
+            # 21: ingrain?
+            # 24: throat chop??  (silenced?)
+            move.category = record.category
+            move.ailment = record.caused_effect
+            # FIXME what is record.status???
+            # FIXME where is this
+            #ailment_chance = _Value(int)
+            # FIXME this is nonsense, it should be per-stat??
+            #move.stat_chance = _Value(int)
+            move.min_turns = record.min_turns
+            move.max_turns = record.max_turns
+            # FIXME split drain out from healing
+            #drain = _Value(int)
+            move.healing = record.healing
+            move.crit_rate = record.crit_rate
+            move.flinch_chance = record.flinch_chance
+
+    with (out / 'moves.yaml').open('w') as f:
+        f.write(Camel([schema.POKEDEX_TYPES]).dump(all_moves))
+
+    return
 
     # Egg moves
     with read_garc(root / 'rom/a/0/1/2') as garc:  # SUMO
@@ -1742,7 +1835,6 @@ def extract_data(root, out):
             machineset.append(moveident)
 
     with (out / 'pokemon.yaml').open('w') as f:
-        #dump_to_yaml(all_pokémon, f)
         f.write(Camel([schema.POKEDEX_TYPES]).dump(all_pokémon))
 
 
