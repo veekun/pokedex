@@ -1356,9 +1356,6 @@ def extract_data(root, out):
             if record.form_count != len(form_names):
                 print("!!!!! MISMATCH", record.form_count, len(form_names))
 
-            for offset in range(record.form_count - 1):
-                identifiers['pokémon'][record.form_species_start + offset] = identifiers['species'][i] + '-' + form_names[offset + 1]
-
             form_data = dict(
                 forms=form_names,
                 is_concrete=record.form_species_start != 0,
@@ -1367,7 +1364,8 @@ def extract_data(root, out):
             )
             species_forms.append(form_data)
             # Concrete ids start at the given species start, if any.  Skip 0
-            # because that refers to the current record
+            # because that refers to the current record.  Also populate
+            # concrete Pokémon identifiers
             concrete_form_order[i] = (i, 0)
             if record.form_species_start:
                 for f in range(1, record.form_count):
@@ -1375,6 +1373,7 @@ def extract_data(root, out):
                     form_data['concrete_ids'].append(concrete_id)
                     assert concrete_id not in concrete_form_order
                     concrete_form_order[concrete_id] = (i, f)
+                    identifiers['pokémon'][concrete_id] = identifiers['species'][i] + '-' + form_names[f]
             # Flavor ids all just go in species order
             flavor_form_order[i] = (i, 0)
             for f in range(1, record.form_count):
@@ -1395,8 +1394,17 @@ def extract_data(root, out):
         # FIXME ho ho, hang on a second, forms have their own flavor text too!!
         # TODO well this depends on which game you're dumping
         pokémon.flavor_text = collect_text(texts, 'species-flavor-moon', base_species_id)
-        # FIXME include form names?  only when they exist?  can that be
-        # inconsistent between languages?
+
+        # FIXME this is pretty temporary hackery; ideally the file would be
+        # arranged around species, not concrete forms
+        pokémon.form_base_species = identifiers['species'][base_species_id]
+        pokémon.form_number = form_name_id
+        if i < len(species_forms) and not species_forms[i]['is_concrete']:
+            pokémon.form_appearances = species_forms[i]['forms']
+        else:
+            pokémon.form_appearances = []
+        # FIXME this skips over form names for non-concrete forms, ugh
+        pokémon.form_name = collect_text(texts, 'form-names', species_forms[base_species_id]['flavor_ids'][form_name_id])
 
         pokémon.base_stats = {
             'hp': record.stat_hp,

@@ -197,6 +197,13 @@ class Item(VersionedLocus):
 class Pokémon(VersionedLocus):
     name = _Localized(str)
 
+    # FIXME hackery to get forms working well enough to import back into veekun
+    # later; this will need some cleaning up later, somehow
+    form_base_species = _Value(str)
+    form_number = _Value(int)
+    form_appearances = _List(str)
+    form_name = _Localized(str)
+
     types = _List(Type, min=1, max=2)
     base_stats = _Map(Stat, int)
     growth_rate = _Value(GrowthRate)
