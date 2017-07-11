@@ -19,8 +19,8 @@ from construct import (
     Const, Flag, Int16sl, Int16ul, Int8sl, Int8ul, Int32ul, Padding,
     # Structures and meta stuff
     Array, BitsInteger, BitsSwapped, Bitwise, Embedded, Enum, Filter,
-    FocusedSeq, GreedyRange, Pointer, PrefixedArray, Range, Struct, Terminated,
-    this,
+    FlagsEnum, FocusedSeq, GreedyRange, Pointer, PrefixedArray, Range, Struct,
+    Terminated, this,
     # temp
     Peek, Bytes,
 )
@@ -90,17 +90,32 @@ EGG_GROUPS = {
     15: 'eg.no-eggs',
 }
 
+# TODO the order of these in the veekun db doesn't match the order in the games
+COLORS = {
+    4: 'pc.black',
+    1: 'pc.blue',
+    5: 'pc.brown',
+    7: 'pc.gray',
+    3: 'pc.green',
+    9: 'pc.pink',
+    6: 'pc.purple',
+    0: 'pc.red',
+    8: 'pc.white',
+    2: 'pc.yellow',
+}
+
 DAMAGE_CLASSES = {
     0: 'dc.status',
     1: 'dc.physical',
     2: 'dc.special',
 }
 
+# TODO the order of these in the veekun db doesn't match the order in the games
 MOVE_RANGES = {
     13: 'mr.specific-move',
     3: 'mr.selected-pokemon-me-first',
     2: 'mr.ally',
-    6: 'mr.users-field',
+    12: 'mr.users-field',
     1: 'mr.user-or-ally',
     11: 'mr.opponents-field',
     7: 'mr.user',
@@ -109,10 +124,96 @@ MOVE_RANGES = {
     0: 'mr.selected-pokemon',
     5: 'mr.all-opponents',
     10: 'mr.entire-field',
-    12: 'mr.user-and-allies',
+    6: 'mr.user-and-allies',
     8: 'mr.all-pokemon',
 }
 
+AILMENTS = {
+    -1: 'ma.unknown',
+    0: 'ma.none',
+    1: 'ma.paralysis',
+    2: 'ma.sleep',
+    3: 'ma.freeze',
+    4: 'ma.burn',
+    5: 'ma.poison',
+    6: 'ma.confusion',
+    7: 'ma.infatuation',
+    8: 'ma.trap',
+    9: 'ma.nightmare',
+    12: 'ma.torment',
+    13: 'ma.disable',
+    14: 'ma.yawn',
+    15: 'ma.heal-block',
+    17: 'ma.no-type-immunity',
+    18: 'ma.leech-seed',
+    19: 'ma.embargo',
+    20: 'ma.perish-song',
+    21: 'ma.ingrain',
+    24: 'ma.silence',
+}
+
+MOVE_CATEGORIES = {
+    0: 'mc.damage',
+    1: 'mc.ailment',
+    2: 'mc.net-good-stats',
+    3: 'mc.heal',
+    4: 'mc.damage+ailment',
+    5: 'mc.swagger',
+    6: 'mc.damage+lower',
+    7: 'mc.damage+raise',
+    8: 'mc.damage+heal',
+    9: 'mc.ohko',
+    10: 'mc.whole-field-effect',
+    11: 'mc.field-effect',
+    12: 'mc.force-switch',
+    13: 'mc.unique',
+}
+
+MOVE_FLAGS = {
+    1: 'mf.contact',
+    2: 'mf.charge',
+    3: 'mf.recharge',
+    4: 'mf.protect',
+    5: 'mf.reflectable',
+    6: 'mf.snatch',
+    7: 'mf.mirror',
+    8: 'mf.punch',
+    9: 'mf.sound',
+    10: 'mf.gravity',
+    11: 'mf.defrost',
+    12: 'mf.distance',
+    13: 'mf.heal',
+    14: 'mf.authentic',
+    # FIXME this was powder before?  whenever "before" was?  also this name, is bad.
+    15: 'mf.non-sky-battle',
+
+    # NOTE: 16 indicates a distinct animation when the move is used on an ally,
+    # I think; doesn't seem like something we care about
+    #16: 'mf.unknown16',
+
+    # FIXME this is new
+    17: 'mf.dance',
+
+    # FIXME these are either gone, or in a different order?  the last four seem
+    # to be inventions by surskitty, not sure where they came from
+    #16: 'mf.bite',
+    #17: 'mf.pulse',
+    #18: 'mf.ballistics',
+    #19: 'mf.mental',
+    #20: 'mf.non-sky-battle',
+}
+
+# FIXME hokey; "all" in particular is not great
+MOVE_STATS = {
+    1: 'st.attack',
+    2: 'st.defense',
+    3: 'st.special-attack',
+    4: 'st.special-defense',
+    5: 'st.speed',
+    6: 'st.accuracy',
+    7: 'st.evasion',
+    8: 'st.all',
+}
 
 # ja-Hrkt: hiragana/katakana
 # zh-Hans: simplified
@@ -406,21 +507,26 @@ pokemon_struct = Struct(
     'form_species_start' / Int16ul,
     'form_sprite_start' / Int16ul,
     'form_count' / Int8ul,
-    'color' / Int8ul,
+    'color' / VeekunEnum(Int8ul, COLORS),
     'base_exp' / Int16ul,
     'height' / Int16ul,
     'weight' / Int16ul,
-    'machines' / BitsSwapped(Bitwise(Array(14 * 8, Flag))),
-    Padding(2),
+    'machines' / BitsSwapped(Bitwise(Array(16 * 8, Flag))),
     'tutors' / Int32ul,
     'mystery1' / Int16ul,
     'mystery2' / Int16ul,
-    'bp_tutors1' / Int32ul,  # unused in sumo
-    'bp_tutors2' / Int32ul,  # unused in sumo
-    'bp_tutors3' / Int32ul,  # unused in sumo
-    'bp_tutors4' / Int32ul,  # sumo: big numbers for pikachu, eevee, snorlax, mew, starter evos, couple others??  maybe special z-move item?
-    # TODO sumo is four bytes longer, not sure why, find out if those bytes are anything and a better way to express them
-    GreedyRange(Const(b'\x00')),
+    # TODO these are unused in sumo
+    'bp_tutors1' / Const(b'\x00\x00\x00\x00'),
+    'bp_tutors2' / Const(b'\x00\x00\x00\x00'),
+    'bp_tutors3' / Const(b'\x00\x00\x00\x00'),
+    # FIXME this is bp_tutors4 in oras
+    'z_crystal' / Int16ul,
+    'z_base_move' / Int16ul,
+    # FIXME oras ends here
+    'z_move' / Int16ul,
+    # Not sure where this is used but it seems to be 1 for Alolan Pokémon only
+    # (but not their totem versions)
+    'is_alolan' / Int16ul,
 )
 
 pokemon_mega_evolutions_struct = Filter(this.number != 0, Range(
@@ -462,39 +568,36 @@ level_up_moves_struct = GreedyRange(
 
 move_struct = Struct(
     'type' / VeekunEnum(Int8ul, TYPES),
-    'category' / Int8ul,
+    'category' / VeekunEnum(Int8ul, MOVE_CATEGORIES),
     'damage_class' / VeekunEnum(Int8ul, DAMAGE_CLASSES),
     'power' / Int8ul,
     'accuracy' / Int8ul,
     'pp' / Int8ul,
     'priority' / Int8sl,
     'min_max_hits' / Int8ul,
-    'caused_effect' / Int16sl,
-    'effect_chance' / Int8ul,
+    'ailment' / VeekunEnum(Int16sl, AILMENTS),
+    'ailment_chance' / Int8ul,
     'status' / Int8ul,
     'min_turns' / Int8ul,
     'max_turns' / Int8ul,
     'crit_rate' / Int8ul,
     'flinch_chance' / Int8ul,
     'effect' / Int16ul,
-    'recoil' / Int8sl,
-    'healing' / Int8ul,
+    'drain' / Int8sl,
+    'healing' / Int8sl,
     'range' / VeekunEnum(Int8ul, MOVE_RANGES),
-    'stat_change' / Bitwise(Array(6, BitsInteger(4))),
-    'stat_amount' / Bitwise(Array(6, BitsInteger(4))),
-    'stat_chance' / Bitwise(Array(6, BitsInteger(4))),
+    'stat_change' / Array(3, Int8ul),
+    'stat_amount' / Array(3, Int8sl),
+    'stat_chance' / Array(3, Int8ul),
     # FIXME sumo only; padding in oras i think
-    'z_move_id' / Int16ul,         # ok
-    'flags' / Int16ul,
-    'padding2' / Int8ul,         # ok
-    'extra' / Int8ul,
-    # FIXME unsure whether this exists in ORAS; should use a length limiter in the parent
-    'extra2' / Int8ul,
-    'extra3' / Int8ul,
-    # a single flag, 1 = dance move
-    'extra4' / Int8ul,
-    # all zeroes
-    Padding(1, strict=True),
+    'z_move_id' / Int16ul,
+    'z_move_power' / Int8ul,
+    'z_move_effect' / Int8ul,
+    # FIXME this cuts off somewhere in ORAS, unsure where...  but the flags are last, so, ??
+    'mystery3' / Int8ul,  # 0-4
+    'mystery4' / Int8ul,  # 0, 25, 50, or 100
+
+    'flags' / FlagsEnum(Int32ul, **{v: 1 << (k - 1) for (k, v) in MOVE_FLAGS.items()}),
 )
 move_container_struct = FocusedSeq('records',
     Const(b'WD'),  # waza...  descriptions?
@@ -885,7 +988,11 @@ ORAS_NORMAL_MOVE_TUTORS = (
 # TODO ripe for being put in the pokedex codebase itself
 def make_identifier(english_name):
     # TODO do nidoran too
-    return re.sub('[. ]+', '-', english_name.lower())
+    return re.sub(
+        '[^a-zA-Z0-9-]+',
+        '-',
+        english_name.lower().replace('’', ''),
+    )
 
 @contextmanager
 def read_garc(path):
@@ -969,9 +1076,15 @@ def extract_data(root, out):
     identifiers['item'] = list(map(make_identifier, texts['en']['item-names']))
     identifiers['ability'] = list(map(make_identifier, texts['en']['ability-names']))
 
-    # De-duplicate some items with identical names
+    # De-duplicate some moves and items with identical names
     # TODO eventually these should be a separate manual list that these scripts
     # can update when necessary for new games
+    # Generic Z-moves come in both physical and special, with the same names
+    for i in range(622, 658):
+        if i % 2 == 0:
+            identifiers['move'][i] += '--physical'
+        else:
+            identifiers['move'][i] += '--special'
     # TODO or maybe we should name /both/ items in each pair...  but for old
     # items that requires matching up with older versions in some sensible way,
     # right?  maybe?
@@ -1470,6 +1583,9 @@ def extract_data(root, out):
         # FIXME this skips over form names for non-concrete forms, ugh
         pokémon.form_name = collect_text(texts, 'form-names', species_forms[base_species_id]['flavor_ids'][form_name_id])
 
+        # TODO stage?  i'm iffy on that since it's a computed thing and what if
+        # it's incorrect?  same problem as trusting the move meta stuff i
+        # suppose
         pokémon.base_stats = {
             'hp': record.stat_hp,
             'attack': record.stat_atk,
@@ -1491,7 +1607,6 @@ def extract_data(root, out):
         else:
             pokémon.types = [record.type1, record.type2]
         pokémon.capture_rate = record.capture_rate
-        # TODO stage?
         # Held items are a bit goofy; if the same item is in all three slots, it always appears!
         pokémon.held_items = {}
         if 0 != record.held_item1 == record.held_item2 == record.held_item3:
@@ -1520,9 +1635,8 @@ def extract_data(root, out):
             for ability in (record.ability1, record.ability2, record.ability_hidden)
         ]
         # FIXME safari escape??
-        # FIXME form stuff
-        # FIXME color
         pokémon.base_experience = record.base_exp
+        pokémon.color = record.color
         # FIXME what units are these!
         pokémon.height = record.height
         pokémon.weight = record.weight
@@ -1532,13 +1646,12 @@ def extract_data(root, out):
 
         # TODO transform to an OD somehow probably
         pokemon_data.append(record)
-        print("{:4d} {:25s} {} {:5d} {:5d} {:20s} {:4d} {:4d} {:2d} | {} - {p.effort_padding:2d} - {p.effort:04x} {p.effort_hp:1d} {p.effort_attack:1d} {p.effort_defense:1d} {p.effort_speed:1d} {p.effort_special_attack:1d} {p.effort_special_defense:1d}".format(
+        print("{:4d} {:25s} {} {:5d} {:5d} {:4d} {:4d} {:2d} / {p.z_crystal:3d} {p.z_base_move:3d} {p.z_move:3d} | {:10s} - {p.effort_padding:2d} - {p.effort:04x} {p.effort_hp:1d} {p.effort_attack:1d} {p.effort_defense:1d} {p.effort_speed:1d} {p.effort_special_attack:1d} {p.effort_special_defense:1d}".format(
             i,
             identifiers['pokémon'][i],
             ('0'*16 + bin(record.mystery1)[2:])[-16:],
             record.mystery2,
             record.stage,
-            texts['en']['form-names'][i],
             record.form_species_start,
             record.form_sprite_start,
             record.form_count,
@@ -1556,8 +1669,12 @@ def extract_data(root, out):
         # TODO assert only one file wherever i do this
         records = move_container_struct.parse_stream(garc[0][0])
         for i, record in enumerate(records):
+            if i == 0:
+                # Skip the dummy zeroth move, which has no useful properties
+                continue
+
             # TODO with the release of oras all moves have contest types and effects again!  where are they??
-            print(f"{i:3d} {texts['en']['move-names'][i]:30s} | {record.type:10s} {record.category:3d} / {record.priority:2d} {record.range:20s} {record.damage_class:12s} / {record.effect:3d} {record.caused_effect:3d} {record.effect_chance:3d}  --  {record.min_max_hits:3d}, {record.status:3d} {record.min_turns:3d} {record.max_turns:3d} {record.crit_rate:3d} {record.flinch_chance:3d} {record.recoil:4d} {record.healing:3d} ~ {identifiers['move'][record.z_move_id]:30s} {record.flags:04x} {record.padding2:3d} {record.extra:3d} {record.extra2:08b} {record.extra2 >> 3:3d}+{record.extra2 & 7:<3d} {record.extra3:3d} {record.extra4:3d}")
+            print(f"{i:3d} {texts['en']['move-names'][i]:30s} | {record.type:10s} / {record.effect:3d} {record.ailment_chance:3d} -- {record.status:3d} ~ {record.z_move_id:3d} {record.z_move_power:3d} {record.z_move_effect:4d} ~ {record.mystery3:3d} {record.mystery4:3d} ~ {' '.join(k for (k, v) in record.flags.items() if v)} | {[x for x in zip(record.stat_change, record.stat_amount, record.stat_chance) if x[0]]}")
 
             ident = identifiers['move'][i]
             move = all_moves[ident] = schema.Move()
@@ -1577,7 +1694,10 @@ def extract_data(root, out):
             move.range = record.range
 
             move.effect = record.effect
-            move.effect_chance = record.effect_chance
+            # NOTE that this is now a weird computed thing, which raises the
+            # question of exactly how much of the meta stuff is used by code vs
+            # how much isn't; are there decompiles of this?
+            move.effect_chance = record.ailment_chance or record.flinch_chance or record.stat_chance[0] or record.stat_chance[1] or record.stat_chance[2] or None
             # FIXME need to identify whether THIS move is a z-move?
             if record.z_move_id:
                 move.z_move = identifiers['move'][record.z_move_id]
@@ -1588,40 +1708,40 @@ def extract_data(root, out):
 
             move.min_hits = record.min_max_hits & 0x0f
             move.max_hits = record.min_max_hits >> 4
-            # -1: tri attack?  telekinesis, smack down, thousand arrows
-            # 1: paralysis
-            # 2: sleep
-            # 3: frozen
-            # 4: burn
-            # 5: poison
-            # 6: confusion
-            # 7: infatuation
-            # 8: trapped?  multi-turn move?
-            # 9: nightmare
-            # 12: tormented
-            # 13: disabled
-            # 14: drowsy (yawn)
-            # 15: heal blocked
-            # 17: foresight + odor sleuth + miracle eye (identified?)
-            # 18: seeded
-            # 19: embargoed
-            # 20: perish song
-            # 21: ingrain?
-            # 24: throat chop??  (silenced?)
             move.category = record.category
-            move.ailment = record.caused_effect
+            move.ailment = record.ailment
+            move.ailment_chance = record.ailment_chance
             # FIXME what is record.status???
-            # FIXME where is this
-            #ailment_chance = _Value(int)
-            # FIXME this is nonsense, it should be per-stat??
+            # FIXME this is nonsense, it should be per-stat??  also it's often
+            # zero.  also one of the stats is "all".  this may take a little
+            # caressing
             #move.stat_chance = _Value(int)
             move.min_turns = record.min_turns
             move.max_turns = record.max_turns
-            # FIXME split drain out from healing
-            #drain = _Value(int)
+            move.drain = record.drain
             move.healing = record.healing
             move.crit_rate = record.crit_rate
             move.flinch_chance = record.flinch_chance
+
+            move.flags = set(k for (k, v) in record.flags.items() if v)
+
+    print()
+    moves_by_status = defaultdict(list)
+    for i, record in enumerate(records):
+        if record.status:
+            moves_by_status[record.status].append(i)
+    for status in sorted(moves_by_status):
+        print(f"moves with status == {status}:")
+        print(*(identifiers['move'][i] for i in moves_by_status[status]))
+
+    print()
+    moves_by_mystery4 = defaultdict(list)
+    for i, record in enumerate(records):
+        if record.mystery4:
+            moves_by_mystery4[record.mystery4].append(i)
+    for mystery4 in sorted(moves_by_mystery4):
+        print(f"moves with mystery4 == {mystery4}:")
+        print(*(identifiers['move'][i] for i in moves_by_mystery4[mystery4]))
 
     with (out / 'moves.yaml').open('w') as f:
         f.write(Camel([schema.POKEDEX_TYPES]).dump(all_moves))

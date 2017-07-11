@@ -270,20 +270,27 @@ class Move(VersionedLocus):
 
     # FIXME this should be an enum really too
     effect = _Value(MoveEffect)
-
+    # FIXME this is a bogus derived value now
     effect_chance = _Value(int)
 
     # NOTE: In the old schema, this stuff is in a separate table, since it's
     # not quite 100% reliable; in particular the lack of a value doesn't mean
     # that the effect cannot happen via code.  Also, consider Tri Attack, whose
-    # inflicted ailments aren't listed here at all.  :(
-    # TODO i wonder if these should be left out of the yaml if blank
-    max_hits = _Value(int)
+    # inflicted ailments aren't listed here at all.  :(  Not sure what we
+    # should do with it, since it's interesting for nerds but confusing for
+    # everyone else.
+    # FIXME this should probably be, like, _Set(MoveFlag)
+    # FIXME also it doesn't dump using ? syntax like the yaml registry says
+    flags = _Value(set)
     # FIXME these should be enums
     category = _Value(int)
     ailment = _Value(int)
+    # FIXME this is bogus, it's per stat change
+    # FIXME also, include stat changes?
+    #stat_chance = _Value(int)
+    # TODO i wonder if all these should be left out of the yaml if blank
     min_hits = _Value(int)
-    stat_chance = _Value(int)
+    max_hits = _Value(int)
     min_turns = _Value(int)
     max_turns = _Value(int)
     drain = _Value(int)
