@@ -1068,6 +1068,40 @@ Changes []{move:nature-power} to []{move:thunderbolt}."
 
 The target's other type will affect damage as usual.  If this move's type is changed, it remains super-effective against Water regardless of its type."
 381,9,XXX new effect for disarming-voice,XXX new effect for disarming-voice
+382,9,XXX new effect for shore-up,XXX new effect for shore-up
+383,9,XXX new effect for first-impression,XXX new effect for first-impression
+384,9,XXX new effect for baneful-bunker,XXX new effect for baneful-bunker
+385,9,XXX new effect for spirit-shackle,XXX new effect for spirit-shackle
+386,9,XXX new effect for sparkling-aria,XXX new effect for sparkling-aria
+387,9,XXX new effect for floral-healing,XXX new effect for floral-healing
+388,9,XXX new effect for strength-sap,XXX new effect for strength-sap
+389,9,XXX new effect for spotlight,XXX new effect for spotlight
+390,9,XXX new effect for toxic-thread,XXX new effect for toxic-thread
+391,9,XXX new effect for laser-focus,XXX new effect for laser-focus
+392,9,XXX new effect for gear-up,XXX new effect for gear-up
+393,9,XXX new effect for throat-chop,XXX new effect for throat-chop
+394,9,XXX new effect for pollen-puff,XXX new effect for pollen-puff
+395,9,XXX new effect for psychic-terrain,XXX new effect for psychic-terrain
+396,9,XXX new effect for lunge,XXX new effect for lunge
+397,9,XXX new effect for fire-lash,XXX new effect for fire-lash
+398,9,XXX new effect for burn-up,XXX new effect for burn-up
+399,9,XXX new effect for speed-swap,XXX new effect for speed-swap
+400,9,XXX new effect for purify,XXX new effect for purify
+401,9,XXX new effect for revelation-dance,XXX new effect for revelation-dance
+402,9,XXX new effect for core-enforcer,XXX new effect for core-enforcer
+403,9,XXX new effect for instruct,XXX new effect for instruct
+404,9,XXX new effect for beak-blast,XXX new effect for beak-blast
+405,9,XXX new effect for clanging-scales,XXX new effect for clanging-scales
+406,9,XXX new effect for brutal-swing,XXX new effect for brutal-swing
+407,9,XXX new effect for aurora-veil,XXX new effect for aurora-veil
+408,9,XXX new effect for shell-trap,XXX new effect for shell-trap
+409,9,XXX new effect for stomping-tantrum,XXX new effect for stomping-tantrum
+410,9,XXX new effect for spectral-thief,XXX new effect for spectral-thief
+411,9,XXX new effect for sunsteel-strike,XXX new effect for sunsteel-strike
+412,9,XXX new effect for tearful-look,XXX new effect for tearful-look
+413,9,XXX new effect for guardian-of-alola,XXX new effect for guardian-of-alola
+414,9,XXX new effect for extreme-evoboost,XXX new effect for extreme-evoboost
+415,9,XXX new effect for genesis-supernova,XXX new effect for genesis-supernova
 10001,9,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move while in [hyper mode]{mechanic:hyper-mode}.
 10002,9,User receives 1/2 its HP in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 of its current [HP]{mechanic:hp} in recoil.
 10003,9,Halves HP of all Pokémon on the field.  Must recharge,"Halves [HP]{mechanic:hp} of all Pokémon on the field.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic:switch} out during that turn."
