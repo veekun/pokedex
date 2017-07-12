@@ -2517,7 +2517,9 @@ Move.contest_type = relationship(ContestType,
 Move.damage_class = relationship(MoveDamageClass,
     innerjoin=True,
     backref='moves')
-Move.flags = association_proxy('move_flags', 'flag')
+Move.flags = relationship(MoveFlag,
+    secondary=MoveFlagMap.__table__,
+    backref='moves')
 Move.flavor_text = relationship(MoveFlavorText,
     order_by=MoveFlavorText.version_group_id, backref='move')
 Move.generation = relationship(Generation,
