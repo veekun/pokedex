@@ -46,9 +46,14 @@ def _getset_factory_factory(column_name, string_getter):
             session = object_session(translations)
             language = translations.local_language
             return string_getter(text, session, language)
-        def setter(translations, value):
-            # The string must be set on the Translation directly.
-            raise AttributeError("Cannot set %s" % column_name)
+
+        if underlying_type is dict:
+            def setter(translations, key, value):
+                setattr(translations, instance.value_attr, value)
+        else:
+            def setter(translations, value):
+                # The string must be set on the Translation directly.
+                raise AttributeError("Cannot set %s" % column_name)
         return getter, setter
     return getset_factory
 

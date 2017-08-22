@@ -28,6 +28,7 @@ import yaml
 
 import pokedex.schema as schema
 from .lib.garc import GARCFile, decrypt_xy_text
+from .lib.pc import PokemonContainerFile
 
 # TODO: ribbons!  080 in sumo
 
@@ -102,6 +103,25 @@ COLORS = {
     0: 'pc.red',
     8: 'pc.white',
     2: 'pc.yellow',
+}
+
+# NOTE: these are listed in veekun order, which doesn't match the games, just
+# as with colors
+SHAPES = {
+    0: 'ps.ball',
+    12: 'ps.squiggle',
+    2: 'ps.fish',
+    13: 'ps.arms',
+    8: 'ps.blob',
+    9: 'ps.upright',
+    1: 'ps.legs',
+    4: 'ps.quadruped',
+    11: 'ps.wings',
+    7: 'ps.tentacles',
+    6: 'ps.heads',  # NOTE: this is really multi-body
+    10: 'ps.humanoid',
+    5: 'ps.bug-wings',
+    3: 'ps.armor',  # NOTE/TODO?: this is really just bug-shaped
 }
 
 DAMAGE_CLASSES = {
@@ -297,7 +317,7 @@ SUMO_SCRIPT_ENTRIES = {
     'pokemon-weight-flavor': 117,
     'trainer-class-names': 106,
     'berry-names': 65,
-    # 49 might be pokédex colors?  or maybe clothing colors
+    # 49 appears to be clothing dye colors + a set of clothes patterns?
 
     # 38: item names, with macros to branch for pluralization
     # 114: copy of item names, but with "PP" in latin in korean (?!)
@@ -428,7 +448,8 @@ FORM_NAMES = {
     # TODO why are 10 and 50 duplicated?
     718: (None, '10', '10', '50', 'complete'),
     # Hoopa
-    720: ('confined', 'unbound'),
+    # TODO should the default form be 'confined'?
+    720: (None, 'unbound'),
     # Gumshoos
     735: (None, 'totem'),
     # Vikavolt
@@ -512,7 +533,9 @@ pokemon_struct = Struct(
     'height' / Int16ul,
     'weight' / Int16ul,
     'machines' / BitsSwapped(Bitwise(Array(16 * 8, Flag))),
+    # TODO this is clearly not tutors (in sumo anyway)?  bulb is 1/1/9, char 2/2/18, squirtle 4/4/36, then all zeroes until dratini 64/64/64, then same with next starters...
     'tutors' / Int32ul,
+    # TODO appear to be all zeroes, at least in sumo
     'mystery1' / Int16ul,
     'mystery2' / Int16ul,
     # TODO these are unused in sumo
@@ -664,7 +687,7 @@ item_struct = Struct(
     # 6 - tms
     # 7 - berries
     # 8 - key items
-    'mystery0d' / Int8ul,
+    'pocketish' / Int8ul,
     # 1 - can be used (+ consumed) by pokémon (maybe for recycle purposes)
     # 16 - black/white/yellow/red/blue flutes??  (not in xy?)
     'mystery0e' / Int8ul,
@@ -991,8 +1014,8 @@ def make_identifier(english_name):
     return re.sub(
         '[^a-zA-Z0-9-]+',
         '-',
-        english_name.lower().replace('’', ''),
-    )
+        english_name.lower().replace('é', 'e').replace('’', '').replace('♂', '-m').replace('♀', '-f'),
+    ).rstrip('-')
 
 @contextmanager
 def read_garc(path):
@@ -1372,18 +1395,18 @@ def extract_data(root, out):
         f.seek(0x0049795a)  # SUMO
         # TODO magic number (107)
         machineids = struct.unpack('<107H', f.read(2 * 107))
-        # TODO dunno if this is still true
+        # FIXME this is no longer true in sun/moon, of course
         # Order appears to be based on some gen 4 legacy: TMs 1 through 92, HMs
         # 1 through 6, then the other eight TMs and the last HM.  But the bits
         # in the Pokémon structs are in the expected order of 1 through 100, 1
         # through 7
         machines = [
             identifiers['move'][moveid]
-            for moveid in
-                machineids[0:92] +
-                machineids[98:106] +
-                machineids[92:98] +
-                machineids[106:]
+            for moveid in machineids
+                #machineids[0:92] +
+                #machineids[98:106] +
+                #machineids[92:98] +
+                #machineids[106:]
         ]
 
         # TODO Pokémon box sprite map
@@ -1418,18 +1441,26 @@ def extract_data(root, out):
         item_ct = len(garc)
         for i, subfile in enumerate(garc):
             identifier = identifiers['item'][i]
-            if identifier == '???':
+            if identifier == '':
                 # Junk non-item
-                # TODO striiictly speaking, maybe we should dump these anyway
+                # TODO striiictly speaking, maybe we should dump these
+                # anyway...  but we have no way of knowing what they'd do, so,
+                # eh
                 continue
 
             item = all_items[identifier] = schema.Item()
+            item.game_index = i
             item.name = collect_text(texts, 'item-names', i)
             item.flavor_text = collect_text(texts, 'item-flavor', i)
 
             raw_item = item_struct.parse_stream(subfile[0])
-            item.price = raw_item.price
+            item.price = raw_item.price * 10
             item.fling_power = raw_item.fling_power
+
+
+            subfile[0].seek(0)
+            data = subfile[0].read()
+            print(f"{identifiers['item'][i]:24s}  {raw_item.price:5d}  {raw_item.fling_effect:3d}  {raw_item.natural_gift_effect:3d}  {raw_item.natural_gift_power:3d}  {raw_item.natural_gift_type & 31:2d} | {raw_item.pocketish:1d} {data.hex()[:32]}")
 
     with (out / 'items.yaml').open('w') as f:
         f.write(Camel([schema.POKEDEX_TYPES]).dump(all_items))
@@ -1469,7 +1500,18 @@ def extract_data(root, out):
     assert not unused_image_datae
 
     # -------------------------------------------------------------------------
-    # Pokémon structs
+    # Pokémon
+
+    # Shapes are stored separately alongside some Pokédex sorting data, since
+    # they're only used in the Pokédex search.  In SUMO, at least, every flavor
+    # form has its own shape.
+    # TODO where is this in other games?
+    # TODO what are the other records in these two files?  file 0 has 11 records, file 1 has 7
+    with read_garc(root / 'rom/a/1/5/2') as garc:  # SUMO
+        subfile = PokemonContainerFile(garc[1][0])
+        shape_data = subfile[1].read()
+        # One byte per form, no parsing required!
+        pokémon_form_shapes = [SHAPES[shape_id] for shape_id in shape_data]
 
     # TODO document this properly sometime, somewhere, but the gist is:
     # - a species may have multiple forms
@@ -1564,18 +1606,20 @@ def extract_data(root, out):
         pokémon.game_index = i
 
         base_species_id, form_name_id = concrete_form_order[i]
+        flavor_id = species_forms[base_species_id]['flavor_ids'][form_name_id]
         # TODO i observe this is explicitly a species name, the one thing that
         # really is shared between forms
         pokémon.name = collect_text(texts, 'species-names', base_species_id)
         pokémon.genus = collect_text(texts, 'genus-names', base_species_id)
         # FIXME ho ho, hang on a second, forms have their own flavor text too!!
         # TODO well this depends on which game you're dumping
-        pokémon.flavor_text = collect_text(texts, 'species-flavor-moon', base_species_id)
+        pokémon.flavor_text = collect_text(texts, 'species-flavor-moon', flavor_id)
 
         # FIXME this is pretty temporary hackery; ideally the file would be
         # arranged around species, not concrete forms
         pokémon.form_base_species = identifiers['species'][base_species_id]
         pokémon.form_number = form_name_id
+        pokémon.form_identifier = species_forms[base_species_id]['forms'][form_name_id]
         if i < len(species_forms) and not species_forms[i]['is_concrete']:
             pokémon.form_appearances = species_forms[i]['forms']
         else:
@@ -1637,6 +1681,7 @@ def extract_data(root, out):
         # FIXME safari escape??
         pokémon.base_experience = record.base_exp
         pokémon.color = record.color
+        pokémon.shape = pokémon_form_shapes[flavor_id]
         # FIXME what units are these!
         pokémon.height = record.height
         pokémon.weight = record.weight
@@ -1646,7 +1691,7 @@ def extract_data(root, out):
 
         # TODO transform to an OD somehow probably
         pokemon_data.append(record)
-        print("{:4d} {:25s} {} {:5d} {:5d} {:4d} {:4d} {:2d} / {p.z_crystal:3d} {p.z_base_move:3d} {p.z_move:3d} | {:10s} - {p.effort_padding:2d} - {p.effort:04x} {p.effort_hp:1d} {p.effort_attack:1d} {p.effort_defense:1d} {p.effort_speed:1d} {p.effort_special_attack:1d} {p.effort_special_defense:1d}".format(
+        print("{:4d} {:25s} {} {:5d} {:5d} {:4d} {:4d} {:2d} / {p.z_crystal:3d} {p.z_base_move:3d} {p.z_move:3d} | {:10s} - {p.effort_padding:2d} - {p.safari_escape:3d} {p.mystery1:5d} {p.mystery2:5d} {p.held_item3:3d} {p.tutors:10} {shape}".format(
             i,
             identifiers['pokémon'][i],
             ('0'*16 + bin(record.mystery1)[2:])[-16:],
@@ -1657,6 +1702,7 @@ def extract_data(root, out):
             record.form_count,
             record.color,
             p=record,
+            shape=pokémon_form_shapes[flavor_id],
         ))
 
     # -------------------------------------------------------------------------
@@ -1762,9 +1808,13 @@ def extract_data(root, out):
             if i > len(identifiers['species']):
                 continue
             moveset = all_pokémon[ident].moves
+            eggseen = set()
             eggset = moveset['egg'] = []
             for moveid in container.moveids:
-                eggset.append(identifiers['move'][moveid])
+                # Swinub has Mud Shot listed twice, for some reason
+                if moveid not in eggseen:
+                    eggset.append(identifiers['move'][moveid])
+                    eggseen.add(moveid)
 
     # Level-up moves
     with read_garc(root / 'rom/a/0/1/3') as garc:  # SUMO
@@ -1811,16 +1861,18 @@ def extract_data(root, out):
                 evo['into'] = identifiers['pokémon'][raw_evo.into_species]
 
                 if raw_evo.method == 1:
-                    evo['trade'] = 'ev.level-up'
+                    evo['trigger'] = 'ev.level-up'
                     evo['minimum-friendship'] = 220
                 elif raw_evo.method == 2:
-                    evo['trade'] = 'ev.level-up'
+                    evo['trigger'] = 'ev.level-up'
                     # FIXME is this an enum?  also really it's morning OR day
                     evo['time-of-day'] = 'day'
+                    evo['minimum-friendship'] = 220
                 elif raw_evo.method == 3:
-                    evo['trade'] = 'ev.level-up'
+                    evo['trigger'] = 'ev.level-up'
                     # FIXME is this an enum?
                     evo['time-of-day'] = 'night'
+                    evo['minimum-friendship'] = 220
                 elif raw_evo.method == 4:
                     evo['trigger'] = 'ev.level-up'
                     evo['minimum-level'] = raw_evo.level
@@ -1831,6 +1883,9 @@ def extract_data(root, out):
                     evo['held-item'] = identifiers['item'][raw_evo.param]
                 elif raw_evo.method == 7:
                     evo['trigger'] = 'ev.trade'
+                    # FIXME uhh this is always zero.  karrablast and shelmet do
+                    # not actually mention each other here.  guess it's
+                    # hardcoded??  awesome
                     evo['traded-with'] = identifiers['pokémon'][raw_evo.param]
                 elif raw_evo.method == 8:
                     evo['trigger'] = 'ev.use-item'
@@ -1880,6 +1935,7 @@ def extract_data(root, out):
                     evo['held-item'] = identifiers['item'][raw_evo.param]
                 elif raw_evo.method == 20:
                     evo['trigger'] = 'ev.level-up'
+                    evo['time-of-day'] = 'night'
                     evo['held-item'] = identifiers['item'][raw_evo.param]
                 elif raw_evo.method == 21:
                     evo['trigger'] = 'ev.level-up'
@@ -1920,7 +1976,9 @@ def extract_data(root, out):
                 elif raw_evo.method == 30:
                     evo['trigger'] = 'ev.level-up'
                     evo['minimum-level'] = raw_evo.level
-                    evo['party-member-type'] = TYPES[raw_evo.param]
+                    # This is Pancham (needs Dark-type party member) but the
+                    # type seems to be hardcoded, ugh
+                    evo['party-member-type'] = 't.dark'
                 elif raw_evo.method == 31:
                     evo['trigger'] = 'ev.level-up'
                     evo['minimum-level'] = raw_evo.level
@@ -1966,18 +2024,34 @@ def extract_data(root, out):
 
                 all_pokémon[identifier].evolutions.append(evo)
 
+        # Shedinja is an exceptionally special case that isn't listed in the data
+        # TODO having to lay this out explicitly bugs me
+        all_pokémon['nincada'].evolutions.append(dict(
+            into='shedinja',
+            trigger='shed',
+        ))
+
     # Mega evolution
     # TODO
     # already parsed a/0/1/5 as mega_evolutions...  but...  that only lists
     # items?  what lists the actual megas?  OH is the number a form number??
     # wow i really need a list of species -> forms eh
     # TODO what is a/1/9/4 (ORAS) or a/0/1/6 (SUMO)?  8 files of 404 bytes each
+    # in both versions, so not dependent on the number of loci
     # Baby Pokémon
     #with read_garc(root / 'rom/a/1/9/6') as garc:  # ORAS
-    #with read_garc(root / 'rom/a/0/1/8') as garc:  # SUMO?
-    #    for subfile in garc:
-    #        baby_pokemon = subfile[0].read()
-    #        print(repr(baby_pokemon))
+    with read_garc(root / 'rom/a/0/1/8') as garc:  # SUMO?
+        # Last record shows something else
+        last_data = garc[-1][0].read()
+        for i, subfile in enumerate(garc[:-1]):
+            data = subfile[0].read()
+            baby_id = int.from_bytes(data[:2], 'little')
+            print(identifiers['species'][i], '->', identifiers['species'][baby_id])
+            if data[2:] != b'\xff\xff':
+                print("!!!", repr(data))
+            other_id = int.from_bytes(last_data[i*2:i*2+2], 'little')
+            if other_id != baby_id:
+                print("!!!", i, baby_id, other_id)
 
     # Tutor moves (from the personal structs)
     # FIXME why is this down here and not just in the personal loop?

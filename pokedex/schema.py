@@ -165,6 +165,8 @@ Evolution = _ForwardDeclaration()
 EncounterMap = _ForwardDeclaration()
 MoveSet = _ForwardDeclaration()
 Pokedex = _ForwardDeclaration()
+PokédexColor = _ForwardDeclaration()
+PokédexShape = _ForwardDeclaration()
 
 
 class Ability(VersionedLocus):
@@ -201,25 +203,32 @@ class Pokémon(VersionedLocus):
     # FIXME hackery to get forms working well enough to import back into veekun
     # later; this will need some cleaning up later, somehow
     form_base_species = _Value(str)
+    form_identifier = _Value(str)
     form_number = _Value(int)
-    form_appearances = _List(str)
+    form_appearances = _List(str)  # flavor only!
     form_name = _Localized(str)
 
     types = _List(Type, min=1, max=2)
+    # FIXME how do i distinguish hidden ability?
+    abilities = _List(Ability, min=1, max=3)
     base_stats = _Map(Stat, int)
     growth_rate = _Value(GrowthRate)
     base_experience = _Value(int, min=0, max=255)
     effort = _Map(Stat, int)
     capture_rate = _Value(int, min=0, max=255)
+    base_happiness = _Value(int, min=0, max=255)
     held_items = _Map(Item, int)
     gender_rate = _Value(int)
     egg_groups = _List(EggGroup, min=1, max=2)
+    hatch_counter = _Value(int, min=0, max=255)
 
     pokedex_numbers = _Map(Pokedex, int)
 
     # TODO family?
     evolutions = _List(Evolution)
 
+    color = _Value(PokédexColor)
+    shape = _Value(PokédexShape)
     genus = _Localized(str)
     flavor_text = _Localized(str)
     # TODO maybe want little wrapper types that can display as either imperial
@@ -242,9 +251,6 @@ class Pokémon(VersionedLocus):
 
     # TODO should this be written in hex, maybe?
     game_index = _Value(int)
-
-    # FIXME how do i distinguish hidden ability?
-    abilities = _List(Ability)
 
 Pokemon = Pokémon
 
