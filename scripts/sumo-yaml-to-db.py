@@ -15,7 +15,12 @@ import pokedex.schema as schema
 # FIXME multiple things in here are not idempotent, but should be
 # FIXME things currently not covered by this script:
 # - machine to move mapping; unclear where this should live, possibly in a game-global data file, or maybe on items themselves?
+# - populating version_group_pokemon_move_methods, whose purpose is a mystery to me
+# - version_group_regions, whoops
 # - pokedex numbering; unclear where this actually lives in the game
+# - encounters; not dumped at all, they are hard
+# - rotom's form change moves; these are likely hardcoded, boo
+# - pichu's volt tackle via light ball; probably also hardcoded
 
 # TODO still obviously missing:
 # - pokedex order
@@ -29,11 +34,18 @@ import pokedex.schema as schema
 # - is_battle_only
 # - form explanations
 # - pokemon and form order
+# - forms' pokemon_names; the site depends on this for lookup of specific forms
 # - evolutions requiring particular locations
+# TODO needs updating on the site after a new game:
+# - pokémon flavor pages
+# - default version to use for main sprite
+# - probably the css sprite image thing
+# - sprite version shown on main pokémon pages, in flavor section
 # TODO needs fixing codewise:
 # - decide if i'm using these new pixel version icons or what
 # - remove extraneous "Pokémon" after genus
-# - 
+# - need ui for moves learned at level 0 (when evolved)
+# - z-moves (not ripped, not loaded, not handled by the ui, ugh)
 
 out = Path('moon-out')
 session = pokedex.db.connect('postgresql:///veekun_pokedex')
@@ -272,6 +284,11 @@ for sumo_identifier, sumo_ability in abilities.items():
         session.add(db_ability)
 
     update_names(sumo_ability.name, db_ability.name_map)
+
+    # Populate with dummy effects
+    if db_ability in session.new:
+        db_ability.short_effect_map[db_languages['en']] = f"XXX new effect for {sumo_identifier}"
+        db_ability.effect_map[db_languages['en']] = f"XXX new effect for {sumo_identifier}"
 
     # Flavor text is per-version (group) and thus always new
     # TODO not idempotent
@@ -745,6 +762,8 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
             full_form_identifier = species_identifier + ('-' + form_identifier if form_identifier else '')
             if full_form_identifier in db_pokemon_forms:
                 id = db_pokemon_forms[full_form_identifier].id
+            elif form_order == 1:
+                id = sumo_pokemon.game_index
             else:
                 max_pokemon_form_id += 1
                 id = max_pokemon_form_id
