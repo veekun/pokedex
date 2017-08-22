@@ -81,7 +81,7 @@ def create_translation_table(_table_name, foreign_class, relation_name,
         # Now you can do the following:
         foo.name
         foo.name_map['en']
-        foo.foo_bars['en']
+        foo.bars['en']
 
         foo.name_map['en'] = "new name"
         del foo.name_map['en']
@@ -198,7 +198,7 @@ def create_translation_table(_table_name, foreign_class, relation_name,
         # Class.(column)_map -- accessor for the language dict
         # Need a custom creator since Translations doesn't have an init, and
         # these are passed as *args anyway
-        def creator(language, value):
+        def creator(language, value, name=name):
             row = Translations()
             # TODO this has to be an object; we don't seem to have any way to
             # handle receiving a string here

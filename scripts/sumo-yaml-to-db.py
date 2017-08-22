@@ -12,7 +12,10 @@ import pokedex.db.tables as t
 import pokedex.main as main
 import pokedex.schema as schema
 
-# FIXME machine to move mapping isn't listed anywhere, oops.  where does that go?
+# FIXME multiple things in here are not idempotent, but should be
+# FIXME things currently not covered by this script:
+# - machine to move mapping; unclear where this should live, possibly in a game-global data file, or maybe on items themselves?
+# - pokedex numbering; unclear where this actually lives in the game
 
 # TODO still obviously missing:
 # - pokedex order
@@ -206,9 +209,9 @@ for sumo_identifier, sumo_item in sumo_items.items():
         db_item.short_effect_map[db_languages['en']] = f"XXX new effect for {sumo_identifier}"
         db_item.effect_map[db_languages['en']] = f"XXX new effect for {sumo_identifier}"
 
+    """
     # Flavor text is per-version (group) and thus always new
     # FIXME not idempotent
-    """
     for lang, flavor_text in sumo_item.flavor_text.items():
         session.add(t.ItemFlavorText(
             item=db_item,
@@ -216,11 +219,9 @@ for sumo_identifier, sumo_item in sumo_items.items():
             language=db_languages[lang],
             flavor_text=flavor_text,
         ))
-    """
 
     # Game index
     # FIXME not idempotent
-    """
     session.add(t.ItemGameIndex(
         item=db_item,
         generation=db_sumo_generation,
@@ -266,7 +267,7 @@ for sumo_identifier, sumo_ability in abilities.items():
             identifier=sumo_identifier,
             generation_id=7,
             is_main_series=True,
-            names=[],
+            names={},
         )
         session.add(db_ability)
 
@@ -317,7 +318,7 @@ for (sumo_identifier, sumo_move), db_move in itertools.zip_longest(
     db_move = db_moves[sumo_identifier] = cheap_upsert(
         db_move,
         t.Move,
-        dict(generation_id=7, names=[]),
+        dict(generation_id=7, names={}),
         identifier=sumo_identifier,
         type=db_types[sumo_move.type.rpartition('.')[2]],
         power=None if sumo_move.power in (0, 1) else sumo_move.power,
@@ -437,7 +438,7 @@ with (out / 'pokemon.yaml').open(encoding='utf8') as f:
 sumo_pokemon_by_species = OrderedDict()
 # This maps (Pokémon!) identifiers to { base_pokemon, members }, where
 # Pokémon in the same family will (in theory) share the same value
-sumo_families = dict()
+sumo_families = OrderedDict()
 sumo_evolves_from = dict()  # species!
 for sumo_identifier, sumo_pokemon in pokemon.items():
     if sumo_identifier == 'egg':
@@ -447,31 +448,37 @@ for sumo_identifier, sumo_pokemon in pokemon.items():
     sumo_species_identifier = sumo_pokemon.form_base_species
     sumo_pokemon_by_species.setdefault(sumo_species_identifier, []).append(sumo_pokemon)
 
-    # Construct the family.  Basic idea is to pretend we're a new family, then
-    # look through the evolutions for any existing families and merge them
-    family = dict(
-        base_pokemon=sumo_identifier,
-        members={sumo_identifier},
-        db_chain=None,
-    )
-    try:
-        family['db_chain'] = db_pokemon_specieses[sumo_species_identifier].evolution_chain
-    except KeyError:
-        pass
+    # Construct the family.  Basic idea is to aggressively merge together
+    # families as we go, so at the end every species in the same family should
+    # have the same dict
+    if sumo_species_identifier in sumo_families:
+        family = sumo_families[sumo_species_identifier]
+    else:
+        family = sumo_families[sumo_species_identifier] = dict(
+            base_species=sumo_species_identifier,
+            members={sumo_identifier},
+            db_chain=None,
+        )
+        try:
+            family['db_chain'] = db_pokemon_specieses[sumo_species_identifier].evolution_chain
+        except KeyError:
+            pass
+
     for evolution in sumo_pokemon.evolutions:
         into = evolution['into']
-        sumo_evolves_from[pokemon[into].form_base_species] = sumo_species_identifier
-        if into in sumo_families:
-            # If this happens, then the current Pokémon evolves into a Pokémon
-            # that's already been seen, therefore this is an earlier evolution
-            family['members'].update(sumo_families[into]['members'])
+        into_species = pokemon[into].form_base_species
+        sumo_evolves_from[into_species] = sumo_species_identifier
+        # First, merge; no matter what the evolution order, the current Pokémon
+        # is earlier than any we find here, so our base always wins out
+        if into_species in sumo_families:
+            family['members'].update(sumo_families[into_species]['members'])
             if not family['db_chain']:
-                family['db_chain'] = sumo_families[into]['db_chain']
+                family['db_chain'] = sumo_families[into_species]['db_chain']
         else:
             family['members'].add(into)
-    # Once we're done, ensure every member is using this same newly-updated dict
-    for member in family['members']:
-        sumo_families[member] = family
+            sumo_families[into_species] = family
+        # Then share the dict
+        sumo_families[into_species] = family
 
 for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
     db_species = db_pokemon_specieses.get(species_identifier)
@@ -546,9 +553,9 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
     # it evolves into something that can breed
     is_baby = False
     sumo_identifier = sumo_pokemons[0].identifier
-    sumo_family = sumo_families[sumo_identifier]
+    sumo_family = sumo_families[species_identifier]
     is_baby = (
-        sumo_family['base_pokemon'] == sumo_identifier and
+        sumo_family['base_species'] == species_identifier and
         sumo_pokemons[0].egg_groups == ['eg.no-eggs'] and
         any(pokemon[identifier].egg_groups != ['eg.no-eggs']
             for identifier in sumo_family['members'])
@@ -571,7 +578,7 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
             # Avoids database fetches on new rows
             evolutions=[],
             egg_groups=[],
-            names=[],
+            names={},
             # Doesn't apply to Pokémon not in FRLG
             habitat_id=None,
             # Doesn't apply to Pokémon not in Conquest
@@ -607,7 +614,6 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
     )
 
     # NOTE names are given per concrete form but are really truly a species thing
-    # FIXME i am not sure doing both of these at the same time actually works
     update_names(sumo_pokemons[0].name, db_species.name_map)
     update_names(sumo_pokemons[0].genus, db_species.genus_map)
 
@@ -626,9 +632,6 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
             ))
     """
 
-    # FIXME i fucked something up!  new pokemon's forms ended up in the
-    # stratosphere and also not marked as defaults.  had to do:
-    # update pokemon_forms set id = pokemon_id, is_default = true where form_order = 1 and id > 10000 and pokemon_id between 720 and 9999;
     sumo_db_pokemon_pairs = []
     sumo_db_pokemon_form_pairs = []
     if species_identifier == 'floette':
@@ -647,6 +650,8 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
         for form_order, (sumo_pokemon, sumo_form_identifier) in enumerate(zip(sumo_pokemons, sumo_form_identifiers), start=1):
             if sumo_pokemon.identifier in db_pokemons:
                 id = db_pokemons[sumo_pokemon.identifier].id
+            elif form_order == 1:
+                id = sumo_pokemon.game_index
             else:
                 max_pokemon_id += 1
                 id = max_pokemon_id
@@ -658,7 +663,6 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
                     types=[],
                     pokemon_abilities=[],
                     items=[],
-                    names=[],
                     stats=[],
                     # Easier to populate manually
                     order=0,
@@ -683,6 +687,8 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
             db_form = next(iter(db_pokemons[sumo_pokemon.identifier].forms), None)
             if db_form:
                 id = db_form.id
+            elif form_order == 1:
+                id = sumo_pokemon.game_index
             else:
                 max_pokemon_form_id += 1
                 id = max_pokemon_form_id
@@ -720,7 +726,6 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
                 types=[],
                 pokemon_abilities=[],
                 items=[],
-                names=[],
                 stats=[],
                 order=0,
             ),
@@ -756,7 +761,7 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
                 identifier=full_form_identifier,
                 form_identifier=form_identifier,
                 pokemon=db_pokemon,
-                is_default=id < 10000,
+                is_default=form_order == 1,
                 is_mega=bool(form_identifier and form_identifier.startswith('mega')),
                 # FIXME this is wrong if there are existing forms that disappeared in sumo
                 form_order=form_order,
@@ -919,7 +924,7 @@ for species_identifier, sumo_pokemons in sumo_pokemon_by_species.items():
             elif species_identifier == 'shelmet':
                 traded_with = db_pokemon_specieses['karrablast']
             else:
-                raise ValueError(f"Don't know who trade-evolves with {sumo_species_identifier}")
+                raise ValueError(f"Don't know who trade-evolves with {species_identifier}")
         else:
             traded_with = None
 
