@@ -7230,106 +7230,6 @@ item_id,local_language_id,name
 749,9,TM100
 749,11,わざマシン１００
 749,12,招式学习器１００
-750,1,じてんしゃ
-750,3,자전거
-750,4,自行車
-750,5,Bicyclette
-750,6,Fahrrad
-750,7,Bici
-750,8,Bicicletta
-750,9,Bike
-750,11,じてんしゃ
-750,12,自行车
-751,1,そうこのカギ
-751,3,창고열쇠
-751,4,倉庫鑰匙
-751,5,Clé Stockage
-751,6,Lagerschlüssel
-751,7,Llave Almacén
-751,8,Depochiave
-751,9,Storage Key
-751,11,そうこのカギ
-751,12,仓库钥匙
-752,1,ちかのかぎ
-752,3,지하의열쇠
-752,4,地下鑰匙
-752,5,Clé Sous-Sol
-752,6,Kelleröffner
-752,7,Llave Sótano
-752,8,Chiave sotterr.
-752,9,Basement Key
-752,11,ちかのかぎ
-752,12,地下钥匙
-753,1,ライブキャスター
-753,3,라이브캐스터
-753,4,即時通訊器
-753,5,Vokit
-753,6,Viso-Caster
-753,7,Videomisor
-753,8,Interpoké
-753,9,Xtransceiver
-753,11,ライブキャスター
-753,12,即时通讯器
-754,1,ライブキャスター
-754,3,라이브캐스터
-754,4,即時通訊器
-754,5,Vokit
-754,6,Viso-Caster
-754,7,Videomisor
-754,8,Interpoké
-754,9,Xtransceiver
-754,11,ライブキャスター
-754,12,即时通讯器
-755,1,いでんしのくさび
-755,3,유전자쐐기
-755,4,基因之楔
-755,5,Pointeau ADN
-755,6,DNS-Keil
-755,7,Punta ADN
-755,8,Cuneo DNA
-755,9,DNA Splicers
-755,11,いでんしのくさび
-755,12,基因之楔
-756,1,いでんしのくさび
-756,3,유전자쐐기
-756,4,基因之楔
-756,5,Pointeau ADN
-756,6,DNS-Keil
-756,7,Punta ADN
-756,8,Cuneo DNA
-756,9,DNA Splicers
-756,11,いでんしのくさび
-756,12,基因之楔
-757,1,わすれもの
-757,3,잊은물건
-757,4,遺忘物
-757,5,Objet Trouvé
-757,6,Fundsache
-757,7,Objeto Perdido
-757,8,Oggetto perso
-757,9,Dropped Item
-757,11,わすれもの
-757,12,遗忘物
-758,1,わすれもの
-758,3,잊은물건
-758,4,遺忘物
-758,5,Objet Trouvé
-758,6,Fundsache
-758,7,Objeto Perdido
-758,8,Oggetto perso
-758,9,Dropped Item
-758,11,わすれもの
-758,12,遗忘物
-759,1,ホロキャスター
-759,3,홀로캐스터
-759,4,全像投影通訊器
-759,5,Holokit
-759,6,Holo-Log
-759,7,Holomisor
-759,8,Holovox
-759,9,Holo Caster
-759,11,ホロキャスター
-759,12,全息影像通讯器
 760,1,ラティアスナイト
 760,3,라티아스나이트
 760,4,拉帝亞斯進化石
@@ -7390,26 +7290,6 @@ item_id,local_language_id,name
 765,9,Shalour Sable
 765,11,シャラサブレ
 765,12,娑罗沙布蕾
-766,1,じてんしゃ
-766,3,자전거
-766,4,自行車
-766,5,Bicyclette
-766,6,Fahrrad
-766,7,Bici
-766,8,Bicicletta
-766,9,Bike
-766,11,じてんしゃ
-766,12,自行车
-767,1,ホロキャスター
-767,3,홀로캐스터
-767,4,全像投影通訊器
-767,5,Holokit
-767,6,Holo-Log
-767,7,Holomisor
-767,8,Holovox
-767,9,Holo Caster
-767,11,ホロキャスター
-767,12,全息影像通讯器
 768,1,メガチャーム
 768,3,메가참
 768,4,超級墜飾
@@ -7440,16 +7320,6 @@ item_id,local_language_id,name
 770,9,Devon Parts
 770,11,デボンのにもつ
 770,12,得文的物品
-771,1,ちかのカギ
-771,3,지하열쇠
-771,4,地下鑰匙
-771,5,Clé Sous-Sol
-771,6,Kelleröffner
-771,7,Llave del Sótano
-771,8,Chiave sotterr.
-771,9,Basement Key
-771,11,ちかのカギ
-771,12,地下钥匙
 772,1,ポロックキット
 772,3,포켓몬스넥키트
 772,4,寶可方塊組合
@@ -7500,26 +7370,6 @@ item_id,local_language_id,name
 776,9,Key to Room 6
 776,11,６ごうしつのカギ
 776,12,６号客房的钥匙
-777,1,そうこのカギ
-777,3,창고열쇠
-777,4,倉庫鑰匙
-777,5,Clé Stockage
-777,6,Lagerschlüssel
-777,7,Llave Almacén
-777,8,Chiave magazzino
-777,9,Storage Key
-777,11,そうこのカギ
-777,12,仓库钥匙
-778,1,ふねのチケット
-778,3,승선티켓
-778,4,船票
-778,5,Passe Bateau
-778,6,Bootsticket
-778,7,Ticket Barco
-778,8,Biglietto Nave
-778,9,S.S. Ticket
-778,11,ふねのチケット
-778,12,船票
 779,1,デボンボンベ
 779,3,데봉봄베
 779,4,得文潛水裝備
@@ -7540,16 +7390,6 @@ item_id,local_language_id,name
 780,9,Contest Costume
 780,11,ライブスーツ
 780,12,演出礼服
-781,1,ライブドレス
-781,3,라이브드레스
-781,4,演出禮裙
-781,5,Robe Live
-781,6,Live-Kleid
-781,7,Vestido de Gala
-781,8,Vestito Live
-781,9,Contest Costume
-781,11,ライブドレス
-781,12,演出礼裙
 782,1,マグマスーツ
 782,3,마그마슈트
 782,4,熔岩裝
@@ -7650,16 +7490,6 @@ item_id,local_language_id,name
 791,9,Mega Anklet
 791,11,メガアンクレット
 791,12,超级脚镯
-792,1,いんせき
-792,3,운석
-792,4,隕石
-792,5,Météorite
-792,6,Meteorit
-792,7,Meteorito
-792,8,Meteorite
-792,9,Meteorite
-792,11,いんせき
-792,12,陨石
 793,1,ラグラージナイト
 793,3,대짱이나이트
 793,4,巨沼怪進化石
@@ -7850,26 +7680,6 @@ item_id,local_language_id,name
 811,9,Beedrillite
 811,11,スピアナイト
 811,12,大针蜂进化石
-812,1,いんせき
-812,3,운석
-812,4,隕石
-812,5,Météorite
-812,6,Meteorit
-812,7,Meteorito
-812,8,Meteorite
-812,9,Meteorite
-812,11,いんせき
-812,12,陨石
-813,1,いんせき
-813,3,운석
-813,4,隕石
-813,5,Météorite
-813,6,Meteorit
-813,7,Meteorito
-813,8,Meteorite
-813,9,Meteorite
-813,11,いんせき
-813,12,陨石
 814,1,キーストーン
 814,3,키스톤
 814,4,鑰石
@@ -8210,296 +8020,6 @@ item_id,local_language_id,name
 847,9,Mewnium Z
 847,11,ミュウＺ
 847,12,梦幻Ｚ
-848,1,ノーマルＺ
-848,3,노말Z
-848,4,一般Ｚ
-848,5,Normazélite
-848,6,Normium Z
-848,7,Normastal Z
-848,8,Normium Z
-848,9,Normalium Z
-848,11,ノーマルＺ
-848,12,一般Ｚ
-849,1,ホノオＺ
-849,3,불꽃Z
-849,4,火Ｚ
-849,5,Pyrozélite
-849,6,Pyrium Z
-849,7,Pirostal Z
-849,8,Pirium Z
-849,9,Firium Z
-849,11,ホノオＺ
-849,12,火Ｚ
-850,1,ミズＺ
-850,3,물Z
-850,4,水Ｚ
-850,5,Aquazélite
-850,6,Aquium Z
-850,7,Hidrostal Z
-850,8,Idrium Z
-850,9,Waterium Z
-850,11,ミズＺ
-850,12,水Ｚ
-851,1,デンキＺ
-851,3,전기Z
-851,4,電Ｚ
-851,5,Voltazélite
-851,6,Voltium Z
-851,7,Electrostal Z
-851,8,Electrium Z
-851,9,Electrium Z
-851,11,デンキＺ
-851,12,电Ｚ
-852,1,クサＺ
-852,3,풀Z
-852,4,草Ｚ
-852,5,Florazélite
-852,6,Botanium Z
-852,7,Fitostal Z
-852,8,Herbium Z
-852,9,Grassium Z
-852,11,クサＺ
-852,12,草Ｚ
-853,1,コオリＺ
-853,3,얼음Z
-853,4,冰Ｚ
-853,5,Cryozélite
-853,6,Glacium Z
-853,7,Criostal Z
-853,8,Glacium Z
-853,9,Icium Z
-853,11,コオリＺ
-853,12,冰Ｚ
-854,1,カクトウＺ
-854,3,격투Z
-854,4,格鬥Ｚ
-854,5,Combazélite
-854,6,Battalium Z
-854,7,Lizastal Z
-854,8,Luctium Z
-854,9,Fightinium Z
-854,11,カクトウＺ
-854,12,格斗Ｚ
-855,1,ドクＺ
-855,3,독Z
-855,4,毒Ｚ
-855,5,Toxizélite
-855,6,Toxium Z
-855,7,Toxistal Z
-855,8,Venenium Z
-855,9,Poisonium Z
-855,11,ドクＺ
-855,12,毒Ｚ
-856,1,ジメンＺ
-856,3,땅Z
-856,4,地面Ｚ
-856,5,Terrazélite
-856,6,Terrium Z
-856,7,Geostal Z
-856,8,Terrium Z
-856,9,Groundium Z
-856,11,ジメンＺ
-856,12,地面Ｚ
-857,1,ヒコウＺ
-857,3,비행Z
-857,4,飛行Ｚ
-857,5,Aérozélite
-857,6,Aerium Z
-857,7,Aerostal Z
-857,8,Volantium Z
-857,9,Flyinium Z
-857,11,ヒコウＺ
-857,12,飞行Ｚ
-858,1,エスパーＺ
-858,3,에스퍼Z
-858,4,超能力Ｚ
-858,5,Psychézélite
-858,6,Psium Z
-858,7,Psicostal Z
-858,8,Psichium Z
-858,9,Psychium Z
-858,11,エスパーＺ
-858,12,超能力Ｚ
-859,1,ムシＺ
-859,3,벌레Z
-859,4,蟲Ｚ
-859,5,Insectozélite
-859,6,Insectium Z
-859,7,Insectostal Z
-859,8,Insectium Z
-859,9,Buginium Z
-859,11,ムシＺ
-859,12,虫Ｚ
-860,1,イワＺ
-860,3,바위Z
-860,4,岩石Ｚ
-860,5,Rocazélite
-860,6,Petrium Z
-860,7,Litostal Z
-860,8,Petrium Z
-860,9,Rockium Z
-860,11,イワＺ
-860,12,岩石Ｚ
-861,1,ゴーストＺ
-861,3,고스트Z
-861,4,幽靈Ｚ
-861,5,Spectrozélite
-861,6,Phantomium Z
-861,7,Espectrostal Z
-861,8,Spectrium Z
-861,9,Ghostium Z
-861,11,ゴーストＺ
-861,12,幽灵Ｚ
-862,1,ドラゴンＺ
-862,3,드래곤Z
-862,4,龍Ｚ
-862,5,Dracozélite
-862,6,Dracium Z
-862,7,Dracostal Z
-862,8,Draconium Z
-862,9,Dragonium Z
-862,11,ドラゴンＺ
-862,12,龙Ｚ
-863,1,アクＺ
-863,3,악Z
-863,4,惡Ｚ
-863,5,Ténébrozélite
-863,6,Noctium Z
-863,7,Nictostal Z
-863,8,Obscurium Z
-863,9,Darkinium Z
-863,11,アクＺ
-863,12,恶Ｚ
-864,1,ハガネＺ
-864,3,강철Z
-864,4,鋼Ｚ
-864,5,Métallozélite
-864,6,Metallium Z
-864,7,Metalostal Z
-864,8,Metallium Z
-864,9,Steelium Z
-864,11,ハガネＺ
-864,12,钢Ｚ
-865,1,フェアリーＺ
-865,3,페어리Z
-865,4,妖精Ｚ
-865,5,Nymphézélite
-865,6,Sylphium Z
-865,7,Feeristal Z
-865,8,Follectium Z
-865,9,Fairium Z
-865,11,フェアリーＺ
-865,12,妖精Ｚ
-866,1,ピカチュウＺ
-866,3,피카츄Z
-866,4,皮卡丘Ｚ
-866,5,Pikazélite
-866,6,Pikachium Z
-866,7,Pikastal Z
-866,8,Pikacium Z
-866,9,Pikanium Z
-866,11,ピカチュウＺ
-866,12,皮卡丘Ｚ
-867,1,ジュナイパーＺ
-867,3,모크나이퍼Z
-867,4,狙射樹梟Ｚ
-867,5,Archézélite
-867,6,Silvarronium Z
-867,7,Dueyestal Z
-867,8,Deciduenium Z
-867,9,Decidium Z
-867,11,ジュナイパーＺ
-867,12,狙射树枭Ｚ
-868,1,ガオガエンＺ
-868,3,어흥염Z
-868,4,熾焰咆哮虎Ｚ
-868,5,Félinozélite
-868,6,Fuegronium Z
-868,7,Incinostal Z
-868,8,Incineronium Z
-868,9,Incinium Z
-868,11,ガオガエンＺ
-868,12,炽焰咆哮虎Ｚ
-869,1,アシレーヌＺ
-869,3,누리레느Z
-869,4,西獅海壬Ｚ
-869,5,Oratozélite
-869,6,Primarenium Z
-869,7,Primastal Z
-869,8,Primarinium Z
-869,9,Primarium Z
-869,11,アシレーヌＺ
-869,12,西狮海壬Ｚ
-870,1,カプＺ
-870,3,카푸Z
-870,4,卡璞Ｚ
-870,5,Tokozélite
-870,6,Kapium Z
-870,7,Tapistal Z
-870,8,Tapium Z
-870,9,Tapunium Z
-870,11,カプＺ
-870,12,卡璞Ｚ
-871,1,マーシャドーＺ
-871,3,마샤도Z
-871,4,瑪夏多Ｚ
-871,5,Marshadozélite
-871,6,Marshadownium Z
-871,7,Marshastal Z
-871,8,Marshadium Z
-871,9,Marshadium Z
-871,11,マーシャドーＺ
-871,12,玛夏多Ｚ
-872,1,アロライＺ
-872,3,알로라이Z
-872,4,阿羅雷Ｚ
-872,5,Aloraïzélite
-872,6,A-Raichunium Z
-872,7,Alo-Raistal Z
-872,8,Aloraicium Z
-872,9,Aloraichium Z
-872,11,アロライＺ
-872,12,阿罗雷Ｚ
-873,1,カビゴンＺ
-873,3,잠만보Z
-873,4,卡比獸Ｚ
-873,5,Ronflézélite
-873,6,Relaxonium Z
-873,7,Snorlastal Z
-873,8,Snorlactium Z
-873,9,Snorlium Z
-873,11,カビゴンＺ
-873,12,卡比兽Ｚ
-874,1,イーブイＺ
-874,3,이브이Z
-874,4,伊布Ｚ
-874,5,Évolizélite
-874,6,Evolium Z
-874,7,Eeveestal Z
-874,8,Eevium Z
-874,9,Eevium Z
-874,11,イーブイＺ
-874,12,伊布Ｚ
-875,1,ミュウＺ
-875,3,뮤Z
-875,4,夢幻Ｚ
-875,5,Mewzélite
-875,6,Mewnium Z
-875,7,Mewstal Z
-875,8,Mewnium Z
-875,9,Mewnium Z
-875,11,ミュウＺ
-875,12,梦幻Ｚ
-876,1,サトピカＺ
-876,3,지우피카Z
-876,4,智皮卡Ｚ
-876,5,Pikachazélite
-876,6,Ash-Pikachium Z
-876,7,Ash-Pikastal Z
-876,8,Ashpikacium Z
-876,9,Pikashunium Z
-876,11,サトピカＺ
-876,12,智皮卡Ｚ
 877,1,サトピカＺ
 877,3,지우피카Z
 877,4,智皮卡Ｚ
