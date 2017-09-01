@@ -14,8 +14,8 @@ id,identifier,generation_id,damage_class_id,color
 13,electric,1,3,#F8D030
 14,psychic,1,3,#F85888
 15,ice,1,3,#98D8D8
-16,dragon,1,3#7038F8
+16,dragon,1,3,#7038F8
 17,dark,2,3,#705848
 18,fairy,6,,#EE99AC
 10001,unknown,2,,#68A090
-10002,shadow,3,#555555
+10002,shadow,3,,#555555
