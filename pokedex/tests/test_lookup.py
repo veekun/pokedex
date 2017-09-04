@@ -15,7 +15,7 @@ parametrize = pytest.mark.parametrize
 
         # Funny characters
         (u'Mr. Mime',       'pokemon_species', 122),
-        (u"Farfetch'd",     'pokemon_species', 83),
+        (u"Farfetch’d",     'pokemon_species', 83),
         (u'Poké Ball',      'items',           4),
 
         # Forms
@@ -93,7 +93,7 @@ def test_language_lookup(lookup):
         (u'pokeball',           u'Poké Ball'),
 
         # Names with squiggles in them
-        (u'farfetchd',          u"Farfetch'd"),
+        (u'farfetchd',          u"Farfetch’d"),
         (u'porygonz',           u'Porygon-Z'),
 
         # Sufficiently long foreign names
