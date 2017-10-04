@@ -2165,8 +2165,9 @@ class Type(TableBase):
         doc=u"The ID of the generation this type first appeared in.")
     damage_class_id = Column(Integer, ForeignKey('move_damage_classes.id'), nullable=True,
         doc=u"The ID of the damage class this type's moves had before Generation IV, null if not applicable (e.g. ???).")
-    color = Column(Unicode(7), nullable=False,
-        doc=u"The hex value for the type's color.")
+    color = Column(Unicode(7), nullable=True,
+        doc=u"The hex value for the type's color.",
+        info=dict(format='plaintext'))
 
 create_translation_table('type_names', Type, 'names',
     relation_lazy='joined',
