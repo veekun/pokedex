@@ -4,13 +4,9 @@ This is a Python library slash pile of data containing a whole lot of data scrap
 
 ## Current status
 
-The project is not _dead_, but it is _languishing_.  It's currently being maintained by only a single person ([eevee](https://eev.ee/)), who is also preoccupied with a lot of other things.  It needs a lot of TLC to modernize it and fix a lot of rough edges, but updating it for newly-released games is even more urgent, and that's not happening very quickly either.
+The project is not _dead_, but it is _languishing_.  It's currently being maintained by only a single person ([eevee](https://eev.ee/)), who is also preoccupied with a lot of other things.  It needs a lot of TLC to modernize it and fix a lot of rough edges.
 
-I started on an experiment with switching to YAML for data storage some time ago, for a variety of reasons.  Then new games came out and interrupted me.  I knew that if I didn't commit to the YAML thing then it would never get finished and I'd just grow to resent this project, so for Sun and Moon, I'm dumping to YAML _first_ and then loading that into the old database.  I'm also writing all the extraction code from scratch, since historically our process for new games has involved dozens of little ad-hoc programs we keep losing and a lot of manual effort.
-
-That means the YAML project is finally starting to show some promise, but it's taking me forever to actually get Sun and Moon data on the site.
-
-On the other hand, if I can get this going, the results could be _fantastic_:
+I started on an experiment with switching to YAML for data storage some time ago, for a variety of reasons.  It's finally starting to show some promise — all of gen 7 was dumped to a YAML format, then loaded into the database from there — but it'll take a lot more work to get this usable.  The intended _upsides_ are:
 
 - The data will include everything from older games, so you don't have to guess!  Also, the site will handle older games correctly, probably!
 - Many more filtering and searching tools on veekun, since I won't have to fight SQL to write them!
@@ -18,7 +14,7 @@ On the other hand, if I can get this going, the results could be _fantastic_:
 - A project that's actually documented and not confusing as hell to use!
 - A useful command line interface that doesn't require weird setup steps!
 
-So please be patient.  :)
+If you're interested in this work, hearing about that would be some great motivation!  In the meantime, veekun will look a bit stagnant.  I can't dedicate huge amounts of time to it, either, so this may take a while, if it ever gets done at all.  Sorry.
 
 
 ### How can I help?
