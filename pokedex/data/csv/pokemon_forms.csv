@@ -718,7 +718,7 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 717,yveltal,,717,15,1,0,0,1,969
 718,zygarde,,718,15,1,0,0,1,970
 719,diancie,,719,15,1,0,0,1,974
-720,hoopa,,720,15,1,0,0,1,976
+720,hoopa,confined,720,15,1,0,0,1,976
 721,volcanion,,721,15,1,0,0,1,978
 722,rowlet,,722,17,1,0,0,1,979
 723,dartrix,,723,17,1,0,0,1,980
