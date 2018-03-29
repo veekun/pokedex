@@ -613,7 +613,7 @@ This ability cannot be copied or replaced.  This ability only takes effect for G
 
 This ability cannot be copied or replaced.  This ability only takes effect for Zygarde."
 212,9,This Pokémon can inflict poison on Poison and Steel Pokémon.,This Pokémon's moves and item ignore the usual immunity of Poison and Steel Pokémon when attempting to inflict poison.
-213,9,This Pokémon always  acts as though it were Asleep.,"This Pokémon always acts as though it were Asleep.  It cannot be given another status ailment, it's unaffected by []{move:yawn}, it can use []{move:sleep-talk}, and so on.""
+213,9,This Pokémon always  acts as though it were Asleep.,"This Pokémon always acts as though it were Asleep.  It cannot be given another status ailment, it's unaffected by []{move:yawn}, it can use []{move:sleep-talk}, and so on."
 214,9,Opposing Pokémon cannot use priority attacks.,"When an opposing Pokémon attempts to use a move that targets this Pokémon or an ally, and that move has priority, it will fail."
 215,9,"When this Pokémon faints from an opponent's move, that opponent takes damage equal to the HP this Pokémon had remaining.","When this Pokémon faints from an opponent's move, that opponent takes damage equal to the HP this Pokémon had remaining."
 216,9,"Whenever another Pokémon uses a dance move, this Pokémon will use the same move immediately afterwards.","Whenever another Pokémon uses a dance move, this Pokémon will use the same move immediately afterwards."
