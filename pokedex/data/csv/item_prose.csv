@@ -377,11 +377,11 @@ Used on a party Pokémon
 :   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes bitter flavors (i.e., has a nature that lowers [Special Defense]{mechanic:special-defense}), it will also become [confused]{mechanic:confusion}."
 140,9,Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike sour flavor.,"Held in battle
 :   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes sour flavors (i.e., has a nature that lowers [Defense]{mechanic:defense}), it will also become [confused]{mechanic:confusion}."
-141,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-142,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-143,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-144,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-145,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
+141,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+142,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+143,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+144,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+145,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
 146,9,Drops HP Effort Values by 10 and raises happiness.,"Used on a party Pokémon
 :   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [HP]{mechanic:hp} [effort]{mechanic:effort} by 10."
 147,9,Drops Attack Effort Values by 10 and raises happiness.,"Used on a party Pokémon
