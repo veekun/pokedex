@@ -543,7 +543,7 @@ Held by Onix or Scyther: Evolves the holder into Steelix or Scizor when traded, 
 239,9,Raises the holder's Cuteness while in a contest.,Held: Increases the holder's Cuteness during a Super Contest's Visual Competition.
 240,9,Raises the holder's Smartness while in a contest.,Held: Increases the holder's Smartness during a Super Contest's Visual Competition.
 241,9,Raises the holder's Toughness while in a contest.,Held: Increases the holder's Toughness during a Super Contest's Visual Competition.
-242,9,Held: Provides a 1/10 (10%) boost in accuracy to the holder.,Held: Increases the accuracy of any move the holder uses by 10% (multiplied, i.e. 70% accuracy is increased to 77%).
+242,9,Held: Provides a 1/10 (10%) boost in accuracy to the holder.,"Held: Increases the accuracy of any move the holder uses by 10% (multiplied, i.e. 70% accuracy is increased to 77%)."
 243,9,Held: Boosts the damage of physical moves used by the holder by 10%.,Held: Increases the power of the holder's physical moves by 10%.
 244,9,Held: Boosts the damage of special moves used by the holder by 1/10 (10%).,Held: Increases the power of the holder's special moves by 10%.
 245,9,Held: Holder's Super Effective moves do 20% extra damage.,"Held: When the holder hits with a super-effective move, its power is raised by 20%."
