@@ -895,7 +895,7 @@ This move cannot be selected by []{move:sleep-talk}."
 279,9,Prevents any multi-target moves from hitting friendly Pokémon this turn.,"Moves with multiple targets will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will [fail]{mechanic:fail}.
 
 This move cannot be selected by []{move:assist} or []{move:metronome}."
-280,9,Averages Defense and Special Defense with the target.,Averages the user's unmodified [Defense]{mechanic:defense} with the target's unmodified Defense, the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic:special-defense} is averaged the same way.
+280,9,Averages Defense and Special Defense with the target.,"Averages the user's unmodified [Defense]{mechanic:defense} with the target's unmodified Defense, the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic:special-defense} is averaged the same way."
 281,9,Averages Attack and Special Attack with the target.,"Averages the user's unmodified [Attack]{mechanic:attack} with the target's unmodified Attack; the value becomes the unmodified Attack for both Pokémon. Unmodified [Special Attack]{mechanic:special-attack} is averaged the same way.
 
 This effect applies before any other persistent changes to unmodified Attack or Special Attack, such as []{ability:flower-gift} during []{move:sunny-day}."
