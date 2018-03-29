@@ -752,7 +752,7 @@ This move may be used even if the user is under the effect of []{move:ingrain}. 
 If a Pokémon under this effect uses []{move:bug-bite} or []{move:pluck} on a Pokémon holding a berry, the berry is destroyed but not used.  If a Pokémon under this effect uses []{move:fling}, it will [fail]{mechanic:fail}.
 
 This effect is passed by []{move:baton-pass}."
-234,9,Throws held item at the target, power depends on the item.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's [held item]{mechanic:held-item}.  The item is consumed.  If the user is not holding an item, or its item has no set type and power, this move will [fail]{mechanic:fail}.
+234,9,"Throws held item at the target, power depends on the item.","Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's [held item]{mechanic:held-item}.  The item is consumed.  If the user is not holding an item, or its item has no set type and power, this move will [fail]{mechanic:fail}.
 
 This move ignores []{ability:sticky-hold}.
 
