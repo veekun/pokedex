@@ -394,15 +394,15 @@ Used on a party Pokémon
 :   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Special Defense]{mechanic:special-defense} [effort]{mechanic:effort} by 10."
 151,9,Drops Speed Effort Values by 10 and raises happiness.,"Used on a party Pokémon
 :   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Speed]{mechanic:speed} [effort]{mechanic:effort} by 10."
-152,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-153,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-154,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-155,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-156,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-157,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-158,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-159,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
-160,9,Used for creating PokéBlocks and Poffins.,No effect, only useful for planting and cooking.
+152,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+153,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+154,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+155,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+156,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+157,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+158,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+159,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+160,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
 161,9,Held: Consumed when struck by a super-effective Fire-type attack to halve the damage.,"Held in battle
 :   When the holder would take [super-effective]{mechanic:super-effective} []{type:fire}-type damage, it consumes this item to halve the amount of damage taken."
 162,9,Held: Consumed when struck by a super-effective Water-type attack to halve the damage.,"Held in battle
