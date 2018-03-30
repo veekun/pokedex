@@ -207,11 +207,13 @@ def create_translation_table(_table_name, foreign_class, relation_name,
     return Translations
 
 class MultilangQuery(Query):
-    def __iter__(self):
+    def _execute_and_instances(self, *args, **kwargs):
+        # Set _default_language_id param if it hasn't been set by the time the query is executed.
+        # XXX This is really hacky and we should figure out a cleaner method.
         if '_default_language_id' not in self._params or self._params['_default_language_id'] == 'dummy':
             self._params = self._params.copy()
             self._params['_default_language_id'] = self.session.default_language_id
-        return super(MultilangQuery, self).__iter__()
+        return super(MultilangQuery, self)._execute_and_instances(*args, **kwargs)
 
 class MultilangSession(Session):
     """A tiny Session subclass that adds support for a default language.
