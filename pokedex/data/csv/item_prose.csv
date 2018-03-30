@@ -377,11 +377,11 @@ Used on a party Pokémon
 :   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes bitter flavors (i.e., has a nature that lowers [Special Defense]{mechanic:special-defense}), it will also become [confused]{mechanic:confusion}."
 140,9,Held: Consumed at 1/2 max HP to restore 1/8 max HP. Confuses Pokémon that dislike sour flavor.,"Held in battle
 :   When the holder has 1/2 its max [HP]{mechanic:hp} remaining or less, it consumes this item to restore 1/8 its max HP.  If the holder dislikes sour flavors (i.e., has a nature that lowers [Defense]{mechanic:defense}), it will also become [confused]{mechanic:confusion}."
-141,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-142,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-143,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-144,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-145,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+141,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+142,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+143,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+144,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+145,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
 146,9,Drops HP Effort Values by 10 and raises happiness.,"Used on a party Pokémon
 :   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [HP]{mechanic:hp} [effort]{mechanic:effort} by 10."
 147,9,Drops Attack Effort Values by 10 and raises happiness.,"Used on a party Pokémon
@@ -394,15 +394,15 @@ Used on a party Pokémon
 :   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Special Defense]{mechanic:special-defense} [effort]{mechanic:effort} by 10."
 151,9,Drops Speed Effort Values by 10 and raises happiness.,"Used on a party Pokémon
 :   Increases [happiness]{mechanic:happiness} by 10/5/2.  Lowers [Speed]{mechanic:speed} [effort]{mechanic:effort} by 10."
-152,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-153,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-154,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-155,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-156,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-157,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-158,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-159,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
-160,9,Used for creating PokéBlocks and Poffins.,"No effect, only useful for planting and cooking."
+152,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+153,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+154,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+155,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+156,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+157,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+158,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+159,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
+160,9,Used for creating PokéBlocks and Poffins.,"No effect; only useful for planting and cooking."
 161,9,Held: Consumed when struck by a super-effective Fire-type attack to halve the damage.,"Held in battle
 :   When the holder would take [super-effective]{mechanic:super-effective} []{type:fire}-type damage, it consumes this item to halve the amount of damage taken."
 162,9,Held: Consumed when struck by a super-effective Water-type attack to halve the damage.,"Held in battle
@@ -543,7 +543,7 @@ Held by Onix or Scyther: Evolves the holder into Steelix or Scizor when traded, 
 239,9,Raises the holder's Cuteness while in a contest.,Held: Increases the holder's Cuteness during a Super Contest's Visual Competition.
 240,9,Raises the holder's Smartness while in a contest.,Held: Increases the holder's Smartness during a Super Contest's Visual Competition.
 241,9,Raises the holder's Toughness while in a contest.,Held: Increases the holder's Toughness during a Super Contest's Visual Competition.
-242,9,Held: Provides a 1/10 (10%) boost in accuracy to the holder.,"Held: Increases the accuracy of any move the holder uses by 10% (multiplied, i.e. 70% accuracy is increased to 77%)."
+242,9,Held: Provides a 1/10 (10%) boost in accuracy to the holder.,"Held: Increases the accuracy of any move the holder uses by 10% (multiplied; i.e. 70% accuracy is increased to 77%)."
 243,9,Held: Boosts the damage of physical moves used by the holder by 10%.,Held: Increases the power of the holder's physical moves by 10%.
 244,9,Held: Boosts the damage of special moves used by the holder by 1/10 (10%).,Held: Increases the power of the holder's special moves by 10%.
 245,9,Held: Holder's Super Effective moves do 20% extra damage.,"Held: When the holder hits with a super-effective move, its power is raised by 20%."
@@ -1124,7 +1124,7 @@ Used in battle
 618,9,Ends a wild battle.,"Used in battle
 :   Ends a wild battle.  Cannot be used in trainer battles."
 619,9,Stores props for the Pokémon Musical.,Stores props for the Pokémon Musical.
-620,9,Return to the museum in Nacrene City.,"Only used as a plot point, this item is given to the player and taken away in the same cutscene."
+620,9,Return to the museum in Nacrene City.,"Only used as a plot point; this item is given to the player and taken away in the same cutscene."
 621,9,Sell to Hungry Maid for 25000 Pokédollars.,Cult vendor trash.
 622,9,Sell to Ore Collector for 30000 Pokédollars.,Cult vendor trash.
 623,9,Sell to Ore Collector for 25000 Pokédollars.,Cult vendor trash.
@@ -1236,7 +1236,7 @@ This item can only be obtained or used via the Wonder Launcher."
 674,9,Doubles the chance of two Pokémon producing an egg at the daycare every 255 steps.,Doubles the chance of two Pokémon producing an egg at the daycare every 255 steps.
 675,9,Raises the chance of finding a shiny Pokémon.,Raises the chance of finding a shiny Pokémon.
 676,9,Required to progress in the Plasma Frigate.,Required to progress in the Plasma Frigate.
-677,9,"Appears in the Café Warehouse on Sunday, return to the customer with a Patrat on Thursday.","Appears in the Café Warehouse on Sunday, return to the customer with a Patrat on Thursday."
+677,9,"Appears in the Café Warehouse on Sunday; return to the customer with a Patrat on Thursday.","Appears in the Café Warehouse on Sunday; return to the customer with a Patrat on Thursday."
 678,9,Wakes up the Crustle blocking the way in Seaside Cave.,Wakes up the Crustle blocking the way in Seaside Cave.
 679,9,Returned to Curtis or Yancy as part of a sidequest.,Returned to Curtis or Yancy as part of a sidequest.
 681,9,"Switches Tornadus, Thundurus, and Landorus between Incarnate and Therian Forme.","Switches Tornadus, Thundurus, and Landorus between Incarnate and Therian Forme."
