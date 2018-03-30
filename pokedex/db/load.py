@@ -180,7 +180,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     print_start('Creating tables')
     for n, table in enumerate(table_objs):
-        table.create(bind=engine)
+        table.create()
         print_status('%s/%s' % (n, len(table_objs)))
     print_done()
 
@@ -312,7 +312,6 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
             # Remembering some zillion rows in the session consumes a lot of
             # RAM.  Let's not do that.  Commit every 1000 rows
             if len(new_rows) >= 1000:
-                print("flushing")
                 insert_and_commit()
 
         insert_and_commit()
