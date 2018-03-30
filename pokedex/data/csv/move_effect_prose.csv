@@ -752,7 +752,7 @@ This move may be used even if the user is under the effect of []{move:ingrain}. 
 If a Pokémon under this effect uses []{move:bug-bite} or []{move:pluck} on a Pokémon holding a berry, the berry is destroyed but not used.  If a Pokémon under this effect uses []{move:fling}, it will [fail]{mechanic:fail}.
 
 This effect is passed by []{move:baton-pass}."
-234,9,"Throws held item at the target, power depends on the item.","Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's [held item]{mechanic:held-item}.  The item is consumed.  If the user is not holding an item, or its item has no set type and power, this move will [fail]{mechanic:fail}.
+234,9,"Throws held item at the target; power depends on the item.","Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's [held item]{mechanic:held-item}.  The item is consumed.  If the user is not holding an item, or its item has no set type and power, this move will [fail]{mechanic:fail}.
 
 This move ignores []{ability:sticky-hold}.
 
@@ -895,14 +895,14 @@ This move cannot be selected by []{move:sleep-talk}."
 279,9,Prevents any multi-target moves from hitting friendly Pokémon this turn.,"Moves with multiple targets will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will [fail]{mechanic:fail}.
 
 This move cannot be selected by []{move:assist} or []{move:metronome}."
-280,9,Averages Defense and Special Defense with the target.,"Averages the user's unmodified [Defense]{mechanic:defense} with the target's unmodified Defense, the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic:special-defense} is averaged the same way."
+280,9,Averages Defense and Special Defense with the target.,"Averages the user's unmodified [Defense]{mechanic:defense} with the target's unmodified Defense; the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic:special-defense} is averaged the same way."
 281,9,Averages Attack and Special Attack with the target.,"Averages the user's unmodified [Attack]{mechanic:attack} with the target's unmodified Attack; the value becomes the unmodified Attack for both Pokémon. Unmodified [Special Attack]{mechanic:special-attack} is averaged the same way.
 
 This effect applies before any other persistent changes to unmodified Attack or Special Attack, such as []{ability:flower-gift} during []{move:sunny-day}."
 282,9,All Pokémon's Defense and Special Defense are swapped for 5 turns.,"For five turns (including this one), every Pokémon's [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} are swapped."
 283,9,"Inflicts damage based on the target's Defense, not Special Defense.","Inflicts [regular damage]{mechanic:regular-damage}.  Damage calculation always uses the target's [Defense]{mechanic:defense}, regardless of this move's damage class."
 284,9,Inflicts double damage if the target is Poisoned.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target is [poisoned]{mechanic:poisoned}, this move has double power."
-285,9,Raises the user's Speed by two stages and halves the user's weight.,"Raises the user's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.  Halves the user's weight, this effect does not stack."
+285,9,Raises the user's Speed by two stages and halves the user's weight.,"Raises the user's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.  Halves the user's weight; this effect does not stack."
 286,9,Moves have 100% accuracy against the target for three turns.,"For three turns (including this one), moves used against the target have 100% [accuracy]{mechanic:accuracy}, but the target is immune to []{type:ground} damage.  Accuracy of one-hit KO moves is exempt from this effect.
 
 This effect is removed by []{move:gravity}.  If Gravity is already in effect, this move will [fail]{mechanic:fail}."
