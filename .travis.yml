@@ -7,6 +7,6 @@ python:
     - "pypy3"
 
 install: pip install -e .
-before_script: pokedex setup -v
+before_script: pokedex load -S && pokedex reindex
 script: py.test
 sudo: false
