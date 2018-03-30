@@ -20,10 +20,10 @@ def test_languages(session):
             tables.PokemonSpecies.name == u"Mightyena")
     pkmn = q.one()
     for lang, name in (
-            ('en', u'Mightyena'),
-            ('ja-Hrkt', u'グラエナ'),
-            ('roomaji', u'Guraena'),
-            ('fr', u'Grahyèna'),
+            (u'en', u'Mightyena'),
+            (u'ja-Hrkt', u'グラエナ'),
+            (u'roomaji', u'Guraena'),
+            (u'fr', u'Grahyèna'),
         ):
         language = session.query(tables.Language).filter_by(
                 identifier=lang).one()
@@ -92,8 +92,8 @@ def test_markdown(session):
     assert '10%' in move.effect_map[language].__html__()
 
 def test_markdown_string(session):
-    en = util.get(session, tables.Language, 'en')
-    md = markdown.MarkdownString('[]{move:thunderbolt} [paralyzes]{mechanic:paralysis} []{form:sky shaymin}. []{pokemon:mewthree} does not exist.', session, en)
+    en = util.get(session, tables.Language, u'en')
+    md = markdown.MarkdownString(u'[]{move:thunderbolt} [paralyzes]{mechanic:paralysis} []{form:sky shaymin}. []{pokemon:mewthree} does not exist.', session, en)
     assert str(md) == 'Thunderbolt paralyzes Sky Shaymin. mewthree does not exist.'
     assert md.as_html() == '<p><span>Thunderbolt</span> <span>paralyzes</span> <span>Sky Shaymin</span>. <span>mewthree</span> does not exist.</p>'
 
