@@ -147,6 +147,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     table_objs = sqlalchemy.sql.util.sort_tables(table_objs)
 
+    session = session() # get a concrete Session from a ScopedSession
     engine = session.get_bind()
 
     # Limit table names to 30 characters for Oracle
@@ -157,7 +158,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
     # SQLite speed tweaks
     if not safe and engine.dialect.name == 'sqlite':
         session.execute("PRAGMA synchronous=OFF")
-        #session.execute("PRAGMA journal_mode=OFF")
+        session.execute("PRAGMA journal_mode=OFF")
 
     # Drop all tables if requested
     if drop_tables:
