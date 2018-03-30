@@ -156,7 +156,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     # SQLite speed tweaks
     if not safe and engine.dialect.name == 'sqlite':
-        session.execute("PRAGMA synchronous=OFF")
+        #session.execute("PRAGMA synchronous=OFF")
         session.execute("PRAGMA journal_mode=OFF")
 
     # Drop all tables if requested
