@@ -156,8 +156,21 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     # SQLite speed tweaks
     if not safe and engine.dialect.name == 'sqlite':
-        session.execute("PRAGMA synchronous=OFF")
-        session.execute("PRAGMA journal_mode=OFF")
+        # We have to explicity call close here because session.execute
+        # returns a ResultProxy object that hangs onto the database cursor
+        # in case you wanted to see the results of your statement, and
+        # these PRAGMA commands helpfully return the string 'OFF'.
+        #
+        # This would not normally be a problem, except that when
+        # journal_mode=OFF, SQLite sometimes doesn't like it when you
+        # have multiple database cursors open.
+        #
+        # This would still not normally be a problem because CPython
+        # will free the ResultProxy immediately because it isn't referenced,
+        # closing the database cursor, but this isn't true in PyPy,
+        # which doesn't use reference counting.
+        session.execute("PRAGMA synchronous=OFF").close()
+        session.execute("PRAGMA journal_mode=OFF").close()
 
     # Drop all tables if requested
     if drop_tables:
