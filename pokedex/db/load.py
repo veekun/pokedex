@@ -254,7 +254,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
         def insert_and_commit():
             if not new_rows:
                 return
-            session.execute(insert_stmt, new_rows).close()
+            session.execute(insert_stmt, new_rows)
             session.commit()
             new_rows[:] = []
 
@@ -326,7 +326,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
             session.execute(
                 insert_stmt.values(**row_data)
-            ).close()
+            )
             seen_ids.add(row_data['id'])
 
         session.commit()
@@ -341,7 +341,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
         table_obj = translation_class.__table__
         if table_obj in table_objs:
             insert_stmt = table_obj.insert()
-            session.execute(insert_stmt, rows).close()
+            session.execute(insert_stmt, rows)
             session.commit()
             # We don't have a total, but at least show some increasing number
             new_row_count += len(rows)
