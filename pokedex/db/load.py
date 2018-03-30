@@ -193,7 +193,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     print_start('Creating tables')
     for n, table in enumerate(table_objs):
-        table.create()
+        table.create(bind=engine)
         print_status('%s/%s' % (n, len(table_objs)))
     print_done()
 
