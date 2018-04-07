@@ -17,6 +17,9 @@ def gift_data():
     R = get_version(u'red')
     B = get_version(u'blue')
     Y = get_version(u'yellow')
+    G = get_version(u'gold')
+    S = get_version(u'silver')
+    C = get_version(u'crystal')
     return [
         # Gen I
         [ u'bulbasaur',   [ R, B ],  5, u'pallet-town' ],
@@ -35,6 +38,24 @@ def gift_data():
         [ u'hitmonchan', [ R, B, Y ], 30, u'saffron-city',  u'fighting-dojo' ],
         [ u'eevee',      [ R, B, Y ], 25, u'celadon-city',  u'celadon-mansion' ],
         [ u'lapras',     [ R, B, Y ], 15, u'saffron-city',  u'silph-co-7f' ],
+
+        # Gen II
+        [ u'chikorita', [ G, S, C ],  5, u'new-bark-town' ],
+        [ u'cyndaquil', [ G, S, C ],  5, u'new-bark-town' ],
+        [ u'totodile',  [ G, S, C ],  5, u'new-bark-town' ],
+        [ u'togepi',    [ G, S, C ],  0, u'violet-city'   ],
+        [ u'pichu',     [       C ],  0, u'johto-route-34' ],
+        [ u'cleffa',    [       C ],  0, u'johto-route-34' ],
+        [ u'igglybuff', [       C ],  0, u'johto-route-34' ],
+        [ u'tyrogue',   [       C ],  0, u'johto-route-34' ],
+        [ u'smoochum',  [       C ],  0, u'johto-route-34' ],
+        [ u'elekid',    [       C ],  0, u'johto-route-34' ],
+        [ u'magby',     [       C ],  0, u'johto-route-34' ],
+        [ u'spearow',   [ G, S, C ], 10, u'goldenrod-city', u'north-gate' ],
+        [ u'eevee',     [ G, S, C ], 20, u'goldenrod-city' ],
+        [ u'shuckle',   [ G, S, C ], 15, u'cianwood-city'  ],
+        [ u'dratini',   [       C ], 15, u'dragons-den'    ],
+        [ u'tyrogue',   [ G, S, C ], 10, u'mt-mortar',      u'b1f' ],
     ]
 
 
