@@ -31,6 +31,12 @@ def gift_data():
     PT = get_version(u'platinum')
     HG = get_version(u'heartgold')
     SS = get_version(u'soulsilver')
+
+    BL = get_version(u'black')
+    WH = get_version(u'white')
+    B2 = get_version(u'black-2')
+    W2 = get_version(u'white-2')
+
     return [
         # Gen I
         [ u'bulbasaur',   [ R, B ],  5, u'pallet-town' ],
@@ -69,6 +75,9 @@ def gift_data():
         [ u'tyrogue',   [ G, S, C ], 10, u'mt-mortar',      u'b1f' ],
 
         # Gen III
+        # Note Lileep + Anorith are not listed because they are not *gifts*
+        # They're note quite encounters either
+        # but that's outta scope of gift logic
         [ u'treecko',   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
         [ u'torchic',   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
         [ u'mudkip' ,   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
@@ -124,6 +133,56 @@ def gift_data():
         [ u'treecko',    [ HG, SS ],  5, u'saffron-city',   u'silph-co-7f' ],
         [ u'torchic',    [ HG, SS ],  5, u'saffron-city',   u'silph-co-7f' ],
         [ u'mudkip' ,    [ HG, SS ],  5, u'saffron-city',   u'silph-co-7f' ],
+
+        # Gen V
+        [ u'snivy',      [ BL, WH ],  5, u'nuvema-town'   ],
+        [ u'tepig',      [ BL, WH ],  5, u'nuvema-town'   ],
+        [ u'oshawott',   [ BL, WH ],  5, u'nuvema-town'   ],
+        [ u'pansage',    [ BL, WH ], 10, u'dreamyard'     ], # not the basement
+        [ u'pansear',    [ BL, WH ], 10, u'dreamyard'     ],
+        [ u'panpour',    [ BL, WH ], 10, u'dreamyard'     ],
+        [ u'zorua',      [ BL, WH ], 10, u'castelia-city' ],
+        [ u'tirtouga',   [ BL, WH ], 25, u'relic-castle', u'a' ],
+        [ u'archen',     [ BL, WH ], 25, u'relic-castle', u'a' ],
+        [ u'larvesta',   [ BL, WH ],  0, u'unova-route-18'     ],
+        [ u'omanyte',    [ BL, WH ], 25, u'twist-mountain'     ],
+        [ u'kabuto',     [ BL, WH ], 25, u'twist-mountain'     ],
+        [ u'aerodactyl', [ BL, WH ], 25, u'twist-mountain'     ],
+        [ u'lileep',     [ BL, WH ], 25, u'twist-mountain'     ],
+        [ u'anorith',    [ BL, WH ], 25, u'twist-mountain'     ],
+        [ u'cranidos',   [ BL, WH ], 25, u'twist-mountain'     ],
+        [ u'shieldon',   [ BL, WH ], 25, u'twist-mountain'     ],
+        [ u'magikarp',   [ BL, WH ],  5, u'marvelous-bridge'   ],
+
+        [ u'snivy',      [ B2, W2 ],  5, u'aspertia-city'    ],
+        [ u'tepig',      [ B2, W2 ],  5, u'aspertia-city'    ],
+        [ u'oshawott',   [ B2, W2 ],  5, u'aspertia-city'    ],
+        [ u'zorua',      [ B2, W2 ], 25, u'driftveil-city'   ],
+        [ u'deerling',   [ B2, W2 ], 30, u'unova-route-6'    ],
+        [ u'eevee',      [ B2, W2 ], 10, u'castelia-city'    ],
+        [ u'omanyte',    [ B2, W2 ], 25, u'join-avenue'      ],
+        [ u'kabuto',     [ B2, W2 ], 25, u'join-avenue'      ],
+        [ u'aerodactyl', [ B2, W2 ], 25, u'join-avenue'      ],
+        [ u'lileep',     [ B2, W2 ], 25, u'join-avenue'      ],
+        [ u'anorith',    [ B2, W2 ], 25, u'join-avenue'      ],
+        [ u'cranidos',   [ B2, W2 ], 25, u'join-avenue'      ],
+        [ u'shieldon',   [ B2, W2 ], 25, u'join-avenue'      ],
+        [ u'tirtouga',   [ B2, W2 ], 25, u'join-avenue'      ],
+        [ u'archen',     [ B2, W2 ], 25, u'join-avenue'      ],
+        [ u'magikarp',   [ B2, W2 ],  5, u'marvelous-bridge' ],
+        [ u'happiny',    [ B2, W2 ],  0, u'nacrene-city'     ],
+        [ u'tirtouga',   [ B2, W2 ], 25, u'nacrene-city'     ],
+        [ u'archen',     [ B2, W2 ], 25, u'nacrene-city'     ],
+        [ u'omanyte',    [ B2, W2 ], 25, u'twist-mountain'   ],
+        [ u'kabuto',     [ B2, W2 ], 25, u'twist-mountain'   ],
+        [ u'aerodactyl', [ B2, W2 ], 25, u'twist-mountain'   ],
+        [ u'lileep',     [ B2, W2 ], 25, u'twist-mountain'   ],
+        [ u'anorith',    [ B2, W2 ], 25, u'twist-mountain'   ],
+        [ u'cranidos',   [ B2, W2 ], 25, u'twist-mountain'   ],
+        [ u'shieldon',   [ B2, W2 ], 25, u'twist-mountain'   ],
+        # These are shiny...
+        [ u'dratini',    [     W2 ],  1, u'floccesy-town'    ],
+        [ u'gible',      [ B2     ],  1, u'floccesy-town'    ],
     ]
 
 
