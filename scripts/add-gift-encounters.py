@@ -20,6 +20,11 @@ def gift_data():
     G = get_version(u'gold')
     S = get_version(u'silver')
     C = get_version(u'crystal')
+    RU = get_version(u'ruby')
+    SA = get_version(u'sapphire')
+    EM = get_version(u'emerald')
+    FR = get_version(u'firered')
+    LG = get_version(u'leafgreen')
     return [
         # Gen I
         [ u'bulbasaur',   [ R, B ],  5, u'pallet-town' ],
@@ -56,6 +61,30 @@ def gift_data():
         [ u'shuckle',   [ G, S, C ], 15, u'cianwood-city'  ],
         [ u'dratini',   [       C ], 15, u'dragons-den'    ],
         [ u'tyrogue',   [ G, S, C ], 10, u'mt-mortar',      u'b1f' ],
+
+        # Gen III
+        [ u'treecko',   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
+        [ u'torchic',   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
+        [ u'mudkip' ,   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
+        [ u'wynaut',    [ RU, SA, EM ],  0, u'lavaridge-town'  ],
+        [ u'castform',  [ RU, SA, EM ], 25, u'hoenn-route-119', u'weather-center' ],
+        [ u'beldum',    [ RU, SA, EM ],  5, u'mossdeep-city',   u'stevens-house'  ],
+        [ u'chikorita', [         EM ],  5, u'littleroot-town' ],
+        [ u'cyndaquil', [         EM ],  5, u'littleroot-town' ],
+        [ u'totodile',  [         EM ],  5, u'littleroot-town' ],
+
+        [ u'bulbasaur',  [ FR, LG ],  5, u'pallet-town' ],
+        [ u'charmander', [ FR, LG ],  5, u'pallet-town' ],
+        [ u'squirtle',   [ FR, LG ],  5, u'pallet-town' ],
+        [ u'aerodactyl', [ FR, LG ],  5, u'pewter-city',   u'museum-of-science' ],
+        [ u'magikarp',   [ FR, LG ],  5, u'kanto-route-4', u'pokemon-center' ],
+        [ u'omanyte',    [ FR, LG ],  5, u'mt-moon',       u'b2f' ],
+        [ u'kabuto',     [ FR, LG ],  5, u'mt-moon',       u'b2f' ],
+        [ u'hitmonlee',  [ FR, LG ], 25, u'saffron-city',  u'fighting-dojo' ],
+        [ u'hitmonchan', [ FR, LG ], 25, u'saffron-city',  u'fighting-dojo' ],
+        [ u'eevee',      [ FR, LG ], 25, u'celadon-city',  u'celadon-mansion' ],
+        [ u'lapras',     [ FR, LG ], 25, u'saffron-city',  u'silph-co-7f' ],
+        [ u'togepi',     [ FR, LG ],  0, u'water-labyrinth' ],
     ]
 
 
