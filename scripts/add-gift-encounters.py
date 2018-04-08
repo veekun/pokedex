@@ -25,6 +25,12 @@ def gift_data():
     EM = get_version(u'emerald')
     FR = get_version(u'firered')
     LG = get_version(u'leafgreen')
+
+    DI = get_version(u'diamond')
+    PE = get_version(u'pearl')
+    PT = get_version(u'platinum')
+    HG = get_version(u'heartgold')
+    SS = get_version(u'soulsilver')
     return [
         # Gen I
         [ u'bulbasaur',   [ R, B ],  5, u'pallet-town' ],
@@ -85,6 +91,39 @@ def gift_data():
         [ u'eevee',      [ FR, LG ], 25, u'celadon-city',  u'celadon-mansion' ],
         [ u'lapras',     [ FR, LG ], 25, u'saffron-city',  u'silph-co-7f' ],
         [ u'togepi',     [ FR, LG ],  0, u'water-labyrinth' ],
+
+        # Gen IV
+        [ u'turtwig',  [ DI, PE     ],  5, u'lake-verity', u'before-galactic-intervention' ],
+        [ u'chimchar', [ DI, PE     ],  5, u'lake-verity', u'before-galactic-intervention' ],
+        [ u'piplup',   [ DI, PE     ],  5, u'lake-verity', u'before-galactic-intervention' ],
+        [ u'turtwig',  [         PT ],  5, u'sinnoh-route-201' ],
+        [ u'chimchar', [         PT ],  5, u'sinnoh-route-201' ],
+        [ u'piplup',   [         PT ],  5, u'sinnoh-route-201' ],
+        [ u'togepi',   [ DI, PE, PT ],  0, u'eterna-city' ],
+        [ u'eevee',    [ DI, PE,    ],  5, u'hearthome-city' ],
+        [ u'eevee',    [         PT ], 20, u'hearthome-city' ],
+        [ u'happiny',  [ DI, PE,    ],  0, u'hearthome-city' ],
+        [ u'porygon',  [         PT ], 25, u'veilstone-city' ],
+        [ u'riolu',    [ DI, PE, PT ],  0, u'iron-island', u'b2f-left' ],
+
+        [ u'chikorita',  [ HG, SS ],  5, u'new-bark-town' ],
+        [ u'cyndaquil',  [ HG, SS ],  5, u'new-bark-town' ],
+        [ u'totodile',   [ HG, SS ],  5, u'new-bark-town' ],
+        [ u'togepi',     [ HG, SS ],  0, u'violet-city'   ],
+        [ u'spearow',    [ HG, SS ], 20, u'goldenrod-city', u'north-gate' ],
+        [ u'eevee',      [ HG, SS ],  5, u'goldenrod-city' ],
+        [ u'shuckle',    [ HG, SS ], 15, u'cianwood-city'  ],
+        [ u'dratini',    [ HG, SS ], 15, u'dragons-den'    ],
+        [ u'tyrogue',    [ HG, SS ], 10, u'mt-mortar',      u'b1f' ],
+        [ u'mareep',     [ HG, SS ],  0, u'violet-city'   ],
+        [ u'wooper',     [ HG, SS ],  0, u'violet-city'   ],
+        [ u'slugma',     [ HG, SS ],  0, u'violet-city'   ],
+        [ u'bulbasaur',  [ HG, SS ],  5, u'pallet-town'   ],
+        [ u'charmander', [ HG, SS ],  5, u'pallet-town'   ],
+        [ u'squirtle',   [ HG, SS ],  5, u'pallet-town'   ],
+        [ u'treecko',    [ HG, SS ],  5, u'saffron-city',   u'silph-co-7f' ],
+        [ u'torchic',    [ HG, SS ],  5, u'saffron-city',   u'silph-co-7f' ],
+        [ u'mudkip' ,    [ HG, SS ],  5, u'saffron-city',   u'silph-co-7f' ],
     ]
 
 
