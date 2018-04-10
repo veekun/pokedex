@@ -37,6 +37,11 @@ def gift_data():
     B2 = get_version(u'black-2')
     W2 = get_version(u'white-2')
 
+    X  = get_version(u'x')
+    Y  = get_version(u'y')
+    OR = get_version(u'omega-ruby')
+    AS = get_version(u'alpha-sapphire')
+
     return [
         # Gen I
         [ u'bulbasaur',   [ R, B ],  5, u'pallet-town' ],
@@ -183,6 +188,41 @@ def gift_data():
         # These are shiny...
         [ u'dratini',    [     W2 ],  1, u'floccesy-town'    ],
         [ u'gible',      [ B2     ],  1, u'floccesy-town'    ],
+
+        # Gen VI
+        [ u'chespin',      [ X, Y ],  5, u'aquacorde-town'   ],
+        [ u'fennekin',     [ X, Y ],  5, u'aquacorde-town'   ],
+        [ u'froakie',      [ X, Y ],  5, u'aquacorde-town'   ],
+        [ u'bulbasaur',    [ X, Y ], 10, u'lumiose-city'     ],
+        [ u'charmander',   [ X, Y ], 10, u'lumiose-city'     ],
+        [ u'squirtle',     [ X, Y ], 10, u'lumiose-city'     ],
+        [ u'tyrunt',       [ X, Y ], 20, u'glittering-cave', u'unknown-area-303' ], # 304 means ceiling
+        [ u'amaura',       [ X, Y ], 20, u'glittering-cave', u'unknown-area-303' ],
+        [ u'lucario',      [ X, Y ], 32, u'tower-of-mastery' ],
+        [ u'lapras',       [ X, Y ], 30, u'kalos-route-12'   ],
+
+        [ u'treecko',   [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'torchic',   [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'mudkip',    [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'pikachu',   [ OR, AS ], 20, u'contest-hall'    ], # suprisingly, this location exists already
+        [ u'wynaut',    [ OR, AS ],  0, u'lavaridge-town'  ],
+        [ u'latios',    [ OR     ], 30, u'southern-island' ], # eon tickets ignored here - they're not gifts?
+        [ u'latias',    [     AS ], 30, u'southern-island' ],
+        [ u'castform',  [ OR, AS ], 30, u'hoenn-route-119', u'weather-center' ],
+        [ u'chikorita', [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'cyndaquil', [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'totodile',  [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'togepi',    [ OR, AS ],  0, u'lavaridge-town'  ],
+        [ u'snivy',     [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'tepig',     [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'oshawott',  [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'beldum',    [ OR, AS ],  1, u'mossdeep-city',   u'stevens-house'  ],
+        [ u'turtwig',   [ OR, AS ],  5, u'sinnoh-route-201' ],
+        [ u'chimchar',  [ OR, AS ],  5, u'sinnoh-route-201' ],
+        [ u'piplup',    [ OR, AS ],  5, u'sinnoh-route-201' ],
+        [ u'camerupt',  [ OR, AS ], 40, u'battle-resort'    ],
+        [ u'sharpedo',  [ OR, AS ], 40, u'battle-resort'    ],
+
     ]
 
 
