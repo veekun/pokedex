@@ -850,7 +850,17 @@ create_translation_table('encounter_method_prose', EncounterMethod, 'prose',
 )
 
 class EncounterSlot(TableBase):
-    u"""An abstract "slot" within a method, associated with both some set of conditions and a rarity."""
+    u"""An abstract "slot" within a method, associated with both some set of conditions and a rarity.
+
+    "slot" has a very specific meaning:
+    If during gameplay you know sufficient details about the current game state,
+    you can predict which slot (and therefore which pokemon) will spawn.
+
+    There are currently two reasons that "slot" might be empty:
+    1) The slot corresponds to a gift pokemon.
+    2) Red/Blue's Super Rod slots, which don't correspond to in-game slots.
+       See https://github.com/veekun/pokedex/issues/166#issuecomment-220101455
+    """
 
     __tablename__ = 'encounter_slots'
     id = Column(Integer, primary_key=True, nullable=False,
