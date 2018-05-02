@@ -62,25 +62,25 @@ def create_parser():
         parents=[common_parser],
     )
 
-    cmds = parser.add_subparsers(title='Commands')
+    cmds = parser.add_subparsers(title='commands', metavar='<command>', help='commands')
     cmd_help = cmds.add_parser(
-        'help', help=u'Display this message',
+        'help', help=u'display this message',
         parents=[common_parser])
     cmd_help.set_defaults(func=command_help)
 
     cmd_lookup = cmds.add_parser(
-        'lookup', help=u'Look up something in the Pokédex',
+        'lookup', help=u'look up something in the Pokédex',
         parents=[common_parser])
     cmd_lookup.set_defaults(func=command_lookup)
     cmd_lookup.add_argument('criteria', nargs='+')
 
     cmd_search = cmds.add_parser(
-        'search', help=u'Find things by various criteria',
+        'search', help=u'find things by various criteria',
         parents=[common_parser])
     pokedex.cli.search.configure_parser(cmd_search)
 
     cmd_load = cmds.add_parser(
-        'load', help=u'Load Pokédex data into a database from CSV files',
+        'load', help=u'load Pokédex data into a database from CSV files',
         parents=[common_parser])
     cmd_load.set_defaults(func=command_load, verbose=True)
     # TODO get the actual default here
@@ -105,7 +105,7 @@ def create_parser():
         help="list of database tables to load (default: all)")
 
     cmd_dump = cmds.add_parser(
-        'dump', help=u'Dump Pokédex data from a database into CSV files',
+        'dump', help=u'dump Pokédex data from a database into CSV files',
         parents=[common_parser])
     cmd_dump.set_defaults(func=command_dump, verbose=True)
     cmd_dump.add_argument(
