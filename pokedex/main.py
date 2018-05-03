@@ -14,11 +14,12 @@ from pokedex import defaults
 
 
 def main(junk, *argv):
-    if len(argv) <= 0:
-        command_help()
-        return
-
     parser = create_parser()
+    
+    if len(argv) <= 0:
+        parser.print_help()
+        sys.exit()
+
     args = parser.parse_args(argv)
     args.func(parser, args)
 
@@ -62,7 +63,7 @@ def create_parser():
         parents=[common_parser],
     )
 
-    cmds = parser.add_subparsers(title='Commands')
+    cmds = parser.add_subparsers(title='commands', metavar='<command>', help='commands')
     cmd_help = cmds.add_parser(
         'help', help=u'Display this message',
         parents=[common_parser])
