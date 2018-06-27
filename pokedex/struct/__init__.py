@@ -107,11 +107,11 @@ class SaveFilePokemon(object):
         self._pokemon = session.query(tables.Pokemon).get(st.national_id)
         self._pokemon_form = session.query(tables.PokemonForm) \
             .with_parent(self._pokemon) \
-            .filter_by(name=st.alternate_form) \
+            .filter_by(form_identifier=st.alternate_form) \
             .one()
         self._ability = self._session.query(tables.Ability).get(st.ability_id)
 
-        growth_rate = self._pokemon.evolution_chain.growth_rate
+        growth_rate = self._pokemon.species.growth_rate
         self._experience_rung = session.query(tables.Experience) \
             .filter(tables.Experience.growth_rate == growth_rate) \
             .filter(tables.Experience.experience <= st.exp) \
