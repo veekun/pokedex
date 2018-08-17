@@ -262,11 +262,15 @@ class Translations(object):
     def reader_for_class(self, cls, reader_class=csv.reader):
         tablename = cls.__table__.name
         csvpath = os.path.join(self.csv_directory, tablename + '.csv')
-        return reader_class(open(csvpath, 'r'), lineterminator='\n')
+        if six.PY2:
+            read = open(csvpath, 'r')
+        else:
+            read = open(csvpath, 'r', encoding='utf-8')
+        return reader_class(read, lineterminator='\n')
 
     def writer_for_lang(self, lang):
         csvpath = os.path.join(self.translation_directory, '%s.csv' % lang)
-        return csv.writer(io.open(csvpath, 'w', newline=''), lineterminator='\n')
+        return csv.writer(io.open(csvpath, 'w', newline='', encoding="utf8"), lineterminator='\n')
 
     def yield_source_messages(self, language_id=None):
         """Yield all messages from source CSV files
@@ -307,7 +311,10 @@ class Translations(object):
         """
         path = os.path.join(self.csv_directory, 'translations', '%s.csv' % lang)
         try:
-            file = open(path, 'r')
+            if six.PY2:
+                file = open(path, 'r')
+            else:
+                file = open(path, 'r', encoding="utf8")
         except IOError:
             return ()
         return yield_translation_csv_messages(file)

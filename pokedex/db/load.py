@@ -210,7 +210,10 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
         try:
             csvpath = "%s/%s.csv" % (directory, table_name)
-            csvfile = open(csvpath, 'r')
+            if six.PY2:
+                csvfile = open(csvpath, 'r')
+            else:
+                csvfile = open(csvpath, 'r', encoding="utf8")
         except IOError:
             # File doesn't exist; don't load anything!
             print_done('missing?')
@@ -389,7 +392,7 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
     """
 
     # First take care of verbosity
-    print_start, print_status, print_done = _get_verbose_prints(verbose)
+    print_start, print_done = _get_verbose_prints(verbose)
 
     languages = dict((l.id, l) for l in session.query(pokedex.db.tables.Language))
 
@@ -416,7 +419,7 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
 
         # CSV module only works with bytes on 2 and only works with text on 3!
         if six.PY3:
-            writer = csv.writer(open(filename, 'w', newline=''), lineterminator='\n')
+            writer = csv.writer(open(filename, 'w', newline='', encoding="utf8"), lineterminator='\n')
             columns = [col.name for col in table.columns]
         else:
             writer = csv.writer(open(filename, 'wb'), lineterminator='\n')
