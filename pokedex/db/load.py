@@ -392,7 +392,7 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
     """
 
     # First take care of verbosity
-    print_start, print_done = _get_verbose_prints(verbose)
+    print_start, print_status, print_done = _get_verbose_prints(verbose)
 
     languages = dict((l.id, l) for l in session.query(pokedex.db.tables.Language))
 
