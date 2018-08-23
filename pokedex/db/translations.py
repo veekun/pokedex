@@ -25,10 +25,10 @@ from __future__ import print_function
 
 import binascii
 import csv
-import io
 import os
 import re
 from collections import defaultdict
+from io import open
 
 import six
 from six.moves import zip
@@ -262,15 +262,11 @@ class Translations(object):
     def reader_for_class(self, cls, reader_class=csv.reader):
         tablename = cls.__table__.name
         csvpath = os.path.join(self.csv_directory, tablename + '.csv')
-        if six.PY2:
-            read = open(csvpath, 'r')
-        else:
-            read = open(csvpath, 'r', encoding='utf-8')
-        return reader_class(read, lineterminator='\n')
+        return reader_class(open(csvpath, 'r', encoding='utf-8'), lineterminator='\n')
 
     def writer_for_lang(self, lang):
         csvpath = os.path.join(self.translation_directory, '%s.csv' % lang)
-        return csv.writer(io.open(csvpath, 'w', newline='', encoding="utf8"), lineterminator='\n')
+        return csv.writer(open(csvpath, 'w', encoding='utf-8', newline=''), lineterminator='\n')
 
     def yield_source_messages(self, language_id=None):
         """Yield all messages from source CSV files
@@ -311,10 +307,7 @@ class Translations(object):
         """
         path = os.path.join(self.csv_directory, 'translations', '%s.csv' % lang)
         try:
-            if six.PY2:
-                file = open(path, 'r')
-            else:
-                file = open(path, 'r', encoding="utf8")
+            file = open(path, 'r', encoding='utf-8')
         except IOError:
             return ()
         return yield_translation_csv_messages(file)

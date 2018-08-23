@@ -5,6 +5,7 @@ import csv
 import fnmatch
 import os.path
 import sys
+from io import open
 
 import six
 import sqlalchemy.sql.util
@@ -15,7 +16,6 @@ from pokedex.db import metadata, translations
 from pokedex.defaults import get_default_csv_dir
 from pokedex.db.dependencies import find_dependent_tables
 from pokedex.db.oracle import rewrite_long_table_names
-
 
 def _get_table_names(metadata, patterns):
     """Returns a list of table names from the given metadata.  If `patterns`
@@ -210,10 +210,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
         try:
             csvpath = "%s/%s.csv" % (directory, table_name)
-            if six.PY2:
-                csvfile = open(csvpath, 'r')
-            else:
-                csvfile = open(csvpath, 'r', encoding="utf8")
+            csvfile = open(csvpath, 'r', encoding='utf-8')
         except IOError:
             # File doesn't exist; don't load anything!
             print_done('missing?')
@@ -419,7 +416,7 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
 
         # CSV module only works with bytes on 2 and only works with text on 3!
         if six.PY3:
-            writer = csv.writer(open(filename, 'w', newline='', encoding="utf8"), lineterminator='\n')
+            writer = csv.writer(open(filename, 'w', newline='', encoding='utf-8'), lineterminator='\n')
             columns = [col.name for col in table.columns]
         else:
             writer = csv.writer(open(filename, 'wb'), lineterminator='\n')
