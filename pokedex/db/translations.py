@@ -1,23 +1,18 @@
 #! /usr/bin/env python
 u"""General handling of translations
-
 The general idea is to get messages from somewhere: the source pokedex CSVs,
 or the translation CSVs, etc., then merge them together in some way, and shove
 them into the database.
-
 If a message is translated, it has a source string attached to it, with the
 original English version. Or at least it has a CRC of the original.
 When that doesn't match, it means the English string changed and the
 translation has to be updated.
 Also this is why we can't dump translations from the database: there's no
 original string info.
-
 Some complications:
-
 Flavor text is so repetitive that we take strings from all the version,
 separate the unique ones by blank lines, let translators work on that, and then
 put it in flavor_summary tables.
-
 Routes names and other repetitive numeric things are replaced by e.g.
 "Route {num}" so translators only have to work on each set once.
 """
@@ -25,10 +20,10 @@ from __future__ import print_function
 
 import binascii
 import csv
+import io
 import os
 import re
 from collections import defaultdict
-from io import open
 
 import six
 from six.moves import zip
@@ -73,12 +68,10 @@ def crc(string):
 
 class Message(object):
     """Holds all info about a translatable or translated string
-
     cls: Name of the mapped class the message belongs to
     id: The id of the thing the message belongs to
     colname: name of the database column
     strings: A list of strings in the message, usualy of length 1.
-
     Optional attributes (None if not set):
     colsize: Max length of the database column
     source: The string this was translated from
@@ -220,9 +213,7 @@ class Translations(object):
 
     def write_translations(self, lang, *streams):
         """Write a translation CSV containing messages from streams.
-
         Streams should be ordered by priority, from highest to lowest.
-
         Any official translations (from the main database) are added automatically.
         """
         writer = self.writer_for_lang(lang)
@@ -262,15 +253,18 @@ class Translations(object):
     def reader_for_class(self, cls, reader_class=csv.reader):
         tablename = cls.__table__.name
         csvpath = os.path.join(self.csv_directory, tablename + '.csv')
-        return reader_class(open(csvpath, 'r', encoding='utf-8'), lineterminator='\n')
+        if six.PY2:
+            read = open(csvpath, 'r')
+        else:
+            read = open(csvpath, 'r', encoding='utf-8')
+        return reader_class(read, lineterminator='\n')
 
     def writer_for_lang(self, lang):
         csvpath = os.path.join(self.translation_directory, '%s.csv' % lang)
-        return csv.writer(open(csvpath, 'w', encoding='utf-8', newline=''), lineterminator='\n')
+        return csv.writer(io.open(csvpath, 'w', newline='', encoding="utf8"), lineterminator='\n')
 
     def yield_source_messages(self, language_id=None):
         """Yield all messages from source CSV files
-
         Messages from all languages are returned. The messages are not ordered
         properly, but splitting the stream by language (and filtering results
         by merge_adjacent) will produce proper streams.
@@ -307,7 +301,10 @@ class Translations(object):
         """
         path = os.path.join(self.csv_directory, 'translations', '%s.csv' % lang)
         try:
-            file = open(path, 'r', encoding='utf-8')
+            if six.PY2:
+                file = open(path, 'r')
+            else:
+                file = open(path, 'r', encoding="utf8")
         except IOError:
             return ()
         return yield_translation_csv_messages(file)
@@ -320,7 +317,6 @@ class Translations(object):
 
     def get_load_data(self, langs=None):
         """Yield (translation_class, data for INSERT) pairs for loading into the DB
-
         langs is either a list of language identifiers or None
         """
         if langs is None:
@@ -366,7 +362,6 @@ class Translations(object):
 
 def group_by_object(stream):
     """Group stream by object
-
     Yields ((class name, object ID), (list of messages)) pairs.
     """
     stream = iter(stream)
@@ -384,7 +379,6 @@ def group_by_object(stream):
 
 class Merge(object):
     """Merge several sorted iterators together
-
     Additional iterators may be added at any time with add_iterator.
     Accepts None for the initial iterators
     If the same value appears in more iterators, there will be duplicates in
@@ -442,13 +436,10 @@ def merge_adjacent(gen):
 
 def leftjoin(left_stream, right_stream, key=lambda x: x, unused=None):
     """A "left join" operation on sorted iterators
-
     Yields (left, right) pairs, where left comes from left_stream and right
     is the corresponding item from right, or None
-
     Note that if there are duplicates in right_stream, you won't get duplicate
     rows for them.
-
     If given, unused should be a one-arg function that will get called on all
     unused items in right_stream.
     """
@@ -587,14 +578,12 @@ def yield_translation_csv_messages(file, no_header=False):
 def pot_for_column(cls, column, summary=False):
     """Translatable texts get categorized into different POT files to help
        translators prioritize. The pots are:
-
     - flavor: Flavor texts: here, strings from multiple versions are summarized
     - ripped: Strings ripped from the games; translators for "official"
       languages don't need to bother with these
     - effects: Fanon descriptions of things; they usually use technical
       language
     - misc: Everything else; usually small texts
-
     Set source to true if this is a flavor summary column. Others are
     determined by the column itself.
     """
@@ -614,14 +603,11 @@ def number_replace(source, string):
 
 def match_to_source(source, *translations):
     """Matches translated string(s) to source
-
     The first translation whose source matches the source message, or whose CRC
     matches, or which is official, and which is not fuzzy, it is used.
     If thre's no such translation, the first translation is used.
-
     Returns (source, source string CRC, string for CSV file, exact match?)
     If there are no translations, returns (source, None, None, None)
-
     Handles translations where numbers have been replaced by {num}, if they
     have source information.
     """
@@ -662,9 +648,7 @@ def match_to_source(source, *translations):
 
 def merge_translations(source_stream, *translation_streams, **kwargs):
     """For each source message, get its best translation from translations.
-
     Translations should be ordered by priority, highest to lowest.
-
     Messages that don't appear in translations at all aren't included.
     """
     source = tuple(source_stream)
