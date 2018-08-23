@@ -40,6 +40,7 @@ def _get_verbose_prints(verbose):
     """If `verbose` is true, returns three functions: one for printing a
     starting message, one for printing an interim status update, and one for
     printing a success or failure message when finished.
+
     If `verbose` is false, returns no-op functions.
     """
 
@@ -100,23 +101,32 @@ def _get_verbose_prints(verbose):
 
 def load(session, tables=[], directory=None, drop_tables=False, verbose=False, safe=True, recursive=True, langs=None):
     """Load data from CSV files into the given database session.
+
     Tables are created automatically.
+
     `session`
         SQLAlchemy session to use.
+
     `tables`
         List of tables to load.  If omitted, all tables are loaded.
+
     `directory`
         Directory the CSV files reside in.  Defaults to the `pokedex` data
         directory.
+
     `drop_tables`
         If set to True, existing `pokedex`-related tables will be dropped.
+
     `verbose`
         If set to True, status messages will be printed to stdout.
+
     `safe`
         If set to False, load can be faster, but can corrupt the database if
         it crashes or is interrupted.
+
     `recursive`
         If set to True, load all dependent tables too.
+
     `langs`
         List of identifiers of extra language to load, or None to load them all
     """
@@ -363,15 +373,20 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 def dump(session, tables=[], directory=None, verbose=False, langs=None):
     """Dumps the contents of a database to a set of CSV files.  Probably not
     useful to anyone besides a developer.
+
     `session`
         SQLAlchemy session to use.
+
     `tables`
         List of tables to dump.  If omitted, all tables are dumped.
+
     `directory`
         Directory the CSV files should be put in.  Defaults to the `pokedex`
         data directory.
+
     `verbose`
         If set to True, status messages will be printed to stdout.
+
     `langs`
         List of identifiers of languages to dump unofficial texts for
     """
@@ -455,4 +470,3 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
                 writer.writerow(csvs)
 
         print_done()
-        
