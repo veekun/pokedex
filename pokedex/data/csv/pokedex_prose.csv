@@ -41,3 +41,7 @@ pokedex_id,local_language_id,name,description
 15,5,Hoenn amélioré,"Pokédex régional d'Hoenn dans Rubis Oméga/Saphir Alpha, mis à jour pour les nouvelles évolutions"
 15,6,Neue Hoenn,Omega Rubin/Alpha Saphir Hoenn Dex — Dex aus Rubin/Saphir/Smaragd um Neue Entwicklungen erweitert
 15,9,New Hoenn,"Omega Ruby/Alpha Sapphire Hoenn Dex—Ruby/Sapphire/Emerald's, updated to add new evolutions"
+16,6,Alola,Sonne/Mond Alola Dex
+16,9,Alola,Sun/Moon Alola Dex
+17,6,Alola,Ultra Sonne/Ultra Mond Dex
+17,9,Alola,Ultra Sun/Ultra Moon Dex

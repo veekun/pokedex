@@ -13,3 +13,5 @@ id,region_id,identifier,is_main_series
 13,6,kalos-coastal,1
 14,6,kalos-mountain,1
 15,3,updated-hoenn,1
+16,7,alola-sm,1
+17,7,alola-usum,1
