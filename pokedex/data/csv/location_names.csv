@@ -918,120 +918,456 @@ location_id,local_language_id,name
 428,1,海底遺跡
 428,5,Ruines des Abysses
 428,9,Abyssal Ruins
+429,1,トウカシティ
+429,3,등화도시
 429,5,Clémenti-Ville
+429,6,Blütenburg City
+429,7,Ciudad Petalia
+429,8,Petalipoli
 429,9,Petalburg City
+429,11,トウカシティ
+430,1,カイナシティ
+430,3,잿빛도시
 430,5,Poivressel
+430,6,Graphitport City
+430,7,Ciudad Portual
+430,8,Porto Selcepoli
 430,9,Slateport City
+430,11,カイナシティ
+431,1,ミナモシティ
+431,3,해안시티
 431,5,Nénucrique
+431,6,Seegrasulb City
+431,7,Ciudad Calagua
+431,8,Porto Alghepoli
 431,9,Lilycove City
+431,11,ミナモシティ
+432,1,トクサネシティ
+432,3,이끼시티
 432,5,Algatia
+432,6,Moosbach City
+432,7,Ciudad Algaria
+432,8,Verdeazzupoli
 432,9,Mossdeep City
+432,11,トクサネシティ
+433,1,ルネシティ
+433,3,루네시티
 433,5,Atalanopolis
+433,6,Xeneroville
+433,7,Arrecípolis
+433,8,Ceneride
 433,9,Sootopolis City
-434,5,Eternara
+433,11,ルネシティ
+434,1,サイユウシティ
+434,3,그랜드시티
+434,5,Éternara
+434,6,Prachtpolis City
+434,7,Ciudad Colosalia
+434,8,Iridopoli
 434,9,Ever Grande City
+434,11,サイユウシティ
+435,1,りゅうせいのたき
+435,3,유성의 폭포
 435,5,Site Météore
+435,6,Meteorfälle
+435,7,Cascada Meteoro
+435,8,Cascate Meteora
 435,9,Meteor Falls
+435,11,流星の滝
+436,1,カナシダトンネル
+436,3,금잔터널
 436,5,Tunnel Mérazon
+436,6,Metaflurtunnel
+436,7,Túnel Fervergal
+436,8,Tunnel Menferro
 436,9,Rusturf Tunnel
+436,11,カナシダトンネル
+437,1,いしのどうくつ
+437,3,바위 동굴
 437,5,Grotte Granite
+437,6,Granithöhle
+437,7,Cueva Granito
+437,8,Grotta Pietrosa
 437,9,Granite Cave
+437,11,石の洞窟
+438,1,トウカのもり
+438,3,등화숲
 438,5,Bois Clémenti
+438,6,Blütenburgwald
+438,7,Bosque Petalia
+438,8,Bosco Petalo
 438,9,Petalburg Woods
+438,11,トウカの森
+439,1,デコボコさんどう
+439,3,울퉁불퉁 산길
 439,5,Sentier Sinuroc
+439,6,Steilpass
+439,7,Desfiladero
+439,8,Passo Selvaggio
 439,9,Jagged Pass
+439,11,デコボコ山道
+440,1,ほのおのぬけみち
+440,3,불꽃샛길
 440,5,Chemin Ardent
+440,6,Feuriger Pfad
+440,7,Senda Ígnea
+440,8,Cammino Ardente
 440,9,Fiery Path
+440,11,炎の抜け道
+441,1,おくりびやま
+441,3,송화산
 441,5,Mont Mémoria
+441,6,Pyroberg
+441,7,Monte Pírico
+441,8,Monte Pira
 441,9,Mt. Pyre
+441,11,おくりび山
+442,1,かいていどうくつ
+442,3,해저동굴
 442,5,Caverne Fondmer
+442,6,Tiefseehöhle
+442,7,Caverna Abisal
+442,8,Antro Abissale
 442,9,Seafloor Cavern
+442,11,海底洞窟
+443,1,めざめのほこら
+443,3,각성의 사당
 443,5,Grotte Origine
+443,6,Urzeithöhle
+443,7,Cueva Ancestral
+443,8,Grotta dei Tempi
 443,9,Cave of Origin
+443,11,目覚めのほこら
+444,1,チャンピオンロード
+444,3,챔피언로드
 444,5,Route Victoire
+444,6,Siegesstraße
+444,7,Calle Victoria
+444,8,Via Vittoria
 444,9,Victory Road
+444,11,チャンピオンロード
+445,1,あさせのほらあな
+445,3,여울의 동굴
 445,5,Grotte Tréfonds
+445,6,Küstenhöhle
+445,7,Cueva Cardumen
+445,8,Grotta Ondosa
 445,9,Shoal Cave
+445,11,浅瀬の洞穴
+446,1,ニューキンセツ
+446,3,뉴보라
 446,5,New Lavandia
+446,6,Neu Malvenfroh
+446,7,Malvalanova
+446,8,Ciclanova
 446,9,New Mauville
+446,11,ニューキンセツ
 447,5,Épave
 447,9,Abandoned Ship
-448,5,Tour Céleste
+448,1,そらのはしら
+448,3,하늘기둥
+448,5,Pilier Céleste
+448,6,Himmelturm
+448,7,Pilar Celeste
+448,8,Torre dei Cieli
 448,9,Sky Pillar
+448,11,空の柱
+449,1,１０１ばんどうろ
+449,3,101번도로
 449,5,Route 101
+449,6,Route 101
+449,7,Ruta 101
+449,8,Percorso 101
 449,9,Route 101
+449,11,１０１番道路
+450,1,１０２ばんどうろ
+450,3,102번도로
 450,5,Route 102
+450,6,Route 102
+450,7,Ruta 102
+450,8,Percorso 102
 450,9,Route 102
+450,11,１０２番道路
+451,1,１０３ばんどうろ
+451,3,103번도로
 451,5,Route 103
+451,6,Route 103
+451,7,Ruta 103
+451,8,Percorso 103
 451,9,Route 103
+451,11,１０３番道路
+452,1,１０４ばんどうろ
+452,3,104번도로
 452,5,Route 104
+452,6,Route 104
+452,7,Ruta 104
+452,8,Percorso 104
 452,9,Route 104
-453,5,Route 105
+452,11,１０４番道路
+453,1,１０５ばんすいどう
+453,3,105번수로
+453,5,Chenal 105
+453,6,Route 105
+453,7,Ruta 105
+453,8,Percorso 105
 453,9,Route 105
-454,5,Route 106
+453,11,１０５番水道
+454,1,１０６ばんすいどう
+454,3,106번수로
+454,5,Chenal 106
+454,6,Route 106
+454,7,Ruta 106
+454,8,Percorso 106
 454,9,Route 106
-455,5,Route 107
+454,11,１０６番水道
+455,1,１０７ばんすいどう
+455,3,107번수로
+455,5,Chenal 107
+455,6,Route 107
+455,7,Ruta 107
+455,8,Percorso 107
 455,9,Route 107
-456,5,Route 108
+455,11,１０７番水道
+456,1,１０８ばんすいどう
+456,3,108번수로
+456,5,Chenal 108
+456,6,Route 108
+456,7,Ruta 108
+456,8,Percorso 108
 456,9,Route 108
-457,5,Route 109
+456,11,１０８番水道
+457,1,１０９ばんすいどう
+457,3,109번수로
+457,5,Chenal 109
+457,6,Route 109
+457,7,Ruta 109
+457,8,Percorso 109
 457,9,Route 109
+457,11,１０９番水道
+458,1,１１０ばんどうろ
+458,3,110번도로
 458,5,Route 110
+458,6,Route 110
+458,7,Ruta 110
+458,8,Percorso 110
 458,9,Route 110
+458,11,１１０番道路
+459,1,１１１ばんどうろ
+459,3,111번도로
 459,5,Route 111
+459,6,Route 111
+459,7,Ruta 111
+459,8,Percorso 111
 459,9,Route 111
+459,11,１１１番道路
+460,1,１１２ばんどうろ
+460,3,112번도로
 460,5,Route 112
+460,6,Route 112
+460,7,Ruta 112
+460,8,Percorso 112
 460,9,Route 112
+460,11,１１２番道路
+461,1,１１３ばんどうろ
+461,3,113번도로
 461,5,Route 113
+461,6,Route 113
+461,7,Ruta 113
+461,8,Percorso 113
 461,9,Route 113
+461,11,１１３番道路
+462,1,１１４ばんどうろ
+462,3,114번도로
 462,5,Route 114
+462,6,Route 114
+462,7,Ruta 114
+462,8,Percorso 114
 462,9,Route 114
+462,11,１１４番道路
+463,1,１１５ばんどうろ
+463,3,115번도로
 463,5,Route 115
+463,6,Route 115
+463,7,Ruta 115
+463,8,Percorso 115
 463,9,Route 115
+463,11,１１５番道路
+464,1,１１６ばんどうろ
+464,3,116번도로
 464,5,Route 116
+464,6,Route 116
+464,7,Ruta 116
+464,8,Percorso 116
 464,9,Route 116
+464,11,１１６番道路
+465,1,１１７ばんどうろ
+465,3,117번도로
 465,5,Route 117
+465,6,Route 117
+465,7,Ruta 117
+465,8,Percorso 117
 465,9,Route 117
+465,11,１１７番道路
+466,1,１１８ばんどうろ
+466,3,118번도로
 466,5,Route 118
+466,6,Route 118
+466,7,Ruta 118
+466,8,Percorso 118
 466,9,Route 118
+466,11,１１８番道路
+467,1,１１９ばんどうろ
+467,3,119번도로
 467,5,Route 119
+467,6,Route 119
+467,7,Ruta 119
+467,8,Percorso 119
 467,9,Route 119
+467,11,１１９番道路
+468,1,１２０ばんどうろ
+468,3,120번도로
 468,5,Route 120
+468,6,Route 120
+468,7,Ruta 120
+468,8,Percorso 120
 468,9,Route 120
+468,11,１２０番道路
+469,1,１２１ばんどうろ
+469,3,121번도로
 469,5,Route 121
+469,6,Route 121
+469,7,Ruta 121
+469,8,Percorso 121
 469,9,Route 121
-470,5,Route 122
+469,11,１２１番道路
+470,1,１２２ばんすいどう
+470,3,122번수로
+470,5,Chenal 122
+470,6,Route 122
+470,7,Ruta 122
+470,8,Percorso 122
 470,9,Route 122
+470,11,１２２番水道
+471,1,１２３ばんどうろ
+471,3,123번도로
 471,5,Route 123
+471,6,Route 123
+471,7,Ruta 123
+471,8,Percorso 123
 471,9,Route 123
-472,5,Route 124
+471,11,１２３番道路
+472,1,１２４ばんすいどう
+472,3,124번수로
+472,5,Chenal 124
+472,6,Route 124
+472,7,Ruta 124
+472,8,Percorso 124
 472,9,Route 124
-473,5,Route 125
+472,11,１２４番水道
+473,1,１２５ばんすいどう
+473,3,125번수로
+473,5,Chenal 125
+473,6,Route 125
+473,7,Ruta 125
+473,8,Percorso 125
 473,9,Route 125
-474,5,Route 126
+473,11,１２５番水道
+474,1,１２６ばんすいどう
+474,3,126번수로
+474,5,Chenal 126
+474,6,Route 126
+474,7,Ruta 126
+474,8,Percorso 126
 474,9,Route 126
-475,5,Route 127
+474,11,１２６番水道
+475,1,１２７ばんすいどう
+475,3,127번수로
+475,5,Chenal 127
+475,6,Route 127
+475,7,Ruta 127
+475,8,Percorso 127
 475,9,Route 127
-476,5,Route 128
+475,11,１２７番水道
+476,1,１２８ばんすいどう
+476,3,128번수로
+476,5,Chenal 128
+476,6,Route 128
+476,7,Ruta 128
+476,8,Percorso 128
 476,9,Route 128
-477,5,Route 129
+476,11,１２８番水道
+477,1,１２９ばんすいどう
+477,3,129번수로
+477,5,Chenal 129
+477,6,Route 129
+477,7,Ruta 129
+477,8,Percorso 129
 477,9,Route 129
-478,5,Route 130
+477,11,１２９番水道
+478,1,１３０ばんすいどう
+478,3,130번수로
+478,5,Chenal 130
+478,6,Route 130
+478,7,Ruta 130
+478,8,Percorso 130
 478,9,Route 130
-479,5,Route 131
+478,11,１３０番水道
+479,1,１３１ばんすいどう
+479,3,131번수로
+479,5,Chenal 131
+479,6,Route 131
+479,7,Ruta 131
+479,8,Percorso 131
 479,9,Route 131
-480,5,Route 132
+479,11,１３１番水道
+480,1,１３２ばんすいどう
+480,3,132번수로
+480,5,Chenal 132
+480,6,Route 132
+480,7,Ruta 132
+480,8,Percorso 132
 480,9,Route 132
-481,5,Route 133
+480,11,１３２番水道
+481,1,１３３ばんすいどう
+481,3,133번수로
+481,5,Chenal 133
+481,6,Route 133
+481,7,Ruta 133
+481,8,Percorso 133
 481,9,Route 133
-482,5,Route 134
+481,11,１３３番水道
+482,1,１３４ばんすいどう
+482,3,134번수로
+482,5,Chenal 134
+482,6,Route 134
+482,7,Ruta 134
+482,8,Percorso 134
 482,9,Route 134
+482,11,１３４番水道
+483,1,サファリゾーン
+483,3,사파리존
 483,5,Parc Safari
+483,6,Safari-Zone
+483,7,Zona Safari
+483,8,Zona Safari
 483,9,Safari Zone
-484,5,Village Myokara
+483,11,サファリゾーン
+484,1,ムロタウン
+484,3,무로마을
+484,5,Myokara
+484,6,Faustauhaven
+484,7,Pueblo Azuliza
+484,8,Bluruvia
 484,9,Dewford Town
+484,11,ムロタウン
+485,1,キナギタウン
+485,3,황금마을
 485,5,Pacifiville
+485,6,Floßbrunn
+485,7,Pueblo Oromar
+485,8,Orocea
 485,9,Pacifidlog Town
+485,11,キナギタウン
 486,5,Planque Magma
 486,9,Magma Hideout
 487,5,Tour Mirage
@@ -1218,44 +1554,152 @@ location_id,local_language_id,name
 566,1,誓いの林
 566,5,Bois du Serment
 566,9,Pledge Grove
+567,1,ミシロタウン
+567,3,미로마을
 567,5,Bourg-en-Vol
+567,6,Wurzelheim
+567,7,Villa Raíz
+567,8,Albanova
 567,9,Littleroot Town
+567,11,ミシロタウン
+568,1,コトキタウン
+568,3,고도마을
 568,5,Rosyères
+568,6,Rosaltstadt
+568,7,Pueblo Escaso
+568,8,Solarosa
 568,9,Oldale Town
+568,11,コトキタウン
+569,1,フエンタウン
+569,3,용암마을
 569,5,Vermilava
+569,6,Bad Lavastadt
+569,7,Pueblo Lavacalda
+569,8,Cuordilava
 569,9,Lavaridge Town
+569,11,フエンタウン
+570,1,ハジツゲタウン
+570,3,단풍마을
 570,5,Autéquia
+570,6,Laubwechselfeld
+570,7,Pueblo Pardal
+570,8,Brunifoglia
 570,9,Fallarbor Town
+570,11,ハジツゲタウン
+571,1,シダケタウン
+571,3,잔디마을
 571,5,Vergazon
+571,6,Wiesenflur
+571,7,Pueblo Verdegal
+571,8,Mentania
 571,9,Verdanturf Town
+571,11,シダケタウン
+572,1,キンセツシティ
+572,3,보라시티
 572,5,Lavandia
+572,6,Malvenfroh City
+572,7,Ciudad Malvalona
+572,8,Ciclamipoli
 572,9,Mauville City
+572,11,キンセツシティ
+573,1,カナズミシティ
+573,3,금탄도시
 573,5,Mérouville
+573,6,Metarost City
+573,7,Ciudad Férrica
+573,8,Ferrugipoli
 573,9,Rustboro City
+573,11,カナズミシティ
+574,1,ヒワマキシティ
+574,3,검방울시티
 574,5,Cimetronelle
+574,6,Baumhausen City
+574,7,Ciudad Arborada
+574,8,Forestopoli
 574,9,Fortree City
+574,11,ヒワマキシティ
 575,5,Fond marin
 575,9,Underwater
+576,1,えんとつやま
+576,3,굴뚝산
 576,5,Mont Chimnée
+576,6,Schlotberg
+576,7,Monte Cenizo
+576,8,Monte Camino
 576,9,Mt. Chimney
-577,5,Ile Mirage
+576,11,えんとつ山
+577,1,マボロシじま
+577,3,환상섬
+577,5,Île Mirage
+577,6,Wundereiland
+577,7,Isla Espejismo
+577,8,Isola Miraggio
 577,9,Mirage Island
-578,5,Ile du Sud
+577,11,マボロシ島
+578,1,みなみのことう
+578,3,남쪽의 외딴섬
+578,5,Île du Sud
+578,6,Insel im Süden
+578,7,Isla del Sur
+578,8,Isola Remota
 578,9,Southern Island
+578,11,南の孤島
+579,1,おふれのせきしつ
+579,3,고시의 석실
 579,5,Sanctuaire
+579,6,Siegelkammer
+579,7,Cámara Sellada
+579,8,Sala Incisa
 579,9,Sealed Chamber
+579,11,おふれの石室
+580,1,ひでりのいわと
+580,3,가뭄의 암굴
 580,5,Grotte Zénith
+580,6,Sonnengrotte
+580,7,Gruta Solar
+580,8,Grottino Solare
 580,9,Scorched Slab
-581,5,Grotte Island
+580,11,日照りの岩戸
+581,1,こじまのよこあな
+581,3,작은 섬 옆굴
+581,5,Grotte de l’Îlot
+581,6,Inselhöhle
+581,7,Cueva Insular
+581,8,Grotta Insulare
 581,9,Island Cave
+581,11,小島の横穴
+582,1,さばくいせき
+582,3,사막유적
 582,5,Ruines Désert
+582,6,Wüstenruine
+582,7,Ruinas del Desierto
+582,8,Rovine Sabbiose
 582,9,Desert Ruins
+582,11,砂漠遺跡
+583,1,こだいづか
+583,3,고대의 무덤
 583,5,Tombeau Antique
+583,6,Grabmal
+583,7,Tumba Antigua
+583,8,Tomba Antica
 583,9,Ancient Tomb
-584,5,Dans le camion
-584,9,Inside of truck
+583,11,古代塚
+584,1,？？？
+584,3,???
+584,5,???
+584,6,???
+584,7,(?)
+584,8,???
+584,9,???
+584,11,？？？
+585,1,ひみつきち
+585,3,비밀기지
 585,5,Base Secrète
+585,6,Geheimbasis
+585,7,Base Secreta
+585,8,Base Segreta
 585,9,Secret Base
+585,11,ひみつきち
 586,5,Tour de Combat
 586,9,Battle Tower
 587,1,アサメタウン
@@ -2090,3 +2534,155 @@ location_id,local_language_id,name
 690,8,Grotta Ignota
 690,9,Unknown Dungeon
 690,11,ななしの洞窟
+691,1,ポケモンリーグ
+691,3,포켓몬리그
+691,5,Ligue Pokémon
+691,6,Pokémon Liga
+691,7,Liga Pokémon
+691,8,Lega Pokémon
+691,9,Pokémon League
+691,11,ポケモンリーグ
+692,1,アクアだんアジト
+692,3,아쿠아단아지트
+692,5,Planque Aqua
+692,6,Team Aquas Versteck
+692,7,Guarida Aqua
+692,8,Rifugio Idro
+692,9,Team Aqua Hideout
+692,11,アクア団アジト
+693,1,シーキンセツ
+693,3,씨보라
+693,5,Lavandia Sea
+693,6,Seewoge Malvenfroh
+693,7,Malvamar
+693,8,Ciclamare
+693,9,Sea Mauville
+693,11,シーキンセツ
+694,1,マグマだんアジト
+694,3,마그마단아지트
+694,5,Planque Magma
+694,6,Team Magmas Versteck
+694,7,Guarida Magma
+694,8,Rifugio Magma
+694,9,Team Magma Hideout
+694,11,マグマ団アジト
+695,1,バトルリゾート
+695,3,배틀리조트
+695,5,Atoll de Combat
+695,6,Kampfresort
+695,7,Resort Batalla
+695,8,Resort Lotta
+695,9,Battle Resort
+695,11,バトルリゾート
+696,1,タイドリップごう
+696,3,타이드립호
+696,5,Le Marina
+696,6,MS Tide
+696,7,S.S. Marea
+696,8,Motonave Marea
+696,9,S.S. Tidal
+696,11,タイドリップ号
+697,1,マボロシもり
+697,3,환상숲
+697,5,Forêt Mirage
+697,6,Wunderwald
+697,7,Bosque Espejismo
+697,8,Selva Miraggio
+697,9,Mirage Forest
+697,11,マボロシ森
+698,1,マボロシどうくつ
+698,3,환상동굴
+698,5,Grotte Mirage
+698,6,Wunderhöhle
+698,7,Cueva Espejismo
+698,8,Grotta Miraggio
+698,9,Mirage Cave
+698,11,マボロシ洞窟
+699,1,マボロシやま
+699,3,환상산
+699,5,Mont Mirage
+699,6,Wunderberg
+699,7,Monte Espejismo
+699,8,Monte Miraggio
+699,9,Mirage Mountain
+699,11,マボロシ山
+700,1,みかいのもり
+700,3,미개척의 숲
+700,5,Forêt Impénétrable
+700,6,Wilder Wald
+700,7,Bosque Virgen
+700,8,Foresta Vergine
+700,9,Trackless Forest
+700,11,未開の森
+701,1,なもなきへいげん
+701,3,이름없는 평원
+701,5,Plaine Sans Nom
+701,6,Namenlose Ebene
+701,7,Llanura Sinnombre
+701,8,Piana Senza Nome
+701,9,Pathless Plain
+701,11,名もなき平原
+702,1,みちのどうくつ
+702,3,미지의 동굴
+702,5,Grotte Oubliée
+702,6,Unerforschte Höhle
+702,7,Cueva Ignota
+702,8,Caverna Ignota
+702,9,Nameless Cavern
+702,11,未知の洞窟
+703,1,おぼろのどうくつ
+703,3,희미한 동굴
+703,5,Grotte Évanescente
+703,6,Rätselhafte Höhle
+703,7,Cueva Incierta
+703,8,Grotta Sfuggente
+703,9,Fabled Cave
+703,11,おぼろの洞窟
+704,1,いびつなあな
+704,3,비틀린 굴
+704,5,Gouffre Informe
+704,6,Höhle der Spaltung
+704,7,Boquete Irregular
+704,8,Fossa Informe
+704,9,Gnarled Den
+704,11,いびつな穴
+705,1,ゆみなりのしま
+705,3,궁형의 섬
+705,5,Île de l’Arc
+705,6,Sichelinsel
+705,7,Isla Creciente
+705,8,Isola Arcodiluna
+705,9,Crescent Isle
+705,11,弓形の島
+706,1,ひみつのこじま
+706,3,비밀의 작은 섬
+706,5,Îlot Secret
+706,6,Geheiminsel
+706,7,Islote Secreto
+706,8,Isolotto Segreto
+706,9,Secret Islet
+706,11,ひみつの小島
+707,1,おおぞら
+707,3,창공
+707,5,Grand Ciel
+707,6,Luftraum
+707,7,Firmamento
+707,8,Ipersfera
+707,9,Soaring in the sky
+707,11,大空
+708,1,ひみつのいそべ
+708,3,비밀의 바위해변
+708,5,Plage Secrète
+708,6,Geheime Küste
+708,7,Costa Secreta
+708,8,Baia Segreta
+708,9,Secret Shore
+708,11,ひみつのいそべ
+709,1,ひみつのはなばたけ
+709,3,비밀의 꽃밭
+709,5,Champ Fleuri Secret
+709,6,Geheime Blumenwiese
+709,7,Prado Secreto
+709,8,Valle Segreta
+709,9,Secret Meadow
+709,11,ひみつの花畑
