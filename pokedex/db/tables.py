@@ -1112,6 +1112,11 @@ create_translation_table('location_names', Location, 'names',
     name = Column(Unicode(79), nullable=False, index=True,
         doc=u"The name",
         info=dict(format='plaintext', official=True)),
+    subtitle = Column(Unicode(79), nullable=True, index=False,
+        doc=u"""A subtitle for the location, if any.
+            This may be an alternate name for the locaton, as in the Kalos routes,
+            or the name of a subarea of the location, as in Alola.""",
+        info=dict(format='plaintext', official=True)),
 )
 
 class LocationArea(TableBase):
