@@ -13,35 +13,35 @@ session = connect()
 def get_version(name):
     return session.query(Version).filter_by(identifier=identifier_from_name(name)).one()
 
-def gift_data():
-    R = get_version(u'red')
-    B = get_version(u'blue')
-    Y = get_version(u'yellow')
-    G = get_version(u'gold')
-    S = get_version(u'silver')
-    C = get_version(u'crystal')
-    RU = get_version(u'ruby')
-    SA = get_version(u'sapphire')
-    EM = get_version(u'emerald')
-    FR = get_version(u'firered')
-    LG = get_version(u'leafgreen')
+R = get_version(u'red')
+B = get_version(u'blue')
+Y = get_version(u'yellow')
+G = get_version(u'gold')
+S = get_version(u'silver')
+C = get_version(u'crystal')
+RU = get_version(u'ruby')
+SA = get_version(u'sapphire')
+EM = get_version(u'emerald')
+FR = get_version(u'firered')
+LG = get_version(u'leafgreen')
 
-    DI = get_version(u'diamond')
-    PE = get_version(u'pearl')
-    PT = get_version(u'platinum')
-    HG = get_version(u'heartgold')
-    SS = get_version(u'soulsilver')
+DI = get_version(u'diamond')
+PE = get_version(u'pearl')
+PT = get_version(u'platinum')
+HG = get_version(u'heartgold')
+SS = get_version(u'soulsilver')
 
-    BL = get_version(u'black')
-    WH = get_version(u'white')
-    B2 = get_version(u'black-2')
-    W2 = get_version(u'white-2')
+BL = get_version(u'black')
+WH = get_version(u'white')
+B2 = get_version(u'black-2')
+W2 = get_version(u'white-2')
 
-    X  = get_version(u'x')
-    Y  = get_version(u'y')
-    OR = get_version(u'omega-ruby')
-    AS = get_version(u'alpha-sapphire')
+X  = get_version(u'x')
+Y  = get_version(u'y')
+OR = get_version(u'omega-ruby')
+AS = get_version(u'alpha-sapphire')
 
+def normal_gift_data():
     return [
         # Gen I
         [ u'bulbasaur',   [ R, B ],  5, u'pallet-town' ],
@@ -65,14 +65,6 @@ def gift_data():
         [ u'chikorita', [ G, S, C ],  5, u'new-bark-town' ],
         [ u'cyndaquil', [ G, S, C ],  5, u'new-bark-town' ],
         [ u'totodile',  [ G, S, C ],  5, u'new-bark-town' ],
-        [ u'togepi',    [ G, S, C ],  0, u'violet-city'   ],
-        [ u'pichu',     [       C ],  0, u'johto-route-34' ],
-        [ u'cleffa',    [       C ],  0, u'johto-route-34' ],
-        [ u'igglybuff', [       C ],  0, u'johto-route-34' ],
-        [ u'tyrogue',   [       C ],  0, u'johto-route-34' ],
-        [ u'smoochum',  [       C ],  0, u'johto-route-34' ],
-        [ u'elekid',    [       C ],  0, u'johto-route-34' ],
-        [ u'magby',     [       C ],  0, u'johto-route-34' ],
         [ u'spearow',   [ G, S, C ], 10, u'goldenrod-city', u'north-gate' ],
         [ u'eevee',     [ G, S, C ], 20, u'goldenrod-city' ],
         [ u'shuckle',   [ G, S, C ], 15, u'cianwood-city'  ],
@@ -86,7 +78,6 @@ def gift_data():
         [ u'treecko',   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
         [ u'torchic',   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
         [ u'mudkip' ,   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
-        [ u'wynaut',    [ RU, SA, EM ],  0, u'lavaridge-town'  ],
         [ u'castform',  [ RU, SA, EM ], 25, u'hoenn-route-119', u'weather-center' ],
         [ u'beldum',    [ RU, SA, EM ],  5, u'mossdeep-city',   u'stevens-house'  ],
         [ u'chikorita', [         EM ],  5, u'littleroot-town' ],
@@ -104,7 +95,6 @@ def gift_data():
         [ u'hitmonchan', [ FR, LG ], 25, u'saffron-city',  u'fighting-dojo' ],
         [ u'eevee',      [ FR, LG ], 25, u'celadon-city',  u'celadon-mansion' ],
         [ u'lapras',     [ FR, LG ], 25, u'saffron-city',  u'silph-co-7f' ],
-        [ u'togepi',     [ FR, LG ],  0, u'water-labyrinth' ],
 
         # Gen IV
         [ u'turtwig',  [ DI, PE     ],  5, u'lake-verity', u'before-galactic-intervention' ],
@@ -113,25 +103,18 @@ def gift_data():
         [ u'turtwig',  [         PT ],  5, u'sinnoh-route-201' ],
         [ u'chimchar', [         PT ],  5, u'sinnoh-route-201' ],
         [ u'piplup',   [         PT ],  5, u'sinnoh-route-201' ],
-        [ u'togepi',   [ DI, PE, PT ],  0, u'eterna-city' ],
         [ u'eevee',    [ DI, PE,    ],  5, u'hearthome-city' ],
         [ u'eevee',    [         PT ], 20, u'hearthome-city' ],
-        [ u'happiny',  [ DI, PE,    ],  0, u'hearthome-city' ],
         [ u'porygon',  [         PT ], 25, u'veilstone-city' ],
-        [ u'riolu',    [ DI, PE, PT ],  0, u'iron-island', u'b2f-left' ],
 
         [ u'chikorita',  [ HG, SS ],  5, u'new-bark-town' ],
         [ u'cyndaquil',  [ HG, SS ],  5, u'new-bark-town' ],
         [ u'totodile',   [ HG, SS ],  5, u'new-bark-town' ],
-        [ u'togepi',     [ HG, SS ],  0, u'violet-city'   ],
         [ u'spearow',    [ HG, SS ], 20, u'goldenrod-city', u'north-gate' ],
         [ u'eevee',      [ HG, SS ],  5, u'goldenrod-city' ],
         [ u'shuckle',    [ HG, SS ], 15, u'cianwood-city'  ],
         [ u'dratini',    [ HG, SS ], 15, u'dragons-den'    ],
         [ u'tyrogue',    [ HG, SS ], 10, u'mt-mortar',      u'b1f' ],
-        [ u'mareep',     [ HG, SS ],  0, u'violet-city'   ],
-        [ u'wooper',     [ HG, SS ],  0, u'violet-city'   ],
-        [ u'slugma',     [ HG, SS ],  0, u'violet-city'   ],
         [ u'bulbasaur',  [ HG, SS ],  5, u'pallet-town'   ],
         [ u'charmander', [ HG, SS ],  5, u'pallet-town'   ],
         [ u'squirtle',   [ HG, SS ],  5, u'pallet-town'   ],
@@ -149,7 +132,6 @@ def gift_data():
         [ u'zorua',      [ BL, WH ], 10, u'castelia-city' ],
         [ u'tirtouga',   [ BL, WH ], 25, u'relic-castle', u'a' ],
         [ u'archen',     [ BL, WH ], 25, u'relic-castle', u'a' ],
-        [ u'larvesta',   [ BL, WH ],  0, u'unova-route-18'     ],
         [ u'omanyte',    [ BL, WH ], 25, u'twist-mountain'     ],
         [ u'kabuto',     [ BL, WH ], 25, u'twist-mountain'     ],
         [ u'aerodactyl', [ BL, WH ], 25, u'twist-mountain'     ],
@@ -175,7 +157,6 @@ def gift_data():
         [ u'tirtouga',   [ B2, W2 ], 25, u'join-avenue'      ],
         [ u'archen',     [ B2, W2 ], 25, u'join-avenue'      ],
         [ u'magikarp',   [ B2, W2 ],  5, u'marvelous-bridge' ],
-        [ u'happiny',    [ B2, W2 ],  0, u'nacrene-city'     ],
         [ u'tirtouga',   [ B2, W2 ], 25, u'nacrene-city'     ],
         [ u'archen',     [ B2, W2 ], 25, u'nacrene-city'     ],
         [ u'omanyte',    [ B2, W2 ], 25, u'twist-mountain'   ],
@@ -205,14 +186,12 @@ def gift_data():
         [ u'torchic',   [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'mudkip',    [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'pikachu',   [ OR, AS ], 20, u'contest-hall'    ], # suprisingly, this location exists already
-        [ u'wynaut',    [ OR, AS ],  0, u'lavaridge-town'  ],
         [ u'latios',    [ OR     ], 30, u'southern-island' ], # eon tickets ignored here - they're not gifts?
         [ u'latias',    [     AS ], 30, u'southern-island' ],
         [ u'castform',  [ OR, AS ], 30, u'hoenn-route-119', u'weather-center' ],
         [ u'chikorita', [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'cyndaquil', [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'totodile',  [ OR, AS ],  5, u'hoenn-route-101' ],
-        [ u'togepi',    [ OR, AS ],  0, u'lavaridge-town'  ],
         [ u'snivy',     [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'tepig',     [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'oshawott',  [ OR, AS ],  5, u'hoenn-route-101' ],
@@ -222,64 +201,94 @@ def gift_data():
         [ u'piplup',    [ OR, AS ],  5, u'sinnoh-route-201' ],
         [ u'camerupt',  [ OR, AS ], 40, u'battle-resort'    ],
         [ u'sharpedo',  [ OR, AS ], 40, u'battle-resort'    ],
-
     ]
 
+def egg_gift_data():
+    return [
+        [ u'togepi',    [ G, S, C ],  5, u'violet-city'   ],
+        [ u'pichu',     [       C ],  5, u'johto-route-34' ],
+        [ u'cleffa',    [       C ],  5, u'johto-route-34' ],
+        [ u'igglybuff', [       C ],  5, u'johto-route-34' ],
+        [ u'tyrogue',   [       C ],  5, u'johto-route-34' ],
+        [ u'smoochum',  [       C ],  5, u'johto-route-34' ],
+        [ u'elekid',    [       C ],  5, u'johto-route-34' ],
+        [ u'magby',     [       C ],  5, u'johto-route-34' ],
 
-gift_method = session.query(EncounterMethod).filter_by(identifier=u'gift').one()
+        [ u'wynaut',    [ RU, SA, EM ],  5, u'lavaridge-town'  ],
+        [ u'togepi',     [ FR, LG ],  5, u'water-labyrinth' ],
 
-for gift_data in gift_data():
-    pokemon_name  = identifier_from_name(gift_data[0])
-    versions      = gift_data[1]
-    level         = identifier_from_name(str(gift_data[2]))
-    location_name = identifier_from_name(gift_data[3])
-    area_name       = None
-    if len(gift_data) > 4:
-        area_name     = identifier_from_name(gift_data[4])
+        [ u'togepi',   [ DI, PE, PT ],  1, u'eterna-city' ],
+        [ u'happiny',  [ DI, PE,    ],  1, u'hearthome-city' ],
+        [ u'riolu',    [ DI, PE, PT ],  1, u'iron-island', u'b2f-left' ],
+        [ u'togepi',     [ HG, SS ],  1, u'violet-city'   ],
+        [ u'mareep',     [ HG, SS ],  1, u'violet-city'   ],
+        [ u'wooper',     [ HG, SS ],  1, u'violet-city'   ],
+        [ u'slugma',     [ HG, SS ],  1, u'violet-city'   ],
 
+        [ u'larvesta',   [ BL, WH ],  1, u'unova-route-18'     ],
+        [ u'happiny',    [ B2, W2 ],  1, u'nacrene-city'     ],
+        [ u'wynaut',    [ OR, AS ],  1, u'lavaridge-town'  ],
+        [ u'togepi',    [ OR, AS ],  1, u'lavaridge-town'  ],
+    ]
 
-    pokemon       = session.query(Pokemon     ).filter_by(identifier=pokemon_name                      ).one()
-    location      = session.query(Location    ).filter_by(identifier=location_name                     ).one()
-    location_area = session.query(LocationArea).filter_by(identifier=area_name, location_id=location.id).first()
-    # Some of these don't exist yet
-    if not location_area:
-        location_area = LocationArea(
-            location_id = location.id,
-            game_index  = 0, # cause who knows what this means
-            identifier  = area_name
-        )
-        session.add(location_area)
-        session.commit()
+def record_method_and_gifts(gift_method, gift_data):
+    for gift_datum in gift_data:
+        pokemon_name  = identifier_from_name(gift_datum[0])
+        versions      = gift_datum[1]
+        level         = identifier_from_name(str(gift_datum[2]))
+        location_name = identifier_from_name(gift_datum[3])
+        area_name       = None
+        if len(gift_datum) > 4:
+            area_name     = identifier_from_name(gift_datum[4])
 
-    for version in versions:
-        encounter_slot = session.query(EncounterSlot).filter_by(
-            version_group_id    = version.version_group_id,
-            encounter_method_id = gift_method.id
-        ).first()
-
-        if not encounter_slot:
-            encounter_slot = EncounterSlot(
-                version_group_id = version.version_group_id,
-                encounter_method_id = gift_method.id,
-                # No priority over or under other events/conditions
-                slot                = None,
-                # Rarity is meaningless for gifts
-                rarity              = None,
+        pokemon       = session.query(Pokemon     ).filter_by(identifier=pokemon_name                      ).one()
+        location      = session.query(Location    ).filter_by(identifier=location_name                     ).one()
+        location_area = session.query(LocationArea).filter_by(identifier=area_name, location_id=location.id).first()
+        # Some of these don't exist yet
+        if not location_area:
+            location_area = LocationArea(
+                location_id = location.id,
+                game_index  = 0, # cause who knows what this means
+                identifier  = area_name
             )
-            session.add(encounter_slot)
+            session.add(location_area)
             session.commit()
 
-        encounter_info = {
-            'version_id':        version.id,
-            'location_area_id':  location_area.id,
-            'encounter_slot_id': encounter_slot.id,
-            'pokemon_id':        pokemon.id,
-            'min_level':         level,
-            'max_level':         level
-        }
-        encounter = session.query(Encounter).filter_by(**encounter_info).first()
-        if not encounter:
-            encounter = Encounter(**encounter_info)
-            session.add(encounter)
+        for version in versions:
+            encounter_slot = session.query(EncounterSlot).filter_by(
+                version_group_id    = version.version_group_id,
+                encounter_method_id = gift_method.id
+            ).first()
 
-    session.commit()
+            if not encounter_slot:
+                encounter_slot = EncounterSlot(
+                    version_group_id = version.version_group_id,
+                    encounter_method_id = gift_method.id,
+                    # No priority over or under other events/conditions
+                    slot                = None,
+                    # Rarity is meaningless for gifts
+                    rarity              = None,
+                )
+                session.add(encounter_slot)
+                session.commit()
+
+            encounter_info = {
+                'version_id':        version.id,
+                'location_area_id':  location_area.id,
+                'encounter_slot_id': encounter_slot.id,
+                'pokemon_id':        pokemon.id,
+                'min_level':         level,
+                'max_level':         level
+            }
+            encounter = session.query(Encounter).filter_by(**encounter_info).first()
+            if not encounter:
+                encounter = Encounter(**encounter_info)
+                session.add(encounter)
+
+        session.commit()
+
+normal_gift_method = session.query(EncounterMethod).filter_by(identifier=u'gift').one()
+record_method_and_gifts(normal_gift_method, normal_gift_data())
+
+egg_gift_method = session.query(EncounterMethod).filter_by(identifier=u'gift-egg').one()
+record_method_and_gifts(egg_gift_method, egg_gift_data())
