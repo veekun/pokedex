@@ -5,8 +5,7 @@ reference.
 """
 
 from pokedex.db import connect, identifier_from_name
-from pokedex.db.tables import Encounter, EncounterSlot, LocationArea
-from pokedex.db.tables import EncounterMethod, Location, Pokemon, Version
+from pokedex.db.tables import Encounter, EncounterMethod, EncounterSlot, Language, Location, LocationArea, Pokemon, Version
 
 session = connect()
 
@@ -52,22 +51,22 @@ def normal_gift_data():
         [ u'charmander',  [ Y    ], 10, u'kanto-route-24' ],
         [ u'squirtle',    [ Y    ], 10, u'vermilion-city' ],
 
-        [ u'aerodactyl', [ R, B, Y ], 30, u'pewter-city',   u'museum-of-science' ],
-        [ u'magikarp',   [ R, B, Y ],  5, u'kanto-route-4', u'pokemon-center' ],
+        [ u'aerodactyl', [ R, B, Y ], 30, u'pewter-city',   u'museum-of-science', u'Pewter Museum of Science' ],
+        [ u'magikarp',   [ R, B, Y ],  5, u'kanto-route-4', u'pokemon-center',    u'Pokemon Center' ],
         [ u'omanyte',    [ R, B, Y ], 30, u'mt-moon',       u'b2f' ],
         [ u'kabuto',     [ R, B, Y ], 30, u'mt-moon',       u'b2f' ],
-        [ u'hitmonlee',  [ R, B, Y ], 30, u'saffron-city',  u'fighting-dojo' ],
-        [ u'hitmonchan', [ R, B, Y ], 30, u'saffron-city',  u'fighting-dojo' ],
-        [ u'eevee',      [ R, B, Y ], 25, u'celadon-city',  u'celadon-mansion' ],
-        [ u'lapras',     [ R, B, Y ], 15, u'saffron-city',  u'silph-co-7f' ],
+        [ u'hitmonlee',  [ R, B, Y ], 30, u'saffron-city',  u'fighting-dojo',     u'Fighting Dojo' ],
+        [ u'hitmonchan', [ R, B, Y ], 30, u'saffron-city',  u'fighting-dojo',     u'Fighting Dojo' ],
+        [ u'eevee',      [ R, B, Y ], 25, u'celadon-city',  u'celadon-mansion',   u'Celadon Mansion rooftop' ],
+        [ u'lapras',     [ R, B, Y ], 15, u'saffron-city',  u'silph-co-7f',       u'Silph Co. 7F' ],
 
         # Gen II
         [ u'chikorita', [ G, S, C ],  5, u'new-bark-town' ],
         [ u'cyndaquil', [ G, S, C ],  5, u'new-bark-town' ],
         [ u'totodile',  [ G, S, C ],  5, u'new-bark-town' ],
-        [ u'spearow',   [ G, S, C ], 10, u'goldenrod-city', u'north-gate' ],
-        [ u'eevee',     [ G, S, C ], 20, u'goldenrod-city' ],
-        [ u'shuckle',   [ G, S, C ], 15, u'cianwood-city'  ],
+        [ u'spearow',   [ G, S, C ], 10, u'goldenrod-city', u'north-gate',   u'North Gate' ],
+        [ u'eevee',     [ G, S, C ], 20, u'goldenrod-city', u'bills-house',  u"Bill's house" ],
+        [ u'shuckle',   [ G, S, C ], 15, u'cianwood-city',  u'manias-house', u"Mania's house" ],
         [ u'dratini',   [       C ], 15, u'dragons-den'    ],
         [ u'tyrogue',   [ G, S, C ], 10, u'mt-mortar',      u'b1f' ],
 
@@ -78,8 +77,8 @@ def normal_gift_data():
         [ u'treecko',   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
         [ u'torchic',   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
         [ u'mudkip' ,   [ RU, SA, EM ],  5, u'hoenn-route-101' ],
-        [ u'castform',  [ RU, SA, EM ], 25, u'hoenn-route-119', u'weather-center' ],
-        [ u'beldum',    [ RU, SA, EM ],  5, u'mossdeep-city',   u'stevens-house'  ],
+        [ u'castform',  [ RU, SA, EM ], 25, u'hoenn-route-119', u'weather-institute', u'Weather Institute' ],
+        [ u'beldum',    [ RU, SA, EM ],  5, u'mossdeep-city',   u'stevens-house',     u"Steven's house"  ],
         [ u'chikorita', [         EM ],  5, u'littleroot-town' ],
         [ u'cyndaquil', [         EM ],  5, u'littleroot-town' ],
         [ u'totodile',  [         EM ],  5, u'littleroot-town' ],
@@ -111,8 +110,8 @@ def normal_gift_data():
         [ u'cyndaquil',  [ HG, SS ],  5, u'new-bark-town' ],
         [ u'totodile',   [ HG, SS ],  5, u'new-bark-town' ],
         [ u'spearow',    [ HG, SS ], 20, u'goldenrod-city', u'north-gate' ],
-        [ u'eevee',      [ HG, SS ],  5, u'goldenrod-city' ],
-        [ u'shuckle',    [ HG, SS ], 15, u'cianwood-city'  ],
+        [ u'eevee',      [ HG, SS ],  5, u'goldenrod-city', u'bills-house' ],
+        [ u'shuckle',    [ HG, SS ], 15, u'cianwood-city', u'kirks-house', u"Kirk's house"  ],
         [ u'dratini',    [ HG, SS ], 15, u'dragons-den'    ],
         [ u'tyrogue',    [ HG, SS ], 10, u'mt-mortar',      u'b1f' ],
         [ u'bulbasaur',  [ HG, SS ],  5, u'pallet-town'   ],
@@ -129,7 +128,7 @@ def normal_gift_data():
         [ u'pansage',    [ BL, WH ], 10, u'dreamyard'     ], # not the basement
         [ u'pansear',    [ BL, WH ], 10, u'dreamyard'     ],
         [ u'panpour',    [ BL, WH ], 10, u'dreamyard'     ],
-        [ u'zorua',      [ BL, WH ], 10, u'castelia-city' ],
+        [ u'zorua',      [ BL, WH ], 10, u'castelia-city', u'game-freak-hq-1f', u'Game Freak HQ 1F' ],
         [ u'tirtouga',   [ BL, WH ], 25, u'relic-castle', u'a' ],
         [ u'archen',     [ BL, WH ], 25, u'relic-castle', u'a' ],
         [ u'omanyte',    [ BL, WH ], 25, u'twist-mountain'     ],
@@ -145,7 +144,7 @@ def normal_gift_data():
         [ u'tepig',      [ B2, W2 ],  5, u'aspertia-city'    ],
         [ u'oshawott',   [ B2, W2 ],  5, u'aspertia-city'    ],
         [ u'zorua',      [ B2, W2 ], 25, u'driftveil-city'   ],
-        [ u'deerling',   [ B2, W2 ], 30, u'unova-route-6'    ],
+        [ u'deerling',   [ B2, W2 ], 30, u'unova-route-6', u'weather-institute', u'Weather Institute' ],
         [ u'eevee',      [ B2, W2 ], 10, u'castelia-city'    ],
         [ u'omanyte',    [ B2, W2 ], 25, u'join-avenue'      ],
         [ u'kabuto',     [ B2, W2 ], 25, u'join-avenue'      ],
@@ -157,8 +156,8 @@ def normal_gift_data():
         [ u'tirtouga',   [ B2, W2 ], 25, u'join-avenue'      ],
         [ u'archen',     [ B2, W2 ], 25, u'join-avenue'      ],
         [ u'magikarp',   [ B2, W2 ],  5, u'marvelous-bridge' ],
-        [ u'tirtouga',   [ B2, W2 ], 25, u'nacrene-city'     ],
-        [ u'archen',     [ B2, W2 ], 25, u'nacrene-city'     ],
+        [ u'tirtouga',   [ B2, W2 ], 25, u'nacrene-city', u'museum', u'Nacrene City Museum' ],
+        [ u'archen',     [ B2, W2 ], 25, u'nacrene-city', u'museum'],
         [ u'omanyte',    [ B2, W2 ], 25, u'twist-mountain'   ],
         [ u'kabuto',     [ B2, W2 ], 25, u'twist-mountain'   ],
         [ u'aerodactyl', [ B2, W2 ], 25, u'twist-mountain'   ],
@@ -188,7 +187,7 @@ def normal_gift_data():
         [ u'pikachu',   [ OR, AS ], 20, u'contest-hall'    ], # suprisingly, this location exists already
         [ u'latios',    [ OR     ], 30, u'southern-island' ], # eon tickets ignored here - they're not gifts?
         [ u'latias',    [     AS ], 30, u'southern-island' ],
-        [ u'castform',  [ OR, AS ], 30, u'hoenn-route-119', u'weather-center' ],
+        [ u'castform',  [ OR, AS ], 30, u'hoenn-route-119', u'weather-institute' ],
         [ u'chikorita', [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'cyndaquil', [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'totodile',  [ OR, AS ],  5, u'hoenn-route-101' ],
@@ -217,21 +216,24 @@ def egg_gift_data():
         [ u'wynaut',    [ RU, SA, EM ],  5, u'lavaridge-town'  ],
         [ u'togepi',     [ FR, LG ],  5, u'water-labyrinth' ],
 
-        [ u'togepi',   [ DI, PE, PT ],  1, u'eterna-city' ],
-        [ u'happiny',  [ DI, PE,    ],  1, u'hearthome-city' ],
+        [ u'togepi',   [ DI, PE, PT ],  1, u'eterna-city',    u'west-gate', u'West Gate' ],
+        [ u'happiny',  [ DI, PE,    ],  1, u'hearthome-city', u'west-gate', u'West Gate' ],
         [ u'riolu',    [ DI, PE, PT ],  1, u'iron-island', u'b2f-left' ],
-        [ u'togepi',     [ HG, SS ],  1, u'violet-city'   ],
-        [ u'mareep',     [ HG, SS ],  1, u'violet-city'   ],
-        [ u'wooper',     [ HG, SS ],  1, u'violet-city'   ],
-        [ u'slugma',     [ HG, SS ],  1, u'violet-city'   ],
+        [ u'togepi',     [ HG, SS ],  1, u'violet-city',   u'poke-mart', u'Poke Mart' ],
+        [ u'mareep',     [ HG, SS ],  1, u'violet-city',   u'pokemon-center', u'Pokemon Center' ],
+        [ u'wooper',     [ HG, SS ],  1, u'violet-city',   u'pokemon-center' ],
+        [ u'slugma',     [ HG, SS ],  1, u'violet-city',   u'pokemon-center' ],
 
         [ u'larvesta',   [ BL, WH ],  1, u'unova-route-18'     ],
-        [ u'happiny',    [ B2, W2 ],  1, u'nacrene-city'     ],
+        [ u'happiny',    [ B2, W2 ],  1, u'nacrene-city', u'west-gate', u'West Gate' ],
         [ u'wynaut',    [ OR, AS ],  1, u'lavaridge-town'  ],
         [ u'togepi',    [ OR, AS ],  1, u'lavaridge-town'  ],
     ]
 
 def record_method_and_gifts(gift_method, gift_data):
+
+    en = session.query(Language).filter_by(identifier=u'en').one()
+
     for gift_datum in gift_data:
         pokemon_name  = identifier_from_name(gift_datum[0])
         versions      = gift_datum[1]
@@ -246,11 +248,18 @@ def record_method_and_gifts(gift_method, gift_data):
         location_area = session.query(LocationArea).filter_by(identifier=area_name, location_id=location.id).first()
         # Some of these don't exist yet
         if not location_area:
+
             location_area = LocationArea(
                 location_id = location.id,
                 game_index  = 0, # cause who knows what this means
                 identifier  = area_name
             )
+
+            area_prose = None
+            if area_name != None:
+                area_prose = gift_datum[5]
+            location_area.name_map[en] = area_prose
+
             session.add(location_area)
             session.commit()
 
