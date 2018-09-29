@@ -519,11 +519,11 @@ id,region_id,identifier
 535,5,join-avenue
 536,5,floccesy-town
 537,5,lentimas-town
-538,5,route-19
-539,5,route-20
-540,5,route-21
-541,5,route-22
-542,5,route-23
+538,5,unova-route-19
+539,5,unova-route-20
+540,5,unova-route-21
+541,5,unova-route-22
+542,5,unova-route-23
 543,5,castelia-sewers
 544,5,floccesy-ranch
 545,5,virbank-complex
@@ -638,8 +638,8 @@ id,region_id,identifier
 654,6,dernière-way
 655,6,kalos-route-22
 656,6,detourner-way
-657,6,victory-road
-658,6,pokemon-league
+657,6,kalos-victory-road
+658,6,kalos-pokemon-league
 659,6,kiloude-city
 660,6,battle-maison
 661,6,azure-bay

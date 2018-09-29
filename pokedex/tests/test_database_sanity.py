@@ -1,6 +1,8 @@
 import pytest
 parametrize = pytest.mark.parametrize
 
+import re
+
 from sqlalchemy.orm import aliased, joinedload, lazyload
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.sql import func
@@ -93,3 +95,22 @@ def test_default_forms(session):
             pytest.fail("species %s has no default pokemon" % species.name)
         elif num_default_pokemon > 1:
             pytest.fail("species %s has %d default pokemon" % (species.name, num_default_pokemon))
+
+ROUTE_RE = re.compile(ur'route-\d+')
+
+def test_location_identifiers(session):
+    """Check that location identifiers for some common locations are prefixed
+    with the region name, ala kalos-route-2"""
+
+    q = session.query(tables.Location)
+    q = q.join(tables.Region)
+    q = q.options(lazyload('*'))
+    for loc in q:
+        if (loc.identifier in [u'victory-road', u'pokemon-league', u'safari-zone']
+                or ROUTE_RE.match(loc.identifier)):
+            if loc.region:
+                region = loc.region.identifier.lower()
+                suggested_identifier = region + "-" + loc.identifier
+                pytest.fail("location %d: identifier %s should be prefixed with its region (e.g. %s)" % (loc.id, loc.identifier, suggested_identifier))
+            else:
+                pytest.fail("location %d: identifier %s should be prefixed with its region" % (loc.id, loc.identifier))
