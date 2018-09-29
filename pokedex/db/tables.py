@@ -1103,7 +1103,7 @@ class Location(TableBase):
         doc=u"A numeric ID")
     region_id = Column(Integer, ForeignKey('regions.id'),
         doc=u"ID of the region this location is in")
-    identifier = Column(Unicode(79), nullable=False,
+    identifier = Column(Unicode(79), nullable=False, unique=True,
         doc=u"An identifier",
         info=dict(format='identifier'))
 
@@ -1132,6 +1132,11 @@ class LocationArea(TableBase):
     identifier = Column(Unicode(79), nullable=True,
         doc=u"An identifier",
         info=dict(format='identifier'))
+
+    __table_args__ = (
+        UniqueConstraint(location_id, identifier),
+        {},
+    )
 
 create_translation_table('location_area_prose', LocationArea, 'prose',
     relation_lazy='joined',
