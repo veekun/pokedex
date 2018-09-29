@@ -96,7 +96,7 @@ def test_default_forms(session):
         elif num_default_pokemon > 1:
             pytest.fail("species %s has %d default pokemon" % (species.name, num_default_pokemon))
 
-ROUTE_RE = re.compile(ur'route-\d+')
+ROUTE_RE = re.compile(u'route-\\d+')
 
 def test_location_identifiers(session):
     """Check that location identifiers for some common locations are prefixed
