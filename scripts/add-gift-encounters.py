@@ -275,8 +275,9 @@ def record_method_and_gifts(gift_method, gift_data):
                     encounter_method_id = gift_method.id,
                     # No priority over or under other events/conditions
                     slot                = None,
-                    # Rarity is meaningless for gifts
-                    rarity              = None,
+                    # Rarity is meaningless for gifts, but say that it's
+                    # 100% to help out code that expects rarity to be defined.
+                    rarity              = 100,
                 )
                 session.add(encounter_slot)
                 session.commit()
