@@ -14,7 +14,7 @@ def get_version(name):
 
 R = get_version(u'red')
 B = get_version(u'blue')
-Y = get_version(u'yellow')
+Ye = get_version(u'yellow')
 G = get_version(u'gold')
 S = get_version(u'silver')
 C = get_version(u'crystal')
@@ -46,19 +46,19 @@ def normal_gift_data():
         [ u'bulbasaur',   [ R, B ],  5, u'pallet-town' ],
         [ u'charmander',  [ R, B ],  5, u'pallet-town' ],
         [ u'squirtle',    [ R, B ],  5, u'pallet-town' ],
-        [ u'pikachu',     [ Y    ],  5, u'pallet-town' ],
-        [ u'bulbasaur',   [ Y    ], 10, u'cerulean-city'  ],
-        [ u'charmander',  [ Y    ], 10, u'kanto-route-24' ],
-        [ u'squirtle',    [ Y    ], 10, u'vermilion-city' ],
+        [ u'pikachu',     [ Ye   ],  5, u'pallet-town' ],
+        [ u'bulbasaur',   [ Ye   ], 10, u'cerulean-city'  ],
+        [ u'charmander',  [ Ye   ], 10, u'kanto-route-24' ],
+        [ u'squirtle',    [ Ye   ], 10, u'vermilion-city' ],
 
-        #[ u'aerodactyl', [ R, B, Y ], 30, u'pewter-city',   u'museum-of-science', u'Pewter Museum of Science' ],
-        [ u'magikarp',   [ R, B, Y ],  5, u'kanto-route-4', u'pokemon-center',    u'Pokemon Center' ],
-        #[ u'omanyte',    [ R, B, Y ], 30, u'mt-moon',       u'b2f' ],
-        #[ u'kabuto',     [ R, B, Y ], 30, u'mt-moon',       u'b2f' ],
-        [ u'hitmonlee',  [ R, B, Y ], 30, u'saffron-city',  u'fighting-dojo',     u'Fighting Dojo' ],
-        [ u'hitmonchan', [ R, B, Y ], 30, u'saffron-city',  u'fighting-dojo',     u'Fighting Dojo' ],
-        [ u'eevee',      [ R, B, Y ], 25, u'celadon-city',  u'celadon-mansion',   u'Celadon Mansion rooftop' ],
-        [ u'lapras',     [ R, B, Y ], 15, u'saffron-city',  u'silph-co-7f',       u'Silph Co. 7F' ],
+        #[ u'aerodactyl', [ R, B, Ye ], 30, u'pewter-city',   u'museum-of-science', u'Pewter Museum of Science' ],
+        [ u'magikarp',   [ R, B, Ye ],  5, u'kanto-route-4', u'pokemon-center',    u'Pokemon Center' ],
+        #[ u'omanyte',    [ R, B, Ye ], 30, u'mt-moon',       u'b2f' ],
+        #[ u'kabuto',     [ R, B, Ye ], 30, u'mt-moon',       u'b2f' ],
+        [ u'hitmonlee',  [ R, B, Ye ], 30, u'saffron-city',  u'fighting-dojo',     u'Fighting Dojo' ],
+        [ u'hitmonchan', [ R, B, Ye ], 30, u'saffron-city',  u'fighting-dojo',     u'Fighting Dojo' ],
+        [ u'eevee',      [ R, B, Ye ], 25, u'celadon-city',  u'celadon-mansion',   u'Celadon Mansion rooftop' ],
+        [ u'lapras',     [ R, B, Ye ], 15, u'saffron-city',  u'silph-co-7f',       u'Silph Co. 7F' ],
 
         # Gen II
         [ u'chikorita', [ G, S, C ],  5, u'new-bark-town' ],
