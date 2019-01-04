@@ -1103,7 +1103,7 @@ class Location(TableBase):
         doc=u"A numeric ID")
     region_id = Column(Integer, ForeignKey('regions.id'),
         doc=u"ID of the region this location is in")
-    identifier = Column(Unicode(79), nullable=False,
+    identifier = Column(Unicode(79), nullable=False, unique=True,
         doc=u"An identifier",
         info=dict(format='identifier'))
 
@@ -1111,6 +1111,11 @@ create_translation_table('location_names', Location, 'names',
     relation_lazy='joined',
     name = Column(Unicode(79), nullable=False, index=True,
         doc=u"The name",
+        info=dict(format='plaintext', official=True)),
+    subtitle = Column(Unicode(79), nullable=True, index=False,
+        doc=u"""A subtitle for the location, if any.
+            This may be an alternate name for the locaton, as in the Kalos routes,
+            or the name of a subarea of the location, as in Alola.""",
         info=dict(format='plaintext', official=True)),
 )
 
@@ -1127,6 +1132,11 @@ class LocationArea(TableBase):
     identifier = Column(Unicode(79), nullable=True,
         doc=u"An identifier",
         info=dict(format='identifier'))
+
+    __table_args__ = (
+        UniqueConstraint(location_id, identifier),
+        {},
+    )
 
 create_translation_table('location_area_prose', LocationArea, 'prose',
     relation_lazy='joined',
