@@ -28,7 +28,6 @@ import csv
 import io
 import os
 import re
-import sys
 from collections import defaultdict
 
 import six
@@ -381,10 +380,7 @@ def group_by_object(stream):
     try:
         current = next(stream)
     except StopIteration:
-        if sys.version_info >= (3, 7):
-            return
-        else:
-            raise StopIteration
+        return
     current_key = current.cls, current.id
     group = [current]
     for message in stream:
