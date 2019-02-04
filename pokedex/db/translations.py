@@ -377,10 +377,7 @@ def group_by_object(stream):
     Yields ((class name, object ID), (list of messages)) pairs.
     """
     stream = iter(stream)
-    try:
-        current = next(stream)
-    except StopIteration:
-        yield StopIteration
+    current = next(stream)
     current_key = current.cls, current.id
     group = [current]
     for message in stream:
