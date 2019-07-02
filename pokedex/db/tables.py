@@ -90,10 +90,10 @@ class Language(TableBase):
     id = Column(Integer, primary_key=True, nullable=False,
         doc=u"A numeric ID")
     iso639 = Column(Unicode(79), nullable=False,
-        doc=u"The two-letter code of the country where this language is spoken. Note that it is not unique.",
+        doc=u"The two-letter code of the language. Note that it is not unique.",
         info=dict(format='identifier'))
     iso3166 = Column(Unicode(79), nullable=False,
-        doc=u"The two-letter code of the language. Note that it is not unique.",
+        doc=u"The two-letter code of the country where this language is spoken. Note that it is not unique.",
         info=dict(format='identifier'))
     identifier = Column(Unicode(79), nullable=False,
         doc=u"An identifier",
