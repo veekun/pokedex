@@ -26,6 +26,28 @@ def test_encounter_slots(session):
     # Encounter slots all match the encounters they belong to
     assert sanity_q.count() == 0
 
+def test_encounter_regions(session):
+    """Check that encounter locations match the region of the game they're from.
+    """
+
+    sanity_q = session.query(tables.Encounter) \
+        .join((tables.Version, tables.Encounter.version)) \
+        .join((tables.VersionGroup, tables.Version.version_group)) \
+        .join((tables.LocationArea, tables.Encounter.location_area)) \
+        .join((tables.Location, tables.LocationArea.location)) \
+        .join((tables.Region, tables.Location.region)) \
+        .filter(~tables.VersionGroup.version_group_regions.any(tables.VersionGroupRegion.region_id == tables.Region.id))
+
+    for e in sanity_q.limit(20):
+        acceptable_regions = " or ".join(r.identifier for r in e.version.version_group.regions)
+        if e.location_area.location.region is not None:
+            print("{e} ({e.pokemon.identifier}, {e.slot.method.identifier}, {e.version.identifier}) is in {e.location_area.location.region.identifier} ({e.location_area.location.identifier}) but should be in {acceptable_regions} ({e.version.identifier})".format(e=e, acceptable_regions=acceptable_regions))
+        else:
+            print("{e} ({e.pokemon.identifier}, {e.slot.method.identifier}, {e.version.identifier}) is in a pseudo-location ({e.location_area.location.identifier}) that is not part of any region, but should be in {acceptable_regions} ({e.version.identifier})".format(e=e, acceptable_regions=acceptable_regions))
+
+    # Encounter regions match the games they belong to
+    assert sanity_q.count() == 0
+
 @parametrize('cls', tables.mapped_classes)
 def test_nonzero_autoincrement_ids(session, cls):
     """Check that autoincrementing ids don't contain zeroes

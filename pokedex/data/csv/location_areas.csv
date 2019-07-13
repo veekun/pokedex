@@ -682,3 +682,7 @@ id,location_id,game_index,identifier
 790,153,0,poke-mart
 791,153,0,pokemon-center
 792,349,0,west-gate
+793,430,0,contest-hall
+794,571,0,contest-hall
+795,570,0,contest-hall
+796,431,0,contest-hall

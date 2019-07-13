@@ -184,7 +184,11 @@ def normal_gift_data():
         [ u'treecko',   [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'torchic',   [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'mudkip',    [ OR, AS ],  5, u'hoenn-route-101' ],
-        [ u'pikachu',   [ OR, AS ], 20, u'contest-hall'    ], # suprisingly, this location exists already
+        # cosplay pikachu is given to you the first time you participate in a contest
+        [ u'pikachu',   [ OR, AS ], 20, u'slateport-city',  u'contest-hall', u"Contest Hall" ],
+        [ u'pikachu',   [ OR, AS ], 20, u'verdanturf-town', u'contest-hall', u"Contest Hall" ],
+        [ u'pikachu',   [ OR, AS ], 20, u'fallarbor-town',  u'contest-hall', u"Contest Hall" ],
+        [ u'pikachu',   [ OR, AS ], 20, u'lilycove-city',   u'contest-hall', u"Contest Hall" ],
         [ u'latios',    [ OR     ], 30, u'southern-island' ], # eon tickets ignored here - they're not gifts?
         [ u'latias',    [     AS ], 30, u'southern-island' ],
         [ u'castform',  [ OR, AS ], 30, u'hoenn-route-119', u'weather-institute' ],
@@ -195,9 +199,9 @@ def normal_gift_data():
         [ u'tepig',     [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'oshawott',  [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'beldum',    [ OR, AS ],  1, u'mossdeep-city',   u'stevens-house'  ],
-        [ u'turtwig',   [ OR, AS ],  5, u'sinnoh-route-201' ],
-        [ u'chimchar',  [ OR, AS ],  5, u'sinnoh-route-201' ],
-        [ u'piplup',    [ OR, AS ],  5, u'sinnoh-route-201' ],
+        [ u'turtwig',   [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'chimchar',  [ OR, AS ],  5, u'hoenn-route-101' ],
+        [ u'piplup',    [ OR, AS ],  5, u'hoenn-route-101' ],
         [ u'camerupt',  [ OR, AS ], 40, u'battle-resort'    ],
         [ u'sharpedo',  [ OR, AS ], 40, u'battle-resort'    ],
     ]
