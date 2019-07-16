@@ -1771,6 +1771,13 @@ class PokemonDexNumber(TableBase):
     pokedex_number = Column(Integer, nullable=False,
         doc=u"Number of the Pokémon in that the Pokédex")
 
+    __table_args__ = (
+        UniqueConstraint(pokedex_id, pokedex_number),
+        UniqueConstraint(pokedex_id, species_id),
+        {},
+    )
+
+
 class PokemonEggGroup(TableBase):
     u"""Maps an Egg group to a species; each species belongs to one or two egg groups."""
     __tablename__ = 'pokemon_egg_groups'

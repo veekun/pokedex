@@ -1,6 +1,7 @@
 import pytest
 parametrize = pytest.mark.parametrize
 
+from collections import Counter
 import re
 
 from sqlalchemy.orm import aliased, joinedload, lazyload
@@ -69,7 +70,7 @@ def test_nonzero_autoincrement_ids(session, cls):
         pytest.fail("No zero id in %s" % cls.__name__)
 
 def test_unique_form_order(session):
-    """Check that tone PokemonForm.order value isn't used for more species"""
+    """Check that one PokemonForm.order value isn't used for more species"""
 
     species_by_form_order = {}
 
@@ -87,6 +88,22 @@ def test_unique_form_order(session):
                         form.order,
                         species_by_form_order[form.order].name,
                         form.species.name))
+
+def test_pokedex_numbers(session):
+    """Check that pokedex numbers are contiguous (there are no gaps)"""
+
+    dex_query = session.query(tables.Pokedex).order_by(tables.Pokedex.id)
+    failed = False
+    for dex in dex_query:
+        query = session.query(tables.PokemonDexNumber.pokedex_number).filter_by(pokedex_id=dex.id)
+        numbers = set([x[0] for x in query.all()])
+        for i in range(1, max(numbers)):
+            if i not in numbers:
+                print("number {n} is missing from the {dex.name} pokedex".format(n=i, dex=dex))
+                failed = True
+
+    assert not failed, "missing pokedex numbers"
+
 
 def test_default_forms(session):
     """Check that each pokemon has one default form and each species has one
