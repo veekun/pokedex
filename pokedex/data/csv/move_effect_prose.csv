@@ -717,7 +717,7 @@ Specifically, []{type:flying} Pokémon and those with []{ability:levitate} or th
 []{move:bounce}, []{move:fly}, []{move:sky-drop}, []{move:high-jump-kick}, []{move:jump-kick}, and []{move:splash} cannot be used while this move is in effect.
 
 *Bug*: If this move is used during a double or triple battle while Pokémon are under the effect of []{move:sky-drop}, Sky Drop's effect is not correctly canceled on its target, and it remains high in the air indefinitely.  As Sky Drop prevents the target from acting, the only way to subsequently remove it from the field is to faint it."
-217,9,"Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.",Resets the target's [evasion]{mechanic:evasion} to normal and prevents any further boosting until the target leaves the [field]{mechanic:field}.  A []{type:dark} Pokémon under this effect takes normal damage from []{type:psychic} moves.  This move itself ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
+217,9,"Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.","Resets the target's [evasion]{mechanic:evasion} to normal and prevents any further boosting until the target leaves the [field]{mechanic:field}.  A []{type:dark} Pokémon under this effect takes normal damage from []{type:psychic} moves.  This move itself ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers."
 218,9,"If the target is asleep, has double power and wakes it up.","Inflicts [regular damage]{mechanic:regular-damage}.  If the target is [sleep]{mechanic:sleep}ing, this move has double power, and the target wakes up."
 219,9,Lowers user's Speed by one stage.,"Inflicts [regular damage]{mechanic:regular-damage}, then lowers the user's [Speed]{mechanic:speed} by one [stage]{mechanic:stage}."
 220,9,"Power raises when the user has lower Speed, up to a maximum of 150.","Inflicts [regular damage]{mechanic:regular-damage}.  Power increases with the target's current [Speed]{mechanic:speed} compared to the user, given by `1 + 25 * target Speed / user Speed`, capped at 150."
@@ -752,7 +752,7 @@ This move may be used even if the user is under the effect of []{move:ingrain}. 
 If a Pokémon under this effect uses []{move:bug-bite} or []{move:pluck} on a Pokémon holding a berry, the berry is destroyed but not used.  If a Pokémon under this effect uses []{move:fling}, it will [fail]{mechanic:fail}.
 
 This effect is passed by []{move:baton-pass}."
-234,9,Throws held item at the target; power depends on the item.,"Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's [held item]{mechanic:held-item}.  The item is consumed.  If the user is not holding an item, or its item has no set type and power, this move will [fail]{mechanic:fail}.
+234,9,"Throws held item at the target; power depends on the item.","Inflicts [regular damage]{mechanic:regular-damage}.  Power and type are determined by the user's [held item]{mechanic:held-item}.  The item is consumed.  If the user is not holding an item, or its item has no set type and power, this move will [fail]{mechanic:fail}.
 
 This move ignores []{ability:sticky-hold}.
 
@@ -895,14 +895,14 @@ This move cannot be selected by []{move:sleep-talk}."
 279,9,Prevents any multi-target moves from hitting friendly Pokémon this turn.,"Moves with multiple targets will not hit friendly Pokémon for the remainder of this turn.  If the user is last to act this turn, this move will [fail]{mechanic:fail}.
 
 This move cannot be selected by []{move:assist} or []{move:metronome}."
-280,9,Averages Defense and Special Defense with the target.,Averages the user's unmodified [Defense]{mechanic:defense} with the target's unmodified Defense; the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic:special-defense} is averaged the same way.
+280,9,Averages Defense and Special Defense with the target.,"Averages the user's unmodified [Defense]{mechanic:defense} with the target's unmodified Defense; the value becomes the unmodified Defense for both Pokémon. Unmodified [Special Defense]{mechanic:special-defense} is averaged the same way."
 281,9,Averages Attack and Special Attack with the target.,"Averages the user's unmodified [Attack]{mechanic:attack} with the target's unmodified Attack; the value becomes the unmodified Attack for both Pokémon. Unmodified [Special Attack]{mechanic:special-attack} is averaged the same way.
 
 This effect applies before any other persistent changes to unmodified Attack or Special Attack, such as []{ability:flower-gift} during []{move:sunny-day}."
 282,9,All Pokémon's Defense and Special Defense are swapped for 5 turns.,"For five turns (including this one), every Pokémon's [Defense]{mechanic:defense} and [Special Defense]{mechanic:special-defense} are swapped."
 283,9,"Inflicts damage based on the target's Defense, not Special Defense.","Inflicts [regular damage]{mechanic:regular-damage}.  Damage calculation always uses the target's [Defense]{mechanic:defense}, regardless of this move's damage class."
 284,9,Inflicts double damage if the target is Poisoned.,"Inflicts [regular damage]{mechanic:regular-damage}.  If the target is [poisoned]{mechanic:poisoned}, this move has double power."
-285,9,Raises the user's Speed by two stages and halves the user's weight.,Raises the user's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.  Halves the user's weight; this effect does not stack.
+285,9,Raises the user's Speed by two stages and halves the user's weight.,"Raises the user's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.  Halves the user's weight; this effect does not stack."
 286,9,Moves have 100% accuracy against the target for three turns.,"For three turns (including this one), moves used against the target have 100% [accuracy]{mechanic:accuracy}, but the target is immune to []{type:ground} damage.  Accuracy of one-hit KO moves is exempt from this effect.
 
 This effect is removed by []{move:gravity}.  If Gravity is already in effect, this move will [fail]{mechanic:fail}."
@@ -1058,7 +1058,7 @@ Changes []{move:nature-power} to []{move:thunderbolt}."
 371,9,Does nothing.,Does nothing.
 372,9,Has a $effect_chance% chance to paralyze the target.,Inflicts [regular damage]{mechanic:regular-damage}.  Has a $effect_chance% chance to [paralyze]{mechanic:paralysis} the target.
 373,9,"Grounds the target, and hits even Flying-type or levitating Pokémon.",Inflicts regular damage.  Grounds the target until it leaves battle.  Ignores levitation effects and the immunity of []{type:flying}-type Pokémon.
-374,9,Prevents the target from leaving battle.,Inflicts regular damage.  Traps the target.  
+374,9,Prevents the target from leaving battle.,Inflicts regular damage.  Traps the target.
 375,9,Raises the user's Attack by one stage after inflicting damage.,Inflicts regular damage.  Raises the user's Attack by one stage.
 376,9,Adds []{type:grass} to the target's types.,Adds []{type:grass} to the target's types.
 377,9,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.
@@ -1110,11 +1110,11 @@ Any [regular damage]{mechanic:regular-damage} dealt to an affected Pokémon is r
 413,9,Damages the target for 75% of its remaining HP.,Inflicts direct damage equal to ¾ of the target's remaining HP.
 414,9,Raises all of the user's stats by two stages.,"Raises the user's [Attack]{mechanic:attack}, [Defense]{mechanic:defense}, [Special Attack]{mechanic:special-attack}, [Special Defense]{mechanic:special-defense}, and [Speed]{mechanic:speed} by two [stages]{mechanic:stage} each."
 415,9,Changes the terrain to Psychic Terrain after inflicting damage.,"Inflicts [regular damage]{mechanic:regular-damage}, then (if successful) changes the terrain to []{move:psychic-terrain}."
-416,9,XXX new effect for light-that-burns-the-sky,XXX new effect for light-that-burns-the-sky
-417,9,XXX new effect for lets-snuggle-forever,XXX new effect for lets-snuggle-forever
-418,9,XXX new effect for splintered-stormshards,XXX new effect for splintered-stormshards
-419,9,XXX new effect for clangorous-soulblaze,XXX new effect for clangorous-soulblaze
-420,9,XXX new effect for mind-blown,XXX new effect for mind-blown
+416,9,"Is physical or special, whichever stat is higher for the user. Ignores ability.","Is physical or special, whichever stat is higher for the user. Ignores target’s ability, user’s Huge Power or Pure Power."
+417,9,Inflicts regular damage with no additional effect.,Inflicts [regular damage]{mechanic:regular-damage}.
+418,9,"Inflicts [regular damage]{mechanic:regular-damage}, then removes any terrain","Inflicts [regular damage]{mechanic:regular-damage}, then removes any terrain"".
+419,9,"Inflicts [regular damage]{mechanic:regular-damage}, then raises user's Attack, Defense, Sp.Atk, Sp.Def and Speed by 1.","Inflicts [regular damage]{mechanic:regular-damage}, then raises user's [Attack]{mechanic:attack}, [Defense]{mechanic:defense}, [Special Attack]{mechanic:special-attack}, [Special Defense]{mechanic:special-defense}, and [Speed]{mechanic:speed} by one [stage]{mechanic:stage} each."
+420,9,User receives 1/2 its total HP in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 of its total [HP]{mechanic:hp} in recoil.
 10001,9,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move while in [hyper mode]{mechanic:hyper-mode}.
 10002,9,User receives 1/2 its HP in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 of its current [HP]{mechanic:hp} in recoil.
 10003,9,Halves HP of all Pokémon on the field.  Must recharge,"Halves [HP]{mechanic:hp} of all Pokémon on the field.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic:switch} out during that turn."

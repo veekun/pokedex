@@ -555,7 +555,7 @@ The type change takes place just before the move is used."
 174,9,Turns the bearer's []{type:normal} moves into []{type:ice} moves and strengthens them to 1.3× their power.,Turns the bearer's []{type:normal}-type moves into []{type:ice}-type moves.  Moves changed by this ability have 1.3× their power.
 175,9,Prevents friendly Pokémon from sleeping.,Prevents friendly Pokémon from sleeping.
 176,9,"Changes []{pokemon:aegislash} to Blade Forme before using a damaging move, or Shield Forme before using []{move:kings-shield}.","Changes []{pokemon:aegislash} to Blade Forme before using a damaging move, or Shield Forme before using []{move:kings-shield}."
-177,9,Raises []{type:flying} moves' priority by one stage.,Raises []{type:flying} moves' priority by one stage.
+177,9,Raises []{type:flying} moves' priority by one stage at full [HP]{mechanic:hp}.,Raises []{type:flying} moves' priority by one stage at full [HP]{mechanic:hp}.
 178,9,Strengthens aura and pulse moves to 1.5× their power.,Strengthens aura and pulse moves to 1.5× their power.
 179,9,Boosts Defense while []{move:grassy-terrain} is in effect.,Boosts Defense while []{move:grassy-terrain} is in effect.
 180,9,Passes the bearer's held item to an ally when the ally uses up its item.,Passes the bearer's held item to an ally when the ally uses up its item.
@@ -563,7 +563,7 @@ The type change takes place just before the move is used."
 182,9,Turns the bearer's []{type:normal} moves into []{type:fairy} moves and strengthens them to 1.3× their power.,Turns the bearer's []{type:normal}-type moves into []{type:fairy} moves.  Moves changed by this ability have 1.3× their power.
 183,9,Lowers attacking Pokémon's Speed by one stage on contact.,Lowers attacking Pokémon's Speed by one stage on contact.
 184,9,Turns the bearer's []{type:normal} moves into []{type:flying} moves and strengthens them to 1.3× their power.,Turns the bearer's []{type:normal}-type moves into []{type:flying}-type moves.  Moves changed by this ability have 1.3× their power.
-185,9,Lets the bearer hit twice with damaging moves.  The second hit has half power.,Lets the bearer hit twice with damaging moves.  The second hit has half power.
+185,9,Lets the bearer hit twice with damaging moves.  The second hit has quarter power.,Lets the bearer hit twice with damaging moves.  The second hit has quarter power.
 186,9,Strengthens []{type:dark} moves to 1.33× their power for all friendly and opposing Pokémon.,Strengthens []{type:dark} moves for all friendly and opposing Pokémon.
 187,9,Strengthens []{type:fairy} moves to 1.33× their power for all friendly and opposing Pokémon.,Strengthens []{type:fairy} moves for all friendly and opposing Pokémon.
 188,9,Makes []{ability:dark-aura} and []{ability:fairy-aura} weaken moves of their respective types.,"While this Pokémon is on the field, []{ability:dark-aura} and []{ability:fairy-aura} weaken moves of their respective types to 2/3 their power, rather than strengthening them."
@@ -583,17 +583,17 @@ The mysterious air current ends when this Pokémon leaves battle or loses this a
 
 []{ability:air-lock} and []{ability:cloud-nine} will prevent the effect of a mysterious air current, but will not allow the weather to be changed."
 192,9,Raises this Pokémon's Defense by one stage when it takes damage from a move.,Raises this Pokémon's Defense by one stage when it takes damage from a move.
-193,9,This Pokémon automatically switches out when its HP drops below half.,"After this Pokémon is hit by a move, if that move caused this Pokémon's HP to drop below half, it switches out."
-194,9,This Pokémon automatically switches out when its HP drops below half.,"After this Pokémon is hit by a move, if that move caused this Pokémon's HP to drop below half, it switches out."
+193,9,This Pokémon automatically switches out when its [HP]{mechanic:hp} drops below half.,"After this Pokémon is hit by a move, if that move caused this Pokémon's [HP]{mechanic:hp} to drop below half, it switches out."
+194,9,This Pokémon automatically switches out when its [HP]{mechanic:hp} drops below half.,"After this Pokémon is hit by a move, if that move caused this Pokémon's [HP]{mechanic:hp} to drop below half, it switches out."
 195,9,Raises this Pokémon's Defense by two stages when it's hit by a Water move.,Raises this Pokémon's Defense by two stages when it's hit by a Water move.
 196,9,This Pokémon's moves critical hit against poisoned targets.,This Pokémon's moves critical hit against poisoned targets.
-197,9,Transforms this Minior between Core Form and Meteor Form.  Prevents major status ailments and drowsiness while in Meteor Form.,"When this Pokémon enters battle and at the end of each turn, if its HP is 50% or above, it changes into Meteor Form; otherwise, it changes into Core Form.  In Meteor Form, it cannot be given a major status ailment (though existing ones are not cured), cannot become drowsy from []{move:yawn}, and cannot use []{move:rest} (which will simply fail).
+197,9,Transforms this Minior between Core Form and Meteor Form.  Prevents major status ailments and drowsiness while in Meteor Form.,"When this Pokémon enters battle and at the end of each turn, if its [HP]{mechanic:hp} is 50% or above, it changes into Meteor Form; otherwise, it changes into Core Form.  In Meteor Form, it cannot be given a major status ailment (though existing ones are not cured), cannot become drowsy from []{move:yawn}, and cannot use []{move:rest} (which will simply fail).
 
 This ability cannot be copied, replaced, or nullified.  This ability only takes effect for Minior."
 198,9,This Pokémon's moves have double power against Pokémon that switched in this turn.,This Pokémon's moves have double power against Pokémon that switched in this turn.
 199,9,"Halves damage from Fire moves, doubles damage of Water moves, and prevents burns.","When this Pokémon is hit by a Fire move, the damage is halved.  When this Pokémon uses a Water move, the power is doubled.  This Pokémon cannot be burned, and if it becomes burned, the  burn is immediately ured."
 200,9,This Pokémon's Steel moves have 1.5× power.,This Pokémon's Steel moves have 1.5× power.
-201,9,Raises this Pokémon's Special Attack by one stage every time its HP drops below half.,"Whenever this Pokémon takes damage from a move that causes its HP to drop below 50%, its Special Attack rises by one stage."
+201,9,Raises this Pokémon's Special Attack by one stage every time its HP drops below half.,"Whenever this Pokémon takes damage from a move that causes its [HP]{mechanic:hp} to drop below 50%, its Special Attack rises by one stage."
 202,9,"During Hail, this Pokémon has double Speed.","During Hail, this Pokémon has double Speed."
 203,9,This Pokémon's moves do not make contact.,A move used by this Pokémon will not make contact.
 204,9,Sound-based moves become Water-type.,"When this Pokémon uses a move that is sound-based, that move's type is Water."
@@ -609,11 +609,11 @@ This ability cannot be copied or replaced.  This ability only takes effect for M
 210,9,Transforms this Pokémon into Ash-Greninja after fainting an opponent.  Water Shuriken's power is 20 and always hits three times.,"Transforms this Pokémon into Ash-Greninja after fainting an opponent.  Water Shuriken's power is 20 and always hits three times.
 
 This ability cannot be copied or replaced.  This ability only takes effect for Greninja."
-211,9,Transforms 10% or 50% Zygarde into Complete Forme when its HP is below 50%.,"Transforms 10% or 50% Zygarde into Complete Forme when its HP is below 50%.
+211,9,Transforms 10% or 50% Zygarde into Complete Forme when its HP is below 50%.,"Transforms 10% or 50% Zygarde into Complete Forme when its [HP]{mechanic:hp} is below 50%.
 
 This ability cannot be copied or replaced.  This ability only takes effect for Zygarde."
 212,9,This Pokémon can inflict poison on Poison and Steel Pokémon.,This Pokémon's moves and item ignore the usual immunity of Poison and Steel Pokémon when attempting to inflict poison.
-213,9,This Pokémon always  acts as though it were Asleep.,This Pokémon always acts as though it were Asleep.  It cannot be given another status ailment; it's unaffected by []{move:yawn}; it can use []{move:sleep-talk}; and so on.
+213,9,This Pokémon always  acts as though it were Asleep.,"This Pokémon always acts as though it were Asleep.  It cannot be given another status ailment, it's unaffected by []{move:yawn}, it can use []{move:sleep-talk}, and so on."
 214,9,Opposing Pokémon cannot use priority attacks.,"When an opposing Pokémon attempts to use a move that targets this Pokémon or an ally, and that move has priority, it will fail."
 215,9,"When this Pokémon faints from an opponent's move, that opponent takes damage equal to the HP this Pokémon had remaining.","When this Pokémon faints from an opponent's move, that opponent takes damage equal to the HP this Pokémon had remaining."
 216,9,"Whenever another Pokémon uses a dance move, this Pokémon will use the same move immediately afterwards.","Whenever another Pokémon uses a dance move, this Pokémon will use the same move immediately afterwards."
@@ -641,4 +641,4 @@ This ability cannot be nullified."
 232,9,Reduces super-effective damage to 0.75×.,"Super-effective damage this Pokémon takes is reduced to 0.75×.
 
 This Ability is not bypassed by []{ability:mold-breaker}, []{ability:teravolt}, or []{ability:turboblaze}."
-233,9,XXX new effect for neuroforce,XXX new effect for neuroforce
+233,9,Increases power of super-effective moves by 20%.,Increases power of super-effective moves by 20%.
