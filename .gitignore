@@ -17,3 +17,4 @@ pip-selfcheck.json
 /local
 /lib
 /include
+scripts/
