@@ -862,7 +862,7 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10054,arceus-rock,rock,493,8,0,0,0,6,624
 10055,arceus-steel,steel,493,8,0,0,0,9,627
 10056,arceus-water,water,493,8,0,0,0,11,629
-10057,arceus-unknown,unknown,493,8,0,0,0,3,621
+10057,arceus-unknown,unknown,493,8,0,0,0,10001,621
 10058,rotom-heat,heat,10008,9,1,0,0,2,599
 10059,rotom-wash,wash,10009,9,1,0,0,3,600
 10060,rotom-frost,frost,10010,9,1,0,0,4,601
@@ -1001,12 +1001,12 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10193,rattata-alola,alola,10091,17,1,0,0,2,26
 10194,raticate-alola,alola,10092,17,1,0,0,2,28
 10195,raticate-totem-alola,totem-alola,10093,17,1,1,0,3,29
-10196,pikachu-original-cap,original-cap,10094,17,1,0,0,2,37
-10197,pikachu-hoenn-cap,hoenn-cap,10095,17,1,0,0,3,38
-10198,pikachu-sinnoh-cap,sinnoh-cap,10096,17,1,0,0,4,39
-10199,pikachu-unova-cap,unova-cap,10097,17,1,0,0,5,40
-10200,pikachu-kalos-cap,kalos-cap,10098,17,1,0,0,6,41
-10201,pikachu-alola-cap,alola-cap,10099,17,1,0,0,7,42
+10196,pikachu-original-cap,original-cap,10094,17,1,0,0,8,37
+10197,pikachu-hoenn-cap,hoenn-cap,10095,17,1,0,0,9,38
+10198,pikachu-sinnoh-cap,sinnoh-cap,10096,17,1,0,0,10,39
+10199,pikachu-unova-cap,unova-cap,10097,17,1,0,0,11,40
+10200,pikachu-kalos-cap,kalos-cap,10098,17,1,0,0,12,41
+10201,pikachu-alola-cap,alola-cap,10099,17,1,0,0,13,42
 10202,raichu-alola,alola,10100,17,1,0,0,2,45
 10203,sandshrew-alola,alola,10101,17,1,0,0,2,47
 10204,sandslash-alola,alola,10102,17,1,0,0,2,49
@@ -1072,7 +1072,7 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10264,mimikyu-totem-busted,totem-busted,10145,17,1,1,0,4,1082
 10265,kommo-o-totem,totem,10146,17,1,1,0,2,1089
 10266,magearna-original,original,10147,17,1,0,0,2,1110
-10267,pikachu-partner-cap,partner-cap,10148,18,1,0,0,8,43
+10267,pikachu-partner-cap,partner-cap,10148,18,1,0,0,14,43
 10268,marowak-totem,totem,10149,18,1,0,0,3,152
 10269,mothim-sandy,sandy,414,18,0,0,0,2,552
 10270,mothim-trash,trash,414,18,0,0,0,3,553
