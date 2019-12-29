@@ -963,3 +963,5 @@ id,identifier,species_id,height,weight,base_experience,order,is_default
 10155,necrozma-dusk,800,38,4600,306,954,0
 10156,necrozma-dawn,800,42,3500,306,955,0
 10157,necrozma-ultra,800,75,2300,339,956,0
+10158,meltan,808,2,80,135,957,1
+10159,melmetal,809,25,8000,270,958,1
