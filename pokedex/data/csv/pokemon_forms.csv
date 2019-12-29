@@ -1122,3 +1122,5 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10314,necrozma-dusk,dusk,10155,18,1,0,0,2,1113
 10315,necrozma-dawn,dawn,10156,18,1,0,0,3,1114
 10316,necrozma-ultra,ultra,10157,18,1,0,0,4,1115
+10317,meltan,,10158,,1,0,0,1,1116
+10318,melmetal,,10159,,1,0,0,1,1117
