@@ -13,4 +13,4 @@ install: pip install -e .
 before_script: pokedex setup -v
 script:
     - py.test
-    - pokedex dump -l all
+    - pokedex dump
