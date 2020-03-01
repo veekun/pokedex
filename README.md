@@ -14,7 +14,7 @@ to maintain for the games and generations to come.
 
 ### Status of the YAML migration
 
-**Update from 18.06.2017**
+**Update from 2017-06-18**
 
 @eevee started on an experiment with switching to YAML for data storage some time ago, for a variety of reasons.
 It's finally starting to show some promise — all of gen 7 was dumped to a YAML format, then loaded into the database
@@ -82,7 +82,7 @@ Dumping the SQLite database back into the CSV files:
 bin/docker-pokedex dump -l all
 ```
 
-You also have a special command to re-build the docker image:
+You also have a special command to re-build the docker image (e.g. after editing files):
 ```bash
 bin/docker-pokedex rebuild
 ```
