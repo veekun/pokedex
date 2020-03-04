@@ -14,6 +14,9 @@ pip-selfcheck.json
 !/bin/edit-csv-as-yaml
 !/bin/poupdate
 !/bin/reset-postgresql-sequences
+!/bin/docker-pokedex
 /local
 /lib
 /include
+
+.idea
