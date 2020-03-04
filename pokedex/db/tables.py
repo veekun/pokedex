@@ -90,10 +90,10 @@ class Language(TableBase):
     id = Column(Integer, primary_key=True, nullable=False,
         doc=u"A numeric ID")
     iso639 = Column(Unicode(79), nullable=False,
-        doc=u"The two-letter code of the country where this language is spoken. Note that it is not unique.",
+        doc=u"The two-letter code of the language. Note that it is not unique.",
         info=dict(format='identifier'))
     iso3166 = Column(Unicode(79), nullable=False,
-        doc=u"The two-letter code of the language. Note that it is not unique.",
+        doc=u"The two-letter code of the country where this language is spoken. Note that it is not unique.",
         info=dict(format='identifier'))
     identifier = Column(Unicode(79), nullable=False,
         doc=u"An identifier",
@@ -850,7 +850,17 @@ create_translation_table('encounter_method_prose', EncounterMethod, 'prose',
 )
 
 class EncounterSlot(TableBase):
-    u"""An abstract "slot" within a method, associated with both some set of conditions and a rarity."""
+    u"""An abstract "slot" within a method, associated with both some set of conditions and a rarity.
+
+    "slot" has a very specific meaning:
+    If during gameplay you know sufficient details about the current game state,
+    you can predict which slot (and therefore which pokemon) will spawn.
+
+    There are currently two reasons that "slot" might be empty:
+    1) The slot corresponds to a gift pokemon.
+    2) Red/Blue's Super Rod slots, which don't correspond to in-game slots.
+       See https://github.com/veekun/pokedex/issues/166#issuecomment-220101455
+    """
 
     __tablename__ = 'encounter_slots'
     id = Column(Integer, primary_key=True, nullable=False,
@@ -1760,6 +1770,13 @@ class PokemonDexNumber(TableBase):
         doc=u"ID of the Pokédex")
     pokedex_number = Column(Integer, nullable=False,
         doc=u"Number of the Pokémon in that the Pokédex")
+
+    __table_args__ = (
+        UniqueConstraint(pokedex_id, pokedex_number),
+        UniqueConstraint(pokedex_id, species_id),
+        {},
+    )
+
 
 class PokemonEggGroup(TableBase):
     u"""Maps an Egg group to a species; each species belongs to one or two egg groups."""

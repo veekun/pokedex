@@ -1,23 +1,13 @@
-FROM python:2.7-slim
+ARG PYTHON_VERSION=${PYTHON_VERSION:-"3.7-slim"}
+FROM python:${PYTHON_VERSION}
 
-RUN echo "Upgrading distro..." && \
-    apt-get update > /dev/null && \
-    apt-get upgrade -y > /dev/null && \
-    echo "Installing dependencies..." && \
-    apt-get install -y git python-distribute > /dev/null && \
-    pip install --no-cache-dir virtualenv psycopg2 pymysql > /dev/null && \
-    echo "Optimizing space..." && \
-    apt-get remove --purge -y software-properties-common > /dev/null && \
-    apt-get autoremove -y > /dev/null && \
-    apt-get clean > /dev/null && \
-    apt-get autoclean > /dev/null && \
-    echo -n > /var/lib/apt/extended_states && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /usr/share/man/?? && \
-    rm -rf /usr/share/man/??_*
+ADD ./ /app/
 
-COPY ./docker-entrypoint.sh /docker-entrypoint
-RUN chmod +x /docker-entrypoint
+WORKDIR /app
 
-ENTRYPOINT ["/docker-entrypoint"]
+RUN echo "Setting up project..." && \
+    pip install -e . && \
+    echo "DONE"
+
+ENTRYPOINT ["pokedex"]
 CMD ["status"]
