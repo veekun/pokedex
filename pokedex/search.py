@@ -46,7 +46,9 @@ def search(session, **criteria):
     do_stat = False
 
     if criteria.get('name') is not None:
-        query = query.filter(t.Pokemon.species.has(func.lower(t.PokemonSpecies.name) == criteria['name'].lower()))
+        query = query.join(t.Pokemon.species)
+        query = query.join(t.PokemonSpecies.names_local)
+        query = query.filter(func.lower(t.PokemonSpecies.names_table.name) == criteria['name'].lower())
 
     for stat_ident in (u'attack', u'defense', u'special-attack', u'special-defense', u'speed', u'hp'):
         criterion = criteria.get(stat_ident)
