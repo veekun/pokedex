@@ -431,9 +431,13 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
         # if specified, or for official languages by default.
         # For non-translation tables, dump all rows.
         if 'local_language_id' in columns:
-            if langs is None:
+            # If no lang arguments were passed or the 'all' argument was passed
+            if langs is None or langs == ['all']:
                 def include_row(row):
                     return languages[row.local_language_id].official
+            # If the none argument is passed then nothing should be changed from the csv files
+            elif langs == ['none']:
+                return False
             elif any(col.info.get('official') for col in table.columns):
                 def include_row(row):
                     return (languages[row.local_language_id].official or
