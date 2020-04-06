@@ -207,8 +207,20 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
             if "already exists" in str(error.orig):
                 print("\n\nERROR:  The table '{}' already exists in the database. "
                     "Did you mean to use 'pokedex load -D'".format(table))
-                
+            sys.exit(1)
+
+            # If it happens to be some other error but raised by the same 
+            # exception, then an unexpected error message is sent with 
+            # the error included
+            else:
+                print("\n\n UNEXPECTED ERROR: ", error)
                 sys.exit(1)
+        
+        # In case any other exception not specified above is raised, an
+        # unexpected exception error is sent with the error included.
+        except Exception as error:
+            print("\n\nUNEXPECTED Error:  ", error)
+            sys.exit(1)
 
         print_status('%s/%s' % (n, len(table_objs)))
     print_done()
