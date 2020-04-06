@@ -196,35 +196,19 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
         try:
             table.create(bind=engine)
         
-        # This except is for SQLite
-        except sqlalchemy.exc.OperationalError as error:
-            # All the databases create extra spaces or new lines so this is the best way I can see to handle it
-            if "table {} already exists".format(table) in error.orig.__str__():
+        # Exceptions for handling the error thrown when trying to load
+        # the database with a table that already exists.
+        except (
+            sqlalchemy.exc.OperationalError,  # Exception used for SQLite
+            sqlalchemy.exc.ProgrammingError,  # Exception used for PostgreSQL
+            sqlalchemy.exc.InternalError      # Exception used for MySQL
+            ) as error:
+
+            if "already exists" in str(error.orig):
                 print("\n\nERROR:  The table '{}' already exists in the database. "
                     "Did you mean to use 'pokedex load -D'".format(table))
-            
-            # If the error was not that the table already exists, full error message is displayed
-            else:
-                print("\n\nUNEXPECTED Error:  ", error)
-            sys.exit(1)
-        
-        # This except is for PostgreSQL
-        except sqlalchemy.exc.ProgrammingError as error:
-            if 'relation "{}" already exists'.format(table) in error.orig.__str__():
-                print("\n\nERROR:  The table '{}' already exists in the database. "
-                    "Did you mean to use 'pokedex load -D'".format(table))
-            else:
-                print("\n\nUNEXPECTED Error:  ", error)
-            sys.exit(1)
-        
-        # This except is for MySQL
-        except sqlalchemy.exc.InternalError as error:
-            if "Table '{}' already exists".format(table) in error.orig.__str__():
-                print("\n\nERROR:  The table '{}' already exists in the database. "
-                    "Did you mean to use 'pokedex load -D'".format(table))
-            else:
-                print("\n\nUNEXPECTED Error:  ", error)
-            sys.exit(1)
+                
+                sys.exit(1)
 
         print_status('%s/%s' % (n, len(table_objs)))
     print_done()
