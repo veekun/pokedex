@@ -114,7 +114,7 @@ def create_parser():
         help="directory to place the dumped CSV files")
     cmd_dump.add_argument(
         '-l', '--langs', dest='langs', default=None,
-        help=u"comma-separated list of language codes to load, 'none', or 'all' (default: all)")
+        help=u"comma-separated list of language codes to load, 'none', or 'all' (default: none)")
     cmd_dump.add_argument(
         'tables', nargs='*',
         help="list of database tables to load (default: all)")
@@ -210,8 +210,9 @@ def command_dump(parser, args):
     if args.langs is not None:
         langs = [l.strip() for l in args.langs.split(',')]
         
-        # If the langs code is only 'all' then langs is None so that all the tables get dumped.
-        if len(langs) == 1 and langs[0] == 'all':
+        # If the `langs` code is 'none' then langs is None so only the official languages
+        # from the tables will be dumped. This is the same as if no `langs` were passed.
+        if len(langs) == 1 and langs[0] == 'none':
             langs = None
 
         # Check if either 'all' or 'none' codes are used along side other codes.

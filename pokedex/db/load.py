@@ -425,26 +425,34 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
             writer = csv.writer(open(filename, 'wb'), lineterminator='\n')
             columns = [col.name.encode('utf8') for col in table.columns]
 
-        # For name tables, always dump rows for official languages, as well as
-        # for those in `langs` if specified.
-        # For other translation tables, only dump rows for languages in `langs`
-        # if specified, or for official languages by default.
-        # For non-translation tables, dump all rows.
+        # Tables always dump official languages.
+        # If there were any `langs` passed, then the official languages plus
+        # the specified `langs` will be dumped from the tables that have a 
+        # 'local_language_id' column.
+        # If the table doesn't have a 'local_language_id' column, then
+        # all the rows will be dumped.
         if 'local_language_id' in columns:
+            # If 'pokedex dump' OR 'pokedex dump -l none' were passed
+            # Only columns with official languages will be dumped.
             if langs is None:
                 def include_row(row):
                     return languages[row.local_language_id].official
-            # If the none code is passed, then all the csv files with the local_language_id
-            # column are not updated. In other words they are left blank.
-            elif langs == ['none']:
-                return False
-            elif any(col.info.get('official') for col in table.columns):
+            
+            # If 'pokedex dump -l all' was passed. All the columns will be 
+            # dumped, no matter if the language is official or not.
+            elif langs == ['all']:
+                def include_row(row):
+                    return True
+            
+            # If there is a/multiple language codes passed, then all the columns that are
+            # those languages OR are official languages will be dumped.
+            else:
                 def include_row(row):
                     return (languages[row.local_language_id].official or
                             languages[row.local_language_id].identifier in langs)
-            else:
-                def include_row(row):
-                    return languages[row.local_language_id].identifier in langs
+
+        # If there is no 'local_language_id' column in the table then all the rows
+        # are dumped.
         else:
             def include_row(row):
                 return True
