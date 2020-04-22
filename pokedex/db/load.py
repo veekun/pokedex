@@ -215,12 +215,6 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
             else:
                 print("\n\n UNEXPECTED ERROR: ", error)
                 sys.exit(1)
-        
-        # In case any other exception not specified above is raised, an
-        # unexpected exception error is sent with the error included.
-        except Exception as error:
-            print("\n\nUNEXPECTED Error:  ", error)
-            sys.exit(1)
 
         print_status('%s/%s' % (n, len(table_objs)))
     print_done()
