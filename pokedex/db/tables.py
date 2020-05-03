@@ -2055,6 +2055,10 @@ class PokemonSpecies(TableBase):
         doc=u"ID of the growth rate for this family")
     forms_switchable = Column(Boolean, nullable=False,
         doc=u"True iff a particular individual of this species can switch between its different forms.")
+    is_legendary = Column(Boolean, nullable=False,
+        doc=u'True iff the Pokémon is a legendary Pokémon.')
+    is_mythical = Column(Boolean, nullable=False,
+        doc=u'True iff the Pokémon is a mythical Pokémon.')
     order = Column(Integer, nullable=False, index=True,
         doc=u'The order in which species should be sorted.  Based on National Dex order, except families are grouped together and sorted by stage.')
     conquest_order = Column(Integer, nullable=True, index=True,
