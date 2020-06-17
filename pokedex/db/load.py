@@ -193,7 +193,29 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
 
     print_start('Creating tables')
     for n, table in enumerate(table_objs):
-        table.create(bind=engine)
+        try:
+            table.create(bind=engine)
+
+        # Exceptions for handling the error thrown when trying to load
+        # the database with a table that already exists.
+        except (
+            sqlalchemy.exc.OperationalError,  # Exception used for SQLite
+            sqlalchemy.exc.ProgrammingError,  # Exception used for PostgreSQL
+            sqlalchemy.exc.InternalError      # Exception used for MySQL
+            ) as error:
+
+            if "already exists" in str(error.orig):
+                print("\n\nERROR:  The table '{}' already exists in the database. "
+                    "Did you mean to use 'pokedex load -D'".format(table))
+                sys.exit(1)
+
+            # If it happens to be some other error but raised by the same
+            # exception, then an unexpected error message is sent with
+            # the error included
+            else:
+                print("\n\n UNEXPECTED ERROR: ", error)
+                sys.exit(1)
+
         print_status('%s/%s' % (n, len(table_objs)))
     print_done()
 
