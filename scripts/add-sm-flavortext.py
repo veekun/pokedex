@@ -7,8 +7,11 @@ import sys
 import re
 
 textdir = sys.argv[1]
-VERSION = 'sun'
-FILE = '119'
+#VERSION = 'sun'
+#FILE = '119'
+VERSION = 'ultra-moon'
+FILE = '125'
+
 NUM_SPECIES = 807
 
 lang_idents = {
