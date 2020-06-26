@@ -2059,6 +2059,10 @@ class PokemonSpecies(TableBase):
         doc=u'The order in which species should be sorted.  Based on National Dex order, except families are grouped together and sorted by stage.')
     conquest_order = Column(Integer, nullable=True, index=True,
         doc=u'The order in which species should be sorted for Pokémon Conquest-related tables.  Matches gallery order.')
+    is_legendary = Column(Boolean, nullable=False,
+        doc=u'True if the Pokémon is a legendary Pokémon.')
+    is_mythical = Column(Boolean, nullable=False,
+        doc=u'True if the Pokémon is a mythical Pokémon.')
 
 create_translation_table('pokemon_species_names', PokemonSpecies, 'names',
     relation_lazy='joined',
