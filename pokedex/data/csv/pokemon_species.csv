@@ -1,5 +1,5 @@
 id,identifier,generation_id,evolves_from_species_id,evolution_chain_id,color_id,shape_id,habitat_id,gender_rate,capture_rate,base_happiness,is_baby,hatch_counter,has_gender_differences,growth_rate_id,forms_switchable,is_legendary,is_mythical,order,conquest_order
-1,bulbasaur,1,,1,5,8,3,1,45,70,0,20,0,4,0,0,0,1,
+1,bulbasaur,1,,1,5,8,3,1,120,70,0,20,0,4,0,0,0,1,
 2,ivysaur,1,1,1,5,8,3,1,45,70,0,20,0,4,0,0,0,2,
 3,venusaur,1,2,1,5,8,3,1,45,70,0,20,1,4,1,0,0,3,
 4,charmander,1,,2,8,6,4,1,45,70,0,20,0,4,0,0,0,4,109
@@ -806,3 +806,5 @@ id,identifier,generation_id,evolves_from_species_id,evolution_chain_id,color_id,
 805,stakataka,7,,425,4,8,,-1,30,0,0,120,0,1,0,0,0,805,
 806,blacephalon,7,,426,9,12,,-1,30,0,0,120,0,1,0,0,0,806,
 807,zeraora,7,,427,10,12,,-1,3,0,0,120,0,1,0,0,1,807,
+808,meltan,7,,428,4,0,,-1,3,0,0,120,0,1,0,0,0,808,
+809,melmetal,7,,429,4,0,,-1,3,0,0,120,0,1,0,0,0,809,
