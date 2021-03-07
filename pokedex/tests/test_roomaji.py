@@ -25,6 +25,7 @@ import pokedex.roomaji
         (u'ラティアス',         'ratiasu'),
         (u'ウィー',             'wii'),
         (u'セレビィ',           'sereby'),
+        (u'ウッウ',             u"u'u"),
     ]
 )
 def test_roomaji(kana, roomaji):
@@ -52,6 +53,7 @@ def test_roomaji(kana, roomaji):
         (u'ラティアス',         u'ratiasu'),
         (u'ウィー',             u'wí'),
         (u'セレビィ',           u'serebí'),
+        (u'ウッウ',             u"u'u"),
     ]
 )
 def test_roomaji_cs(kana, roomaji):
