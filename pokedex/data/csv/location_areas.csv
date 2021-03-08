@@ -15,9 +15,9 @@ id,location_id,game_index,identifier
 14,10,14,snowfall
 15,10,15,blizzard
 16,10,16,4f
-17,10,17,5f
-18,10,18,6f
-19,10,19,7f
+17,10,17,4f-small-room
+18,10,18,5f
+19,10,19,6f
 20,10,20,cave
 21,10,21,route-216
 22,10,22,route-211
