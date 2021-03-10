@@ -110,8 +110,8 @@ def test_default_forms(session):
     default pokemon."""
 
     q = session.query(tables.Pokemon)
-    q = q.join(tables.PokemonForm)
-    q = q.filter(tables.PokemonForm.is_default==True)
+    # TODO: could use table.Pokemon.forms.and_: https://docs.sqlalchemy.org/en/14/orm/queryguide.html#orm-queryguide-join-on-augmented
+    q = q.outerjoin(tables.PokemonForm, (tables.PokemonForm.pokemon_id == tables.Pokemon.id) & (tables.PokemonForm.is_default==True))
     q = q.options(lazyload('*'))
     q = q.group_by(tables.Pokemon)
     q = q.add_columns(func.count(tables.PokemonForm.id))
@@ -123,8 +123,7 @@ def test_default_forms(session):
             pytest.fail("pokemon %s has %d default forms" % (pokemon.name, num_default_forms))
 
     q = session.query(tables.PokemonSpecies)
-    q = q.join(tables.Pokemon)
-    q = q.filter(tables.Pokemon.is_default==True)
+    q = q.outerjoin(tables.Pokemon, (tables.Pokemon.species_id == tables.PokemonSpecies.id) & (tables.Pokemon.is_default==True))
     q = q.options(lazyload('*'))
     q = q.group_by(tables.PokemonSpecies)
     q = q.add_columns(func.count(tables.Pokemon.id))
