@@ -441,10 +441,12 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
 
         # CSV module only works with bytes on 2 and only works with text on 3!
         if six.PY3:
-            writer = csv.writer(open(filename, 'w', newline='', encoding="utf8"), lineterminator='\n')
+            csvfile = open(filename, 'w', newline='', encoding="utf8")
+            writer = csv.writer(csvfile, lineterminator='\n')
             columns = [col.name for col in table.columns]
         else:
-            writer = csv.writer(open(filename, 'wb'), lineterminator='\n')
+            csvfile = open(filename, 'wb')
+            writer = csv.writer(csvfile, lineterminator='\n')
             columns = [col.name.encode('utf8') for col in table.columns]
 
         # For name tables, always dump rows for official languages, as well as
@@ -491,4 +493,5 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
 
                 writer.writerow(csvs)
 
+        csvfile.close()
         print_done()
