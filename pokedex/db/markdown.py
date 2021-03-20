@@ -11,6 +11,7 @@ which case it is replaced by the name of the thing linked to.
 """
 from __future__ import absolute_import
 
+import sys
 import re
 
 import markdown
@@ -159,7 +160,10 @@ class PokedexLinkPattern(markdown.inlinepatterns.Pattern):
 
     Handles matches using factory
     """
-    regex = u'(?x) \\[ ([^]]*) \\] \\{ ([-a-z0-9]+) : ([-a-z0-9 ]+) \\}'
+    if sys.version_info >= (3, 6):
+        regex = u'(?x: \\[ ([^]]*) \\] \\{ ([-a-z0-9]+) : ([-a-z0-9 ]+) \\} )'
+    else:
+        regex = u'(?x) \\[ ([^]]*) \\] \\{ ([-a-z0-9]+) : ([-a-z0-9 ]+) \\}'
 
     def __init__(self, factory, session, string_language=None, game_language=None):
         markdown.inlinepatterns.Pattern.__init__(self, self.regex)
