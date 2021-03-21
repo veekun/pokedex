@@ -21,6 +21,9 @@ def pytest_runtest_setup(item):
     if 'slow' in item.keywords and not item.config.getvalue('all'):
         pytest.skip("skipping slow tests")
 
+def pytest_configure(config):
+    config.addinivalue_line("markers", "slow: marks tests as slow (require --all to run)")
+
 @pytest.fixture(scope="module")
 def session(request):
     import pokedex.db
