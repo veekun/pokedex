@@ -1115,6 +1115,27 @@ Any [regular damage]{mechanic:regular-damage} dealt to an affected Pokémon is r
 418,9,XXX new effect for splintered-stormshards,XXX new effect for splintered-stormshards
 419,9,XXX new effect for clangorous-soulblaze,XXX new effect for clangorous-soulblaze
 420,9,XXX new effect for mind-blown,XXX new effect for mind-blown
+421,9,XXX new effect for dynamax-cannon,XXX new effect for dynamax-cannon
+422,9,XXX new effect for snipe-shot,XXX new effect for snipe-shot
+423,9,XXX new effect for jaw-lock,XXX new effect for jaw-lock
+424,9,XXX new effect for stuff-cheeks,XXX new effect for stuff-cheeks
+425,9,XXX new effect for no-retreat,XXX new effect for no-retreat
+426,9,XXX new effect for tar-shot,XXX new effect for tar-shot
+427,9,XXX new effect for magic-powder,XXX new effect for magic-powder
+428,9,XXX new effect for dragon-darts,XXX new effect for dragon-darts
+429,9,XXX new effect for teatime,XXX new effect for teatime
+430,9,XXX new effect for octolock,XXX new effect for octolock
+431,9,XXX new effect for bolt-beak,XXX new effect for bolt-beak
+432,9,XXX new effect for court-change,XXX new effect for court-change
+433,9,XXX new effect for clangorous-soul,XXX new effect for clangorous-soul
+434,9,XXX new effect for body-press,XXX new effect for body-press
+435,9,XXX new effect for decorate,XXX new effect for decorate
+436,9,XXX new effect for behemoth-blade,XXX new effect for behemoth-blade
+437,9,XXX new effect for aura-wheel,XXX new effect for aura-wheel
+439,9,XXX new effect for overdrive,XXX new effect for overdrive
+440,9,XXX new effect for apple-acid,XXX new effect for apple-acid
+441,9,XXX new effect for life-dew,XXX new effect for life-dew
+442,9,XXX new effect for obstruct,XXX new effect for obstruct
 10001,9,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move while in [hyper mode]{mechanic:hyper-mode}.
 10002,9,User receives 1/2 its HP in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 of its current [HP]{mechanic:hp} in recoil.
 10003,9,Halves HP of all Pokémon on the field.  Must recharge,"Halves [HP]{mechanic:hp} of all Pokémon on the field.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic:switch} out during that turn."
