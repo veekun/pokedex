@@ -1236,7 +1236,7 @@ id,identifier,form_identifier,pokemon_id,introduced_in_version_group_id,is_defau
 10337,darmanitan-galar-zen,galar-zen,10178,20,1,0,0,4,729
 10338,yamask-galar,galar,10179,20,1,0,0,2,737
 10339,stunfisk-galar,galar,10180,20,1,0,0,2,800
-10340,zygarde-10,10,10181,20,1,0,0,2,1001
+10340,zygarde-10,10,10181,17,1,0,0,2,1001
 10341,cramorant-gulping,gulping,10182,20,1,0,0,2,1186
 10342,cramorant-gorging,gorging,10183,20,1,0,0,3,1187
 10343,toxtricity-low-key,low-key,10184,20,1,0,0,2,1192
