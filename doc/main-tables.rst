@@ -45,6 +45,7 @@ Moves
 .. dex-table:: Move
 .. dex-table:: MoveEffect
 .. dex-table:: MoveMeta
+.. dex-table:: ZMoveEffect
 
 Items
 -----

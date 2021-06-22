@@ -1236,6 +1236,12 @@ class Move(TableBase):
         doc=u"ID of the move's Contest effect")
     super_contest_effect_id = Column(Integer, ForeignKey('super_contest_effects.id'), nullable=True,
         doc=u"ID of the move's Super Contest effect")
+    z_power = Column(SmallInteger, nullable=True,
+        doc=u"Z-power of the move, null if it does not have a set z-power.")
+    z_effect_id = Column(Integer, ForeignKey('z_move_effects.id'), nullable=True,
+        doc=u"ID of the z-move's effect, null if it does not have a set z-move effect.")
+    dynamax_power = Column(SmallInteger, nullable=True,
+        doc=u"Dynamax power of the move, null if it does not have a set dynamax power.")
 
 create_translation_table('move_names', Move, 'names',
     relation_lazy='joined',
@@ -2280,6 +2286,22 @@ class VersionGroupRegion(TableBase):
     region_id = Column(Integer, ForeignKey('regions.id'), primary_key=True, nullable=False,
         doc=u"The ID of the region.")
 
+class ZMoveEffect(TableBase):
+    u"""An effect of a z-move."""
+    __tablename__ = 'z_move_effects'
+    __singlename__ = 'z_move_effect'
+    id = Column(Integer, primary_key=True, nullable=False,
+        doc=u"A numeric ID")
+
+create_translation_table('z_move_effect_prose', ZMoveEffect, 'prose',
+    short_effect = Column(UnicodeText, nullable=True,
+        doc=u"A short summary of the effect",
+        info=dict(format='markdown')),
+    effect = Column(UnicodeText, nullable=True,
+        doc=u"A detailed description of the effect",
+        info=dict(format='markdown')),
+)
+
 
 ### Relationships down here, to avoid dependency ordering problems
 
@@ -2587,11 +2609,19 @@ Move.target = relationship(MoveTarget,
 Move.type = relationship(Type,
     innerjoin=True, lazy='joined',
     backref='moves')
+Move.z_move_effect = relationship(ZMoveEffect,
+    innerjoin=True,
+    backref='moves')
 
 Move.effect = markdown.MoveEffectProperty('effect')
 Move.effect_map = markdown.MoveEffectPropertyMap('effect_map')
 Move.short_effect = markdown.MoveEffectProperty('short_effect')
 Move.short_effect_map = markdown.MoveEffectPropertyMap('short_effect_map')
+
+Move.z_effect = markdown.MoveEffectProperty('z_effect', relationship='z_move_effect')
+Move.z_effect_map = markdown.MoveEffectPropertyMap('z_effect_map', relationship='z_move_effect')
+Move.z_short_effect = markdown.MoveEffectProperty('z_short_effect', relationship='z_move_effect')
+Move.z_short_effect_map = markdown.MoveEffectPropertyMap('z_short_effect_map', relationship='z_move_effect')
 
 MoveChangelog.changed_in = relationship(VersionGroup,
     innerjoin=True, lazy='joined',

@@ -1,0 +1,32 @@
+z_move_effect_id,local_language_id,short_effect,effect
+1,9,Raises the user's Attack by one stage.,Raises the user's [Attack]{mechanic:attack} by one [stage]{mechanic:stage}.
+2,9,Raises the user's Attack by two stages.,Raises the user's [Attack]{mechanic:attack} by two [stages]{mechanic:stage}.
+3,9,Raises the user's Attack by three stages.,Raises the user's [Attack]{mechanic:attack} by three [stages]{mechanic:stage}.
+4,9,Raises the user's Defense by one stage.,Raises the user's [Defense]{mechanic:defense} by one [stage]{mechanic:stage}.
+5,9,Raises the user's Defense by two stages.,Raises the user's [Defense]{mechanic:defense} by two [stages]{mechanic:stage}.
+6,9,Raises the user's Defense by three stages.,Raises the user's [Defense]{mechanic:defense} by three [stages]{mechanic:stage}.
+7,9,Raises the user's Special Attack by one stage.,Raises the user's [Special Attack]{mechanic:special-attack} by one [stage]{mechanic:stage}.
+8,9,Raises the user's Special Attack by two stages.,Raises the user's [Special Attack]{mechanic:special-attack} by two [stages]{mechanic:stage}.
+9,9,Raises the user's Special Attack by three stages.,Raises the user's [Special Attack]{mechanic:special-attack} by three [stages]{mechanic:stage}.
+10,9,Raises the user's Special Defense by one stage.,Raises the user's [Special Defense]{mechanic:special-defense} by one [stage]{mechanic:stage}.
+11,9,Raises the user's Special Defense by two stages.,Raises the user's [Special Defense]{mechanic:special-defense} by two [stages]{mechanic:stage}.
+12,9,Raises the user's Special Defense by three stages.,Raises the user's [Special Defense]{mechanic:special-defense} by three [stages]{mechanic:stage}.
+13,9,Raises the user's Speed by one stage.,Raises the user's [Speed]{mechanic:speed} by one [stage]{mechanic:stage}.
+14,9,Raises the user's Speed by two stages.,Raises the user's [Speed]{mechanic:speed} by two [stages]{mechanic:stage}.
+15,9,Raises the user's Speed by three stages.,Raises the user's [Speed]{mechanic:speed} by three [stages]{mechanic:stage}.
+16,9,Raises the user's Accuracy by one stage.,Raises the user's [Accuracy]{mechanic:accuracy} by one [stage]{mechanic:stage}.
+17,9,Raises the user's Accuracy by two stages.,Raises the user's [Accuracy]{mechanic:accuracy} by two [stages]{mechanic:stage}.
+18,9,Raises the user's Accuracy by three stages.,Raises the user's [Accuracy]{mechanic:accuracy} by three [stages]{mechanic:stage}.
+19,9,Raises the user's Evasion by one stage.,Raises the user's [Evasion]{mechanic:evasion} by one [stage]{mechanic:stage}.
+20,9,Raises the user's Evasion by two stages.,Raises the user's [Evasion]{mechanic:evasion} by two [stages]{mechanic:stage}.
+21,9,Raises the user's Evasion by three stages.,Raises the user's [Evasion]{mechanic:evasion} by three [stages]{mechanic:stage}.
+22,9,Raises all of the user's stats by one stage.,Raises all of the user's [stats]{mechanic:stat} by one [stage]{mechanic:stage}.
+23,9,Raises all of the user's stats by two stage.,Raises all of the user's [stats]{mechanic:stat} by two [stage]{mechanic:stage}.
+24,9,Raises all of the user's stats by three stage.,Raises all of the user's [stats]{mechanic:stat} by three [stage]{mechanic:stage}.
+25,9,Increases the user's chance to score a critical hit.,User's [critical hit]{mechanic:critical-hit} rate is two levels higher until it leaves the field.
+26,9,"Resets all of the user's lowered stats, accuracy, and evasion.","Resets all of the user's lowered [stats]{mechanic:stat}, [accuracy]{mechanic:accuracy}, and [evasion]{mechanic:evasion}."
+27,9,Heals all of the user's HP.,Heals all of the user's [HP]{mechanic:hp}.
+28,9,Heals all of the replacement's HP.,Heals all of the replacement's [HP]{mechanic:hp}.
+29,9,Redirects the target's single-target effects to the user for this turn.,"Until the end of this turn, any moves that opposing Pokémon target solely at the user's ally will instead target the user."
+30,9,Ghosts recover all their HP.  Others increase Attack.,"If the user is a []{type:ghost}: heals all of the user's [HP]{mechanic:hp}.
+Otherwise: Raises the user's [Attack]{mechanic:attack} by one [stage]{mechanic:stage}."
