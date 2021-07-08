@@ -13,5 +13,5 @@ install: pip install -e .
 before_script: pokedex setup -v
 script:
     - py.test
-    - pokedex dump
+    - pokedex dump -l all
     - git --no-pager diff --exit-code pokedex/data/csv/
