@@ -111,6 +111,9 @@ For example, you can get a list of all pokémon species, sorted by their
     Xerneas
     Yveltal
     Zygarde
+    Diancie
+    Hoopa
+    Volcanion
 
 Or to order by :attr:`~pokedex.db.tables.PokemonSpecies.name`:
 
