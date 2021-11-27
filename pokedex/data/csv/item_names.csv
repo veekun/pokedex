@@ -2190,7 +2190,7 @@ item_id,local_language_id,name
 224,8,Spettrotarga
 224,9,Spell Tag
 224,11,のろいのおふだ
-224,12,诅咒之符
+224,12,咒术之符
 225,1,まがったスプーン
 225,3,휘어진스푼
 225,4,彎曲的湯匙
@@ -4022,7 +4022,7 @@ item_id,local_language_id,name
 408,4,寶可追蹤
 408,5,Poké Radar
 408,6,Pokéradar
-408,7,Pokéradar
+408,7,Poké Radar
 408,8,Poké Radar
 408,9,Poké Radar
 408,11,ポケトレ
@@ -4030,31 +4030,31 @@ item_id,local_language_id,name
 409,1,ポイントカード
 409,3,포인트카드
 409,4,點數卡
-409,5,Carte Points
+409,5,Carte à Points
 409,6,Punktekarte
 409,7,Tarjeta Puntos
-409,8,Scheda Punti
+409,8,Scheda punti
 409,9,Point Card
 409,11,ポイントカード
 409,12,点数卡
 410,1,ぼうけんノート
 410,3,모험노트
 410,4,冒險筆記
-410,5,Journal
-410,6,Tagebuch
-410,7,Diario
-410,8,Agenda
-410,9,Journal
+410,5,Notes d’Aventure
+410,6,Abenteuernotizen
+410,7,Guía de Viaje
+410,8,Note di viaggio
+410,9,Guidebook
 410,11,ぼうけんノート
 410,12,冒险笔记
 411,1,シールいれ
 411,3,실상자
 411,4,貼紙盒
-411,5,Boîte Sceaux
+411,5,Boîte à Sceaux
 411,6,Stickerkoffer
-411,7,Caja Sellos
+411,7,Caja de Sellos
 411,8,Portabolli
-411,9,Seal Case
+411,9,Sticker Case
 411,11,シールいれ
 411,12,贴纸盒
 412,1,アクセサリーいれ
@@ -4074,7 +4074,7 @@ item_id,local_language_id,name
 413,6,Stickertüte
 413,7,Bolsa Sellos
 413,8,Bollosacca
-413,9,Seal Bag
+413,9,Sticker Bag
 413,11,シールぶくろ
 413,12,贴纸袋
 414,1,ともだちてちょう
@@ -4090,10 +4090,10 @@ item_id,local_language_id,name
 415,1,はつでんしょキー
 415,3,발전소키
 415,4,發電廠鑰匙
-415,5,Clé Centrale
+415,5,Clé Parc Éolien
 415,6,K-Schlüssel
 415,7,Llave Central
-415,8,Turbinchiave
+415,8,Chiave impianto
 415,9,Works Key
 415,11,はつでんしょキー
 415,12,发电厂钥匙
@@ -4103,7 +4103,7 @@ item_id,local_language_id,name
 416,5,Vieux Grigri
 416,6,Talisman
 416,7,Talismán
-416,8,Arcamuleto
+416,8,Amuleto antico
 416,9,Old Charm
 416,11,こだいのおまもり
 416,12,古代护符
@@ -4113,17 +4113,17 @@ item_id,local_language_id,name
 417,5,Clé Galaxie
 417,6,G-Schlüssel
 417,7,Llave Galaxia
-417,8,Galachiave
+417,8,Chiave Galassia
 417,9,Galactic Key
 417,11,ギンガだんのカギ
 417,12,银河队钥匙
 418,1,あかいくさり
-418,3,빨강쇠사슬
+418,3,빨강사슬
 418,4,紅色鎖鏈
 418,5,Chaîne Rouge
 418,6,Rote Kette
 418,7,Cadena Roja
-418,8,Rossocatena
+418,8,Catena rossa
 418,9,Red Chain
 418,11,あかいくさり
 418,12,红色锁链
@@ -4191,7 +4191,7 @@ item_id,local_language_id,name
 425,3,고라파덕물뿌리개
 425,4,可達鴨噴壺
 425,5,Kwakarrosoir
-425,6,Entonkanne
+425,6,Enton-Kanne
 425,7,Psydugadera
 425,8,Sprayduck
 425,9,Sprayduck
@@ -4200,7 +4200,7 @@ item_id,local_language_id,name
 426,1,ポフィンケース
 426,3,포핀케이스
 426,4,寶芬盒
-426,5,Boîte Poffin
+426,5,Boîte à Poffins
 426,6,Knurspbox
 426,7,Pokochera
 426,8,Portapoffin
@@ -4217,10 +4217,10 @@ item_id,local_language_id,name
 428,1,ルームキー
 428,3,룸키
 428,4,房間鑰匙
-428,5,Clé Chambre
-428,6,B-Schlüssel
+428,5,Clé de Chambre
+428,6,Hotelschlüssel
 428,7,Llave Suite
-428,8,Chiave Suite
+428,8,Chiave suite
 428,9,Suite Key
 428,11,ルームキー
 428,12,房间钥匙
@@ -4237,11 +4237,11 @@ item_id,local_language_id,name
 430,1,みかづきのはね
 430,3,초승달날개
 430,4,新月之羽
-430,5,Lun’Aile
+430,5,Plume Lune
 430,6,Lunarfeder
 430,7,Pluma Lunar
-430,8,Alalunare
-430,9,Lunar Wing
+430,8,Piumalunare
+430,9,Lunar Feather
 430,11,みかづきのはね
 430,12,新月之羽
 431,1,メンバーズカード
@@ -4269,7 +4269,7 @@ item_id,local_language_id,name
 433,4,船票
 433,5,Passe Bateau
 433,6,Bootsticket
-433,7,Ticket Barco
+433,7,Ticket del Barco
 433,8,Biglietto nave
 433,9,S.S. Ticket
 433,11,ふねのチケット
@@ -4308,7 +4308,7 @@ item_id,local_language_id,name
 437,3,교환권1
 437,4,兌換券１
 437,5,Bon 1
-437,6,Kupon 1
+437,6,Coupon 1
 437,7,Cupón 1
 437,8,Coupon 1
 437,9,Coupon 1
@@ -4318,7 +4318,7 @@ item_id,local_language_id,name
 438,3,교환권2
 438,4,兌換券２
 438,5,Bon 2
-438,6,Kupon 2
+438,6,Coupon 2
 438,7,Cupón 2
 438,8,Coupon 2
 438,9,Coupon 2
@@ -4328,7 +4328,7 @@ item_id,local_language_id,name
 439,3,교환권3
 439,4,兌換券３
 439,5,Bon 3
-439,6,Kupon 3
+439,6,Coupon 3
 439,7,Cupón 3
 439,8,Coupon 3
 439,9,Coupon 3
@@ -4337,21 +4337,21 @@ item_id,local_language_id,name
 440,1,そうこのカギ
 440,3,창고열쇠
 440,4,倉庫鑰匙
-440,5,Clé Stockage
+440,5,Clé du Hangar
 440,6,Lagerschlüssel
 440,7,Llave Almacén
-440,8,Depochiave
+440,8,Chiave magazzino
 440,9,Storage Key
 440,11,そうこのカギ
 440,12,仓库钥匙
 441,1,ひでんのくすり
 441,3,비전신약
 441,4,秘傳之藥
-441,5,Potion Secrète
-441,6,Geheimtrank
-441,7,Poción Secreta
-441,8,Pozione Segreta
-441,9,Secret Potion
+441,5,Remède Secret
+441,6,Geheimmedizin
+441,7,Medicina Secreta
+441,8,Rimedio segreto
+441,9,Secret Medicine
 441,11,ひでんのくすり
 441,12,秘传之药
 442,1,はっきんだま
@@ -8611,7 +8611,7 @@ item_id,local_language_id,name
 932,1,そうこのカギ
 932,3,창고열쇠
 932,4,倉庫鑰匙
-932,5,Clé Stockage
+932,5,Clé du Hangar
 932,6,Lagerschlüssel
 932,7,Llave Almacén
 932,8,Chiave magazzino
@@ -8623,7 +8623,7 @@ item_id,local_language_id,name
 933,4,船票
 933,5,Passe Bateau
 933,6,Bootsticket
-933,7,Ticket Barco
+933,7,Ticket del Barco
 933,8,Biglietto nave
 933,9,S.S. Ticket
 933,11,ふねのチケット
@@ -8997,7 +8997,7 @@ item_id,local_language_id,name
 970,8,Mimikyum Z
 970,9,Mimikium Z
 970,11,ミミッキュＺ
-970,12,谜拟ＱＺ
+970,12,谜拟丘Ｚ
 971,1,ルガルガンＺ
 971,3,루가루암Z
 971,4,鬃岩狼人Ｚ
@@ -9057,7 +9057,7 @@ item_id,local_language_id,name
 976,8,Mimikyum Z
 976,9,Mimikium Z
 976,11,ミミッキュＺ
-976,12,谜拟ＱＺ
+976,12,谜拟丘Ｚ
 977,1,ルガルガンＺ
 977,3,루가루암Z
 977,4,鬃岩狼人Ｚ
@@ -15878,3 +15878,153 @@ item_id,local_language_id,name
 1658,9,Reins of Unity
 1658,11,キズナのタヅナ
 1658,12,牵绊缰绳
+1659,1,なぞのかけらＳ
+1659,3,수수께끼의조각S
+1659,4,謎之碎片Ｓ
+1659,5,Éclat Étrange S
+1659,6,Enigmafragment S
+1659,7,Esquirla Extraña S
+1659,8,Frammento insolito S
+1659,9,Mysterious Shard S
+1659,11,なぞのかけらＳ
+1659,12,谜之碎片Ｓ
+1660,1,なぞのかけらＬ
+1660,3,수수께끼의조각L
+1660,4,謎之碎片Ｌ
+1660,5,Éclat Étrange L
+1660,6,Enigmafragment L
+1660,7,Esquirla Extraña L
+1660,8,Frammento insolito L
+1660,9,Mysterious Shard L
+1660,11,なぞのかけらＬ
+1660,12,谜之碎片Ｌ
+1661,1,あなほりドリル
+1661,3,구멍파기드릴
+1661,4,挖洞鑽
+1661,5,Foreuse
+1661,6,Einwegbohrer
+1661,7,Taladro
+1661,8,Trivella
+1661,9,Digger Drill
+1661,11,あなほりドリル
+1661,12,挖洞钻
+1662,1,カントーのせきばん
+1662,3,관동의석판
+1662,4,關都石板
+1662,5,Tablette Kanto
+1662,6,Kanto-Platte
+1662,7,Losa Kanto
+1662,8,Piastra di Kanto
+1662,9,Kanto Slate
+1662,11,カントーのせきばん
+1662,12,关都石板
+1663,1,ジョウトのせきばん
+1663,3,성도의석판
+1663,4,城都石板
+1663,5,Tablette Johto
+1663,6,Johto-Platte
+1663,7,Losa Johto
+1663,8,Piastra di Johto
+1663,9,Johto Slate
+1663,11,ジョウトのせきばん
+1663,12,城都石板
+1664,1,こころのせきばん
+1664,3,마음의석판
+1664,4,心之石板
+1664,5,Tablette Cœur
+1664,6,Gefühlsplatte
+1664,7,Losa Empatía
+1664,8,Piastra del cuore
+1664,9,Soul Slate
+1664,11,こころのせきばん
+1664,12,心之石板
+1665,1,にじのせきばん
+1665,3,무지개의석판
+1665,4,彩虹石板
+1665,5,Tablette Arc-en-ciel
+1665,6,Regenbogenplatte
+1665,7,Losa Arcoíris
+1665,8,Piastra arcobaleno
+1665,9,Rainbow Slate
+1665,11,にじのせきばん
+1665,12,彩虹石板
+1666,1,あらしのせきばん
+1666,3,폭풍의석판
+1666,4,暴風石板
+1666,5,Tablette Tempête
+1666,6,Sturmplatte
+1666,7,Losa Tormenta
+1666,8,Piastra dei venti
+1666,9,Squall Slate
+1666,11,あらしのせきばん
+1666,12,暴风石板
+1667,1,たいかいのせきばん
+1667,3,대해의석판
+1667,4,大海石板
+1667,5,Tablette Océans
+1667,6,Meeresplatte
+1667,7,Losa Mar
+1667,8,Piastra dei mari
+1667,9,Oceanic Slate
+1667,11,たいかいのせきばん
+1667,12,大海石板
+1668,1,たいりくのせきばん
+1668,3,대륙의석판
+1668,4,大陸石板
+1668,5,Tablette Continents
+1668,6,Kontinentplatte
+1668,7,Losa Tierra
+1668,8,Piastra delle terre
+1668,9,Tectonic Slate
+1668,11,たいりくのせきばん
+1668,12,大陆石板
+1669,1,てんくうのせきばん
+1669,3,천공의석판
+1669,4,天空石板
+1669,5,Tablette Cieux
+1669,6,Himmelsplatte
+1669,7,Losa Cielo
+1669,8,Piastra dei cieli
+1669,9,Stratospheric Slate
+1669,11,てんくうのせきばん
+1669,12,天空石板
+1670,1,いでんしのせきばん
+1670,3,유전자의석판
+1670,4,基因石板
+1670,5,Tablette Génétique
+1670,6,Genplatte
+1670,7,Losa Genética
+1670,8,Piastra del gene
+1670,9,Genome Slate
+1670,11,いでんしのせきばん
+1670,12,基因石板
+1671,1,みちびきのせきばん
+1671,3,인도의석판
+1671,4,引導石板
+1671,5,Tablette Guides
+1671,6,Weisungsplatte
+1671,7,Losa Inicio
+1671,8,Piastra degli esordi
+1671,9,Discovery Slate
+1671,11,みちびきのせきばん
+1671,12,引导石板
+1672,1,やぶれたせきばん
+1672,3,깨어진석판
+1672,4,毀壞石板
+1672,5,Tablette Distorsion
+1672,6,Zerrplatte
+1672,7,Losa Distorsión
+1672,8,Piastra distorta
+1672,9,Distortion Slate
+1672,11,やぶれたせきばん
+1672,12,毁坏石板
+1673,1,ＤＳプレイヤー
+1673,3,DS플레이어
+1673,4,ＤＳ播放器
+1673,5,Lecteur DS
+1673,6,DS-Player
+1673,7,Reproductor DS
+1673,8,Lettore DS
+1673,9,DS Sounds
+1673,11,ＤＳプレイヤー
+1673,12,ＤＳ播放器
