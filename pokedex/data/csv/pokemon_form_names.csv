@@ -46,11 +46,14 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 386,12,普通形态,
 412,1,くさきのミノ,
 412,3,초목도롱,
+412,4,草木蓑衣,
 412,5,Cape Plante,Cheniti Plante
 412,6,Pflanzenumhang,
 412,7,Tronco Planta,
 412,8,Manto Pianta,
 412,9,Plant Cloak,Plant Burmy
+412,11,くさきのミノ,
+412,12,草木蓑衣,
 413,1,くさきのミノ,
 413,3,초목도롱,
 413,4,草木蓑衣,
@@ -719,18 +722,24 @@ pokemon_form_id,local_language_id,form_name,pokemon_name
 10033,12,速度形态,
 10034,1,すなちのミノ,
 10034,3,모래땅도롱,
+10034,4,砂土蓑衣,
 10034,5,Cape Sable,Cheniti Sable
 10034,6,Sandumhang,
 10034,7,Tronco Arena,
 10034,8,Manto Sabbia,
 10034,9,Sandy Cloak,Sandy Burmy
+10034,11,すなちのミノ,
+10034,12,砂土蓑衣,
 10035,1,ゴミのミノ,
 10035,3,슈레도롱,
+10035,4,垃圾蓑衣,
 10035,5,Cape Déchet,Cheniti Déchet
 10035,6,Lumpenumhang,
 10035,7,Tronco Basura,
 10035,8,Manto Scarti,
 10035,9,Trash Cloak,Trash Burmy
+10035,11,ゴミのミノ,
+10035,12,垃圾蓑衣,
 10036,1,すなちのミノ,
 10036,3,모래땅도롱,
 10036,4,砂土蓑衣,
