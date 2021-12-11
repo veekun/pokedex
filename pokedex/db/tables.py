@@ -2475,7 +2475,8 @@ Experience.growth_rate = relationship(GrowthRate,
 Generation.versions = relationship(Version,
     secondary=VersionGroup.__table__,
     innerjoin=True)
-Generation.main_region = relationship(Region, innerjoin=True)
+Generation.main_region = relationship(Region, innerjoin=True,
+    backref=backref('generation', uselist=False))
 
 
 GrowthRate.max_experience_obj = relationship(Experience,
@@ -2497,13 +2498,12 @@ Item.flavor_text = relationship(ItemFlavorText,
 Item.fling_effect = relationship(ItemFlingEffect,
     backref='items')
 Item.machines = relationship(Machine,
-    order_by=Machine.version_group_id.asc())
+    order_by=Machine.version_group_id.asc(),
+    backref='item')
 Item.category = relationship(ItemCategory,
     innerjoin=True,
     backref=backref('items', order_by=Item.identifier.asc()))
 Item.pocket = association_proxy('category', 'pocket')
-
-ItemCategory.pocket = relationship(ItemPocket, innerjoin=True)
 
 ItemFlavorText.version_group = relationship(VersionGroup,
     innerjoin=True, lazy='joined')
@@ -2518,7 +2518,8 @@ ItemGameIndex.generation = relationship(Generation,
 
 ItemPocket.categories = relationship(ItemCategory,
     innerjoin=True,
-    order_by=ItemCategory.identifier.asc())
+    order_by=ItemCategory.identifier.asc(),
+    backref=backref('pocket', innerjoin=True))
 
 
 Location.region = relationship(Region,
@@ -2539,11 +2540,6 @@ LocationGameIndex.location = relationship(Location,
     innerjoin=True, lazy='joined',
     backref='game_indices')
 LocationGameIndex.generation = relationship(Generation,
-    innerjoin=True, lazy='joined')
-
-
-Machine.item = relationship(Item)
-Machine.version_group = relationship(VersionGroup,
     innerjoin=True, lazy='joined')
 
 
@@ -2886,7 +2882,6 @@ PokemonSpecies.conquest_evolution = relationship(ConquestPokemonEvolution,
 PokemonSpeciesFlavorText.version = relationship(Version, innerjoin=True, lazy='joined')
 PokemonSpeciesFlavorText.language = relationship(Language, innerjoin=True, lazy='joined')
 
-Region.generation = relationship(Generation, uselist=False)
 Region.version_group_regions = relationship(VersionGroupRegion,
     order_by=VersionGroupRegion.version_group_id.asc(),
     backref='region')
@@ -2950,7 +2945,8 @@ VersionGroup.pokemon_move_methods = relationship(PokemonMoveMethod,
     backref="version_groups")
 VersionGroup.machines = relationship(Machine,
     innerjoin=True,
-    order_by=Machine.machine_number)
+    order_by=Machine.machine_number,
+    backref=backref('version_group', innerjoin=True, lazy='joined'))
 
 
 VersionGroupPokemonMoveMethod.version_group = relationship(VersionGroup,
