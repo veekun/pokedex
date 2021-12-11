@@ -30,6 +30,7 @@ from functools import partial
 import six
 
 from sqlalchemy import Column, ForeignKey, MetaData, PrimaryKeyConstraint, UniqueConstraint
+from sqlalchemy import __version__ as sqla_version
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
@@ -38,6 +39,12 @@ from sqlalchemy.sql import and_
 from sqlalchemy.types import Boolean, Enum, Integer, SmallInteger, Unicode, UnicodeText
 
 from pokedex.db import markdown, multilang
+
+relationship = partial(relationship, viewonly=True)
+if (1, 3, 17) <= tuple(int(x) for x in sqla_version.split(".")) < (1, 4):
+    # `sync_backref` was introduced in 1.3.17
+    # Since 1.4 it defaults to False if `viewonly` is True
+    relationship = partial(relationship, sync_backref=False)
 
 class TableSuperclass(object):
     """Superclass for declarative tables, to give them some generic niceties
