@@ -17,7 +17,7 @@ from pokedex.defaults import get_default_csv_dir
 from pokedex.db.dependencies import find_dependent_tables
 from pokedex.db.oracle import rewrite_long_table_names
 
-from sqlalchemy import and_
+from sqlalchemy import and_, true
 from sqlalchemy.sql import exists
 
 
@@ -381,6 +381,7 @@ def load(session, tables=[], directory=None, drop_tables=False, verbose=False, s
         session.query(VGPMM).delete()
 
         q = session.query(t.VersionGroup.id, t.PokemonMoveMethod.id)
+        q = q.filter(true())  # Suppress cartesian product warning
         q = q.filter(exists().where(and_(
                 t.PokemonMove.pokemon_move_method_id == t.PokemonMoveMethod.id,
                 t.PokemonMove.version_group_id == t.VersionGroup.id)))

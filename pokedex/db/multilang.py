@@ -10,6 +10,18 @@ from sqlalchemy.types import Integer
 
 from pokedex.db import markdown
 
+# Decide which method to use for the default value of the parameter _default_language_id
+_MULTILANG_SESSION_USE_EVENT = False
+try:
+    from sqlalchemy.orm import SessionEvents
+except ImportError:
+    pass
+else:
+    if hasattr(SessionEvents, 'do_orm_execute'):
+        # SQLAlchemy 1.4+
+        from sqlalchemy import event
+        _MULTILANG_SESSION_USE_EVENT = True
+
 class LocalAssociationProxy(AssociationProxy, ColumnOperators):
     """An association proxy for names in the default language
 
@@ -168,11 +180,12 @@ def create_translation_table(_table_name, foreign_class, relation_name,
         primaryjoin=and_(
             Translations.foreign_id == foreign_class.id,
             Translations.local_language_id == bindparam('_default_language_id',
-                value='dummy', type_=Integer, required=True),
+                value='dummy', type_=Integer),
         ),
         foreign_keys=[Translations.foreign_id, Translations.local_language_id],
         uselist=False,
         lazy=relation_lazy,
+        viewonly=True,
     ))
 
     # Add per-column proxies to the original class
@@ -206,14 +219,16 @@ def create_translation_table(_table_name, foreign_class, relation_name,
     # Done
     return Translations
 
-class MultilangQuery(Query):
-    def _execute_and_instances(self, *args, **kwargs):
-        # Set _default_language_id param if it hasn't been set by the time the query is executed.
-        # XXX This is really hacky and we should figure out a cleaner method.
-        if '_default_language_id' not in self._params or self._params['_default_language_id'] == 'dummy':
-            self._params = self._params.copy()
-            self._params['_default_language_id'] = self.session.default_language_id
-        return super(MultilangQuery, self)._execute_and_instances(*args, **kwargs)
+if not _MULTILANG_SESSION_USE_EVENT:
+    # SQLAlchemy 1.4 no longer supports Query._execute_and_instances
+    class MultilangQuery(Query):
+        def _execute_and_instances(self, *args, **kwargs):
+            # Set _default_language_id param if it hasn't been set by the time the query is executed.
+            # XXX This is really hacky and we should figure out a cleaner method.
+            if '_default_language_id' not in self._params or self._params['_default_language_id'] == 'dummy':
+                self._params = self._params.copy()
+                self._params['_default_language_id'] = self.session.default_language_id
+            return super(MultilangQuery, self)._execute_and_instances(*args, **kwargs)
 
 class MultilangSession(Session):
     """A tiny Session subclass that adds support for a default language.
@@ -232,9 +247,18 @@ class MultilangSession(Session):
 
         self.markdown_extension = markdown_extension_class(self)
 
-        kwargs.setdefault('query_cls', MultilangQuery)
+        if not _MULTILANG_SESSION_USE_EVENT:
+            kwargs.setdefault('query_cls', MultilangQuery)
 
         super(MultilangSession, self).__init__(*args, **kwargs)
+
+if _MULTILANG_SESSION_USE_EVENT:
+    @event.listens_for(MultilangSession, 'do_orm_execute')
+    def receive_do_orm_execute(state):
+        # Set _default_language_id param if it hasn't been set by the time the query is executed.
+        # The same hack as above, but for SQLAlchemy 1.4+
+        if state.is_select and state.parameters.get('_default_language_id', 'dummy') == 'dummy':
+            return state.invoke_statement(params={'_default_language_id': state.session.default_language_id})
 
 class MultilangScopedSession(ScopedSession):
     """Dispatches language selection to the attached Session."""
