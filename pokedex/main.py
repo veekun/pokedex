@@ -114,7 +114,7 @@ def create_parser():
         help="directory to place the dumped CSV files")
     cmd_dump.add_argument(
         '-l', '--langs', dest='langs', default=None,
-        help="comma-separated list of language codes to load, 'none', or 'all' (default: en)")
+        help="comma-separated list of language codes to load, 'none', or 'all' (default: all langs)")
     cmd_dump.add_argument(
         'tables', nargs='*',
         help="list of database tables to load (default: all)")
