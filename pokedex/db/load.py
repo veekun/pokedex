@@ -476,7 +476,7 @@ def dump(session, tables=[], directory=None, verbose=False, langs=None):
         # if specified, or for official languages by default.
         # For non-translation tables, dump all rows.
         if 'local_language_id' in columns:
-            if langs is None:
+            if langs is None or 'all' in langs:
                 def include_row(row):
                     return languages[row.local_language_id].official
             elif any(col.info.get('official') for col in table.columns):
