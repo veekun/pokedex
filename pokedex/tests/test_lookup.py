@@ -133,7 +133,6 @@ def test_bare_random(lookup):
         results = lookup.lookup(u'random')
         assert len(results) == 1
 
-
 @parametrize(
     'table_name',
     [
@@ -154,3 +153,10 @@ def test_crash_empty_prefix(lookup):
     """Searching for ':foo' used to crash, augh!"""
     results = lookup.lookup(u':Eevee')
     assert results[0].object.name == u'Eevee'
+
+
+def test_prefix_lookup(lookup):
+    prefix = 'char'
+    results = lookup.prefix_lookup(prefix=prefix)
+    object_name = results[0].object.name
+    assert prefix in str(object_name).lower()
