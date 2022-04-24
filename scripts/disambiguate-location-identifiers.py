@@ -31,6 +31,7 @@ def main(*argv):
         location_dict[location.identifier].append(location)
 
     changes = False
+    pointer = 0
     for identifier, locations in sorted(location_dict.items()):
         disambiguate = any((
                 len(locations) > 1,
@@ -38,7 +39,7 @@ def main(*argv):
                 identifier in ambiguous_set,
             ))
         location_split = identifier.split('-')
-        print(location_split)
+        print(location_split,pointer)
         if disambiguate:
             changes = True
             #print u'→'.encode('utf-8'),
@@ -65,7 +66,8 @@ def main(*argv):
                         numbered_identifier = '%s-%s' % (new_identifier, i)
                        # print numbered_identifier,
                         location.identifier = numbered_identifier
-            print(location)
+            #print(location)
+        pointer += 1
 
     if changes:
         if argv and argv[0] == '--commit':
