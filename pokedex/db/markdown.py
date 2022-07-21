@@ -17,8 +17,9 @@ import re
 import markdown
 import six
 from sqlalchemy.orm.session import object_session
-from markdown.util import etree, AtomicString
 
+from markdown.util import AtomicString
+import xml.etree.ElementTree as etree 
 
 @six.python_2_unicode_compatible
 class MarkdownString(object):

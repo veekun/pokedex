@@ -11,7 +11,7 @@ setup(
     install_requires=[
         'SQLAlchemy>=1.0,<1.4',
         'whoosh>=2.5,<2.7',
-        'markdown>=2.4.1,<=2.6.11',
+        'markdown>=3.4,<3.5',
         'construct==2.5.3',
         'six>=1.9.0',
     ],
@@ -22,6 +22,7 @@ setup(
     },
     classifiers=[
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
